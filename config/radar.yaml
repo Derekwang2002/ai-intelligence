@@ -1,0 +1,250 @@
+schema_version: 1
+project: ai-intelligence
+
+paths:
+  rules: AGENTS.md
+  task: TASK.md
+  state: state.json
+  events_dir: events
+  daily_dir: daily
+  trends_dir: trends
+  current_trends: trends/current.md
+  event_index: index/events.json
+  logs_dir: logs
+
+time_window:
+  timestamp_timezone: UTC
+  report_timezone: Asia/Shanghai
+  initial_lookback_hours: 24
+  overlap_hours: 3
+  checkpoint_field: last_successful_run_at
+  next_checkpoint_value: current_run_started_at
+
+persistence:
+  daily_pattern: daily/YYYY-MM-DD.md
+  events_pattern: events/YYYY-MM-DD.json
+  trend_snapshot_pattern: trends/YYYY-MM-DD.md
+  current_trends_path: trends/current.md
+  safe_write: true
+  update_checkpoint_last: true
+  fail_without_checkpoint_advance: true
+
+history:
+  default_recent_days: 7
+  extended_recent_days: 30
+  load_all_history: false
+  lookup_keys:
+    - organization
+    - model
+    - technology
+    - framework
+    - protocol
+    - category
+    - tags
+    - event_fingerprint
+
+deduplication:
+  canonical_fields:
+    - event_fingerprint
+    - canonical_url
+    - official_event_id
+    - title
+    - organization
+    - release_name
+    - model_or_product_name
+    - published_at
+  merge_duplicate_media_reports: true
+  prefer_update_existing_event: true
+
+output:
+  language: zh-CN
+  keep_technical_terms_in_english: true
+  daily_is_cumulative: true
+  include_debug_logs_in_daily: false
+
+source_tiers:
+  tier_1_primary:
+    - official_blog
+    - official_docs
+    - release_notes
+    - github
+    - hugging_face
+    - research_blog
+    - api_documentation
+    - official_announcement
+  tier_2_research:
+    - arxiv
+    - papers_with_code
+    - research_lab
+    - conference_paper
+    - github_research_repo
+  tier_3_media:
+    - Reuters
+    - Bloomberg
+    - Financial Times
+    - The Information
+    - TechCrunch
+    - The Verge
+    - Wired
+    - Ars Technica
+  tier_4_community_signal_only:
+    - GitHub Trending
+    - Hacker News
+    - Reddit
+    - X
+    - Hugging Face Trending
+
+focus_areas:
+  foundation_models:
+    topics:
+      - new_models
+      - reasoning
+      - multimodal
+      - long_context
+      - coding
+      - tool_use
+      - structured_output
+      - computer_use
+      - embeddings
+      - reranking
+      - api
+      - pricing
+      - open_weight_models
+      - small_models
+    organizations:
+      - OpenAI
+      - Anthropic
+      - Google DeepMind
+      - Meta
+      - Microsoft
+      - Mistral
+      - xAI
+      - Cohere
+      - Alibaba Qwen
+      - DeepSeek
+      - Moonshot
+      - Zhipu
+      - ByteDance
+  ai_agent:
+    - agent_framework
+    - multi_agent
+    - tool_calling
+    - computer_use
+    - browser_agent
+    - coding_agent
+    - research_agent
+    - memory
+    - planning
+    - evaluation
+    - observability
+    - security
+    - MCP
+    - agent_to_agent_protocol
+    - workflow_orchestration
+    - sandbox
+    - long_running_agents
+  ai_engineering:
+    - RAG
+    - retrieval
+    - graph_rag
+    - embedding
+    - reranking
+    - context_engineering
+    - structured_generation
+    - guardrails
+    - evaluation
+    - observability
+    - llm_gateway
+    - caching
+    - model_routing
+    - fine_tuning
+    - distillation
+    - quantization
+    - model_serving
+    - streaming
+    - ai_backend_architecture
+  open_source:
+    - github
+    - hugging_face
+    - agent_frameworks
+    - ai_sdk
+    - inference_framework
+    - evaluation
+    - ai_infra
+    - developer_tools
+  research:
+    - arxiv
+    - papers_with_code
+    - top_conferences
+    - research_repositories
+  infrastructure:
+    - gpu
+    - tpu
+    - accelerator
+    - training_infrastructure
+    - inference_infrastructure
+    - distributed_training
+    - model_serving
+    - ai_cloud
+  developer_tools:
+    - Codex
+    - Claude Code
+    - Cursor
+    - GitHub Copilot
+    - Windsurf
+    - Gemini CLI
+    - OpenCode
+    - Aider
+    - Continue
+  business_policy:
+    include_only_if_affects:
+      - ai_technical_ecosystem
+      - developer_ecosystem
+      - product_development
+      - model_access
+      - api_cost
+      - chip_supply
+      - open_source
+
+scoring:
+  scale: 1-5
+  dimensions:
+    - technical_impact
+    - engineering_value
+    - adoption_signal
+    - maturity
+    - verification_cost
+    - risk
+  recommendations:
+    - ADOPT
+    - TRIAL
+    - WATCH
+    - IGNORE
+
+trend_rules:
+  require_historical_evidence: true
+  minimum_independent_signals: 2
+  prefer_signals_from_different_dates: true
+  prefer_signals_from_different_organizations: true
+  allowed_statuses:
+    - candidate
+    - emerging
+    - strengthening
+    - established
+    - weakening
+    - invalidated
+  confidence_levels:
+    - Low
+    - Medium
+    - High
+  no_forced_trends_statement: 本周期没有发现证据充分的新趋势。
+
+quality_gate:
+  require_freshness_check: true
+  require_primary_source_when_available: true
+  require_dedup_against_index: true
+  require_daily_update: true
+  require_event_store_update: true
+  require_trend_update: true
+  require_index_update: true
+  require_state_update_last: true
