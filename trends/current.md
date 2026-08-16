@@ -1,33 +1,40 @@
-# Current Trend State — as of 2026-08-15T12:26Z
+# Current Trend State — as of 2026-08-16T00:00Z
 
-> 维护说明：本文件反映当前仍值得追踪的候选/确认趋势。每次运行可新增、升级、降级或作废条目。首次运行：无已确认趋势。
+> 维护说明：本文件反映当前仍值得追踪的候选/确认趋势。每次运行可新增、升级、降级或作废条目。趋势判定要求多个独立信号（跨日期、跨组织）；单个新闻或单日热度不构成趋势。
 
 ## Candidates under observation
 
-### Candidate: Open-weight agentic coding models from Chinese labs competing at frontier level
-- **Status:** candidate (first observation — NOT a trend yet)
+### Emerging: Open-weight agentic coding models from Chinese labs competing at frontier level
+- **Status:** emerging (upgraded from candidate — multi-org evidence accumulated, still short of confirmation criteria)
 - **Confidence:** Low
 - **First observed:** 2026-08-15 (covering 2026-08-14 window)
-- **Last updated:** 2026-08-15
-- **Evidence so far:** Qwen3.8-27B weights (Apache 2.0, 91k downloads day-one); GLM-5.3 launch (weights pending ~8/28)
+- **Last updated:** 2026-08-16
+- **Evidence so far:** Qwen3.8-27B weights (Apache 2.0, 91k downloads day-one, 2026-08-14); GLM-5.3 launch (weights pending ~8/28, 2026-08-14); adjacent context: Meta Muse Glimmer / Muse Spark 1.2 open weights (2026-08-10, US lab — same direction, different scope); background: Kimi K3 2.8T open weights (2026-07-16)
+- **2026-08-16 run:** no new independent signals in window (GLM-5.3 Product Hunt #3 is community heat only). Status/Confidence unchanged.
 - **What would confirm:** GLM-5.3 weights land + independent benchmark reproduction; another same-tier release next cycle; sustained HF download velocity
 
-### Candidate: MCP entering enterprise security & enforcement phase
-- **Status:** candidate (first observation — NOT a trend yet)
-- **Confidence:** Low
+### Emerging: MCP entering enterprise security & enforcement phase
+- **Status:** emerging (upgraded from candidate on 2026-08-16)
+- **Confidence:** Medium
 - **First observed:** 2026-08-15 (covering 2026-08-14 window)
-- **Last updated:** 2026-08-15
-- **Evidence so far:** Cloudflare Gateway MCP detection/enforcement GA (`experimental.is_mcp`, Portal-only enforcement, OAuth pre-registration); Agents SDK v0.20.0 stateless-spec support
-- **What would confirm:** second vendor (Zscaler/Netskope/Palo Alto) shipping MCP identification; published enterprise shadow-MCP telemetry; MCP auth spec adoption in major agent frameworks
+- **Last updated:** 2026-08-16
+- **Evidence:**
+  1. Cloudflare One Gateway MCP detection/enforcement GA — `experimental.is_mcp`, Portal-only enforcement, OAuth pre-registration (2026-08-14, primary, ev-20260814-03)
+  2. Workday Adaptive Planning first-party MCP Server in 2026R2 release notes (2026-08-14, official docs) — enterprise SaaS supply side
+  3. Practical DevSecOps MCP Security Statistics 2026: 82% of implementations vulnerable to path traversal; 40+ disclosed MCP CVEs by early August — security demand side
+  4. Ecosystem scale: 10,000+ MCP servers after the 2026-07-28 stateless spec revision
+- **Why upgraded:** multiple independent signals from different organizations and dates (network vendor, enterprise SaaS, security research) all point the same direction — MCP is moving from novelty protocol to governed enterprise infrastructure.
+- **What would confirm:** second security vendor (Zscaler/Netskope/Palo Alto) shipping MCP identification; published enterprise shadow-MCP telemetry; MCP auth spec adoption in major agent frameworks
 
 ### Candidate: Coding agents converging into multi-agent runtimes
 - **Status:** candidate (first observation — NOT a trend yet)
 - **Confidence:** Low
 - **First observed:** 2026-08-15 (covering 2026-08-13/14 window)
-- **Last updated:** 2026-08-15
-- **Evidence so far:** Claude Code default-on subagent forking + cross-session SendMessage; GitHub Copilot Agent Plugins 1.0 GA; DeepSeek Harness (dsh) MIT open-source
+- **Last updated:** 2026-08-16
+- **Evidence so far:** Claude Code default-on subagent forking + cross-session SendMessage (2026-08-13/14); GitHub Copilot Agent Plugins 1.0 GA (2026-08-13); DeepSeek Harness (dsh) MIT open-source (2026-08-14)
+- **2026-08-16 run:** no new signals in window (no new Claude Code release; Cursor Builds default-on is 8/17, not yet in effect).
 - **What would confirm:** equivalent primitives (fork/inter-agent messaging) appearing in Codex/Cursor/OpenCode next cycles; community patterns consolidating around orchestration-on-CLI
 
 ## Invalidated / retired
 
-(none — first run)
+(none)

@@ -45,12 +45,16 @@
       "organization": ["DeepSeek"],
       "published_at": "2026-08-13",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-08-15T12:26:05Z",
+      "last_updated_at": "2026-08-16T00:00:26Z",
       "source_type": "primary",
       "primary_source": "https://api-docs.deepseek.com/updates/",
-      "secondary_sources": ["https://n8nlab.io/news/deepseek-pro-model-harness-launch"],
+      "secondary_sources": [
+        "https://n8nlab.io/news/deepseek-pro-model-harness-launch",
+        "https://api-docs.deepseek.com/quick_start/pricing",
+        "https://www.reddit.com/r/DeepSeek/ (price-increase reaction thread)"
+      ],
       "summary": "DeepSeek moved V4-Pro from preview to GA across app/web/API (deepseek-v4-pro) with native OpenAI Responses API support and a one-click Codex configuration. Thinking-effort levels (low/high/max) added for V4-Pro and V4-Flash. Peak/off-peak pricing takes effect 2026-08-16T16:00Z with off-peak at 50% of peak.",
-      "why_it_matters": "Responses-API compatibility makes DeepSeek a near-drop-in inside OpenAI-native agent stacks; half-price off-peak output changes the cost math for overnight batch agents.",
+      "why_it_matters": "Responses-API compatibility makes DeepSeek a near-drop-in inside OpenAI-native agent stacks. Confirmed peak/off-peak rates (effective 2026-08-16T16:00Z) are a large increase vs current flat rates — V4-Pro output rises from $0.87 to $3.96/Mtok peak / $1.98 off-peak — so budget-sensitive agent workloads now need time-of-day scheduling or re-evaluation.",
       "technical_details": {
         "terminal_bench_2_1": 87.9,
         "hle_without_tools": 42.7,
@@ -58,8 +62,22 @@
         "deepswe": 62.7,
         "cybergym": 83.3,
         "responses_api_compatible": true,
-        "off_peak_pricing_effective": "2026-08-16T16:00Z"
+        "off_peak_pricing_effective": "2026-08-16T16:00Z",
+        "pricing_usd_per_mtok": {
+          "until_2026_08_16T16Z": {
+            "deepseek_v4_pro": {"input_cache_hit": 0.003625, "input_cache_miss": 0.435, "output": 0.87},
+            "deepseek_v4_flash": {"input_cache_hit": 0.0028, "input_cache_miss": 0.14, "output": 0.28}
+          },
+          "from_2026_08_16T16Z": {
+            "peak_hours_utc": "01:00-04:00 and 06:00-10:00 (7h/day); all other hours off-peak",
+            "deepseek_v4_pro_peak": {"input_cache_hit": 0.044, "input_cache_miss": 1.32, "output": 3.96},
+            "deepseek_v4_pro_off_peak": {"input_cache_hit": 0.022, "input_cache_miss": 0.66, "output": 1.98},
+            "deepseek_v4_flash_peak": {"input_cache_hit": 0.014, "input_cache_miss": 0.44, "output": 1.32},
+            "deepseek_v4_flash_off_peak": {"input_cache_hit": 0.007, "input_cache_miss": 0.22, "output": 0.66}
+          }
+        }
       },
+      "update_2026_08_16": "Exact peak/off-peak rates confirmed from official pricing docs during 2026-08-16T00:00Z run. Net effect is a substantial price increase, not a discount: even off-peak V4-Pro output is ~2.3x the current flat rate, and peak is ~4.6x. Peak windows align with China business hours (09:00-12:00 / 14:00-18:00 Beijing). Concurrency limits unchanged: flash 2500, pro 500.",
       "tags": ["deepseek", "v4-pro", "ga", "responses-api", "pricing", "agents"],
       "technical_impact": 3,
       "engineering_value": 4,
