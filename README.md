@@ -36,6 +36,8 @@ ai-intelligence/
 ├── index/
 │   └── events.json        # 跨运行事件索引（去重 + 趋势分析）
 ├── logs/                  # 失败日志与恢复信息
+├── docs/
+│   └── site-architecture.md  # 站点技术文档：架构、选型考量、已知限制、演进方向、维护手册
 ├── site/                  # 只读静态网站（Astro），把知识库渲染为可浏览的雷达/时间线/趋势/日报
 │   ├── scripts/prepare-data.mjs   # 构建前数据管线：知识库 → src/data/generated/（不入库）
 │   └── …                   # 本地运行：cd site && npm install && npm run dev

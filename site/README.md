@@ -2,6 +2,8 @@
 
 知识库（`events/`、`daily/`、`trends/`、`index/`、`state.json`）的只读静态站点，基于 [Astro](https://astro.build)。
 
+> 架构与选型的完整说明见 [`docs/site-architecture.md`](../docs/site-architecture.md)。
+
 ## 视图
 
 | 路由 | 内容 |
