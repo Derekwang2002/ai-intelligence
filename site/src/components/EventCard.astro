@@ -1,0 +1,45 @@
+---
+import RecBadge from './RecBadge.astro';
+import { u, catLabel, CATEGORY_VARS } from '../lib/url';
+
+interface Props {
+  event: any;
+  compact?: boolean;
+}
+
+const { event, compact = false } = Astro.props;
+const href = u(`/events/${event.event_id}/`);
+const catVar = CATEGORY_VARS[event.category] ?? 'var(--text-faint)';
+
+const miniDims = [
+  { key: 'technical_impact', label: 'TI' },
+  { key: 'engineering_value', label: 'EV' },
+  { key: 'adoption_signal', label: 'AS' },
+];
+---
+
+<a class="event-card card rise" href={href} data-cat={event.category} data-rec={event.recommendation} data-org={(event.organization ?? []).join('|')} data-tags={(event.tags ?? []).join('|')} data-q={`${event.title} ${event.summary ?? ''} ${(event.organization ?? []).join(' ')} ${(event.tags ?? []).join(' ')}`.toLowerCase()}>
+  <div class="top">
+    <span class="cat-chip" style={`--cat-c: ${catVar}`}>{catLabel(event.category)}</span>
+    <span class="date">{event.published_date}</span>
+    <RecBadge rec={event.recommendation} />
+  </div>
+  <h3>{event.title}</h3>
+  {!compact && event.summary && <p class="summary">{event.summary}</p>}
+  <div class="bottom">
+    {(event.organization ?? []).slice(0, 3).map((org: string) => <span class="tag">{org}</span>)}
+    {(event.tags ?? []).slice(0, 4).map((t: string) => <span class="tag">{t}</span>)}
+    <div class="mini-scores">
+      {miniDims.map((d) => (
+        <span class="m" title={d.label}>
+          {d.label}
+          <span class="dots">
+            {[1, 2, 3, 4, 5].map((n) => (
+              <span class={`dot ${n <= (event[d.key] ?? 0) ? 'on' : ''}`}></span>
+            ))}
+          </span>
+        </span>
+      ))}
+    </div>
+  </div>
+</a>

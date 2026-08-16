@@ -1,0 +1,10 @@
+---
+interface Props {
+  rec: string;
+}
+const { rec } = Astro.props;
+const cls =
+  { ADOPT: 'badge-adopt', TRIAL: 'badge-trial', WATCH: 'badge-watch', IGNORE: 'badge-ignore' }[rec] ?? 'badge-ignore';
+---
+
+<span class={`badge ${cls}`}>{rec}</span>

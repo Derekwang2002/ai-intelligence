@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { u } from '../../lib/url';
+import daily from '../../data/generated/daily.json';
+
+export function getStaticPaths() {
+  return daily.map((d: any) => ({ params: { date: d.date }, props: { report: d } }));
+}
+
+const { report } = Astro.props;
+const idx = daily.findIndex((d: any) => d.date === report.date);
+const newer = daily[idx - 1];
+const older = daily[idx + 1];
+---
+
+<Base title={`日报 ${report.date}`}>
+  <div class="article-head card">
+    <div class="crumbs"><a href={u('/daily/')}>← 日报</a><span>·</span><span class="mono">{report.date}</span></div>
+    <h1>AI Intelligence · {report.date}</h1>
+    <div class="meta-row">
+      {newer && <a href={u(`/daily/${newer.date}/`)}>← 较新 {newer.date}</a>}
+      {older && <a href={u(`/daily/${older.date}/`)} style="margin-left: auto;">较旧 {older.date} →</a>}
+    </div>
+  </div>
+  <div class="card article-body">
+    <div class="prose" set:html={report.html} />
+  </div>
+</Base>

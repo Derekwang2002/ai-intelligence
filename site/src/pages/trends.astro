@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import { u } from '../lib/url';
+import trends from '../data/generated/trends.json';
+
+const active = trends.trends.filter((t: any) => !t.retired);
+const retired = trends.trends.filter((t: any) => t.retired);
+const lifecycle = ['candidate', 'emerging', 'strengthening', 'established', 'weakening', 'invalidated'];
+
+function evidenceItems(ev: string): string[] {
+  return ev
+    .split('\n')
+    .map((l) => l.replace(/^\s*\d+\.\s*/, '').trim())
+    .filter(Boolean);
+}
+---
+
+<Base title="趋势" description="AI Intelligence Radar — 多信号支撑的趋势追踪与生命周期状态">
+  <div class="page-head">
+    <h1>趋势</h1>
+    <p class="desc">
+      单个新闻不构成趋势。这里的每条趋势都要求多个独立信号（跨日期、跨组织）支撑，
+      并随每次扫描升级、降级或作废。数据截至 <code>{trends.asOf}</code>。
+    </p>
+  </div>
+
+  <div class="lifecycle-bar card" style="padding: 12px 18px; margin-bottom: 24px; flex-wrap: wrap;">
+    <span style="font-weight: 600; color: var(--text-muted); margin-right: 6px;">生命周期：</span>
+    {lifecycle.map((s, i) => (
+      <>
+        {i > 0 && <span class="arrow">→</span>}
+        <span class={`status-pill st-${s}`}>{s}</span>
+      </>
+    ))}
+  </div>
+
+  <div class="grid" style="grid-template-columns: 1fr;">
+    {active.map((t: any) => (
+      <article class="card trend-card">
+        <div class="head">
+          <h3>{t.name}</h3>
+          <span class={`status-pill st-${t.status}`}>{t.status}</span>
+          <span class="conf-pill">Confidence {t.confidence}</span>
+        </div>
+        <div class="meta">
+          {t.firstObserved && <span>首次观察 {t.firstObserved}</span>}
+          {t.lastUpdated && <span>最后更新 {t.lastUpdated}</span>}
+        </div>
+        {t.statusRaw && t.statusRaw.toLowerCase() !== t.status && (
+          <div class="block">{t.statusRaw}</div>
+        )}
+        {evidenceItems(t.evidence).length > 0 && (
+          <div>
+            <div class="block"><b>证据：</b></div>
+            <ol class="evidence">
+              {evidenceItems(t.evidence).map((item) => <li>{item}</li>)}
+            </ol>
+          </div>
+        )}
+        {t.confirm && (
+          <div class="block"><b>确认条件：</b>{t.confirm}</div>
+        )}
+      </article>
+    ))}
+  </div>
+
+  {retired.length > 0 && (
+    <>
+      <div class="section-title">已作废 / 退役</div>
+      <div class="grid" style="grid-template-columns: 1fr;">
+        {retired.map((t: any) => (
+          <article class="card trend-card" style="opacity: 0.7;">
+            <div class="head">
+              <h3>{t.name}</h3>
+              <span class={`status-pill st-${t.status}`}>{t.status}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </>
+  )}
+
+  {trends.snapshots.length > 0 && (
+    <>
+      <div class="section-title">历史快照</div>
+      <div class="card" style="padding: 8px 20px;">
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          {trends.snapshots.map((s: any) => (
+            <li style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px;">
+              <span class="mono" style="color: var(--text-faint);">{s.date}</span>
+              <a href={u(`/trends/archive/${s.date}/`)} style="color: var(--accent);">查看当日趋势快照 →</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  )}
+</Base>

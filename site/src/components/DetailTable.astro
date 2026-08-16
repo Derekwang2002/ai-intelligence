@@ -1,0 +1,56 @@
+---
+// Renders an arbitrary technical_details object as key/value rows.
+// Numeric-looking nested objects (e.g. benchmarks) render as labeled bars.
+interface Props {
+  obj: Record<string, any>;
+  depth?: number;
+}
+
+const { obj, depth = 0 } = Astro.props;
+
+function isNumericMap(v: any): v is Record<string, number> {
+  if (!v || typeof v !== 'object' || Array.isArray(v)) return false;
+  const vals = Object.values(v);
+  return vals.length > 0 && vals.every((x) => typeof x === 'number');
+}
+
+const prettyKey = (k: string) =>
+  k
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase())
+    .replace(/\bMtok\b/i, 'Mtok')
+    .replace(/\bApi\b/i, 'API')
+    .replace(/\bSdk\b/i, 'SDK');
+
+const entries = Object.entries(obj ?? {}).filter(([k]) => !k.startsWith('update_'));
+const maxBench = (m: Record<string, number>) => Math.max(...Object.values(m), 100);
+---
+
+<table class="kv-table">
+  {entries.map(([k, v]) => (
+    <tr>
+      <th scope="row">{prettyKey(k)}</th>
+      <td>
+        {typeof v === 'string' || typeof v === 'number' ? (
+          <span class="mono">{String(v)}</span>
+        ) : Array.isArray(v) ? (
+          <span class="mono">{v.join(' · ')}</span>
+        ) : isNumericMap(v) ? (
+          <div class="bench-grid">
+            {Object.entries(v).map(([bn, bv]) => (
+              <span class="bench-item">
+                <span class="bn">{bn}</span>
+                <span class="bt"><span class="bf" style={`width: ${Math.min(100, (Number(bv) / maxBench(v)) * 100)}%`}></span></span>
+                <span class="bv">{bv}</span>
+              </span>
+            ))}
+          </div>
+        ) : depth < 1 ? (
+          <Astro.self obj={v} depth={depth + 1} />
+        ) : (
+          <span class="mono">{JSON.stringify(v)}</span>
+        )}
+      </td>
+    </tr>
+  ))}
+</table>

@@ -1,0 +1,30 @@
+---
+interface Props {
+  scores: any;
+}
+
+const { scores } = Astro.props;
+
+const dims = [
+  { key: 'technical_impact', label: '技术影响' },
+  { key: 'engineering_value', label: '工程价值' },
+  { key: 'adoption_signal', label: '采用信号' },
+  { key: 'maturity', label: '成熟度' },
+  { key: 'verification_cost', label: '验证成本' },
+  { key: 'risk', label: '风险' },
+];
+---
+
+<div class="score-list">
+  {dims.map((d) => {
+    const v = scores[d.key] ?? 0;
+    const color = d.key === 'risk' && v >= 4 ? 'var(--watch)' : 'var(--accent)';
+    return (
+      <div class="score-row">
+        <span class="name">{d.label}</span>
+        <span class="track"><span class="fill" style={`width: ${(v / 5) * 100}%; background: ${color}`}></span></span>
+        <span class="val">{v}</span>
+      </div>
+    );
+  })}
+</div>
