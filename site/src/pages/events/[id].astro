@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import RecBadge from '../../components/RecBadge.astro';
 import ScoreBars from '../../components/ScoreBars.astro';
 import DetailTable from '../../components/DetailTable.astro';
-import { u, catLabel, CATEGORY_VARS, fmtDateTime } from '../../lib/url';
+import { u, catLabel, fmtDateTime } from '../../lib/url';
 import events from '../../data/generated/events.json';
 
 export function getStaticPaths() {
@@ -11,7 +11,6 @@ export function getStaticPaths() {
 }
 
 const { event } = Astro.props;
-const catVar = CATEGORY_VARS[event.category] ?? 'var(--text-faint)';
 const updateKeys = Object.keys(event).filter((k) => /^update_/.test(k));
 const idx = events.findIndex((e: any) => e.event_id === event.event_id);
 const newer = idx > 0 ? events[idx - 1] : null;
@@ -25,10 +24,10 @@ const recHint: Record<string, string> = {
 ---
 
 <Base title={event.title.slice(0, 80)}>
-  <div class="article-head card">
+  <div class="article-head">
     <div class="crumbs">
       <a href={u('/events/')}>← 事件</a>
-      <span class="cat-chip" style={`--cat-c: ${catVar}`}>{catLabel(event.category)}</span>
+      <span class="cat-chip">{catLabel(event.category)}</span>
       <span class="mono" style="font-size: 12px;">{event.event_id}</span>
     </div>
     <h1>{event.title}</h1>
@@ -42,14 +41,14 @@ const recHint: Record<string, string> = {
 
   <div class="detail-grid">
     <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
-      <div class="card article-body">
-        <div class="section-title" style="margin-top: 22px;">摘要</div>
+      <div class="article-body">
+        <div class="section-title">摘要</div>
         <p style="margin: 0; color: var(--text); font-size: 15px; line-height: 1.9;">{event.summary}</p>
 
         {event.why_it_matters && (
           <>
             <div class="section-title">为什么重要</div>
-            <blockquote style="margin: 0; padding: 12px 18px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 10px 10px 0; color: var(--text); font-size: 14.5px; line-height: 1.85;">
+            <blockquote style="margin: 0; padding: 2px 0 2px 18px; border-left: 2px solid var(--accent); color: var(--text-muted); font-size: 14.5px; line-height: 1.85;">
               {event.why_it_matters}
             </blockquote>
           </>

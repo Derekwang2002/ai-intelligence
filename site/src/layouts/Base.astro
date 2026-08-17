@@ -10,11 +10,10 @@ interface Props {
 const { title, description = 'AI 情报观察站：Events → Signals → Trends → Decisions 的 AI 技术情报知识库' } = Astro.props;
 
 const navItems = [
-  { href: u('/'), label: '概览', match: (p: string) => p === '/' || p === '' },
+  { href: u('/daily/'), label: '日报', match: (p: string) => p.startsWith('/daily') },
   { href: u('/events/'), label: '事件', match: (p: string) => p.startsWith('/events') },
   { href: u('/radar/'), label: '技术雷达', match: (p: string) => p.startsWith('/radar') },
   { href: u('/trends/'), label: '趋势', match: (p: string) => p.startsWith('/trends') },
-  { href: u('/daily/'), label: '日报', match: (p: string) => p.startsWith('/daily') },
 ];
 
 const rawBase = (import.meta.env.BASE_URL ?? '/').replace(/\/+$/, '');
@@ -34,7 +33,9 @@ const pageTitle = title ? `${title} · AI 情报观察站` : 'AI 情报观察站
     <title>{pageTitle}</title>
     <script is:inline>
       (() => {
-        const stored = localStorage.getItem('theme');
+        // ?theme=light|dark 可强制指定主题（测试/分享用），否则用手动选择，再否则跟随系统
+        const forced = new URLSearchParams(location.search).get('theme');
+        const stored = forced === 'light' || forced === 'dark' ? forced : localStorage.getItem('theme');
         const theme =
           stored === 'light' || stored === 'dark'
             ? stored

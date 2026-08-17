@@ -15,7 +15,7 @@ import aggregates from '../data/generated/aggregates.json';
       每个事件按建议归入内环（<b>ADOPT</b>）到外环（<b>IGNORE</b>），按领域落入四个象限。
       同一技术多次出现时取最新事件。共 <code>{aggregates.totals.events}</code> 个事件、
       <code>{new Set(events.map((e: any) => e.event_fingerprint)).size}</code> 个独立条目。
-      悬停查看详情，点击进入事件页。
+      上方按象限索引，下方为雷达总览，编号一一对应。
     </p>
   </div>
   <RadarChart events={events} />

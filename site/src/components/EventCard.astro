@@ -1,6 +1,6 @@
 ---
 import RecBadge from './RecBadge.astro';
-import { u, catLabel, CATEGORY_VARS } from '../lib/url';
+import { u, catLabel } from '../lib/url';
 
 interface Props {
   event: any;
@@ -9,16 +9,9 @@ interface Props {
 
 const { event, compact = false } = Astro.props;
 const href = u(`/events/${event.event_id}/`);
-const catVar = CATEGORY_VARS[event.category] ?? 'var(--text-faint)';
-
-const miniDims = [
-  { key: 'technical_impact', label: 'TI' },
-  { key: 'engineering_value', label: 'EV' },
-  { key: 'adoption_signal', label: 'AS' },
-];
 
 // 组织名与其同名 hashtag（如 org "Qwen" + tag "qwen"）只保留组织标签；
-// 卡片底部空间有限，组织与标签各取前 2 个，其余合并为 +N（悬停可见完整清单）。
+// 底部空间有限，组织与标签各取前 2 个，其余合并为 +N（悬停可见完整清单）。
 const orgs = event.organization ?? [];
 const orgLower = new Set(orgs.map((o: string) => o.toLowerCase()));
 const allTags = (event.tags ?? []).filter((t: string) => !orgLower.has(t.toLowerCase()));
@@ -27,29 +20,22 @@ const shownTags = allTags.slice(0, 2);
 const hiddenItems = [...orgs.slice(2), ...allTags.slice(2)];
 ---
 
-<a class="event-card card rise" href={href} data-cat={event.category} data-rec={event.recommendation} data-org={(event.organization ?? []).join('|')} data-tags={(event.tags ?? []).join('|')} data-q={`${event.title} ${event.summary ?? ''} ${(event.organization ?? []).join(' ')} ${(event.tags ?? []).join(' ')}`.toLowerCase()}>
+<a class="event-card" href={href} data-cat={event.category} data-rec={event.recommendation} data-org={(event.organization ?? []).join('|')} data-tags={(event.tags ?? []).join('|')} data-q={`${event.title} ${event.summary ?? ''} ${(event.organization ?? []).join(' ')} ${(event.tags ?? []).join(' ')}`.toLowerCase()}>
   <div class="top">
-    <span class="cat-chip" style={`--cat-c: ${catVar}`}>{catLabel(event.category)}</span>
     <span class="date">{event.published_date}</span>
-    <RecBadge rec={event.recommendation} />
+    <span class="cat-chip">{catLabel(event.category)}</span>
   </div>
   <h3>{event.title}</h3>
+  <div class="side">
+    <RecBadge rec={event.recommendation} />
+    <span class="score-nums" title="技术影响 / 工程价值 / 采用信号">
+      影响 {event.technical_impact ?? 0} · 工程 {event.engineering_value ?? 0} · 采用 {event.adoption_signal ?? 0}
+    </span>
+  </div>
   {!compact && event.summary && <p class="summary">{event.summary}</p>}
   <div class="bottom">
     {shownOrgs.map((org: string) => <span class="tag">{org}</span>)}
     {shownTags.map((t: string) => <span class="tag">{t}</span>)}
     {hiddenItems.length > 0 && <span class="tag tag-more" title={hiddenItems.join(', ')}>+{hiddenItems.length}</span>}
-    <div class="mini-scores">
-      {miniDims.map((d) => (
-        <span class="m" title={d.label}>
-          {d.label}
-          <span class="dots">
-            {[1, 2, 3, 4, 5].map((n) => (
-              <span class={`dot ${n <= (event[d.key] ?? 0) ? 'on' : ''}`}></span>
-            ))}
-          </span>
-        </span>
-      ))}
-    </div>
   </div>
 </a>

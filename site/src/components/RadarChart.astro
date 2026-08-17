@@ -107,63 +107,64 @@ const quadLabelPos = (range: [number, number]) => {
 };
 ---
 
-<div class="radar-wrap">
-  <div class="card" style="padding: 18px;">
-    <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label="AI 情报观察站技术雷达">
-      {RING_ORDER.map((r) => (
-        <path class="ring-band" d={annulus(RINGS[r][0], RINGS[r][1])} fill={REC_VAR[r]} fill-rule="evenodd" opacity={RING_TINT[r]} />
-      ))}
-      {RING_ORDER.map((r) => (
-        <circle class="ring-line" cx={CX} cy={CY} r={RINGS[r][1]} />
-      ))}
-      <circle class="ring-line" cx={CX} cy={CY} r={RINGS.ADOPT[0]} opacity="0.5" />
-      <line class="axis-line" x1={CX} y1={26} x2={CX} y2={974} />
-      <line class="axis-line" x1="26" y1={CY} x2="974" y2={CY} />
-
-      {RING_ORDER.map((r) => (
-        <text class="ring-label" x={CX} y={CY - ringMid(r) + 6}>{r}</text>
-      ))}
-
-      {QUADRANTS.map((q) => {
-        const p = quadLabelPos(q.range as unknown as [number, number]);
-        return <text class="quad-label" x={p.x} y={p.y} text-anchor="middle">{q.label}</text>;
-      })}
-
-      {legend.flatMap(({ blips }) =>
-        blips.map((b) => (
-          <a class="blip" href={b.href} aria-label={`${b.title}（${b.rec}）`} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
-            <circle cx={b.x} cy={b.y} r="12" fill={REC_VAR[b.rec] ?? REC_VAR.WATCH} />
-            <text x={b.x} y={b.y + 0.5}>{b.no}</text>
-          </a>
-        ))
-      )}
-    </svg>
-  </div>
-
-  <aside class="radar-legend">
-    {legend.map(({ quad, blips }) => (
-      <div>
-        <h3>{quad.label}<span class="count">{blips.length}</span></h3>
-        <div class="items">
-          {blips.length === 0 && <span style="font-size: 12.5px; color: var(--text-faint); padding: 4px 8px;">暂无条目</span>}
-          {blips.map((b) => (
+<div class="radar-lists">
+  {legend.map(({ quad, blips }) => (
+    <section class="quad-block">
+      <h3 class="quad-head">{quad.label}<span class="count">{blips.length}</span></h3>
+      <ol class="quad-items">
+        {blips.length === 0 && <li class="quad-empty">暂无条目</li>}
+        {blips.map((b) => (
+          <li>
             <a href={b.href} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
               <span class="no">{String(b.no).padStart(2, '0')}</span>
               <span class="rec-dot" style={`background: ${REC_VAR[b.rec] ?? REC_VAR.WATCH}`}></span>
-              <span>{b.title.length > 58 ? b.title.slice(0, 55) + '…' : b.title}</span>
+              <span class="qi-title">{b.title}</span>
+              <span class="qi-meta">{b.date}</span>
             </a>
-          ))}
-        </div>
-      </div>
-    ))}
-    <div class="radar-legend-foot">
-      {RING_ORDER.map((r) => (
-        <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
-      ))}
-      <span style="width: 100%; color: var(--text-faint);">内环 → 外环，建议强度递减</span>
-    </div>
-  </aside>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
 </div>
+
+<figure class="card radar-figure" style="margin: 0 auto 8px;">
+  <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label="AI 情报观察站技术雷达">
+    {RING_ORDER.map((r) => (
+      <path class="ring-band" d={annulus(RINGS[r][0], RINGS[r][1])} fill={REC_VAR[r]} fill-rule="evenodd" opacity={RING_TINT[r]} />
+    ))}
+    {RING_ORDER.map((r) => (
+      <circle class="ring-line" cx={CX} cy={CY} r={RINGS[r][1]} />
+    ))}
+    <circle class="ring-line" cx={CX} cy={CY} r={RINGS.ADOPT[0]} opacity="0.5" />
+    <line class="axis-line" x1={CX} y1={26} x2={CX} y2={974} />
+    <line class="axis-line" x1="26" y1={CY} x2="974" y2={CY} />
+
+    {RING_ORDER.map((r) => (
+      <text class="ring-label" x={CX} y={CY - ringMid(r) + 6}>{r}</text>
+    ))}
+
+    {QUADRANTS.map((q) => {
+      const p = quadLabelPos(q.range as unknown as [number, number]);
+      return <text class="quad-label" x={p.x} y={p.y} text-anchor="middle">{q.label}</text>;
+    })}
+
+    {legend.flatMap(({ blips }) =>
+      blips.map((b) => (
+        <a class="blip" href={b.href} aria-label={`${b.title}（${b.rec}）`} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
+          <circle cx={b.x} cy={b.y} r="12" fill={REC_VAR[b.rec] ?? REC_VAR.WATCH} />
+          <text x={b.x} y={b.y + 0.5}>{b.no}</text>
+        </a>
+      ))
+    )}
+  </svg>
+  <figcaption class="radar-legend-foot">
+    {RING_ORDER.map((r) => (
+      <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
+    ))}
+    <span style="width: 100%; color: var(--text-faint);">内环 → 外环，建议强度递减；编号与上方索引一一对应</span>
+  </figcaption>
+</figure>
 
 <div class="radar-tip" id="radar-tip" aria-hidden="true">
   <div class="t"></div>
@@ -171,15 +172,14 @@ const quadLabelPos = (range: [number, number]) => {
 </div>
 
 <script>
-  const svg = document.querySelector('.radar-svg');
   const tip = document.getElementById('radar-tip');
 
   function show(target: Element, clientX: number, clientY: number) {
     if (!tip) return;
-    const title = target.closest('a')?.getAttribute('data-tip-title') ?? target.getAttribute('aria-label') ?? '';
-    const meta = target.closest('a')?.getAttribute('data-tip-meta') ?? '';
-    tip.querySelector('.t')!.textContent = title;
-    tip.querySelector('.m')!.textContent = meta;
+    const anchor = target.closest('[data-tip-title]');
+    if (!anchor) return;
+    tip.querySelector('.t')!.textContent = anchor.getAttribute('data-tip-title') ?? '';
+    tip.querySelector('.m')!.textContent = anchor.getAttribute('data-tip-meta') ?? '';
     tip.classList.add('show');
     const pad = 14;
     const w = tip.offsetWidth;
@@ -196,17 +196,13 @@ const quadLabelPos = (range: [number, number]) => {
     tip?.classList.remove('show');
   }
 
-  svg?.addEventListener('mousemove', (ev) => {
-    const target = ev.target as Element;
-    if (target.closest('.blip') || target.closest('.radar-legend a')) {
+  document.addEventListener('mousemove', (ev) => {
+    const target = (ev.target as Element).closest?.('[data-tip-title]');
+    if (target) {
       show(target, (ev as MouseEvent).clientX, (ev as MouseEvent).clientY);
     } else {
       hide();
     }
   });
-  svg?.addEventListener('mouseleave', hide);
-  document.querySelector('.radar-legend')?.addEventListener('mousemove', (ev) => {
-    const target = ev.target as Element;
-    if (target.closest('a')) show(target, (ev as MouseEvent).clientX, (ev as MouseEvent).clientY);
-  });
+  document.addEventListener('mouseleave', hide);
 </script>

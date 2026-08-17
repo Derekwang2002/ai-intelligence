@@ -23,19 +23,6 @@ export function catLabel(cat: string): string {
   return CATEGORY_LABELS[cat] ?? cat;
 }
 
-// Category -> CSS variable used for its color dot / radar quadrant.
-export const CATEGORY_VARS: Record<string, string> = {
-  'foundation-model': 'var(--cat-model)',
-  research: 'var(--cat-research)',
-  agent: 'var(--cat-agent)',
-  'agent-security': 'var(--cat-agent)',
-  'ai-engineering': 'var(--cat-agent)',
-  'developer-tools': 'var(--cat-tools)',
-  'open-source': 'var(--cat-oss)',
-  infrastructure: 'var(--cat-infra)',
-  business: 'var(--cat-business)',
-};
-
 export function fmtDateTime(iso: string | null | undefined, timeZone = 'Asia/Shanghai'): string {
   if (!iso) return '—';
   const d = new Date(iso.includes('T') ? iso : `${iso}T00:00:00Z`);

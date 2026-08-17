@@ -6,17 +6,6 @@ import trends from '../data/generated/trends.json';
 const active = trends.trends.filter((t: any) => !t.retired);
 const retired = trends.trends.filter((t: any) => t.retired);
 const lifecycle = ['candidate', 'emerging', 'strengthening', 'established', 'weakening', 'invalidated'];
-const CONF_LEVEL: Record<string, number> = { High: 3, Medium: 2, Low: 1 };
-
-// 状态 → 趋势卡左侧色条（与 status-pill 语义色一致）
-const STATUS_VAR: Record<string, string> = {
-  candidate: 'var(--ignore)',
-  emerging: 'var(--trial)',
-  strengthening: 'var(--accent)',
-  established: 'var(--adopt)',
-  weakening: 'var(--watch)',
-  invalidated: '#d0455e',
-};
 
 function evidenceItems(ev: string): string[] {
   return ev
@@ -38,7 +27,7 @@ function evidenceItems(ev: string): string[] {
     </p>
   </div>
 
-  <div class="lifecycle-bar card" style="padding: 14px 20px; margin-bottom: 26px;">
+  <div class="lifecycle-bar" style="margin-bottom: 26px;">
     <span class="lc-label">生命周期</span>
     <div class="lifecycle-steps" aria-label="趋势生命周期阶段">
       {lifecycle.map((s, i) => (
@@ -50,17 +39,13 @@ function evidenceItems(ev: string): string[] {
     </div>
   </div>
 
-  <div class="grid" style="grid-template-columns: 1fr;">
+  <div class="stack">
     {active.map((t: any) => (
-      <article class="card trend-card" style={`--tc: ${STATUS_VAR[t.status] ?? 'var(--border-strong)'}`}>
+      <article class="card trend-card">
         <div class="head">
           <h3>{t.name}</h3>
           <span class={`status-pill st-${t.status}`}>{t.status}</span>
-          <span class="conf-dots" title={`Confidence ${t.confidence}`} aria-label={`Confidence ${t.confidence}`}>
-            {[1, 2, 3].map((n) => (
-              <i class={n <= (CONF_LEVEL[t.confidence] ?? 1) ? 'on' : ''}></i>
-            ))}
-          </span>
+          <span class="t-conf">置信度 {t.confidence}</span>
         </div>
         <div class="meta">
           {t.firstObserved && <span>首次观察 {t.firstObserved}</span>}
@@ -87,7 +72,7 @@ function evidenceItems(ev: string): string[] {
   {retired.length > 0 && (
     <>
       <div class="section-title">已作废 / 退役</div>
-      <div class="grid" style="grid-template-columns: 1fr;">
+      <div class="stack">
         {retired.map((t: any) => (
           <article class="card trend-card" style="opacity: 0.68;">
             <div class="head">
@@ -103,7 +88,7 @@ function evidenceItems(ev: string): string[] {
   {trends.snapshots.length > 0 && (
     <>
       <div class="section-title">历史快照</div>
-      <ul class="watch-list card" style="padding: 6px 20px;">
+      <ul class="watch-list">
         {trends.snapshots.map((s: any) => (
           <li>
             <span class="mono" style="color: var(--text-faint);">{s.date}</span>
