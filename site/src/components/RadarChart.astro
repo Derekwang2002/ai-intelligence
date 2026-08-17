@@ -19,10 +19,10 @@ const RING_ORDER = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const;
 // 象限为 [起始角, 结束角]（度）。SVG y 轴向下、角度自东向顺时针，
 // 因此 [-90,0] 是右上楔形。
 const QUADRANTS = [
-  { id: 'models', label: '模型与研究', cats: ['foundation-model', 'research'], range: [-90, 0], tint: 'var(--cat-model)' },
-  { id: 'agents', label: 'Agent 与工程', cats: ['agent-security', 'agent', 'ai-engineering'], range: [180, 270], tint: 'var(--cat-agent)' },
-  { id: 'infra', label: '基础设施与开源', cats: ['open-source', 'infrastructure'], range: [90, 180], tint: 'var(--cat-oss)' },
-  { id: 'tools', label: '工具与商业', cats: ['developer-tools', 'business'], range: [0, 90], tint: 'var(--cat-tools)' },
+  { id: 'models', label: '模型与研究', cats: ['foundation-model', 'research'], range: [-90, 0] },
+  { id: 'agents', label: 'Agent 与工程', cats: ['agent-security', 'agent', 'ai-engineering'], range: [180, 270] },
+  { id: 'infra', label: '基础设施与开源', cats: ['open-source', 'infrastructure'], range: [90, 180] },
+  { id: 'tools', label: '工具与商业', cats: ['developer-tools', 'business'], range: [0, 90] },
 ];
 
 const CX = 500;
@@ -34,14 +34,11 @@ const REC_VAR: Record<string, string> = {
   IGNORE: 'var(--ignore)',
 };
 
-// 象限楔形 path（从圆心出发的两条半径 + 外弧）
-function wedgePath(range: [number, number], radius: number): string {
-  const p = (deg: number, r: number) => {
-    const rad = (deg * Math.PI) / 180;
-    return `${CX + r * Math.cos(rad)} ${CY + r * Math.sin(rad)}`;
-  };
-  return `M ${CX} ${CY} L ${p(range[0], radius)} A ${radius} ${radius} 0 0 1 ${p(range[1], radius)} Z`;
-}
+// Annulus path (outer circle minus inner circle) for soft ring band tints.
+const annulus = (ri: number, ro: number) =>
+  `M ${CX - ro} ${CY} a ${ro} ${ro} 0 1 0 ${2 * ro} 0 a ${ro} ${ro} 0 1 0 ${-2 * ro} 0 Z` +
+  ` M ${CX - ri} ${CY} a ${ri} ${ri} 0 1 0 ${2 * ri} 0 a ${ri} ${ri} 0 1 0 ${-2 * ri} 0 Z`;
+const RING_TINT: Record<string, number> = { ADOPT: 0.08, TRIAL: 0.05, WATCH: 0.035, IGNORE: 0.025 };
 
 // 由 fingerprint 生成确定性伪随机数，保证每次构建光点位置稳定。
 function hash01(str: string, salt: number): number {
@@ -108,14 +105,13 @@ const quadLabelPos = (range: [number, number]) => {
   const r = 512;
   return { x: CX + r * Math.cos(mid), y: CY + r * Math.sin(mid) };
 };
-const OUTER = RINGS.IGNORE[1];
 ---
 
 <div class="radar-wrap">
   <div class="card" style="padding: 18px;">
     <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label="AI 情报观察站技术雷达">
-      {QUADRANTS.map((q) => (
-        <path class="quad-fill" d={wedgePath(q.range as unknown as [number, number], OUTER)} fill={q.tint} fill-opacity="0.045" />
+      {RING_ORDER.map((r) => (
+        <path class="ring-band" d={annulus(RINGS[r][0], RINGS[r][1])} fill={REC_VAR[r]} fill-rule="evenodd" opacity={RING_TINT[r]} />
       ))}
       {RING_ORDER.map((r) => (
         <circle class="ring-line" cx={CX} cy={CY} r={RINGS[r][1]} />
@@ -135,7 +131,7 @@ const OUTER = RINGS.IGNORE[1];
 
       {legend.flatMap(({ blips }) =>
         blips.map((b) => (
-          <a class="blip" href={b.href} aria-label={`${b.title}（${b.rec}）`}>
+          <a class="blip" href={b.href} aria-label={`${b.title}（${b.rec}）`} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
             <circle cx={b.x} cy={b.y} r="12" fill={REC_VAR[b.rec] ?? REC_VAR.WATCH} />
             <text x={b.x} y={b.y + 0.5}>{b.no}</text>
           </a>

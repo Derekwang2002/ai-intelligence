@@ -6,16 +6,7 @@ import trends from '../data/generated/trends.json';
 const active = trends.trends.filter((t: any) => !t.retired);
 const retired = trends.trends.filter((t: any) => t.retired);
 const lifecycle = ['candidate', 'emerging', 'strengthening', 'established', 'weakening', 'invalidated'];
-
-// 状态 → 趋势卡左侧色条
-const STATUS_VAR: Record<string, string> = {
-  candidate: 'var(--ignore)',
-  emerging: 'var(--trial)',
-  strengthening: 'var(--accent)',
-  established: 'var(--adopt)',
-  weakening: 'var(--watch)',
-  invalidated: '#cf4a62',
-};
+const CONF_LEVEL: Record<string, number> = { High: 3, Medium: 2, Low: 1 };
 
 function evidenceItems(ev: string): string[] {
   return ev
@@ -37,23 +28,29 @@ function evidenceItems(ev: string): string[] {
     </p>
   </div>
 
-  <div class="lifecycle-bar" aria-label="趋势生命周期">
-    <span style="font-weight: 600; color: var(--text-muted); margin-right: 4px;">生命周期</span>
-    {lifecycle.map((s, i) => (
-      <>
-        {i > 0 && <span class="arrow">→</span>}
-        <span class={`status-pill st-${s}`}>{s}</span>
-      </>
-    ))}
+  <div class="lifecycle-bar card" style="padding: 14px 20px; margin-bottom: 26px; flex-wrap: wrap;">
+    <span style="font-weight: 600; color: var(--text-muted); margin-right: 10px; font-size: 12.5px;">生命周期</span>
+    <div class="lifecycle-steps">
+      {lifecycle.map((s, i) => (
+        <span class="lc-step">
+          {i > 0 && <span class="lc-link"></span>}
+          <span class={`status-pill st-${s}`}>{s}</span>
+        </span>
+      ))}
+    </div>
   </div>
 
   <div class="grid" style="grid-template-columns: 1fr;">
     {active.map((t: any) => (
-      <article class="card trend-card" style={`--tc: ${STATUS_VAR[t.status] ?? 'var(--border-strong)'}`}>
+      <article class="card trend-card">
         <div class="head">
           <h3>{t.name}</h3>
           <span class={`status-pill st-${t.status}`}>{t.status}</span>
-          <span class="conf-pill">Confidence {t.confidence}</span>
+          <span class="conf-dots" title={`Confidence ${t.confidence}`} aria-label={`Confidence ${t.confidence}`}>
+            {[1, 2, 3].map((n) => (
+              <i class={n <= (CONF_LEVEL[t.confidence] ?? 1) ? 'on' : ''}></i>
+            ))}
+          </span>
         </div>
         <div class="meta">
           {t.firstObserved && <span>首次观察 {t.firstObserved}</span>}

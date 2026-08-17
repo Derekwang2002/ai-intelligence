@@ -13,6 +13,9 @@ export function getStaticPaths() {
 const { event } = Astro.props;
 const catVar = CATEGORY_VARS[event.category] ?? 'var(--text-faint)';
 const updateKeys = Object.keys(event).filter((k) => /^update_/.test(k));
+const idx = events.findIndex((e: any) => e.event_id === event.event_id);
+const newer = idx > 0 ? events[idx - 1] : null;
+const older = idx >= 0 && idx < events.length - 1 ? events[idx + 1] : null;
 const recHint: Record<string, string> = {
   ADOPT: '成熟、价值明确，可以实际采用',
   TRIAL: '值得进行 POC 或小规模实验',
@@ -120,4 +123,19 @@ const recHint: Record<string, string> = {
       </div>
     </div>
   </div>
+
+  <nav class="prevnext" aria-label="相邻事件">
+    {newer ? (
+      <a class="card pn-link" href={u(`/events/${newer.event_id}/`)}>
+        <span class="pn-dir">← 较新事件 · {newer.date}</span>
+        <span class="pn-title">{newer.title}</span>
+      </a>
+    ) : <span></span>}
+    {older ? (
+      <a class="card pn-link next" href={u(`/events/${older.event_id}/`)}>
+        <span class="pn-dir">较旧事件 · {older.date} →</span>
+        <span class="pn-title">{older.title}</span>
+      </a>
+    ) : <span></span>}
+  </nav>
 </Base>

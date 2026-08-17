@@ -13,6 +13,10 @@ for (const e of events) {
 const dateGroups = [...groups.entries()].sort((a, b) => b[0].localeCompare(a[0]));
 const categories = Object.keys(aggregates.byCategory).sort();
 const orgs = aggregates.byOrg.slice(0, 20);
+const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
+  r,
+  n: (aggregates.byRecommendation as any)[r] ?? 0,
+}));
 ---
 
 <Base title="事件" description="AI 情报观察站：按时间线浏览全部结构化事件，支持按类别、组织、建议筛选">
@@ -37,13 +41,12 @@ const orgs = aggregates.byOrg.slice(0, 20);
       <option value="">全部组织</option>
       {orgs.map((o: any) => <option value={o.name}>{o.name}（{o.count}）</option>)}
     </select>
-    <select id="f-rec" aria-label="按建议筛选">
-      <option value="">全部建议</option>
-      <option value="ADOPT">ADOPT</option>
-      <option value="TRIAL">TRIAL</option>
-      <option value="WATCH">WATCH</option>
-      <option value="IGNORE">IGNORE</option>
-    </select>
+    <div class="filter-chips" id="f-rec-chips" role="group" aria-label="按建议筛选">
+      <button type="button" class="fchip active" data-rec="">全部 <span class="n">{aggregates.totals.events}</span></button>
+      {recCounts.map(({ r, n }) => (
+        <button type="button" class="fchip" data-rec={r}>{r} <span class="n">{n}</span></button>
+      ))}
+    </div>
     <span class="filter-count" id="f-count" aria-live="polite"></span>
   </div>
 
@@ -69,21 +72,24 @@ const orgs = aggregates.byOrg.slice(0, 20);
   const search = document.getElementById('f-search') as HTMLInputElement;
   const cat = document.getElementById('f-cat') as HTMLSelectElement;
   const org = document.getElementById('f-org') as HTMLSelectElement;
-  const rec = document.getElementById('f-rec') as HTMLSelectElement;
+  const chipsWrap = document.getElementById('f-rec-chips');
+  const count = document.getElementById('f-count');
   const list = document.getElementById('event-list');
   const empty = document.getElementById('empty-hint');
-  const count = document.getElementById('f-count');
-  if (search && cat && org && rec && list) {
-    const total = list.querySelectorAll('.event-card').length;
+  let rec = '';
+
+  if (search && cat && org && chipsWrap && list) {
     const apply = () => {
       const q = search.value.trim().toLowerCase();
       let visible = 0;
+      let total = 0;
       for (const card of list.querySelectorAll<HTMLElement>('.event-card')) {
+        total++;
         const ok =
           (!q || (card.dataset.q ?? '').includes(q)) &&
           (!cat.value || card.dataset.cat === cat.value) &&
           (!org.value || (card.dataset.org ?? '').split('|').includes(org.value)) &&
-          (!rec.value || card.dataset.rec === rec.value);
+          (!rec || card.dataset.rec === rec);
         card.hidden = !ok;
         if (ok) visible++;
       }
@@ -92,9 +98,16 @@ const orgs = aggregates.byOrg.slice(0, 20);
         group.hidden = !anyVisible;
       }
       if (empty) empty.hidden = visible > 0;
-      if (count) count.textContent = `${visible} / ${total}`;
+      if (count) count.textContent = `${visible} / ${total} 条`;
     };
-    for (const el of [search, cat, org, rec]) el.addEventListener('input', apply);
+    for (const el of [search, cat, org]) el.addEventListener('input', apply);
+    chipsWrap.addEventListener('click', (ev) => {
+      const chip = (ev.target as HTMLElement).closest<HTMLElement>('.fchip');
+      if (!chip) return;
+      rec = chip.dataset.rec ?? '';
+      for (const c of chipsWrap.querySelectorAll('.fchip')) c.classList.toggle('active', c === chip);
+      apply();
+    });
     apply();
   }
 </script>

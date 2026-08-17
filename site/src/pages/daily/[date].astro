@@ -25,7 +25,45 @@ const older = daily[idx + 1];
       {older && <a href={u(`/daily/${older.date}/`)}>较旧 {older.date} →</a>}
     </div>
   </div>
-  <div class="card article-body">
-    <div class="prose" set:html={report.html} />
+  <div class="daily-grid">
+    <div class="card article-body">
+      <div class="prose" set:html={report.html} />
+    </div>
+    <div class="card toc-card" id="toc-card" hidden>
+      <h3>本页目录</h3>
+      <nav class="toc-list" id="toc-list" aria-label="本页目录"></nav>
+    </div>
   </div>
 </Base>
+
+<script>
+  // Build a sticky table of contents from the rendered report's h2 sections.
+  const prose = document.querySelector('.prose');
+  const tocCard = document.getElementById('toc-card');
+  const tocList = document.getElementById('toc-list');
+  if (prose && tocCard && tocList) {
+    const heads = [...prose.querySelectorAll('h2')];
+    if (heads.length >= 2) {
+      heads.forEach((h, i) => {
+        const id = `sec-${i}`;
+        h.id = id;
+        const a = document.createElement('a');
+        a.href = `#${id}`;
+        a.textContent = h.textContent;
+        tocList.appendChild(a);
+      });
+      tocCard.hidden = false;
+
+      const links = [...tocList.querySelectorAll('a')];
+      const mark = () => {
+        let current = 0;
+        heads.forEach((h, i) => {
+          if (h.getBoundingClientRect().top <= 110) current = i;
+        });
+        links.forEach((a, i) => a.classList.toggle('current', i === current));
+      };
+      document.addEventListener('scroll', mark, { passive: true });
+      mark();
+    }
+  }
+</script>

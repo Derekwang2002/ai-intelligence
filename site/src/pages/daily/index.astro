@@ -13,14 +13,12 @@ import daily from '../../data/generated/daily.json';
     <p class="desc">每日累计的中文情报简报：执行摘要、各领域动态、趋势信号、Tech Radar 变化与观察清单。</p>
   </div>
 
-  <div class="grid" style="grid-template-columns: 1fr;">
+  <div class="card feed">
     {daily.map((d: any) => (
-      <a class="card" href={u(`/daily/${d.date}/`)} style="padding: 19px 22px; display: flex; flex-direction: column; gap: 8px; transition: border-color .15s, box-shadow .15s;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span class="mono" style="font-weight: 600; font-size: 15.5px; color: var(--text);">{d.date}</span>
-          <span style="margin-left: auto; font-size: 13px; color: var(--text-muted);">阅读全文 →</span>
-        </div>
-        <p style="margin: 0; color: var(--text-muted); font-size: 13.5px; line-height: 1.85; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">{d.excerpt}</p>
+      <a class="daily-row" href={u(`/daily/${d.date}/`)}>
+        <span class="d-date">{d.date}</span>
+        <p class="d-excerpt">{d.excerpt}</p>
+        <span class="d-arrow">→</span>
       </a>
     ))}
   </div>
