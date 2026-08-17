@@ -8,6 +8,16 @@ const retired = trends.trends.filter((t: any) => t.retired);
 const lifecycle = ['candidate', 'emerging', 'strengthening', 'established', 'weakening', 'invalidated'];
 const CONF_LEVEL: Record<string, number> = { High: 3, Medium: 2, Low: 1 };
 
+// 状态 → 趋势卡左侧色条（与 status-pill 语义色一致）
+const STATUS_VAR: Record<string, string> = {
+  candidate: 'var(--ignore)',
+  emerging: 'var(--trial)',
+  strengthening: 'var(--accent)',
+  established: 'var(--adopt)',
+  weakening: 'var(--watch)',
+  invalidated: '#d0455e',
+};
+
 function evidenceItems(ev: string): string[] {
   return ev
     .split('\n')
@@ -28,9 +38,9 @@ function evidenceItems(ev: string): string[] {
     </p>
   </div>
 
-  <div class="lifecycle-bar card" style="padding: 14px 20px; margin-bottom: 26px; flex-wrap: wrap;">
-    <span style="font-weight: 600; color: var(--text-muted); margin-right: 10px; font-size: 12.5px;">生命周期</span>
-    <div class="lifecycle-steps">
+  <div class="lifecycle-bar card" style="padding: 14px 20px; margin-bottom: 26px;">
+    <span class="lc-label">生命周期</span>
+    <div class="lifecycle-steps" aria-label="趋势生命周期阶段">
       {lifecycle.map((s, i) => (
         <span class="lc-step">
           {i > 0 && <span class="lc-link"></span>}
@@ -42,7 +52,7 @@ function evidenceItems(ev: string): string[] {
 
   <div class="grid" style="grid-template-columns: 1fr;">
     {active.map((t: any) => (
-      <article class="card trend-card">
+      <article class="card trend-card" style={`--tc: ${STATUS_VAR[t.status] ?? 'var(--border-strong)'}`}>
         <div class="head">
           <h3>{t.name}</h3>
           <span class={`status-pill st-${t.status}`}>{t.status}</span>
