@@ -375,6 +375,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   letter-spacing: 0.02em;
   color: var(--text-muted);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .cat-chip::before {
   content: "";
@@ -395,8 +396,10 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   color: var(--text-muted);
   border: 1px solid var(--border);
   white-space: nowrap;
+  flex-shrink: 0;
   transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
 }
+.tag.tag-more { background: transparent; border-style: dashed; color: var(--text-faint); }
 
 .status-pill {
   display: inline-flex;
@@ -456,7 +459,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.event-card .bottom { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; border-top: 1px dashed var(--border); padding-top: 12px; }
+.event-card .bottom { display: flex; align-items: center; gap: 6px 10px; flex-wrap: wrap; border-top: 1px dashed var(--border); padding-top: 12px; }
 .event-card:hover .tag { color: var(--text); border-color: var(--border-strong); }
 .mini-scores { display: flex; gap: 12px; margin-left: auto; align-items: center; }
 .mini-scores .m { display: flex; align-items: center; gap: 5px; font-size: 10.5px; letter-spacing: 0.05em; color: var(--text-faint); font-family: var(--mono); }

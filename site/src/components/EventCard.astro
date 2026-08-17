@@ -16,6 +16,15 @@ const miniDims = [
   { key: 'engineering_value', label: 'EV' },
   { key: 'adoption_signal', label: 'AS' },
 ];
+
+// 组织名与其同名 hashtag（如 org "Qwen" + tag "qwen"）只保留组织标签；
+// 卡片底部空间有限，组织与标签各取前 2 个，其余合并为 +N（悬停可见完整清单）。
+const orgs = event.organization ?? [];
+const orgLower = new Set(orgs.map((o: string) => o.toLowerCase()));
+const allTags = (event.tags ?? []).filter((t: string) => !orgLower.has(t.toLowerCase()));
+const shownOrgs = orgs.slice(0, 2);
+const shownTags = allTags.slice(0, 2);
+const hiddenItems = [...orgs.slice(2), ...allTags.slice(2)];
 ---
 
 <a class="event-card card rise" href={href} data-cat={event.category} data-rec={event.recommendation} data-org={(event.organization ?? []).join('|')} data-tags={(event.tags ?? []).join('|')} data-q={`${event.title} ${event.summary ?? ''} ${(event.organization ?? []).join(' ')} ${(event.tags ?? []).join(' ')}`.toLowerCase()}>
@@ -27,8 +36,9 @@ const miniDims = [
   <h3>{event.title}</h3>
   {!compact && event.summary && <p class="summary">{event.summary}</p>}
   <div class="bottom">
-    {(event.organization ?? []).slice(0, 3).map((org: string) => <span class="tag">{org}</span>)}
-    {(event.tags ?? []).slice(0, 4).map((t: string) => <span class="tag">{t}</span>)}
+    {shownOrgs.map((org: string) => <span class="tag">{org}</span>)}
+    {shownTags.map((t: string) => <span class="tag">{t}</span>)}
+    {hiddenItems.length > 0 && <span class="tag tag-more" title={hiddenItems.join(', ')}>+{hiddenItems.length}</span>}
     <div class="mini-scores">
       {miniDims.map((d) => (
         <span class="m" title={d.label}>
