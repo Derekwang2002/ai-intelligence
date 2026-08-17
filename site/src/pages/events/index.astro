@@ -15,9 +15,12 @@ const categories = Object.keys(aggregates.byCategory).sort();
 const orgs = aggregates.byOrg.slice(0, 20);
 ---
 
-<Base title="事件" description="AI Intelligence Radar — 按时间线浏览全部结构化事件，支持按类别、组织、建议筛选">
+<Base title="事件" description="AI 情报观察站：按时间线浏览全部结构化事件，支持按类别、组织、建议筛选">
   <div class="page-head">
-    <h1>事件流</h1>
+    <div class="head-row">
+      <h1>事件</h1>
+      <span class="en">Events Timeline</span>
+    </div>
     <p class="desc">
       共 <code>{aggregates.totals.events}</code> 个结构化事件，按发布日期归属（非发现时间）。每个事件均经来源验证与去重，
       携带六维评分与采用建议。
@@ -41,6 +44,7 @@ const orgs = aggregates.byOrg.slice(0, 20);
       <option value="WATCH">WATCH</option>
       <option value="IGNORE">IGNORE</option>
     </select>
+    <span class="filter-count" id="f-count" aria-live="polite"></span>
   </div>
 
   <div id="event-list">
@@ -58,7 +62,7 @@ const orgs = aggregates.byOrg.slice(0, 20);
     ))}
   </div>
 
-  <div class="filter-empty" id="empty-hint" hidden>没有符合筛选条件的事件。</div>
+  <div class="filter-empty" id="empty-hint" hidden>没有符合筛选条件的事件。可以调整关键词或清除筛选。</div>
 </Base>
 
 <script>
@@ -68,7 +72,9 @@ const orgs = aggregates.byOrg.slice(0, 20);
   const rec = document.getElementById('f-rec') as HTMLSelectElement;
   const list = document.getElementById('event-list');
   const empty = document.getElementById('empty-hint');
+  const count = document.getElementById('f-count');
   if (search && cat && org && rec && list) {
+    const total = list.querySelectorAll('.event-card').length;
     const apply = () => {
       const q = search.value.trim().toLowerCase();
       let visible = 0;
@@ -86,6 +92,7 @@ const orgs = aggregates.byOrg.slice(0, 20);
         group.hidden = !anyVisible;
       }
       if (empty) empty.hidden = visible > 0;
+      if (count) count.textContent = `${visible} / ${total}`;
     };
     for (const el of [search, cat, org, rec]) el.addEventListener('input', apply);
     apply();

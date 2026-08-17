@@ -7,6 +7,16 @@ const active = trends.trends.filter((t: any) => !t.retired);
 const retired = trends.trends.filter((t: any) => t.retired);
 const lifecycle = ['candidate', 'emerging', 'strengthening', 'established', 'weakening', 'invalidated'];
 
+// 状态 → 趋势卡左侧色条
+const STATUS_VAR: Record<string, string> = {
+  candidate: 'var(--ignore)',
+  emerging: 'var(--trial)',
+  strengthening: 'var(--accent)',
+  established: 'var(--adopt)',
+  weakening: 'var(--watch)',
+  invalidated: '#cf4a62',
+};
+
 function evidenceItems(ev: string): string[] {
   return ev
     .split('\n')
@@ -15,17 +25,20 @@ function evidenceItems(ev: string): string[] {
 }
 ---
 
-<Base title="趋势" description="AI Intelligence Radar — 多信号支撑的趋势追踪与生命周期状态">
+<Base title="趋势" description="AI 情报观察站：多信号支撑的趋势追踪与生命周期状态">
   <div class="page-head">
-    <h1>趋势</h1>
+    <div class="head-row">
+      <h1>趋势</h1>
+      <span class="en">Trends</span>
+    </div>
     <p class="desc">
       单个新闻不构成趋势。这里的每条趋势都要求多个独立信号（跨日期、跨组织）支撑，
       并随每次扫描升级、降级或作废。数据截至 <code>{trends.asOf}</code>。
     </p>
   </div>
 
-  <div class="lifecycle-bar card" style="padding: 12px 18px; margin-bottom: 24px; flex-wrap: wrap;">
-    <span style="font-weight: 600; color: var(--text-muted); margin-right: 6px;">生命周期：</span>
+  <div class="lifecycle-bar" aria-label="趋势生命周期">
+    <span style="font-weight: 600; color: var(--text-muted); margin-right: 4px;">生命周期</span>
     {lifecycle.map((s, i) => (
       <>
         {i > 0 && <span class="arrow">→</span>}
@@ -36,7 +49,7 @@ function evidenceItems(ev: string): string[] {
 
   <div class="grid" style="grid-template-columns: 1fr;">
     {active.map((t: any) => (
-      <article class="card trend-card">
+      <article class="card trend-card" style={`--tc: ${STATUS_VAR[t.status] ?? 'var(--border-strong)'}`}>
         <div class="head">
           <h3>{t.name}</h3>
           <span class={`status-pill st-${t.status}`}>{t.status}</span>
@@ -51,7 +64,7 @@ function evidenceItems(ev: string): string[] {
         )}
         {evidenceItems(t.evidence).length > 0 && (
           <div>
-            <div class="block"><b>证据：</b></div>
+            <div class="block"><b>证据</b></div>
             <ol class="evidence">
               {evidenceItems(t.evidence).map((item) => <li>{item}</li>)}
             </ol>
@@ -69,7 +82,7 @@ function evidenceItems(ev: string): string[] {
       <div class="section-title">已作废 / 退役</div>
       <div class="grid" style="grid-template-columns: 1fr;">
         {retired.map((t: any) => (
-          <article class="card trend-card" style="opacity: 0.7;">
+          <article class="card trend-card" style="opacity: 0.68;">
             <div class="head">
               <h3>{t.name}</h3>
               <span class={`status-pill st-${t.status}`}>{t.status}</span>
@@ -83,16 +96,14 @@ function evidenceItems(ev: string): string[] {
   {trends.snapshots.length > 0 && (
     <>
       <div class="section-title">历史快照</div>
-      <div class="card" style="padding: 8px 20px;">
-        <ul style="list-style: none; margin: 0; padding: 0;">
-          {trends.snapshots.map((s: any) => (
-            <li style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px;">
-              <span class="mono" style="color: var(--text-faint);">{s.date}</span>
-              <a href={u(`/trends/archive/${s.date}/`)} style="color: var(--accent);">查看当日趋势快照 →</a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul class="watch-list card" style="padding: 6px 20px;">
+        {trends.snapshots.map((s: any) => (
+          <li>
+            <span class="mono" style="color: var(--text-faint);">{s.date}</span>
+            <span style="margin-left: auto;"><a href={u(`/trends/archive/${s.date}/`)}>查看当日趋势快照 →</a></span>
+          </li>
+        ))}
+      </ul>
     </>
   )}
 </Base>

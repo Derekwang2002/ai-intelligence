@@ -24,15 +24,13 @@ const recHint: Record<string, string> = {
 <Base title={event.title.slice(0, 80)}>
   <div class="article-head card">
     <div class="crumbs">
-      <a href={u('/events/')}>← 事件流</a>
-      <span>·</span>
+      <a href={u('/events/')}>← 事件</a>
       <span class="cat-chip" style={`--cat-c: ${catVar}`}>{catLabel(event.category)}</span>
-      <span>·</span>
-      <span class="mono">{event.event_id}</span>
+      <span class="mono" style="font-size: 12px;">{event.event_id}</span>
     </div>
     <h1>{event.title}</h1>
     <div class="meta-row">
-      <span class="mono">{event.published_at}</span>
+      <span class="mono" style="font-size: 12.5px;">{event.published_at}</span>
       {(event.organization ?? []).map((o: string) => <span class="tag">{o}</span>)}
       <RecBadge rec={event.recommendation} />
       <span style="color: var(--text-faint); font-size: 12.5px;">{recHint[event.recommendation]}</span>
@@ -40,15 +38,15 @@ const recHint: Record<string, string> = {
   </div>
 
   <div class="detail-grid">
-    <div style="display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+    <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
       <div class="card article-body">
         <div class="section-title" style="margin-top: 22px;">摘要</div>
-        <p style="margin: 0; color: var(--text); font-size: 15px; line-height: 1.85;">{event.summary}</p>
+        <p style="margin: 0; color: var(--text); font-size: 15px; line-height: 1.9;">{event.summary}</p>
 
         {event.why_it_matters && (
           <>
             <div class="section-title">为什么重要</div>
-            <blockquote style="margin: 0; padding: 12px 18px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 10px 10px 0; color: var(--text); font-size: 14.5px; line-height: 1.8;">
+            <blockquote style="margin: 0; padding: 12px 18px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 10px 10px 0; color: var(--text); font-size: 14.5px; line-height: 1.85;">
               {event.why_it_matters}
             </blockquote>
           </>
@@ -64,10 +62,10 @@ const recHint: Record<string, string> = {
         {updateKeys.length > 0 && (
           <>
             <div class="section-title">后续更新</div>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 9px;">
               {updateKeys.map((k) => (
-                <div class="card" style="padding: 12px 16px; font-size: 13.8px; color: var(--text-muted); line-height: 1.75; background: var(--surface-2); box-shadow: none;">
-                  <span class="mono" style="color: var(--text-faint); margin-right: 8px;">{k.replace(/^update_/, '').replace(/_/g, '-')}</span>
+                <div style="padding: 11px 16px; font-size: 13.5px; color: var(--text-muted); line-height: 1.8; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px;">
+                  <span class="mono" style="color: var(--text-faint); margin-right: 8px; font-size: 11.5px;">{k.replace(/^update_/, '').replace(/_/g, '-')}</span>
                   {event[k]}
                 </div>
               ))}
@@ -78,7 +76,7 @@ const recHint: Record<string, string> = {
         {(event.tags ?? []).length > 0 && (
           <>
             <div class="section-title">标签</div>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 7px 14px;">
               {event.tags.map((t: string) => <span class="tag">{t}</span>)}
             </div>
           </>
@@ -88,7 +86,7 @@ const recHint: Record<string, string> = {
 
     <div class="side-stack">
       <div class="card side-box">
-        <h3>评分 · {recHint[event.recommendation] ? '' : ''}{event.recommendation}</h3>
+        <h3>评分 · {event.recommendation}</h3>
         <ScoreBars scores={event} />
       </div>
 
@@ -117,7 +115,7 @@ const recHint: Record<string, string> = {
           <tr><th>发布时间</th><td class="mono">{event.published_at}</td></tr>
           <tr><th>首次发现</th><td class="mono">{fmtDateTime(event.first_seen_at)}</td></tr>
           <tr><th>最后更新</th><td class="mono">{fmtDateTime(event.last_updated_at)}</td></tr>
-          <tr><th>Fingerprint</th><td class="mono" style="font-size: 11.5px; word-break: break-all;">{event.event_fingerprint}</td></tr>
+          <tr><th>Fingerprint</th><td class="mono" style="font-size: 11px; word-break: break-all;">{event.event_fingerprint}</td></tr>
         </table>
       </div>
     </div>

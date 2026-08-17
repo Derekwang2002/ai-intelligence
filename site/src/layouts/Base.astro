@@ -1,5 +1,8 @@
 ---
 import { u } from '../lib/url';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/ibm-plex-mono/600.css';
 import '../styles/global.css';
 
 interface Props {
@@ -7,7 +10,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'AI Intelligence Radar — Events → Signals → Trends → Decisions 的 AI 技术情报知识库' } = Astro.props;
+const { title, description = 'AI 情报观察站：Events → Signals → Trends → Decisions 的 AI 技术情报知识库' } = Astro.props;
 
 const navItems = [
   { href: u('/'), label: '概览', match: (p: string) => p === '/' || p === '' },
@@ -21,7 +24,7 @@ const rawBase = (import.meta.env.BASE_URL ?? '/').replace(/\/+$/, '');
 const pathname = Astro.url.pathname === rawBase + '/' || Astro.url.pathname === rawBase
   ? '/'
   : Astro.url.pathname.replace(rawBase, '') || '/';
-const pageTitle = title ? `${title} · AI Intelligence Radar` : 'AI Intelligence Radar';
+const pageTitle = title ? `${title} · AI 情报观察站` : 'AI 情报观察站';
 ---
 
 <!doctype html>
@@ -54,15 +57,16 @@ const pageTitle = title ? `${title} · AI Intelligence Radar` : 'AI Intelligence
               <circle cx="15" cy="15" r="13" stroke="var(--accent)" stroke-opacity="0.9" stroke-width="1.6" />
               <circle cx="15" cy="15" r="8" stroke="var(--accent)" stroke-opacity="0.45" stroke-width="1.2" />
               <circle cx="15" cy="15" r="3.2" stroke="var(--accent)" stroke-opacity="0.25" stroke-width="1" />
-              <circle cx="20.5" cy="9.5" r="2.6" fill="var(--adopt)" />
-              <path d="M15 15 L20.5 9.5" stroke="var(--adopt)" stroke-width="1.2" />
+              <circle cx="20.5" cy="9.5" r="2.6" fill="var(--accent)" />
+              <path d="M15 15 L20.5 9.5" stroke="var(--accent)" stroke-width="1.2" />
             </svg>
           </span>
-          <span>AI Intelligence Radar<span class="sub">观察站</span></span>
+          <span class="name">AI 情报观察站</span>
+          <span class="sub">Intelligence Radar</span>
         </a>
-        <nav class="main-nav">
+        <nav class="main-nav" aria-label="主导航">
           {navItems.map((item) => (
-            <a href={item.href} class={item.match(pathname) ? 'active' : ''}>{item.label}</a>
+            <a href={item.href} class={item.match(pathname) ? 'active' : ''} aria-current={item.match(pathname) ? 'page' : undefined}>{item.label}</a>
           ))}
           <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换浅色 / 深色主题" title="切换浅色 / 深色主题">
             <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -84,7 +88,8 @@ const pageTitle = title ? `${title} · AI Intelligence Radar` : 'AI Intelligence
     <footer class="site-footer">
       <div class="container inner">
         <div>
-          AI Intelligence Radar — 本站由知识库（events / daily / trends）自动构建，push 到 main 后经 GitHub Actions 自动发布。
+          本站由知识库（events / daily / trends）自动构建，push 到 main 后经 GitHub Actions 发布。
+          内容为增量扫描一手来源后的结构化沉淀，非实时新闻聚合。
         </div>
         <div>
           <a href="https://github.com/Derekwang2002/ai-intelligence" target="_blank" rel="noopener">GitHub</a>

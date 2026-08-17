@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import EventCard from '../components/EventCard.astro';
-import { u, fmtDateTime } from '../lib/url';
+import RecBadge from '../components/RecBadge.astro';
+import { u, catLabel, CATEGORY_VARS, fmtDateTime } from '../lib/url';
 import events from '../data/generated/events.json';
 import aggregates from '../data/generated/aggregates.json';
 import daily from '../data/generated/daily.json';
@@ -10,9 +11,24 @@ import state from '../data/generated/state.json';
 
 const activeTrends = trends.trends.filter((t: any) => !t.retired);
 const latestDaily = daily[0];
-const latestEvents = events.slice(0, 5);
 
-// Continuous day range (last 14 days ending at the most recent day with data).
+// 头条：最近 7 天内技术影响分最高的事件（以最后有数据的一天为基准）
+const anchorDay = aggregates.totals.lastDay ?? latestDaily?.date ?? '';
+const weekAgo = new Date(`${anchorDay}T00:00:00Z`);
+weekAgo.setUTCDate(weekAgo.getUTCDate() - 7);
+const weekAgoStr = weekAgo.toISOString().slice(0, 10);
+const featured =
+  [...events]
+    .filter((e: any) => !anchorDay || e.published_date >= weekAgoStr)
+    .sort(
+      (a: any, b: any) =>
+        (b.technical_impact ?? 0) - (a.technical_impact ?? 0) ||
+        String(b.published_date).localeCompare(String(a.published_date))
+    )[0] ?? events[0];
+const latestEvents = events.filter((e: any) => e.event_id !== featured?.event_id).slice(0, 5);
+const featuredCatVar = featured ? CATEGORY_VARS[featured.category] ?? 'var(--text-faint)' : '';
+
+// 连续日期区间（以最后有数据的一天为终点的 14 天）
 function dayRange(from: string, to: string): string[] {
   const out: string[] = [];
   const d = new Date(`${from}T00:00:00Z`);
@@ -33,49 +49,78 @@ const recTotal = Object.values(aggregates.byRecommendation).reduce((a: number, b
 const recSummary = (['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const)
   .map((r) => ({ r, n: aggregates.byRecommendation[r] ?? 0 }))
   .filter((x) => x.n > 0);
+
+const today = new Date().toISOString().slice(0, 10);
 ---
 
 <Base>
-  <section class="hero rise">
-    <div class="kicker">AI Intelligence Radar</div>
-    <h1>追踪值得工程决策关注的<br />AI 技术变化</h1>
-    <p>
-      不是新闻聚合器。增量扫描一手来源，把分散的公开信息沉淀为结构化事件、可验证信号与趋势判断，
-      每个条目都带有评分与 ADOPT / TRIAL / WATCH / IGNORE 建议。
+  <section class="masthead rise">
+    <div class="rule-top"></div>
+    <div class="meta-row">
+      <span class="today">{today.replaceAll('-', '.')}</span>
+      <span>最后扫描 {fmtDateTime(state.last_successful_run_at)}</span>
+      <span>累计 {state.total_runs} 轮</span>
+    </div>
+    <h1>追踪值得工程决策关注的 AI 技术变化</h1>
+    <p class="lede">
+      这里不是新闻聚合器。增量扫描一手来源，把分散的公开信息沉淀为结构化事件、可验证信号与趋势判断，
+      每个条目都带有六维评分与 ADOPT / TRIAL / WATCH / IGNORE 建议。
     </p>
-    <div class="pipeline">
+    <div class="pipeline" aria-label="处理流水线">
       <span>Events</span><span class="sep">→</span>
       <span>Signals</span><span class="sep">→</span>
       <span>Trends</span><span class="sep">→</span>
-      <span>Decisions</span>
+      <span class="stage-last">Decisions</span>
     </div>
   </section>
 
-  <section class="grid grid-4 rise-2" style="margin-top: 26px;">
-    <div class="card stat">
+  <section class="statbar rise-2" aria-label="知识库概览">
+    <div class="stat">
       <div class="num">{aggregates.totals.events}</div>
       <div class="label">结构化事件</div>
-      <div class="detail">{aggregates.totals.days} 天 · {aggregates.totals.tags} 个标签</div>
+      <div class="detail">覆盖 {aggregates.totals.days} 天 · {aggregates.totals.tags} 个标签</div>
     </div>
-    <div class="card stat">
+    <div class="stat">
       <div class="num">{aggregates.totals.orgs}</div>
       <div class="label">追踪中的组织</div>
-      <div class="detail">最高频：{aggregates.byOrg[0]?.name ?? '—'}（{aggregates.byOrg[0]?.count ?? 0}）</div>
+      <div class="detail">最高频：{aggregates.byOrg[0]?.name ?? '无'}（{aggregates.byOrg[0]?.count ?? 0}）</div>
     </div>
-    <div class="card stat">
+    <div class="stat">
       <div class="num">{activeTrends.length}</div>
       <div class="label">活跃趋势候选</div>
-      <div class="detail">生命周期：candidate → established</div>
+      <div class="detail">生命周期 candidate → established</div>
     </div>
-    <div class="card stat">
-      <div class="num" style="font-size: 19px; padding-top: 6px;">{fmtDateTime(state.last_successful_run_at)}</div>
+    <div class="stat">
+      <div class="num small">{fmtDateTime(state.last_successful_run_at)}</div>
       <div class="label">最后扫描（北京时间）</div>
-      <div class="detail">共 {state.total_runs} 次运行</div>
+      <div class="detail">检查点即下次扫描起点</div>
     </div>
   </section>
 
   <div style="display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 28px; align-items: start;" class="home-cols">
     <div>
+      {featured && (
+        <div class="section-title rise-2">
+          头条 · 本周期最高技术影响
+          <a class="more" href={u(`/events/${featured.event_id}/`)}>进入事件 →</a>
+        </div>
+      )}
+      {featured && (
+        <a class="card feature-card rise-2" href={u(`/events/${featured.event_id}/`)}>
+          <div class="top">
+            <span class="cat-chip" style={`--cat-c: ${featuredCatVar}`}>{catLabel(featured.category)}</span>
+            <span class="mono" style="font-size: 12px; color: var(--text-faint);">{featured.published_date}</span>
+            <RecBadge rec={featured.recommendation} />
+          </div>
+          <h3>{featured.title}</h3>
+          {featured.summary && <p class="summary">{featured.summary}</p>}
+          <div class="bottom">
+            {(featured.organization ?? []).slice(0, 3).map((org: string) => <span class="tag">{org}</span>)}
+            {(featured.tags ?? []).slice(0, 4).map((t: string) => <span class="tag">{t}</span>)}
+          </div>
+        </a>
+      )}
+
       <div class="section-title rise-2">
         最新事件
         <span class="count">{aggregates.totals.events} 条</span>
@@ -86,23 +131,21 @@ const recSummary = (['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const)
       </div>
 
       {latestDaily && (
-        <div class="card" style="padding: 20px 22px; margin-top: 28px;">
-          <div class="section-title" style="margin: 0 0 8px;">
+        <div class="card rise-2" style="padding: 18px 22px; margin-top: 26px;">
+          <div class="section-title" style="margin: 0 0 8px; border-bottom: none; padding-bottom: 0;">
             最新日报 · {latestDaily.date}
             <a class="more" href={u(`/daily/${latestDaily.date}/`)}>阅读全文 →</a>
           </div>
-          <p style="margin: 0; color: var(--text-muted); font-size: 13.8px; line-height: 1.8;">{latestDaily.excerpt}</p>
+          <p style="margin: 0; color: var(--text-muted); font-size: 13.5px; line-height: 1.85;">{latestDaily.excerpt}</p>
         </div>
       )}
     </div>
 
-    <div>
+    <aside>
       <div class="section-title rise-3">观察清单</div>
-      <div class="card rise-3" style="padding: 6px 20px;">
-        <ul class="watch-list" style="margin: 0; padding: 0; list-style: none;">
-          {state.next_scan_focus.map((item: string) => <li>{item}</li>)}
-        </ul>
-      </div>
+      <ul class="watch-list rise-3">
+        {state.next_scan_focus.map((item: string) => <li>{item}</li>)}
+      </ul>
 
       <div class="section-title rise-3">
         活跃趋势
@@ -110,45 +153,43 @@ const recSummary = (['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const)
       </div>
       <div class="grid rise-3">
         {activeTrends.slice(0, 4).map((t: any) => (
-          <a class="card trend-card" href={u('/trends/')} style="gap: 8px; padding: 16px 18px;">
-            <div class="head" style="margin-bottom: 0;">
+          <a class="card" href={u('/trends/')} style="gap: 8px; padding: 15px 18px; display: flex; flex-direction: column; border-left: 3px solid var(--accent);">
+            <div class="head" style="display: flex; align-items: center; gap: 8px;">
               <span class={`status-pill st-${t.status}`}>{t.status}</span>
               <span class="conf-pill">{t.confidence}</span>
             </div>
             <div style="font-weight: 600; font-size: 14px; line-height: 1.6; color: var(--text);">{t.name}</div>
-            <div style="font-size: 12px; color: var(--text-faint); font-family: var(--mono);">首次观察 {t.firstObserved.slice(0, 10)} · 更新 {t.lastUpdated.slice(0, 10)}</div>
+            <div style="font-size: 11.5px; color: var(--text-faint); font-family: var(--mono);">首次观察 {t.firstObserved.slice(0, 10)}</div>
           </a>
         ))}
       </div>
 
-      <div class="section-title rise-3">事件活动</div>
-      <div class="card rise-3" style="padding: 16px 18px 10px;">
-        <div class="activity">
-          {chartDays.map((d) => {
-            const n = aggregates.byDay[d] ?? 0;
-            return (
-              <div class="col" title={`${d} · ${n} 个事件`}>
-                <div class={`bar ${n === 0 ? 'empty' : ''}`} style={`height: ${Math.max(4, (n / maxCount) * 82)}px;`}></div>
-                <div class="lbl">{d.slice(5)}</div>
-              </div>
-            );
-          })}
-        </div>
+      <div class="section-title rise-3">事件活动 · 近 14 天</div>
+      <div class="activity rise-3" role="img" aria-label="近 14 天事件数量柱状图">
+        {chartDays.map((d) => {
+          const n = aggregates.byDay[d] ?? 0;
+          return (
+            <div class="col" title={`${d} · ${n} 个事件`}>
+              <div class={`bar ${n === 0 ? 'empty' : ''}`} style={`height: ${Math.max(4, (n / maxCount) * 78)}px;`}></div>
+              <div class="lbl">{d.slice(5)}</div>
+            </div>
+          );
+        })}
       </div>
 
       <div class="section-title rise-3">建议分布</div>
-      <div class="card rise-3" style="padding: 16px 18px; display: flex; flex-direction: column; gap: 10px;">
+      <div class="rec-dist rise-3">
         {recSummary.map(({ r, n }) => (
-          <a href={u('/radar/')} style="display: grid; grid-template-columns: 64px 1fr 40px; gap: 10px; align-items: center; font-size: 12.5px; color: var(--text-muted);">
+          <a href={u('/radar/')} title={`查看 ${r} 条目`}>
             <span class={`badge badge-${r.toLowerCase()}`}>{r}</span>
-            <span class="track" style="height: 6px; border-radius: 4px; background: var(--surface-3); overflow: hidden; display: block;">
-              <span style={`display: block; height: 100%; width: ${(n / recTotal) * 100}%; background: var(--${r.toLowerCase()}); border-radius: 4px;`}></span>
+            <span class="track">
+              <span class="fill" style={`width: ${(n / recTotal) * 100}%; background: var(--${r.toLowerCase()});`}></span>
             </span>
-            <span class="mono" style="text-align: right;">{n}</span>
+            <span class="n">{n}</span>
           </a>
         ))}
       </div>
-    </div>
+    </aside>
   </div>
 </Base>
 

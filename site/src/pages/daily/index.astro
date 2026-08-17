@@ -4,20 +4,23 @@ import { u } from '../../lib/url';
 import daily from '../../data/generated/daily.json';
 ---
 
-<Base title="日报" description="AI Intelligence Radar — 每日中文情报日报">
+<Base title="日报" description="AI 情报观察站：每日中文情报日报">
   <div class="page-head">
-    <h1>日报</h1>
+    <div class="head-row">
+      <h1>日报</h1>
+      <span class="en">Daily Briefing</span>
+    </div>
     <p class="desc">每日累计的中文情报简报：执行摘要、各领域动态、趋势信号、Tech Radar 变化与观察清单。</p>
   </div>
 
   <div class="grid" style="grid-template-columns: 1fr;">
     {daily.map((d: any) => (
-      <a class="card" href={u(`/daily/${d.date}/`)} style="padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; transition: border-color .15s, box-shadow .15s;">
+      <a class="card" href={u(`/daily/${d.date}/`)} style="padding: 19px 22px; display: flex; flex-direction: column; gap: 8px; transition: border-color .15s, box-shadow .15s;">
         <div style="display: flex; align-items: center; gap: 12px;">
-          <span class="mono" style="font-weight: 700; font-size: 16px; color: var(--text);">{d.date}</span>
+          <span class="mono" style="font-weight: 600; font-size: 15.5px; color: var(--text);">{d.date}</span>
           <span style="margin-left: auto; font-size: 13px; color: var(--text-muted);">阅读全文 →</span>
         </div>
-        <p style="margin: 0; color: var(--text-muted); font-size: 13.8px; line-height: 1.8; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">{d.excerpt}</p>
+        <p style="margin: 0; color: var(--text-muted); font-size: 13.5px; line-height: 1.85; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">{d.excerpt}</p>
       </a>
     ))}
   </div>

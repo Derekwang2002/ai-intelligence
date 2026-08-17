@@ -7,7 +7,7 @@ interface Props {
 
 const { events } = Astro.props;
 
-// Ring bands (inner/outer radius) by recommendation, innermost = adopt first.
+// 环带（内/外半径），按建议分区，最内环为 ADOPT。
 const RINGS: Record<string, [number, number]> = {
   ADOPT: [30, 168],
   TRIAL: [172, 298],
@@ -16,13 +16,13 @@ const RINGS: Record<string, [number, number]> = {
 };
 const RING_ORDER = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const;
 
-// Quadrants as [start, end] angles in degrees; SVG y-axis points down and
-// angles run clockwise from east (0°), so [-90,0] is the top-right wedge.
+// 象限为 [起始角, 结束角]（度）。SVG y 轴向下、角度自东向顺时针，
+// 因此 [-90,0] 是右上楔形。
 const QUADRANTS = [
-  { id: 'models', label: '模型与研究', cats: ['foundation-model', 'research'], range: [-90, 0] },
-  { id: 'agents', label: 'Agent 与工程', cats: ['agent-security', 'agent', 'ai-engineering'], range: [180, 270] },
-  { id: 'infra', label: '基础设施与开源', cats: ['open-source', 'infrastructure'], range: [90, 180] },
-  { id: 'tools', label: '工具与商业', cats: ['developer-tools', 'business'], range: [0, 90] },
+  { id: 'models', label: '模型与研究', cats: ['foundation-model', 'research'], range: [-90, 0], tint: 'var(--cat-model)' },
+  { id: 'agents', label: 'Agent 与工程', cats: ['agent-security', 'agent', 'ai-engineering'], range: [180, 270], tint: 'var(--cat-agent)' },
+  { id: 'infra', label: '基础设施与开源', cats: ['open-source', 'infrastructure'], range: [90, 180], tint: 'var(--cat-oss)' },
+  { id: 'tools', label: '工具与商业', cats: ['developer-tools', 'business'], range: [0, 90], tint: 'var(--cat-tools)' },
 ];
 
 const CX = 500;
@@ -34,8 +34,16 @@ const REC_VAR: Record<string, string> = {
   IGNORE: 'var(--ignore)',
 };
 
-// Deterministic pseudo-random in [0,1) from a fingerprint, so blip placement
-// is stable across rebuilds but spread within its segment.
+// 象限楔形 path（从圆心出发的两条半径 + 外弧）
+function wedgePath(range: [number, number], radius: number): string {
+  const p = (deg: number, r: number) => {
+    const rad = (deg * Math.PI) / 180;
+    return `${CX + r * Math.cos(rad)} ${CY + r * Math.sin(rad)}`;
+  };
+  return `M ${CX} ${CY} L ${p(range[0], radius)} A ${radius} ${radius} 0 0 1 ${p(range[1], radius)} Z`;
+}
+
+// 由 fingerprint 生成确定性伪随机数，保证每次构建光点位置稳定。
 function hash01(str: string, salt: number): number {
   let h = 2166136261 ^ salt;
   for (let i = 0; i < str.length; i++) {
@@ -46,7 +54,7 @@ function hash01(str: string, salt: number): number {
   return h / 4294967296;
 }
 
-// One blip per event fingerprint — the latest event wins.
+// 每个 fingerprint 只保留一个光点，取最新事件。
 const byFingerprint = new Map<string, any>();
 for (const e of events) {
   const fp = e.event_fingerprint || e.event_id;
@@ -97,23 +105,27 @@ for (const quad of QUADRANTS) {
 const ringMid = (r: keyof typeof RINGS) => (RINGS[r][0] + RINGS[r][1]) / 2;
 const quadLabelPos = (range: [number, number]) => {
   const mid = ((range[0] + range[1]) / 2) * (Math.PI / 180);
-  const r = 508;
+  const r = 512;
   return { x: CX + r * Math.cos(mid), y: CY + r * Math.sin(mid) };
 };
+const OUTER = RINGS.IGNORE[1];
 ---
 
 <div class="radar-wrap">
   <div class="card" style="padding: 18px;">
-    <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label="AI Intelligence 技术雷达">
+    <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label="AI 情报观察站技术雷达">
+      {QUADRANTS.map((q) => (
+        <path class="quad-fill" d={wedgePath(q.range as unknown as [number, number], OUTER)} fill={q.tint} fill-opacity="0.045" />
+      ))}
       {RING_ORDER.map((r) => (
         <circle class="ring-line" cx={CX} cy={CY} r={RINGS[r][1]} />
       ))}
       <circle class="ring-line" cx={CX} cy={CY} r={RINGS.ADOPT[0]} opacity="0.5" />
-      <line class="axis-line" x1={CX} y1="26" x2={CX} y2="974" />
+      <line class="axis-line" x1={CX} y1={26} x2={CX} y2={974} />
       <line class="axis-line" x1="26" y1={CY} x2="974" y2={CY} />
 
       {RING_ORDER.map((r) => (
-        <text class="ring-label" x={CX} y={CY - ringMid(r) + 7}>{r}</text>
+        <text class="ring-label" x={CX} y={CY - ringMid(r) + 6}>{r}</text>
       ))}
 
       {QUADRANTS.map((q) => {
@@ -124,7 +136,7 @@ const quadLabelPos = (range: [number, number]) => {
       {legend.flatMap(({ blips }) =>
         blips.map((b) => (
           <a class="blip" href={b.href} aria-label={`${b.title}（${b.rec}）`}>
-            <circle cx={b.x} cy={b.y} r="11.5" fill={REC_VAR[b.rec] ?? REC_VAR.WATCH} />
+            <circle cx={b.x} cy={b.y} r="12" fill={REC_VAR[b.rec] ?? REC_VAR.WATCH} />
             <text x={b.x} y={b.y + 0.5}>{b.no}</text>
           </a>
         ))
@@ -135,7 +147,7 @@ const quadLabelPos = (range: [number, number]) => {
   <aside class="radar-legend">
     {legend.map(({ quad, blips }) => (
       <div>
-        <h3>{quad.label}<span class="count" style="margin-left:8px; color: var(--text-faint); font-weight: 500;">{blips.length}</span></h3>
+        <h3>{quad.label}<span class="count">{blips.length}</span></h3>
         <div class="items">
           {blips.length === 0 && <span style="font-size: 12.5px; color: var(--text-faint); padding: 4px 8px;">暂无条目</span>}
           {blips.map((b) => (
@@ -152,6 +164,7 @@ const quadLabelPos = (range: [number, number]) => {
       {RING_ORDER.map((r) => (
         <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
       ))}
+      <span style="width: 100%; color: var(--text-faint);">内环 → 外环，建议强度递减</span>
     </div>
   </aside>
 </div>

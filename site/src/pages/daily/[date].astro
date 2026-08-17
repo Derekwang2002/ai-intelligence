@@ -15,11 +15,14 @@ const older = daily[idx + 1];
 
 <Base title={`日报 ${report.date}`}>
   <div class="article-head card">
-    <div class="crumbs"><a href={u('/daily/')}>← 日报</a><span>·</span><span class="mono">{report.date}</span></div>
-    <h1>AI Intelligence · {report.date}</h1>
-    <div class="meta-row">
-      {newer && <a href={u(`/daily/${newer.date}/`)}>← 较新 {newer.date}</a>}
-      {older && <a href={u(`/daily/${older.date}/`)} style="margin-left: auto;">较旧 {older.date} →</a>}
+    <div class="crumbs">
+      <a href={u('/daily/')}>← 日报</a>
+      <span class="mono" style="font-size: 12.5px;">{report.date}</span>
+    </div>
+    <h1>AI 情报日报 · {report.date}</h1>
+    <div class="pager">
+      {newer ? <a href={u(`/daily/${newer.date}/`)}>← 较新 {newer.date}</a> : <span></span>}
+      {older && <a href={u(`/daily/${older.date}/`)}>较旧 {older.date} →</a>}
     </div>
   </div>
   <div class="card article-body">
