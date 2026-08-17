@@ -1014,6 +1014,32 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 
 /* ---------- trends: lifecycle stepper ---------- */
 
+/* home sidebar mini trend cards（与趋势页 trend-card 同一状态色体系） */
+.trend-mini {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  border-left: 3px solid var(--tc, var(--border-strong));
+  transition: border-color 0.2s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.trend-mini:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--accent-soft);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.trend-mini .tm-meta { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.trend-mini .tm-date {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+.trend-mini .tm-name { font-weight: 600; font-size: 14px; line-height: 1.6; color: var(--text); text-wrap: pretty; }
+.trend-mini:hover .tm-name { color: var(--accent); }
+
 .lifecycle-steps { display: flex; align-items: center; gap: 0; flex-wrap: wrap; row-gap: 8px; }
 .lc-step { display: flex; align-items: center; gap: 0; }
 .lc-step .lc-link {
