@@ -1,11 +1,13 @@
 ---
-import { u, catLabel } from '../lib/url';
+import { u } from '../lib/url';
+import { t, type Locale, type UiKey } from '../lib/i18n';
 
 interface Props {
   events: any[];
+  locale?: Locale;
 }
 
-const { events } = Astro.props;
+const { events, locale = 'zh' } = Astro.props;
 
 // 环带（内/外半径），按建议分区，最内环为 ADOPT。
 const RINGS: Record<string, [number, number]> = {
@@ -18,11 +20,11 @@ const RING_ORDER = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const;
 
 // 象限为 [起始角, 结束角]（度）。SVG y 轴向下、角度自东向顺时针，
 // 因此 [-90,0] 是右上楔形。
-const QUADRANTS = [
-  { id: 'models', label: '模型与研究', cats: ['foundation-model', 'research'], range: [-90, 0] },
-  { id: 'agents', label: 'Agent 与工程', cats: ['agent-security', 'agent', 'ai-engineering'], range: [180, 270] },
-  { id: 'infra', label: '基础设施与开源', cats: ['open-source', 'infrastructure'], range: [90, 180] },
-  { id: 'tools', label: '工具与商业', cats: ['developer-tools', 'business'], range: [0, 90] },
+const QUADRANTS: { id: string; labelKey: UiKey; cats: string[]; range: [number, number] }[] = [
+  { id: 'models', labelKey: 'radar.quad.models', cats: ['foundation-model', 'research'], range: [-90, 0] },
+  { id: 'agents', labelKey: 'radar.quad.agents', cats: ['agent-security', 'agent', 'ai-engineering'], range: [180, 270] },
+  { id: 'infra', labelKey: 'radar.quad.infra', cats: ['open-source', 'infrastructure'], range: [90, 180] },
+  { id: 'tools', labelKey: 'radar.quad.tools', cats: ['developer-tools', 'business'], range: [0, 90] },
 ];
 
 const CX = 500;
@@ -93,7 +95,7 @@ for (const quad of QUADRANTS) {
       title: e.title,
       org: (e.organization ?? []).join(', '),
       date: e.published_date,
-      href: u(`/events/${e.event_id}/`),
+      href: u(`/events/${e.event_id}/`, locale),
     });
   }
   legend.push({ quad, blips });
@@ -110,9 +112,9 @@ const quadLabelPos = (range: [number, number]) => {
 <div class="radar-lists">
   {legend.map(({ quad, blips }) => (
     <section class="quad-block">
-      <h3 class="quad-head">{quad.label}<span class="count">{blips.length}</span></h3>
+      <h3 class="quad-head">{t(locale, quad.labelKey)}<span class="count">{blips.length}</span></h3>
       <ol class="quad-items">
-        {blips.length === 0 && <li class="quad-empty">暂无条目</li>}
+        {blips.length === 0 && <li class="quad-empty">{t(locale, 'radar.empty')}</li>}
         {blips.map((b) => (
           <li>
             <a href={b.href} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
@@ -129,7 +131,7 @@ const quadLabelPos = (range: [number, number]) => {
 </div>
 
 <figure class="card radar-figure" style="margin: 0 auto 8px;">
-  <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label="MATRIX 技术雷达">
+  <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label={t(locale, 'radar.aria')}>
     {RING_ORDER.map((r) => (
       <path class="ring-band" d={annulus(RINGS[r][0], RINGS[r][1])} fill={REC_VAR[r]} fill-rule="evenodd" opacity={RING_TINT[r]} />
     ))}
@@ -146,7 +148,7 @@ const quadLabelPos = (range: [number, number]) => {
 
     {QUADRANTS.map((q) => {
       const p = quadLabelPos(q.range as unknown as [number, number]);
-      return <text class="quad-label" x={p.x} y={p.y} text-anchor="middle">{q.label}</text>;
+      return <text class="quad-label" x={p.x} y={p.y} text-anchor="middle">{t(locale, q.labelKey)}</text>;
     })}
 
     {legend.flatMap(({ blips }) =>
@@ -162,7 +164,7 @@ const quadLabelPos = (range: [number, number]) => {
     {RING_ORDER.map((r) => (
       <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
     ))}
-    <span style="width: 100%; color: var(--text-faint);">内环 → 外环，建议强度递减；编号与上方索引一一对应</span>
+    <span style="width: 100%; color: var(--text-faint);">{t(locale, 'radar.legendNote')}</span>
   </figcaption>
 </figure>
 

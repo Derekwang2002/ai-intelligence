@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import { u } from '../../lib/url';
+import { t, loc, type Locale } from '../../lib/i18n';
+import daily from '../../data/generated/daily.json';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = 'zh' } = Astro.props;
+---
+
+<Base title={t(locale, 'daily.title')} description={t(locale, 'daily.description')} locale={locale}>
+  <div class="page-head">
+    <div class="head-row">
+      <h1>{t(locale, 'daily.title')}</h1>
+      <span class="en">{t(locale, 'daily.en')}</span>
+    </div>
+    <p class="desc">{t(locale, 'daily.desc')}</p>
+  </div>
+
+  <div>
+    {daily.map((d: any) => (
+      <a class="daily-row" href={u(`/daily/${d.date}/`, locale)}>
+        <span class="d-date">{d.date}</span>
+        <p class="d-excerpt">{loc(d, 'excerpt', locale)}</p>
+        <span class="d-arrow">→</span>
+      </a>
+    ))}
+  </div>
+</Base>

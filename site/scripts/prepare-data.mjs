@@ -2,6 +2,13 @@
 // Reads the knowledge base (events/, daily/, trends/, index/, state.json)
 // and writes flattened JSON into src/data/generated/ for Astro pages.
 // The knowledge base itself is never modified — the site is a read-only projection.
+//
+// Bilingual contract (AGENTS.md §6/§7/§10):
+// - events carry summary_zh/summary_en, why_it_matters_zh/why_it_matters_en
+//   (legacy summary/why_it_matters remain as English fallback);
+// - daily reports pair YYYY-MM-DD.md (zh) with YYYY-MM-DD.en.md (en);
+// - trends ship a structured trends/current.json (bilingual); when it is
+//   missing we fall back to regex-parsing trends/current.md (legacy).
 
 import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -22,6 +29,10 @@ function renderMarkdown(md) {
 
 async function readJson(file) {
   return JSON.parse(await readFile(file, 'utf8'));
+}
+
+async function readIfExists(file) {
+  return existsSync(file) ? await readFile(file, 'utf8') : null;
 }
 
 async function readDirJson(dir) {
@@ -91,7 +102,7 @@ function buildAggregates(events) {
   };
 }
 
-/* ---------- daily reports ---------- */
+/* ---------- daily reports (bilingual file pairs) ---------- */
 
 function extractExcerpt(md) {
   const m = md.match(/## Daily Executive Summary\n([\s\S]*?)(?=\n## |\n$|$)/);
@@ -105,14 +116,32 @@ function extractExcerpt(md) {
   return text.length > 220 ? text.slice(0, 217) + '…' : text;
 }
 
+// Collect dates that have at least one of YYYY-MM-DD.md / YYYY-MM-DD.en.md.
+async function collectDatePairs(dir) {
+  const dates = new Set();
+  for (const name of await readdir(dir)) {
+    const m = name.match(/^(\d{4}-\d{2}-\d{2})(\.en)?\.md$/);
+    if (m) dates.add(m[1]);
+  }
+  return [...dates].sort();
+}
+
 async function loadDaily() {
   const dir = path.join(ROOT, 'daily');
-  const names = (await readdir(dir)).filter((n) => n.endsWith('.md')).sort();
   const out = [];
-  for (const name of names) {
-    const date = name.replace(/\.md$/, '');
-    const md = await readFile(path.join(dir, name), 'utf8');
-    out.push({ date, html: renderMarkdown(md), excerpt: extractExcerpt(md) });
+  for (const date of await collectDatePairs(dir)) {
+    // Missing one language falls back to the other so pages never render empty.
+    const zh = (await readIfExists(path.join(dir, `${date}.md`))) ?? null;
+    const en = (await readIfExists(path.join(dir, `${date}.en.md`))) ?? null;
+    const zhMd = zh ?? en ?? '';
+    const enMd = en ?? zh ?? '';
+    out.push({
+      date,
+      html_zh: renderMarkdown(zhMd),
+      html_en: renderMarkdown(enMd),
+      excerpt_zh: extractExcerpt(zhMd),
+      excerpt_en: extractExcerpt(enMd),
+    });
   }
   return out.reverse(); // newest first
 }
@@ -120,6 +149,71 @@ async function loadDaily() {
 /* ---------- trends ---------- */
 
 const STATUS_WORDS = ['candidate', 'emerging', 'strengthening', 'established', 'weakening', 'invalidated', 'retired'];
+
+// Unified trend shape consumed by the templates. Both the structured
+// current.json and the legacy markdown parse are normalized into this.
+function normalizeTrend(t) {
+  const toList = (v) => (Array.isArray(v) ? v : v ? [v] : []);
+  return {
+    id: t.id || '',
+    status: STATUS_WORDS.find((w) => String(t.status || '').toLowerCase().startsWith(w)) || 'candidate',
+    retired: !!t.retired,
+    confidence: String(t.confidence || 'Low').replace(/^([A-Za-z]+).*$/, '$1'),
+    firstObserved: t.first_observed || t.firstObserved || '',
+    lastUpdated: t.last_updated || t.lastUpdated || '',
+    name_zh: t.name_zh || t.name_en || '',
+    name_en: t.name_en || t.name_zh || '',
+    statusNote_zh: t.status_note_zh ?? t.status_note_en ?? '',
+    statusNote_en: t.status_note_en ?? t.status_note_zh ?? '',
+    evidence_zh: toList(t.evidence_zh ?? t.evidence_en),
+    evidence_en: toList(t.evidence_en ?? t.evidence_zh),
+    why_zh: t.why_it_matters_zh ?? t.why_it_matters_en ?? '',
+    why_en: t.why_it_matters_en ?? t.why_it_matters_zh ?? '',
+    confirm_zh: t.what_would_confirm_zh ?? t.what_would_confirm_en ?? '',
+    confirm_en: t.what_would_confirm_en ?? t.what_would_confirm_zh ?? '',
+    updates: (t.updates || []).map((u) => ({
+      date: u.date || '',
+      note_zh: u.note_zh ?? u.note_en ?? '',
+      note_en: u.note_en ?? u.note_zh ?? '',
+    })),
+  };
+}
+
+async function loadCurrentTrends(dir) {
+  const jsonPath = path.join(dir, 'current.json');
+  if (existsSync(jsonPath)) {
+    const data = await readJson(jsonPath);
+    return {
+      asOf: data.as_of || '',
+      structured: true,
+      trends: (data.trends || []).map(normalizeTrend),
+    };
+  }
+  // Legacy fallback: regex-parse the human-readable current.md.
+  const currentMd = await readFile(path.join(dir, 'current.md'), 'utf8');
+  const parsed = parseCurrentTrends(currentMd);
+  return {
+    asOf: parsed.asOf,
+    structured: false,
+    trends: parsed.trends.map((t) =>
+      normalizeTrend({
+        id: '',
+        status: t.status,
+        retired: t.retired,
+        confidence: t.confidence,
+        first_observed: t.firstObserved,
+        last_updated: t.lastUpdated,
+        name_en: t.name,
+        status_note_en: t.statusRaw,
+        evidence_en: t.evidence
+          .split('\n')
+          .map((l) => l.replace(/^\s*\d+\.\s*/, '').trim())
+          .filter(Boolean),
+        what_would_confirm_en: t.confirm,
+      })
+    ),
+  };
+}
 
 function parseCurrentTrends(md) {
   const asOfMatch = md.match(/^#\s+.*?(\d{4}-\d{2}-\d{2}[T ][\d:]+Z?)/m);
@@ -172,16 +266,19 @@ function parseCurrentTrends(md) {
 }
 
 async function loadTrends() {
-  const currentMd = await readFile(path.join(ROOT, 'trends/current.md'), 'utf8');
-  const parsed = parseCurrentTrends(currentMd);
   const dir = path.join(ROOT, 'trends');
+  const current = await loadCurrentTrends(dir);
   const snapshots = [];
-  for (const name of (await readdir(dir)).sort().reverse()) {
-    if (!/^\d{4}-\d{2}-\d{2}\.md$/.test(name)) continue;
-    const date = name.replace(/\.md$/, '');
-    snapshots.push({ date, html: renderMarkdown(await readFile(path.join(dir, name), 'utf8')) });
+  for (const date of (await collectDatePairs(dir)).reverse()) {
+    const zh = await readIfExists(path.join(dir, `${date}.md`));
+    const en = await readIfExists(path.join(dir, `${date}.en.md`));
+    snapshots.push({
+      date,
+      html_zh: renderMarkdown(zh ?? en ?? ''),
+      html_en: renderMarkdown(en ?? zh ?? ''),
+    });
   }
-  return { ...parsed, html: renderMarkdown(currentMd), snapshots };
+  return { ...current, snapshots };
 }
 
 /* ---------- main ---------- */
@@ -211,7 +308,7 @@ async function main() {
 
   console.log(
     `[prepare-data] ${events.length} events, ${daily.length} daily reports, ` +
-      `${trends.trends.length} trends, ${trends.snapshots.length} trend snapshots -> ${path.relative(ROOT, OUT)}`
+      `${trends.trends.length} trends (structured=${trends.structured}), ${trends.snapshots.length} trend snapshots -> ${path.relative(ROOT, OUT)}`
   );
 }
 

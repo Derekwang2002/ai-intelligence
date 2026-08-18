@@ -20,6 +20,10 @@
       ],
       "summary": "Alibaba released open weights of Qwen3.8-27B, the open sibling of the Qwen3.8 family promised at the Aug 3 Qwen3.8-Max launch. Dense 27.8B vision-language model with hybrid attention (Gated DeltaNet + Gated Attention), 262,144-token native context extensible to 1M via YaRN, image+video+text input, Apache 2.0. Thinking on by default with reasoning_effort control (xhigh/medium/low).",
       "why_it_matters": "Frontier-adjacent agentic + multimodal capability in a single-GPU-class open model under Apache 2.0 — the leading candidate default local/self-hosted coding-agent base model for this cycle.",
+      "summary_zh": "Alibaba 发布 Qwen3.8-27B 开源权重，即 8 月 3 日 Qwen3.8-Max 发布时承诺的 Qwen3.8 家族开源版本。27.8B dense 视觉语言模型，采用混合注意力（Gated DeltaNet + Gated Attention），原生 262,144 token 上下文、可经 YaRN 扩展至 1M，支持图像+视频+文本输入，Apache 2.0 协议。默认开启 thinking，支持 reasoning_effort 控制（xhigh/medium/low）。",
+      "summary_en": "Alibaba released open weights of Qwen3.8-27B, the open sibling of the Qwen3.8 family promised at the Aug 3 Qwen3.8-Max launch. Dense 27.8B vision-language model with hybrid attention (Gated DeltaNet + Gated Attention), 262,144-token native context extensible to 1M via YaRN, image+video+text input, Apache 2.0. Thinking on by default with reasoning_effort control (xhigh/medium/low).",
+      "why_it_matters_zh": "在 Apache 2.0 下，单卡级开源模型具备了接近 frontier 的 agentic + 多模态能力——这是本周期本地/自托管 coding agent 基座模型的首选候选。",
+      "why_it_matters_en": "Frontier-adjacent agentic + multimodal capability in a single-GPU-class open model under Apache 2.0 — the leading candidate default local/self-hosted coding-agent base model for this cycle.",
       "technical_details": {
         "params": "27.78B BF16 (~55.6GB)",
         "architecture": "64 layers; 16 x (3 x (Gated DeltaNet -> FFN) -> 1 x (Gated Attention -> FFN)); MTP trained; architecture family qwen3_5",
@@ -68,6 +72,10 @@
       ],
       "summary": "Zhipu released GLM-5.3, built on the same base as GLM-5.2 with all gains from post-training ('scaling post-training is all we did'). Positioned as strongest open-weights coding model with heavy cybersecurity/agentic focus: worked with Chinese security teams to find 2,436 vulnerabilities across 269 projects, published in public registry cvd.z.ai. Available immediately via GLM Coding Plan (works with Claude Code, OpenCode); API 'coming soon'; open weights in ~2 weeks after security reviews.",
       "why_it_matters": "Post-training-only release claiming open-weights coding SOTA and leading CyberGym over US frontier models — a data point that post-training scaling can move agentic/coding capability substantially; the deferred-weights-after-security-review pattern is itself notable.",
+      "summary_zh": "智谱发布 GLM-5.3，与 GLM-5.2 同一基座，全部提升来自 post-training（官方称「scaling post-training 是我们唯一做的事」）。定位为最强开源权重 coding 模型，重点投入网络安全/agentic 能力：与中国安全团队合作在 269 个项目中发现 2,436 个漏洞，公开登记于 cvd.z.ai。现已通过 GLM Coding Plan 提供（兼容 Claude Code、OpenCode）；API 「即将上线」；开源权重预计在约 2 周的安全审查后发布。",
+      "summary_en": "Zhipu released GLM-5.3, built on the same base as GLM-5.2 with all gains from post-training ('scaling post-training is all we did'). Positioned as strongest open-weights coding model with heavy cybersecurity/agentic focus: worked with Chinese security teams to find 2,436 vulnerabilities across 269 projects, published in public registry cvd.z.ai. Available immediately via GLM Coding Plan (works with Claude Code, OpenCode); API 'coming soon'; open weights in ~2 weeks after security reviews.",
+      "why_it_matters_zh": "仅靠 post-training 就号称拿下开源权重 coding SOTA、并在 CyberGym 上超过美国 frontier 模型——这是一个数据点，说明 post-training scaling 能显著推动 agentic/coding 能力；「安全审查后再放权重」的模式本身也值得关注。",
+      "why_it_matters_en": "Post-training-only release claiming open-weights coding SOTA and leading CyberGym over US frontier models — a data point that post-training scaling can move agentic/coding capability substantially; the deferred-weights-after-security-review pattern is itself notable.",
       "technical_details": {
         "context": "1M tokens, 128K max output",
         "zai_code_bench": "+50% vs GLM-5.2",
@@ -105,6 +113,10 @@
       ],
       "summary": "Cloudflare added first-class identification, monitoring, and control of MCP traffic to its Zero Trust Gateway, targeting shadow-MCP discovery and blocking of unapproved servers. Detection keys on the MCP-Protocol-Version HTTP header (required by MCP 2025-11-25 spec; on every POST in the 2026-07-28 stateless spec, which adds Mcp-Method/Mcp-Name). New experimental.is_mcp boolean selector for all Zero Trust customers; dedicated MCP dashboard; Portal-only enforcement via Traffic Source selectors; MCP Portals support pre-registered OAuth clients; Agents SDK v0.20.0 supports the stateless 2026-07-28 spec as client and server.",
       "why_it_matters": "First widely deployed network-level enforcement primitive for MCP — security teams can discover and block shadow MCP servers without maintaining domain lists. Addresses a top enterprise blocker for agent rollout.",
+      "summary_zh": "Cloudflare 在其 Zero Trust Gateway 中加入对 MCP 流量的一等识别、监控与管控，目标是发现 shadow-MCP 并阻断未经批准的服务器。检测基于 MCP-Protocol-Version HTTP header（MCP 2025-11-25 规范要求携带；2026-07-28 无状态规范中每个 POST 都带，并新增 Mcp-Method/Mcp-Name）。新增 experimental.is_mcp 布尔选择器，面向全部 Zero Trust 客户；独立 MCP dashboard；通过 Traffic Source 选择器实现仅放行 Portal 的管控；MCP Portals 支持预注册 OAuth client；Agents SDK v0.20.0 作为 client 和 server 均支持 2026-07-28 无状态规范。",
+      "summary_en": "Cloudflare added first-class identification, monitoring, and control of MCP traffic to its Zero Trust Gateway, targeting shadow-MCP discovery and blocking of unapproved servers. Detection keys on the MCP-Protocol-Version HTTP header (required by MCP 2025-11-25 spec; on every POST in the 2026-07-28 stateless spec, which adds Mcp-Method/Mcp-Name). New experimental.is_mcp boolean selector for all Zero Trust customers; dedicated MCP dashboard; Portal-only enforcement via Traffic Source selectors; MCP Portals support pre-registered OAuth clients; Agents SDK v0.20.0 supports the stateless 2026-07-28 spec as client and server.",
+      "why_it_matters_zh": "这是首个广泛部署的 MCP 网络层管控原语——安全团队无需维护域名清单即可发现并阻断 shadow MCP server，解决了企业落地 agent 的一个主要阻碍。",
+      "why_it_matters_en": "First widely deployed network-level enforcement primitive for MCP — security teams can discover and block shadow MCP servers without maintaining domain lists. Addresses a top enterprise blocker for agent rollout.",
       "technical_details": {
         "detection": "MCP-Protocol-Version HTTP header on TLS-decrypted requests",
         "selector": "experimental.is_mcp == true",
@@ -141,6 +153,10 @@
       ],
       "summary": "Two rapid-fire Claude Code releases turn it toward multi-agent operation: subagent forking on by default ('fork' subagent inherits full conversation + prompt cache; non-teammate agent spawns run in background), cross-session agent-to-agent messaging via @-mentions (SendMessage to named live sessions, v2.1.224+, local sockets, messages only), GitLab MR support + plugin marketplaces, secret redaction, multiple security fixes (PowerShell $PSDefaultParameterValues overwrite, Cygwin symlink bypass, nested-git-repo trust inheritance, /tmp socket hardening). 2.1.233 adds cgroup memory limits for sandboxed Bash (CLAUDE_CODE_TOOL_MEMORY_LIMIT), opt-in forward_user_identity gateway spend attribution, MCP v2 reconnect fix; todo tools removed for Opus 4.8/Sonnet 5/Fable 5/Mythos 5+.",
       "why_it_matters": "Default-on forking plus native inter-session messaging makes Claude Code a de facto local multi-agent runtime; resource-limited sandboxed execution and per-user spend attribution are enterprise-blocking features now landing.",
+      "summary_zh": "连续两个 Claude Code 版本将其推向多 agent 形态：subagent forking 默认开启（fork 出的 subagent 继承完整会话和 prompt cache；非 teammate 的 agent 在后台启动），通过 @-mention 实现跨会话 agent 间消息（向指定存活会话 SendMessage，v2.1.224+，基于本地 socket，仅传消息），GitLab MR 支持 + plugin marketplace，secret 脱敏，多项安全修复（PowerShell $PSDefaultParameterValues 覆写、Cygwin symlink 绕过、嵌套 git 仓库信任继承、/tmp socket 加固）。2.1.233 新增 sandbox Bash 的 cgroup 内存限制（CLAUDE_CODE_TOOL_MEMORY_LIMIT）、可选开启的 forward_user_identity 网关花费归因、MCP v2 重连修复；Opus 4.8/Sonnet 5/Fable 5/Mythos 5+ 移除 todo 工具。",
+      "summary_en": "Two rapid-fire Claude Code releases turn it toward multi-agent operation: subagent forking on by default ('fork' subagent inherits full conversation + prompt cache; non-teammate agent spawns run in background), cross-session agent-to-agent messaging via @-mentions (SendMessage to named live sessions, v2.1.224+, local sockets, messages only), GitLab MR support + plugin marketplaces, secret redaction, multiple security fixes (PowerShell $PSDefaultParameterValues overwrite, Cygwin symlink bypass, nested-git-repo trust inheritance, /tmp socket hardening). 2.1.233 adds cgroup memory limits for sandboxed Bash (CLAUDE_CODE_TOOL_MEMORY_LIMIT), opt-in forward_user_identity gateway spend attribution, MCP v2 reconnect fix; todo tools removed for Opus 4.8/Sonnet 5/Fable 5/Mythos 5+.",
+      "why_it_matters_zh": "默认开启 forking 加上原生跨会话消息，使 Claude Code 成为事实上的本地 multi-agent runtime；带资源限制的沙箱执行和按用户的花费归因正是企业落地的阻塞项，如今开始补齐。",
+      "why_it_matters_en": "Default-on forking plus native inter-session messaging makes Claude Code a de facto local multi-agent runtime; resource-limited sandboxed execution and per-user spend attribution are enterprise-blocking features now landing.",
       "technical_details": {
         "forking": "default on; inherits conversation + prompt cache",
         "messaging": "SendMessage via @-mentions across live sessions; no history/files/permissions exchange",
@@ -172,6 +188,10 @@
       "secondary_sources": ["https://n8nlab.io/news/ai-news-roundup-august-fourteen"],
       "summary": "DeepSeek released its agent harness (the framework behind its benchmark runs) as open source under MIT — a TypeScript/Node monorepo built on the Cordis framework with an everything-is-a-plugin architecture, positioned as an open challenge to Claude Code. Runs via npx @deepseek-ai/dsh web (Web UI at 127.0.0.1:3080); AGENTS.md/CLAUDE.md-compatible config; developer preview with explicit breaking-change warnings.",
       "why_it_matters": "A frontier lab releasing its production agent runtime under MIT gives agent engineers a first-party reference implementation of DeepSeek's agent loop and a new harness option; expect preview churn.",
+      "summary_zh": "DeepSeek 将其 agent harness（跑 benchmark 所用的框架）以 MIT 协议开源——基于 Cordis 框架的 TypeScript/Node monorepo，采用 everything-is-a-plugin 架构，被视为对 Claude Code 的公开挑战。通过 npx @deepseek-ai/dsh web 运行（Web UI 位于 127.0.0.1:3080）；兼容 AGENTS.md/CLAUDE.md 配置；当前为 developer preview，官方明确警告会有 breaking change。",
+      "summary_en": "DeepSeek released its agent harness (the framework behind its benchmark runs) as open source under MIT — a TypeScript/Node monorepo built on the Cordis framework with an everything-is-a-plugin architecture, positioned as an open challenge to Claude Code. Runs via npx @deepseek-ai/dsh web (Web UI at 127.0.0.1:3080); AGENTS.md/CLAUDE.md-compatible config; developer preview with explicit breaking-change warnings.",
+      "why_it_matters_zh": "一家 frontier lab 以 MIT 协议放出生产级 agent runtime，让 agent 工程师拿到了 DeepSeek agent loop 的第一方参考实现和一个新的 harness 选项；预期 preview 阶段会有频繁变动。",
+      "why_it_matters_en": "A frontier lab releasing its production agent runtime under MIT gives agent engineers a first-party reference implementation of DeepSeek's agent loop and a new harness option; expect preview churn.",
       "technical_details": {
         "license": "MIT",
         "language": "TypeScript/Node (Cordis-based, plugin architecture)",
@@ -201,6 +221,10 @@
       "secondary_sources": ["CNBC", "Reuters"],
       "summary": "Cursor announced the acquisition officially closed: $60B all-stock deal first agreed 2026-06-16. Cursor now has access to 'the largest fleet of GPUs in the world'; Grok 4.6 (shipped Aug 12) cited as an early product of the partnership. No leadership/org details disclosed.",
       "why_it_matters": "Model-IDE vertical integration (Grok models built into the most-used AI-native IDE) sets the competitive template; expect model-default and pricing shifts inside Cursor and ripple effects on Copilot/Claude Code positioning.",
+      "summary_zh": "Cursor 宣布收购正式完成：2026-06-16 达成的 600 亿美元全股票交易。Cursor 现在可以使用「全球最大规模的 GPU 集群」；Grok 4.6（8 月 12 日发布）被视为双方合作的早期产物。未披露管理层和组织细节。",
+      "summary_en": "Cursor announced the acquisition officially closed: $60B all-stock deal first agreed 2026-06-16. Cursor now has access to 'the largest fleet of GPUs in the world'; Grok 4.6 (shipped Aug 12) cited as an early product of the partnership. No leadership/org details disclosed.",
+      "why_it_matters_zh": "模型-IDE 垂直整合（Grok 模型内置进使用最广的 AI-native IDE）确立了竞争模板；预期 Cursor 内部的默认模型和定价会调整，并波及 Copilot/Claude Code 的定位。",
+      "why_it_matters_en": "Model-IDE vertical integration (Grok models built into the most-used AI-native IDE) sets the competitive template; expect model-default and pricing shifts inside Cursor and ripple effects on Copilot/Claude Code positioning.",
       "technical_details": {
         "deal_value": "$60B all-stock",
         "agreed": "2026-06-16",
@@ -230,6 +254,10 @@
       "secondary_sources": ["https://www.trendingtopics.eu/anthropic-plans-watermarks-for-ai-generated-content-from-august-2026/"],
       "summary": "Anthropic published the technical mechanism behind Claude's invisible, machine-readable text watermarking, applying to all Claude models launched on/after 2026-08-02 (older models in transition).",
       "why_it_matters": "Developers building detection/provenance pipelines or redistributing Claude output need to know watermark semantics; signals watermarking becoming a standard API-model property.",
+      "summary_zh": "Anthropic 公布了 Claude 不可见、机器可读文本水印的技术机制，适用于 2026-08-02 及之后发布的所有 Claude 模型（更早的模型处于过渡期）。",
+      "summary_en": "Anthropic published the technical mechanism behind Claude's invisible, machine-readable text watermarking, applying to all Claude models launched on/after 2026-08-02 (older models in transition).",
+      "why_it_matters_zh": "构建检测/溯源流水线或再分发 Claude 输出内容的开发者需要了解水印语义；这标志水印正成为 API 模型的标准属性。",
+      "why_it_matters_en": "Developers building detection/provenance pipelines or redistributing Claude output need to know watermark semantics; signals watermarking becoming a standard API-model property.",
       "technical_details": {
         "applies_to": "Claude models launched on/after 2026-08-02; pre-existing models in transition",
         "mechanism": "embedded in generated text, machine-readable"
@@ -257,6 +285,10 @@
       "secondary_sources": [],
       "summary": "Aug 14 ChatGPT release notes: desktop app for Linux in public preview (Ubuntu/Debian/Fedora) with Codex; also interactive quizzes, project-memory setting changes, 'Think' mode on Free/Go web tiers, Android dictation. No model/API/pricing changes.",
       "why_it_matters": "Codex reaching Linux desktop broadens the coding-agent surface; otherwise product-level updates only.",
+      "summary_zh": "8 月 14 日 ChatGPT release notes：Linux 桌面版进入 public preview（Ubuntu/Debian/Fedora），内置 Codex；另有交互式测验、项目记忆设置变更、Free/Go 网页档上线 Think 模式、Android 听写。无模型/API/定价变更。",
+      "summary_en": "Aug 14 ChatGPT release notes: desktop app for Linux in public preview (Ubuntu/Debian/Fedora) with Codex; also interactive quizzes, project-memory setting changes, 'Think' mode on Free/Go web tiers, Android dictation. No model/API/pricing changes.",
+      "why_it_matters_zh": "Codex 登陆 Linux 桌面拓宽了 coding agent 的覆盖面；其余仅为产品级更新。",
+      "why_it_matters_en": "Codex reaching Linux desktop broadens the coding-agent surface; otherwise product-level updates only.",
       "technical_details": {
         "platforms": ["Ubuntu", "Debian", "Fedora"],
         "includes": "Codex"

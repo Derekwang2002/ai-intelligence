@@ -1,0 +1,323 @@
+// Central UI string dictionary + locale helpers.
+// Both locales share the same components; only strings and content fields differ.
+
+export type Locale = 'zh' | 'en';
+export const LOCALES: Locale[] = ['zh', 'en'];
+export const DEFAULT_LOCALE: Locale = 'zh';
+
+// Content-field fallback: loc(event, 'summary', 'zh') tries summary_zh,
+// then summary_en, then the legacy summary field. Never returns undefined.
+export function loc(obj: any, field: string, locale: Locale): string {
+  if (!obj) return '';
+  const primary = obj[`${field}_${locale}`];
+  if (primary) return primary;
+  const secondary = obj[`${field}_${locale === 'zh' ? 'en' : 'zh'}`];
+  if (secondary) return secondary;
+  return obj[field] ?? '';
+}
+
+const zh = {
+  'site.description': 'MATRIX：Events → Signals → Trends → Decisions 的 AI 技术情报知识库',
+  'site.titleSuffix': 'MATRIX · AI 技术情报',
+  'nav.aria': '主导航',
+  'nav.daily': '日报',
+  'nav.events': '事件',
+  'nav.radar': '技术雷达',
+  'nav.trends': '趋势',
+  'nav.langSwitch': 'English',
+  'nav.langSwitchAria': '切换到英文版',
+  'theme.toggle': '切换浅色 / 深色主题',
+  'footer.line1': '本站由知识库（events / daily / trends）自动构建，push 到 main 后经 GitHub Actions 发布。内容为增量扫描一手来源后的结构化沉淀，非实时新闻聚合。',
+
+  'home.kicker': 'AI Intelligence Radar',
+  'home.h1a': '追踪值得工程决策关注的',
+  'home.h1b': 'AI 技术变化',
+  'home.intro':
+    '不是新闻聚合器。增量扫描一手来源，把分散的公开信息沉淀为结构化事件、可验证信号与趋势判断，每个条目都带有评分与 ADOPT / TRIAL / WATCH / IGNORE 建议。',
+  'home.readToday': '读今日简报 →',
+  'home.browseEvents': '浏览全部事件',
+  'home.lastScan': '最后扫描',
+  'home.beijingTime': '北京时间',
+  'home.metaEvents': '事件',
+  'home.metaOrgs': '组织',
+  'home.metaTrends': '条活跃趋势',
+  'home.briefLabel': '今日简报 · Executive Summary',
+  'home.readFull': '阅读全文 →',
+  'home.latestEvents': '最新事件',
+  'home.countSuffix': '条',
+  'home.viewAll': '查看全部 →',
+  'home.activeTrends': '活跃趋势',
+  'home.all': '全部 →',
+  'home.recDist': '建议分布',
+  'home.viewRec': '查看 {r} 条目',
+
+  'scores.impact': '影响',
+  'scores.engineering': '工程',
+  'scores.adoption': '采用',
+  'scores.tripleTitle': '技术影响 / 工程价值 / 采用信号',
+  'scores.technical_impact': '技术影响',
+  'scores.engineering_value': '工程价值',
+  'scores.adoption_signal': '采用信号',
+  'scores.maturity': '成熟度',
+  'scores.verification_cost': '验证成本',
+  'scores.risk': '风险',
+
+  'radar.title': '技术雷达',
+  'radar.en': 'Tech Radar',
+  'radar.description': 'MATRIX：ADOPT / TRIAL / WATCH / IGNORE 四环 × 四象限技术雷达',
+  'radar.descPre': '每个事件按建议归入内环（',
+  'radar.descMid1': '）到外环（',
+  'radar.descMid2': '），按领域落入四个象限。同一技术多次出现时取最新事件。共 ',
+  'radar.descEvents': ' 个事件、',
+  'radar.descUnique': ' 个独立条目。上方按象限索引，下方为雷达总览，编号一一对应。',
+  'radar.quad.models': '模型与研究',
+  'radar.quad.agents': 'Agent 与工程',
+  'radar.quad.infra': '基础设施与开源',
+  'radar.quad.tools': '工具与商业',
+  'radar.empty': '暂无条目',
+  'radar.aria': 'MATRIX 技术雷达',
+  'radar.legendNote': '内环 → 外环，建议强度递减；编号与上方索引一一对应',
+
+  'trends.title': '趋势',
+  'trends.en': 'Trends',
+  'trends.description': 'MATRIX：多信号支撑的趋势追踪与生命周期状态',
+  'trends.desc':
+    '单个新闻不构成趋势。这里的每条趋势都要求多个独立信号（跨日期、跨组织）支撑，并随每次扫描升级、降级或作废。数据截至 ',
+  'trends.lifecycle': '生命周期',
+  'trends.confidence': '置信度',
+  'trends.firstObserved': '首次观察',
+  'trends.lastUpdated': '最后更新',
+  'trends.evidence': '证据',
+  'trends.confirm': '确认条件：',
+  'trends.why': '为什么重要',
+  'trends.runNotes': '逐次复核',
+  'trends.retired': '已作废 / 退役',
+  'trends.snapshots': '历史快照',
+  'trends.viewSnapshot': '查看当日趋势快照 →',
+  'trends.archiveTitle': '趋势快照',
+  'trends.back': '← 趋势',
+  'trends.archiveCrumb': '历史快照',
+
+  'daily.title': '日报',
+  'daily.en': 'Daily Briefing',
+  'daily.description': 'MATRIX：每日中文情报日报',
+  'daily.desc': '每日累计的情报简报：执行摘要、各领域动态、趋势信号、Tech Radar 变化与观察清单。',
+  'daily.back': '← 日报',
+  'daily.reportTitle': 'AI 情报日报',
+  'daily.newer': '较新',
+  'daily.older': '较旧',
+  'daily.toc': '本页目录',
+
+  'events.title': '事件',
+  'events.en': 'Events Timeline',
+  'events.description': 'MATRIX：按时间线浏览全部结构化事件，支持按类别、组织、建议筛选',
+  'events.descPre': '共 ',
+  'events.descPost':
+    ' 个结构化事件，按发布日期归属（非发现时间）。每个事件均经来源验证与去重，携带六维评分与采用建议。',
+  'events.searchPlaceholder': '搜索标题、摘要、组织、标签…',
+  'events.searchAria': '搜索事件',
+  'events.catAria': '按类别筛选',
+  'events.allCats': '全部类别',
+  'events.orgAria': '按组织筛选',
+  'events.allOrgs': '全部组织',
+  'events.all': '全部',
+  'events.recAria': '按建议筛选',
+  'events.countUnit': '个事件',
+  'events.empty': '没有符合筛选条件的事件。可以调整关键词或清除筛选。',
+  'events.countSuffix': '条',
+  'events.back': '← 事件',
+  'events.summary': '摘要',
+  'events.why': '为什么重要',
+  'events.details': '技术细节',
+  'events.updates': '后续更新',
+  'events.tags': '标签',
+  'events.scores': '评分',
+  'events.sources': '来源',
+  'events.sourceType': '来源类型：',
+  'events.meta': '元信息',
+  'events.publishedAt': '发布时间',
+  'events.firstSeen': '首次发现',
+  'events.lastUpdated': '最后更新',
+  'events.newer': '较新事件',
+  'events.older': '较旧事件',
+  'events.prevNextAria': '相邻事件',
+
+  'rec.ADOPT': '成熟、价值明确，可以实际采用',
+  'rec.TRIAL': '值得进行 POC 或小规模实验',
+  'rec.WATCH': '值得持续跟踪，暂不投入较多资源',
+  'rec.IGNORE': '当前信号不足、价值有限或 hype 较重',
+} as const;
+
+export type UiKey = keyof typeof zh;
+
+const en: Record<UiKey, string> = {
+  'site.description': 'MATRIX: an AI tech intelligence knowledge base — Events → Signals → Trends → Decisions',
+  'site.titleSuffix': 'MATRIX · AI Tech Intelligence',
+  'nav.aria': 'Main navigation',
+  'nav.daily': 'Daily',
+  'nav.events': 'Events',
+  'nav.radar': 'Tech Radar',
+  'nav.trends': 'Trends',
+  'nav.langSwitch': '中文',
+  'nav.langSwitchAria': 'Switch to Chinese version',
+  'theme.toggle': 'Toggle light / dark theme',
+  'footer.line1':
+    'This site is built automatically from the knowledge base (events / daily / trends) and published via GitHub Actions on push to main. Content is a structured accumulation of incrementally scanned primary sources, not a real-time news aggregator.',
+
+  'home.kicker': 'AI Intelligence Radar',
+  'home.h1a': 'Tracking AI tech changes',
+  'home.h1b': 'worth engineering decisions',
+  'home.intro':
+    'Not a news aggregator. Incremental scans of primary sources distill scattered public information into structured events, verifiable signals, and trend judgments — every entry carries scores and an ADOPT / TRIAL / WATCH / IGNORE recommendation.',
+  'home.readToday': "Read today's briefing →",
+  'home.browseEvents': 'Browse all events',
+  'home.lastScan': 'Last scan',
+  'home.beijingTime': 'Beijing time',
+  'home.metaEvents': 'events',
+  'home.metaOrgs': 'orgs',
+  'home.metaTrends': 'active trends',
+  'home.briefLabel': "Today's briefing · Executive Summary",
+  'home.readFull': 'Read in full →',
+  'home.latestEvents': 'Latest events',
+  'home.countSuffix': '',
+  'home.viewAll': 'View all →',
+  'home.activeTrends': 'Active trends',
+  'home.all': 'All →',
+  'home.recDist': 'Recommendation mix',
+  'home.viewRec': 'View {r} entries',
+
+  'scores.impact': 'Impact',
+  'scores.engineering': 'Eng',
+  'scores.adoption': 'Adoption',
+  'scores.tripleTitle': 'Technical impact / Engineering value / Adoption signal',
+  'scores.technical_impact': 'Technical impact',
+  'scores.engineering_value': 'Engineering value',
+  'scores.adoption_signal': 'Adoption signal',
+  'scores.maturity': 'Maturity',
+  'scores.verification_cost': 'Verification cost',
+  'scores.risk': 'Risk',
+
+  'radar.title': 'Tech Radar',
+  'radar.en': 'Tech Radar',
+  'radar.description': 'MATRIX: ADOPT / TRIAL / WATCH / IGNORE rings × four-quadrant tech radar',
+  'radar.descPre': 'Each event sits in a ring from inner (',
+  'radar.descMid1': ') to outer (',
+  'radar.descMid2':
+    ') by recommendation, and in one of four quadrants by domain. Technologies seen multiple times keep their latest event. ',
+  'radar.descEvents': ' events, ',
+  'radar.descUnique':
+    ' unique entries. The quadrant index is on top; the radar overview below uses matching numbers.',
+  'radar.quad.models': 'Models & Research',
+  'radar.quad.agents': 'Agents & Engineering',
+  'radar.quad.infra': 'Infra & Open Source',
+  'radar.quad.tools': 'Tools & Business',
+  'radar.empty': 'No entries yet',
+  'radar.aria': 'MATRIX Tech Radar',
+  'radar.legendNote': 'Inner → outer rings: recommendation strength decreases; numbers match the index above',
+
+  'trends.title': 'Trends',
+  'trends.en': 'Trends',
+  'trends.description': 'MATRIX: multi-signal trend tracking with lifecycle status',
+  'trends.desc':
+    'A single news item is not a trend. Every trend here requires multiple independent signals (across dates and organizations), and is upgraded, downgraded, or retired with each scan. Data as of ',
+  'trends.lifecycle': 'Lifecycle',
+  'trends.confidence': 'Confidence',
+  'trends.firstObserved': 'First observed',
+  'trends.lastUpdated': 'Last updated',
+  'trends.evidence': 'Evidence',
+  'trends.confirm': 'What would confirm: ',
+  'trends.why': 'Why it matters',
+  'trends.runNotes': 'Per-run reviews',
+  'trends.retired': 'Invalidated / retired',
+  'trends.snapshots': 'Snapshots',
+  'trends.viewSnapshot': 'View the snapshot for that day →',
+  'trends.archiveTitle': 'Trend snapshot',
+  'trends.back': '← Trends',
+  'trends.archiveCrumb': 'Archive',
+
+  'daily.title': 'Daily',
+  'daily.en': 'Daily Briefing',
+  'daily.description': 'MATRIX: daily intelligence briefing',
+  'daily.desc':
+    'Cumulative daily intelligence briefing: executive summary, per-domain developments, trend signals, Tech Radar changes, and the watch list.',
+  'daily.back': '← Daily',
+  'daily.reportTitle': 'AI Intelligence Daily',
+  'daily.newer': 'Newer',
+  'daily.older': 'Older',
+  'daily.toc': 'On this page',
+
+  'events.title': 'Events',
+  'events.en': 'Events Timeline',
+  'events.description': 'MATRIX: browse all structured events on a timeline, filter by category, org, recommendation',
+  'events.descPre': '',
+  'events.descPost':
+    ' structured events, filed by publication date (not discovery time). Every event is source-verified and deduplicated, with six-dimension scores and an adoption recommendation.',
+  'events.searchPlaceholder': 'Search titles, summaries, orgs, tags…',
+  'events.searchAria': 'Search events',
+  'events.catAria': 'Filter by category',
+  'events.allCats': 'All categories',
+  'events.orgAria': 'Filter by organization',
+  'events.allOrgs': 'All organizations',
+  'events.all': 'All',
+  'events.recAria': 'Filter by recommendation',
+  'events.countUnit': 'events',
+  'events.empty': 'No events match the filters. Adjust the keywords or clear the filters.',
+  'events.countSuffix': '',
+  'events.back': '← Events',
+  'events.summary': 'Summary',
+  'events.why': 'Why it matters',
+  'events.details': 'Technical details',
+  'events.updates': 'Updates',
+  'events.tags': 'Tags',
+  'events.scores': 'Scores',
+  'events.sources': 'Sources',
+  'events.sourceType': 'Source type: ',
+  'events.meta': 'Metadata',
+  'events.publishedAt': 'Published at',
+  'events.firstSeen': 'First seen',
+  'events.lastUpdated': 'Last updated',
+  'events.newer': 'Newer event',
+  'events.older': 'Older event',
+  'events.prevNextAria': 'Adjacent events',
+
+  'rec.ADOPT': 'Mature with clear value; ready for adoption',
+  'rec.TRIAL': 'Worth a POC or small-scale experiment',
+  'rec.WATCH': 'Keep tracking; not worth heavy investment yet',
+  'rec.IGNORE': 'Weak signals, limited value, or heavy hype',
+};
+
+export const ui: Record<Locale, Record<UiKey, string>> = { zh, en };
+
+export function t(locale: Locale, key: UiKey): string {
+  return ui[locale][key] ?? ui.zh[key] ?? key;
+}
+
+// Category display names per locale.
+export const CATEGORY_LABELS: Record<Locale, Record<string, string>> = {
+  zh: {
+    'foundation-model': 'Foundation Models',
+    'agent-security': 'Agent Security',
+    agent: 'Agent',
+    'ai-engineering': 'AI Engineering',
+    'developer-tools': 'Developer Tools',
+    'open-source': 'Open Source',
+    infrastructure: 'Infrastructure',
+    research: 'Research',
+    business: 'Business & Policy',
+  },
+  en: {
+    'foundation-model': 'Foundation Models',
+    'agent-security': 'Agent Security',
+    agent: 'Agent',
+    'ai-engineering': 'AI Engineering',
+    'developer-tools': 'Developer Tools',
+    'open-source': 'Open Source',
+    infrastructure: 'Infrastructure',
+    research: 'Research',
+    business: 'Business & Policy',
+  },
+};
+
+export function catLabel(cat: string, locale: Locale = 'zh'): string {
+  return CATEGORY_LABELS[locale]?.[cat] ?? cat;
+}

@@ -1,0 +1,115 @@
+---
+import Base from '../../layouts/Base.astro';
+import { u } from '../../lib/url';
+import { t, loc, type Locale } from '../../lib/i18n';
+import trends from '../../data/generated/trends.json';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = 'zh' } = Astro.props;
+
+const active = trends.trends.filter((tr: any) => !tr.retired);
+const retired = trends.trends.filter((tr: any) => tr.retired);
+const lifecycle = ['candidate', 'emerging', 'strengthening', 'established', 'weakening', 'invalidated'];
+
+function evidenceList(tr: any, loc_: Locale): string[] {
+  const items = loc_ === 'zh' ? tr.evidence_zh : tr.evidence_en;
+  return (items ?? []).filter(Boolean);
+}
+---
+
+<Base title={t(locale, 'trends.title')} description={t(locale, 'trends.description')} locale={locale}>
+  <div class="page-head">
+    <div class="head-row">
+      <h1>{t(locale, 'trends.title')}</h1>
+      <span class="en">{t(locale, 'trends.en')}</span>
+    </div>
+    <p class="desc">
+      {t(locale, 'trends.desc')}<code>{trends.asOf}</code>
+    </p>
+  </div>
+
+  <div class="lifecycle-bar" style="margin-bottom: 26px;">
+    <span class="lc-label">{t(locale, 'trends.lifecycle')}</span>
+    <div class="lifecycle-steps" aria-label={t(locale, 'trends.lifecycle')}>
+      {lifecycle.map((s, i) => (
+        <span class="lc-step">
+          {i > 0 && <span class="lc-link"></span>}
+          <span class={`status-pill st-${s}`}>{s}</span>
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <div class="stack">
+    {active.map((tr: any) => (
+      <article class="card trend-card">
+        <div class="head">
+          <h3>{loc(tr, 'name', locale)}</h3>
+          <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
+          <span class="t-conf">{t(locale, 'trends.confidence')} {tr.confidence}</span>
+        </div>
+        <div class="meta">
+          {tr.firstObserved && <span>{t(locale, 'trends.firstObserved')} {tr.firstObserved}</span>}
+          {tr.lastUpdated && <span>{t(locale, 'trends.lastUpdated')} {tr.lastUpdated}</span>}
+        </div>
+        {loc(tr, 'statusNote', locale) && loc(tr, 'statusNote', locale).toLowerCase() !== tr.status && (
+          <div class="block">{loc(tr, 'statusNote', locale)}</div>
+        )}
+        {loc(tr, 'why', locale) && (
+          <div class="block"><b>{t(locale, 'trends.why')}：</b>{loc(tr, 'why', locale)}</div>
+        )}
+        {evidenceList(tr, locale).length > 0 && (
+          <div>
+            <div class="block"><b>{t(locale, 'trends.evidence')}</b></div>
+            <ol class="evidence">
+              {evidenceList(tr, locale).map((item) => <li>{item}</li>)}
+            </ol>
+          </div>
+        )}
+        {(tr.updates ?? []).length > 0 && (
+          <div>
+            <div class="block"><b>{t(locale, 'trends.runNotes')}</b></div>
+            <ol class="evidence">
+              {tr.updates.map((up: any) => <li><span class="mono" style="color: var(--text-faint);">{up.date}</span> — {loc(up, 'note', locale)}</li>)}
+            </ol>
+          </div>
+        )}
+        {loc(tr, 'confirm', locale) && (
+          <div class="block"><b>{t(locale, 'trends.confirm')}</b>{loc(tr, 'confirm', locale)}</div>
+        )}
+      </article>
+    ))}
+  </div>
+
+  {retired.length > 0 && (
+    <>
+      <div class="section-title">{t(locale, 'trends.retired')}</div>
+      <div class="stack">
+        {retired.map((tr: any) => (
+          <article class="card trend-card" style="opacity: 0.68;">
+            <div class="head">
+              <h3>{loc(tr, 'name', locale)}</h3>
+              <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </>
+  )}
+
+  {trends.snapshots.length > 0 && (
+    <>
+      <div class="section-title">{t(locale, 'trends.snapshots')}</div>
+      <ul class="watch-list">
+        {trends.snapshots.map((s: any) => (
+          <li>
+            <span class="mono" style="color: var(--text-faint);">{s.date}</span>
+            <span style="margin-left: auto;"><a href={u(`/trends/archive/${s.date}/`, locale)}>{t(locale, 'trends.viewSnapshot')}</a></span>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+</Base>

@@ -1,24 +1,10 @@
 ---
-import Base from '../../../layouts/Base.astro';
-import { u } from '../../../lib/url';
+import TrendArchive from '../../../components/pages/TrendArchive.astro';
 import trends from '../../../data/generated/trends.json';
 
 export function getStaticPaths() {
   return trends.snapshots.map((s: any) => ({ params: { date: s.date }, props: { snapshot: s } }));
 }
-
-const { snapshot } = Astro.props;
 ---
 
-<Base title={`趋势快照 ${snapshot.date}`}>
-  <div class="article-head">
-    <div class="crumbs">
-      <a href={u('/trends/')}>← 趋势</a>
-      <span>历史快照</span>
-    </div>
-    <h1>趋势快照 · {snapshot.date}</h1>
-  </div>
-  <div class="article-body">
-    <div class="prose" set:html={snapshot.html} />
-  </div>
-</Base>
+<TrendArchive snapshot={Astro.props.snapshot} locale="zh" />

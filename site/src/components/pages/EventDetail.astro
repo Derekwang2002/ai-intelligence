@@ -1,0 +1,139 @@
+---
+import Base from '../../layouts/Base.astro';
+import RecBadge from '../RecBadge.astro';
+import ScoreBars from '../ScoreBars.astro';
+import DetailTable from '../DetailTable.astro';
+import { u, fmtDateTime } from '../../lib/url';
+import { t, loc, catLabel, type Locale, type UiKey } from '../../lib/i18n';
+import events from '../../data/generated/events.json';
+
+interface Props {
+  event: any;
+  locale?: Locale;
+}
+
+const { event, locale = 'zh' } = Astro.props;
+const updateKeys = Object.keys(event).filter((k) => /^update_/.test(k));
+const idx = events.findIndex((e: any) => e.event_id === event.event_id);
+const newer = idx > 0 ? events[idx - 1] : null;
+const older = idx >= 0 && idx < events.length - 1 ? events[idx + 1] : null;
+const summary = loc(event, 'summary', locale);
+const whyItMatters = loc(event, 'why_it_matters', locale);
+const recHintKey = `rec.${event.recommendation}` as UiKey;
+---
+
+<Base title={event.title.slice(0, 80)} locale={locale}>
+  <div class="article-head">
+    <div class="crumbs">
+      <a href={u('/events/', locale)}>{t(locale, 'events.back')}</a>
+      <span class="cat-chip">{catLabel(event.category, locale)}</span>
+      <span class="mono" style="font-size: 12px;">{event.event_id}</span>
+    </div>
+    <h1>{event.title}</h1>
+    <div class="meta-row">
+      <span class="mono" style="font-size: 12.5px;">{event.published_at}</span>
+      {(event.organization ?? []).map((o: string) => <span class="tag">{o}</span>)}
+      <RecBadge rec={event.recommendation} />
+      <span style="color: var(--text-faint); font-size: 12.5px;">{t(locale, recHintKey)}</span>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
+      <div class="article-body">
+        <div class="section-title">{t(locale, 'events.summary')}</div>
+        <p style="margin: 0; color: var(--text); font-size: 15px; line-height: 1.9;">{summary}</p>
+
+        {whyItMatters && (
+          <>
+            <div class="section-title">{t(locale, 'events.why')}</div>
+            <blockquote style="margin: 0; padding: 2px 0 2px 18px; border-left: 2px solid var(--accent); color: var(--text-muted); font-size: 14.5px; line-height: 1.85;">
+              {whyItMatters}
+            </blockquote>
+          </>
+        )}
+
+        {event.technical_details && Object.keys(event.technical_details).length > 0 && (
+          <>
+            <div class="section-title">{t(locale, 'events.details')}</div>
+            <DetailTable obj={event.technical_details} />
+          </>
+        )}
+
+        {updateKeys.length > 0 && (
+          <>
+            <div class="section-title">{t(locale, 'events.updates')}</div>
+            <div style="display: flex; flex-direction: column; gap: 9px;">
+              {updateKeys.map((k) => (
+                <div style="padding: 11px 16px; font-size: 13.5px; color: var(--text-muted); line-height: 1.8; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px;">
+                  <span class="mono" style="color: var(--text-faint); margin-right: 8px; font-size: 11.5px;">{k.replace(/^update_/, '').replace(/_/g, '-')}</span>
+                  {event[k]}
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        {(event.tags ?? []).length > 0 && (
+          <>
+            <div class="section-title">{t(locale, 'events.tags')}</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 7px 14px;">
+              {event.tags.map((tag: string) => <span class="tag">{tag}</span>)}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+
+    <div class="side-stack">
+      <div class="card side-box">
+        <h3>{t(locale, 'events.scores')} · {event.recommendation}</h3>
+        <ScoreBars scores={event} locale={locale} />
+      </div>
+
+      <div class="card side-box">
+        <h3>{t(locale, 'events.sources')}</h3>
+        <div class="src-list">
+          {event.primary_source && (
+            <div class="src">
+              <span class="tag-tier tag-primary">PRIMARY</span>
+              <a href={event.primary_source} target="_blank" rel="noopener">{event.primary_source}</a>
+            </div>
+          )}
+          {(event.secondary_sources ?? []).map((s: string) => (
+            <div class="src">
+              <span class="tag-tier tag-secondary">SEC</span>
+              <a href={s} target="_blank" rel="noopener">{s}</a>
+            </div>
+          ))}
+        </div>
+        {event.source_type && <div style="margin-top: 12px; font-size: 12px; color: var(--text-faint);">{t(locale, 'events.sourceType')}<span class="mono">{event.source_type}</span></div>}
+      </div>
+
+      <div class="card side-box">
+        <h3>{t(locale, 'events.meta')}</h3>
+        <table class="kv-table">
+          <tr><th>{t(locale, 'events.publishedAt')}</th><td class="mono">{event.published_at}</td></tr>
+          <tr><th>{t(locale, 'events.firstSeen')}</th><td class="mono">{fmtDateTime(event.first_seen_at, locale)}</td></tr>
+          <tr><th>{t(locale, 'events.lastUpdated')}</th><td class="mono">{fmtDateTime(event.last_updated_at, locale)}</td></tr>
+          <tr><th>Fingerprint</th><td class="mono" style="font-size: 11px; word-break: break-all;">{event.event_fingerprint}</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <nav class="prevnext" aria-label={t(locale, 'events.prevNextAria')}>
+    {newer ? (
+      <a class="card pn-link" href={u(`/events/${newer.event_id}/`, locale)}>
+        <span class="pn-dir">← {t(locale, 'events.newer')} · {newer.date}</span>
+        <span class="pn-title">{newer.title}</span>
+      </a>
+    ) : <span></span>}
+    {older ? (
+      <a class="card pn-link next" href={u(`/events/${older.event_id}/`, locale)}>
+        <span class="pn-dir">{t(locale, 'events.older')} · {older.date} →</span>
+        <span class="pn-title">{older.title}</span>
+      </a>
+    ) : <span></span>}
+  </nav>
+</Base>

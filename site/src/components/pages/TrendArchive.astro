@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import { u } from '../../lib/url';
+import { t, loc, type Locale } from '../../lib/i18n';
+
+interface Props {
+  snapshot: any;
+  locale?: Locale;
+}
+
+const { snapshot, locale = 'zh' } = Astro.props;
+---
+
+<Base title={`${t(locale, 'trends.archiveTitle')} ${snapshot.date}`} locale={locale}>
+  <div class="article-head">
+    <div class="crumbs">
+      <a href={u('/trends/', locale)}>{t(locale, 'trends.back')}</a>
+      <span>{t(locale, 'trends.archiveCrumb')}</span>
+    </div>
+    <h1>{t(locale, 'trends.archiveTitle')} · {snapshot.date}</h1>
+  </div>
+  <div class="article-body">
+    <div class="prose" set:html={loc(snapshot, 'html', locale)} />
+  </div>
+</Base>

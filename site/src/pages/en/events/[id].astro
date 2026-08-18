@@ -1,0 +1,10 @@
+---
+import EventDetail from '../../../components/pages/EventDetail.astro';
+import events from '../../../data/generated/events.json';
+
+export function getStaticPaths() {
+  return events.map((event: any) => ({ params: { id: event.event_id }, props: { event } }));
+}
+---
+
+<EventDetail event={Astro.props.event} locale="en" />

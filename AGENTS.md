@@ -29,10 +29,13 @@ ai-intelligence/
 ├── events/
 │   └── YYYY-MM-DD.json
 ├── daily/
-│   └── YYYY-MM-DD.md
+│   ├── YYYY-MM-DD.md        （中文日报）
+│   └── YYYY-MM-DD.en.md     （英文日报）
 ├── trends/
-│   ├── YYYY-MM-DD.md
-│   └── current.md
+│   ├── YYYY-MM-DD.md        （中文快照）
+│   ├── YYYY-MM-DD.en.md     （英文快照）
+│   ├── current.md           （人读趋势看板，中文）
+│   └── current.json         （机读趋势数据，双语结构化）
 ├── index/
 │   └── events.json
 └── logs/
@@ -175,6 +178,10 @@ events/YYYY-MM-DD.json
   "secondary_sources": [],
   "summary": "",
   "why_it_matters": "",
+  "summary_zh": "",
+  "summary_en": "",
+  "why_it_matters_zh": "",
+  "why_it_matters_en": "",
   "technical_details": {},
   "tags": [],
   "technical_impact": 0,
@@ -195,15 +202,23 @@ events/YYYY-MM-DD.json
 - 如果有完整 timestamp，使用 UTC 规范化后的日期作为文件名。
 - 如果旧事件在本周期出现重大更新，更新原事件，并在当日日报中记录更新。
 
+双语字段规则：
+
+- `summary` / `why_it_matters` 保持英文原文，与 `summary_en` / `why_it_matters_en` 内容一致（保留原字段是为了向后兼容）。
+- `summary_zh` / `why_it_matters_zh` 为必填中文版本；中文版本里技术名称、产品名和关键术语保留英文。
+- `title`、`category`、`organization`、`tags`、`technical_details` 不做翻译，保持英文。
+- 更新已有事件时，双语字段必须同步更新，不允许只更新一种语言。
+
 ## 7. Daily Reports
 
-每日累计报告写入：
+每日累计报告写入中英两份文件：
 
 ```text
-daily/YYYY-MM-DD.md
+daily/YYYY-MM-DD.md       （中文）
+daily/YYYY-MM-DD.en.md    （英文）
 ```
 
-同一天多次运行时，不要创建 `run-1`、`run-2` 文件。继续维护当天同一份日报，将新增事件和更新合并进去。
+两份文件内容一一对应，同一天多次运行时，不要创建 `run-1`、`run-2` 文件。继续维护当天同一份日报，将新增事件和更新合并进去，并保持中英两份同步。
 
 日报是给人看的 intelligence，不是调试日志。不要写入 HTTP 请求过程、搜索 query、调试内容、错误堆栈或大量中间候选新闻。
 
@@ -226,7 +241,7 @@ daily/YYYY-MM-DD.md
 ## Sources
 ```
 
-日报必须输出中文，技术名称、产品名和关键技术术语保留英文。
+日报必须输出中英双语：`YYYY-MM-DD.md` 为中文（技术名称、产品名和关键技术术语保留英文），`YYYY-MM-DD.en.md` 为对应的英文版本。两份的结构一致（相同章节、相同条目），只是语言不同。
 
 ## 8. Index
 
@@ -274,17 +289,54 @@ daily/YYYY-MM-DD.md
 
 ## 10. Trend Persistence
 
-趋势分析按日期写入：
+趋势分析按日期写入中英两份快照：
 
 ```text
-trends/YYYY-MM-DD.md
+trends/YYYY-MM-DD.md       （中文）
+trends/YYYY-MM-DD.en.md    （英文）
 ```
 
-当前仍有效、值得持续追踪的趋势维护在：
+当前仍有效、值得持续追踪的趋势维护在两份文件：
 
 ```text
-trends/current.md
+trends/current.md      （人读趋势看板，中文）
+trends/current.json    （机读结构化数据，双语，供网站直接消费）
 ```
+
+`current.json` 与 `current.md` 内容必须一致：每次更新趋势时先更新 `current.json`，再让 `current.md` 反映同样的状态。`current.json` 格式：
+
+```json
+{
+  "as_of": "YYYY-MM-DDTHH:MMZ",
+  "trends": [
+    {
+      "id": "kebab-case-stable-id",
+      "name_zh": "",
+      "name_en": "",
+      "status": "candidate | emerging | strengthening | established | weakening | invalidated",
+      "status_note_zh": "",
+      "status_note_en": "",
+      "confidence": "High | Medium | Low",
+      "first_observed": "YYYY-MM-DD",
+      "last_updated": "YYYY-MM-DD",
+      "retired": false,
+      "evidence_zh": ["", ""],
+      "evidence_en": ["", ""],
+      "why_it_matters_zh": "",
+      "why_it_matters_en": "",
+      "what_would_confirm_zh": "",
+      "what_would_confirm_en": "",
+      "updates": [
+        { "date": "YYYY-MM-DD", "note_zh": "", "note_en": "" }
+      ]
+    }
+  ]
+}
+```
+
+- `evidence_*` 为数组，每条证据一个元素，尽量来自不同日期、组织和来源。
+- `updates` 记录每次运行的复核结论（无新证据也要记一条 "no new signals"），与 `current.md` 中的逐次运行记录对应。
+- 作废趋势移入 `current.json` 中 `retired: true`，并在 `current.md` 的 "Invalidated / retired" 区保留条目。
 
 `current.md` 不是简单累积所有历史趋势。每次运行时可以：
 
@@ -604,9 +656,10 @@ Checkpoint updated:
 - 是否与历史记录重复？
 - 是否把同一事件的更新误认为新事件？
 - `daily/` 是否正确更新？
-- `events/` 是否正确更新？
+- `events/` 是否正确更新（含双语字段）？
 - `index/` 是否正确更新？
-- `trends/` 是否正确更新？
+- `trends/` 是否正确更新（`current.json` 与 `current.md` 一致、快照双语齐全）？
+- 双语是否完整：每个事件 `summary_zh/en`、`why_it_matters_zh/en` 非空；日报、趋势快照中英两份文件均已写入且内容对应？
 - `state.json` 是否最后更新？
 - 趋势是否有多个独立证据？
 - 是否错误地把一次热点称为趋势？

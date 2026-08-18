@@ -1,69 +1,10 @@
 ---
-import Base from '../../layouts/Base.astro';
-import { u } from '../../lib/url';
+import DailyDetail from '../../components/pages/DailyDetail.astro';
 import daily from '../../data/generated/daily.json';
 
 export function getStaticPaths() {
   return daily.map((d: any) => ({ params: { date: d.date }, props: { report: d } }));
 }
-
-const { report } = Astro.props;
-const idx = daily.findIndex((d: any) => d.date === report.date);
-const newer = daily[idx - 1];
-const older = daily[idx + 1];
 ---
 
-<Base title={`日报 ${report.date}`}>
-  <div class="article-head">
-    <div class="crumbs">
-      <a href={u('/daily/')}>← 日报</a>
-      <span class="mono" style="font-size: 12.5px;">{report.date}</span>
-    </div>
-    <h1>AI 情报日报 · {report.date}</h1>
-    <div class="pager">
-      {newer ? <a href={u(`/daily/${newer.date}/`)}>← 较新 {newer.date}</a> : <span></span>}
-      {older && <a href={u(`/daily/${older.date}/`)}>较旧 {older.date} →</a>}
-    </div>
-  </div>
-  <div class="daily-grid">
-    <div class="article-body">
-      <div class="prose" set:html={report.html} />
-    </div>
-    <div class="card toc-card" id="toc-card" hidden>
-      <h3>本页目录</h3>
-      <nav class="toc-list" id="toc-list" aria-label="本页目录"></nav>
-    </div>
-  </div>
-</Base>
-
-<script>
-  // Build a sticky table of contents from the rendered report's h2 sections.
-  const prose = document.querySelector('.prose');
-  const tocCard = document.getElementById('toc-card');
-  const tocList = document.getElementById('toc-list');
-  if (prose && tocCard && tocList) {
-    const heads = [...prose.querySelectorAll('h2')];
-    if (heads.length >= 2) {
-      heads.forEach((h, i) => {
-        const id = `sec-${i}`;
-        h.id = id;
-        const a = document.createElement('a');
-        a.href = `#${id}`;
-        a.textContent = h.textContent;
-        tocList.appendChild(a);
-      });
-      tocCard.hidden = false;
-
-      const links = [...tocList.querySelectorAll('a')];
-      const mark = () => {
-        let current = 0;
-        heads.forEach((h, i) => {
-          if (h.getBoundingClientRect().top <= 110) current = i;
-        });
-        links.forEach((a, i) => a.classList.toggle('current', i === current));
-      };
-      document.addEventListener('scroll', mark, { passive: true });
-      mark();
-    }
-  }
-</script>
+<DailyDetail report={Astro.props.report} locale="zh" />

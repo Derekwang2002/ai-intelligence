@@ -1,0 +1,10 @@
+---
+import DailyDetail from '../../../components/pages/DailyDetail.astro';
+import daily from '../../../data/generated/daily.json';
+
+export function getStaticPaths() {
+  return daily.map((d: any) => ({ params: { date: d.date }, props: { report: d } }));
+}
+---
+
+<DailyDetail report={Astro.props.report} locale="en" />

@@ -159,19 +159,18 @@
 
 **代价**：圆点多了会重叠（哈希定位不做碰撞检测），交互升级（点击象限放大、拖拽）都得手写。按当前每个环最多十几个点的密度，没问题；这也是 §6 里"什么时候必须重写"的触发条件之一。
 
-### 4.7 趋势解析：正则解析 markdown 的脆弱性与兜底
+### 4.7 趋势数据：结构化 `current.json` 优先，markdown 解析为兜底
 
-`trends/current.md` 是人读的 markdown，但趋势页需要结构化数据（状态、置信度、证据列表）。`prepare-data.mjs` 用正则解析它：识别 `### 状态: 名称` 标题和 `- **字段:**` 列表项。
+趋势数据由 agent 直接产出结构化的 `trends/current.json`（双语字段：`name_zh/en`、`evidence_zh/en`、`why_it_matters_zh/en`、`what_would_confirm_zh/en`、`updates[].note_zh/en`），`prepare-data.mjs` 优先消费它并规整成统一形状；`current.json` 缺失时回退到正则解析人读的 `trends/current.md`（识别 `### 状态: 名称` 标题和 `- **字段:**` 列表项）。
 
-**为什么脆弱**：格式由 `AGENTS.md` 约定，agent 一般会遵守，但字段名轻微漂移（比如 `Evidence` 写成 `Evidences`）会导致解析结果为空。
+**为什么保留兜底**：格式由 `AGENTS.md` 约定，agent 一般会遵守，但漏写 `current.json` 或字段漂移时站点不应崩溃——回退路径用 md 解析结果填充同一套模板字段（英文填入 zh/en 两侧）。
 
-**兜底措施**：
+**其余兜底**：
 
 - 解析不到的字段显示为空，页面不会崩；
-- 管线同时保留整份 `current.md` 的 HTML 渲染结果（`trends.json` 的 `html` 字段），随时可以在页面上加一个"查看原文"兜底视图；
 - 历史快照页（`/trends/archive/[date]/`）直接渲染 markdown HTML，完全不依赖解析。
 
-**根治方案**在 §6：让 agent 直接产出结构化的 `trends/current.json`。
+**双语回退通则**：事件、日报、趋势快照都一样——某一语言缺失时回退到另一语言的内容，保证页面永远有内容（详见 §7.6）。
 
 ### 4.8 主题：CSS 变量 + `data-theme`，防闪烁的内联脚本
 
@@ -219,7 +218,6 @@ GitHub Pages 的项目站部署在 `https://xxx.github.io/ai-intelligence/`（�
 4. **雷达图无碰撞检测**，单环几十个点时会重叠（§4.6）。
 5. **没有 sitemap.xml 和 RSS**，订阅和 SEO 都还没做。
 6. **日报摘要提取依赖 `## Daily Executive Summary` 这个标题**，改日报结构时要同步改正则。
-7. **单语言（中文）**，技术名词保留英文。
 
 ## 6. 演进方向
 
@@ -233,9 +231,9 @@ Pagefind 是专为静态站设计的搜索索引器：构建后跑一遍，为�
 
 `aggregates.json` 里已经算好了每个组织的事件列表和频率，加 `/orgs/[name]/` 页面是纯增量工作，半天以内。
 
-### 6.3 趋势数据结构化（触发信号：趋势解析第二次出问题，或想做"趋势状态随时间演变"图）
+### 6.3 趋势数据结构化（✅ 已在 v4 双语改造中落地）
 
-根治 §4.7 的脆弱性：修改 `AGENTS.md`，让 agent 在写 `current.md`（人读）的同时产出 `trends/current.json`（机读）。站点删除解析逻辑，直接吃 JSON。附带收益：可以用历史快照画出"某趋势从 candidate → emerging → strengthening 的时间线"，这是 markdown 很难表达的东西。
+`AGENTS.md` §10 已约定 agent 产出 `trends/current.json`（双语结构化），站点优先消费 JSON、保留 md 解析兜底（§4.7）。后续可在此基础上画"趋势状态随时间演变"的时间线图。
 
 ### 6.4 RSS + sitemap（触发信号：想被订阅/分享）
 
@@ -270,19 +268,24 @@ ASTRO_BASE=/ai-intelligence npm run build   # 本地模拟线上构建，排查 
 | 想做什么 | 去哪改 |
 |---|---|
 | 改颜色/字体/间距 | `src/styles/global.css`，只动 CSS 变量；**新增变量必须浅色深色成对出现** |
+| 改 UI 文案（任一语言） | `src/lib/i18n.ts` 的 `ui` 字典；**zh / en 两个键集合必须保持一致** |
 | 改雷达象限划分（哪个类别进哪个扇区） | `src/components/RadarChart.astro` 顶部的 `QUADRANTS` 数组 |
-| 改类别显示名 | `src/lib/url.ts` 的 `CATEGORY_LABELS` |
-| 加新页面 | `src/pages/xxx.astro`；动态路由用 `getStaticPaths()`（参考 `events/[id].astro`） |
-| 消费事件的新字段 | 不用改管线——管线透传整个事件对象，页面直接 `event.字段名` |
+| 改类别显示名 | `src/lib/i18n.ts` 的 `CATEGORY_LABELS` |
+| 改页面结构/样式 | `src/components/pages/` 下的共享模板（中英两套路由共用，改一处两语言同时生效） |
+| 加新页面 | 共享模板放 `src/components/pages/`，再在 `src/pages/` 与 `src/pages/en/` 各加一个薄路由；动态路由的 `getStaticPaths` 写在薄路由里（参考 `events/[id].astro`） |
+| 消费事件的新字段 | 不用改管线——管线透传整个事件对象，页面直接 `event.字段名`；双语文本字段用 `loc(event, 'summary', locale)` 取值 |
 | 改部署仓库/域名 | workflow 里的 `ASTRO_BASE` + `astro.config.mjs` 的 `site` |
 
-### 7.3 三个最容易踩的坑
+### 7.3 四个最容易踩的坑
 
-1. **内链必须 `u('/path')`**（`import { u } from '../lib/url'`）。手写 `/path` 在本地完全正常、线上 404。
+1. **内链必须 `u('/path', locale)`**（`import { u } from '../lib/url'`）。手写 `/path` 或漏传 locale 在本地完全正常、线上 404 或串语言（中文页链到英文页）。
 2. **组件递归必须 `Astro.self`**，不能在模板里引用自己的文件名。
 3. **dev 运行中改了知识库**：手动跑 `node scripts/prepare-data.mjs` 再刷新浏览器，否则看到的还是旧数据。
+4. **共享模板改结构只改 `src/components/pages/`**：`src/pages/` 和 `src/pages/en/` 下只是传 `locale` 的薄路由，不要在里面写页面逻辑。
 
 ### 7.4 页面路由一览
+
+每个路由都有中英两份：中文在根路径，英文在 `/en/` 镜像路径（如 `/en/events/`）。下表只列中文路径：
 
 | 路由 | 页面 | 数据来源 |
 |---|---|---|
@@ -294,6 +297,14 @@ ASTRO_BASE=/ai-intelligence npm run build   # 本地模拟线上构建，排查 
 | `/trends/archive/[date]/` | 趋势快照原文 | `trends.json` |
 | `/daily/` `/daily/[date]/` | 日报列表与阅读页 | `daily.json` |
 
+### 7.6 双语机制（v4 起）
+
+- **内容双语在知识库侧产出**（AGENTS.md §6/§7/§10）：事件 JSON 带 `summary_zh/en`、`why_it_matters_zh/en`；日报与趋势快照是 `YYYY-MM-DD.md` + `YYYY-MM-DD.en.md` 文件对；趋势看板是 `trends/current.json`（双语结构化）。站点只读，不做翻译。
+- **管线**把文件对合成 `{ html_zh, html_en, excerpt_zh, excerpt_en }` 这类平铺字段；某一语言缺失时回退到另一语言，页面永不空白。
+- **页面侧**用 `loc(obj, field, locale)` 取内容字段（`_zh` → `_en` → 原字段 的回退链），用 `t(locale, key)` 取 UI 文案（字典在 `src/lib/i18n.ts`）。
+- **路由**：中文是默认语言无前缀，英文在 `/en/` 下；`u(path, locale)` 统一处理 base 前缀 + 语言前缀；`Base.astro` 头部的语言切换链接按当前路径计算对方语言 URL。
+- **界面统一**：两种语言共用 `src/components/pages/` 里的同一套模板，不存在"英文版长得不一样"的可能。
+
 ### 7.5 评分与视觉的映射约定
 
 - 六维评分（1–5）：技术影响 / 工程价值 / 采用信号 / 成熟度 / 验证成本 / 风险 → 详情页 `ScoreBars`，列表页只显示前三维的紧凑数字（`影响 4 · 工程 4 · 采用 3`）。
@@ -303,4 +314,4 @@ ASTRO_BASE=/ai-intelligence npm run build   # 本地模拟线上构建，排查 
 
 ---
 
-*文档写于 2026-08-16，对应站点首版；2026-08-18 更新至 v3（编辑简报式改版：配色/排版/首页结构/雷达页布局，见 §7.5）。架构有变时请同步更新本文。*
+*文档写于 2026-08-16，对应站点首版；2026-08-18 更新至 v3（编辑简报式改版：配色/排版/首页结构/雷达页布局，见 §7.5）；2026-08-18 更新至 v4（中英双语：知识库双语字段与 `.en.md` 文件对、`trends/current.json` 结构化、共享页面模板 + `/en/` 镜像路由，见 §7.6）。架构有变时请同步更新本文。*

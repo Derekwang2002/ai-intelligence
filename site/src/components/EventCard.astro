@@ -1,41 +1,44 @@
 ---
 import RecBadge from './RecBadge.astro';
-import { u, catLabel } from '../lib/url';
+import { u } from '../lib/url';
+import { t, loc, catLabel, type Locale } from '../lib/i18n';
 
 interface Props {
   event: any;
   compact?: boolean;
+  locale?: Locale;
 }
 
-const { event, compact = false } = Astro.props;
-const href = u(`/events/${event.event_id}/`);
+const { event, compact = false, locale = 'zh' } = Astro.props;
+const href = u(`/events/${event.event_id}/`, locale);
+const summary = loc(event, 'summary', locale);
 
 // 组织名与其同名 hashtag（如 org "Qwen" + tag "qwen"）只保留组织标签；
 // 底部空间有限，组织与标签各取前 2 个，其余合并为 +N（悬停可见完整清单）。
 const orgs = event.organization ?? [];
 const orgLower = new Set(orgs.map((o: string) => o.toLowerCase()));
-const allTags = (event.tags ?? []).filter((t: string) => !orgLower.has(t.toLowerCase()));
+const allTags = (event.tags ?? []).filter((tag: string) => !orgLower.has(tag.toLowerCase()));
 const shownOrgs = orgs.slice(0, 2);
 const shownTags = allTags.slice(0, 2);
 const hiddenItems = [...orgs.slice(2), ...allTags.slice(2)];
 ---
 
-<a class="event-card" href={href} data-cat={event.category} data-rec={event.recommendation} data-org={(event.organization ?? []).join('|')} data-tags={(event.tags ?? []).join('|')} data-q={`${event.title} ${event.summary ?? ''} ${(event.organization ?? []).join(' ')} ${(event.tags ?? []).join(' ')}`.toLowerCase()}>
+<a class="event-card" href={href} data-cat={event.category} data-rec={event.recommendation} data-org={(event.organization ?? []).join('|')} data-tags={(event.tags ?? []).join('|')} data-q={`${event.title} ${event.summary ?? ''} ${event.summary_zh ?? ''} ${(event.organization ?? []).join(' ')} ${(event.tags ?? []).join(' ')}`.toLowerCase()}>
   <div class="top">
     <span class="date">{event.published_date}</span>
-    <span class="cat-chip">{catLabel(event.category)}</span>
+    <span class="cat-chip">{catLabel(event.category, locale)}</span>
   </div>
   <h3>{event.title}</h3>
   <div class="side">
     <RecBadge rec={event.recommendation} />
-    <span class="score-nums" title="技术影响 / 工程价值 / 采用信号">
-      影响 {event.technical_impact ?? 0} · 工程 {event.engineering_value ?? 0} · 采用 {event.adoption_signal ?? 0}
+    <span class="score-nums" title={t(locale, 'scores.tripleTitle')}>
+      {t(locale, 'scores.impact')} {event.technical_impact ?? 0} · {t(locale, 'scores.engineering')} {event.engineering_value ?? 0} · {t(locale, 'scores.adoption')} {event.adoption_signal ?? 0}
     </span>
   </div>
-  {!compact && event.summary && <p class="summary">{event.summary}</p>}
+  {!compact && summary && <p class="summary">{summary}</p>}
   <div class="bottom">
     {shownOrgs.map((org: string) => <span class="tag">{org}</span>)}
-    {shownTags.map((t: string) => <span class="tag">{t}</span>)}
+    {shownTags.map((tag: string) => <span class="tag">{tag}</span>)}
     {hiddenItems.length > 0 && <span class="tag tag-more" data-more={hiddenItems.join('|')} title={hiddenItems.join(', ')}>+{hiddenItems.length}</span>}
   </div>
 </a>

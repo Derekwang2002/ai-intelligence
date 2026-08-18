@@ -1,0 +1,10 @@
+---
+import TrendArchive from '../../../../components/pages/TrendArchive.astro';
+import trends from '../../../../data/generated/trends.json';
+
+export function getStaticPaths() {
+  return trends.snapshots.map((s: any) => ({ params: { date: s.date }, props: { snapshot: s } }));
+}
+---
+
+<TrendArchive snapshot={Astro.props.snapshot} locale="en" />

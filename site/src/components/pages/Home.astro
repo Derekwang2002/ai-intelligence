@@ -1,0 +1,139 @@
+---
+import Base from '../../layouts/Base.astro';
+import RecBadge from '../RecBadge.astro';
+import { u, fmtDateTime } from '../../lib/url';
+import { t, loc, catLabel, type Locale } from '../../lib/i18n';
+import events from '../../data/generated/events.json';
+import aggregates from '../../data/generated/aggregates.json';
+import daily from '../../data/generated/daily.json';
+import trends from '../../data/generated/trends.json';
+import state from '../../data/generated/state.json';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = 'zh' } = Astro.props;
+
+const activeTrends = trends.trends.filter((tr: any) => !tr.retired);
+const latestDaily = daily[0];
+const latestEvents = events.slice(0, 6);
+
+// 首页主角是最新日报的执行摘要：从渲染后的 HTML 中截取
+// “Daily Executive Summary” 一节；取不到时退化为文本摘要。
+function extractExecSummary(html: string): string {
+  const m = html.match(/<h2[^>]*>\s*Daily Executive Summary\s*<\/h2>([\s\S]*?)(?=<h2|$)/i);
+  if (m) return m[1];
+  return '';
+}
+const execHtml = latestDaily ? extractExecSummary(loc(latestDaily, 'html', locale)) : '';
+
+const recTotal = Object.values(aggregates.byRecommendation).reduce((a: number, b: any) => a + b, 0);
+const recSummary = (['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const)
+  .map((r) => ({ r, n: (aggregates.byRecommendation as any)[r] ?? 0 }))
+  .filter((x) => x.n > 0);
+---
+
+<Base locale={locale}>
+  <section class="hero rise">
+    <div class="kicker">{t(locale, 'home.kicker')}</div>
+    <h1>{t(locale, 'home.h1a')}<br />{t(locale, 'home.h1b')}</h1>
+    <p>
+      {t(locale, 'home.intro')}
+    </p>
+    <div class="hero-cta">
+      {latestDaily && <a class="btn-primary" href={u(`/daily/${latestDaily.date}/`, locale)}>{t(locale, 'home.readToday')}</a>}
+      <a class="btn-ghost" href={u('/events/', locale)}>{t(locale, 'home.browseEvents')}</a>
+    </div>
+    <div class="hero-meta">
+      {t(locale, 'home.lastScan')} {fmtDateTime(state.last_successful_run_at, locale)}（{t(locale, 'home.beijingTime')}）· {aggregates.totals.events} {t(locale, 'home.metaEvents')} /
+      {aggregates.totals.orgs} {t(locale, 'home.metaOrgs')} · {activeTrends.length} {t(locale, 'home.metaTrends')}
+    </div>
+  </section>
+
+  <div class="home-cols">
+    <div>
+      {latestDaily && (
+        <section class="card brief rise-2" aria-label={t(locale, 'home.briefLabel')}>
+          <div class="brief-head">
+            <span class="brief-date">{latestDaily.date}</span>
+            <span class="brief-label">{t(locale, 'home.briefLabel')}</span>
+            <a class="more" href={u(`/daily/${latestDaily.date}/`, locale)}>{t(locale, 'home.readFull')}</a>
+          </div>
+          {execHtml
+            ? <div class="prose brief-exec" set:html={execHtml} />
+            : <p class="prose brief-exec">{loc(latestDaily, 'excerpt', locale)}</p>}
+        </section>
+      )}
+
+      <div class="section-title rise-2">
+        {t(locale, 'home.latestEvents')}
+        <span class="count">{aggregates.totals.events} {t(locale, 'home.countSuffix')}</span>
+        <a class="more" href={u('/events/', locale)}>{t(locale, 'home.viewAll')}</a>
+      </div>
+      <div class="feed rise-2">
+        {latestEvents.map((e: any) => (
+          <a class="feed-row" href={u(`/events/${e.event_id}/`, locale)}>
+            <span class="f-date">{e.published_date}</span>
+            <span class="f-main">
+              <span class="f-top">
+                <span class="cat-chip">{catLabel(e.category, locale)}</span>
+                <span class="f-orgs">{(e.organization ?? []).join(' · ')}</span>
+              </span>
+              <span class="f-title">{e.title}</span>
+            </span>
+            <span class="f-side">
+              <RecBadge rec={e.recommendation} />
+              <span class="score-nums" title={t(locale, 'scores.tripleTitle')}>
+                {t(locale, 'scores.impact')} {e.technical_impact ?? 0} · {t(locale, 'scores.engineering')} {e.engineering_value ?? 0} · {t(locale, 'scores.adoption')} {e.adoption_signal ?? 0}
+              </span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <aside>
+      <div class="section-title rise-3">
+        {t(locale, 'home.activeTrends')}
+        <a class="more" href={u('/trends/', locale)}>{t(locale, 'home.all')}</a>
+      </div>
+      <div class="trend-minis rise-3">
+        {activeTrends.slice(0, 4).map((tr: any) => (
+          <a class="t-mini" href={u('/trends/', locale)}>
+            <span class="tm-meta">
+              <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
+              <span class="tm-date">{tr.firstObserved.slice(0, 10)}</span>
+            </span>
+            <span class="tm-name">{loc(tr, 'name', locale)}</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="section-title rise-3">{t(locale, 'home.recDist')}</div>
+      <div class="rec-dist rise-3">
+        {recSummary.map(({ r, n }) => (
+          <a href={u('/radar/', locale)} title={t(locale, 'home.viewRec').replace('{r}', r)}>
+            <span class={`badge badge-${r.toLowerCase()}`}>{r}</span>
+            <span class="track">
+              <span class="fill" style={`width: ${(n / recTotal) * 100}%; background: var(--${r.toLowerCase()});`}></span>
+            </span>
+            <span class="n">{n}</span>
+          </a>
+        ))}
+      </div>
+    </aside>
+  </div>
+</Base>
+
+<style>
+  .home-cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    gap: 36px;
+    align-items: start;
+    margin-top: 12px;
+  }
+  @media (max-width: 940px) {
+    .home-cols { grid-template-columns: 1fr; }
+  }
+</style>

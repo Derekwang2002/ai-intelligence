@@ -1,34 +1,37 @@
 ---
-import { u } from '../lib/url';
+import { u, logicalPath } from '../lib/url';
+import { t, type Locale } from '../lib/i18n';
 import '../styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
+  locale?: Locale;
 }
 
-const { title, description = 'MATRIX：Events → Signals → Trends → Decisions 的 AI 技术情报知识库' } = Astro.props;
+const { title, locale = 'zh' } = Astro.props;
+const description = Astro.props.description ?? t(locale, 'site.description');
 
 const navItems = [
-  { href: u('/daily/'), label: '日报', match: (p: string) => p.startsWith('/daily') },
-  { href: u('/events/'), label: '事件', match: (p: string) => p.startsWith('/events') },
-  { href: u('/radar/'), label: '技术雷达', match: (p: string) => p.startsWith('/radar') },
-  { href: u('/trends/'), label: '趋势', match: (p: string) => p.startsWith('/trends') },
+  { href: u('/daily/', locale), label: t(locale, 'nav.daily'), match: (p: string) => p.startsWith('/daily') },
+  { href: u('/events/', locale), label: t(locale, 'nav.events'), match: (p: string) => p.startsWith('/events') },
+  { href: u('/radar/', locale), label: t(locale, 'nav.radar'), match: (p: string) => p.startsWith('/radar') },
+  { href: u('/trends/', locale), label: t(locale, 'nav.trends'), match: (p: string) => p.startsWith('/trends') },
 ];
 
-const rawBase = (import.meta.env.BASE_URL ?? '/').replace(/\/+$/, '');
-const pathname = Astro.url.pathname === rawBase + '/' || Astro.url.pathname === rawBase
-  ? '/'
-  : Astro.url.pathname.replace(rawBase, '') || '/';
-const pageTitle = title ? `${title} · MATRIX` : 'MATRIX · AI 技术情报';
+const pathname = logicalPath(Astro.url.pathname);
+const otherLocale: Locale = locale === 'zh' ? 'en' : 'zh';
+const langSwitchHref = u(pathname, otherLocale);
+const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang={locale === 'en' ? 'en' : 'zh-CN'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="alternate" hreflang={otherLocale === 'en' ? 'en' : 'zh-CN'} href={langSwitchHref} />
     <link rel="icon" type="image/svg+xml" href={u('/favicon.svg')} />
     <title>{pageTitle}</title>
     <script is:inline>
@@ -49,7 +52,7 @@ const pageTitle = title ? `${title} · MATRIX` : 'MATRIX · AI 技术情报';
   <body>
     <header class="site-header">
       <div class="container inner">
-        <a class="brand" href={u('/')}>
+        <a class="brand" href={u('/', locale)}>
           <span class="logo">
             <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true">
               <g fill="var(--text-faint)">
@@ -63,16 +66,17 @@ const pageTitle = title ? `${title} · MATRIX` : 'MATRIX · AI 技术情报';
           <span class="name">MATRIX</span>
           <span class="sub">AI Intelligence Radar</span>
         </a>
-        <nav class="main-nav" aria-label="主导航">
+        <nav class="main-nav" aria-label={t(locale, 'nav.aria')}>
           {navItems.map((item) => (
             <a href={item.href} class={item.match(pathname) ? 'active' : ''} aria-current={item.match(pathname) ? 'page' : undefined}>{item.label}</a>
           ))}
-          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换浅色 / 深色主题" title="切换浅色 / 深色主题">
+          <a class="lang-switch" href={langSwitchHref} hreflang={otherLocale === 'en' ? 'en' : 'zh-CN'} aria-label={t(locale, 'nav.langSwitchAria')}>{t(locale, 'nav.langSwitch')}</a>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label={t(locale, 'theme.toggle')} title={t(locale, 'theme.toggle')}>
             <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
             <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="4" />
+              <circle cx="12" r="4" />
               <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
             </svg>
           </button>
@@ -87,8 +91,7 @@ const pageTitle = title ? `${title} · MATRIX` : 'MATRIX · AI 技术情报';
     <footer class="site-footer">
       <div class="container inner">
         <div>
-          本站由知识库（events / daily / trends）自动构建，push 到 main 后经 GitHub Actions 发布。
-          内容为增量扫描一手来源后的结构化沉淀，非实时新闻聚合。
+          {t(locale, 'footer.line1')}
         </div>
         <div>
           <a href="https://github.com/Derekwang2002/ai-intelligence" target="_blank" rel="noopener">GitHub</a>
@@ -106,3 +109,18 @@ const pageTitle = title ? `${title} · MATRIX` : 'MATRIX · AI 技术情报';
     </script>
   </body>
 </html>
+
+<style>
+  .lang-switch {
+    font-size: 12.5px;
+    color: var(--text-faint);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 10px;
+    text-decoration: none;
+  }
+  .lang-switch:hover {
+    color: var(--text);
+    border-color: var(--text-faint);
+  }
+</style>

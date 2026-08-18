@@ -1,17 +1,20 @@
 ---
+import { t, type Locale, type UiKey } from '../lib/i18n';
+
 interface Props {
   scores: any;
+  locale?: Locale;
 }
 
-const { scores } = Astro.props;
+const { scores, locale = 'zh' } = Astro.props;
 
-const dims = [
-  { key: 'technical_impact', label: '技术影响' },
-  { key: 'engineering_value', label: '工程价值' },
-  { key: 'adoption_signal', label: '采用信号' },
-  { key: 'maturity', label: '成熟度' },
-  { key: 'verification_cost', label: '验证成本' },
-  { key: 'risk', label: '风险' },
+const dims: { key: string; labelKey: UiKey }[] = [
+  { key: 'technical_impact', labelKey: 'scores.technical_impact' },
+  { key: 'engineering_value', labelKey: 'scores.engineering_value' },
+  { key: 'adoption_signal', labelKey: 'scores.adoption_signal' },
+  { key: 'maturity', labelKey: 'scores.maturity' },
+  { key: 'verification_cost', labelKey: 'scores.verification_cost' },
+  { key: 'risk', labelKey: 'scores.risk' },
 ];
 ---
 
@@ -21,7 +24,7 @@ const dims = [
     const color = d.key === 'risk' && v >= 4 ? 'var(--watch)' : 'var(--text)';
     return (
       <div class="score-row">
-        <span class="name">{d.label}</span>
+        <span class="name">{t(locale, d.labelKey)}</span>
         <span class="track"><span class="fill" style={`width: ${(v / 5) * 100}%; background: ${color}`}></span></span>
         <span class="val">{v}</span>
       </div>
