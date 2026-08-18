@@ -7,7 +7,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'AI 情报观察站：Events → Signals → Trends → Decisions 的 AI 技术情报知识库' } = Astro.props;
+const { title, description = 'MATRIX：Events → Signals → Trends → Decisions 的 AI 技术情报知识库' } = Astro.props;
 
 const navItems = [
   { href: u('/daily/'), label: '日报', match: (p: string) => p.startsWith('/daily') },
@@ -20,7 +20,7 @@ const rawBase = (import.meta.env.BASE_URL ?? '/').replace(/\/+$/, '');
 const pathname = Astro.url.pathname === rawBase + '/' || Astro.url.pathname === rawBase
   ? '/'
   : Astro.url.pathname.replace(rawBase, '') || '/';
-const pageTitle = title ? `${title} · AI 情报观察站` : 'AI 情报观察站';
+const pageTitle = title ? `${title} · MATRIX` : 'MATRIX · AI 技术情报';
 ---
 
 <!doctype html>
@@ -60,8 +60,8 @@ const pageTitle = title ? `${title} · AI 情报观察站` : 'AI 情报观察站
               <circle cx="50" cy="14" r="7.5" fill="var(--accent)"/>
             </svg>
           </span>
-          <span class="name">AI 情报观察站</span>
-          <span class="sub">Intelligence Radar</span>
+          <span class="name">MATRIX</span>
+          <span class="sub">AI Intelligence Radar</span>
         </a>
         <nav class="main-nav" aria-label="主导航">
           {navItems.map((item) => (
