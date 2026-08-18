@@ -36,6 +36,6 @@ const hiddenItems = [...orgs.slice(2), ...allTags.slice(2)];
   <div class="bottom">
     {shownOrgs.map((org: string) => <span class="tag">{org}</span>)}
     {shownTags.map((t: string) => <span class="tag">{t}</span>)}
-    {hiddenItems.length > 0 && <span class="tag tag-more" title={hiddenItems.join(', ')}>+{hiddenItems.length}</span>}
+    {hiddenItems.length > 0 && <span class="tag tag-more" data-more={hiddenItems.join('|')} title={hiddenItems.join(', ')}>+{hiddenItems.length}</span>}
   </div>
 </a>

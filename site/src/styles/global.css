@@ -319,6 +319,8 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   flex-shrink: 0;
 }
 .tag.tag-more { border-style: dashed; color: var(--text-faint); }
+/* 搜索命中的折叠标签被临时展开为 accent 边框芯片 */
+.tag.tag-hit { border-color: var(--accent-border); color: var(--accent); }
 
 /* 趋势状态：纯文字语义色，不带底色胶囊 */
 .status-pill {
@@ -380,6 +382,8 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+/* 搜索命中摘要时取消截断，避免高亮被藏进折叠部分 */
+.event-card .summary.has-hit { -webkit-line-clamp: unset; }
 .event-card .bottom { grid-column: 1 / -1; display: flex; align-items: center; gap: 6px 10px; flex-wrap: wrap; }
 .event-card .side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding-top: 2px; }
 /* 搜索关键词高亮：accent 浅底 + 下划细线，保持编辑简报气质 */
