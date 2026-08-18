@@ -1,0 +1,39 @@
+{
+  "date": "2026-08-17",
+  "provenance": "Incremental scan window [2026-08-17T00:00:22Z, 2026-08-18T00:00:25Z]; retrieval overlap from 2026-08-16T21:00:22Z (retrieval only, dedup enforced against index).",
+  "events": [
+    {
+      "event_id": "ev-20260817-01",
+      "title": "Agentic Transaction — ACID-style transaction semantics for LLM agent systems (arXiv 2608.13900)",
+      "category": "research",
+      "organization": ["academic", "Tsinghua University"],
+      "published_at": "2026-08-17",
+      "published_at_note": "Submitted 2026-08-14; announced in the Mon, 17 Aug 2026 arXiv digest (in-window). Cross-listed cs.DB/cs.AI/cs.CL/cs.LG. Guoliang Li group (affiliation per common record, not stated on abstract page).",
+      "first_seen_at": "2026-08-18T00:00:25Z",
+      "last_updated_at": "2026-08-18T00:00:25Z",
+      "source_type": "research",
+      "primary_source": "https://arxiv.org/abs/2608.13900",
+      "secondary_sources": [
+        "https://arxiv.org/list/cs.CL/recent"
+      ],
+      "summary": "Paper adapts database ACID guarantees to long-horizon LLM agents as \"agentic transactions\": Semantic Atomicity, Semantic Consistency, Semantic Isolation, Semantic Durability. Implementation includes transactional exploration-execution-validation cycles, transactional skill hubs, confidence-divergence-based validation, semantic dependency-aware isolation, and transaction-aware state management. Authors claim a 10.6% improvement over state-of-the-art agents on standard benchmarks, outperforming Claude Code. No code repository released at announcement.",
+      "why_it_matters": "Reliability, consistent outcomes, safe concurrency, and durable state are exactly the gaps blocking long-running agents in production; the DB transaction analogy (atomic units, isolation, rollback semantics, idempotent tool effects) is a directly reusable design pattern for agent orchestration layers and agent-runtime engineers — independent of whether this exact implementation wins.",
+      "technical_details": {
+        "guarantees": ["Semantic Atomicity", "Semantic Consistency", "Semantic Isolation", "Semantic Durability"],
+        "mechanisms": ["transactional exploration-execution-validation cycles", "transactional skill hubs", "confidence-divergence-based validation", "semantic dependency-aware isolation", "transaction-aware state management"],
+        "claimed_results": "+10.6% over SOTA agents on standard benchmarks; outperforms Claude Code (author-claimed, single-source)",
+        "code": "none found at announcement",
+        "benchmark_caveat": "results are author-reported in abstract; no independent reproduction yet"
+      },
+      "tags": ["agents", "reliability", "transactions", "acid", "orchestration", "arxiv", "research"],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2608-13900-agentic-transaction"
+    }
+  ]
+}
