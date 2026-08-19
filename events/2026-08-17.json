@@ -1,6 +1,6 @@
 {
   "date": "2026-08-17",
-  "provenance": "Incremental scan window [2026-08-17T00:00:22Z, 2026-08-18T00:00:25Z]; retrieval overlap from 2026-08-16T21:00:22Z (retrieval only, dedup enforced against index).",
+  "provenance": "Incremental scan window [2026-08-17T00:00:22Z, 2026-08-18T00:00:25Z]; retrieval overlap from 2026-08-16T21:00:22Z (retrieval only, dedup enforced against index). ev-20260817-02 appended by the 2026-08-19 run as a coverage-gap recovery (published 2026-08-17, within the previous run's retrieval overlap but not captured then).",
   "events": [
     {
       "event_id": "ev-20260817-01",
@@ -38,6 +38,47 @@
       "risk": 2,
       "recommendation": "WATCH",
       "event_fingerprint": "arxiv-2608-13900-agentic-transaction"
+    },
+    {
+      "event_id": "ev-20260817-02",
+      "title": "Cursor launches Origin — agent-native code hosting with built-in PR review, GitHub sync, and CI/preview apps",
+      "category": "developer-tools",
+      "organization": ["Anysphere", "Cursor"],
+      "published_at": "2026-08-17",
+      "published_at_note": "Changelog post metadata publishedTime 2026-08-17T00:00Z (date-granular); community coverage confirms Aug 17. Coverage-gap recovery: published seconds before the previous run's window start ([2026-08-17T00:00:22Z, ...]) and within its 3h retrieval overlap, but not captured by that run; registered by the 2026-08-19 run with first_seen_at = 2026-08-19T00:00:17Z.",
+      "first_seen_at": "2026-08-19T00:00:17Z",
+      "last_updated_at": "2026-08-19T00:00:17Z",
+      "source_type": "primary",
+      "primary_source": "https://cursor.com/changelog/origin-code-hosting",
+      "secondary_sources": [
+        "https://cursor.com/origin",
+        "https://www.reddit.com/r/cursor/comments/1vqypok/"
+      ],
+      "summary": "Cursor announced Origin, its own code hosting platform, rolling out in early beta to all paid plans. Origin is a git hosting service designed for 'agent scale': create repos and push with git, sync existing repositories from other hosts, and review Pull Requests natively in Cursor (including agentic code review). Bidirectional GitHub sync keeps remote refs, merge queues, branch protections and check runs mirrored, so teams can adopt Origin while staying interoperable with GitHub. Agents can push directly to Origin. Launch partners provide the surrounding toolchain: Vercel (preview deployments), Depot (Docker builds) and Buildkite (CI) via a request-builds tool and MCP servers.",
+      "why_it_matters": "The most-used AI-native editor moving into GitHub's core territory (hosting + code review + CI integration) is the clearest signal yet of coding agents pulling the whole DevOps chain into the agent platform. Engineering-relevant now: agent-native hosting plus built-in PR review and bidirectional GitHub sync means low-friction trial without abandoning GitHub. Open questions: beta stability, migration/lock-in, long-term parity with GitHub's ecosystem, and how SpaceX-owned Cursor steers defaults after the acquisition.",
+      "summary_zh": "Cursor 发布自有代码托管平台 Origin，开始向所有付费计划灰度（early beta）。Origin 是面向「agent 规模」设计的 git 托管服务：创建仓库、git push、从其他托管服务同步既有仓库，并在 Cursor 内原生评审 Pull Request（含 agentic code review）。双向 GitHub 同步会镜像远端 ref、merge queue、分支保护和 check run，团队可以在保持与 GitHub 互操作的同时试用 Origin。Agent 可以直接 push 到 Origin。首发合作方补齐周边工具链：Vercel（preview 部署）、Depot（Docker 构建）和 Buildkite（CI），通过 request-builds 工具和 MCP server 接入。",
+      "summary_en": "Cursor announced Origin, its own code hosting platform, rolling out in early beta to all paid plans. Origin is a git hosting service designed for 'agent scale': create repos and push with git, sync existing repositories from other hosts, and review Pull Requests natively in Cursor (including agentic code review). Bidirectional GitHub sync keeps remote refs, merge queues, branch protections and check runs mirrored, so teams can adopt Origin while staying interoperable with GitHub. Agents can push directly to Origin. Launch partners provide the surrounding toolchain: Vercel (preview deployments), Depot (Docker builds) and Buildkite (CI) via a request-builds tool and MCP servers.",
+      "why_it_matters_zh": "使用最广的 AI-native 编辑器进入 GitHub 的核心领地（托管 + code review + CI 集成），是 coding agent 把整条 DevOps 链拉进 agent 平台的最明确信号。当下的工程意义：agent-native 托管 + 内置 PR review + 双向 GitHub 同步意味着可以低摩擦试用而不必放弃 GitHub。待观察：beta 稳定性、迁移/锁定风险、与 GitHub 生态的长期对等性，以及被 SpaceX 收购后 Cursor 如何引导默认行为。",
+      "why_it_matters_en": "The most-used AI-native editor moving into GitHub's core territory (hosting + code review + CI integration) is the clearest signal yet of coding agents pulling the whole DevOps chain into the agent platform. Engineering-relevant now: agent-native hosting plus built-in PR review and bidirectional GitHub sync means low-friction trial without abandoning GitHub. Open questions: beta stability, migration/lock-in, long-term parity with GitHub's ecosystem, and how SpaceX-owned Cursor steers defaults after the acquisition.",
+      "technical_details": {
+        "status": "early beta, rolling out to all paid plans",
+        "hosting": "git hosting; create repos; push; sync from other hosts",
+        "code_review": "Pull Requests reviewed natively in Cursor, including agentic code review",
+        "github_sync": "bidirectional; mirrors refs, merge queue, branch protections, check runs",
+        "agents": "agents can push directly to Origin",
+        "apps": ["Vercel (preview deployments)", "Depot (Docker builds)", "Buildkite (CI)"],
+        "integration_mechanism": "request-builds tool + MCP servers",
+        "context": "launched the same day as a GitHub outage (community-noted); first major Cursor infrastructure move after the SpaceX acquisition closed (2026-08-14, ev-20260814-06)"
+      },
+      "tags": ["cursor", "origin", "code-hosting", "git", "pull-requests", "ci", "vercel", "buildkite", "mcp", "ecosystem"],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 1,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "cursor-origin-code-hosting"
     }
   ]
 }

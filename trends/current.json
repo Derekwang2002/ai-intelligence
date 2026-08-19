@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-08-18T00:00Z",
+  "as_of": "2026-08-19T00:00Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -43,6 +43,11 @@
           "date": "2026-08-18",
           "note_zh": "窗口内无新信号（GLM-5.3 权重仍待 ~8/28 落地）。Status/Confidence 维持不变。",
           "note_en": "No new signals in window (GLM-5.3 weights still pending ~8/28). Status/Confidence unchanged."
+        },
+        {
+          "date": "2026-08-19",
+          "note_zh": "窗口内无新信号（GLM-5.3 权重仍未落地；HF 上 zai-org/GLM-5.3 仓库尚不存在）。背景交叉参考（不计为证据）：OpenAI《The Defender's Window》（8/10，窗口外）预期 8 月底一个 open-weight、近 frontier cyber 能力的模型将显著加剧威胁格局，时间点与 GLM-5.3（~8/28）相合。Status/Confidence 维持不变。",
+          "note_en": "No new in-window signals (GLM-5.3 weights still pending; the zai-org/GLM-5.3 HF repository does not exist yet). Background cross-reference (not counted as evidence): OpenAI's 'The Defender's Window' (8/10, out of window) expects an end-of-August open-weight model with near-frontier cyber capabilities to significantly accelerate the threat landscape — timing aligns with GLM-5.3 (~8/28). Status/Confidence unchanged."
         }
       ]
     },
@@ -83,6 +88,11 @@
           "date": "2026-08-18",
           "note_zh": "背景说明——Netskope 的 MCP 安全能力（实时识别 MCP server/client 及 name/ID/URL/version/host/protocol 属性、CCI 风险评分、default-block 策略、DLP）于 2025-12-01 以 Preview 状态宣布，GA 计划 2026 上半年；未检索到带日期的 GA 公告。能力上部分满足第二家厂商判据，但早于本知识库覆盖范围——仅作为背景登记。补充背景：2026-07-28 MCP auth spec（OAuth 2.1/OIDC）遭企业侧阻力（anonymous DCR 批评）；CSA 在 2026 年初记录约 7,000 个暴露的 MCP server，约半数无认证；NSA/DoD 于 2026 年 6 月发布安全设计指引。判据修正为：第二家安全厂商交付 **GA** 状态的 MCP 识别能力 + 公开遥测。Status/Confidence 维持不变。",
           "note_en": "Background note — Netskope's MCP security (real-time MCP server/client identification with name/ID/URL/version/host/protocol attributes, CCI risk scoring, default-block policy, DLP) was announced 2025-12-01 as Preview, GA planned H1 2026; no dated GA announcement found. Partially satisfies the second-vendor criterion on capability, but predates KB coverage — logged as background only. Additional context: 2026-07-28 MCP auth spec (OAuth 2.1/OIDC) faces enterprise pushback (anonymous DCR criticism); CSA catalogued ~7,000 exposed MCP servers in early 2026, ~half unauthenticated; NSA/DoD security design guidance June 2026. Criterion refined to: second security vendor with **GA** MCP identification + published telemetry. Status/Confidence unchanged."
+        },
+        {
+          "date": "2026-08-19",
+          "note_zh": "窗口内无新信号；Netskope GA 判据仍未满足（新闻发布页本次不可达，未检索到带日期 GA 公告）。邻接信号（不计为证据）：Codex 0.148.0 的 MCP OAuth 重认证恢复与沙箱 fail-closed 属客户端可靠性加固，非企业级识别/管控。Status/Confidence 维持不变。",
+          "note_en": "No new in-window signals; the Netskope GA criterion remains unmet (press-release page unreachable this run; no dated GA announcement found). Adjacent signal (not counted as evidence): Codex 0.148.0's MCP recovery after OAuth re-auth and sandbox fail-closed are client-side reliability hardening, not enterprise identification/enforcement. Status/Confidence unchanged."
         }
       ]
     },
@@ -91,28 +101,32 @@
       "name_zh": "Coding agent 收敛为 multi-agent runtime",
       "name_en": "Coding agents converging into multi-agent runtimes",
       "status": "emerging",
-      "status_note_zh": "emerging（2026-08-18 由 candidate 升级——跨组织原语已核实，包括早于本知识库覆盖的背景事实）",
-      "status_note_en": "emerging (upgraded from candidate on 2026-08-18 — cross-org primitives verified, including background facts predating KB coverage)",
+      "status_note_zh": "emerging（2026-08-18 由 candidate 升级——跨组织原语已核实，包括早于本知识库覆盖的背景事实；2026-08-19 补两条窗口内证据）",
+      "status_note_en": "emerging (upgraded from candidate on 2026-08-18 — cross-org primitives verified, including background facts predating KB coverage; two in-window evidence items added 2026-08-19)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-08-18",
+      "last_updated": "2026-08-19",
       "retired": false,
       "evidence_zh": [
         "Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）",
         "GitHub/Microsoft Copilot Agent Plugins 1.0 GA（2026-08-13）",
         "DeepSeek Harness (dsh) MIT 开源 agent runtime（2026-08-14）",
         "OpenAI Codex subagents GA——manager agent 并行派生专门 subagent（2026-03-16；官方 @OpenAIDevs 公告，snowflake 时间戳 2026-03-16T20:09Z + 媒体交叉印证；2026-08-18 核实为覆盖前背景）",
-        "OpenCode 实验性 background subagents，primary/subagent 结构（v1.14.51，v1.18.x 之前的版本线；2026-08-18 核实为覆盖前背景）"
+        "OpenCode 实验性 background subagents，primary/subagent 结构（v1.14.51，v1.18.x 之前的版本线；2026-08-18 核实为覆盖前背景）",
+        "OpenAI Codex CLI 0.148.0 stable 落地 `codex exec fork` 会话分叉 + 可调用 MCP 工具的异步 hooks（2026-08-18T22:26Z，一手来源，ev-20260818-02）",
+        "Gemini CLI main 分支存在 packages/a2a-server（A2A 协议 server），nightly（8/14–18）引用 a2a-server 与 SSR Agent（2026-08-19 观察；early indication——未进 stable、无官方公告）"
       ],
       "evidence_en": [
         "Anthropic Claude Code: default-on subagent forking + cross-session SendMessage (2026-08-13/14)",
         "GitHub/Microsoft Copilot Agent Plugins 1.0 GA (2026-08-13)",
         "DeepSeek Harness (dsh) MIT open-source agent runtime (2026-08-14)",
         "OpenAI Codex subagents GA — manager agents spawning specialized subagents in parallel (2026-03-16; official @OpenAIDevs announcement, snowflake timestamp 2026-03-16T20:09Z + media corroboration; verified 2026-08-18 as pre-coverage background)",
-        "OpenCode experimental background subagents, primary/subagent structure (v1.14.51, pre-v1.18.x line; verified 2026-08-18 as pre-coverage background)"
+        "OpenCode experimental background subagents, primary/subagent structure (v1.14.51, pre-v1.18.x line; verified 2026-08-18 as pre-coverage background)",
+        "OpenAI Codex CLI 0.148.0 stable ships `codex exec fork` session forking + async hooks that invoke MCP tools (2026-08-18T22:26Z, primary source, ev-20260818-02)",
+        "Gemini CLI main branch hosts packages/a2a-server (A2A protocol server); nightlies 8/14–18 reference a2a-server and SSR Agent (observed 2026-08-19; early indication — not stable, no official announcement)"
       ],
-      "why_it_matters_zh": "升级依据：等效原语已在五家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode）得到核实，且从 2026 年 3 月持续至 8 月——时间持续性、多主体参与、技术收敛三项条件均满足。尚未确立（established）的原因：非 Anthropic 运行时尚无 inter-agent messaging 类原语（Codex/OpenCode 为 subagent 派生，非跨会话消息）；缺少公开的生产案例与采用遥测。",
-      "why_it_matters_en": "Why upgraded: equivalent primitives now verified across five organizations (Anthropic, GitHub/Microsoft, DeepSeek, OpenAI, SST/OpenCode) with persistence March→August 2026 — time continuity + multi-actor participation + technical convergence all satisfied. Not yet established because no inter-agent messaging primitive exists in non-Anthropic runtimes yet (Codex/OpenCode ship subagent spawning, not cross-session messaging), and there are no public production case studies or adoption telemetry.",
+      "why_it_matters_zh": "升级依据：等效原语已在五家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode）得到核实，且从 2026 年 3 月持续至 8 月——时间持续性、多主体参与、技术收敛三项条件均满足；2026-08-18 Codex 0.148.0 又把会话分叉推进 stable。尚未确立（established）的原因：非 Anthropic stable 运行时尚无 inter-agent messaging 类原语（Codex fork 是分叉而非消息；Gemini CLI a2a-server 仅为 repo 级 early indication）；缺少公开的生产案例与采用遥测。",
+      "why_it_matters_en": "Why upgraded: equivalent primitives now verified across five organizations (Anthropic, GitHub/Microsoft, DeepSeek, OpenAI, SST/OpenCode) with persistence March→August 2026 — time continuity + multi-actor participation + technical convergence all satisfied; on 2026-08-18 Codex 0.148.0 additionally pushed session forking into the stable channel. Not yet established because no inter-agent messaging primitive exists in non-Anthropic stable runtimes yet (Codex fork is forking, not messaging; Gemini CLI's a2a-server is a repo-level early indication), and there are no public production case studies or adoption telemetry.",
       "what_would_confirm_zh": "(a) Codex、Cursor、OpenCode 或 Gemini CLI 任一落地跨会话/跨 agent messaging；(b) 社区编排模式收敛到 orchestration-on-CLI（出现事实标准工具或命名模式）；(c) ≥2 个独立组织公开生产案例",
       "what_would_confirm_en": "(a) Cross-session/inter-agent messaging landing in Codex, Cursor, OpenCode or Gemini CLI; (b) community orchestration patterns consolidating around orchestration-on-CLI (de-facto standard tool or named pattern); (c) ≥2 independent organizations publishing production case studies",
       "updates": [
@@ -125,6 +139,11 @@
           "date": "2026-08-17",
           "note_zh": "Cursor Builds 按计划对所有环境默认开启——但 Builds 是 warm-snapshot 基础设施改进，不是 multi-agent 原语；不计为证据。",
           "note_en": "Cursor Builds became default-on for all environments as scheduled — but Builds is a warm-snapshot infra improvement, not a multi-agent primitive; not counted as evidence."
+        },
+        {
+          "date": "2026-08-19",
+          "note_zh": "新增两条窗口内证据：(a) Codex CLI 0.148.0 stable 落地 `codex exec fork` + 可调用 MCP 工具的异步 hooks（一手来源）；(b) Gemini CLI main 分支出现 packages/a2a-server（A2A 协议 server，nightly 引用）——early indication。判据 (a)（跨会话/跨 agent messaging 落地非 Anthropic stable 运行时）仍未满足：Codex fork 是分叉原语而非消息原语，a2a-server 未进 stable。Status/Confidence 维持不变。",
+          "note_en": "Two in-window evidence items added: (a) Codex CLI 0.148.0 stable ships `codex exec fork` + async hooks that invoke MCP tools (primary source); (b) Gemini CLI main branch hosts packages/a2a-server (A2A protocol server, referenced by nightlies) — early indication. Criterion (a) (cross-session/inter-agent messaging in a non-Anthropic stable runtime) remains unmet: Codex fork is a forking primitive, not messaging; a2a-server is not stable. Status/Confidence unchanged."
         }
       ]
     }
