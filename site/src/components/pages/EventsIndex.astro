@@ -146,6 +146,8 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
     };
 
     const apply = () => {
+      // 筛选会收缩页面高度：先回顶部再展示结果，避免滚动钳位造成的跳动
+      if (window.scrollY > 240) window.scrollTo({ top: 0, behavior: 'instant' });
       const raw = search.value.trim();
       const q = raw.toLowerCase();
       let visible = 0;
