@@ -27,18 +27,16 @@ const hiddenItems = [...orgs.slice(2), ...allTags.slice(2)];
   <div class="top">
     <span class="date">{event.published_date}</span>
     <span class="cat-chip">{catLabel(event.category, locale)}</span>
+    <RecBadge rec={event.recommendation} />
   </div>
   <h3>{event.title}</h3>
-  <div class="side">
-    <RecBadge rec={event.recommendation} />
-    <span class="score-nums" title={t(locale, 'scores.tripleTitle')}>
-      {t(locale, 'scores.impact')} {event.technical_impact ?? 0} · {t(locale, 'scores.engineering')} {event.engineering_value ?? 0} · {t(locale, 'scores.adoption')} {event.adoption_signal ?? 0}
-    </span>
-  </div>
   {!compact && summary && <p class="summary">{summary}</p>}
   <div class="bottom">
     {shownOrgs.map((org: string) => <span class="tag">{org}</span>)}
     {shownTags.map((tag: string) => <span class="tag">{tag}</span>)}
     {hiddenItems.length > 0 && <span class="tag tag-more" data-more={hiddenItems.join('|')} title={hiddenItems.join(', ')}>+{hiddenItems.length}</span>}
+    <span class="score-nums" title={t(locale, 'scores.tripleTitle')}>
+      {t(locale, 'scores.impact')} {event.technical_impact ?? 0} · {t(locale, 'scores.engineering')} {event.engineering_value ?? 0} · {t(locale, 'scores.adoption')} {event.adoption_signal ?? 0}
+    </span>
   </div>
 </a>
