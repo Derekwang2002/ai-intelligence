@@ -25,6 +25,15 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
 ---
 
 <Base title={t(locale, 'events.title')} description={t(locale, 'events.description')} locale={locale}>
+  <div class="header-search" role="search" slot="header-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </svg>
+    <input type="search" id="f-search" placeholder={t(locale, 'events.searchPlaceholder')} aria-label={t(locale, 'events.searchAria')} />
+    <kbd>⌘K</kbd>
+  </div>
+
   <div class="page-head">
     <div class="head-row">
       <h1>{t(locale, 'events.title')}</h1>
@@ -35,16 +44,21 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
     </p>
   </div>
 
-  <div class="filter-bar" role="search">
-    <input type="search" id="f-search" placeholder={t(locale, 'events.searchPlaceholder')} aria-label={t(locale, 'events.searchAria')} />
-    <select id="f-cat" aria-label={t(locale, 'events.catAria')}>
-      <option value="">{t(locale, 'events.allCats')}</option>
-      {categories.map((c) => <option value={c}>{catLabel(c, locale)}（{(aggregates.byCategory as any)[c]}）</option>)}
-    </select>
-    <select id="f-org" aria-label={t(locale, 'events.orgAria')}>
-      <option value="">{t(locale, 'events.allOrgs')}</option>
-      {orgs.map((o: any) => <option value={o.name}>{o.name}（{o.count}）</option>)}
-    </select>
+  <div class="filter-bar">
+    <div class="filter-field">
+      <span class="filter-label" id="f-cat-label">{t(locale, 'events.catLabel')}</span>
+      <select id="f-cat" aria-labelledby="f-cat-label">
+        <option value="">{t(locale, 'events.allCats')}</option>
+        {categories.map((c) => <option value={c}>{catLabel(c, locale)}（{(aggregates.byCategory as any)[c]}）</option>)}
+      </select>
+    </div>
+    <div class="filter-field">
+      <span class="filter-label" id="f-org-label">{t(locale, 'events.orgLabel')}</span>
+      <select id="f-org" aria-labelledby="f-org-label">
+        <option value="">{t(locale, 'events.allOrgs')}</option>
+        {orgs.map((o: any) => <option value={o.name}>{o.name}（{o.count}）</option>)}
+      </select>
+    </div>
     <div class="filter-chips" id="f-rec-chips" role="group" aria-label={t(locale, 'events.recAria')}>
       <button type="button" class="fchip active" data-rec="">{t(locale, 'events.all')} <span class="n">{aggregates.totals.events}</span></button>
       {recCounts.map(({ r, n }) => (
@@ -154,14 +168,30 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
       if (empty) empty.hidden = visible > 0;
       if (count) count.textContent = `${visible} / ${total} ${count.dataset.suffix ?? ''}`.trim();
     };
-    for (const el of [search, cat, org]) el.addEventListener('input', apply);
+    // 列表重排的瞬时跳变用快速交叉淡化掩盖；浏览器不支持或偏好减弱动效时直接应用
+    const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const runApply = () => {
+      if (!prefersReduced && document.startViewTransition) document.startViewTransition(apply);
+      else apply();
+    };
+    for (const el of [search, cat, org]) el.addEventListener('input', runApply);
     chipsWrap.addEventListener('click', (ev) => {
       const chip = (ev.target as HTMLElement).closest<HTMLElement>('.fchip');
       if (!chip) return;
       rec = chip.dataset.rec ?? '';
       for (const c of chipsWrap.querySelectorAll('.fchip')) c.classList.toggle('active', c === chip);
-      apply();
+      runApply();
     });
+    // ⌘K / Ctrl+K 聚焦 header 搜索框；非 macOS 把提示改成 Ctrl+K
+    document.addEventListener('keydown', (ev) => {
+      if ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() === 'k') {
+        ev.preventDefault();
+        search.focus();
+        search.select();
+      }
+    });
+    const kbd = document.querySelector('.header-search kbd');
+    if (kbd && !/Mac|iPhone|iPad/.test(navigator.platform ?? '')) kbd.textContent = 'Ctrl+K';
     apply();
   }
 </script>

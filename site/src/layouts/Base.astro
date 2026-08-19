@@ -20,6 +20,7 @@ const navItems = [
 ];
 
 const pathname = logicalPath(Astro.url.pathname);
+const hasHeaderSearch = Astro.slots.has('header-search');
 const otherLocale: Locale = locale === 'zh' ? 'en' : 'zh';
 const langSwitchHref = u(pathname, otherLocale);
 const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
@@ -50,7 +51,7 @@ const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
     </script>
   </head>
   <body>
-    <header class="site-header">
+    <header class={hasHeaderSearch ? 'site-header has-search' : 'site-header'}>
       <div class="container inner">
         <a class="brand" href={u('/', locale)}>
           <span class="logo">
@@ -66,6 +67,7 @@ const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
           <span class="name">MATRIX</span>
           <span class="sub">AI Intelligence Radar</span>
         </a>
+        <slot name="header-search" />
         <nav class="main-nav" aria-label={t(locale, 'nav.aria')}>
           {navItems.map((item) => (
             <a href={item.href} class={item.match(pathname) ? 'active' : ''} aria-current={item.match(pathname) ? 'page' : undefined}>{item.label}</a>
