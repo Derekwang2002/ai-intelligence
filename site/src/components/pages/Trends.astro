@@ -119,4 +119,53 @@ function evidenceList(tr: any, loc_: Locale): string[] {
       </ul>
     </>
   )}
+
+  <script>
+    // 趋势卡片展开/折叠：WAAPI 高度动画，两个方向一致。
+    // （纯 CSS 的 ::details-content 过渡在展开方向上依赖较新浏览器，行为不稳定。）
+    document.querySelectorAll('details.trend-card').forEach((details) => {
+      const summary = details.querySelector('summary');
+      const content = details.querySelector('.trend-detail');
+      if (!summary || !content) return;
+      let anim = null;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      summary.addEventListener('click', (e) => {
+        if (reduce) return; // 减少动态效果：保持原生即时开合
+        e.preventDefault();
+        anim?.cancel();
+        const cs = getComputedStyle(content);
+        const pt = cs.paddingTop;
+        const pb = cs.paddingBottom;
+        if (details.open) {
+          const h = content.offsetHeight;
+          content.style.overflow = 'clip';
+          anim = content.animate(
+            [
+              { height: `${h}px`, paddingTop: pt, paddingBottom: pb },
+              { height: '0px', paddingTop: '0px', paddingBottom: '0px' },
+            ],
+            { duration: 230, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' }
+          );
+          anim.onfinish = () => {
+            details.open = false;
+            content.style.overflow = '';
+          };
+        } else {
+          details.open = true;
+          const h = content.offsetHeight;
+          content.style.overflow = 'clip';
+          anim = content.animate(
+            [
+              { height: '0px', paddingTop: '0px', paddingBottom: '0px' },
+              { height: `${h}px`, paddingTop: pt, paddingBottom: pb },
+            ],
+            { duration: 260, easing: 'cubic-bezier(0.2, 0.6, 0.2, 1)' }
+          );
+          anim.onfinish = () => {
+            content.style.overflow = '';
+          };
+        }
+      });
+    });
+  </script>
 </Base>
