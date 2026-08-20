@@ -33,7 +33,7 @@ const zh = {
   'nav.langSwitch': 'English',
   'nav.langSwitchAria': '切换到英文版',
   'theme.toggle': '切换浅色 / 深色主题',
-  'footer.line1': '本站由知识库（events / daily / trends）自动构建，push 到 main 后经 GitHub Actions 发布。内容为增量扫描一手来源后的结构化沉淀，非实时新闻聚合。',
+  'footer.line1': 'AI 技术情报，每日更新。',
 
   'home.kicker': 'AI Intelligence Radar',
   'home.h1a': '追踪值得工程决策关注的',
@@ -198,8 +198,7 @@ const en: Record<UiKey, string> = {
   'nav.langSwitch': '中文',
   'nav.langSwitchAria': 'Switch to Chinese version',
   'theme.toggle': 'Toggle light / dark theme',
-  'footer.line1':
-    'This site is built automatically from the knowledge base (events / daily / trends) and published via GitHub Actions on push to main. Content is a structured accumulation of incrementally scanned primary sources, not a real-time news aggregator.',
+  'footer.line1': 'AI tech intelligence, updated daily.',
 
   'home.kicker': 'AI Intelligence Radar',
   'home.h1a': 'Tracking AI tech changes',
