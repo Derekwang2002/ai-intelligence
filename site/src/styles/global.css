@@ -779,13 +779,13 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   transition: background-color 0.15s var(--ease);
 }
 .trend-card > summary::-webkit-details-marker { display: none; }
-/* hover 提亮只给折叠态；展开后 header 与详情同属一张卡，整片 hover 背景会割裂卡片 */
-.trend-card:not([open]) > summary:hover { background-color: color-mix(in srgb, var(--surface) 94%, var(--text) 6%); }
-.trend-card[open] > summary:hover .t-chev { color: var(--text-muted); }
+/* 展开后 summary 成为横线之上的独立 header 区，hover 提亮在两种状态下都成立 */
+.trend-card > summary:hover { background-color: color-mix(in srgb, var(--surface) 94%, var(--text) 6%); }
+.trend-card[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
 .trend-card .t-chev { margin-left: auto; align-self: center; width: 15px; height: 15px; color: var(--text-faint); flex-shrink: 0; transition: transform 0.25s var(--ease); }
 .trend-card[open] .t-chev { transform: rotate(90deg); }
 .trend-card .t-note { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.trend-card .trend-detail { padding: 2px 24px 22px; display: flex; flex-direction: column; gap: 11px; }
+.trend-card .trend-detail { padding: 14px 24px 22px; display: flex; flex-direction: column; gap: 11px; border-top: 1px solid var(--border); }
 .trend-card .head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .trend-card .head h3 { margin: 0; font-family: var(--serif); font-size: 18px; line-height: 1.5; flex: 1 1 auto; min-width: 0; letter-spacing: 0; text-wrap: pretty; }
 .trend-card .meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11.5px; color: var(--text-faint); font-family: var(--mono); letter-spacing: 0.02em; }

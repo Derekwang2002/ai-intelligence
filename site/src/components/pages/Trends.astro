@@ -148,12 +148,16 @@ function evidenceList(tr: any, loc_: Locale): string[] {
           );
           anim.onfinish = () => {
             details.open = false;
-            content.style.overflow = '';
+            content.removeAttribute('style');
           };
         } else {
+          // 先把内联高度钉为 0 再开动画：避免 open 后内容以全高闪一帧（抖动来源）
           details.open = true;
           const h = content.offsetHeight;
           content.style.overflow = 'clip';
+          content.style.height = '0px';
+          content.style.paddingTop = '0px';
+          content.style.paddingBottom = '0px';
           anim = content.animate(
             [
               { height: '0px', paddingTop: '0px', paddingBottom: '0px' },
@@ -162,7 +166,7 @@ function evidenceList(tr: any, loc_: Locale): string[] {
             { duration: 260, easing: 'cubic-bezier(0.2, 0.6, 0.2, 1)' }
           );
           anim.onfinish = () => {
-            content.style.overflow = '';
+            content.removeAttribute('style');
           };
         }
       });
