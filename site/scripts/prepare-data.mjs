@@ -4,7 +4,8 @@
 // The knowledge base itself is never modified — the site is a read-only projection.
 //
 // Bilingual contract (AGENTS.md §6/§7/§10):
-// - events carry summary_zh/summary_en, why_it_matters_zh/why_it_matters_en
+// - events carry title_zh (title stays the English canonical form),
+//   summary_zh/summary_en, why_it_matters_zh/why_it_matters_en
 //   (legacy summary/why_it_matters remain as English fallback);
 // - daily reports pair YYYY-MM-DD.md (zh) with YYYY-MM-DD.en.md (en);
 // - trends ship a structured trends/current.json (bilingual); when it is

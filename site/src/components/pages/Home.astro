@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import RecBadge from '../RecBadge.astro';
 import { u, fmtDateTime } from '../../lib/url';
-import { t, loc, catLabel, type Locale } from '../../lib/i18n';
+import { t, loc, locTitle, catLabel, type Locale } from '../../lib/i18n';
 import events from '../../data/generated/events.json';
 import aggregates from '../../data/generated/aggregates.json';
 import daily from '../../data/generated/daily.json';
@@ -79,7 +79,7 @@ const recSummary = (['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const)
                 <span class="cat-chip">{catLabel(e.category, locale)}</span>
                 <span class="f-orgs">{(e.organization ?? []).join(' · ')}</span>
               </span>
-              <span class="f-title">{e.title}</span>
+              <span class="f-title">{locTitle(e, locale)}</span>
             </span>
             <span class="f-side">
               <RecBadge rec={e.recommendation} />

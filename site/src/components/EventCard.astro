@@ -1,7 +1,7 @@
 ---
 import RecBadge from './RecBadge.astro';
 import { u } from '../lib/url';
-import { t, loc, catLabel, type Locale } from '../lib/i18n';
+import { t, loc, locTitle, catLabel, type Locale } from '../lib/i18n';
 
 interface Props {
   event: any;
@@ -11,6 +11,7 @@ interface Props {
 
 const { event, compact = false, locale = 'zh' } = Astro.props;
 const href = u(`/events/${event.event_id}/`, locale);
+const title = locTitle(event, locale);
 const summary = loc(event, 'summary', locale);
 
 // 组织名与其同名 hashtag（如 org "Qwen" + tag "qwen"）只保留组织标签；
@@ -23,13 +24,13 @@ const shownTags = allTags.slice(0, 2);
 const hiddenItems = [...orgs.slice(2), ...allTags.slice(2)];
 ---
 
-<a class="event-card" href={href} data-cat={event.category} data-rec={event.recommendation} data-org={(event.organization ?? []).join('|')} data-tags={(event.tags ?? []).join('|')} data-q={`${event.title} ${event.summary ?? ''} ${event.summary_zh ?? ''} ${(event.organization ?? []).join(' ')} ${(event.tags ?? []).join(' ')}`.toLowerCase()}>
+<a class="event-card" href={href} data-cat={event.category} data-rec={event.recommendation} data-org={(event.organization ?? []).join('|')} data-tags={(event.tags ?? []).join('|')} data-q={`${event.title} ${event.title_zh ?? ''} ${event.summary ?? ''} ${event.summary_zh ?? ''} ${(event.organization ?? []).join(' ')} ${(event.tags ?? []).join(' ')}`.toLowerCase()}>
   <div class="top">
     <span class="date">{event.published_date}</span>
     <span class="cat-chip">{catLabel(event.category, locale)}</span>
     <RecBadge rec={event.recommendation} />
   </div>
-  <h3>{event.title}</h3>
+  <h3>{title}</h3>
   {!compact && summary && <p class="summary">{summary}</p>}
   <div class="bottom">
     {shownOrgs.map((org: string) => <span class="tag">{org}</span>)}

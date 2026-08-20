@@ -16,6 +16,12 @@ export function loc(obj: any, field: string, locale: Locale): string {
   return obj[field] ?? '';
 }
 
+// title 以英文为规范字段：zh 模式优先 title_zh，en 模式直接用 title。
+// 不走 loc() 的交叉回退，否则英文页会拿到中文标题。
+export function locTitle(e: any, locale: Locale): string {
+  return (locale === 'zh' && e?.title_zh) || e?.title || '';
+}
+
 const zh = {
   'site.description': 'MATRIX：Events → Signals → Trends → Decisions 的 AI 技术情报知识库',
   'site.titleSuffix': 'MATRIX · AI 技术情报',

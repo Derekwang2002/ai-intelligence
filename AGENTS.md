@@ -168,6 +168,7 @@ events/YYYY-MM-DD.json
 {
   "event_id": "",
   "title": "",
+  "title_zh": "",
   "category": "",
   "organization": [],
   "published_at": "",
@@ -206,7 +207,8 @@ events/YYYY-MM-DD.json
 
 - `summary` / `why_it_matters` 保持英文原文，与 `summary_en` / `why_it_matters_en` 内容一致（保留原字段是为了向后兼容）。
 - `summary_zh` / `why_it_matters_zh` 为必填中文版本；中文版本里技术名称、产品名和关键术语保留英文。
-- `title`、`category`、`organization`、`tags`、`technical_details` 不做翻译，保持英文。
+- `title` 为英文规范标题（站点英文模式直接使用）；`title_zh` 为必填中文标题，供中文模式展示——产品名、模型名、版本号、协议名等保持英文，只翻译描述性部分。
+- `category`、`organization`、`tags`、`technical_details` 不做翻译，保持英文。
 - 更新已有事件时，双语字段必须同步更新，不允许只更新一种语言。
 
 ## 7. Daily Reports
@@ -659,7 +661,7 @@ Checkpoint updated:
 - `events/` 是否正确更新（含双语字段）？
 - `index/` 是否正确更新？
 - `trends/` 是否正确更新（`current.json` 与 `current.md` 一致、快照双语齐全）？
-- 双语是否完整：每个事件 `summary_zh/en`、`why_it_matters_zh/en` 非空；日报、趋势快照中英两份文件均已写入且内容对应？
+- 双语是否完整：每个事件 `title_zh`、`summary_zh/en`、`why_it_matters_zh/en` 非空；日报、趋势快照中英两份文件均已写入且内容对应？
 - `state.json` 是否最后更新？
 - 趋势是否有多个独立证据？
 - 是否错误地把一次热点称为趋势？

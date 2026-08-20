@@ -4,7 +4,7 @@ import RecBadge from '../RecBadge.astro';
 import ScoreBars from '../ScoreBars.astro';
 import DetailTable from '../DetailTable.astro';
 import { u, fmtDateTime } from '../../lib/url';
-import { t, loc, catLabel, type Locale, type UiKey } from '../../lib/i18n';
+import { t, loc, locTitle, catLabel, type Locale, type UiKey } from '../../lib/i18n';
 import events from '../../data/generated/events.json';
 
 interface Props {
@@ -22,14 +22,14 @@ const whyItMatters = loc(event, 'why_it_matters', locale);
 const recHintKey = `rec.${event.recommendation}` as UiKey;
 ---
 
-<Base title={event.title.slice(0, 80)} locale={locale}>
+<Base title={locTitle(event, locale).slice(0, 80)} locale={locale}>
   <div class="article-head">
     <div class="crumbs">
       <a href={u('/events/', locale)}>{t(locale, 'events.back')}</a>
       <span class="cat-chip">{catLabel(event.category, locale)}</span>
       <span class="mono" style="font-size: 12px;">{event.event_id}</span>
     </div>
-    <h1>{event.title}</h1>
+    <h1>{locTitle(event, locale)}</h1>
     <div class="meta-row">
       <span class="mono" style="font-size: 12.5px;">{event.published_at}</span>
       {(event.organization ?? []).map((o: string) => <span class="tag">{o}</span>)}
@@ -126,13 +126,13 @@ const recHintKey = `rec.${event.recommendation}` as UiKey;
     {newer ? (
       <a class="card pn-link" href={u(`/events/${newer.event_id}/`, locale)}>
         <span class="pn-dir">← {t(locale, 'events.newer')} · {newer.date}</span>
-        <span class="pn-title">{newer.title}</span>
+        <span class="pn-title">{locTitle(newer, locale)}</span>
       </a>
     ) : <span></span>}
     {older ? (
       <a class="card pn-link next" href={u(`/events/${older.event_id}/`, locale)}>
         <span class="pn-dir">{t(locale, 'events.older')} · {older.date} →</span>
-        <span class="pn-title">{older.title}</span>
+        <span class="pn-title">{locTitle(older, locale)}</span>
       </a>
     ) : <span></span>}
   </nav>

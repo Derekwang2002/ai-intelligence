@@ -1,6 +1,6 @@
 ---
 import { u } from '../lib/url';
-import { t, type Locale } from '../lib/i18n';
+import { t, locTitle, type Locale } from '../lib/i18n';
 
 interface Props {
   events: any[];
@@ -90,7 +90,7 @@ for (const quad of QUADRANTS) {
       x: CX + radius * Math.cos(angle),
       y: CY + radius * Math.sin(angle),
       rec,
-      title: e.title,
+      title: locTitle(e, locale),
       org: (e.organization ?? []).join(', '),
       date: e.published_date,
       href: u(`/events/${e.event_id}/`),
