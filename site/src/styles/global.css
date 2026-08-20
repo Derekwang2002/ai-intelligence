@@ -389,7 +389,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 }
 /* Apple 式连续曲率角：支持的浏览器把圆角升级为超椭圆（squircle），消除直边与圆弧衔接处的曲率跳变；不支持的浏览器忽略本属性，回退为普通 border-radius */
 .card, .event-card, .filter-bar, .feed-row, .pn-link, .daily-row, .quad-items,
-.filter-bar select, .fchip, .pager a, .btn-primary, .btn-ghost, .t-mini, .watch-list,
+.filter-bar select, .fchip, .pager a, .btn-primary, .btn-ghost, .t-mini,
 .radar-tip, .nav-utils, .header-search input, .prose pre { corner-shape: squircle; }
 
 /* ============ badges / chips / tags ============ */
@@ -817,28 +817,30 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .lc-step { display: flex; align-items: center; gap: 0; }
 .lc-step .lc-link { width: 20px; height: 1px; background: var(--border-strong); flex-shrink: 0; align-self: center; margin: 0 3px; }
 
-/* ============ plain lists ============ */
-
-.watch-list {
+/* ============ trends snapshot calendar ============ */
+/* 历史快照用月历呈现：有快照的日期为可点击的 accent 格，其余为静默日期 */
+.cal-wrap { display: flex; flex-wrap: wrap; gap: 20px; }
+.cal-block { padding: 18px 22px 20px; }
+.cal-head { font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 34px); gap: 3px; }
+.cal-wd { text-align: center; font-family: var(--mono); font-size: 10.5px; color: var(--text-faint); padding-bottom: 7px; }
+.cal-day {
   display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 6px 0;
-  list-style: none;
-  background: var(--surface);
-  border-radius: var(--radius);
-  box-shadow: var(--card-ring), var(--card-sheen), var(--card-shadow);
-  overflow: clip;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-faint);
 }
-.watch-list li {
-  display: flex;
-  gap: 12px;
-  padding: 10px 20px;
-  font-size: 13.8px;
-  color: var(--text-muted);
-  line-height: 1.75;
+a.cal-day {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 650;
+  transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
 }
-.watch-list li + li { border-top: 1px solid var(--border); }
+a.cal-day:hover { background: var(--accent); color: var(--accent-contrast); text-decoration: none; }
 
 /* ============ rec distribution (home aside) ============ */
 

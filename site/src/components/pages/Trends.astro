@@ -17,6 +17,25 @@ function evidenceList(tr: any, loc_: Locale): string[] {
   const items = loc_ === 'zh' ? tr.evidence_zh : tr.evidence_en;
   return (items ?? []).filter(Boolean);
 }
+
+// 历史快照按月份分组成日历格：有快照的日期才可点击，避免逐行重复"查看快照"链接
+const snapDates = new Set<string>(trends.snapshots.map((s: any) => s.date));
+const monthKeys = [...new Set(trends.snapshots.map((s: any) => String(s.date).slice(0, 7)))].sort().reverse();
+const WEEKDAYS = locale === 'zh'
+  ? ['一', '二', '三', '四', '五', '六', '日']
+  : ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+const snapMonths = monthKeys.map((mk) => {
+  const [y, mo] = mk.split('-').map(Number);
+  const offset = (new Date(y, mo - 1, 1).getDay() + 6) % 7; // 周一开头
+  const days = new Date(y, mo, 0).getDate();
+  const cells: ({ day: number; date: string; has: boolean } | null)[] = Array(offset).fill(null);
+  for (let d = 1; d <= days; d++) {
+    const date = `${mk}-${String(d).padStart(2, '0')}`;
+    cells.push({ day: d, date, has: snapDates.has(date) });
+  }
+  const label = new Intl.DateTimeFormat(locale === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long' }).format(new Date(y, mo - 1, 1));
+  return { label, cells };
+});
 ---
 
 <Base title={t(locale, 'trends.title')} description={t(locale, 'trends.description')} locale={locale}>
@@ -109,14 +128,25 @@ function evidenceList(tr: any, loc_: Locale): string[] {
   {trends.snapshots.length > 0 && (
     <>
       <div class="section-title">{t(locale, 'trends.snapshots')}</div>
-      <ul class="watch-list">
-        {trends.snapshots.map((s: any) => (
-          <li>
-            <span class="mono" style="color: var(--text-faint);">{s.date}</span>
-            <span style="margin-left: auto;"><a href={u(`/trends/archive/${s.date}/`, locale)}>{t(locale, 'trends.viewSnapshot')}</a></span>
-          </li>
+      <div class="cal-wrap">
+        {snapMonths.map((m) => (
+          <div class="card cal-block">
+            <div class="cal-head">{m.label}</div>
+            <div class="cal-grid">
+              {WEEKDAYS.map((w) => <span class="cal-wd">{w}</span>)}
+              {m.cells.map((c) =>
+                c === null ? (
+                  <span class="cal-day"></span>
+                ) : c.has ? (
+                  <a class="cal-day" href={u(`/trends/archive/${c.date}/`, locale)} aria-label={`${c.date} · ${t(locale, 'trends.viewSnapshot').replace(/ →$/, '')}`}>{c.day}</a>
+                ) : (
+                  <span class="cal-day">{c.day}</span>
+                )
+              )}
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </>
   )}
 
