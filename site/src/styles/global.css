@@ -776,10 +776,12 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   gap: 10px;
   border-radius: var(--radius);
   corner-shape: squircle;
-  transition: background-color 0.15s var(--ease);
+  transition: background-color 0.15s var(--ease), border-radius 0.25s var(--ease);
 }
 .trend-card > summary::-webkit-details-marker { display: none; }
-/* summary 在两种状态下都保持完整圆角：展开时卡片从腰部整体拉长，没有"变方角再展开"的阶段 */
+/* 展开态 summary 底部角收方，hover 提亮与详情区顶部横线贴合；
+   border-radius 随展开动画同步过渡，读感仍是卡片整体从腰部拉长，而非先变方角再展开 */
+.trend-card[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
 .trend-card > summary:hover { background-color: color-mix(in srgb, var(--surface) 94%, var(--text) 6%); }
 .trend-card .t-chev { margin-left: auto; align-self: center; width: 15px; height: 15px; color: var(--text-faint); flex-shrink: 0; transition: transform 0.25s var(--ease); }
 .trend-card[open] .t-chev { transform: rotate(90deg); }
