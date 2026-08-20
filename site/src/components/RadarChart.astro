@@ -128,17 +128,17 @@ const quadLabelPos = (range: [number, number]) => {
   ))}
 </div>
 
-<section class="card radar-overview">
-  <div class="radar-overview-head">
-    <span class="kicker">{t(locale, 'radar.overview')}</span>
-    <span class="legend">
-      {RING_ORDER.map((r) => (
-        <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
-      ))}
-      <span class="legend-note">{t(locale, 'radar.legendNote')}</span>
-    </span>
-  </div>
+<div class="radar-overview-head">
+  <h3 class="quad-head">{t(locale, 'radar.overview')}<span class="count">{counter}</span></h3>
+  <span class="legend">
+    {RING_ORDER.map((r) => (
+      <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
+    ))}
+    <span class="legend-note">{t(locale, 'radar.legendNote')}</span>
+  </span>
+</div>
 
+<section class="card radar-overview">
   <figure class="radar-figure">
     <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label={t(locale, 'radar.aria')}>
     <circle class="adopt-disc" cx={CX} cy={CY} r={RINGS.ADOPT[1]} />

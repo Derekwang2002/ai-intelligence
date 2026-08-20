@@ -76,7 +76,7 @@ const zh = {
   'radar.quad.tools': '工具与商业',
   'radar.empty': '暂无条目',
   'radar.aria': 'MATRIX 技术雷达',
-  'radar.overview': '雷达总览 · Radar Overview',
+  'radar.overview': '雷达总览',
   'radar.legendNote': '内环 → 外环，建议强度递减 · 悬停与列表联动',
 
   'trends.title': '趋势',
