@@ -389,6 +389,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 }
 /* Apple 式连续曲率角：支持的浏览器把圆角升级为超椭圆（squircle），消除直边与圆弧衔接处的曲率跳变；不支持的浏览器忽略本属性，回退为普通 border-radius */
 .card, .event-card, .filter-bar, .feed-row, .pn-link, .daily-row, .quad-items,
+.quad-items li:first-child > a, .quad-items li:last-child > a,
 .filter-bar select, .fchip, .pager a, .btn-primary, .btn-ghost, .t-mini,
 .radar-tip, .nav-utils, .header-search input, .prose pre { corner-shape: squircle; }
 
@@ -672,7 +673,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 6px 0;
+  padding: 0;
   list-style: none;
   background: var(--surface);
   border-radius: var(--radius);
@@ -680,6 +681,9 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   overflow: clip;
 }
 .quad-items li + li { border-top: 1px solid var(--border); }
+/* 首/末行与卡片角齐平：hover 提亮用相同的 squircle 圆角，与卡片边界完全贴合 */
+.quad-items li:first-child > a { border-radius: var(--radius) var(--radius) 0 0; }
+.quad-items li:last-child > a { border-radius: 0 0 var(--radius) var(--radius); }
 .quad-items a {
   display: flex;
   gap: 10px;
