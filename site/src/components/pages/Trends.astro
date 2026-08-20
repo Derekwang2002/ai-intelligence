@@ -139,10 +139,12 @@ function evidenceList(tr: any, loc_: Locale): string[] {
         if (details.open) {
           const h = content.offsetHeight;
           content.style.overflow = 'clip';
+          // 高度收拢的同时内容提前淡出：横线不会拖到最后一刻才消失
           anim = content.animate(
             [
-              { height: `${h}px`, paddingTop: pt, paddingBottom: pb },
-              { height: '0px', paddingTop: '0px', paddingBottom: '0px' },
+              { height: `${h}px`, paddingTop: pt, paddingBottom: pb, opacity: '1' },
+              { opacity: '0', offset: 0.55 },
+              { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: '0' },
             ],
             { duration: 230, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' }
           );
@@ -158,10 +160,12 @@ function evidenceList(tr: any, loc_: Locale): string[] {
           content.style.height = '0px';
           content.style.paddingTop = '0px';
           content.style.paddingBottom = '0px';
+          // 卡片从腰部拉长，横线与内容随高度一起浮现（opacity 半程到位，避免拖沓）
           anim = content.animate(
             [
-              { height: '0px', paddingTop: '0px', paddingBottom: '0px' },
-              { height: `${h}px`, paddingTop: pt, paddingBottom: pb },
+              { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: '0' },
+              { opacity: '1', offset: 0.5 },
+              { height: `${h}px`, paddingTop: pt, paddingBottom: pb, opacity: '1' },
             ],
             { duration: 260, easing: 'cubic-bezier(0.2, 0.6, 0.2, 1)' }
           );
