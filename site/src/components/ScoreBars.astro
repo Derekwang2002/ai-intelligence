@@ -23,7 +23,7 @@ const dims: { key: string; labelKey: UiKey }[] = [
     const v = scores[d.key] ?? 0;
     const color = d.key === 'risk' && v >= 4 ? 'var(--watch)' : 'var(--text)';
     return (
-      <div class="score-row">
+      <div class="score-row" title={t(locale, `scores.anchor.${d.key}` as UiKey)}>
         <span class="name">{t(locale, d.labelKey)}</span>
         <span class="track"><span class="fill" style={`width: ${(v / 5) * 100}%; background: ${color}`}></span></span>
         <span class="val">{v}</span>

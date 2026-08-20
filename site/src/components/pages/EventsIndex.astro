@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import EventCard from '../EventCard.astro';
-import { t, catLabel, type Locale } from '../../lib/i18n';
+import { t, catLabel, type Locale, type UiKey } from '../../lib/i18n';
 import events from '../../data/generated/events.json';
 import aggregates from '../../data/generated/aggregates.json';
 
@@ -62,7 +62,7 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
     <div class="filter-chips" id="f-rec-chips" role="group" aria-label={t(locale, 'events.recAria')}>
       <button type="button" class="fchip active" data-rec="">{t(locale, 'events.all')} <span class="n">{aggregates.totals.events}</span></button>
       {recCounts.map(({ r, n }) => (
-        <button type="button" class="fchip" data-rec={r}>{r} <span class="n">{n}</span></button>
+        <button type="button" class="fchip" data-rec={r} title={t(locale, `rec.${r}` as UiKey)}>{r} <span class="n">{n}</span></button>
       ))}
     </div>
     <span class="filter-count" id="f-count" aria-live="polite" data-suffix={t(locale, 'events.countSuffix')}></span>

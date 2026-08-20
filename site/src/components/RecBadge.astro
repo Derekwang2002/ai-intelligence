@@ -1,10 +1,13 @@
 ---
+import { t, type Locale, type UiKey } from '../lib/i18n';
+
 interface Props {
   rec: string;
+  locale?: Locale;
 }
-const { rec } = Astro.props;
+const { rec, locale = 'zh' } = Astro.props;
 const cls =
   { ADOPT: 'badge-adopt', TRIAL: 'badge-trial', WATCH: 'badge-watch', IGNORE: 'badge-ignore' }[rec] ?? 'badge-ignore';
 ---
 
-<span class={`badge ${cls}`}>{rec}</span>
+<span class={`badge ${cls}`} title={t(locale, `rec.${rec}` as UiKey)}>{rec}</span>

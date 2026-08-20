@@ -153,6 +153,36 @@ const zh = {
   'rec.TRIAL': '值得进行 POC 或小规模实验',
   'rec.WATCH': '值得持续跟踪，暂不投入较多资源',
   'rec.IGNORE': '当前信号不足、价值有限或 hype 较重',
+
+  'about.title': '阅读指南',
+  'about.en': 'How to Read',
+  'about.description': 'MATRIX:六维评分、采用建议与方法论说明',
+  'about.desc':
+    'MATRIX 不是新闻聚合器，而是持续积累的 AI 技术情报知识库。本页说明每个事件附带的六维评分与 ADOPT / TRIAL / WATCH / IGNORE 建议该如何阅读。',
+  'about.method': '方法论',
+  'about.methodText':
+    '以增量方式扫描一手来源（官方博客、Release Notes、GitHub、Hugging Face、论文），按官方发布时间归档为结构化事件，经指纹去重与多来源交叉验证。多个独立信号（跨日期、跨组织）才沉淀为趋势——单个新闻不构成趋势。沉淀链路：Events → Signals → Trends → Decisions。',
+  'about.scores': '六维评分',
+  'about.scoresText': '每个事件按 1–5 打分，锚点含义如下。事件页卡片的刻度条与详情页评分条均可悬停查看同一份锚点。',
+  'about.colDim': '维度',
+  'about.colMeaning': '含义',
+  'about.colAnchors': '刻度锚点',
+  'about.recs': '采用建议',
+  'about.recsText': '六维评分综合为四级行动建议：',
+  'scores.meaning.technical_impact': '技术新颖度与范式潜力',
+  'scores.meaning.engineering_value': '对成本、延迟、稳定性与开发工作流的实际改善',
+  'scores.meaning.adoption_signal': '真实采用强度（GitHub / Hugging Face 数据、框架集成、企业采用），而非媒体热度',
+  'scores.meaning.maturity': '从研究演示到被广泛采用的成熟程度',
+  'scores.meaning.verification_cost': '亲自验证其价值所需的时间投入',
+  'scores.meaning.risk': 'license、安全、vendor lock-in、API 稳定性、隐私与生产可靠性的综合评估',
+  'scores.anchor.technical_impact': '1 基本无创新 · 3 有实际改进 · 5 可能改变技术路线',
+  'scores.anchor.engineering_value': '1 几乎无法应用 · 3 有一定工程价值 · 5 可显著改变开发方式',
+  'scores.anchor.adoption_signal': '1 几乎无人关注 · 5 快速真实采用',
+  'scores.anchor.maturity': '1 Research Demo · 2 Early Prototype · 3 Usable · 4 Production Ready · 5 Widely Adopted',
+  'scores.anchor.verification_cost': '1 几分钟 · 2 几小时 · 3 一天 · 4 数天 · 5 高成本',
+  'scores.anchor.risk': '1 很低 · 5 很高',
+  'events.scoreGuide': '如何评分 →',
+  'footer.guide': '评分与阅读指南',
 } as const;
 
 export type UiKey = keyof typeof zh;
@@ -292,6 +322,37 @@ const en: Record<UiKey, string> = {
   'rec.TRIAL': 'Worth a POC or small-scale experiment',
   'rec.WATCH': 'Keep tracking; not worth heavy investment yet',
   'rec.IGNORE': 'Weak signals, limited value, or heavy hype',
+
+  'about.title': 'Reading Guide',
+  'about.en': 'How to Read',
+  'about.description': 'MATRIX: the six-dimension scores, adoption recommendations, and methodology',
+  'about.desc':
+    'MATRIX is not a news aggregator but a continuously accumulating AI tech intelligence knowledge base. This page explains the six-dimension scores and the ADOPT / TRIAL / WATCH / IGNORE recommendation attached to every event.',
+  'about.method': 'Methodology',
+  'about.methodText':
+    'Primary sources (official blogs, release notes, GitHub, Hugging Face, papers) are scanned incrementally and filed as structured events by official publication date, deduplicated by fingerprint and cross-verified across sources. A trend requires multiple independent signals across dates and organizations — a single news item is not a trend. The pipeline: Events → Signals → Trends → Decisions.',
+  'about.scores': 'Six-dimension scores',
+  'about.scoresText':
+    'Every event is scored 1–5 on six dimensions. Anchors below; the meter on event cards and the score bars on detail pages show the same anchors on hover.',
+  'about.colDim': 'Dimension',
+  'about.colMeaning': 'Meaning',
+  'about.colAnchors': 'Scale anchors',
+  'about.recs': 'Recommendations',
+  'about.recsText': 'The six scores distill into four action levels:',
+  'scores.meaning.technical_impact': 'Technical novelty and paradigm-shift potential',
+  'scores.meaning.engineering_value': 'Practical improvement to cost, latency, reliability, and developer workflow',
+  'scores.meaning.adoption_signal': 'Real adoption (GitHub / Hugging Face numbers, framework integrations, enterprise use) — not media buzz',
+  'scores.meaning.maturity': 'From research demo to wide adoption',
+  'scores.meaning.verification_cost': 'Time it takes to verify the value yourself',
+  'scores.meaning.risk': 'Combined assessment of license, security, vendor lock-in, API stability, privacy, and production reliability',
+  'scores.anchor.technical_impact': '1 No real innovation · 3 Real improvement · 5 Could change the technical roadmap',
+  'scores.anchor.engineering_value': '1 Barely applicable · 3 Some engineering value · 5 Can significantly change how you build',
+  'scores.anchor.adoption_signal': '1 Almost no attention · 5 Rapid genuine adoption',
+  'scores.anchor.maturity': '1 Research Demo · 2 Early Prototype · 3 Usable · 4 Production Ready · 5 Widely Adopted',
+  'scores.anchor.verification_cost': '1 Minutes · 2 Hours · 3 A day · 4 Several days · 5 High cost',
+  'scores.anchor.risk': '1 Very low · 5 Very high',
+  'events.scoreGuide': 'How scores work →',
+  'footer.guide': 'Reading guide',
 };
 
 export const ui: Record<Locale, Record<UiKey, string>> = { zh, en };

@@ -33,7 +33,7 @@ const recHintKey = `rec.${event.recommendation}` as UiKey;
     <div class="meta-row">
       <span class="mono" style="font-size: 12.5px;">{event.published_at}</span>
       {(event.organization ?? []).map((o: string) => <span class="tag">{o}</span>)}
-      <RecBadge rec={event.recommendation} />
+      <RecBadge rec={event.recommendation} locale={locale} />
       <span style="color: var(--text-faint); font-size: 12.5px;">{t(locale, recHintKey)}</span>
     </div>
   </div>
@@ -89,6 +89,9 @@ const recHintKey = `rec.${event.recommendation}` as UiKey;
       <div class="card side-box">
         <h3>{t(locale, 'events.scores')} · {event.recommendation}</h3>
         <ScoreBars scores={event} locale={locale} />
+        <div style="margin-top: 14px; font-size: 12.5px;">
+          <a href={`${u('/about/', locale)}#scores`} style="color: var(--text-faint);">{t(locale, 'events.scoreGuide')}</a>
+        </div>
       </div>
 
       <div class="card side-box">

@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import RecBadge from '../RecBadge.astro';
+import { t, type Locale, type UiKey } from '../../lib/i18n';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = 'zh' } = Astro.props;
+
+const dims: UiKey[] = [
+  'technical_impact',
+  'engineering_value',
+  'adoption_signal',
+  'maturity',
+  'verification_cost',
+  'risk',
+];
+const recs = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'];
+---
+
+<Base title={t(locale, 'about.title')} description={t(locale, 'about.description')} locale={locale}>
+  <div class="page-head">
+    <div class="head-row">
+      <h1>{t(locale, 'about.title')}</h1>
+      <span class="en">{t(locale, 'about.en')}</span>
+    </div>
+    <p class="desc">{t(locale, 'about.desc')}</p>
+  </div>
+
+  <div class="section-title">{t(locale, 'about.method')}</div>
+  <p class="guide-text">{t(locale, 'about.methodText')}</p>
+
+  <div class="section-title" id="scores">{t(locale, 'about.scores')}</div>
+  <p class="guide-text">{t(locale, 'about.scoresText')}</p>
+  <table class="guide-table">
+    <thead>
+      <tr>
+        <th>{t(locale, 'about.colDim')}</th>
+        <th>{t(locale, 'about.colMeaning')}</th>
+        <th>{t(locale, 'about.colAnchors')}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {dims.map((d) => (
+        <tr>
+          <td class="gd-name">{t(locale, `scores.${d}` as UiKey)}</td>
+          <td>{t(locale, `scores.meaning.${d}` as UiKey)}</td>
+          <td class="gd-anchors">{t(locale, `scores.anchor.${d}` as UiKey)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <div class="section-title">{t(locale, 'about.recs')}</div>
+  <p class="guide-text">{t(locale, 'about.recsText')}</p>
+  <div class="guide-recs">
+    {recs.map((r) => (
+      <div class="guide-rec">
+        <RecBadge rec={r} locale={locale} />
+        <span>{t(locale, `rec.${r}` as UiKey)}</span>
+      </div>
+    ))}
+  </div>
+</Base>

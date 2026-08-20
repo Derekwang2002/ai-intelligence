@@ -82,7 +82,7 @@ const recSummary = (['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const)
               <span class="f-title">{locTitle(e, locale)}</span>
             </span>
             <span class="f-side">
-              <RecBadge rec={e.recommendation} />
+              <RecBadge rec={e.recommendation} locale={locale} />
               <span class="score-nums" title={t(locale, 'scores.tripleTitle')}>
                 {t(locale, 'scores.impact')} {e.technical_impact ?? 0} · {t(locale, 'scores.engineering')} {e.engineering_value ?? 0} · {t(locale, 'scores.adoption')} {e.adoption_signal ?? 0}
               </span>
