@@ -128,18 +128,19 @@ const quadLabelPos = (range: [number, number]) => {
   ))}
 </div>
 
-<div class="radar-overview-head">
-  <span class="kicker">{t(locale, 'radar.overview')}</span>
-  <span class="legend">
-    {RING_ORDER.map((r) => (
-      <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
-    ))}
-    <span class="legend-note">{t(locale, 'radar.legendNote')}</span>
-  </span>
-</div>
+<section class="card radar-overview">
+  <div class="radar-overview-head">
+    <span class="kicker">{t(locale, 'radar.overview')}</span>
+    <span class="legend">
+      {RING_ORDER.map((r) => (
+        <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
+      ))}
+      <span class="legend-note">{t(locale, 'radar.legendNote')}</span>
+    </span>
+  </div>
 
-<figure class="card radar-figure">
-  <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label={t(locale, 'radar.aria')}>
+  <figure class="radar-figure">
+    <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label={t(locale, 'radar.aria')}>
     <circle class="adopt-disc" cx={CX} cy={CY} r={RINGS.ADOPT[1]} />
     {RING_ORDER.map((r) => (
       <circle class="ring-line" cx={CX} cy={CY} r={RINGS[r][1]} />
@@ -167,7 +168,8 @@ const quadLabelPos = (range: [number, number]) => {
       ))
     )}
   </svg>
-</figure>
+  </figure>
+</section>
 
 <div class="radar-tip" id="radar-tip" aria-hidden="true">
   <div class="t"></div>
