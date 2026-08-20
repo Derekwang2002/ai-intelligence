@@ -127,13 +127,13 @@ const recHintKey = `rec.${event.recommendation}` as UiKey;
 
   <nav class="prevnext" aria-label={t(locale, 'events.prevNextAria')}>
     {newer ? (
-      <a class="card pn-link" href={u(`/events/${newer.event_id}/`, locale)}>
+      <a class="pn-link" href={u(`/events/${newer.event_id}/`, locale)}>
         <span class="pn-dir">← {t(locale, 'events.newer')} · {newer.date}</span>
         <span class="pn-title">{locTitle(newer, locale)}</span>
       </a>
     ) : <span></span>}
     {older ? (
-      <a class="card pn-link next" href={u(`/events/${older.event_id}/`, locale)}>
+      <a class="pn-link next" href={u(`/events/${older.event_id}/`, locale)}>
         <span class="pn-dir">{t(locale, 'events.older')} · {older.date} →</span>
         <span class="pn-title">{locTitle(older, locale)}</span>
       </a>
