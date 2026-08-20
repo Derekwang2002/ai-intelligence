@@ -43,44 +43,51 @@ function evidenceList(tr: any, loc_: Locale): string[] {
   </div>
 
   <div class="stack">
-    {active.map((tr: any) => (
-      <article class="card trend-card">
-        <div class="head">
-          <h3>{loc(tr, 'name', locale)}</h3>
-          <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
-          <span class="t-conf">{t(locale, 'trends.confidence')} {tr.confidence}</span>
-        </div>
-        <div class="meta">
-          {tr.firstObserved && <span>{t(locale, 'trends.firstObserved')} {tr.firstObserved}</span>}
-          {tr.lastUpdated && <span>{t(locale, 'trends.lastUpdated')} {tr.lastUpdated}</span>}
-        </div>
-        {loc(tr, 'statusNote', locale) && loc(tr, 'statusNote', locale).toLowerCase() !== tr.status && (
-          <div class="block">{loc(tr, 'statusNote', locale)}</div>
-        )}
-        {loc(tr, 'why', locale) && (
-          <div class="block"><b>{t(locale, 'trends.why')}：</b>{loc(tr, 'why', locale)}</div>
-        )}
-        {evidenceList(tr, locale).length > 0 && (
-          <div>
-            <div class="block"><b>{t(locale, 'trends.evidence')}</b></div>
-            <ol class="evidence">
-              {evidenceList(tr, locale).map((item) => <li>{item}</li>)}
-            </ol>
+    {active.map((tr: any) => {
+      const note = loc(tr, 'statusNote', locale);
+      const showNote = note && note.toLowerCase() !== tr.status;
+      return (
+        <details class="card trend-card">
+          <summary aria-label={t(locale, 'trends.toggle')}>
+            <div class="head">
+              <h3>{loc(tr, 'name', locale)}</h3>
+              <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
+              <span class="t-conf">{t(locale, 'trends.confidence')} {tr.confidence}</span>
+              <svg class="t-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+            </div>
+            <div class="meta">
+              {tr.firstObserved && <span>{t(locale, 'trends.firstObserved')} {tr.firstObserved}</span>}
+              {tr.lastUpdated && <span>{t(locale, 'trends.lastUpdated')} {tr.lastUpdated}</span>}
+            </div>
+            {showNote && <div class="block t-note">{note}</div>}
+          </summary>
+          <div class="trend-detail">
+            {loc(tr, 'why', locale) && (
+              <div class="block"><b>{t(locale, 'trends.why')}：</b>{loc(tr, 'why', locale)}</div>
+            )}
+            {evidenceList(tr, locale).length > 0 && (
+              <div>
+                <div class="block"><b>{t(locale, 'trends.evidence')}</b></div>
+                <ol class="evidence">
+                  {evidenceList(tr, locale).map((item) => <li>{item}</li>)}
+                </ol>
+              </div>
+            )}
+            {(tr.updates ?? []).length > 0 && (
+              <div>
+                <div class="block"><b>{t(locale, 'trends.runNotes')}</b></div>
+                <ol class="evidence">
+                  {tr.updates.map((up: any) => <li><span class="mono" style="color: var(--text-faint);">{up.date}</span> — {loc(up, 'note', locale)}</li>)}
+                </ol>
+              </div>
+            )}
+            {loc(tr, 'confirm', locale) && (
+              <div class="block"><b>{t(locale, 'trends.confirm')}</b>{loc(tr, 'confirm', locale)}</div>
+            )}
           </div>
-        )}
-        {(tr.updates ?? []).length > 0 && (
-          <div>
-            <div class="block"><b>{t(locale, 'trends.runNotes')}</b></div>
-            <ol class="evidence">
-              {tr.updates.map((up: any) => <li><span class="mono" style="color: var(--text-faint);">{up.date}</span> — {loc(up, 'note', locale)}</li>)}
-            </ol>
-          </div>
-        )}
-        {loc(tr, 'confirm', locale) && (
-          <div class="block"><b>{t(locale, 'trends.confirm')}</b>{loc(tr, 'confirm', locale)}</div>
-        )}
-      </article>
-    ))}
+        </details>
+      );
+    })}
   </div>
 
   {retired.length > 0 && (
