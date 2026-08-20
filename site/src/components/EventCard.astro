@@ -36,8 +36,21 @@ const hiddenItems = [...orgs.slice(2), ...allTags.slice(2)];
     {shownOrgs.map((org: string) => <span class="tag">{org}</span>)}
     {shownTags.map((tag: string) => <span class="tag">{tag}</span>)}
     {hiddenItems.length > 0 && <span class="tag tag-more" data-more={hiddenItems.join('|')} title={hiddenItems.join(', ')}>+{hiddenItems.length}</span>}
-    <span class="score-nums" title={t(locale, 'scores.tripleTitle')}>
-      {t(locale, 'scores.impact')} {event.technical_impact ?? 0} · {t(locale, 'scores.engineering')} {event.engineering_value ?? 0} · {t(locale, 'scores.adoption')} {event.adoption_signal ?? 0}
+    <span class="score-meter" title={t(locale, 'scores.tripleTitle')}>
+      {[
+        { label: t(locale, 'scores.impact'), v: event.technical_impact ?? 0 },
+        { label: t(locale, 'scores.engineering'), v: event.engineering_value ?? 0 },
+        { label: t(locale, 'scores.adoption'), v: event.adoption_signal ?? 0 },
+      ].map((s: { label: string; v: number }) => {
+        const val = Math.max(0, Math.min(5, s.v));
+        return (
+          <span class="sc">
+            <span class="sc-label">{s.label}</span>
+            <span class="sc-bar">{[1, 2, 3, 4, 5].map((n) => <i class={n <= val ? 'on' : ''} />)}</span>
+            <span class="sc-num">{s.v}</span>
+          </span>
+        );
+      })}
     </span>
   </div>
 </a>
