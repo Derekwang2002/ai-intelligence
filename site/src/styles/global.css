@@ -388,8 +388,8 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   box-shadow: var(--card-ring), var(--card-sheen), var(--card-shadow);
 }
 /* Apple 式连续曲率角：支持的浏览器把圆角升级为超椭圆（squircle），消除直边与圆弧衔接处的曲率跳变；不支持的浏览器忽略本属性，回退为普通 border-radius */
-.card, .event-card, .filter-bar, .feed-row, .pn-link, .daily-row, .quad-items a,
-.filter-bar select, .fchip, .pager a, .btn-primary, .btn-ghost, .t-mini, .watch-list li,
+.card, .event-card, .filter-bar, .feed-row, .pn-link, .daily-row, .quad-items,
+.filter-bar select, .fchip, .pager a, .btn-primary, .btn-ghost, .t-mini, .watch-list,
 .radar-tip, .nav-utils, .header-search input, .prose pre { corner-shape: squircle; }
 
 /* ============ badges / chips / tags ============ */
@@ -667,24 +667,31 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   color: var(--text);
 }
 .quad-head .count { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--text-faint); margin-left: 8px; }
-.quad-items { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+/* 密集多条目列表：一整张大卡片承载，条目间用内部横线分隔，不再各自成卡 */
+.quad-items {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--card-ring), var(--card-sheen), var(--card-shadow);
+  overflow: clip;
+}
+.quad-items li + li { border-top: 1px solid var(--border); }
 .quad-items a {
   display: flex;
   gap: 10px;
   align-items: baseline;
-  padding: 8px 12px;
-  margin-bottom: 6px;
-  background: var(--surface);
-  border-radius: var(--radius-md);
-  box-shadow: var(--card-ring), var(--card-sheen), var(--card-shadow);
+  padding: 9px 18px;
   color: var(--text-muted);
   font-size: 13.5px;
   line-height: 1.6;
-  transition: box-shadow 0.2s var(--ease), background-color 0.15s var(--ease), color 0.15s var(--ease);
+  transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
 }
 .quad-items a:hover {
   background-color: color-mix(in srgb, var(--surface) 94%, var(--text) 6%);
-  box-shadow: var(--card-ring), var(--card-sheen), var(--card-shadow-hover);
   color: var(--text);
   text-decoration: none;
 }
@@ -693,7 +700,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .quad-items .rec-dot { width: 7px; height: 7px; border-radius: 2px; flex-shrink: 0; position: relative; top: -1px; }
 .quad-items .qi-title { color: inherit; }
 .quad-items .qi-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--text-faint); flex-shrink: 0; }
-.quad-empty { font-size: 12.5px; color: var(--text-faint); padding: 8px 2px; }
+.quad-empty { font-size: 12.5px; color: var(--text-faint); padding: 10px 18px; }
 
 /* ============ 雷达总览 ============ */
 /* 与象限区块同一版面语法：serif 章节标题（图例在右）→ 标准卡片承载表盘 */
@@ -812,19 +819,26 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 
 /* ============ plain lists ============ */
 
-.watch-list { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.watch-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--card-ring), var(--card-sheen), var(--card-shadow);
+  overflow: clip;
+}
 .watch-list li {
   display: flex;
   gap: 12px;
-  padding: 10px 14px;
-  margin-bottom: 8px;
-  background: var(--surface);
-  border-radius: var(--radius-md);
-  box-shadow: var(--card-ring), var(--card-sheen), var(--card-shadow);
+  padding: 10px 20px;
   font-size: 13.8px;
   color: var(--text-muted);
   line-height: 1.75;
 }
+.watch-list li + li { border-top: 1px solid var(--border); }
 
 /* ============ rec distribution (home aside) ============ */
 
