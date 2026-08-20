@@ -1,6 +1,6 @@
 ---
 import { u } from '../lib/url';
-import { t, type Locale, type UiKey } from '../lib/i18n';
+import { t, type Locale } from '../lib/i18n';
 
 interface Props {
   events: any[];
@@ -20,12 +20,12 @@ const RING_ORDER = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const;
 
 // 象限为 [起始角, 结束角]（度）。SVG y 轴向下、角度自东向顺时针，
 // 因此 [-90,0] 是右上楔形。
-const QUADRANTS: { id: string; labelKey: UiKey; cats: string[]; range: [number, number] }[] = [
+const QUADRANTS = [
   { id: 'models', labelKey: 'radar.quad.models', cats: ['foundation-model', 'research'], range: [-90, 0] },
   { id: 'agents', labelKey: 'radar.quad.agents', cats: ['agent-security', 'agent', 'ai-engineering'], range: [180, 270] },
   { id: 'infra', labelKey: 'radar.quad.infra', cats: ['open-source', 'infrastructure'], range: [90, 180] },
   { id: 'tools', labelKey: 'radar.quad.tools', cats: ['developer-tools', 'business'], range: [0, 90] },
-];
+] as const;
 
 const CX = 500;
 const CY = 500;
@@ -35,23 +35,6 @@ const REC_VAR: Record<string, string> = {
   WATCH: 'var(--watch)',
   IGNORE: 'var(--ignore)',
 };
-
-// Annulus path (outer circle minus inner circle) for soft ring band tints.
-const annulus = (ri: number, ro: number) =>
-  `M ${CX - ro} ${CY} a ${ro} ${ro} 0 1 0 ${2 * ro} 0 a ${ro} ${ro} 0 1 0 ${-2 * ro} 0 Z` +
-  ` M ${CX - ri} ${CY} a ${ri} ${ri} 0 1 0 ${2 * ri} 0 a ${ri} ${ri} 0 1 0 ${-2 * ri} 0 Z`;
-const RING_TINT: Record<string, number> = { ADOPT: 0.08, TRIAL: 0.05, WATCH: 0.035, IGNORE: 0.025 };
-
-// 由 fingerprint 生成确定性伪随机数，保证每次构建光点位置稳定。
-function hash01(str: string, salt: number): number {
-  let h = 2166136261 ^ salt;
-  for (let i = 0; i < str.length; i++) {
-    h ^= str.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  h = (h ^ (h >>> 13)) >>> 0;
-  return h / 4294967296;
-}
 
 // 每个 fingerprint 只保留一个光点，取最新事件。
 const byFingerprint = new Map<string, any>();
@@ -72,30 +55,45 @@ type Blip = {
   href: string;
 };
 
+// 光点在每个（象限 × 环）单元格内沿弧线均匀分布：按日期排序、
+// 两条半径泳道交替。位置完全确定，避免随机散点的噪声与重叠。
 const legend: { quad: (typeof QUADRANTS)[number]; blips: Blip[] }[] = [];
 let counter = 0;
 for (const quad of QUADRANTS) {
   const quadEvents = [...byFingerprint.values()]
     .filter((e) => quad.cats.includes(e.category))
     .sort((a, b) => String(a.published_date).localeCompare(String(b.published_date)));
+  const cellSize = new Map<string, number>();
+  for (const e of quadEvents) {
+    const rec = RINGS[e.recommendation] ? e.recommendation : 'WATCH';
+    cellSize.set(rec, (cellSize.get(rec) ?? 0) + 1);
+  }
+  const cellIdx = new Map<string, number>();
   const blips: Blip[] = [];
   for (const e of quadEvents) {
     counter += 1;
-    const [ri, ro] = RINGS[e.recommendation] ?? RINGS.WATCH;
+    const rec = RINGS[e.recommendation] ? e.recommendation : 'WATCH';
+    const idx = cellIdx.get(rec) ?? 0;
+    cellIdx.set(rec, idx + 1);
+    const n = cellSize.get(rec)!;
+    const [ri, ro] = RINGS[rec];
     const [qs, qe] = quad.range;
-    const t1 = 0.12 + 0.76 * hash01(e.event_fingerprint, 1);
-    const t2 = 0.2 + 0.6 * hash01(e.event_fingerprint, 2);
-    const angle = ((qs + (qe - qs) * t1) * Math.PI) / 180;
-    const radius = ri + (ro - ri) * t2;
+    const span = qe - qs;
+    const pad = 14;
+    const deg = n > 1 ? qs + pad + ((span - 2 * pad) * idx) / (n - 1) : qs + span / 2;
+    const mid = (ri + ro) / 2;
+    const laneGap = Math.min(16, (ro - ri) / 5);
+    const radius = n > 2 ? mid + (idx % 2 === 0 ? -1 : 1) * laneGap : mid;
+    const angle = (deg * Math.PI) / 180;
     blips.push({
       no: counter,
       x: CX + radius * Math.cos(angle),
       y: CY + radius * Math.sin(angle),
-      rec: e.recommendation,
+      rec,
       title: e.title,
       org: (e.organization ?? []).join(', '),
       date: e.published_date,
-      href: u(`/events/${e.event_id}/`, locale),
+      href: u(`/events/${e.event_id}/`),
     });
   }
   legend.push({ quad, blips });
@@ -117,7 +115,7 @@ const quadLabelPos = (range: [number, number]) => {
         {blips.length === 0 && <li class="quad-empty">{t(locale, 'radar.empty')}</li>}
         {blips.map((b) => (
           <li>
-            <a href={b.href} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
+            <a href={b.href} data-no={b.no} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
               <span class="no">{String(b.no).padStart(2, '0')}</span>
               <span class="rec-dot" style={`background: ${REC_VAR[b.rec] ?? REC_VAR.WATCH}`}></span>
               <span class="qi-title">{b.title}</span>
@@ -130,20 +128,28 @@ const quadLabelPos = (range: [number, number]) => {
   ))}
 </div>
 
-<figure class="card radar-figure" style="margin: 0 auto 8px;">
-  <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label={t(locale, 'radar.aria')}>
+<div class="radar-overview-head">
+  <span class="kicker">{t(locale, 'radar.overview')}</span>
+  <span class="legend">
     {RING_ORDER.map((r) => (
-      <path class="ring-band" d={annulus(RINGS[r][0], RINGS[r][1])} fill={REC_VAR[r]} fill-rule="evenodd" opacity={RING_TINT[r]} />
+      <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
     ))}
+    <span class="legend-note">{t(locale, 'radar.legendNote')}</span>
+  </span>
+</div>
+
+<figure class="radar-figure">
+  <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label={t(locale, 'radar.aria')}>
+    <circle class="adopt-disc" cx={CX} cy={CY} r={RINGS.ADOPT[1]} />
     {RING_ORDER.map((r) => (
       <circle class="ring-line" cx={CX} cy={CY} r={RINGS[r][1]} />
     ))}
     <circle class="ring-line" cx={CX} cy={CY} r={RINGS.ADOPT[0]} opacity="0.5" />
-    <line class="axis-line" x1={CX} y1={26} x2={CX} y2={974} />
-    <line class="axis-line" x1="26" y1={CY} x2="974" y2={CY} />
+    <line class="axis-line" x1={CX} y1={CY - 476} x2={CX} y2={CY + 476} />
+    <line class="axis-line" x1={CX - 476} y1={CY} x2={CX + 476} y2={CY} />
 
     {RING_ORDER.map((r) => (
-      <text class="ring-label" x={CX} y={CY - ringMid(r) + 6}>{r}</text>
+      <text class="ring-label" x={CX} y={CY - ringMid(r)}>{r}</text>
     ))}
 
     {QUADRANTS.map((q) => {
@@ -153,19 +159,14 @@ const quadLabelPos = (range: [number, number]) => {
 
     {legend.flatMap(({ blips }) =>
       blips.map((b) => (
-        <a class="blip" href={b.href} aria-label={`${b.title}（${b.rec}）`} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
-          <circle cx={b.x} cy={b.y} r="12" fill={REC_VAR[b.rec] ?? REC_VAR.WATCH} />
+        <a class="blip" href={b.href} data-no={b.no} aria-label={`${b.title}（${b.rec}）`} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
+          <circle class="halo" cx={b.x} cy={b.y} r="17" stroke={REC_VAR[b.rec] ?? REC_VAR.WATCH} stroke-width="2" />
+          <circle class="dot" cx={b.x} cy={b.y} r="11" fill={REC_VAR[b.rec] ?? REC_VAR.WATCH} />
           <text x={b.x} y={b.y + 0.5}>{b.no}</text>
         </a>
       ))
     )}
   </svg>
-  <figcaption class="radar-legend-foot">
-    {RING_ORDER.map((r) => (
-      <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
-    ))}
-    <span style="width: 100%; color: var(--text-faint);">{t(locale, 'radar.legendNote')}</span>
-  </figcaption>
 </figure>
 
 <div class="radar-tip" id="radar-tip" aria-hidden="true">
@@ -207,4 +208,24 @@ const quadLabelPos = (range: [number, number]) => {
     }
   });
   document.addEventListener('mouseleave', hide);
+
+  // 列表 ↔ 雷达图联动高亮：两侧元素通过 data-no 共享编号
+  let current: string | null = null;
+  function setHl(no: string, on: boolean) {
+    for (const el of document.querySelectorAll(`[data-no="${CSS.escape(no)}"]`)) {
+      el.classList.toggle('hl', on);
+    }
+  }
+  document.addEventListener('mouseover', (ev) => {
+    const target = (ev.target as Element).closest?.('[data-no]');
+    const no = target?.getAttribute('data-no') ?? null;
+    if (no === current) return;
+    if (current) setHl(current, false);
+    current = no;
+    if (current) setHl(current, true);
+  });
+  document.addEventListener('mouseleave', () => {
+    if (current) setHl(current, false);
+    current = null;
+  });
 </script>
