@@ -13,28 +13,56 @@ const { report, locale = 'zh' } = Astro.props;
 const idx = daily.findIndex((d: any) => d.date === report.date);
 const newer = daily[idx - 1];
 const older = daily[idx + 1];
+
+// 日报 markdown 的 H1 与页头标题重复，渲染时剔除
+let html = (loc(report, 'html', locale) as string).replace(/<h1[^>]*>[\s\S]*?<\/h1>/, '');
+
+// 中文模式：知识库日报的英文小节名替换为中文。正文 h2 与右侧目录同源，一并将目录中文化。
+if (locale === 'zh') {
+  const SECTION_ZH: Record<string, string> = {
+    'Daily Executive Summary': '今日摘要',
+    'Updates to Existing Events': '既有事件更新',
+    'Models': '模型',
+    'Agent &amp; AI Engineering': 'Agent 与 AI 工程',
+    'Open Source': '开源',
+    'Research': '研究',
+    'Developer Tools': '开发者工具',
+    'Infrastructure': '基础设施',
+    'Business &amp; Policy': '商业与政策',
+    'Trend Signals': '趋势信号',
+    'Tech Radar': '技术雷达',
+    'Worth Trying': '值得一试',
+    'Watch Items': '观察项',
+    'Sources': '来源',
+  };
+  html = html.replace(/<h2>([^<]+)<\/h2>/g, (m, name: string) => {
+    const n = name.trim();
+    if (SECTION_ZH[n]) return `<h2>${SECTION_ZH[n]}</h2>`;
+    if (n.startsWith('Watch Items')) return `<h2>${n.replace('Watch Items', '观察项')}</h2>`;
+    return m;
+  });
+}
 ---
 
 <Base title={`${t(locale, 'daily.reportTitle')} ${report.date}`} locale={locale}>
   <div class="article-head">
-    <div class="crumbs">
-      <a href={u('/daily/', locale)}>{t(locale, 'daily.back')}</a>
-      <span class="mono" style="font-size: 12.5px;">{report.date}</span>
+    <div class="back-row">
+      <a class="btn-ghost btn-sm" href={u('/daily/', locale)}>{t(locale, 'daily.back')}</a>
     </div>
     <h1>{t(locale, 'daily.reportTitle')} · {report.date}</h1>
-    <div class="pager">
-      {newer ? <a href={u(`/daily/${newer.date}/`, locale)}>← {t(locale, 'daily.newer')} {newer.date}</a> : <span></span>}
-      {older && <a href={u(`/daily/${older.date}/`, locale)}>{t(locale, 'daily.older')} {older.date} →</a>}
-    </div>
   </div>
   <div class="daily-grid">
     <div class="article-body">
-      <div class="prose" set:html={loc(report, 'html', locale)} />
+      <div class="prose" set:html={html} />
     </div>
     <div class="card toc-card" id="toc-card" hidden>
       <h3>{t(locale, 'daily.toc')}</h3>
       <nav class="toc-list" id="toc-list" aria-label={t(locale, 'daily.toc')}></nav>
     </div>
+  </div>
+  <div class="pager pager-bottom">
+    {newer ? <a href={u(`/daily/${newer.date}/`, locale)}>← {t(locale, 'daily.newer')} {newer.date}</a> : <span></span>}
+    {older ? <a href={u(`/daily/${older.date}/`, locale)}>{t(locale, 'daily.older')} {older.date} →</a> : <span></span>}
   </div>
 </Base>
 
