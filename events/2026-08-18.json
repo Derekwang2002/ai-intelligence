@@ -7,7 +7,9 @@
       "title": "Cerebras unveils CS-4 at SUPERNOVA 2026 — rack-scale 750 PFLOPS system on three WSE-3 Turbo wafers",
       "title_zh": "Cerebras 在 SUPERNOVA 2026 发布 CS-4——三片 WSE-3 Turbo 晶圆组成的机架级 750 PFLOPS 系统",
       "category": "infrastructure",
-      "organization": ["Cerebras"],
+      "organization": [
+        "Cerebras"
+      ],
       "published_at": "2026-08-18",
       "published_at_note": "Announced during the SUPERNOVA 2026 keynote (livestream from ~22:30Z, Aug 18); press release syndicated 2026-08-18. In-window. Independent coverage: StockTitan (2026-08-18) and live cerebras.ai homepage; search indexes had not caught up at scan time.",
       "first_seen_at": "2026-08-19T00:00:17Z",
@@ -31,7 +33,11 @@
       "technical_details": {
         "compute": "750 PFLOPS AI (rack-scale)",
         "wafers": "3x WSE-3 Turbo",
-        "claims": ["up to 2x CS-3", "up to 30x tokens/sec/user vs GPU solutions", "up to 10x throughput per watt"],
+        "claims": [
+          "up to 2x CS-3",
+          "up to 30x tokens/sec/user vs GPU solutions",
+          "up to 10x throughput per watt"
+        ],
         "memory_bandwidth": "129.6 PB/s",
         "io": "7.2 Tb/s",
         "wafer_latency": "as low as 2 microseconds",
@@ -40,7 +46,15 @@
         "benchmark_caveat": "all figures vendor-claimed at announcement; no independent benchmarks yet"
       },
       "update_2026_08_19": "Independent analysis wave post-announcement: SemiAnalysis 'Cerebras's Next Generation CS-4: Fast Just Got Faster' (2026-08-18, coverage-gap recovery — published in the previous window but index-lag prevented capture) concludes CS-4 roughly doubles CS-3 performance mainly via increased power consumption, higher per-wafer clock frequency and rack-scale density rather than a new chip generation ('Double the Performance with Double the Power'); TNW frames it as Cerebras' first multi-wafer system with essentially faster-clocked WSE-3 silicon; TechTimes cites ~4,400 tokens/sec decode (~2x CS-3 token speed, ~6x system-level throughput) with no new silicon (same 5nm wafer, higher clocks); per-wafer figures cited: 44GB on-wafer SRAM, 250 PFLOPS, 43.2 PB/s memory bandwidth. Nexus Platform Architecture details: pluggable Wafer-Scale Backpack, RoCE v2, Direct Wafer Links. Hardware pricing still undisclosed; first-shipments-this-quarter reiterated by HPCwire/IBD/DataCenterDynamics. Also verified: SUPERNOVA 2026 produced no additional product/model announcements beyond CS-4 (investors newsroom + StockTitan CBRS feed checked 2026-08-20). Recommendation stays WATCH pending independent benchmarks and shipment evidence.",
-      "tags": ["cerebras", "cs-4", "wse-3-turbo", "inference", "hardware", "wafer-scale", "supernova-2026"],
+      "tags": [
+        "cerebras",
+        "cs-4",
+        "wse-3-turbo",
+        "inference",
+        "hardware",
+        "wafer-scale",
+        "supernova-2026"
+      ],
       "technical_impact": 4,
       "engineering_value": 3,
       "adoption_signal": 2,
@@ -48,14 +62,32 @@
       "verification_cost": 3,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "cerebras-cs-4-supernova-2026"
+      "event_fingerprint": "cerebras-cs-4-supernova-2026",
+      "technical_details_zh": {
+        "算力": "750 PFLOPS AI（机架级）",
+        "晶圆": "3 × WSE-3 Turbo",
+        "宣称": [
+          "最高 2x CS-3",
+          "每用户 tokens/sec 最高 30x GPU 方案",
+          "每瓦吞吐最高 10x"
+        ],
+        "内存带宽": "129.6 PB/s",
+        "IO": "7.2 Tb/s",
+        "晶圆延迟": "低至 2 微秒",
+        "架构": "模块化 Nexus Platform Architecture；可插拔 Wafer-Scale Backpack；Direct Wafer Links；支持 >50T 参数模型",
+        "供货": "预计本季度（Q3 2026）首批出货",
+        "Benchmark 注意": "所有数字均为发布时厂商宣称；尚无独立 benchmark"
+      }
     },
     {
       "event_id": "ev-20260818-02",
       "title": "OpenAI Codex CLI 0.148.0 stable — session forking, async hooks that invoke MCP tools, built-in Amazon Bedrock provider",
       "title_zh": "OpenAI Codex CLI 0.148.0 稳定版——会话 fork、可调用 MCP 工具的异步 hooks、内置 Amazon Bedrock provider",
       "category": "developer-tools",
-      "organization": ["OpenAI", "Amazon"],
+      "organization": [
+        "OpenAI",
+        "Amazon"
+      ],
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
@@ -76,9 +108,25 @@
         "bedrock": "built-in Amazon Bedrock Runtime provider; AWS profile + region; GPT-5.6 routing",
         "cost_visibility": "estimated thread credits/cost in /status, status lines, terminal titles",
         "export": "/export markdown to clipboard or file",
-        "hardening": ["sandbox fail-closed for denied/unreadable paths (Linux/Windows)", "MCP recovery after OAuth re-auth", "reconnect through provider outages", "resumed sessions restore cwd + approval policy"]
+        "hardening": [
+          "sandbox fail-closed for denied/unreadable paths (Linux/Windows)",
+          "MCP recovery after OAuth re-auth",
+          "reconnect through provider outages",
+          "resumed sessions restore cwd + approval policy"
+        ]
       },
-      "tags": ["codex", "openai", "cli", "session-forking", "hooks", "mcp", "bedrock", "aws", "cost-visibility", "release"],
+      "tags": [
+        "codex",
+        "openai",
+        "cli",
+        "session-forking",
+        "hooks",
+        "mcp",
+        "bedrock",
+        "aws",
+        "cost-visibility",
+        "release"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 4,
@@ -86,14 +134,30 @@
       "verification_cost": 1,
       "risk": 2,
       "recommendation": "ADOPT",
-      "event_fingerprint": "openai-codex-cli-0-148-0"
+      "event_fingerprint": "openai-codex-cli-0-148-0",
+      "technical_details_zh": {
+        "版本": "0.148.0（stable）",
+        "会话 fork": "codex exec fork；TUI resume 选择器中 archive/restore",
+        "Hooks": "异步命令执行；可调用 MCP 工具",
+        "Bedrock": "内置 Amazon Bedrock Runtime provider；AWS profile + region；GPT-5.6 路由",
+        "成本可见性": "/status、状态栏、终端标题显示预估 thread credits/成本",
+        "导出": "/export markdown 到剪贴板或文件",
+        "加固": [
+          "sandbox 对被拒/不可读路径 fail-closed（Linux/Windows）",
+          "OAuth 重认证后 MCP 恢复",
+          "provider 故障期间自动重连",
+          "恢复的会话还原 cwd + approval policy"
+        ]
+      }
     },
     {
       "event_id": "ev-20260818-03",
       "title": "KV-Cache retention breaks rollback consistency in language agents (arXiv 2608.15939)",
       "title_zh": "KV-Cache 残留会破坏语言 agent 的回滚一致性（arXiv 2608.15939）",
       "category": "research",
-      "organization": ["academic"],
+      "organization": [
+        "academic"
+      ],
       "published_at": "2026-08-18",
       "published_at_note": "v1 submitted 2026-08-16 21:49:38 UTC; announced in the Tue, 18 Aug 2026 arXiv cs.CL digest (in-window). cs.CL. Authors: Guijia Zhang, Harry Yang (affiliations not stated on abstract page).",
       "first_seen_at": "2026-08-19T00:00:17Z",
@@ -118,7 +182,17 @@
         "code": "no direct repo link on abstract page; authors claim reproducibility from released artifacts (CC BY 4.0, TeX source available)",
         "relation_to_kb": "complements Agentic Transaction (ev-20260817-01): both target atomicity/rollback semantics for agents — this paper shows the storage layer (KV cache) violates them silently"
       },
-      "tags": ["agents", "kv-cache", "rollback", "reliability", "security", "langgraph", "transformers", "arxiv", "research"],
+      "tags": [
+        "agents",
+        "kv-cache",
+        "rollback",
+        "reliability",
+        "security",
+        "langgraph",
+        "transformers",
+        "arxiv",
+        "research"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -126,7 +200,16 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2608-15939-kv-cache-rollback-consistency"
+      "event_fingerprint": "arxiv-2608-15939-kv-cache-rollback-consistency",
+      "technical_details_zh": {
+        "保证": "回滚一致性——完整 abort 必须恢复模型实际 attended 的状态，而不只是 transcript",
+        "方法": "same-token/different-cache 审计（决策 token 完全一致，仅缓存前缀不同）",
+        "范围": "7 个开放权重模型家族（3.8B–36B）；HF Transformers 默认 cache 复用；LangGraph time-travel；端到端会话应用；MoE cache 隔离对照",
+        "结果": "仅陈旧 KV 就在 25/63 个被审计单元中翻转了一个已写入的受保护副作用；攻击者 token 在全部 63 个服务请求中均不存在；重建 cache 可闭合所有案例",
+        "修复": "abort 时做事务级 cache 恢复（而非全局 flush）",
+        "代码": "摘要页无直接仓库链接；作者宣称可从发布的 artifact 复现（CC BY 4.0，提供 TeX 源码）",
+        "与知识库的关系": "补充 Agentic Transaction（ev-20260817-01）：两者都瞄准 agent 的原子性/回滚语义——本文表明存储层（KV cache）会静默违反它们"
+      }
     }
   ]
 }

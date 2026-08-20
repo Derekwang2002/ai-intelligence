@@ -7,7 +7,10 @@
       "title": "Cursor cloud agents become an always-on system — event Subscriptions, VM-isolated subagents, /goal, non-interrupt steering",
       "title_zh": "Cursor 云端 agent 升级为常驻系统——事件订阅、VM 隔离 subagent、/goal、免打断引导",
       "category": "developer-tools",
-      "organization": ["Anysphere", "Cursor"],
+      "organization": [
+        "Anysphere",
+        "Cursor"
+      ],
       "published_at": "2026-08-19",
       "published_at_note": "Official changelog entry dated Aug 19, 2026 at cursor.com/changelog/08-19-26 (per-entry page shows 'Aug 19, 2026 · Changelog'). In-window. Cloud subagents themselves predate this (cloud environment setup + cloud subagents shipped ~2026-06-17); what is new on 8/19 is the always-on/event-driven system layer.",
       "first_seen_at": "2026-08-20T00:00:23Z",
@@ -33,7 +36,19 @@
         "context": "extends cloud agents/cloud subagents line (cloud environment setup + cloud subagents since ~2026-06-17); follows Builds (8/13) and Origin hosting (8/17)",
         "relation_to_kb": "in-window evidence for trend coding-agents-multi-agent-runtimes (new org: Cursor; new primitive types: event-driven wake, VM-per-subagent); also extends the single-vendor vertical-integration early indication (Builds 8/13 → Origin 8/17 → always-on system 8/19)"
       },
-      "tags": ["cursor", "anysphere", "cloud-agents", "subscriptions", "subagents", "virtual-machines", "swarm", "goal", "event-driven", "always-on", "release"],
+      "tags": [
+        "cursor",
+        "anysphere",
+        "cloud-agents",
+        "subscriptions",
+        "subagents",
+        "virtual-machines",
+        "swarm",
+        "goal",
+        "event-driven",
+        "always-on",
+        "release"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 3,
@@ -41,14 +56,25 @@
       "verification_cost": 1,
       "risk": 3,
       "recommendation": "TRIAL",
-      "event_fingerprint": "cursor-cloud-agents-subscriptions-vm-subagents"
+      "event_fingerprint": "cursor-cloud-agents-subscriptions-vm-subagents",
+      "technical_details_zh": {
+        "Subscriptions": "事件源：PR、Slack thread、定时任务；cloud agent 自动订阅自己创建的 PR 并驱动到完成（修 CI、处理 bot 评论）；目前仅 cloud agents",
+        "Custom Modes": "任意 skill 可固定为常驻模式（/ 菜单里 ⌥⏎ / Alt+Enter，或 'Use as Mode'）",
+        "Subagent 隔离": "每个 subagent 运行在独立 VM，拿到项目的隔离副本与干净上下文；支持 swarm 模式",
+        "/goal": "长期目标，持续工作直到完成；可与 custom mode、/loop 组合",
+        "Steering": "后续消息排队到下一个 tool call 再生效，不再打断；'Send now' 或双击 ⏎",
+        "背景": "延续 cloud agents / cloud subagents 线（约 2026-06-17 起的环境初始化 + cloud subagents）；接 Builds（8/13）与 Origin 托管（8/17）",
+        "与知识库的关系": "趋势 coding-agents-multi-agent-runtimes 的窗口内证据（新组织：Cursor；新原语：事件驱动唤醒、VM-per-subagent）；也延伸了单一厂商垂直整合的早期迹象（Builds 8/13 → Origin 8/17 → always-on 系统 8/19）"
+      }
     },
     {
       "event_id": "ev-20260819-02",
       "title": "PTXBench: benchmarking and adapting LLMs for architecture-specific PTX GPU kernel optimization (arXiv 2608.17379)",
       "title_zh": "PTXBench：面向特定架构 PTX GPU kernel 优化的 LLM 评测与适配（arXiv 2608.17379）",
       "category": "research",
-      "organization": ["academic"],
+      "organization": [
+        "academic"
+      ],
       "published_at": "2026-08-19",
       "published_at_note": "v1 submitted 2026-08-18T05:14:41Z; announced in the Wed, 19 Aug 2026 arXiv cs.CL digest (in-window). Authors: Genghan Zhang, Yixin Dong, Chengze Fan, Zhichen Zeng, Yueming Yuan, Shaowei Zhu.",
       "first_seen_at": "2026-08-20T00:00:23Z",
@@ -66,13 +92,33 @@
       "why_it_matters_en": "Kernel generation is where LLMs could compound the hardest (hardware refreshes every year, kernel engineers scarce), and this is one of the first benchmarks to go below CUDA to architecture-specific PTX on both H100 and B200, with runtime verification that claimed instructions actually execute. The negative result is the actionable part: today's models can emit exotic instructions without beating tuned libraries, so kernel-agent pipelines should verify speedup, not instruction selection, as their success signal. Extends the KB's GPU-kernel-with-LLMs evidence line (ev-20260813-06, contract-grade verifier) from verification toward capability measurement.",
       "technical_details": {
         "scope": "GEMM + attention workloads; H100 + B200; architecture-specific PTX",
-        "metrics": ["functional correctness", "target-instruction runtime execution", "speedup vs frontier libraries"],
-        "findings": ["success rates drop sharply on attention-backward", "instruction execution ≠ competitive performance", "no model consistently matches frontier libraries"],
+        "metrics": [
+          "functional correctness",
+          "target-instruction runtime execution",
+          "speedup vs frontier libraries"
+        ],
+        "findings": [
+          "success rates drop sharply on attention-backward",
+          "instruction execution ≠ competitive performance",
+          "no model consistently matches frontier libraries"
+        ],
         "adaptation": "SFT on Qwen3.6-27B; repair-conditioned training helps per-task; generalization uneven; data coverage/balance/teacher quality matter beyond size",
         "code": "no repo link on abstract page; benchmark claimed as auditable testbed",
         "relation_to_kb": "extends GPU-kernel × LLM evidence line started by arXiv 2608.12700 contract-grade verifier (ev-20260813-06)"
       },
-      "tags": ["gpu-kernels", "ptx", "benchmark", "llm", "kernel-optimization", "h100", "b200", "qwen", "sft", "arxiv", "research"],
+      "tags": [
+        "gpu-kernels",
+        "ptx",
+        "benchmark",
+        "llm",
+        "kernel-optimization",
+        "h100",
+        "b200",
+        "qwen",
+        "sft",
+        "arxiv",
+        "research"
+      ],
       "technical_impact": 3,
       "engineering_value": 3,
       "adoption_signal": 1,
@@ -80,14 +126,32 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2608-17379-ptxbench-ptx-kernel-optimization"
+      "event_fingerprint": "arxiv-2608-17379-ptxbench-ptx-kernel-optimization",
+      "technical_details_zh": {
+        "范围": "GEMM + attention 负载；H100 + B200；架构特定 PTX",
+        "度量": [
+          "功能正确性",
+          "目标指令运行时执行",
+          "相对前沿库的加速比"
+        ],
+        "发现": [
+          "attention-backward 上成功率骤降",
+          "指令执行 ≠ 有竞争力的性能",
+          "没有模型能稳定追平前沿库"
+        ],
+        "适配": "在 Qwen3.6-27B 上做 SFT；按任务做 repair-conditioned 训练有帮助；泛化不均；数据覆盖/平衡/教师质量比规模更关键",
+        "代码": "摘要页无仓库链接；宣称 benchmark 为可审计 testbed",
+        "与知识库的关系": "延续 arXiv 2608.12700 合约级验证器（ev-20260813-06）开启的 GPU-kernel × LLM 证据线"
+      }
     },
     {
       "event_id": "ev-20260819-03",
       "title": "Aggregate benchmark scores conceal item-level regressions in commercial LLM API migrations (arXiv 2608.17719)",
       "title_zh": "聚合 benchmark 分数会掩盖商用 LLM API 迁移中的条目级回退（arXiv 2608.17719）",
       "category": "research",
-      "organization": ["academic"],
+      "organization": [
+        "academic"
+      ],
       "published_at": "2026-08-19",
       "published_at_note": "v1 submitted 2026-08-18T12:44:54Z; announced in the Wed, 19 Aug 2026 arXiv cs.CL digest (in-window). Authors: Xiaonan Xu, Wenjing Wu. Complete response-level archive and per-item scoring outputs released per the abstract.",
       "first_seen_at": "2026-08-20T00:00:23Z",
@@ -106,11 +170,25 @@
       "technical_details": {
         "scope": "3 pairwise upgrades, GPT-5.4 → GPT-5.6 Sol product sequence",
         "method": "900 public benchmark items × 50 queries per item per model; FDR control + practical-significance threshold; label-permutation null calibration",
-        "results": ["aggregate +7.3pp edges contain up to 8.3% reliably regressed items", "aggregate-loss edges contain up to 10.7% reliably improved items", "strict-vs-loose scoring gap on instruction following: 3.9pt regression shrinks to 0.04pt under loose scoring"],
+        "results": [
+          "aggregate +7.3pp edges contain up to 8.3% reliably regressed items",
+          "aggregate-loss edges contain up to 10.7% reliably improved items",
+          "strict-vs-loose scoring gap on instruction following: 3.9pt regression shrinks to 0.04pt under loose scoring"
+        ],
         "artifacts": "complete response-level archive + per-item scoring outputs released",
         "relation_to_kb": "practical companion to DeepSeek V4-Pro pricing/GA event (ev-20260813-02) era of forced model migrations; methodology adoptable as migration acceptance gates"
       },
-      "tags": ["llm-api", "model-migration", "evaluation", "benchmarks", "regression-testing", "gpt-5", "reliability", "arxiv", "research"],
+      "tags": [
+        "llm-api",
+        "model-migration",
+        "evaluation",
+        "benchmarks",
+        "regression-testing",
+        "gpt-5",
+        "reliability",
+        "arxiv",
+        "research"
+      ],
       "technical_impact": 2,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -118,7 +196,18 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2608-17719-item-level-api-migration-regressions"
+      "event_fingerprint": "arxiv-2608-17719-item-level-api-migration-regressions",
+      "technical_details_zh": {
+        "范围": "3 组成对升级，GPT-5.4 → GPT-5.6 Sol 产品序列",
+        "方法": "900 条公开 benchmark 条目 × 每条每模型 50 次查询；FDR 控制 + 实际显著性阈值；标签置换零假设校准",
+        "结果": [
+          "聚合 +7.3pp 的升级边里含至多 8.3% 可靠回退条目",
+          "聚合损失的边里含至多 10.7% 可靠改进条目",
+          "instruction following 的严格/宽松评分差距：3.9pt 回退在宽松评分下缩至 0.04pt"
+        ],
+        "产物": "发布完整 response 级归档 + 逐条评分输出",
+        "与知识库的关系": "DeepSeek V4-Pro 定价/GA 事件（ev-20260813-02）强制迁移时代的实用配套；方法论可直接用作迁移验收门禁"
+      }
     }
   ]
 }

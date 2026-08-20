@@ -33,6 +33,8 @@ const maxBench = (m: Record<string, number>) => Math.max(...Object.values(m), 10
       <td>
         {typeof v === 'string' || typeof v === 'number' ? (
           <span class="mono">{String(v)}</span>
+        ) : typeof v === 'boolean' ? (
+          <span class="mono">{v ? '✓' : '✗'}</span>
         ) : Array.isArray(v) ? (
           <span class="mono">{v.join(' · ')}</span>
         ) : isNumericMap(v) ? (

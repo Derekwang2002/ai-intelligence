@@ -7,7 +7,10 @@
       "title": "Agentic Transaction — ACID-style transaction semantics for LLM agent systems (arXiv 2608.13900)",
       "title_zh": "Agentic Transaction——为 LLM agent 系统引入 ACID 式事务语义（arXiv 2608.13900）",
       "category": "research",
-      "organization": ["academic", "Tsinghua University"],
+      "organization": [
+        "academic",
+        "Tsinghua University"
+      ],
       "published_at": "2026-08-17",
       "published_at_note": "Submitted 2026-08-14; announced in the Mon, 17 Aug 2026 arXiv digest (in-window). Cross-listed cs.DB/cs.AI/cs.CL/cs.LG. Guoliang Li group (affiliation per common record, not stated on abstract page).",
       "first_seen_at": "2026-08-18T00:00:25Z",
@@ -24,13 +27,32 @@
       "why_it_matters_zh": "可靠性、结果一致性、安全并发和持久状态正是长时 agent 生产化的缺口；数据库事务的类比（原子单元、隔离、回滚语义、幂等 tool 副作用）是 agent 编排层和 agent-runtime 工程师可直接复用的设计模式——与这个具体实现是否胜出无关。",
       "why_it_matters_en": "Reliability, consistent outcomes, safe concurrency, and durable state are exactly the gaps blocking long-running agents in production; the DB transaction analogy (atomic units, isolation, rollback semantics, idempotent tool effects) is a directly reusable design pattern for agent orchestration layers and agent-runtime engineers — independent of whether this exact implementation wins.",
       "technical_details": {
-        "guarantees": ["Semantic Atomicity", "Semantic Consistency", "Semantic Isolation", "Semantic Durability"],
-        "mechanisms": ["transactional exploration-execution-validation cycles", "transactional skill hubs", "confidence-divergence-based validation", "semantic dependency-aware isolation", "transaction-aware state management"],
+        "guarantees": [
+          "Semantic Atomicity",
+          "Semantic Consistency",
+          "Semantic Isolation",
+          "Semantic Durability"
+        ],
+        "mechanisms": [
+          "transactional exploration-execution-validation cycles",
+          "transactional skill hubs",
+          "confidence-divergence-based validation",
+          "semantic dependency-aware isolation",
+          "transaction-aware state management"
+        ],
         "claimed_results": "+10.6% over SOTA agents on standard benchmarks; outperforms Claude Code (author-claimed, single-source)",
         "code": "none found at announcement",
         "benchmark_caveat": "results are author-reported in abstract; no independent reproduction yet"
       },
-      "tags": ["agents", "reliability", "transactions", "acid", "orchestration", "arxiv", "research"],
+      "tags": [
+        "agents",
+        "reliability",
+        "transactions",
+        "acid",
+        "orchestration",
+        "arxiv",
+        "research"
+      ],
       "technical_impact": 3,
       "engineering_value": 3,
       "adoption_signal": 1,
@@ -38,14 +60,35 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2608-13900-agentic-transaction"
+      "event_fingerprint": "arxiv-2608-13900-agentic-transaction",
+      "technical_details_zh": {
+        "保证": [
+          "语义原子性",
+          "语义一致性",
+          "语义隔离",
+          "语义持久性"
+        ],
+        "机制": [
+          "事务化「探索-执行-验证」循环",
+          "事务化 skill hub",
+          "基于置信度分歧的验证",
+          "语义依赖感知的隔离",
+          "事务感知的状态管理"
+        ],
+        "宣称结果": "标准 benchmark 上超出 SOTA agent +10.6%；优于 Claude Code（作者宣称，单一来源）",
+        "代码": "发布时未找到",
+        "Benchmark 注意": "结果为作者在摘要中自报；尚无独立复现"
+      }
     },
     {
       "event_id": "ev-20260817-02",
       "title": "Cursor launches Origin — agent-native code hosting with built-in PR review, GitHub sync, and CI/preview apps",
       "title_zh": "Cursor 推出 Origin——agent 原生代码托管，内置 PR review、GitHub 同步与 CI/预览应用",
       "category": "developer-tools",
-      "organization": ["Anysphere", "Cursor"],
+      "organization": [
+        "Anysphere",
+        "Cursor"
+      ],
       "published_at": "2026-08-17",
       "published_at_note": "Changelog post metadata publishedTime 2026-08-17T00:00Z (date-granular); community coverage confirms Aug 17. Coverage-gap recovery: published seconds before the previous run's window start ([2026-08-17T00:00:22Z, ...]) and within its 3h retrieval overlap, but not captured by that run; registered by the 2026-08-19 run with first_seen_at = 2026-08-19T00:00:17Z.",
       "first_seen_at": "2026-08-19T00:00:17Z",
@@ -68,11 +111,26 @@
         "code_review": "Pull Requests reviewed natively in Cursor, including agentic code review",
         "github_sync": "bidirectional; mirrors refs, merge queue, branch protections, check runs",
         "agents": "agents can push directly to Origin",
-        "apps": ["Vercel (preview deployments)", "Depot (Docker builds)", "Buildkite (CI)"],
+        "apps": [
+          "Vercel (preview deployments)",
+          "Depot (Docker builds)",
+          "Buildkite (CI)"
+        ],
         "integration_mechanism": "request-builds tool + MCP servers",
         "context": "launched the same day as a GitHub outage (community-noted); first major Cursor infrastructure move after the SpaceX acquisition closed (2026-08-14, ev-20260814-06)"
       },
-      "tags": ["cursor", "origin", "code-hosting", "git", "pull-requests", "ci", "vercel", "buildkite", "mcp", "ecosystem"],
+      "tags": [
+        "cursor",
+        "origin",
+        "code-hosting",
+        "git",
+        "pull-requests",
+        "ci",
+        "vercel",
+        "buildkite",
+        "mcp",
+        "ecosystem"
+      ],
       "technical_impact": 3,
       "engineering_value": 3,
       "adoption_signal": 3,
@@ -80,7 +138,21 @@
       "verification_cost": 1,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "cursor-origin-code-hosting"
+      "event_fingerprint": "cursor-origin-code-hosting",
+      "technical_details_zh": {
+        "状态": "early beta，正向全部付费计划推送",
+        "托管": "git 托管；创建仓库、push、从其他托管同步",
+        "代码评审": "PR 在 Cursor 内原生评审，含 agentic code review",
+        "GitHub 同步": "双向；镜像 refs、merge queue、分支保护、check runs",
+        "Agent": "agent 可直接 push 到 Origin",
+        "应用": [
+          "Vercel（预览部署）",
+          "Depot（Docker 构建）",
+          "Buildkite（CI）"
+        ],
+        "集成机制": "request-builds 工具 + MCP servers",
+        "背景": "发布当天恰逢 GitHub 故障（社区注意到）；SpaceX 收购完成（2026-08-14，ev-20260814-06）后 Cursor 首个重大基础设施动作"
+      }
     }
   ]
 }

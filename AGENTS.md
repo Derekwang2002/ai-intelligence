@@ -184,6 +184,7 @@ events/YYYY-MM-DD.json
   "why_it_matters_zh": "",
   "why_it_matters_en": "",
   "technical_details": {},
+  "technical_details_zh": {},
   "tags": [],
   "technical_impact": 0,
   "engineering_value": 0,
@@ -208,7 +209,8 @@ events/YYYY-MM-DD.json
 - `summary` / `why_it_matters` 保持英文原文，与 `summary_en` / `why_it_matters_en` 内容一致（保留原字段是为了向后兼容）。
 - `summary_zh` / `why_it_matters_zh` 为必填中文版本；中文版本里技术名称、产品名和关键术语保留英文。
 - `title` 为英文规范标题（站点英文模式直接使用）；`title_zh` 为必填中文标题，供中文模式展示——产品名、模型名、版本号、协议名等保持英文，只翻译描述性部分。
-- `category`、`organization`、`tags`、`technical_details` 不做翻译，保持英文。
+- `category`、`organization`、`tags` 不做翻译，保持英文。
+- `technical_details` 保持英文为规范版本；同时必填 `technical_details_zh` 中文展示镜像：key 直接写中文显示标签（benchmark 名、产品名、协议名等技术名词保留英文），value 中技术名称、产品名、版本号保留英文；纯数值、布尔值与 benchmark 嵌套 map 与英文版保持一致。嵌套结构最多两层，深层数据应展开为可读字符串。
 - 更新已有事件时，双语字段必须同步更新，不允许只更新一种语言。
 
 ## 7. Daily Reports

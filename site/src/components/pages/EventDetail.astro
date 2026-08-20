@@ -20,6 +20,8 @@ const older = idx >= 0 && idx < events.length - 1 ? events[idx + 1] : null;
 const summary = loc(event, 'summary', locale);
 const whyItMatters = loc(event, 'why_it_matters', locale);
 const recHintKey = `rec.${event.recommendation}` as UiKey;
+// 中文模式优先使用技术细节的中文展示镜像（AGENTS.md §6 双语约定）
+const techDetails = (locale === 'zh' && event.technical_details_zh) ? event.technical_details_zh : event.technical_details;
 ---
 
 <Base title={locTitle(event, locale).slice(0, 80)} locale={locale}>
@@ -53,10 +55,10 @@ const recHintKey = `rec.${event.recommendation}` as UiKey;
           </>
         )}
 
-        {event.technical_details && Object.keys(event.technical_details).length > 0 && (
+        {techDetails && Object.keys(techDetails).length > 0 && (
           <>
             <div class="section-title">{t(locale, 'events.details')}</div>
-            <DetailTable obj={event.technical_details} />
+            <DetailTable obj={techDetails} />
           </>
         )}
 

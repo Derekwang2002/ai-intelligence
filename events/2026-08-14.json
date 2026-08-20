@@ -7,7 +7,10 @@
       "title": "Qwen3.8-27B open weights released — 27.8B dense multimodal, 262K native context, Apache 2.0",
       "title_zh": "Qwen3.8-27B 开放权重——27.8B 稠密多模态，原生 262K 上下文，Apache 2.0 协议",
       "category": "foundation-model",
-      "organization": ["Alibaba", "Qwen"],
+      "organization": [
+        "Alibaba",
+        "Qwen"
+      ],
       "published_at": "2026-08-14T15:00:01Z",
       "first_seen_at": "2026-08-15T12:26:05Z",
       "last_updated_at": "2026-08-15T12:26:05Z",
@@ -43,9 +46,22 @@
           "ifbench": 79.5
         },
         "adoption": "91,917 downloads + 9,479 likes on HF within ~1 day; 319 community quantizations; Ollama day-0 support (v0.32.12/v0.32.13 on Aug 14); OpenRouter $0.45/$3.20 per Mtok",
-        "runtimes": ["vLLM", "SGLang", "transformers", "Ollama"]
+        "runtimes": [
+          "vLLM",
+          "SGLang",
+          "transformers",
+          "Ollama"
+        ]
       },
-      "tags": ["qwen", "open-weights", "apache-2", "agentic", "multimodal", "long-context", "local"],
+      "tags": [
+        "qwen",
+        "open-weights",
+        "apache-2",
+        "agentic",
+        "multimodal",
+        "long-context",
+        "local"
+      ],
       "technical_impact": 4,
       "engineering_value": 5,
       "adoption_signal": 4,
@@ -53,14 +69,42 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "qwen3-8-27b-open-weights"
+      "event_fingerprint": "qwen3-8-27b-open-weights",
+      "technical_details_zh": {
+        "参数量": "27.78B BF16（约 55.6GB）",
+        "架构": "64 层；16 ×（3 ×（Gated DeltaNet → FFN）→ 1 ×（Gated Attention → FFN））；MTP 训练；架构族 qwen3_5",
+        "上下文": "原生 262,144 / YaRN 扩展 1,000,000",
+        "模态": "image-text-to-text（图片、视频、文本）",
+        "许可证": "Apache-2.0",
+        "Benchmarks": {
+          "swe_bench_pro": 61.7,
+          "terminal_bench_2_1": 73.0,
+          "livecodebench_v6": 90.3,
+          "gpqa_diamond": 89.2,
+          "osworld_verified": 84.3,
+          "webarena_verified": 64.8,
+          "deepswe_1_1": 42.2,
+          "hle": 30.8,
+          "ifbench": 79.5
+        },
+        "采用情况": "HF 约 1 天内 91,917 次下载 + 9,479 赞；319 个社区量化版；Ollama day-0 支持（8/14 v0.32.12/v0.32.13）；OpenRouter $0.45/$3.20 每 Mtok",
+        "运行时": [
+          "vLLM",
+          "SGLang",
+          "transformers",
+          "Ollama"
+        ]
+      }
     },
     {
       "event_id": "ev-20260814-02",
       "title": "Zhipu (Z.ai) releases GLM-5.3 — claims strongest open-weights coding model; weights deferred ~2 weeks for security review",
       "title_zh": "智谱（Z.ai）发布 GLM-5.3——号称最强开放权重编程模型；权重因安全审查推迟约 2 周",
       "category": "foundation-model",
-      "organization": ["Zhipu AI", "Z.ai"],
+      "organization": [
+        "Zhipu AI",
+        "Z.ai"
+      ],
       "published_at": "2026-08-14",
       "first_seen_at": "2026-08-15T12:26:05Z",
       "last_updated_at": "2026-08-15T12:26:05Z",
@@ -90,7 +134,14 @@
         "weights": "open-source planned ~2 weeks after security review (approx 2026-08-28)"
       },
       "update_2026_08_15": "Z.ai published follow-up 'Preparing GLM-5.3 for Open Release: A Responsible Path to Cyber Defense' at 2026-08-15T06:32Z, plus live OpenVuln demo space (huggingface.co/spaces/zai-org/OpenVuln). Reaffirms weights-after-review plan.",
-      "tags": ["glm", "zhipu", "coding", "agents", "cybersecurity", "open-weights-pending"],
+      "tags": [
+        "glm",
+        "zhipu",
+        "coding",
+        "agents",
+        "cybersecurity",
+        "open-weights-pending"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 3,
@@ -98,14 +149,27 @@
       "verification_cost": 2,
       "risk": 3,
       "recommendation": "TRIAL",
-      "event_fingerprint": "zai-glm-5-3-release"
+      "event_fingerprint": "zai-glm-5-3-release",
+      "technical_details_zh": {
+        "上下文": "1M tokens，最大输出 128K",
+        "Z.ai Code Bench": "对比 GLM-5.2 +50%",
+        "Terminal-Bench 3.0": "28.3（从 4.6）",
+        "DeepSWE v1.1": "66.9（从 46.2）",
+        "Agent's Last Exam": "28.5（从 23.8）",
+        "CyberGym": "84.5%（对比 Mythos 5 83.8%、GPT-5.6 Sol 83.6%）",
+        "ExploitBench": "54.4%（从 24.4%）",
+        "发现漏洞": "覆盖 269 个项目共 2,436 个（注册库：cvd.z.ai）",
+        "权重": "计划安全审查后约 2 周开源（约 2026-08-28）"
+      }
     },
     {
       "event_id": "ev-20260814-03",
       "title": "Cloudflare ships MCP traffic detection and enforcement in Cloudflare One Gateway",
       "title_zh": "Cloudflare One Gateway 上线 MCP 流量检测与管控",
       "category": "agent-security",
-      "organization": ["Cloudflare"],
+      "organization": [
+        "Cloudflare"
+      ],
       "published_at": "2026-08-14",
       "first_seen_at": "2026-08-15T12:26:05Z",
       "last_updated_at": "2026-08-15T12:26:05Z",
@@ -128,7 +192,14 @@
         "agents_sdk": "v0.20.0 — stateless 2026-07-28 spec client+server support, createMcpHandler in Workers",
         "prerequisite": "TLS decryption in Gateway"
       },
-      "tags": ["mcp", "security", "zero-trust", "cloudflare", "shadow-mcp", "enterprise"],
+      "tags": [
+        "mcp",
+        "security",
+        "zero-trust",
+        "cloudflare",
+        "shadow-mcp",
+        "enterprise"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 3,
@@ -136,14 +207,24 @@
       "verification_cost": 2,
       "risk": 3,
       "recommendation": "TRIAL",
-      "event_fingerprint": "cloudflare-mcp-gateway-enforcement"
+      "event_fingerprint": "cloudflare-mcp-gateway-enforcement",
+      "technical_details_zh": {
+        "检测": "在 TLS 解密请求上识别 MCP-Protocol-Version HTTP 头",
+        "选择器": "experimental.is_mcp == true",
+        "仪表盘": "请求量、独立用户/服务器数、Portal 与直连占比、top 影子服务器",
+        "管控": "Traffic Source 选择器；基线规则拦截非 mcp_portal 的 MCP 流量",
+        "Agents SDK": "v0.20.0——支持 2026-07-28 无状态规范的 client+server，Workers 内置 createMcpHandler",
+        "前提": "Gateway 需开启 TLS 解密"
+      }
     },
     {
       "event_id": "ev-20260814-04",
       "title": "Claude Code 2.1.232–2.1.234 — subagent forking default-on, cross-session agent messaging, sandbox resource limits",
       "title_zh": "Claude Code 2.1.232–2.1.234——subagent fork 默认开启、跨会话 agent 消息、sandbox 资源限额",
       "category": "developer-tools",
-      "organization": ["Anthropic"],
+      "organization": [
+        "Anthropic"
+      ],
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
@@ -170,7 +251,13 @@
       "update_2026_08_17": "2.1.234 (2026-08-17, in-window): rejects Windows NT-namespace (\\??\\) paths across remote file reads, session restore, CLAUDE.md includes, workflow scripts and uploads — hardens pre-approval file accesses against the NTLM credential-leak vector; GitLab MR footer badge (draft/pending/green states, glab repos); auto-continue sessions when usage limit resets (toggle in /config); claude-api skill context cost cut from ~200k+ to ~25k tokens; selection:clear keybinding; CLAUDE_CODE_PROJECT_DIR_NAME env var; many Remote Control / permission-preview / TUI fixes.",
       "update_2026_08_18": "2.1.235 (2026-08-18, in-window): security-relevant fix — Shift+Tab in the permission prompt's comment field no longer wrongly grants session-wide edit permission; new optional `spellcheck` setting (aspell/hunspell/ispell); fix for whole-prompt-cache invalidation when a language server disconnects mid-session; nested markdown list misalignment fix (depth 3+); lower memory/CPU usage for background cloud sessions (/ultrareview); permission dialogs now display exactly what a grant covers; VS Code focus fix after window restore. Recommendation stays ADOPT; upgrading also picks up the 2.1.234 NTLM hardening.",
       "update_2026_08_19": "2.1.236 (2026-08-19, in-window): `notify_when_idle` option added to cross-session SendMessage — one session can request a single notice when another goes idle (macOS/Linux), extending the inter-agent messaging primitive with idle-awareness; new ANTHROPIC_DEFAULT_MODEL env var sets the starting model for new sessions (/model pick still overrides and persists); macOS sandbox hardening — wildcard read-deny rules like **/.env now take precedence inside allowed regions and resist rename-based bypass; /goal idle sessions auto-check-in after 30 minutes behind long background work; /usage gains a usage-credits row (Team/Enterprise); fixes: clipboard/background tasks breaking after session-directory removal, fullscreen renderer permanently failing after one bad start, /model picker overflow on tall terminals, various fullscreen/tmux rendering issues. Recommendation stays ADOPT.",
-      "tags": ["claude-code", "multi-agent", "forking", "sandbox", "changelog"],
+      "tags": [
+        "claude-code",
+        "multi-agent",
+        "forking",
+        "sandbox",
+        "changelog"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 4,
@@ -178,21 +265,31 @@
       "verification_cost": 1,
       "risk": 3,
       "recommendation": "ADOPT",
-      "event_fingerprint": "anthropic-claude-code-2-1-23x-multiagent"
+      "event_fingerprint": "anthropic-claude-code-2-1-23x-multiagent",
+      "technical_details_zh": {
+        "fork": "默认开启；继承会话与 prompt cache",
+        "消息": "通过 @-mentions 跨实时会话 SendMessage；不交换历史/文件/权限",
+        "Sandbox": "CLAUDE_CODE_TOOL_MEMORY_LIMIT cgroup 限制（Linux）",
+        "破坏性变更": "新模型默认停用 todo 工具"
+      }
     },
     {
       "event_id": "ev-20260814-05",
       "title": "DeepSeek open-sources Harness (dsh) — MIT TypeScript agent runtime, extreme star velocity",
       "title_zh": "DeepSeek 开源 Harness（dsh）——MIT 协议的 TypeScript agent 运行时，star 增速极快",
       "category": "open-source",
-      "organization": ["DeepSeek"],
+      "organization": [
+        "DeepSeek"
+      ],
       "published_at": "2026-08-14",
       "published_at_note": "Exact open-source release date community-reported only (~Aug 13/14; v0.1 with 24k+ stars within a day per roundup of 2026-08-14T21:21Z). Repo pre-existed (referenced in DeepSeek changelog 2026-07-31 as forthcoming).",
       "first_seen_at": "2026-08-15T12:26:05Z",
       "last_updated_at": "2026-08-15T12:26:05Z",
       "source_type": "primary",
       "primary_source": "https://github.com/deepseek-ai/deepseek-harness",
-      "secondary_sources": ["https://n8nlab.io/news/ai-news-roundup-august-fourteen"],
+      "secondary_sources": [
+        "https://n8nlab.io/news/ai-news-roundup-august-fourteen"
+      ],
       "summary": "DeepSeek released its agent harness (the framework behind its benchmark runs) as open source under MIT — a TypeScript/Node monorepo built on the Cordis framework with an everything-is-a-plugin architecture, positioned as an open challenge to Claude Code. Runs via npx @deepseek-ai/dsh web (Web UI at 127.0.0.1:3080); AGENTS.md/CLAUDE.md-compatible config; developer preview with explicit breaking-change warnings.",
       "why_it_matters": "A frontier lab releasing its production agent runtime under MIT gives agent engineers a first-party reference implementation of DeepSeek's agent loop and a new harness option; expect preview churn.",
       "summary_zh": "DeepSeek 将其 agent harness（跑 benchmark 所用的框架）以 MIT 协议开源——基于 Cordis 框架的 TypeScript/Node monorepo，采用 everything-is-a-plugin 架构，被视为对 Claude Code 的公开挑战。通过 npx @deepseek-ai/dsh web 运行（Web UI 位于 127.0.0.1:3080）；兼容 AGENTS.md/CLAUDE.md 配置；当前为 developer preview，官方明确警告会有 breaking change。",
@@ -205,7 +302,13 @@
         "stars_at_scan": "108,000 (10.4k forks); community-reported 24k+ within first day",
         "status": "developer preview, breaking changes expected"
       },
-      "tags": ["deepseek", "agent-runtime", "open-source", "mit", "dsh"],
+      "tags": [
+        "deepseek",
+        "agent-runtime",
+        "open-source",
+        "mit",
+        "dsh"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 4,
@@ -213,20 +316,34 @@
       "verification_cost": 3,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "deepseek-harness-dsh-opensource"
+      "event_fingerprint": "deepseek-harness-dsh-opensource",
+      "technical_details_zh": {
+        "许可证": "MIT",
+        "语言": "TypeScript/Node（基于 Cordis，插件架构）",
+        "扫描时 star": "108,000（10.4k forks）；社区报告首日 24k+",
+        "状态": "developer preview，预期会有破坏性变更"
+      }
     },
     {
       "event_id": "ev-20260814-06",
       "title": "SpaceX's $60B acquisition of Cursor (Anysphere) officially closes",
       "title_zh": "SpaceX 以 600 亿美元收购 Cursor（Anysphere）正式完成交割",
       "category": "business",
-      "organization": ["SpaceX", "SpaceXAI", "Anysphere", "Cursor"],
+      "organization": [
+        "SpaceX",
+        "SpaceXAI",
+        "Anysphere",
+        "Cursor"
+      ],
       "published_at": "2026-08-14",
       "first_seen_at": "2026-08-15T12:26:05Z",
       "last_updated_at": "2026-08-15T12:26:05Z",
       "source_type": "primary",
       "primary_source": "https://cursor.com/blog/joining-spacex",
-      "secondary_sources": ["CNBC", "Reuters"],
+      "secondary_sources": [
+        "CNBC",
+        "Reuters"
+      ],
       "summary": "Cursor announced the acquisition officially closed: $60B all-stock deal first agreed 2026-06-16. Cursor now has access to 'the largest fleet of GPUs in the world'; Grok 4.6 (shipped Aug 12) cited as an early product of the partnership. No leadership/org details disclosed.",
       "why_it_matters": "Model-IDE vertical integration (Grok models built into the most-used AI-native IDE) sets the competitive template; expect model-default and pricing shifts inside Cursor and ripple effects on Copilot/Claude Code positioning.",
       "summary_zh": "Cursor 宣布收购正式完成：2026-06-16 达成的 600 亿美元全股票交易。Cursor 现在可以使用「全球最大规模的 GPU 集群」；Grok 4.6（8 月 12 日发布）被视为双方合作的早期产物。未披露管理层和组织细节。",
@@ -239,7 +356,14 @@
         "closed": "2026-08-14",
         "early_product": "Grok 4.6 (2026-08-12)"
       },
-      "tags": ["cursor", "spacex", "acquisition", "ide", "grok", "ecosystem"],
+      "tags": [
+        "cursor",
+        "spacex",
+        "acquisition",
+        "ide",
+        "grok",
+        "ecosystem"
+      ],
       "technical_impact": 2,
       "engineering_value": 2,
       "adoption_signal": 4,
@@ -247,20 +371,30 @@
       "verification_cost": 5,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "spacex-cursor-acquisition-close"
+      "event_fingerprint": "spacex-cursor-acquisition-close",
+      "technical_details_zh": {
+        "交易额": "$60B 全股票",
+        "达成协议": "2026-06-16",
+        "正式完成": "2026-08-14",
+        "首个合作产品": "Grok 4.6（2026-08-12）"
+      }
     },
     {
       "event_id": "ev-20260814-07",
       "title": "Anthropic explains how Claude's text watermark works",
       "title_zh": "Anthropic 详解 Claude 文本水印的工作原理",
       "category": "foundation-model",
-      "organization": ["Anthropic"],
+      "organization": [
+        "Anthropic"
+      ],
       "published_at": "2026-08-14",
       "first_seen_at": "2026-08-15T12:26:05Z",
       "last_updated_at": "2026-08-15T12:26:05Z",
       "source_type": "primary",
       "primary_source": "https://www.anthropic.com/news",
-      "secondary_sources": ["https://www.trendingtopics.eu/anthropic-plans-watermarks-for-ai-generated-content-from-august-2026/"],
+      "secondary_sources": [
+        "https://www.trendingtopics.eu/anthropic-plans-watermarks-for-ai-generated-content-from-august-2026/"
+      ],
       "summary": "Anthropic published the technical mechanism behind Claude's invisible, machine-readable text watermarking, applying to all Claude models launched on/after 2026-08-02 (older models in transition).",
       "why_it_matters": "Developers building detection/provenance pipelines or redistributing Claude output need to know watermark semantics; signals watermarking becoming a standard API-model property.",
       "summary_zh": "Anthropic 公布了 Claude 不可见、机器可读文本水印的技术机制，适用于 2026-08-02 及之后发布的所有 Claude 模型（更早的模型处于过渡期）。",
@@ -271,7 +405,12 @@
         "applies_to": "Claude models launched on/after 2026-08-02; pre-existing models in transition",
         "mechanism": "embedded in generated text, machine-readable"
       },
-      "tags": ["anthropic", "watermark", "provenance", "detection"],
+      "tags": [
+        "anthropic",
+        "watermark",
+        "provenance",
+        "detection"
+      ],
       "technical_impact": 3,
       "engineering_value": 2,
       "adoption_signal": 2,
@@ -279,14 +418,20 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "anthropic-claude-text-watermark"
+      "event_fingerprint": "anthropic-claude-text-watermark",
+      "technical_details_zh": {
+        "适用范围": "2026-08-02 及之后发布的 Claude 模型；更早模型处于过渡期",
+        "机制": "嵌入生成文本中，机器可读"
+      }
     },
     {
       "event_id": "ev-20260814-08",
       "title": "ChatGPT desktop for Linux enters public preview (Ubuntu/Debian/Fedora) with Codex",
       "title_zh": "ChatGPT Linux 桌面版进入公开预览（Ubuntu/Debian/Fedora），内置 Codex",
       "category": "developer-tools",
-      "organization": ["OpenAI"],
+      "organization": [
+        "OpenAI"
+      ],
       "published_at": "2026-08-14",
       "first_seen_at": "2026-08-15T12:26:05Z",
       "last_updated_at": "2026-08-15T12:26:05Z",
@@ -300,10 +445,20 @@
       "why_it_matters_zh": "Codex 登陆 Linux 桌面拓宽了 coding agent 的覆盖面；其余仅为产品级更新。",
       "why_it_matters_en": "Codex reaching Linux desktop broadens the coding-agent surface; otherwise product-level updates only.",
       "technical_details": {
-        "platforms": ["Ubuntu", "Debian", "Fedora"],
+        "platforms": [
+          "Ubuntu",
+          "Debian",
+          "Fedora"
+        ],
         "includes": "Codex"
       },
-      "tags": ["openai", "chatgpt", "linux", "codex", "preview"],
+      "tags": [
+        "openai",
+        "chatgpt",
+        "linux",
+        "codex",
+        "preview"
+      ],
       "technical_impact": 1,
       "engineering_value": 2,
       "adoption_signal": 3,
@@ -311,7 +466,15 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "openai-chatgpt-linux-desktop-preview"
+      "event_fingerprint": "openai-chatgpt-linux-desktop-preview",
+      "technical_details_zh": {
+        "平台": [
+          "Ubuntu",
+          "Debian",
+          "Fedora"
+        ],
+        "内置": "Codex"
+      }
     }
   ]
 }
