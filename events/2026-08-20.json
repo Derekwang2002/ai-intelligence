@@ -1,0 +1,215 @@
+{
+  "date": "2026-08-20",
+  "provenance": "Incremental scan window [2026-08-20T00:00:23Z, 2026-08-21T00:00:37Z]; retrieval overlap from 2026-08-19T21:00:23Z (retrieval only, dedup enforced against index). Mistral Agentic Search announced 2026-08-20 (official news page). arXiv papers announced in the Thu, 20 Aug 2026 cs.CL digest (Compress and Forget v1 submitted 2026-08-19T06:17:13Z; SMTrap v1 submitted 2026-08-19T13:51:31Z — digest-date attribution per KB convention). Four existing events updated in their original files: ev-20260814-04 (Claude Code 2.1.237/238), ev-20260818-01 (CS-4 watch re-check), ev-20260818-02 (Codex 0.149.0 stable), ev-20260817-02 (Origin early-beta feedback). ev-20260819-04 (Bedrock + Grok 4.6) appended to events/2026-08-19.json as a coverage-gap recovery (AWS announcement dated 2026-08-19, surfaced 2026-08-20T05:02Z via aggregator).",
+  "events": [
+    {
+      "event_id": "ev-20260820-01",
+      "title": "Mistral launches Agentic Search — multi-step retrieval layer with search/open/navigate/read/grep tools",
+      "title_zh": "Mistral 发布 Agentic Search——带 search/open/navigate/read/grep 五个工具的多步检索层",
+      "category": "ai-engineering",
+      "organization": [
+        "Mistral AI"
+      ],
+      "published_at": "2026-08-20",
+      "published_at_note": "Official announcement dated August 20, 2026 on mistral.ai/news; docs live at docs.mistral.ai. In-window.",
+      "first_seen_at": "2026-08-21T00:00:37Z",
+      "last_updated_at": "2026-08-21T00:00:37Z",
+      "source_type": "primary",
+      "primary_source": "https://mistral.ai/news/agentic-search",
+      "secondary_sources": [
+        "https://docs.mistral.ai/"
+      ],
+      "summary": "Agentic Search is Mistral's retrieval layer for AI systems: instead of one-shot chunk retrieval, the model runs a multi-step loop over an existing search index using five file-system-like tools — search, open, navigate, read, and grep — iteratively finding, inspecting and verifying information inside complex documents. Two delivery routes: the Mistral Search Toolkit (open modules for ingesting, embedding and indexing data, deployable in the cloud or on-premises, for integration into your own agents and workflows) and libraries usable out of the box inside Studio and Vibe; a Search Starter App on GitHub creates a local index with default settings. The design is model-agnostic and requires no fine-tuning — retrieval quality scales with model capability rather than being capped by the chunking strategy. Reported benchmarks (default, untuned settings): FinanceBench (SEC filings) correctness from 26.7% to 86% (up to 3x); OfficeQA Pro (Treasury Bulletins) from 6.3% to 51.9% (+45.6 points); p90 latency reduced by up to 39.6%; token use reduced by up to one-third. Tested with both Mistral Medium 3.5 and Z.ai GLM-5.2.",
+      "why_it_matters": "This attacks one-shot RAG's structural failure mode — answers that require navigating long reports, comparing sources, or reading tables and footnotes — by giving the model iterative document operations instead of better chunking. The isolation-boundary design (index stays inside your perimeter) plus the open Toolkit route makes it viable for sensitive enterprise data, and the model-agnostic framing means it can be benchmarked against and combined with other stacks. Caveats: the benchmark deltas are vendor-reported, measured on document-heavy domains, and pricing was not stated; independent reproduction is pending.",
+      "summary_zh": "Agentic Search 是 Mistral 面向 AI 系统的检索层：不做一次性 chunk 检索，而是让模型在既有搜索索引上运行多步循环，使用 search、open、navigate、read、grep 五个类文件系统工具，迭代地在复杂文档内查找、检查并验证信息。两条交付路径：Mistral Search Toolkit（用于数据摄取、embedding 与索引的开放模块，可部署在云端或本地，集成进自己的 agent 与工作流）和 Studio / Vibe 内开箱即用的 libraries；GitHub 上的 Search Starter App 可用默认配置创建本地索引快速实验。设计上 model-agnostic、无需 fine-tuning——检索质量随模型能力提升，而不是被 chunking 策略封顶。官方 benchmark（默认、未调优设置）：FinanceBench（SEC 财报）正确率 26.7% → 86%（最高 3 倍）；OfficeQA Pro（Treasury Bulletins）6.3% → 51.9%（+45.6 点）；p90 延迟最高降低 39.6%；token 用量最多减少三分之一。同时用 Mistral Medium 3.5 与 Z.ai GLM-5.2 测试，验证 model-agnostic 声明。",
+      "summary_en": "Agentic Search is Mistral's retrieval layer for AI systems: instead of one-shot chunk retrieval, the model runs a multi-step loop over an existing search index using five file-system-like tools — search, open, navigate, read, and grep — iteratively finding, inspecting and verifying information inside complex documents. Two delivery routes: the Mistral Search Toolkit (open modules for ingesting, embedding and indexing data, deployable in the cloud or on-premises, for integration into your own agents and workflows) and libraries usable out of the box inside Studio and Vibe; a Search Starter App on GitHub creates a local index with default settings. The design is model-agnostic and requires no fine-tuning — retrieval quality scales with model capability rather than being capped by the chunking strategy. Reported benchmarks (default, untuned settings): FinanceBench (SEC filings) correctness from 26.7% to 86% (up to 3x); OfficeQA Pro (Treasury Bulletins) from 6.3% to 51.9% (+45.6 points); p90 latency reduced by up to 39.6%; token use reduced by up to one-third. Tested with both Mistral Medium 3.5 and Z.ai GLM-5.2.",
+      "why_it_matters_zh": "这直接针对 one-shot RAG 的结构性短板——需要翻阅长报告、跨来源对比、读表格与脚注才能回答的问题——解法是给模型迭代式文档操作而非更好的 chunking。隔离边界设计（索引留在自己的安全边界内）加上开放的 Toolkit 路径，使其可用于敏感企业数据；model-agnostic 的定位也意味着可以与其他技术栈对比评测、组合使用。注意事项：benchmark 数字为厂商自报、测于文档密集场景，且未公布定价；独立复现待验证。",
+      "why_it_matters_en": "This attacks one-shot RAG's structural failure mode — answers that require navigating long reports, comparing sources, or reading tables and footnotes — by giving the model iterative document operations instead of better chunking. The isolation-boundary design (index stays inside your perimeter) plus the open Toolkit route makes it viable for sensitive enterprise data, and the model-agnostic framing means it can be benchmarked against and combined with other stacks. Caveats: the benchmark deltas are vendor-reported, measured on document-heavy domains, and pricing was not stated; independent reproduction is pending.",
+      "technical_details": {
+        "tools": "search, open, navigate, read, grep — file-system-like operations the model drives in a loop over an existing index",
+        "mechanism": "multi-step iterative retrieval; no fine-tuning or model-specific training; quality scales with model capability",
+        "distribution": [
+          "Mistral Search Toolkit: open modules (ingest/embed/index), cloud or on-premises",
+          "Libraries built into Studio and Vibe",
+          "Search Starter App on GitHub (local index, default settings)"
+        ],
+        "benchmarks": [
+          "FinanceBench (SEC filings): 26.7% -> 86% correctness (up to 3x)",
+          "OfficeQA Pro (Treasury Bulletins): 6.3% -> 51.9% (+45.6 points)",
+          "p90 latency: up to -39.6%",
+          "token use: up to -1/3"
+        ],
+        "models_tested": "Mistral Medium 3.5, Z.ai GLM-5.2 (model-agnostic claim)",
+        "caveats": "vendor-reported benchmarks; document-heavy domains (filings, bulletins); pricing not stated in announcement",
+        "relation_to_kb": "first vendor product packaging the agentic-retrieval loop; same-day academic echo DeepWeaver (arXiv 2608.18988) — logged as an early-indication watch item, not a trend"
+      },
+      "tags": [
+        "mistral",
+        "agentic-search",
+        "rag",
+        "retrieval",
+        "document-qa",
+        "benchmark",
+        "release"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "mistral-agentic-search",
+      "technical_details_zh": {
+        "工具": "search、open、navigate、read、grep——模型在既有索引上循环驱动的类文件系统操作",
+        "机制": "多步迭代检索；无需 fine-tuning 或模型特定训练；质量随模型能力扩展",
+        "交付": [
+          "Mistral Search Toolkit：开放模块（摄取/embedding/索引），云端或本地部署",
+          "内置 Studio 与 Vibe 的 libraries",
+          "GitHub Search Starter App（本地索引 + 默认配置）"
+        ],
+        "Benchmark": [
+          "FinanceBench（SEC 财报）：正确率 26.7% → 86%（最高 3 倍）",
+          "OfficeQA Pro（Treasury Bulletins）：6.3% → 51.9%（+45.6 点）",
+          "p90 延迟：最高 -39.6%",
+          "token 用量：最多 -1/3"
+        ],
+        "测试模型": "Mistral Medium 3.5、Z.ai GLM-5.2（验证 model-agnostic）",
+        "注意": "benchmark 为厂商自报；文档密集场景（财报、公告）；公告未给出定价",
+        "与知识库的关系": "首个把 agentic 检索循环产品化的厂商发布；同日学术回声 DeepWeaver（arXiv 2608.18988）——登记为 early indication watch item，不立趋势"
+      }
+    },
+    {
+      "event_id": "ev-20260820-02",
+      "title": "Compress and Forget: bitsandbytes quantization amplifies proactive interference in LLMs (arXiv 2608.18578)",
+      "title_zh": "Compress and Forget：bitsandbytes 量化会放大 LLM 的前摄干扰（arXiv 2608.18578）",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-08-20",
+      "published_at_note": "v1 submitted 2026-08-19T06:17:13Z; announced in the Thu, 20 Aug 2026 arXiv cs.CL digest (in-window; digest-date attribution per KB convention). Authors: Shayan Shahrabi-Farahani, Dara Rahmati (Shahid Beheshti University).",
+      "first_seen_at": "2026-08-21T00:00:37Z",
+      "last_updated_at": "2026-08-21T00:00:37Z",
+      "source_type": "research",
+      "primary_source": "https://arxiv.org/abs/2608.18578",
+      "secondary_sources": [
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://github.com/ShayanShahrabi/compress-and-forget"
+      ],
+      "summary": "The paper asks whether post-training quantization — the default deployment path for open-weight models — worsens proactive interference (PI): the phenomenon where retrieving an overwritten value degrades as overwrites accumulate (analogous to human working memory). Method: three precisions (FP16, INT8, INT4/NF4 via bitsandbytes) evaluated on three instruction-tuned models (Qwen2.5-7B-Instruct, Mistral-7B-Instruct-v0.3, Phi-3.5-mini-instruct) with a fixed retrieval task. Findings: INT4 significantly lowered accuracy under high interference in every model — e.g., Qwen2.5-7B dropped from 81.0% to 68.3% — while INT8, often assumed safe, showed a smaller but real penalty in two of three models. The effect was specific to semantically similar distractors (reversed sign under a numeric control) and was traced via ablation to the quantized transformer backbone rather than the output projection; same-key intrusion errors rose from 21.5% to 24.6% (p = 4.8e-7). Statistics: paired McNemar's tests (p <= 2.6e-6) plus mixed-effects regression across interference levels. The authors conclude that 4-bit quantization can impose an additional cost on applications using long, updatable, semantically dense contexts even when aggregate benchmark accuracy appears largely unaffected. Code and data released.",
+      "why_it_matters": "Aggregate benchmarks stay largely flat while a behavior agent workloads actually depend on — recalling the latest version of a frequently-updated value in a long, semantically dense context — quietly degrades. Teams serving quantized open-weight models behind agent workspaces (memory systems, editable documents, tool-state tracking) should add PI-style probes to their quantization acceptance tests instead of trusting standard benchmarks. The methodology is cheap, reproducible, and released.",
+      "summary_zh": "论文研究 post-training 量化（开源权重模型的默认部署路径）是否会加剧前摄干扰（proactive interference, PI）：即被覆写值的检索精度随覆写次数累积而下降的现象（类比人类工作记忆）。方法：三种精度（FP16、INT8、INT4/NF4，经 bitsandbytes）× 三个 instruction-tuned 模型（Qwen2.5-7B-Instruct、Mistral-7B-Instruct-v0.3、Phi-3.5-mini-instruct），固定检索任务。发现：INT4 在所有模型上都显著降低高干扰下的准确率——例如 Qwen2.5-7B 从 81.0% 降至 68.3%；常被默认安全的 INT8 在三个模型中的两个上也表现出较小但真实的损失。效应仅出现在语义相似 distractor 下（数值对照下符号反转），并通过消融定位到被量化的 transformer backbone 而非输出投影；same-key intrusion 错误从 21.5% 升至 24.6%（p = 4.8e-7）。统计：配对 McNemar 检验（p ≤ 2.6e-6）+ 跨干扰水平的混合效应回归。作者结论：即使聚合 benchmark 准确率看起来基本不受影响，4-bit 量化也会给使用长、可更新、语义密集上下文的应用带来额外代价。代码与数据已发布。",
+      "summary_en": "The paper asks whether post-training quantization — the default deployment path for open-weight models — worsens proactive interference (PI): the phenomenon where retrieving an overwritten value degrades as overwrites accumulate (analogous to human working memory). Method: three precisions (FP16, INT8, INT4/NF4 via bitsandbytes) evaluated on three instruction-tuned models (Qwen2.5-7B-Instruct, Mistral-7B-Instruct-v0.3, Phi-3.5-mini-instruct) with a fixed retrieval task. Findings: INT4 significantly lowered accuracy under high interference in every model — e.g., Qwen2.5-7B dropped from 81.0% to 68.3% — while INT8, often assumed safe, showed a smaller but real penalty in two of three models. The effect was specific to semantically similar distractors (reversed sign under a numeric control) and was traced via ablation to the quantized transformer backbone rather than the output projection; same-key intrusion errors rose from 21.5% to 24.6% (p = 4.8e-7). Statistics: paired McNemar's tests (p <= 2.6e-6) plus mixed-effects regression across interference levels. The authors conclude that 4-bit quantization can impose an additional cost on applications using long, updatable, semantically dense contexts even when aggregate benchmark accuracy appears largely unaffected. Code and data released.",
+      "why_it_matters_zh": "聚合 benchmark 基本持平，而 agent 负载真正依赖的行为——在长、语义密集上下文中召回被频繁更新值的最新版本——在悄悄劣化。在 agent 工作区（记忆系统、可编辑文档、tool-state 跟踪）后面用量化开源模型提供服务的团队，应在量化验收测试中加入 PI 类探针，而不是信任标准 benchmark。方法论便宜、可复现、已发布产物。",
+      "why_it_matters_en": "Aggregate benchmarks stay largely flat while a behavior agent workloads actually depend on — recalling the latest version of a frequently-updated value in a long, semantically dense context — quietly degrades. Teams serving quantized open-weight models behind agent workspaces (memory systems, editable documents, tool-state tracking) should add PI-style probes to their quantization acceptance tests instead of trusting standard benchmarks. The methodology is cheap, reproducible, and released.",
+      "technical_details": {
+        "scope": "FP16 vs INT8 vs INT4/NF4 (bitsandbytes PTQ); Qwen2.5-7B-Instruct, Mistral-7B-Instruct-v0.3, Phi-3.5-mini-instruct",
+        "task": "fixed retrieval task with accumulating overwrites (proactive interference paradigm)",
+        "results": [
+          "INT4 lowers high-interference accuracy in all 3 models (Qwen2.5-7B 81.0% -> 68.3%)",
+          "INT8 shows a smaller real penalty in 2 of 3 models",
+          "same-key intrusion errors 21.5% -> 24.6% (p = 4.8e-7)"
+        ],
+        "statistics": "paired McNemar's tests (p <= 2.6e-6); mixed-effects regression across interference levels",
+        "localization": "quantized transformer backbone (not the output projection); effect specific to semantically similar distractors, reverses under numeric control",
+        "code": "github.com/ShayanShahrabi/compress-and-forget (code and data released)",
+        "relation_to_kb": "quantization x agent-context interaction; complements the hidden serving-layer behavior line opened by KV-cache rollback consistency (ev-20260818-03)"
+      },
+      "tags": [
+        "quantization",
+        "bitsandbytes",
+        "int4",
+        "proactive-interference",
+        "agents",
+        "memory",
+        "reliability",
+        "arxiv",
+        "research"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2608-18578-bnb-quantization-proactive-interference",
+      "technical_details_zh": {
+        "范围": "FP16 vs INT8 vs INT4/NF4（bitsandbytes PTQ）；Qwen2.5-7B-Instruct、Mistral-7B-Instruct-v0.3、Phi-3.5-mini-instruct",
+        "任务": "带覆写累积的固定检索任务（前摄干扰范式）",
+        "结果": [
+          "INT4 在全部 3 个模型上降低高干扰准确率（Qwen2.5-7B 81.0% → 68.3%）",
+          "INT8 在 3 个模型中的 2 个上有较小但真实的损失",
+          "same-key intrusion 错误 21.5% → 24.6%（p = 4.8e-7）"
+        ],
+        "统计": "配对 McNemar 检验（p ≤ 2.6e-6）；跨干扰水平混合效应回归",
+        "定位": "量化后的 transformer backbone（非输出投影）；效应仅限语义相似 distractor，数值对照下反转",
+        "代码": "github.com/ShayanShahrabi/compress-and-forget（代码与数据已发布）",
+        "与知识库的关系": "量化 × agent 上下文的交互；与 KV-cache 回滚一致性（ev-20260818-03）开启的「serving 层隐藏行为变化」证据线互补"
+      }
+    },
+    {
+      "event_id": "ev-20260820-03",
+      "title": "SMTrap: feedback-free, CPU-only compute-exhaustion attacks against large reasoning models via SMT conflict guidance (arXiv 2608.18921)",
+      "title_zh": "SMTrap：基于 SMT 冲突计数引导、无需反馈且仅用 CPU 的大推理模型算力耗尽攻击（arXiv 2608.18921）",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-08-20",
+      "published_at_note": "v1 submitted 2026-08-19T13:51:31Z; announced in the Thu, 20 Aug 2026 arXiv cs.CL digest (in-window; digest-date attribution per KB convention). Authors: Jian Yang, Zhenqi Feng, Zhaoyang Yu, Zhaoxin Fan, Kejian Wu, Xiaofeng Wang, Zheng Zhu, Jianjun Huang, Wei You, Bin Liang.",
+      "first_seen_at": "2026-08-21T00:00:37Z",
+      "last_updated_at": "2026-08-21T00:00:37Z",
+      "source_type": "research",
+      "primary_source": "https://arxiv.org/abs/2608.18921",
+      "secondary_sources": [
+        "https://arxiv.org/list/cs.CL/recent"
+      ],
+      "summary": "Prior denial-of-service attacks on large reasoning models (LRMs) depend on model feedback — repeatedly querying the target or training a dedicated attack model — which is costly and reduces leverage. SMTrap introduces a paradigm the authors call search amplification: conflict counts from an SMT (Satisfiability Modulo Theories) solver serve as a cheap external signal to guide the synthesis of inference-heavy constraint-satisfaction-problem (CSP) queries. The key observation is that LRMs solve CSPs via trial-and-backtracking search, and higher SMT conflict counts on a CSP instance correlate with more extensive backtracking and substantially longer outputs. The framework is lightweight and CPU-only: no queries to the target model, no attack-model training, no GPU compute. Evaluations across seven frontier models reportedly show state-of-the-art LRM-DoS capability, several times stronger than existing baselines. The authors also demonstrate a tool-based mitigation — offloading the solving to a tool — that significantly cuts token usage.",
+      "why_it_matters": "Cost exhaustion is a practical threat surface for anyone exposing reasoning models through an API or budget-limited agent tools: an attacker converts a cheap CPU-side query into expensive inference by forcing long backtracking chains. The feedback-free property weakens the usual defenses — rate limiting and query-pattern detection assume the attacker must probe the target. Mitigations are cheap and actionable: per-request token/cost ceilings, detection of solver-shaped queries, and giving models a solver tool so they offload instead of searching in-context. Recorded for defensive planning (LLM gateway / serving safeguards), consistent with the KB's serving-layer security line.",
+      "summary_zh": "此前针对大推理模型（LRM）的拒绝服务攻击依赖模型反馈——反复查询目标模型或训练专门的攻击模型——成本高且杠杆有限。SMTrap 提出作者称为 search amplification 的范式：用 SMT（Satisfiability Modulo Theories）求解器的 conflict count 作为廉价外部信号，引导合成推理量巨大的约束满足问题（CSP）查询。关键观察是：LRM 通过试错与回溯搜索求解 CSP，CSP 实例上更高的 SMT conflict count 与更长的回溯和显著更长的输出相关。该框架轻量且仅用 CPU：不查询目标模型、不训练攻击模型、不需要 GPU。在七个前沿模型上的评测号称达到 SOTA 的 LRM-DoS 能力，数倍强于既有基线。作者还演示了基于工具的缓解——把求解卸载给工具——可显著削减 token 用量。",
+      "summary_en": "Prior denial-of-service attacks on large reasoning models (LRMs) depend on model feedback — repeatedly querying the target or training a dedicated attack model — which is costly and reduces leverage. SMTrap introduces a paradigm the authors call search amplification: conflict counts from an SMT (Satisfiability Modulo Theories) solver serve as a cheap external signal to guide the synthesis of inference-heavy constraint-satisfaction-problem (CSP) queries. The key observation is that LRMs solve CSPs via trial-and-backtracking search, and higher SMT conflict counts on a CSP instance correlate with more extensive backtracking and substantially longer outputs. The framework is lightweight and CPU-only: no queries to the target model, no attack-model training, no GPU compute. Evaluations across seven frontier models reportedly show state-of-the-art LRM-DoS capability, several times stronger than existing baselines. The authors also demonstrate a tool-based mitigation — offloading the solving to a tool — that significantly cuts token usage.",
+      "why_it_matters_zh": "对任何通过 API 或预算受限 agent 工具暴露推理模型的人，成本耗尽是现实威胁面：攻击者用廉价的 CPU 侧查询换取昂贵的推理，手段是迫使模型陷入长回溯链。无需反馈的特性削弱了常规防御——限流与查询模式检测都假设攻击者必须探测目标。缓解措施廉价且可落地：每请求 token/成本上限、对求解器形态查询的检测、给模型一个求解器工具让它卸载而非在上下文内搜索。出于防御规划目的收录（LLM gateway / serving 防护），与知识库 serving 层安全证据线一致。",
+      "why_it_matters_en": "Cost exhaustion is a practical threat surface for anyone exposing reasoning models through an API or budget-limited agent tools: an attacker converts a cheap CPU-side query into expensive inference by forcing long backtracking chains. The feedback-free property weakens the usual defenses — rate limiting and query-pattern detection assume the attacker must probe the target. Mitigations are cheap and actionable: per-request token/cost ceilings, detection of solver-shaped queries, and giving models a solver tool so they offload instead of searching in-context. Recorded for defensive planning (LLM gateway / serving safeguards), consistent with the KB's serving-layer security line.",
+      "technical_details": {
+        "paradigm": "search amplification — SMT solver conflict counts guide synthesis of inference-heavy CSP queries",
+        "cost": "CPU-only; no target-model queries; no attack-model training; no GPU",
+        "mechanism": "LRMs solve CSPs via trial-and-backtracking; higher SMT conflict counts correlate with longer backtracking and outputs",
+        "scope": "seven frontier reasoning models (not named in abstract)",
+        "mitigation": "tool-based offloading of solving significantly cuts token usage; per-request budgets advised",
+        "caveat": "attacker-side academic research; defensive value for gateways/serving; no code link found on abstract page",
+        "relation_to_kb": "serving-layer security line; cost-exhaustion complement to KV-cache rollback (ev-20260818-03) and Cloudflare MCP enforcement (ev-20260814-03) era hardening"
+      },
+      "tags": [
+        "security",
+        "dos",
+        "cost-exhaustion",
+        "reasoning-models",
+        "smt",
+        "csp",
+        "llm-gateway",
+        "serving",
+        "arxiv",
+        "research"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2608-18921-smtrap-lrm-dos",
+      "technical_details_zh": {
+        "范式": "search amplification——用 SMT 求解器 conflict count 引导合成推理量巨大的 CSP 查询",
+        "成本": "仅 CPU；不查询目标模型；不训练攻击模型；无需 GPU",
+        "机制": "LRM 以试错 + 回溯方式解 CSP；更高的 SMT conflict count 与更长回溯和输出相关",
+        "范围": "七个前沿推理模型（摘要未点名）",
+        "缓解": "把求解卸载给工具可显著削减 token；建议配每请求预算上限",
+        "注意": "攻击侧学术研究；对 gateway/serving 的价值在防御；摘要页未见代码链接",
+        "与知识库的关系": "serving 层安全证据线；与 KV-cache 回滚（ev-20260818-03）、Cloudflare MCP enforcement（ev-20260814-03）时代的加固主题互补的成本耗尽向量"
+      }
+    }
+  ]
+}

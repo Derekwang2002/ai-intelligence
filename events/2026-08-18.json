@@ -13,7 +13,7 @@
       "published_at": "2026-08-18",
       "published_at_note": "Announced during the SUPERNOVA 2026 keynote (livestream from ~22:30Z, Aug 18); press release syndicated 2026-08-18. In-window. Independent coverage: StockTitan (2026-08-18) and live cerebras.ai homepage; search indexes had not caught up at scan time.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-08-20T00:00:23Z",
+      "last_updated_at": "2026-08-21T00:00:37Z",
       "source_type": "primary+media",
       "primary_source": "https://www.cerebras.ai/",
       "secondary_sources": [
@@ -77,12 +77,13 @@
         "架构": "模块化 Nexus Platform Architecture；可插拔 Wafer-Scale Backpack；Direct Wafer Links；支持 >50T 参数模型",
         "供货": "预计本季度（Q3 2026）首批出货",
         "Benchmark 注意": "所有数字均为发布时厂商宣称；尚无独立 benchmark"
-      }
+      },
+      "update_2026_08_20": "Watch-item re-check (2026-08-20): hardware pricing, independent benchmarks and shipment confirmations remain unavailable (third-party coverage consistently notes all three pending; no MLPerf submissions found). New technical specificity from The Next Platform's analysis: CS-4 machines use an overclocked WSE-3 with the same 900,000 cores, clock speed doubled from 1.4 GHz to 2.8 GHz — mechanically consistent with SemiAnalysis's 'double the performance with double the power' reading (ev-20260818-01 update_2026_08_19). Recommendation stays WATCH pending third-party benchmarks, pricing and first-shipment evidence."
     },
     {
       "event_id": "ev-20260818-02",
-      "title": "OpenAI Codex CLI 0.148.0 stable — session forking, async hooks that invoke MCP tools, built-in Amazon Bedrock provider",
-      "title_zh": "OpenAI Codex CLI 0.148.0 稳定版——会话 fork、可调用 MCP 工具的异步 hooks、内置 Amazon Bedrock provider",
+      "title": "OpenAI Codex CLI 0.148–0.149 stable — exec fork, interactive agents dashboard, codex queue session messaging, async hooks + MCP, Bedrock",
+      "title_zh": "OpenAI Codex CLI 0.148–0.149 稳定版——exec fork、交互式 agents dashboard、codex queue 会话消息、异步 hooks + MCP、Bedrock",
       "category": "developer-tools",
       "organization": [
         "OpenAI",
@@ -91,7 +92,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-08-19T00:00:17Z",
+      "last_updated_at": "2026-08-21T00:00:37Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [],
@@ -148,7 +149,8 @@
           "provider 故障期间自动重连",
           "恢复的会话还原 cwd + approval policy"
         ]
-      }
+      },
+      "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT."
     },
     {
       "event_id": "ev-20260818-03",

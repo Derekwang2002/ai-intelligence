@@ -219,8 +219,8 @@
     },
     {
       "event_id": "ev-20260814-04",
-      "title": "Claude Code 2.1.232–2.1.234 — subagent forking default-on, cross-session agent messaging, sandbox resource limits",
-      "title_zh": "Claude Code 2.1.232–2.1.234——subagent fork 默认开启、跨会话 agent 消息、sandbox 资源限额",
+      "title": "Claude Code 2.1.232–2.1.238 — subagent forking default-on, cross-session agent messaging, sandbox resource limits",
+      "title_zh": "Claude Code 2.1.232–2.1.238——subagent fork 默认开启、跨会话 agent 消息、sandbox 资源限额",
       "category": "developer-tools",
       "organization": [
         "Anthropic"
@@ -228,7 +228,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-08-20T00:00:23Z",
+      "last_updated_at": "2026-08-21T00:00:37Z",
       "source_type": "primary",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -271,7 +271,8 @@
         "消息": "通过 @-mentions 跨实时会话 SendMessage；不交换历史/文件/权限",
         "Sandbox": "CLAUDE_CODE_TOOL_MEMORY_LIMIT cgroup 限制（Linux）",
         "破坏性变更": "新模型默认停用 todo 工具"
-      }
+      },
+      "update_2026_08_20": "2.1.237 + 2.1.238 (both 2026-08-20, in-window). 2.1.237: fixed prompt caching for sessions using an LLM gateway or custom base URL (directly relevant to gateway deployments); added a built-in 'Concise' output style ('Claude leads with results and skips preamble and narration') selectable via /config. 2.1.238: fixed unbounded memory growth in long interactive sessions — subagent tool results are now freed after leaving the recent display window, directly relevant to long-running multi-agent sessions; plugin marketplaces gained `headersHelper` for URL marketplaces/catalog entries (mints short-lived HTTP headers such as tokens for catalog and same-origin archive fetches, shown to the user first with [y/N] confirmation, no inherited credential env vars) — private/enterprise plugin distribution; self-hosted runner `--defer-shutdown-max-min` (keep serving attached sessions on SIGTERM, then park and exit) and `--proxy-authorization-command`/`--proxy-authorization-file` for proxies needing a fresh Proxy-Authorization header per connection; numerous Remote Control fixes (mid-turn messages vanishing from transcripts, model picks on phone/web not updating the terminal, 'login expired' on brief network hiccups now retries, crashed-session reuse, env-var leaks, per-task Stop, ListAgents/SendMessage wrongly reporting 'not connected' in server mode); cross-session messaging hardening (refused inboxes now report 'refused'; rate-limited/dropped messages notify the sender instead of vanishing); MCP fixes (stdio servers no longer receive server/discover before initialize — lazy servers no longer start on every open; elicitation dialogs fixed for URLs over 4,096 chars; disabled servers listed without health-checking). Recommendation stays ADOPT."
     },
     {
       "event_id": "ev-20260814-05",

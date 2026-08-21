@@ -1,6 +1,6 @@
 {
   "date": "2026-08-19",
-  "provenance": "Incremental scan window [2026-08-19T00:00:17Z, 2026-08-20T00:00:23Z]; retrieval overlap from 2026-08-18T21:00:17Z (retrieval only, dedup enforced against index). Cursor 'Cloud Agents and Cursor Harness Improvements' changelog entry dated Aug 19, 2026 (page metadata + dated entry URL). arXiv papers announced in the Wed, 19 Aug 2026 cs.CL digest (PTXBench v1 submitted 2026-08-18T05:14Z; item-level API-migration study v1 submitted 2026-08-18T12:44Z). Two existing events updated in their original files: ev-20260818-01 (CS-4 independent analysis wave) and ev-20260814-04 (Claude Code 2.1.236).",
+  "provenance": "Incremental scan window [2026-08-19T00:00:17Z, 2026-08-20T00:00:23Z]; retrieval overlap from 2026-08-18T21:00:17Z (retrieval only, dedup enforced against index). Cursor 'Cloud Agents and Cursor Harness Improvements' changelog entry dated Aug 19, 2026 (page metadata + dated entry URL). arXiv papers announced in the Wed, 19 Aug 2026 cs.CL digest (PTXBench v1 submitted 2026-08-18T05:14Z; item-level API-migration study v1 submitted 2026-08-18T12:44Z). Two existing events updated in their original files: ev-20260818-01 (CS-4 independent analysis wave) and ev-20260814-04 (Claude Code 2.1.236). ev-20260819-04 appended by the 2026-08-21 run as a coverage-gap recovery (AWS announcement dated 2026-08-19, surfaced 2026-08-20T05:02Z via aggregator alert).",
   "events": [
     {
       "event_id": "ev-20260819-01",
@@ -207,6 +207,84 @@
         ],
         "产物": "发布完整 response 级归档 + 逐条评分输出",
         "与知识库的关系": "DeepSeek V4-Pro 定价/GA 事件（ev-20260813-02）强制迁移时代的实用配套；方法论可直接用作迁移验收门禁"
+      }
+    },
+    {
+      "event_id": "ev-20260819-04",
+      "title": "Amazon Bedrock adds xAI Grok 4.6 — 500K context, cross-region inference profiles, $2.00–2.20 per M input",
+      "title_zh": "Amazon Bedrock 上架 xAI Grok 4.6——500K 上下文、跨区域推理 profile、输入 $2.00–2.20/M",
+      "category": "foundation-model",
+      "organization": [
+        "xAI",
+        "Amazon",
+        "AWS"
+      ],
+      "published_at": "2026-08-19",
+      "published_at_note": "AWS What's New announcement dated August 19, 2026 (US date). Coverage-gap recovery: surfaced via aggregator alert 2026-08-20T05:02Z and captured by the 2026-08-21 run. Grok 4.6 itself launched 2026-08-12 as xAI's flagship (out of KB coverage, background); what is new here is Bedrock availability, pricing and feature scope.",
+      "first_seen_at": "2026-08-21T00:00:37Z",
+      "last_updated_at": "2026-08-21T00:00:37Z",
+      "source_type": "primary",
+      "primary_source": "https://aws.amazon.com/about-aws/whats-new/",
+      "secondary_sources": [
+        "https://aiweekly.co/alerts/amazon-bedrock-adds-xais-grok-46-with-500k-context-window"
+      ],
+      "summary": "Amazon Bedrock added xAI's Grok 4.6 — a 500K-token-context frontier model positioned for coding, agentic tasks and knowledge work with emphasis on long-running agents. Four configurable reasoning effort levels (low default / medium / high / xhigh); accepts text and image input, returns text output; accessible via the Responses, Chat Completions and Converse APIs with prompt caching and reasoning support. Two cross-region inference profiles launched: us.xai.grok-4.6 for US data residency and global.xai.grok-4.6, which routes anywhere worldwide when there are no residency constraints. Pricing: in-region and US geo profiles $2.20/M input, $6.60/M output, $0.55/M cache read; global cross-region profile $2.00/M input, $6.00/M output, $0.50/M cache read. Not supported: server-side tool use, structured outputs, intelligent prompt routing, application inference profiles.",
+      "why_it_matters": "Model-access event: xAI's frontier model becomes procurable through AWS (Bedrock commitments, private networking, IAM), which matters for enterprises standardizing on AWS and for multi-model routing strategies; 500K context plus the long-running-agent positioning makes it a candidate for long-context agent workloads. The engineering caveats are as important as the headline — no server-side tool use and no structured outputs on Bedrock means agent stacks must keep tool execution client-side and parse text outputs, a real integration constraint versus APIs that offer those server-side.",
+      "summary_zh": "Amazon Bedrock 上架 xAI Grok 4.6——500K token 上下文的前沿模型，定位 coding、agentic task 与知识工作，强调长时 agent。四档可配置 reasoning effort（默认 low / medium / high / xhigh）；接受文本与图像输入、输出文本；可通过 Responses、Chat Completions 与 Converse API 访问，支持 prompt caching 与 reasoning。上线两个跨区域推理 profile：us.xai.grok-4.6（美国数据驻留）与 global.xai.grok-4.6（无驻留约束时全球路由）。定价：in-region 与 US geo profile 输入 $2.20/M、输出 $6.60/M、缓存读 $0.55/M；global 跨区域 profile 输入 $2.00/M、输出 $6.00/M、缓存读 $0.50/M。不支持：server-side tool use、structured outputs、intelligent prompt routing、application inference profiles。",
+      "summary_en": "Amazon Bedrock added xAI's Grok 4.6 — a 500K-token-context frontier model positioned for coding, agentic tasks and knowledge work with emphasis on long-running agents. Four configurable reasoning effort levels (low default / medium / high / xhigh); accepts text and image input, returns text output; accessible via the Responses, Chat Completions and Converse APIs with prompt caching and reasoning support. Two cross-region inference profiles launched: us.xai.grok-4.6 for US data residency and global.xai.grok-4.6, which routes anywhere worldwide when there are no residency constraints. Pricing: in-region and US geo profiles $2.20/M input, $6.60/M output, $0.55/M cache read; global cross-region profile $2.00/M input, $6.00/M output, $0.50/M cache read. Not supported: server-side tool use, structured outputs, intelligent prompt routing, application inference profiles.",
+      "why_it_matters_zh": "模型获取事件：xAI 前沿模型可以通过 AWS 采购（Bedrock commitment、私有网络、IAM），对以 AWS 为主的标准企业与多模型路由策略有实际意义；500K 上下文 + 长时 agent 定位使其成为长上下文 agent 负载的候选。工程注意事项与 headline 同样重要——Bedrock 上不支持 server-side tool use 与 structured outputs，意味着 agent 栈必须把工具执行留在客户端并解析文本输出，相对提供这些服务端能力的是真实集成约束。",
+      "why_it_matters_en": "Model-access event: xAI's frontier model becomes procurable through AWS (Bedrock commitments, private networking, IAM), which matters for enterprises standardizing on AWS and for multi-model routing strategies; 500K context plus the long-running-agent positioning makes it a candidate for long-context agent workloads. The engineering caveats are as important as the headline — no server-side tool use and no structured outputs on Bedrock means agent stacks must keep tool execution client-side and parse text outputs, a real integration constraint versus APIs that offer those server-side.",
+      "technical_details": {
+        "context_window": "500K tokens",
+        "reasoning_efforts": "low (default) / medium / high / xhigh",
+        "modalities": "text + image input; text output",
+        "apis": "Responses, Chat Completions, Converse; prompt caching + reasoning supported",
+        "inference_profiles": [
+          "us.xai.grok-4.6 (US data residency)",
+          "global.xai.grok-4.6 (worldwide routing when no residency constraints)"
+        ],
+        "pricing": [
+          "in-region / US geo: $2.20/M in, $6.60/M out, $0.55/M cache read",
+          "global cross-region: $2.00/M in, $6.00/M out, $0.50/M cache read"
+        ],
+        "not_supported": "server-side tool use, structured outputs, intelligent prompt routing, application inference profiles",
+        "background": "Grok 4.6 launched 2026-08-12 (pre-coverage background); this event covers the Bedrock availability layer only",
+        "relation_to_kb": "model-access/pricing line alongside DeepSeek V4-Pro GA pricing (ev-20260813-02); long-context agent workload candidate"
+      },
+      "tags": [
+        "grok-4-6",
+        "xai",
+        "amazon-bedrock",
+        "aws",
+        "model-availability",
+        "long-context",
+        "cross-region-inference",
+        "pricing"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 3,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "amazon-bedrock-grok-4-6-availability",
+      "technical_details_zh": {
+        "上下文窗口": "500K tokens",
+        "Reasoning Effort": "low（默认）/ medium / high / xhigh",
+        "模态": "文本 + 图像输入；文本输出",
+        "API": "Responses、Chat Completions、Converse；支持 prompt caching 与 reasoning",
+        "推理 Profile": [
+          "us.xai.grok-4.6（美国数据驻留）",
+          "global.xai.grok-4.6（无驻留约束时全球路由）"
+        ],
+        "定价": [
+          "in-region / US geo：输入 $2.20/M、输出 $6.60/M、缓存读 $0.55/M",
+          "global 跨区域：输入 $2.00/M、输出 $6.00/M、缓存读 $0.50/M"
+        ],
+        "不支持": "server-side tool use、structured outputs、intelligent prompt routing、application inference profiles",
+        "背景": "Grok 4.6 于 2026-08-12 发布（覆盖前背景）；本事件只覆盖 Bedrock 可用性这一层",
+        "与知识库的关系": "与 DeepSeek V4-Pro GA 定价（ev-20260813-02）同属模型获取/定价线；长上下文 agent 负载候选"
       }
     }
   ]
