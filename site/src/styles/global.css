@@ -391,7 +391,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .card, .event-card, .filter-bar, .feed-row, .pn-link, .daily-row, .quad-items,
 .quad-items li:first-child > a, .quad-items li:last-child > a,
 .filter-bar select, .fchip, .pager a, .btn-primary, .btn-ghost, .t-mini,
-.radar-tip, .nav-utils, .header-search input, .prose pre { corner-shape: squircle; }
+.nav-utils, .header-search input, .prose pre { corner-shape: squircle; }
 
 /* ============ badges / chips / tags ============ */
 
@@ -652,14 +652,20 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .src-list a { word-break: break-all; color: var(--text-muted); }
 .src-list a:hover { color: var(--accent); }
 
-/* ============ radar page ============ */
+/* ============ radar section（洞察页内） ============ */
 
-/* 象限索引列表为主体 */
-/* 象限密度差异大：用多列流式布局让浏览器按块高自动平衡两列，
-   块内不断裂、阅读顺序保持自上而下再换列，消除 grid 行对齐造成的空洞 */
-.radar-lists { columns: 2; column-gap: 40px; margin-bottom: 40px; }
-@media (max-width: 860px) { .radar-lists { columns: 1; } }
-.quad-block { padding: 4px 0 18px; break-inside: avoid; }
+/* 图与清单同屏：桌面端左右分栏，图 sticky 在左，清单在右滚动；
+   窄屏堆叠，图在前作为可视索引 */
+.radar-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+.radar-side { position: sticky; top: 92px; }
+@media (max-width: 1080px) {
+  .radar-split { grid-template-columns: 1fr; }
+  .radar-side { position: static; }
+}
+
+/* 象限清单在右栏单列堆叠 */
+.radar-lists { display: flex; flex-direction: column; gap: 26px; }
+.quad-block { padding: 0; }
 .quad-head {
   margin: 0 0 8px;
   font-family: var(--serif);
@@ -707,23 +713,24 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .quad-empty { font-size: 12.5px; color: var(--text-faint); padding: 10px 18px; }
 
 /* ============ 雷达总览 ============ */
-/* 与象限区块同一版面语法：serif 章节标题（图例在右）→ 标准卡片承载表盘 */
+/* 图例行（含筛选 chips）夹在章节标题与分栏之间 */
 .radar-overview-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 8px 18px;
   flex-wrap: wrap;
-  margin-top: 46px;
+  margin: 0 0 14px;
 }
-.radar-overview-head .quad-head { margin: 0; }
 .radar-overview-head .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; color: var(--text-muted); }
 .legend-sw { display: inline-flex; align-items: center; gap: 7px; }
 .legend-sw i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
 .legend-note { color: var(--text-faint); }
+.radar-filters { display: inline-flex; gap: 8px; flex-wrap: wrap; }
+.radar-filters .fchip { cursor: pointer; }
 
-.radar-overview { margin-top: 6px; padding: 20px 26px 14px; }
-.radar-figure { max-width: 680px; margin: 4px auto 0; }
+.radar-overview { padding: 18px 22px 12px; }
+.radar-figure { margin: 2px auto 0; }
 .radar-svg { width: 100%; height: auto; display: block; user-select: none; }
 .radar-svg .adopt-disc { fill: var(--accent-soft); }
 .radar-svg .ring-line { fill: none; stroke: var(--border-strong); stroke-width: 1; opacity: 0.7; }
@@ -741,7 +748,13 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   stroke-width: 7px;
 }
 .radar-svg .quad-label { fill: var(--text-muted); font-size: 18px; font-weight: 700; font-family: var(--serif); opacity: 0.9; }
-.radar-svg .blip { cursor: pointer; }
+/* 象限 / 环标签是筛选控制器 */
+.radar-svg .q-filter, .radar-svg .r-filter { cursor: pointer; transition: opacity 0.15s var(--ease); }
+.radar-svg .q-filter:hover, .radar-svg .r-filter:hover { fill: var(--accent); }
+.radar-svg .q-filter.active, .radar-svg .r-filter.active { fill: var(--accent); opacity: 1; }
+.radar-svg .q-filter.dim, .radar-svg .r-filter.dim { opacity: 0.35; }
+.radar-svg .blip { cursor: pointer; transition: opacity 0.2s var(--ease); }
+.radar-svg .blip.dim { opacity: 0.12; pointer-events: none; }
 .radar-svg .blip .dot { stroke: var(--bg); stroke-width: 1.5; transition: r 0.15s var(--ease); }
 .radar-svg .blip .halo { fill: none; opacity: 0; transition: opacity 0.15s var(--ease); }
 .radar-svg .blip:hover .dot, .radar-svg .blip.hl .dot { r: 13.5; }
@@ -751,26 +764,15 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 /* 列表 ↔ 图联动高亮 */
 .quad-items a.hl { background: var(--accent-soft); color: var(--text); }
 
-.radar-tip {
-  position: fixed;
-  z-index: 90;
-  pointer-events: none;
-  max-width: 330px;
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  border: 1px solid var(--border-strong);
-  box-shadow: var(--shadow-md);
-  font-size: 12.5px;
-  line-height: 1.65;
-  color: var(--text-muted);
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.15s var(--ease), transform 0.15s var(--ease);
+/* 点击光点定位到清单行：闪烁一次 */
+@keyframes row-flash {
+  0% { background-color: var(--accent-soft); }
+  100% { background-color: transparent; }
 }
-.radar-tip.show { opacity: 1; transform: translateY(0); }
-.radar-tip .t { color: var(--text); font-weight: 650; font-size: 13px; margin-bottom: 4px; line-height: 1.5; }
-.radar-tip .m { font-family: var(--mono); font-size: 11px; color: var(--text-faint); }
+.quad-items li.flash > a { animation: row-flash 1.7s var(--ease); }
+
+/* 筛选态：隐藏行/块 */
+.quad-items li.hide, .quad-block.hide { display: none; }
 
 /* ============ trends ============ */
 
@@ -820,6 +822,18 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .lifecycle-steps { display: flex; align-items: center; gap: 0; flex-wrap: wrap; row-gap: 8px; }
 .lc-step { display: flex; align-items: center; gap: 0; }
 .lc-step .lc-link { width: 20px; height: 1px; background: var(--border-strong); flex-shrink: 0; align-self: center; margin: 0 3px; }
+/* 洞察页：生命周期从独立通栏降级为章节标题旁的小图例 */
+.lc-inline .status-pill { font-size: 10px; padding: 1px 8px; }
+.lc-inline .lc-link { width: 12px; }
+
+/* ============ insights（趋势 + 雷达合并页） ============ */
+
+/* 章节锚点定位预留 sticky 头高度 */
+.ins-sec { scroll-margin-top: 88px; }
+/* 页头下的章节快捷入口，沿用筛选 chip 语言 */
+.ins-anchors { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+/* 章节标题里内嵌小图例时允许换行（窄屏） */
+.section-title.has-extra { flex-wrap: wrap; row-gap: 10px; }
 
 /* ============ trends snapshot calendar ============ */
 /* 历史快照用月历呈现：有快照的日期为可点击的 accent 格，其余为静默日期 */

@@ -49,8 +49,8 @@ type Blip = {
   x: number;
   y: number;
   rec: string;
+  quad: string;
   title: string;
-  org: string;
   date: string;
   href: string;
 };
@@ -90,127 +90,113 @@ for (const quad of QUADRANTS) {
       x: CX + radius * Math.cos(angle),
       y: CY + radius * Math.sin(angle),
       rec,
+      quad: quad.id,
       title: locTitle(e, locale),
-      org: (e.organization ?? []).join(', '),
       date: e.published_date,
-      href: u(`/events/${e.event_id}/`),
+      href: u(`/events/${e.event_id}/`, locale),
     });
   }
   legend.push({ quad, blips });
 }
 
 const ringMid = (r: keyof typeof RINGS) => (RINGS[r][0] + RINGS[r][1]) / 2;
-const quadLabelPos = (range: [number, number]) => {
+const quadLabelPos = (range: readonly [number, number]) => {
   const mid = ((range[0] + range[1]) / 2) * (Math.PI / 180);
   const r = 512;
   return { x: CX + r * Math.cos(mid), y: CY + r * Math.sin(mid) };
 };
 ---
 
-<div class="radar-lists">
-  {legend.map(({ quad, blips }) => (
-    <section class="quad-block">
-      <h3 class="quad-head">{t(locale, quad.labelKey)}<span class="count">{blips.length}</span></h3>
-      <ol class="quad-items">
-        {blips.length === 0 && <li class="quad-empty">{t(locale, 'radar.empty')}</li>}
-        {blips.map((b) => (
-          <li>
-            <a href={b.href} data-no={b.no} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
-              <span class="no">{String(b.no).padStart(2, '0')}</span>
-              <span class="rec-dot" style={`background: ${REC_VAR[b.rec] ?? REC_VAR.WATCH}`}></span>
-              <span class="qi-title">{b.title}</span>
-              <span class="qi-meta">{b.date}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
-    </section>
-  ))}
-</div>
-
 <div class="radar-overview-head">
-  <h3 class="quad-head">{t(locale, 'radar.overview')}<span class="count">{counter}</span></h3>
   <span class="legend">
     {RING_ORDER.map((r) => (
       <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
     ))}
     <span class="legend-note">{t(locale, 'radar.legendNote')}</span>
   </span>
+  <span class="radar-filters" id="radar-filters" hidden data-clear-label={t(locale, 'insights.filterClear')}></span>
 </div>
 
-<section class="card radar-overview">
-  <figure class="radar-figure">
-    <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label={t(locale, 'radar.aria')}>
-    <circle class="adopt-disc" cx={CX} cy={CY} r={RINGS.ADOPT[1]} />
-    {RING_ORDER.map((r) => (
-      <circle class="ring-line" cx={CX} cy={CY} r={RINGS[r][1]} />
+<div class="radar-split">
+  <div class="radar-side">
+    <section class="card radar-overview">
+      <figure class="radar-figure">
+        <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label={t(locale, 'radar.aria')}>
+        <circle class="adopt-disc" cx={CX} cy={CY} r={RINGS.ADOPT[1]} />
+        {RING_ORDER.map((r) => (
+          <circle class="ring-line" cx={CX} cy={CY} r={RINGS[r][1]} />
+        ))}
+        <circle class="ring-line" cx={CX} cy={CY} r={RINGS.ADOPT[0]} opacity="0.5" />
+        <line class="axis-line" x1={CX} y1={CY - 476} x2={CX} y2={CY + 476} />
+        <line class="axis-line" x1={CX - 476} y1={CY} x2={CX + 476} y2={CY} />
+
+        {RING_ORDER.map((r) => (
+          <text
+            class="ring-label r-filter"
+            x={CX}
+            y={CY - ringMid(r)}
+            data-ring={r}
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+            aria-label={`${r} · ${t(locale, 'insights.filterRingAria')}`}
+          >{r}</text>
+        ))}
+
+        {QUADRANTS.map((q) => {
+          const p = quadLabelPos(q.range);
+          return (
+            <text
+              class="quad-label q-filter"
+              x={p.x}
+              y={p.y}
+              text-anchor="middle"
+              data-quad={q.id}
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+              aria-label={`${t(locale, q.labelKey)} · ${t(locale, 'insights.filterQuadAria')}`}
+            >{t(locale, q.labelKey)}</text>
+          );
+        })}
+
+        {legend.flatMap(({ blips }) =>
+          blips.map((b) => (
+            <a class="blip" href={b.href} data-no={b.no} data-quad={b.quad} data-rec={b.rec} aria-label={`${b.title}（${b.rec}）`}>
+              <circle class="halo" cx={b.x} cy={b.y} r="17" stroke={REC_VAR[b.rec] ?? REC_VAR.WATCH} stroke-width="2" />
+              <circle class="dot" cx={b.x} cy={b.y} r="11" fill={REC_VAR[b.rec] ?? REC_VAR.WATCH} />
+              <text x={b.x} y={b.y + 0.5}>{b.no}</text>
+            </a>
+          ))
+        )}
+      </svg>
+      </figure>
+    </section>
+  </div>
+
+  <div class="radar-lists">
+    {legend.map(({ quad, blips }) => (
+      <section class="quad-block" data-quad={quad.id}>
+        <h3 class="quad-head">{t(locale, quad.labelKey)}<span class="count">{blips.length}</span></h3>
+        <ol class="quad-items">
+          {blips.length === 0 && <li class="quad-empty">{t(locale, 'radar.empty')}</li>}
+          {blips.map((b) => (
+            <li id={`blip-${b.no}`} data-rec={b.rec}>
+              <a href={b.href} data-no={b.no}>
+                <span class="no">{String(b.no).padStart(2, '0')}</span>
+                <span class="rec-dot" style={`background: ${REC_VAR[b.rec] ?? REC_VAR.WATCH}`}></span>
+                <span class="qi-title">{b.title}</span>
+                <span class="qi-meta">{b.date}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
     ))}
-    <circle class="ring-line" cx={CX} cy={CY} r={RINGS.ADOPT[0]} opacity="0.5" />
-    <line class="axis-line" x1={CX} y1={CY - 476} x2={CX} y2={CY + 476} />
-    <line class="axis-line" x1={CX - 476} y1={CY} x2={CX + 476} y2={CY} />
-
-    {RING_ORDER.map((r) => (
-      <text class="ring-label" x={CX} y={CY - ringMid(r)}>{r}</text>
-    ))}
-
-    {QUADRANTS.map((q) => {
-      const p = quadLabelPos(q.range as unknown as [number, number]);
-      return <text class="quad-label" x={p.x} y={p.y} text-anchor="middle">{t(locale, q.labelKey)}</text>;
-    })}
-
-    {legend.flatMap(({ blips }) =>
-      blips.map((b) => (
-        <a class="blip" href={b.href} data-no={b.no} aria-label={`${b.title}（${b.rec}）`} data-tip-title={b.title} data-tip-meta={`${b.org} · ${b.date} · ${b.rec}`}>
-          <circle class="halo" cx={b.x} cy={b.y} r="17" stroke={REC_VAR[b.rec] ?? REC_VAR.WATCH} stroke-width="2" />
-          <circle class="dot" cx={b.x} cy={b.y} r="11" fill={REC_VAR[b.rec] ?? REC_VAR.WATCH} />
-          <text x={b.x} y={b.y + 0.5}>{b.no}</text>
-        </a>
-      ))
-    )}
-  </svg>
-  </figure>
-</section>
-
-<div class="radar-tip" id="radar-tip" aria-hidden="true">
-  <div class="t"></div>
-  <div class="m"></div>
+  </div>
 </div>
 
 <script>
-  const tip = document.getElementById('radar-tip');
-
-  function show(target: Element, clientX: number, clientY: number) {
-    if (!tip) return;
-    const anchor = target.closest('[data-tip-title]');
-    if (!anchor) return;
-    tip.querySelector('.t')!.textContent = anchor.getAttribute('data-tip-title') ?? '';
-    tip.querySelector('.m')!.textContent = anchor.getAttribute('data-tip-meta') ?? '';
-    tip.classList.add('show');
-    const pad = 14;
-    const w = tip.offsetWidth;
-    const h = tip.offsetHeight;
-    let x = clientX + pad;
-    let y = clientY + pad;
-    if (x + w > innerWidth - 8) x = clientX - w - pad;
-    if (y + h > innerHeight - 8) y = clientY - h - pad;
-    tip.style.left = `${x}px`;
-    tip.style.top = `${y}px`;
-  }
-
-  function hide() {
-    tip?.classList.remove('show');
-  }
-
-  document.addEventListener('mousemove', (ev) => {
-    const target = (ev.target as Element).closest?.('[data-tip-title]');
-    if (target) {
-      show(target, (ev as MouseEvent).clientX, (ev as MouseEvent).clientY);
-    } else {
-      hide();
-    }
-  });
-  document.addEventListener('mouseleave', hide);
-
   // 列表 ↔ 雷达图联动高亮：两侧元素通过 data-no 共享编号
   let current: string | null = null;
   function setHl(no: string, on: boolean) {
@@ -229,5 +215,105 @@ const quadLabelPos = (range: [number, number]) => {
   document.addEventListener('mouseleave', () => {
     if (current) setHl(current, false);
     current = null;
+  });
+
+  // 点击光点：不跳转，平滑滚动到对应清单行并闪烁定位（修飾键/中键保持原有打开行为）
+  document.addEventListener('click', (ev) => {
+    const blip = (ev.target as Element).closest?.('a.blip');
+    if (!blip) return;
+    const mev = ev as MouseEvent;
+    if (mev.button !== 0 || mev.metaKey || mev.ctrlKey || mev.shiftKey || mev.altKey) return;
+    ev.preventDefault();
+    const no = blip.getAttribute('data-no');
+    const row = no && document.getElementById(`blip-${no}`);
+    if (!row) return;
+    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    row.classList.remove('flash');
+    void row.offsetWidth; // 重新触发动画
+    row.classList.add('flash');
+  });
+
+  // 象限 / 环标签点击筛选：两个维度可叠加，再次点击同一标签取消。
+  // 清单行按维度隐藏，光点调暗并禁用指针，避免“点了跳到一个看不见的行”。
+  const filterBox = document.getElementById('radar-filters');
+  let fq: string | null = null;
+  let fr: string | null = null;
+  let fqLabel = '';
+  let frLabel = '';
+
+  function applyFilters() {
+    for (const block of document.querySelectorAll<HTMLElement>('.quad-block')) {
+      const quadOk = !fq || block.dataset.quad === fq;
+      let visibleRows = 0;
+      for (const li of block.querySelectorAll<HTMLElement>('li[data-rec]')) {
+        const show = quadOk && (!fr || li.dataset.rec === fr);
+        li.classList.toggle('hide', !show);
+        if (show) visibleRows += 1;
+      }
+      block.classList.toggle('hide', !quadOk || visibleRows === 0);
+    }
+    for (const blip of document.querySelectorAll<SVGElement>('a.blip')) {
+      const ok = (!fq || blip.dataset.quad === fq) && (!fr || blip.dataset.rec === fr);
+      blip.classList.toggle('dim', !ok);
+    }
+    for (const lab of document.querySelectorAll<SVGElement>('[data-quad].q-filter, [data-ring].r-filter')) {
+      const isQuad = lab.hasAttribute('data-quad');
+      const val = isQuad ? lab.getAttribute('data-quad') : lab.getAttribute('data-ring');
+      const active = isQuad ? fq === val : fr === val;
+      lab.classList.toggle('active', active);
+      lab.classList.toggle('dim', (isQuad ? !!fq : !!fr) && !active);
+      lab.setAttribute('aria-pressed', String(active));
+    }
+    renderChips();
+  }
+
+  function renderChips() {
+    if (!filterBox) return;
+    filterBox.innerHTML = '';
+    const active = fq || fr;
+    filterBox.hidden = !active;
+    if (!active) return;
+    const mk = (label: string, clear: () => void) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'fchip active';
+      b.textContent = `${label} ×`;
+      b.addEventListener('click', clear);
+      filterBox.appendChild(b);
+    };
+    if (fq) mk(fqLabel, () => { fq = null; applyFilters(); });
+    if (fr) mk(frLabel, () => { fr = null; applyFilters(); });
+    const clear = document.createElement('button');
+    clear.type = 'button';
+    clear.className = 'fchip';
+    clear.textContent = filterBox.dataset.clearLabel ?? 'Clear';
+    clear.addEventListener('click', () => { fq = null; fr = null; applyFilters(); });
+    filterBox.appendChild(clear);
+  }
+
+  function toggleFilter(el: Element) {
+    if (el.hasAttribute('data-quad')) {
+      const val = el.getAttribute('data-quad');
+      fq = fq === val ? null : val;
+      fqLabel = fq ? (el.textContent ?? '') : '';
+    } else if (el.hasAttribute('data-ring')) {
+      const val = el.getAttribute('data-ring');
+      fr = fr === val ? null : val;
+      frLabel = fr ? (el.textContent ?? '') : '';
+    }
+    applyFilters();
+  }
+
+  document.addEventListener('click', (ev) => {
+    const lab = (ev.target as Element).closest?.('.q-filter, .r-filter');
+    if (lab) toggleFilter(lab);
+  });
+  document.addEventListener('keydown', (ev) => {
+    if ((ev as KeyboardEvent).key !== 'Enter' && (ev as KeyboardEvent).key !== ' ') return;
+    const lab = (ev.target as Element).closest?.('.q-filter, .r-filter');
+    if (lab) {
+      ev.preventDefault();
+      toggleFilter(lab);
+    }
   });
 </script>

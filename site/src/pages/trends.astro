@@ -1,5 +1,18 @@
 ---
-import Trends from '../components/pages/Trends.astro';
+// 趋势页已合并进洞察页，保留旧路径做跳转（GitHub Pages 无服务端 301，用 meta refresh）
+import { u } from '../lib/url';
+const target = u('/insights/#trends');
 ---
 
-<Trends locale="zh" />
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>页面已移动 · 洞察</title>
+  </head>
+  <body>
+    <p>趋势看板已并入<a href={target}>洞察</a>页。</p>
+  </body>
+</html>

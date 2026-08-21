@@ -1,5 +1,19 @@
 ---
-import Trends from '../../components/pages/Trends.astro';
+// Trends page merged into Insights; keep the old path as a redirect
+// (GitHub Pages has no server-side 301, so use a meta refresh).
+import { u } from '../../lib/url';
+const target = u('/insights/#trends', 'en');
 ---
 
-<Trends locale="en" />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Moved · Insights</title>
+  </head>
+  <body>
+    <p>The trends board is now part of <a href={target}>Insights</a>.</p>
+  </body>
+</html>

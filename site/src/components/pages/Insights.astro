@@ -1,7 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
+import RadarChart from '../RadarChart.astro';
 import { u } from '../../lib/url';
 import { t, loc, type Locale } from '../../lib/i18n';
+import events from '../../data/generated/events.json';
 import trends from '../../data/generated/trends.json';
 
 interface Props {
@@ -12,6 +14,7 @@ const { locale = 'zh' } = Astro.props;
 const active = trends.trends.filter((tr: any) => !tr.retired);
 const retired = trends.trends.filter((tr: any) => tr.retired);
 const lifecycle = ['candidate', 'emerging', 'strengthening', 'established', 'weakening', 'invalidated'];
+const uniqueCount = new Set(events.map((e: any) => e.event_fingerprint)).size;
 
 function evidenceList(tr: any, loc_: Locale): string[] {
   const items = loc_ === 'zh' ? tr.evidence_zh : tr.evidence_en;
@@ -38,96 +41,111 @@ const snapMonths = monthKeys.map((mk) => {
 });
 ---
 
-<Base title={t(locale, 'trends.title')} description={t(locale, 'trends.description')} locale={locale}>
+<Base title={t(locale, 'insights.title')} description={t(locale, 'insights.description')} locale={locale}>
   <div class="page-head">
     <div class="head-row">
-      <h1>{t(locale, 'trends.title')}</h1>
-      <span class="en">{t(locale, 'trends.en')}</span>
+      <h1>{t(locale, 'insights.title')}</h1>
+      <span class="en">{t(locale, 'insights.en')}</span>
     </div>
     <p class="desc">
-      {t(locale, 'trends.desc')}<code>{trends.asOf}</code>
+      {t(locale, 'insights.desc')}
+      <code>{active.length}</code>{t(locale, 'insights.meta1')}<code>{uniqueCount}</code>{t(locale, 'insights.meta2')}<code>{trends.asOf}</code>
     </p>
+    <nav class="ins-anchors" aria-label={t(locale, 'insights.sec.aria')}>
+      <a class="fchip" href="#trends">{t(locale, 'insights.anchor.trends')}</a>
+      <a class="fchip" href="#radar">{t(locale, 'insights.anchor.radar')}</a>
+      <a class="fchip" href="#archive">{t(locale, 'insights.anchor.archive')}</a>
+    </nav>
   </div>
 
-  <div class="lifecycle-bar" style="margin-bottom: 26px;">
-    <span class="lc-label">{t(locale, 'trends.lifecycle')}</span>
-    <div class="lifecycle-steps" aria-label={t(locale, 'trends.lifecycle')}>
-      {lifecycle.map((s, i) => (
-        <span class="lc-step">
-          {i > 0 && <span class="lc-link"></span>}
-          <span class={`status-pill st-${s}`}>{s}</span>
-        </span>
-      ))}
+  <section class="ins-sec" id="trends">
+    <div class="section-title has-extra">
+      {t(locale, 'insights.sec.trends')}
+      <span class="count">{active.length}</span>
+      <span class="lifecycle-steps lc-inline" role="img" aria-label={t(locale, 'trends.lifecycle')}>
+        {lifecycle.map((s, i) => (
+          <span class="lc-step">
+            {i > 0 && <span class="lc-link"></span>}
+            <span class={`status-pill st-${s}`}>{s}</span>
+          </span>
+        ))}
+      </span>
     </div>
-  </div>
 
-  <div class="stack">
-    {active.map((tr: any) => {
-      const note = loc(tr, 'statusNote', locale);
-      const showNote = note && note.toLowerCase() !== tr.status;
-      return (
-        <details class="card trend-card">
-          <summary aria-label={t(locale, 'trends.toggle')}>
-            <div class="head">
-              <h3>{loc(tr, 'name', locale)}</h3>
-              <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
-              <span class="t-conf">{t(locale, 'trends.confidence')} {tr.confidence}</span>
-              <svg class="t-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
-            </div>
-            <div class="meta">
-              {tr.firstObserved && <span>{t(locale, 'trends.firstObserved')} {tr.firstObserved}</span>}
-              {tr.lastUpdated && <span>{t(locale, 'trends.lastUpdated')} {tr.lastUpdated}</span>}
-            </div>
-            {showNote && <div class="block t-note">{note}</div>}
-          </summary>
-          <div class="trend-detail">
-            {loc(tr, 'why', locale) && (
-              <div class="block"><b>{t(locale, 'trends.why')}：</b>{loc(tr, 'why', locale)}</div>
-            )}
-            {evidenceList(tr, locale).length > 0 && (
-              <div>
-                <div class="block"><b>{t(locale, 'trends.evidence')}</b></div>
-                <ol class="evidence">
-                  {evidenceList(tr, locale).map((item) => <li>{item}</li>)}
-                </ol>
+    <div class="stack">
+      {active.map((tr: any) => {
+        const note = loc(tr, 'statusNote', locale);
+        const showNote = note && note.toLowerCase() !== tr.status;
+        return (
+          <details class="card trend-card">
+            <summary aria-label={t(locale, 'trends.toggle')}>
+              <div class="head">
+                <h3>{loc(tr, 'name', locale)}</h3>
+                <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
+                <span class="t-conf">{t(locale, 'trends.confidence')} {tr.confidence}</span>
+                <svg class="t-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
               </div>
-            )}
-            {(tr.updates ?? []).length > 0 && (
-              <div>
-                <div class="block"><b>{t(locale, 'trends.runNotes')}</b></div>
-                <ol class="evidence">
-                  {tr.updates.map((up: any) => <li><span class="mono" style="color: var(--text-faint);">{up.date}</span> — {loc(up, 'note', locale)}</li>)}
-                </ol>
+              <div class="meta">
+                {tr.firstObserved && <span>{t(locale, 'trends.firstObserved')} {tr.firstObserved}</span>}
+                {tr.lastUpdated && <span>{t(locale, 'trends.lastUpdated')} {tr.lastUpdated}</span>}
               </div>
-            )}
-            {loc(tr, 'confirm', locale) && (
-              <div class="block"><b>{t(locale, 'trends.confirm')}</b>{loc(tr, 'confirm', locale)}</div>
-            )}
-          </div>
-        </details>
-      );
-    })}
-  </div>
+              {showNote && <div class="block t-note">{note}</div>}
+            </summary>
+            <div class="trend-detail">
+              {loc(tr, 'why', locale) && (
+                <div class="block"><b>{t(locale, 'trends.why')}：</b>{loc(tr, 'why', locale)}</div>
+              )}
+              {evidenceList(tr, locale).length > 0 && (
+                <div>
+                  <div class="block"><b>{t(locale, 'trends.evidence')}</b></div>
+                  <ol class="evidence">
+                    {evidenceList(tr, locale).map((item) => <li>{item}</li>)}
+                  </ol>
+                </div>
+              )}
+              {(tr.updates ?? []).length > 0 && (
+                <div>
+                  <div class="block"><b>{t(locale, 'trends.runNotes')}</b></div>
+                  <ol class="evidence">
+                    {tr.updates.map((up: any) => <li><span class="mono" style="color: var(--text-faint);">{up.date}</span> — {loc(up, 'note', locale)}</li>)}
+                  </ol>
+                </div>
+              )}
+              {loc(tr, 'confirm', locale) && (
+                <div class="block"><b>{t(locale, 'trends.confirm')}</b>{loc(tr, 'confirm', locale)}</div>
+              )}
+            </div>
+          </details>
+        );
+      })}
+    </div>
+  </section>
 
-  {retired.length > 0 && (
-    <>
-      <div class="section-title">{t(locale, 'trends.retired')}</div>
-      <div class="stack">
+  <section class="ins-sec" id="radar">
+    <div class="section-title">
+      {t(locale, 'insights.sec.radar')}
+      <span class="count">{uniqueCount}</span>
+    </div>
+    <RadarChart events={events} locale={locale} />
+  </section>
+
+  <section class="ins-sec" id="archive">
+    <div class="section-title">{t(locale, 'insights.sec.archive')}</div>
+
+    {retired.length > 0 && (
+      <div class="stack" style="margin-bottom: 30px;">
         {retired.map((tr: any) => (
           <article class="card trend-card" style="opacity: 0.68;">
-            <div class="head">
+            <div class="head" style="padding: 16px 24px;">
               <h3>{loc(tr, 'name', locale)}</h3>
               <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
             </div>
           </article>
         ))}
       </div>
-    </>
-  )}
+    )}
 
-  {trends.snapshots.length > 0 && (
-    <>
-      <div class="section-title">{t(locale, 'trends.snapshots')}</div>
+    {trends.snapshots.length > 0 && (
       <div class="cal-wrap">
         {snapMonths.map((m) => (
           <div class="card cal-block">
@@ -147,8 +165,8 @@ const snapMonths = monthKeys.map((mk) => {
           </div>
         ))}
       </div>
-    </>
-  )}
+    )}
+  </section>
 
   <script>
     // 趋势卡片展开/折叠：WAAPI 高度动画，两个方向一致。

@@ -15,8 +15,12 @@ const description = Astro.props.description ?? t(locale, 'site.description');
 const navItems = [
   { href: u('/daily/', locale), label: t(locale, 'nav.daily'), match: (p: string) => p.startsWith('/daily') },
   { href: u('/events/', locale), label: t(locale, 'nav.events'), match: (p: string) => p.startsWith('/events') },
-  { href: u('/radar/', locale), label: t(locale, 'nav.radar'), match: (p: string) => p.startsWith('/radar') },
-  { href: u('/trends/', locale), label: t(locale, 'nav.trends'), match: (p: string) => p.startsWith('/trends') },
+  {
+    href: u('/insights/', locale),
+    label: t(locale, 'nav.insights'),
+    // /radar 与 /trends 已合并进洞察页（旧路径 301 式跳转），趋势快照归档仍挂在 /trends/archive/ 下
+    match: (p: string) => p.startsWith('/insights') || p.startsWith('/radar') || p.startsWith('/trends'),
+  },
 ];
 
 const pathname = logicalPath(Astro.url.pathname);
@@ -65,7 +69,7 @@ const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
             </svg>
           </span>
           <span class="name">M<span class="hl">A</span>TR<span class="hl">I</span>X</span>
-          <span class="sub">AI Intelligence Radar</span>
+          <span class="sub">{t(locale, 'brand.sub')}</span>
         </a>
         <slot name="header-search" />
         <nav class="main-nav" aria-label={t(locale, 'nav.aria')}>

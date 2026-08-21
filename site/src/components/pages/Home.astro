@@ -95,11 +95,11 @@ const recSummary = (['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const)
     <aside>
       <div class="section-title rise-3">
         {t(locale, 'home.activeTrends')}
-        <a class="more" href={u('/trends/', locale)}>{t(locale, 'home.all')}</a>
+        <a class="more" href={`${u('/insights/', locale)}#trends`}>{t(locale, 'home.all')}</a>
       </div>
       <div class="trend-minis rise-3">
         {activeTrends.slice(0, 4).map((tr: any) => (
-          <a class="t-mini" href={u('/trends/', locale)}>
+          <a class="t-mini" href={`${u('/insights/', locale)}#trends`}>
             <span class="tm-meta">
               <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
               <span class="tm-date">{tr.firstObserved.slice(0, 10)}</span>
@@ -112,7 +112,7 @@ const recSummary = (['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const)
       <div class="section-title rise-3">{t(locale, 'home.recDist')}</div>
       <div class="rec-dist rise-3">
         {recSummary.map(({ r, n }) => (
-          <a href={u('/radar/', locale)} title={t(locale, 'home.viewRec').replace('{r}', r)}>
+          <a href={`${u('/insights/', locale)}#radar`} title={t(locale, 'home.viewRec').replace('{r}', r)}>
             <span class={`badge badge-${r.toLowerCase()}`}>{r}</span>
             <span class="track">
               <span class="fill" style={`width: ${(n / recTotal) * 100}%; background: var(--${r.toLowerCase()});`}></span>
