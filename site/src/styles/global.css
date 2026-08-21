@@ -388,8 +388,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   box-shadow: var(--card-ring), var(--card-sheen), var(--card-shadow);
 }
 /* Apple 式连续曲率角：支持的浏览器把圆角升级为超椭圆（squircle），消除直边与圆弧衔接处的曲率跳变；不支持的浏览器忽略本属性，回退为普通 border-radius */
-.card, .event-card, .filter-bar, .feed-row, .pn-link, .daily-row, .quad-items,
-.quad-items li:first-child > a, .quad-items li:last-child > a,
+.card, .event-card, .filter-bar, .feed-row, .pn-link, .daily-row,
 .filter-bar select, .fchip, .pager a, .btn-primary, .btn-ghost, .t-mini,
 .nav-utils, .header-search input, .prose pre { corner-shape: squircle; }
 
@@ -509,6 +508,8 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 }
 /* 搜索命中摘要时取消截断，避免高亮被藏进折叠部分 */
 .event-card .summary.has-hit { -webkit-line-clamp: unset; }
+/* 卡片默认不显示简介；仅搜索命中摘要时由 JS 揭开（解释“为什么搜到它”） */
+.event-card .summary[hidden] { display: none; }
 .event-card .bottom { display: flex; align-items: center; gap: 6px 10px; flex-wrap: wrap; margin-top: 11px; }
 .event-card .bottom .score-nums { margin-left: auto; }
 /* 评分：标签 + 5 段刻度条 + 数值，刻度条给数据一点"仪表盘"质感 */
@@ -533,6 +534,28 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .date-group:first-child { margin-top: 26px; }
 .date-group h2 { margin: 0; font-size: 13px; font-family: var(--mono); color: var(--text); font-weight: 700; letter-spacing: 0.03em; }
 .date-group .n { font-size: 11.5px; color: var(--text-faint); font-family: var(--mono); }
+
+/* ============ 事件矩阵（领域 × 日期） ============ */
+/* 分类总览：行=日期、列=象限，单元格内为迷你事件链接；窄屏横向滚动 */
+.mx-wrap { overflow-x: auto; padding: 8px 10px; }
+.mx { border-collapse: collapse; width: 100%; min-width: 820px; }
+.mx th, .mx td { text-align: left; vertical-align: top; padding: 10px 12px; }
+.mx thead th {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+}
+.mx tbody th { font-family: var(--mono); font-size: 11.5px; font-weight: 400; color: var(--text-muted); white-space: nowrap; }
+.mx tbody tr + tr > th, .mx tbody tr + tr > td { border-top: 1px solid var(--border); }
+.mx td { min-width: 160px; }
+.mx-item { display: flex; align-items: baseline; gap: 7px; font-size: 12.5px; line-height: 1.5; color: var(--text-muted); }
+.mx-item + .mx-item { margin-top: 5px; }
+.mx-item:hover { color: var(--accent); text-decoration: none; }
+.mx-item .rec-dot { width: 7px; height: 7px; border-radius: 2px; flex-shrink: 0; position: relative; top: -1px; }
 
 /* ============ filter bar ============ */
 
@@ -654,18 +677,6 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 
 /* ============ radar section（洞察页内） ============ */
 
-/* 图与清单同屏：桌面端左右分栏，图 sticky 在左，清单在右滚动；
-   窄屏堆叠，图在前作为可视索引 */
-.radar-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: start; }
-.radar-side { position: sticky; top: 92px; }
-@media (max-width: 1080px) {
-  .radar-split { grid-template-columns: 1fr; }
-  .radar-side { position: static; }
-}
-
-/* 象限清单在右栏单列堆叠 */
-.radar-lists { display: flex; flex-direction: column; gap: 26px; }
-.quad-block { padding: 0; }
 .quad-head {
   margin: 0 0 8px;
   font-family: var(--serif);
@@ -674,43 +685,8 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   color: var(--text);
 }
 .quad-head .count { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--text-faint); margin-left: 8px; }
-/* 密集多条目列表：一整张大卡片承载，条目间用内部横线分隔，不再各自成卡 */
-.quad-items {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  background: var(--surface);
-  border-radius: var(--radius);
-  box-shadow: var(--card-ring), var(--card-sheen), var(--card-shadow);
-  overflow: clip;
-}
-.quad-items li + li { border-top: 1px solid var(--border); }
-/* 首/末行与卡片角齐平：hover 提亮用相同的 squircle 圆角，与卡片边界完全贴合 */
-.quad-items li:first-child > a { border-radius: var(--radius) var(--radius) 0 0; }
-.quad-items li:last-child > a { border-radius: 0 0 var(--radius) var(--radius); }
-.quad-items a {
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
-  padding: 9px 18px;
-  color: var(--text-muted);
-  font-size: 13.5px;
-  line-height: 1.6;
-  transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
-}
-.quad-items a:hover {
-  background-color: color-mix(in srgb, var(--surface) 94%, var(--text) 6%);
-  color: var(--text);
-  text-decoration: none;
-}
-.quad-items a:hover .qi-title { color: var(--accent); }
-.quad-items .no { font-family: var(--mono); font-size: 11px; color: var(--text-faint); flex-shrink: 0; }
-.quad-items .rec-dot { width: 7px; height: 7px; border-radius: 2px; flex-shrink: 0; position: relative; top: -1px; }
-.quad-items .qi-title { color: inherit; }
-.quad-items .qi-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--text-faint); flex-shrink: 0; }
-.quad-empty { font-size: 12.5px; color: var(--text-faint); padding: 10px 18px; }
+/* 雷达区内的小节标题（象限快照 / 时间分布） */
+.chart-sub { margin: 30px 0 10px; }
 
 /* ============ 雷达总览 ============ */
 /* 图例行（含筛选 chips）夹在章节标题与分栏之间 */
@@ -730,6 +706,8 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .radar-filters .fchip { cursor: pointer; }
 
 .radar-overview { padding: 18px 22px 12px; }
+/* 象限快照居中收窄，泳道图占满整行 */
+.radar-main { max-width: 720px; margin-left: auto; margin-right: auto; }
 .radar-figure { margin: 2px auto 0; }
 .radar-svg { width: 100%; height: auto; display: block; user-select: none; }
 .radar-svg .adopt-disc { fill: var(--accent-soft); }
@@ -748,31 +726,53 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   stroke-width: 7px;
 }
 .radar-svg .quad-label { fill: var(--text-muted); font-size: 18px; font-weight: 700; font-family: var(--serif); opacity: 0.9; }
-/* 象限 / 环标签是筛选控制器 */
+/* 象限 / 环标签是聚焦控制器 */
 .radar-svg .q-filter, .radar-svg .r-filter { cursor: pointer; transition: opacity 0.15s var(--ease); }
 .radar-svg .q-filter:hover, .radar-svg .r-filter:hover { fill: var(--accent); }
 .radar-svg .q-filter.active, .radar-svg .r-filter.active { fill: var(--accent); opacity: 1; }
 .radar-svg .q-filter.dim, .radar-svg .r-filter.dim { opacity: 0.35; }
 .radar-svg .blip { cursor: pointer; transition: opacity 0.2s var(--ease); }
 .radar-svg .blip.dim { opacity: 0.12; pointer-events: none; }
-.radar-svg .blip .dot { stroke: var(--bg); stroke-width: 1.5; transition: r 0.15s var(--ease); }
+.radar-svg .blip .dot { stroke: var(--bg); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; transition: transform 0.15s var(--ease); }
 .radar-svg .blip .halo { fill: none; opacity: 0; transition: opacity 0.15s var(--ease); }
-.radar-svg .blip:hover .dot, .radar-svg .blip.hl .dot { r: 13.5; }
+.radar-svg .blip:hover .dot, .radar-svg .blip.hl .dot { transform: scale(1.18); }
 .radar-svg .blip:hover .halo, .radar-svg .blip.hl .halo { opacity: 0.5; }
-.radar-svg .blip text { fill: var(--bg); font-size: 10px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; font-family: var(--mono); }
-
-/* 列表 ↔ 图联动高亮 */
-.quad-items a.hl { background: var(--accent-soft); color: var(--text); }
-
-/* 点击光点定位到清单行：闪烁一次 */
-@keyframes row-flash {
-  0% { background-color: var(--accent-soft); }
-  100% { background-color: transparent; }
+/* 悬停名称标签：默认隐藏，hover / 联动高亮时浮现 */
+.radar-svg .bl-tag { opacity: 0; transition: opacity 0.12s var(--ease); pointer-events: none; }
+.radar-svg .blip:hover .bl-tag, .radar-svg .blip.hl .bl-tag { opacity: 1; }
+.radar-svg .bl-tag rect { fill: var(--surface); stroke: var(--border-strong); stroke-width: 1; }
+.radar-svg .bl-tag text { fill: var(--text); font-size: 13px; font-weight: 600; font-family: var(--sans); }
+/* 新事件脉冲环（近 2 天） */
+.radar-svg .pulse { fill: none; transform-box: fill-box; transform-origin: center; animation: blip-pulse 2.1s ease-out infinite; }
+@keyframes blip-pulse {
+  0% { opacity: 0.8; transform: scale(1); }
+  70% { opacity: 0; transform: scale(1.8); }
+  100% { opacity: 0; transform: scale(1.8); }
 }
-.quad-items li.flash > a { animation: row-flash 1.7s var(--ease); }
-
-/* 筛选态：隐藏行/块 */
-.quad-items li.hide, .quad-block.hide { display: none; }
+/* 建议等级变动三角：in 指向圆心，out 指向外 */
+.radar-svg .move-arrow { fill: var(--text-muted); opacity: 0.9; }
+/* 泳道图：日期网格虚线 + 轴刻度 + 左侧等级泳道标签 */
+.radar-svg .b-grid { stroke: var(--border); stroke-width: 1; stroke-dasharray: 3 5; }
+.radar-svg .b-tick { fill: var(--text-faint); font-size: 13px; font-family: var(--mono); }
+.radar-svg .b-lane {
+  fill: var(--text-faint);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--mono);
+  letter-spacing: 0.12em;
+  text-anchor: end;
+  dominant-baseline: central;
+}
+/* 图下注脚 */
+.chart-note {
+  margin: 10px 4px 6px;
+  font-size: 11.5px;
+  font-family: var(--mono);
+  color: var(--text-faint);
+  line-height: 1.7;
+  text-align: center;
+}
+.chart-sw { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin: 0 5px 0 2px; }
 
 /* ============ trends ============ */
 
@@ -830,6 +830,8 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 
 /* 章节锚点定位预留 sticky 头高度 */
 .ins-sec { scroll-margin-top: 88px; }
+/* 章节间距：section-title:first-child 会吃掉自身顶距，章节间补回来 */
+.ins-sec + .ins-sec { margin-top: 54px; }
 /* 页头下的章节快捷入口，沿用筛选 chip 语言 */
 .ins-anchors { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
 /* 章节标题里内嵌小图例时允许换行（窄屏） */
@@ -1201,6 +1203,7 @@ a.cal-day:hover { background: var(--accent); color: var(--accent-contrast); text
 
 @media (prefers-reduced-motion: reduce) {
   .rise, .rise-2, .rise-3 { animation: none; }
+  .radar-svg .pulse { animation: none; opacity: 0.45; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
   html { scroll-behavior: auto; }
 }

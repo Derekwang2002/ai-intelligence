@@ -133,20 +133,26 @@ const snapMonths = monthKeys.map((mk) => {
     <div class="section-title">{t(locale, 'insights.sec.archive')}</div>
 
     {retired.length > 0 && (
-      <div class="stack" style="margin-bottom: 30px;">
-        {retired.map((tr: any) => (
-          <article class="card trend-card" style="opacity: 0.68;">
-            <div class="head" style="padding: 16px 24px;">
-              <h3>{loc(tr, 'name', locale)}</h3>
-              <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
-            </div>
-          </article>
-        ))}
-      </div>
+      <>
+        <h3 class="quad-head">{t(locale, 'insights.archiveRetired')}</h3>
+        <div class="stack" style="margin-bottom: 34px;">
+          {retired.map((tr: any) => (
+            <article class="card trend-card" style="opacity: 0.68;">
+              <div class="head" style="padding: 16px 24px;">
+                <h3>{loc(tr, 'name', locale)}</h3>
+                <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </>
     )}
 
     {trends.snapshots.length > 0 && (
-      <div class="cal-wrap">
+      <>
+        <h3 class="quad-head">{t(locale, 'insights.archiveSnapshots')}</h3>
+        <p class="chart-note" style="text-align: left; margin: 0 2px 14px;">{t(locale, 'insights.archiveSnapNote')}</p>
+        <div class="cal-wrap">
         {snapMonths.map((m) => (
           <div class="card cal-block">
             <div class="cal-head">{m.label}</div>
@@ -164,7 +170,8 @@ const snapMonths = monthKeys.map((mk) => {
             </div>
           </div>
         ))}
-      </div>
+        </div>
+      </>
     )}
   </section>
 
