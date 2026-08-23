@@ -11,54 +11,14 @@ interface Props {
 
 const { events, locale = 'zh' } = Astro.props;
 
-// 环带（内/外半径），按建议分区，最内环为 ADOPT。
-const RINGS: Record<string, [number, number]> = {
-  ADOPT: [30, 168],
-  TRIAL: [172, 298],
-  WATCH: [302, 418],
-  IGNORE: [422, 468],
-};
 const RING_ORDER = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const;
 const RING_IDX: Record<string, number> = { ADOPT: 0, TRIAL: 1, WATCH: 2, IGNORE: 3 };
-
-// 象限角度范围 [起始角, 结束角]（度）。SVG y 轴向下、角度自东向顺时针。
-const QUAD_RANGE: Record<string, readonly [number, number]> = {
-  models: [-90, 0],
-  agents: [180, 270],
-  infra: [90, 180],
-  tools: [0, 90],
-};
-
-const CX = 500;
-const CY = 500;
-const REC_VAR: Record<string, string> = {
-  ADOPT: 'var(--adopt)',
-  TRIAL: 'var(--trial)',
-  WATCH: 'var(--watch)',
-  IGNORE: 'var(--ignore)',
-};
 // 泳道图象限色：站点无类别色相，这里给象限一组双主题可读的中饱和色
 const QUAD_COLOR: Record<string, string> = {
   models: '#4f8ef7',
   agents: '#a78bfa',
   infra: '#34b08c',
   tools: '#e8a04c',
-};
-
-// ---- 派生信号：等级变动（同 fingerprint 历史 rec 变化） ----
-const hist = new Map<string, any[]>();
-for (const e of events) {
-  const fp = e.event_fingerprint || e.event_id;
-  if (!hist.has(fp)) hist.set(fp, []);
-  hist.get(fp)!.push(e);
-}
-const moveOf = (fp: string): 'in' | 'out' | null => {
-  const list = (hist.get(fp) ?? []).slice().sort((a, b) => String(a.published_date).localeCompare(String(b.published_date)));
-  if (list.length < 2) return null;
-  const prev = RING_IDX[list[list.length - 2].recommendation];
-  const last = RING_IDX[list[list.length - 1].recommendation];
-  if (prev === undefined || last === undefined || prev === last) return null;
-  return last < prev ? 'in' : 'out';
 };
 
 // 每个 fingerprint 只保留一个光点，取最新事件。
@@ -69,15 +29,12 @@ for (const e of events) {
   if (!existing || String(e.published_date) > String(existing.published_date)) byFingerprint.set(fp, e);
 }
 const unique = [...byFingerprint.values()];
-// 新事件：数据窗口最后 2 天内发布
+// 新事件：数据窗口最后 2 天内发布（脉冲环）
 const maxT = Math.max(...unique.map((e) => new Date(`${e.published_date}T00:00:00Z`).getTime()));
 const isNew = (date: string) => maxT - new Date(`${date}T00:00:00Z`).getTime() <= 2 * 86400000;
 
 type Blip = {
   no: number;
-  x: number;
-  y: number;
-  r: number;
   rec: string;
   quad: string;
   date: string;
@@ -85,82 +42,30 @@ type Blip = {
   label: string;
   lw: number;
   fresh: boolean;
-  arrow: string | null;
   href: string;
 };
 
-// ---- 雷达图布局：象限 × 环单元格内沿弧线均匀分布，两条半径泳道交替 ----
-let counter = 0;
 const blips: Blip[] = [];
-for (const quad of QUADRANTS) {
-  const quadEvents = unique
-    .filter((e) => quad.cats.includes(e.category))
-    .sort((a, b) => String(a.published_date).localeCompare(String(b.published_date)));
-  const cellSize = new Map<string, number>();
-  for (const e of quadEvents) {
-    const rec = RINGS[e.recommendation] ? e.recommendation : 'WATCH';
-    cellSize.set(rec, (cellSize.get(rec) ?? 0) + 1);
-  }
-  const cellIdx = new Map<string, number>();
-  for (const e of quadEvents) {
+{
+  let counter = 0;
+  for (const e of unique) {
+    const quad = QUADRANTS.find((q) => q.cats.includes(e.category));
+    if (!quad) continue;
     counter += 1;
-    const rec = RINGS[e.recommendation] ? e.recommendation : 'WATCH';
-    const idx = cellIdx.get(rec) ?? 0;
-    cellIdx.set(rec, idx + 1);
-    const n = cellSize.get(rec)!;
-    const [ri, ro] = RINGS[rec];
-    const [qs, qe] = QUAD_RANGE[quad.id];
-    const span = qe - qs;
-    const pad = 14;
-    const deg = n > 1 ? qs + pad + ((span - 2 * pad) * idx) / (n - 1) : qs + span / 2;
-    const mid = (ri + ro) / 2;
-    const laneGap = Math.min(16, (ro - ri) / 5);
-    const radius = n > 2 ? mid + (idx % 2 === 0 ? -1 : 1) * laneGap : mid;
-    const angle = (deg * Math.PI) / 180;
-    const x = CX + radius * Math.cos(angle);
-    const y = CY + radius * Math.sin(angle);
-    // 点大小 = 采用信号（1–5）
-    const r = 9.5 + (e.adoption_signal ?? 1) * 1.5;
-    // 等级变动标记：in 外侧三角指向圆心，out 内侧三角指向外
-    const mv = moveOf(e.event_fingerprint || e.event_id);
-    let arrow: string | null = null;
-    if (mv) {
-      const len = Math.hypot(x - CX, y - CY) || 1;
-      const ux = (x - CX) / len;
-      const uy = (y - CY) / len;
-      const s = mv === 'in' ? 1 : -1;
-      const tip = { x: x + s * ux * (r + 4), y: y + s * uy * (r + 4) };
-      const base = { x: x + s * ux * (r + 13), y: y + s * uy * (r + 13) };
-      const px = -uy * 4.5;
-      const py = ux * 4.5;
-      arrow = `M ${tip.x} ${tip.y} L ${base.x + px} ${base.y + py} L ${base.x - px} ${base.y - py} Z`;
-    }
     const label = shortLabel(e);
     blips.push({
       no: counter,
-      x,
-      y,
-      r,
-      rec,
+      rec: RING_IDX[e.recommendation] !== undefined ? e.recommendation : 'WATCH',
       quad: quad.id,
       date: e.published_date,
       title: locTitle(e, locale),
       label,
       lw: labelWidth(label),
       fresh: isNew(e.published_date),
-      arrow,
       href: u(`/events/${e.event_id}/`, locale),
     });
   }
 }
-
-const ringMid = (r: keyof typeof RINGS) => (RINGS[r][0] + RINGS[r][1]) / 2;
-const quadLabelPos = (id: string) => {
-  const range = QUAD_RANGE[id];
-  const mid = ((range[0] + range[1]) / 2) * (Math.PI / 180);
-  const rr = 512;
-  return { x: CX + rr * Math.cos(mid), y: CY + rr * Math.sin(mid) };
-};
 
 // 悬停标签：默认在点上方，贴顶则放下方，左右越界则钳位
 const tagPos = (b: { x: number; y: number; r: number; lw: number }, W: number) => {
@@ -170,7 +75,7 @@ const tagPos = (b: { x: number; y: number; r: number; lw: number }, W: number) =
   return { tx, ty };
 };
 
-// ---- 泳道图布局：x=发布日期，y=建议等级，同道同日纵向错开 ----
+// ---- 泳道布局：x=发布日期，y=建议等级，同道同日纵向错开 ----
 const B_W = 1000;
 const B_H = 560;
 const B_LANE_H = 118;
@@ -201,78 +106,10 @@ for (const [, group] of bGroups) {
 ---
 
 <div class="radar-overview-head">
-  <span class="legend">
-    {RING_ORDER.map((r) => (
-      <span class="legend-sw"><i style={`background: ${REC_VAR[r]}`}></i>{r}</span>
-    ))}
-    <span class="legend-note">{t(locale, 'radar.legendNote')}</span>
-  </span>
+  <span class="legend-note">{t(locale, 'radar.legendNote')}</span>
   <span class="radar-filters" id="radar-filters" hidden data-clear-label={t(locale, 'insights.filterClear')}></span>
 </div>
 
-<h3 class="quad-head chart-sub">{t(locale, 'insights.radarSnap')}</h3>
-<section class="card radar-overview radar-main">
-  <figure class="radar-figure">
-    <svg class="radar-svg" viewBox="0 0 1000 1000" role="img" aria-label={t(locale, 'radar.aria')}>
-      <circle class="adopt-disc" cx={CX} cy={CY} r={RINGS.ADOPT[1]} />
-      {RING_ORDER.map((r) => (
-        <circle class="ring-line" cx={CX} cy={CY} r={RINGS[r][1]} />
-      ))}
-      <circle class="ring-line" cx={CX} cy={CY} r={RINGS.ADOPT[0]} opacity="0.5" />
-      <line class="axis-line" x1={CX} y1={CY - 476} x2={CX} y2={CY + 476} />
-      <line class="axis-line" x1={CX - 476} y1={CY} x2={CX + 476} y2={CY} />
-
-      {RING_ORDER.map((r) => (
-        <text
-          class="ring-label r-filter"
-          x={CX}
-          y={CY - ringMid(r)}
-          data-ring={r}
-          tabindex="0"
-          role="button"
-          aria-pressed="false"
-          aria-label={`${r} · ${t(locale, 'insights.filterRingAria')}`}
-        >{r}</text>
-      ))}
-
-      {QUADRANTS.map((q) => {
-        const p = quadLabelPos(q.id);
-        return (
-          <text
-            class="quad-label q-filter"
-            x={p.x}
-            y={p.y}
-            text-anchor="middle"
-            data-quad={q.id}
-            tabindex="0"
-            role="button"
-            aria-pressed="false"
-            aria-label={`${t(locale, q.labelKey)} · ${t(locale, 'insights.filterQuadAria')}`}
-          >{t(locale, q.labelKey)}</text>
-        );
-      })}
-
-      {blips.map((b) => {
-        const tp = tagPos(b, 1000);
-        return (
-          <a class="blip" href={b.href} data-no={b.no} data-quad={b.quad} data-rec={b.rec} aria-label={`${b.title}（${b.rec}）`}>
-            {b.fresh && <circle class="pulse" cx={b.x} cy={b.y} r={b.r + 4} stroke={REC_VAR[b.rec]} stroke-width="2" />}
-            {b.arrow && <path class="move-arrow" d={b.arrow} />}
-            <circle class="halo" cx={b.x} cy={b.y} r={b.r + 6} stroke={REC_VAR[b.rec]} stroke-width="2" />
-            <circle class="dot" cx={b.x} cy={b.y} r={b.r} fill={REC_VAR[b.rec]} />
-            <g class="bl-tag">
-              <rect x={tp.tx - b.lw / 2} y={tp.ty - 13} width={b.lw} height="26" rx="8" />
-              <text x={tp.tx} y={tp.ty + 4.5} text-anchor="middle">{b.label}</text>
-            </g>
-          </a>
-        );
-      })}
-    </svg>
-  </figure>
-  <p class="chart-note">{t(locale, 'insights.radarNote')}</p>
-</section>
-
-<h3 class="quad-head chart-sub">{t(locale, 'insights.radarTime')}</h3>
 <section class="card radar-overview">
   <figure class="radar-figure">
     <svg class="radar-svg" viewBox={`0 0 ${B_W} ${B_H}`} role="img" aria-label={t(locale, 'insights.radarTimeAria')}>
@@ -317,33 +154,23 @@ for (const [, group] of bGroups) {
   <p class="chart-note">
     {t(locale, 'insights.radarTimeNote')}
     {QUADRANTS.map((q, i) => (
-      <span><i class="chart-sw" style={`background: ${QUAD_COLOR[q.id]}`}></i>{quadLabel(q.id, locale)}{i < QUADRANTS.length - 1 ? ' · ' : ''}</span>
+      <>
+        <span
+          class="q-filter q-chip"
+          data-quad={q.id}
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          aria-label={`${quadLabel(q.id, locale)} · ${t(locale, 'insights.filterQuadAria')}`}
+        ><i class="chart-sw" style={`background: ${QUAD_COLOR[q.id]}`}></i>{quadLabel(q.id, locale)}</span>
+        {i < QUADRANTS.length - 1 ? ' · ' : ''}
+      </>
     ))}
   </p>
 </section>
 
 <script>
-  // 两图联动高亮：共享 data-no 编号
-  let current: string | null = null;
-  function setHl(no: string, on: boolean) {
-    for (const el of document.querySelectorAll(`[data-no="${CSS.escape(no)}"]`)) {
-      el.classList.toggle('hl', on);
-    }
-  }
-  document.addEventListener('mouseover', (ev) => {
-    const target = (ev.target as Element).closest?.('[data-no]');
-    const no = target?.getAttribute('data-no') ?? null;
-    if (no === current) return;
-    if (current) setHl(current, false);
-    current = no;
-    if (current) setHl(current, true);
-  });
-  document.addEventListener('mouseleave', () => {
-    if (current) setHl(current, false);
-    current = null;
-  });
-
-  // 象限 / 环标签点击聚焦：两个维度可叠加，再次点击同一标签取消；
+  // 象限 / 等级标签点击聚焦：两个维度可叠加，再次点击同一标签取消；
   // 非匹配光点调暗并禁用指针
   const filterBox = document.getElementById('radar-filters');
   let fq: string | null = null;
@@ -395,11 +222,11 @@ for (const [, group] of bGroups) {
     if (el.hasAttribute('data-quad')) {
       const val = el.getAttribute('data-quad');
       fq = fq === val ? null : val;
-      fqLabel = fq ? (el.textContent ?? '') : '';
+      fqLabel = fq ? (el.textContent ?? '').trim() : '';
     } else if (el.hasAttribute('data-ring')) {
       const val = el.getAttribute('data-ring');
       fr = fr === val ? null : val;
-      frLabel = fr ? (el.textContent ?? '') : '';
+      frLabel = fr ? (el.textContent ?? '').trim() : '';
     }
     applyFilters();
   }

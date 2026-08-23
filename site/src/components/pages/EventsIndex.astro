@@ -1,10 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import EventCard from '../EventCard.astro';
-import { u } from '../../lib/url';
-import { t, locTitle, catLabel, type Locale, type UiKey } from '../../lib/i18n';
-import { QUADRANTS } from '../../lib/quadrants';
-import { shortLabel } from '../../lib/shortLabel';
+import { t, catLabel, type Locale, type UiKey } from '../../lib/i18n';
 import events from '../../data/generated/events.json';
 import aggregates from '../../data/generated/aggregates.json';
 
@@ -25,12 +22,6 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
   r,
   n: (aggregates.byRecommendation as any)[r] ?? 0,
 }));
-const REC_VAR: Record<string, string> = {
-  ADOPT: 'var(--adopt)',
-  TRIAL: 'var(--trial)',
-  WATCH: 'var(--watch)',
-  IGNORE: 'var(--ignore)',
-};
 ---
 
 <Base title={t(locale, 'events.title')} description={t(locale, 'events.description')} locale={locale}>
@@ -75,38 +66,6 @@ const REC_VAR: Record<string, string> = {
       ))}
     </div>
     <span class="filter-count" id="f-count" aria-live="polite" data-suffix={t(locale, 'events.countSuffix')}></span>
-  </div>
-
-  <div class="section-title">{t(locale, 'events.matrix')}</div>
-  <div class="card mx-wrap">
-    <table class="mx">
-      <thead>
-        <tr>
-          <th></th>
-          {QUADRANTS.map((q) => <th>{t(locale, q.labelKey)}</th>)}
-        </tr>
-      </thead>
-      <tbody>
-        {dateGroups.map(([date, list]) => (
-          <tr>
-            <th scope="row">{date}</th>
-            {QUADRANTS.map((q) => {
-              const cell = list.filter((e) => q.cats.includes(e.category));
-              return (
-                <td>
-                  {cell.map((e) => (
-                    <a class="mx-item" href={u(`/events/${e.event_id}/`, locale)} title={locTitle(e, locale)}>
-                      <i class="rec-dot" style={`background: ${REC_VAR[e.recommendation] ?? 'var(--watch)'}`}></i>
-                      {shortLabel(e)}
-                    </a>
-                  ))}
-                </td>
-              );
-            })}
-          </tr>
-        ))}
-      </tbody>
-    </table>
   </div>
 
   <div id="event-list">

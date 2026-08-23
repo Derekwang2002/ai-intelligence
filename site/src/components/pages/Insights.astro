@@ -2,7 +2,9 @@
 import Base from '../../layouts/Base.astro';
 import RadarChart from '../RadarChart.astro';
 import { u } from '../../lib/url';
-import { t, loc, type Locale } from '../../lib/i18n';
+import { t, loc, locTitle, type Locale } from '../../lib/i18n';
+import { QUADRANTS } from '../../lib/quadrants';
+import { shortLabel } from '../../lib/shortLabel';
 import events from '../../data/generated/events.json';
 import trends from '../../data/generated/trends.json';
 
@@ -15,6 +17,20 @@ const active = trends.trends.filter((tr: any) => !tr.retired);
 const retired = trends.trends.filter((tr: any) => tr.retired);
 const lifecycle = ['candidate', 'emerging', 'strengthening', 'established', 'weakening', 'invalidated'];
 const uniqueCount = new Set(events.map((e: any) => e.event_fingerprint)).size;
+
+// 领域 × 日期矩阵：行 = 日期降序，列 = 四象限
+const groups = new Map<string, any[]>();
+for (const e of events) {
+  if (!groups.has(e.published_date)) groups.set(e.published_date, []);
+  groups.get(e.published_date)!.push(e);
+}
+const dateGroups = [...groups.entries()].sort((a, b) => b[0].localeCompare(a[0]));
+const REC_VAR: Record<string, string> = {
+  ADOPT: 'var(--adopt)',
+  TRIAL: 'var(--trial)',
+  WATCH: 'var(--watch)',
+  IGNORE: 'var(--ignore)',
+};
 
 function evidenceList(tr: any, loc_: Locale): string[] {
   const items = loc_ === 'zh' ? tr.evidence_zh : tr.evidence_en;
@@ -127,6 +143,38 @@ const snapMonths = monthKeys.map((mk) => {
       <span class="count">{uniqueCount}</span>
     </div>
     <RadarChart events={events} locale={locale} />
+
+    <h3 class="quad-head chart-sub">{t(locale, 'insights.matrix')}</h3>
+    <div class="card mx-wrap">
+      <table class="mx">
+        <thead>
+          <tr>
+            <th></th>
+            {QUADRANTS.map((q) => <th>{t(locale, q.labelKey)}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {dateGroups.map(([date, list]) => (
+            <tr>
+              <th scope="row">{date}</th>
+              {QUADRANTS.map((q) => {
+                const cell = list.filter((e) => q.cats.includes(e.category));
+                return (
+                  <td>
+                    {cell.map((e) => (
+                      <a class="mx-item" href={u(`/events/${e.event_id}/`, locale)} title={locTitle(e, locale)}>
+                        <i class="rec-dot" style={`background: ${REC_VAR[e.recommendation] ?? 'var(--watch)'}`}></i>
+                        {shortLabel(e)}
+                      </a>
+                    ))}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <section class="ins-sec" id="archive">

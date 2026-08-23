@@ -535,7 +535,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .date-group h2 { margin: 0; font-size: 13px; font-family: var(--mono); color: var(--text); font-weight: 700; letter-spacing: 0.03em; }
 .date-group .n { font-size: 11.5px; color: var(--text-faint); font-family: var(--mono); }
 
-/* ============ 事件矩阵（领域 × 日期） ============ */
+/* ============ 领域 × 日期矩阵（洞察页） ============ */
 /* 分类总览：行=日期、列=象限，单元格内为迷你事件链接；窄屏横向滚动 */
 .mx-wrap { overflow-x: auto; padding: 8px 10px; }
 .mx { border-collapse: collapse; width: 100%; min-width: 820px; }
@@ -684,12 +684,11 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   font-weight: 700;
   color: var(--text);
 }
-.quad-head .count { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--text-faint); margin-left: 8px; }
-/* 雷达区内的小节标题（象限快照 / 时间分布） */
+/* 雷达区内的小节标题（领域 × 日期矩阵） */
 .chart-sub { margin: 30px 0 10px; }
 
-/* ============ 雷达总览 ============ */
-/* 图例行（含筛选 chips）夹在章节标题与分栏之间 */
+/* ============ 雷达总览（时间分布泳道图） ============ */
+/* 图例行（交互提示 + 筛选 chips）夹在章节标题与图之间 */
 .radar-overview-head {
   display: flex;
   align-items: baseline;
@@ -698,48 +697,30 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   flex-wrap: wrap;
   margin: 0 0 14px;
 }
-.radar-overview-head .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; color: var(--text-muted); }
-.legend-sw { display: inline-flex; align-items: center; gap: 7px; }
-.legend-sw i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
-.legend-note { color: var(--text-faint); }
+.legend-note { font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; color: var(--text-faint); }
 .radar-filters { display: inline-flex; gap: 8px; flex-wrap: wrap; }
 .radar-filters .fchip { cursor: pointer; }
 
 .radar-overview { padding: 18px 22px 12px; }
-/* 象限快照居中收窄，泳道图占满整行 */
-.radar-main { max-width: 720px; margin-left: auto; margin-right: auto; }
 .radar-figure { margin: 2px auto 0; }
 .radar-svg { width: 100%; height: auto; display: block; user-select: none; }
-.radar-svg .adopt-disc { fill: var(--accent-soft); }
-.radar-svg .ring-line { fill: none; stroke: var(--border-strong); stroke-width: 1; opacity: 0.7; }
 .radar-svg .axis-line { stroke: var(--border); stroke-width: 1; }
-.radar-svg .ring-label {
-  fill: var(--text-faint);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  font-family: var(--mono);
-  text-anchor: middle;
-  dominant-baseline: central;
-  paint-order: stroke;
-  stroke: var(--bg);
-  stroke-width: 7px;
-}
-.radar-svg .quad-label { fill: var(--text-muted); font-size: 18px; font-weight: 700; font-family: var(--serif); opacity: 0.9; }
-/* 象限 / 环标签是聚焦控制器 */
-.radar-svg .q-filter, .radar-svg .r-filter { cursor: pointer; transition: opacity 0.15s var(--ease); }
-.radar-svg .q-filter:hover, .radar-svg .r-filter:hover { fill: var(--accent); }
-.radar-svg .q-filter.active, .radar-svg .r-filter.active { fill: var(--accent); opacity: 1; }
-.radar-svg .q-filter.dim, .radar-svg .r-filter.dim { opacity: 0.35; }
+/* 等级泳道标签（图内左侧）与象限色块（图注）是聚焦控制器 */
+.radar-svg .r-filter { cursor: pointer; transition: opacity 0.15s var(--ease); }
+.radar-svg .r-filter:hover, .radar-svg .r-filter.active { fill: var(--accent); opacity: 1; }
+.radar-svg .r-filter.dim { opacity: 0.35; }
+.q-chip { cursor: pointer; transition: opacity 0.15s var(--ease), color 0.15s var(--ease); }
+.q-chip:hover, .q-chip.active { color: var(--accent); }
+.q-chip.dim { opacity: 0.4; }
 .radar-svg .blip { cursor: pointer; transition: opacity 0.2s var(--ease); }
 .radar-svg .blip.dim { opacity: 0.12; pointer-events: none; }
 .radar-svg .blip .dot { stroke: var(--bg); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; transition: transform 0.15s var(--ease); }
 .radar-svg .blip .halo { fill: none; opacity: 0; transition: opacity 0.15s var(--ease); }
-.radar-svg .blip:hover .dot, .radar-svg .blip.hl .dot { transform: scale(1.18); }
-.radar-svg .blip:hover .halo, .radar-svg .blip.hl .halo { opacity: 0.5; }
-/* 悬停名称标签：默认隐藏，hover / 联动高亮时浮现 */
+.radar-svg .blip:hover .dot { transform: scale(1.18); }
+.radar-svg .blip:hover .halo { opacity: 0.5; }
+/* 悬停名称标签：默认隐藏，hover 时浮现 */
 .radar-svg .bl-tag { opacity: 0; transition: opacity 0.12s var(--ease); pointer-events: none; }
-.radar-svg .blip:hover .bl-tag, .radar-svg .blip.hl .bl-tag { opacity: 1; }
+.radar-svg .blip:hover .bl-tag { opacity: 1; }
 .radar-svg .bl-tag rect { fill: var(--surface); stroke: var(--border-strong); stroke-width: 1; }
 .radar-svg .bl-tag text { fill: var(--text); font-size: 13px; font-weight: 600; font-family: var(--sans); }
 /* 新事件脉冲环（近 2 天） */
@@ -749,8 +730,6 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   70% { opacity: 0; transform: scale(1.8); }
   100% { opacity: 0; transform: scale(1.8); }
 }
-/* 建议等级变动三角：in 指向圆心，out 指向外 */
-.radar-svg .move-arrow { fill: var(--text-muted); opacity: 0.9; }
 /* 泳道图：日期网格虚线 + 轴刻度 + 左侧等级泳道标签 */
 .radar-svg .b-grid { stroke: var(--border); stroke-width: 1; stroke-dasharray: 3 5; }
 .radar-svg .b-tick { fill: var(--text-faint); font-size: 13px; font-family: var(--mono); }
