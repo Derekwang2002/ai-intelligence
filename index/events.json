@@ -1,7 +1,7 @@
 {
   "description": "Event index for dedup and cross-run lookup. Key by event_fingerprint.",
-  "last_updated": "2026-08-21T00:00:37Z",
-  "total_events": 28,
+  "last_updated": "2026-08-24T00:00:29Z",
+  "total_events": 35,
   "events": [
     {
       "event_id": "ev-20260813-01",
@@ -169,6 +169,14 @@
         {
           "date": "2026-08-20",
           "note": "2.1.237+2.1.238 (8/20): gateway prompt-caching fix, Concise style; long-session memory-growth fix (subagent tool results freed), plugin-marketplace headersHelper, self-hosted-runner proxy auth + deferred shutdown, Remote Control + cross-session messaging hardening, stdio MCP handshake-order fix"
+        },
+        {
+          "date": "2026-08-21",
+          "note": "2.1.239 released 8/21: Bedrock proxy Content-Type double-billing fix, 1.1x US-residency premium in cost estimates, cloud plugin sync (name@synced), ListAgents live teammates, /goal backoff + resume goal, Alpine/musl support"
+        },
+        {
+          "date": "2026-08-22",
+          "note": "2.1.240 (13:03Z) + 2.1.241 (23:58Z): both 'Bug fixes and reliability improvements' only, no documented changes; npm timestamps as evidence"
         }
       ]
     },
@@ -181,7 +189,13 @@
         "DeepSeek"
       ],
       "category": "open-source",
-      "file": "events/2026-08-14.json"
+      "file": "events/2026-08-14.json",
+      "updates": [
+        {
+          "date": "2026-08-22",
+          "note": "ecosystem check: main repo 181,199 stars (~168k in 9 days); derivatives desktop 17.5k / awesome 11.2k / routing 6.6k / web-ui 5.4k / presets 3.7k within first week; stays WATCH"
+        }
+      ]
     },
     {
       "event_id": "ev-20260814-06",
@@ -336,16 +350,23 @@
     {
       "event_id": "ev-20260819-04",
       "fingerprint": "amazon-bedrock-grok-4-6-availability",
-      "title": "Bedrock adds xAI Grok 4.6 (500K context)",
+      "title": "Grok 4.6 multi-cloud availability (Bedrock + Google Enterprise Agent Platform)",
       "date": "2026-08-19",
       "orgs": [
         "xAI",
         "Amazon",
-        "AWS"
+        "AWS",
+        "Google"
       ],
       "category": "foundation-model",
       "file": "events/2026-08-19.json",
-      "note": "coverage-gap recovery: AWS announcement dated 8/19, surfaced 8/20T05:02Z via aggregator, first seen 2026-08-21 run; Grok 4.6 launch itself (8/12) is pre-coverage background"
+      "note": "coverage-gap recovery: AWS announcement dated 8/19, surfaced 8/20T05:02Z via aggregator, first seen 2026-08-21 run; Grok 4.6 launch itself (8/12) is pre-coverage background",
+      "updates": [
+        {
+          "date": "2026-08-21",
+          "note": "xAI official: Grok 4.6 also on Google Enterprise Agent Platform via Model Garden (500K ctx, low/med/high/xhigh efforts, $2.00/$0.50-cached/$6.00 per M — matches Bedrock global profile). Coverage-gap recovery captured by 2026-08-24 run; scope extended to multi-cloud"
+        }
+      ]
     },
     {
       "event_id": "ev-20260820-01",
@@ -379,6 +400,88 @@
       ],
       "category": "research",
       "file": "events/2026-08-20.json"
+    },
+    {
+      "event_id": "ev-20260818-04",
+      "fingerprint": "openai-pacing-cyber-critical-astra-rl-pause",
+      "title": "OpenAI paces down frontier RL training after model-driven HF incident (Astra near Critical)",
+      "date": "2026-08-18",
+      "orgs": [
+        "OpenAI",
+        "Hugging Face"
+      ],
+      "category": "agent-security",
+      "file": "events/2026-08-18.json",
+      "note": "coverage-gap recovery: announced 2026-08-18 (Reuters/Fortune), official long-form post mirrored 8/20T16:48Z; recovered 2026-08-22 run per the 8/19 daily's stated criterion"
+    },
+    {
+      "event_id": "ev-20260818-05",
+      "fingerprint": "openai-zdr-private-safety-processing",
+      "title": "OpenAI ZDR reaffirmation + Private Safety Processing preview",
+      "date": "2026-08-18",
+      "orgs": [
+        "OpenAI"
+      ],
+      "category": "ai-engineering",
+      "file": "events/2026-08-18.json",
+      "note": "coverage-gap recovery: official publishedTime 2026-08-18T22:00Z, surfaced 2026-08-22 run"
+    },
+    {
+      "event_id": "ev-20260821-01",
+      "fingerprint": "openai-gpt-5-6-sol-price-cut-2026-08",
+      "title": "GPT-5.6 Sol API pricing cut >20% for 3 months",
+      "date": "2026-08-21",
+      "orgs": [
+        "OpenAI"
+      ],
+      "category": "foundation-model",
+      "file": "events/2026-08-21.json"
+    },
+    {
+      "event_id": "ev-20260821-02",
+      "fingerprint": "arxiv-2608-19670-compression-asymmetric-harms",
+      "title": "Asymmetric Harms of LLM Compression (arXiv 2608.19670)",
+      "date": "2026-08-21",
+      "orgs": [
+        "academic"
+      ],
+      "category": "research",
+      "file": "events/2026-08-21.json"
+    },
+    {
+      "event_id": "ev-20260821-03",
+      "fingerprint": "arxiv-2608-19662-recache-kv-reuse-agents",
+      "title": "ReCache: composition-invariant KV cache reuse for tool-augmented agents (arXiv 2608.19662)",
+      "date": "2026-08-21",
+      "orgs": [
+        "academic"
+      ],
+      "category": "research",
+      "file": "events/2026-08-21.json"
+    },
+    {
+      "event_id": "ev-20260821-04",
+      "fingerprint": "arxiv-2608-19652-statembench-agent-memory",
+      "title": "StateMemBench: agent memory state tracking (arXiv 2608.19652)",
+      "date": "2026-08-21",
+      "orgs": [
+        "academic"
+      ],
+      "category": "research",
+      "file": "events/2026-08-21.json"
+    },
+    {
+      "event_id": "ev-20260822-01",
+      "fingerprint": "nvidia-poolside-open-weight-model-deal",
+      "title": "Report: Nvidia to build a US open-weight model via $6B Poolside deal",
+      "date": "2026-08-22",
+      "orgs": [
+        "Nvidia",
+        "Poolside"
+      ],
+      "category": "business",
+      "file": "events/2026-08-22.json",
+      "note": "press-sourced (WSJ 8/22); no official confirmation, model, timeline or license terms as of 2026-08-24"
     }
   ],
   "known_fingerprints_for_dedup": [
@@ -409,6 +512,13 @@
     "amazon-bedrock-grok-4-6-availability",
     "mistral-agentic-search",
     "arxiv-2608-18578-bnb-quantization-proactive-interference",
-    "arxiv-2608-18921-smtrap-lrm-dos"
+    "arxiv-2608-18921-smtrap-lrm-dos",
+    "openai-pacing-cyber-critical-astra-rl-pause",
+    "openai-zdr-private-safety-processing",
+    "openai-gpt-5-6-sol-price-cut-2026-08",
+    "arxiv-2608-19670-compression-asymmetric-harms",
+    "arxiv-2608-19662-recache-kv-reuse-agents",
+    "arxiv-2608-19652-statembench-agent-memory",
+    "nvidia-poolside-open-weight-model-deal"
   ]
 }

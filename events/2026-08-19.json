@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260819-01",
-      "title": "Cursor cloud agents become an always-on system — event Subscriptions, VM-isolated subagents, /goal, non-interrupt steering",
-      "title_zh": "Cursor 云端 agent 升级为常驻系统——事件订阅、VM 隔离 subagent、/goal、免打断引导",
+      "title": "Cursor turns cloud agents into an always-on event-driven system",
+      "title_zh": "Cursor 把云端 agent 升级为事件驱动的常驻系统",
       "category": "developer-tools",
       "organization": [
         "Anysphere",
@@ -21,12 +21,12 @@
         "https://cursor.com/changelog",
         "https://cursor.com/docs/cloud-agent"
       ],
-      "summary": "Cursor shipped a release that turns cloud agents from on-demand sessions into an always-on system that 'operates as a system, building and shipping software on their own'. New primitives: (1) Subscriptions — a cloud agent subscribes to an event source (a PR, a Slack thread, a schedule) and wakes when something happens; cloud agents automatically subscribe to PRs they create and drive them to completion, fixing CI and addressing bot comments; available for cloud agents only for now. (2) Custom modes — any skill can be pinned as an always-on 'custom mode' in chat. (3) Subagents on their own machines — each subagent runs on its own virtual machine with an isolated copy of the project and clean context; supports swarm patterns ('run a swarm of subagents to test my app for bugs, each in its own environment'). (4) /goal — give the agent a long-lived objective worked toward until fully complete, pairable with custom modes and /loop. (5) Steering improvements — follow-up messages wait for the next tool call instead of interrupting the agent mid-action.",
-      "why_it_matters": "This is the most complete commercial packaging so far of the always-on multi-agent runtime pattern: event-driven wake-up, VM-per-subagent isolation for clean-context parallel work, long-lived goals, and non-interrupt steering are exactly the primitives an autonomous coding fleet needs. The auto-subscribed, PR-driving agent closes the loop with Cursor's own hosting (Origin) and CI integrations, meaning one vendor now covers repo → review → CI → always-on agents. Caution: it deepens lock-in to Cursor's cloud stack, swarm parallelism has real compute cost, and autonomous PR-driving agents need guardrails before pointing at production repositories.",
-      "summary_zh": "Cursor 发布新版本，把 cloud agent 从按需会话升级为「作为一个系统自主运行、持续构建和交付软件」的 always-on 体系。新原语：(1) Subscriptions——cloud agent 订阅一个事件源（PR、Slack thread、定时任务），事件发生时被唤醒；cloud agent 会自动订阅自己创建的 PR 并驱动到完成（修复 CI、处理 bot 评论）；目前仅限 cloud agents。(2) Custom modes——任意 skill 可固定为 chat 中常驻的「自定义模式」。(3) Subagents on their own machines——每个 subagent 运行在自己的虚拟机上，拿到项目的隔离副本与干净上下文；支持 swarm 模式（「run a swarm of subagents to test my app for bugs, each in its own environment」）。(4) /goal——给 agent 一个长期目标，持续工作直到完全完成；可与 custom mode、/loop 组合。(5) Steering 改进——后续消息等待下一个 tool call 再生效，不再打断 agent 正在执行的动作。",
-      "summary_en": "Cursor shipped a release that turns cloud agents from on-demand sessions into an always-on system that 'operates as a system, building and shipping software on their own'. New primitives: (1) Subscriptions — a cloud agent subscribes to an event source (a PR, a Slack thread, a schedule) and wakes when something happens; cloud agents automatically subscribe to PRs they create and drive them to completion, fixing CI and addressing bot comments; available for cloud agents only for now. (2) Custom modes — any skill can be pinned as an always-on 'custom mode' in chat. (3) Subagents on their own machines — each subagent runs on its own virtual machine with an isolated copy of the project and clean context; supports swarm patterns ('run a swarm of subagents to test my app for bugs, each in its own environment'). (4) /goal — give the agent a long-lived objective worked toward until fully complete, pairable with custom modes and /loop. (5) Steering improvements — follow-up messages wait for the next tool call instead of interrupting the agent mid-action.",
-      "why_it_matters_zh": "这是目前对 always-on multi-agent runtime 模式最完整的商业封装：事件驱动唤醒、每个 subagent 独立 VM 的干净上下文并行、长期目标、非打断式 steering，正是一个自主 coding fleet 需要的原语。自动订阅并驱动 PR 的 agent 与 Cursor 自家托管（Origin）和 CI 集成形成闭环——单一厂商已覆盖 repo → review → CI → always-on agents 全链路。注意事项：加深对 Cursor 云栈的锁定；swarm 并行有真实算力成本；自主驱动 PR 的 agent 指向生产仓库前需要 guardrails。",
-      "why_it_matters_en": "This is the most complete commercial packaging so far of the always-on multi-agent runtime pattern: event-driven wake-up, VM-per-subagent isolation for clean-context parallel work, long-lived goals, and non-interrupt steering are exactly the primitives an autonomous coding fleet needs. The auto-subscribed, PR-driving agent closes the loop with Cursor's own hosting (Origin) and CI integrations, meaning one vendor now covers repo → review → CI → always-on agents. Caution: it deepens lock-in to Cursor's cloud stack, swarm parallelism has real compute cost, and autonomous PR-driving agents need guardrails before pointing at production repositories.",
+      "summary": "Cursor shipped a release that turns cloud agents from on-demand sessions into an always-on system that builds and ships software on its own. The core primitive is Subscriptions: an agent subscribes to an event source such as a PR, a Slack thread, or a schedule, and wakes when something happens. Agents automatically subscribe to the PRs they create and drive them to completion, fixing CI and addressing bot comments; this is cloud-agents-only for now. The same release adds custom modes (any skill pinned as an always-on mode in chat), subagents that each run on their own VM with an isolated project copy and clean context (swarm patterns supported), and /goal, a long-lived objective the agent works toward until complete, pairable with custom modes and /loop. Steering changed too: follow-up messages now queue until the next tool call instead of interrupting the agent mid-action.",
+      "why_it_matters": "This is the most complete commercial packaging yet of the always-on multi-agent runtime pattern: event-driven wake-up, VM-per-subagent isolation for clean-context parallel work, long-lived goals, and non-interrupt steering are exactly the primitives an autonomous coding fleet needs. The auto-subscribed, PR-driving agent also closes the loop with Cursor's own hosting (Origin) and CI integrations, so one vendor now covers repo → review → CI → always-on agents. For teams considering it, the caveats are concrete: deeper lock-in to Cursor's cloud stack, real compute cost from swarm parallelism, and guardrails needed before autonomous PR-driving agents point at production repositories.",
+      "summary_zh": "Cursor 这次发布把云端 agent 从按需会话升级为常驻系统：agent 作为一个系统自主构建和交付软件。核心原语是 Subscriptions——agent 订阅 PR、Slack 讨论串或定时任务等事件源，有事发生时被唤醒。agent 会自动订阅自己创建的 PR 并推进到底，包括修 CI 和回复 bot 评论；该能力目前仅限云端 agent。同批上线的还有：custom modes 可把任意 skill 固定为常驻模式；每个 subagent 运行在自己的虚拟机上，拿到项目的隔离副本和干净上下文，支持 swarm 并行；/goal 给 agent 一个长期目标，一直做到完全完成，可与 custom mode 和 /loop 组合。引导方式（steering）也改了：后续消息排队到下一次工具调用再生效，不再打断 agent 正在执行的动作。",
+      "summary_en": "Cursor shipped a release that turns cloud agents from on-demand sessions into an always-on system that builds and ships software on its own. The core primitive is Subscriptions: an agent subscribes to an event source such as a PR, a Slack thread, or a schedule, and wakes when something happens. Agents automatically subscribe to the PRs they create and drive them to completion, fixing CI and addressing bot comments; this is cloud-agents-only for now. The same release adds custom modes (any skill pinned as an always-on mode in chat), subagents that each run on their own VM with an isolated project copy and clean context (swarm patterns supported), and /goal, a long-lived objective the agent works toward until complete, pairable with custom modes and /loop. Steering changed too: follow-up messages now queue until the next tool call instead of interrupting the agent mid-action.",
+      "why_it_matters_zh": "这是 always-on 多 agent 运行时模式目前最完整的商业封装。对搭建自主编码 agent 集群的人来说，事件驱动唤醒、每个 subagent 一台虚拟机带来的干净上下文并行、长期目标、不打断的引导，正是需要的原语。自动订阅并推进 PR 的 agent 还与 Cursor 自家托管（Origin）和 CI 集成形成闭环——一家厂商现在覆盖了仓库、评审、CI、常驻 agent 的全链路。想试的话注意三点：对 Cursor 云栈的锁定会加深；swarm 并行有真实算力成本；能自主推进 PR 的 agent 在指向生产仓库之前必须先配好护栏。",
+      "why_it_matters_en": "This is the most complete commercial packaging yet of the always-on multi-agent runtime pattern: event-driven wake-up, VM-per-subagent isolation for clean-context parallel work, long-lived goals, and non-interrupt steering are exactly the primitives an autonomous coding fleet needs. The auto-subscribed, PR-driving agent also closes the loop with Cursor's own hosting (Origin) and CI integrations, so one vendor now covers repo → review → CI → always-on agents. For teams considering it, the caveats are concrete: deeper lock-in to Cursor's cloud stack, real compute cost from swarm parallelism, and guardrails needed before autonomous PR-driving agents point at production repositories.",
       "technical_details": {
         "subscriptions": "event sources: PRs, Slack threads, scheduled tasks; cloud agents auto-subscribe to PRs they create and drive to completion (fix CI, address bot comments); cloud-agents-only for now",
         "custom_modes": "pin any skill as an always-on mode (⌥⏎ / Alt+Enter from the / menu, or 'Use as Mode')",
@@ -58,19 +58,19 @@
       "recommendation": "TRIAL",
       "event_fingerprint": "cursor-cloud-agents-subscriptions-vm-subagents",
       "technical_details_zh": {
-        "Subscriptions": "事件源：PR、Slack thread、定时任务；cloud agent 自动订阅自己创建的 PR 并驱动到完成（修 CI、处理 bot 评论）；目前仅 cloud agents",
+        "Subscriptions": "事件源：PR、Slack 讨论串、定时任务；云端 agent 自动订阅自己创建的 PR 并推进到完成（修 CI、处理 bot 评论）；目前仅限云端 agent",
         "Custom Modes": "任意 skill 可固定为常驻模式（/ 菜单里 ⌥⏎ / Alt+Enter，或 'Use as Mode'）",
         "Subagent 隔离": "每个 subagent 运行在独立 VM，拿到项目的隔离副本与干净上下文；支持 swarm 模式",
         "/goal": "长期目标，持续工作直到完成；可与 custom mode、/loop 组合",
-        "Steering": "后续消息排队到下一个 tool call 再生效，不再打断；'Send now' 或双击 ⏎",
-        "背景": "延续 cloud agents / cloud subagents 线（约 2026-06-17 起的环境初始化 + cloud subagents）；接 Builds（8/13）与 Origin 托管（8/17）",
-        "与知识库的关系": "趋势 coding-agents-multi-agent-runtimes 的窗口内证据（新组织：Cursor；新原语：事件驱动唤醒、VM-per-subagent）；也延伸了单一厂商垂直整合的早期迹象（Builds 8/13 → Origin 8/17 → always-on 系统 8/19）"
+        "Steering": "后续消息排队到下一次工具调用再生效，不再打断；'Send now' 或双击 ⏎",
+        "背景": "延续云端 agent / cloud subagents 这条线（约 2026-06-17 起的环境初始化 + cloud subagents）；接 Builds（8/13）与 Origin 托管（8/17）",
+        "与知识库的关系": "趋势 coding-agents-multi-agent-runtimes 的窗口内证据（新组织：Cursor；新原语：事件驱动唤醒、每个 subagent 一台 VM）；也延伸了单一厂商垂直整合的早期迹象（Builds 8/13 → Origin 8/17 → 常驻系统 8/19）"
       }
     },
     {
       "event_id": "ev-20260819-02",
-      "title": "PTXBench: benchmarking and adapting LLMs for architecture-specific PTX GPU kernel optimization (arXiv 2608.17379)",
-      "title_zh": "PTXBench：面向特定架构 PTX GPU kernel 优化的 LLM 评测与适配（arXiv 2608.17379）",
+      "title": "PTXBench: LLMs emit exotic PTX instructions but can't beat tuned libraries",
+      "title_zh": "PTXBench：模型能写出特殊 PTX 指令，却跑不赢调优库",
       "category": "research",
       "organization": [
         "academic"
@@ -84,12 +84,12 @@
       "secondary_sources": [
         "https://arxiv.org/list/cs.CL/recent"
       ],
-      "summary": "PTXBench is a benchmark for evaluating and adapting LLMs to use architecture-specific PTX (NVIDIA's low-level IR) for GPU kernel optimization. It measures three things across GEMM and attention workloads on H100 and B200: functional correctness, whether the selected target instructions actually execute at runtime, and speedup over frontier libraries (e.g. cuBLAS/cuDNN-class). Findings: architecture-specific PTX capability is uneven — success rates fall sharply on complex attention-backward workloads, and executing the target instructions does not translate into competitive performance (no evaluated model consistently matches frontier libraries). The authors also adapt Qwen3.6-27B via SFT: repair-conditioned training improves several tasks, but generalization remains uneven; data coverage, balance and reasoning-teacher quality matter beyond dataset size. PTXBench positions itself as an auditable testbed for measuring and improving LLMs' ability to exploit evolving GPU architectures.",
-      "why_it_matters": "Kernel generation is where LLMs could compound the hardest (hardware refreshes every year, kernel engineers scarce), and this is one of the first benchmarks to go below CUDA to architecture-specific PTX on both H100 and B200, with runtime verification that claimed instructions actually execute. The negative result is the actionable part: today's models can emit exotic instructions without beating tuned libraries, so kernel-agent pipelines should verify speedup, not instruction selection, as their success signal. Extends the KB's GPU-kernel-with-LLMs evidence line (ev-20260813-06, contract-grade verifier) from verification toward capability measurement.",
-      "summary_zh": "PTXBench 是一个评估和改造 LLM 使用架构特定 PTX（NVIDIA 底层 IR）做 GPU kernel 优化的 benchmark。它在 H100 与 B200 上针对 GEMM 和 attention 负载度量三件事：功能正确性、选定的目标指令是否真的在运行时执行、相对前沿库（cuBLAS/cuDNN 级别）的加速比。结论：架构特定 PTX 能力参差——复杂 attention backward 负载上成功率显著下降，且目标指令被执行并不等于性能有竞争力（没有任何被测模型能稳定追平前沿库）。作者还用 SFT 改造 Qwen3.6-27B：repair-conditioned 训练改进了若干任务，但泛化仍不均匀；除数据规模外，数据覆盖度、平衡性与 reasoning teacher 质量同样关键。PTXBench 定位为度量并改进 LLM 利用演进 GPU 架构能力的可审计 testbed。",
-      "summary_en": "PTXBench is a benchmark for evaluating and adapting LLMs to use architecture-specific PTX (NVIDIA's low-level IR) for GPU kernel optimization. It measures three things across GEMM and attention workloads on H100 and B200: functional correctness, whether the selected target instructions actually execute at runtime, and speedup over frontier libraries (e.g. cuBLAS/cuDNN-class). Findings: architecture-specific PTX capability is uneven — success rates fall sharply on complex attention-backward workloads, and executing the target instructions does not translate into competitive performance (no evaluated model consistently matches frontier libraries). The authors also adapt Qwen3.6-27B via SFT: repair-conditioned training improves several tasks, but generalization remains uneven; data coverage, balance and reasoning-teacher quality matter beyond dataset size. PTXBench positions itself as an auditable testbed for measuring and improving LLMs' ability to exploit evolving GPU architectures.",
-      "why_it_matters_zh": "Kernel 生成是 LLM 可能产生最大复利效应的领域（硬件每年刷新、kernel 工程师稀缺），而这是首批下探到架构特定 PTX、并同时覆盖 H100 与 B200 的 benchmark 之一，且带运行时验证（声称的指令是否真的执行）。最有行动价值的是负结果：当前模型能输出特殊指令却不敌调优库——kernel-agent 流水线应把「加速比」而非「指令选择」作为成功信号。与本知识库 GPU-kernel×LLM 证据线（ev-20260813-06 contract-grade verifier）形成衔接：从验证走向能力度量。",
-      "why_it_matters_en": "Kernel generation is where LLMs could compound the hardest (hardware refreshes every year, kernel engineers scarce), and this is one of the first benchmarks to go below CUDA to architecture-specific PTX on both H100 and B200, with runtime verification that claimed instructions actually execute. The negative result is the actionable part: today's models can emit exotic instructions without beating tuned libraries, so kernel-agent pipelines should verify speedup, not instruction selection, as their success signal. Extends the KB's GPU-kernel-with-LLMs evidence line (ev-20260813-06, contract-grade verifier) from verification toward capability measurement.",
+      "summary": "PTXBench is a benchmark for evaluating and adapting LLMs on GPU kernel optimization with architecture-specific PTX, NVIDIA's low-level IR. On GEMM and attention workloads across H100 and B200, it measures three things: functional correctness, whether the selected target instructions actually execute at runtime, and speedup over frontier libraries such as cuBLAS and cuDNN. The headline finding is negative: no evaluated model consistently matches the tuned libraries, success rates fall sharply on complex attention-backward workloads, and executing the target instructions does not translate into competitive performance. The authors also adapt Qwen3.6-27B with repair-conditioned SFT, which improves several tasks but generalizes unevenly; data coverage, balance, and reasoning-teacher quality matter beyond dataset size. PTXBench is positioned as an auditable testbed for measuring and improving how well LLMs exploit evolving GPU architectures.",
+      "why_it_matters": "Kernel generation is where LLMs could compound hardest: hardware refreshes every year and kernel engineers are scarce. For teams building kernel-agent pipelines, the actionable part is the negative result — treat speedup, not instruction selection, as the success signal, because today's models can emit exotic instructions without beating tuned libraries. This is one of the first benchmarks to go below CUDA to architecture-specific PTX on both H100 and B200, with runtime verification that claimed instructions actually execute; it extends the KB's GPU-kernel evidence line (ev-20260813-06) from verification toward capability measurement.",
+      "summary_zh": "PTXBench 是一个评测并改造 LLM 做 GPU kernel 优化的 benchmark，目标是架构特定的 PTX（NVIDIA 的底层中间表示）。它在 H100 和 B200 上测 GEMM 与 attention 负载，看三件事：功能是否正确、选中的目标指令运行时是否真的执行、相对 cuBLAS/cuDNN 这类前沿库的加速比。主要结论偏负面：没有一个被测模型能稳定追平调优库；复杂的 attention 反向传播负载上成功率明显下降；目标指令真的执行了，也不等于性能有竞争力。作者还用 repair-conditioned SFT 改造 Qwen3.6-27B，若干任务有改善但泛化不稳；数据覆盖度、平衡性和推理教师的质量比数据规模更关键。PTXBench 把自己定位为可审计的试验台，用来度量并改进 LLM 利用新 GPU 架构的能力。",
+      "summary_en": "PTXBench is a benchmark for evaluating and adapting LLMs on GPU kernel optimization with architecture-specific PTX, NVIDIA's low-level IR. On GEMM and attention workloads across H100 and B200, it measures three things: functional correctness, whether the selected target instructions actually execute at runtime, and speedup over frontier libraries such as cuBLAS and cuDNN. The headline finding is negative: no evaluated model consistently matches the tuned libraries, success rates fall sharply on complex attention-backward workloads, and executing the target instructions does not translate into competitive performance. The authors also adapt Qwen3.6-27B with repair-conditioned SFT, which improves several tasks but generalizes unevenly; data coverage, balance, and reasoning-teacher quality matter beyond dataset size. PTXBench is positioned as an auditable testbed for measuring and improving how well LLMs exploit evolving GPU architectures.",
+      "why_it_matters_zh": "Kernel 生成是 LLM 复利效应最强的方向之一：硬件每年换代，kernel 工程师稀缺。对做 kernel 生成 agent 流水线的人来说，最可行动的是这个负结果——成功信号要看加速比，而不是指令选没选对，因为现在的模型能写出特殊指令却跑不赢调优库。这也是首批下探到架构特定 PTX、同时覆盖 H100 与 B200、并验证指令是否真的在运行时执行的 benchmark 之一，把知识库的 GPU-kernel 证据线（ev-20260813-06）从验证推进到能力度量。",
+      "why_it_matters_en": "Kernel generation is where LLMs could compound hardest: hardware refreshes every year and kernel engineers are scarce. For teams building kernel-agent pipelines, the actionable part is the negative result — treat speedup, not instruction selection, as the success signal, because today's models can emit exotic instructions without beating tuned libraries. This is one of the first benchmarks to go below CUDA to architecture-specific PTX on both H100 and B200, with runtime verification that claimed instructions actually execute; it extends the KB's GPU-kernel evidence line (ev-20260813-06) from verification toward capability measurement.",
       "technical_details": {
         "scope": "GEMM + attention workloads; H100 + B200; architecture-specific PTX",
         "metrics": [
@@ -131,23 +131,23 @@
         "范围": "GEMM + attention 负载；H100 + B200；架构特定 PTX",
         "度量": [
           "功能正确性",
-          "目标指令运行时执行",
+          "目标指令是否在运行时真正执行",
           "相对前沿库的加速比"
         ],
         "发现": [
-          "attention-backward 上成功率骤降",
-          "指令执行 ≠ 有竞争力的性能",
+          "attention 反向传播上成功率骤降",
+          "指令被执行 ≠ 性能有竞争力",
           "没有模型能稳定追平前沿库"
         ],
-        "适配": "在 Qwen3.6-27B 上做 SFT；按任务做 repair-conditioned 训练有帮助；泛化不均；数据覆盖/平衡/教师质量比规模更关键",
+        "适配": "在 Qwen3.6-27B 上做 SFT；repair-conditioned 训练对若干任务有帮助；泛化不均；数据覆盖、平衡与教师质量比规模更关键",
         "代码": "摘要页无仓库链接；宣称 benchmark 为可审计 testbed",
         "与知识库的关系": "延续 arXiv 2608.12700 合约级验证器（ev-20260813-06）开启的 GPU-kernel × LLM 证据线"
       }
     },
     {
       "event_id": "ev-20260819-03",
-      "title": "Aggregate benchmark scores conceal item-level regressions in commercial LLM API migrations (arXiv 2608.17719)",
-      "title_zh": "聚合 benchmark 分数会掩盖商用 LLM API 迁移中的条目级回退（arXiv 2608.17719）",
+      "title": "Aggregate benchmark gains hide per-item regressions in LLM API migrations",
+      "title_zh": "研究：聚合涨分掩盖 LLM API 迁移中的条目级回退",
       "category": "research",
       "organization": [
         "academic"
@@ -161,12 +161,12 @@
       "secondary_sources": [
         "https://arxiv.org/list/cs.CL/recent"
       ],
-      "summary": "An empirical software-engineering study of what aggregate benchmark scores hide during commercial LLM API migrations. Method: three pairwise upgrades in the GPT-5.4 → GPT-5.6 Sol product sequence; 900 public benchmark items (graduate-level knowledge, olympiad mathematics, instruction following) queried 50 times per item per model; each item classified as reliably improved, reliably regressed, practically equivalent, or inconclusive under false-discovery-rate control and a practical-significance threshold, calibrated against a label-permutation null. Results: across all nine migration-benchmark cells, reliable improvements and reliable regressions coexist — upgrade edges with aggregate gains of up to 7.3 percentage points still contain up to 8.3% reliably regressed items, and edges with aggregate losses contain up to 10.7% reliably improved items. On instruction following, the strict-vs-loose scoring gap widens by 3.9 points on the latest migration (a 3.9-point regression under strict scoring shrinks to 0.04 under loose). The complete response-level archive and per-item scoring outputs are released.",
-      "why_it_matters": "Every team on a commercial LLM API faces forced migrations when vendors deprecate models; this paper turns 'aggregate scores look fine' into a measured, reproducible warning: net-positive upgrades ship double-digit percentages of reliably regressed behaviors, and scoring strictness alone can make a regression disappear. The methodology (per-item repeated sampling + FDR control + practical-significance thresholds, with a released archive) is directly reusable as a migration acceptance gate — more useful to API consumers than another leaderboard.",
-      "summary_zh": "一项针对商业 LLM API 迁移中聚合 benchmark 分数掩盖现象的实证软件工程研究。方法：GPT-5.4 → GPT-5.6 Sol 产品序列的三次成对升级；900 个公开 benchmark 条目（研究生级知识、奥数、instruction following），每条目每模型查询 50 次；在 false-discovery-rate 控制与实际显著性阈值下将每条目分类为可靠改进、可靠回退、实际等价或不确定，并用 label-permutation 空值校准。结果：全部九个迁移-benchmark 单元中，可靠改进与可靠回退并存——聚合增益最高 7.3 个百分点的升级边中仍含至多 8.3% 的可靠回退条目；聚合损失的边中也有至多 10.7% 的可靠改进条目。Instruction following 上，最新迁移的严格/宽松评分差距扩大 3.9 个百分点（严格口径下 3.9 点的回退在宽松口径下缩至 0.04）。完整 response-level 归档与逐条目评分输出已发布。",
-      "summary_en": "An empirical software-engineering study of what aggregate benchmark scores hide during commercial LLM API migrations. Method: three pairwise upgrades in the GPT-5.4 → GPT-5.6 Sol product sequence; 900 public benchmark items (graduate-level knowledge, olympiad mathematics, instruction following) queried 50 times per item per model; each item classified as reliably improved, reliably regressed, practically equivalent, or inconclusive under false-discovery-rate control and a practical-significance threshold, calibrated against a label-permutation null. Results: across all nine migration-benchmark cells, reliable improvements and reliable regressions coexist — upgrade edges with aggregate gains of up to 7.3 percentage points still contain up to 8.3% reliably regressed items, and edges with aggregate losses contain up to 10.7% reliably improved items. On instruction following, the strict-vs-loose scoring gap widens by 3.9 points on the latest migration (a 3.9-point regression under strict scoring shrinks to 0.04 under loose). The complete response-level archive and per-item scoring outputs are released.",
-      "why_it_matters_zh": "所有使用商业 LLM API 的团队都会遇到厂商弃用模型后的被迫迁移；本文把「聚合分数看起来没问题」变成可度量、可复现的警告：净收益为正的升级仍会带来两位数百分比的可靠行为回退，而评分口径的宽严就能让回退消失。其方法（逐条目重复采样 + FDR 控制 + 实际显著性阈值 + 归档发布）可直接复用为迁移验收门禁——对 API 使用方比对又一个 leaderboard 有用得多。",
-      "why_it_matters_en": "Every team on a commercial LLM API faces forced migrations when vendors deprecate models; this paper turns 'aggregate scores look fine' into a measured, reproducible warning: net-positive upgrades ship double-digit percentages of reliably regressed behaviors, and scoring strictness alone can make a regression disappear. The methodology (per-item repeated sampling + FDR control + practical-significance thresholds, with a released archive) is directly reusable as a migration acceptance gate — more useful to API consumers than another leaderboard.",
+      "summary": "An empirical software-engineering study of what aggregate benchmark scores hide during commercial LLM API migrations. The authors ran three pairwise upgrades in the GPT-5.4 → GPT-5.6 Sol product sequence over 900 public benchmark items (graduate-level knowledge, olympiad mathematics, instruction following), querying each item 50 times per model, and classified every item as reliably improved, reliably regressed, practically equivalent, or inconclusive under false-discovery-rate control with a practical-significance threshold. Reliable improvements and regressions coexist in all nine migration-benchmark cells: upgrade edges with aggregate gains of up to 7.3 percentage points still contain up to 8.3% reliably regressed items, and aggregate-loss edges contain up to 10.7% reliably improved ones. On instruction following, the latest migration's 3.9-point regression under strict scoring shrinks to 0.04 under loose scoring, so scoring strictness alone can make a regression disappear. The complete response-level archive and per-item scoring outputs are released.",
+      "why_it_matters": "Every team on a commercial LLM API faces forced migrations when vendors deprecate models. This paper turns 'aggregate scores look fine' into a measured, reproducible warning: net-positive upgrades still ship double-digit percentages of reliably regressed behaviors, and scoring strictness alone can hide them. For API consumers, the methodology — per-item repeated sampling, FDR control, practical-significance thresholds, plus a released archive — is directly reusable as a migration acceptance gate, which is more useful than another leaderboard.",
+      "summary_zh": "一项实证研究：商用 LLM API 迁移时，聚合 benchmark 分数到底掩盖了什么。作者在 GPT-5.4 → GPT-5.6 Sol 产品序列上做了三次成对升级，用 900 个公开 benchmark 条目（研究生级知识、奥数、指令遵循），每条目每模型查询 50 次，在错误发现率（FDR）控制和实际显著性阈值下，把每条目判定为可靠改进、可靠回退、实际等价或不确定。结果是九个迁移-benchmark 组合里改进与回退并存：聚合净涨最高 7.3 个百分点的升级，仍含至多 8.3% 的可靠回退条目；聚合净跌的升级也含至多 10.7% 的可靠改进条目。指令遵循上，最近一次迁移在严格评分下回退 3.9 分，宽松评分下只剩 0.04 分——评分口径一松，回退就「消失」了。完整的逐条回复归档和逐条评分输出已公开。",
+      "summary_en": "An empirical software-engineering study of what aggregate benchmark scores hide during commercial LLM API migrations. The authors ran three pairwise upgrades in the GPT-5.4 → GPT-5.6 Sol product sequence over 900 public benchmark items (graduate-level knowledge, olympiad mathematics, instruction following), querying each item 50 times per model, and classified every item as reliably improved, reliably regressed, practically equivalent, or inconclusive under false-discovery-rate control with a practical-significance threshold. Reliable improvements and regressions coexist in all nine migration-benchmark cells: upgrade edges with aggregate gains of up to 7.3 percentage points still contain up to 8.3% reliably regressed items, and aggregate-loss edges contain up to 10.7% reliably improved ones. On instruction following, the latest migration's 3.9-point regression under strict scoring shrinks to 0.04 under loose scoring, so scoring strictness alone can make a regression disappear. The complete response-level archive and per-item scoring outputs are released.",
+      "why_it_matters_zh": "对用商业 LLM API 的团队来说，厂商弃用旧模型就得被迫迁移。这篇论文把「总分看着没问题」变成了一句可复现的警告：净涨分的升级照样带着两位数百分比的可靠行为回退，评分口径一松，回退就没了。它的方法——逐条目重复采样、FDR 控制、实际显著性阈值，加上公开的归档——可以直接拿来当迁移验收门禁。对 API 使用方来说，这比又多一个 leaderboard 有用得多。",
+      "why_it_matters_en": "Every team on a commercial LLM API faces forced migrations when vendors deprecate models. This paper turns 'aggregate scores look fine' into a measured, reproducible warning: net-positive upgrades still ship double-digit percentages of reliably regressed behaviors, and scoring strictness alone can hide them. For API consumers, the methodology — per-item repeated sampling, FDR control, practical-significance thresholds, plus a released archive — is directly reusable as a migration acceptance gate, which is more useful than another leaderboard.",
       "technical_details": {
         "scope": "3 pairwise upgrades, GPT-5.4 → GPT-5.6 Sol product sequence",
         "method": "900 public benchmark items × 50 queries per item per model; FDR control + practical-significance threshold; label-permutation null calibration",
@@ -199,41 +199,43 @@
       "event_fingerprint": "arxiv-2608-17719-item-level-api-migration-regressions",
       "technical_details_zh": {
         "范围": "3 组成对升级，GPT-5.4 → GPT-5.6 Sol 产品序列",
-        "方法": "900 条公开 benchmark 条目 × 每条每模型 50 次查询；FDR 控制 + 实际显著性阈值；标签置换零假设校准",
+        "方法": "900 条公开 benchmark 条目 × 每条每模型 50 次查询；FDR 控制 + 实际显著性阈值；标签置换空假设校准",
         "结果": [
-          "聚合 +7.3pp 的升级边里含至多 8.3% 可靠回退条目",
-          "聚合损失的边里含至多 10.7% 可靠改进条目",
-          "instruction following 的严格/宽松评分差距：3.9pt 回退在宽松评分下缩至 0.04pt"
+          "聚合净涨 +7.3pp 的升级仍含至多 8.3% 可靠回退条目",
+          "聚合净跌的升级也含至多 10.7% 可靠改进条目",
+          "指令遵循的严格/宽松评分差距：3.9 分回退在宽松评分下缩至 0.04 分"
         ],
-        "产物": "发布完整 response 级归档 + 逐条评分输出",
-        "与知识库的关系": "DeepSeek V4-Pro 定价/GA 事件（ev-20260813-02）强制迁移时代的实用配套；方法论可直接用作迁移验收门禁"
+        "产物": "发布完整的逐条回复归档与逐条评分输出",
+        "与知识库的关系": "DeepSeek V4-Pro 定价/GA 事件（ev-20260813-02）开启的强制迁移时代的实用配套；方法可直接用作迁移验收门禁"
       }
     },
     {
       "event_id": "ev-20260819-04",
-      "title": "Amazon Bedrock adds xAI Grok 4.6 — 500K context, cross-region inference profiles, $2.00–2.20 per M input",
-      "title_zh": "Amazon Bedrock 上架 xAI Grok 4.6——500K 上下文、跨区域推理 profile、输入 $2.00–2.20/M",
+      "title": "Grok 4.6 goes multi-cloud: Bedrock first, then Google Enterprise Agent Platform",
+      "title_zh": "Grok 4.6 相继上架 Bedrock 与 Google 企业 agent 平台",
       "category": "foundation-model",
       "organization": [
         "xAI",
         "Amazon",
-        "AWS"
+        "AWS",
+        "Google"
       ],
       "published_at": "2026-08-19",
       "published_at_note": "AWS What's New announcement dated August 19, 2026 (US date). Coverage-gap recovery: surfaced via aggregator alert 2026-08-20T05:02Z and captured by the 2026-08-21 run. Grok 4.6 itself launched 2026-08-12 as xAI's flagship (out of KB coverage, background); what is new here is Bedrock availability, pricing and feature scope.",
       "first_seen_at": "2026-08-21T00:00:37Z",
-      "last_updated_at": "2026-08-21T00:00:37Z",
+      "last_updated_at": "2026-08-24T00:00:29Z",
       "source_type": "primary",
       "primary_source": "https://aws.amazon.com/about-aws/whats-new/",
       "secondary_sources": [
-        "https://aiweekly.co/alerts/amazon-bedrock-adds-xais-grok-46-with-500k-context-window"
+        "https://aiweekly.co/alerts/amazon-bedrock-adds-xais-grok-46-with-500k-context-window",
+        "https://x.ai/news/grok-4-6-vertex-ai"
       ],
-      "summary": "Amazon Bedrock added xAI's Grok 4.6 — a 500K-token-context frontier model positioned for coding, agentic tasks and knowledge work with emphasis on long-running agents. Four configurable reasoning effort levels (low default / medium / high / xhigh); accepts text and image input, returns text output; accessible via the Responses, Chat Completions and Converse APIs with prompt caching and reasoning support. Two cross-region inference profiles launched: us.xai.grok-4.6 for US data residency and global.xai.grok-4.6, which routes anywhere worldwide when there are no residency constraints. Pricing: in-region and US geo profiles $2.20/M input, $6.60/M output, $0.55/M cache read; global cross-region profile $2.00/M input, $6.00/M output, $0.50/M cache read. Not supported: server-side tool use, structured outputs, intelligent prompt routing, application inference profiles.",
-      "why_it_matters": "Model-access event: xAI's frontier model becomes procurable through AWS (Bedrock commitments, private networking, IAM), which matters for enterprises standardizing on AWS and for multi-model routing strategies; 500K context plus the long-running-agent positioning makes it a candidate for long-context agent workloads. The engineering caveats are as important as the headline — no server-side tool use and no structured outputs on Bedrock means agent stacks must keep tool execution client-side and parse text outputs, a real integration constraint versus APIs that offer those server-side.",
-      "summary_zh": "Amazon Bedrock 上架 xAI Grok 4.6——500K token 上下文的前沿模型，定位 coding、agentic task 与知识工作，强调长时 agent。四档可配置 reasoning effort（默认 low / medium / high / xhigh）；接受文本与图像输入、输出文本；可通过 Responses、Chat Completions 与 Converse API 访问，支持 prompt caching 与 reasoning。上线两个跨区域推理 profile：us.xai.grok-4.6（美国数据驻留）与 global.xai.grok-4.6（无驻留约束时全球路由）。定价：in-region 与 US geo profile 输入 $2.20/M、输出 $6.60/M、缓存读 $0.55/M；global 跨区域 profile 输入 $2.00/M、输出 $6.00/M、缓存读 $0.50/M。不支持：server-side tool use、structured outputs、intelligent prompt routing、application inference profiles。",
-      "summary_en": "Amazon Bedrock added xAI's Grok 4.6 — a 500K-token-context frontier model positioned for coding, agentic tasks and knowledge work with emphasis on long-running agents. Four configurable reasoning effort levels (low default / medium / high / xhigh); accepts text and image input, returns text output; accessible via the Responses, Chat Completions and Converse APIs with prompt caching and reasoning support. Two cross-region inference profiles launched: us.xai.grok-4.6 for US data residency and global.xai.grok-4.6, which routes anywhere worldwide when there are no residency constraints. Pricing: in-region and US geo profiles $2.20/M input, $6.60/M output, $0.55/M cache read; global cross-region profile $2.00/M input, $6.00/M output, $0.50/M cache read. Not supported: server-side tool use, structured outputs, intelligent prompt routing, application inference profiles.",
-      "why_it_matters_zh": "模型获取事件：xAI 前沿模型可以通过 AWS 采购（Bedrock commitment、私有网络、IAM），对以 AWS 为主的标准企业与多模型路由策略有实际意义；500K 上下文 + 长时 agent 定位使其成为长上下文 agent 负载的候选。工程注意事项与 headline 同样重要——Bedrock 上不支持 server-side tool use 与 structured outputs，意味着 agent 栈必须把工具执行留在客户端并解析文本输出，相对提供这些服务端能力的是真实集成约束。",
-      "why_it_matters_en": "Model-access event: xAI's frontier model becomes procurable through AWS (Bedrock commitments, private networking, IAM), which matters for enterprises standardizing on AWS and for multi-model routing strategies; 500K context plus the long-running-agent positioning makes it a candidate for long-context agent workloads. The engineering caveats are as important as the headline — no server-side tool use and no structured outputs on Bedrock means agent stacks must keep tool execution client-side and parse text outputs, a real integration constraint versus APIs that offer those server-side.",
+      "summary": "Amazon Bedrock added xAI's Grok 4.6, a frontier model with a 500K-token context window positioned for coding, agentic tasks, and knowledge work, with emphasis on long-running agents. It offers four configurable reasoning effort levels (low by default, then medium, high, and xhigh), accepts text and image input, returns text, and is accessible through the Responses, Chat Completions, and Converse APIs with prompt caching and reasoning support. Two cross-region inference profiles launched: us.xai.grok-4.6 for US data residency, and global.xai.grok-4.6, which routes anywhere worldwide when no residency constraints apply. Pricing is $2.20/M input, $6.60/M output, and $0.55/M cache read for in-region and US geo profiles, and $2.00/M, $6.00/M, and $0.50/M for the global cross-region profile. Not supported: server-side tool use, structured outputs, intelligent prompt routing, and application inference profiles. Update (2026-08-21): xAI also brought Grok 4.6 to Google Enterprise Agent Platform via Model Garden - same 500K context and four reasoning-effort levels, priced at $2.00/M input, $0.50/M cached input and $6.00/M output, matching the Bedrock global cross-region profile.",
+      "why_it_matters": "For enterprises standardizing on AWS, xAI's frontier model is now procurable through Bedrock commitments, private networking, and IAM, and it adds an option for multi-model routing strategies; 500K context plus the long-running-agent positioning makes it a candidate for long-context agent workloads. The caveats matter as much as the headline: with no server-side tool use and no structured outputs on Bedrock, agent stacks must keep tool execution client-side and parse text outputs themselves, a real integration constraint versus APIs that offer those server-side. With Bedrock and Google both carrying it within three days, procuring xAI's flagship for multi-cloud routing is now straightforward on both major US clouds; what still needs evaluation is the integration surface (no server-side tool use or structured outputs on the Bedrock side).",
+      "summary_zh": "Amazon Bedrock 上架 xAI 的 Grok 4.6：500K token 上下文的前沿模型，主打编码、agent 任务和知识工作，强调长时间运行的 agent。模型提供四档推理强度（默认 low，可选 medium、high、xhigh），接受文本和图像输入、输出文本，可通过 Responses、Chat Completions 和 Converse 三个 API 访问，支持前缀缓存（prompt caching）与推理。同步上线两个跨区域推理 profile：us.xai.grok-4.6 用于美国数据驻留；global.xai.grok-4.6 在无驻留约束时全球路由。定价方面，区域内与美国 profile 输入 $2.20/M、输出 $6.60/M、缓存读 $0.55/M；全球跨区域 profile 输入 $2.00/M、输出 $6.00/M、缓存读 $0.50/M。不支持服务端工具调用、结构化输出、智能提示路由和 application inference profiles。更新（8/21）：xAI 又把 Grok 4.6 带上 Google Enterprise Agent Platform（经 Model Garden 提供）——同样 500K 上下文、四档推理强度，定价输入 $2.00、缓存 $0.50、输出 $6.00 每百万 token，与 Bedrock 全球跨区域 profile 持平。",
+      "summary_en": "Amazon Bedrock added xAI's Grok 4.6, a frontier model with a 500K-token context window positioned for coding, agentic tasks, and knowledge work, with emphasis on long-running agents. It offers four configurable reasoning effort levels (low by default, then medium, high, and xhigh), accepts text and image input, returns text, and is accessible through the Responses, Chat Completions, and Converse APIs with prompt caching and reasoning support. Two cross-region inference profiles launched: us.xai.grok-4.6 for US data residency, and global.xai.grok-4.6, which routes anywhere worldwide when no residency constraints apply. Pricing is $2.20/M input, $6.60/M output, and $0.55/M cache read for in-region and US geo profiles, and $2.00/M, $6.00/M, and $0.50/M for the global cross-region profile. Not supported: server-side tool use, structured outputs, intelligent prompt routing, and application inference profiles. Update (2026-08-21): xAI also brought Grok 4.6 to Google Enterprise Agent Platform via Model Garden - same 500K context and four reasoning-effort levels, priced at $2.00/M input, $0.50/M cached input and $6.00/M output, matching the Bedrock global cross-region profile.",
+      "why_it_matters_zh": "对以 AWS 为主的企业来说，xAI 的前沿模型现在可以通过 Bedrock 承诺用量、私有网络和 IAM 采购，多模型路由策略也多了一个选项；500K 上下文加上长时 agent 的定位，让它成为长上下文 agent 负载的候选。工程上的限制和上架本身同样重要：Bedrock 上不支持服务端工具调用和结构化输出，agent 栈必须把工具执行留在客户端、自己解析文本输出。相比在服务端提供这些能力的 API，这是实实在在的集成约束。三天内美系两大云双双上架，多云路由采购 xAI 旗舰已经没有障碍；真正要评估的仍是集成面（Bedrock 侧无服务端工具调用与结构化输出）。",
+      "why_it_matters_en": "For enterprises standardizing on AWS, xAI's frontier model is now procurable through Bedrock commitments, private networking, and IAM, and it adds an option for multi-model routing strategies; 500K context plus the long-running-agent positioning makes it a candidate for long-context agent workloads. The caveats matter as much as the headline: with no server-side tool use and no structured outputs on Bedrock, agent stacks must keep tool execution client-side and parse text outputs themselves, a real integration constraint versus APIs that offer those server-side. With Bedrock and Google both carrying it within three days, procuring xAI's flagship for multi-cloud routing is now straightforward on both major US clouds; what still needs evaluation is the integration surface (no server-side tool use or structured outputs on the Bedrock side).",
       "technical_details": {
         "context_window": "500K tokens",
         "reasoning_efforts": "low (default) / medium / high / xhigh",
@@ -249,7 +251,8 @@
         ],
         "not_supported": "server-side tool use, structured outputs, intelligent prompt routing, application inference profiles",
         "background": "Grok 4.6 launched 2026-08-12 (pre-coverage background); this event covers the Bedrock availability layer only",
-        "relation_to_kb": "model-access/pricing line alongside DeepSeek V4-Pro GA pricing (ev-20260813-02); long-context agent workload candidate"
+        "relation_to_kb": "model-access/pricing line alongside DeepSeek V4-Pro GA pricing (ev-20260813-02); long-context agent workload candidate",
+        "google_availability": "2026-08-21: Google Enterprise Agent Platform via Model Garden; 500K context; reasoning effort low/medium/high/xhigh; $2.00/M input, $0.50/M cached input, $6.00/M output (matches Bedrock global profile); model card on Google docs + Cloud console listing"
       },
       "tags": [
         "grok-4-6",
@@ -259,7 +262,9 @@
         "model-availability",
         "long-context",
         "cross-region-inference",
-        "pricing"
+        "pricing",
+        "google-cloud",
+        "model-garden"
       ],
       "technical_impact": 2,
       "engineering_value": 3,
@@ -271,9 +276,9 @@
       "event_fingerprint": "amazon-bedrock-grok-4-6-availability",
       "technical_details_zh": {
         "上下文窗口": "500K tokens",
-        "Reasoning Effort": "low（默认）/ medium / high / xhigh",
+        "推理强度": "low（默认）/ medium / high / xhigh",
         "模态": "文本 + 图像输入；文本输出",
-        "API": "Responses、Chat Completions、Converse；支持 prompt caching 与 reasoning",
+        "API": "Responses、Chat Completions、Converse；支持前缀缓存（prompt caching）与推理",
         "推理 Profile": [
           "us.xai.grok-4.6（美国数据驻留）",
           "global.xai.grok-4.6（无驻留约束时全球路由）"
@@ -284,8 +289,10 @@
         ],
         "不支持": "server-side tool use、structured outputs、intelligent prompt routing、application inference profiles",
         "背景": "Grok 4.6 于 2026-08-12 发布（覆盖前背景）；本事件只覆盖 Bedrock 可用性这一层",
-        "与知识库的关系": "与 DeepSeek V4-Pro GA 定价（ev-20260813-02）同属模型获取/定价线；长上下文 agent 负载候选"
-      }
+        "与知识库的关系": "与 DeepSeek V4-Pro GA 定价（ev-20260813-02）同属模型获取/定价线；长上下文 agent 负载候选",
+        "Google 平台上架（8/21 更新）": "2026-08-21：Google Enterprise Agent Platform，经 Model Garden 提供；500K 上下文；推理强度 low/medium/high/xhigh；输入 $2.00/M、缓存 $0.50/M、输出 $6.00/M（与 Bedrock 全球 profile 持平）；模型卡 hosted 在 Google 文档站 + Cloud console 上架"
+      },
+      "update_2026_08_21": "Coverage-gap recovery (2026-08-24 run): xAI officially announced on 2026-08-21 that Grok 4.6 is also available on Google Enterprise Agent Platform via Model Garden - 500K context, reasoning effort low/medium/high/xhigh, pricing $2.00/M input, $0.50/M cached input, $6.00/M output, matching the Bedrock global cross-region profile (primary: x.ai/news/grok-4-6-vertex-ai). Second hyperscaler marketplace within three days (Bedrock 8/19, Google 8/21); surfaced via 8/23 aggregator digest, missed by the 8/22 run. Event scope extended from Bedrock-only to multi-cloud availability; recommendation stays TRIAL."
     }
   ]
 }

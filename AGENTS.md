@@ -207,11 +207,54 @@ events/YYYY-MM-DD.json
 双语字段规则：
 
 - `summary` / `why_it_matters` 保持英文原文，与 `summary_en` / `why_it_matters_en` 内容一致（保留原字段是为了向后兼容）。
-- `summary_zh` / `why_it_matters_zh` 为必填中文版本；中文版本里技术名称、产品名和关键术语保留英文。
-- `title` 为英文规范标题（站点英文模式直接使用）；`title_zh` 为必填中文标题，供中文模式展示——产品名、模型名、版本号、协议名等保持英文，只翻译描述性部分。
+- `summary_zh` / `why_it_matters_zh` 为必填中文版本；术语取舍与行文风格遵守 6.5 节（产品名、模型名、协议名、benchmark 名保留英文，有通行译法的技术词用中文）。
+- `title` 为英文规范标题（站点英文模式直接使用）；`title_zh` 为必填中文标题，供中文模式展示；两者都遵守 6.5 节的标题规则。
 - `category`、`organization`、`tags` 不做翻译，保持英文。
 - `technical_details` 保持英文为规范版本；同时必填 `technical_details_zh` 中文展示镜像：key 直接写中文显示标签（benchmark 名、产品名、协议名等技术名词保留英文），value 中技术名称、产品名、版本号保留英文；纯数值、布尔值与 benchmark 嵌套 map 与英文版保持一致。嵌套结构最多两层，深层数据应展开为可读字符串。
 - 更新已有事件时，双语字段必须同步更新，不允许只更新一种语言。
+
+## 6.5 Writing Style（写作风格：写给人读）
+
+所有面向读者的文本——`title` / `title_zh` / `summary*` / `why_it_matters*` / `technical_details_zh`、日报、趋势——必须读起来像资深工程师写给同行的简报，而不是机器翻译或数据库记录。每次写入前按本节自检。
+
+### 标题
+
+1. 标题是一句话，说清「谁 + 做了什么 / 发现了什么」，主谓宾完整。禁止用分号把两层意思塞进一个标题；一个标题最多保留一个最关键的数字。
+2. 中文标题目标 ≤ 35 字，英文标题目标 ≤ 80 字符。
+3. arXiv 编号、完整版本号清单、成串数字不进标题——放进 `technical_details` 或正文。论文名 / 项目名保留在标题里（可搜索的标识）。
+4. 用动词驱动的事实句，不用营销形容词（revolutionary、game-changing、颠覆性、炸裂）。
+
+反例 → 正例：
+
+- ✗ `StateMemBench：agent 记忆系统无法追踪演化状态；StateMem 包装器提升准确率 32-67 点（arXiv 2608.19652）`
+  ✓ `StateMemBench：现有 agent 记忆系统跟不上不断变化的状态`
+- ✗ `The Asymmetric Harms of LLM Compression: 3 LLMs x 11 compression methods (arXiv 2608.19670)`
+  ✓ `Study: LLM compression quietly hurts common knowledge and calibration`
+
+### 中文写作
+
+1. 先用中文想，再落笔——禁止逐字翻译英文习语。中文里不存在的说法必须改写，常见错误对照：
+   - ✗「改写路由决策的算术」→ ✓「模型路由的成本账要重算了」
+   - ✗「全部表现挣扎」→ ✓「表现都不理想」
+   - ✗「把 X 从良好实践变成验收测试要求」→ ✓「X 不再只是建议，而是上线前的必测项」
+2. 术语分三级处理：
+   - 保留英文：产品名、模型名、协议名、benchmark 名、库名（GPT-5.6、MCP、SWE-bench、bitsandbytes）。
+   - 有通行译法就用中文：前缀缓存（不写 prefix caching）、量化、校准、注意力机制、嵌入、流水线（不写「管线」）、封装（不写「包装器」）、护栏、路由、上下文窗口、首 token 延迟（TTFT 可在括号内保留）。
+   - 生僻或新造术语：首次出现写「中文描述（English term）」并给一句白话解释，例如「常见知识（head knowledge）」「闭集评分（closed-pool grading，只在固定候选答案中判定对错）」。
+3. 一句只讲一件事。摘要 3–5 个短句；禁止括号套括号；背景信息另起一句，不用破折号硬接。
+4. 数字只保留决策相关的：幅度、对比、日期。「82.3% vs 82.4%」这类并列细节放 `technical_details`，不进摘要。
+5. `why_it_matters` 用「对做 X 的人来说，这意味着 Y」的视角写，落到具体行动或决策；不写「这值得关注」之类的空话。
+
+### 英文写作
+
+同样原则：plain English、短句、active voice。标题不要写成「论文名：三个名词短语堆叠」的学术格式。
+
+### 写入前自检
+
+- 这句话能一口气读出来吗？
+- 除了产品 / 模型 / 协议 / benchmark 名，句子里还有没必要的英文吗？
+- 一个不熟这个子领域的工程师，读完能复述大意吗？
+- 标题把括号删掉后还成立吗？
 
 ## 7. Daily Reports
 
@@ -308,6 +351,8 @@ trends/current.json    （机读结构化数据，双语，供网站直接消费
 ```
 
 `current.json` 与 `current.md` 内容必须一致：每次更新趋势时先更新 `current.json`，再让 `current.md` 反映同样的状态。`current.json` 格式：
+
+趋势的稳定编号以 `current.json` 中 `trends` 数组的顺序为准（数组第 1 个 = 趋势 #1，以此类推）。快照正文的分节编号、日报里的「趋势 #N / trend #N」引用都必须使用这个稳定编号，并按此顺序排列分节；不得按当日活跃度临时重排或局部编号。
 
 ```json
 {

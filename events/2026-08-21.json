@@ -1,0 +1,287 @@
+{
+  "date": "2026-08-21",
+  "provenance": "Incremental scan window [2026-08-21T00:00:37Z, 2026-08-22T00:00:33Z]; retrieval overlap from 2026-08-20T21:00:37Z (retrieval only, dedup enforced against index). Friday window. GPT-5.6 Sol price cut announced via official page update dated 2026-08-21 (in-window; Reuters same-day corroboration). Three arXiv papers attributed to the Fri, 21 Aug 2026 cs.CL digest per KB digest-date convention (v1 submitted 2026-08-20). Two coverage-gap recoveries appended to events/2026-08-18.json: OpenAI 'Pacing model development in an era of cyber-critical capabilities' (announced 8/18 via Reuters/Fortune; official long-form post mirrored on OpenAI forum 8/20T16:48Z; recovered per the 8/19 daily's stated criterion) and OpenAI ZDR/Private Safety Processing (official publishedTime 2026-08-18T22:00Z). Two existing events updated in events/2026-08-14.json: ev-20260814-04 (Claude Code 2.1.239, in-window 8/21T17:18Z) and ev-20260814-05 (DeepSeek Harness ecosystem, GitHub observation 8/21-22).",
+  "events": [
+    {
+      "event_id": "ev-20260821-01",
+      "title": "OpenAI cuts GPT-5.6 Sol API and credit prices by over 20% for three months",
+      "title_zh": "OpenAI 下调 GPT-5.6 Sol API 与 credit 价格超 20%，为期三个月",
+      "category": "foundation-model",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-08-21",
+      "published_at_note": "Official update dated August 21, 2026 on the GPT-5.6 announcement page; promotional Sol pricing confirmed on the API pricing page ('at least through November 21, 2026'); Reuters corroborated the cut on Aug 21. In-window.",
+      "first_seen_at": "2026-08-22T00:00:33Z",
+      "last_updated_at": "2026-08-22T00:00:33Z",
+      "source_type": "primary",
+      "primary_source": "https://openai.com/index/gpt-5-6/",
+      "secondary_sources": [
+        "https://developers.openai.com/api/docs/pricing",
+        "https://www.reuters.com/technology/openai-slows-model-training-bolster-security-after-hugging-face-hack-2026-08-18/"
+      ],
+      "summary": "OpenAI updated the GPT-5.6 announcement page on August 21: API and credit pricing for GPT-5.6 Sol drops by over 20% for the next three months. The API pricing page lists promotional Sol pricing of $4.00 per 1M input / $20.00 per 1M output tokens for short context ($8.00/$30.00 long context), cached input at 10% of the input price, and states the promotional pricing is available 'at least through November 21, 2026'. Family context: Terra at $2.00/$12.00 and Luna at $0.20/$1.20 (short context); Batch and Flex tiers are 50% off standard (Sol $2.00/$10.00); Fast mode is 2x. The GPT-5.6 family (Sol/Terra/Luna) reached GA on 2026-08-18, with Luna positioned as the low-cost tier powering Replit's Free Mode (announced 8/18-19, just before this window). The cut moves in the opposite direction to DeepSeek V4-Pro's large price increase effective 2026-08-16.",
+      "why_it_matters": "For teams running output-heavy, cost-sensitive agent pipelines, a >20% cut on the frontier flagship changes routing math: with Batch/Flex at $2.00/$10.00, Sol moves into mid-tier cost territory while keeping frontier quality. Two planning cautions. First, it is explicitly promotional — 'at least through Nov 21' means budgets and routing policies must model reversion risk after the window. Second, per the item-level API-migration audit (ev-20260819-03), aggregate benchmark gains can hide item-level regressions, so price alone should not drive a blind all-in migration to Sol.",
+      "summary_zh": "OpenAI 于 8 月 21 日更新 GPT-5.6 官方公告页：GPT-5.6 Sol 的 API 与 credit 价格在未来三个月下调超 20%。API 定价页显示，Sol 促销价为短上下文 $4.00/1M 输入、$20.00/1M 输出，长上下文 $8.00/$30.00，缓存输入按输入价的 10% 计费，并注明促销价「至少持续到 2026 年 11 月 21 日」。同家族的 Terra 为 $2.00/$12.00，Luna 为 $0.20/$1.20（均为短上下文价）；Batch/Flex 档为标准价 5 折（Sol $2.00/$10.00），Fast 模式为 2 倍。GPT-5.6 家族（Sol/Terra/Luna）于 2026-08-18 GA，Luna 定位低成本档，支撑了 Replit 在 8/18-19 发布的 Free Mode。此次降价与 DeepSeek V4-Pro 自 2026-08-16 起的大幅涨价方向相反。",
+      "summary_en": "OpenAI updated the GPT-5.6 announcement page on August 21: API and credit pricing for GPT-5.6 Sol drops by over 20% for the next three months. The API pricing page lists promotional Sol pricing of $4.00 per 1M input / $20.00 per 1M output tokens for short context ($8.00/$30.00 long context), cached input at 10% of the input price, and states the promotional pricing is available 'at least through November 21, 2026'. Family context: Terra at $2.00/$12.00 and Luna at $0.20/$1.20 (short context); Batch and Flex tiers are 50% off standard (Sol $2.00/$10.00); Fast mode is 2x. The GPT-5.6 family (Sol/Terra/Luna) reached GA on 2026-08-18, with Luna positioned as the low-cost tier powering Replit's Free Mode (announced 8/18-19, just before this window). The cut moves in the opposite direction to DeepSeek V4-Pro's large price increase effective 2026-08-16.",
+      "why_it_matters_zh": "对输出 token 消耗大、成本敏感的 agent 流水线团队来说，旗舰模型降价超 20% 意味着路由的成本账要重算：Batch/Flex 档 $2.00/$10.00 让 Sol 在保持旗舰质量的同时落入中档价位。但有两点要纳入规划。一是这明确是促销价，「至少到 11 月 21 日」意味着预算和路由策略必须考虑窗口结束后的价格回弹。二是按 item-level API 迁移审计（ev-20260819-03）的结论，聚合 benchmark 的提升可能掩盖逐条目的回退，不能只看价格就全面迁移到 Sol。",
+      "why_it_matters_en": "For teams running output-heavy, cost-sensitive agent pipelines, a >20% cut on the frontier flagship changes routing math: with Batch/Flex at $2.00/$10.00, Sol moves into mid-tier cost territory while keeping frontier quality. Two planning cautions. First, it is explicitly promotional — 'at least through Nov 21' means budgets and routing policies must model reversion risk after the window. Second, per the item-level API-migration audit (ev-20260819-03), aggregate benchmark gains can hide item-level regressions, so price alone should not drive a blind all-in migration to Sol.",
+      "technical_details": {
+        "cut": "API and credit pricing of GPT-5.6 Sol reduced by over 20% for 3 months (official update dated 2026-08-21)",
+        "promotional_window": "at least through 2026-11-21 (API pricing page)",
+        "sol_pricing_per_1M": {
+          "input_short": "$4.00",
+          "output_short": "$20.00",
+          "input_long": "$8.00",
+          "output_long": "$30.00",
+          "cached_input": "10% of input",
+          "cache_write_short": "$5.00"
+        },
+        "family_short_ctx_per_1M": {
+          "terra": "$2.00/$12.00",
+          "luna": "$0.20/$1.20"
+        },
+        "tiers": "Batch/Flex 50% off standard; Fast mode 2x standard",
+        "context": "GPT-5.6 family GA 2026-08-18 (Sol/Terra/Luna tiers); Luna powers Replit Free Mode (8/18-19, pre-window background); counter-direction to DeepSeek V4-Pro price increase effective 2026-08-16 (ev-20260813-02 update)"
+      },
+      "tags": [
+        "openai",
+        "gpt-5.6",
+        "pricing",
+        "api",
+        "cost",
+        "promotional-pricing",
+        "routing"
+      ],
+      "technical_impact": 1,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 5,
+      "verification_cost": 1,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "openai-gpt-5-6-sol-price-cut-2026-08",
+      "technical_details_zh": {
+        "降价": "GPT-5.6 Sol 的 API 与 credit 价格下调超 20%，为期 3 个月（官方更新标注 2026-08-21）",
+        "促销窗口": "至少持续到 2026-11-21（API 定价页）",
+        "Sol 定价（每 1M）": {
+          "短上下文输入": "$4.00",
+          "短上下文输出": "$20.00",
+          "长上下文输入": "$8.00",
+          "长上下文输出": "$30.00",
+          "缓存输入": "输入价的 10%",
+          "短上下文缓存写入": "$5.00"
+        },
+        "家族短上下文价（每 1M）": {
+          "Terra": "$2.00/$12.00",
+          "Luna": "$0.20/$1.20"
+        },
+        "档位": "Batch/Flex 标准价 5 折；Fast 模式标准价 2 倍",
+        "背景": "GPT-5.6 家族 2026-08-18 GA（Sol/Terra/Luna）；Luna 支撑 Replit Free Mode（8/18-19 发布，属此前背景）；与 DeepSeek V4-Pro 自 2026-08-16 的涨价方向相反（ev-20260813-02 更新）"
+      }
+    },
+    {
+      "event_id": "ev-20260821-02",
+      "title": "Study: LLM compression quietly hurts common knowledge and calibration",
+      "title_zh": "研究显示 LLM 压缩会悄悄损害常见知识和校准",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-08-21",
+      "published_at_note": "v1 submitted 2026-08-20T06:06:36Z; announced in the Fri, 21 Aug 2026 arXiv cs.CL digest (digest-date attribution per KB convention). Authors: Yuan Wu, Mairui Li, Lesia Semenova, Chudi Zhong.",
+      "first_seen_at": "2026-08-22T00:00:33Z",
+      "last_updated_at": "2026-08-22T00:00:33Z",
+      "source_type": "research",
+      "primary_source": "https://arxiv.org/abs/2608.19670",
+      "secondary_sources": [
+        "https://arxiv.org/list/cs.CL/recent"
+      ],
+      "summary": "A systematic evaluation of 3 LLMs and 11 compression methods, measuring effects on knowledge retention, model confidence, and social bias that aggregate metrics (perplexity, accuracy) mask. Findings: compression disproportionately reduces relative retention of head knowledge compared to tail knowledge; compressed models often remain substantially confident in incorrect answers on newly lost knowledge, so calibration quietly degrades; and stable aggregate bias scores can conceal substantial, opposing shifts in stereotypical preferences across demographic subgroups. The conclusion: compression produces asymmetric behavioral changes that aggregate measures cannot see, so granular evaluation is required before deployment.",
+      "why_it_matters": "This is the second paper in two days showing aggregate metrics mask compression damage, after the bitsandbytes proactive-interference result (ev-20260820-02, 8/20). This one is broader — 11 compression methods across 3 models — and adds the confidence/calibration and bias-subgroup dimensions. Together they make granular behavioral probes before deploying compressed models a concrete acceptance-testing requirement rather than just good practice. Confidence-while-wrong is directly dangerous for agent pipelines that branch on model self-assessment.",
+      "summary_zh": "这篇论文对 3 个 LLM 和 11 种压缩方法做了系统评估，考察的是聚合指标（perplexity、accuracy）容易掩盖的三个维度：知识保持、模型置信度、社会偏见。主要发现有三个。第一，压缩对常见知识（head knowledge，高频出现的常识内容）的损害明显大于长尾知识（tail knowledge）。第二，压缩后的模型对刚丢失的知识给出错误答案时往往依然很自信，校准在不知不觉中劣化。第三，聚合偏见分数看似稳定，背后却可能是各人口子群体刻板偏好方向相反的移动相互抵消。结论是压缩会带来聚合指标看不见的不对称行为变化，部署前必须做细粒度评估。",
+      "summary_en": "A systematic evaluation of 3 LLMs and 11 compression methods, measuring effects on knowledge retention, model confidence, and social bias that aggregate metrics (perplexity, accuracy) mask. Findings: compression disproportionately reduces relative retention of head knowledge compared to tail knowledge; compressed models often remain substantially confident in incorrect answers on newly lost knowledge, so calibration quietly degrades; and stable aggregate bias scores can conceal substantial, opposing shifts in stereotypical preferences across demographic subgroups. The conclusion: compression produces asymmetric behavioral changes that aggregate measures cannot see, so granular evaluation is required before deployment.",
+      "why_it_matters_zh": "这是两天内第二篇指出「聚合指标掩盖压缩损害」的论文，前一天是 bitsandbytes 的前摄干扰退化研究（ev-20260820-02，8/20）。本篇覆盖更广（11 种压缩方法 × 3 个模型），还补上了置信度/校准与偏见子群体两个维度。两篇合起来意味着：部署压缩模型前做细粒度行为探针，不再只是建议，而是上线前的必测项。「答错了还很自信」这一点，对依赖模型自我评估做分支决策的 agent 流水线尤其危险。",
+      "why_it_matters_en": "This is the second paper in two days showing aggregate metrics mask compression damage, after the bitsandbytes proactive-interference result (ev-20260820-02, 8/20). This one is broader — 11 compression methods across 3 models — and adds the confidence/calibration and bias-subgroup dimensions. Together they make granular behavioral probes before deploying compressed models a concrete acceptance-testing requirement rather than just good practice. Confidence-while-wrong is directly dangerous for agent pipelines that branch on model self-assessment.",
+      "technical_details": {
+        "scope": "3 LLMs x 11 compression methods; knowledge retention, confidence, social bias",
+        "findings": [
+          "head knowledge loses disproportionately more relative retention than tail knowledge",
+          "compressed models stay substantially confident on newly lost (wrong) answers",
+          "stable aggregate bias scores conceal opposing subgroup shifts in stereotypical preferences"
+        ],
+        "implication": "granular behavioral evaluation required before deployment; aggregate perplexity/accuracy insufficient",
+        "relation_to_kb": "extends the compression-x-behavior line opened by ev-20260820-02 (arXiv 2608.18578, 2026-08-20); same meta-finding from an independent team"
+      },
+      "tags": [
+        "compression",
+        "quantization",
+        "evaluation",
+        "calibration",
+        "bias",
+        "deployment",
+        "research"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2608-19670-compression-asymmetric-harms",
+      "technical_details_zh": {
+        "范围": "3 个 LLM × 11 种压缩方法；知识保持、置信度、社会偏见",
+        "发现": [
+          "常见知识（head knowledge）的相对保持率受损明显大于长尾知识（tail knowledge）",
+          "压缩后的模型对刚丢失知识给出的错误答案仍保持高置信度",
+          "聚合偏见分数看似稳定，实则掩盖各子群体刻板偏好方向相反的移动"
+        ],
+        "启示": "部署前需要细粒度行为评估；只看聚合 perplexity/accuracy 不够",
+        "与知识库的关系": "延续 ev-20260820-02（arXiv 2608.18578，2026-08-20）开辟的压缩 × 行为研究线；独立团队得出同一元结论"
+      }
+    },
+    {
+      "event_id": "ev-20260821-03",
+      "title": "ReCache makes KV cache reusable for tool-heavy LLM agents",
+      "title_zh": "ReCache：让 agent 反复拼装的 tool schema 也能复用 KV cache",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-08-21",
+      "published_at_note": "v1 submitted 2026-08-20T05:57:22Z; announced in the Fri, 21 Aug 2026 arXiv cs.CL digest (digest-date attribution per KB convention). Authors: Yichu Fang, Sitong Wei, Haozhe Hu, Xiaoyu Shen (EIT-NLP). Code released.",
+      "first_seen_at": "2026-08-22T00:00:33Z",
+      "last_updated_at": "2026-08-22T00:00:33Z",
+      "source_type": "research",
+      "primary_source": "https://arxiv.org/abs/2608.19662",
+      "secondary_sources": [
+        "https://github.com/EIT-NLP/ReCache"
+      ],
+      "summary": "Agent workloads repeatedly encode tool and skill schemas that recur across requests in different combinations and orders, so standard prefix caching cannot reuse their KV states. ReCache caches each resource's representation independently: resource-wise attention removes cross-resource interactions and assigns resource-local positions, producing composition-invariant KV blocks; visibility is restricted to contribution-selected layer-KV-head-group routes, and structural plus semantic pruning keeps only invocation-critical fields. On a benchmark assembled from seven public tool/skill-use datasets (including resource-disjoint tests), resource-wise attention matches dense invocation performance (82.3% vs 82.4% Inv-F1) while delivering a 3.655x time-to-first-token speedup; the full framework cuts allocated KV-tensor memory by 92.43% and accelerates attention by 1.423x. Code is available at github.com/EIT-NLP/ReCache.",
+      "why_it_matters": "Prefix caching fails exactly where agent traffic is heaviest: tool schemas recombined on every request. For teams running MCP or tool-heavy gateways, this is a concrete serving-cost lever on both TTFT and KV memory, complementing the correctness side of agent x KV-cache interactions (ev-20260818-03). The caveats: it requires attention-level changes (resource-wise attention), so it is not a drop-in cache configuration; integration into production serving stacks carries real cost, and the evaluation is academic-benchmark scale.",
+      "summary_zh": "在 agent 负载里，tool/skill schema 会以不同组合、不同顺序反复出现，标准的前缀缓存因此无法复用它们的 KV 状态。ReCache 的做法是把每个资源的表示独立缓存：resource-wise attention 去掉跨资源交互并给资源分配局部位置，得到组合不变（composition-invariant）的 KV block；资源的可见范围被限制在按贡献选出的 layer-KV-head-group 路由上，再通过结构化和语义剪枝只保留调用关键字段。在 7 个公开 tool/skill 使用数据集组成的 benchmark 上（含资源不相交测试），resource-wise attention 与 dense 调用性能持平（Inv-F1 82.3% vs 82.4%），同时首 token 延迟（TTFT）加速 3.655 倍；完整框架把已分配的 KV-tensor 内存降低 92.43%，attention 加速 1.423 倍。代码已开源：github.com/EIT-NLP/ReCache。",
+      "summary_en": "Agent workloads repeatedly encode tool and skill schemas that recur across requests in different combinations and orders, so standard prefix caching cannot reuse their KV states. ReCache caches each resource's representation independently: resource-wise attention removes cross-resource interactions and assigns resource-local positions, producing composition-invariant KV blocks; visibility is restricted to contribution-selected layer-KV-head-group routes, and structural plus semantic pruning keeps only invocation-critical fields. On a benchmark assembled from seven public tool/skill-use datasets (including resource-disjoint tests), resource-wise attention matches dense invocation performance (82.3% vs 82.4% Inv-F1) while delivering a 3.655x time-to-first-token speedup; the full framework cuts allocated KV-tensor memory by 92.43% and accelerates attention by 1.423x. Code is available at github.com/EIT-NLP/ReCache.",
+      "why_it_matters_zh": "前缀缓存恰恰在 agent 流量最重的地方失效：每次请求都要重新拼装的 tool schema。对跑 MCP 或工具密集型 gateway 的团队来说，这是一个能同时压 TTFT 和 KV 内存的具体 serving 成本手段，与 agent × KV-cache 交互的正确性研究（ev-20260818-03）正好互补。但要注意，它需要改动 attention 层（resource-wise attention），不是改个缓存配置就能上——接入生产 serving 栈有真实成本，且评估规模还只是学术 benchmark。",
+      "why_it_matters_en": "Prefix caching fails exactly where agent traffic is heaviest: tool schemas recombined on every request. For teams running MCP or tool-heavy gateways, this is a concrete serving-cost lever on both TTFT and KV memory, complementing the correctness side of agent x KV-cache interactions (ev-20260818-03). The caveats: it requires attention-level changes (resource-wise attention), so it is not a drop-in cache configuration; integration into production serving stacks carries real cost, and the evaluation is academic-benchmark scale.",
+      "technical_details": {
+        "problem": "tool/skill schemas recur across requests in varying combinations/orders; prefix caching cannot reuse their KV states",
+        "mechanism": [
+          "resource-wise attention: remove cross-resource interactions + resource-local positions -> composition-invariant KV blocks",
+          "contribution-selected layer-KV-head-group visibility routes",
+          "structural + semantic pruning of invocation-critical fields"
+        ],
+        "results": [
+          "Inv-F1 82.3% vs 82.4% dense (parity)",
+          "3.655x TTFT speedup",
+          "-92.43% allocated KV-tensor memory",
+          "1.423x attention speedup"
+        ],
+        "benchmark": "seven public tool/skill-use datasets, incl. resource-disjoint tests",
+        "code": "github.com/EIT-NLP/ReCache",
+        "relation_to_kb": "cost dimension of agent x KV-cache line; correctness dimension opened by ev-20260818-03 (arXiv 2608.15939)"
+      },
+      "tags": [
+        "kv-cache",
+        "inference",
+        "serving",
+        "agents",
+        "tool-use",
+        "mcp",
+        "cost",
+        "latency",
+        "research"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2608-19662-recache-kv-reuse-agents",
+      "technical_details_zh": {
+        "问题": "tool/skill schema 以不同组合和顺序跨请求反复出现；前缀缓存无法复用其 KV 状态",
+        "机制": [
+          "resource-wise attention：去除跨资源交互并分配资源局部位置，得到组合不变的 KV block",
+          "按贡献选择的 layer-KV-head-group 可见性路由",
+          "对调用关键字段做结构化和语义剪枝"
+        ],
+        "结果": [
+          "Inv-F1 82.3% vs 82.4% dense（持平）",
+          "首 token 延迟（TTFT）加速 3.655 倍",
+          "已分配 KV-tensor 内存 -92.43%",
+          "attention 加速 1.423 倍"
+        ],
+        "基准测试": "7 个公开 tool/skill 使用数据集，含资源不相交（resource-disjoint）测试",
+        "代码": "github.com/EIT-NLP/ReCache",
+        "与知识库的关系": "agent × KV-cache 研究线的成本一侧；正确性一侧见 ev-20260818-03（arXiv 2608.15939）"
+      }
+    },
+    {
+      "event_id": "ev-20260821-04",
+      "title": "StateMemBench shows agent memory systems can't track a changing world",
+      "title_zh": "StateMemBench：现有 agent 记忆系统跟不上不断变化的状态",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-08-21",
+      "published_at_note": "v1 submitted 2026-08-20T05:41:16Z; announced in the Fri, 21 Aug 2026 arXiv cs.CL digest (digest-date attribution per KB convention). Authors: Xinyi Fan, Miri Liu, Ruozhen Yang, Siru Ouyang.",
+      "first_seen_at": "2026-08-22T00:00:33Z",
+      "last_updated_at": "2026-08-22T00:00:33Z",
+      "source_type": "research",
+      "primary_source": "https://arxiv.org/abs/2608.19652",
+      "secondary_sources": [
+        "https://arxiv.org/list/cs.CL/recent"
+      ],
+      "summary": "The paper argues an effective agent memory system must track the evolving state of the world: as facts, constraints, and decisions are revised over a long interaction, answers must reflect the current state, not a superseded one. It defines this as state tracking and releases StateMemBench: 234 multi-session scenarios across two conversation-length regimes, with closed-pool grading that scores whether an answer reflects the current state, a superseded state, or fails otherwise — separating state-tracking failures from other errors by construction. Existing memory systems, retrieval-augmented baselines, and long-context baselines all struggle. The proposed StateMem, a state-first memory that explicitly tracks supersession and relational dependencies, improves current-state accuracy 1.8x over the strongest same-backbone baseline (0.205 -> 0.363 on DeepSeek-V4-Flash) and 1.6x over the strongest memory system (0.149 -> 0.233 on Qwen-3.5-9B). As a lightweight single-call wrapper over six existing memory/retrieval backends, it lifts current-state accuracy by +32 to +67 points, and a length- and cost-matched control attributes +15 to +32 of those points to state structure rather than added context.",
+      "why_it_matters": "The best absolute accuracy is still only 0.363, so evolving-state tracking remains an unsolved failure mode across every current memory architecture; closed-pool grading makes it measurable in production evals. For teams building agent memory today, the wrapper result (+32 to +67 points across six backends with a single call) is immediately actionable: track supersession explicitly instead of hoping recall-shaped benchmarks cover it. This is the third paper this week (after ev-20260820-02 and ev-20260821-02) converging on the same meta-finding: aggregate or recall-shaped evaluation misses what agent workloads actually depend on.",
+      "summary_zh": "论文提出，有效的 agent 记忆系统必须能追踪世界状态的变化：事实、约束和决策会在长交互中被不断修订，答案必须反映当前状态，而不是已被取代的旧状态。作者把这一能力定义为状态追踪（state tracking），并发布 StateMemBench：234 个多会话场景、两种对话长度区间。评测采用闭集评分（closed-pool grading，在固定候选中判定答案反映的是当前状态、被取代状态还是其他失败），从构造上把状态追踪失败与其他错误区分开。现有记忆系统、RAG 基线和长上下文基线表现都不理想。论文提出的 StateMem 是状态优先（state-first）的记忆方法，显式追踪取代关系和关系依赖；当前状态准确率较最强同 backbone 基线提升 1.8 倍（DeepSeek-V4-Flash 上 0.205 → 0.363），较最强记忆系统提升 1.6 倍（Qwen-3.5-9B 上 0.149 → 0.233）。作为轻量的单次调用封装，StateMem 可以套在六个现有记忆/检索后端上，把当前状态准确率提升 +32 至 +67 点；长度与成本匹配的对照显示，其中 +15 至 +32 点来自状态结构本身而非新增上下文。",
+      "summary_en": "The paper argues an effective agent memory system must track the evolving state of the world: as facts, constraints, and decisions are revised over a long interaction, answers must reflect the current state, not a superseded one. It defines this as state tracking and releases StateMemBench: 234 multi-session scenarios across two conversation-length regimes, with closed-pool grading that scores whether an answer reflects the current state, a superseded state, or fails otherwise — separating state-tracking failures from other errors by construction. Existing memory systems, retrieval-augmented baselines, and long-context baselines all struggle. The proposed StateMem, a state-first memory that explicitly tracks supersession and relational dependencies, improves current-state accuracy 1.8x over the strongest same-backbone baseline (0.205 -> 0.363 on DeepSeek-V4-Flash) and 1.6x over the strongest memory system (0.149 -> 0.233 on Qwen-3.5-9B). As a lightweight single-call wrapper over six existing memory/retrieval backends, it lifts current-state accuracy by +32 to +67 points, and a length- and cost-matched control attributes +15 to +32 of those points to state structure rather than added context.",
+      "why_it_matters_zh": "目前最好的绝对准确率也只有 0.363，说明状态追踪是所有现役记忆架构都没解决的失败模式；闭集评分让这个问题在生产评测中变得可测量。对正在做 agent 记忆的团队来说，封装版的结果（六个后端提升 +32 至 +67 点，只需单次调用）今天就能用：显式追踪取代关系，而不是指望 recall 型 benchmark 能覆盖这一点。这也是本周第三篇（前两篇为 ev-20260820-02、ev-20260821-02）指向同一结论的论文：聚合或 recall 型评估，看不到 agent 负载真正依赖的能力。",
+      "why_it_matters_en": "The best absolute accuracy is still only 0.363, so evolving-state tracking remains an unsolved failure mode across every current memory architecture; closed-pool grading makes it measurable in production evals. For teams building agent memory today, the wrapper result (+32 to +67 points across six backends with a single call) is immediately actionable: track supersession explicitly instead of hoping recall-shaped benchmarks cover it. This is the third paper this week (after ev-20260820-02 and ev-20260821-02) converging on the same meta-finding: aggregate or recall-shaped evaluation misses what agent workloads actually depend on.",
+      "technical_details": {
+        "benchmark": "StateMemBench: 234 multi-session scenarios, two conversation-length regimes, closed-pool grading (current state / superseded state / fail)",
+        "baselines": "existing memory systems, retrieval-augmented baselines, long-context baselines — all struggle",
+        "statemem": "state-first memory tracking supersession + relational dependencies",
+        "results": [
+          "1.8x over strongest same-backbone baseline: 0.205 -> 0.363 current-state accuracy (DeepSeek-V4-Flash)",
+          "1.6x over strongest memory system: 0.149 -> 0.233 (Qwen-3.5-9B)",
+          "single-call wrapper over 6 memory/retrieval backends: +32 to +67 points",
+          "length/cost-matched control: +15 to +32 points attributable to state structure itself"
+        ],
+        "relation_to_kb": "same overwritten-value recall line as ev-20260820-02 (arXiv 2608.18578); third paper in the week's evaluation-blind-spot cluster"
+      },
+      "tags": [
+        "agent-memory",
+        "memory",
+        "benchmark",
+        "state-tracking",
+        "evaluation",
+        "agents",
+        "research"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2608-19652-statembench-agent-memory",
+      "technical_details_zh": {
+        "Benchmark": "StateMemBench：234 个多会话场景、两种对话长度区间、闭集评分（当前状态/被取代状态/失败）",
+        "基线": "现有记忆系统、RAG 基线、长上下文基线，表现都不理想",
+        "StateMem": "状态优先（state-first）的记忆方法，显式追踪取代关系与关系依赖",
+        "结果": [
+          "较最强同 backbone 基线提升 1.8 倍：当前状态准确率 0.205 → 0.363（DeepSeek-V4-Flash）",
+          "较最强记忆系统提升 1.6 倍：0.149 → 0.233（Qwen-3.5-9B）",
+          "套在 6 个记忆/检索后端上的单次调用封装：+32 至 +67 点",
+          "长度/成本匹配对照：+15 至 +32 点可归因于状态结构本身"
+        ],
+        "与知识库的关系": "与 ev-20260820-02（arXiv 2608.18578）同属被覆写值召回研究线；本周评估盲区集群的第三篇"
+      }
+    }
+  ]
+}
