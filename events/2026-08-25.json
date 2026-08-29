@@ -1,0 +1,129 @@
+{
+  "date": "2026-08-25",
+  "provenance": "Captured by 2026-08-28T00:31:03Z run (scan window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z]). GLM-5.3-Flash verified via Hugging Face API (repo createdAt 2026-08-25T06:45:05Z, MIT license, model card) plus z.ai official blog; Gemini CLI a2a-server verified via GitHub release tag v0.57.0 (published 2026-08-25T18:37:14Z, packages/a2a-server in tag tree) and npm registry (@google/gemini-cli-a2a-server@0.57.0).",
+  "events": [
+    {
+      "event_id": "ev-20260825-01",
+      "title": "Z.ai open-sources GLM-5.3-Flash (new base, hybrid attention, MIT)",
+      "title_zh": "Z.ai 开源 GLM-5.3-Flash（全新底座、MIT 许可）",
+      "category": "foundation-model",
+      "organization": [
+        "Zhipu AI",
+        "Z.ai"
+      ],
+      "published_at": "2026-08-25T06:45:05Z",
+      "first_seen_at": "2026-08-28T00:31:03Z",
+      "last_updated_at": "2026-08-29T11:35:46Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/zai-org/GLM-5.3-Flash",
+      "secondary_sources": [
+        "https://z.ai/blog/glm-5.3-flash",
+        "https://huggingface.co/zai-org/GLM-5.3-Flash-BF16",
+        "https://artificialanalysis.ai/models/glm-5-3-flash"
+      ],
+      "summary": "Z.ai released GLM-5.3-Flash weights under MIT on Hugging Face: a 320B-total / 18B-active natively multimodal MoE, the first GLM-5-series model trained from a newly built base rather than GLM-5.2. It combines sparse and linear attention to cut long-context serving cost and adds Manifold-Constrained Hyper-Connections, pre-trained on a 30T-token multimodal corpus. Z.ai claims it beats GLM-5.2 across benchmarks at one-tenth the price and approaches Claude Opus 4.8 on coding and agentic tasks; Artificial Analysis independently scored it 57 on their Intelligence Index (added 2026-08-26). vLLM, SGLang, Transformers, KTransformers and vLLM-Ascend support shipped day-0.",
+      "why_it_matters": "For teams weighing self-hosted open weights, this is the most permissive license in the current Chinese frontier wave (plain MIT, no revenue caps or security-review clauses) paired with an architecture explicitly designed to lower long-context serving costs — the two biggest blockers to production self-hosting. The hybrid sparse-linear attention design is also the first mainstream open-weight test of whether linear attention materially changes long-context unit economics; watch serving-stack version requirements before committing.",
+      "summary_zh": "Z.ai 在 Hugging Face 以 MIT 许可放出 GLM-5.3-Flash：320B 总参 / 18B 激活的原生多模态 MoE，也是 GLM-5 系列首个从全新底座训练的模型（不再沿用 GLM-5.2 基座）。模型混合稀疏注意力与线性注意力以压低长上下文服务成本，引入 Manifold-Constrained Hyper-Connections（mHC），预训练语料为 30T token 多模态数据。官方称其以 GLM-5.2 十分之一的价格全面超过 GLM-5.2，在 coding 与 agentic 基准上接近 Claude Opus 4.8；Artificial Analysis 独立评测给出 Intelligence Index 57（8/26 上架）。vLLM、SGLang、Transformers、KTransformers、vLLM-Ascend 均已 day-0 支持。",
+      "summary_en": "Z.ai released GLM-5.3-Flash weights under MIT on Hugging Face: a 320B-total / 18B-active natively multimodal MoE, the first GLM-5-series model trained from a newly built base rather than GLM-5.2. It combines sparse and linear attention to cut long-context serving cost and adds Manifold-Constrained Hyper-Connections, pre-trained on a 30T-token multimodal corpus. Z.ai claims it beats GLM-5.2 across benchmarks at one-tenth the price and approaches Claude Opus 4.8 on coding and agentic tasks; Artificial Analysis independently scored it 57 on their Intelligence Index (added 2026-08-26). vLLM, SGLang, Transformers, KTransformers and vLLM-Ascend support shipped day-0.",
+      "why_it_matters_zh": "对考虑自托管开源权重的团队，这是本轮中国前沿开源潮里最宽松的许可证（纯 MIT，无营收门槛、无安全审查条款），叠加一个明确为压低长上下文服务成本设计的架构——这两点正是自托管落地的最大阻碍。混合稀疏-线性注意力也是主流开源权重模型对「线性注意力能否实质改变长上下文单位成本」的第一次检验；采用前先确认 serving 栈的版本要求。",
+      "why_it_matters_en": "For teams weighing self-hosted open weights, this is the most permissive license in the current Chinese frontier wave (plain MIT, no revenue caps or security-review clauses) paired with an architecture explicitly designed to lower long-context serving costs — the two biggest blockers to production self-hosting. The hybrid sparse-linear attention design is also the first mainstream open-weight test of whether linear attention materially changes long-context unit economics; watch serving-stack version requirements before committing.",
+      "technical_details": {
+        "architecture": "320B total / 18B active MoE; hybrid sparse + linear attention; Manifold-Constrained Hyper-Connections (mHC)",
+        "base_model": "newly trained base (not GLM-5.2); first natively multimodal model in the GLM-5 series",
+        "pretraining": "30T-token multimodal corpus",
+        "license": "MIT (GLM-5.3 main model uses a custom glm-5.3 license instead)",
+        "repos": "zai-org/GLM-5.3-Flash + GLM-5.3-Flash-BF16, created 2026-08-25T06:45Z; ungated",
+        "serving": "day-0: vLLM, SGLang, Transformers, KTransformers, Unsloth, vLLM-Ascend (Ascend NPU)",
+        "independent_eval": "Artificial Analysis Intelligence Index 57 (added 2026-08-26); Baseten hosting noted",
+        "positioning": "one-tenth the price of GLM-5.2; approaches Claude Opus 4.8 on coding/agentic benchmarks (vendor claim)",
+        "community": "1,454 HF likes within 3 days (2026-08-28 check)"
+      },
+      "technical_details_zh": {
+        "架构": "320B 总参 / 18B 激活 MoE；稀疏 + 线性混合注意力；Manifold-Constrained Hyper-Connections（mHC）",
+        "基座": "全新训练底座（非 GLM-5.2）；GLM-5 系列首个原生多模态模型",
+        "预训练": "30T token 多模态语料",
+        "许可证": "MIT（主模型 GLM-5.3 使用自定义 glm-5.3 许可证）",
+        "仓库": "zai-org/GLM-5.3-Flash + GLM-5.3-Flash-BF16，2026-08-25T06:45Z 创建；无访问门禁",
+        "推理支持": "day-0：vLLM、SGLang、Transformers、KTransformers、Unsloth、vLLM-Ascend（昇腾 NPU）",
+        "独立评测": "Artificial Analysis Intelligence Index 57（2026-08-26 上架）；Baseten 已托管",
+        "定位": "GLM-5.2 十分之一的价格；coding/agentic 基准接近 Claude Opus 4.8（厂商自报）",
+        "社区": "3 天内 1,454 HF likes（2026-08-28 核查）"
+      },
+      "tags": [
+        "glm",
+        "zai",
+        "open-weights",
+        "mit-license",
+        "multimodal",
+        "moe",
+        "linear-attention",
+        "long-context"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "zai-glm-5-3-flash-320b-a18b-open-weights",
+      "update_2026_08_29": "Adoption check @2026-08-29T11:35Z: zai-org/GLM-5.3-Flash at 189,793 downloads (30d; repo listed 8/25, so effectively all-time) + 1,557 likes; GLM-5.3-Flash-BF16 (created 2026-08-25T06:45Z) at 4,006 downloads. vLLM recipe page live (recipes.vllm.ai/zai-org/GLM-5.3-Flash; multimodal MoE ~321B total / 18B active). Community: r/LocalLLaMA megathread; NVFP4 quantized-serving comparisons vs Qwen3.8-Flash-Next on NVIDIA developer forums; third-party head-to-heads (Akash). No independent long-context throughput benchmarks published yet — vLLM/SGLang real-world numbers remain the open verification item. Recommendation stays TRIAL."
+    },
+    {
+      "event_id": "ev-20260825-02",
+      "title": "Gemini CLI 0.57.0 ships the A2A server package in its stable line",
+      "title_zh": "Gemini CLI 0.57.0 稳定版把 A2A server 打进发布线",
+      "category": "developer-tools",
+      "organization": [
+        "Google"
+      ],
+      "published_at": "2026-08-25T18:37:14Z",
+      "first_seen_at": "2026-08-28T00:31:03Z",
+      "last_updated_at": "2026-08-28T00:31:03Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.57.0",
+      "secondary_sources": [
+        "https://www.npmjs.com/package/@google/gemini-cli-a2a-server"
+      ],
+      "summary": "Gemini CLI v0.57.0 (stable, 2026-08-25T18:37Z) includes packages/a2a-server — an Agent2Agent protocol server — in its release tag, and the package is published to npm as @google/gemini-cli-a2a-server@0.57.0. The release notes merge a wave of '[SSR Agent]' fixes touching a2a-server tests, TUI execution timeouts, subagent gating and handoff regressions, indicating active maintenance rather than an abandoned experiment. There is still no official announcement, documentation page, or usage guidance from Google.",
+      "why_it_matters": "Agent-to-agent interop has moved from a main-branch experiment (observed 2026-08-19) to a shipped, installable Google artifact in a stable runtime — a second major organization after Anthropic exposing inter-agent messaging in stable tooling. Because it is undocumented and unannounced, treat it as a directional signal of Google's roadmap, not a build target: the surface can change without notice.",
+      "summary_zh": "Gemini CLI v0.57.0 stable（2026-08-25T18:37Z）的发布 tag 中包含 packages/a2a-server（Agent2Agent 协议 server），且该包已以 @google/gemini-cli-a2a-server@0.57.0 发布到 npm。Release notes 合并了一大批「[SSR Agent]」修复，涉及 a2a-server 测试、TUI 执行超时、subagent 开关与交接回归，说明这是持续维护的功能而非废弃实验。Google 仍未给出官方公告、文档页面或使用指引。",
+      "why_it_matters_zh": "Agent 间互操作从 main 分支实验（8/19 观察到）变成了 Google 稳定运行时里可安装的产物——继 Anthropic 之后第二家在稳定工具链中暴露 agent 间消息能力的大型组织。但它既无文档也无公告，应视为 Google 路线图的方向信号、而不是可以构建依赖的目标：接口随时可能变化。",
+      "summary_en": "Gemini CLI v0.57.0 (stable, 2026-08-25T18:37Z) includes packages/a2a-server — an Agent2Agent protocol server — in its release tag, and the package is published to npm as @google/gemini-cli-a2a-server@0.57.0. The release notes merge a wave of '[SSR Agent]' fixes touching a2a-server tests, TUI execution timeouts, subagent gating and handoff regressions, indicating active maintenance rather than an abandoned experiment. There is still no official announcement, documentation page, or usage guidance from Google.",
+      "why_it_matters_en": "Agent-to-agent interop has moved from a main-branch experiment (observed 2026-08-19) to a shipped, installable Google artifact in a stable runtime — a second major organization after Anthropic exposing inter-agent messaging in stable tooling. Because it is undocumented and unannounced, treat it as a directional signal of Google's roadmap, not a build target: the surface can change without notice.",
+      "technical_details": {
+        "release": "v0.57.0 stable published 2026-08-25T18:37:14Z; packages/a2a-server present in the v0.57.0 tag tree (verified via git tree API)",
+        "npm": "@google/gemini-cli-a2a-server@0.57.0 published; package scoped under @google",
+        "release_notes": "multiple '[SSR Agent]' fixes merged into v0.57.0: a2a-server test migration, TUI execution timeouts, subagent gating when agents mode disabled, sub-agent handoff token regression, cli_help markdown formatting",
+        "package_contents": "a2a-server/src includes agent executor/task modules, command registry, extensions; development-extension-rfc.md present",
+        "status": "shipped-but-undocumented: no official announcement, docs, or usage telemetry as of 2026-08-28",
+        "related_kb": "upgrade of the 2026-08-19 early indication (a2a-server main-branch only) to a stable-line artifact; evidence item for trend coding-agents-multi-agent-runtimes"
+      },
+      "technical_details_zh": {
+        "发布": "v0.57.0 stable 于 2026-08-25T18:37:14Z 发布；v0.57.0 tag 树中包含 packages/a2a-server（经 git tree API 核实）",
+        "npm": "@google/gemini-cli-a2a-server@0.57.0 已发布；包在 @google scope 下",
+        "Release notes": "v0.57.0 合并多批「[SSR Agent]」修复：a2a-server 测试迁移、TUI 执行超时、agents 模式关闭时的 subagent 拦截、sub-agent 交接 token 回归、cli_help markdown 格式化",
+        "包内容": "a2a-server/src 含 agent executor/task 模块、命令注册表、extensions；附 development-extension-rfc.md",
+        "状态": "已发布但未文档化：截至 2026-08-28 无官方公告、文档或使用遥测",
+        "关联": "8/19 early indication（a2a-server 仅 main 分支）升级为 stable 产物；作为趋势 coding-agents-multi-agent-runtimes 的证据"
+      },
+      "tags": [
+        "gemini-cli",
+        "google",
+        "a2a",
+        "agent-to-agent",
+        "protocol",
+        "multi-agent",
+        "cli"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "google-gemini-cli-a2a-server-stable"
+    }
+  ]
+}

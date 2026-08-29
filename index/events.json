@@ -1,7 +1,7 @@
 {
   "description": "Event index for dedup and cross-run lookup. Key by event_fingerprint.",
-  "last_updated": "2026-08-24T00:00:29Z",
-  "total_events": 35,
+  "last_updated": "2026-08-29T11:35:46Z",
+  "total_events": 47,
   "events": [
     {
       "event_id": "ev-20260813-01",
@@ -129,6 +129,14 @@
         {
           "date": "2026-08-15",
           "note": "open-release prep post + OpenVuln demo"
+        },
+        {
+          "date": "2026-08-25",
+          "note": "open weights landed: HF zai-org/GLM-5.3 (FP8, 153 files) + GLM-5.3-BF16 created 2026-08-25T06:42Z (~3 days ahead of the ~8/28 estimate); ungated; 753B total params; custom glm-5.3 license (MIT-style; only restriction: >$10B-revenue MaaS businesses need Z.ai security review before commercial use); independent eval: Artificial Analysis Intelligence Index 60 (max) — on par with Kimi K3, +7 vs GLM-5.2; captured 2026-08-28 run; recommendation stays TRIAL"
+        },
+        {
+          "date": "2026-08-29",
+          "note": "model card rewritten on HF (8/27, coverage-gap recovery) with full benchmark table + footnotes (same base as GLM-5.2, post-training-only gains); community PRs #2/#3 (8/28-29) are .eval_results metadata sync, NOT independent reproduction; FP8 repo 8,804 downloads + 1,207 likes; captured 2026-08-29 run"
         }
       ]
     },
@@ -177,6 +185,26 @@
         {
           "date": "2026-08-22",
           "note": "2.1.240 (13:03Z) + 2.1.241 (23:58Z): both 'Bug fixes and reliability improvements' only, no documented changes; npm timestamps as evidence"
+        },
+        {
+          "date": "2026-08-24",
+          "note": "2.1.242 (19:16Z, no changelog entry) + 2.1.243 (23:10Z): /usage Loops breakdown, modelPicker setting, promptCacheTtl + subagentPromptCacheTtl settings (1h main / 5m subagent), modelPricing managed setting (contracted rates into /cost), keyless Console sign-in"
+        },
+        {
+          "date": "2026-08-25",
+          "note": "2.1.245 (04:45Z): glibc 2.44 startup-crash fix; 2.1.246 (19:17Z): Auto-mode rules tab in /permissions, startup warning for wildcard-before-subcommand Bash allow rules, MCP tool-arg typing fix (empty-schema {}), transcript rendering perf fixes"
+        },
+        {
+          "date": "2026-08-26",
+          "note": "2.1.247 (18:02Z): SendFeedback tool, /claude-api cost-optimize (profile API spend across caching/token hygiene/batch/effort/model choice), sub-agent fallback model chain on 404, Sonnet 5 default auto-compact window to full 1M, cross-session peer messages collapse to one-line preview"
+        },
+        {
+          "date": "2026-08-27",
+          "note": "2.1.248 (20:35Z): --restricted confinement mode (strips exec/WebFetch tools, working-directory confinement, refuses bypassPermissions), per-agent experimental.cacheTtl, cross-session messaging (SendMessage/ListAgents) extended to Bedrock/Vertex/Foundry + telemetry-off, hourly OAuth-refresh prompt-cache-miss fix, Workflow tool prompt 5.7k->1k tokens, /usage-credits for Enterprise; 2.1.250 (22:27Z): bug fixes only"
+        },
+        {
+          "date": "2026-08-28",
+          "note": "2.1.251 (15:34Z): PreModelSwitch/PostModelSwitch hooks, SessionStart resume hooks get staleness + re-cache cost, foreground-subagent tool-call streaming to Remote Control, /usage spend-limit bar, /cost per-session prompt-cache line; security fixes (symlink-swap escape, plugin path traversal, Grep/Glob symlinked deny bypass); agent-team reply fixes; captured 2026-08-29 run"
         }
       ]
     },
@@ -260,6 +288,10 @@
         {
           "date": "2026-08-20",
           "note": "independent early-beta feedback wave (daily.dev 8/19 hands-on coverage-gap recovery, InfoWorld, The Rundown, aireiter 8/17): core git workflow functional but rough — missing public repos/CI-CD/Issues/Discussions, enterprise depth; mirror-for-now consensus"
+        },
+        {
+          "date": "2026-08-27",
+          "note": "'Start from scratch': cloud agents no longer require a connected SCM; background Origin repo creation + Create repo (custom name, private/internal); browser port-forwarded live preview of the cloud-agent environment; Vercel publish. Origin still early beta, no GA statement"
         }
       ]
     },
@@ -299,6 +331,18 @@
         {
           "date": "2026-08-20",
           "note": "0.149.0 stable 8/20 21:04Z: interactive agents dashboard (fleet management), codex queue cross-session messaging + reliable idle wake, /cd /pwd /cwd, expanded doctor, GPT-5.6 max context raised, sandbox hardening (capability drop / fail-closed lowerer / symlink-safe reads); 0.150.0-alpha.1 same day"
+        },
+        {
+          "date": "2026-08-26",
+          "note": "0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes"
+        },
+        {
+          "date": "2026-08-27",
+          "note": "0.150.1 (01:56Z): remote compaction counts retained images toward token budget (backport)"
+        },
+        {
+          "date": "2026-08-29",
+          "note": "0.151.0 stable (09:55Z): extensions inspect/replace MCP tool results before the model (MCP middleware in stable), optional-MCP tool-discovery grace period, per-repo plugin catalogs; /cd sandbox weakening fix, model-switch tool/effort fixes, nested subagent tokens toward root budgets; 0.152.0-alpha.1 same day; captured 2026-08-29 run"
         }
       ]
     },
@@ -481,7 +525,159 @@
       ],
       "category": "business",
       "file": "events/2026-08-22.json",
-      "note": "press-sourced (WSJ 8/22); no official confirmation, model, timeline or license terms as of 2026-08-24"
+      "note": "press-sourced (WSJ 8/22); no official confirmation, model, timeline or license terms as of 2026-08-24",
+      "updates": [
+        {
+          "date": "2026-08-24",
+          "note": "Quartz (8/24, citing WSJ): the 100+ Poolside engineers will work on Nvidia's Nemotron open-weight model project; still no official confirmation, model, timeline, or license terms as of 2026-08-28; recommendation stays WATCH"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20260825-01",
+      "fingerprint": "zai-glm-5-3-flash-320b-a18b-open-weights",
+      "title": "GLM-5.3-Flash open weights (320B-A18B, MIT, hybrid attention)",
+      "date": "2026-08-25",
+      "orgs": [
+        "Zhipu AI",
+        "Z.ai"
+      ],
+      "category": "foundation-model",
+      "file": "events/2026-08-25.json",
+      "updates": [
+        {
+          "date": "2026-08-29",
+          "note": "adoption check: 189,793 downloads (30d=all-time, ~4 days) + 1,557 likes; Flash-BF16 4,006; vLLM recipe page live; NVFP4 + megathread community activity; independent throughput numbers still missing; captured 2026-08-29 run"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20260825-02",
+      "fingerprint": "google-gemini-cli-a2a-server-stable",
+      "title": "Gemini CLI 0.57.0 ships a2a-server in stable (+npm package)",
+      "date": "2026-08-25",
+      "orgs": [
+        "Google"
+      ],
+      "category": "developer-tools",
+      "file": "events/2026-08-25.json"
+    },
+    {
+      "event_id": "ev-20260826-01",
+      "fingerprint": "arxiv-2608-23041-autosaddler-harness-optimization",
+      "title": "AutoSaddler: automatic harness optimization from failure traces",
+      "date": "2026-08-26",
+      "orgs": [
+        "Microsoft",
+        "academic"
+      ],
+      "category": "research",
+      "file": "events/2026-08-26.json"
+    },
+    {
+      "event_id": "ev-20260826-02",
+      "fingerprint": "arxiv-2608-23078-agentweave-tool-routing",
+      "title": "AgentWeave: pre-inference tool routing for function calling",
+      "date": "2026-08-26",
+      "orgs": [
+        "academic"
+      ],
+      "category": "research",
+      "file": "events/2026-08-26.json"
+    },
+    {
+      "event_id": "ev-20260826-03",
+      "fingerprint": "arxiv-2608-22960-scae-process-eval-coding-agents",
+      "title": "SCAE: step-level causal attribution for coding-agent process evals",
+      "date": "2026-08-26",
+      "orgs": [
+        "academic"
+      ],
+      "category": "research",
+      "file": "events/2026-08-26.json"
+    },
+    {
+      "event_id": "ev-20260826-04",
+      "fingerprint": "qwen3-8-flash-next-open-weights-architecture-preview",
+      "title": "Qwen3.8-Flash-Next open weights (Qwen4 architecture preview)",
+      "date": "2026-08-26",
+      "orgs": [
+        "Alibaba",
+        "Qwen"
+      ],
+      "category": "foundation-model",
+      "file": "events/2026-08-26.json",
+      "note": "coverage-gap recovery: HF repo created 2026-08-24T08:24Z inside the previous run's window, public listing dated 8/26; first seen 2026-08-29 run. Hybrid Gated DeltaNet + Qwen Sparse Attention (~180B, 6B active), 262k ctx; custom qwen-community-1.0 license; 52k downloads / 4d"
+    },
+    {
+      "event_id": "ev-20260827-01",
+      "fingerprint": "anthropic-model-hardware-standard-preview",
+      "title": "Anthropic Model Hardware Standard research preview",
+      "date": "2026-08-27",
+      "orgs": [
+        "Anthropic",
+        "HHMI Janelia Research Campus"
+      ],
+      "category": "computer-use",
+      "file": "events/2026-08-27.json",
+      "note": "coverage-gap recovery: published 8/27 inside the previous run's window, missed then; first seen 2026-08-29 run. Spec for agents to safely operate physical devices (read/write driver primitives, discovery, driver-enforced limits; MCP/CLI/API control); spec not public yet; vendor driver ecosystem announced"
+    },
+    {
+      "event_id": "ev-20260827-02",
+      "fingerprint": "google-gemini-omni-1-1-flash-ga",
+      "title": "Gemini Omni 1.1 Flash GA (keyframe control, 4K)",
+      "date": "2026-08-27",
+      "orgs": [
+        "Google",
+        "Google DeepMind"
+      ],
+      "category": "foundation-model",
+      "file": "events/2026-08-27.json",
+      "note": "coverage-gap recovery: published 8/27 inside the previous run's window, missed then; first seen 2026-08-29 run"
+    },
+    {
+      "event_id": "ev-20260828-01",
+      "fingerprint": "anthropic-automated-alignment-researchers-2026-08",
+      "title": "Anthropic automated alignment researchers close 85% of deception gap",
+      "date": "2026-08-28",
+      "orgs": [
+        "Anthropic"
+      ],
+      "category": "research",
+      "file": "events/2026-08-28.json"
+    },
+    {
+      "event_id": "ev-20260829-01",
+      "fingerprint": "arxiv-2608-27146-sara-action-authorization-split",
+      "title": "SARA: separating action induction from execution authorization",
+      "date": "2026-08-29",
+      "orgs": [
+        "academic"
+      ],
+      "category": "research",
+      "file": "events/2026-08-29.json"
+    },
+    {
+      "event_id": "ev-20260829-02",
+      "fingerprint": "arxiv-2608-27311-harnesslens-budget-aware-harness-evolution",
+      "title": "HarnessLens: budget-aware agent harness evolution",
+      "date": "2026-08-29",
+      "orgs": [
+        "academic"
+      ],
+      "category": "research",
+      "file": "events/2026-08-29.json"
+    },
+    {
+      "event_id": "ev-20260829-03",
+      "fingerprint": "arxiv-2608-27128-twinkv-eviction-repair-pass",
+      "title": "TwinKV: composable KV eviction repair pass",
+      "date": "2026-08-29",
+      "orgs": [
+        "academic"
+      ],
+      "category": "research",
+      "file": "events/2026-08-29.json"
     }
   ],
   "known_fingerprints_for_dedup": [
@@ -519,6 +715,18 @@
     "arxiv-2608-19670-compression-asymmetric-harms",
     "arxiv-2608-19662-recache-kv-reuse-agents",
     "arxiv-2608-19652-statembench-agent-memory",
-    "nvidia-poolside-open-weight-model-deal"
+    "nvidia-poolside-open-weight-model-deal",
+    "zai-glm-5-3-flash-320b-a18b-open-weights",
+    "google-gemini-cli-a2a-server-stable",
+    "arxiv-2608-23041-autosaddler-harness-optimization",
+    "arxiv-2608-23078-agentweave-tool-routing",
+    "arxiv-2608-22960-scae-process-eval-coding-agents",
+    "qwen3-8-flash-next-open-weights-architecture-preview",
+    "anthropic-model-hardware-standard-preview",
+    "google-gemini-omni-1-1-flash-ga",
+    "anthropic-automated-alignment-researchers-2026-08",
+    "arxiv-2608-27146-sara-action-authorization-split",
+    "arxiv-2608-27311-harnesslens-budget-aware-harness-evolution",
+    "arxiv-2608-27128-twinkv-eviction-repair-pass"
   ]
 }

@@ -1,0 +1,235 @@
+{
+  "date": "2026-08-26",
+  "provenance": "Captured by 2026-08-28T00:31:03Z run. Papers announced in the arXiv Tue 25 Aug 2026 digest (announcement ~2026-08-26T00:00Z; all three submitted 2026-08-24). Abstracts verified on arxiv.org abs pages. Appended by 2026-08-29T11:35:46Z run: ev-20260826-04 (Qwen3.8-Flash-Next) recovered as a coverage gap from the same window.",
+  "events": [
+    {
+      "event_id": "ev-20260826-01",
+      "title": "AutoSaddler learns agent-harness fixes from failure traces",
+      "title_zh": "AutoSaddler：从失败轨迹自动改进 agent harness",
+      "category": "research",
+      "organization": [
+        "Microsoft",
+        "academic"
+      ],
+      "published_at": "2026-08-26T00:00:00Z",
+      "published_at_note": "arXiv 2608.23041 submitted 2026-08-24T09:45Z; announced in the Tue 25 Aug digest (~2026-08-26T00:00Z). Project site on the aka.ms domain (Microsoft); paper page does not state affiliations.",
+      "first_seen_at": "2026-08-28T00:31:03Z",
+      "last_updated_at": "2026-08-28T00:31:03Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2608.23041",
+      "secondary_sources": [
+        "https://huggingface.co/papers"
+      ],
+      "summary": "AutoSaddler (arXiv 2608.23041) treats agent-harness improvement as an offline learning problem: it mines failure signals from mini-batches of execution traces, generates structured patches that treat the harness — prompts, tool configurations, control logic — as code, and selects updates through validation. It improved the base harness by 9.0, 9.6 and 10.0 percentage points on GAIA2, SWE-Bench Pro and Terminal-Bench 2.0 respectively. Ablations attribute the gains to deep debugging over shallow reflection and to generalization-aware selection over trajectory-specific repair. Code is released via the project site.",
+      "why_it_matters": "For anyone operating coding agents, the harness is becoming a measurable optimization target on par with model choice — and the failure traces you already accumulate are the training data. The recipe is directly borrowable: diagnose failing runs, patch the harness as code, keep only updates that validate on held-out tasks.",
+      "summary_zh": "AutoSaddler（arXiv 2608.23041）把 agent harness 的改进当作离线学习问题：从执行轨迹的小批量失败信号中挖掘问题，生成把 harness——prompt、工具配置、控制逻辑——当代码来改的结构化补丁，再通过验证挑选更新。在 GAIA2、SWE-Bench Pro、Terminal-Bench 2.0 上分别比基础 harness 提升 9.0、9.6、10.0 个百分点。消融实验显示收益来自两点：深挖式调试优于浅层反思，泛化导向的筛选优于针对单条轨迹的修补。代码已随项目站开源。",
+      "why_it_matters_zh": "对运营 coding agent 的团队来说，harness 正在成为与模型选型同量级的可测量优化对象——而你已经在积累的失败轨迹就是训练数据。方法论可以直接借鉴：诊断失败 run、把 harness 当代码打补丁、只保留在留出任务上验证通过的更新。",
+      "summary_en": "AutoSaddler (arXiv 2608.23041) treats agent-harness improvement as an offline learning problem: it mines failure signals from mini-batches of execution traces, generates structured patches that treat the harness — prompts, tool configurations, control logic — as code, and selects updates through validation. It improved the base harness by 9.0, 9.6 and 10.0 percentage points on GAIA2, SWE-Bench Pro and Terminal-Bench 2.0 respectively. Ablations attribute the gains to deep debugging over shallow reflection and to generalization-aware selection over trajectory-specific repair. Code is released via the project site.",
+      "why_it_matters_en": "For anyone operating coding agents, the harness is becoming a measurable optimization target on par with model choice — and the failure traces you already accumulate are the training data. The recipe is directly borrowable: diagnose failing runs, patch the harness as code, keep only updates that validate on held-out tasks.",
+      "technical_details": {
+        "method": "offline loop: failure-trace diagnosis -> structured patch generation (harness-as-code) -> validation-based update selection; mini-batch iteration over execution traces",
+        "results": "+9.0pp GAIA2, +9.6pp SWE-Bench Pro, +10.0pp Terminal-Bench 2.0 over the base harness",
+        "ablations": "deep debugging > shallow reflection; generalization-aware selection > trajectory-specific repair",
+        "code": "released via project website (aka.ms domain)",
+        "affiliation": "project site on aka.ms (Microsoft domain); paper page lists no affiliations",
+        "arxiv": "2608.23041, submitted 2026-08-24"
+      },
+      "technical_details_zh": {
+        "方法": "离线闭环：失败轨迹诊断 -> 结构化补丁生成（harness 即代码）-> 基于验证的更新筛选；按小批量执行轨迹迭代",
+        "结果": "GAIA2 +9.0pp、SWE-Bench Pro +9.6pp、Terminal-Bench 2.0 +10.0pp（相对基础 harness）",
+        "消融": "深挖式调试 > 浅层反思；泛化导向筛选 > 单轨迹修补",
+        "代码": "已随项目网站开源（aka.ms 域名）",
+        "隶属": "项目站位于 aka.ms（Microsoft 域名）；论文页未列机构隶属",
+        "arXiv": "2608.23041，2026-08-24 提交"
+      },
+      "tags": [
+        "agent-harness",
+        "coding-agent",
+        "optimization",
+        "execution-traces",
+        "swe-bench",
+        "research"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2608-23041-autosaddler-harness-optimization"
+    },
+    {
+      "event_id": "ev-20260826-02",
+      "title": "AgentWeave filters the tool list before reasoning to cut agent cost",
+      "title_zh": "AgentWeave：推理前先筛工具列表，压低 agent 成本",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-08-26T00:00:00Z",
+      "published_at_note": "arXiv 2608.23078 submitted 2026-08-24; announced in the Tue 25 Aug digest (~2026-08-26T00:00Z). No institutional affiliations listed.",
+      "first_seen_at": "2026-08-28T00:31:03Z",
+      "last_updated_at": "2026-08-28T00:31:03Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2608.23078",
+      "secondary_sources": [],
+      "summary": "AgentWeave (arXiv 2608.23078) is a deterministic pre-inference routing layer that shrinks the candidate tool set an LLM sees, filtering on eligibility, requirement, capability and routing signals before an unchanged downstream model does function calling. On 48 fresh BFCL V4 multiple-function tasks with the frozen Hammer2.1-1.5b model it reached 6/48 successes versus 0/48 for all-tools, random-top-8 and semantic-top-8 baselines (McNemar p=0.03125), while exposing 70.18% fewer tools, using 61.70% fewer input tokens and cutting mean local-model latency by 50.95%. The authors themselves frame it as a BFCL-derived routing-pressure study, not a leaderboard result, and absolute success stays low.",
+      "why_it_matters": "Tool-catalog bloat is a real cost driver now that agents routinely face hundreds of MCP tools, and the token and latency cuts here are large. But treat the headline as directional: 48 tasks and a frozen 1.5b model is a stress test, not production evidence, and the 0/48 for semantic top-8 selection is the more interesting warning — similarity-based tool selection may be the wrong default.",
+      "summary_zh": "AgentWeave（arXiv 2608.23078）是一个确定性的推理前路由层：在下游模型不变的前提下，先用资格、需求、能力与路由信号过滤候选工具集，再做 function calling。在 48 个全新 BFCL V4 多函数任务上（冻结的 Hammer2.1-1.5b 模型），它取得 6/48 成功，而全量工具、随机 top-8、语义 top-8 三个基线均为 0/48（McNemar p=0.03125）；同时少暴露 70.18% 的工具、少用 61.70% 的输入 token、平均本地推理延迟降低 50.95%。作者自己将其定位为 BFCL 衍生的路由压力测试，不是榜单结果，绝对成功率仍然很低。",
+      "why_it_matters_zh": "在 agent 动辄面对数百个 MCP 工具的当下，工具目录膨胀是真实的成本项，这里的 token 与延迟削减幅度可观。但结论只能当方向看：48 个任务加一个冻结的 1.5b 模型是压力测试而不是生产证据；更有价值的警示是语义 top-8 的 0/48——基于相似度的工具选择可能本来就是错的默认方案。",
+      "summary_en": "AgentWeave (arXiv 2608.23078) is a deterministic pre-inference routing layer that shrinks the candidate tool set an LLM sees, filtering on eligibility, requirement, capability and routing signals before an unchanged downstream model does function calling. On 48 fresh BFCL V4 multiple-function tasks with the frozen Hammer2.1-1.5b model it reached 6/48 successes versus 0/48 for all-tools, random-top-8 and semantic-top-8 baselines (McNemar p=0.03125), while exposing 70.18% fewer tools, using 61.70% fewer input tokens and cutting mean local-model latency by 50.95%. The authors themselves frame it as a BFCL-derived routing-pressure study, not a leaderboard result, and absolute success stays low.",
+      "why_it_matters_en": "Tool-catalog bloat is a real cost driver now that agents routinely face hundreds of MCP tools, and the token and latency cuts here are large. But treat the headline as directional: 48 tasks and a frozen 1.5b model is a stress test, not production evidence, and the 0/48 for semantic top-8 selection is the more interesting warning — similarity-based tool selection may be the wrong default.",
+      "technical_details": {
+        "method": "deterministic pre-inference filtering: eligibility, requirement, capability, routing signals; downstream model unchanged",
+        "results": "6/48 vs 0/48 (all-tools, random top-8, semantic top-8) on BFCL V4, frozen Hammer2.1-1.5b; -70.18% tools exposed, -61.70% input tokens, -50.95% mean latency",
+        "statistics": "McNemar p=0.03125; 95% bootstrap CI +4.17 to +22.92 pp",
+        "caveats": "authors label it a routing-pressure study, not an official leaderboard result; absolute success low; small model, 48 tasks",
+        "code": "open-source implementation and reproducibility artifacts stated in comments (no direct link on paper page)",
+        "arxiv": "2608.23078, submitted 2026-08-24"
+      },
+      "technical_details_zh": {
+        "方法": "确定性推理前过滤：资格、需求、能力、路由四类信号；下游模型不变",
+        "结果": "BFCL V4 上 6/48 对 0/48（全量工具、随机 top-8、语义 top-8），模型为冻结 Hammer2.1-1.5b；少暴露工具 70.18%、少输入 token 61.70%、平均延迟 -50.95%",
+        "统计": "McNemar p=0.03125；95% bootstrap CI +4.17 至 +22.92 pp",
+        "局限": "作者自称是路由压力测试、非官方榜单结果；绝对成功率低；小模型、48 个任务",
+        "代码": "论文评论区称已开源实现与复现产物（论文页未给直链）",
+        "arXiv": "2608.23078，2026-08-24 提交"
+      },
+      "tags": [
+        "tool-routing",
+        "function-calling",
+        "model-routing",
+        "cost",
+        "latency",
+        "mcp",
+        "research"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2608-23078-agentweave-tool-routing"
+    },
+    {
+      "event_id": "ev-20260826-03",
+      "title": "Study: full-trace process judges score relevance, not causal contribution",
+      "title_zh": "研究：LLM 过程评估打的是语义相关性，不是因果贡献",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-08-26T00:00:00Z",
+      "published_at_note": "arXiv 2608.22960 submitted 2026-08-24; announced in the Tue 25 Aug digest (~2026-08-26T00:00Z). No institutional affiliations listed.",
+      "first_seen_at": "2026-08-28T00:31:03Z",
+      "last_updated_at": "2026-08-28T00:31:03Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2608.22960",
+      "secondary_sources": [],
+      "summary": "The paper (arXiv 2608.22960) separates process evaluation of coding agents into action, task and step levels, and instantiates step-level causal attribution with SCAE, a replay-based estimator built on a structural causal model of agent execution that combines prefix-conditioned identification, replay/intervention-based estimation and controlled manipulation of judge information. Across 499 file-localization episodes from 12 repositories it finds that next actions are driven mainly by execution provenance rather than code-graph transitions, and that full-trace LLM judges show systematic collider bias — they tend to reward semantic relevance rather than certified causal contribution.",
+      "why_it_matters": "If your agent eval pipeline scores whole trajectories with an LLM judge, this evidence says you are partly measuring plausibility, not contribution — and gating deploys on that number is risky. Replay- and intervention-based step-level attribution costs more to run but gives a defensible answer, which matters wherever agent evals feed release decisions.",
+      "summary_zh": "论文（arXiv 2608.22960）把 coding agent 的过程评估拆为 action、task、step 三层，并用 SCAE 实现 step 级因果归因——一个建立在 agent 执行结构因果模型上的重放式估计器，结合前缀条件识别、重放/干预式估计与对 judge 信息量的受控操纵。在 12 个仓库的 499 段文件定位轨迹上发现：下一步行动主要由执行历史驱动，而非代码图转移；全轨迹 LLM judge 存在系统性 collider bias——它们倾向于奖励语义相关性，而不是经过认证的因果贡献。",
+      "why_it_matters_zh": "如果你的 agent 评估流水线在用 LLM judge 给整条轨迹打分，这条证据说明你测到的有一部分是「说得通」而不是「真有用」——拿这个数字卡上线有风险。基于重放与干预的 step 级归因跑起来更贵，但结论站得住，这在评估结果直接影响发布决策的场景里很关键。",
+      "summary_en": "The paper (arXiv 2608.22960) separates process evaluation of coding agents into action, task and step levels, and instantiates step-level causal attribution with SCAE, a replay-based estimator built on a structural causal model of agent execution that combines prefix-conditioned identification, replay/intervention-based estimation and controlled manipulation of judge information. Across 499 file-localization episodes from 12 repositories it finds that next actions are driven mainly by execution provenance rather than code-graph transitions, and that full-trace LLM judges show systematic collider bias — they tend to reward semantic relevance rather than certified causal contribution.",
+      "why_it_matters_en": "If your agent eval pipeline scores whole trajectories with an LLM judge, this evidence says you are partly measuring plausibility, not contribution — and gating deploys on that number is risky. Replay- and intervention-based step-level attribution costs more to run but gives a defensible answer, which matters wherever agent evals feed release decisions.",
+      "technical_details": {
+        "framework": "three process-evaluation levels: action, task, step; SCAE = replay-based step-level causal attribution on a structural causal model of agent execution",
+        "method": "prefix-conditioned identification; replay/intervention-based estimation; controlled manipulation of judge information",
+        "data": "499 file-localization episodes, 12 repositories",
+        "findings": "next actions driven by execution provenance, not code-graph transitions; uncertainty structured at task level; full-trace judges show systematic collider bias (semantic relevance over causal contribution)",
+        "code": "not released",
+        "arxiv": "2608.22960, submitted 2026-08-24"
+      },
+      "technical_details_zh": {
+        "框架": "过程评估三层：action、task、step；SCAE = 基于 agent 执行结构因果模型的重放式 step 级因果归因",
+        "方法": "前缀条件识别；重放/干预式估计；对 judge 信息量的受控操纵",
+        "数据": "499 段文件定位轨迹，12 个仓库",
+        "发现": "下一步行动由执行历史而非代码图转移驱动；不确定性在 task 层结构化；全轨迹 judge 存在系统性 collider bias（语义相关性高于因果贡献）",
+        "代码": "未放出",
+        "arXiv": "2608.22960，2026-08-24 提交"
+      },
+      "tags": [
+        "agent-evaluation",
+        "coding-agent",
+        "llm-judge",
+        "causal-inference",
+        "evaluation",
+        "research"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 1,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2608-22960-scae-process-eval-coding-agents"
+    },
+    {
+      "event_id": "ev-20260826-04",
+      "title": "Qwen open-weights Flash-Next, an architecture preview for Qwen4",
+      "title_zh": "Qwen 开源 Flash-Next，预演 Qwen4 架构",
+      "category": "foundation-model",
+      "organization": [
+        "Alibaba",
+        "Qwen"
+      ],
+      "published_at": "2026-08-26T00:00:00Z",
+      "published_at_note": "HF repo Qwen/Qwen3.8-Flash-Next created 2026-08-24T08:24:59Z, weights finalized 2026-08-27T05:03:36Z; public trackers (llm-stats) date the release Aug 26. Coverage-gap recovery: inside the previous run's window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z] but not captured then; first seen 2026-08-29 run.",
+      "first_seen_at": "2026-08-29T11:35:46Z",
+      "last_updated_at": "2026-08-29T11:35:46Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+      "secondary_sources": [
+        "https://llm-stats.com/llm-updates"
+      ],
+      "summary": "Qwen3.8-Flash-Next is an experimental open-weight multimodal model previewing the architecture planned for Qwen4: a 125B-parameter LM with 6B activated, plus a 51B n-gram embedding table and a 4B multi-token-prediction head (~180B total in BF16). Attention is hybrid — Gated DeltaNet linear attention with Qwen Sparse Attention every 4th layer — with 262,144 tokens of native context extensible to 1M via YaRN. The card benchmarks it ahead of Qwen3.8-27B and DeepSeek-V4-Flash-0731 on agentic suites (DeepSWE 1.1 58.7, SWE-bench Pro 62.5, LiveCodeBench v6 91.9, GPQA Diamond 91.7). It ships as post-trained weights for Transformers, vLLM and SGLang under the custom qwen-community-1.0 license, with the official Qwen3.8-Flash positioned as its production counterpart.",
+      "why_it_matters": "For serving teams this is the second frontier-lab open-weight release in a week to bet on hybrid linear attention for long-context cost — GLM-5.3-Flash shipped the same idea on 8/25. Treat it as an architecture signal rather than a production drop: it is explicitly experimental, the license is custom rather than MIT/Apache, and the production Qwen3.8-Flash with 1M default context is the supported counterpart.",
+      "summary_zh": "Qwen3.8-Flash-Next 是一个实验性开源权重多模态模型，预演 Qwen4 计划采用的架构：125B 语言模型（每 token 激活 6B），外加 51B n-gram 嵌入表与 4B 多 token 预测头（BF16 合计约 180B）。注意力为混合式——Gated DeltaNet 线性注意力为主、每 4 层插一层 Qwen Sparse Attention；原生 262,144 token 上下文，YaRN 可扩到 1M。模型卡 benchmark 上领先 Qwen3.8-27B 与 DeepSeek-V4-Flash-0731（DeepSWE 1.1 58.7、SWE-bench Pro 62.5、LiveCodeBench v6 91.9、GPQA Diamond 91.7）。以 qwen-community-1.0 自定义许可发布，提供 Transformers / vLLM / SGLang 三种后训练权重形态；官方定位中 Qwen3.8-Flash 是它的生产对应版本。",
+      "why_it_matters_zh": "对服务团队来说，这是一周内第二个把筹码押在「混合线性注意力降长上下文成本」上的前沿实验室开源权重——GLM-5.3-Flash 在 8/25 落地了同一思路。把它当架构信号而不是生产可用版本：官方明确标注实验性质、许可证是自定义而非 MIT/Apache，且默认 1M 上下文的生产版 Qwen3.8-Flash 才是受支持的对位产品。",
+      "summary_en": "Qwen3.8-Flash-Next is an experimental open-weight multimodal model previewing the architecture planned for Qwen4: a 125B-parameter LM with 6B activated, plus a 51B n-gram embedding table and a 4B multi-token-prediction head (~180B total in BF16). Attention is hybrid — Gated DeltaNet linear attention with Qwen Sparse Attention every 4th layer — with 262,144 tokens of native context extensible to 1M via YaRN. The card benchmarks it ahead of Qwen3.8-27B and DeepSeek-V4-Flash-0731 on agentic suites (DeepSWE 1.1 58.7, SWE-bench Pro 62.5, LiveCodeBench v6 91.9, GPQA Diamond 91.7). It ships as post-trained weights for Transformers, vLLM and SGLang under the custom qwen-community-1.0 license, with the official Qwen3.8-Flash positioned as its production counterpart.",
+      "why_it_matters_en": "For serving teams this is the second frontier-lab open-weight release in a week to bet on hybrid linear attention for long-context cost — GLM-5.3-Flash shipped the same idea on 8/25. Treat it as an architecture signal rather than a production drop: it is explicitly experimental, the license is custom rather than MIT/Apache, and the production Qwen3.8-Flash with 1M default context is the supported counterpart.",
+      "technical_details": {
+        "architecture": "125B LM (6B activated) + 51B n-gram embedding (bigram/trigram lookup) + 4B multi-token prediction; ~180B total params BF16; 48 layers in repeating pattern 3x (Gated DeltaNet -> MoE) then 1x (Qwen Sparse Attention -> MoE)",
+        "attention": "hybrid: Gated DeltaNet linear attention (48 V / 16 QK heads, dim 128) + Qwen Sparse Attention every 4th layer (24 Q / 2 KV heads, dim 256; indexer budget 512 blocks / 2048 tokens)",
+        "moe": "512 experts, 10 routed + 1 shared per token; Gated Residual 4 branches, bottleneck rank 320",
+        "context": "262,144 native; extensible to 1M via YaRN",
+        "modality": "image-text-to-text multimodal; thinking mode default (effort xhigh/medium/low)",
+        "training": "Muon + AdamW split across weight categories; no batch-size warmup; larger learning rates",
+        "benchmarks": "DeepSWE 1.1 58.7, SWE-bench Pro 62.5, SWE-bench Multilingual 81.0, NL2Repo-Bench 48.1, Agents' Last Exam 51.2, GPQA Diamond 91.7, LiveCodeBench v6 91.9; vision: AndroidWorld 84.5, LVBench 76.6 — vs Qwen3.8-27B, Qwen3.7-Plus, DeepSeek-V4-Flash-0731, Claude-Opus-4.6",
+        "license": "custom qwen-community-1.0 (license: other) — check terms before commercial use",
+        "adoption": "52,341 downloads (30d) + 4,213 likes @2026-08-29T11:35Z; FP8 variant 44,281 downloads"
+      },
+      "technical_details_zh": {
+        "架构": "125B 语言模型（激活 6B）+ 51B n-gram 嵌入（bigram/trigram 查表）+ 4B 多 token 预测；BF16 合计约 180B；48 层循环模式：3 x（Gated DeltaNet -> MoE）+ 1 x（Qwen Sparse Attention -> MoE）",
+        "注意力": "混合式：Gated DeltaNet 线性注意力（48 V / 16 QK 头，dim 128）+ 每 4 层一次 Qwen Sparse Attention（24 Q / 2 KV 头，dim 256；索引预算 512 blocks / 2048 tokens）",
+        "MoE": "512 专家，每 token 激活 10 路由 + 1 共享；Gated Residual 4 分支，瓶颈秩 320",
+        "上下文": "原生 262,144；YaRN 可扩至 1M",
+        "模态": "图-文输入的多模态；默认思考模式（effort xhigh/medium/low）",
+        "训练": "Muon 与 AdamW 按权重类别分工；不做 batch-size warmup；更大学习率",
+        "benchmark": "DeepSWE 1.1 58.7、SWE-bench Pro 62.5、SWE-bench Multilingual 81.0、NL2Repo-Bench 48.1、Agents' Last Exam 51.2、GPQA Diamond 91.7、LiveCodeBench v6 91.9；视觉：AndroidWorld 84.5、LVBench 76.6——对比 Qwen3.8-27B、Qwen3.7-Plus、DeepSeek-V4-Flash-0731、Claude-Opus-4.6",
+        "许可证": "自定义 qwen-community-1.0（license: other）——商用前先核对条款",
+        "采用": "截至 2026-08-29T11:35Z：主仓 52,341 下载（30d）+ 4,213 likes；FP8 变体 44,281 下载"
+      },
+      "tags": [
+        "open-weights",
+        "architecture-preview",
+        "linear-attention",
+        "moe",
+        "long-context",
+        "multimodal"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "qwen3-8-flash-next-open-weights-architecture-preview"
+    }
+  ]
+}

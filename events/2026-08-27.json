@@ -1,0 +1,98 @@
+{
+  "date": "2026-08-27",
+  "provenance": "Captured by 2026-08-29T11:35:46Z run. Both events are coverage-gap recoveries: they fall inside the previous run's window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z] but were not captured then; first seen this run. Primary sources verified directly.",
+  "events": [
+    {
+      "event_id": "ev-20260827-01",
+      "title": "Anthropic previews the Model Hardware Standard for agent-controlled devices",
+      "title_zh": "Anthropic 预发布 Model Hardware Standard，让 agent 安全操作物理设备",
+      "category": "computer-use",
+      "organization": ["Anthropic", "HHMI Janelia Research Campus"],
+      "published_at": "2026-08-27T00:00:00Z",
+      "published_at_note": "Anthropic newsroom entry dated 2026-08-27 (no timestamp published). Coverage-gap recovery: within the previous run's window but missed; first seen 2026-08-29 run.",
+      "first_seen_at": "2026-08-29T11:35:46Z",
+      "last_updated_at": "2026-08-29T11:35:46Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
+      "secondary_sources": [
+        "https://modelhardwarestandard.com/",
+        "https://mlq.ai/news/anthropic-previews-model-hardware-standard-for-ai-controlled-lab-and-factory-equipment/"
+      ],
+      "summary": "Anthropic opened a research preview of the Model Hardware Standard (MHS), a shared specification for AI agents to safely operate physical devices. Each device gets a standardized driver exposing read/write primitives, a network discovery format, and natural-language capability tags from which the driver auto-generates a reference file covering what the device can measure, what is adjustable, and its safety limits — with limits enforced at the driver level. Agents connect through MCP, a CLI, or code APIs, and can chain driver commands into deterministic scripts for long or fast operations. Phase 1 opens to a first group of scientific research labs and advanced manufacturers; the spec itself is not public yet, with open-sourcing planned. Vendors building drivers include AWS (Strands Robots), Tecan, QIAGEN, Doosan, Universal Robots, Automata, Danaher, MBF Bioscience, Hugging Face (LeRobot) and Raspberry Pi.",
+      "why_it_matters": "This is the first serious attempt to standardize the agent-to-physical-device interface the way MCP standardized agent-to-tool access — and it is explicitly MCP-compatible and model-agnostic. Lab-automation and industrial teams should consider joining phase 1; for everyone else the signal is that computer use is moving from screen-scraping toward device-level contracts with enforced safety limits.",
+      "summary_zh": "Anthropic 开放了 Model Hardware Standard（MHS）研究预览：一份让 AI agent 安全操作物理设备的共享规范。每台设备配一个标准化 driver，只暴露 read / write 两类原语；配套网络发现格式，以及用自然语言描述设备特性（如机械臂负载）后自动生成的参考文件——说明设备能测什么、能调什么、安全边界在哪，边界由 driver 层强制执行。agent 可通过 MCP、CLI 或代码 API 接入，还能把 driver 命令串成确定性脚本执行长流程。第一阶段面向首批科研实验室与先进制造企业开放申请；规范本身尚未公开，官方称后续会开源。已宣布参与构建 driver 的厂商包括 AWS（Strands Robots）、Tecan、QIAGEN、Doosan、Universal Robots、Automata、Danaher、MBF Bioscience、Hugging Face（LeRobot）与 Raspberry Pi。",
+      "why_it_matters_zh": "这是第一个认真尝试把 agent 与物理设备的接口标准化的工作——定位类似 MCP 对 agent 与工具接口的标准化，且明确兼容 MCP、不限模型。做实验室自动化或工业自动化的团队值得申请第一阶段；对其他人，信号意义在于 computer use 正从「截屏点按」转向带强制安全边界的设备级契约。",
+      "summary_en": "Anthropic opened a research preview of the Model Hardware Standard (MHS), a shared specification for AI agents to safely operate physical devices. Each device gets a standardized driver exposing read/write primitives, a network discovery format, and natural-language capability tags from which the driver auto-generates a reference file covering what the device can measure, what is adjustable, and its safety limits — with limits enforced at the driver level. Agents connect through MCP, a CLI, or code APIs, and can chain driver commands into deterministic scripts for long or fast operations. Phase 1 opens to a first group of scientific research labs and advanced manufacturers; the spec itself is not public yet, with open-sourcing planned. Vendors building drivers include AWS (Strands Robots), Tecan, QIAGEN, Doosan, Universal Robots, Automata, Danaher, MBF Bioscience, Hugging Face (LeRobot) and Raspberry Pi.",
+      "why_it_matters_en": "This is the first serious attempt to standardize the agent-to-physical-device interface the way MCP standardized agent-to-tool access — and it is explicitly MCP-compatible and model-agnostic. Lab-automation and industrial teams should consider joining phase 1; for everyone else the signal is that computer use is moving from screen-scraping toward device-level contracts with enforced safety limits.",
+      "technical_details": {
+        "origin": "developed with HHMI Janelia Research Campus; grew out of a shared-memory state dictionary by researcher Arco Bast and Anthropic's Alek Kemeny",
+        "driver": "read/write primitives; standardized discovery format; natural-language machine characteristics -> auto-generated reference file (measurable, adjustable, safety limits); safety limits enforced in driver",
+        "control_planes": "MCP, CLI, code files (APIs); state dictionary in shared memory; deterministic command chaining for long/fast operations",
+        "access": "research preview, phase 1 for selected scientific research labs and advanced manufacturers; apply at modelhardwarestandard.com",
+        "spec_code": "not publicly released yet; open-sourcing planned; CMU drivers to be made public later",
+        "vendors": "AWS (Strands Robots), Tecan, QIAGEN, Doosan, Universal Robots, Automata, Danaher, MBF Bioscience, Hugging Face (LeRobot), Raspberry Pi",
+        "device_examples": "microscopes, liquid handlers, robotic arms, plate readers, lasers — any device with a programmable interface"
+      },
+      "technical_details_zh": {
+        "来源": "与 HHMI Janelia Research Campus 联合开发；源自研究员 Arco Bast 与 Anthropic 的 Alek Kemeny 构建的共享内存状态字典",
+        "driver": "read / write 原语；标准化发现格式；自然语言设备特性 -> 自动生成参考文件（可测量项、可调节项、安全边界）；安全边界由 driver 强制执行",
+        "接入方式": "MCP、CLI、代码文件（API）三种控制面；共享内存中的状态字典；支持把命令串成确定性脚本",
+        "开放范围": "研究预览，第一阶段面向获选科研实验室与先进制造企业；申请入口 modelhardwarestandard.com",
+        "规范与代码": "尚未公开发布；官方计划开源；CMU 的 driver 后续公开",
+        "参与厂商": "AWS（Strands Robots）、Tecan、QIAGEN、Doosan、Universal Robots、Automata、Danaher、MBF Bioscience、Hugging Face（LeRobot）、Raspberry Pi",
+        "设备示例": "显微镜、移液工作站、机械臂、酶标仪、激光器——任何带可编程接口的设备"
+      },
+      "tags": ["computer-use", "physical-devices", "mcp", "protocol", "lab-automation", "safety"],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "anthropic-model-hardware-standard-preview"
+    },
+    {
+      "event_id": "ev-20260827-02",
+      "title": "Google ships Gemini Omni 1.1 Flash with keyframe control and 4K output",
+      "title_zh": "Google 发布 Gemini Omni 1.1 Flash，支持关键帧控制与 4K",
+      "category": "foundation-model",
+      "organization": ["Google", "Google DeepMind"],
+      "published_at": "2026-08-27T00:00:00Z",
+      "published_at_note": "Google blog post dated 2026-08-27. Coverage-gap recovery: within the previous run's window but missed; first seen 2026-08-29 run.",
+      "first_seen_at": "2026-08-29T11:35:46Z",
+      "last_updated_at": "2026-08-29T11:35:46Z",
+      "source_type": "official_blog",
+      "primary_source": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/",
+      "secondary_sources": [
+        "https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash",
+        "https://www.neowin.net/news/google-unveils-gemini-omni-11-flash-that-can-create-4k-ai-videos-of-up-to-40-seconds/"
+      ],
+      "summary": "Gemini Omni 1.1 Flash is a production-ready (GA) update to Google's generative video line: 4K upscaling, scene extension up to 40 seconds, first-and-last-frame keyframe control, and a 360p drafting mode for cheaper iterations before the final render. It is available through the Gemini API and, for AI Plus / Pro / Ultra subscribers, in the Gemini app and Google Flow.",
+      "why_it_matters": "Keyframe control plus a low-cost drafting tier make generative video controllable enough for product pipelines where iteration cost and shot-level precision previously ruled it out. The broader signal for API design is cost-tiered generation — draft cheap, render expensive — becoming a default pattern rather than an afterthought.",
+      "summary_zh": "Gemini Omni 1.1 Flash 是 Google 生成式视频产品线的 GA 更新：新增 4K 超分、最长 40 秒的场景延长、首尾帧关键帧控制，以及先用 360p 草稿档低成本试错再出正片的模式。已通过 Gemini API 提供，AI Plus / Pro / Ultra 订阅用户可在 Gemini 应用与 Google Flow 中使用。",
+      "why_it_matters_zh": "关键帧控制加上低成本草稿档，让生成式视频第一次满足了产品流水线对迭代成本和镜头级精度的要求。对 API 设计更广的信号是「草稿便宜、正片昂贵」的分层生成正在成为默认模式，而不是事后补丁。",
+      "summary_en": "Gemini Omni 1.1 Flash is a production-ready (GA) update to Google's generative video line: 4K upscaling, scene extension up to 40 seconds, first-and-last-frame keyframe control, and a 360p drafting mode for cheaper iterations before the final render. It is available through the Gemini API and, for AI Plus / Pro / Ultra subscribers, in the Gemini app and Google Flow.",
+      "why_it_matters_en": "Keyframe control plus a low-cost drafting tier make generative video controllable enough for product pipelines where iteration cost and shot-level precision previously ruled it out. The broader signal for API design is cost-tiered generation — draft cheap, render expensive — becoming a default pattern rather than an afterthought.",
+      "technical_details": {
+        "new_capabilities": "4K upscaling; scene extension to 40s; first-and-last-frame keyframe control; 360p drafting mode",
+        "availability": "GA via Gemini API; Gemini app + Google Flow for AI Plus/Pro/Ultra subscribers",
+        "docs": "ai.google.dev/gemini-api/docs/models/gemini-omni-flash"
+      },
+      "technical_details_zh": {
+        "新能力": "4K 超分；场景延长至 40 秒；首尾帧关键帧控制；360p 草稿档",
+        "可用性": "已 GA，经 Gemini API 提供；Gemini 应用与 Google Flow 面向 AI Plus/Pro/Ultra 订阅用户",
+        "文档": "ai.google.dev/gemini-api/docs/models/gemini-omni-flash"
+      },
+      "tags": ["video-generation", "multimodal", "gemini-api", "ga"],
+      "technical_impact": 2,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 4,
+      "verification_cost": 1,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "google-gemini-omni-1-1-flash-ga"
+    }
+  ]
+}

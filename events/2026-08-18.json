@@ -92,7 +92,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-08-21T00:00:37Z",
+      "last_updated_at": "2026-08-29T11:35:46Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [],
@@ -114,7 +114,9 @@
           "MCP recovery after OAuth re-auth",
           "reconnect through provider outages",
           "resumed sessions restore cwd + approval policy"
-        ]
+        ],
+        "v0_150_0": "0.150.0 stable (2026-08-26T19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal — agent-initiated cross-task messaging in stable; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
+        "v0_150_1": "0.150.1 (2026-08-27T01:56Z): remote compaction counts retained images toward token budget (backport)"
       },
       "tags": [
         "codex",
@@ -148,9 +150,14 @@
           "OAuth 重新认证后 MCP 恢复",
           "provider 故障期间自动重连",
           "恢复的会话还原工作目录与 approval policy"
-        ]
+        ],
+        "v0_150_0": "0.150.0 stable（2026-08-26T19:37Z）：@ 引用其他 Codex 任务；agent 可在终端读取、创建或向任务发消息——agent 发起的跨任务消息进入 stable；Interrupt hooks（回合被中断时执行命令或 MCP handler）；安全：不可信项目不再注入 AGENTS.md、app-server 诊断凭据脱敏、应用签名校验、Bedrock multi-agent/压缩兼容修复",
+        "v0_150_1": "0.150.1（2026-08-27T01:56Z）：远程压缩将保留图片计入 token 预算（backport）"
       },
-      "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT."
+      "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
+      "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
+      "update_2026_08_27": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.1 (01:56Z): remote compaction counts retained images toward token budget (backport)",
+      "update_2026_08_29": "0.151.0 stable (2026-08-29T09:55:39Z GitHub / 09:59:26Z npm, in-window; twelve 0.151.0 alphas 8/27-8/29 preceded it; 0.152.0-alpha.1 followed at 10:53Z). New: configurable grace period for discovering tools from optional MCP servers (#41199); extensions can inspect or replace MCP tool results before they reach the model (#41202) — an MCP middleware hook landing in stable; plugin catalogs combine per-repository configuration and report invalid project marketplaces without hiding valid plugins (#41208). Fixes: restored permission profiles preserved across TUI turns and /cd no longer weakening sandbox restrictions (#41192); tool availability and reasoning effort kept correct across model switches and fallbacks (#41195, #41206); remote sandbox enforcement using the executor's actual home directory, OS and path conventions (#41196/41204/41207/41209); structured MCP tool/resource errors preserved in app-server responses (#41196); nested subagent token usage counted toward root goal budgets (#41183); stale Guardian classifications no longer authorize actions after permission state changes (#41196). Recommendation stays ADOPT."
     },
     {
       "event_id": "ev-20260818-03",

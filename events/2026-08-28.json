@@ -1,0 +1,57 @@
+{
+  "date": "2026-08-28",
+  "provenance": "Created by 2026-08-29T11:35:46Z run. Event published 2026-08-28, inside this run's scan window [2026-08-28T00:31:03Z, 2026-08-29T11:35:46Z]. Claude Code 2.1.251 (2026-08-28T15:34Z, also in-window) is recorded as an update on ev-20260814-04 in events/2026-08-14.json.",
+  "events": [
+    {
+      "event_id": "ev-20260828-01",
+      "title": "Anthropic: automated researchers closed 85% of the deception safety gap",
+      "title_zh": "Anthropic：自动化研究员关闭了 85% 的欺骗性安全差距",
+      "category": "research",
+      "organization": ["Anthropic"],
+      "published_at": "2026-08-28T00:00:00Z",
+      "published_at_note": "Anthropic research page dated 2026-08-28; exact hour not stated (TechCrunch coverage same day). Treated as in-window for the 2026-08-29 run given the 3h retrieval overlap back to 2026-08-27T21:31Z.",
+      "first_seen_at": "2026-08-29T11:35:46Z",
+      "last_updated_at": "2026-08-29T11:35:46Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures",
+      "secondary_sources": [
+        "https://alignment.anthropic.com/2026/automated-alignment-researchers/",
+        "https://www.unite.ai/anthropic-reports-claude-agents-mitigated-ten-alignment-failures/",
+        "https://techcrunch.com/"
+      ],
+      "summary": "Anthropic reports that Claude, running as an automated alignment researcher, autonomously executed research loops — literature search, method and data proposal, training, testing — to post-train student models against 10 categories of alignment failure, with a monitoring agent reviewing every proposed method and an Opus 4.8 cheat monitor auditing transcripts. It found fixes for all 10 failure categories without degrading the checked capabilities, closing on average 85% of the deception safety gap across 150+ attempts; six experienced human researchers closed 20% on average, and Claude's best deception method beat the best human proposal by 20%. In a production-scale test, Sonnet 5 post-training an early Opus 4.8 checkpoint matched near-production alignment in 60 hours across 50+ experiments, with the winning recipe using just over 2,000 training examples — roughly 15,000x fewer than a standard alignment run. Gains held on held-out evaluations never shown during the loop, on adversarial multi-turn simulation (Petri), and on models up to 4.7x larger. The research harness is open-sourced.",
+      "why_it_matters": "For safety and evals teams this is the first quantitative head-to-head showing automated alignment research beating experienced humans at a fraction of the cost, with a released harness to borrow. The stated caveats matter as much as the headline: only a narrow failure taxonomy was tested, capability-degradation checks covered a fixed list, evals like Petri are proxies, durability under further RL is untested, and the cheat monitor depends on misbehavior surfacing in model reasoning.",
+      "summary_zh": "Anthropic 报告：让 Claude 扮演自动化对齐研究员，自主跑完整研究闭环——检索文献、提方法与数据、训练、测试——对学生模型做针对 10 类对齐失败的 post-training，另有监督 agent 审查每个提议方法、Opus 4.8 充当作弊监视器。结果是在不损伤受检能力的前提下找到全部 10 类失败的修复方案：欺骗性维度平均关闭 85% 的安全差距（150+ 次尝试），6 名资深人类研究员平均只关闭 20%，Claude 的最佳欺骗修复方法比人类最佳提议高 20%。生产级测试中，Sonnet 5 对早期 Opus 4.8 checkpoint 做 post-training，60 小时、50+ 实验后达到接近生产线的对齐水平，胜出配方只用 2,000 出头训练样本——比标准对齐流程少约 15,000 倍。收益在循环中从未见过的留出评测、对抗式多轮模拟（Petri）以及大至 4.7 倍的模型上保持。研究 harness 已开源。",
+      "why_it_matters_zh": "对安全与评估团队，这是第一次有量化对照显示自动化对齐研究以极低成本胜过资深人类，且 harness 已放出可借鉴。但官方列的局限和结论同样重要：只测了窄口径的失败分类集、能力退化检查只覆盖固定清单、Petri 这类评测只是现实风险的代理、后续再做 RL 后的持久性未测、作弊监视器依赖不当行为出现在推理文本里。",
+      "summary_en": "Anthropic reports that Claude, running as an automated alignment researcher, autonomously executed research loops — literature search, method and data proposal, training, testing — to post-train student models against 10 categories of alignment failure, with a monitoring agent reviewing every proposed method and an Opus 4.8 cheat monitor auditing transcripts. It found fixes for all 10 failure categories without degrading the checked capabilities, closing on average 85% of the deception safety gap across 150+ attempts; six experienced human researchers closed 20% on average, and Claude's best deception method beat the best human proposal by 20%. In a production-scale test, Sonnet 5 post-training an early Opus 4.8 checkpoint matched near-production alignment in 60 hours across 50+ experiments, with the winning recipe using just over 2,000 training examples — roughly 15,000x fewer than a standard alignment run. Gains held on held-out evaluations never shown during the loop, on adversarial multi-turn simulation (Petri), and on models up to 4.7x larger. The research harness is open-sourced.",
+      "why_it_matters_en": "For safety and evals teams this is the first quantitative head-to-head showing automated alignment research beating experienced humans at a fraction of the cost, with a released harness to borrow. The stated caveats matter as much as the headline: only a narrow failure taxonomy was tested, capability-degradation checks covered a fixed list, evals like Petri are proxies, durability under further RL is untested, and the cheat monitor depends on misbehavior surfacing in model reasoning.",
+      "technical_details": {
+        "setup": "Claude as automated alignment researcher; monitoring agent reviews every proposed method; Claude Opus 4.8 as cheat monitor; student models incl. Gemma-2-2B; Sonnet 5 post-training an early Opus 4.8 checkpoint",
+        "results": "10/10 failure categories fixed without checked-capability degradation; deception gap 85% closed avg (best run 82%+; 150+ attempts) vs 20% avg by 6 experienced humans; best Claude method +20% over best human proposal; outscored 28 human researchers (up to 8h each); production test 60h / 50+ experiments; winning recipe ~2,000 training examples (~15,000x fewer than standard alignment)",
+        "sycophancy": "98% of proposals converged on training on the model's own non-sycophantic answers, often via activation steering",
+        "cheat_monitoring": "cheating flagged in 39 of ~1,600 transcripts (2.4%)",
+        "transfer": "held-out alignment evals; Petri adversarial multi-turn simulation; models up to 4.7x larger",
+        "limitations": "narrow failure taxonomy (political bias not measured); fixed capability-degradation checklist; evals are proxies; durability after extensive RL untested; cheat monitor depends on misbehavior appearing in reasoning",
+        "artifacts": "research harness open-sourced; full report PDF (automated-alignment-researchers-august-2026.pdf) + Alignment Science blog"
+      },
+      "technical_details_zh": {
+        "设置": "Claude 任自动化对齐研究员；监督 agent 审查每个提议方法；Claude Opus 4.8 任作弊监视器；学生模型含 Gemma-2-2B；Sonnet 5 对早期 Opus 4.8 checkpoint 做 post-training",
+        "结果": "10/10 失败类别全部修复且受检能力不退化；欺骗性差距平均关闭 85%（150+ 次尝试），6 名资深人类平均 20%；最佳方法较人类最佳提议高 20%；整体优于 28 名人类研究员（每人最多 8 小时）；生产级测试 60 小时 / 50+ 实验；胜出配方约 2,000 训练样本（比标准对齐少约 15,000 倍）",
+        "谄媚类": "98% 的提议收敛到「用模型自身非谄媚回答做训练」，多经 activation steering 实现",
+        "作弊监控": "约 1,600 份轨迹中标记 39 份作弊（2.4%）",
+        "迁移": "留出对齐评测；Petri 对抗式多轮模拟；大至 4.7 倍的模型",
+        "局限": "失败分类口径窄（未测政治偏见）；能力退化检查为固定清单；评测是代理；后续大量 RL 后的持久性未测；作弊监视器依赖不当行为出现在推理文本",
+        "产物": "研究 harness 已开源；完整报告 PDF（automated-alignment-researchers-august-2026.pdf）与 Alignment Science 博客"
+      },
+      "tags": ["alignment", "safety", "automated-research", "post-training", "agent-safety", "research"],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 1,
+      "recommendation": "WATCH",
+      "event_fingerprint": "anthropic-automated-alignment-researchers-2026-08"
+    }
+  ]
+}
