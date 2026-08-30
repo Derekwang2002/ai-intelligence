@@ -1,6 +1,6 @@
 {
   "date": "2026-08-26",
-  "provenance": "Captured by 2026-08-28T00:31:03Z run. Papers announced in the arXiv Tue 25 Aug 2026 digest (announcement ~2026-08-26T00:00Z; all three submitted 2026-08-24). Abstracts verified on arxiv.org abs pages. Appended by 2026-08-29T11:35:46Z run: ev-20260826-04 (Qwen3.8-Flash-Next) recovered as a coverage gap from the same window.",
+  "provenance": "Captured by 2026-08-28T00:31:03Z run. Papers announced in the arXiv Tue 25 Aug 2026 digest (announcement ~2026-08-26T00:00Z; all three submitted 2026-08-24). Abstracts verified on arxiv.org abs pages. Appended by 2026-08-29T11:35:46Z run: ev-20260826-04 (Qwen3.8-Flash-Next) recovered as a coverage gap from the same window. Appended by 2026-08-30T00:00:20Z run: ev-20260826-05 (vLLM v0.28.0, coverage-gap recovery from the same window); ev-20260826-04 updated (production counterpart verified).",
   "events": [
     {
       "event_id": "ev-20260826-01",
@@ -180,7 +180,7 @@
       "published_at": "2026-08-26T00:00:00Z",
       "published_at_note": "HF repo Qwen/Qwen3.8-Flash-Next created 2026-08-24T08:24:59Z, weights finalized 2026-08-27T05:03:36Z; public trackers (llm-stats) date the release Aug 26. Coverage-gap recovery: inside the previous run's window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z] but not captured then; first seen 2026-08-29 run.",
       "first_seen_at": "2026-08-29T11:35:46Z",
-      "last_updated_at": "2026-08-29T11:35:46Z",
+      "last_updated_at": "2026-08-30T00:00:20Z",
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
       "secondary_sources": [
@@ -201,7 +201,7 @@
         "training": "Muon + AdamW split across weight categories; no batch-size warmup; larger learning rates",
         "benchmarks": "DeepSWE 1.1 58.7, SWE-bench Pro 62.5, SWE-bench Multilingual 81.0, NL2Repo-Bench 48.1, Agents' Last Exam 51.2, GPQA Diamond 91.7, LiveCodeBench v6 91.9; vision: AndroidWorld 84.5, LVBench 76.6 — vs Qwen3.8-27B, Qwen3.7-Plus, DeepSeek-V4-Flash-0731, Claude-Opus-4.6",
         "license": "custom qwen-community-1.0 (license: other) — check terms before commercial use",
-        "adoption": "52,341 downloads (30d) + 4,213 likes @2026-08-29T11:35Z; FP8 variant 44,281 downloads"
+        "adoption": "52,341 downloads (30d) + 4,287 likes @2026-08-30T00:00Z; FP8 variant 44,281 downloads; production counterpart = Qwen3.8-Flash on QwenCloud/Model Studio/OpenRouter since launch week ($0.15/$0.47 per M)"
       },
       "technical_details_zh": {
         "架构": "125B 语言模型（激活 6B）+ 51B n-gram 嵌入（bigram/trigram 查表）+ 4B 多 token 预测；BF16 合计约 180B；48 层循环模式：3 x（Gated DeltaNet -> MoE）+ 1 x（Qwen Sparse Attention -> MoE）",
@@ -212,7 +212,7 @@
         "训练": "Muon 与 AdamW 按权重类别分工；不做 batch-size warmup；更大学习率",
         "benchmark": "DeepSWE 1.1 58.7、SWE-bench Pro 62.5、SWE-bench Multilingual 81.0、NL2Repo-Bench 48.1、Agents' Last Exam 51.2、GPQA Diamond 91.7、LiveCodeBench v6 91.9；视觉：AndroidWorld 84.5、LVBench 76.6——对比 Qwen3.8-27B、Qwen3.7-Plus、DeepSeek-V4-Flash-0731、Claude-Opus-4.6",
         "许可证": "自定义 qwen-community-1.0（license: other）——商用前先核对条款",
-        "采用": "截至 2026-08-29T11:35Z：主仓 52,341 下载（30d）+ 4,213 likes；FP8 变体 44,281 下载"
+        "采用": "截至 2026-08-30T00:00Z：主仓 52,341 下载（30d）+ 4,287 likes；FP8 变体 44,281 下载；生产对位版本 Qwen3.8-Flash 自发布周起在 QwenCloud / Model Studio / OpenRouter 提供（$0.15 / $0.47 每百万 token）"
       },
       "tags": [
         "open-weights",
@@ -229,7 +229,66 @@
       "verification_cost": 2,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "qwen3-8-flash-next-open-weights-architecture-preview"
+      "event_fingerprint": "qwen3-8-flash-next-open-weights-architecture-preview",
+      "update_2026_08_30": "Production counterpart verified (resolves the prior watch item): Qwen3.8-Flash is the API-only production version of Flash-Next — live on QwenCloud since launch week with a 1M-token default context and official built-in tools; served via Alibaba Cloud Model Studio (USD 0.15/M input <=1M tokens, 0.47/M output, context-caching discount) and OpenRouter (0.15/0.47). No separately licensed open weights beyond Flash-Next itself (custom qwen-community-1.0). Adoption re-check 2026-08-30: main repo 52,341 downloads + 4,287 likes (was 4,213 on 8/29; the 30d download pool is unchanged at 52,341 — treat as a static window, not zero growth). Recommendation stays WATCH (experimental preview; production path is the API)."
+    },
+    {
+      "event_id": "ev-20260826-05",
+      "title": "vLLM 0.28.0 lands a big-model serving push for Kimi-K3 and DeepSeek V4",
+      "title_zh": "vLLM 0.28.0 发布：Kimi-K3 与 DeepSeek V4 服务优化成主线",
+      "category": "open-source",
+      "organization": [
+        "vLLM Project"
+      ],
+      "published_at": "2026-08-26T09:46:30Z",
+      "published_at_note": "GitHub release published 2026-08-26T09:46:30Z; surfaced on Hacker News 2026-08-29T18:22Z. Coverage-gap recovery: inside the previous window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z] but not captured then; first seen 2026-08-30 run.",
+      "first_seen_at": "2026-08-30T00:00:20Z",
+      "last_updated_at": "2026-08-30T00:00:20Z",
+      "source_type": "release_notes",
+      "primary_source": "https://github.com/vllm-project/vllm/releases/tag/v0.28.0",
+      "secondary_sources": [
+        "https://hn.algolia.com/api/v1"
+      ],
+      "summary": "vLLM 0.28.0 (584 commits from 270 contributors, 76 new) is dominated by a Kimi-K3 performance push: Decode Context Parallel support, fused FlashKDA decode/prefill kernels, combined all-gathers with 1.5-3x kernel-level speedup, an adaptive speculative token budget delivering ~60% better DSpark TTFT, and optional shared-expert sharding saving ~17 GiB per GPU. DeepSeek V4 gets sparse MLA working end-to-end for plain decode, MTP and DSpark speculative decoding, plus AMD Quark NVFP4 and ROCm enablement. Other headline items: DFlash2 speculative decoding with a candidate selector, Model Runner V2 maturation (E/P/D disaggregation, weight offloading), tiered KV-cache offloading including disk, a Rust frontend with gRPC (protobuf schemas on Buf), and new defaults (max_num_batched_tokens 8192->16384, Mamba prefix caching on by default). Breaking changes: bitsandbytes support moved to an out-of-tree plugin, Transformers bumped to 5.15.0, deprecated APIs removed.",
+      "why_it_matters": "If you serve Kimi-K3 or DeepSeek V4 weights, this release is where the material throughput and memory wins land — plan an upgrade pass. Everyone else should note the two structural signals: open-weight frontier models now get first-class, model-specific kernel work in the default serving stack within days of release, and bitsandbytes users must install the out-of-tree plugin before upgrading.",
+      "summary_zh": "vLLM 0.28.0（584 个提交、270 位贡献者、其中 76 位新加入）的主线是 Kimi-K3 性能攻坚：Decode Context Parallel 支持、融合 FlashKDA decode/prefill kernel、合并 all-gather（kernel 级提速 1.5-3 倍）、自适应投机 token 预算（DSpark 首 token 延迟改善约 60%）、可选共享专家分片（每卡省约 17 GiB 显存）。DeepSeek V4 侧稀疏 MLA 在纯 decode、MTP 与 DSpark 投机解码上全链路打通，另有 AMD Quark NVFP4 与 ROCm 支持。其余亮点：DFlash2 投机解码带候选选择器、Model Runner V2 成熟化（E/P/D 分离部署、权重 offload）、分层 KV cache offload（含磁盘）、Rust 前端 + gRPC（protobuf schema 上 Buf）、新默认值（max_num_batched_tokens 8192->16384、Mamba 默认开前缀缓存）。破坏性变更：bitsandbytes 迁出为外部插件、Transformers 升到 5.15.0、移除废弃 API。",
+      "why_it_matters_zh": "在自托管 Kimi-K3 或 DeepSeek V4 权重的团队，这版就是吞吐与显存收益落地的地方，值得安排一次升级。其他团队的看点是两个结构性信号：开源前沿模型发布数天内就在默认服务栈里拿到模型专属的 kernel 优化；用 bitsandbytes 的用户升级前必须先装外部插件。",
+      "summary_en": "vLLM 0.28.0 (584 commits from 270 contributors, 76 new) is dominated by a Kimi-K3 performance push: Decode Context Parallel support, fused FlashKDA decode/prefill kernels, combined all-gathers with 1.5-3x kernel-level speedup, an adaptive speculative token budget delivering ~60% better DSpark TTFT, and optional shared-expert sharding saving ~17 GiB per GPU. DeepSeek V4 gets sparse MLA working end-to-end for plain decode, MTP and DSpark speculative decoding, plus AMD Quark NVFP4 and ROCm enablement. Other headline items: DFlash2 speculative decoding with a candidate selector, Model Runner V2 maturation (E/P/D disaggregation, weight offloading), tiered KV-cache offloading including disk, a Rust frontend with gRPC (protobuf schemas on Buf), and new defaults (max_num_batched_tokens 8192->16384, Mamba prefix caching on by default). Breaking changes: bitsandbytes support moved to an out-of-tree plugin, Transformers bumped to 5.15.0, deprecated APIs removed.",
+      "why_it_matters_en": "If you serve Kimi-K3 or DeepSeek V4 weights, this release is where the material throughput and memory wins land — plan an upgrade pass. Everyone else should note the two structural signals: open-weight frontier models now get first-class, model-specific kernel work in the default serving stack within days of release, and bitsandbytes users must install the out-of-tree plugin before upgrading.",
+      "technical_details": {
+        "kimi_k3": "Decode Context Parallel (#50484); fused FlashKDA kernels (#50654,#51311,#52458); SiTU activation for MegaMoE (#50510); GEMM-RS sequence parallelism (#52079); combined all-gathers 1.5-3x kernel speedup (#51070); adaptive speculative token budget ~60% better DSpark TTFT (#51725); optional shared-expert sharding -17 GiB/GPU (#50912); ROCm V2 model runner (#51653)",
+        "deepseek_v4": "sparse MLA end-to-end for plain decode/MTP/DSpark (#51538); AMD Quark NVFP4 (#47972); reasoning-effort prompts (#50580); ROCm gfx11/gfx950 (#47017,#52212)",
+        "speculative_decoding": "DFlash2 with local convolution + candidate selector (#52816); DSpark confidence-scheduled verification (#47808); async scheduling auto-enabled for draft models (#48341)",
+        "model_runner_v2": "E/P/D disaggregation (#38390); weight offloading (#51413); multi-layer MTP KV cache (#50062); encoder CUDA graphs (#49852); thinking_token_budget (#46727)",
+        "kv_offload": "disk offloading (#49644); out-of-tree secondary tier managers (#51007); tiering metrics (#48798); canonical CPU layout (#48414)",
+        "defaults_breaking": "max_num_batched_tokens 8192->16384 (#51726); Mamba prefix caching default on (#50991); Blackwell CUDA graph capture default 1024 (#49390); bitsandbytes out-of-tree plugin (#43529); Transformers 5.15.0 (#51668); calculate_kv_scales and override_attention_dtype removed",
+        "new_models": "Muse Glimmer, Ling 3.0 Flash (+FP8, hybrid MXFP4), Dots3 NOTE, Interns2mobius; CuTe DSL skinny GEMM extended to GLM-5.2"
+      },
+      "technical_details_zh": {
+        "Kimi-K3": "Decode Context Parallel（#50484）；融合 FlashKDA kernel（#50654/#51311/#52458）；MegaMoE 的 SiTU 激活（#50510）；GEMM-RS 序列并行（#52079）；合并 all-gather 令 kernel 提速 1.5-3 倍（#51070）；自适应投机 token 预算令 DSpark 首 token 延迟改善约 60%（#51725）；可选共享专家分片每卡省约 17 GiB（#50912）；ROCm V2 model runner（#51653）",
+        "DeepSeek V4": "稀疏 MLA 在纯 decode/MTP/DSpark 全链路（#51538）；AMD Quark NVFP4（#47972）；reasoning-effort 提示映射（#50580）；ROCm gfx11/gfx950（#47017/#52212）",
+        "投机解码": "DFlash2 带局部卷积与候选选择器（#52816）；DSpark 置信度调度验证（#47808）；draft 模型默认开异步调度（#48341）",
+        "Model Runner V2": "E/P/D 分离部署（#38390）；权重 offload（#51413）；多层 MTP KV cache（#50062）；encoder CUDA graph（#49852）；thinking_token_budget（#46727）",
+        "KV offload": "磁盘 offload（#49644）；树外二级 tier manager（#51007）；分层指标（#48798）；规范 CPU 布局（#48414）",
+        "默认值与破坏性变更": "max_num_batched_tokens 8192->16384（#51726）；Mamba 前缀缓存默认开（#50991）；Blackwell CUDA graph 捕获默认 1024（#49390）；bitsandbytes 迁为树外插件（#43529）；Transformers 5.15.0（#51668）；移除 calculate_kv_scales 与 override_attention_dtype",
+        "新模型支持": "Muse Glimmer、Ling 3.0 Flash（含 FP8 与混合 MXFP4）、Dots3 NOTE、Interns2mobius；CuTe DSL skinny GEMM 扩展到 GLM-5.2"
+      },
+      "tags": [
+        "vllm",
+        "inference",
+        "model-serving",
+        "open-weights",
+        "performance",
+        "release"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "ADOPT",
+      "event_fingerprint": "vllm-v0-28-0-release"
     }
   ]
 }

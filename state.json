@@ -1,31 +1,33 @@
 {
   "version": 1,
-  "last_successful_run_at": "2026-08-29T11:35:46Z",
-  "last_run_started_at": "2026-08-29T11:35:46Z",
-  "last_run_completed_at": "2026-08-29T12:09:19Z",
-  "total_runs": 11,
+  "last_successful_run_at": "2026-08-30T00:00:20Z",
+  "last_run_started_at": "2026-08-30T00:00:20Z",
+  "last_run_completed_at": "2026-08-30T00:38:41Z",
+  "total_runs": 12,
   "first_run": false,
   "initial_lookback_hours": 24,
   "scan_window": {
-    "start": "2026-08-28T00:31:03Z",
-    "end": "2026-08-29T11:35:46Z",
-    "retrieval_overlap_start": "2026-08-27T21:31:03Z",
-    "overlap_note": "Overlap used for retrieval only; no duplicates written. ~1.5-day window: 7 new events (Anthropic automated alignment researchers 8/28 ev-20260828-01 WATCH — 85% deception gap closed, harness open-sourced; Anthropic Model Hardware Standard preview 8/27 ev-20260827-01 WATCH coverage-gap recovery — agent-to-physical-device spec, MCP-compatible; Qwen3.8-Flash-Next 8/26 ev-20260826-04 WATCH coverage-gap recovery — ~180B hybrid DeltaNet+sparse-attention Qwen4 preview, 52k dl/4d; Gemini Omni 1.1 Flash GA 8/27 ev-20260827-02 WATCH coverage-gap recovery; SARA arXiv 2608.27146 ev-20260829-01 WATCH; HarnessLens 2608.27311 ev-20260829-02 WATCH; TwinKV 2608.27128 ev-20260829-03 WATCH). 4 updates: Codex 0.151.0 stable 8/29 (extensions inspect/replace MCP tool results = MCP middleware in stable; /cd sandbox fix); Claude Code 2.1.251 8/28 (model-switch hooks, subagent streaming to Remote Control, /cost prompt-cache line, symlink/path-traversal security fixes); GLM-5.3 (model card rewritten 8/27 w/ full benchmark table; community eval PRs = .eval_results metadata sync NOT reproduction; FP8 8,804 dl); GLM-5.3-Flash (189,793 dl/4d, vLLM recipe, NVFP4 discussions). Trend #1 stays strengthening/Medium after criterion audit (1/3 met: downloads yes, reproduction no, same-tier-other-org partial); trends #2/#3 unchanged (no new qualifying signals; same-org hardening only). No new trends. Also repaired persistence inconsistency: 8/24-8/27 update notes previously in index only were backfilled into event files (ev-20260814-02/04, ev-20260817-02, ev-20260818-02, ev-20260822-01). Filtered: OpenCode 1.18.24/25 routine provider/auth fixes, OpenAI Thailand accelerator, Anthropic ~$1T valuation coverage, TTPO 2608.27448 (small-model, no code), BTS-AgentBench (too narrow), Gemini CLI nightlies only, Cursor no changelog."
+    "start": "2026-08-29T11:35:46Z",
+    "end": "2026-08-30T00:00:20Z",
+    "retrieval_overlap_start": "2026-08-29T08:35:46Z",
+    "overlap_note": "Overlap for retrieval only; no duplicates written. ~12.4h Saturday window: 0 strictly in-window new events (weekend quiet). 5 coverage-gap recoveries from earlier windows: OpenAI Jalapeño first results 8/25 (Hot Chips; InferenceX 1.5-1.9x per-watt work & 1.7-3.6x lower latency vs GB200/GB300; end-2026 small-volume deploy; WATCH), vLLM 0.28.0 8/26 (Kimi-K3 full-stack push ~60% better DSpark TTFT + 17GiB/GPU savings, DeepSeek V4 sparse MLA e2e; bitsandbytes out-of-tree; ADOPT), Nvidia x Hugging Face $12.9B acquisition reports 8/27 (press-sourced, no official statement; WATCH), Tencent Hy4 preview open weights 8/28 (770B/49B MoE, >1M ctx, Apache 2.0; vendor blind test only 2.99 vs GLM-5.3 2.92/Kimi K3 2.94; WATCH; trend #1 evidence item 9), OpenAI winds down Cursor model contract 8/28 (change-of-control trigger, 2026-11-12 shutoff, Astra excluded, BYOK/Codex-extension workarounds; WATCH). 2 updates: Cerebras CS-4 Hot Chips deep dive 8/25 (CS-5 2027 targets, CS-6 3D-DRAM roadmap; pricing/benchmarks/shipment still unmet), Qwen3.8-Flash production counterpart verified (API-only, live since launch week, $0.15/$0.47 per M). Trend #1 stays strengthening/Medium — Hy4 is the strongest same-tier-different-org candidate yet but preview + vendor-only eval; (a) reproduction still absent; (c) 30d download pools unrolled. Trends #2/#3 no new signals. No new trends. Also: DeepSeek Harness 203,390 stars (+612/day, decelerating); GLM-5.3 HF discussions still metadata-sync only. Filtered: Claude Opus 4.8 (5/28 old news), Anthropic IPO expectations, Moonshot $3.5B round (7/29 old), SpaceX-xAI merger (2/2 background), China ~200 AI standards, Xiaomi EMNLP acceptances, Codex 0.151.0-alpha.7.2 (alpha patch, no notes), Netskope 141.x still absent."
   },
   "next_scan_focus": [
-    "Trend #1 (strengthening/Medium) High criteria: (a) genuine community independent reproduction on GLM-5.3 weights (third-party Terminal Bench / SWE runs — model-card .eval_results metadata sync does NOT count); (b) another same-tier open-weight release from a different org (Flash-Next was experimental-tier, partial); (c) sustained HF download velocity (Flash 189,793/4d is the baseline to sustain; GLM-5.3 FP8 8,804)",
-    "Qwen3.8-Flash official production counterpart (1M default context): release date, license terms (Flash-Next used custom qwen-community-1.0), benchmark deltas vs Flash-Next",
-    "MHS (ev-20260827-01): public spec, open-sourcing timeline, second equivalent spec from another org, third-party lab adoption feedback",
-    "Trend #3 (established/High) residual watches: official docs/announcement for @google/gemini-cli-a2a-server (still 0-doc, nightlies only since 0.57.0); Codex 0.152 stable line (alpha.1 opened 8/29); Claude Code 2.1.252+; public production case studies + adoption telemetry (>=2 orgs)",
+    "Trend #1 (strengthening/Medium) High criteria: (a) genuine third-party reproduction on GLM-5.3 weights (Terminal Bench / SWE runs — HF discussions are still metadata-sync only); (b) Tencent Hy4 full release + public benchmarks (SWE-bench/Terminal-Bench) or another same-tier open-weight release from a different org (Hy4 preview is the strongest candidate yet but not fully met); (c) re-sample download velocity once the 30d pools roll (Flash 189,793 / Flash-Next 52,341 baselines; Hy4 ~1.4k/2d)",
+    "Nvidia x Hugging Face (ev-20260827-03): official confirmation, closing terms, Hub neutrality commitments, regulatory movement — any one upgrades the entry",
+    "OpenAI -> Cursor cutoff (ev-20260828-03): execution toward 2026-11-12; BYOK billing/support posture; whether Anthropic/Google/xAI fill the Cursor model gap; Astra rollout without Cursor",
+    "Tencent Hy4 (ev-20260828-02): full Hy4 weights, public benchmark scores, download velocity, next-batch timing",
+    "Jalapeno (ev-20260825-03): independent InferenceX re-runs, end-of-2026 deployment evidence, Gen2 details",
+    "Trend #3 (established/High) residual watches: @google/gemini-cli-a2a-server docs (still 0-doc, nightlies only since 0.57.0); Codex 0.152 stable line (alpha.1 8/29; alpha.7.2 patch has no notes); Claude Code 2.1.252+; public production case studies + adoption telemetry (>=2 orgs)",
     "Trend #2 (MCP security, emerging/Medium): Netskope 141.x release notes (22 MCP attributes out of feature flag + public telemetry); Zscaler AI Broker GA status; MCP auth spec adoption in major agent frameworks",
-    "Nvidia x Poolside / Nemotron (ev-20260822-01): official confirmation, model artifacts, or license terms — any one upgrades WATCH",
-    "Early indications (not trends): agentic retrieval loop (Mistral 8/20, awaiting second vendor); coding-agent platform vertical integration (Cursor Origin GA / independent adoption); agent-to-physical-world interface standardization (MHS single event — recheck on second spec or public spec)",
-    "GLM-5.3-Flash (ev-20260825-01): independent vLLM/SGLang long-context throughput + memory numbers; Baseten serving; AA eval depth",
-    "Astra / OpenAI security posture (ev-20260818-04): frontier RL run resumption, Preparedness Framework extension; GLM-5.3 emergent cyber capability (CyberGym 84.5) is a live instance of the Defender's Window prediction",
-    "September: OpenAI ZDR/Private Safety white paper (ev-20260818-05); 2026-09-29 OpenAI DevDay; 2026-11-21 GPT-5.6 Sol promo pricing expiry (ev-20260821-01)",
-    "DeepSeek Harness (ev-20260814-05): API/plugin surface stabilization = TRIAL re-evaluation condition; 202,778 stars @8/29 (+1,033/day, slowing from +13.8k/4d)",
-    "Cerebras CS-4: third-party benchmarks, pricing disclosure, first-shipment confirmation (all still unmet)",
-    "Anthropic automated alignment researchers (ev-20260828-01): open-sourced harness location/adoption; independent reproduction; coverage of the stated limitations"
+    "MHS (ev-20260827-01): public spec, open-sourcing timeline, second equivalent spec from another org, third-party lab adoption feedback",
+    "Nvidia x Poolside / Nemotron (ev-20260822-01): official confirmation, model artifacts, or license terms — any one upgrades WATCH; read together with the HF acquisition reports",
+    "Cerebras CS-4: pricing, independent benchmarks, first-shipment confirmation (all still unmet; CS-5/CS-6 roadmap now public via Hot Chips 8/25)",
+    "GLM-5.3-Flash (ev-20260825-01): independent vLLM/SGLang long-context throughput + memory numbers; Baseten serving",
+    "September calendar: OpenAI ZDR/Private Safety white paper (ev-20260818-05); 2026-09-29 OpenAI DevDay; 2026-11-12 Cursor cutoff; 2026-11-21 GPT-5.6 Sol promo pricing expiry (ev-20260821-01)",
+    "DeepSeek Harness (ev-20260814-05): API/plugin surface stabilization = TRIAL re-evaluation condition; 203,390 stars @8/30 (+612/day, decelerating from +13.8k/4d)",
+    "Astra / OpenAI security posture (ev-20260818-04): frontier RL run resumption, Preparedness Framework extension",
+    "Weekend arXiv backlog: Sat/Sun digests announced ~2026-08-30T00:00Z / 08-31T00:00Z plus Monday submissions — next run should sweep the full backlog"
   ],
-  "notes": "Checkpoint uses current_run_started_at (not completion time) per spec. state.json written via tmp file + atomic replace. Coverage-gap recoveries this run: MHS + Gemini Omni 1.1 Flash (8/27), Qwen3.8-Flash-Next (8/24-26), GLM-5.3 model-card rewrite (8/27) — all inside the previous run's window but missed then."
+  "notes": "Checkpoint uses current_run_started_at (not completion time) per spec; tmp file + atomic replace. This run recovered 5 events missed by earlier windows (8/25-8/28: Jalapeno, vLLM 0.28.0, Nvidia x HF, Hy4, OpenAI-Cursor) — the previous [08-24, 08-28] window had multiple misses; weekend quiet window otherwise. Site (site/) auto-rebuilds on push via CI."
 }

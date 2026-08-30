@@ -1,13 +1,15 @@
 {
   "date": "2026-08-28",
-  "provenance": "Created by 2026-08-29T11:35:46Z run. Event published 2026-08-28, inside this run's scan window [2026-08-28T00:31:03Z, 2026-08-29T11:35:46Z]. Claude Code 2.1.251 (2026-08-28T15:34Z, also in-window) is recorded as an update on ev-20260814-04 in events/2026-08-14.json.",
+  "provenance": "Created by 2026-08-29T11:35:46Z run. Event published 2026-08-28, inside this run's scan window [2026-08-28T00:31:03Z, 2026-08-29T11:35:46Z]. Claude Code 2.1.251 (2026-08-28T15:34Z, also in-window) is recorded as an update on ev-20260814-04 in events/2026-08-14.json. Appended by 2026-08-30T00:00:20Z run: ev-20260828-02 (Tencent Hy4 preview) and ev-20260828-03 (OpenAI winds down Cursor model contract) — both coverage-gap recoveries from this run's previous scan window [2026-08-28T00:31:03Z, 2026-08-29T11:35:46Z], first seen 2026-08-30 run.",
   "events": [
     {
       "event_id": "ev-20260828-01",
       "title": "Anthropic: automated researchers closed 85% of the deception safety gap",
       "title_zh": "Anthropic：自动化研究员关闭了 85% 的欺骗性安全差距",
       "category": "research",
-      "organization": ["Anthropic"],
+      "organization": [
+        "Anthropic"
+      ],
       "published_at": "2026-08-28T00:00:00Z",
       "published_at_note": "Anthropic research page dated 2026-08-28; exact hour not stated (TechCrunch coverage same day). Treated as in-window for the 2026-08-29 run given the 3h retrieval overlap back to 2026-08-27T21:31Z.",
       "first_seen_at": "2026-08-29T11:35:46Z",
@@ -43,7 +45,14 @@
         "局限": "失败分类口径窄（未测政治偏见）；能力退化检查为固定清单；评测是代理；后续大量 RL 后的持久性未测；作弊监视器依赖不当行为出现在推理文本",
         "产物": "研究 harness 已开源；完整报告 PDF（automated-alignment-researchers-august-2026.pdf）与 Alignment Science 博客"
       },
-      "tags": ["alignment", "safety", "automated-research", "post-training", "agent-safety", "research"],
+      "tags": [
+        "alignment",
+        "safety",
+        "automated-research",
+        "post-training",
+        "agent-safety",
+        "research"
+      ],
       "technical_impact": 4,
       "engineering_value": 3,
       "adoption_signal": 2,
@@ -52,6 +61,123 @@
       "risk": 1,
       "recommendation": "WATCH",
       "event_fingerprint": "anthropic-automated-alignment-researchers-2026-08"
+    },
+    {
+      "event_id": "ev-20260828-02",
+      "title": "Tencent open-weights Hy4 preview: 770B MoE under Apache 2.0",
+      "title_zh": "腾讯开源 Hy4 预览版：770B MoE，Apache 2.0，1M 上下文",
+      "category": "foundation-model",
+      "organization": [
+        "Tencent"
+      ],
+      "published_at": "2026-08-28T00:00:00Z",
+      "published_at_note": "Official Tencent announcement dated 2026-08-28; HF repos tencent/Hy4-preview (+FP8) created 2026-08-27T08:52Z; surfaced on Hacker News front page 2026-08-29T19:33Z (161 points). Coverage-gap recovery: published inside the previous run's window but missed then; first seen 2026-08-30 run.",
+      "first_seen_at": "2026-08-30T00:00:20Z",
+      "last_updated_at": "2026-08-30T00:00:20Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/",
+      "secondary_sources": [
+        "https://huggingface.co/tencent/Hy4-preview",
+        "https://recipes.vllm.ai/tencent/Hy4-preview",
+        "https://news.ycombinator.com/"
+      ],
+      "summary": "Tencent released and open-sourced Hy4 preview, its next-generation LLM: a 770B-parameter MoE with 49B active per token and a context window beyond 1M tokens, shipped as standard and FP8 weights under Apache 2.0 (per HF tags; the announcement itself names no license). Target uses are software engineering (planning, debugging, front-end quality), office work (financial and data analysis, cross-document collaboration), game development (playable prototypes from a single prompt) and scientific research. Public benchmark evidence is thin: one internal Tencent blind test with 163 experts over 203 engineering tasks scored Hy4 preview 2.99/4.00, slightly ahead of GLM-5.3 (2.92) and Kimi K3 (2.94). Tencent says the model assisted its own training pipeline and self-optimized its inference stack for a 31.8% end-to-end throughput gain. The full Hy4 is not released yet — a preview-first rollout with the next batch 'soon'. API access via Tencent Cloud TokenHub and OpenRouter at $0.834/M input, $2.501/M output, $0.042/M cached.",
+      "why_it_matters": "This is the third Chinese lab in one week to put major open weights on Hugging Face (Z.ai 8/25, Qwen 8/24-26, Tencent 8/27-28), and at 770B Apache 2.0 it is the closest thing yet to a same-tier, different-organization release for the open-weight frontier — direct evidence for trend #1. But treat capability claims as unverified: no public benchmark scores, one vendor-run blind test, and a preview badge. Serving teams get a vLLM recipe day-0; expect a real read on the model only when public harnesses (SWE-bench, Terminal-Bench) publish runs.",
+      "summary_zh": "腾讯发布并开源了下一代大模型 Hy4 预览版：770B 参数 MoE，每 token 激活 49B，上下文超过 1M token；以标准与 FP8 两种权重上架，许可证为 Apache 2.0（以 HF 标签为准，公告正文未写许可）。主打场景：软件工程（规划、调试、前端质量）、办公（金融与数据分析、跨文档协作）、游戏开发（一句自然语言生成可玩原型）与科学研究。公开 benchmark 证据很薄：仅一项腾讯内部盲测——163 名专家、203 个工程任务，Hy4 预览版 2.99/4.00，略高于 GLM-5.3（2.92）与 Kimi K3（2.94）。官方称模型参与了自己的训练流水线，并自优化推理系统使端到端吞吐提升 31.8%。完整版 Hy4 尚未发布——官方采用 preview-first 策略，下一批「很快」。API 经腾讯云 TokenHub 与 OpenRouter 提供：输入 $0.834/M、输出 $2.501/M、缓存 $0.042/M。",
+      "why_it_matters_zh": "这是一周内第三家在 Hugging Face 放出重要开源权重的中国实验室（Z.ai 8/25、Qwen 8/24-26、腾讯 8/27-28），770B + Apache 2.0 的组合也最接近「同级别、不同组织」的开源前沿发布——趋势 #1 的直接证据。但能力声称未经验证：没有公开 benchmark 分数、只有一项厂商自跑的盲测、且带 preview 标。服务团队有 day-0 的 vLLM recipe 可用；对模型的真实判断要等公开测试框架（SWE-bench、Terminal-Bench）跑出结果。",
+      "summary_en": "Tencent released and open-sourced Hy4 preview, its next-generation LLM: a 770B-parameter MoE with 49B active per token and a context window beyond 1M tokens, shipped as standard and FP8 weights under Apache 2.0 (per HF tags; the announcement itself names no license). Target uses are software engineering (planning, debugging, front-end quality), office work (financial and data analysis, cross-document collaboration), game development (playable prototypes from a single prompt) and scientific research. Public benchmark evidence is thin: one internal Tencent blind test with 163 experts over 203 engineering tasks scored Hy4 preview 2.99/4.00, slightly ahead of GLM-5.3 (2.92) and Kimi K3 (2.94). Tencent says the model assisted its own training pipeline and self-optimized its inference stack for a 31.8% end-to-end throughput gain. The full Hy4 is not released yet — a preview-first rollout with the next batch 'soon'. API access via Tencent Cloud TokenHub and OpenRouter at $0.834/M input, $2.501/M output, $0.042/M cached.",
+      "why_it_matters_en": "This is the third Chinese lab in one week to put major open weights on Hugging Face (Z.ai 8/25, Qwen 8/24-26, Tencent 8/27-28), and at 770B Apache 2.0 it is the closest thing yet to a same-tier, different-organization release for the open-weight frontier — direct evidence for trend #1. But treat capability claims as unverified: no public benchmark scores, one vendor-run blind test, and a preview badge. Serving teams get a vLLM recipe day-0; expect a real read on the model only when public harnesses (SWE-bench, Terminal-Bench) publish runs.",
+      "technical_details": {
+        "architecture": "770B total / 49B active MoE; context beyond 1M tokens",
+        "license": "Apache 2.0 per Hugging Face tags (announcement text names no license)",
+        "artifacts": "tencent/Hy4-preview + tencent/Hy4-preview-FP8 on HF (repos created 2026-08-27T08:52Z); ModelScope mirror; vLLM recipe day-0; downloads ~1.4k main + ~1.3k FP8, 283 likes @2026-08-30",
+        "eval": "internal blind test only: 163 experts, 203 engineering tasks; Hy4 preview 2.99/4.00 vs GLM-5.3 2.92, Kimi K3 2.94; no public benchmark scores (no SWE-bench/Terminal-Bench)",
+        "self_improvement": "model assisted its own training pipeline; self-optimized inference system +31.8% end-to-end throughput (vendor claim)",
+        "api": "Tencent Cloud TokenHub + OpenRouter; $0.834/M input, $2.501/M output, $0.042/M cached; free two weeks on WorkBuddy/CodeBuddy; Hy3 free extended to 2026-09-30",
+        "rollout": "preview-first; full Hy4 weights not yet released; next Hy4-series batch 'expected soon'"
+      },
+      "technical_details_zh": {
+        "架构": "770B 总参数 / 49B 激活 MoE；上下文超过 1M token",
+        "许可证": "以 Hugging Face 标签为准为 Apache 2.0（公告正文未写许可）",
+        "产物": "HF tencent/Hy4-preview + FP8（仓库 2026-08-27T08:52Z 创建）；ModelScope 镜像；day-0 vLLM recipe；截至 2026-08-30 主仓约 1.4k 下载、FP8 约 1.3k、283 likes",
+        "评测": "仅内部盲测：163 名专家、203 个工程任务；Hy4 预览版 2.99/4.00，GLM-5.3 2.92、Kimi K3 2.94；无公开 benchmark 分数（未上 SWE-bench/Terminal-Bench）",
+        "自我改进": "官方称模型参与自身训练流水线，并自优化推理系统使端到端吞吐 +31.8%（厂商声称）",
+        "API": "腾讯云 TokenHub + OpenRouter；输入 $0.834/M、输出 $2.501/M、缓存 $0.042/M；WorkBuddy/CodeBuddy 免费两周；Hy3 免费延长至 2026-09-30",
+        "节奏": "preview-first；完整版 Hy4 权重未发布；下一批 Hy4 系列「预计很快」"
+      },
+      "tags": [
+        "open-weights",
+        "moe",
+        "long-context",
+        "apache-2",
+        "coding",
+        "tencent"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "tencent-hy4-preview-open-weights"
+    },
+    {
+      "event_id": "ev-20260828-03",
+      "title": "OpenAI will cut off Cursor's bundled model access on November 12",
+      "title_zh": "OpenAI 将于 11 月 12 日切断 Cursor 的模型合同供应",
+      "category": "business",
+      "organization": [
+        "OpenAI",
+        "SpaceX",
+        "Anysphere"
+      ],
+      "published_at": "2026-08-28T00:00:00Z",
+      "published_at_note": "OpenAI post page metadata timestamp 2026-08-28T02:00 (timezone unstated); Chinese press summarizes it as announced 'August 28 local time'; CNBC follow-up 2026-08-29. Coverage-gap recovery: inside the previous run's window [2026-08-28T00:31:03Z, 2026-08-29T11:35:46Z] but missed then; first seen 2026-08-30 run.",
+      "first_seen_at": "2026-08-30T00:00:20Z",
+      "last_updated_at": "2026-08-30T00:00:20Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "secondary_sources": [
+        "https://www.cnbc.com/2026/08/29/openai-cursor-spacex-model-access.html",
+        "https://cybersecuritynews.com/openai-models-ends-with-cursor/"
+      ],
+      "summary": "OpenAI announced it has notified SpaceX that it intends to wind down the contract providing OpenAI models to Cursor, with a proposed shutoff date of 2026-11-12 — the maximum notice available under the agreement. The reason given: after SpaceX's $60B acquisition of Anysphere closed, OpenAI says it cannot be confident SpaceX will use its technology within the terms of service, citing prior experience with Musk companies (Twitter's ToS breach; Musk admitting under oath that xAI violated OpenAI's ToS). The custom agreement includes a limited change-of-control cancellation window; OpenAI says it will hold the cancellation to the latest possible date while declining to provide future models to Cursor — explicitly naming accountability concerns around the upcoming model Astra. Developers can keep using OpenAI models inside Cursor via their own API key (bring-your-own-key) or the Codex IDE extension.",
+      "why_it_matters": "This is the first major change-of-control fallout of the SpaceX-Cursor acquisition (ev-20260814-06), and it lands on every team using OpenAI models inside Cursor: migrate before 11/12 — BYOK preserves access but changes billing and support posture, and future OpenAI models (Astra) will not ship to Cursor at all. The broader lesson generalizes: model access resold through an intermediary is now exposed to change-of-control clauses, so map which of your tools depend on which vendor contracts before the next acquisition does it for you.",
+      "summary_zh": "OpenAI 宣布已通知 SpaceX：打算终止向 Cursor 提供 OpenAI 模型的合同，拟定切断日期 2026-11-12——这是协议下能给的最长通知期。给出的理由是：SpaceX 600 亿美元收购 Anysphere 交割后，OpenAI 表示无法确信 SpaceX 会在服务条款内使用其技术，并援引与马斯克系公司的既往经历（Twitter 违反 ToS；马斯克在宣誓作证时承认 xAI 违反过 OpenAI ToS）。这份定制协议含有限时的控制权变更取消窗口；OpenAI 称会把取消时点压到最后，但不再向 Cursor 提供未来的模型——明确点名了对即将发布的 Astra 的使用问责。开发者仍可在 Cursor 内通过自带 OpenAI API key（BYOK）或 Codex IDE 扩展继续使用 OpenAI 模型。",
+      "why_it_matters_zh": "这是 SpaceX 收购 Cursor（ev-20260814-06）后第一份实质性的控制权变更后果，直接砸在所有在 Cursor 里用 OpenAI 模型的团队头上：11/12 前完成迁移——BYOK 能保住访问但计费与支持口径会变，且未来的 OpenAI 模型（Astra）根本不会进 Cursor。更一般的教训：经中间商转售的模型访问，现在暴露在控制权变更条款之下；在下一次收购替你做决定之前，先盘点你的工具链各自依赖哪家厂商的合同。",
+      "summary_en": "OpenAI announced it has notified SpaceX that it intends to wind down the contract providing OpenAI models to Cursor, with a proposed shutoff date of 2026-11-12 — the maximum notice available under the agreement. The reason given: after SpaceX's $60B acquisition of Anysphere closed, OpenAI says it cannot be confident SpaceX will use its technology within the terms of service, citing prior experience with Musk companies (Twitter's ToS breach; Musk admitting under oath that xAI violated OpenAI's ToS). The custom agreement includes a limited change-of-control cancellation window; OpenAI says it will hold the cancellation to the latest possible date while declining to provide future models to Cursor — explicitly naming accountability concerns around the upcoming model Astra. Developers can keep using OpenAI models inside Cursor via their own API key (bring-your-own-key) or the Codex IDE extension.",
+      "why_it_matters_en": "This is the first major change-of-control fallout of the SpaceX-Cursor acquisition (ev-20260814-06), and it lands on every team using OpenAI models inside Cursor: migrate before 11/12 — BYOK preserves access but changes billing and support posture, and future OpenAI models (Astra) will not ship to Cursor at all. The broader lesson generalizes: model access resold through an intermediary is now exposed to change-of-control clauses, so map which of your tools depend on which vendor contracts before the next acquisition does it for you.",
+      "technical_details": {
+        "decision": "wind down the Cursor model contract; proposed shutoff 2026-11-12; maximum notice under the agreement",
+        "mechanism": "custom agreement has a limited change-of-control cancellation window; cancellation held to the latest date; future models (Astra named) not provided to Cursor",
+        "stated_reason": "cannot be confident SpaceX will stay within ToS, citing Twitter ToS breach and Musk's under-oath admission that xAI violated OpenAI ToS",
+        "workarounds": "bring-your-own OpenAI API key inside Cursor; Codex IDE extension; ~4 years of partnership predates the split",
+        "context": "SpaceX acquired Anysphere (Cursor) for $60B, closed 2026-08-14 (ev-20260814-06); SpaceX-xAI merger was 2026-02-02"
+      },
+      "technical_details_zh": {
+        "决定": "终止 Cursor 模型合同；拟定切断日期 2026-11-12；为协议下的最长通知期",
+        "机制": "定制协议含限时的控制权变更取消窗口；取消时点压到最后；未来模型（点名 Astra）不再提供给 Cursor",
+        "官方理由": "无法确信 SpaceX 会在 ToS 内使用技术，援引 Twitter 违反 ToS 与马斯克宣誓承认 xAI 违反 OpenAI ToS",
+        "替代路径": "Cursor 内自带 OpenAI API key（BYOK）；Codex IDE 扩展；双方合作已近 4 年",
+        "背景": "SpaceX 以 600 亿美元收购 Anysphere（Cursor），2026-08-14 交割（ev-20260814-06）；SpaceX 与 xAI 合并于 2026-02-02"
+      },
+      "tags": [
+        "openai",
+        "cursor",
+        "spacex",
+        "model-access",
+        "change-of-control",
+        "developer-ecosystem"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 3,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 1,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "openai-cursor-model-contract-windown"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "description": "Event index for dedup and cross-run lookup. Key by event_fingerprint.",
-  "last_updated": "2026-08-29T11:35:46Z",
-  "total_events": 47,
+  "last_updated": "2026-08-30T00:00:20Z",
+  "total_events": 52,
   "events": [
     {
       "event_id": "ev-20260813-01",
@@ -313,6 +313,10 @@
         {
           "date": "2026-08-20",
           "note": "watch items still unmet (pricing/independent benchmarks/shipment; no MLPerf); Next Platform detail: overclocked WSE-3, same 900k cores, clock 1.4->2.8 GHz — consistent with SemiAnalysis power/clock/density reading"
+        },
+        {
+          "date": "2026-08-30",
+          "note": "Hot Chips 2026 deep dive (Cerebras blog, 2026-08-25; coverage-gap recovery, first seen 2026-08-30 run): CS-5 (2027) targets up to 10k tok/s/user on open models, 5k on multi-T models, 3M tok/s per MW; CS-6 = wafer-scale SRAM + 3D-stacked DRAM, order-of-magnitude smaller footprint; CS-4 power-delivery detail. Watch items (pricing/independent benchmarks/shipment) still unmet; stays WATCH"
         }
       ]
     },
@@ -563,6 +567,19 @@
       "file": "events/2026-08-25.json"
     },
     {
+      "event_id": "ev-20260825-03",
+      "fingerprint": "openai-jalapeno-first-benchmark-results",
+      "title": "OpenAI Jalapeño chip first benchmark results",
+      "date": "2026-08-25",
+      "orgs": [
+        "OpenAI",
+        "Broadcom"
+      ],
+      "category": "infrastructure",
+      "file": "events/2026-08-25.json",
+      "note": "coverage-gap recovery: presented at Hot Chips 2026-08-25 inside the previous window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z], first seen 2026-08-30 run. InferenceX: 1.5-1.9x per-watt work, 1.7-3.6x lower latency vs GB200/GB300; end-2026 small-volume deployment"
+    },
+    {
       "event_id": "ev-20260826-01",
       "fingerprint": "arxiv-2608-23041-autosaddler-harness-optimization",
       "title": "AutoSaddler: automatic harness optimization from failure traces",
@@ -607,7 +624,25 @@
       ],
       "category": "foundation-model",
       "file": "events/2026-08-26.json",
-      "note": "coverage-gap recovery: HF repo created 2026-08-24T08:24Z inside the previous run's window, public listing dated 8/26; first seen 2026-08-29 run. Hybrid Gated DeltaNet + Qwen Sparse Attention (~180B, 6B active), 262k ctx; custom qwen-community-1.0 license; 52k downloads / 4d"
+      "note": "coverage-gap recovery: HF repo created 2026-08-24T08:24Z inside the previous run's window, public listing dated 8/26; first seen 2026-08-29 run. Hybrid Gated DeltaNet + Qwen Sparse Attention (~180B, 6B active), 262k ctx; custom qwen-community-1.0 license; 52k downloads / 4d",
+      "updates": [
+        {
+          "date": "2026-08-30",
+          "note": "Production counterpart verified (prior watch item): Qwen3.8-Flash = API-only production version, live on QwenCloud/Model Studio/OpenRouter since launch week, 1M default context, $0.15/$0.47 per M (caching discount); open-weights side remains Flash-Next (custom license). Adoption: 52,341 dl + 4,287 likes (30d pool unchanged). Recommendation stays WATCH"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20260826-05",
+      "fingerprint": "vllm-v0-28-0-release",
+      "title": "vLLM 0.28.0 (Kimi-K3 / DeepSeek V4 serving push)",
+      "date": "2026-08-26",
+      "orgs": [
+        "vLLM Project"
+      ],
+      "category": "open-source",
+      "file": "events/2026-08-26.json",
+      "note": "coverage-gap recovery: GitHub release 2026-08-26T09:46Z inside the previous window, first seen 2026-08-30 run. ADOPT with breaking-change note (bitsandbytes out-of-tree, Transformers 5.15.0)"
     },
     {
       "event_id": "ev-20260827-01",
@@ -636,6 +671,19 @@
       "note": "coverage-gap recovery: published 8/27 inside the previous run's window, missed then; first seen 2026-08-29 run"
     },
     {
+      "event_id": "ev-20260827-03",
+      "fingerprint": "nvidia-hugging-face-acquisition-12-9b",
+      "title": "Report: Nvidia agrees to buy Hugging Face for $12.9B",
+      "date": "2026-08-27",
+      "orgs": [
+        "Nvidia",
+        "Hugging Face"
+      ],
+      "category": "business",
+      "file": "events/2026-08-27.json",
+      "note": "coverage-gap recovery: The Information 8/27, Reuters/CNBC 8/27-28; press-sourced, no official statement as of 2026-08-30; first seen 2026-08-30 run"
+    },
+    {
       "event_id": "ev-20260828-01",
       "fingerprint": "anthropic-automated-alignment-researchers-2026-08",
       "title": "Anthropic automated alignment researchers close 85% of deception gap",
@@ -645,6 +693,32 @@
       ],
       "category": "research",
       "file": "events/2026-08-28.json"
+    },
+    {
+      "event_id": "ev-20260828-02",
+      "fingerprint": "tencent-hy4-preview-open-weights",
+      "title": "Tencent Hy4 preview open weights (770B MoE, Apache 2.0)",
+      "date": "2026-08-28",
+      "orgs": [
+        "Tencent"
+      ],
+      "category": "foundation-model",
+      "file": "events/2026-08-28.json",
+      "note": "coverage-gap recovery: official announcement dated 8/28 (HF repos created 8/27T08:52Z) inside the previous run's window, first seen 2026-08-30 run; HN front page 8/29T19:33Z. 770B/49B active, >1M context, Apache 2.0; vendor blind test only (2.99 vs GLM-5.3 2.92, Kimi K3 2.94); trend #1 evidence item 9"
+    },
+    {
+      "event_id": "ev-20260828-03",
+      "fingerprint": "openai-cursor-model-contract-windown",
+      "title": "OpenAI winds down Cursor model contract (Nov 12 shutoff)",
+      "date": "2026-08-28",
+      "orgs": [
+        "OpenAI",
+        "SpaceX",
+        "Anysphere"
+      ],
+      "category": "business",
+      "file": "events/2026-08-28.json",
+      "note": "coverage-gap recovery: OpenAI post dated 8/28 (page metadata 02:00, tz unstated) inside the previous run's window, first seen 2026-08-30 run. Change-of-control trigger; future models (Astra) excluded; BYOK/Codex-extension workarounds"
     },
     {
       "event_id": "ev-20260829-01",
@@ -718,13 +792,18 @@
     "nvidia-poolside-open-weight-model-deal",
     "zai-glm-5-3-flash-320b-a18b-open-weights",
     "google-gemini-cli-a2a-server-stable",
+    "openai-jalapeno-first-benchmark-results",
+    "vllm-v0-28-0-release",
     "arxiv-2608-23041-autosaddler-harness-optimization",
     "arxiv-2608-23078-agentweave-tool-routing",
     "arxiv-2608-22960-scae-process-eval-coding-agents",
     "qwen3-8-flash-next-open-weights-architecture-preview",
+    "nvidia-hugging-face-acquisition-12-9b",
     "anthropic-model-hardware-standard-preview",
     "google-gemini-omni-1-1-flash-ga",
     "anthropic-automated-alignment-researchers-2026-08",
+    "tencent-hy4-preview-open-weights",
+    "openai-cursor-model-contract-windown",
     "arxiv-2608-27146-sara-action-authorization-split",
     "arxiv-2608-27311-harnesslens-budget-aware-harness-evolution",
     "arxiv-2608-27128-twinkv-eviction-repair-pass"

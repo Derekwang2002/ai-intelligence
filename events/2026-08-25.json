@@ -1,6 +1,6 @@
 {
   "date": "2026-08-25",
-  "provenance": "Captured by 2026-08-28T00:31:03Z run (scan window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z]). GLM-5.3-Flash verified via Hugging Face API (repo createdAt 2026-08-25T06:45:05Z, MIT license, model card) plus z.ai official blog; Gemini CLI a2a-server verified via GitHub release tag v0.57.0 (published 2026-08-25T18:37:14Z, packages/a2a-server in tag tree) and npm registry (@google/gemini-cli-a2a-server@0.57.0).",
+  "provenance": "Captured by 2026-08-28T00:31:03Z run (scan window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z]). GLM-5.3-Flash verified via Hugging Face API (repo createdAt 2026-08-25T06:45:05Z, MIT license, model card) plus z.ai official blog; Gemini CLI a2a-server verified via GitHub release tag v0.57.0 (published 2026-08-25T18:37:14Z, packages/a2a-server in tag tree) and npm registry (@google/gemini-cli-a2a-server@0.57.0). Appended by 2026-08-30T00:00:20Z run: ev-20260825-03 (OpenAI Jalapeño first results, Hot Chips 2026-08-25) recovered as a coverage gap from the same window.",
   "events": [
     {
       "event_id": "ev-20260825-01",
@@ -124,6 +124,63 @@
       "risk": 3,
       "recommendation": "WATCH",
       "event_fingerprint": "google-gemini-cli-a2a-server-stable"
+    },
+    {
+      "event_id": "ev-20260825-03",
+      "title": "OpenAI's Jalapeño chip posts first benchmark wins over Nvidia systems",
+      "title_zh": "OpenAI 自研推理芯片 Jalapeño 首批实测领先 Nvidia 同类",
+      "category": "infrastructure",
+      "organization": [
+        "OpenAI",
+        "Broadcom"
+      ],
+      "published_at": "2026-08-25T00:00:00Z",
+      "published_at_note": "Presented at Hot Chips 2026 on 2026-08-25; OpenAI news listing and TechCrunch coverage dated 2026-08-25 (page metadata shows a 2026-08-28 update timestamp). Coverage-gap recovery: inside the previous window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z] but not captured then; first seen 2026-08-30 run.",
+      "first_seen_at": "2026-08-30T00:00:20Z",
+      "last_updated_at": "2026-08-30T00:00:20Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/jalapeno-first-results/",
+      "secondary_sources": [
+        "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+        "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/"
+      ],
+      "summary": "Jalapeño is OpenAI's first custom inference chip, designed with Broadcom (unveiled 2026-06-24, TSMC 3nm, roughly a nine-month design cycle with AI assistance). At Hot Chips on 2026-08-25 OpenAI presented first results on the public SemiAnalysis InferenceX benchmark: against Nvidia GB200 and GB300 systems, Jalapeño delivered 1.5-1.9x more AI work per watt at peak and 1.7-3.6x lower end-to-end latency, with 2.1-4.1x higher performance for interactive workloads (GPT-OSS on GB200; DeepSeek R1 and Kimi K2.5 on GB300 as comparison points). The chip is rated at 700W and sustains at most 550W in production profiles. AI-generated kernels beat human experts by 1.5-1.8x on selected blocks of the stack. First deployment is planned for the end of 2026 in very small volumes, with second- and third-generation parts on the roadmap; Nvidia GPUs remain the bulk of OpenAI's fleet.",
+      "why_it_matters": "These are vendor-presented numbers, but on a public, independently defined benchmark rather than an in-house suite — a step more verifiable than most chip launches. If the per-watt lead holds at deployment, OpenAI's own inference cost trajectory decouples from Nvidia's pricing, and first-generation custom ASICs for LLM serving will have beaten current flagship GPUs on efficiency. Infra teams should watch end-of-2026 deployment and second-gen scaling before drawing architecture conclusions.",
+      "summary_zh": "Jalapeño 是 OpenAI 的第一颗自研推理芯片，与 Broadcom 合作设计（6 月 24 日首发，TSMC 3nm，借助 AI 约九个月完成设计）。8 月 25 日在 Hot Chips 上，OpenAI 给出公开的 SemiAnalysis InferenceX 基准首批结果：对比 Nvidia GB200 与 GB300 系统，Jalapeño 峰值每瓦多完成 1.5-1.9 倍的 AI 工作，端到端延迟低 1.7-3.6 倍，交互式负载性能高 2.1-4.1 倍（对比负载：GB200 跑 GPT-OSS，GB300 跑 DeepSeek R1 与 Kimi K2.5）。芯片额定 700W，生产档持续功耗不超过 550W。AI 生成的 kernel 在部分模块上比人类专家快 1.5-1.8 倍。计划 2026 年底以很小批量首次部署，后续有第二代、第三代路线图；Nvidia GPU 仍是 OpenAI 算力的主体。",
+      "why_it_matters_zh": "数字由厂商发布，但跑在公开、独立定义的基准上，比大多数芯片发布更可验证。如果每瓦优势在部署后保持，OpenAI 自有推理成本曲线将与 Nvidia 定价脱钩，也意味着第一代 LLM 推理专用 ASIC 已经在能效上超过当前旗舰 GPU。基础设施团队应等年底部署与第二代扩展数据出来，再下架构结论。",
+      "summary_en": "Jalapeño is OpenAI's first custom inference chip, designed with Broadcom (unveiled 2026-06-24, TSMC 3nm, roughly a nine-month design cycle with AI assistance). At Hot Chips on 2026-08-25 OpenAI presented first results on the public SemiAnalysis InferenceX benchmark: against Nvidia GB200 and GB300 systems, Jalapeño delivered 1.5-1.9x more AI work per watt at peak and 1.7-3.6x lower end-to-end latency, with 2.1-4.1x higher performance for interactive workloads (GPT-OSS on GB200; DeepSeek R1 and Kimi K2.5 on GB300 as comparison points). The chip is rated at 700W and sustains at most 550W in production profiles. AI-generated kernels beat human experts by 1.5-1.8x on selected blocks of the stack. First deployment is planned for the end of 2026 in very small volumes, with second- and third-generation parts on the roadmap; Nvidia GPUs remain the bulk of OpenAI's fleet.",
+      "why_it_matters_en": "These are vendor-presented numbers, but on a public, independently defined benchmark rather than an in-house suite — a step more verifiable than most chip launches. If the per-watt lead holds at deployment, OpenAI's own inference cost trajectory decouples from Nvidia's pricing, and first-generation custom ASICs for LLM serving will have beaten current flagship GPUs on efficiency. Infra teams should watch end-of-2026 deployment and second-gen scaling before drawing architecture conclusions.",
+      "technical_details": {
+        "benchmark": "SemiAnalysis InferenceX (public methodology); comparison systems Nvidia GB200 (GPT-OSS) and GB300 (DeepSeek R1, Kimi K2.5)",
+        "results": "1.5-1.9x more AI work per watt at peak; 1.7-3.6x lower end-to-end latency; 2.1-4.1x higher performance on interactive workloads",
+        "power": "rated 700W; sustained <=550W in production profiles",
+        "design": "with Broadcom; unveiled 2026-06-24; TSMC 3nm; ~9-month design cycle with AI assistance; AI-generated kernels 1.5-1.8x faster than human experts on selected blocks",
+        "deployment": "end of 2026 in very small volumes; Gen2/Gen3 roadmap; Nvidia GPUs remain the bulk of OpenAI capacity",
+        "venue": "Hot Chips 2026, 2026-08-25"
+      },
+      "technical_details_zh": {
+        "基准": "SemiAnalysis InferenceX（方法学公开）；对照系统为 Nvidia GB200（跑 GPT-OSS）与 GB300（跑 DeepSeek R1、Kimi K2.5）",
+        "结果": "峰值每瓦 AI 工作量 1.5-1.9 倍；端到端延迟低 1.7-3.6 倍；交互式负载性能高 2.1-4.1 倍",
+        "功耗": "额定 700W；生产档持续 <=550W",
+        "设计": "与 Broadcom 合作；2026-06-24 首发；TSMC 3nm；借 AI 约 9 个月完成设计；AI 生成 kernel 在选定模块上比人类专家快 1.5-1.8 倍",
+        "部署": "2026 年底很小批量首 deploy；有 Gen2/Gen3 路线图；OpenAI 算力主体仍是 Nvidia GPU",
+        "场合": "Hot Chips 2026，2026-08-25"
+      },
+      "tags": [
+        "inference-chip",
+        "custom-silicon",
+        "broadcom",
+        "benchmark",
+        "inference-infrastructure"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "openai-jalapeno-first-benchmark-results"
     }
   ]
 }
