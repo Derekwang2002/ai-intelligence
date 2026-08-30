@@ -683,11 +683,22 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   font-size: 17px;
   font-weight: 700;
   color: var(--text);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+/* 与 .section-title 一致的延伸发丝线 */
+.quad-head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  align-self: center;
 }
 /* 雷达区内的小节标题（领域 × 日期矩阵） */
 .chart-sub { margin: 30px 0 10px; }
 
-/* ============ 雷达总览（时间分布泳道图） ============ */
+/* ============ 雷达总览（象限雷达图 + 编号清单） ============ */
 /* 图例行（交互提示 + 筛选 chips）夹在章节标题与图之间 */
 .radar-overview-head {
   display: flex;
@@ -701,23 +712,50 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .radar-filters { display: inline-flex; gap: 8px; flex-wrap: wrap; }
 .radar-filters .fchip { cursor: pointer; }
 
+/* 图 + 清单同一行；清单内部再分两栏压缩高度，避免图下方留白 */
+.radar-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+
 .radar-overview { padding: 18px 22px 12px; }
 .radar-figure { margin: 2px auto 0; }
 .radar-svg { width: 100%; height: auto; display: block; user-select: none; }
 .radar-svg .axis-line { stroke: var(--border); stroke-width: 1; }
-/* 等级泳道标签（图内左侧）与象限色块（图注）是聚焦控制器 */
+/* 扇区淡色底：仅作分区提示，深浅主题都用极低不透明度 */
+.radar-svg .wedge { opacity: 0.07; }
+/* 环标签（底部轴线上）与象限标签（扇区外角）是聚焦控制器 */
 .radar-svg .r-filter { cursor: pointer; transition: opacity 0.15s var(--ease); }
 .radar-svg .r-filter:hover, .radar-svg .r-filter.active { fill: var(--accent); opacity: 1; }
 .radar-svg .r-filter.dim { opacity: 0.35; }
-.q-chip { cursor: pointer; transition: opacity 0.15s var(--ease), color 0.15s var(--ease); }
-.q-chip:hover, .q-chip.active { color: var(--accent); }
-.q-chip.dim { opacity: 0.4; }
+.radar-svg .b-ring {
+  fill: var(--text-faint);
+  font-size: 10.5px;
+  font-weight: 700;
+  font-family: var(--mono);
+  letter-spacing: 0.12em;
+  dominant-baseline: central;
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 5;
+}
+.radar-svg .q-label {
+  fill: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 600;
+  dominant-baseline: central;
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 5;
+}
+.q-filter { cursor: pointer; transition: opacity 0.15s var(--ease), fill 0.15s var(--ease); }
+.radar-svg .q-filter:hover, .radar-svg .q-filter.active { fill: var(--accent); }
+.radar-svg .q-filter.dim { opacity: 0.4; }
 .radar-svg .blip { cursor: pointer; transition: opacity 0.2s var(--ease); }
 .radar-svg .blip.dim { opacity: 0.12; pointer-events: none; }
 .radar-svg .blip .dot { stroke: var(--bg); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; transition: transform 0.15s var(--ease); }
 .radar-svg .blip .halo { fill: none; opacity: 0; transition: opacity 0.15s var(--ease); }
-.radar-svg .blip:hover .dot { transform: scale(1.18); }
-.radar-svg .blip:hover .halo { opacity: 0.5; }
+.radar-svg .blip:hover .dot, .radar-svg .blip.hl .dot { transform: scale(1.18); }
+.radar-svg .blip:hover .halo, .radar-svg .blip.hl .halo { opacity: 0.5; }
+/* 光点内编号：与右侧清单一一对应 */
+.radar-svg .bl-no { fill: var(--bg); font-size: 9px; font-weight: 700; font-family: var(--mono); pointer-events: none; }
 /* 悬停名称标签：默认隐藏，hover 时浮现 */
 .radar-svg .bl-tag { opacity: 0; transition: opacity 0.12s var(--ease); pointer-events: none; }
 .radar-svg .blip:hover .bl-tag { opacity: 1; }
@@ -730,18 +768,6 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   70% { opacity: 0; transform: scale(1.8); }
   100% { opacity: 0; transform: scale(1.8); }
 }
-/* 泳道图：日期网格虚线 + 轴刻度 + 左侧等级泳道标签 */
-.radar-svg .b-grid { stroke: var(--border); stroke-width: 1; stroke-dasharray: 3 5; }
-.radar-svg .b-tick { fill: var(--text-faint); font-size: 13px; font-family: var(--mono); }
-.radar-svg .b-lane {
-  fill: var(--text-faint);
-  font-size: 13px;
-  font-weight: 700;
-  font-family: var(--mono);
-  letter-spacing: 0.12em;
-  text-anchor: end;
-  dominant-baseline: central;
-}
 /* 图下注脚 */
 .chart-note {
   margin: 10px 4px 6px;
@@ -752,6 +778,52 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   text-align: center;
 }
 .chart-sw { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin: 0 5px 0 2px; }
+
+/* 雷达编号清单：按象限分组、内部两栏排布，编号圆点用建议色；允许组跨栏以平衡栏高 */
+.radar-list { columns: 2; column-gap: 18px; }
+.rl-group { margin-bottom: 16px; }
+.rl-head {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  margin: 0 0 8px;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+.rl-head .rl-count { margin-left: auto; font-family: var(--mono); font-size: 11px; font-weight: 400; color: var(--text-faint); }
+.rl-items { display: flex; flex-direction: column; }
+.rl-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 3px 5px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: background-color 0.12s var(--ease), opacity 0.2s var(--ease);
+}
+.rl-item:hover { background: var(--surface-2); color: var(--text); text-decoration: none; }
+.rl-item.dim { opacity: 0.25; pointer-events: none; }
+.rl-no {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--bg);
+  position: relative;
+  top: -1px;
+}
+.rl-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rl-item:hover .rl-label { white-space: normal; }
+.rl-date { margin-left: auto; flex-shrink: 0; font-family: var(--mono); font-size: 10.5px; color: var(--text-faint); }
 
 /* ============ trends ============ */
 
@@ -815,6 +887,21 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .ins-anchors { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
 /* 章节标题里内嵌小图例时允许换行（窄屏） */
 .section-title.has-extra { flex-wrap: wrap; row-gap: 10px; }
+/* 章节标题下的一句话读法说明 */
+.sec-intro { margin: -6px 0 18px; font-size: 13.5px; color: var(--text-muted); max-width: 72ch; }
+
+/* 趋势区：主栏 = 活跃趋势卡片，右栏 = 快照日历 + 退役趋势 */
+.trend-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start; }
+.trend-rail { display: flex; flex-direction: column; gap: 26px; }
+.trend-rail .cal-wrap { flex-direction: column; }
+.trend-sub .quad-head { margin-bottom: 10px; }
+.trend-rail .stack { gap: 10px; }
+@media (max-width: 960px) {
+  .trend-layout { grid-template-columns: 1fr; }
+  .radar-layout { grid-template-columns: 1fr; }
+  .radar-layout .radar-overview { margin-bottom: 20px; }
+}
+@media (max-width: 700px) { .radar-list { columns: 1; } }
 
 /* ============ trends snapshot calendar ============ */
 /* 历史快照用月历呈现：有快照的日期为可点击的 accent 格，其余为静默日期 */

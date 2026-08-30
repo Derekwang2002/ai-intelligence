@@ -70,7 +70,6 @@ const snapMonths = monthKeys.map((mk) => {
     <nav class="ins-anchors" aria-label={t(locale, 'insights.sec.aria')}>
       <a class="fchip" href="#trends">{t(locale, 'insights.anchor.trends')}</a>
       <a class="fchip" href="#radar">{t(locale, 'insights.anchor.radar')}</a>
-      <a class="fchip" href="#archive">{t(locale, 'insights.anchor.archive')}</a>
     </nav>
   </div>
 
@@ -88,7 +87,8 @@ const snapMonths = monthKeys.map((mk) => {
       </span>
     </div>
 
-    <div class="stack">
+    <div class="trend-layout">
+      <div class="stack">
       {active.map((tr: any) => {
         const note = loc(tr, 'statusNote', locale);
         const showNote = note && note.toLowerCase() !== tr.status;
@@ -134,6 +134,51 @@ const snapMonths = monthKeys.map((mk) => {
           </details>
         );
       })}
+      </div>
+
+      <aside class="trend-rail">
+      {trends.snapshots.length > 0 && (
+      <div class="trend-sub">
+        <h3 class="quad-head">{t(locale, 'insights.archiveSnapshots')}</h3>
+        <p class="chart-note" style="text-align: left; margin: 0 2px 14px;">{t(locale, 'insights.archiveSnapNote')}</p>
+        <div class="cal-wrap">
+        {snapMonths.map((m) => (
+          <div class="card cal-block">
+            <div class="cal-head">{m.label}</div>
+            <div class="cal-grid">
+              {WEEKDAYS.map((w) => <span class="cal-wd">{w}</span>)}
+              {m.cells.map((c) =>
+                c === null ? (
+                  <span class="cal-day"></span>
+                ) : c.has ? (
+                  <a class="cal-day" href={u(`/trends/archive/${c.date}/`, locale)} aria-label={`${c.date} · ${t(locale, 'trends.viewSnapshot').replace(/ →$/, '')}`}>{c.day}</a>
+                ) : (
+                  <span class="cal-day">{c.day}</span>
+                )
+              )}
+            </div>
+          </div>
+        ))}
+        </div>
+      </div>
+    )}
+
+    {retired.length > 0 && (
+      <div class="trend-sub">
+        <h3 class="quad-head">{t(locale, 'insights.archiveRetired')}</h3>
+        <div class="stack">
+          {retired.map((tr: any) => (
+            <article class="card trend-card" style="opacity: 0.68;">
+              <div class="head" style="padding: 16px 24px;">
+                <h3>{loc(tr, 'name', locale)}</h3>
+                <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+      </aside>
     </div>
   </section>
 
@@ -142,6 +187,7 @@ const snapMonths = monthKeys.map((mk) => {
       {t(locale, 'insights.sec.radar')}
       <span class="count">{uniqueCount}</span>
     </div>
+    <p class="sec-intro">{t(locale, 'insights.radarIntro')}</p>
     <RadarChart events={events} locale={locale} />
 
     <h3 class="quad-head chart-sub">{t(locale, 'insights.matrix')}</h3>
@@ -175,52 +221,6 @@ const snapMonths = monthKeys.map((mk) => {
         </tbody>
       </table>
     </div>
-  </section>
-
-  <section class="ins-sec" id="archive">
-    <div class="section-title">{t(locale, 'insights.sec.archive')}</div>
-
-    {retired.length > 0 && (
-      <>
-        <h3 class="quad-head">{t(locale, 'insights.archiveRetired')}</h3>
-        <div class="stack" style="margin-bottom: 34px;">
-          {retired.map((tr: any) => (
-            <article class="card trend-card" style="opacity: 0.68;">
-              <div class="head" style="padding: 16px 24px;">
-                <h3>{loc(tr, 'name', locale)}</h3>
-                <span class={`status-pill st-${tr.status}`}>{tr.status}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </>
-    )}
-
-    {trends.snapshots.length > 0 && (
-      <>
-        <h3 class="quad-head">{t(locale, 'insights.archiveSnapshots')}</h3>
-        <p class="chart-note" style="text-align: left; margin: 0 2px 14px;">{t(locale, 'insights.archiveSnapNote')}</p>
-        <div class="cal-wrap">
-        {snapMonths.map((m) => (
-          <div class="card cal-block">
-            <div class="cal-head">{m.label}</div>
-            <div class="cal-grid">
-              {WEEKDAYS.map((w) => <span class="cal-wd">{w}</span>)}
-              {m.cells.map((c) =>
-                c === null ? (
-                  <span class="cal-day"></span>
-                ) : c.has ? (
-                  <a class="cal-day" href={u(`/trends/archive/${c.date}/`, locale)} aria-label={`${c.date} · ${t(locale, 'trends.viewSnapshot').replace(/ →$/, '')}`}>{c.day}</a>
-                ) : (
-                  <span class="cal-day">{c.day}</span>
-                )
-              )}
-            </div>
-          </div>
-        ))}
-        </div>
-      </>
-    )}
   </section>
 
   <script>
