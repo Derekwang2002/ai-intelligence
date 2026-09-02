@@ -126,6 +126,10 @@ const zh = {
   'daily.newer': '较新',
   'daily.older': '较旧',
   'daily.toc': '本页目录',
+  'daily.kindNew': '新事件',
+  'daily.kindUpdate': '更新',
+  'daily.itemCount': '{n} 条要点',
+  'daily.moreItems': '+{n} 条要点',
 
   'events.title': '事件',
   'events.en': 'Events Timeline',
@@ -304,6 +308,10 @@ const en: Record<UiKey, string> = {
   'daily.newer': 'Newer',
   'daily.older': 'Older',
   'daily.toc': 'On this page',
+  'daily.kindNew': 'New',
+  'daily.kindUpdate': 'Update',
+  'daily.itemCount': '{n} highlights',
+  'daily.moreItems': '+{n} more',
 
   'events.title': 'Events',
   'events.en': 'Events Timeline',
