@@ -1,0 +1,259 @@
+{
+  "date": "2026-09-02",
+  "provenance": "Captured by 2026-09-02T00:01:14Z run (scan window [2026-08-31T00:00:24Z, 2026-09-02T00:01:14Z]). Research items are from the Wed 2 Sep digest (Monday 8/31 + Tuesday 9/1 submissions), which the arXiv API/listing indexed right around the window boundary: WHALE = 2609.00196, CacheBridge = 2609.00891, Calibration = 2609.00949, Irreversibility Budget = 2609.00275, Instella-MoE = 2609.00791. The digest was still propagating at retrieval time (listing topped out ~2609.01604); the next run should re-sweep ids above that.",
+  "events": [
+    {
+      "event_id": "ev-20260902-01",
+      "title": "WHALE co-optimizes model weights and the agent harness",
+      "title_zh": "WHALE：把模型权重与 agent harness 放在一起协同优化",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-02T00:00:00Z",
+      "first_seen_at": "2026-09-02T00:01:14Z",
+      "last_updated_at": "2026-09-02T00:01:14Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.00196",
+      "secondary_sources": [
+        "https://arxiv.org/abs/2609.01437",
+        "https://arxiv.org/abs/2609.00829"
+      ],
+      "summary": "WHALE (Weight-Harness Alternating LEarning, arXiv 2609.00196, Wed 2 Sep digest) alternates two phases: updating the model under the current harness (online rejection-sampling fine-tuning), then searching for a better harness under the updated model. The premise is that agent performance depends jointly on weights and executable harness code, so optimizing either in isolation leaves the system bottlenecked by the frozen counterpart — weight updates change which harness is effective, and harness updates change which model capabilities get exposed. Prior joint-adaptation work optimized weights and textual prompts but left the broader harness fixed.",
+      "why_it_matters": "This extends the harness-optimization line the KB has tracked since AutoSaddler (8/26) and HarnessLens (8/29) from prompt-and-tool search into weight territory. If you fine-tune agents for production, the practical warning is direct: a harness tuned for the old checkpoint can silently waste the gains of a new one, so harness re-tuning belongs in the same release cadence as model updates. The same digest also carries HarnessDev (2609.01437, LLMs creating and evolving their own harness) and HarnessEvolve (2609.00829, reference-trajectory learning for reliable self-evolution) — four harness-focused papers in three digests.",
+      "summary_zh": "WHALE（Weight-Harness Alternating LEarning，arXiv 2609.00196，9 月 2 日周三 digest）在两个阶段间交替：在当前 harness 下更新模型（在线拒绝采样微调），再在更新后的模型上搜索更好的 harness。出发点是 agent 表现同时取决于权重与可执行的 harness 代码，单独优化任何一方都会被冻结的另一方卡住——权重更新会改变哪个 harness 有效，harness 更新也会改变哪些模型能力被暴露出来。既有的联合适配工作只优化权重与文本提示，不碰更广义的 harness。",
+      "summary_en": "WHALE (Weight-Harness Alternating LEarning, arXiv 2609.00196, Wed 2 Sep digest) alternates two phases: updating the model under the current harness (online rejection-sampling fine-tuning), then searching for a better harness under the updated model. The premise is that agent performance depends jointly on weights and executable harness code, so optimizing either in isolation leaves the system bottlenecked by the frozen counterpart — weight updates change which harness is effective, and harness updates change which model capabilities get exposed. Prior joint-adaptation work optimized weights and textual prompts but left the broader harness fixed.",
+      "why_it_matters_zh": "这把知识库自 AutoSaddler（8/26）、HarnessLens（8/29）以来追踪的 harness 优化路线从提示与工具搜索推进到了权重层面。对为生产微调 agent 的团队，警示很直接：为旧 checkpoint 调好的 harness 会悄悄浪费新模型的红利，harness 重调应该和模型更新放在同一个发布节奏里。同期 digest 还有 HarnessDev（2609.01437，LLM 创建并演化自己的 harness）与 HarnessEvolve（2609.00829，用参考轨迹做可靠自演化）——三个 digest 里出现了四篇 harness 主题论文。",
+      "why_it_matters_en": "This extends the harness-optimization line the KB has tracked since AutoSaddler (8/26) and HarnessLens (8/29) from prompt-and-tool search into weight territory. If you fine-tune agents for production, the practical warning is direct: a harness tuned for the old checkpoint can silently waste the gains of a new one, so harness re-tuning belongs in the same release cadence as model updates. The same digest also carries HarnessDev (2609.01437, LLMs creating and evolving their own harness) and HarnessEvolve (2609.00829, reference-trajectory learning for reliable self-evolution) — four harness-focused papers in three digests.",
+      "technical_details": {
+        "arxiv": "2609.00196, announced in the Wed 2 Sep 2026 digest",
+        "mechanism": "alternating optimization: (1) update model under current harness via online rejection-sampling fine-tuning; (2) search for a better harness under the updated model (instantiated with Meta-Harness)",
+        "premise": "weights and harness co-determine performance; frozen-counterpart bottleneck; prior joint adaptation covered weights + textual prompts only",
+        "cluster": "harness-focused run: AutoSaddler (2608.23041, 8/26), HarnessLens (2608.27311, 8/29), HarnessDev (2609.01437), HarnessEvolve (2609.00829), EvoUndo (2608.28363, 8/31 digest)"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.00196，2026 年 9 月 2 日周三 digest 宣告",
+        "机制": "交替优化：(1) 在当前 harness 下用在线拒绝采样微调更新模型；(2) 在更新后的模型上搜索更好的 harness（用 Meta-Harness 实例化）",
+        "前提": "权重与 harness 共同决定表现；冻结另一方会成为瓶颈；既有联合适配只覆盖权重 + 文本提示",
+        "同主题序列": "harness 专题连续出现：AutoSaddler（2608.23041，8/26）、HarnessLens（2608.27311，8/29）、HarnessDev（2609.01437）、HarnessEvolve（2609.00829）、EvoUndo（2608.28363，8/31 digest）"
+      },
+      "tags": [
+        "harness-optimization",
+        "fine-tuning",
+        "agent",
+        "co-optimization",
+        "self-evolution"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609-00196-whale-joint-harness-weight-optimization"
+    },
+    {
+      "event_id": "ev-20260902-02",
+      "title": "CacheBridge transfers KV caches across different model architectures",
+      "title_zh": "CacheBridge：跨模型架构迁移 KV 缓存",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-02T00:00:00Z",
+      "first_seen_at": "2026-09-02T00:01:14Z",
+      "last_updated_at": "2026-09-02T00:01:14Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.00891",
+      "secondary_sources": [
+        "https://arxiv.org/abs/2608.30963"
+      ],
+      "summary": "CacheBridge (arXiv 2609.00891, Wed 2 Sep digest) avoids shared-prefix replay when routing requests between LLMs: it co-designs architecture-indexed mapper support, attention-aligned calibration, and bounded mapper construction while retaining a closed-form affine-mapper interface that translates source-model KV caches into target-model caches online. It improves on Full-Head Mapping, whose per-head-from-every-head design is sensitive to architectural differences and whose mapper cost grows with layer support. The same window carries an independent companion: 'A Universal Context-Reuse Layer for Cross-Model KV Sharing' (2608.30963, Tue 1 Sep digest), which studies cross-model KV translation across differences in scale, architecture, attention configuration, tokenizer, and model family.",
+      "why_it_matters": "Multi-model pipelines (router -> small model, draft -> verifier, generalist -> specialist) currently pay full prefill on every handoff, which dominates cost exactly where routing is supposed to save money. Two independent groups publishing cross-model KV transfer in the same window suggests the assumption 'KV caches are model-specific' is starting to bend; teams running model-routing stacks should track this the way they tracked prompt caching in 2025.",
+      "summary_zh": "CacheBridge（arXiv 2609.00891，9 月 2 日周三 digest）解决请求在多个 LLM 之间流转时的共享前缀重算问题：在保留闭式仿射映射器在线部署接口的同时，协同设计架构索引的映射器支撑、注意力对齐的校准与有界映射器构造。它改进了 Full-Head Mapping——后者每个目标头都从所有源头映射，对架构差异敏感，映射器的存储与应用成本随层支持增长。同一窗口还有独立并行工作《A Universal Context-Reuse Layer for Cross-Model KV Sharing》（2608.30963，9 月 1 日周二 digest），研究跨规模、跨架构、跨注意力配置、跨 tokenizer、跨模型家族的 KV 转译。",
+      "summary_en": "CacheBridge (arXiv 2609.00891, Wed 2 Sep digest) avoids shared-prefix replay when routing requests between LLMs: it co-designs architecture-indexed mapper support, attention-aligned calibration, and bounded mapper construction while retaining a closed-form affine-mapper interface that translates source-model KV caches into target-model caches online. It improves on Full-Head Mapping, whose per-head-from-every-head design is sensitive to architectural differences and whose mapper cost grows with layer support. The same window carries an independent companion: 'A Universal Context-Reuse Layer for Cross-Model KV Sharing' (2608.30963, Tue 1 Sep digest), which studies cross-model KV translation across differences in scale, architecture, attention configuration, tokenizer, and model family.",
+      "why_it_matters_zh": "多模型流水线（路由到小模型、草稿到校验、通用到专精）目前每次交接都要付一次完整 prefill，而这恰恰发生在路由本该省钱的地方，成了成本大头。两个独立团队在同一窗口发表跨模型 KV 迁移，说明「KV 缓存只能本模型用」这个假设开始松动；跑模型路由栈的团队应该像 2025 年盯 prompt caching 一样盯住这条线。",
+      "why_it_matters_en": "Multi-model pipelines (router -> small model, draft -> verifier, generalist -> specialist) currently pay full prefill on every handoff, which dominates cost exactly where routing is supposed to save money. Two independent groups publishing cross-model KV transfer in the same window suggests the assumption 'KV caches are model-specific' is starting to bend; teams running model-routing stacks should track this the way they tracked prompt caching in 2025.",
+      "technical_details": {
+        "arxiv": "2609.00891, announced in the Wed 2 Sep 2026 digest",
+        "mechanism": "closed-form affine mapper from source to target KV caches, online-deployable; architecture-indexed mapper support + attention-aligned calibration + bounded mapper construction",
+        "improves_on": "Full-Head Mapping (maps each target head from every source head in selected layers): transfer quality sensitive to architectural differences; mapper storage/application cost grows with layer support",
+        "companion": "arXiv 2608.30963 'A Universal Context-Reuse Layer for Cross-Model KV Sharing' (Tue 1 Sep digest): cross-model KV translation across scale/architecture/attention/tokenizer/family differences; evaluated within-family (Qwen2.5-7B -> Qwen2.5-1.5B) and cross-family",
+        "kb_thread": "continues the KV-reuse line: ReCache (2608.19662, 8/21, composition-invariant reuse for tool-augmented agents), TwinKV (2608.27128, 8/29, eviction repair)"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.00891，2026 年 9 月 2 日周三 digest 宣告",
+        "机制": "源到目标 KV 的闭式仿射映射器，可在线部署；架构索引的映射器支撑 + 注意力对齐校准 + 有界映射器构造",
+        "改进对象": "Full-Head Mapping（每个目标头从所选层的所有源头映射）：迁移质量对架构差异敏感；映射器存储与应用成本随层支持增长",
+        "并行工作": "arXiv 2608.30963《A Universal Context-Reuse Layer for Cross-Model KV Sharing》（9 月 1 日周二 digest）：跨规模 / 架构 / 注意力配置 / tokenizer / 家族的 KV 转译；同家族（Qwen2.5-7B → Qwen2.5-1.5B）与跨家族均做了评测",
+        "知识库脉络": "延续 KV 复用线：ReCache（2608.19662，8/21，工具增强 agent 的组合不变复用）、TwinKV（2608.27128，8/29，逐出修复）"
+      },
+      "tags": [
+        "kv-cache",
+        "cross-model",
+        "prefill",
+        "model-routing",
+        "serving",
+        "inference-efficiency"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609-00891-cachebridge-cross-model-kv-transfer"
+    },
+    {
+      "event_id": "ev-20260902-03",
+      "title": "Tool-calling study finds action-class calibration, not execution, is the bottleneck",
+      "title_zh": "工具调用研究：瓶颈在动作类型校准而非执行",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-02T00:00:00Z",
+      "first_seen_at": "2026-09-02T00:01:14Z",
+      "last_updated_at": "2026-09-02T00:01:14Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.00949",
+      "secondary_sources": [],
+      "summary": "'Calibration is the Bottleneck' (arXiv 2609.00949, Wed 2 Sep digest) decomposes multi-turn tool-calling failures into two orthogonal modes over a four-class action space (TOOL_CALL / ASK / REFUSE / CONFIRM): action-class miscalibration and action-execution failure. It introduces a self-revealing upper bound, Acc <= GAR (Gold Action Recall), where bound violations expose state-grader masking of miscalibration. The context: on public tool-calling benchmarks, open-weight models now approach or surpass closed-source frontier models in aggregate accuracy, but aggregate numbers average over very different multi-turn situations.",
+      "why_it_matters": "For anyone building tool-using agents, this gives a decomposition you can run on your own traces: separate 'chose the wrong kind of action' (call vs ask vs refuse vs confirm) from 'executed the right action badly'. Aggregate accuracy hides the first mode entirely, and the paper's bound gives a cheap audit — if your grader only checks state, miscalibrated models look better than they are. That distinction maps directly onto where to spend effort: prompting/selection policies for calibration, tool ergonomics for execution.",
+      "summary_zh": "《Calibration is the Bottleneck》（arXiv 2609.00949，9 月 2 日周三 digest）把多轮工具调用失效分解为两个正交模式（在 TOOL_CALL / ASK / REFUSE / CONFIRM 四类动作空间上）：动作类型失准（miscalibration）与动作执行失败。论文引入自揭示上界 Acc <= GAR（Gold Action Recall），越界即暴露 state-grader 对失准的掩盖。背景是：在公开工具调用基准上，开源权重模型的总准确率已接近甚至超过闭源前沿模型，但总分会把截然不同的多轮情形平均掉。",
+      "summary_en": "'Calibration is the Bottleneck' (arXiv 2609.00949, Wed 2 Sep digest) decomposes multi-turn tool-calling failures into two orthogonal modes over a four-class action space (TOOL_CALL / ASK / REFUSE / CONFIRM): action-class miscalibration and action-execution failure. It introduces a self-revealing upper bound, Acc <= GAR (Gold Action Recall), where bound violations expose state-grader masking of miscalibration. The context: on public tool-calling benchmarks, open-weight models now approach or surpass closed-source frontier models in aggregate accuracy, but aggregate numbers average over very different multi-turn situations.",
+      "why_it_matters_zh": "对做工具型 agent 的团队，这给了一个可以直接套在自己轨迹上的分解：把「选错了动作类型」（调用 / 追问 / 拒绝 / 确认）与「选对了但执行得差」分开。总分完全掩盖第一种失效，而论文的上界提供了一种廉价审计——如果 grader 只看状态，失准的模型会被高估。这个区分直接对应投入方向：校准问题靠提示与选择策略，执行问题靠工具的人机工学。",
+      "why_it_matters_en": "For anyone building tool-using agents, this gives a decomposition you can run on your own traces: separate 'chose the wrong kind of action' (call vs ask vs refuse vs confirm) from 'executed the right action badly'. Aggregate accuracy hides the first mode entirely, and the paper's bound gives a cheap audit — if your grader only checks state, miscalibrated models look better than they are. That distinction maps directly onto where to spend effort: prompting/selection policies for calibration, tool ergonomics for execution.",
+      "technical_details": {
+        "arxiv": "2609.00949, announced in the Wed 2 Sep 2026 digest",
+        "framework": "four-class action space (TOOL_CALL / ASK / REFUSE / CONFIRM); failure decomposed into action-class miscalibration vs action-execution failure",
+        "diagnostic": "self-revealing upper bound Acc <= GAR (Gold Action Recall); bound violation (Acc > GAR) exposes state-grader masking of miscalibration",
+        "context": "open-weight models now approach or surpass closed-source frontier models in aggregate tool-calling accuracy, obscuring per-situation balance"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.00949，2026 年 9 月 2 日周三 digest 宣告",
+        "框架": "四类动作空间（TOOL_CALL / ASK / REFUSE / CONFIRM）；失效分解为动作类型失准与动作执行失败",
+        "诊断": "自揭示上界 Acc <= GAR（Gold Action Recall）；越界（Acc > GAR）即暴露 state-grader 对失准的掩盖",
+        "背景": "开源权重模型在公开工具调用基准的总准确率已接近甚至超过闭源前沿模型，掩盖了各情形间的不均衡"
+      },
+      "tags": [
+        "tool-calling",
+        "evaluation",
+        "agent-reliability",
+        "calibration",
+        "diagnostics"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-00949-tool-calling-action-class-calibration"
+    },
+    {
+      "event_id": "ev-20260902-04",
+      "title": "The Irreversibility Budget prices agent effects a fleet cannot undo",
+      "title_zh": "不可逆预算：给 agent 集群做不了的事定价",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-02T00:00:00Z",
+      "first_seen_at": "2026-09-02T00:01:14Z",
+      "last_updated_at": "2026-09-02T00:01:14Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.00275",
+      "secondary_sources": [],
+      "summary": "'The Irreversibility Budget' (arXiv 2609.00275, Wed 2 Sep digest) proposes a cumulative account of residual value-at-risk that a trusted runtime maintains per principal across agents, workflows, and tenants. Treating irreversibility as a first-class resource, the runtime charges each effect (money moved, code deployed, data deleted, information disclosed) its residual loss and denies the marginal effect once the aggregate would overdraw the budget. The motivation: current controls check one effect at a time, so a fleet of individually authorized agents can overdraw its principal's risk under a shared trigger while every local gate stays correct.",
+      "why_it_matters": "This is the missing control plane for the multi-agent runtime convergence (trend #3): once agents message each other and act on shared triggers, per-action approval stops bounding blast radius. The paper's framing — irreversibility as a metered resource with admission control, not a per-permission checkbox — is a concrete design sketch for platform teams building agent orchestrators, and pairs naturally with the runtime-level containment rules shipping in Claude Code and Codex this week.",
+      "summary_zh": "《The Irreversibility Budget》（arXiv 2609.00275，9 月 2 日周三 digest）提出由可信运行时为每个委托方（principal）跨 agent、工作流与租户维护一份「剩余在险价值」的累计账本。把不可逆性当作一等资源：运行时对每个效应（转出的钱、部署的代码、删除的数据、披露的信息）收取其剩余损失，累计将超出预算时拒绝边际效应。动机是：现有控制逐个检查效应，一支「每个动作都单独获授权」的 agent 集群仍可能在共享触发条件下把委托方的风险刷爆，而每个局部闸门都显示正常。",
+      "summary_en": "'The Irreversibility Budget' (arXiv 2609.00275, Wed 2 Sep digest) proposes a cumulative account of residual value-at-risk that a trusted runtime maintains per principal across agents, workflows, and tenants. Treating irreversibility as a first-class resource, the runtime charges each effect (money moved, code deployed, data deleted, information disclosed) its residual loss and denies the marginal effect once the aggregate would overdraw the budget. The motivation: current controls check one effect at a time, so a fleet of individually authorized agents can overdraw its principal's risk under a shared trigger while every local gate stays correct.",
+      "why_it_matters_zh": "这正好补上 multi-agent runtime 汇聚（趋势 #3）缺失的控制面：当 agent 互相发消息、响应共享触发器时，逐动作审批就不再能约束爆炸半径。论文的框架——把不可逆性做成带准入控制的计量资源，而不是逐权限勾选框——给做 agent 编排器的平台团队一份具体的设计草稿，也和本周 Claude Code、Codex 相继落地的运行时级 containment 规则形成呼应。",
+      "why_it_matters_en": "This is the missing control plane for the multi-agent runtime convergence (trend #3): once agents message each other and act on shared triggers, per-action approval stops bounding blast radius. The paper's framing — irreversibility as a metered resource with admission control, not a per-permission checkbox — is a concrete design sketch for platform teams building agent orchestrators, and pairs naturally with the runtime-level containment rules shipping in Claude Code and Codex this week.",
+      "technical_details": {
+        "arxiv": "2609.00275, announced in the Wed 2 Sep 2026 digest",
+        "mechanism": "cumulative residual value-at-risk account per principal, maintained by a trusted runtime across agents/workflows/tenants; each effect charged its residual loss; marginal effects denied at budget overdraw (admission control)",
+        "problem": "per-effect authorization gates stay locally correct while a fleet overdraws aggregate risk under a shared trigger; pricing is hard because effects are heterogeneous and adversarial"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.00275，2026 年 9 月 2 日周三 digest 宣告",
+        "机制": "可信运行时为每个 principal 维护跨 agent / 工作流 / 租户的剩余在险价值累计账本；每个效应计入其剩余损失；累计超预算即拒绝边际效应（准入控制）",
+        "问题": "逐效应的授权闸门各自正确，但集群在共享触发下仍会刷爆聚合风险；效应异构且存在对抗性，定价困难"
+      },
+      "tags": [
+        "agent-governance",
+        "risk-control",
+        "multi-agent",
+        "admission-control",
+        "agent-os"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 1,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609-00275-irreversibility-budget-agent-fleets"
+    },
+    {
+      "event_id": "ev-20260902-05",
+      "title": "AMD open-sources Instella-MoE, a 16B MoE trained entirely on Instinct GPUs",
+      "title_zh": "AMD 开源 Instella-MoE：完全在 Instinct GPU 上训练的 16B MoE",
+      "category": "open-source",
+      "organization": [
+        "AMD"
+      ],
+      "published_at": "2026-09-02T00:00:00Z",
+      "first_seen_at": "2026-09-02T00:01:14Z",
+      "last_updated_at": "2026-09-02T00:01:14Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.00791",
+      "secondary_sources": [
+        "https://huggingface.co/AMD"
+      ],
+      "summary": "AMD published the Instella-MoE technical report (arXiv 2609.00791, Wed 2 Sep digest): a fully open 16B-total / 2.8B-active MoE trained from scratch on AMD Instinct MI300X and MI325X GPUs. It combines Gated Multi-head Latent Attention and FarSkip-Collective connectivity, and was built through a multi-stage pipeline: pre-training, mid-training, long-context extension, SFT with feedback-driven data curation, DPO, and RL with Multi-Teacher On-Policy Distillation.",
+      "why_it_matters": "The open-weight frontier is currently a Chinese-lab story with a US response forming via Nvidia/Poolside; Instella-MoE adds a third vector — open weights proven out on non-NVIDIA silicon at scale. At 16B it is not frontier-tier, but it is a credible reference for anyone evaluating MI300X/MI325X training stacks, and MLA-class architecture choices show AMD targeting the same serving-efficiency conventions as DeepSeek-family models.",
+      "summary_zh": "AMD 发布 Instella-MoE 技术报告（arXiv 2609.00791，9 月 2 日周三 digest）：完全开放的 16B 总参 / 2.8B 激活 MoE，从头在 AMD Instinct MI300X 与 MI325X GPU 上训练。模型结合 Gated Multi-head Latent Attention 与 FarSkip-Collective 连接结构，走多阶段流水线：预训练、中训、长上下文扩展、带反馈数据筛选的 SFT、DPO、以及 Multi-Teacher On-Policy Distillation 的 RL。",
+      "summary_en": "AMD published the Instella-MoE technical report (arXiv 2609.00791, Wed 2 Sep digest): a fully open 16B-total / 2.8B-active MoE trained from scratch on AMD Instinct MI300X and MI325X GPUs. It combines Gated Multi-head Latent Attention and FarSkip-Collective connectivity, and was built through a multi-stage pipeline: pre-training, mid-training, long-context extension, SFT with feedback-driven data curation, DPO, and RL with Multi-Teacher On-Policy Distillation.",
+      "why_it_matters_zh": "开源权重前沿目前是中国实验室主导、美国方面以 Nvidia/Poolside 回应的格局；Instella-MoE 加入了第三个方向——在非 NVIDIA 芯片上规模化跑通的全开放权重。16B 不算前沿量级，但对评估 MI300X/MI325X 训练栈的团队是有价值的参照；MLA 类架构选择也说明 AMD 在对齐 DeepSeek 系模型开创的 serving 效率惯例。",
+      "why_it_matters_en": "The open-weight frontier is currently a Chinese-lab story with a US response forming via Nvidia/Poolside; Instella-MoE adds a third vector — open weights proven out on non-NVIDIA silicon at scale. At 16B it is not frontier-tier, but it is a credible reference for anyone evaluating MI300X/MI325X training stacks, and MLA-class architecture choices show AMD targeting the same serving-efficiency conventions as DeepSeek-family models.",
+      "technical_details": {
+        "arxiv": "2609.00791, announced in the Wed 2 Sep 2026 digest",
+        "scale": "16B total / 2.8B active MoE",
+        "hardware": "trained entirely on AMD Instinct MI300X and MI325X",
+        "architecture": "Gated Multi-head Latent Attention (Gated MLA); FarSkip-Collective connectivity",
+        "pipeline": "pre-training -> mid-training -> long-context extension -> SFT (feedback-driven data curation) -> DPO -> RL with Multi-Teacher On-Policy Distillation",
+        "openness": "fully open (technical report + model family on Hugging Face under AMD org)"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.00791，2026 年 9 月 2 日周三 digest 宣告",
+        "规模": "16B 总参 / 2.8B 激活 MoE",
+        "硬件": "完全在 AMD Instinct MI300X 与 MI325X 上训练",
+        "架构": "Gated Multi-head Latent Attention（Gated MLA）；FarSkip-Collective 连接结构",
+        "流水线": "预训练 → 中训 → 长上下文扩展 → SFT（反馈驱动数据筛选）→ DPO → Multi-Teacher On-Policy Distillation 的 RL",
+        "开放性": "完全开放（技术报告 + Hugging Face AMD 组织下的模型家族）"
+      },
+      "tags": [
+        "open-weights",
+        "amd",
+        "moe",
+        "mla",
+        "training-infrastructure",
+        "instinct"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "amd-instella-moe-technical-report"
+    }
+  ]
+}
