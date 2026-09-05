@@ -1,0 +1,323 @@
+{
+  "date": "2026-09-05",
+  "provenance": "Captured by 2026-09-05T00:00:21Z run (scan window [2026-09-02T00:01:14Z, 2026-09-05T00:00:21Z]). All six items are from the Fri 4 Sep digest (announced 2026-09-05T00:00Z), selected from ~358 keyword hits across the Wed/Thu/Fri digests: Jina-OCR-v1 = 2609.03181 (Jina AI, models on HF), AdaptiveSpec = 2609.02897, Minima NVFP4 = 2609.04098 (cs.AI; checkpoints on HF minima-ai), Random Attention = 2609.03430 (UIUC + Salesforce AI Research, code public; InertiaKV 2609.03515 folded in as convergent evidence), Speculative Macro Commit = 2609.03236 (USC, cs.AI, code public), SWE-Gate = 2609.04167 (cs.AI, replication package public). Digest watermarks: Wed 2 Sep topped at 2609.01604 (re-swept above it; Tue 1 Sep digest max id 2608.31170 was fully below the prior watermark), Thu 3 Sep topped at 2609.02859, Fri 4 Sep topped at 2609.04199 (complete 115/115 at retrieval but cross-lists may still arrive — next run should re-sweep above 2609.04199).",
+  "events": [
+    {
+      "event_id": "ev-20260905-01",
+      "title": "Jina-OCR-v1: a production document-parsing model with speculative decoding",
+      "title_zh": "Jina-OCR-v1：带推测解码的生产级文档解析模型",
+      "category": "open-source",
+      "organization": [
+        "Jina AI"
+      ],
+      "published_at": "2026-09-05T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.03181",
+      "secondary_sources": [
+        "https://huggingface.co/jinaai"
+      ],
+      "summary": "Jina-OCR-v1 (arXiv 2609.03181, Fri 4 Sep digest; Jina AI, co-author Han Xiao) is a document-parsing model combining a DeepSeek-OCR-style compressed vision encoder with a 3B MoE decoder (~0.57B parameters active per token) and a FastMTP speculative-decoding head that recursively shares a single draft block across K=3 prediction steps; greedy verification keeps decoding lossless. Post-training runs instruction alignment, robustness fine-tuning, and GRPO with dense verifiable rewards — deterministic formula/table/structure checks that award partial credit. Scores: 91.14 on OmniDocBench v1.6 and 83.4 on olmOCR-Bench at 2.57 pages/s (the highest throughput in its comparison); FastMTP doubles decode speed on an NVIDIA L4 GPU. The models are public on Hugging Face.",
+      "why_it_matters": "This is a complete, deployable production recipe for a workload almost every RAG pipeline depends on: document parsing at 2.5+ pages/s on a single L4-class GPU, with the full post-training stack (MoE + MTP + dense-reward GRPO) documented and weights public. For teams currently paying OCR API bills, this is a self-host alternative with benchmark numbers to check against.",
+      "summary_zh": "Jina-OCR-v1（arXiv 2609.03181，9 月 4 日周五 digest；Jina AI，合著者韩霄）是文档解析模型：结合 DeepSeek-OCR 式压缩视觉编码器、3B MoE 解码器（每 token 约激活 5.7 亿参数），以及 FastMTP 推测解码头——单个 draft block 在 K=3 个预测步间递归复用；贪婪验证保证解码无损。后训练包含指令对齐、鲁棒性微调，以及用密集可验证奖励做 GRPO（确定性的公式 / 表格 / 结构检查，给部分分）。得分：OmniDocBench v1.6 91.14、olmOCR-Bench 83.4，吞吐 2.57 页/秒（其对比中最高）；FastMTP 让 NVIDIA L4 上的解码速度翻倍。模型已在 Hugging Face 公开。",
+      "summary_en": "Jina-OCR-v1 (arXiv 2609.03181, Fri 4 Sep digest; Jina AI, co-author Han Xiao) is a document-parsing model combining a DeepSeek-OCR-style compressed vision encoder with a 3B MoE decoder (~0.57B parameters active per token) and a FastMTP speculative-decoding head that recursively shares a single draft block across K=3 prediction steps; greedy verification keeps decoding lossless. Post-training runs instruction alignment, robustness fine-tuning, and GRPO with dense verifiable rewards — deterministic formula/table/structure checks that award partial credit. Scores: 91.14 on OmniDocBench v1.6 and 83.4 on olmOCR-Bench at 2.57 pages/s (the highest throughput in its comparison); FastMTP doubles decode speed on an NVIDIA L4 GPU. The models are public on Hugging Face.",
+      "why_it_matters_zh": "这是一份完整可部署的生产配方，面向几乎每条 RAG 流水线都依赖的工作负载：单张 L4 级 GPU 上 2.5+ 页/秒的文档解析，且整个后训练栈（MoE + MTP + 密集奖励 GRPO）有文档、权重公开。正在付 OCR API 账单的团队，可以拿它对照基准做自托管替代方案。",
+      "why_it_matters_en": "This is a complete, deployable production recipe for a workload almost every RAG pipeline depends on: document parsing at 2.5+ pages/s on a single L4-class GPU, with the full post-training stack (MoE + MTP + dense-reward GRPO) documented and weights public. For teams currently paying OCR API bills, this is a self-host alternative with benchmark numbers to check against.",
+      "technical_details": {
+        "arxiv": "2609.03181, announced in the Fri 4 Sep 2026 digest",
+        "architecture": "compressed vision encoder (DeepSeek-OCR style) + 3B MoE decoder (~0.57B active/token) + FastMTP speculative decoding head (one draft block reused recursively across K=3 steps, greedy lossless verification)",
+        "post_training": "instruction alignment + robustness fine-tuning + GRPO with dense verifiable rewards (deterministic formula/table/structure checks, partial credit)",
+        "results": "OmniDocBench v1.6 91.14; olmOCR-Bench 83.4; 2.57 pages/s (highest in its comparison); FastMTP doubles decoding on an NVIDIA L4",
+        "availability": "models public under the jinaai HF org"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.03181，2026 年 9 月 4 日周五 digest 宣告",
+        "架构": "压缩视觉编码器（DeepSeek-OCR 式）+ 3B MoE 解码器（每 token 约 0.57B 激活）+ FastMTP 推测解码头（单个 draft block 跨 K=3 步递归复用，贪婪无损验证）",
+        "后训练": "指令对齐 + 鲁棒性微调 + 密集可验证奖励 GRPO（确定性公式 / 表格 / 结构检查，部分给分）",
+        "结果": "OmniDocBench v1.6 91.14；olmOCR-Bench 83.4；2.57 页/秒（其对比最高）；FastMTP 在 NVIDIA L4 上解码翻倍",
+        "可用性": "模型公开于 HF jinaai 组织"
+      },
+      "tags": [
+        "ocr",
+        "document-parsing",
+        "moe",
+        "speculative-decoding",
+        "grpo",
+        "open-weights",
+        "rag"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-03181-jina-ocr-v1"
+    },
+    {
+      "event_id": "ev-20260905-02",
+      "title": "Training-free lossy speculative decoding lifts SGLang throughput up to 56%",
+      "title_zh": "免训练有损推测解码让 SGLang 吞吐最高提升 56%",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-05T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.02897",
+      "secondary_sources": [],
+      "summary": "'Margins, Not Windows' (arXiv 2609.02897, Fri 4 Sep digest) presents AdaptiveSpec, a training-free approach to lossy speculative decoding that co-adapts two knobs at decode time: a per-step margin verification rule that promotes mismatched draft tokens when the ratio of target to draft top-1 probability exceeds a threshold, and a draft-tree shape (depth/width/node count) adjusted from the draft model's top-1 confidence plus rolling accept history. Both signals are already available during decoding, so nothing needs training. It is implemented in the SGLang production engine and reaches up to 56% higher throughput than EAGLE-3 on SGLang across three target models (DeepSeek-R1-Distill-Llama-8B, Llama-3.1-8B-Instruct, Qwen3-8B), recovering 93-100% of lossless task accuracy on GSM8K, MATH-500, and HumanEval.",
+      "why_it_matters": "Speculative decoding is the standard throughput lever, but the lossy variant usually means retraining a verifier. This one is plug-in: the margin rule and tree shaping reuse signals the engine already computes, integration exists in SGLang, and the accuracy/throughput dial (93-100% accuracy recovery) is explicit — teams can pick their operating point instead of binary lossless-or-not.",
+      "summary_zh": "《Margins, Not Windows》（arXiv 2609.02897，9 月 4 日周五 digest）提出 AdaptiveSpec：免训练的有损推测解码，在解码时协同调节两个旋钮——逐步的边际验证规则（目标与草稿 top-1 概率之比超过阈值时，提升不匹配的草稿 token）与草稿树形态（深度 / 宽度 / 节点数，由草稿 top-1 置信度加滚动接受历史调整）。两个信号都是解码过程本来就有的，无需任何训练。已在 SGLang 生产引擎中实现：在三个目标模型（DeepSeek-R1-Distill-Llama-8B、Llama-3.1-8B-Instruct、Qwen3-8B）上，吞吐较 SGLang 上的 EAGLE-3 最高提升 56%，在 GSM8K、MATH-500、HumanEval 上恢复无损失准确率的 93-100%。",
+      "summary_en": "'Margins, Not Windows' (arXiv 2609.02897, Fri 4 Sep digest) presents AdaptiveSpec, a training-free approach to lossy speculative decoding that co-adapts two knobs at decode time: a per-step margin verification rule that promotes mismatched draft tokens when the ratio of target to draft top-1 probability exceeds a threshold, and a draft-tree shape (depth/width/node count) adjusted from the draft model's top-1 confidence plus rolling accept history. Both signals are already available during decoding, so nothing needs training. It is implemented in the SGLang production engine and reaches up to 56% higher throughput than EAGLE-3 on SGLang across three target models (DeepSeek-R1-Distill-Llama-8B, Llama-3.1-8B-Instruct, Qwen3-8B), recovering 93-100% of lossless task accuracy on GSM8K, MATH-500, and HumanEval.",
+      "why_it_matters_zh": "推测解码是标准的吞吐杠杆，但有损版本通常要重训验证器。这一版是即插即用：边际规则与树形调整复用引擎本就计算的信号，SGLang 已有集成，且准确率 / 吞吐的权衡（恢复 93-100% 准确率）是显式的——团队可以自选工作点，而不是在「无损 / 不用」之间二选一。",
+      "why_it_matters_en": "Speculative decoding is the standard throughput lever, but the lossy variant usually means retraining a verifier. This one is plug-in: the margin rule and tree shaping reuse signals the engine already computes, integration exists in SGLang, and the accuracy/throughput dial (93-100% accuracy recovery) is explicit — teams can pick their operating point instead of binary lossless-or-not.",
+      "technical_details": {
+        "arxiv": "2609.02897, announced in the Fri 4 Sep 2026 digest",
+        "mechanism": "per-step margin rule (promote mismatched draft tokens when target/draft top-1 probability ratio exceeds threshold) + adaptive draft-tree shape (depth/width/nodes from draft confidence + rolling accept history); zero training",
+        "integration": "implemented in the SGLang production engine",
+        "results": "up to +56% throughput vs EAGLE-3 on SGLang across DeepSeek-R1-Distill-Llama-8B, Llama-3.1-8B-Instruct, Qwen3-8B; 93-100% of lossless accuracy on GSM8K / MATH-500 / HumanEval"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.02897，2026 年 9 月 4 日周五 digest 宣告",
+        "机制": "逐步边际规则（目标 / 草稿 top-1 概率比超阈值时提升不匹配草稿 token）+ 自适应草稿树形态（由草稿置信度 + 滚动接受历史决定深度 / 宽度 / 节点数）；零训练",
+        "集成": "已在 SGLang 生产引擎中实现",
+        "结果": "三个目标模型（DeepSeek-R1-Distill-Llama-8B、Llama-3.1-8B-Instruct、Qwen3-8B）上较 SGLang 的 EAGLE-3 吞吐最高 +56%；GSM8K / MATH-500 / HumanEval 上恢复无损失准确率的 93-100%"
+      },
+      "tags": [
+        "speculative-decoding",
+        "sglang",
+        "serving",
+        "throughput",
+        "inference-efficiency"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-02897-margins-not-windows-speculative-decoding"
+    },
+    {
+      "event_id": "ev-20260905-03",
+      "title": "Study quantizes a hybrid 27B model to NVFP4 W4A4, gating layers included",
+      "title_zh": "研究：混合线性注意力 27B 模型可整体 NVFP4 W4A4 量化",
+      "category": "research",
+      "organization": [
+        "academic",
+        "Minima AI"
+      ],
+      "published_at": "2026-09-05T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04098",
+      "secondary_sources": [
+        "https://huggingface.co/minima-ai"
+      ],
+      "summary": "Minima (arXiv 2609.04098, Fri 4 Sep digest, cs.AI) applies NVFP4 W4A4 to all 496 linear layers of a Qwen3.8-27B hybrid — including all 48 Gated DeltaNet layers — explicitly testing the intuition that the gating must stay high precision. Result: within noise of BF16 (average -0.52 across five tasks) on 4K/32K perplexity, MMLU-Pro, GSM8K, AIME'25, GPQA-Diamond, LiveCodeBench, and RULER up to 64K, while being the smallest recipe in its comparison (17.5 GiB) with the fastest prefill (+14-19%). The four-part mechanism study explains why: NVFP4's 16-element block scaling localizes outliers; gating projections are the least sensitive; the delta-rule recursion keeps noise stationary; and per-token costs amortize rather than accumulate. Quantized checkpoints are public on HF (minima-ai), along with FP8 KV-cache scaling factors.",
+      "why_it_matters": "The open-weight frontier just moved to hybrid linear-attention architectures (trend #1: GLM-5.3-Flash, Qwen3.8-Flash-Next), and those models have no settled quantization recipes — providers are shipping NVFP4 derivatives ad hoc. This gives the first thorough public answer for a 27B hybrid: quantize everything, including the recurrent half, and expect no measurable quality loss. Directly changes the serving-cost math for hybrid models.",
+      "summary_zh": "Minima（arXiv 2609.04098，9 月 4 日周五 digest，cs.AI）把 NVFP4 W4A4 应用到 Qwen3.8-27B 混合模型的全部 496 个线性层——包括全部 48 个 Gated DeltaNet 层——直接检验「门控必须保高精度」的直觉。结果：在 4K/32K 困惑度、MMLU-Pro、GSM8K、AIME'25、GPQA-Diamond、LiveCodeBench 与 64K 以内 RULER 上与 BF16 相差在噪声内（五项任务平均 -0.52），同时是其对比中最小的配方（17.5 GiB）、prefill 最快（+14-19%）。四部分机制研究解释了原因：NVFP4 的 16 元素块缩放把异常值局部化；门控投影最不敏感；delta-rule 递归让噪声保持平稳；每 token 的代价会被摊销而非累积。量化后的 checkpoint 已公开在 HF（minima-ai），同时发布 FP8 KV-cache 缩放因子。",
+      "summary_en": "Minima (arXiv 2609.04098, Fri 4 Sep digest, cs.AI) applies NVFP4 W4A4 to all 496 linear layers of a Qwen3.8-27B hybrid — including all 48 Gated DeltaNet layers — explicitly testing the intuition that the gating must stay high precision. Result: within noise of BF16 (average -0.52 across five tasks) on 4K/32K perplexity, MMLU-Pro, GSM8K, AIME'25, GPQA-Diamond, LiveCodeBench, and RULER up to 64K, while being the smallest recipe in its comparison (17.5 GiB) with the fastest prefill (+14-19%). The four-part mechanism study explains why: NVFP4's 16-element block scaling localizes outliers; gating projections are the least sensitive; the delta-rule recursion keeps noise stationary; and per-token costs amortize rather than accumulate. Quantized checkpoints are public on HF (minima-ai), along with FP8 KV-cache scaling factors.",
+      "why_it_matters_zh": "开源权重前沿刚切换到混合线性注意力架构（趋势 #1：GLM-5.3-Flash、Qwen3.8-Flash-Next），而这类模型还没有成熟的量化配方——各厂商在临时发 NVFP4 衍生版。这项工作给出 27B 混合模型的首个系统性公开答案：全部量化，包括循环那一半，质量损失在测量噪声内。这会直接改写混合模型的 serving 成本账。",
+      "why_it_matters_en": "The open-weight frontier just moved to hybrid linear-attention architectures (trend #1: GLM-5.3-Flash, Qwen3.8-Flash-Next), and those models have no settled quantization recipes — providers are shipping NVFP4 derivatives ad hoc. This gives the first thorough public answer for a 27B hybrid: quantize everything, including the recurrent half, and expect no measurable quality loss. Directly changes the serving-cost math for hybrid models.",
+      "technical_details": {
+        "arxiv": "2609.04098, announced in the Fri 4 Sep 2026 digest (cs.AI pool)",
+        "target": "Qwen3.8-27B hybrid: NVFP4 W4A4 on all 496 linear layers incl. all 48 Gated DeltaNet layers",
+        "results": "within noise of BF16 (avg -0.52 across five tasks) on 4K/32K perplexity, MMLU-Pro, GSM8K, AIME'25, GPQA-Diamond, LiveCodeBench, RULER up to 64K; smallest recipe in comparison (17.5 GiB); fastest prefill (+14-19%)",
+        "mechanism": "16-element block scaling localizes outliers; gating projections least sensitive; delta-rule recursion keeps noise stationary; per-token costs amortize",
+        "artifacts": "quantized checkpoints on HF (minima-ai); FP8 KV-cache scaling factors released"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.04098，2026 年 9 月 4 日周五 digest 宣告（cs.AI 池）",
+        "对象": "Qwen3.8-27B 混合模型：全部 496 个线性层 NVFP4 W4A4，含全部 48 个 Gated DeltaNet 层",
+        "结果": "4K/32K 困惑度、MMLU-Pro、GSM8K、AIME'25、GPQA-Diamond、LiveCodeBench、64K 内 RULER 上与 BF16 差异在噪声内（五项平均 -0.52）；对比中最小配方（17.5 GiB）；prefill 最快（+14-19%）",
+        "机制": "16 元素块缩放局部化异常值；门控投影最不敏感；delta-rule 递归使噪声平稳；每 token 代价被摊销",
+        "产物": "量化 checkpoint 公开于 HF（minima-ai）；同时发布 FP8 KV-cache 缩放因子"
+      },
+      "tags": [
+        "quantization",
+        "nvfp4",
+        "hybrid-attention",
+        "gated-deltanet",
+        "serving",
+        "open-weights"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-04098-nvfp4-hybrid-quantization"
+    },
+    {
+      "event_id": "ev-20260905-04",
+      "title": "Random KV eviction matches learned eviction policies at higher throughput",
+      "title_zh": "随机 KV 逐出追平学习型策略，吞吐还高 32-43%",
+      "category": "research",
+      "organization": [
+        "academic",
+        "UIUC",
+        "Salesforce AI Research"
+      ],
+      "published_at": "2026-09-05T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.03430",
+      "secondary_sources": [
+        "https://arxiv.org/abs/2609.03515",
+        "https://github.com/SalesforceAIResearch/Random-Attention"
+      ],
+      "summary": "'Random Attention' (arXiv 2609.03430, Fri 4 Sep digest; UIUC Heng Wang & Jiawei Han with Salesforce AI Research) shows that during reasoning, the choice signal in KV-cache eviction contributes almost nothing: keeping the prompt and evicting uniformly at random within each attention head — with no scoring at all — matches the previous strongest eviction policies across four models and six reasoning tasks, while delivering 32-43% higher throughput when deployed in vLLM. The explanation: the prompt is the fragile part, and reasoning traces protect themselves through redundancy (textual restatement plus per-head copies), so random sampling retains enough copies. The same digest carries an independent convergence: InertiaKV (2609.03515, EMNLP 2026 main) shows that under aggressive compression, temporal aggregation makes near-rank-preserving scorer modifications indistinguishable at the eviction-set level, and proposes Score-Free decoding (score the full context once, freeze the ranking: +0.07 average quality change, no further scoring).",
+      "why_it_matters": "A large slice of KV-compression research is scoring functions, and two independent teams now report that under aggressive budgets the scoring matters far less than assumed — reasoning traces are self-redundant, prompts are not. Practical read: protect the prompt, randomize the rest, and treat scorer-based methods' gains skeptically unless they beat this much cheaper baseline; the vLLM-deployable implementation is public.",
+      "summary_zh": "《Random Attention》（arXiv 2609.03430，9 月 4 日周五 digest；UIUC 王恒、Jiawei Han 与 Salesforce AI Research）证明：在推理过程中，KV 缓存逐出的「选择信号」几乎没有贡献——保留提示、在每个注意力头内均匀随机逐出、完全不打分，就能在四个模型、六个推理任务上追平此前最强的逐出策略，在 vLLM 中部署时吞吐还高 32-43%。解释是：脆弱的部分是提示；推理轨迹靠冗余自我保护（文本重述 + 每个头各持一份副本），随机抽取总能留下足够副本。同 digest 的独立收敛证据：InertiaKV（2609.03515，EMNLP 2026 主会）表明激进压缩下，时间聚合使「近似保序」的打分器改动在逐出集合层面不可区分，并提出 Score-Free 解码（对完整上下文只打一次分并冻结排序：平均质量变化 +0.07，后续不再打分）。",
+      "summary_en": "'Random Attention' (arXiv 2609.03430, Fri 4 Sep digest; UIUC Heng Wang & Jiawei Han with Salesforce AI Research) shows that during reasoning, the choice signal in KV-cache eviction contributes almost nothing: keeping the prompt and evicting uniformly at random within each attention head — with no scoring at all — matches the previous strongest eviction policies across four models and six reasoning tasks, while delivering 32-43% higher throughput when deployed in vLLM. The explanation: the prompt is the fragile part, and reasoning traces protect themselves through redundancy (textual restatement plus per-head copies), so random sampling retains enough copies. The same digest carries an independent convergence: InertiaKV (2609.03515, EMNLP 2026 main) shows that under aggressive compression, temporal aggregation makes near-rank-preserving scorer modifications indistinguishable at the eviction-set level, and proposes Score-Free decoding (score the full context once, freeze the ranking: +0.07 average quality change, no further scoring).",
+      "why_it_matters_zh": "KV 压缩研究有一大块都在做打分函数，而现在两个独立团队都报告：在激进预算下，打分的作用远小于假设——推理轨迹自带冗余，提示没有。实践结论：保住提示、其余随机化；除非能打赢这个便宜得多的基线，否则对打分类方法的增益要保持怀疑。vLLM 可部署的实现已公开。",
+      "why_it_matters_en": "A large slice of KV-compression research is scoring functions, and two independent teams now report that under aggressive budgets the scoring matters far less than assumed — reasoning traces are self-redundant, prompts are not. Practical read: protect the prompt, randomize the rest, and treat scorer-based methods' gains skeptically unless they beat this much cheaper baseline; the vLLM-deployable implementation is public.",
+      "technical_details": {
+        "arxiv": "2609.03430, announced in the Fri 4 Sep 2026 digest",
+        "claim": "prompt-preserving per-head uniform-random eviction, no scoring, matches the strongest prior eviction policies across 4 models x 6 reasoning tasks; +32-43% throughput in vLLM",
+        "explanation": "prompt is the fragile component; reasoning traces self-protect via redundancy (restatement + per-head copies)",
+        "convergent": "InertiaKV (2609.03515, EMNLP 2026 main): temporal aggregation makes near-rank-preserving scorer changes indistinguishable at eviction-set level; Score-Free decoding scores once and freezes ranking (+0.07 avg quality, removes subsequent scoring)",
+        "code": "github.com/SalesforceAIResearch/Random-Attention"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.03430，2026 年 9 月 4 日周五 digest 宣告",
+        "主张": "保提示、每头内均匀随机逐出、零打分，在 4 模型 × 6 推理任务上追平此前最强逐出策略；vLLM 部署吞吐 +32-43%",
+        "解释": "提示是脆弱成分；推理轨迹靠冗余自我保护（重述 + 每头副本）",
+        "收敛证据": "InertiaKV（2609.03515，EMNLP 2026 主会）：激进压缩下时间聚合使近似保序的打分器改动在逐出集合层面不可区分；Score-Free 解码只打一次分并冻结排序（平均质量 +0.07，免去后续打分）",
+        "代码": "github.com/SalesforceAIResearch/Random-Attention"
+      },
+      "tags": [
+        "kv-cache",
+        "eviction",
+        "vllm",
+        "reasoning",
+        "negative-result",
+        "serving"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-03430-random-attention-kv-eviction"
+    },
+    {
+      "event_id": "ev-20260905-05",
+      "title": "Speculative Macro Commit pre-executes agent action chains to cut latency",
+      "title_zh": "SMC：让 agent 动作链提前投机执行来降延迟",
+      "category": "research",
+      "organization": [
+        "academic",
+        "USC"
+      ],
+      "published_at": "2026-09-05T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.03236",
+      "secondary_sources": [],
+      "summary": "'Speculative Macro Commit for Faster Tool-Using Agents' (arXiv 2609.03236, Fri 4 Sep digest, cs.AI; USC) extends speculative execution from tokens to multi-action agent trajectories. A fast speculative drafter continuously predicts and executes future action chains on isolated environment snapshots, mining recurring multi-action skeletons from training trajectories into a macro library; when the authoritative actor's next tool call matches the first drafted action, SMC commits the pre-executed steps and their observations. With a Qwen3.5-27B INT4 actor and Qwen3.5-4B drafter, on tau2-Bench Telecom latency drops 10.23% versus a Speculative Actions baseline and 18.59% versus sequential execution; on AppWorld 7.7% and 44.9% respectively, with a slight dip in task completion. Code is public.",
+      "why_it_matters": "Latency is the UX bottleneck for tool-using agents, and this opens a lever beyond token-level speculation: speculate over whole action chains on snapshot-isolated environments, commit when the authority agrees. The isolated-snapshot pattern (cheap copies of the environment for the drafter) is reusable by anyone orchestrating agent runtimes, independent of the paper's specific numbers.",
+      "summary_zh": "《Speculative Macro Commit for Faster Tool-Using Agents》（arXiv 2609.03236，9 月 4 日周五 digest，cs.AI；USC）把投机执行从 token 级扩展到多动作 agent 轨迹：快速的投机草拟器在隔离的环境快照上持续预测并执行未来的动作链，从训练轨迹中挖掘反复出现的多动作骨架存入宏库；当权威行动者的下一个工具调用与第一个草拟动作一致时，SMC 提交已预先执行的步骤及其观察。用 Qwen3.5-27B INT4 行动者 + Qwen3.5-4B 草拟器：tau2-Bench Telecom 上延迟较 Speculative Actions 基线降 10.23%、较顺序执行降 18.59%；AppWorld 上分别降 7.7% 与 44.9%（任务完成率略降）。代码已公开。",
+      "summary_en": "'Speculative Macro Commit for Faster Tool-Using Agents' (arXiv 2609.03236, Fri 4 Sep digest, cs.AI; USC) extends speculative execution from tokens to multi-action agent trajectories. A fast speculative drafter continuously predicts and executes future action chains on isolated environment snapshots, mining recurring multi-action skeletons from training trajectories into a macro library; when the authoritative actor's next tool call matches the first drafted action, SMC commits the pre-executed steps and their observations. With a Qwen3.5-27B INT4 actor and Qwen3.5-4B drafter, on tau2-Bench Telecom latency drops 10.23% versus a Speculative Actions baseline and 18.59% versus sequential execution; on AppWorld 7.7% and 44.9% respectively, with a slight dip in task completion. Code is public.",
+      "why_it_matters_zh": "延迟是工具型 agent 的体验瓶颈，这项工作在 token 级投机之外打开了新杠杆：在快照隔离的环境上对整条动作链做投机，权威一致时提交。隔离快照模式（为草拟器提供廉价环境副本）可被任何做 agent 运行时编排的团队复用，与论文的具体数字无关。",
+      "why_it_matters_en": "Latency is the UX bottleneck for tool-using agents, and this opens a lever beyond token-level speculation: speculate over whole action chains on snapshot-isolated environments, commit when the authority agrees. The isolated-snapshot pattern (cheap copies of the environment for the drafter) is reusable by anyone orchestrating agent runtimes, independent of the paper's specific numbers.",
+      "technical_details": {
+        "arxiv": "2609.03236, announced in the Fri 4 Sep 2026 digest (cs.AI pool)",
+        "org": "USC (Zeyu Liu, Souvik Kundu, Peter A. Beerel)",
+        "mechanism": "speculative drafter executes predicted action chains on isolated environment snapshots; multi-action skeletons mined from training trajectories into a macro library; commit pre-executed steps + observations when the authoritative actor's next tool call matches the first drafted action",
+        "setup": "Qwen3.5-27B INT4 actor + Qwen3.5-4B drafter",
+        "results": "tau2-Bench Telecom: -10.23% latency vs Speculative Actions, -18.59% vs sequential; AppWorld: -7.7% / -44.9% (slight task-completion dip)",
+        "code": "public on GitHub"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.03236，2026 年 9 月 4 日周五 digest 宣告（cs.AI 池）",
+        "机构": "USC（Zeyu Liu、Souvik Kundu、Peter A. Beerel）",
+        "机制": "投机草拟器在隔离环境快照上执行预测的动作链；从训练轨迹挖掘多动作骨架入宏库；权威行动者的下一个工具调用与首个草拟动作匹配时，提交预执行步骤与观察",
+        "配置": "Qwen3.5-27B INT4 行动者 + Qwen3.5-4B 草拟器",
+        "结果": "tau2-Bench Telecom：较 Speculative Actions 延迟 -10.23%、较顺序执行 -18.59%；AppWorld：-7.7% / -44.9%（任务完成率略降）",
+        "代码": "GitHub 公开"
+      },
+      "tags": [
+        "agent-latency",
+        "speculative-execution",
+        "tool-calling",
+        "orchestration",
+        "agent-runtime"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 1,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609-03236-speculative-macro-commit"
+    },
+    {
+      "event_id": "ev-20260905-06",
+      "title": "SWE-Gate: a third of functionally passing agent fixes fail review constraints",
+      "title_zh": "SWE-Gate：三分之一的「测试通过」修复过不了评审约束",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-05T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04167",
+      "secondary_sources": [
+        "https://github.com/DeepSoftwareAnalytics"
+      ],
+      "summary": "SWE-Gate (arXiv 2609.04167, Fri 4 Sep digest, cs.AI) is a benchmark of 303 repository-level fix instances across 75 open-source Python repositories, each carrying review constraints derived from real PR review comments, with functional correctness and constraint compliance separated out — independent functional and constraint tests, plus non-compliant and golden patches. On a common scaffold across four LLM backbones, of 644 fixes that passed the functional tests, 221 failed the review constraints. A replication package is public.",
+      "why_it_matters": "'The tests pass' is the current acceptance bar for coding agents, and this quantifies exactly how far it sits from 'a human would accept this patch' — one in three. Teams shipping agent-generated code should add constraint-style checks (derived from their own review conventions) to their eval harnesses; the benchmark and its non-compliant/golden-patch pairs are directly usable.",
+      "summary_zh": "SWE-Gate（arXiv 2609.04167，9 月 4 日周五 digest，cs.AI）是 303 个仓库级修复实例的基准，覆盖 75 个开源 Python 仓库，每个实例带从真实 PR 评审意见中提炼的评审约束，并把功能正确性与约束合规分开度量——独立的功能测试与约束测试，外加不合规补丁与黄金补丁。在统一脚手架、四个 LLM 底座下：644 个通过功能测试的修复中，221 个过不了评审约束。复现包已公开。",
+      "summary_en": "SWE-Gate (arXiv 2609.04167, Fri 4 Sep digest, cs.AI) is a benchmark of 303 repository-level fix instances across 75 open-source Python repositories, each carrying review constraints derived from real PR review comments, with functional correctness and constraint compliance separated out — independent functional and constraint tests, plus non-compliant and golden patches. On a common scaffold across four LLM backbones, of 644 fixes that passed the functional tests, 221 failed the review constraints. A replication package is public.",
+      "why_it_matters_zh": "「测试通过」是当前 coding agent 的验收线，这个基准把这条线离「人类会接受这个补丁」有多远量化出来了——三分之一。让 agent 写代码的团队应该在自己的评测 harness 里加上约束式检查（从自己的评审惯例提炼）；基准本身及其不合规 / 黄金补丁对可以直接用。",
+      "why_it_matters_en": "'The tests pass' is the current acceptance bar for coding agents, and this quantifies exactly how far it sits from 'a human would accept this patch' — one in three. Teams shipping agent-generated code should add constraint-style checks (derived from their own review conventions) to their eval harnesses; the benchmark and its non-compliant/golden-patch pairs are directly usable.",
+      "technical_details": {
+        "arxiv": "2609.04167, announced in the Fri 4 Sep 2026 digest (cs.AI pool)",
+        "benchmark": "303 repository-level fix instances, 75 open-source Python repos; review constraints derived from real PR review comments",
+        "design": "functional correctness and constraint compliance measured independently; non-compliant and golden patches included",
+        "result": "common scaffold, 4 LLM backbones: of 644 functionally passing fixes, 221 failed review constraints (~34%)",
+        "code": "replication package public under github.com/DeepSoftwareAnalytics"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.04167，2026 年 9 月 4 日周五 digest 宣告（cs.AI 池）",
+        "基准": "303 个仓库级修复实例，75 个开源 Python 仓库；评审约束提炼自真实 PR 评审意见",
+        "设计": "功能正确性与约束合规独立度量；附不合规补丁与黄金补丁",
+        "结果": "统一脚手架、4 个 LLM 底座：644 个功能通过的修复中 221 个违反评审约束（约 34%）",
+        "代码": "复现包公开于 github.com/DeepSoftwareAnalytics"
+      },
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "benchmark",
+        "code-review",
+        "swe"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-04167-swe-gate"
+    }
+  ]
+}

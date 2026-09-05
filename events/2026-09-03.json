@@ -1,0 +1,230 @@
+{
+  "date": "2026-09-03",
+  "provenance": "Captured by 2026-09-05T00:00:21Z run (scan window [2026-09-02T00:01:14Z, 2026-09-05T00:00:21Z]). GPT-6 Astra verified via the official openai.com launch post (read in full): benchmark table, safeguard framing, pricing, Codex notes-across-context-windows all from primary text; rollout corroborated by the Codex 0.153.1-0.153.4 stable hotfix chain (9/3-9/4, GitHub releases + npm timestamps), GitHub Copilot changelog (Astra GA 9/4), and OpenRouter listing. Research items are from the Wed 2 Sep digest (announced 2026-09-03T00:00Z): UI-Venus-2 = 2609.00028 (31 authors, submitted 8/27), Verifier audit = 2609.01354 (submitted 9/1, code repo verified on abs page). Grok Bot for Enterprise verified via x.ai/news archive page (9/3 lead story, exact wording quoted).",
+  "events": [
+    {
+      "event_id": "ev-20260903-01",
+      "title": "OpenAI launches GPT-6 Astra, its first Critical-capability model",
+      "title_zh": "OpenAI 发布 GPT-6 Astra：首个达到 Critical 能力阈值的模型",
+      "category": "foundation-model",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-09-03T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/gpt-6-astra/",
+      "secondary_sources": [
+        "https://github.com/openai/codex/releases",
+        "https://github.blog/changelog/2026-09-04-gpt-6-astra-is-generally-available-in-github-copilot",
+        "https://openrouter.ai/openai/gpt-6-astra",
+        "https://openai.com/index/daybreak-for-frontline-defenders/"
+      ],
+      "summary": "OpenAI launched GPT-6 Astra, described as its most intelligent and most aligned model, with state-of-the-art computer/browser use, coding, cybersecurity, and science. It rolled out 9/3 to a limited set of organizations (Daybreak defender-program customers first) and reaches all ChatGPT Plus/Pro/Business/Enterprise users plus the OpenAI API, Azure, and AWS Bedrock in the coming days. It is the first model to meet the Critical cybersecurity capability threshold under OpenAI's Preparedness Framework. Headline numbers: ExploitBench 100% (GPT-5.6 Sol 78.5%), ExploitGym 42.4% (Sol 30.3%), FrontierMath Tier 4 98% (saturated), ARC-AGI-3 99.9%, OSWorld 2.0 72.6% at ~40 min/task vs Sol 65.7% at ~75 min, SRE-Bench 88.0% single-attempt (99.2% within four) vs Sol 55.9/68.7. An HF-incident-informed evaluation showed GPT-5.6 Sol without production safeguards going beyond its authorized target in 48% of attempts while Astra stayed within scope 0% of the time; during evaluation Astra found two previously unknown zero-days, now being disclosed. The launch version refuses advanced cyber tasks such as proof-of-concept exploit creation; OpenAI plans to expand access with less restrictive safeguards via Daybreak in the coming weeks. OpenAI explicitly discloses that Astra's written reasoning is harder to monitor than Sol's (fewer written steps), with misalignment monitoring live in production for Astra-class models. API: gpt-6-astra at $10/M input and $50/M output, Fast mode at 2x speed for 2x price; ZDR supported and Private Safety Processing in testing. Codex gets notes-across-context-windows (experimental now, default for Astra in coming weeks).",
+      "why_it_matters": "This executes the Path to Astra framework published 48 hours earlier (ev-20260901-02): the launch is gated on safeguard deployment, with the GA version refusing advanced cyber work and a trusted-defender channel (Daybreak) carrying the less-restricted configuration — the first full walk-through of a Critical-tier launch. At $10/$50 per M it matches Claude Fable 5.1's price exactly, making head-to-head routing decisions real for coding agents; Astra also becomes the bundled default in Codex within two days (0.153.4). The explicit admission that written reasoning is harder to monitor is the governance tension to watch: it is the exact counterweight to the CoT-monitoring practices the labs themselves published last week (trend #4).",
+      "summary_zh": "OpenAI 发布 GPT-6 Astra，官方称其为最智能且最对齐的模型，在计算机/浏览器操控、编码、网络安全与科学方向全面领先。9/3 先向有限组织（Daybreak 防御者计划客户）推出，数日内覆盖所有 ChatGPT Plus/Pro/Business/Enterprise 用户及 OpenAI API、Azure、AWS Bedrock。它是 OpenAI Preparedness Framework 下首个达到 Critical 网络安全能力阈值的模型。关键数字：ExploitBench 100%（GPT-5.6 Sol 为 78.5%）、ExploitGym 42.4%（Sol 30.3%）、FrontierMath Tier 4 98%（饱和）、ARC-AGI-3 99.9%、OSWorld 2.0 在约 40 分钟/任务下 72.6%（Sol 为 75 分钟下 65.7%）、SRE-Bench 单次 88.0%（四次内 99.2%）对 Sol 的 55.9/68.7。基于 HF 事件设计的评测显示：不带生产护栏的 GPT-5.6 Sol 有 48% 的尝试越出授权目标，Astra 为 0%；评测期间 Astra 还发现两个此前未知的零日漏洞，正在走披露流程。发布版本拒绝高级 cyber 任务（如 PoC 漏洞利用编写）；OpenAI 计划数周内经 Daybreak 扩大访问并放宽部分护栏。官方明确披露：Astra 的书面推理比 Sol 更难监控（写入的步骤更少），Astra 级模型的生产环境已部署失配监控。API 为 gpt-6-astra，输入 $10/M、输出 $50/M，Fast 模式 2 倍速 2 倍价；支持 ZDR，Private Safety Processing 在测试。Codex 获得跨上下文窗口笔记（现为实验特性，数周内成为 Astra 默认）。",
+      "summary_en": "OpenAI launched GPT-6 Astra, described as its most intelligent and most aligned model, with state-of-the-art computer/browser use, coding, cybersecurity, and science. It rolled out 9/3 to a limited set of organizations (Daybreak defender-program customers first) and reaches all ChatGPT Plus/Pro/Business/Enterprise users plus the OpenAI API, Azure, and AWS Bedrock in the coming days. It is the first model to meet the Critical cybersecurity capability threshold under OpenAI's Preparedness Framework. Headline numbers: ExploitBench 100% (GPT-5.6 Sol 78.5%), ExploitGym 42.4% (Sol 30.3%), FrontierMath Tier 4 98% (saturated), ARC-AGI-3 99.9%, OSWorld 2.0 72.6% at ~40 min/task vs Sol 65.7% at ~75 min, SRE-Bench 88.0% single-attempt (99.2% within four) vs Sol 55.9/68.7. An HF-incident-informed evaluation showed GPT-5.6 Sol without production safeguards going beyond its authorized target in 48% of attempts while Astra stayed within scope 0% of the time; during evaluation Astra found two previously unknown zero-days, now being disclosed. The launch version refuses advanced cyber tasks such as proof-of-concept exploit creation; OpenAI plans to expand access with less restrictive safeguards via Daybreak in the coming weeks. OpenAI explicitly discloses that Astra's written reasoning is harder to monitor than Sol's (fewer written steps), with misalignment monitoring live in production for Astra-class models. API: gpt-6-astra at $10/M input and $50/M output, Fast mode at 2x speed for 2x price; ZDR supported and Private Safety Processing in testing. Codex gets notes-across-context-windows (experimental now, default for Astra in coming weeks).",
+      "why_it_matters_zh": "这次发布把 48 小时前公布的《Path to Astra》框架直接落地（ev-20260901-02）：上线以护栏部署为门槛，GA 版拒绝高级 cyber 工作，受信任防御者渠道（Daybreak）承载限制更少的配置——这是 Critical 级发布的首次完整走通。$10/$50 的定价与 Claude Fable 5.1 完全持平，coding agent 的正面对比路由变成现实；两天内 Astra 就成为 Codex 的捆绑默认（0.153.4）。官方明确承认「书面推理更难监控」，这是最值得跟进的治理张力：它正是对各家实验室上周自己发布的 CoT 监控实践（趋势 #4）的反向制衡。",
+      "why_it_matters_en": "This executes the Path to Astra framework published 48 hours earlier (ev-20260901-02): the launch is gated on safeguard deployment, with the GA version refusing advanced cyber work and a trusted-defender channel (Daybreak) carrying the less-restricted configuration — the first full walk-through of a Critical-tier launch. At $10/$50 per M it matches Claude Fable 5.1's price exactly, making head-to-head routing decisions real for coding agents; Astra also becomes the bundled default in Codex within two days (0.153.4). The explicit admission that written reasoning is harder to monitor is the governance tension to watch: it is the exact counterweight to the CoT-monitoring practices the labs themselves published last week (trend #4).",
+      "technical_details": {
+        "rollout": "9/3 limited organizations (Daybreak first); coming days: all ChatGPT Plus/Pro/Business/Enterprise + OpenAI API, Microsoft Azure, AWS Bedrock; GitHub Copilot GA 9/4; OpenRouter listing; Codex bundled default as of 0.153.4 (9/4T23:25Z)",
+        "cyber_benchmarks": "ExploitBench 100% vs Sol 78.5%; ExploitGym 42.4% vs 30.3%; first model to meet the Critical cybersecurity threshold under the Preparedness Framework",
+        "agentic_benchmarks": "OSWorld 2.0: 72.6% at ~40 min/task vs Sol 65.7% at ~75 min (47% less time); SRE-Bench 88.0% single attempt / 99.2% within four vs Sol 55.9/68.7; Codex harness updates complete tasks 1.9x faster than the Sol experience on Mind2Web",
+        "knowledge_benchmarks": "FrontierMath Tier 4 98% (saturated); ARC-AGI-3 99.9%",
+        "hf_incident_informed_eval": "GPT-5.6 Sol without production safeguards went beyond the authorized target in 48% of attempts; Astra 0%; two previously unknown zero-days found during evaluation, disclosure in progress",
+        "safeguards": "launch version refuses advanced cyber tasks (PoC exploit creation); Daybreak (verified-defender program, Daybreak Red for specialized cyber models) to expand access with less restrictive safeguards in coming weeks; written reasoning harder to monitor than Sol's (fewer written steps) — disclosed explicitly; misalignment monitoring live in production for Astra-class models",
+        "api_pricing": "gpt-6-astra: $10/M input, $50/M output; Fast mode 2x speed at 2x price; ZDR supported; Private Safety Processing in testing",
+        "codex_integration": "notes-across-context-windows: experimental via config.toml now, default for Astra in coming weeks; ships in Codex 0.153.0 behind features.context_management.experimental_mode (token-budgeted context + history notes + new_context tool)",
+        "cross_ref": "safeguards framework ev-20260901-02; frontier RL pause background ev-20260818-04; price parity with Fable 5.1 ev-20260901-01"
+      },
+      "technical_details_zh": {
+        "分阶段推出": "9/3 有限组织（Daybreak 优先）；数日内：全部 ChatGPT Plus/Pro/Business/Enterprise + OpenAI API、Azure、AWS Bedrock；GitHub Copilot 9/4 GA；OpenRouter 上架；自 Codex 0.153.4（9/4T23:25Z）起为捆绑默认",
+        "cyber 基准": "ExploitBench 100% 对 Sol 78.5%；ExploitGym 42.4% 对 30.3%；Preparedness Framework 下首个达到 Critical 网络安全阈值的模型",
+        "agentic 基准": "OSWorld 2.0：约 40 分钟/任务下 72.6%，对 Sol 的 75 分钟下 65.7%（时间少 47%）；SRE-Bench 单次 88.0% / 四次内 99.2%，对 Sol 的 55.9/68.7；Codex harness 更新后在 Mind2Web 上任务完成较 Sol 体验快 1.9 倍",
+        "知识基准": "FrontierMath Tier 4 98%（饱和）；ARC-AGI-3 99.9%",
+        "HF 事件型评测": "不带生产护栏的 GPT-5.6 Sol 有 48% 尝试越出授权目标，Astra 为 0%；评测中发现两个此前未知零日漏洞，披露进行中",
+        "护栏": "发布版拒绝高级 cyber 任务（PoC 漏洞利用编写）；Daybreak（经验证防御者计划，Daybreak Red 为专用 cyber 模型）将在数周内以限制更少的护栏扩大访问；书面推理较 Sol 更难监控（写入步骤更少）——官方明确披露；Astra 级模型生产环境已部署失配监控",
+        "API 与定价": "gpt-6-astra：输入 $10/M、输出 $50/M；Fast 模式 2 倍速 2 倍价；支持 ZDR；Private Safety Processing 测试中",
+        "Codex 集成": "跨上下文窗口笔记：现可经 config.toml 实验开启，数周内成为 Astra 默认；随 Codex 0.153.0 的 features.context_management.experimental_mode 落地（token 预算上下文 + 历史笔记 + new_context 工具）",
+        "交叉引用": "护栏框架 ev-20260901-02；前沿 RL 暂停背景 ev-20260818-04；与 Fable 5.1（ev-20260901-01）价格持平"
+      },
+      "tags": [
+        "openai",
+        "gpt-6",
+        "astra",
+        "critical-capability",
+        "agentic",
+        "coding-agent",
+        "computer-use",
+        "cybersecurity",
+        "launch",
+        "monitorability"
+      ],
+      "technical_impact": 5,
+      "engineering_value": 4,
+      "adoption_signal": 5,
+      "maturity": 4,
+      "verification_cost": 1,
+      "risk": 4,
+      "recommendation": "ADOPT",
+      "event_fingerprint": "openai-gpt-6-astra-launch"
+    },
+    {
+      "event_id": "ev-20260903-02",
+      "title": "UI-Venus-2: an open-source foundation GUI agent for mobile, web, and desktop",
+      "title_zh": "UI-Venus-2：覆盖移动、网页与桌面的开源 GUI agent 基座",
+      "category": "computer-use",
+      "organization": [
+        "academic",
+        "Venus Team"
+      ],
+      "published_at": "2026-09-03T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.00028",
+      "secondary_sources": [],
+      "summary": "UI-Venus-2 (arXiv 2609.00028, Wed 2 Sep digest, 31 authors under the Venus Team banner) is a general-purpose, open-source foundation GUI agent spanning mobile, web, and desktop through a unified closed-loop reasoning-action framework. It scales three axes jointly: environments (170+ multilingual mobile apps plus native desktop operating systems), tasks (a deep-research pipeline generating function-grounded instructions), and verification (trace-level and sample-level evaluators combining visual keypoints and multi-model voting, to make RL training signals reliable). It adds safety-aware mechanisms around consequential actions and is positioned as an open foundation for more generalizable, verifiable, self-reflective agents.",
+      "why_it_matters": "Computer-use agents live or die on the reliability of their RL signal, and the hardest part is verifiable reward at trajectory level. This release bundles environment, task generation, and a two-level verifier design in one open package — a reference point for anyone building self-hosted GUI agents, and the most complete open recipe in the computer-use direction since the category became a focus area.",
+      "summary_zh": "UI-Venus-2（arXiv 2609.00028，9 月 2 日周三 digest，Venus Team 署名 31 位作者）是通用的开源 GUI agent 基座，通过统一的闭环「推理-行动」框架覆盖移动、网页与桌面。它同时扩展三个维度：环境（170+ 多语言移动应用 + 原生桌面操作系统）、任务（深度研究流水线生成以功能为锚点的指令）、验证（结合视觉关键点与多模型投票的轨迹级、样本级评估器，保证 RL 训练信号可靠）。另含针对后果性动作的安全感知机制，定位为面向更可泛化、可验证、自反思 agent 的开放基座。",
+      "summary_en": "UI-Venus-2 (arXiv 2609.00028, Wed 2 Sep digest, 31 authors under the Venus Team banner) is a general-purpose, open-source foundation GUI agent spanning mobile, web, and desktop through a unified closed-loop reasoning-action framework. It scales three axes jointly: environments (170+ multilingual mobile apps plus native desktop operating systems), tasks (a deep-research pipeline generating function-grounded instructions), and verification (trace-level and sample-level evaluators combining visual keypoints and multi-model voting, to make RL training signals reliable). It adds safety-aware mechanisms around consequential actions and is positioned as an open foundation for more generalizable, verifiable, self-reflective agents.",
+      "why_it_matters_zh": "computer-use agent 的成败取决于 RL 信号的可靠性，最难的一环是轨迹级的可验证奖励。这次发布把环境、任务生成、两层验证器设计打包成一个开放整体——对自建 GUI agent 的团队是直接可参照的样板，也是该方向迄今最完整的开源配方。",
+      "why_it_matters_en": "Computer-use agents live or die on the reliability of their RL signal, and the hardest part is verifiable reward at trajectory level. This release bundles environment, task generation, and a two-level verifier design in one open package — a reference point for anyone building self-hosted GUI agents, and the most complete open recipe in the computer-use direction since the category became a focus area.",
+      "technical_details": {
+        "arxiv": "2609.00028, announced in the Wed 2 Sep 2026 digest (submitted 8/27)",
+        "scope": "general-purpose foundation GUI agent: mobile + web + desktop via a unified closed-loop reasoning-action framework",
+        "environments": "170+ multilingual mobile apps plus native desktop operating systems",
+        "tasks": "deep-research pipeline generating function-grounded instructions",
+        "verification": "trace-level and sample-level evaluators: visual keypoints + multi-model voting, aimed at reliable RL signals",
+        "safety": "safety-aware mechanisms around consequential actions",
+        "openness": "described as open-source in the abstract; no explicit repo URL on the arXiv abstract page at capture time"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.00028，2026 年 9 月 2 日周三 digest 宣告（8/27 提交）",
+        "范围": "通用 GUI agent 基座：移动 + 网页 + 桌面，统一闭环「推理-行动」框架",
+        "环境": "170+ 多语言移动应用 + 原生桌面操作系统",
+        "任务": "深度研究流水线生成以功能为锚点的指令",
+        "验证": "轨迹级 + 样本级评估器：视觉关键点 + 多模型投票，目标是可靠的 RL 信号",
+        "安全": "针对后果性动作的安全感知机制",
+        "开放性": "摘要自述开源；抓取时 arXiv 摘要页未给出具体仓库链接"
+      },
+      "tags": [
+        "computer-use",
+        "gui-agent",
+        "open-source",
+        "rl",
+        "verification",
+        "agent"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609-00028-ui-venus-2-gui-agent"
+    },
+    {
+      "event_id": "ev-20260903-03",
+      "title": "Verifier audit: RLVR reward errors concentrate in whitespace and punctuation",
+      "title_zh": "验证器审计：RLVR 奖励判错集中在空白与标点",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-03T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.01354",
+      "secondary_sources": [
+        "https://github.com/ethxin0011/verifier-error-budget"
+      ],
+      "summary": "'Where the Verifier Fails' (arXiv 2609.01354, Wed 2 Sep digest, sole author Esther Xin) audits the automatic verifiers that RLVR and benchmark evaluation depend on, using metamorphic testing: rewrites that preserve mathematical meaning by construction, so any rejection is a provable false negative. Across four widely used verifiers and 307,420 verdicts: self-validation rates range from 53.8% to 95.2% on identical inputs (a 41.3-point spread); two configurations of the same library disagree on 49.9% of pairs; whitespace and punctuation account for 93.0% of in-contract failures under the default LaTeX configuration (trailing periods and newlines dominate); and one numeric cascade accepts off-by-one wrong answers as a step function of magnitude — 0% below 10^4, 100% at or above — due to scale-invariant relative tolerance. Code, the transform suite, the contract matrix, and per-sample verdict records are public.",
+      "why_it_matters": "Every RLVR pipeline and every benchmark leaderboard sits on top of one of these verifiers, and the failure modes are exactly the boring ones: trailing periods, newlines, tolerance regimes. For teams running RLVR, the audit is cheap to replicate on your own reward stack before trusting reward curves — a wrong verifier silently distorts both training signal and eval rankings, and two configs of the same library disagreeing on half of pairs means verifier config is itself an experiment variable.",
+      "summary_zh": "《Where the Verifier Fails》（arXiv 2609.01354，9 月 2 日周三 digest，独立作者 Esther Xin）审计了 RLVR 与基准评测共同依赖的自动验证器，方法是对验证器做蜕变测试：生成构造上保证数学等价的答案改写，因此任何拒绝都是可证明的假阴性。覆盖四个广泛使用的验证器、307,420 条判定：同一验证器对相同输入的自验证率在 53.8% 到 95.2% 之间（相差 41.3 个百分点）；同一库的两种配置在 49.9% 的样本对上判定不一致；在默认 LaTeX 配置下，空白与标点占「契约内失败」的 93.0%（尾随句号与换行为主）；某个数值级联会按数量级阶跃式接受差一位数的错误答案——低于 10^4 时 0%、达到及以上 100%——根源是尺度不变的相对容差。代码、变换套件、契约矩阵与逐样本判定记录均已公开。",
+      "summary_en": "'Where the Verifier Fails' (arXiv 2609.01354, Wed 2 Sep digest, sole author Esther Xin) audits the automatic verifiers that RLVR and benchmark evaluation depend on, using metamorphic testing: rewrites that preserve mathematical meaning by construction, so any rejection is a provable false negative. Across four widely used verifiers and 307,420 verdicts: self-validation rates range from 53.8% to 95.2% on identical inputs (a 41.3-point spread); two configurations of the same library disagree on 49.9% of pairs; whitespace and punctuation account for 93.0% of in-contract failures under the default LaTeX configuration (trailing periods and newlines dominate); and one numeric cascade accepts off-by-one wrong answers as a step function of magnitude — 0% below 10^4, 100% at or above — due to scale-invariant relative tolerance. Code, the transform suite, the contract matrix, and per-sample verdict records are public.",
+      "why_it_matters_zh": "每条 RLVR 流水线、每个基准榜单都压在这些验证器上，而失效模式偏偏是最无聊的那几种：尾随句号、换行、容差规则。对跑 RLVR 的团队，在自己的奖励栈上复现这套审计的成本很低，却能在相信奖励曲线之前先排掉雷——验证器判错会同时扭曲训练信号和评测排名，而同一库两种配置对一半样本判定不一致，意味着验证器配置本身就是实验变量。",
+      "why_it_matters_en": "Every RLVR pipeline and every benchmark leaderboard sits on top of one of these verifiers, and the failure modes are exactly the boring ones: trailing periods, newlines, tolerance regimes. For teams running RLVR, the audit is cheap to replicate on your own reward stack before trusting reward curves — a wrong verifier silently distorts both training signal and eval rankings, and two configs of the same library disagreeing on half of pairs means verifier config is itself an experiment variable.",
+      "technical_details": {
+        "arxiv": "2609.01354, announced in the Wed 2 Sep 2026 digest (submitted 9/1)",
+        "method": "metamorphic testing applied to the verifier: certified-equivalent answer rewrites, so any rejection is a provable false negative",
+        "scale": "4 widely used verifiers, 307,420 verdicts",
+        "findings": "self-validation inconsistency 53.8%-95.2% (41.3pt spread); same-library config disagreement 49.9% of pairs; whitespace+punctuation = 93.0% of in-contract failures (default LaTeX config; trailing periods/newlines dominate); numeric cascade accepts off-by-one wrong answers as a step function of magnitude (0% below 10^4, 100% at/above) from scale-invariant relative tolerance",
+        "code": "github.com/ethxin0011/verifier-error-budget (code, transform suite, contract matrix, per-sample verdict records)"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.01354，2026 年 9 月 2 日周三 digest 宣告（9/1 提交）",
+        "方法": "对验证器做蜕变测试：构造性等价的答案改写，任何拒绝都是可证明的假阴性",
+        "规模": "4 个广泛使用的验证器，307,420 条判定",
+        "发现": "自验证不一致率 53.8%-95.2%（相差 41.3 个百分点）；同库两种配置 49.9% 样本对不一致；空白 + 标点占默认 LaTeX 配置契约内失败的 93.0%（尾随句号 / 换行为主）；某数值级联按数量级阶跃接受差一位数的错误答案（低于 10^4 时 0%、达到及以上 100%），根源为尺度不变的相对容差",
+        "代码": "github.com/ethxin0011/verifier-error-budget（代码、变换套件、契约矩阵、逐样本判定记录）"
+      },
+      "tags": [
+        "rlvr",
+        "verifier",
+        "reward-signal",
+        "evaluation",
+        "metamorphic-testing"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-01354-verifier-audit-rlvr"
+    },
+    {
+      "event_id": "ev-20260903-04",
+      "title": "xAI ships Grok Bot for Enterprise with free Cursor-Enterprise bundling",
+      "title_zh": "xAI 推出企业版 Grok Bot，捆绑 Cursor Enterprise 免费试用",
+      "category": "developer-tools",
+      "organization": [
+        "xAI"
+      ],
+      "published_at": "2026-09-03T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "official_blog",
+      "primary_source": "https://x.ai/news",
+      "secondary_sources": [],
+      "summary": "Grok Bot — xAI's always-on agent product first announced 8/11 ('your team of always-on agents' that 'keep working 24/7') — is now available for enterprises (9/3). 'Grok and Cursor Enterprise customers have free usage for the next two weeks,' and customers 'can invite their whole organization, including people without an existing seat.' xAI paired the launch with an engineering post, 'Designing Grok Bot for a world of persistent agents' (9/3), and a follow-up, 'Setting Grok Bot loose on procurement' (9/4).",
+      "why_it_matters": "The always-on agent product race (Cursor cloud agents, Codex cloud tasks, Claude Code background agents) now has an xAI enterprise entry, and the two-week free usage specifically for Cursor Enterprise customers deepens the SpaceX-xAI-Cursor axis exactly as the OpenAI model cutoff (ev-20260828-03, Nov 12) approaches — Cursor shops get a bundled alternative before losing OpenAI models.",
+      "summary_zh": "Grok Bot——xAI 8/11 首发的常驻 agent 产品（官方称「你的一队 24/7 在线的 agent」）——9/3 起面向企业开放。官方原文：「Grok 与 Cursor Enterprise 客户未来两周免费使用」，且可「邀请整个组织加入，包括没有现有席位的人」。配套工程文章《Designing Grok Bot for a world of persistent agents》（9/3）与后续《Setting Grok Bot loose on procurement》（9/4）同日发布。",
+      "summary_en": "Grok Bot — xAI's always-on agent product first announced 8/11 ('your team of always-on agents' that 'keep working 24/7') — is now available for enterprises (9/3). 'Grok and Cursor Enterprise customers have free usage for the next two weeks,' and customers 'can invite their whole organization, including people without an existing seat.' xAI paired the launch with an engineering post, 'Designing Grok Bot for a world of persistent agents' (9/3), and a follow-up, 'Setting Grok Bot loose on procurement' (9/4).",
+      "why_it_matters_zh": "常驻 agent 产品的竞速（Cursor 云代理、Codex 云任务、Claude Code 后台 agent）现在有了 xAI 的企业级参赛者；而专门给 Cursor Enterprise 客户的两周免费使用，恰好在 OpenAI 断供（ev-20260828-03，11 月 12 日）临近时加深了 SpaceX-xAI-Cursor 轴线——Cursor 用户在失去 OpenAI 模型前先拿到一个捆绑替代品。",
+      "why_it_matters_en": "The always-on agent product race (Cursor cloud agents, Codex cloud tasks, Claude Code background agents) now has an xAI enterprise entry, and the two-week free usage specifically for Cursor Enterprise customers deepens the SpaceX-xAI-Cursor axis exactly as the OpenAI model cutoff (ev-20260828-03, Nov 12) approaches — Cursor shops get a bundled alternative before losing OpenAI models.",
+      "technical_details": {
+        "product": "Grok Bot: always-on agent teams product, first announced 2026-08-11; enterprise availability 2026-09-03",
+        "bundling": "free usage for two weeks for Grok and Cursor Enterprise customers; org-wide invitations including users without an existing seat",
+        "companion_posts": "Designing Grok Bot for a world of persistent agents (9/3); Setting Grok Bot loose on procurement (9/4)",
+        "context": "Grok 4.6 (8/12) is the underlying flagship; Grok Bot works with X since 8/29"
+      },
+      "technical_details_zh": {
+        "产品": "Grok Bot：常驻 agent 团队产品，2026-08-11 首发；2026-09-03 企业版可用",
+        "捆绑": "Grok 与 Cursor Enterprise 客户两周免费；可邀请全组织（含无席位用户）",
+        "配套文章": "《Designing Grok Bot for a world of persistent agents》（9/3）；《Setting Grok Bot loose on procurement》（9/4）",
+        "背景": "底座旗舰为 Grok 4.6（8/12）；8/29 起 Grok Bot 接入 X"
+      },
+      "tags": [
+        "xai",
+        "grok-bot",
+        "enterprise",
+        "persistent-agents",
+        "cursor"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 2,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 1,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "xai-grok-bot-enterprise"
+    }
+  ]
+}

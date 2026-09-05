@@ -12,12 +12,13 @@
       ],
       "published_at": "2026-09-01T00:00:00Z",
       "first_seen_at": "2026-09-02T00:01:14Z",
-      "last_updated_at": "2026-09-02T00:01:14Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
       "source_type": "official_blog",
       "primary_source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
       "secondary_sources": [
         "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
-        "https://news.ycombinator.com/item?id=49420096"
+        "https://news.ycombinator.com/item?id=49420096",
+        "https://artificialanalysis.ai/models/claude-fable-5-1"
       ],
       "summary": "Anthropic launched Claude Fable 5.1, its most advanced model for coding and knowledge work, GA on all platforms (claude-fable-5-1 on the API, plus AWS, GCP, Azure) and made it the default Fable model in Claude Code. Pricing keeps $10/M input and $50/M output but cuts cache reads from $1.00/M to $0.25/M, making typical workloads ~25% cheaper than Fable 5 and highly cache-heavy agentic workloads up to ~45% cheaper. Benchmarks: Terminal-Bench 4.0 55.8% (Fable 5 42.0, GPT-5.6 Sol 37.3), Terminal-Bench-Science 0.1 52.6% vs GPT-5.6 Sol 22.4, GPQA 88.5 (new SOTA), HLE 60.9 without tools. The same model ships as Mythos 5.1 for trusted-access programs (bio via LSVP with the US government, cyber via CYP), with stronger cyber capabilities but below Anthropic's next bio risk tier. Anthropic also announced Enterprise Frontier Safeguards (ZDR-equivalent privacy with safeguards, phases starting fall 2026) and, for models released after Aug 2 2026 (Fable 5.1 included), output watermarking per the EU AI Act with a detection API in private preview.",
       "why_it_matters": "For anyone running agentic workloads on Claude, the cache-read cut is the headline: agents that re-read long frozen context every turn are exactly the profile that saves up to ~45%, which changes model-routing math for coding agents specifically. The benchmark spread on Terminal-Bench 4.0 (55.8 vs GPT-5.6 Sol's 37.3) plus effort levels now exposed on a 1-10 scale makes effort-based cost control practical. Watch the two governance shifts: Enterprise Frontier Safeguards converges on OpenAI's Private Safety Processing (retention-free inference with safety tooling), and the EU watermark + detection API turn provenance marking into an integration requirement for European deployments.",
@@ -71,7 +72,8 @@
       "verification_cost": 1,
       "risk": 2,
       "recommendation": "ADOPT",
-      "event_fingerprint": "anthropic-claude-fable-mythos-5-1-launch"
+      "event_fingerprint": "anthropic-claude-fable-mythos-5-1-launch",
+      "update_2026_09_04": "Third-party eval + tooling follow-up: Artificial Analysis model page (captured 9/5; eval reflected ~9/2) scores Fable 5.1 at 57 on the Intelligence Index, ranked #1 of 202 listed models, $6.12 per Intelligence Index task — AA flags it as 'particularly expensive when comparing to other models of similar price' despite the cache-read cut. Claude Code 2.1.260 (9/3) fixed Fable 5.1 in the /model picker, fable agents ignoring the [1m] tag (silently running 200K windows), and a tool-result prompt-cache miss on Fable 5.1; 1M-context auto-compact improved. Recommendation stays ADOPT"
     },
     {
       "event_id": "ev-20260901-02",
@@ -83,11 +85,12 @@
       ],
       "published_at": "2026-09-01T00:00:00Z",
       "first_seen_at": "2026-09-02T00:01:14Z",
-      "last_updated_at": "2026-09-02T00:01:14Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
       "source_type": "official_blog",
       "primary_source": "https://openai.com/index/path-to-astra/",
       "secondary_sources": [
-        "https://news.ycombinator.com/item?id=49420096"
+        "https://news.ycombinator.com/item?id=49420096",
+        "https://openai.com/index/gpt-6-astra/"
       ],
       "summary": "OpenAI published 'Path to Astra: critical capabilities and frontier safeguards', announcing that Astra will be the first OpenAI model to meet the Critical cybersecurity capability threshold under its Preparedness Framework, and detailing the stronger safeguards required for release. Building on lessons from the Hugging Face incident (ev-20260818-04), the framework covers threat modeling with both attacker-driven and failure-driven scenarios, risk mapping of where agentic models touch critical systems, and action thresholds for how cyber capabilities are tracked over time.",
       "why_it_matters": "This is the first time a frontier lab has publicly walked a model up to its own Critical tier while specifying what changes operationally: monitoring obligations, sandboxing depth, and disclosure duties for frontier-cyber deployments. For security and platform teams it is an early template of the compliance surface high-capability agents will carry — and the clearest signal yet that Astra's launch is gated on safeguard deployment rather than raw capability.",
@@ -122,7 +125,8 @@
       "verification_cost": 1,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "openai-path-to-astra-critical-capability-framework"
+      "event_fingerprint": "openai-path-to-astra-critical-capability-framework",
+      "update_2026_09_03": "Framework executed: GPT-6 Astra launched 9/3 (ev-20260903-01) as the first model to meet the Critical cyber threshold — the launch version ships safeguards that refuse advanced-cyber tasks (e.g. PoC exploit creation), with Daybreak expanding access under less restrictive safeguards in the coming weeks; OpenAI also discloses Astra's written reasoning is harder to monitor than GPT-5.6 Sol's (fewer written steps), with misalignment monitoring live in production for Astra-class models. The 'launch gated on safeguard deployment' reading held"
     },
     {
       "event_id": "ev-20260901-03",

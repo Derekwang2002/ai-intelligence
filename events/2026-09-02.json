@@ -1,6 +1,6 @@
 {
   "date": "2026-09-02",
-  "provenance": "Captured by 2026-09-02T00:01:14Z run (scan window [2026-08-31T00:00:24Z, 2026-09-02T00:01:14Z]). Research items are from the Wed 2 Sep digest (Monday 8/31 + Tuesday 9/1 submissions), which the arXiv API/listing indexed right around the window boundary: WHALE = 2609.00196, CacheBridge = 2609.00891, Calibration = 2609.00949, Irreversibility Budget = 2609.00275, Instella-MoE = 2609.00791. The digest was still propagating at retrieval time (listing topped out ~2609.01604); the next run should re-sweep ids above that.",
+  "provenance": "Captured by 2026-09-02T00:01:14Z run (scan window [2026-08-31T00:00:24Z, 2026-09-02T00:01:14Z]). Research items are from the Wed 2 Sep digest (Monday 8/31 + Tuesday 9/1 submissions), which the arXiv API/listing indexed right around the window boundary: WHALE = 2609.00196, CacheBridge = 2609.00891, Calibration = 2609.00949, Irreversibility Budget = 2609.00275, Instella-MoE = 2609.00791. The digest was still propagating at retrieval time (listing topped out ~2609.01604); the next run should re-sweep ids above that. Appended by the 2026-09-05T00:00:21Z run: three 9/2-dated events recovered from the [2026-09-02T00:01:14Z, 2026-09-05T00:00:21Z] window (Gemini 3.8 Flash + Flash Cyber, Cursor self-hosted machines, Muse Spark 1.3) — all verified against primary sources (blog.google, cursor.com changelog, research.meta.ai); the blog.google page supplies every Flash/Flash-Cyber number quoted.",
   "events": [
     {
       "event_id": "ev-20260902-01",
@@ -254,6 +254,166 @@
       "risk": 2,
       "recommendation": "WATCH",
       "event_fingerprint": "amd-instella-moe-technical-report"
+    },
+    {
+      "event_id": "ev-20260902-06",
+      "title": "Google ships Gemini 3.8 Flash and a gated Flash Cyber security model",
+      "title_zh": "Google 发布 Gemini 3.8 Flash 与受控分发的 Flash Cyber 安全模型",
+      "category": "foundation-model",
+      "organization": [
+        "Google",
+        "Google DeepMind"
+      ],
+      "published_at": "2026-09-02T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "official_blog",
+      "primary_source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+      "secondary_sources": [
+        "https://github.blog/changelog/2026-09-03-gemini-3-8-flash-is-now-available-in-github-copilot"
+      ],
+      "summary": "Google launched Gemini 3.8 Flash, its 'most intelligent workhorse model' — the third Flash release in six weeks — at the same speed and cost class as 3.7 Flash, with gains in software engineering, agentic tasks, and multi-step specialized reasoning. HLE-Verified 54.9%; on DeepSWE v1.1 it beats most larger frontier models at a fraction of the cost. Alongside it, Gemini 3.8 Flash Cyber is Google's most capable cybersecurity model — frontier-level vulnerability detection and automated patching — available only to trusted defenders (government authorities, critical-infrastructure operators, software maintainers) via the Fairwind Program: CWE-Bench (Collinear) pass@1 47.2% vs a leading frontier model's 47.8% at significantly lower cost; 2.6x more correct Chrome patches than much larger commercial models; Wiz reports +7.5-9.7% recall on internal pentest benchmarks at 2.3-5.2x lower cost; Google Cloud Vulnerability Research found a critical foundational vulnerability in under 2 hours. Intro pricing for 3.8 Flash: $0.75/M input and $3.75/M output until 2026-12-31, then $1.50/$7.50. Available across Antigravity, Gemini API, Stitch, Gemini Enterprise, and AI Pro/Ultra; 3.7 Flash remains supported for efficiency-first workloads (3.8 Flash uses more tokens on complex tasks, with lower effort levels available). Both models carry CBRN and cyber-offense safeguards under the Frontier Safety Framework plus improved prompt-injection robustness (Gray Swan). Gemini 3.8 Flash reached GitHub Copilot on 9/3.",
+      "why_it_matters": "Two things land at once: a workhorse-tier upgrade at an aggressive intro price ($0.75/$3.75), which resets the price-performance line for coding-agent routing; and the second lab in a week shipping a cyber-capable model gated behind a trusted-defender program (after Anthropic's Mythos 5.1 CYP) — controlled distribution of frontier cyber capability is becoming the standard pattern, not an outlier. For security teams, Flash Cyber's numbers (near-frontier CWE-Bench at lower cost, 2.6x correct Chrome patches) make vuln-detection pipelines practical; everyone else should note the token-usage increase on complex tasks before switching.",
+      "summary_zh": "Google 发布 Gemini 3.8 Flash——官方称「最智能的主力模型」，六周内第三个 Flash，速度与成本档位与 3.7 Flash 相同，在软件工程、agentic 任务与专业领域多步推理上提升：HLE-Verified 54.9%；DeepSWE v1.1 上以零头成本胜过多数更大的前沿模型。同期发布的 Gemini 3.8 Flash Cyber 是 Google 最强网络安全模型——前沿级漏洞发现与自动修补——仅通过 Fairwind 计划向受信任防御者（政府机构、关键基础设施运营方、软件维护方）开放：CWE-Bench（Collinear）pass@1 47.2%，对比某领先前沿模型的 47.8% 但成本显著更低；Chrome 正确补丁数是更大商业模型的 2.6 倍；Wiz 内部渗透基准召回率 +7.5-9.7 个百分点、成本低 2.3-5.2 倍；Google Cloud 漏洞研究团队不到 2 小时找到一个关键基础漏洞。3.8 Flash 介绍期定价：输入 $0.75/M、输出 $3.75/M（至 2026-12-31，之后 $1.50/$7.50）。可用范围覆盖 Antigravity、Gemini API、Stitch、Gemini Enterprise 与 AI Pro/Ultra；3.7 Flash 继续服务效率优先场景（3.8 Flash 在复杂任务上耗更多 token，可调低 effort 档）。两模型均按 Frontier Safety Framework 携带 CBRN 与网络攻击防护，并改进了提示注入鲁棒性（Gray Swan 度量）。Gemini 3.8 Flash 已于 9/3 进入 GitHub Copilot。",
+      "summary_en": "Google launched Gemini 3.8 Flash, its 'most intelligent workhorse model' — the third Flash release in six weeks — at the same speed and cost class as 3.7 Flash, with gains in software engineering, agentic tasks, and multi-step specialized reasoning. HLE-Verified 54.9%; on DeepSWE v1.1 it beats most larger frontier models at a fraction of the cost. Alongside it, Gemini 3.8 Flash Cyber is Google's most capable cybersecurity model — frontier-level vulnerability detection and automated patching — available only to trusted defenders (government authorities, critical-infrastructure operators, software maintainers) via the Fairwind Program: CWE-Bench (Collinear) pass@1 47.2% vs a leading frontier model's 47.8% at significantly lower cost; 2.6x more correct Chrome patches than much larger commercial models; Wiz reports +7.5-9.7% recall on internal pentest benchmarks at 2.3-5.2x lower cost; Google Cloud Vulnerability Research found a critical foundational vulnerability in under 2 hours. Intro pricing for 3.8 Flash: $0.75/M input and $3.75/M output until 2026-12-31, then $1.50/$7.50. Available across Antigravity, Gemini API, Stitch, Gemini Enterprise, and AI Pro/Ultra; 3.7 Flash remains supported for efficiency-first workloads (3.8 Flash uses more tokens on complex tasks, with lower effort levels available). Both models carry CBRN and cyber-offense safeguards under the Frontier Safety Framework plus improved prompt-injection robustness (Gray Swan). Gemini 3.8 Flash reached GitHub Copilot on 9/3.",
+      "why_it_matters_zh": "两件事同时落地：其一，主力档模型在激进介绍价（$0.75/$3.75）下升级，重画了 coding agent 路由的性价比线；其二，一周内第二家实验室发布受信任防御者计划门控的 cyber 能力模型（继 Anthropic Mythos 5.1 的 CYP 之后）——前沿 cyber 能力的受控分发正在成为标准做法而非例外。对安全团队，Flash Cyber 的数字（接近前沿的 CWE-Bench、更低成本、2.6 倍的 Chrome 正确补丁）让漏洞发现流水线变得可落地；其他团队切换前应留意复杂任务上 token 用量的上升。",
+      "why_it_matters_en": "Two things land at once: a workhorse-tier upgrade at an aggressive intro price ($0.75/$3.75), which resets the price-performance line for coding-agent routing; and the second lab in a week shipping a cyber-capable model gated behind a trusted-defender program (after Anthropic's Mythos 5.1 CYP) — controlled distribution of frontier cyber capability is becoming the standard pattern, not an outlier. For security teams, Flash Cyber's numbers (near-frontier CWE-Bench at lower cost, 2.6x correct Chrome patches) make vuln-detection pipelines practical; everyone else should note the token-usage increase on complex tasks before switching.",
+      "technical_details": {
+        "availability": "3.8 Flash: Google Antigravity, Gemini API (AI Studio, Android Studio), Stitch, Gemini Enterprise, AI Pro/Ultra consumers; GitHub Copilot 9/3; 3.7 Flash remains for efficiency-first workloads",
+        "pricing": "intro $0.75/M input, $3.75/M output until 2026-12-31; $1.50/$7.50 from 2027-01-01; 3.8 Flash uses more tokens on complex tasks, lower effort levels available",
+        "flash_benchmarks": "HLE-Verified 54.9%; DeepSWE v1.1 beats most larger frontier models at a fraction of the cost",
+        "flash_cyber_benchmarks": "CWE-Bench (Collinear) pass@1 47.2% vs leading frontier 47.8% at significantly lower cost; 2.6x more correct Chrome patches than best commercial models; Wiz +7.5-9.7% recall at 2.3-5.2x lower cost; Google Cloud VR critical foundational vuln in <2h; >70% success on internal 20-language vulnerability benchmark",
+        "gating": "Fairwind Program: trusted government authorities, critical infrastructure operators, software maintainers; more permissive cyber mitigations than the standard model",
+        "safety": "CBRN + cyber-offense safeguards per Frontier Safety Framework; improved prompt-injection robustness (Gray Swan)"
+      },
+      "technical_details_zh": {
+        "可用性": "3.8 Flash：Google Antigravity、Gemini API（AI Studio、Android Studio）、Stitch、Gemini Enterprise、AI Pro/Ultra 消费端；9/3 进 GitHub Copilot；3.7 Flash 继续服务效率优先场景",
+        "定价": "介绍期输入 $0.75/M、输出 $3.75/M（至 2026-12-31）；2027-01-01 起 $1.50/$7.50；3.8 Flash 复杂任务更耗 token，可调低 effort",
+        "Flash 基准": "HLE-Verified 54.9%；DeepSWE v1.1 以零头成本胜过多数更大前沿模型",
+        "Flash Cyber 基准": "CWE-Bench（Collinear）pass@1 47.2%，对比领先前沿 47.8% 且成本显著更低；Chrome 正确补丁为最佳商业模型 2.6 倍；Wiz 召回 +7.5-9.7 个百分点、成本低 2.3-5.2 倍；Google Cloud VR 不到 2 小时找到关键基础漏洞；内部 20 语言漏洞基准成功率超 70%",
+        "访问门控": "Fairwind 计划：受信任的政府机构、关键基础设施运营方、软件维护方；比标准模型更宽松的 cyber 防护策略",
+        "安全": "按 Frontier Safety Framework 携带 CBRN 与网络攻击防护；提示注入鲁棒性改进（Gray Swan）"
+      },
+      "tags": [
+        "gemini",
+        "flash",
+        "cybersecurity",
+        "fairwind",
+        "pricing",
+        "coding-agent",
+        "trusted-access"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 1,
+      "risk": 2,
+      "recommendation": "ADOPT",
+      "event_fingerprint": "google-gemini-3-8-flash-flash-cyber-release"
+    },
+    {
+      "event_id": "ev-20260902-07",
+      "title": "Cursor adds self-hosted machines so cloud agents run on your own infra",
+      "title_zh": "Cursor 云代理支持自托管机器，执行留在自己基础设施里",
+      "category": "developer-tools",
+      "organization": [
+        "Anysphere",
+        "Cursor"
+      ],
+      "published_at": "2026-09-02T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "official_blog",
+      "primary_source": "https://cursor.com/changelog",
+      "secondary_sources": [],
+      "summary": "Cursor shipped 'Self-hosted machines' (9/2 changelog): tool execution for cloud agents stays entirely on the customer's own network — codebases, build artifacts, and secrets remain on internal infrastructure. Scheduling is a dynamic pool: personal 'My Machines', scalable team pools, and idle-worker hibernation. Cloud agents can run on existing sandboxes — AWS Lambda, Coder, Cloudflare, Daytona, Modal, Namespace, Vercel, E2B — and computer use works on self-hosted Linux and Mac machines.",
+      "why_it_matters": "Always-on cloud agents have been the part of the coding-agent stack that data-residency-constrained enterprises could not adopt, because execution meant sending code to vendor infra. This turns the execution plane into bring-your-own infrastructure, reusing sandbox providers teams already run. It pairs with OpenAI's ZDR/Private Safety Processing commitments and Anthropic's Enterprise Frontier Safeguards as the enterprise control surface assembles (candidate trend).",
+      "summary_zh": "Cursor 发布「Self-hosted machines」（9/2 changelog）：云代理的工具执行完全保留在客户自己的网络内——代码库、构建产物与密钥都不离开内部基础设施。调度采用动态资源池：个人的「My Machines」、可扩展的团队池、空闲 worker 休眠。云代理可以跑在既有沙箱上——AWS Lambda、Coder、Cloudflare、Daytona、Modal、Namespace、Vercel、E2B；computer use 支持自托管 Linux 与 Mac 机器。",
+      "summary_en": "Cursor shipped 'Self-hosted machines' (9/2 changelog): tool execution for cloud agents stays entirely on the customer's own network — codebases, build artifacts, and secrets remain on internal infrastructure. Scheduling is a dynamic pool: personal 'My Machines', scalable team pools, and idle-worker hibernation. Cloud agents can run on existing sandboxes — AWS Lambda, Coder, Cloudflare, Daytona, Modal, Namespace, Vercel, E2B — and computer use works on self-hosted Linux and Mac machines.",
+      "why_it_matters_zh": "对数据驻留受限的企业，常驻云代理一直是 coding-agent 栈里没法采用的一环，因为执行意味着把代码送到厂商基础设施。这次把执行面变成自带基础设施，且复用团队本就在跑的沙箱供应商。它与 OpenAI 的 ZDR/Private Safety Processing、Anthropic 的 Enterprise Frontier Safeguards 相互呼应——企业控制面正在成形（候选趋势）。",
+      "why_it_matters_en": "Always-on cloud agents have been the part of the coding-agent stack that data-residency-constrained enterprises could not adopt, because execution meant sending code to vendor infra. This turns the execution plane into bring-your-own infrastructure, reusing sandbox providers teams already run. It pairs with OpenAI's ZDR/Private Safety Processing commitments and Anthropic's Enterprise Frontier Safeguards as the enterprise control surface assembles (candidate trend).",
+      "technical_details": {
+        "execution": "tool execution on the customer's own network; codebases, build artifacts, secrets stay internal",
+        "scheduling": "dynamic pool: personal 'My Machines', scalable team pools, idle-worker hibernation",
+        "sandbox_providers": "AWS Lambda, Coder, Cloudflare, Daytona, Modal, Namespace, Vercel, E2B",
+        "computer_use": "supported on self-hosted Linux and Mac machines"
+      },
+      "technical_details_zh": {
+        "执行": "工具执行在客户自有网络；代码库、构建产物、密钥不外流",
+        "调度": "动态池：个人「My Machines」、可扩展团队池、空闲 worker 休眠",
+        "沙箱供应商": "AWS Lambda、Coder、Cloudflare、Daytona、Modal、Namespace、Vercel、E2B",
+        "computer use": "支持自托管 Linux 与 Mac 机器"
+      },
+      "tags": [
+        "cursor",
+        "self-hosted",
+        "cloud-agents",
+        "data-residency",
+        "sandbox",
+        "computer-use"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "cursor-self-hosted-machines"
+    },
+    {
+      "event_id": "ev-20260902-08",
+      "title": "Meta iterates Muse Spark toward long-horizon agentic coding",
+      "title_zh": "Meta 迭代 Muse Spark：面向长时程 agentic coding",
+      "category": "foundation-model",
+      "organization": [
+        "Meta",
+        "Meta Superintelligence Labs"
+      ],
+      "published_at": "2026-09-02T00:00:00Z",
+      "first_seen_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-05T00:00:21Z",
+      "source_type": "official_blog",
+      "primary_source": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
+      "secondary_sources": [],
+      "summary": "Meta Superintelligence Labs shipped Muse Spark 1.3 (9/2), an agentic-coding iteration of the Muse Spark line: better long-horizon task sustainment, generating its own context from messy or conflicting sources, proactively correcting plan gaps, and self-tracking learnings; collaboration behaviors (clarifying questions on ambiguous prompts, asking for help when stuck, confirming before consequential actions); fewer dropped constraints on long-form instructions; better routing inside messy single-threaded contexts including interruptions; improved self-awareness of knowledge limits ('hitting hurdles rather than hallucinating outcomes'); and cleaner coding output with fewer unnecessary turns. Meta engineer comparisons vs 1.2: ~20% fewer tool calls and ~25% fewer tokens. Available in Muse Code and the Meta Model API (max-reasoning variant live on both); a Muse Spark open-weights release is teased but undated.",
+      "why_it_matters": "The US-lab frontier coding-agent line is iterating on agent-efficiency economics (~20% fewer tool calls, ~25% fewer tokens is a direct cost cut at fixed capability), and the open-weights tease matters for the open-weight competitive landscape (trend #1's US supply side). Beyond that, the collaboration behavior set — ask, confirm-before-consequence, admit limits — is becoming table stakes for deployed agents, and it is useful as a checklist when specifying your own agent behavior.",
+      "summary_zh": "Meta 超级智能实验室发布 Muse Spark 1.3（9/2），Muse Spark 线的 agentic coding 迭代：长时程任务续航更好、能从杂乱或冲突来源自行生成上下文、主动修补计划缺口、自记录学习；协作行为（对模糊提示追问、卡住时求助、后果性动作前确认）；长指令少丢约束；杂波单线程上下文（含打断）内路由更好；对自身知识边界更自省（「撞到墙而不是编造结果」）；编码输出更干净、少绕弯。Meta 工程师对比 1.2：工具调用少约 20%、token 少约 25%。已在 Muse Code 与 Meta Model API 可用（两平台均有 max reasoning 变体）；预告了 Muse Spark 开源权重发布但未给日期。",
+      "summary_en": "Meta Superintelligence Labs shipped Muse Spark 1.3 (9/2), an agentic-coding iteration of the Muse Spark line: better long-horizon task sustainment, generating its own context from messy or conflicting sources, proactively correcting plan gaps, and self-tracking learnings; collaboration behaviors (clarifying questions on ambiguous prompts, asking for help when stuck, confirming before consequential actions); fewer dropped constraints on long-form instructions; better routing inside messy single-threaded contexts including interruptions; improved self-awareness of knowledge limits ('hitting hurdles rather than hallucinating outcomes'); and cleaner coding output with fewer unnecessary turns. Meta engineer comparisons vs 1.2: ~20% fewer tool calls and ~25% fewer tokens. Available in Muse Code and the Meta Model API (max-reasoning variant live on both); a Muse Spark open-weights release is teased but undated.",
+      "why_it_matters_zh": "美国实验室的前沿 coding agent 线正在 agent 效率经济学上快速迭代（同等能力下工具调用少约 20%、token 少约 25% 就是直接降本），而开源权重预告对开源竞争格局（趋势 #1 的美国供给侧）有意义。此外这套协作行为集——追问、后果前确认、承认局限——正在成为已部署 agent 的标配，也可以当作给自己 agent 定行为规格时的清单。",
+      "why_it_matters_en": "The US-lab frontier coding-agent line is iterating on agent-efficiency economics (~20% fewer tool calls, ~25% fewer tokens is a direct cost cut at fixed capability), and the open-weights tease matters for the open-weight competitive landscape (trend #1's US supply side). Beyond that, the collaboration behavior set — ask, confirm-before-consequence, admit limits — is becoming table stakes for deployed agents, and it is useful as a checklist when specifying your own agent behavior.",
+      "technical_details": {
+        "agentic": "long-horizon sustainment; self-generated context from messy/conflicting sources; proactive plan-gap correction; self-tracked learnings",
+        "collaboration": "clarifying questions on ambiguous prompts; requests for help when stuck; confirms before consequential actions",
+        "other": "fewer dropped constraints on long-form instructions; multitasking in messy single-threaded contexts incl. interruptions; self-awareness of knowledge limits; cleaner coding, fewer turns",
+        "efficiency": "Meta engineer comparisons vs 1.2: ~20% fewer tool calls, ~25% fewer tokens",
+        "availability": "Muse Code + Meta Model API (max reasoning variant live); install via curl from dev.meta.ai; open weights teased, no date",
+        "openness": "API/tool access only at release; no weights yet"
+      },
+      "technical_details_zh": {
+        "agentic": "长时程续航；从杂乱 / 冲突来源自生成上下文；主动修补计划缺口；自记录学习",
+        "协作": "对模糊提示追问；卡住时求助；后果性动作前确认",
+        "其他": "长指令少丢约束；杂波单线程上下文（含打断）路由更好；对知识边界更自省；编码更干净、少绕弯",
+        "效率": "Meta 工程师对比 1.2：工具调用少约 20%、token 少约 25%",
+        "可用性": "Muse Code + Meta Model API（max reasoning 变体已上）；dev.meta.ai curl 安装；开源权重已预告、无日期",
+        "开放性": "发布时仅 API / 工具访问；尚无权重"
+      },
+      "tags": [
+        "meta",
+        "muse-spark",
+        "agentic-coding",
+        "agent-efficiency",
+        "open-weights-tease"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 1,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "meta-muse-spark-1-3"
     }
   ]
 }
