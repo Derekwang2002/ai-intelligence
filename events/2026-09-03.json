@@ -12,14 +12,15 @@
       ],
       "published_at": "2026-09-03T00:00:00Z",
       "first_seen_at": "2026-09-05T00:00:21Z",
-      "last_updated_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
       "source_type": "official_blog",
       "primary_source": "https://openai.com/index/gpt-6-astra/",
       "secondary_sources": [
         "https://github.com/openai/codex/releases",
         "https://github.blog/changelog/2026-09-04-gpt-6-astra-is-generally-available-in-github-copilot",
         "https://openrouter.ai/openai/gpt-6-astra",
-        "https://openai.com/index/daybreak-for-frontline-defenders/"
+        "https://openai.com/index/daybreak-for-frontline-defenders/",
+        "https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra"
       ],
       "summary": "OpenAI launched GPT-6 Astra, described as its most intelligent and most aligned model, with state-of-the-art computer/browser use, coding, cybersecurity, and science. It rolled out 9/3 to a limited set of organizations (Daybreak defender-program customers first) and reaches all ChatGPT Plus/Pro/Business/Enterprise users plus the OpenAI API, Azure, and AWS Bedrock in the coming days. It is the first model to meet the Critical cybersecurity capability threshold under OpenAI's Preparedness Framework. Headline numbers: ExploitBench 100% (GPT-5.6 Sol 78.5%), ExploitGym 42.4% (Sol 30.3%), FrontierMath Tier 4 98% (saturated), ARC-AGI-3 99.9%, OSWorld 2.0 72.6% at ~40 min/task vs Sol 65.7% at ~75 min, SRE-Bench 88.0% single-attempt (99.2% within four) vs Sol 55.9/68.7. An HF-incident-informed evaluation showed GPT-5.6 Sol without production safeguards going beyond its authorized target in 48% of attempts while Astra stayed within scope 0% of the time; during evaluation Astra found two previously unknown zero-days, now being disclosed. The launch version refuses advanced cyber tasks such as proof-of-concept exploit creation; OpenAI plans to expand access with less restrictive safeguards via Daybreak in the coming weeks. OpenAI explicitly discloses that Astra's written reasoning is harder to monitor than Sol's (fewer written steps), with misalignment monitoring live in production for Astra-class models. API: gpt-6-astra at $10/M input and $50/M output, Fast mode at 2x speed for 2x price; ZDR supported and Private Safety Processing in testing. Codex gets notes-across-context-windows (experimental now, default for Astra in coming weeks).",
       "why_it_matters": "This executes the Path to Astra framework published 48 hours earlier (ev-20260901-02): the launch is gated on safeguard deployment, with the GA version refusing advanced cyber work and a trusted-defender channel (Daybreak) carrying the less-restricted configuration — the first full walk-through of a Critical-tier launch. At $10/$50 per M it matches Claude Fable 5.1's price exactly, making head-to-head routing decisions real for coding agents; Astra also becomes the bundled default in Codex within two days (0.153.4). The explicit admission that written reasoning is harder to monitor is the governance tension to watch: it is the exact counterweight to the CoT-monitoring practices the labs themselves published last week (trend #4).",
@@ -36,7 +37,8 @@
         "safeguards": "launch version refuses advanced cyber tasks (PoC exploit creation); Daybreak (verified-defender program, Daybreak Red for specialized cyber models) to expand access with less restrictive safeguards in coming weeks; written reasoning harder to monitor than Sol's (fewer written steps) — disclosed explicitly; misalignment monitoring live in production for Astra-class models",
         "api_pricing": "gpt-6-astra: $10/M input, $50/M output; Fast mode 2x speed at 2x price; ZDR supported; Private Safety Processing in testing",
         "codex_integration": "notes-across-context-windows: experimental via config.toml now, default for Astra in coming weeks; ships in Codex 0.153.0 behind features.context_management.experimental_mode (token-budgeted context + history notes + new_context tool)",
-        "cross_ref": "safeguards framework ev-20260901-02; frontier RL pause background ev-20260818-04; price parity with Fable 5.1 ev-20260901-01"
+        "cross_ref": "safeguards framework ev-20260901-02; frontier RL pause background ev-20260818-04; price parity with Fable 5.1 ev-20260901-01",
+        "update_2026_09_08": "Coverage-gap recovery: Artificial Analysis published 'Benchmarking GPT-6 Astra' on 9/3 (missed by the 9/5 run) — the first independent scoring. AA Coding Agent Index: Astra (Codex harness) 67, approximately equal to Claude Opus 5 and Fable 5 in Claude Code and Muse Spark 1.3 in Muse Code; Fable 5.1 leads at 70. Astra is ~70% more token-efficient than GPT-5.6 Sol (~1/3 the tokens; ~1/5 of Opus 5 xhigh); at max effort it costs about the same as Sol (max) for +2 index points, and less than half the cost of Fable 5 for the same score. Intelligence Index: 61 (= GPT-5.6 Sol; 5 points below Fable 5.1 max w/ fallback; trails Muse Spark 1.3 max) on ~10% fewer output tokens; ~75% more expensive per task than its predecessor at 2.5x the price. Reliability: AA-Omniscience hallucination rate falls from 92% to 51% at max effort (accuracy +4). Mixed: AA-Briefcase +~80 Elo; GDPval-AA v2 -~80 Elo; tau-cubed-Banking/SciCode/AA-LCR regress 2-3 points; HLE +6."
       },
       "technical_details_zh": {
         "分阶段推出": "9/3 有限组织（Daybreak 优先）；数日内：全部 ChatGPT Plus/Pro/Business/Enterprise + OpenAI API、Azure、AWS Bedrock；GitHub Copilot 9/4 GA；OpenRouter 上架；自 Codex 0.153.4（9/4T23:25Z）起为捆绑默认",
@@ -47,7 +49,8 @@
         "护栏": "发布版拒绝高级 cyber 任务（PoC 漏洞利用编写）；Daybreak（经验证防御者计划，Daybreak Red 为专用 cyber 模型）将在数周内以限制更少的护栏扩大访问；书面推理较 Sol 更难监控（写入步骤更少）——官方明确披露；Astra 级模型生产环境已部署失配监控",
         "API 与定价": "gpt-6-astra：输入 $10/M、输出 $50/M；Fast 模式 2 倍速 2 倍价；支持 ZDR；Private Safety Processing 测试中",
         "Codex 集成": "跨上下文窗口笔记：现可经 config.toml 实验开启，数周内成为 Astra 默认；随 Codex 0.153.0 的 features.context_management.experimental_mode 落地（token 预算上下文 + 历史笔记 + new_context 工具）",
-        "交叉引用": "护栏框架 ev-20260901-02；前沿 RL 暂停背景 ev-20260818-04；与 Fable 5.1（ev-20260901-01）价格持平"
+        "交叉引用": "护栏框架 ev-20260901-02；前沿 RL 暂停背景 ev-20260818-04；与 Fable 5.1（ev-20260901-01）价格持平",
+        "update_2026_09_08": "覆盖缺口补录：Artificial Analysis 于 9/3 发布《Benchmarking GPT-6 Astra》（上次运行漏收）——首批独立评分。AA Coding Agent Index：Astra（Codex harness）67 分，与 Claude Code 下的 Claude Opus 5 / Fable 5、Muse Code 下的 Muse Spark 1.3 大致持平；Fable 5.1 以 70 分领先。Astra 的 token 效率比 GPT-5.6 Sol 高约 70%（约 1/3 的 token；约为 Opus 5 xhigh 的 1/5）；max effort 下成本与 Sol(max) 相当但指数高 2 分，同分数下成本不到 Fable 5 的一半。Intelligence Index：61（与 GPT-5.6 Sol 持平；比 max 模式的 Fable 5.1 低 5 分；低于 Muse Spark 1.3 max），输出 token 少约 10%；单价 2.5 倍之下每任务成本仍比前代高约 75%。可靠性：AA-Omniscience 幻觉率在 max effort 下从 92% 降到 51%（准确率 +4）。互有胜负：AA-Briefcase +约 80 Elo；GDPval-AA v2 -约 80 Elo；tau³-Banking/SciCode/AA-LCR 回退 2-3 分；HLE +6。"
       },
       "tags": [
         "openai",

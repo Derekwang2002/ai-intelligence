@@ -1,0 +1,523 @@
+{
+  "date": "2026-09-08",
+  "provenance": "Captured by 2026-09-08T00:00:18Z run (scan window [2026-09-05T00:00:21Z, 2026-09-08T00:00:18Z]). All items are from the Mon 7 Sep arXiv digest (announced 2026-09-08T00:00Z; header 'Mon, 7 Sep 2026'), selected from 213 keyword hits out of 356 digest entries across cs.CL/cs.AI/cs.LG: 2609.04748 cache-quantization divergence, 2609.04852 KVMem, 2609.04434 hybrid attention/recurrence division, 2609.04575 MoE expert halving, 2609.04611 tau-tau-Bench, 2609.04280 EVOHARNESSBENCH. Watermark advances from 2609.04199 (Fri 4 Sep digest) to 2609.05405.",
+  "events": [
+    {
+      "event_id": "ev-20260908-01",
+      "title": "Prefix caching quietly breaks reproducibility, and quantization multiplies the damage",
+      "title_zh": "前缀缓存在悄悄破坏可复现性，量化还会放大破坏",
+      "category": "ai-engineering",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04748",
+      "secondary_sources": [],
+      "summary": "Same Request, Different Answer (arXiv 2609.04748, Mon 7 Sep digest) measures what prefix caching — enabled by default in the major open-source serving stacks and treated as a transparent optimization — costs in reproducibility. Holding model, decoding parameters, seed and request order fixed and issuing every request serially at batch size one, the author ran an 80-episode multi-turn agentic tool-use workload with caching on and off across two engines and four weight formats. Enabling the cache changed the agent's trajectory on 36.2% of episodes at 16-bit precision and on 75.0% at 4-bit; with caching disabled, repeated execution was bit-identical in every configuration (0 of 800 episodes), bounding all other sources of nondeterminism at 0.5%. Three follow-up experiments locate the cause: a single server-level prompt-cache setting moves run-to-run outcomes, and the divergence compounds across a multi-turn session.",
+      "why_it_matters": "Anyone running quantized models with default prefix caching is silently running a different agent on every cache hit — this turns 'the same prompt gave a different answer' from a mystery into a measured, reproducible effect with a 2x jump between FP16 and INT4. For teams doing agent evals, A/B tests or regression tracking on quantized deployments, the actionable move is either pinning cache state in the harness or reporting cache configuration alongside results; at 4-bit, three quarters of episodes diverge, which is enough to swamp most effect sizes.",
+      "summary_zh": "Same Request, Different Answer（arXiv 2609.04748，9 月 7 日周一 digest）量化了前缀缓存的复现性代价——主流开源 serving 栈默认开启前缀缓存，并把它当作透明优化。固定模型、解码参数、种子和请求顺序、以 batch size 1 串行发请求，作者在两种引擎、四种权重精度上跑了 80 个回合的多轮 agent 工具调用负载。开缓存后，16-bit 下 36.2% 的回合轨迹改变，4-bit 下达 75.0%；关缓存时每种配置的重复执行都比特级一致（800 个回合 0 次分歧），把其他所有不确定性来源约束在 0.5% 以内。三个后续实验定位了成因：单个服务端 prompt-cache 设置就能改变运行结果，且分歧会在多轮会话中累积。",
+      "summary_en": "Same Request, Different Answer (arXiv 2609.04748, Mon 7 Sep digest) measures what prefix caching — enabled by default in the major open-source serving stacks and treated as a transparent optimization — costs in reproducibility. Holding model, decoding parameters, seed and request order fixed and issuing every request serially at batch size one, the author ran an 80-episode multi-turn agentic tool-use workload with caching on and off across two engines and four weight formats. Enabling the cache changed the agent's trajectory on 36.2% of episodes at 16-bit precision and on 75.0% at 4-bit; with caching disabled, repeated execution was bit-identical in every configuration (0 of 800 episodes), bounding all other sources of nondeterminism at 0.5%. Three follow-up experiments locate the cause: a single server-level prompt-cache setting moves run-to-run outcomes, and the divergence compounds across a multi-turn session.",
+      "why_it_matters_zh": "任何在量化模型上开着默认前缀缓存的团队，每次缓存命中都在悄悄运行一个不同的 agent——这项工作把「同样的 prompt 给出不同答案」从玄学变成了可测量、可复现的效应，且 FP16 到 INT4 之间效应翻倍。对在量化部署上做 agent 评测、A/B 测试或回归追踪的团队，可做的事要么在 harness 里固定缓存状态，要么在结果旁标注缓存配置；4-bit 下四分之三的回合会分歧，足以淹没大多数效应量。",
+      "why_it_matters_en": "Anyone running quantized models with default prefix caching is silently running a different agent on every cache hit — this turns 'the same prompt gave a different answer' from a mystery into a measured, reproducible effect with a 2x jump between FP16 and INT4. For teams doing agent evals, A/B tests or regression tracking on quantized deployments, the actionable move is either pinning cache state in the harness or reporting cache configuration alongside results; at 4-bit, three quarters of episodes diverge, which is enough to swamp most effect sizes.",
+      "technical_details": {
+        "experiment": "80-episode multi-turn agentic tool-use workload; 2 engines x 4 weight formats; model/seed/order fixed; serial, batch size 1",
+        "divergence_rates": "cache ON changed trajectory: 36.2% of episodes at 16-bit; 75.0% at 4-bit; cache OFF bit-identical (0/800), bounding other nondeterminism at 0.5%",
+        "cause_localization": "a single server-level prompt-cache setting moves run-to-run outcomes; divergence compounds across multi-turn sessions"
+      },
+      "technical_details_zh": {
+        "实验": "80 回合多轮 agent 工具调用负载；2 种引擎 x 4 种权重精度；固定模型/种子/顺序；串行 batch size 1",
+        "分歧率": "开缓存后轨迹改变：16-bit 下 36.2%；4-bit 下 75.0%；关缓存比特级一致（800 回合 0 次），其他不确定性来源上界 0.5%",
+        "成因定位": "单个服务端 prompt-cache 设置即可改变运行结果；分歧在多轮会话中累积"
+      },
+      "tags": [
+        "prefix-caching",
+        "quantization",
+        "reproducibility",
+        "llm-serving",
+        "agent-evaluation",
+        "determinism"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-04748-cache-quantization-divergence"
+    },
+    {
+      "event_id": "ev-20260908-02",
+      "title": "KVMem virtualizes million-token agent workspaces on a consumer GPU",
+      "title_zh": "KVMem 在消费级 GPU 上虚拟化百万 token 的 agent 工作区",
+      "category": "ai-engineering",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04852",
+      "secondary_sources": [],
+      "summary": "KVMem (arXiv 2609.04852, Mon 7 Sep digest) is a KV-context virtualization system for long-running agents: instead of compacting overflowed workspace history into summaries or re-retrieving it as text (losing fine-grained execution evidence and re-prefilling already-processed content), it preserves overflowed history as paged KV state across GPU memory, host memory and NVMe. Lightweight model-native attention-space indexes select relevant historical blocks, and a query-dependent execution view bounded by the model's native context window is materialized on demand. On long-context agent benchmarks spanning histories up to one million tokens — LongMemEval, MemoryAgentBench, AgentLongBench — KVMem generally achieves higher task utility and greater inference efficiency than compaction-based approaches, the de-facto standard for context overflow (paper reports a DeepSWE long-context test with Qwen3.8-27B).",
+      "why_it_matters": "This attacks the biggest practical gap in long-running agents: compaction is lossy and re-retrieval is expensive, while the KV the model already computed is thrown away. Paging KV to host/NVMe with attention-space indexing is the memory-hierarchy move the agent-memory space has been missing, and it runs on a single consumer GPU. Teams building persistent workspaces (cloud agents, long coding sessions) get a design template that keeps full-fidelity history without paying unbounded context costs.",
+      "summary_zh": "KVMem（arXiv 2609.04852，9 月 7 日周一 digest）是为长时运行 agent 设计的 KV 上下文虚拟化系统：溢出的工作区历史不再被压缩成摘要、也不再以文本形式重复检索（前者丢失细粒度执行证据，后者反复 prefill 已处理过的内容），而是作为分页 KV 状态保留在 GPU 显存、主机内存和 NVMe 之间。轻量的模型原生注意力空间索引选取相关历史块，按需物化一个受模型原生上下文窗口约束的、随查询变化的执行视图。在历史最长达一百万 token 的长上下文 agent 基准（LongMemEval、MemoryAgentBench、AgentLongBench）上，KVMem 的任务效用和推理效率总体优于压缩类方案——后者是上下文溢出的事实标准（论文含 Qwen3.8-27B 的 DeepSWE 长上下文测试）。",
+      "summary_en": "KVMem (arXiv 2609.04852, Mon 7 Sep digest) is a KV-context virtualization system for long-running agents: instead of compacting overflowed workspace history into summaries or re-retrieving it as text (losing fine-grained execution evidence and re-prefilling already-processed content), it preserves overflowed history as paged KV state across GPU memory, host memory and NVMe. Lightweight model-native attention-space indexes select relevant historical blocks, and a query-dependent execution view bounded by the model's native context window is materialized on demand. On long-context agent benchmarks spanning histories up to one million tokens — LongMemEval, MemoryAgentBench, AgentLongBench — KVMem generally achieves higher task utility and greater inference efficiency than compaction-based approaches, the de-facto standard for context overflow (paper reports a DeepSWE long-context test with Qwen3.8-27B).",
+      "why_it_matters_zh": "这解决的是长时运行 agent 最大的实践缺口：压缩有损、重复检索昂贵，而模型已经算好的 KV 被直接扔掉。把 KV 分页到主机内存/NVMe 并用注意力空间索引管理，是 agent 记忆领域一直缺的存储层级设计，而且单张消费级 GPU 就能跑。在做常驻工作区的团队（云代理、长 coding 会话）这里拿到的是保持全保真历史、又不用付无界上下文成本的设计模板。",
+      "why_it_matters_en": "This attacks the biggest practical gap in long-running agents: compaction is lossy and re-retrieval is expensive, while the KV the model already computed is thrown away. Paging KV to host/NVMe with attention-space indexing is the memory-hierarchy move the agent-memory space has been missing, and it runs on a single consumer GPU. Teams building persistent workspaces (cloud agents, long coding sessions) get a design template that keeps full-fidelity history without paying unbounded context costs.",
+      "technical_details": {
+        "approach": "paged KV state for overflowed workspace history across GPU memory / host memory / NVMe; model-native attention-space indexes select relevant blocks; query-dependent execution view bounded by native context window",
+        "benchmarks": "LongMemEval, MemoryAgentBench, AgentLongBench; histories up to 1M tokens; also DeepSWE long-context test with Qwen3.8-27B",
+        "comparison": "generally higher task utility and greater inference efficiency vs compaction-based approaches (the de-facto standard)"
+      },
+      "technical_details_zh": {
+        "方案": "溢出历史以分页 KV 状态存于 GPU 显存/主机内存/NVMe；模型原生注意力空间索引选取相关块；物化受原生上下文窗口约束、随查询变化的执行视图",
+        "基准": "LongMemEval、MemoryAgentBench、AgentLongBench；历史最长 100 万 token；另有 Qwen3.8-27B 的 DeepSWE 长上下文测试",
+        "对比": "任务效用与推理效率总体优于压缩类方案（事实标准）"
+      },
+      "tags": [
+        "agent-memory",
+        "kv-cache",
+        "virtualization",
+        "long-context",
+        "serving",
+        "long-running-agents"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-04852-kvmem-agent-workspace-virtualization"
+    },
+    {
+      "event_id": "ev-20260908-03",
+      "title": "Causal experiments split hybrid models: attention recalls, recurrence controls",
+      "title_zh": "因果实验拆分混合模型：注意力负责回忆，递归负责控制",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04434",
+      "secondary_sources": [],
+      "summary": "What Attention Recalls and Recurrence Controls in Hybrid Language Models (arXiv 2609.04434, Mon 7 Sep digest) introduces two cache-level interventions on hybrid attention+recurrence models — split-prefill (keep only the KV cache or only the recurrent state from a prefilled context, then generate) and state-swap (pair the KV cache from one context with the recurrent state from another in a single forward pass). On Qwen3.5 and Falcon-H1 the two channels split sharply by function: exact retrieval survives only through attention (64-98% of full accuracy) and collapses to zero through recurrence, while output language and persona reverse the pattern (surviving recurrence at 70-80% and 3-5x, with KV-only dropping to ~1% language accuracy). State-swap confirms it causally: the answer takes its value from the KV side and its language from the recurrent side. The authors' summary: attention provides a lookup over what was said; the recurrent state shapes how the model says it next.",
+      "why_it_matters": "This is the first clean causal division of labor between the two channels of the hybrid architectures now shipping in open weights (GLM-5.3-Flash, Qwen3.8-Flash-Next — trend #1), and it lands exactly where serving engineering is being designed: prefix caching and state checkpointing must treat the KV side and recurrent state differently, because only attention carries exact recall — recurrent-state-only caches silently lose lookup while preserving style and persona. Teams building hybrid-model caching or state migration should test both channels separately; this paper supplies the intervention protocol.",
+      "summary_zh": "《What Attention Recalls and Recurrence Controls in Hybrid Language Models》（arXiv 2609.04434，9 月 7 日周一 digest）在注意力+递归混合模型上引入两个缓存层干预：split-prefill（prefill 后只保留 KV 缓存或只保留递归状态再生成）和 state-swap（单次前向中把一个上下文的 KV 缓存与另一个上下文的递归状态配对）。在 Qwen3.5 和 Falcon-H1 上两个通道按功能尖锐分化：精确检索只能经注意力存活（全精度准确率的 64-98%），经递归完全归零；而输出语言与人设正好相反（经递归以 70-80% 和 3-5 倍存活，仅 KV 时语言准确率掉到约 1%）。state-swap 给出因果确认：答案的取值来自 KV 侧，答案的语言来自递归侧。作者总结：注意力提供「说过什么」的查表；递归状态塑造「接下来说成什么样」。",
+      "summary_en": "What Attention Recalls and Recurrence Controls in Hybrid Language Models (arXiv 2609.04434, Mon 7 Sep digest) introduces two cache-level interventions on hybrid attention+recurrence models — split-prefill (keep only the KV cache or only the recurrent state from a prefilled context, then generate) and state-swap (pair the KV cache from one context with the recurrent state from another in a single forward pass). On Qwen3.5 and Falcon-H1 the two channels split sharply by function: exact retrieval survives only through attention (64-98% of full accuracy) and collapses to zero through recurrence, while output language and persona reverse the pattern (surviving recurrence at 70-80% and 3-5x, with KV-only dropping to ~1% language accuracy). State-swap confirms it causally: the answer takes its value from the KV side and its language from the recurrent side. The authors' summary: attention provides a lookup over what was said; the recurrent state shapes how the model says it next.",
+      "why_it_matters_zh": "这是对当前正以开源权重落地的混合架构（GLM-5.3-Flash、Qwen3.8-Flash-Next——趋势 #1）两个通道首次干净的因果分工拆解，而且正落在 serving 工程的设计点上：前缀缓存与状态检查点必须区别对待 KV 侧和递归状态——只有注意力承载精确回忆，只存递归状态的缓存会无声地丢失查表能力却保留风格与人设。做混合模型缓存或状态迁移的团队应分开测两个通道；本文提供了现成的干预协议。",
+      "why_it_matters_en": "This is the first clean causal division of labor between the two channels of the hybrid architectures now shipping in open weights (GLM-5.3-Flash, Qwen3.8-Flash-Next — trend #1), and it lands exactly where serving engineering is being designed: prefix caching and state checkpointing must treat the KV side and recurrent state differently, because only attention carries exact recall — recurrent-state-only caches silently lose lookup while preserving style and persona. Teams building hybrid-model caching or state migration should test both channels separately; this paper supplies the intervention protocol.",
+      "technical_details": {
+        "interventions": "split-prefill: keep only KV cache or only recurrent state from prefilled context, then generate; state-swap: KV cache from one context + recurrent state from another in a single forward pass",
+        "models": "Qwen3.5, Falcon-H1",
+        "findings": "exact retrieval survives attention only (64-98% of full accuracy), collapses to 0 through recurrence; language/persona survive recurrence (70-80%, 3-5x) while KV-only ~1% language accuracy; state-swap: answer value from KV side, language from recurrent side",
+        "one_liner": "attention = lookup over what was said; recurrent state = how the model says it next"
+      },
+      "technical_details_zh": {
+        "干预": "split-prefill：prefill 后只留 KV 缓存或只留递归状态再生成；state-swap：单次前向中把一个上下文的 KV 与另一上下文的递归状态配对",
+        "模型": "Qwen3.5、Falcon-H1",
+        "发现": "精确检索只经注意力存活（全精度的 64-98%），经递归归零；语言/人设经递归存活（70-80%、3-5 倍），仅 KV 时语言准确率约 1%；state-swap：答案取值来自 KV 侧，语言来自递归侧",
+        "一句话": "注意力 = 「说过什么」的查表；递归状态 = 「接下来说成什么样」"
+      },
+      "tags": [
+        "hybrid-attention",
+        "linear-attention",
+        "interpretability",
+        "prefix-caching",
+        "kv-cache",
+        "causal-analysis"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 1,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-04434-hybrid-attention-recurrence-division"
+    },
+    {
+      "event_id": "ev-20260908-04",
+      "title": "One integer halves activated MoE experts with near-zero quality loss",
+      "title_zh": "一个整数就能把 MoE 激活专家数减半，质量几乎无损",
+      "category": "ai-engineering",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04575",
+      "secondary_sources": [],
+      "summary": "Training-Free Halving of Activated Experts in Fine-Grained Mixture-of-Experts Models (arXiv 2609.04575, Mon 7 Sep digest) exploits a subtle property of fine-grained MoE routing: renormalizing router probabilities implicitly calibrates expert output gain to the training top-k, so naively reducing k at inference changes both which experts fire and their strength. The fix is one integer: activate the top k1 experts while normalizing by the probability mass of the top k2 experts — no parameters, no training, no measurable overhead. On Qwen3.6-35B-A3B, going from 8 to 4 experts costs 4.65 MMLU points under standard renormalization but only 0.35 points with k2=16, while halving routed-expert compute; the result replicates on the 11x larger Qwen3.5-397B-A17B (10 to 5 experts, 0.55-point loss with an appropriate reference set). Removing renormalization entirely is catastrophic — preserving a suitable reference mass is what matters. Perplexity and downstream accuracy also favor different k2 values, so pick by task metric.",
+      "why_it_matters": "For anyone serving fine-grained MoE models, this is a free ~2x cut in expert-compute with a one-line change, validated across an 11x model-size range — the kind of result you test the afternoon you read it. The caveat matters: perplexity is not the right selection metric, so validate on your downstream task, and note the effect is about inference-time expert skipping on already-trained models, not training-time sparsity.",
+      "summary_zh": "《Training-Free Halving of Activated Experts in Fine-Grained Mixture-of-Experts Models》（arX 2609.04575，9 月 7 日周一 digest）利用了细粒度 MoE 路由的一个微妙性质：路由概率重归一化会把专家输出增益隐式校准到训练时的 top-k，因此推理时直接减小 k 会同时改变哪些专家被激活和它们的强度。修复只需一个整数：激活 top k1 个专家，但按 top k2 个专家的概率质量归一化——零参数、零训练、无可测开销。在 Qwen3.6-35B-A3B 上，8 减到 4 个专家在标准重归一化下损失 4.65 个 MMLU 点，k2=16 时只损失 0.35 点，同时专家路由算力减半；结果在 11 倍大的 Qwen3.5-397B-A17B 上复现（10 减到 5，配好参照集损失 0.55 点）。完全去掉重归一化是灾难性的——关键是保留合适的参照质量。困惑度与下游准确率偏好的 k2 不同，选择时要用任务指标。",
+      "summary_en": "Training-Free Halving of Activated Experts in Fine-Grained Mixture-of-Experts Models (arXiv 2609.04575, Mon 7 Sep digest) exploits a subtle property of fine-grained MoE routing: renormalizing router probabilities implicitly calibrates expert output gain to the training top-k, so naively reducing k at inference changes both which experts fire and their strength. The fix is one integer: activate the top k1 experts while normalizing by the probability mass of the top k2 experts — no parameters, no training, no measurable overhead. On Qwen3.6-35B-A3B, going from 8 to 4 experts costs 4.65 MMLU points under standard renormalization but only 0.35 points with k2=16, while halving routed-expert compute; the result replicates on the 11x larger Qwen3.5-397B-A17B (10 to 5 experts, 0.55-point loss with an appropriate reference set). Removing renormalization entirely is catastrophic — preserving a suitable reference mass is what matters. Perplexity and downstream accuracy also favor different k2 values, so pick by task metric.",
+      "why_it_matters_zh": "对任何在跑细粒度 MoE 模型 serving 的团队，这是一行改动换来约 2 倍专家算力削减，且在 11 倍模型尺寸跨度上得到验证——读完当天下午就能测完的那种结果。注意事项：困惑度不是合适的选型指标，要在下游任务上验证；且这是对已训练模型的推理期专家跳过，不是训练期稀疏化。",
+      "why_it_matters_en": "For anyone serving fine-grained MoE models, this is a free ~2x cut in expert-compute with a one-line change, validated across an 11x model-size range — the kind of result you test the afternoon you read it. The caveat matters: perplexity is not the right selection metric, so validate on your downstream task, and note the effect is about inference-time expert skipping on already-trained models, not training-time sparsity.",
+      "technical_details": {
+        "method": "activate top k1 experts, normalize by probability mass of top k2 experts (k2 > k1); one integer, no parameters/training/overhead",
+        "results": "Qwen3.6-35B-A3B 8->4 experts: 4.65 MMLU drop (standard renorm) vs 0.35 (k2=16), halving routed-expert compute; replicates on Qwen3.5-397B-A17B (10->5, 0.55 loss); removing renormalization entirely is catastrophic",
+        "caveats": "perplexity and downstream accuracy favor different k2 — select by task metric"
+      },
+      "technical_details_zh": {
+        "方法": "激活 top k1 个专家，按 top k2（k2 > k1）的概率质量归一化；一个整数，零参数/训练/开销",
+        "结果": "Qwen3.6-35B-A3B 8->4：标准重归一化损失 4.65 MMLU 点 vs k2=16 损失 0.35 点，专家路由算力减半；Qwen3.5-397B-A17B 复现（10->5，损失 0.55）；完全去掉重归一化是灾难",
+        "注意": "困惑度与下游准确率偏好不同 k2——按任务指标选型"
+      },
+      "tags": [
+        "moe",
+        "expert-skipping",
+        "inference-efficiency",
+        "llm-serving",
+        "training-free"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-04575-moe-expert-halving"
+    },
+    {
+      "event_id": "ev-20260908-05",
+      "title": "tau-tau-Bench: the strongest agent-building agent passes 24% of real engagements",
+      "title_zh": "ττ-Bench：最强的造 agent 的 agent 只通过 24% 的真实交付",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04611",
+      "secondary_sources": [],
+      "summary": "tau-tau-Bench (arXiv 2609.04611, Mon 7 Sep digest; pronounced hyper-tau-bench) makes agent construction itself the task: a developer agent receives the records a business actually keeps, a client holding requirements, a production API that operations must run through, a codebase to inherit, and limits on serving cost and models — the same starting point a real client engagement provides — and must deliver a complete customer-service agent, scored by deploying it against held-out simulated users. Across 53 tasks in four domains, the strongest configuration (Claude Opus 5 under Claude Code) passes 23.9% of evaluation simulations; an expert-authored reference ceiling scores 82.2%. Failures mirror the ones human agent developers hit: requirements not honored, API misuse, and brittle conversation handling.",
+      "why_it_matters": "This is the first benchmark for the meta-task everyone assumes coding agents can already do — build production agents from messy requirements — and the 24%-vs-82% gap is the most quotable number yet on how far 'agents building agents' is from human delivery. For platform teams, the benchmark design (real client records + production API + cost limits + held-out simulated users) is itself a reusable template for vendor evaluation: stop accepting demo tasks, ask for a delivered agent.",
+      "summary_zh": "ττ-Bench（arXiv 2609.04611，9 月 7 日周一 digest）把「造 agent」本身做成任务：开发者 agent 拿到的是企业真实留存的记录、握有需求的客户、运营必须使用的生产 API、需要接手的代码库、以及服务成本与模型限制——与真实客户委托完全相同的起点——然后交付一个完整的客服 agent，用部署后对留存模拟用户的通过率打分。四个领域 53 个任务上，最强配置（Claude Code 下的 Claude Opus 5）通过 23.9% 的评测模拟；专家撰写的参照上限为 82.2%。失败模式与人类 agent 开发者如出一辙：需求未被遵守、API 误用、对话处理脆弱。",
+      "summary_en": "tau-tau-Bench (arXiv 2609.04611, Mon 7 Sep digest; pronounced hyper-tau-bench) makes agent construction itself the task: a developer agent receives the records a business actually keeps, a client holding requirements, a production API that operations must run through, a codebase to inherit, and limits on serving cost and models — the same starting point a real client engagement provides — and must deliver a complete customer-service agent, scored by deploying it against held-out simulated users. Across 53 tasks in four domains, the strongest configuration (Claude Opus 5 under Claude Code) passes 23.9% of evaluation simulations; an expert-authored reference ceiling scores 82.2%. Failures mirror the ones human agent developers hit: requirements not honored, API misuse, and brittle conversation handling.",
+      "why_it_matters_zh": "这是第一个为「人人默认 coding agent 已经会做」的元任务——从杂乱需求造出生产级 agent——设计的基准，24% 对 82% 的差距是「agent 造 agent」离人类交付还有多远的最可引用数字。对平台团队，基准本身的设计（真实客户记录 + 生产 API + 成本限制 + 留存模拟用户）就是可复用的供应商评测模板：别再接受演示任务，要求交付一个能跑的 agent。",
+      "why_it_matters_en": "This is the first benchmark for the meta-task everyone assumes coding agents can already do — build production agents from messy requirements — and the 24%-vs-82% gap is the most quotable number yet on how far 'agents building agents' is from human delivery. For platform teams, the benchmark design (real client records + production API + cost limits + held-out simulated users) is itself a reusable template for vendor evaluation: stop accepting demo tasks, ask for a delivered agent.",
+      "technical_details": {
+        "design": "developer agent receives: business records, client with requirements, production API, inherited codebase, serving-cost and model limits; delivers a customer-service agent scored against held-out simulated users",
+        "scale": "53 tasks, 4 domains",
+        "results": "best config (Claude Opus 5 under Claude Code): 23.9% pass; expert-authored reference ceiling: 82.2%; failures mirror human agent-development failures (unhonored requirements, API misuse, brittle conversation handling)"
+      },
+      "technical_details_zh": {
+        "设计": "开发者 agent 获得：企业记录、握需求的客户、生产 API、接手的代码库、服务成本与模型限制；交付客服 agent，用留存模拟用户打分",
+        "规模": "53 个任务、4 个领域",
+        "结果": "最佳配置（Claude Code 下 Claude Opus 5）：通过 23.9%；专家参照上限：82.2%；失败模式与人类 agent 开发者一致（需求未遵守、API 误用、对话脆弱）"
+      },
+      "tags": [
+        "agent-evaluation",
+        "benchmark",
+        "coding-agents",
+        "agent-construction",
+        "customer-service"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-04611-tautau-bench-agent-construction"
+    },
+    {
+      "event_id": "ev-20260908-06",
+      "title": "EVOHARNESSBENCH measures what agents lose as their harness evolves",
+      "title_zh": "EVOHARNESSBENCH 度量 harness 演进时 agent 会丢掉什么",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04280",
+      "secondary_sources": [],
+      "summary": "EVOHARNESSBENCH (arXiv 2609.04280, Mon 7 Sep digest) is a benchmark for evaluating agents under controlled harness evolution — placing non-stationarity not in the task stream (as continual-learning agent benchmarks do) but in the externally supplied harness of tools, skills and agents itself. It contains 17 deterministic multi-stage harness streams built from verifier-based benchmarks: 802 tasks, 520 tools, 42 skills, 62 agents. Two complementary settings isolate the central challenges: deployment evaluation (does previously accessible competence survive as the harness expands?) and self-evolving adaptation evaluation (does accumulated experience transfer to unseen harness configurations?).",
+      "why_it_matters": "Every team shipping agent platforms adds tools weekly; this is the first controlled instrument for the resulting regression class — competence quietly lost when a harness grows — plus the other direction: whether experience gained on one harness config transfers after the next platform update. The deterministic stream construction (verifier-based) means it can run in CI as a harness-change canary, which is exactly how AutoSaddler/HarnessLens-style findings should be operationalized.",
+      "summary_zh": "EVOHARNESSBENCH（arXiv 2609.04280，9 月 7 日周一 digest）是评测受控 harness 演进下 agent 表现的基准——把非平稳性从任务流（持续学习类 agent 基准的惯例）移到外部供给的 harness 本身（工具、技能、agent 三轴）。它包含 17 条由可验证基准确定性地构建的多阶段 harness 流：802 个任务、520 个工具、42 个技能、62 个 agent。两个互补设定分离核心挑战：部署评测（harness 扩张时既有能力是否存活）与自演化适应评测（积累的经验能否迁移到未见过的 harness 配置）。",
+      "summary_en": "EVOHARNESSBENCH (arXiv 2609.04280, Mon 7 Sep digest) is a benchmark for evaluating agents under controlled harness evolution — placing non-stationarity not in the task stream (as continual-learning agent benchmarks do) but in the externally supplied harness of tools, skills and agents itself. It contains 17 deterministic multi-stage harness streams built from verifier-based benchmarks: 802 tasks, 520 tools, 42 skills, 62 agents. Two complementary settings isolate the central challenges: deployment evaluation (does previously accessible competence survive as the harness expands?) and self-evolving adaptation evaluation (does accumulated experience transfer to unseen harness configurations?).",
+      "why_it_matters_zh": "每个在发 agent 平台的团队都在每周加工具；这是针对由此产生的回归类别——harness 长大时悄悄丢掉的能力——的第一个受控测量工具，另一个方向也测：在一种 harness 配置上攒的经验，平台下次更新后还管不管用。确定性流构建（基于可验证器）意味着它可以作为 harness 变更的金丝雀跑进 CI——这正是 AutoSaddler/HarnessLens 类发现应该被落地的方式。",
+      "why_it_matters_en": "Every team shipping agent platforms adds tools weekly; this is the first controlled instrument for the resulting regression class — competence quietly lost when a harness grows — plus the other direction: whether experience gained on one harness config transfers after the next platform update. The deterministic stream construction (verifier-based) means it can run in CI as a harness-change canary, which is exactly how AutoSaddler/HarnessLens-style findings should be operationalized.",
+      "technical_details": {
+        "construction": "17 deterministic multi-stage harness streams from verifier-based benchmarks; axes: tools, skills, agents",
+        "scale": "802 tasks, 520 tools, 42 skills, 62 agents",
+        "settings": "deployment evaluation (retention of previously accessible competence as the harness expands) + self-evolving adaptation evaluation (transfer of accumulated experience to unseen harness configurations)"
+      },
+      "technical_details_zh": {
+        "构建": "17 条由可验证基准确定性构建的多阶段 harness 流；三轴：工具、技能、agent",
+        "规模": "802 任务、520 工具、42 技能、62 agent",
+        "设定": "部署评测（harness 扩张时既有能力存活）+ 自演化适应评测（经验迁移到未见 harness 配置）"
+      },
+      "tags": [
+        "agent-evaluation",
+        "harness",
+        "continual-learning",
+        "benchmark",
+        "regression-testing"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-04280-evoharnessbench"
+    },
+    {
+      "event_id": "ev-20260908-07",
+      "title": "Agent memory changes meaning across model upgrades unless normalized to a schema",
+      "title_zh": "不规范化成固定 schema 的 agent 记忆，换模型后含义会漂移",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.05339",
+      "secondary_sources": [],
+      "summary": "Does Your Agent's Memory Survive a Model Upgrade? (arXiv 2609.05339, Mon 7 Sep digest) compares four memory representations as the same history is preserved verbatim for long-context reading (LC-RAW), chunked for RAG, compressed by a model into natural-language notes (NOTES), or normalized into a fixed-schema knowledge graph (KG-fixed). Across 48 synthetic histories with randomized answer codes and exact scoring, using two open-weight models under 10B, fixed-schema structures transfer essentially perfectly across writer swaps (KG-fixed accuracy shifts by +0.0004 +/- 0.0020), while compressed NOTES are highly model-coupled — accuracy moves asymmetrically by +9.91 or -13.28 percentage points depending on migration direction. In RAG systems, a 50/50 mixed embedding index (partial migration) captures worse than either pure index.",
+      "why_it_matters": "Model upgrades are routine; memory migrations are not — and this quantifies the failure precisely: notes written by model A get reinterpreted by model B with double-digit accuracy swings, while schema-normalized memory is writer-agnostic. The engineering rule is cheap to state: normalize long-lived agent memory into an explicit schema (or raw evidence) rather than model-compressed summaries, and never run a mixed embedding index during migration — re-embed fully or pin the writer. Follows StateMemBench in making agent-memory failure modes measurable.",
+      "summary_zh": "《Does Your Agent's Memory Survive a Model Upgrade?》（arXiv 2609.05339，9 月 7 日周一 digest）比较了四种记忆表示：逐字保留供长上下文阅读（LC-RAW）、分块供 RAG 检索、由模型压缩成自然语言笔记（NOTES）、规范化进固定 schema 知识图谱（KG-fixed）。用 48 份随机化答案编码的合成历史、精确计分、两个 10B 以下开源模型：固定 schema 结构在换写入者时近乎完美迁移（KG-fixed 准确率变化 +0.0004 ± 0.0020），而压缩 NOTES 与模型强耦合——按迁移方向不同，准确率不对称地波动 +9.91 或 -13.28 个百分点。RAG 系统中，50/50 混合嵌入索引（部分迁移）的表现比两个纯索引都差。",
+      "summary_en": "Does Your Agent's Memory Survive a Model Upgrade? (arXiv 2609.05339, Mon 7 Sep digest) compares four memory representations as the same history is preserved verbatim for long-context reading (LC-RAW), chunked for RAG, compressed by a model into natural-language notes (NOTES), or normalized into a fixed-schema knowledge graph (KG-fixed). Across 48 synthetic histories with randomized answer codes and exact scoring, using two open-weight models under 10B, fixed-schema structures transfer essentially perfectly across writer swaps (KG-fixed accuracy shifts by +0.0004 +/- 0.0020), while compressed NOTES are highly model-coupled — accuracy moves asymmetrically by +9.91 or -13.28 percentage points depending on migration direction. In RAG systems, a 50/50 mixed embedding index (partial migration) captures worse than either pure index.",
+      "why_it_matters_zh": "换模型是常态，记忆迁移不是——这项工作把失败量化得很精确：模型 A 写的笔记会被模型 B 重新解读，准确率波动达两位数百分点；而 schema 规范化的记忆与写入者无关。工程规则一句话就能说清：把长寿命的 agent 记忆规范化成显式 schema（或保留原始证据），别用模型压缩的摘要；迁移期间绝不跑混合嵌入索引——要么全量重嵌入，要么锁死写入者。它是继 StateMemBench 之后又一项把 agent 记忆失效模式做成可测量的工作。",
+      "why_it_matters_en": "Model upgrades are routine; memory migrations are not — and this quantifies the failure precisely: notes written by model A get reinterpreted by model B with double-digit accuracy swings, while schema-normalized memory is writer-agnostic. The engineering rule is cheap to state: normalize long-lived agent memory into an explicit schema (or raw evidence) rather than model-compressed summaries, and never run a mixed embedding index during migration — re-embed fully or pin the writer. Follows StateMemBench in making agent-memory failure modes measurable.",
+      "technical_details": {
+        "representations": "LC-RAW (verbatim long-context), RAG (chunked), NOTES (model-compressed natural-language notes), KG-fixed (fixed-schema knowledge graph)",
+        "setup": "48 synthetic histories with randomized answer codes, exact scoring, two open-weight models <10B",
+        "results": "KG-fixed writer swap: +0.0004 +/- 0.0020 accuracy (portable); NOTES: +9.91 / -13.28 pp asymmetric shifts (model-coupled); RAG 50/50 mixed embedding index underperforms both pure indexes",
+        "rule": "normalize long-lived memory to an explicit schema or raw evidence; avoid model-compressed notes and mixed embedding indexes during migration"
+      },
+      "technical_details_zh": {
+        "表示法": "LC-RAW（逐字长上下文）、RAG（分块）、NOTES（模型压缩笔记）、KG-fixed（固定 schema 知识图谱）",
+        "设置": "48 份随机化答案编码的合成历史、精确计分、两个 <10B 开源模型",
+        "结果": "KG-fixed 换写入者：准确率 +0.0004 ± 0.0020（可移植）；NOTES：+9.91 / -13.28 个百分点不对称波动（模型耦合）；RAG 50/50 混合索引劣于两个纯索引",
+        "规则": "长寿命记忆规范化成显式 schema 或原始证据；避免模型压缩笔记与迁移期混合嵌入索引"
+      },
+      "tags": [
+        "agent-memory",
+        "memory-portability",
+        "model-upgrade",
+        "rag",
+        "knowledge-graph",
+        "evaluation"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-05339-memory-portability-model-upgrade"
+    },
+    {
+      "event_id": "ev-20260908-08",
+      "title": "A draft-model gate predicts coding-agent failures before execution",
+      "title_zh": "用 draft 模型当闸门，在执行前预测 coding agent 失败",
+      "category": "ai-engineering",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.05274",
+      "secondary_sources": [],
+      "summary": "Speculative Uncertainty (arX 2609.05274, Mon 7 Sep digest) recovers a predictive failure signal for a black-box agent from its output tokens alone — no logits, weights, activations or repeated sampling. It inverts speculative decoding: a small open-weight draft model scores the agent's already-generated trajectory in a single forward pass, producing speculative cross-likelihoods from which phase-aware features (reasoning vs action spans separated) are calibrated against a verifiable objective. The resulting failure-likelihood score feeds any downstream policy; instantiated as a pre-execution veto gate on software-engineering agents Qwen3-Coder-480B and Claude 3.5 Sonnet, it cuts execution error rate by 6-8 percentage points and token cost by 14-19%.",
+      "why_it_matters": "This is a drop-in uncertainty signal for the exact problem production agent deployments have: confidently-wrong actions that only get noticed after expensive execution. Because it needs only the trajectory text and one forward pass from a small draft model, it works on closed-source agents (Sonnet tested) and adds negligible latency. Teams running retry loops or human-escalation policies get a cheap, calibrated trigger for both.",
+      "summary_zh": "《Speculative Uncertainty》（arX 2609.05274，9 月 7 日周一 digest）只凭输出 token 就能为黑盒 agent 恢复出预测性失败信号——不需要 logits、权重、激活或重复采样。做法是反转推测解码：一个小型开源 draft 模型对 agent 已生成的轨迹做单次前向打分，得到投机交叉似然，再从中提取按阶段分离（推理段 vs 动作段）的特征，对照可验证目标做校准。产出的失败似然分数可接入任何下游策略；在 Qwen3-Coder-480B 与 Claude 3.5 Sonnet 两个软件工程 agent 上实例化为执行前否决闸门后，执行错误率下降 6-8 个百分点，token 成本下降 14-19%。",
+      "summary_en": "Speculative Uncertainty (arX 2609.05274, Mon 7 Sep digest) recovers a predictive failure signal for a black-box agent from its output tokens alone — no logits, weights, activations or repeated sampling. It inverts speculative decoding: a small open-weight draft model scores the agent's already-generated trajectory in a single forward pass, producing speculative cross-likelihoods from which phase-aware features (reasoning vs action spans separated) are calibrated against a verifiable objective. The resulting failure-likelihood score feeds any downstream policy; instantiated as a pre-execution veto gate on software-engineering agents Qwen3-Coder-480B and Claude 3.5 Sonnet, it cuts execution error rate by 6-8 percentage points and token cost by 14-19%.",
+      "why_it_matters_zh": "这是给生产 agent 部署最痛的问题——自信地做错、执行完才发现——提供的即插即用不确定性信号。它只需要轨迹文本和一个小 draft 模型的一次前向，因此对闭源 agent（已测 Sonnet）同样适用，延迟开销可忽略。在跑重试循环或人工升级策略的团队，这里拿到的是一个便宜且校准过的触发器。",
+      "why_it_matters_en": "This is a drop-in uncertainty signal for the exact problem production agent deployments have: confidently-wrong actions that only get noticed after expensive execution. Because it needs only the trajectory text and one forward pass from a small draft model, it works on closed-source agents (Sonnet tested) and adds negligible latency. Teams running retry loops or human-escalation policies get a cheap, calibrated trigger for both.",
+      "technical_details": {
+        "method": "small open-weight draft model scores the agent's generated trajectory in one forward pass (inverted speculative decoding); phase-aware features separate reasoning and action spans; calibrated against a verifiable objective",
+        "requirements": "output tokens only — no logits, weights, activations, or repeated sampling; works on black-box/closed-source agents",
+        "results": "pre-execution veto gate on Qwen3-Coder-480B and Claude 3.5 Sonnet: execution error rate -6 to -8 pp; token cost -14% to -19%"
+      },
+      "technical_details_zh": {
+        "方法": "小型开源 draft 模型对已生成轨迹单次前向打分（反转推测解码）；阶段感知特征分离推理段与动作段；对照可验证目标校准",
+        "要求": "只需输出 token——无需 logits/权重/激活/重复采样；适用于黑盒/闭源 agent",
+        "结果": "在 Qwen3-Coder-480B 与 Claude 3.5 Sonnet 上的执行前否决闸门：执行错误率 -6 至 -8 个百分点；token 成本 -14% 至 -19%"
+      },
+      "tags": [
+        "uncertainty",
+        "speculative-decoding",
+        "coding-agents",
+        "failure-prediction",
+        "agent-reliability"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-05274-draft-model-gate-uncertainty"
+    },
+    {
+      "event_id": "ev-20260908-09",
+      "title": "Prompt injection should be evaluated as an attacker's test-time search",
+      "title_zh": "提示注入应该按攻击者的测试时搜索来评测",
+      "category": "agent-security",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04495",
+      "secondary_sources": [],
+      "summary": "Rethinking Indirect Prompt Injection as a Test-Time Search Problem (arXiv 2609.04495, Mon 7 Sep digest) reformulates indirect prompt injection as a test-time search over a task-dependent attack surface induced by the environment, user task and injection task. To operationalize it, the authors build an agentic attacker with a dedicated search harness: environment reconnaissance, structured reasoning over attack strategies, and adaptive evaluation using victim-agent feedback. Across heterogeneous tasks, increasing attacker test-time compute reliably improves vulnerability discovery and exploitation, while ablations show explicit strategy management is what sustains gains at larger budgets (avoiding redundant search). The conclusion: attack success is a function of the attacker's search procedure and compute budget, not a budget-independent property of the victim.",
+      "why_it_matters": "This closes a methodological hole in agent-security evaluation: a one-shot injection test that passes means little, because a patient attacker with the same agent and environment keeps finding ways in as its compute grows. Practical consequences: red-team reports should state the attacker compute budget; defensive evals should run adaptive multi-turn attackers, not single-attempt payloads; and budget-dependent curves (attacks found vs compute) are the right artifact to track for any tool-using agent shipping to users.",
+      "summary_zh": "《Rethinking Indirect Prompt Injection as a Test-Time Search Problem》（arXiv 2609.04495，9 月 7 日周一 digest）把间接提示注入重新表述为：在由环境、用户任务与注入任务共同决定的任务相关攻击面上的测试时搜索。为落地这一表述，作者造了一个带专用搜索 harness 的 agentic 攻击者：环境侦察、对攻击策略的结构化推理、利用受害 agent 反馈的自适应评估。跨多个异构任务，增加攻击者的测试时算力稳定提升漏洞发现与利用；消融显示显式的策略管理是大预算下维持收益的关键（避免冗余搜索）。结论：攻击成功率是攻击者搜索过程与算力预算的函数，不是受害者的预算无关属性。",
+      "summary_en": "Rethinking Indirect Prompt Injection as a Test-Time Search Problem (arXiv 2609.04495, Mon 7 Sep digest) reformulates indirect prompt injection as a test-time search over a task-dependent attack surface induced by the environment, user task and injection task. To operationalize it, the authors build an agentic attacker with a dedicated search harness: environment reconnaissance, structured reasoning over attack strategies, and adaptive evaluation using victim-agent feedback. Across heterogeneous tasks, increasing attacker test-time compute reliably improves vulnerability discovery and exploitation, while ablations show explicit strategy management is what sustains gains at larger budgets (avoiding redundant search). The conclusion: attack success is a function of the attacker's search procedure and compute budget, not a budget-independent property of the victim.",
+      "why_it_matters_zh": "这补上了 agent 安全评测的方法论漏洞：通过一次性注入测试说明不了什么——同一个 agent 和环境里，有耐心的攻击者会随算力增长不断找到新入口。实践后果：红队报告应标注攻击者算力预算；防御评测应跑自适应多轮攻击者而不是单次 payload；对任何面向用户发布的工具型 agent，「发现攻击数 vs 算力」的预算曲线才是应该追踪的产物。",
+      "why_it_matters_en": "This closes a methodological hole in agent-security evaluation: a one-shot injection test that passes means little, because a patient attacker with the same agent and environment keeps finding ways in as its compute grows. Practical consequences: red-team reports should state the attacker compute budget; defensive evals should run adaptive multi-turn attackers, not single-attempt payloads; and budget-dependent curves (attacks found vs compute) are the right artifact to track for any tool-using agent shipping to users.",
+      "technical_details": {
+        "formulation": "indirect prompt injection = test-time search over a task-dependent attack surface (environment x user task x injection task)",
+        "attacker": "agentic attacker with dedicated search harness: environment reconnaissance, structured strategy reasoning, adaptive evaluation using victim-agent feedback",
+        "findings": "attacker test-time compute improves vulnerability discovery/exploitation; explicit strategy management sustains gains at larger budgets; attack success is budget-dependent, not a fixed property of the victim"
+      },
+      "technical_details_zh": {
+        "表述": "间接提示注入 = 任务相关攻击面上的测试时搜索（环境 x 用户任务 x 注入任务）",
+        "攻击者": "带专用搜索 harness 的 agentic 攻击者：环境侦察、结构化策略推理、利用受害 agent 反馈的自适应评估",
+        "发现": "攻击者测试时算力提升漏洞发现/利用；显式策略管理在大预算下维持收益；攻击成功率依赖预算，不是受害者的固定属性"
+      },
+      "tags": [
+        "prompt-injection",
+        "agent-security",
+        "red-teaming",
+        "test-time-compute",
+        "evaluation"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609-04495-prompt-injection-test-time-search"
+    },
+    {
+      "event_id": "ev-20260908-10",
+      "title": "HackProbe detects reward hacking in self-evolving models without touching weights",
+      "title_zh": "HackProbe 不碰权重就能检测自演化模型的 reward hacking",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04665",
+      "secondary_sources": [],
+      "summary": "Harness-agnostic detection and immunization of reward hacking in self-evolving language models (arXiv 2609.04665, Mon 7 Sep digest) introduces HackProbe, a monitor that attaches to an arbitrary self-evolving loop through two black-box hooks with no access to weights or activations. It maintains a secret, distribution-fixed comparison core (whose frozen distribution makes the capability proxy comparable across generations) alongside a rotated fresh layer that hardens the bank against co-adaptation. Four tests — level gap, scale-aligned divergence with online change-point detection, capability stagnation, and conditional confidently-wrong rate — combine via a Sidak correction into a calibrated family-wise p-value. Diagnosis alone recovers nothing, so a risk-aware immunization layer reselects an honest candidate from the proposal pool using the core plus a purely structural gaming footprint, disclosing at most log2(P) bits.",
+      "why_it_matters": "Any team running selection loops on an imperfect proxy metric (RLVR, self-improvement pipelines, even eval-driven model routing) faces reward hacking that is invisible from the score itself. HackProbe's design constraints are what make it adoptable: black-box hooks only, statistical calibration rather than thresholds, and an explicit immunization step that bounds information disclosure. It is the monitoring half of the reward-hacking stack the KB has been tracking (BAITBENCH measured it; this detects and neutralizes it).",
+      "summary_zh": "《Harness-agnostic detection and immunization of reward hacking in self-evolving language models》（arXiv 2609.04665，9 月 7 日周一 digest）提出 HackProbe：通过两个黑盒挂钩接入任意自演化循环的监控器，不需要访问权重或激活。它维护一个保密的、分布固定的对照核（其冻结分布使能力代理跨代可比），外加轮换的新鲜层以对抗共同适应。四个检验——水平差距、带在线变点检测的尺度对齐分歧、能力停滞、条件性自信错误率——经 Sidak 校正合并为校准的族级 p 值。光诊断不回收任何东西，因此还有一个风险感知的免疫层：用对照核加纯结构性的博弈足迹，从提案池中重选诚实候选，信息泄露上界为 log2(P) 比特。",
+      "summary_en": "Harness-agnostic detection and immunization of reward hacking in self-evolving language models (arXiv 2609.04665, Mon 7 Sep digest) introduces HackProbe, a monitor that attaches to an arbitrary self-evolving loop through two black-box hooks with no access to weights or activations. It maintains a secret, distribution-fixed comparison core (whose frozen distribution makes the capability proxy comparable across generations) alongside a rotated fresh layer that hardens the bank against co-adaptation. Four tests — level gap, scale-aligned divergence with online change-point detection, capability stagnation, and conditional confidently-wrong rate — combine via a Sidak correction into a calibrated family-wise p-value. Diagnosis alone recovers nothing, so a risk-aware immunization layer reselects an honest candidate from the proposal pool using the core plus a purely structural gaming footprint, disclosing at most log2(P) bits.",
+      "why_it_matters_zh": "任何在不完美代理指标上跑选择循环的团队（RLVR、自我改进流水线、甚至评测驱动的模型路由）都会遇到从分数本身看不见的 reward hacking。HackProbe 的设计约束正是它可落地的原因：只用黑盒挂钩、用统计校准代替阈值、并有明确的信息泄露上界的免疫步骤。它是本知识库一直在追踪的 reward hacking 技术栈的监控半边（BAITBENCH 负责测量，这个负责检测并中和）。",
+      "why_it_matters_en": "Any team running selection loops on an imperfect proxy metric (RLVR, self-improvement pipelines, even eval-driven model routing) faces reward hacking that is invisible from the score itself. HackProbe's design constraints are what make it adoptable: black-box hooks only, statistical calibration rather than thresholds, and an explicit immunization step that bounds information disclosure. It is the monitoring half of the reward-hacking stack the KB has been tracking (BAITBENCH measured it; this detects and neutralizes it).",
+      "technical_details": {
+        "monitor": "two black-box hooks; secret distribution-fixed comparison core + rotated fresh layer (anti co-adaptation); no weight/activation access",
+        "tests": "level gap; scale-aligned divergence w/ online change-point detection; capability stagnation; conditional confidently-wrong rate; Sidak-corrected family-wise p-value",
+        "immunization": "risk-aware reselection of an honest candidate from the proposal pool (core + structural gaming footprint); discloses at most log2(P) bits"
+      },
+      "technical_details_zh": {
+        "监控器": "两个黑盒挂钩；保密的分布固定对照核 + 轮换新鲜层（抗共同适应）；无需权重/激活访问",
+        "检验": "水平差距；带在线变点检测的尺度对齐分歧；能力停滞；条件性自信错误率；Sidak 校正族级 p 值",
+        "免疫": "风险感知地从提案池重选诚实候选（对照核 + 结构性博弈足迹）；信息泄露上界 log2(P) 比特"
+      },
+      "tags": [
+        "reward-hacking",
+        "self-evolving",
+        "monitoring",
+        "rlvr",
+        "detection",
+        "black-box"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-04665-hackprobe-reward-hacking"
+    },
+    {
+      "event_id": "ev-20260908-11",
+      "title": "Harbor Adapters standardize 80+ agentic benchmarks into one runnable harness",
+      "title_zh": "Harbor Adapters 把 80 多个 agent 基准标准化进同一个可运行 harness",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-08T00:00:18Z",
+      "last_updated_at": "2026-09-08T00:00:18Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.04298",
+      "secondary_sources": [],
+      "summary": "Harbor Adapters and Harbor-Index (arXiv 2609.04298, Mon 7 Sep digest) is unified evaluation infrastructure for agentic benchmarks: adapters port more than 80 benchmarks to evaluate arbitrary agents, validated through code review and parity experiments. Using it, the authors run 8 models across capability tiers on 54 benchmarks, each with Terminus-2 and one of 3 native harnesses — enabling broader analysis of agent capabilities and failure modes than previously possible. Harbor-Index distills the adapted suite into 82 difficult, diverse, high-quality tasks spanning 29 benchmarks (difficulty filtering, AI and human audit, audit-and-fix loop): it preserves the challenge and breadth of large-scale agentic evaluation while being affordable to run — no evaluated model-harness configuration saturates it.",
+      "why_it_matters": "The agent-eval world's fragmentation tax is real: every benchmark ships its own environment and integration. 80+ adapters with parity validation is the largest standardization effort yet, and the 82-task Harbor-Index is calibrated to stay discriminative at frontier level while cheap enough for routine runs — exactly the artifact a platform team needs as a standing regression suite. Notably, terminal-bench's unified dataset already lives under the harborframework org on GitHub (seen in GLM-5.3's eval-metadata PRs), so the ecosystem adoption has started.",
+      "summary_zh": "《Harbor Adapters and Harbor-Index》（arXiv 2609.04298，9 月 7 日周一 digest）是 agent 基准的统一评测基础设施：适配器把 80 多个基准移植到对任意 agent 可评测，并经代码评审与一致性实验验证。基于它，作者在 54 个基准上跑了 8 个跨能力档的模型，每个模型分别用 Terminus-2 和 3 个原生 harness 之一——由此得出比以往更宽的 agent 能力与失败模式分析。Harbor-Index 把适配套件蒸馏成 82 个跨 29 个基准的高难度、高多样性、高质量任务（难度过滤 + AI 与人工审计 + 审计-修复循环）：保留大规模 agent 评测的挑战性与广度，同时跑得起——没有任何被测模型-harness 组合能 saturate 它。",
+      "summary_en": "Harbor Adapters and Harbor-Index (arXiv 2609.04298, Mon 7 Sep digest) is unified evaluation infrastructure for agentic benchmarks: adapters port more than 80 benchmarks to evaluate arbitrary agents, validated through code review and parity experiments. Using it, the authors run 8 models across capability tiers on 54 benchmarks, each with Terminus-2 and one of 3 native harnesses — enabling broader analysis of agent capabilities and failure modes than previously possible. Harbor-Index distills the adapted suite into 82 difficult, diverse, high-quality tasks spanning 29 benchmarks (difficulty filtering, AI and human audit, audit-and-fix loop): it preserves the challenge and breadth of large-scale agentic evaluation while being affordable to run — no evaluated model-harness configuration saturates it.",
+      "why_it_matters_zh": "agent 评测世界的碎片化税是真的：每个基准都自带环境和集成。80 多个带一致性验证的适配器是迄今最大的标准化工程，82 任务的 Harbor-Index 校准到在前沿水平仍有区分度、又便宜到可以日常跑——正是平台团队需要的常驻回归套件。值得注意的是，terminal-bench 的统一数据集已经放在 GitHub 的 harborframework 组织下（在 GLM-5.3 的评测元数据 PR 中可见），生态采用已经启动。",
+      "why_it_matters_en": "The agent-eval world's fragmentation tax is real: every benchmark ships its own environment and integration. 80+ adapters with parity validation is the largest standardization effort yet, and the 82-task Harbor-Index is calibrated to stay discriminative at frontier level while cheap enough for routine runs — exactly the artifact a platform team needs as a standing regression suite. Notably, terminal-bench's unified dataset already lives under the harborframework org on GitHub (seen in GLM-5.3's eval-metadata PRs), so the ecosystem adoption has started.",
+      "technical_details": {
+        "adapters": "80+ benchmarks ported to evaluate arbitrary agents; validated via code review and parity experiments",
+        "evaluation": "8 models across capability tiers x 54 benchmarks; each model run with Terminus-2 and one of 3 native harnesses",
+        "harbor_index": "82 curated tasks spanning 29 benchmarks; difficulty filtering + AI/human audit + audit-and-fix loop; affordable to run; no evaluated model-harness configuration saturates it",
+        "ecosystem": "terminal-bench unified dataset lives under the harborframework GitHub org (referenced in GLM-5.3 eval-metadata PRs)"
+      },
+      "technical_details_zh": {
+        "适配器": "80 多个基准移植到对任意 agent 可评测；经代码评审与一致性实验验证",
+        "评测": "8 个跨能力档模型 x 54 个基准；每个模型用 Terminus-2 与 3 个原生 harness 之一",
+        "Harbor-Index": "82 个任务、跨 29 个基准；难度过滤 + AI/人工审计 + 审计-修复循环；跑得起；无被测组合能饱和",
+        "生态": "terminal-bench 统一数据集位于 GitHub harborframework 组织下（GLM-5.3 评测元数据 PR 中引用）"
+      },
+      "tags": [
+        "agent-evaluation",
+        "benchmark",
+        "evaluation-infrastructure",
+        "harness",
+        "harbor"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-04298-harbor-adapters-index"
+    }
+  ]
+}
