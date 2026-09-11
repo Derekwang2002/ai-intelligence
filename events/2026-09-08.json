@@ -1,6 +1,6 @@
 {
   "date": "2026-09-08",
-  "provenance": "Captured by 2026-09-08T00:00:18Z run (scan window [2026-09-05T00:00:21Z, 2026-09-08T00:00:18Z]). All items are from the Mon 7 Sep arXiv digest (announced 2026-09-08T00:00Z; header 'Mon, 7 Sep 2026'), selected from 213 keyword hits out of 356 digest entries across cs.CL/cs.AI/cs.LG: 2609.04748 cache-quantization divergence, 2609.04852 KVMem, 2609.04434 hybrid attention/recurrence division, 2609.04575 MoE expert halving, 2609.04611 tau-tau-Bench, 2609.04280 EVOHARNESSBENCH. Watermark advances from 2609.04199 (Fri 4 Sep digest) to 2609.05405. | 2026-09-11 run append: two 9/8 vendor events (ev-20260908-12 Mistral EUR3B Series D, ev-20260908-13 Meta Muse security post) missed by the 9/8 run's weekend-arXiv-focused sweep; merged into this file.",
+  "provenance": "Captured by 2026-09-08T00:00:18Z run (scan window [2026-09-05T00:00:21Z, 2026-09-08T00:00:18Z]). All items are from the Mon 7 Sep arXiv digest (announced 2026-09-08T00:00Z; header 'Mon, 7 Sep 2026'), selected from 213 keyword hits out of 356 digest entries across cs.CL/cs.AI/cs.LG: 2609.04748 cache-quantization divergence, 2609.04852 KVMem, 2609.04434 hybrid attention/recurrence division, 2609.04575 MoE expert halving, 2609.04611 tau-tau-Bench, 2609.04280 EVOHARNESSBENCH. Watermark advances from 2609.04199 (Fri 4 Sep digest) to 2609.05405. | 2026-09-11 run append: two 9/8 vendor events (ev-20260908-12 Mistral EUR3B Series D, ev-20260908-13 Meta Muse security post) missed by the 9/8 run's weekend-arXiv-focused sweep; merged into this file. | Reconciliation pass (2026-09-11T19:05Z+): appended ev-20260908-14..17 (Cohere megakernel serving, Windsurf Cascade removal, Nex-N2.5 open weights, CUA-Universe coverage-gap recovery) — verified events from the concurrent session's window that the consolidated commit lacked.",
   "events": [
     {
       "event_id": "ev-20260908-01",
@@ -624,6 +624,196 @@
       "risk": 2,
       "recommendation": "TRIAL",
       "event_fingerprint": "meta-muse-safety-practices-post"
+    },
+    {
+      "event_id": "ev-20260908-14",
+      "title": "Cohere details its megakernel serving engine for North Mini Code",
+      "title_zh": "Cohere 公开 North Mini Code 的 megakernel serving 引擎细节",
+      "category": "ai-engineering",
+      "organization": [
+        "Cohere"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-11T18:31:49Z",
+      "last_updated_at": "2026-09-11T18:31:49Z",
+      "source_type": "official_blog",
+      "primary_source": "https://cohere.com/blog/megakernels",
+      "secondary_sources": [],
+      "summary": "Cohere published a long-form engineering write-up of the megakernel serving approach behind North Mini Code: fusing the whole inference step into persistent GPU kernels to cut launch overhead and memory traffic, reporting 1.58x faster LLM serving on H100 (vendor-measured). The post covers the kernel design trade-offs and how it composes with the serving stack.",
+      "why_it_matters": "Persistent-kernel / megakernel serving is no longer a single-lab curiosity — DeepSeek's FlashMLA lineage, academic megakernel work and now Cohere's production deployment make it a multi-vendor engineering direction. For serving teams the post is a concrete reference implementation of what step-level fusion buys.",
+      "summary_zh": "Cohere 发布长文介绍 North Mini Code 背后的 megakernel serving 方案：把整个推理步骤融合进常驻 GPU kernel，减少 launch 开销与显存搬运，报告在 H100 上实现 1.58 倍的 LLM serving 提速（厂商自测）。文章覆盖 kernel 设计的取舍以及它与 serving 栈的组合方式。",
+      "summary_en": "Cohere published a long-form engineering write-up of the megakernel serving approach behind North Mini Code: fusing the whole inference step into persistent GPU kernels to cut launch overhead and memory traffic, reporting 1.58x faster LLM serving on H100 (vendor-measured). The post covers the kernel design trade-offs and how it composes with the serving stack.",
+      "why_it_matters_zh": "常驻 kernel / megakernel serving 已不再是单一团队的专利——DeepSeek 的 FlashMLA 谱系、学术界的 megakernel 工作，加上 Cohere 的生产部署，说明这是多厂商共同推进的工程方向。对 serving 团队，这篇文章是「步骤级融合到底能换来什么」的具体参考。",
+      "why_it_matters_en": "Persistent-kernel / megakernel serving is no longer a single-lab curiosity — DeepSeek's FlashMLA lineage, academic megakernel work and now Cohere's production deployment make it a multi-vendor engineering direction. For serving teams the post is a concrete reference implementation of what step-level fusion buys.",
+      "technical_details": {
+        "approach": "megakernel / persistent-kernel serving engine for North Mini Code",
+        "claim": "1.58x faster LLM serving on H100 (vendor-measured)",
+        "context": "same direction as DeepSeek FlashMLA lineage and academic megakernel work"
+      },
+      "technical_details_zh": {
+        "方案": "North Mini Code 的 megakernel / 常驻 kernel serving 引擎",
+        "声明": "H100 上 LLM serving 提速 1.58 倍（厂商自测）",
+        "背景": "与 DeepSeek FlashMLA 谱系及学术界 megakernel 工作同向"
+      },
+      "tags": [
+        "model-serving",
+        "megakernel",
+        "inference-optimization"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "cohere-megakernel-serving-north-mini-code"
+    },
+    {
+      "event_id": "ev-20260908-15",
+      "title": "Windsurf removes Cascade; Devin Local becomes its only agent",
+      "title_zh": "Windsurf 移除 Cascade，Devin Local 成为唯一 agent",
+      "category": "developer-tools",
+      "organization": [
+        "Windsurf",
+        "Cognition"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-11T18:31:49Z",
+      "last_updated_at": "2026-09-11T18:31:49Z",
+      "source_type": "release_notes",
+      "primary_source": "https://docs.devin.ai/desktop/changelog",
+      "secondary_sources": [],
+      "summary": "Windsurf's desktop changelog (now hosted on docs.devin.ai — Windsurf has become Devin Desktop) shows v3.9.19 (Sep 8) removing the legacy Cascade agent entirely: \"Devin Local is the only agent available in Devin Desktop\", with a 'Continue in Devin Local' migration path and a reorganized Local/Worktree/Cloud location picker. v3.10.23 (Sep 10) follows with SSH remote agent hosts and ACP permanently enabled, stripping the last legacy Cascade entry points (Vibe & Replace, Deploy, workflow commands).",
+      "why_it_matters": "A top-5 coding tool has now fully swapped its agent runtime post-acquisition — the fastest full-runtime replacement in this market so far. Teams still on Windsurf/Cascade workflows need to migrate or re-evaluate; for everyone else it is a live case study of how quickly agent-tool consolidation executes once an acquisition closes.",
+      "summary_zh": "Windsurf 桌面版 changelog（现在托管在 docs.devin.ai——Windsurf 已并入 Devin Desktop）显示 v3.9.19（9/8）彻底移除旧 Cascade agent：「Devin Local 是 Devin Desktop 中唯一可用的 agent」，并提供「Continue in Devin Local」迁移路径与重组后的 Local/Worktree/Cloud 位置选择器。随后 v3.10.23（9/10）加入 SSH 远程 agent 主机并永久启用 ACP，剥离了最后一批 Cascade 入口（Vibe & Replace、Deploy、workflow 命令）。",
+      "summary_en": "Windsurf's desktop changelog (now hosted on docs.devin.ai — Windsurf has become Devin Desktop) shows v3.9.19 (Sep 8) removing the legacy Cascade agent entirely: \"Devin Local is the only agent available in Devin Desktop\", with a 'Continue in Devin Local' migration path and a reorganized Local/Worktree/Cloud location picker. v3.10.23 (Sep 10) follows with SSH remote agent hosts and ACP permanently enabled, stripping the last legacy Cascade entry points (Vibe & Replace, Deploy, workflow commands).",
+      "why_it_matters_zh": "一个头部 coding 工具在收购后完成了整个 agent 运行时的置换——这是目前这个市场里最快的一次全运行时替换。还在用 Windsurf/Cascade 工作流的团队需要迁移或重新选型；对其他人，这是「收购合拢后 agent 工具整合执行得多快」的活案例。",
+      "why_it_matters_en": "A top-5 coding tool has now fully swapped its agent runtime post-acquisition — the fastest full-runtime replacement in this market so far. Teams still on Windsurf/Cascade workflows need to migrate or re-evaluate; for everyone else it is a live case study of how quickly agent-tool consolidation executes once an acquisition closes.",
+      "technical_details": {
+        "v3_9_19": "2026-09-08: Cascade removed; Devin Local the only agent; 'Continue in Devin Local' migration; Local/Worktree/Cloud location picker",
+        "v3_10_23": "2026-09-10: SSH remote agent hosts (saved hosts, status dots, transcript recovery on reconnect); ACP permanently enabled; legacy Cascade entry points stripped",
+        "hosting": "windsurf.com/changelog now redirects to docs.devin.ai/desktop/changelog"
+      },
+      "technical_details_zh": {
+        "v3.9.19": "2026-09-08：移除 Cascade；Devin Local 成为唯一 agent；「Continue in Devin Local」迁移；Local/Worktree/Cloud 位置选择器",
+        "v3.10.23": "2026-09-10：SSH 远程 agent 主机（保存主机、状态点、重连后记录恢复）；ACP 永久启用；剥离旧 Cascade 入口",
+        "托管": "windsurf.com/changelog 现重定向至 docs.devin.ai/desktop/changelog"
+      },
+      "tags": [
+        "coding-agent",
+        "devin",
+        "consolidation",
+        "changelog"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 2,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "windsurf-cascade-removal-devin-local"
+    },
+    {
+      "event_id": "ev-20260908-16",
+      "title": "Nex-N2.5: Shanghai Innovation Institute open-sources agent-recipe models",
+      "title_zh": "Nex-N2.5：上海创智学院开源 agent 配方模型",
+      "category": "foundation-model",
+      "organization": [
+        "Shanghai Innovation Institute",
+        "nex-agi"
+      ],
+      "published_at": "2026-09-08T11:01:41Z",
+      "first_seen_at": "2026-09-11T18:31:49Z",
+      "last_updated_at": "2026-09-11T18:31:49Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/nex-agi/Nex-N2.5-Pro",
+      "secondary_sources": [
+        "https://nex.sii.edu.cn"
+      ],
+      "summary": "nex-agi, the agent alliance of the Shanghai Innovation Institute (nex.sii.edu.cn), open-sourced the Nex-N2.5 family: N2.5-Max (created Sep 7), then N2.5-Mini (a 35B multimodal agent model) and N2.5-Pro (created 2026-09-08T11:01Z) under Apache-2.0. The Pro repo uses the qwen3_5_moe architecture tag (image-text-to-text) — the family is built on Qwen MoE bases with the alliance's agent post-training. N2.5-Mini is free to use on OpenRouter; the family sat at #5-7 of HF trending at capture.",
+      "why_it_matters": "A new kind of participant has joined the open agentic-model wave: a state-backed alliance publishing agent recipes on top of Qwen bases rather than frontier weights. For trend tracking this broadens the multi-org base; for engineers the value is the agent post-training recipe on an already-familiar serving surface.",
+      "summary_zh": "nex-agi（上海创智学院的智能体联盟，nex.sii.edu.cn）开源了 Nex-N2.5 系列：N2.5-Max（仓库 9/7 创建）、N2.5-Mini（35B 多模态 agent 模型）与 N2.5-Pro（2026-09-08T11:01Z 创建），许可证 Apache-2.0。Pro 仓库带 qwen3_5_moe 架构标签（image-text-to-text）——该系列是在 Qwen MoE 底座上叠加联盟的 agent 后训练。N2.5-Mini 在 OpenRouter 免费可用；采样时该系列占据 HF trending 第 5-7 位。",
+      "summary_en": "nex-agi, the agent alliance of the Shanghai Innovation Institute (nex.sii.edu.cn), open-sourced the Nex-N2.5 family: N2.5-Max (created Sep 7), then N2.5-Mini (a 35B multimodal agent model) and N2.5-Pro (created 2026-09-08T11:01Z) under Apache-2.0. The Pro repo uses the qwen3_5_moe architecture tag (image-text-to-text) — the family is built on Qwen MoE bases with the alliance's agent post-training. N2.5-Mini is free to use on OpenRouter; the family sat at #5-7 of HF trending at capture.",
+      "why_it_matters_zh": "开源 agent 模型浪潮里出现了一类新参与者：不是发前沿权重，而是在 Qwen 底座上发布 agent 配方的国家背景联盟。对趋势跟踪而言这是参与面的扩大；对工程师而言，价值是在已经熟悉的 serving 面上拿到一套 agent 后训练配方。",
+      "why_it_matters_en": "A new kind of participant has joined the open agentic-model wave: a state-backed alliance publishing agent recipes on top of Qwen bases rather than frontier weights. For trend tracking this broadens the multi-org base; for engineers the value is the agent post-training recipe on an already-familiar serving surface.",
+      "technical_details": {
+        "family": "Nex-N2.5-Max (HF created 2026-09-07), N2.5-Mini (35B multimodal agent), N2.5-Pro (created 2026-09-08T11:01:41Z)",
+        "license": "Apache-2.0",
+        "base": "qwen3_5_moe architecture tag on Pro (image-text-to-text) — Qwen MoE base + alliance agent post-training",
+        "availability": "N2.5-Mini free on OpenRouter",
+        "adoption": "Pro 12,260 downloads + 593 likes in ~3 days (captured 2026-09-11T18:34Z); family at #5-7 HF trending"
+      },
+      "technical_details_zh": {
+        "系列": "Nex-N2.5-Max（HF 仓库 2026-09-07 创建）、N2.5-Mini（35B 多模态 agent）、N2.5-Pro（2026-09-08T11:01:41Z 创建）",
+        "许可证": "Apache-2.0",
+        "底座": "Pro 带 qwen3_5_moe 架构标签（image-text-to-text）——Qwen MoE 底座 + 联盟 agent 后训练",
+        "可用性": "N2.5-Mini 在 OpenRouter 免费可用",
+        "采用": "Pro 约 3 天 12,260 下载 + 593 likes（2026-09-11T18:34Z 采样）；系列居 HF trending 第 5-7"
+      },
+      "tags": [
+        "open-weights",
+        "agent-model",
+        "chinese-labs",
+        "multimodal"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 2,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "nex-agi-nex-n2-5-open-weights"
+    },
+    {
+      "event_id": "ev-20260908-17",
+      "title": "CUA-Universe synthesizes hybrid GUI+CLI environments for computer-use agents",
+      "title_zh": "CUA-Universe 为 computer-use agent 合成混合 GUI+CLI 环境",
+      "category": "computer-use",
+      "organization": [
+        "Shanghai Jiao Tong University",
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-11T18:31:49Z",
+      "last_updated_at": "2026-09-11T18:31:49Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.05374",
+      "secondary_sources": [],
+      "summary": "CUA-Universe is a pipeline that converts real desktop software into hybrid GUI+CLI environments (App-Forge VM adaptation across 16 applications, Task-Weave task synthesis, Path-Steer efficient hybrid-path rollout collection). A 9B model trained on the resulting data gains +39.3 CUA-Verse score with -37% steps and -60% tokens; on OSWorld it adds +16.8 SR with -57% steps, and +7.84 on OSWorld-MCP.",
+      "why_it_matters": "The efficiency gains are as large as the accuracy gains: hybrid GUI+CLI action spaces let computer-use agents take shell shortcuts instead of pixel-grinding through dialogs. For teams building computer-use agents, synthetic hybrid environments are now demonstrably the training-data lever.",
+      "summary_zh": "CUA-Universe 是一条把真实桌面软件转换成混合 GUI+CLI 环境的流水线（App-Forge VM 适配 16 个应用、Task-Weave 任务合成、Path-Steer 高效混合路径 rollout 采集）。在其数据上训练的 9B 模型：CUA-Verse 分数 +39.3，步数 -37%，token -60%；OSWorld 上 SR +16.8、步数 -57%；OSWorld-MCP +7.84。",
+      "summary_en": "CUA-Universe is a pipeline that converts real desktop software into hybrid GUI+CLI environments (App-Forge VM adaptation across 16 applications, Task-Weave task synthesis, Path-Steer efficient hybrid-path rollout collection). A 9B model trained on the resulting data gains +39.3 CUA-Verse score with -37% steps and -60% tokens; on OSWorld it adds +16.8 SR with -57% steps, and +7.84 on OSWorld-MCP.",
+      "why_it_matters_zh": "效率收益和准确率收益一样大：混合 GUI+CLI 动作空间让 computer-use agent 走 shell 捷径，而不是在对话框里逐像素磨。对做 computer-use agent 的团队，合成混合环境已被证明是训练数据这一侧的关键杠杆。",
+      "why_it_matters_en": "The efficiency gains are as large as the accuracy gains: hybrid GUI+CLI action spaces let computer-use agents take shell shortcuts instead of pixel-grinding through dialogs. For teams building computer-use agents, synthetic hybrid environments are now demonstrably the training-data lever.",
+      "technical_details": {
+        "arxiv": "2609.05374 (Mon 7 Sep digest, announced 2026-09-08T00:00Z; coverage-gap recovery — same digest as ev-20260908-01..11 but not selected then, first seen 2026-09-11 run)",
+        "pipeline": "App-Forge (VM adaptation, 16 apps) + Task-Weave (task synthesis) + Path-Steer (hybrid-path rollout collection)",
+        "results": "9B model: CUA-Verse +39.3 / steps -37% / tokens -60%; OSWorld SR +16.8 / steps -57%; OSWorld-MCP +7.84",
+        "code": "not stated in abstract"
+      },
+      "technical_details_zh": {
+        "arXiv": "2609.05374（9 月 7 日周一 digest，2026-09-08T00:00Z 宣告；coverage-gap recovery——与 ev-20260908-01..11 同 digest 但当时未入选，2026-09-11 运行首次发现）",
+        "流水线": "App-Forge（VM 适配，16 个应用）+ Task-Weave（任务合成）+ Path-Steer（混合路径 rollout 采集）",
+        "结果": "9B 模型：CUA-Verse +39.3 / 步数 -37% / token -60%；OSWorld SR +16.8 / 步数 -57%；OSWorld-MCP +7.84",
+        "代码": "摘要未提及"
+      },
+      "tags": [
+        "computer-use",
+        "gui-agent",
+        "synthetic-data",
+        "training"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609-05374-cua-universe-hybrid-gui-cli"
     }
   ]
 }
