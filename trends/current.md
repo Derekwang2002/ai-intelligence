@@ -1,4 +1,4 @@
-# Current Trend State — as of 2026-09-11T19:05Z
+# Current Trend State — as of 2026-09-11T19:45Z
 
 > 维护说明：本文件反映当前仍值得追踪的候选/确认趋势。每次运行可新增、升级、降级或作废条目。趋势判定要求多个独立信号（跨日期、跨组织）；单个新闻或单日热度不构成趋势。
 
@@ -114,6 +114,7 @@
 - **2026-09-05 run:** 窗口内无新跨组织原语证据。同组织加固：Claude Code 2.1.259/260/261（managedMcpServers 组织级 MCP 下发、/diff、/skill-doctor、无头会话 /reload-plugins、并发会话状态互相覆写修复）；Codex 0.153.0（插件市场 CLI、实验性 context management——Astra 的跨窗口笔记，数周内默认）；Gemini CLI 无新 stable，nightly 为安全加固簇（MCP OAuth RFC 9207、Seatbelt 临时目录隔离、扩展加载路径边界），a2a-server 仅有 171 字节 README 存根、仍零使用文档。Cursor self-hosted machines（ev-20260902-07）把执行面扩成自带基础设施——Cursor 已计为组织成员，不另计证据。生产案例观察项部分推进：Anthropic 费马大定理形式化（ev-20260904-01）是 Claude Code 多 agent 框架迄今最高调的真实工作负载（1300 万行 Lean、29,500 定理、11 天），但属厂商自跑，不计入独立组织生产案例。维持 established / High。
 - **2026-09-08 run:** 窗口内无新跨组织证据（周末静默）。同组织动态：Claude Code 2.1.263（9/6，纯 bugfix 补丁，2.1.262 被跳过）；Codex 无新 stable（0.154.0 alpha 至 alpha.6）；Gemini CLI 无新 stable（nightly 0.60.0）。学术背景（不计为证据）：ττ-Bench（ev-20260908-05）测出最强「agent 造 agent」配置只通过 23.9% 的真实委托（专家上限 82.2%）——多 agent 运行时的下一层瓶颈在交付质量而非原语。残余观察项：@google/gemini-cli-a2a-server 仍零文档；公开生产案例与采用遥测仍缺。维持 established / High。
 - **2026-09-12 run:** 窗口内两条同组织平台级证据（新增证据第 12、13 条）：OpenAI 把 Codex harness 做成托管 Agents API（执行环境可选 OpenAI 托管 / 自有基础设施 / 九家沙箱伙伴含 VPC），Cursor 把 coordinator + 常驻云 agent 做成 Projects。无新组织加入（仍七家）。残余观察项推进：观察项 (b)「社区编排事实标准」出现新候选——Agents API 是否成为事实上的编排面，值得作为独立信号追踪。维持 established / High。
+- **2026-09-12 第三轮补漏:** Navier–Stokes 运行（ev-20260908-18）是该模式迄今最大单一工作负载——约 10,000 个并发 agent 经 harness 协调、以 cross-pollination 会话共享洞见、88 小时得解；属厂商自跑的同组织加强信号（OpenAI 已计为成员），不计新组织证据。残余观察项 (c) 独立组织生产案例仍缺。维持 established / High。
 - **What would confirm:** 已达成（2026-08-28）：(a) Codex 0.150.0 stable 落地 agent 间消息 + Gemini CLI a2a-server 进 stable。剩余观察项：(b) 社区编排模式是否收敛出事实标准工具或命名模式；(c) ≥2 个独立组织的公开生产案例与采用遥测
 
 ### Emerging: 前沿实验室把安全事件披露与第三方独立审查制度化
@@ -141,6 +142,7 @@
 - **2026-09-08 run:** 新增两条一手证据（第 9、10 条）：Research acceleration 把「披露」推进到运行指标与治理机制层面（含算力替代的量化）；An Alien Mind 给出可监控性下降的框架化表述。判据复核：METR 对 Anthropic 事件的审查仍未发布；尚无第二家实验室承诺常态化独立审查。已核实的覆盖前背景（不计为证据）：Anthropic《Redacted Risk Report August 2026》（8/14 发布，覆盖截至 7/15）为 RSP 下的第二份公司级风险报告，引用 METR Frontier Risk Report 的作弊示例——风险报告的半年度节奏 + METR 分节审查已是事实惯例。反向张力延续：An Alien Mind 明确说 CoT 监控在失效。维持 emerging / Medium。
 - **2026-09-12 run:** 新增两条一手证据（第 11、12 条）：Anthropic 威胁报告（系列化、运营化）与 Meta 安全架构披露（含持续审计承诺——「第二家实验室常态化独立审查」判据部分达成，产品级）。METR 对 Anthropic 的审查仍未发布。维持 emerging / Medium。
 - **2026-09-11 仲裁补记（并发扫描合并）:** 新增证据第 13 条（ev-20260909-01——9/9 的对齐评估 + METR 常设调查协议，「实验室把独立审查流程化」判据实质推进，Anthropic 为首家）；同时补回趋势 #1 证据第 15 条中被并发改写删去的安全外溢句（ev-20260911-06）。
+- **2026-09-12 第三轮补漏:** NS 发布把两条线推进：其一，能力披露换了载体——以数学结果披露未发布内部模型（「显著强于 GPT-6 Astra」，8/28 起训练中）；其二，Buckmaster 争议暴露 harness 介质数据治理缺口（OpenAI 拒答内部模型是否接触对方 Codex 草稿；称未访问用户数据但「不能排除」去标识化使用数据帮助模型改进；因竞争关系拒绝 Anthropic 员工联署）。与 An Alien Mind「CoT 可监控性下降」同向。维持 emerging / Medium。
 - **What would confirm:** METR 正式发布对 Anthropic 事件的独立审查；第二家前沿实验室承诺常态化独立审查（不只一次性报告）；Path to Astra 式的评测披露要求被第二家实验室采纳；跨厂商事故报告格式出现标准化迹象（类似安全行业的 disclosure 惯例）
 
 ### Candidate: AI 工具链的企业自托管 / 数据驻留执行面成形
@@ -159,6 +161,22 @@
 - **2026-09-08 run:** 判据复核（周末窗口）：无第二家开发工具厂商落地自托管 agent 执行；OpenAI Private Safety Processing 白皮书仍未发布（OpenAI 新闻索引 9/6 后仅两篇文章，均非 PSP）；Anthropic EFS 仍为 2026 秋起的分阶段计划，无落地。立项时自设的降级条件命中，status 由 candidate 降为 weakening；因 9 月（PSP 白皮书计划窗口）未结束，暂不 retire——下一周期若无第二家厂商或 EFS/PSP 实质落地，直接作废。
 - **2026-09-12 run:** 降级判据被推翻，weakening 复活为 candidate（新增证据第 5 条）：OpenAI Agents API 把执行环境做成显式菜单（含自有基础设施与 VPC 内部署）——第二家厂商、而且是最大平台落地执行面选择；Cursor self-hosted machines 为第一家。PSP 白皮书仍未发布、Anthropic EFS 仍无落地、独立采用数据仍缺——维持 Low，若 9 月结束仍无 PSP/EFS 落地且无采用数据，再降级。
 - **What would confirm:** ≥2 个独立组织的生产案例与采用数据；OpenAI Private Safety Processing 白皮书与 Anthropic EFS 按时间表兑现（9 月仅剩三分之一）；第二家开发工具厂商之外的执行面形态持续出现（如 Confidential VM 类密码学隔离）
+
+### Emerging: AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
+- **Status:** emerging（2026-09-12 立项：8 天内三家主体产出三个千禧年级结果——FLT、Navier–Stokes、forced Euler——全部以 Lean 形式化验证作信任层，并有数学界公开回应；争议与验证状态如实记录）
+- **Confidence:** Medium
+- **First observed:** 2026-09-04
+- **Last updated:** 2026-09-12
+- **Evidence:**
+  1. Anthropic 端到端形式化费马大定理（2026-09-04，一手来源，ev-20260904-01）：1300 万行 Lean、29.5k 定理、约 60 亿输出 token、11 天，Prove2Me + Claude Code 多 agent 编排，代码开源
+  2. OpenAI 发布 Navier–Stokes 千禧年问题的 AI 生成解（2026-09-08，一手来源，ev-20260908-18）：内部模型（显著强于 GPT-6 Astra）+ 约 10,000 并发 agent + 88 小时得解，GPT-6 Astra 17 小时完成 Lean 形式化；Quanta/Guardian 报道、HN 1,337 分
+  3. Alpöge（Anthropic）与 Buckmaster（NYU）用 Anthropic 内部模型解决 forced Euler（2026-09-08，Buckmaster 声明一手，ev-20260908-19）：此前用 Claude/Codex 协作近一年——「人引导 agent 长期攻坚」的工作流首次在千禧年级问题上走通
+  4. 25 位 Fields Medalist 联署《Math & AI 宣言》（2026-09-11 digest，ev-20260911-05）：数学界对 AI 数学能力供给的公开回应与治理主张
+  5. 社区验证活动成型：Buckmaster 声明 HN 2,035 分（反超官宣帖）；John D. Cook 形式化方法专文（9/10，HN 174 分）；r/mathematics 初步验证报告
+- **Time Horizon:** Short-term
+- **Why It Matters:** benchmark 分数可被污染，Lean 证明不可——形式化验证正在成为「前沿能力」的可信度量衡，也是继 coding 之后第二个被 AI 实质推进的可验证领域。该工作负载同时把两个治理问题摆上台面：内部模型能力披露（以数学结果披露未发布模型）与 harness 介质的数据治理（Buckmaster 争议）。工程侧：形式化验证工具链（Lean / Prove2Me 类）值得纳入 agent 平台的「可验证输出」选项。
+- **2026-09-12 run:** 第三轮补漏时立项为 emerging / Medium。反向张力如实记录：NS 证明尚未获数学界广泛接受；OpenAI 拒答内部模型是否接触对方 Codex 草稿，争议未决。
+- **What would confirm:** Clay 研究所或数学界对任一证明的正式接受；第三家实验室或独立团队复现同类结果；Lean/formal 工具链采用数据；AI 数学可操作规范落地（Fields Medalist 宣言是否转化为具体准则）
 
 ## Invalidated / retired
 

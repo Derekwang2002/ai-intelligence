@@ -1,6 +1,6 @@
 {
   "date": "2026-09-08",
-  "provenance": "Captured by 2026-09-08T00:00:18Z run (scan window [2026-09-05T00:00:21Z, 2026-09-08T00:00:18Z]). All items are from the Mon 7 Sep arXiv digest (announced 2026-09-08T00:00Z; header 'Mon, 7 Sep 2026'), selected from 213 keyword hits out of 356 digest entries across cs.CL/cs.AI/cs.LG: 2609.04748 cache-quantization divergence, 2609.04852 KVMem, 2609.04434 hybrid attention/recurrence division, 2609.04575 MoE expert halving, 2609.04611 tau-tau-Bench, 2609.04280 EVOHARNESSBENCH. Watermark advances from 2609.04199 (Fri 4 Sep digest) to 2609.05405. | 2026-09-11 run append: two 9/8 vendor events (ev-20260908-12 Mistral EUR3B Series D, ev-20260908-13 Meta Muse security post) missed by the 9/8 run's weekend-arXiv-focused sweep; merged into this file. | Reconciliation pass (2026-09-11T19:05Z+): appended ev-20260908-14..17 (Cohere megakernel serving, Windsurf Cascade removal, Nex-N2.5 open weights, CUA-Universe coverage-gap recovery) — verified events from the concurrent session's window that the consolidated commit lacked.",
+  "provenance": "Captured by 2026-09-08T00:00:18Z run (scan window [2026-09-05T00:00:21Z, 2026-09-08T00:00:18Z]). All items are from the Mon 7 Sep arXiv digest (announced 2026-09-08T00:00Z; header 'Mon, 7 Sep 2026'), selected from 213 keyword hits out of 356 digest entries across cs.CL/cs.AI/cs.LG: 2609.04748 cache-quantization divergence, 2609.04852 KVMem, 2609.04434 hybrid attention/recurrence division, 2609.04575 MoE expert halving, 2609.04611 tau-tau-Bench, 2609.04280 EVOHARNESSBENCH. Watermark advances from 2609.04199 (Fri 4 Sep digest) to 2609.05405. | 2026-09-11 run append: two 9/8 vendor events (ev-20260908-12 Mistral EUR3B Series D, ev-20260908-13 Meta Muse security post) missed by the 9/8 run's weekend-arXiv-focused sweep; merged into this file. | Reconciliation pass (2026-09-11T19:05Z+): appended ev-20260908-14..17 (Cohere megakernel serving, Windsurf Cascade removal, Nex-N2.5 open weights, CUA-Universe coverage-gap recovery) — verified events from the concurrent session's window that the consolidated commit lacked. Third-pass backfill (18:31:48Z session, merged 2026-09-12T19:45Z): ev-20260908-18/19/20 are the 9/8 daytime OpenAI/product events (Navier-Stokes Millennium solution, concurrent forced-Euler resolution, GPT-Image-2.5) that the 18:30Z/19:05Z sessions' changelog-based retrieval did not surface; openai.com verified via web_reader against the official RSS dates.",
   "events": [
     {
       "event_id": "ev-20260908-01",
@@ -814,6 +814,170 @@
       "risk": 2,
       "recommendation": "WATCH",
       "event_fingerprint": "arxiv-2609-05374-cua-universe-hybrid-gui-cli"
+    },
+    {
+      "event_id": "ev-20260908-18",
+      "title": "OpenAI's internal model produces an AI-generated solution to the Navier–Stokes Millennium Problem",
+      "title_zh": "OpenAI 内部模型给出 Navier–Stokes 千禧年难题的 AI 生成解",
+      "category": "research",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-09-08T10:00:00Z",
+      "first_seen_at": "2026-09-11T18:31:48Z",
+      "last_updated_at": "2026-09-11T18:31:48Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/navier-stokes-solution/",
+      "secondary_sources": [
+        "https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/",
+        "https://www.theguardian.com/science/2026/sep/08/openai-claims-to-have-solved-maths-problem-that-stumped-humans-for-decades",
+        "https://news.ycombinator.com/item?id=49613262",
+        "https://simonwillison.net/2026/Sep/8/on-navier-stokes/"
+      ],
+      "summary": "OpenAI announced an AI-generated solution to the Navier–Stokes existence-and-smoothness Millennium Prize Problem, with a writeup and a formal proof in Lean. The work came from an internal model described as significantly more capable than GPT-6 Astra, in training since 2026-08-28 and still ongoing. A multi-agent system of roughly 10,000 concurrent agents ran from 9/1 to 9/5 (~88 hours to the resolution); the effort totals 4.9M messages and ~300B output tokens across all attempted problems, 2.7M messages and ~130B output tokens for Navier–Stokes, and GPT-6 Astra produced the Lean formalization in 17 hours. The proof shows initially smooth, at-rest fluid can develop a singularity in finite time (statements C and D); the unforced Euler regularity problem was also resolved (~100 agents, ~50 hours). OpenAI states it will not claim the Clay Millennium Prize.",
+      "why_it_matters": "This is the first demonstration that long-horizon multi-agent harnesses can carry an open Millennium-scale problem end to end, with Lean formalization acting as the trust layer for AI-generated mathematics. It also discloses an internal frontier model stronger than GPT-6 Astra, and the concurrent-work dispute (ev-20260908-15) makes harness-mediated data leakage a first-class governance concern for every vendor-run agent platform. Willison estimates the token volume at ~$15M at public Astra prices, putting a hard cost number on frontier-scale agent compute.",
+      "summary_zh": "OpenAI 发布了 Navier–Stokes 存在性与光滑性千禧年难题的 AI 生成解，附带论文写本与 Lean 形式化证明。工作由一个内部模型完成——官方称其能力显著强于 GPT-6 Astra，自 8 月 28 日起训练且仍在进行。约 10,000 个并发 agent 的多 agent 系统自 9/1 运行至 9/5 得解（约 88 小时）；全部尝试合计 490 万条消息、约 3000 亿输出 token，其中 Navier–Stokes 占 270 万条、约 1300 亿 token；GPT-6 Astra 随后用 17 小时完成 Lean 形式化。证明结论：初始光滑且静止的流体可在有限时间内发展出奇点（陈述 C 与 D）；无外力 Euler 正则性问题也已解决（约 100 个 agent、约 50 小时）。OpenAI 声明不申请 Clay 千禧年奖金。",
+      "summary_en": "OpenAI announced an AI-generated solution to the Navier–Stokes existence-and-smoothness Millennium Prize Problem, with a writeup and a formal proof in Lean. The work came from an internal model described as significantly more capable than GPT-6 Astra, in training since 2026-08-28 and still ongoing. A multi-agent system of roughly 10,000 concurrent agents ran from 9/1 to 9/5 (~88 hours to the resolution); the effort totals 4.9M messages and ~300B output tokens across all attempted problems, 2.7M messages and ~130B output tokens for Navier–Stokes, and GPT-6 Astra produced the Lean formalization in 17 hours. The proof shows initially smooth, at-rest fluid can develop a singularity in finite time (statements C and D); the unforced Euler regularity problem was also resolved (~100 agents, ~50 hours). OpenAI states it will not claim the Clay Millennium Prize.",
+      "why_it_matters_zh": "这是第一次有证据表明长时程多 agent harness 能端到端啃下开放的千禧年级问题，而 Lean 形式化充当了 AI 生成数学的信任层。事件同时披露了一个强于 GPT-6 Astra 的内部前沿模型；并行工作争议（ev-20260908-15）则把「harness 介质的数据泄漏」变成所有厂商自跑 agent 平台必须正面处理的治理问题。Willison 按公开 Astra 价格估算 token 开销约 $1500 万，给前沿级 agent 算力第一次标上了硬成本。",
+      "why_it_matters_en": "This is the first demonstration that long-horizon multi-agent harnesses can carry an open Millennium-scale problem end to end, with Lean formalization acting as the trust layer for AI-generated mathematics. It also discloses an internal frontier model stronger than GPT-6 Astra, and the concurrent-work dispute (ev-20260908-15) makes harness-mediated data leakage a first-class governance concern for every vendor-run agent platform. Willison estimates the token volume at ~$15M at public Astra prices, putting a hard cost number on frontier-scale agent compute.",
+      "technical_details": {
+        "result": "initially smooth fluid at rest can develop a singularity in finite time (statements C and D); unforced Euler regularity also resolved (~100 agents, ~50 hours)",
+        "model": "internal model 'significantly more capable than GPT-6 Astra', in training since 2026-08-28, ongoing; Astra performed the 17-hour Lean formalization",
+        "harness": "~10,000 concurrent agents on Navier–Stokes; agents attend cross-pollination sessions to share insights; the rival team's Codex prompts were investigated as a possible information channel",
+        "compute_accounting": "4.9M messages / ~300B output tokens across all problems; 2.7M messages / ~130B for Navier–Stokes; ~$15M estimated at public Astra prices (Willison)",
+        "verification": "Lean 4 formal proof included; broad math-community verification pending as of 9/11; OpenAI declines the Millennium Prize",
+        "reaction": "announcement HN thread 1,337 pts / 1,132 comments; Buckmaster statement thread 2,035 pts; Quanta and Guardian coverage 9/8; John D. Cook on the Lean 4 formal proof (9/10)"
+      },
+      "technical_details_zh": {
+        "结论": "初始光滑且静止的流体可在有限时间内发展出奇点（陈述 C 与 D）；无外力 Euler 正则性问题也已解决（约 100 个 agent、约 50 小时）",
+        "模型": "内部模型，「显著强于 GPT-6 Astra」，自 2026-08-28 起训练且仍在进行；Lean 形式化由 GPT-6 Astra 用 17 小时完成",
+        "harness": "Navier–Stokes 投入约 10,000 个并发 agent；agent 定期参加 cross-pollination 分享会；对方团队的 Codex 提示词被排查为潜在信息通道",
+        "算力账": "全部问题合计 490 万条消息 / 约 3000 亿输出 token；Navier–Stokes 占 270 万条 / 约 1300 亿；按公开 Astra 价格估算约 $1500 万（Willison）",
+        "验证": "随附 Lean 4 形式化证明；截至 9/11 数学界广泛验证仍在进行；OpenAI 不申请千禧年奖金",
+        "反应": "官宣帖 HN 1,337 分 / 1,132 评论；Buckmaster 声明帖 2,035 分；Quanta、Guardian 9/8 报道；John D. Cook 专文谈 Lean 4 形式化证明（9/10）"
+      },
+      "tags": [
+        "millennium-prize",
+        "lean",
+        "formal-verification",
+        "multi-agent",
+        "math",
+        "internal-model",
+        "openai"
+      ],
+      "technical_impact": 5,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "openai-navier-stokes-millennium-solution"
+    },
+    {
+      "event_id": "ev-20260908-19",
+      "title": "Alpöge and Buckmaster resolve the forced Euler problem with an Anthropic internal model",
+      "title_zh": "Alpöge 与 Buckmaster 用 Anthropic 内部模型解决 forced Euler 问题",
+      "category": "research",
+      "organization": [
+        "Anthropic",
+        "NYU",
+        "academic"
+      ],
+      "published_at": "2026-09-08T00:00:00Z",
+      "first_seen_at": "2026-09-11T18:31:48Z",
+      "last_updated_at": "2026-09-11T18:31:48Z",
+      "source_type": "research_lab",
+      "primary_source": "https://cims.nyu.edu/~tristanb/statement.pdf",
+      "secondary_sources": [
+        "https://openai.com/index/navier-stokes-solution/",
+        "https://simonwillison.net/2026/Sep/8/on-navier-stokes/",
+        "https://news.ycombinator.com/item?id=49613262",
+        "https://mastodon.social/@tristanbuckmaster/117233413705701198"
+      ],
+      "summary": "Levent Alpöge (Anthropic) and Tristan Buckmaster (NYU) independently produced a resolution of the forced Euler regularity problem using an internal Anthropic model, announced the same day as OpenAI's Navier–Stokes post. Per Buckmaster's statement, the pair had worked on related problems for nearly a year with Claude and Codex (primarily GPT-5.6 Sol), reaching a breakthrough on 2026-08-15; he alleges OpenAI's first prompt on the problem was sent only after information about their work had reached OpenAI, and that OpenAI would not answer whether its model was trained on their Codex drafts. OpenAI acknowledges their priority on forced Euler, says it offered a joint announcement, that no user data was accessed, but cannot rule out that de-identified product-usage data informed model improvements; the two proofs cover different Euler variants (forced vs. unforced). Buckmaster also reports Alpöge was told he could not co-author an OpenAI paper given the OpenAI–Anthropic competitive relationship. The statement's HN thread (2,035 pts) outdrew the announcement itself.",
+      "why_it_matters": "Two readings matter. Technically, a second lab has now driven Millennium-scale mathematics with an internal model, and the collaboration pattern — a year of guided Codex/Claude work preceding the breakthrough — is itself a replicable research workflow. Institutionally, the dispute exposes the questions every agent-platform vendor must eventually answer: whether user sessions can inform competing internal efforts, and how rival-lab contributors are credited. Willison's framing is the sharpest: could your own partial solution, produced in someone's product, help a later model finish it first?",
+      "summary_zh": "Levent Alpöge（Anthropic 员工）与 Tristan Buckmaster（NYU）用 Anthropic 内部模型独立得到 forced Euler 正则性问题的解，与 OpenAI 的 Navier–Stokes 帖同日公布。按 Buckmaster 声明：两人用 Claude 和 Codex（以 GPT-5.6 Sol 为主）在此类问题上工作近一年，8 月 15 日取得突破；他指称 OpenAI 在得知其工作之后才首次向模型发出该问题的 prompt，且 OpenAI 拒答该模型是否用过他们的 Codex 草稿训练；Alpöge 还被告知因 OpenAI 与 Anthropic 的竞争关系无法联署 OpenAI 论文。OpenAI 承认对方在 forced Euler 上的优先权、称曾提议联合官宣；官方口径是不访问用户数据，但「不能排除」去标识化的产品使用数据帮助了模型改进；两份证明覆盖不同 Euler 变体（forced 与 unforced）。声明帖的 HN 热度（2,035 分）超过官宣帖本身。",
+      "summary_en": "Levent Alpöge (Anthropic) and Tristan Buckmaster (NYU) independently produced a resolution of the forced Euler regularity problem using an internal Anthropic model, announced the same day as OpenAI's Navier–Stokes post. Per Buckmaster's statement, the pair had worked on related problems for nearly a year with Claude and Codex (primarily GPT-5.6 Sol), reaching a breakthrough on 2026-08-15; he alleges OpenAI's first prompt on the problem was sent only after information about their work had reached OpenAI, and that OpenAI would not answer whether its model was trained on their Codex drafts. OpenAI acknowledges their priority on forced Euler, says it offered a joint announcement, that no user data was accessed, but cannot rule out that de-identified product-usage data informed model improvements; the two proofs cover different Euler variants (forced vs. unforced). Buckmaster also reports Alpöge was told he could not co-author an OpenAI paper given the OpenAI–Anthropic competitive relationship. The statement's HN thread (2,035 pts) outdrew the announcement itself.",
+      "why_it_matters_zh": "两个层面值得记。技术上：第二家实验室用内部模型推动千禧年级数学，而「人与 agent 协作近一年后突破」的工作流本身可复现。制度上：这场争议暴露了每个 agent 平台厂商迟早要回答的问题——用户会话是否会进入竞争方向的内部工作、竞争对手实验室的贡献者如何署名。Willison 的表述最锋利：你在别人产品里做出的半成品，会不会让后来的模型先帮你「完成」？",
+      "why_it_matters_en": "Two readings matter. Technically, a second lab has now driven Millennium-scale mathematics with an internal model, and the collaboration pattern — a year of guided Codex/Claude work preceding the breakthrough — is itself a replicable research workflow. Institutionally, the dispute exposes the questions every agent-platform vendor must eventually answer: whether user sessions can inform competing internal efforts, and how rival-lab contributors are credited. Willison's framing is the sharpest: could your own partial solution, produced in someone's product, help a later model finish it first?",
+      "technical_details": {
+        "result": "resolution of the forced Euler regularity problem; distinct from OpenAI's unforced-Euler and Navier–Stokes results",
+        "tooling": "a year of work with Claude and Codex (primarily GPT-5.6 Sol), breakthrough 2026-08-15; final resolution with an internal Anthropic model",
+        "dispute": "Buckmaster alleges OpenAI's first problem prompt came after their work was known to OpenAI; OpenAI declines to say whether the internal model was trained on their Codex drafts, says no user data accessed, cannot rule out de-identified usage data helping model improvement; Alpöge told co-authorship was blocked by the OpenAI–Anthropic competitive relationship",
+        "reaction": "Buckmaster statement HN thread 2,035 pts / 826 comments (9/8), larger than the announcement thread"
+      },
+      "technical_details_zh": {
+        "结论": "forced Euler 正则性问题的解；与 OpenAI 的无外力 Euler 及 Navier–Stokes 结果为不同变体",
+        "工具链": "先用 Claude 与 Codex（以 GPT-5.6 Sol 为主）工作一年，8/15 突破；最终由 Anthropic 内部模型完成",
+        "争议": "Buckmaster 指称 OpenAI 首次 prompt 发出晚于其工作被 OpenAI 知晓；OpenAI 拒答内部模型是否用其 Codex 草稿训练，称未访问用户数据但无法排除去标识化使用数据帮助模型改进；Alpöge 被告知因两司竞争关系无法联署",
+        "反应": "Buckmaster 声明帖 HN 2,035 分 / 826 评论（9/8），热度超过官宣帖"
+      },
+      "tags": [
+        "euler",
+        "millennium-prize",
+        "internal-model",
+        "anthropic",
+        "research-workflow",
+        "training-data-governance"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "alpoge-buckmaster-forced-euler-anthropic-model"
+    },
+    {
+      "event_id": "ev-20260908-20",
+      "title": "OpenAI ships GPT-Image-2.5: Sunburst for fidelity, Flare for half the latency",
+      "title_zh": "OpenAI 发布 GPT-Image-2.5：Sunburst 主打质量，Flare 延迟减半",
+      "category": "foundation-model",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-09-08T11:30:00Z",
+      "first_seen_at": "2026-09-11T18:31:48Z",
+      "last_updated_at": "2026-09-11T18:31:48Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/introducing-chatgpt-images-2-5/",
+      "secondary_sources": [
+        "https://community.openai.com/t/introducing-gpt-images-2-5-in-the-api-and-chatgpt/1395897",
+        "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
+        "https://vercel.com/changelog/gpt-image-2-5-flare-and-sunburst-now-available-on-ai-gateway"
+      ],
+      "summary": "OpenAI introduced GPT-Image-2.5 in the API and ChatGPT as two models: Sunburst, its most capable image model (sharper detail, more natural lighting, finer editing control), and Flare, a faster variant with roughly 50% lower latency than GPT Image 2 at the same quality. Official guidance is to default to Flare and switch to Sunburst when precision edits matter. Community reports place the pair first and second on Image Arena (Tier-4 signal), and third-party availability (Vercel AI Gateway, fal.ai, ComfyUI partner nodes) landed within days.",
+      "why_it_matters": "For product teams doing image generation at scale, Flare's latency claim changes the interactive-use calculus (inline generation, agents that render), while Sunburst becomes the quality ceiling to benchmark against. Same-day gateway and workflow-tool availability shows distribution for OpenAI image models now happens within hours.",
+      "summary_zh": "OpenAI 在 API 与 ChatGPT 中推出 GPT-Image-2.5 双模型：Sunburst 为其最强图像模型（细节更锐、光照更自然、编辑控制更细），Flare 为更快档——质量相当、延迟较 GPT Image 2 约低 50%。官方建议默认用 Flare，需要精细编辑时换 Sunburst。社区报告称两模型在 Image Arena 分列前二（Tier-4 信号）；Vercel AI Gateway、fal.ai、ComfyUI 合作节点数日内即上线。",
+      "summary_en": "OpenAI introduced GPT-Image-2.5 in the API and ChatGPT as two models: Sunburst, its most capable image model (sharper detail, more natural lighting, finer editing control), and Flare, a faster variant with roughly 50% lower latency than GPT Image 2 at the same quality. Official guidance is to default to Flare and switch to Sunburst when precision edits matter. Community reports place the pair first and second on Image Arena (Tier-4 signal), and third-party availability (Vercel AI Gateway, fal.ai, ComfyUI partner nodes) landed within days.",
+      "why_it_matters_zh": "对规模化做图像生成的产品团队，Flare 的延迟指标改变了交互式场景（内联生成、需要渲染的 agent）的成本账；Sunburst 则是新的质量上限基准。网关与工作流工具当天可用，说明 OpenAI 图像模型的分发速度已经以小时计。",
+      "why_it_matters_en": "For product teams doing image generation at scale, Flare's latency claim changes the interactive-use calculus (inline generation, agents that render), while Sunburst becomes the quality ceiling to benchmark against. Same-day gateway and workflow-tool availability shows distribution for OpenAI image models now happens within hours.",
+      "technical_details": {
+        "models": "gpt-image-2.5-sunburst (quality/edit-control tier) and gpt-image-2.5-flare (~50% lower latency than GPT Image 2, same quality); guidance: default Flare, Sunburst for precision",
+        "availability": "API + ChatGPT (9/8); Vercel AI Gateway, fal.ai, ComfyUI partner nodes within days",
+        "community": "Image Arena #1/#2 per Reddit (Tier-4, unverified)"
+      },
+      "technical_details_zh": {
+        "模型": "gpt-image-2.5-sunburst（质量 / 编辑控制档）与 gpt-image-2.5-flare（较 GPT Image 2 延迟约低 50%、质量相当）；官方建议默认 Flare，精细场景用 Sunburst",
+        "可用性": "9/8 起 API + ChatGPT；Vercel AI Gateway、fal.ai、ComfyUI 合作节点数日内跟进",
+        "社区": "Reddit 报告称 Image Arena 前二（Tier-4，未独立验证）"
+      },
+      "tags": [
+        "image-generation",
+        "openai",
+        "api",
+        "latency"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 1,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "openai-gpt-image-2-5-sunburst-flare"
     }
   ]
 }
