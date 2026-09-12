@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-11T19:45Z",
+  "as_of": "2026-09-12T02:08Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -130,6 +130,11 @@
           "date": "2026-09-12",
           "note_zh": "判据复核：(b) 由 DeepSeek V4.1 Flash 达成——另一组织、同量级（763B vs 753B）、MIT、前沿 agentic coding 分数；(c) 第五个连续放量周期（新增证据第 15 条）；(a) 仍未达成（讨论区 #43-#48 无第三方 TB/SWE 运行；#48 为 Omen Alpha 身份猜测）。维持 strengthening / Medium。",
           "note_en": "Criteria re-check: (b) met by DeepSeek V4.1 Flash — another org, same scale class (763B vs 753B), MIT, frontier agentic-coding scores; (c) fifth consecutive velocity cycle (evidence item 15); (a) still unmet (discussions #43-#48 hold no third-party TB/SWE run; #48 is Omen Alpha identity speculation). Maintained strengthening / Medium."
+        },
+        {
+          "date": "2026-09-12",
+          "note_zh": "02:08Z 续扫：窗口内没有新的同级开放权重模型，也没有 GLM-5.3 或 DeepSeek V4.1-Flash 的第三方 Terminal-Bench / SWE 复现。短窗口不重复计算下载放量周期。维持 strengthening / Medium。",
+          "note_en": "02:08Z follow-up scan: no new same-tier open-weight model and no third-party Terminal-Bench / SWE reproduction on GLM-5.3 or DeepSeek V4.1-Flash. The short window does not count another download-velocity cycle. Stays strengthening / Medium."
         }
       ]
     },
@@ -252,6 +257,11 @@
           "date": "2026-09-12",
           "note_zh": "合并收尾轮：新增证据第 10 条（《Scanning the Harness》——MCP/skills 配置供应链首个量化审计，16% 缺陷率）。复核：Netskope 官方 release notes 仍停留在 141.0.0（未检出 141.x hotfix 或 142.x），22 个 MCP 数据属性仍在 feature flag 之后、无公开遥测；Zscaler 无 GA 公告。邻接信号（不计证据）：GitHub Copilot agent 操作企业权限 GA（ev-20260909-02）把 block/ask/allow 治理带进客户端。干净 GA 判据仍未满足，维持 emerging / Medium。",
           "note_en": "Reconciliation pass: evidence item 10 added ('Scanning the Harness' — the first quantified audit of the MCP/skills config supply chain, 16% defect rate). Review: Netskope's official release notes still stop at 141.0.0 (no 141.x hotfix or 142.x found); the 22 MCP data attributes remain behind the feature flag with no public telemetry; no Zscaler GA announcement. Adjacent signal (not counted): GitHub Copilot's enterprise agent-operations permissions GA (ev-20260909-02) brings block/ask/allow governance to the client side. The clean-GA criterion remains unmet; stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-12",
+          "note_zh": "02:08Z 续扫：没有新的企业 MCP enforcement GA 或公开遥测。邻接信号（不计证据）：Gemini CLI 0.61.0 nightly 阻断经构建文件修改和不可信 flag 发起的间接提示注入，并加固沙箱文件系统边界；仍是预发布版本。维持 emerging / Medium。",
+          "note_en": "02:08Z follow-up scan: no new enterprise MCP-enforcement GA or public telemetry. Adjacent signal (not counted): Gemini CLI 0.61.0 nightly blocks indirect prompt injection through build-file changes and untrusted flags and hardens sandbox filesystem boundaries; it remains pre-release. Stays emerging / Medium."
         }
       ]
     },
@@ -279,7 +289,8 @@
         "OpenAI Codex CLI 0.150.0 stable 落地任务级 `@` 引用与 agent 间消息——「ask agents to read, create, or message tasks」：agent 发起的跨任务/跨 agent 消息进入非 Anthropic stable 运行时；另有 Interrupt hooks（回合中断触发命令/MCP handler）（2026-08-26T19:37Z，一手来源，ev-20260818-02 更新）",
         "Gemini CLI 0.57.0 stable 发布 tag 包含 packages/a2a-server（A2A 协议 server），并以 @google/gemini-cli-a2a-server@0.57.0 发布到 npm；release notes 合并整批 [SSR Agent] 修复——Google 成为在稳定运行时落地协议级 agent 间互操作的第七家组织（2026-08-25T18:37Z，一手来源，ev-20260825-02）",
         "12. OpenAI Agents API（2026-09-10，一手来源，ev-20260910-02）：Codex harness 托管化为平台原语——一次 API 调用创建生产级 cloud agent，编排、跨上下文窗口压缩、tool search、程序化工具调用、MCP、subagent 并行全部内建；harness 层从 CLI 运行时升级为云平台商品（同组织 OpenAI 的加固与新台阶，不新增组织，但把「harness 即平台」钉进产品面）",
-        "13. Cursor Projects（2026-09-10，官方 changelog，ev-20260910-03）：coordinator agent 规划分派而非亲自写码、月级任务上下文、项目级共享记忆（后续 agent 复用先前 agent 的知识）、Slack/定时/PR 订阅唤醒——月级自主工作成为主流 coding 工具的管理单元（同组织 Cursor 的加固，不另计组织）"
+        "13. Cursor Projects（2026-09-10，官方 changelog，ev-20260910-03）：coordinator agent 规划分派而非亲自写码、月级任务上下文、项目级共享记忆（后续 agent 复用先前 agent 的知识）、Slack/定时/PR 订阅唤醒——月级自主工作成为主流 coding 工具的管理单元（同组织 Cursor 的加固，不另计组织）",
+        "14. GitHub Copilot code review（2026-09-11T20:00Z，一手来源，ev-20260911-11）：Lite review 改为多 agent ensemble，并在 agent firewall 后运行完整 Copilot SDK shell 工具集做构建、测试和定向脚本验证；厂商实验中被采纳的高严重度评论 +47%、成本约 -8%。同组织 GitHub/Microsoft 的运行时加固，不新增组织"
       ],
       "evidence_en": [
         "Anthropic Claude Code: default-on subagent forking + cross-session SendMessage (2026-08-13/14)",
@@ -294,7 +305,8 @@
         "OpenAI Codex CLI 0.150.0 stable ships task-level `@` references and inter-agent messaging — \"ask agents to read, create, or message tasks\": agent-initiated cross-task/inter-agent messaging lands in a non-Anthropic stable runtime; plus Interrupt hooks (commands/MCP handlers on turn interruption) (2026-08-26T19:37Z, primary source, ev-20260818-02 update)",
         "Gemini CLI 0.57.0 stable's release tag contains packages/a2a-server (an A2A protocol server), published to npm as @google/gemini-cli-a2a-server@0.57.0, with a wave of [SSR Agent] fixes merged — Google becomes the seventh organization with protocol-level inter-agent interop in a stable runtime (2026-08-25T18:37Z, primary source, ev-20260825-02)",
         "12. OpenAI Agents API (2026-09-10, primary source, ev-20260910-02): the Codex harness productized as a platform primitive — one API call creates a production cloud agent with orchestration, cross-window compaction, tool search, programmatic tool calling, MCP and parallel subagents built in; the harness layer graduates from CLI runtime to cloud-platform commodity (same-org OpenAI reinforcement and a new rung, not a new organization)",
-        "13. Cursor Projects (2026-09-10, official changelog, ev-20260910-03): coordinator agent plans and delegates rather than writing code, months-scale task context, project-level shared memory (later agents reuse earlier agents' knowledge), Slack/schedule/PR subscription wake-ups — months-scale self-directed work becomes the management unit of a mainstream coding tool (same-org Cursor reinforcement, not counted as a new organization)"
+        "13. Cursor Projects (2026-09-10, official changelog, ev-20260910-03): coordinator agent plans and delegates rather than writing code, months-scale task context, project-level shared memory (later agents reuse earlier agents' knowledge), Slack/schedule/PR subscription wake-ups — months-scale self-directed work becomes the management unit of a mainstream coding tool (same-org Cursor reinforcement, not counted as a new organization)",
+        "14. GitHub Copilot code review (2026-09-11T20:00Z, primary source, ev-20260911-11): Lite review now uses a multi-agent ensemble and runs the full Copilot SDK shell-tool set behind the agent firewall for build, test and targeted-script validation; GitHub's experiment reports 47% more addressed high-severity comments at about 8% lower cost. Same-org GitHub/Microsoft runtime reinforcement, not a new organization"
       ],
       "why_it_matters_zh": "升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。",
       "why_it_matters_en": "Why upgraded to established / High: confirmation criterion (a) (agent-to-agent messaging semantics in a non-Anthropic stable runtime) is met by Codex 0.150.0 — agents can read, create, or message other tasks from the terminal, so inbox semantics are no longer Anthropic-only; in the same window Google shipped the A2A protocol server into the Gemini CLI stable line and published it on npm. Equivalent primitives are now verified across seven organizations (Anthropic, GitHub/Microsoft, DeepSeek, OpenAI, SST/OpenCode, Anysphere/Cursor, Google) in stable or installable artifacts, spanning March to August 2026. The engineering impact has landed: the orchestration plane is shifting from human-initiated sessions to resident, event-driven, interoperable task systems — multi-agent orchestration is becoming a built-in capability of CLI runtimes rather than a framework choice. Residual gaps (not blocking established, kept under watch): Google's a2a-server has zero documentation or announcement; public production case studies and adoption telemetry are still missing; on the Anthropic side, Claude Code 2.1.248 extended cross-session messaging to Bedrock/Vertex/Foundry and telemetry-off deployments (same-org hardening, not counted separately).",
@@ -380,6 +392,11 @@
           "date": "2026-09-12",
           "note_zh": "第三轮补漏：Navier–Stokes 运行（ev-20260908-18）是该模式迄今最大单一工作负载——约 10,000 个并发 agent 经 harness 协调、cross-pollination 会话共享洞见；属厂商自跑的同组织加强信号（OpenAI 已计为成员），不计新组织证据。残余观察项 (c) 独立组织生产案例仍缺。",
           "note_en": "Third backfill pass: the Navier-Stokes run (ev-20260908-18) is the largest single workload on this pattern yet — ~10,000 concurrent agents coordinated through a harness with cross-pollination sessions; vendor-run same-org reinforcement (OpenAI already a counted org), not new-org evidence. Residual watch (c) independent production cases still missing."
+        },
+        {
+          "date": "2026-09-12",
+          "note_zh": "02:08Z 续扫：新增证据第 14 条。GitHub 把 Copilot Lite review 改为多 agent ensemble，并用 shell 工具执行构建与测试；同组织加固，不改变七家组织计数。VS Code Agents 使用指标进入企业/组织 API，但这是客户可见的采用测量面，不是公开采用数据；残余观察项 (c) 仍未完成。维持 established / High。",
+          "note_en": "02:08Z follow-up scan: evidence item 14 added. GitHub moved Copilot Lite review to a multi-agent ensemble with shell-backed build and test execution; same-org reinforcement, so the seven-organization count is unchanged. VS Code Agents metrics entered the enterprise/org API, but this is a customer-visible measurement surface rather than public adoption data; residual watch (c) remains open. Stays established / High."
         }
       ]
     },
@@ -458,6 +475,11 @@
           "date": "2026-09-12",
           "note_zh": "第三轮补漏：NS 帖披露未发布内部模型「显著强于 GPT-6 Astra」（能力披露的新形态——以数学结果为载体）；Buckmaster 争议暴露 harness 介质数据治理缺口（OpenAI 称未访问用户数据、但「不能排除」去标识化使用数据帮助模型改进；并因竞争关系拒绝 Anthropic 员工联署）。与 An Alien Mind 的「CoT 可监控性下降」形成同向张力。维持 emerging / Medium。",
           "note_en": "Third backfill pass: the NS post discloses an unreleased internal model 'significantly more capable than GPT-6 Astra' (capability disclosure in a new vehicle — mathematics results); the Buckmaster dispute exposes the harness-mediated data-governance gap (OpenAI says no user data accessed but 'cannot rule out' de-identified usage data aiding model improvement; refused an Anthropic employee's co-authorship citing competition). Same-direction tension as An Alien Mind on CoT monitorability declining. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-12",
+          "note_zh": "02:08Z 续扫：没有新的前沿实验室事件披露、独立审查结果或跨厂商报告规范。维持 emerging / Medium。",
+          "note_en": "02:08Z follow-up scan: no new frontier-lab incident disclosure, independent-review result or cross-vendor reporting format. Stays emerging / Medium."
         }
       ]
     },
@@ -505,6 +527,11 @@
           "date": "2026-09-12",
           "note_zh": "降级判据被推翻，weakening 复活为 candidate（新增证据第 5 条）：OpenAI Agents API 把执行环境做成显式菜单（含自有基础设施与 VPC 内部署）——第二家厂商、而且是最大平台落地执行面选择；Cursor self-hosted machines 为第一家。PSP 白皮书仍未发布、Anthropic EFS 仍无落地、独立采用数据仍缺——维持 Low，若 9 月结束仍无 PSP/EFS 落地且无采用数据，再降级。",
           "note_en": "Downgrade trigger overturned; weakening revived to candidate (evidence item 5): the OpenAI Agents API makes the execution environment an explicit menu (own infrastructure and VPC deployments included) — a second vendor, and the largest platform, lands execution-plane choice; Cursor self-hosted machines was the first. PSP white paper still unpublished, Anthropic EFS not yet landed, independent adoption data still absent — confidence stays Low; if September ends without PSP/EFS landing and without adoption data, downgrade again."
+        },
+        {
+          "date": "2026-09-12",
+          "note_zh": "02:08Z 续扫：OpenAI Private Safety Processing 白皮书与 Anthropic EFS 均无新落地，也没有新的自托管执行面或独立采用案例。维持 candidate / Low。",
+          "note_en": "02:08Z follow-up scan: no new delivery of OpenAI Private Safety Processing or Anthropic EFS, and no new self-hosted execution plane or independent adoption case. Stays candidate / Low."
         }
       ]
     },
@@ -542,6 +569,11 @@
           "date": "2026-09-12",
           "note_zh": "第三轮补漏时立项为 emerging / Medium：FLT（9/4）、NS（9/8）、forced Euler（9/8）三个千禧年级结果跨两家实验室、全部带 Lean 形式化，另有 Fields Medalist 宣言与活跃的社区验证。如实记录的反向张力：NS 证明尚未获数学界广泛接受；OpenAI 拒答内部模型是否接触过对方 Codex 草稿，争议未决。",
           "note_en": "Opened as emerging / Medium during the third backfill pass: three Millennium-scale results (FLT 9/4, NS 9/8, forced Euler 9/8) across two labs, all with Lean formalization, plus the Fields-Medalist declaration and active community verification. Counter-tension recorded honestly: the NS proof is not yet broadly accepted by the mathematics community, and OpenAI declined to answer whether its internal model saw the rival team's Codex drafts — the dispute is unresolved."
+        },
+        {
+          "date": "2026-09-12",
+          "note_zh": "02:08Z 续扫：没有新的正式数学验证结论、第三家实验室复现或 Lean 工具链采用数据。维持 emerging / Medium。",
+          "note_en": "02:08Z follow-up scan: no new formal mathematical-verification outcome, third-lab reproduction or Lean-toolchain adoption data. Stays emerging / Medium."
         }
       ]
     }

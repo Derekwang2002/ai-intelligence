@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-12",
+  "provenance": "Incremental scan [2026-09-11T19:05:56Z, 2026-09-12T02:08:37Z], with retrieval overlap from 2026-09-11T16:05:56Z. The release timestamp falls inside the strict window; this is a nightly pre-release, not a stable release.",
+  "events": [
+    {
+      "event_id": "ev-20260912-01",
+      "title": "Gemini CLI nightly adds a gate against build-file prompt injection",
+      "title_zh": "Gemini CLI nightly 拦截构建文件提示注入",
+      "category": "developer-tools",
+      "organization": [
+        "Google"
+      ],
+      "published_at": "2026-09-12T01:25:00Z",
+      "first_seen_at": "2026-09-12T02:08:37Z",
+      "last_updated_at": "2026-09-12T02:08:37Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.61.0-nightly.20260912.g9c1b0a610",
+      "secondary_sources": [
+        "https://github.com/google-gemini/gemini-cli/pull/29250",
+        "https://github.com/google-gemini/gemini-cli/pull/29214"
+      ],
+      "summary": "Gemini CLI's 0.61 nightly adds a confirmation gate when untrusted context attempts to modify build files or introduce untrusted flags. A companion sandbox patch tightens filesystem boundaries, credential handling, symbolic-link checks and runtime-state isolation. This is a nightly pre-release, so the behavior is evidence of Google's security direction rather than a stable interface.",
+      "why_it_matters": "For teams evaluating coding agents, build files and tool flags are high-leverage paths from untrusted repository content to command execution. The new gate is worth tracking and adversarially testing, but production policy should wait for a stable release and documented guarantees.",
+      "summary_zh": "Gemini CLI 0.61 nightly 新增确认门：不可信上下文若尝试修改构建文件或引入不可信 flag，执行前会被拦截。同期沙箱补丁收紧文件系统边界、凭据处理、符号链接检查与运行时状态隔离。这仍是 nightly 预发布，只能说明 Google 的安全方向，不能当作稳定接口。",
+      "summary_en": "Gemini CLI's 0.61 nightly adds a confirmation gate when untrusted context attempts to modify build files or introduce untrusted flags. A companion sandbox patch tightens filesystem boundaries, credential handling, symbolic-link checks and runtime-state isolation. This is a nightly pre-release, so the behavior is evidence of Google's security direction rather than a stable interface.",
+      "why_it_matters_zh": "对评估 coding agent 的团队来说，构建文件和工具 flag 是不可信仓库内容通向命令执行的高风险路径。这个确认门值得跟踪并做对抗测试，但生产策略应等待 stable 版本与明确的行为保证。",
+      "why_it_matters_en": "For teams evaluating coding agents, build files and tool flags are high-leverage paths from untrusted repository content to command execution. The new gate is worth tracking and adversarially testing, but production policy should wait for a stable release and documented guarantees.",
+      "technical_details": {
+        "release": "v0.61.0-nightly.20260912.g9c1b0a610; published 2026-09-12T01:25:00Z; pre-release",
+        "prompt_injection_gate": "PR #29250 adds confirmation and blocking behavior for indirect prompt injection through modified build files and untrusted flags",
+        "sandbox_hardening": "PR #29214 tightens filesystem boundaries, credential exposure, symlink handling and runtime-state isolation",
+        "availability": "nightly GitHub release; no stable 0.61 release in this scan window"
+      },
+      "technical_details_zh": {
+        "版本": "v0.61.0-nightly.20260912.g9c1b0a610；2026-09-12T01:25:00Z 发布；预发布",
+        "提示注入确认门": "PR #29250 对修改构建文件和不可信 flag 引发的间接提示注入增加确认与阻断",
+        "沙箱加固": "PR #29214 收紧文件系统边界、凭据暴露、符号链接处理与运行时状态隔离",
+        "可用性": "GitHub nightly release；本扫描窗口内没有 stable 0.61 版本"
+      },
+      "tags": [
+        "gemini-cli",
+        "agent-security",
+        "prompt-injection",
+        "sandbox",
+        "developer-tools"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "google-gemini-cli-build-file-prompt-injection-gate"
+    }
+  ]
+}

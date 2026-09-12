@@ -484,6 +484,56 @@
       "risk": 1,
       "recommendation": "WATCH",
       "event_fingerprint": "openai-habitat-storage-scaling-rust-rewrite"
+    },
+    {
+      "event_id": "ev-20260911-11",
+      "title": "GitHub upgrades Copilot review with shell tools and an agent ensemble",
+      "title_zh": "GitHub 用 shell 工具与多 agent 加固 Copilot review",
+      "category": "developer-tools",
+      "organization": [
+        "GitHub",
+        "Microsoft"
+      ],
+      "published_at": "2026-09-11T20:00:07Z",
+      "first_seen_at": "2026-09-12T02:08:37Z",
+      "last_updated_at": "2026-09-12T02:08:37Z",
+      "source_type": "official_docs",
+      "primary_source": "https://github.blog/changelog/2026-09-11-auto-resolution-and-analysis-updates-in-copilot-code-review/",
+      "secondary_sources": [],
+      "summary": "GitHub changed Copilot code review from a file-reading reviewer into an agent that can run builds, tests, targeted scripts, tools and APIs behind the Copilot agent firewall. Lite reviews now use an ensemble of agents and merge their findings into one review. GitHub reports 47% more addressed high-severity comments, 31% more medium-severity comments and about 8% lower review cost in its experiments. Copilot also auto-resolves addressed threads and writes commit messages for applied fixes.",
+      "why_it_matters": "For teams already using Copilot review, validation is moving from static inspection toward execution-backed review without requiring the highest effort tier. Trial it on repositories with reliable tests and compare high-severity precision, runtime and false positives against the previous Lite baseline.",
+      "summary_zh": "GitHub 把 Copilot code review 从只读文件的审查器升级为可在 agent firewall 后运行构建、测试、定向脚本、工具与 API 的 agent。Lite 档现在由多个 agent 分头分析，再合并为一份 review。GitHub 的实验显示，被开发者采纳的高严重度评论增加 47%，中严重度增加 31%，review 成本约降 8%。Copilot 还会自动关闭已修复的评论，并为采纳的修复生成 commit message。",
+      "summary_en": "GitHub changed Copilot code review from a file-reading reviewer into an agent that can run builds, tests, targeted scripts, tools and APIs behind the Copilot agent firewall. Lite reviews now use an ensemble of agents and merge their findings into one review. GitHub reports 47% more addressed high-severity comments, 31% more medium-severity comments and about 8% lower review cost in its experiments. Copilot also auto-resolves addressed threads and writes commit messages for applied fixes.",
+      "why_it_matters_zh": "对已经使用 Copilot review 的团队，这意味着代码审查正从静态检查转向有执行证据的验证，而且不必切到最高 effort 档。可以先在测试可靠的仓库试跑，对比升级前 Lite 基线的高严重度精度、耗时与误报。",
+      "why_it_matters_en": "For teams already using Copilot review, validation is moving from static inspection toward execution-backed review without requiring the highest effort tier. Trial it on repositories with reliable tests and compare high-severity precision, runtime and false positives against the previous Lite baseline.",
+      "technical_details": {
+        "review_runtime": "Full Copilot SDK shell-tool set behind the Copilot agent firewall; can run builds, tests, targeted scripts, and query available tools/APIs",
+        "lite_ensemble": "Multiple review agents contribute perspectives and GitHub merges their findings into one Lite review",
+        "vendor_experiment": "+47% addressed high-severity comments; +31% medium; +11% low; review cost about -8%",
+        "workflow": "Auto-resolves comments after a later commit addresses them; generates context-specific commit messages for applied suggestions"
+      },
+      "technical_details_zh": {
+        "review 运行时": "在 Copilot agent firewall 后使用完整 Copilot SDK shell 工具集；可运行构建、测试、定向脚本，并查询可用工具与 API",
+        "Lite 多 agent": "多个 review agent 分别分析，GitHub 将结果合并为一份 Lite review",
+        "厂商实验": "被采纳的高严重度评论 +47%；中严重度 +31%；低严重度 +11%；review 成本约 -8%",
+        "工作流": "后续 commit 修复问题后自动关闭评论；为采纳的建议生成针对本次变更的 commit message"
+      },
+      "tags": [
+        "copilot",
+        "code-review",
+        "multi-agent",
+        "tool-use",
+        "evaluation",
+        "observability"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "github-copilot-review-shell-tools-agent-ensemble"
     }
   ]
 }
