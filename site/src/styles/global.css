@@ -535,6 +535,47 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .date-group h2 { margin: 0; font-size: 13px; font-family: var(--mono); color: var(--text); font-weight: 700; letter-spacing: 0.03em; }
 .date-group .n { font-size: 11.5px; color: var(--text-faint); font-family: var(--mono); }
 
+/* ============ 领域 × 日期矩阵（洞察页） ============ */
+/* 分类总览：行=日期、列=象限，单元格内为迷你事件链接；构建期限近 30 天 + 页面按段渐进展开 */
+.mx-wrap { overflow-x: auto; padding: 8px 10px; }
+.mx { border-collapse: collapse; width: 100%; min-width: 820px; }
+.mx th, .mx td { text-align: left; vertical-align: top; padding: 10px 12px; }
+.mx thead th {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+}
+.mx tbody th { font-family: var(--mono); font-size: 11.5px; font-weight: 400; color: var(--text-muted); white-space: nowrap; }
+.mx tbody tr + tr > th, .mx tbody tr + tr > td { border-top: 1px solid var(--border); }
+.mx td { min-width: 160px; }
+.mx-item { display: flex; align-items: baseline; gap: 7px; font-size: 12.5px; line-height: 1.5; color: var(--text-muted); }
+.mx-item + .mx-item { margin-top: 5px; }
+.mx-item:hover { color: var(--accent); text-decoration: none; }
+.mx-item .rec-dot { width: 7px; height: 7px; border-radius: 2px; flex-shrink: 0; position: relative; top: -1px; }
+/* 渐进展开：未展开的段整行隐藏 */
+.mx tr.mx-hide { display: none; }
+.mx-more {
+  display: block;
+  margin: 10px auto 8px;
+  padding: 7px 18px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+.mx-more:hover { color: var(--accent); border-color: var(--accent); }
+.mx-archive { text-align: center; border-top: 1px dashed var(--border); }
+.mx-archive a { font-family: var(--mono); font-size: 11.5px; color: var(--text-faint); }
+.mx-archive a:hover { color: var(--accent); text-decoration: none; }
+
 /* ============ filter bar ============ */
 
 /* 搜索已移入 header 常驻，筛选栏不再吸顶，作为列表上方的普通筛选面板 */
@@ -673,6 +714,8 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   background: var(--border);
   align-self: center;
 }
+/* 雷达区内的小节标题（领域 × 日期矩阵） */
+.chart-sub { margin: 30px 0 10px; }
 
 /* ============ 雷达总览（象限雷达图 + 编号清单） ============ */
 /* 图例行（交互提示 + 筛选 chips）夹在章节标题与图之间 */

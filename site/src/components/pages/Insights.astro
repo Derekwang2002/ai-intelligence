@@ -2,7 +2,9 @@
 import Base from '../../layouts/Base.astro';
 import RadarChart from '../RadarChart.astro';
 import { u } from '../../lib/url';
-import { t, loc, type Locale } from '../../lib/i18n';
+import { t, loc, locTitle, type Locale } from '../../lib/i18n';
+import { QUADRANTS } from '../../lib/quadrants';
+import { shortLabel } from '../../lib/shortLabel';
 import { selectRadar } from '../../lib/radar';
 import events from '../../data/generated/events.json';
 import trends from '../../data/generated/trends.json';
@@ -18,6 +20,33 @@ const lifecycle = ['candidate', 'emerging', 'strengthening', 'established', 'wea
 const uniqueCount = new Set(events.map((e: any) => e.event_fingerprint)).size;
 // 雷达上图条数：与 RadarChart 共用同一套窗口/上限逻辑，保证计数与图一致
 const radarSel = selectRadar(events);
+
+// 领域 × 日期矩阵：行 = 日期降序，列 = 四象限。防膨胀两层压缩：
+// 构建期只保留近 MX_WINDOW_DAYS 天（锚定数据集中最新发布日，构建可复现），更早的收口到事件库；
+// 页面上按 MX_CHUNK 天一段渐进展开（客户端小脚本），首屏不被长表淹没。
+const MX_WINDOW_DAYS = 30;
+const MX_CHUNK = 10;
+const maxPub = events.map((e: any) => String(e.published_date)).sort().at(-1) ?? '1970-01-01';
+const mxCutoff = new Date(new Date(`${maxPub}T00:00:00Z`).getTime() - (MX_WINDOW_DAYS - 1) * 86400000)
+  .toISOString()
+  .slice(0, 10);
+const mxGroups = new Map<string, any[]>();
+for (const e of events) {
+  if (String(e.published_date) < mxCutoff) continue;
+  if (!mxGroups.has(e.published_date)) mxGroups.set(e.published_date, []);
+  mxGroups.get(e.published_date)!.push(e);
+}
+const dateGroups = [...mxGroups.entries()].sort((a, b) => b[0].localeCompare(a[0]));
+const mxHasOlder = events.some((e: any) => String(e.published_date) < mxCutoff);
+// 每段的行数（供"再显示 N 天"按钮逐段扣减）
+const mxChunks: number[] = [];
+for (let i = 0; i < dateGroups.length; i++) mxChunks[Math.floor(i / MX_CHUNK)] = (mxChunks[Math.floor(i / MX_CHUNK)] ?? 0) + 1;
+const REC_VAR: Record<string, string> = {
+  ADOPT: 'var(--adopt)',
+  TRIAL: 'var(--trial)',
+  WATCH: 'var(--watch)',
+  IGNORE: 'var(--ignore)',
+};
 
 function evidenceList(tr: any, loc_: Locale): string[] {
   const items = loc_ === 'zh' ? tr.evidence_zh : tr.evidence_en;
@@ -176,6 +205,60 @@ const snapMonths = monthKeys.map((mk) => {
     </div>
     <p class="sec-intro">{t(locale, 'insights.radarIntro')}</p>
     <RadarChart events={events} locale={locale} />
+
+    <h3 class="quad-head chart-sub">{t(locale, 'insights.matrix')}</h3>
+    <div class="card mx-wrap">
+      <table class="mx" id="mx-table">
+        <thead>
+          <tr>
+            <th></th>
+            {QUADRANTS.map((q) => <th>{t(locale, q.labelKey)}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {dateGroups.map(([date, list], i) => (
+            <tr data-mxpage={Math.floor(i / MX_CHUNK)} class={i >= MX_CHUNK ? 'mx-hide' : ''}>
+              <th scope="row">{date}</th>
+              {QUADRANTS.map((q) => {
+                const cell = list.filter((e) => q.cats.includes(e.category));
+                return (
+                  <td>
+                    {cell.map((e) => (
+                      <a class="mx-item" href={u(`/events/${e.event_id}/`, locale)} title={locTitle(e, locale)}>
+                        <i class="rec-dot" style={`background: ${REC_VAR[e.recommendation] ?? 'var(--watch)'}`}></i>
+                        {shortLabel(e)}
+                      </a>
+                    ))}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+        {mxHasOlder && (
+          <tfoot>
+            <tr class={mxChunks.length > 1 ? 'mx-hide' : ''} data-mxpage={Math.max(0, mxChunks.length - 1)}>
+              <td class="mx-archive" colspan={QUADRANTS.length + 1}>
+                <a href={u('/events/', locale)}>{t(locale, 'insights.matrixArchive')}</a>
+              </td>
+            </tr>
+          </tfoot>
+        )}
+      </table>
+      {mxChunks.length > 1 && (
+        <button
+          type="button"
+          class="mx-more"
+          id="mx-more"
+          data-chunks={mxChunks.join(',')}
+          data-label={t(locale, 'insights.matrixMore')}
+        >
+          {t(locale, 'insights.matrixMore')
+            .replace('{n}', String(mxChunks[1]))
+            .replace('{m}', String(dateGroups.length - mxChunks[0]))}
+        </button>
+      )}
+    </div>
   </section>
 
   <script>
@@ -233,5 +316,29 @@ const snapMonths = monthKeys.map((mk) => {
         }
       });
     });
+  </script>
+
+  <script>
+    // 领域 × 日期矩阵渐进展开：每点一次 reveal 下一段（MX_CHUNK 天），
+    // 段数用尽后移除按钮；归档行（tfoot）随最后一段一起出现。
+    (() => {
+      const btn = document.getElementById('mx-more');
+      if (!btn) return;
+      const chunks = (btn.dataset.chunks ?? '').split(',').map(Number).filter((n) => n > 0);
+      const label = btn.dataset.label ?? '';
+      let page = 0;
+      btn.addEventListener('click', () => {
+        page++;
+        for (const tr of document.querySelectorAll<HTMLElement>('#mx-table [data-mxpage]')) {
+          if (Number(tr.dataset.mxpage) <= page) tr.classList.remove('mx-hide');
+        }
+        const rest = chunks.slice(page + 1).reduce((a, b) => a + b, 0);
+        if (rest <= 0) {
+          btn.remove();
+        } else {
+          btn.textContent = label.replace('{n}', String(chunks[page + 1])).replace('{m}', String(rest));
+        }
+      });
+    })();
   </script>
 </Base>
