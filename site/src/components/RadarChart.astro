@@ -2,6 +2,7 @@
 import { u } from '../lib/url';
 import { t, locTitle, type Locale } from '../lib/i18n';
 import { QUADRANTS, quadLabel } from '../lib/quadrants';
+import { selectRadar, RING_ORDER, RING_IDX, RADAR_WINDOW_DAYS } from '../lib/radar';
 import { shortLabel, labelWidth } from '../lib/shortLabel';
 
 interface Props {
@@ -11,8 +12,9 @@ interface Props {
 
 const { events, locale = 'zh' } = Astro.props;
 
-const RING_ORDER = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'] as const;
-const RING_IDX: Record<string, number> = { ADOPT: 0, TRIAL: 1, WATCH: 2, IGNORE: 3 };
+// 窗口 + 每环上限选择在 lib/radar.ts（Insights 页计数共用同一份逻辑）
+const sel = selectRadar(events);
+
 // 扇区底色与清单色标：站点无类别色相，这里给象限一组双主题可读的中饱和色
 const QUAD_COLOR: Record<string, string> = {
   models: '#4f8ef7',
@@ -21,20 +23,12 @@ const QUAD_COLOR: Record<string, string> = {
   tools: '#e8a04c',
 };
 
-// 每个 fingerprint 只保留一个光点，取最新事件。
-const byFingerprint = new Map<string, any>();
-for (const e of events) {
-  const fp = e.event_fingerprint || e.event_id;
-  const existing = byFingerprint.get(fp);
-  if (!existing || String(e.published_date) > String(existing.published_date)) byFingerprint.set(fp, e);
-}
-const unique = [...byFingerprint.values()];
-// 新事件：数据窗口最后 2 天内发布（脉冲环）
-const maxT = Math.max(...unique.map((e) => new Date(`${e.published_date}T00:00:00Z`).getTime()));
+// 新条目：活动日期在数据集最新日期的近 2 天内（脉冲环）
+const maxT = new Date(`${sel.maxDate}T00:00:00Z`).getTime();
 const isNew = (date: string) => maxT - new Date(`${date}T00:00:00Z`).getTime() <= 2 * 86400000;
 
 type Blip = {
-  no: number;
+  no: number; // 象限内编号（1..n，与右侧清单一一对应）
   rec: string;
   quad: string;
   date: string;
@@ -45,30 +39,22 @@ type Blip = {
   href: string;
 };
 
-// 编号顺序 = 清单顺序：象限 → 环 → 日期新到旧。纯函数于输入数据，重建布局不变。
-const quadIdx = (id: string) => QUADRANTS.findIndex((q) => q.id === id);
-const sorted = unique
-  .map((e) => ({ e, quad: QUADRANTS.find((q) => q.cats.includes(e.category)) }))
-  .filter((x) => x.quad)
-  .sort(
-    (a, b) =>
-      quadIdx(a.quad!.id) - quadIdx(b.quad!.id) ||
-      (RING_IDX[a.e.recommendation] ?? 2) - (RING_IDX[b.e.recommendation] ?? 2) ||
-      String(b.e.published_date).localeCompare(String(a.e.published_date))
-  );
-
-const blips: Blip[] = sorted.map((x, i) => {
-  const label = shortLabel(x.e);
+// 编号按象限内展示顺序编排（环 → 评分）：新条目不再引起全图重排，且编号 ≤ 两位放得下光点
+const perQuadCount = new Map<string, number>();
+const blips: Blip[] = sel.items.map((it) => {
+  const no = (perQuadCount.get(it.quad) ?? 0) + 1;
+  perQuadCount.set(it.quad, no);
+  const label = shortLabel(it.e);
   return {
-    no: i + 1,
-    rec: RING_IDX[x.e.recommendation] !== undefined ? x.e.recommendation : 'WATCH',
-    quad: x.quad!.id,
-    date: x.e.published_date,
-    title: locTitle(x.e, locale),
+    no,
+    rec: it.ring,
+    quad: it.quad,
+    date: it.act,
+    title: locTitle(it.e, locale),
     label,
     lw: labelWidth(label),
-    fresh: isNew(x.e.published_date),
-    href: u(`/events/${x.e.event_id}/`, locale),
+    fresh: isNew(it.act),
+    href: u(`/events/${it.e.event_id}/`, locale),
   };
 });
 
@@ -87,37 +73,60 @@ const polar = (deg: number, r: number): [number, number] => [
   CY + r * Math.sin((deg * Math.PI) / 180),
 ];
 
-// 同（象限 × 环）组内布点：小组单半径按角度均布；大组三个半径层循环 + 角度槽均布，
-// 保证相邻光点中心距始终大于直径（确定性布局，重建不变）
+// 同（象限 × 环）组内布点：三个半径层，层内容量由弧长决定（弦距 ≥ 直径 + 6px），
+// 层间距 ≥ 直径 + 3px——按容量分配槽位，光点从几何上不可能重叠（确定性布局，重建不变）
+const SPAN = 80; // 扇区内可用角度（两侧各留 5° 边距）
+const SPAN_RAD = (SPAN * Math.PI) / 180;
+const LEVEL_FRACS = [0.32, 0.66, 0.95];
+type Placed = Blip & { x: number; y: number };
+
+function levelRadii(rIn: number): number[] {
+  const out: number[] = [];
+  for (const f of LEVEL_FRACS) {
+    const prev = out.length ? out[out.length - 1] : -Infinity;
+    out.push(Math.max(rIn + f * THICK, DOT_R + 14, prev + 2 * DOT_R + 3));
+  }
+  return out;
+}
+const levelCap = (r: number) => Math.max(1, Math.floor((r * SPAN_RAD) / (2 * DOT_R + 6)));
+
+// 按容量比例分配槽位（最大余数法，不超任何一层容量）
+function allot(n: number, caps: number[]): number[] {
+  const total = caps.reduce((a, b) => a + b, 0);
+  const raw = caps.map((c) => (n * c) / total);
+  const slots = raw.map((v, i) => Math.min(Math.floor(v), caps[i]));
+  let left = n - slots.reduce((a, b) => a + b, 0);
+  const order = raw.map((v, i) => [v - Math.floor(v), i] as const).sort((a, b) => b[0] - a[0]);
+  for (const [, i] of order) {
+    if (!left) break;
+    if (slots[i] < caps[i]) { slots[i]++; left--; }
+  }
+  // 极端兜底（组大于总容量）：余量放最外层，宁可挤一点也不能丢点
+  if (left) slots[slots.length - 1] += left;
+  return slots;
+}
+
 const groups = new Map<string, Blip[]>();
 for (const b of blips) {
   const k = `${b.quad}|${b.rec}`;
   if (!groups.has(k)) groups.set(k, []);
   groups.get(k)!.push(b);
 }
-type Placed = Blip & { x: number; y: number };
 const placed: Placed[] = [];
 for (const [k, group] of groups) {
   const [quad, rec] = k.split('|');
-  const a0 = sectorStart(quadIdx(quad)) + 5; // 扇区内角边距
-  const span = 90 - 10;
-  const rIn = RING_IDX[rec] * THICK;
-  const n = group.length;
-  group.forEach((b, j) => {
-    let ang: number;
-    let r: number;
-    if (n <= 4) {
-      ang = a0 + ((j + 0.5) / n) * span;
-      r = rIn + 0.5 * THICK;
-    } else {
-      const LEVELS = [0.16, 0.5, 0.84];
-      const slots = Math.ceil(n / LEVELS.length);
-      ang = a0 + ((Math.floor(j / LEVELS.length) + 0.5) / slots) * span;
-      r = rIn + LEVELS[j % LEVELS.length] * THICK;
+  const quadI = QUADRANTS.findIndex((q) => q.id === quad);
+  const a0 = sectorStart(quadI) + (90 - SPAN) / 2;
+  const radii = levelRadii(RING_IDX[rec] * THICK);
+  const slots = allot(group.length, radii.map(levelCap));
+  let j = 0;
+  radii.forEach((r, li) => {
+    const s = slots[li];
+    for (let k2 = 0; k2 < s && j < group.length; k2++, j++) {
+      const ang = a0 + ((k2 + 0.5) / s) * SPAN;
+      const [x, y] = polar(ang, r);
+      placed.push({ ...group[j], x, y });
     }
-    r = Math.max(r, DOT_R + 3); // 内环小组不压圆心
-    const [x, y] = polar(ang, r);
-    placed.push({ ...b, x, y });
   });
 }
 
@@ -184,7 +193,7 @@ const wedge = (i: number) => {
             <a
               class="blip"
               href={b.href}
-              data-no={b.no}
+              data-no={`${b.quad}-${b.no}`}
               data-quad={b.quad}
               data-rec={b.rec}
               style={`color: var(--${b.rec.toLowerCase()})`}
@@ -203,13 +212,17 @@ const wedge = (i: number) => {
         })}
       </svg>
     </figure>
-    {placed.some((b) => b.fresh) && <p class="chart-note">{t(locale, 'insights.radarPulseNote')}</p>}
+    <p class="chart-note">
+      {t(locale, 'insights.radarWindowNote').replace('{d}', String(RADAR_WINDOW_DAYS))}
+      {placed.some((b) => b.fresh) && ` · ${t(locale, 'insights.radarPulseNote')}`}
+    </p>
   </section>
 
   <aside class="radar-list" aria-label={t(locale, 'insights.radarTimeAria')}>
     {QUADRANTS.map((q) => {
       const items = placed.filter((b) => b.quad === q.id);
-      if (items.length === 0) return null;
+      const more = sel.overflow.get(q.id) ?? 0;
+      if (items.length === 0 && more === 0) return null;
       return (
         <div class="rl-group">
           <h4 class="rl-head">
@@ -219,12 +232,17 @@ const wedge = (i: number) => {
           </h4>
           <div class="rl-items">
             {items.map((b) => (
-              <a class="rl-item" href={b.href} data-no={b.no} data-quad={b.quad} data-rec={b.rec}>
+              <a class="rl-item" href={b.href} data-no={`${b.quad}-${b.no}`} data-quad={b.quad} data-rec={b.rec}>
                 <span class="rl-no" style={`background: var(--${b.rec.toLowerCase()})`}>{b.no}</span>
                 <span class="rl-label">{b.label}</span>
                 <span class="rl-date">{String(b.date).slice(5)}</span>
               </a>
             ))}
+            {more > 0 && (
+              <a class="rl-item rl-more" href={u('/events/', locale)}>
+                {t(locale, 'radar.moreInArchive').replace('{n}', String(more))}
+              </a>
+            )}
           </div>
         </div>
       );
@@ -299,7 +317,7 @@ const wedge = (i: number) => {
     if (!no) return;
     document.querySelector(`a.blip[data-no="${no}"]`)?.classList.toggle('hl', on);
   }
-  document.querySelectorAll<HTMLElement>('.rl-item').forEach((it) => {
+  document.querySelectorAll<HTMLElement>('.rl-item[data-no]').forEach((it) => {
     it.addEventListener('mouseenter', () => syncHl(it.dataset.no, true));
     it.addEventListener('mouseleave', () => syncHl(it.dataset.no, false));
   });
