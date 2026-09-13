@@ -16,6 +16,11 @@ for (const e of events) {
   groups.get(e.published_date)!.push(e);
 }
 const dateGroups = [...groups.entries()].sort((a, b) => b[0].localeCompare(a[0]));
+// 渐进展开：默认只显示近 EV_CHUNK 个日期分组，按钮逐段揭示更早分组；
+// 任意筛选/搜索激活时全部分组临时展开，保证结果不被分页藏起来
+const EV_CHUNK = 10;
+const evChunks: number[] = [];
+for (let i = 0; i < dateGroups.length; i++) evChunks[Math.floor(i / EV_CHUNK)] = (evChunks[Math.floor(i / EV_CHUNK)] ?? 0) + 1;
 const categories = Object.keys(aggregates.byCategory).sort();
 const orgs = aggregates.byOrg.slice(0, 20);
 const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
@@ -69,8 +74,8 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
   </div>
 
   <div id="event-list">
-    {dateGroups.map(([date, list]) => (
-      <section data-group={date}>
+    {dateGroups.map(([date, list], i) => (
+      <section data-group={date} data-evpage={Math.floor(i / EV_CHUNK)} class={i >= EV_CHUNK ? 'js-hide' : ''}>
         <div class="date-group">
           <h2>{date}</h2>
           <span class="n">{list.length} {t(locale, 'events.countUnit')}</span>
@@ -81,6 +86,20 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
       </section>
     ))}
   </div>
+
+  {evChunks.length > 1 && (
+    <button
+      type="button"
+      class="btn-more"
+      id="ev-more"
+      data-chunks={evChunks.join(',')}
+      data-label={t(locale, 'events.moreDays')}
+    >
+      {t(locale, 'events.moreDays')
+        .replace('{n}', String(evChunks[1]))
+        .replace('{m}', String(dateGroups.length - evChunks[0]))}
+    </button>
+  )}
 
   <div class="filter-empty" id="empty-hint" hidden>{t(locale, 'events.empty')}</div>
 </Base>
@@ -146,11 +165,12 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
       }
     };
 
-    const apply = () => {
-      // 筛选会收缩页面高度：先回顶部再展示结果，避免滚动钳位造成的跳动
-      if (window.scrollY > 240) window.scrollTo({ top: 0, behavior: 'instant' });
+    const apply = (skipScroll = false) => {
+      // 筛选会收缩页面高度：先回顶部再展示结果，避免滚动钳位造成的跳动（逐段展开时不跳）
+      if (!skipScroll && window.scrollY > 240) window.scrollTo({ top: 0, behavior: 'instant' });
       const raw = search.value.trim();
       const q = raw.toLowerCase();
+      const expanded = filtering();
       let visible = 0;
       let total = 0;
       for (const card of list.querySelectorAll<HTMLElement>('.event-card')) {
@@ -162,15 +182,36 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
           (!rec || card.dataset.rec === rec);
         card.hidden = !ok;
         paint(card, ok ? raw : '');
-        if (ok) visible++;
       }
-      for (const group of list.querySelectorAll('[data-group]')) {
+      for (const group of list.querySelectorAll<HTMLElement>('[data-group]')) {
         const anyVisible = [...group.querySelectorAll('.event-card')].some((c) => !(c as HTMLElement).hidden);
-        (group as HTMLElement).hidden = !anyVisible;
+        const pg = Number(group.dataset.evpage ?? 0);
+        const shown = anyVisible && (expanded || pg <= page);
+        group.hidden = !shown;
+        if (shown) visible += group.querySelectorAll('.event-card:not([hidden])').length;
       }
       if (empty) empty.hidden = visible > 0;
       if (count) count.textContent = `${visible} / ${total} ${count.dataset.suffix ?? ''}`.trim();
+      // 展开按钮：筛选激活时藏起（结果全展）；段数用尽后移除
+      if (moreBtn) {
+        if (expanded) {
+          moreBtn.style.display = 'none';
+        } else {
+          moreBtn.style.display = '';
+          const rest = chunks.slice(page + 1).reduce((a, b) => a + b, 0);
+          if (rest <= 0) moreBtn.remove();
+          else moreBtn.textContent = moreLabel.replace('{n}', String(chunks[page + 1])).replace('{m}', String(rest));
+        }
+      }
     };
+    // 渐进展开：服务端先按段隐藏更早分组，JS 接管后统一用 hidden 驱动
+    let page = 0;
+    const moreBtn = document.getElementById('ev-more');
+    const chunks = (moreBtn?.dataset.chunks ?? '').split(',').map(Number).filter((n) => n > 0);
+    const moreLabel = moreBtn?.dataset.label ?? '';
+    const filtering = () => !!(search.value.trim() || cat.value || org.value || rec);
+    for (const g of list.querySelectorAll('.js-hide')) g.classList.remove('js-hide');
+    moreBtn?.addEventListener('click', () => { page++; apply(true); });
     // 列表重排的瞬时跳变用快速交叉淡化掩盖；浏览器不支持或偏好减弱动效时直接应用
     const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const runApply = () => {

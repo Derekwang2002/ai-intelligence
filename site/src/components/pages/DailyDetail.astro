@@ -55,7 +55,10 @@ if (locale === 'zh') {
     <div class="article-body">
       <div class="prose" set:html={html} />
     </div>
-    <div class="card toc-card" id="toc-card" hidden>
+    <div class="card toc-card" id="toc-card" hidden
+      data-collapse={t(locale, 'daily.collapseAll')}
+      data-expand={t(locale, 'daily.expandAll')}
+      data-sectoggle={t(locale, 'daily.secToggleAria')}>
       <h3>{t(locale, 'daily.toc')}</h3>
       <nav class="toc-list" id="toc-list" aria-label={t(locale, 'daily.toc')}></nav>
     </div>
@@ -72,16 +75,67 @@ if (locale === 'zh') {
   const tocCard = document.getElementById('toc-card');
   const tocList = document.getElementById('toc-list');
   if (prose && tocCard && tocList) {
-    const heads = [...prose.querySelectorAll('h2')];
+    const heads = [...prose.querySelectorAll<HTMLElement>('h2')];
     if (heads.length >= 2) {
+      // 小节折叠：h2 变为开关，正文包进 .sec-body；默认全部展开，读者可按需收起长小节
+      const bodies = heads.map((h, i) => {
+        h.id = `sec-${i}`;
+        h.classList.add('sec-toggle');
+        h.tabIndex = 0;
+        h.setAttribute('role', 'button');
+        h.setAttribute('aria-expanded', 'true');
+        h.title = tocCard.dataset.sectoggle ?? '';
+        const wrap = document.createElement('div');
+        wrap.className = 'sec-body';
+        let n = h.nextSibling;
+        while (n && !(n.nodeType === 1 && (n as HTMLElement).tagName === 'H2')) {
+          const nx = n.nextSibling;
+          wrap.appendChild(n);
+          n = nx;
+        }
+        h.after(wrap);
+        const toggle = () => {
+          const collapsed = wrap.classList.toggle('sec-hide');
+          h.classList.toggle('collapsed', collapsed);
+          h.setAttribute('aria-expanded', String(!collapsed));
+        };
+        h.addEventListener('click', toggle);
+        h.addEventListener('keydown', (ev) => {
+          if ((ev as KeyboardEvent).key !== 'Enter' && (ev as KeyboardEvent).key !== ' ') return;
+          ev.preventDefault();
+          toggle();
+        });
+        return wrap;
+      });
+
       heads.forEach((h, i) => {
-        const id = `sec-${i}`;
-        h.id = id;
         const a = document.createElement('a');
-        a.href = `#${id}`;
+        a.href = `#sec-${i}`;
         a.textContent = h.textContent;
+        // 目录跳到已折叠的小节时先展开，避免锚点落进不可见区域
+        a.addEventListener('click', () => {
+          if (bodies[i].classList.contains('sec-hide')) h.click();
+        });
         tocList.appendChild(a);
       });
+
+      // 目录卡工具行：全部折叠 / 全部展开（只点未处于目标状态的小节）
+      const tools = document.createElement('div');
+      tools.className = 'toc-tools';
+      const mkBtn = (key: 'collapse' | 'expand', wantCollapsed: boolean) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = tocCard.dataset[key] ?? '';
+        b.addEventListener('click', () => {
+          heads.forEach((h, i) => {
+            if (bodies[i].classList.contains('sec-hide') !== wantCollapsed) h.click();
+          });
+        });
+        tools.appendChild(b);
+      };
+      mkBtn('collapse', true);
+      mkBtn('expand', false);
+      tocList.before(tools);
       tocCard.hidden = false;
 
       const links = [...tocList.querySelectorAll('a')];

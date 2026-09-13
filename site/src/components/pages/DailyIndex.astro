@@ -18,6 +18,11 @@ function weekday(date: string): string {
     timeZone: 'UTC',
   }).format(d);
 }
+
+// 渐进展开：日报逐日累积，首屏只给近 DL_CHUNK 篇，更早的按钮逐段揭示
+const DL_CHUNK = 10;
+const dlChunks: number[] = [];
+for (let i = 0; i < daily.length; i++) dlChunks[Math.floor(i / DL_CHUNK)] = (dlChunks[Math.floor(i / DL_CHUNK)] ?? 0) + 1;
 ---
 
 <Base title={t(locale, 'daily.title')} description={t(locale, 'daily.description')} locale={locale}>
@@ -29,13 +34,13 @@ function weekday(date: string): string {
     <p class="desc">{t(locale, 'daily.desc')}</p>
   </div>
 
-  <div>
-    {daily.map((d: any) => {
+  <div id="daily-list">
+    {daily.map((d: any, i: number) => {
       const items = (loc(d, 'highlights', locale) as unknown as any[]) || [];
       const shown = items.slice(0, 3);
       const extra = items.length - shown.length;
       return (
-        <a class="daily-row" href={u(`/daily/${d.date}/`, locale)}>
+        <a class={`daily-row${i >= DL_CHUNK ? ' js-hide' : ''}`} data-dlpage={Math.floor(i / DL_CHUNK)} href={u(`/daily/${d.date}/`, locale)}>
           <span class="d-side">
             <span class="d-date">{d.date}</span>
             <span class="d-sub">
@@ -67,4 +72,41 @@ function weekday(date: string): string {
       );
     })}
   </div>
+
+  {dlChunks.length > 1 && (
+    <button
+      type="button"
+      class="btn-more"
+      id="dl-more"
+      data-chunks={dlChunks.join(',')}
+      data-label={t(locale, 'daily.moreReports')}
+    >
+      {t(locale, 'daily.moreReports')
+        .replace('{n}', String(dlChunks[1]))
+        .replace('{m}', String(daily.length - dlChunks[0]))}
+    </button>
+  )}
 </Base>
+
+<script>
+  // 日报列表渐进展开：每点一次 reveal 下一段（DL_CHUNK 篇），段数用尽后移除按钮
+  (() => {
+    const btn = document.getElementById('dl-more');
+    if (!btn) return;
+    const chunks = (btn.dataset.chunks ?? '').split(',').map(Number).filter((n) => n > 0);
+    const label = btn.dataset.label ?? '';
+    let page = 0;
+    btn.addEventListener('click', () => {
+      page++;
+      for (const row of document.querySelectorAll<HTMLElement>('#daily-list [data-dlpage]')) {
+        if (Number(row.dataset.dlpage) <= page) row.classList.remove('js-hide');
+      }
+      const rest = chunks.slice(page + 1).reduce((a, b) => a + b, 0);
+      if (rest <= 0) {
+        btn.remove();
+      } else {
+        btn.textContent = label.replace('{n}', String(chunks[page + 1])).replace('{m}', String(rest));
+      }
+    });
+  })();
+</script>

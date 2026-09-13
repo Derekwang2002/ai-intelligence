@@ -558,7 +558,10 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .mx-item .rec-dot { width: 7px; height: 7px; border-radius: 2px; flex-shrink: 0; position: relative; top: -1px; }
 /* 渐进展开：未展开的段整行隐藏 */
 .mx tr.mx-hide { display: none; }
-.mx-more {
+/* 服务端先隐藏、JS 接管后移除的通用工具类（事件库 / 日报列表分段） */
+.js-hide { display: none !important; }
+/* 渐进展开按钮（矩阵 / 事件库 / 日报列表共用） */
+.btn-more {
   display: block;
   margin: 10px auto 8px;
   padding: 7px 18px;
@@ -571,7 +574,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
   letter-spacing: 0.03em;
   cursor: pointer;
 }
-.mx-more:hover { color: var(--accent); border-color: var(--accent); }
+.btn-more:hover { color: var(--accent); border-color: var(--accent); }
 .mx-archive { text-align: center; border-top: 1px dashed var(--border); }
 .mx-archive a { font-family: var(--mono); font-size: 11.5px; color: var(--text-faint); }
 .mx-archive a:hover { color: var(--accent); text-decoration: none; }
@@ -1008,6 +1011,37 @@ a.cal-day:hover { background: var(--accent); color: var(--accent-contrast); text
 .prose th { background: var(--surface-2); font-weight: 650; }
 .prose hr { border: none; height: 1px; background: var(--border); margin: 32px 0; }
 .prose a { word-break: break-word; }
+
+/* 日报小节折叠：h2 为开关，右端 chevron 指示状态；正文包在 .sec-body 里 */
+.prose h2.sec-toggle { cursor: pointer; user-select: none; display: flex; align-items: center; gap: 10px; }
+.prose h2.sec-toggle::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  margin-left: auto;
+  flex-shrink: 0;
+  border-right: 2px solid var(--text-faint);
+  border-bottom: 2px solid var(--text-faint);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.15s var(--ease);
+}
+.prose h2.sec-toggle.collapsed::after { transform: rotate(-45deg); }
+.prose h2.sec-toggle:hover::after { border-color: var(--accent); }
+.sec-body.sec-hide { display: none; }
+/* 目录卡工具行（全部折叠 / 全部展开） */
+.toc-tools { display: flex; gap: 6px; margin: 0 0 10px; }
+.toc-tools button {
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-faint);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+.toc-tools button:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ============ article header (daily/event detail) ============ */
 
