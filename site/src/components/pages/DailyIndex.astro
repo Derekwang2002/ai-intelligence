@@ -87,6 +87,7 @@ const byMonth = monthKeys.map((mk) => [mk, daily.filter((d: any) => String(d.dat
           <h2>{monthLabel(mk)}</h2>
           <span class="n">{list.length} {t(locale, 'daily.reportUnit')}</span>
         </summary>
+        <div class="dl-rows">
         {list.map((d: any) => {
           const items = (loc(d, 'highlights', locale) as unknown as any[]) || [];
           const shown = items.slice(0, 3);
@@ -123,7 +124,14 @@ const byMonth = monthKeys.map((mk) => [mk, daily.filter((d: any) => String(d.dat
             </a>
           );
         })}
+        </div>
       </details>
     ))}
   </div>
 </Base>
+
+<script>
+  import { attachFoldAnim } from '../../lib/detailsFold';
+  // 月份分组的折叠/展开走全站统一的非线性动画（AGENTS.md §19）
+  attachFoldAnim('details.dl-month', '.dl-rows');
+</script>

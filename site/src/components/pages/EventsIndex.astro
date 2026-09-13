@@ -137,6 +137,10 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
 </Base>
 
 <script>
+  import { attachFoldAnim } from '../../lib/detailsFold';
+  // 日期分组的折叠/展开走全站统一的非线性动画（AGENTS.md §19）
+  attachFoldAnim('details.ev-group', '.ev-cards');
+
   const search = document.getElementById('f-search') as HTMLInputElement;
   const cat = document.getElementById('f-cat') as HTMLSelectElement;
   const org = document.getElementById('f-org') as HTMLSelectElement;

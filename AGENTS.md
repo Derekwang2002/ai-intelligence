@@ -731,3 +731,13 @@ Checkpoint updated:
 - 是否结合历史数据而不是只看当前 run？
 
 如果质量检查失败，不推进 checkpoint。
+
+## 19. Site Interaction Conventions（站点交互约定）
+
+站点所有折叠/展开交互——事件按日分组、日报按月分组、日报阅读页小节、趋势卡片，以及今后新增的折叠组件——必须使用统一的非线性动画，禁止无动画的生硬开合，禁止各处自造一套。
+
+- 统一实现：`site/src/lib/detailsFold.ts`。`<details>` 组件用 `attachFoldAnim(detailsSelector, contentSelector)` 接线；非 details 的折叠容器（如日报小节）用 `animateFold(content, mode, onDone)`。新折叠场景必须复用这两个入口。
+- 动效规格（全站一致，不可局部调参）：高度用 WAAPI 动画——收起 230ms `cubic-bezier(0.4, 0, 0.2, 1)`，展开 260ms `cubic-bezier(0.2, 0.6, 0.2, 1)`；opacity 半程淡入淡出（收起 offset 0.55，展开 offset 0.5）。展开时先把内联高度钉为 0 再启动画，避免内容以全高闪一帧。
+- `prefers-reduced-motion` 时必须无动画，状态变更立即生效（模块内已处理，调用方不用管）。
+- 不用纯 CSS 的 `::details-content` 过渡：展开方向依赖较新浏览器，行为不稳定。
+- 程序化开合（筛选联动、日历跳转等设置 `details.open`）不经过动画，保持即时——动画只服务用户主动的点击开合。

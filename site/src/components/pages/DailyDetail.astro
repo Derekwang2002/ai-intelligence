@@ -70,6 +70,7 @@ if (locale === 'zh') {
 </Base>
 
 <script>
+  import { animateFold } from '../../lib/detailsFold';
   // Build a sticky table of contents from the rendered report's h2 sections.
   const prose = document.querySelector('.prose');
   const tocCard = document.getElementById('toc-card');
@@ -95,9 +96,16 @@ if (locale === 'zh') {
         }
         h.after(wrap);
         const toggle = () => {
-          const collapsed = wrap.classList.toggle('sec-hide');
-          h.classList.toggle('collapsed', collapsed);
-          h.setAttribute('aria-expanded', String(!collapsed));
+          // 全站统一的非线性折叠动画（AGENTS.md §19）；减少动态时 animateFold 无动画、立即收尾
+          const collapsing = !wrap.classList.contains('sec-hide');
+          if (collapsing) {
+            animateFold(wrap, 'collapse', () => wrap.classList.add('sec-hide'));
+          } else {
+            wrap.classList.remove('sec-hide');
+            animateFold(wrap, 'expand');
+          }
+          h.classList.toggle('collapsed', collapsing);
+          h.setAttribute('aria-expanded', String(!collapsing));
         };
         h.addEventListener('click', toggle);
         h.addEventListener('keydown', (ev) => {
