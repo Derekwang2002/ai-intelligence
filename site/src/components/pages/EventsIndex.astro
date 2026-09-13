@@ -16,11 +16,27 @@ for (const e of events) {
   groups.get(e.published_date)!.push(e);
 }
 const dateGroups = [...groups.entries()].sort((a, b) => b[0].localeCompare(a[0]));
-// 渐进展开：默认只显示近 EV_CHUNK 个日期分组，按钮逐段揭示更早分组；
-// 任意筛选/搜索激活时全部分组临时展开，保证结果不被分页藏起来
-const EV_CHUNK = 10;
-const evChunks: number[] = [];
-for (let i = 0; i < dateGroups.length; i++) evChunks[Math.floor(i / EV_CHUNK)] = (evChunks[Math.floor(i / EV_CHUNK)] ?? 0) + 1;
+// 日历总览 + 折叠分组：默认只展开近 EV_OPEN 个日期分组，其余折叠为一行标题；
+// 顶部日历按月份网格给出全局分布（色深 = 当日事件数），点击清筛选并跳到对应分组
+const EV_OPEN = 7;
+const dayCount = new Map(dateGroups.map(([d, l]) => [d, l.length]));
+const monthKeys = [...new Set(dateGroups.map(([d]) => String(d).slice(0, 7)))].sort().reverse();
+const WEEKDAYS = locale === 'zh'
+  ? ['一', '二', '三', '四', '五', '六', '日']
+  : ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+const calMonths = monthKeys.map((mk) => {
+  const [y, mo] = mk.split('-').map(Number);
+  const offset = (new Date(y, mo - 1, 1).getDay() + 6) % 7; // 周一开头
+  const days = new Date(y, mo, 0).getDate();
+  const cells: ({ day: number; date: string; n: number } | null)[] = Array(offset).fill(null);
+  for (let d = 1; d <= days; d++) {
+    const date = `${mk}-${String(d).padStart(2, '0')}`;
+    cells.push({ day: d, date, n: dayCount.get(date) ?? 0 });
+  }
+  const label = new Intl.DateTimeFormat(locale === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long' }).format(new Date(y, mo - 1, 1));
+  return { label, cells };
+});
+const calBucket = (n: number) => (n <= 0 ? 0 : n <= 2 ? 1 : n <= 5 ? 2 : n <= 9 ? 3 : 4);
 const categories = Object.keys(aggregates.byCategory).sort();
 const orgs = aggregates.byOrg.slice(0, 20);
 const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
@@ -73,33 +89,49 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
     <span class="filter-count" id="f-count" aria-live="polite" data-suffix={t(locale, 'events.countSuffix')}></span>
   </div>
 
-  <div id="event-list">
-    {dateGroups.map(([date, list], i) => (
-      <section data-group={date} data-evpage={Math.floor(i / EV_CHUNK)} class={i >= EV_CHUNK ? 'js-hide' : ''}>
-        <div class="date-group">
-          <h2>{date}</h2>
-          <span class="n">{list.length} {t(locale, 'events.countUnit')}</span>
+  <div class="card ev-cal">
+    <div class="ev-cal-head">
+      {t(locale, 'events.calendar')}
+      <span class="legend-note">{t(locale, 'events.calendarNote')}</span>
+    </div>
+    <div class="cal-wrap">
+      {calMonths.map((m) => (
+        <div class="ev-cal-month">
+          <div class="cal-head">{m.label}</div>
+          <div class="cal-grid">
+            {WEEKDAYS.map((w) => <span class="cal-wd">{w}</span>)}
+            {m.cells.map((c) =>
+              c === null || c.n === 0 ? (
+                <span class="cal-day">{c?.day}</span>
+              ) : (
+                <button
+                  type="button"
+                  class={`cal-day has ev-cal-day n${calBucket(c.n)}`}
+                  data-date={c.date}
+                  title={`${c.date} · ${c.n} ${t(locale, 'events.countUnit')}`}
+                  aria-label={t(locale, 'events.calJumpAria').replace('{d}', c.date).replace('{n}', String(c.n))}
+                >{c.day}</button>
+              )
+            )}
+          </div>
         </div>
-        <div>
-          {list.map((e) => <EventCard event={e} locale={locale} />)}
-        </div>
-      </section>
-    ))}
+      ))}
+    </div>
   </div>
 
-  {evChunks.length > 1 && (
-    <button
-      type="button"
-      class="btn-more"
-      id="ev-more"
-      data-chunks={evChunks.join(',')}
-      data-label={t(locale, 'events.moreDays')}
-    >
-      {t(locale, 'events.moreDays')
-        .replace('{n}', String(evChunks[1]))
-        .replace('{m}', String(dateGroups.length - evChunks[0]))}
-    </button>
-  )}
+  <div id="event-list">
+    {dateGroups.map(([date, list], i) => (
+      <details class="ev-group" data-group={date} open={i < EV_OPEN}>
+        <summary class="date-group">
+          <h2>{date}</h2>
+          <span class="n">{list.length} {t(locale, 'events.countUnit')}</span>
+        </summary>
+        <div class="ev-cards">
+          {list.map((e) => <EventCard event={e} locale={locale} />)}
+        </div>
+      </details>
+    ))}
+  </div>
 
   <div class="filter-empty" id="empty-hint" hidden>{t(locale, 'events.empty')}</div>
 </Base>
@@ -165,8 +197,9 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
       }
     };
 
+    const filtering = () => !!(search.value.trim() || cat.value || org.value || rec);
     const apply = (skipScroll = false) => {
-      // 筛选会收缩页面高度：先回顶部再展示结果，避免滚动钳位造成的跳动（逐段展开时不跳）
+      // 筛选会收缩页面高度：先回顶部再展示结果，避免滚动钳位造成的跳动（日历跳转时不跳）
       if (!skipScroll && window.scrollY > 240) window.scrollTo({ top: 0, behavior: 'instant' });
       const raw = search.value.trim();
       const q = raw.toLowerCase();
@@ -182,36 +215,34 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
           (!rec || card.dataset.rec === rec);
         card.hidden = !ok;
         paint(card, ok ? raw : '');
+        if (ok) visible++;
       }
-      for (const group of list.querySelectorAll<HTMLElement>('[data-group]')) {
+      for (const group of list.querySelectorAll<HTMLDetailsElement>('[data-group]')) {
         const anyVisible = [...group.querySelectorAll('.event-card')].some((c) => !(c as HTMLElement).hidden);
-        const pg = Number(group.dataset.evpage ?? 0);
-        const shown = anyVisible && (expanded || pg <= page);
-        group.hidden = !shown;
-        if (shown) visible += group.querySelectorAll('.event-card:not([hidden])').length;
+        // 筛选/搜索激活时强制展开所有命中分组，折叠状态不拦结果；清除筛选后保留用户的开合
+        if (expanded && anyVisible) group.open = true;
+        group.hidden = !anyVisible;
       }
       if (empty) empty.hidden = visible > 0;
       if (count) count.textContent = `${visible} / ${total} ${count.dataset.suffix ?? ''}`.trim();
-      // 展开按钮：筛选激活时藏起（结果全展）；段数用尽后移除
-      if (moreBtn) {
-        if (expanded) {
-          moreBtn.style.display = 'none';
-        } else {
-          moreBtn.style.display = '';
-          const rest = chunks.slice(page + 1).reduce((a, b) => a + b, 0);
-          if (rest <= 0) moreBtn.remove();
-          else moreBtn.textContent = moreLabel.replace('{n}', String(chunks[page + 1])).replace('{m}', String(rest));
-        }
-      }
     };
-    // 渐进展开：服务端先按段隐藏更早分组，JS 接管后统一用 hidden 驱动
-    let page = 0;
-    const moreBtn = document.getElementById('ev-more');
-    const chunks = (moreBtn?.dataset.chunks ?? '').split(',').map(Number).filter((n) => n > 0);
-    const moreLabel = moreBtn?.dataset.label ?? '';
-    const filtering = () => !!(search.value.trim() || cat.value || org.value || rec);
-    for (const g of list.querySelectorAll('.js-hide')) g.classList.remove('js-hide');
-    moreBtn?.addEventListener('click', () => { page++; apply(true); });
+    // 日历跳转：日历是导航而非筛选——清掉现有筛选，展开目标分组并滚动过去
+    for (const btn of document.querySelectorAll<HTMLButtonElement>('.ev-cal-day')) {
+      btn.addEventListener('click', () => {
+        search.value = '';
+        cat.value = '';
+        org.value = '';
+        rec = '';
+        for (const c of chipsWrap.querySelectorAll('.fchip')) c.classList.toggle('active', (c as HTMLElement).dataset.rec === '');
+        apply(true);
+        const g = list.querySelector<HTMLDetailsElement>(`[data-group="${btn.dataset.date}"]`);
+        if (!g) return;
+        g.open = true;
+        g.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        g.classList.add('cal-flash');
+        setTimeout(() => g.classList.remove('cal-flash'), 1300);
+      });
+    }
     // 列表重排的瞬时跳变用快速交叉淡化掩盖；浏览器不支持或偏好减弱动效时直接应用
     const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const runApply = () => {

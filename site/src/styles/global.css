@@ -558,9 +558,7 @@ code, kbd, pre, .mono { font-family: var(--mono); font-size: 0.92em; }
 .mx-item .rec-dot { width: 7px; height: 7px; border-radius: 2px; flex-shrink: 0; position: relative; top: -1px; }
 /* 渐进展开：未展开的段整行隐藏 */
 .mx tr.mx-hide { display: none; }
-/* 服务端先隐藏、JS 接管后移除的通用工具类（事件库 / 日报列表分段） */
-.js-hide { display: none !important; }
-/* 渐进展开按钮（矩阵 / 事件库 / 日报列表共用） */
+/* 渐进展开按钮（领域 × 日期矩阵） */
 .btn-more {
   display: block;
   margin: 10px auto 8px;
@@ -960,6 +958,62 @@ a.cal-day {
   transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
 }
 a.cal-day:hover { background: var(--accent); color: var(--accent-contrast); text-decoration: none; }
+
+/* ============ 日历总览 + 折叠分组（事件库 / 日报列表） ============ */
+/* 事件库日历的日期格是按钮（跳转导航），日报日历是链接（直达报告）；色深 = 当日条数 */
+.ev-cal, .dl-cal { padding: 18px 22px 16px; margin: 4px 0 8px; }
+.ev-cal-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+button.cal-day { border: 0; cursor: pointer; background: none; }
+.cal-day.has { background: var(--accent-soft); color: var(--accent); font-weight: 650; }
+.cal-day.has.n2 { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+.cal-day.has.n3 { background: color-mix(in srgb, var(--accent) 42%, transparent); color: var(--accent-contrast); }
+.cal-day.has.n4 { background: color-mix(in srgb, var(--accent) 64%, transparent); color: var(--accent-contrast); }
+button.cal-day.has:hover, a.cal-day:hover { background: var(--accent); color: var(--accent-contrast); }
+
+/* 折叠分组标题（事件按日、日报按月）：原生 details，chevron 指示开合 */
+.ev-group, .dl-month { margin-top: 6px; }
+.ev-group > summary, .dl-month > summary {
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  border-radius: var(--radius-sm);
+  padding: 5px 6px 5px 0;
+}
+.ev-group > summary::-webkit-details-marker, .dl-month > summary::-webkit-details-marker { display: none; }
+.ev-group > summary::after, .dl-month > summary::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  margin-left: auto;
+  flex-shrink: 0;
+  align-self: center;
+  border-right: 2px solid var(--text-faint);
+  border-bottom: 2px solid var(--text-faint);
+  transform: rotate(-45deg);
+  transition: transform 0.15s var(--ease);
+}
+.ev-group[open] > summary::after, .dl-month[open] > summary::after { transform: rotate(45deg) translateY(-2px); }
+.ev-group > summary:hover::after, .dl-month > summary:hover::after { border-color: var(--accent); }
+.ev-group > summary.date-group { margin: 20px 0 0; }
+.ev-group[open] > summary.date-group { margin-bottom: 2px; }
+.ev-group .ev-cards { padding-top: 12px; }
+.dl-month > summary.dl-month-head { display: flex; align-items: baseline; gap: 12px; }
+.dl-month-head h2 { margin: 0; font-family: var(--serif); font-size: 17px; font-weight: 700; color: var(--text); }
+.dl-month-head .n { font-family: var(--mono); font-size: 11.5px; color: var(--text-faint); }
+/* 日历跳转后的目标分组短暂高亮，指示落点 */
+.ev-group.cal-flash > summary { animation: cal-flash 1.2s var(--ease); border-radius: var(--radius-sm); }
+@keyframes cal-flash { 0% { background: var(--accent-soft); } 100% { background: transparent; } }
 
 /* ============ rec distribution (home aside) ============ */
 

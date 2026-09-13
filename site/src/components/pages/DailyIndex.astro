@@ -19,10 +19,30 @@ function weekday(date: string): string {
   }).format(d);
 }
 
-// 渐进展开：日报逐日累积，首屏只给近 DL_CHUNK 篇，更早的按钮逐段揭示
-const DL_CHUNK = 10;
-const dlChunks: number[] = [];
-for (let i = 0; i < daily.length; i++) dlChunks[Math.floor(i / DL_CHUNK)] = (dlChunks[Math.floor(i / DL_CHUNK)] ?? 0) + 1;
+const monthLabel = (mk: string) => {
+  const [y, mo] = mk.split('-').map(Number);
+  return new Intl.DateTimeFormat(locale === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long' }).format(new Date(y, mo - 1, 1));
+};
+
+// 日历总览 + 按月折叠：日历给全局分布（有报告的日期可点击直达），
+// 列表按月分组，只有最新一个月默认展开——日报逐日累积也不会淹没首屏
+const reportDates = new Set(daily.map((d: any) => String(d.date)));
+const monthKeys = [...new Set(daily.map((d: any) => String(d.date).slice(0, 7)))].sort().reverse();
+const WEEKDAYS = locale === 'zh'
+  ? ['一', '二', '三', '四', '五', '六', '日']
+  : ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+const calMonths = monthKeys.map((mk) => {
+  const [y, mo] = mk.split('-').map(Number);
+  const offset = (new Date(y, mo - 1, 1).getDay() + 6) % 7; // 周一开头
+  const days = new Date(y, mo, 0).getDate();
+  const cells: ({ day: number; date: string; has: boolean } | null)[] = Array(offset).fill(null);
+  for (let d = 1; d <= days; d++) {
+    const date = `${mk}-${String(d).padStart(2, '0')}`;
+    cells.push({ day: d, date, has: reportDates.has(date) });
+  }
+  return { label: monthLabel(mk), cells };
+});
+const byMonth = monthKeys.map((mk) => [mk, daily.filter((d: any) => String(d.date).startsWith(mk))] as const);
 ---
 
 <Base title={t(locale, 'daily.title')} description={t(locale, 'daily.description')} locale={locale}>
@@ -34,79 +54,76 @@ for (let i = 0; i < daily.length; i++) dlChunks[Math.floor(i / DL_CHUNK)] = (dlC
     <p class="desc">{t(locale, 'daily.desc')}</p>
   </div>
 
-  <div id="daily-list">
-    {daily.map((d: any, i: number) => {
-      const items = (loc(d, 'highlights', locale) as unknown as any[]) || [];
-      const shown = items.slice(0, 3);
-      const extra = items.length - shown.length;
-      return (
-        <a class={`daily-row${i >= DL_CHUNK ? ' js-hide' : ''}`} data-dlpage={Math.floor(i / DL_CHUNK)} href={u(`/daily/${d.date}/`, locale)}>
-          <span class="d-side">
-            <span class="d-date">{d.date}</span>
-            <span class="d-sub">
-              {weekday(d.date)}{items.length > 0 && ` · ${t(locale, 'daily.itemCount').replace('{n}', String(items.length))}`}
-            </span>
-          </span>
-          {shown.length > 0 ? (
-            <span class="d-highlights">
-              {shown.map((h: any) => (
-                <span class="d-hl">
-                  <span class="d-hl-head">
-                    {h.kind && (
-                      <span class={`hl-chip hl-${h.kind}`}>
-                        {t(locale, h.kind === 'new' ? 'daily.kindNew' : 'daily.kindUpdate')}
-                      </span>
-                    )}
-                    <span class="d-hl-title">{h.title}</span>
-                  </span>
-                  {h.body && <span class="d-hl-body">{h.body}</span>}
-                </span>
-              ))}
-              {extra > 0 && <span class="d-more">{t(locale, 'daily.moreItems').replace('{n}', String(extra))}</span>}
-            </span>
-          ) : (
-            <p class="d-excerpt">{loc(d, 'excerpt', locale)}</p>
-          )}
-          <span class="d-arrow">→</span>
-        </a>
-      );
-    })}
+  <div class="card dl-cal">
+    <div class="ev-cal-head">
+      {t(locale, 'daily.calendar')}
+      <span class="legend-note">{t(locale, 'daily.calendarNote')}</span>
+    </div>
+    <div class="cal-wrap">
+      {calMonths.map((m) => (
+        <div class="ev-cal-month">
+          <div class="cal-head">{m.label}</div>
+          <div class="cal-grid">
+            {WEEKDAYS.map((w) => <span class="cal-wd">{w}</span>)}
+            {m.cells.map((c) =>
+              c === null ? (
+                <span class="cal-day"></span>
+              ) : c.has ? (
+                <a class="cal-day" href={u(`/daily/${c.date}/`, locale)} aria-label={c.date}>{c.day}</a>
+              ) : (
+                <span class="cal-day">{c.day}</span>
+              )
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 
-  {dlChunks.length > 1 && (
-    <button
-      type="button"
-      class="btn-more"
-      id="dl-more"
-      data-chunks={dlChunks.join(',')}
-      data-label={t(locale, 'daily.moreReports')}
-    >
-      {t(locale, 'daily.moreReports')
-        .replace('{n}', String(dlChunks[1]))
-        .replace('{m}', String(daily.length - dlChunks[0]))}
-    </button>
-  )}
+  <div id="daily-list">
+    {byMonth.map(([mk, list], mi) => (
+      <details class="dl-month" open={mi === 0}>
+        <summary class="dl-month-head">
+          <h2>{monthLabel(mk)}</h2>
+          <span class="n">{list.length} {t(locale, 'daily.reportUnit')}</span>
+        </summary>
+        {list.map((d: any) => {
+          const items = (loc(d, 'highlights', locale) as unknown as any[]) || [];
+          const shown = items.slice(0, 3);
+          const extra = items.length - shown.length;
+          return (
+            <a class="daily-row" href={u(`/daily/${d.date}/`, locale)}>
+              <span class="d-side">
+                <span class="d-date">{d.date}</span>
+                <span class="d-sub">
+                  {weekday(d.date)}{items.length > 0 && ` · ${t(locale, 'daily.itemCount').replace('{n}', String(items.length))}`}
+                </span>
+              </span>
+              {shown.length > 0 ? (
+                <span class="d-highlights">
+                  {shown.map((h: any) => (
+                    <span class="d-hl">
+                      <span class="d-hl-head">
+                        {h.kind && (
+                          <span class={`hl-chip hl-${h.kind}`}>
+                            {t(locale, h.kind === 'new' ? 'daily.kindNew' : 'daily.kindUpdate')}
+                          </span>
+                        )}
+                        <span class="d-hl-title">{h.title}</span>
+                      </span>
+                      {h.body && <span class="d-hl-body">{h.body}</span>}
+                    </span>
+                  ))}
+                  {extra > 0 && <span class="d-more">{t(locale, 'daily.moreItems').replace('{n}', String(extra))}</span>}
+                </span>
+              ) : (
+                <p class="d-excerpt">{loc(d, 'excerpt', locale)}</p>
+              )}
+              <span class="d-arrow">→</span>
+            </a>
+          );
+        })}
+      </details>
+    ))}
+  </div>
 </Base>
-
-<script>
-  // 日报列表渐进展开：每点一次 reveal 下一段（DL_CHUNK 篇），段数用尽后移除按钮
-  (() => {
-    const btn = document.getElementById('dl-more');
-    if (!btn) return;
-    const chunks = (btn.dataset.chunks ?? '').split(',').map(Number).filter((n) => n > 0);
-    const label = btn.dataset.label ?? '';
-    let page = 0;
-    btn.addEventListener('click', () => {
-      page++;
-      for (const row of document.querySelectorAll<HTMLElement>('#daily-list [data-dlpage]')) {
-        if (Number(row.dataset.dlpage) <= page) row.classList.remove('js-hide');
-      }
-      const rest = chunks.slice(page + 1).reduce((a, b) => a + b, 0);
-      if (rest <= 0) {
-        btn.remove();
-      } else {
-        btn.textContent = label.replace('{n}', String(chunks[page + 1])).replace('{m}', String(rest));
-      }
-    });
-  })();
-</script>
