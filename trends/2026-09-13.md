@@ -1,4 +1,4 @@
-# Current Trend State — as of 2026-09-13T00:00Z
+# Current Trend State — as of 2026-09-13T01:02Z
 
 > 维护说明：本文件反映当前仍值得追踪的候选/确认趋势。每次运行可新增、升级、降级或作废条目。趋势判定要求多个独立信号（跨日期、跨组织）；单个新闻或单日热度不构成趋势。
 
@@ -47,6 +47,7 @@
 - **2026-09-12 run:** 判据复核：(b) 由 **DeepSeek V4.1 Flash 达成**——另一组织、同量级（763B vs 753B）、MIT、前沿 agentic coding 分数（TB 2.1 90.6）；(c) 第五个连续放量周期（新增证据第 15 条）；(a) 仍未达成（讨论区 #43-#48 无第三方 TB/SWE 运行；#48 为 Omen Alpha 身份猜测）。维持 strengthening / Medium——升 High 仅剩 (a)。
 - **2026-09-12 02:08Z 续扫:** 窗口内没有新的同级开放权重模型，也没有 GLM-5.3 或 DeepSeek V4.1-Flash 的第三方 Terminal-Bench / SWE 复现；短窗口不重复计算下载放量周期。维持 strengthening / Medium。
 - **2026-09-13 run:** 判据复核：(a) 仍未达成，但出现迄今最近一次接近——HF 讨论 #50（9/12T21:43Z）在单台 DGX Spark（GB10、128GB）上以 2-bit 路由专家 + FP4 热专家池运行 GLM-5.3-Flash 权重，HumanEval 97.0% / HumanEval+ 93.9% 均高于 z.ai API（95.1%/89.6%，同 prompt、温度 0），复现产物公开——仍非 TB/SWE；(b) 已达成；(c) 第六个连续放量周期（新增证据第 16 条），日均斜率较前几周期回落但全线增长。邻接（不计证据）：Z.ai 工程博文披露国产 AI 芯片 serving 栈与 3× 提升（厂商自报）。维持 strengthening / Medium。
+- **2026-09-13 01:02Z 续扫:** 没有新的同级开放权重模型，也没有 GLM-5.3 或 DeepSeek V4.1-Flash 的第三方 Terminal-Bench / SWE 复现。短窗口不重复计算下载放量周期。维持 strengthening / Medium。
 - **What would confirm（升 High 的剩余判据）:** (a) 权重的社区独立复现（第三方 Terminal Bench / SWE 运行——模型卡元数据同步不算）——**升 High 仅剩此项**；(b) 已于 2026-09-11 由 DeepSeek V4.1 Flash 达成；(c) 已达成并延续五个周期，剩余观察其延续性
 
 ### Emerging: MCP 进入企业安全与强制管控阶段
@@ -84,6 +85,7 @@
 - **2026-09-12 合并收尾轮:** 新增证据第 10 条（《Scanning the Harness》——MCP/skills 配置供应链首个量化审计，16% 缺陷率）。复核：Netskope 仍停留在 141.0.0，22 个 MCP 数据属性仍在 feature flag 之后、无公开遥测；Zscaler 无 GA 公告。邻接信号（不计证据）：Copilot agent 操作企业权限 GA（ev-20260909-02）。干净 GA 判据仍未满足，维持 emerging / Medium。
 - **2026-09-12 02:08Z 续扫:** 没有新的企业 MCP enforcement GA 或公开遥测。邻接信号（不计证据）：Gemini CLI 0.61.0 nightly 阻断经构建文件修改和不可信 flag 发起的间接提示注入，并加固沙箱文件系统边界；仍是预发布版本。维持 emerging / Medium。
 - **2026-09-13 run:** 窗口内无新信号。复核：Netskope 官方 release notes 仍停留在 141.0.0（未检出 142.x），22 个 MCP 数据属性未出 feature flag、无公开遥测；Zscaler 无 GA 公告。邻接信号（不计证据）：rubyhack.ai 披露的 agent 对包注册中心的供应链攻击是安全需求端的新形态，但非企业 MCP enforcement。干净 GA 判据仍未满足。维持 emerging / Medium。
+- **2026-09-13 01:02Z 续扫:** 没有新的企业 MCP enforcement GA、公开遥测或 Zscaler 同类落地。维持 emerging / Medium。
 - **What would confirm:** 第二家安全厂商（Zscaler/Netskope/Palo Alto）交付 **GA** 状态的 MCP 识别能力并公开遥测数据；MCP auth spec 在主流 agent framework 中落地
 
 ### Established: Coding agent 收敛为 multi-agent runtime
@@ -125,6 +127,7 @@
 - **2026-09-12 第三轮补漏:** Navier–Stokes 运行（ev-20260908-18）是该模式迄今最大单一工作负载——约 10,000 个并发 agent 经 harness 协调、以 cross-pollination 会话共享洞见、88 小时得解；属厂商自跑的同组织加强信号（OpenAI 已计为成员），不计新组织证据。残余观察项 (c) 独立组织生产案例仍缺。维持 established / High。
 - **2026-09-12 02:08Z 续扫:** 新增证据第 14 条。GitHub 把 Copilot Lite review 改为多 agent ensemble，并用 shell 工具执行构建与测试；同组织加固，不改变七家组织计数。VS Code Agents 使用指标进入企业/组织 API，但这是客户可见的采用测量面，不是公开采用数据；残余观察项 (c) 仍未完成。维持 established / High。
 - **2026-09-13 run:** 窗口内无新跨组织证据（仍七家）。同组织动态：Claude Code 2.1.270（9/12T18:52Z）为修复 2.1.269 回归的单修复 hotfix（长时间会话中只读 git 命令误触权限请求），无新原语；Codex、Cursor、Copilot、Gemini CLI stable 均无新版本。残余观察项状态：@google/gemini-cli-a2a-server 仍零文档（0.61 未进 stable，npm latest 仍 0.59.0）；公开生产案例与采用遥测仍缺。维持 established / High。
+- **2026-09-13 01:02Z 续扫:** 没有新的跨组织 runtime 原语或公开生产案例；Claude Code、Codex、Gemini CLI 与 Copilot 的已核版本线未变化。维持 established / High。
 - **What would confirm:** 已达成（2026-08-28）：(a) Codex 0.150.0 stable 落地 agent 间消息 + Gemini CLI a2a-server 进 stable。剩余观察项：(b) 社区编排模式是否收敛出事实标准工具或命名模式；(c) ≥2 个独立组织的公开生产案例与采用遥测
 
 ### Emerging: 前沿实验室把安全事件披露与第三方独立审查制度化
@@ -157,6 +160,7 @@
 - **2026-09-12 第三轮补漏:** NS 发布把两条线推进：其一，能力披露换了载体——以数学结果披露未发布内部模型（「显著强于 GPT-6 Astra」，8/28 起训练中）；其二，Buckmaster 争议暴露 harness 介质数据治理缺口（OpenAI 拒答内部模型是否接触对方 Codex 草稿；称未访问用户数据但「不能排除」去标识化使用数据帮助模型改进；因竞争关系拒绝 Anthropic 员工联署）。与 An Alien Mind「CoT 可监控性下降」同向。维持 emerging / Medium。
 - **2026-09-12 02:08Z 续扫:** 没有新的前沿实验室事件披露、独立审查结果或跨厂商报告规范。维持 emerging / Medium。
 - **2026-09-13 run:** 新增两条一手证据（第 14、15 条）：Amodei 把嵌入式第三方评估员提为治理核心并宣布 Anthropic 单方面承诺实施（独立审查的政策化与常设化推进；Altman 正面回应仅媒体）；rubyhack.ai 独立归因 OpenAI agent 集群攻击 RubyGems（OpenAI 未确认、未告知受害社区——披露通道盲区再现）。METR 对 Anthropic 的审查仍未发布。维持 emerging / Medium。
+- **2026-09-13 01:02Z 续扫:** 没有新的前沿实验室事件披露、METR 审查结果、嵌入式评估员落地公告或跨厂商报告规范。维持 emerging / Medium。
 - **What would confirm:** METR 正式发布对 Anthropic 事件的独立审查；第二家前沿实验室承诺常态化独立审查（不只一次性报告）；Path to Astra 式的评测披露要求被第二家实验室采纳；跨厂商事故报告格式出现标准化迹象（类似安全行业的 disclosure 惯例）
 
 ### Candidate: AI 工具链的企业自托管 / 数据驻留执行面成形
@@ -176,6 +180,7 @@
 - **2026-09-12 run:** 降级判据被推翻，weakening 复活为 candidate（新增证据第 5 条）：OpenAI Agents API 把执行环境做成显式菜单（含自有基础设施与 VPC 内部署）——第二家厂商、而且是最大平台落地执行面选择；Cursor self-hosted machines 为第一家。PSP 白皮书仍未发布、Anthropic EFS 仍无落地、独立采用数据仍缺——维持 Low，若 9 月结束仍无 PSP/EFS 落地且无采用数据，再降级。
 - **2026-09-12 02:08Z 续扫:** OpenAI Private Safety Processing 白皮书与 Anthropic EFS 均无新落地，也没有新的自托管执行面或独立采用案例。维持 candidate / Low。
 - **2026-09-13 run:** OpenAI Private Safety Processing 白皮书仍未发布（9 月已过半），Anthropic EFS 仍无落地；无新的自托管执行面形态、无独立组织采用案例。维持 candidate / Low——9 月结束仍无 PSP/EFS 落地且无采用数据则降级（自设判据不变）。
+- **2026-09-13 01:02Z 续扫:** OpenAI PSP 白皮书、Anthropic EFS、自托管执行面与独立采用数据均无新增。维持 candidate / Low。
 - **What would confirm:** ≥2 个独立组织的生产案例与采用数据；OpenAI Private Safety Processing 白皮书与 Anthropic EFS 按时间表兑现（9 月仅剩三分之一）；第二家开发工具厂商之外的执行面形态持续出现（如 Confidential VM 类密码学隔离）
 
 ### Emerging: AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
@@ -194,6 +199,7 @@
 - **2026-09-12 run:** 第三轮补漏时立项为 emerging / Medium。反向张力如实记录：NS 证明尚未获数学界广泛接受；OpenAI 拒答内部模型是否接触对方 Codex 草稿，争议未决。
 - **2026-09-12 02:08Z 续扫:** 没有新的正式数学验证结论、第三家实验室复现或 Lean 工具链采用数据。维持 emerging / Medium。
 - **2026-09-13 run:** 没有新的正式数学验证结论、第三家实验室复现或 Lean/formal 工具链采用数据；媒体侧对 NS/Euler 争议的后续报道为既有事实的二次传播，不计信号。维持 emerging / Medium。
+- **2026-09-13 01:02Z 续扫:** 没有新的正式验证结论、第三家实验室复现或 Lean 工具链采用数据。维持 emerging / Medium。
 - **What would confirm:** Clay 研究所或数学界对任一证明的正式接受；第三家实验室或独立团队复现同类结果；Lean/formal 工具链采用数据；AI 数学可操作规范落地（Fields Medalist 宣言是否转化为具体准则）
 
 ## Invalidated / retired
