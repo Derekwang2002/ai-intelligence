@@ -1,7 +1,7 @@
 {
   "description": "Event index for dedup and cross-run lookup. Key by event_fingerprint.",
-  "last_updated": "2026-09-13T01:02:19Z",
-  "total_events": 143,
+  "last_updated": "2026-09-13T16:00:31Z",
+  "total_events": 144,
   "events": [
     {
       "event_id": "ev-20260813-01",
@@ -802,6 +802,10 @@
         {
           "date": "2026-09-11",
           "note": "586,040 (+23%) + FP8 349,091 (+55%) @9/11; unsloth GGUF 1,106,182; fifth consecutive cycle"
+        },
+        {
+          "date": "2026-09-14",
+          "note": "SGLang main merged one-DGX-Spark / GB10 serving for nvidia/Qwen3.8-Flash-Next-NVFP4 (#39126); narrow 200-question GSM8K 97.5%/97.0% with/without MTP and about 93/90 tok/s. TP=1, untagged; stays WATCH."
         }
       ]
     },
@@ -1622,6 +1626,10 @@
         {
           "date": "2026-09-13",
           "note": "2026-09-13: serving ecosystem - vLLM 63 issues/PRs (13 on 9/12), SGLang 32 (incl. fp8 correctness bug #39193), model card still lacks serving recipe, 15+ third-party deploy repos, LiteLLM pricing PRs; 140,636 dl (+85.6%) @9/13; no third-party TB/SWE run yet"
+        },
+        {
+          "date": "2026-09-14",
+          "note": "vLLM main merged DeepSelect sparse-indexer TopK (#56464; GB200 batch 256 / 1M KV kernel 191 us vs 616 us prior path) plus Engram DP sharding, async CPU-offload prefetch and shared-memory tables (#56512; two-node TP1xDP8, <=0.9% TTFT gain). Untagged; stays TRIAL."
         }
       ]
     },
@@ -2073,6 +2081,18 @@
       ],
       "category": "research",
       "file": "events/2026-09-12.json"
+    },
+    {
+      "event_id": "ev-20260913-01",
+      "fingerprint": "litellm-1-102-agent-skills-mcp-gateway-rc",
+      "title": "LiteLLM release candidate adds Agent Skills discovery and MCP controls",
+      "date": "2026-09-13",
+      "orgs": [
+        "BerriAI",
+        "LiteLLM"
+      ],
+      "category": "ai-engineering",
+      "file": "events/2026-09-13.json"
     }
   ],
   "known_fingerprints_for_dedup": [
@@ -2218,6 +2238,7 @@
     "google-gemini-cli-build-file-prompt-injection-gate",
     "rubygems-gemstuffer-openai-agent-attribution",
     "anthropic-amodei-we-must-pace-the-frontier",
-    "specific-labs-real-swe-private-enterprise-benchmark"
+    "specific-labs-real-swe-private-enterprise-benchmark",
+    "litellm-1-102-agent-skills-mcp-gateway-rc"
   ]
 }

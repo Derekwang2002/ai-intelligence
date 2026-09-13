@@ -180,11 +180,12 @@
       "published_at": "2026-08-26T00:00:00Z",
       "published_at_note": "HF repo Qwen/Qwen3.8-Flash-Next created 2026-08-24T08:24:59Z, weights finalized 2026-08-27T05:03:36Z; public trackers (llm-stats) date the release Aug 26. Coverage-gap recovery: inside the previous run's window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z] but not captured then; first seen 2026-08-29 run.",
       "first_seen_at": "2026-08-29T11:35:46Z",
-      "last_updated_at": "2026-09-11T19:30:00Z",
+      "last_updated_at": "2026-09-13T16:00:31Z",
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
       "secondary_sources": [
-        "https://llm-stats.com/llm-updates"
+        "https://llm-stats.com/llm-updates",
+        "https://github.com/sgl-project/sglang/pull/39126"
       ],
       "summary": "Qwen3.8-Flash-Next is an experimental open-weight multimodal model previewing the architecture planned for Qwen4: a 125B-parameter LM with 6B activated, plus a 51B n-gram embedding table and a 4B multi-token-prediction head (~180B total in BF16). Attention is hybrid — Gated DeltaNet linear attention with Qwen Sparse Attention every 4th layer — with 262,144 tokens of native context extensible to 1M via YaRN. The card benchmarks it ahead of Qwen3.8-27B and DeepSeek-V4-Flash-0731 on agentic suites (DeepSWE 1.1 58.7, SWE-bench Pro 62.5, LiveCodeBench v6 91.9, GPQA Diamond 91.7). It ships as post-trained weights for Transformers, vLLM and SGLang under the custom qwen-community-1.0 license, with the official Qwen3.8-Flash positioned as its production counterpart.",
       "why_it_matters": "For serving teams this is the second frontier-lab open-weight release in a week to bet on hybrid linear attention for long-context cost — GLM-5.3-Flash shipped the same idea on 8/25. Treat it as an architecture signal rather than a production drop: it is explicitly experimental, the license is custom rather than MIT/Apache, and the production Qwen3.8-Flash with 1M default context is the supported counterpart.",
@@ -203,7 +204,8 @@
         "license": "custom qwen-community-1.0 (license: other) — check terms before commercial use",
         "adoption": "52,341 downloads (30d) + 4,287 likes @2026-08-30T00:00Z; FP8 variant 44,281 downloads; production counterpart = Qwen3.8-Flash on QwenCloud/Model Studio/OpenRouter since launch week ($0.15/$0.47 per M)",
         "update_2026_09_08": "Adoption check @2026-09-08: 474,693 downloads (+35% vs 351,374 @9/5) + 4,978 likes; FP8 repo 224,875; unsloth GGUF derivative 868,243 (vs 702,251 @9/5, +24%); nvidia/Qwen3.8-Flash-Next-NVFP4 at 18,068. Fourth consecutive velocity cycle. Stays WATCH.",
-        "update_2026_09_11": "Adoption check @2026-09-11: 586,040 downloads (+23% vs 474,693 @9/8) + 5,098 likes; FP8 349,091 (+55%); unsloth GGUF 1,106,182; nvidia/Qwen3.8-Flash-Next-NVFP4 78,737. Fifth consecutive cycle; main-repo growth decelerating (+23% vs +35%). Stays WATCH."
+        "update_2026_09_11": "Adoption check @2026-09-11: 586,040 downloads (+23% vs 474,693 @9/8) + 5,098 likes; FP8 349,091 (+55%); unsloth GGUF 1,106,182; nvidia/Qwen3.8-Flash-Next-NVFP4 78,737. Fifth consecutive cycle; main-repo growth decelerating (+23% vs +35%). Stays WATCH.",
+        "update_2026_09_14": "SGLang main merged the mixed-precision loader and file-backed PLE offload path for nvidia/Qwen3.8-Flash-Next-NVFP4 on one DGX Spark / GB10 (#39126), with and without the MTP head. A 200-question GSM8K check reported 97.5% with MTP and 97.0% without, at 92.87 and 89.53 tok/s respectively. This is main-only, TP=1 and not a controlled before/after benchmark."
       },
       "technical_details_zh": {
         "架构": "125B 语言模型（激活 6B）+ 51B n-gram 嵌入（bigram/trigram 查表）+ 4B 多 token 预测；BF16 合计约 180B；48 层循环模式：3 x（Gated DeltaNet -> MoE）+ 1 x（Qwen Sparse Attention -> MoE）",
@@ -216,7 +218,8 @@
         "许可证": "自定义 qwen-community-1.0（license: other）——商用前先核对条款",
         "采用": "截至 2026-08-30T00:00Z：主仓 52,341 下载（30d）+ 4,287 likes；FP8 变体 44,281 下载；生产对位版本 Qwen3.8-Flash 自发布周起在 QwenCloud / Model Studio / OpenRouter 提供（$0.15 / $0.47 每百万 token）",
         "update_2026_09_08": "采用核查 @2026-09-08：474,693 下载（较 9/5 的 351,374 +35%）+ 4,978 likes；FP8 仓库 224,875；unsloth GGUF 衍生 868,243（较 9/5 的 702,251 +24%）；nvidia/Qwen3.8-Flash-Next-NVFP4 为 18,068。第四个连续放量周期。维持 WATCH。",
-        "update_2026_09_11": "采用核查 @2026-09-11：586,040 下载（较 9/8 的 474,693 +23%）+ 5,098 likes；FP8 349,091（+55%）；unsloth GGUF 1,106,182；nvidia/Qwen3.8-Flash-Next-NVFP4 78,737。第五个连续周期；主仓增速放缓（+35% → +23%）。维持 WATCH。"
+        "update_2026_09_11": "采用核查 @2026-09-11：586,040 下载（较 9/8 的 474,693 +23%）+ 5,098 likes；FP8 349,091（+55%）；unsloth GGUF 1,106,182；nvidia/Qwen3.8-Flash-Next-NVFP4 78,737。第五个连续周期；主仓增速放缓（+35% → +23%）。维持 WATCH。",
+        "update_2026_09_14": "SGLang main 合并 nvidia/Qwen3.8-Flash-Next-NVFP4 在单台 DGX Spark / GB10 上所需的混合精度加载与 PLE 文件 offload 路径（#39126），支持带或不带 MTP head。200 题 GSM8K 检查分别报告 97.5% 与 97.0%，吞吐为 92.87 与 89.53 tok/s。当前仅 main、TP=1，也不是受控的前后对照 benchmark。"
       },
       "tags": [
         "open-weights",
@@ -237,7 +240,8 @@
       "update_2026_08_30": "Production counterpart verified (resolves the prior watch item): Qwen3.8-Flash is the API-only production version of Flash-Next — live on QwenCloud since launch week with a 1M-token default context and official built-in tools; served via Alibaba Cloud Model Studio (USD 0.15/M input <=1M tokens, 0.47/M output, context-caching discount) and OpenRouter (0.15/0.47). No separately licensed open weights beyond Flash-Next itself (custom qwen-community-1.0). Adoption re-check 2026-08-30: main repo 52,341 downloads + 4,287 likes (was 4,213 on 8/29; the 30d download pool is unchanged at 52,341 — treat as a static window, not zero growth). Recommendation stays WATCH (experimental preview; production path is the API).",
       "update_2026_08_31": "Adoption check @2026-08-31T00:00Z: 121,976 downloads (+133% vs the 52,341 @8/30 sample, ~7 days after listing) + 4,384 likes (+97) — the display counter finally moved after appearing frozen between the 8/29 and 8/30 samples. Sustained-velocity data point for trend #1 criterion (c). Recommendation stays WATCH.",
       "update_2026_09_02": "adoption check @2026-09-02T00:0xZ: 207,941 downloads (+70% vs 121,976 @8/31, ~9 days after listing) + 4,635 likes; FP8 variant 130,451; unsloth GGUF derivative 431,339 (repo created 8/26). slotstream (Show HN 9/1, 147 pts) runs the 104GB 4-bit weights on a 48GB M5 Pro at ~12 tok/s warm decode (32GB peak, SSD streaming, single Swift binary, Ollama/OpenAI-compatible APIs) — independent community serving tooling, though still not a benchmark reproduction. Architecture now documented in the Qwen3.8-Next design paper (arXiv 2608.30320, ev-20260901-03): 125B/6B active + 51B n-gram embeddings, ~1/9 training FLOPs vs the 397B-A17B predecessor at comparable quality. Stays WATCH",
-      "update_2026_09_05": "Adoption check @2026-09-05: 351,374 downloads (+69% vs 9/2) + FP8 repo 186,676 (+43%) + 4,871 likes; unsloth/Qwen3.8-Flash-Next-GGUF at 702,251 — now exceeds Qwen's own main repo; nvidia/Qwen3.8-Flash-Next-NVFP4 created 9/2 (NVIDIA publishing an NVFP4 derivative); mudler APEX GGUF derivative 9/4. Quantization recipe research catching up: Minima NVFP4 W4A4 across a Qwen3.8-27B hybrid incl. GDN layers (ev-20260905-03). Stays WATCH"
+      "update_2026_09_05": "Adoption check @2026-09-05: 351,374 downloads (+69% vs 9/2) + FP8 repo 186,676 (+43%) + 4,871 likes; unsloth/Qwen3.8-Flash-Next-GGUF at 702,251 — now exceeds Qwen's own main repo; nvidia/Qwen3.8-Flash-Next-NVFP4 created 9/2 (NVIDIA publishing an NVFP4 derivative); mudler APEX GGUF derivative 9/4. Quantization recipe research catching up: Minima NVFP4 W4A4 across a Qwen3.8-27B hybrid incl. GDN layers (ev-20260905-03). Stays WATCH",
+      "update_2026_09_14": "2026-09-14 report run: SGLang main merged a reproducible single-DGX-Spark path for NVIDIA's NVFP4 derivative (#39126). The narrow 200-question GSM8K check reported 97.5%/97.0% with/without MTP and 92.87/89.53 tok/s, but this is TP=1, main-branch-only and not a controlled comparison. Recommendation stays WATCH."
     },
     {
       "event_id": "ev-20260826-05",

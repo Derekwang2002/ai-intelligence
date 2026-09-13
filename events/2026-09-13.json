@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-13",
+  "provenance": "Incremental scan [2026-09-13T01:02:19Z, 2026-09-13T16:00:31Z], with retrieval overlap from 2026-09-12T22:02:19Z. PyPI and GitHub release timestamps both fall inside the strict window; the release is an installable release candidate, not stable GA.",
+  "events": [
+    {
+      "event_id": "ev-20260913-01",
+      "title": "LiteLLM release candidate adds Agent Skills discovery and MCP controls",
+      "title_zh": "LiteLLM RC 加入 Skills 发现与 MCP 权限",
+      "category": "ai-engineering",
+      "organization": ["BerriAI", "LiteLLM"],
+      "published_at": "2026-09-13T03:58:55Z",
+      "first_seen_at": "2026-09-13T16:00:31Z",
+      "last_updated_at": "2026-09-13T16:00:31Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/BerriAI/litellm/releases/tag/v1.102.0-rc.1",
+      "secondary_sources": ["https://pypi.org/project/litellm/1.102.0rc1/"],
+      "summary": "LiteLLM 1.102.0-rc.1 exposes registered Agent Skills through a well-known index and can configure Codex and Claude Code to use a gateway key. Its MCP gateway now applies per-user tool permissions to both discovery and execution, while OAuth handling and guardrail failure paths get additional hardening. The release also adds customer-managed KMS keys for virtual-key secrets and routing observability headers. It is installable from PyPI, but remains a release candidate rather than stable GA.",
+      "why_it_matters": "For teams standardizing multiple coding agents behind one gateway, this release joins skill discovery, MCP authorization, secret custody and routing telemetry in the same control plane. The shape is useful for a proof of concept, but production teams should wait for the stable build and test permission-list consistency, spend accounting and guardrail failure behavior during upgrades.",
+      "summary_zh": "LiteLLM 1.102.0-rc.1 可通过 well-known index 发布已注册的 Agent Skills，也能为 Codex 与 Claude Code 配置 gateway key。MCP gateway 现在会在工具发现和执行两个阶段落实按用户授权，同时补强 OAuth 处理与护栏失败路径。该版本还加入虚拟密钥的客户自管 KMS，以及模型路由的可观测性 header。PyPI 已可安装，但目前仍是 RC，不是 stable GA。",
+      "summary_en": "LiteLLM 1.102.0-rc.1 exposes registered Agent Skills through a well-known index and can configure Codex and Claude Code to use a gateway key. Its MCP gateway now applies per-user tool permissions to both discovery and execution, while OAuth handling and guardrail failure paths get additional hardening. The release also adds customer-managed KMS keys for virtual-key secrets and routing observability headers. It is installable from PyPI, but remains a release candidate rather than stable GA.",
+      "why_it_matters_zh": "对希望把多种 coding agent 统一接入一个 gateway 的团队，这个版本把 Skills 发现、MCP 授权、密钥托管与路由遥测收进同一控制面。它适合做 POC，但生产升级应等 stable 版本，并重点验证权限列表一致性、费用统计和护栏失效时的行为。",
+      "why_it_matters_en": "For teams standardizing multiple coding agents behind one gateway, this release joins skill discovery, MCP authorization, secret custody and routing telemetry in the same control plane. The shape is useful for a proof of concept, but production teams should wait for the stable build and test permission-list consistency, spend accounting and guardrail failure behavior during upgrades.",
+      "technical_details": {
+        "release": "v1.102.0-rc.1; first PyPI artifact uploaded 2026-09-13T03:58:55Z; GitHub release published 2026-09-13T04:56:38Z; prerelease",
+        "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
+        "mcp_controls": "per-user MCP tool permissions apply to tools/list and tools/call; MCP OAuth and discovery handling improved; Conduct Guard integration added",
+        "key_management": "customer-managed KMS keys supported for virtual keys stored in AWS Secrets Manager",
+        "observability": "response headers expose the routed model, savings and complexity-routing decisions",
+        "reliability": "fixes cover spend double counting, Redis circuit-breaker state, streamed Bedrock spend buffering, secret redaction and fail-closed guardrail paths",
+        "availability": "installable release candidate on PyPI; stable latest remains 1.100.1 at scan cutoff"
+      },
+      "technical_details_zh": {
+        "版本": "v1.102.0-rc.1；首个 PyPI 产物上传于 2026-09-13T03:58:55Z；GitHub release 发布于 2026-09-13T04:56:38Z；预发布",
+        "Agent Skills": "通过 Agent Skills well-known index 发布已注册 Skills，并用 gateway key 配置 Claude Code 或 Codex",
+        "MCP 管控": "按用户 MCP 工具权限同时作用于 tools/list 与 tools/call；改进 MCP OAuth 和发现流程；新增 Conduct Guard 集成",
+        "密钥管理": "支持用客户自管 KMS key 保护 AWS Secrets Manager 中的虚拟密钥",
+        "可观测性": "响应 header 暴露实际路由模型、节省金额与复杂度路由决策",
+        "可靠性": "修复费用重复计算、Redis 熔断器状态、Bedrock 流式费用缓冲、密钥脱敏与护栏 fail-closed 路径",
+        "可用性": "PyPI 已可安装的 RC；扫描截止时 stable latest 仍为 1.100.1"
+      },
+      "tags": ["litellm", "llm-gateway", "agent-skills", "mcp", "authorization", "observability"],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "litellm-1-102-agent-skills-mcp-gateway-rc"
+    }
+  ]
+}

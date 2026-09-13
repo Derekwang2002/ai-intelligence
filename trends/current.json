@@ -1,16 +1,16 @@
 {
-  "as_of": "2026-09-13T01:02Z",
+  "as_of": "2026-09-13T16:00Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
       "name_zh": "中国实验室的开源权重 agentic coding 模型在前沿水平竞争",
       "name_en": "Open-weight agentic coding models from Chinese labs competing at frontier level",
       "status": "strengthening",
-      "status_note_zh": "strengthening / Medium（维持；判据复核 @2026-09-13：(a) 仍未达成，但出现迄今最近一次接近——HF 讨论 #50 在单台 DGX Spark 上以 2-bit 专家量化运行权重、HumanEval 97.0% 超 API 95.1%（非 TB/SWE）；(b) 已由 DeepSeek V4.1 Flash 达成；(c) 第六个连续放量周期确认，日均斜率回落但全线仍在增长——升 High 仍仅剩 (a) 一项）",
-      "status_note_en": "strengthening / Medium (maintained; criteria re-check @2026-09-13: (a) still unmet but at its nearest approach yet - HF discussion #50 runs the weights on a single DGX Spark with 2-bit experts, HumanEval 97.0% above the API's 95.1% (not TB/SWE); (b) met by DeepSeek V4.1 Flash; (c) sixth consecutive velocity cycle confirmed, per-day slopes cooling but every line still growing - (a) remains the only gate to High)",
+      "status_note_zh": "strengthening / Medium（维持；判据复核 @2026-09-14：(a) 仍未达成，没有新的第三方 Terminal-Bench / SWE 权重复现；(b) 已由 DeepSeek V4.1 Flash 达成；(c) serving 生态新增跨模型、跨框架的合并代码——vLLM 为 DeepSeek 合并 DeepSelect 与 Engram 路径，SGLang 为 Qwen NVFP4 合并单 DGX Spark 路径；升 High 仍仅剩 (a)）",
+      "status_note_en": "strengthening / Medium (maintained; criteria re-check @2026-09-14: (a) still unmet, with no new third-party Terminal-Bench / SWE reproduction on the weights; (b) met by DeepSeek V4.1 Flash; (c) the serving ecosystem gains merged code across models and frameworks - vLLM for DeepSeek DeepSelect/Engram and SGLang for Qwen NVFP4 on one DGX Spark; (a) remains the only gate to High)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-13",
+      "last_updated": "2026-09-14",
       "retired": false,
       "evidence_zh": [
         "Qwen3.8-27B 权重发布（Apache 2.0，首日 91k 下载，2026-08-14）",
@@ -28,7 +28,8 @@
         "第三个连续放量周期 + serving 生态成型（2026-09-05 核查）：GLM-5.3 FP8 94,403 → 303,534（+222%，753B 权重被规模化拉取）、GLM-5.3-Flash 441,348 → 654,957（+48%）、Qwen3.8-Flash-Next 207,941 → 351,374（+69%，另有 FP8 186,676）、Hy4 预览 3,516 → 5,684（+62%）、DeepSeek V4-Flash-Vision-Exp 17.9k → 133,024（本窗口相对增速最陡）；unsloth 的 Flash-Next GGUF 衍生达 702,251、超过 Qwen 主仓；NVIDIA 发布 nvidia/Qwen3.8-Flash-Next-NVFP4（9/2）、AMD 发布 GLM-5.3 Quark 量化版——芯片厂商开始为一波开源权重出官方量化；serving 研究继续补课：混合模型 NVFP4 W4A4 全量化配方（ev-20260905-03）、随机 KV 逐出负结果（ev-20260905-04）；GLM-5.3-Flash 讨论区 #38 出现首个第三方 FP8 部署吞吐报告（2x L40S）（ev-20260814-02 / ev-20260825-01 / ev-20260826-04 / ev-20260828-02 / ev-20260831-02 更新）",
         "第四个连续放量周期（2026-09-08 核查）：GLM-5.3 FP8 303,534 → 442,064（+46%）、GLM-5.3-Flash 654,957 → 784,005（+20%）、Qwen3.8-Flash-Next 351,374 → 474,693（+35%，另有 FP8 224,875）、Hy4 预览 5,684 → 6,705（+18%）、DeepSeek V4-Flash-Vision-Exp 133,024 → 251,611（+89%，连续第二次核查为相对增速最陡）；unsloth Flash-Next GGUF 702,251 → 868,243、NVIDIA NVFP4 衍生仓 18,068——753B 旗舰与全部衍生线继续放量（ev-20260814-02 / ev-20260825-01 / ev-20260826-04 / ev-20260828-02 / ev-20260831-02 更新）",
         "15. 判据 (b) 达成 + 第五个连续放量周期（2026-09-11 核查）：DeepSeek V4.1 Flash 开源（9/10，MIT，763B/552B 骨干，TB 2.1 90.6 高于所有列出闭源模型、DeepSWE 74.2；1.5 天 75.7k 下载）——另一个组织的同级别开源权重发布，与 GLM-5.3 同量级（763B vs 753B）；计数器第五周期：GLM-5.3 FP8 597,626（+35%）、Flash 1,173,520（+50%）、Flash-Next 586,040 + FP8 349,091、Hy4 8,219、V4-Flash-Vision 443,954（ev-20260910-01 / ev-20260814-02 / ev-20260825-01 / ev-20260826-04 / ev-20260828-02 / ev-20260831-02 更新）；serving 诊断跟进混合架构（SinkProbe，ev-20260910-14）；安全外溢具体化——单方向消融可剥离出厂 GLM-5.3-Flash（block-FP8）的拒绝能力（ev-20260911-06）",
-        "16. 第六个连续放量周期 + 权重侧复现的最近一次接近（2026-09-13T00:03Z 核查）：GLM-5.3 FP8 635,504（+6.3%）、GLM-5.3-Flash 1,333,574（+13.6%）、Flash-Next 604,992 + FP8 369,963（+3.2%/+6.0%）、Hy4 8,936（+8.7%）、V4-Flash-Vision 484,422（+9.1%）、DeepSeek V4.1-Flash 140,636（发布约 2.5 天，相对增速最陡）；unsloth Flash-Next GGUF 1,160,057、NVIDIA NVFP4 衍生 89,924（4 天约 5 倍）——全线仍在增长，但 Qwen/GLM Flash 线的日均斜率较前几个 3 天周期回落。判据 (a) 出现迄今最近一次接近：HF 讨论 #50（9/12）在单台 DGX Spark（GB10、128GB 统一内存）上以 2-bit 路由专家量化运行公开权重，HumanEval 97.0% 高于 z.ai API 的 95.1%（同 prompt、温度 0；复现产物公开）——但 HumanEval 不是 Terminal-Bench/SWE，判据仍未达成。邻接（厂商自报，不计证据）：Z.ai 工程博文（9/12）披露 Flash 的 ox-alpha 匿名测试全程跑在国产 AI 芯片集群上（SGLang 定制引擎、EPD 分离架构、端到端 3 倍提升、成本对齐主流 NVIDIA GPU）（ev-20260825-01 更新）"
+        "16. 第六个连续放量周期 + 权重侧复现的最近一次接近（2026-09-13T00:03Z 核查）：GLM-5.3 FP8 635,504（+6.3%）、GLM-5.3-Flash 1,333,574（+13.6%）、Flash-Next 604,992 + FP8 369,963（+3.2%/+6.0%）、Hy4 8,936（+8.7%）、V4-Flash-Vision 484,422（+9.1%）、DeepSeek V4.1-Flash 140,636（发布约 2.5 天，相对增速最陡）；unsloth Flash-Next GGUF 1,160,057、NVIDIA NVFP4 衍生 89,924（4 天约 5 倍）——全线仍在增长，但 Qwen/GLM Flash 线的日均斜率较前几个 3 天周期回落。判据 (a) 出现迄今最近一次接近：HF 讨论 #50（9/12）在单台 DGX Spark（GB10、128GB 统一内存）上以 2-bit 路由专家量化运行公开权重，HumanEval 97.0% 高于 z.ai API 的 95.1%（同 prompt、温度 0；复现产物公开）——但 HumanEval 不是 Terminal-Bench/SWE，判据仍未达成。邻接（厂商自报，不计证据）：Z.ai 工程博文（9/12）披露 Flash 的 ox-alpha 匿名测试全程跑在国产 AI 芯片集群上（SGLang 定制引擎、EPD 分离架构、端到端 3 倍提升、成本对齐主流 NVIDIA GPU）（ev-20260825-01 更新）",
+        "17. serving 路径进入上游合并代码（2026-09-13 UTC）：vLLM 为 DeepSeek V4.1-Flash 合并 DeepSelect 稀疏索引 TopK（GB200、batch 256 / 1M KV 下 191 微秒，原路径为 616 微秒）与 Engram DP 分片、异步 CPU offload、共享内存表；SGLang 为 nvidia/Qwen3.8-Flash-Next-NVFP4 合并单 DGX Spark / GB10 路径（200 题 GSM8K 97.5%/97.0%，约 93/90 tok/s）。两者均在 main、尚未 tagged，说明开放权重 serving 生态继续落地，但不是 TB/SWE 权重复现（ev-20260910-01 / ev-20260826-04 更新）。"
       ],
       "evidence_en": [
         "Qwen3.8-27B weights released (Apache 2.0, 91k downloads day-one, 2026-08-14)",
@@ -46,7 +47,8 @@
         "Third consecutive velocity cycle + serving ecosystem maturing (verified 2026-09-05): GLM-5.3 FP8 94,403 -> 303,534 (+222% — the 753B weights pulled at scale), GLM-5.3-Flash 441,348 -> 654,957 (+48%), Qwen3.8-Flash-Next 207,941 -> 351,374 (+69%, plus FP8 186,676), Hy4 preview 3,516 -> 5,684 (+62%), DeepSeek V4-Flash-Vision-Exp 17.9k -> 133,024 (steepest relative pull-rate of the window); the unsloth Flash-Next GGUF derivative reached 702,251, exceeding Qwen's own main repo; NVIDIA published nvidia/Qwen3.8-Flash-Next-NVFP4 (9/2) and AMD published GLM-5.3 Quark quantizations — silicon vendors now ship official quantizations for this wave; serving research keeps catching up: an NVFP4 W4A4 whole-model recipe for hybrids (ev-20260905-03) and the random-KV-eviction negative result (ev-20260905-04); GLM-5.3-Flash discussion #38 carries the first third-party FP8 deployment throughput report (2x L40S) (ev-20260814-02 / ev-20260825-01 / ev-20260826-04 / ev-20260828-02 / ev-20260831-02 updates)",
         "Fourth consecutive velocity cycle (verified 2026-09-08): GLM-5.3 FP8 303,534 -> 442,064 (+46%), GLM-5.3-Flash 654,957 -> 784,005 (+20%), Qwen3.8-Flash-Next 351,374 -> 474,693 (+35%, plus FP8 224,875), Hy4 preview 5,684 -> 6,705 (+18%), DeepSeek V4-Flash-Vision-Exp 133,024 -> 251,611 (+89%, steepest relative pull-rate for the second consecutive check); unsloth Flash-Next GGUF 702,251 -> 868,243 and NVIDIA's NVFP4 derivative at 18,068 — the 753B flagship and every derivative line still growing (ev-20260814-02 / ev-20260825-01 / ev-20260826-04 / ev-20260828-02 / ev-20260831-02 updates)",
         "15. Criterion (b) met + fifth consecutive velocity cycle (checked 2026-09-11): DeepSeek V4.1 Flash open-weights (9/10, MIT, 763B total/552B backbone, TB 2.1 90.6 above every listed proprietary model, DeepSWE 74.2; 75.7k downloads in ~1.5 days) — a same-tier open-weight release from another organization at GLM-5.3's exact scale class (763B vs 753B); counters fifth cycle: GLM-5.3 FP8 597,626 (+35%), Flash 1,173,520 (+50%), Flash-Next 586,040 + FP8 349,091, Hy4 8,219, V4-Flash-Vision 443,954; serving diagnostics follow the hybrid architectures (SinkProbe, ev-20260910-14); safety spillover made concrete — a single-direction ablation strips refusal from the shipped block-FP8 GLM-5.3-Flash weights (ev-20260911-06)",
-        "16. Sixth consecutive velocity cycle + the nearest approach yet to a weights-side reproduction (checked 2026-09-13T00:03Z): GLM-5.3 FP8 635,504 (+6.3%), GLM-5.3-Flash 1,333,574 (+13.6%), Flash-Next 604,992 + FP8 369,963 (+3.2%/+6.0%), Hy4 8,936 (+8.7%), V4-Flash-Vision 484,422 (+9.1%), DeepSeek V4.1-Flash 140,636 (steepest, ~2.5 days after release); unsloth Flash-Next GGUF 1,160,057 and the NVIDIA NVFP4 derivative 89,924 (~5x in 4 days) - every line still growing, though the per-day slope on the Qwen/GLM Flash lines is below the prior 3-day cycles. Criterion (a) sees its nearest approach yet: HF discussion #50 (9/12) runs the public weights on a single DGX Spark (GB10, 128GB unified memory) with 2-bit routed experts, HumanEval 97.0% above the z.ai API's 95.1% (identical prompts, temperature 0; reproduction artifacts public) - but HumanEval is not Terminal-Bench/SWE, so the criterion remains unmet. Adjacent (vendor-reported, not counted): Z.ai's engineering post (9/12) discloses that the ox-alpha anonymous-testing phase ran entirely on a Chinese-AI-chip cluster (custom SGLang engine, EPD disaggregation, 3x end-to-end improvement, cost comparable to mainstream NVIDIA GPUs) (ev-20260825-01 update)"
+        "16. Sixth consecutive velocity cycle + the nearest approach yet to a weights-side reproduction (checked 2026-09-13T00:03Z): GLM-5.3 FP8 635,504 (+6.3%), GLM-5.3-Flash 1,333,574 (+13.6%), Flash-Next 604,992 + FP8 369,963 (+3.2%/+6.0%), Hy4 8,936 (+8.7%), V4-Flash-Vision 484,422 (+9.1%), DeepSeek V4.1-Flash 140,636 (steepest, ~2.5 days after release); unsloth Flash-Next GGUF 1,160,057 and the NVIDIA NVFP4 derivative 89,924 (~5x in 4 days) - every line still growing, though the per-day slope on the Qwen/GLM Flash lines is below the prior 3-day cycles. Criterion (a) sees its nearest approach yet: HF discussion #50 (9/12) runs the public weights on a single DGX Spark (GB10, 128GB unified memory) with 2-bit routed experts, HumanEval 97.0% above the z.ai API's 95.1% (identical prompts, temperature 0; reproduction artifacts public) - but HumanEval is not Terminal-Bench/SWE, so the criterion remains unmet. Adjacent (vendor-reported, not counted): Z.ai's engineering post (9/12) discloses that the ox-alpha anonymous-testing phase ran entirely on a Chinese-AI-chip cluster (custom SGLang engine, EPD disaggregation, 3x end-to-end improvement, cost comparable to mainstream NVIDIA GPUs) (ev-20260825-01 update)",
+        "17. Serving paths reach merged upstream code (2026-09-13 UTC): vLLM merged DeepSelect sparse-indexer TopK and Engram DP-sharding/async CPU-offload/shared-memory tables for DeepSeek V4.1-Flash; SGLang merged a one-DGX-Spark / GB10 path for nvidia/Qwen3.8-Flash-Next-NVFP4 (200-question GSM8K 97.5%/97.0%, about 93/90 tok/s). Both remain on main and untagged, so this is continued open-weight serving adoption, not a TB/SWE reproduction on the weights (ev-20260910-01 / ev-20260826-04 updates)."
       ],
       "why_it_matters_zh": "升级为 strengthening 的依据：确认判据「GLM-5.3 权重落地 + 独立 benchmark 复现」实质达成——权重 8/25 落地且许可证宽松可用，Artificial Analysis 独立评测把 GLM-5.3 放到与 Kimi K3 同档。GLM-5.3-Flash（纯 MIT、全新底座、线性注意力降本）是同组织的加强信号。仍未到 High，只因为 Artificial Analysis 的独立评测针对 API，尚无社区对公开权重的 Terminal-Bench 或 SWE 复现；跨组织同级别发布与持续下载增速判据均已达成。",
       "why_it_matters_en": "Why upgraded to strengthening: the confirmation criterion \"GLM-5.3 weights land + independent benchmark reproduction\" is substantially met — weights landed 8/25 under a permissive license, and Artificial Analysis independently places GLM-5.3 in the same tier as Kimi K3. GLM-5.3-Flash (plain MIT, new base, linear-attention cost reduction) is a same-org reinforcing signal. Why not High: Artificial Analysis evaluated the API, while community Terminal-Bench or SWE reproduction on the public weights is still missing; the cross-organization same-tier release and sustained download-velocity criteria are now met.",
@@ -147,6 +149,11 @@
           "date": "2026-09-13",
           "note_zh": "01:02Z 续扫：没有新的同级开放权重模型，也没有 GLM-5.3 或 DeepSeek V4.1-Flash 的第三方 Terminal-Bench / SWE 复现。短窗口不重复计算下载放量周期。维持 strengthening / Medium。",
           "note_en": "01:02Z follow-up scan: no new same-tier open-weight model and no third-party Terminal-Bench / SWE reproduction on GLM-5.3 or DeepSeek V4.1-Flash. The short window does not count another download-velocity cycle. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-14",
+          "note_zh": "vLLM 与 SGLang 分别为 DeepSeek V4.1-Flash 和 Qwen3.8-Flash-Next-NVFP4 合并新的 serving 路径（新增证据第 17 条）；两者都尚未进入正式版本，也没有第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。",
+          "note_en": "vLLM and SGLang merged new serving paths for DeepSeek V4.1-Flash and Qwen3.8-Flash-Next-NVFP4 respectively (new evidence item 17). Both remain untagged, and there is still no third-party Terminal-Bench / SWE reproduction on the weights. Stays strengthening / Medium."
         }
       ]
     },
@@ -159,7 +166,7 @@
       "status_note_en": "emerging (upgraded from candidate on 2026-08-16)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-13",
+      "last_updated": "2026-09-14",
       "retired": false,
       "evidence_zh": [
         "Cloudflare One Gateway 的 MCP 检测与 enforcement 能力 GA——`experimental.is_mcp`、enforcement 仅 Portal 可用、OAuth 预注册（2026-08-14，一手来源，ev-20260814-03）",
@@ -284,6 +291,11 @@
           "date": "2026-09-13",
           "note_zh": "01:02Z 续扫：没有新的企业 MCP enforcement GA、公开遥测或 Zscaler 同类落地。维持 emerging / Medium。",
           "note_en": "01:02Z follow-up scan: no new enterprise MCP-enforcement GA, public telemetry or comparable Zscaler delivery. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-14",
+          "note_zh": "LiteLLM RC 新增按用户 MCP 工具权限，但属于 gateway 预发布能力，不是安全厂商 GA 或公开遥测，故不计正式证据。维持 emerging / Medium。",
+          "note_en": "The LiteLLM RC adds per-user MCP tool permissions, but this is a prerelease gateway capability rather than security-vendor GA or public telemetry, so it is not counted as formal evidence. Stays emerging / Medium."
         }
       ]
     },
@@ -296,7 +308,7 @@
       "status_note_en": "established (candidate→emerging 2026-08-18; →strengthening 8/20; →established 2026-08-28 — confirmation criterion (a) met: Codex 0.150.0 stable ships agent-initiated cross-task messaging; in the same window Gemini CLI 0.57.0 shipped a2a-server in stable and on npm, making Google the seventh organization with protocol-level interop in a stable runtime)",
       "confidence": "High",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-13",
+      "last_updated": "2026-09-14",
       "retired": false,
       "evidence_zh": [
         "Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）",
@@ -429,6 +441,11 @@
           "date": "2026-09-13",
           "note_zh": "01:02Z 续扫：没有新的跨组织 runtime 原语或公开生产案例；Claude Code、Codex、Gemini CLI 与 Copilot 的已核版本线未变化。维持 established / High。",
           "note_en": "01:02Z follow-up scan: no new cross-org runtime primitive or public production case; the checked Claude Code, Codex, Gemini CLI and Copilot release lines are unchanged. Stays established / High."
+        },
+        {
+          "date": "2026-09-14",
+          "note_zh": "LiteLLM RC 通过 well-known index 发布 Agent Skills，并可配置 Codex/Claude Code gateway，是技能与编排标准化的邻接信号；因仍是 RC，不计新组织或正式证据。维持 established / High。",
+          "note_en": "The LiteLLM RC exposes Agent Skills through a well-known index and can configure Codex/Claude Code gateways, an adjacent signal for skills/orchestration standardization. Because it remains an RC, it is not counted as a new organization or formal evidence. Stays established / High."
         }
       ]
     },
@@ -441,7 +458,7 @@
       "status_note_en": "emerging (opened 2026-09-02: four independent documents from three organizations plus one national-institute incident disclosure within five days, 8/26-9/1 — cross-org, cross-date, with directly adoptable engineering practices)",
       "confidence": "Medium",
       "first_observed": "2026-08-26",
-      "last_updated": "2026-09-13",
+      "last_updated": "2026-09-14",
       "retired": false,
       "evidence_zh": [
         "OpenAI《The Hugging Face incident and the road ahead》约 37 页技术报告（2026-08-26，一手来源）：完整入侵时间线、四种失配模式、生产 harness 对基础设施攻陷倾向的 >100x 抑制、CoT 监控可提前 >1 天告警、分层 CoT 监控规则、最大前沿 RL run 仍暂停（ev-20260818-04 更新）",
@@ -526,6 +543,11 @@
           "date": "2026-09-13",
           "note_zh": "01:02Z 续扫：没有新的前沿实验室事件披露、METR 审查结果、嵌入式评估员落地公告或跨厂商报告规范。维持 emerging / Medium。",
           "note_en": "01:02Z follow-up scan: no new frontier-lab incident disclosure, METR review result, embedded-evaluator implementation announcement or cross-vendor reporting format. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-14",
+          "note_zh": "没有新的前沿实验室事故披露、METR 审查结果、嵌入式评估员落地或跨厂商报告规范。维持 emerging / Medium。",
+          "note_en": "No new frontier-lab incident disclosure, METR review result, embedded-evaluator implementation or cross-vendor reporting format. Stays emerging / Medium."
         }
       ]
     },
@@ -538,7 +560,7 @@
       "status_note_en": "candidate (opened 2026-09-05; downgraded to weakening 9/8; revived 2026-09-11 — the downgrade trigger 'no second vendor lands execution-plane choice' is overturned: the OpenAI Agents API (9/10) makes the execution environment an explicit menu — OpenAI-hosted / customer's own infrastructure / nine sandbox partners incl. VPC deployments — a second vendor landing 'agent execution need not run on vendor iron' after Cursor self-hosted. PSP white paper still unpublished (a third of September left); confidence stays Low: still no independent-org adoption data)",
       "confidence": "Low",
       "first_observed": "2026-08-18",
-      "last_updated": "2026-09-13",
+      "last_updated": "2026-09-14",
       "retired": false,
       "evidence_zh": [
         "OpenAI 重申 ZDR 并发布 Private Safety Processing 预览（2026-08-18，一手来源，ev-20260818-05）：无留存推理 + 安全工具的承诺形态，白皮书按计划应在 9 月发布（截至本次运行仍未发布）",
@@ -588,6 +610,11 @@
           "date": "2026-09-13",
           "note_zh": "01:02Z 续扫：OpenAI PSP 白皮书、Anthropic EFS、自托管执行面与独立采用数据均无新增。维持 candidate / Low。",
           "note_en": "01:02Z follow-up scan: no new OpenAI PSP white paper, Anthropic EFS delivery, self-hosted execution plane or independent adoption data. Stays candidate / Low."
+        },
+        {
+          "date": "2026-09-14",
+          "note_zh": "LiteLLM RC 的客户自管 KMS 与 gateway key 是控制面加固，不是新的自托管执行面或独立采用案例。OpenAI PSP 白皮书与 Anthropic EFS 仍无新增。维持 candidate / Low。",
+          "note_en": "The LiteLLM RC customer-managed KMS and gateway key are control-plane hardening, not a new self-hosted execution plane or independent adoption case. No new OpenAI PSP white paper or Anthropic EFS delivery. Stays candidate / Low."
         }
       ]
     },
@@ -600,7 +627,7 @@
       "status_note_en": "emerging (opened 2026-09-12: three Millennium-scale results from three parties within eight days — FLT, Navier-Stokes, forced Euler — all using Lean/formal verification as the trust layer, plus a public response from the mathematics community; disputes and verification status recorded honestly)",
       "confidence": "Medium",
       "first_observed": "2026-09-04",
-      "last_updated": "2026-09-13",
+      "last_updated": "2026-09-14",
       "retired": false,
       "evidence_zh": [
         "Anthropic 端到端形式化费马大定理（2026-09-04，一手来源，ev-20260904-01）：1300 万行 Lean、29.5k 定理、约 60 亿输出 token、11 天，Prove2Me + Claude Code 多 agent 编排，代码开源",
@@ -640,6 +667,11 @@
           "date": "2026-09-13",
           "note_zh": "01:02Z 续扫：没有新的正式验证结论、第三家实验室复现或 Lean 工具链采用数据。维持 emerging / Medium。",
           "note_en": "01:02Z follow-up scan: no new formal verification outcome, third-lab reproduction or Lean-toolchain adoption data. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-14",
+          "note_zh": "没有新的正式验证结论、第三方复现或 Lean 工具链采用数据。维持 emerging / Medium。",
+          "note_en": "No new formal verification outcome, third-party reproduction or Lean-toolchain adoption data. Stays emerging / Medium."
         }
       ]
     }
