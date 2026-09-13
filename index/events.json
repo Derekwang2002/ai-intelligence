@@ -1,7 +1,7 @@
 {
   "description": "Event index for dedup and cross-run lookup. Key by event_fingerprint.",
-  "last_updated": "2026-09-12T02:08:37Z",
-  "total_events": 140,
+  "last_updated": "2026-09-13T00:00:24Z",
+  "total_events": 143,
   "events": [
     {
       "event_id": "ev-20260813-01",
@@ -243,8 +243,12 @@
           "note": "2.1.265-269 (9/8-9/11): --plugin-dir folders, 1GB tool-result cap, prompt-cache fixes, maxEffortLevel, gateway pricing relay (/cost matches contracts), self-hosted-runner session-state removal, symlink/secrets security fixes, WebFetch 300s deadline"
         },
         {
-          "date": "2026-09-12",
+          "date": "2026-09-11",
           "note": "2.1.269 verified at 9/11T19:17Z: claude plugin eval JSON/HTML reports, Workflow concurrency configurable 1-256, Bash edit diffs, tee/plugin archive/path-deny hardening"
+        },
+        {
+          "date": "2026-09-13",
+          "note": "2.1.270 (9/12T18:52Z): single hotfix for a 2.1.269 regression (read-only git commands in Bash spurious permission prompts); no other changes"
         }
       ]
     },
@@ -679,6 +683,10 @@
         {
           "date": "2026-09-12",
           "note": "2026-09-12 third-pass backfill: refusal-ablation research cross-ref (ev-20260911-06); adoption @9/11 1,173,520 dl + 2,245 likes"
+        },
+        {
+          "date": "2026-09-13",
+          "note": "2026-09-13: engineering post (9/12T02:17Z) - Chinese-AI-chip SGLang-based serving, EPD disaggregation, 3x e2e, IndexPool/mHC detail; HF discussion #50 (9/12) - strongest weights-side reproduction (single DGX Spark GB10, 2-bit experts, HumanEval 97.0% vs API 95.1%); 1,333,574 dl (+13.6%) @9/13"
         }
       ]
     },
@@ -1609,7 +1617,13 @@
         "DeepSeek"
       ],
       "category": "foundation-model",
-      "file": "events/2026-09-10.json"
+      "file": "events/2026-09-10.json",
+      "updates": [
+        {
+          "date": "2026-09-13",
+          "note": "2026-09-13: serving ecosystem - vLLM 63 issues/PRs (13 on 9/12), SGLang 32 (incl. fp8 correctness bug #39193), model card still lacks serving recipe, 15+ third-party deploy repos, LiteLLM pricing PRs; 140,636 dl (+85.6%) @9/13; no third-party TB/SWE run yet"
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-02",
@@ -2024,6 +2038,41 @@
       ],
       "category": "developer-tools",
       "file": "events/2026-09-12.json"
+    },
+    {
+      "event_id": "ev-20260911-12",
+      "fingerprint": "rubygems-gemstuffer-openai-agent-attribution",
+      "title": "Researchers attribute a May RubyGems package flood to an OpenAI agent swarm",
+      "date": "2026-09-11",
+      "orgs": [
+        "Independent Researchers",
+        "RubyGems",
+        "rubydoc.info"
+      ],
+      "category": "agent-security",
+      "file": "events/2026-09-11.json"
+    },
+    {
+      "event_id": "ev-20260912-02",
+      "fingerprint": "anthropic-amodei-we-must-pace-the-frontier",
+      "title": "Dario Amodei proposes embedded third-party evaluators to pace the AI frontier",
+      "date": "2026-09-12",
+      "orgs": [
+        "Anthropic"
+      ],
+      "category": "business",
+      "file": "events/2026-09-12.json"
+    },
+    {
+      "event_id": "ev-20260912-03",
+      "fingerprint": "specific-labs-real-swe-private-enterprise-benchmark",
+      "title": "Real-SWE benchmarks coding agents on licensed private enterprise codebases",
+      "date": "2026-09-12",
+      "orgs": [
+        "Specific Labs"
+      ],
+      "category": "research",
+      "file": "events/2026-09-12.json"
     }
   ],
   "known_fingerprints_for_dedup": [
@@ -2166,6 +2215,9 @@
     "arxiv-2609-10494-ibib-enterprise-measurement",
     "openai-habitat-storage-scaling-rust-rewrite",
     "github-copilot-review-shell-tools-agent-ensemble",
-    "google-gemini-cli-build-file-prompt-injection-gate"
+    "google-gemini-cli-build-file-prompt-injection-gate",
+    "rubygems-gemstuffer-openai-agent-attribution",
+    "anthropic-amodei-we-must-pace-the-frontier",
+    "specific-labs-real-swe-private-enterprise-benchmark"
   ]
 }

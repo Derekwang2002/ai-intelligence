@@ -12,7 +12,7 @@
       ],
       "published_at": "2026-09-10T02:17:58Z",
       "first_seen_at": "2026-09-11T18:31:49Z",
-      "last_updated_at": "2026-09-11T18:31:49Z",
+      "last_updated_at": "2026-09-13T00:03:00Z",
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
       "secondary_sources": [
@@ -31,7 +31,8 @@
         "training": "45T multimodal tokens pre-training; sparse attention at 64K; context extended to 1M at 34T; SFT -> RL -> on-policy distillation; reasoning_effort integer 1-100",
         "benchmarks": "TB 2.1 90.6 / TB 3.0 30.0 / TB 4.0 31.2; DeepSWE v1.1 74.2 (V4-Flash 54.4); GPQA Diamond 90.9; Codeforces 3471; HLE 36.8 (39.1 text-only); HLE w/tools 63.9; MathArena Apex 65.6; CyberGym 88.1; SEC-Bench Pro 62.8; ExploitGym 15.3; MMMU-Pro 56.5; DocVQA 95.6",
         "api": "model name deepseek-flash; input $0.30 peak / $0.15 off-peak, output $1.20 / $0.60 per 1M; cache-hit $0.006 peak; concurrency 2500; max output 384K; V4-Flash + V4-Flash-Vision-Exp retired (legacy names temporarily routed); V4 Pro continues past 2026-09-14 unchanged billing",
-        "serving": "day-0 vLLM / SGLang / Docker Model Runner / Transformers; deepseek-recipe Rust libs + Python reference; no Jinja chat template"
+        "serving": "day-0 vLLM / SGLang / Docker Model Runner / Transformers; deepseek-recipe Rust libs + Python reference; no Jinja chat template",
+        "update_2026_09_13": "Serving ecosystem @2026-09-12/13: vLLM 63 V4.1-Flash issues/PRs (13 on 9/12: encoder CUDA graph #56625, mHC fold #56633, ROCm gfx950 #56638; ROCm perf RFC #56506); SGLang 32 matches (MI350X #39186, Mooncake Engram KV backend #39205, prefill CP #39179; correctness bug: fp8 wo_a absorb GEMM ~25% wrong when DEEPGEMM_SCALE_UE8M0=false, SM121, #39193). Model card still has no serving recipe (#13 asks); deepseek-recipe = prompt-format lib. 15+ third-party deploy repos on 9/12 (DGX Spark/GB10, Mac Studio 512GB, EXL3); LiteLLM pricing PRs #40919/40920. Downloads 140,636 (+85.6% vs 9/11) + 2,005 likes @2026-09-13T00:03Z."
       },
       "technical_details_zh": {
         "发布": "HF 仓库 2026-09-10T02:17:58Z 创建；MIT；image-text-to-text；约 1 天 75,774 下载 + 1,741 likes（2026-09-11T18:34Z 采样）",
@@ -39,7 +40,8 @@
         "训练": "45T 多模态 token 预训练；64K 处稀疏注意力；34T 处扩展到 1M；SFT → RL → on-policy distillation；reasoning_effort 为 1-100 整数",
         "基准": "TB 2.1 90.6 / TB 3.0 30.0 / TB 4.0 31.2；DeepSWE v1.1 74.2（V4-Flash 54.4）；GPQA Diamond 90.9；Codeforces 3471；HLE 36.8（纯文本 39.1）；HLE w/tools 63.9；MathArena Apex 65.6；CyberGym 88.1；SEC-Bench Pro 62.8；ExploitGym 15.3；MMMU-Pro 56.5；DocVQA 95.6",
         "API": "模型名 deepseek-flash；输入 $0.30 高峰 / $0.15 非高峰、输出 $1.20/$0.60 每百万；缓存命中 $0.006 高峰；并发 2500；最大输出 384K；V4-Flash 与 V4-Flash-Vision-Exp 退役（旧名暂路由）；V4 Pro 2026-09-14 后继续、计费不变",
-        "serving": "day-0 vLLM / SGLang / Docker Model Runner / Transformers；deepseek-recipe Rust 库 + Python 参考实现；无 Jinja chat template"
+        "serving": "day-0 vLLM / SGLang / Docker Model Runner / Transformers；deepseek-recipe Rust 库 + Python 参考实现；无 Jinja chat template",
+        "update_2026_09_13": "serving 生态 @2026-09-12/13：vLLM 63 个 V4.1-Flash issue/PR（9/12 单日 13 个：encoder CUDA graph #56625、mHC fold #56633、ROCm gfx950 #56638；ROCm 性能 RFC #56506）；SGLang 32 个匹配（MI350X #39186、Mooncake Engram KV backend #39205、prefill CP #39179；正确性 bug：DEEPGEMM_SCALE_UE8M0=false 时 fp8 wo_a absorb GEMM 静默错约 25%，SM121，#39193）。模型卡仍无 serving 指引（#13 在求）；deepseek-recipe 为 prompt 格式转换库。9/12 新增 15+ 第三方部署仓（DGX Spark/GB10、Mac Studio 512GB、EXL3）；LiteLLM 定价 PR #40919/40920。下载 140,636（较 9/11 +85.6%）+ 2,005 likes @2026-09-13T00:03Z。"
       },
       "tags": [
         "foundation-model",
@@ -58,7 +60,8 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "deepseek-v4-1-flash-ced-csa2-release"
+      "event_fingerprint": "deepseek-v4-1-flash-ced-csa2-release",
+      "update_2026_09_13": "2026-09-13 run, serving-ecosystem check: vLLM now carries 63 issues/PRs mentioning V4.1-Flash (13 on 2026-09-12 alone - encoder CUDA-graph support #56625 17:54Z, mHC post-block folding into the delayed pre-projection #56633, ROCm gfx950 re-enable #56638; ROCm performance RFC #56506 opened 9/11); SGLang shows 32 matches (MI350X/gfx950 support #39186, Mooncake Engram KV backend with CUDA Graph #39205, prefill context parallelism #39179) plus a third-party report that fp8 wo_a absorb GEMM output is silently ~25% wrong when DEEPGEMM_SCALE_UE8M0=false on SM121 (#39193, 06:21Z). The HF model card still ships no serving recipe (community request in #13); deepseek-ai/deepseek-recipe is a prompt-format conversion library, not serving. 15+ third-party deployment repos created/updated on 9/12 target DGX Spark/GB10, Mac Studio 512GB and EXL3 quantizations; LiteLLM pricing PRs #40919/#40920 (9/12 23:36Z) add V4.1-Flash across five providers. Downloads @2026-09-13T00:03Z: 140,636 (+85.6% vs ~75.8k @9/11, ~2.5 days after release) + 2,005 likes. No third-party Terminal-Bench/SWE run yet. Stays TRIAL."
     },
     {
       "event_id": "ev-20260910-02",

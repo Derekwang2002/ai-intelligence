@@ -1,29 +1,27 @@
 {
   "version": 1,
-  "last_successful_run_at": "2026-09-12T02:08:37Z",
-  "last_run_started_at": "2026-09-12T02:08:37Z",
-  "last_run_completed_at": "2026-09-12T02:27:12Z",
-  "total_runs": 18,
+  "last_successful_run_at": "2026-09-13T00:00:24Z",
+  "last_run_started_at": "2026-09-13T00:00:24Z",
+  "last_run_completed_at": "2026-09-13T00:28:44Z",
+  "total_runs": 19,
   "first_run": false,
   "initial_lookback_hours": 24,
   "scan_window": {
-    "start": "2026-09-11T19:05:56Z",
-    "end": "2026-09-12T02:08:37Z",
-    "retrieval_overlap_start": "2026-09-11T16:05:56Z",
-    "overlap_note": "Overlap used for retrieval only. Added 2 events (GitHub Copilot execution-backed code review and the Gemini CLI 0.61 security nightly), updated 2 existing events (Claude Code 2.1.269 details and Copilot VS Code Agents usage metrics), and skipped 1 already-indexed arXiv duplicate. Event dates use official UTC timestamps; daily and trend snapshots use the Asia/Shanghai report date (2026-09-12)."
+    "start": "2026-09-12T02:08:37Z",
+    "end": "2026-09-13T00:00:24Z",
+    "retrieval_overlap_start": "2026-09-11T23:08:37Z",
+    "overlap_note": "Overlap used for retrieval only. Strict window produced 3 new events (Amodei pacing essay, rubyhack.ai RubyGems attribution admitted as coverage-gap recovery with official date 2026-09-11, Real-SWE benchmark) and 3 existing-event updates (GLM-5.3-Flash engineering post + weights-side reproduction HF #50 + counters; DeepSeek V4.1-Flash serving ecosystem; Claude Code 2.1.270 hotfix). arXiv clean above watermark 2609.11923 (no Saturday digest). Host clock verified against HN Algolia before windowing. This session is the scheduled 'ai-intelligence 每日探测' automation itself. Daily and trend snapshots filed under Asia/Shanghai date 2026-09-13; events filed by official UTC dates (09-11/09-12)."
   },
   "next_scan_focus": [
-    "Process the Z.ai GLM-5.3-Flash engineering post published at 2026-09-12T02:17:01Z, after this run's cutoff; merge substantive architecture and serving details into ev-20260814-02 or the appropriate existing event rather than creating a duplicate.",
-    "Re-sweep arXiv above 2609.11923, including late cross-lists; the 9/11 digest entries above the previous watermark were verified as pre-window submissions and were not admitted. Deduplicate by canonical URL and fingerprint.",
-    "Trend #1: seek independent Terminal-Bench or SWE reproduction on GLM-5.3 or DeepSeek V4.1-Flash weights; verify a sixth adoption-velocity cycle.",
-    "DeepSeek V4.1-Flash (ev-20260910-01): independent serving reports, vLLM/SGLang integration depth, and download velocity.",
-    "OpenAI Agents API (ev-20260910-02): GA timeline, limits, compaction behavior, sandbox-partner adoption, and own-infrastructure/VPC production cases.",
-    "Trend #4: METR publication of its Anthropic review; Meta Confidential VM audit follow-through; cross-vendor incident-reporting practices.",
-    "Trend #5: OpenAI Private Safety Processing white paper, Anthropic EFS delivery, and independent adoption of customer-controlled execution planes.",
-    "Agent security: adoption of capability-scoped authorization, MCP/skill version pinning, and install-time checks following ev-20260910-08/-09.",
-    "Serving research: independent runs of RedKnot-MLA, Osprey, and KVShareArena; track portability across model checkpoints and workload shifts.",
-    "Release lines: Codex 0.155 stable, Claude Code 2.1.270+, Gemini CLI 0.61 stable, and vLLM 0.30.x; verify whether the Gemini nightly security fixes reach stable.",
+    "arXiv: next digest expected 2026-09-14T00:00Z (Sunday announcement); sweep from watermark 2609.11923.",
+    "Trend #1 last gate: third-party Terminal-Bench/SWE reproduction on GLM-5.3 or DeepSeek V4.1-Flash weights (watch whether HF discussion #50's author extends to agentic benchmarks); seventh velocity cycle re-sample.",
+    "Amodei follow-through: Anthropic formalizing embedded evaluators (METR announcement?), OpenAI's promised follow-up in writing, any US government response on the antitrust waiver.",
+    "rubyhack.ai fallout: OpenAI response or confirmation; registry-side defenses; whether more platforms disclose similar agent-driven floods.",
+    "DeepSeek V4.1-Flash: model-card serving docs, SGLang #39193 fp8 correctness fix, vLLM integration depth, download velocity.",
+    "Trend #5 deadline: OpenAI PSP white paper and Anthropic EFS - downgrade at end of September if neither lands with adoption data.",
+    "Release lines: Codex 0.155 stable, Gemini CLI 0.61 stable (security-fix nightly cluster), Claude Code 2.1.271+, vLLM 0.30.x.",
+    "Real-SWE: whether more tasks open beyond the gated 10-task sample; third-party reproductions of the model+harness rankings.",
     "September calendar: Meta Connect 2026-09-23/24 and OpenAI DevDay 2026-09-29; admit announcements only after official publication."
   ],
-  "notes": "2026-09-12T02:08:37Z run: checkpoint advanced only after event-schema, bilingual-report, index-integrity, trend-consistency, git-diff, and 366-page Astro build checks passed. Canonical event files and index/events.json agree on 140 unique IDs and fingerprints. Strict window produced 2 new events and 2 existing-event updates; arXiv strict-window count was zero. GLM-5.3-Flash's engineering post was published eight minutes after the cutoff and is explicitly deferred. Checkpoint always uses current_run_started_at, not completion time. OPERATIONAL LESSONS retained: anchor run time on an external source when the host clock is suspect; re-read state/index/trends before writing if concurrent sessions may advance the checkpoint; reconcile index-to-file IDs and fingerprints plus bilingual completeness before checkpointing; arXiv list dates are not submission timestamps, so verify submission history before admission."
+  "notes": "2026-09-13T00:00:24Z run (scheduled automation): checkpoint advanced only after event-schema, bilingual-completeness, index-integrity (143 ids/fingerprints, bidirectional update-date sync), trend-consistency (current.json == current.md == 2026-09-13.md snapshot, bilingual en snapshot written) and daily-structure checks passed. 3 new events, 3 updated events, 0 arXiv admissions. Double-write repairs applied: ev-20260814-04 index note re-dated 09-12->09-11 to match the file, ev-20260909-02 file-side update key added to mirror its index note. OPERATIONAL LESSONS retained: anchor run time on an external source (HN Algolia) when the host clock is suspect; re-read state/index/trends before writing if concurrent sessions may advance the checkpoint; reconcile index-to-file ids, fingerprints and update dates before checkpointing; arXiv list dates are not submission timestamps; verify subagent-sourced numbers against primary pages before admission (Amodei quotes, rubyhack details, HF #50 numbers, vLLM/SGLang PR timestamps all re-verified first-hand this run)."
 }
