@@ -7,13 +7,18 @@
       "title": "Study finds shell access beats typed tools on enterprise agent tasks",
       "title_zh": "研究发现 shell 胜过企业 agent 的 typed tools",
       "category": "ai-engineering",
-      "organization": ["Microsoft", "Carnegie Mellon University"],
+      "organization": [
+        "Microsoft",
+        "Carnegie Mellon University"
+      ],
       "published_at": "2026-09-14T00:00:00Z",
       "first_seen_at": "2026-09-14T16:02:27Z",
       "last_updated_at": "2026-09-14T16:02:27Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.11999",
-      "secondary_sources": ["https://arxiv.org/html/2609.11999v1"],
+      "secondary_sources": [
+        "https://arxiv.org/html/2609.11999v1"
+      ],
       "summary": "Microsoft and Carnegie Mellon compare five agent tool interfaces on TheAgentCompany and APEX-Agents using Opus 4.8 and GPT-5.5. Bash alone beats typed tools by 21.8–24.5 points on TheAgentCompany and 4.8–7.4 points on APEX-Agents while consuming 19–72% fewer tokens. Adding typed tools or persistent synthesized tools to Bash produces no detectable pooled gain. Programmatic tool calling narrows the action surface and uses fewer tokens than direct typed calls, but usually trails Bash on quality and cost efficiency.",
       "why_it_matters": "For teams choosing an action interface for enterprise agents, this is evidence that a broad shell can be both more capable and cheaper when it runs inside a strong sandbox. Where policy requires a fixed catalog, programmatic tool calling remains the safer compromise. The study does not justify unrestricted host access: isolation and consequence controls are part of the architecture decision.",
       "summary_zh": "Microsoft 与 Carnegie Mellon 用 Opus 4.8 和 GPT-5.5，在 TheAgentCompany 与 APEX-Agents 上比较五种 agent 工具接口。单独使用 Bash 比 typed tools 高 21.8–24.5 分和 4.8–7.4 分，同时少用 19–72% 的 token。给 Bash 叠加 typed tools 或持久化的自生成工具，没有带来可检测的总体收益。程序化工具调用能收窄动作范围，也比直接 typed calls 省 token，但质量和成本效率通常仍落后于 Bash。",
@@ -36,7 +41,14 @@
         "token 变化": "Bash 的总 token 用量少 19% 至 72%",
         "局限": "只覆盖两个模型与两个 benchmark 环境；论文未链接公开实现仓库"
       },
-      "tags": ["agent", "tool-use", "shell", "programmatic-tool-calling", "enterprise-agent", "evaluation"],
+      "tags": [
+        "agent",
+        "tool-use",
+        "shell",
+        "programmatic-tool-calling",
+        "enterprise-agent",
+        "evaluation"
+      ],
       "technical_impact": 4,
       "engineering_value": 5,
       "adoption_signal": 2,
@@ -51,13 +63,17 @@
       "title": "Harness study finds no average vendor-native coding advantage",
       "title_zh": "Harness 研究未发现厂商原生 coding 优势",
       "category": "research",
-      "organization": ["evolutionID"],
+      "organization": [
+        "evolutionID"
+      ],
       "published_at": "2026-09-14T00:00:00Z",
       "first_seen_at": "2026-09-14T16:02:27Z",
       "last_updated_at": "2026-09-14T16:02:27Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.11987",
-      "secondary_sources": ["https://arxiv.org/html/2609.11987v1"],
+      "secondary_sources": [
+        "https://arxiv.org/html/2609.11987v1"
+      ],
       "summary": "A paired study holds the model fixed while comparing Claude Agent SDK and Codex SDK against a neutral LangGraph/deepagents harness on 80 private repository and post-cutoff contest tasks per contrast. Across 792 graded runs, neither vendor-native harness shows a resolved average solve-rate advantage: the paired differences are -1.25 points for Opus 4.8 and +1.25 points for GPT-5.5, with both confidence intervals crossing zero. Neutral harnesses make about twice as many tool calls and cost 1.2–1.6 times more per solved task on observed usage. The paper also corrects its own earlier cache-token accounting defect.",
       "why_it_matters": "For teams deciding between a portable harness and a vendor-native runtime, capability should be measured on the team's workload rather than assumed from branding. Cost and completion behavior can still differ even when solve rates do not. The study's private, selected task pool and unresolved Anthropic billing data make this a decision aid, not a universal ranking.",
       "summary_zh": "这项配对研究固定模型，在每组 80 个私有仓库任务与训练截止后竞赛题上，对比 Claude Agent SDK、Codex SDK 与中立的 LangGraph/deepagents harness。792 次有效运行中，厂商原生 harness 没有呈现可确认的平均解题率优势：Opus 4.8 为 -1.25 分，GPT-5.5 为 +1.25 分，两组置信区间都跨过零。中立 harness 的工具调用约多一倍，按观测用量计算，每解出一题的成本高 1.2–1.6 倍。论文还纠正了自身早期对 cache token 的统计错误。",
@@ -80,7 +96,14 @@
         "公开内容": "orchestrator、评分器、drift gate、重分析代码与派生统计；任务本身保持私有",
         "方法警告": "不同 SDK 的 cache-token 语义不同，早期统计曾把遥测高估 5–8 倍"
       },
-      "tags": ["coding-agent", "agent-harness", "evaluation", "cost", "prompt-caching", "benchmark-contamination"],
+      "tags": [
+        "coding-agent",
+        "agent-harness",
+        "evaluation",
+        "cost",
+        "prompt-caching",
+        "benchmark-contamination"
+      ],
       "technical_impact": 3,
       "engineering_value": 5,
       "adoption_signal": 2,
@@ -95,13 +118,18 @@
       "title": "Runtime gate blocks policy-breaking actions from clean agent skills",
       "title_zh": "运行时 gate 拦住 clean skills 的越权动作",
       "category": "agent-security",
-      "organization": ["Pheo"],
+      "organization": [
+        "Pheo"
+      ],
       "published_at": "2026-09-14T00:00:00Z",
       "first_seen_at": "2026-09-14T16:02:27Z",
       "last_updated_at": "2026-09-14T16:02:27Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.12001",
-      "secondary_sources": ["https://github.com/pheo-ai/open-agent-trust-system", "https://huggingface.co/datasets/OpenClaw/clawhub-security-signals"],
+      "secondary_sources": [
+        "https://github.com/pheo-ai/open-agent-trust-system",
+        "https://huggingface.co/datasets/OpenClaw/clawhub-security-signals"
+      ],
       "summary": "A study of 66,192 ClawHub skill versions separates artifact maliciousness from whether an action is allowed on a specific machine. It finds 705 unanimously clean skills from 135 publishers that still document policy-relevant actions, mostly fetching and executing remote code; a 100-skill audit estimates 92% detector precision. In live runs, 34.7% of agent commands introduced a consequence class absent from the skill's code blocks. A deterministic runtime resolver stopped all 23 forbidden actions attempted across 53 command-producing clean skills, with 67.6 ms median end-to-end hook latency.",
       "why_it_matters": "For teams distributing or installing agent skills, registry scanning cannot express local operator policy and cannot fully predict commands an agent will compose at runtime. A deterministic action gate and per-resource trust ledger provide a practical second layer. The live study uses one model and a small sample, so teams should reproduce both false-positive rates and latency under their own workloads.",
       "summary_zh": "这项研究分析了 66,192 个 ClawHub skill 版本，把「产物是否恶意」与「这台机器是否允许该动作」分开处理。705 个被所有扫描器判为 clean 的 skills 来自 135 个发布者，仍会指示策略敏感动作，主要是拉取并执行远程代码；对 100 个样本的人工审计估算检测器精度为 92%。在真实 agent 运行中，34.7% 的命令引入了 skill 代码块里从未出现的后果类型。确定性的运行时 resolver 在 53 个会产生命令的 clean skills 中拦下全部 23 次禁用动作，中位端到端 hook 延迟为 67.6 毫秒。",
@@ -124,7 +152,14 @@
         "延迟": "当前 CLI hook 的中位端到端延迟 67.6 毫秒，主要来自进程启动",
         "可用性": "Apache-2.0 代码与可复现语料查询已公开"
       },
-      "tags": ["agent-skills", "supply-chain", "runtime-policy", "sandbox", "authorization", "security"],
+      "tags": [
+        "agent-skills",
+        "supply-chain",
+        "runtime-policy",
+        "sandbox",
+        "authorization",
+        "security"
+      ],
       "technical_impact": 4,
       "engineering_value": 5,
       "adoption_signal": 2,
@@ -139,13 +174,18 @@
       "title": "AMD releases execution-verified data for training ROCm kernel agents",
       "title_zh": "AMD 发布可训练 ROCm kernel agent 的验证数据",
       "category": "infrastructure",
-      "organization": ["AMD"],
+      "organization": [
+        "AMD"
+      ],
       "published_at": "2026-09-14T00:00:00Z",
       "first_seen_at": "2026-09-14T16:02:27Z",
       "last_updated_at": "2026-09-14T16:02:27Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.12471",
-      "secondary_sources": ["https://github.com/AMD-AGI/hip_kernel_llm_lab", "https://huggingface.co/datasets/amd/AIG-Datasets"],
+      "secondary_sources": [
+        "https://github.com/AMD-AGI/hip_kernel_llm_lab",
+        "https://huggingface.co/datasets/amd/AIG-Datasets"
+      ],
       "summary": "AMD publishes AMDKernelVault, an open training framework and corpus for HIP and Triton kernel generation on recent CDNA GPUs. The release includes 62,153 execution-verified HIP samples, 39,893 Triton kernels and 2,377 production-grounded ROCm Libraries QA entries. A Qwen3-8B model trained with supervised fine-tuning and execution-aware reinforcement learning leads the compared models on PyTorch-to-HIP, TritonBench-G and ROCmBench correctness under fixed budgets. It does not lead every compilation or speed metric.",
       "why_it_matters": "For teams building kernel-generation agents, this is the first large execution-verified path that treats AMD hardware as a training target rather than a CUDA afterthought. The released data and Apache-2.0 tooling make a focused ROCm reproduction feasible. Low repository and dataset usage at publication means this is a trial candidate, not an adoption signal.",
       "summary_zh": "AMD 发布 AMDKernelVault：面向新一代 CDNA GPU 的 HIP 与 Triton kernel 生成训练框架和开放语料。内容包括 62,153 个经执行验证的 HIP 样本、39,893 个 Triton kernels，以及 2,377 条来自实际 ROCm Libraries 的问答数据。团队用监督微调与执行反馈强化学习训练 Qwen3-8B，在固定预算下的 PyTorch-to-HIP、TritonBench-G 和 ROCmBench 正确率领先对比模型，但编译率和速度指标并非全面领先。",
@@ -168,7 +208,15 @@
         "可用性": "Apache-2.0 代码；公开无门禁 HF 数据集；扫描时 293 次下载、2 个 likes",
         "局限": "固定预算下正确率领先，但编译率或速度并非全面领先"
       },
-      "tags": ["amd", "rocm", "hip", "triton", "gpu-kernel", "rlvr", "open-source"],
+      "tags": [
+        "amd",
+        "rocm",
+        "hip",
+        "triton",
+        "gpu-kernel",
+        "rlvr",
+        "open-source"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -183,13 +231,18 @@
       "title": "SAS trains sparse attention selectors directly from language loss",
       "title_zh": "SAS 用语言建模损失直接训练稀疏注意力 selector",
       "category": "research",
-      "organization": ["Tencent Hunyuan", "HKUST"],
+      "organization": [
+        "Tencent Hunyuan",
+        "HKUST"
+      ],
       "published_at": "2026-09-14T00:00:00Z",
       "first_seen_at": "2026-09-14T16:02:27Z",
       "last_updated_at": "2026-09-14T16:02:27Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.13141",
-      "secondary_sources": ["https://github.com/Tencent-Hunyuan/Simple-Attention-Sparsification"],
+      "secondary_sources": [
+        "https://github.com/Tencent-Hunyuan/Simple-Attention-Sparsification"
+      ],
       "summary": "SAS replaces layer-wise dense-attention distillation with a gated sparse-attention mechanism whose selector scores receive gradients directly from the language-modeling loss. The team continues pretraining OLMo3-7B for about 50 billion tokens and reports an average downstream score of 43.28, close to the dense base at 43.88 and ahead of its distillation baseline at 41.68. LongBench averages 30.0, tied with the strongest compared sparse method and above the dense base at 29.0. Code is public, but the repository has no declared license at the scan cutoff.",
       "why_it_matters": "For model teams converting dense checkpoints to sparse attention, optimizing the selector for final prediction quality is a cleaner objective than imitating dense attention weights. The training bill is substantial and gains vary by task, so teams should reproduce it on their target architecture before treating it as a default recipe. The missing repository license is a deployment blocker.",
       "summary_zh": "SAS 不再逐层蒸馏 dense attention 分布，而是把 selector 的连续分数注入注意力 logits，让语言建模损失直接更新 selector。团队对 OLMo3-7B 继续训练约 500 亿 token，平均下游分数为 43.28，接近 dense base 的 43.88，并高于蒸馏基线的 41.68。LongBench 平均分 30.0，与对比中最强的稀疏方法并列，也高于 dense base 的 29.0。代码已公开，但扫描截止时仓库没有声明许可证。",
@@ -212,7 +265,13 @@
         "LongBench 平均分": "SAS 30.0；dense base 29.0；滑动窗口基线 28.0；HiLS-Attn-RoPE 30.0",
         "可用性": "公开 GitHub 仓库；48 stars；截止时未检测到许可证"
       },
-      "tags": ["sparse-attention", "long-context", "continued-pretraining", "selector", "model-efficiency"],
+      "tags": [
+        "sparse-attention",
+        "long-context",
+        "continued-pretraining",
+        "selector",
+        "model-efficiency"
+      ],
       "technical_impact": 4,
       "engineering_value": 3,
       "adoption_signal": 1,
@@ -227,13 +286,18 @@
       "title": "SQD splits decode around subquadratic attention stages",
       "title_zh": "SQD 按子二次注意力阶段拆分 decode",
       "category": "infrastructure",
-      "organization": ["NVIDIA", "Harvard University"],
+      "organization": [
+        "NVIDIA",
+        "Harvard University"
+      ],
       "published_at": "2026-09-14T00:00:00Z",
       "first_seen_at": "2026-09-14T16:02:27Z",
       "last_updated_at": "2026-09-14T16:02:27Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.13134",
-      "secondary_sources": ["https://arxiv.org/html/2609.13134v1"],
+      "secondary_sources": [
+        "https://arxiv.org/html/2609.13134v1"
+      ],
       "summary": "SQD disaggregates decode by quadratic and subquadratic attention stages instead of treating decode as one pool or splitting only attention from feed-forward work. On an adjusted eight-B200 proxy, it improves tokens per joule by 31–56% over the strongest GPU-only baselines across GLM-5.2, Nemotron 3 Ultra and Gemma 4 31B. A validated analytical model of Rubin plus LPX projects 1.2–1.5 times tighter achievable latency and up to 3.6 times the throughput of attention-FFN disaggregation. The proxy modifies decode-device characteristics and most future-system results are modeled, not production measurements.",
       "why_it_matters": "For inference architects planning mixed GPU and decode-accelerator fleets, hybrid and sparse attention change the correct disaggregation boundary. Moving fixed-state attention with the FFN can reduce energy and interconnect pressure. The paper is architecture guidance rather than deployable software, so capacity plans should wait for a real Rubin/LPX implementation and end-to-end validation.",
       "summary_zh": "SQD 不再把 decode 当作一个整体，也不只按 attention 与 FFN 拆分，而是按二次与子二次注意力阶段分配硬件。在调整后的 8×B200 代理系统上，GLM-5.2、Nemotron 3 Ultra 与 Gemma 4 31B 相对最强纯 GPU 基线的每瓦 token 提升 31–56%。经 B200 结果校准的 Rubin + LPX 分析模型预计可把可达延迟收紧 1.2–1.5 倍，并把 attention-FFN disaggregation 的吞吐最多提高 3.6 倍。代理系统修改了 decode 设备特性，未来硬件的大部分结果仍是模型推演，不是生产实测。",
@@ -256,7 +320,14 @@
         "实验成本": "579 次运行共 4,058 B200 GPU-hours；其中 358 小时进入论文报告结果",
         "可用性": "仅论文与方法；未链接实现仓库"
       },
-      "tags": ["inference", "disaggregation", "subquadratic-attention", "sparse-attention", "nvidia", "energy-efficiency"],
+      "tags": [
+        "inference",
+        "disaggregation",
+        "subquadratic-attention",
+        "sparse-attention",
+        "nvidia",
+        "energy-efficiency"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -271,13 +342,17 @@
       "title": "ParaRecover evaluates recovery across parallel tool-call failures",
       "title_zh": "ParaRecover 评测并行工具调用的故障恢复",
       "category": "research",
-      "organization": ["Dalian University of Technology"],
+      "organization": [
+        "Dalian University of Technology"
+      ],
       "published_at": "2026-09-14T00:00:00Z",
       "first_seen_at": "2026-09-14T16:02:27Z",
       "last_updated_at": "2026-09-14T16:02:27Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.12345",
-      "secondary_sources": ["https://github.com/gbw206/ParaRecover"],
+      "secondary_sources": [
+        "https://github.com/gbw206/ParaRecover"
+      ],
       "summary": "ParaRecover moves agent evaluation from final success to the process of diagnosing and recovering from failures across parallel tool branches. Its 10,626 instances cover 14 error types spanning dependency planning, tool selection and argument matching. The SDE rubric scores structural integrity, diagnostic reasoning and replanning strategy. Tests on more than ten models find persistent weakness in multi-turn error propagation, implicit failures and precise replanning; MIT-licensed code and data are public.",
       "why_it_matters": "For teams operating parallel or multi-agent workflows, a final pass rate hides whether recovery is reliable or accidental. ParaRecover provides a regression suite for localization and replanning before these paths reach production. Because most scoring still depends on a research rubric and the repository has no visible adoption, it should complement environment-specific failure injection rather than replace it.",
       "summary_zh": "ParaRecover 不只看最终任务是否成功，而是评测 agent 能否定位并修复并行工具分支中的中间故障。10,626 个样本覆盖依赖规划、工具选择与参数匹配等 14 类错误。SDE rubric 分别衡量结构完整性、诊断推理与重新规划策略。对十多个模型的测试显示，多轮错误传播、隐式工具失败和精确重规划仍是普遍弱项；MIT 代码与数据已公开。",
@@ -300,7 +375,13 @@
         "可用性": "MIT GitHub 仓库，含数据与评测代码",
         "采用情况": "扫描截止时 GitHub stars 为 0"
       },
-      "tags": ["agent-evaluation", "parallel-tool-use", "error-recovery", "replanning", "benchmark"],
+      "tags": [
+        "agent-evaluation",
+        "parallel-tool-use",
+        "error-recovery",
+        "replanning",
+        "benchmark"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -315,13 +396,19 @@
       "title": "Expert audit finds physics benchmarks understate frontier models",
       "title_zh": "专家审计发现物理 benchmark 低估前沿模型",
       "category": "research",
-      "organization": ["Yale University", "University of Cambridge", "University of Southern California"],
+      "organization": [
+        "Yale University",
+        "University of Cambridge",
+        "University of Southern California"
+      ],
       "published_at": "2026-09-14T00:00:00Z",
       "first_seen_at": "2026-09-14T16:02:27Z",
       "last_updated_at": "2026-09-14T16:02:27Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.13009",
-      "secondary_sources": ["https://arxiv.org/html/2609.13009v1"],
+      "secondary_sources": [
+        "https://arxiv.org/html/2609.13009v1"
+      ],
       "summary": "Domain experts re-grade six physics benchmarks for GPT-5.6 Sol, Fable 5 and Gemini 3.1 Pro, separating model errors from broken questions, reference solutions and graders. On audited public-source cases initially marked wrong, 148 of 152 are benchmark or grader errors. After repair or exclusion, GPT-5.6 Sol rises from 47.3% to 78.7% mean@4 on HLE-Physics and from 61.0% to 87.2% on CMT-Benchmark; corrected pass@4 on retained CritPt tasks reaches 94.4%. The corrected scores use retained or repaired subsets, so they are not a direct like-for-like leaderboard replacement.",
       "why_it_matters": "For teams using scientific benchmarks to route models or claim capability gaps, evaluator and reference quality are now large enough to dominate the measured error. High-stakes benchmark suites need expert adjudication, equivalent-answer handling and retained-set reporting. Near-saturation of repaired closed-ended tasks also means new evaluations must test open-ended modeling and experimental judgment.",
       "summary_zh": "领域专家重新评阅 GPT-5.6 Sol、Fable 5 与 Gemini 3.1 Pro 在六个物理 benchmark 上的结果，把模型错误、题目缺陷、参考答案错误与评分器错误分开。公开来源 benchmark 中，原本判错的 152 个审计案例里有 148 个其实是 benchmark 或 grader 问题。修复或排除缺陷后，GPT-5.6 Sol 在 HLE-Physics 的 mean@4 从 47.3% 升至 78.7%，CMT-Benchmark 从 61.0% 升至 87.2%；保留 CritPt 题目的修正 pass@4 达 94.4%。修正分数基于保留或修复后的子集，不能直接当作原排行榜的同口径替换。",
@@ -344,7 +431,13 @@
         "评测警告": "修复或排除题目后，原始分数与修正分数往往不基于同一题集",
         "可用性": "论文与详细审计表已公开；未链接代码仓库"
       },
-      "tags": ["benchmark-audit", "scientific-reasoning", "evaluation", "physics", "llm-as-a-judge"],
+      "tags": [
+        "benchmark-audit",
+        "scientific-reasoning",
+        "evaluation",
+        "physics",
+        "llm-as-a-judge"
+      ],
       "technical_impact": 4,
       "engineering_value": 5,
       "adoption_signal": 2,
@@ -359,13 +452,19 @@
       "title": "Constant-state cache makes block-diffusion context length independent",
       "title_zh": "固定状态 cache 消除 block diffusion 上下文增长",
       "category": "research",
-      "organization": ["Mila", "Concordia University", "ServiceNow Research"],
+      "organization": [
+        "Mila",
+        "Concordia University",
+        "ServiceNow Research"
+      ],
       "published_at": "2026-09-14T00:00:00Z",
       "first_seen_at": "2026-09-14T16:02:27Z",
       "last_updated_at": "2026-09-14T16:02:27Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.11998",
-      "secondary_sources": ["https://arxiv.org/html/2609.11998v1"],
+      "secondary_sources": [
+        "https://arxiv.org/html/2609.11998v1"
+      ],
       "summary": "A controlled study pretrains attention, Mamba and hybrid 3B block-diffusion models on the same 300 billion tokens and exposes them through one cached decoding interface. Only the Mamba state cache stays constant with context length. At 256K tokens it uses about 7.5 GB and 6.8 ms per step, versus 82 GB and 29 ms for attention, yielding 2.6 times single-stream and 14 times aggregate throughput. Mamba and hybrid models retain retrieval at 8–16 times training length while attention collapses at twice the training length, with no measured quality loss.",
       "why_it_matters": "For teams exploring diffusion language models, the cache architecture can erase much of their long-context serving penalty. The result is expensive but well controlled across equal-scale pretraining runs. Without released checkpoints or serving code, it remains a research direction to watch rather than a deployable option.",
       "summary_zh": "这项受控研究用同一份 3000 亿 token 数据，分别预训练 attention、Mamba 与 hybrid 三个 3B block-diffusion 模型，并通过统一的 cached decoding 接口对比。只有 Mamba 的状态 cache 不随上下文长度增长。在 256K tokens 下，它约占 7.5 GB、每步 6.8 毫秒；attention 则为 82 GB、29 毫秒，单流吞吐高 2.6 倍，总吞吐高 14 倍。Mamba 与 hybrid 在训练长度的 8–16 倍仍能完成检索，而 attention 在 2 倍处失效，且未测得质量损失。",
@@ -388,7 +487,13 @@
         "吞吐": "256K 下 Mamba 单流 2.6 倍、总吞吐 14 倍",
         "可用性": "未链接公开 checkpoint 或实现仓库"
       },
-      "tags": ["diffusion-language-model", "mamba", "long-context", "cache", "inference"],
+      "tags": [
+        "diffusion-language-model",
+        "mamba",
+        "long-context",
+        "cache",
+        "inference"
+      ],
       "technical_impact": 4,
       "engineering_value": 3,
       "adoption_signal": 1,
@@ -397,6 +502,194 @@
       "risk": 2,
       "recommendation": "WATCH",
       "event_fingerprint": "arxiv-2609-11998-block-diffusion-constant-state-cache"
+    },
+    {
+      "event_id": "ev-20260914-10",
+      "title": "Study shows injected plans can evade chain-of-thought monitors",
+      "title_zh": "研究发现注入的计划能绕过思维链监测",
+      "category": "research",
+      "organization": [
+        "academic (see paper)"
+      ],
+      "published_at": "2026-09-14T18:33:27Z",
+      "first_seen_at": "2026-09-15T16:00:31Z",
+      "last_updated_at": "2026-09-15T16:00:31Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.15989",
+      "secondary_sources": [],
+      "summary": "Researchers plant benign-sounding harmful plans in an actor model’s context. The actor follows the plan and restates it as its own reasoning, while monitors miss 25–33% of attacks across tested settings. Giving a monitor the injected plan can reduce detection further in one task. The evidence comes from controlled benchmarks, not production incidents.",
+      "why_it_matters": "Teams relying on reasoning traces for agent safety should test whether external context can launder a plan into apparently clean reasoning. Keep independent action-level checks even when the trace looks benign.",
+      "summary_zh": "研究者把听起来无害的恶意计划放入模型上下文。模型会照着做，还把计划改写成自己的推理。多个测试中，监测器漏掉了 25–33% 的攻击。在一项任务里，让监测器也看到注入内容反而降低了检出率。这是受控实验，尚非生产事故。",
+      "summary_en": "Researchers plant benign-sounding harmful plans in an actor model’s context. The actor follows the plan and restates it as its own reasoning, while monitors miss 25–33% of attacks across tested settings. Giving a monitor the injected plan can reduce detection further in one task. The evidence comes from controlled benchmarks, not production incidents.",
+      "why_it_matters_zh": "对依赖推理轨迹保护 agent 的团队，关键是测试外部上下文能否把恶意计划洗成看似正常的推理。即便轨迹干净，也要独立检查实际动作。",
+      "why_it_matters_en": "Teams relying on reasoning traces for agent safety should test whether external context can launder a plan into apparently clean reasoning. Keep independent action-level checks even when the trace looks benign.",
+      "technical_details": {
+        "attack": "plan injection into actor context",
+        "monitor_evasion": "25–33% across evaluated benchmarks",
+        "bio_math_detection": "access to injected plan reduced detection by up to 50%",
+        "code": "no public implementation linked on arXiv abstract page"
+      },
+      "technical_details_zh": {
+        "攻击方式": "向 actor 上下文注入计划",
+        "监测漏检": "多个 benchmark 为 25–33%",
+        "Bio-Math 检出变化": "看到注入计划后检出率最多下降 50%",
+        "代码": "arXiv 摘要页未链接公开实现"
+      },
+      "tags": [
+        "agent-security",
+        "prompt-injection",
+        "chain-of-thought-monitoring"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609.15989"
+    },
+    {
+      "event_id": "ev-20260914-11",
+      "title": "Gavel reads skill-routing signals from a frozen model",
+      "title_zh": "Gavel 从冻结模型中读取 skill 路由信号",
+      "category": "research",
+      "organization": [
+        "academic (see paper)"
+      ],
+      "published_at": "2026-09-14T17:58:27Z",
+      "first_seen_at": "2026-09-15T16:00:31Z",
+      "last_updated_at": "2026-09-15T16:00:31Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.15982",
+      "secondary_sources": [],
+      "summary": "Gavel reads task and skill representations from a frozen Qwen3-32B with two trained linear maps. It shortlists skills without loading the whole catalog into the prompt, then resumes model inference to judge candidates. On public benchmarks and a new 372-trajectory set, it improves routing by up to 13.4 points on written tasks and 21.9 points during agent rollouts against tested disclosure and retrieval baselines. No public implementation is linked yet.",
+      "why_it_matters": "For teams with large skill catalogs, the result suggests routing can reuse a model’s internal signal and save prompt space. Trial only after code and held-out library tests are available; the reported comparison is still author-run.",
+      "summary_zh": "Gavel 用两个训练过的线性映射读取冻结 Qwen3-32B 的任务与 skill 表示。它先筛选候选 skill，不必把整个目录塞进提示词，再让模型判断候选项。在公开评测和 372 条模拟轨迹上，书面任务最多提高 13.4 分，运行中触发 skill 最多提高 21.9 分。论文目前未链接公开实现。",
+      "summary_en": "Gavel reads task and skill representations from a frozen Qwen3-32B with two trained linear maps. It shortlists skills without loading the whole catalog into the prompt, then resumes model inference to judge candidates. On public benchmarks and a new 372-trajectory set, it improves routing by up to 13.4 points on written tasks and 21.9 points during agent rollouts against tested disclosure and retrieval baselines. No public implementation is linked yet.",
+      "why_it_matters_zh": "对维护大型 skill 目录的团队，这说明模型内部信号可能减少目录占用的上下文。等代码公开后，再用未见过的 skill 目录试验；目前成绩仍是作者自测。",
+      "why_it_matters_en": "For teams with large skill catalogs, the result suggests routing can reuse a model’s internal signal and save prompt space. Trial only after code and held-out library tests are available; the reported comparison is still author-run.",
+      "technical_details": {
+        "backbone": "Qwen3-32B frozen",
+        "trainable_parameters": "two linear maps",
+        "benchmark": "three public sets plus SkillTraj, 372 trajectories",
+        "score_gain": "up to +13.4 pp written tasks; +21.9 pp mid-rollout",
+        "code": "not linked on abstract page"
+      },
+      "technical_details_zh": {
+        "底座": "冻结 Qwen3-32B",
+        "训练参数": "两个线性映射",
+        "评测": "三个公开集合与 SkillTraj 372 条轨迹",
+        "分数提升": "书面任务最多 +13.4 分；运行中最多 +21.9 分",
+        "代码": "摘要页未链接"
+      },
+      "tags": [
+        "agent-skills",
+        "routing",
+        "context-engineering"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609.15982"
+    },
+    {
+      "event_id": "ev-20260914-12",
+      "title": "VLoc Bench finds agents struggle to locate vulnerable code",
+      "title_zh": "VLoc Bench 发现 agent 难以定位漏洞代码",
+      "category": "research",
+      "organization": [
+        "academic (see paper)"
+      ],
+      "published_at": "2026-09-14T17:44:51Z",
+      "first_seen_at": "2026-09-15T16:00:31Z",
+      "last_updated_at": "2026-09-15T16:00:31Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.15939",
+      "secondary_sources": [],
+      "summary": "VLoc Bench pairs vulnerable and patched snapshots for 500 real vulnerabilities across 290 repositories. Agents receive a weakness description and read-only terminal access, then identify affected files or say the patch removed the flaw. Across 27 models and four static analyzers, the best File F1 reaches only 0.229; in 38.4% of tasks no tested model finds a correct location. Even stronger locators can report unsupported files after a fix.",
+      "why_it_matters": "For teams deploying security agents, file localization and abstention on patched code need separate acceptance tests. A high-level vulnerability verdict alone does not establish reliable repository navigation.",
+      "summary_zh": "VLoc Bench 把 290 个仓库中的 500 个真实漏洞配成修复前后快照。agent 只拿到漏洞类别说明和只读终端，需要找出受影响文件，或确认修复后已不存在。27 个模型和四种静态分析工具中，最佳 File F1 仅 0.229；38.4% 的任务无人定位正确。修复后，较强的定位器也会误报。",
+      "summary_en": "VLoc Bench pairs vulnerable and patched snapshots for 500 real vulnerabilities across 290 repositories. Agents receive a weakness description and read-only terminal access, then identify affected files or say the patch removed the flaw. Across 27 models and four static analyzers, the best File F1 reaches only 0.229; in 38.4% of tasks no tested model finds a correct location. Even stronger locators can report unsupported files after a fix.",
+      "why_it_matters_zh": "对部署安全 agent 的团队，应分别验收文件定位能力和修复后的拒报能力。只看漏洞判断结论，无法证明它会可靠地搜索仓库。",
+      "why_it_matters_en": "For teams deploying security agents, file localization and abstention on patched code need separate acceptance tests. A high-level vulnerability verdict alone does not establish reliable repository navigation.",
+      "technical_details": {
+        "dataset": "500 vulnerabilities; 290 repositories; six ecosystems; 147 CWE classes",
+        "evaluation": "27 models and four static analyzers",
+        "best_file_f1": 0.229,
+        "tasks_without_correct_location": "38.4%",
+        "code": "no repository linked on abstract page"
+      },
+      "technical_details_zh": {
+        "数据集": "500 个漏洞；290 个仓库；六种生态；147 类 CWE",
+        "评测": "27 个模型和四种静态分析工具",
+        "最佳 File F1": 0.229,
+        "无人正确定位的任务": "38.4%",
+        "代码": "摘要页未链接仓库"
+      },
+      "tags": [
+        "agent-evaluation",
+        "security",
+        "coding-agents"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609.15939"
+    },
+    {
+      "event_id": "ev-20260914-13",
+      "title": "AlgoEvo adapts algorithm search using execution feedback",
+      "title_zh": "AlgoEvo 利用执行反馈调整算法搜索",
+      "category": "research",
+      "organization": [
+        "academic (see paper)"
+      ],
+      "published_at": "2026-09-14T16:24:27Z",
+      "first_seen_at": "2026-09-15T16:00:31Z",
+      "last_updated_at": "2026-09-15T16:00:31Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.15820",
+      "secondary_sources": [],
+      "summary": "AlgoEvo lets an agent inspect and edit executable candidates as tests return feedback. A skill hub separates design knowledge from the search engine, while a task tree records failed and successful paths. Across six benchmark tasks, the authors report matching or exceeding specialized search methods with fewer evaluations and tokens. The abstract does not supply exact deltas or a public implementation.",
+      "why_it_matters": "For algorithm-discovery workflows, preserving execution feedback as reusable task memory is worth testing. Wait for code and budget-matched reproduction before changing a production search pipeline.",
+      "summary_zh": "AlgoEvo 让 agent 根据执行反馈检查并修改候选代码。skill hub 把领域知识与搜索引擎分开，任务树记录成功和失败路径。作者在六项任务上报告：结果达到或超过专用搜索方法，评测次数和 token 用量更低。摘要没有给出精确幅度，也未提供公开实现。",
+      "summary_en": "AlgoEvo lets an agent inspect and edit executable candidates as tests return feedback. A skill hub separates design knowledge from the search engine, while a task tree records failed and successful paths. Across six benchmark tasks, the authors report matching or exceeding specialized search methods with fewer evaluations and tokens. The abstract does not supply exact deltas or a public implementation.",
+      "why_it_matters_zh": "对算法发现流水线，可先测试把执行反馈存成可复用的任务记忆。代码与同预算复现公布前，暂不调整生产搜索流程。",
+      "why_it_matters_en": "For algorithm-discovery workflows, preserving execution feedback as reusable task memory is worth testing. Wait for code and budget-matched reproduction before changing a production search pipeline.",
+      "technical_details": {
+        "design": "runtime feedback, design skill hub, hierarchical experience tree",
+        "benchmarks": "six representative algorithm tasks",
+        "reported_result": "matches or exceeds specialized methods with fewer evaluations and tokens",
+        "code": "not linked on arXiv abstract page"
+      },
+      "technical_details_zh": {
+        "设计": "执行反馈、design skill hub、分层经验树",
+        "评测": "六项算法任务",
+        "作者报告": "达到或超过专用方法，评测和 token 用量更少",
+        "代码": "arXiv 摘要页未链接"
+      },
+      "tags": [
+        "agentic-search",
+        "algorithm-discovery",
+        "skills"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609.15820"
     }
   ]
 }
