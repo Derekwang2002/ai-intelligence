@@ -1,4 +1,4 @@
-# Current Trend State — as of 2026-09-15T16:00Z
+# Current Trend State — as of 2026-09-16T16:00Z
 
 > 维护说明：本文件反映当前仍值得追踪的候选/确认趋势。每次运行可新增、升级、降级或作废条目。趋势判定要求多个独立信号（跨日期、跨组织）；单个新闻或单日热度不构成趋势。
 
@@ -52,6 +52,7 @@
 - **2026-09-14 run:** vLLM 与 SGLang 分别为 DeepSeek V4.1-Flash 和 Qwen3.8-Flash-Next-NVFP4 合并新的 serving 路径（新增证据第 17 条）；两者都尚未进入正式版本，也没有第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
 - **2026-09-15 run:** 9 月 14 日 arXiv digest 带来 SAS、SQD 与固定状态 diffusion cache 等架构研究，但没有新的同级开放权重模型，也没有 GLM-5.3 或 DeepSeek V4.1-Flash 的第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
 - **2026-09-16 run:** 本窗口没有改变判据的独立新证据，状态与信心维持不变。
+- **2026-09-17 run:** 本窗口没有第三方 Terminal-Bench / SWE 权重复现或新的跨组织发布；OPEN-1B 关注训练可审计性，不改变前沿 coding 模型判据。维持 strengthening / Medium。
 - **What would confirm（升 High 的剩余判据）:** (a) 权重的社区独立复现（第三方 Terminal Bench / SWE 运行——模型卡元数据同步不算）——**升 High 仅剩此项**；(b) 已于 2026-09-11 由 DeepSeek V4.1 Flash 达成；(c) 已达成并延续五个周期，剩余观察其延续性
 
 ### Emerging: MCP 进入企业安全与强制管控阶段
@@ -93,13 +94,14 @@
 - **2026-09-14 run:** LiteLLM RC 新增按用户 MCP 工具权限，但属于 gateway 预发布能力，不是安全厂商 GA 或公开遥测，故不计正式证据。维持 emerging / Medium。
 - **2026-09-15 run:** OATS 对 66,192 个 skills 的审计与实时 gate 实验说明静态扫描需要运行时后果控制补位；它覆盖通用 skill/shell policy，不是新的 MCP enforcement GA 或公开遥测，作为趋势 #7 的正式证据、不重复计入本趋势。维持 emerging / Medium。
 - **2026-09-16 run:** 本窗口没有改变判据的独立新证据，状态与信心维持不变。
+- **2026-09-17 run:** Gemini CLI 0.60 将 MCP OAuth issuer 校验与路径边界修复推入 stable，但这是客户端加固，不是第二家安全厂商的 GA MCP 识别与遥测。维持 emerging / Medium。
 - **What would confirm:** 第二家安全厂商（Zscaler/Netskope/Palo Alto）交付 **GA** 状态的 MCP 识别能力并公开遥测数据；MCP auth spec 在主流 agent framework 中落地
 
 ### Established: Coding agent 收敛为 multi-agent runtime
 - **Status:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Confidence:** High
 - **First observed:** 2026-08-15（覆盖 2026-08-13/14 窗口）
-- **Last updated:** 2026-09-15
+- **Last updated:** 2026-09-17
 - **Evidence:**
   1. Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）
   2. GitHub/Microsoft Copilot Agent Plugins 1.0 GA（2026-08-13）
@@ -116,6 +118,7 @@
   13. Cursor Projects（2026-09-10，官方 changelog，ev-20260910-03）：coordinator agent 规划分派而非亲自写码、月级任务上下文、项目级共享记忆（后续 agent 复用先前 agent 的知识）、Slack/定时/PR 订阅唤醒——月级自主工作成为主流 coding 工具的管理单元（同组织 Cursor 的加固，不另计组织）
   14. GitHub Copilot code review（2026-09-11T20:00Z，一手来源，ev-20260911-11）：Lite review 改为多 agent ensemble，并在 agent firewall 后运行完整 Copilot SDK shell 工具集做构建、测试和定向脚本验证；厂商实验中被采纳的高严重度评论 +47%、成本约 -8%。同组织 GitHub/Microsoft 的运行时加固，不新增组织
   15. Agent runtime 与恢复评测进入配对实验（2026-09-14 digest，ev-20260914-02 / ev-20260914-07）：同模型对比未发现 Claude Agent SDK / Codex SDK 相对中立 deepagents 的平均解题率优势，但中立 harness 每解题成本高 1.2–1.6 倍；ParaRecover 以 10,626 个样本、14 类错误测量并行工具调用的定位与重规划——runtime 选择与故障恢复开始有可复用的过程指标
+  16. runtime、scaffold 与委派拓扑开始可量化（2026-09-15 digest，ev-20260915-02 / ev-20260915-04 / ev-20260915-06）：SWE-bench 前 30 名相邻结果均不可区分，固定模型后的 scaffold 差距最高 29.8 分；生产轨迹给出深层委派的信息损失与成本交叉点；ScienceBuddy 公开 harness 演化与模型训练分层循环。
 - **Why established / High:** 确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
 - **2026-08-16 run:** 窗口内无新信号（Claude Code 无新版本；Cursor Builds 默认开启时间为 8/17，尚未生效）。
 - **2026-08-17 run:** Cursor Builds 按计划对所有环境默认开启。但 Builds 是 warm-snapshot 基础设施改进，不是 multi-agent 原语，不计为证据。
@@ -139,6 +142,7 @@
 - **2026-09-14 run:** LiteLLM RC 通过 well-known index 发布 Agent Skills，并可配置 Codex/Claude Code gateway，是技能与编排标准化的邻接信号；因仍是 RC，不计新组织或正式证据。维持 established / High。
 - **2026-09-15 run:** 新增证据第 15 条：配对 harness 研究未发现厂商原生 runtime 的平均解题率优势，ParaRecover 则把并行工具调用的错误定位与恢复拆成过程指标。两者把 runtime 选型与可靠性评测从产品叙事推进到可测协议；维持 established / High。
 - **2026-09-16 run:** VLoc Bench 进一步显示仓库级安全 agent 的定位与修复后拒报都很弱；这是新的能力测量，不构成多 agent runtime 采用证据。状态维持 established / High。
+- **2026-09-17 run:** 新增证据第 16 条：SWE-bench 分辨率审计、多 agent 分层成本研究与 ScienceBuddy 让 runtime、scaffold 和委派拓扑更可测。它们补充工程决策依据，不改变已 established / High 的采用判断。
 - **What would confirm:** 已达成（2026-08-28）：(a) Codex 0.150.0 stable 落地 agent 间消息 + Gemini CLI a2a-server 进 stable。剩余观察项：(b) 社区编排模式是否收敛出事实标准工具或命名模式；(c) ≥2 个独立组织的公开生产案例与采用遥测
 
 ### Emerging: 前沿实验室把安全事件披露与第三方独立审查制度化
@@ -175,6 +179,7 @@
 - **2026-09-14 run:** 没有新的前沿实验室事故披露、METR 审查结果、嵌入式评估员落地或跨厂商报告规范。维持 emerging / Medium。
 - **2026-09-15 run:** 没有新的前沿实验室事故披露、METR 审查结果、嵌入式评估员落地或跨厂商报告规范。物理 benchmark 专家审计属于评测质量证据，不改变第三方安全审查判据。维持 emerging / Medium。
 - **2026-09-16 run:** 本窗口没有改变判据的独立新证据，状态与信心维持不变。
+- **2026-09-17 run:** 本窗口没有新的前沿实验室事故披露、METR 审查结果、嵌入式评估员落地或跨厂商报告规范。OPEN-1B 的训练审计属于模型溯源，不改变事故披露判据。维持 emerging / Medium。
 - **What would confirm:** METR 正式发布对 Anthropic 事件的独立审查；第二家前沿实验室承诺常态化独立审查（不只一次性报告）；Path to Astra 式的评测披露要求被第二家实验室采纳；跨厂商事故报告格式出现标准化迹象（类似安全行业的 disclosure 惯例）
 
 ### Candidate: AI 工具链的企业自托管 / 数据驻留执行面成形
@@ -198,6 +203,7 @@
 - **2026-09-14 run:** LiteLLM RC 的客户自管 KMS 与 gateway key 是控制面加固，不是新的自托管执行面或独立采用案例。OpenAI PSP 白皮书与 Anthropic EFS 仍无新增。维持 candidate / Low。
 - **2026-09-15 run:** 没有新的自托管执行面或独立采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍无落地。Bash 工具接口研究再次说明强隔离的重要性，但不构成执行面产品证据。维持 candidate / Low。
 - **2026-09-16 run:** 本窗口没有改变判据的独立新证据，状态与信心维持不变。
+- **2026-09-17 run:** 没有新的自托管执行面或独立采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。JustFit 是本地推理容量研究，不构成企业执行面证据。维持 candidate / Low。
 - **What would confirm:** ≥2 个独立组织的生产案例与采用数据；OpenAI Private Safety Processing 白皮书与 Anthropic EFS 按时间表兑现（9 月仅剩三分之一）；第二家开发工具厂商之外的执行面形态持续出现（如 Confidential VM 类密码学隔离）
 
 ### Emerging: AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
@@ -220,13 +226,14 @@
 - **2026-09-14 run:** 没有新的正式验证结论、第三方复现或 Lean 工具链采用数据。维持 emerging / Medium。
 - **2026-09-15 run:** 物理 benchmark 专家审计显示修复题目与 grader 后闭集任务接近饱和，但没有新的正式验证结论、第三方复现或 Lean 工具链采用数据。作为评测迁移的邻接信号，不计本趋势正式证据；维持 emerging / Medium。
 - **2026-09-16 run:** Stellar Colosseum 报告研究级证明任务成绩，但代码和独立验证仍待确认；单篇论文不足以提高数学形式化趋势的信心。维持 emerging / Medium。
+- **2026-09-17 run:** 本窗口没有新的正式数学验证结论、第三方复现或 Lean 工具链采用数据。ScienceBuddy 属于通用科研 agent，不构成本趋势证据。维持 emerging / Medium。
 - **What would confirm:** Clay 研究所或数学界对任一证明的正式接受；第三家实验室或独立团队复现同类结果；Lean/formal 工具链采用数据；AI 数学可操作规范落地（Fields Medalist 宣言是否转化为具体准则）
 
 ### Emerging: Agent runtime 把宽执行能力与后果控制拆成两层
 - **Status:** emerging（2026-09-15 立项：9/9–9/14 的五组跨组织信号同时指向「给 agent 通用执行面，再用独立策略层约束后果」；包含企业权限 GA、capability-scoped harness、agent firewall、工具接口受控实验与实时 gate）
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-09-16
+- **Last updated:** 2026-09-17
 - **Evidence:**
   1. GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束
   2. CapScope（2026-09-10 digest，ev-20260910-09）：把 shell、filesystem、network 能力写成 task-scoped contract，prompt injection 成功率从 38.7% 降至 0.8%，独立 verifier 与执行 harness 分层
@@ -234,10 +241,12 @@
   4. 《Is Bash All You Need?》（2026-09-14 digest，ev-20260914-01）：两模型、两 enterprise benchmark 的受控实验中，Bash 比 typed tools 高 4.8–24.5 分且少用 19–72% token；研究明确把强沙箱列为采用前提
   5. OATS runtime gate（2026-09-14 digest，ev-20260914-03）：66,192 个 skill 版本中，clean artifact 仍会触发本地策略敏感动作；确定性 resolver 在实时实验中拦下 23/23 次禁用动作，中位 hook 延迟 67.6 毫秒
   6. 2026-09-14：计划注入实验在多个设置中造成 25–33% 监测漏检；Claude Code 2.1.271 加入逐命令网络授权（ev-20260914-10；ev-20260814-04 更新）。
+  7. 2026-09-15 至 16：Gemini CLI 0.60 将 MCP OAuth、路径边界、环境变更确认与工具输出来源加固推入 stable；Claude Code 2.1.273 修复 Bash 权限跳过、危险子 shell 与托管策略优先级；social-harness 实验显示跨主体消息还需要独立的来源、权限、交互协议与治理层（ev-20260825-02 / ev-20260814-04 更新；ev-20260915-07）。
 - **Time Horizon:** Short-term
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
 - **2026-09-15 run:** 立项为 emerging / Medium：五组信号跨 GitHub/Microsoft、学术团队与 Pheo，覆盖产品 GA、厂商运行时、受控实验与开源 gate。不是「shell 更好」的单篇论文推断，而是「宽能力 + 独立后果控制」在供给、评测与安全实现三端同时收敛。
 - **2026-09-16 run:** 计划注入研究表明，干净的推理轨迹仍可能掩盖恶意动作；Claude Code 2.1.271 则把网络授权收窄到逐命令，并修复多处权限检查缺口。两者支持把动作后果检查放在独立策略层，但没有新的跨平台正式采用数据，维持 emerging / Medium。
+- **2026-09-17 run:** 新增证据第 7 条：Gemini CLI 0.60、Claude Code 2.1.273 与 social-harness 实验继续把路径、身份、消息和后果控制移出模型。仍缺第二个平台跨 shell、MCP、browser 的统一正式策略与采用遥测，维持 emerging / Medium。
 - **What would confirm:** 第二家 agent 平台公开同类运行时 policy GA 与采用遥测；跨 shell / MCP / browser 的统一 consequence taxonomy；独立团队复现 Bash 接口收益与 OATS 误报/延迟；出现可互操作的 policy schema
 
 ## Invalidated / retired

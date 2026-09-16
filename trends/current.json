@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-15T16:00Z",
+  "as_of": "2026-09-16T16:00Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -164,6 +164,11 @@
           "date": "2026-09-16",
           "note_zh": "本窗口没有改变判据的独立新证据，状态与信心维持不变。",
           "note_en": "No independent in-window evidence changed the confirmation criteria. Status and confidence stay unchanged."
+        },
+        {
+          "date": "2026-09-17",
+          "note_zh": "本窗口没有第三方 Terminal-Bench / SWE 权重复现或新的跨组织发布；OPEN-1B 关注训练可审计性，不改变前沿 coding 模型判据。维持 strengthening / Medium。",
+          "note_en": "No third-party Terminal-Bench or SWE reproduction on public weights and no new cross-organization release appeared. OPEN-1B concerns training auditability rather than frontier coding capability. Stays strengthening / Medium."
         }
       ]
     },
@@ -316,6 +321,11 @@
           "date": "2026-09-16",
           "note_zh": "本窗口没有改变判据的独立新证据，状态与信心维持不变。",
           "note_en": "No independent in-window evidence changed the confirmation criteria. Status and confidence stay unchanged."
+        },
+        {
+          "date": "2026-09-17",
+          "note_zh": "Gemini CLI 0.60 将 MCP OAuth issuer 校验与路径边界修复推入 stable，但这是客户端加固，不是第二家安全厂商的 GA MCP 识别与遥测。维持 emerging / Medium。",
+          "note_en": "Gemini CLI 0.60 moves MCP OAuth issuer checks and path-boundary fixes into stable, but this is client hardening rather than a second security vendor's GA MCP detection with telemetry. Stays emerging / Medium."
         }
       ]
     },
@@ -328,7 +338,7 @@
       "status_note_en": "established (candidate→emerging 2026-08-18; →strengthening 8/20; →established 2026-08-28 — confirmation criterion (a) met: Codex 0.150.0 stable ships agent-initiated cross-task messaging; in the same window Gemini CLI 0.57.0 shipped a2a-server in stable and on npm, making Google the seventh organization with protocol-level interop in a stable runtime)",
       "confidence": "High",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-15",
+      "last_updated": "2026-09-17",
       "retired": false,
       "evidence_zh": [
         "Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）",
@@ -345,7 +355,8 @@
         "12. OpenAI Agents API（2026-09-10，一手来源，ev-20260910-02）：Codex harness 托管化为平台原语——一次 API 调用创建生产级 cloud agent，编排、跨上下文窗口压缩、tool search、程序化工具调用、MCP、subagent 并行全部内建；harness 层从 CLI 运行时升级为云平台商品（同组织 OpenAI 的加固与新台阶，不新增组织，但把「harness 即平台」钉进产品面）",
         "13. Cursor Projects（2026-09-10，官方 changelog，ev-20260910-03）：coordinator agent 规划分派而非亲自写码、月级任务上下文、项目级共享记忆（后续 agent 复用先前 agent 的知识）、Slack/定时/PR 订阅唤醒——月级自主工作成为主流 coding 工具的管理单元（同组织 Cursor 的加固，不另计组织）",
         "14. GitHub Copilot code review（2026-09-11T20:00Z，一手来源，ev-20260911-11）：Lite review 改为多 agent ensemble，并在 agent firewall 后运行完整 Copilot SDK shell 工具集做构建、测试和定向脚本验证；厂商实验中被采纳的高严重度评论 +47%、成本约 -8%。同组织 GitHub/Microsoft 的运行时加固，不新增组织",
-        "15. Agent runtime 与恢复评测进入配对实验（2026-09-14 digest，ev-20260914-02 / ev-20260914-07）：同模型对比未发现 Claude Agent SDK / Codex SDK 相对中立 deepagents 的平均解题率优势，但中立 harness 每解题成本高 1.2–1.6 倍；ParaRecover 以 10,626 个样本、14 类错误测量并行工具调用的定位与重规划——runtime 选择与故障恢复开始有可复用的过程指标"
+        "15. Agent runtime 与恢复评测进入配对实验（2026-09-14 digest，ev-20260914-02 / ev-20260914-07）：同模型对比未发现 Claude Agent SDK / Codex SDK 相对中立 deepagents 的平均解题率优势，但中立 harness 每解题成本高 1.2–1.6 倍；ParaRecover 以 10,626 个样本、14 类错误测量并行工具调用的定位与重规划——runtime 选择与故障恢复开始有可复用的过程指标",
+        "16. runtime、scaffold 与委派拓扑开始可量化（2026-09-15 digest，ev-20260915-02 / ev-20260915-04 / ev-20260915-06）：SWE-bench 前 30 名相邻结果均不可区分，固定模型后的 scaffold 差距最高 29.8 分；生产轨迹给出深层委派的信息损失与成本交叉点；ScienceBuddy 公开 harness 演化与模型训练分层循环。"
       ],
       "evidence_en": [
         "Anthropic Claude Code: default-on subagent forking + cross-session SendMessage (2026-08-13/14)",
@@ -362,7 +373,8 @@
         "12. OpenAI Agents API (2026-09-10, primary source, ev-20260910-02): the Codex harness productized as a platform primitive — one API call creates a production cloud agent with orchestration, cross-window compaction, tool search, programmatic tool calling, MCP and parallel subagents built in; the harness layer graduates from CLI runtime to cloud-platform commodity (same-org OpenAI reinforcement and a new rung, not a new organization)",
         "13. Cursor Projects (2026-09-10, official changelog, ev-20260910-03): coordinator agent plans and delegates rather than writing code, months-scale task context, project-level shared memory (later agents reuse earlier agents' knowledge), Slack/schedule/PR subscription wake-ups — months-scale self-directed work becomes the management unit of a mainstream coding tool (same-org Cursor reinforcement, not counted as a new organization)",
         "14. GitHub Copilot code review (2026-09-11T20:00Z, primary source, ev-20260911-11): Lite review now uses a multi-agent ensemble and runs the full Copilot SDK shell-tool set behind the agent firewall for build, test and targeted-script validation; GitHub's experiment reports 47% more addressed high-severity comments at about 8% lower cost. Same-org GitHub/Microsoft runtime reinforcement, not a new organization",
-        "15. Agent runtime and recovery evaluation enter paired experiments (2026-09-14 digest, ev-20260914-02 / ev-20260914-07): same-model contrasts find no resolved average solve-rate advantage for Claude Agent SDK / Codex SDK over neutral deepagents, while the neutral harness costs 1.2-1.6x more per solved task; ParaRecover measures localization and replanning across parallel tool calls with 10,626 instances and 14 error classes — runtime choice and failure recovery now have reusable process metrics"
+        "15. Agent runtime and recovery evaluation enter paired experiments (2026-09-14 digest, ev-20260914-02 / ev-20260914-07): same-model contrasts find no resolved average solve-rate advantage for Claude Agent SDK / Codex SDK over neutral deepagents, while the neutral harness costs 1.2-1.6x more per solved task; ParaRecover measures localization and replanning across parallel tool calls with 10,626 instances and 14 error classes — runtime choice and failure recovery now have reusable process metrics",
+        "16. Runtime, scaffold and delegation topology become measurable (2026-09-15 digest, ev-20260915-02 / ev-20260915-04 / ev-20260915-06): no adjacent top-30 SWE-bench result is separable, within-model scaffold ranges reach 29.8 points, production traces estimate hierarchy information loss and a cost crossover, and ScienceBuddy releases a layered harness-evolution and model-training loop."
       ],
       "why_it_matters_zh": "升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。",
       "why_it_matters_en": "Why upgraded to established / High: confirmation criterion (a) (agent-to-agent messaging semantics in a non-Anthropic stable runtime) is met by Codex 0.150.0 — agents can read, create, or message other tasks from the terminal, so inbox semantics are no longer Anthropic-only; in the same window Google shipped the A2A protocol server into the Gemini CLI stable line and published it on npm. Equivalent primitives are now verified across seven organizations (Anthropic, GitHub/Microsoft, DeepSeek, OpenAI, SST/OpenCode, Anysphere/Cursor, Google) in stable or installable artifacts, spanning March to August 2026. The engineering impact has landed: the orchestration plane is shifting from human-initiated sessions to resident, event-driven, interoperable task systems — multi-agent orchestration is becoming a built-in capability of CLI runtimes rather than a framework choice. Residual gaps (not blocking established, kept under watch): Google's a2a-server has zero documentation or announcement; public production case studies and adoption telemetry are still missing; on the Anthropic side, Claude Code 2.1.248 extended cross-session messaging to Bedrock/Vertex/Foundry and telemetry-off deployments (same-org hardening, not counted separately).",
@@ -478,6 +490,11 @@
           "date": "2026-09-16",
           "note_zh": "VLoc Bench 进一步显示仓库级安全 agent 的定位与修复后拒报都很弱；这是新的能力测量，不构成多 agent runtime 采用证据。状态维持 established / High。",
           "note_en": "VLoc Bench adds a repository-level security-agent evaluation and exposes weak localization and post-fix abstention. This measures agent capability rather than multi-agent runtime adoption. Stays established / High."
+        },
+        {
+          "date": "2026-09-17",
+          "note_zh": "新增证据第 16 条：SWE-bench 分辨率审计、多 agent 分层成本研究与 ScienceBuddy 让 runtime、scaffold 和委派拓扑更可测。它们补充工程决策依据，不改变已 established / High 的采用判断。",
+          "note_en": "Evidence item 16 added: the SWE-bench resolution audit, multi-agent decomposition-cost study and ScienceBuddy make runtime, scaffold and delegation topology more measurable. They improve engineering decisions without changing the established / High adoption judgment."
         }
       ]
     },
@@ -590,6 +607,11 @@
           "date": "2026-09-16",
           "note_zh": "本窗口没有改变判据的独立新证据，状态与信心维持不变。",
           "note_en": "No independent in-window evidence changed the confirmation criteria. Status and confidence stay unchanged."
+        },
+        {
+          "date": "2026-09-17",
+          "note_zh": "本窗口没有新的前沿实验室事故披露、METR 审查结果、嵌入式评估员落地或跨厂商报告规范。OPEN-1B 的训练审计属于模型溯源，不改变事故披露判据。维持 emerging / Medium。",
+          "note_en": "No new frontier-lab incident disclosure, METR review, embedded-evaluator deployment or cross-vendor reporting standard appeared. OPEN-1B audits training provenance rather than incident disclosure. Stays emerging / Medium."
         }
       ]
     },
@@ -667,6 +689,11 @@
           "date": "2026-09-16",
           "note_zh": "本窗口没有改变判据的独立新证据，状态与信心维持不变。",
           "note_en": "No independent in-window evidence changed the confirmation criteria. Status and confidence stay unchanged."
+        },
+        {
+          "date": "2026-09-17",
+          "note_zh": "没有新的自托管执行面或独立采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。JustFit 是本地推理容量研究，不构成企业执行面证据。维持 candidate / Low。",
+          "note_en": "No new self-hosted execution plane or independent adoption case appeared, and OpenAI PSP plus Anthropic EFS remain unshipped. JustFit studies local inference capacity rather than an enterprise execution plane. Stays candidate / Low."
         }
       ]
     },
@@ -734,6 +761,11 @@
           "date": "2026-09-16",
           "note_zh": "Stellar Colosseum 报告研究级证明任务成绩，但代码和独立验证仍待确认；单篇论文不足以提高数学形式化趋势的信心。维持 emerging / Medium。",
           "note_en": "Stellar Colosseum reports research-level theorem results, but code and independent verification remain open. One paper does not raise confidence in formalized mathematics. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-17",
+          "note_zh": "本窗口没有新的正式数学验证结论、第三方复现或 Lean 工具链采用数据。ScienceBuddy 属于通用科研 agent，不构成本趋势证据。维持 emerging / Medium。",
+          "note_en": "No new formal mathematical validation, third-party reproduction or Lean-toolchain adoption data appeared. ScienceBuddy is a general scientific agent and does not count as evidence for this trend. Stays emerging / Medium."
         }
       ]
     },
@@ -746,7 +778,7 @@
       "status_note_en": "emerging (opened 2026-09-15: five cross-organization signals from 9/9-9/14 converge on giving agents a general execution surface while constraining consequences in a separate policy layer — enterprise-permission GA, capability-scoped harnesses, an agent firewall, controlled tool-interface experiments and a live gate)",
       "confidence": "Medium",
       "first_observed": "2026-09-09",
-      "last_updated": "2026-09-16",
+      "last_updated": "2026-09-17",
       "retired": false,
       "evidence_zh": [
         "GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束",
@@ -754,7 +786,8 @@
         "GitHub Copilot code review（2026-09-11，一手来源，ev-20260911-11）：完整 shell 工具集在 Copilot agent firewall 后运行 build、test 与脚本；能力扩大与隔离层同步上线",
         "《Is Bash All You Need?》（2026-09-14 digest，ev-20260914-01）：两模型、两 enterprise benchmark 的受控实验中，Bash 比 typed tools 高 4.8–24.5 分且少用 19–72% token；研究明确把强沙箱列为采用前提",
         "OATS runtime gate（2026-09-14 digest，ev-20260914-03）：66,192 个 skill 版本中，clean artifact 仍会触发本地策略敏感动作；确定性 resolver 在实时实验中拦下 23/23 次禁用动作，中位 hook 延迟 67.6 毫秒",
-        "2026-09-14：计划注入实验在多个设置中造成 25–33% 监测漏检；Claude Code 2.1.271 加入逐命令网络授权（ev-20260914-10；ev-20260814-04 更新）。"
+        "2026-09-14：计划注入实验在多个设置中造成 25–33% 监测漏检；Claude Code 2.1.271 加入逐命令网络授权（ev-20260914-10；ev-20260814-04 更新）。",
+        "2026-09-15 至 16：Gemini CLI 0.60 将 MCP OAuth、路径边界、环境变更确认与工具输出来源加固推入 stable；Claude Code 2.1.273 修复 Bash 权限跳过、危险子 shell 与托管策略优先级；social-harness 实验显示跨主体消息还需要独立的来源、权限、交互协议与治理层（ev-20260825-02 / ev-20260814-04 更新；ev-20260915-07）。"
       ],
       "evidence_en": [
         "GitHub Copilot enterprise-managed permissions GA (2026-09-09, primary source, ev-20260909-02): administrators deploy block/ask/allow policy for shell, files and network domains, overriding user auto-approval — an organization-level policy constrains a general execution surface",
@@ -762,7 +795,8 @@
         "GitHub Copilot code review (2026-09-11, primary source, ev-20260911-11): the full shell-tool set runs builds, tests and scripts behind the Copilot agent firewall; capability expansion ships with an isolation layer",
         "'Is Bash All You Need?' (2026-09-14 digest, ev-20260914-01): controlled experiments across two models and two enterprise benchmarks put Bash 4.8-24.5 points above typed tools with 19-72% fewer tokens; the study explicitly makes strong sandboxing a prerequisite",
         "OATS runtime gate (2026-09-14 digest, ev-20260914-03): across 66,192 skill versions, clean artifacts still lead to locally policy-sensitive actions; a deterministic resolver blocks 23/23 prohibited attempts in live tests with 67.6 ms median hook latency",
-        "2026-09-14: plan injection evades monitors in 25–33% of tested settings; Claude Code 2.1.271 adds per-command network authorization (ev-20260914-10; ev-20260814-04 update)."
+        "2026-09-14: plan injection evades monitors in 25–33% of tested settings; Claude Code 2.1.271 adds per-command network authorization (ev-20260914-10; ev-20260814-04 update).",
+        "2026-09-15 to 16: Gemini CLI 0.60 moves MCP OAuth, path-boundary, environment-consent and tool-output-provenance hardening into stable; Claude Code 2.1.273 fixes skipped Bash prompts, hidden destructive subshells and managed-policy precedence; social-harness experiments show cross-principal messaging still needs independent provenance, authority, protocol and governance layers (ev-20260825-02 / ev-20260814-04 updates; ev-20260915-07)."
       ],
       "why_it_matters_zh": "对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。",
       "why_it_matters_en": "For teams designing enterprise agents, capability and permission should no longer be implicitly coupled in one tool catalog. A general shell provides better composition and token efficiency, while independent sandboxes, capability contracts and consequence gates bound the blast radius. The immediate architecture move is to make \"what commands the model can generate\" and \"what consequences runtime permits\" independently testable, auditable and upgradable modules.",
@@ -778,6 +812,11 @@
           "date": "2026-09-16",
           "note_zh": "计划注入研究表明，干净的推理轨迹仍可能掩盖恶意动作；Claude Code 2.1.271 则把网络授权收窄到逐命令，并修复多处权限检查缺口。两者支持把动作后果检查放在独立策略层，但没有新的跨平台正式采用数据，维持 emerging / Medium。",
           "note_en": "Plan-injection experiments show that clean reasoning traces can hide harmful actions. Claude Code 2.1.271 narrows network permission to each command and fixes several permission gaps. Both support independent action-policy checks, but no new cross-platform GA adoption data appeared. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-17",
+          "note_zh": "新增证据第 7 条：Gemini CLI 0.60、Claude Code 2.1.273 与 social-harness 实验继续把路径、身份、消息和后果控制移出模型。仍缺第二个平台跨 shell、MCP、browser 的统一正式策略与采用遥测，维持 emerging / Medium。",
+          "note_en": "Evidence item 7 added: Gemini CLI 0.60, Claude Code 2.1.273 and the social-harness experiments continue moving path, identity, message and consequence checks outside the model. A second platform with one GA policy across shell, MCP and browser plus adoption telemetry is still missing. Stays emerging / Medium."
         }
       ]
     }

@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-16",
+  "provenance": "GitHub published this official changelog entry on 2026-09-16 inside the strict scan window. It was checked against the existing event index and earlier AI Scan preview/API entries; this scope expansion is a distinct product change rather than a duplicate media report.",
+  "events": [
+    {
+      "event_id": "ev-20260916-01",
+      "title": "GitHub expands AI Scan beyond repositories with CodeQL default setup",
+      "title_zh": "GitHub 扩大 AI Scan 覆盖，取消 CodeQL 前置要求",
+      "category": "developer-tools",
+      "organization": ["GitHub", "Microsoft"],
+      "published_at": "2026-09-16T13:26:06Z",
+      "first_seen_at": "2026-09-16T16:00:47Z",
+      "last_updated_at": "2026-09-16T16:00:47Z",
+      "source_type": "official_changelog",
+      "primary_source": "https://github.blog/changelog/2026-09-16-code-scanning-ai-scan-no-longer-requires-codeql-default-setup/",
+      "secondary_sources": ["https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-ai-powered-security-detections"],
+      "summary": "GitHub AI Scan for pull requests no longer requires CodeQL default setup on each repository. Existing organization or enterprise enablement now reaches all eligible repositories under the same permission hierarchy. The feature remains a public preview for organization-owned and personal repositories on github.com. It requires GitHub Advanced Security and does not support GitHub Enterprise Server.",
+      "why_it_matters": "For AppSec teams, this removes a repository-by-repository dependency that limited AI-assisted pull-request scanning coverage. Measure finding quality and review load before broad rollout because preview availability does not establish precision. Existing enterprise policy still controls where the scanner runs.",
+      "summary_zh": "GitHub 的 pull request AI Scan 不再要求每个仓库先启用 CodeQL 默认配置。组织或企业已开启该功能后，同一权限层级下的所有合格仓库都会获得覆盖。该功能仍是 github.com 上面向组织仓库与个人仓库的 public preview。它需要 GitHub Advanced Security，且不支持 GitHub Enterprise Server。",
+      "summary_en": "GitHub AI Scan for pull requests no longer requires CodeQL default setup on each repository. Existing organization or enterprise enablement now reaches all eligible repositories under the same permission hierarchy. The feature remains a public preview for organization-owned and personal repositories on github.com. It requires GitHub Advanced Security and does not support GitHub Enterprise Server.",
+      "why_it_matters_zh": "对 AppSec 团队来说，这移除了逐仓库配置依赖，AI 辅助 pull request 扫描可以更广覆盖。public preview 不代表检测精度已经成熟，全面开启前应量误报、漏报和审查负担。现有企业策略仍决定扫描器在哪些范围运行。",
+      "why_it_matters_en": "For AppSec teams, this removes a repository-by-repository dependency that limited AI-assisted pull-request scanning coverage. Measure finding quality and review load before broad rollout because preview availability does not establish precision. Existing enterprise policy still controls where the scanner runs.",
+      "technical_details": {
+        "status": "public preview",
+        "scope": "organization-owned and personal repositories on github.com",
+        "requirement_removed": "CodeQL default setup per repository",
+        "requirements": "GitHub Advanced Security plus code scanning and AI Scan enabled by repository, organization or enterprise policy",
+        "unsupported": "GitHub Enterprise Server"
+      },
+      "technical_details_zh": {
+        "状态": "public preview",
+        "范围": "github.com 上的组织仓库与个人仓库",
+        "移除的要求": "每个仓库的 CodeQL 默认配置",
+        "仍需条件": "GitHub Advanced Security，且仓库、组织或企业策略已启用 code scanning 与 AI Scan",
+        "不支持": "GitHub Enterprise Server"
+      },
+      "tags": ["GitHub", "AI-Scan", "CodeQL", "AppSec", "pull-request"],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "github-ai-scan-without-codeql-default-setup"
+    }
+  ]
+}
