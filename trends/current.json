@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-16T16:00Z",
+  "as_of": "2026-09-17T23:58Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -169,6 +169,11 @@
           "date": "2026-09-17",
           "note_zh": "本窗口没有第三方 Terminal-Bench / SWE 权重复现或新的跨组织发布；OPEN-1B 关注训练可审计性，不改变前沿 coding 模型判据。维持 strengthening / Medium。",
           "note_en": "No third-party Terminal-Bench or SWE reproduction on public weights and no new cross-organization release appeared. OPEN-1B concerns training auditability rather than frontier coding capability. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-18",
+          "note_zh": "没有新的同级开放权重模型或第三方 Terminal-Bench / SWE 权重复现。HOPE 研究模型压缩，不改变前沿 coding 能力判据。维持 strengthening / Medium。",
+          "note_en": "No new same-tier open-weight model or third-party Terminal-Bench/SWE reproduction appeared. HOPE studies compression rather than frontier coding capability. Stays strengthening / Medium."
         }
       ]
     },
@@ -326,6 +331,11 @@
           "date": "2026-09-17",
           "note_zh": "Gemini CLI 0.60 将 MCP OAuth issuer 校验与路径边界修复推入 stable，但这是客户端加固，不是第二家安全厂商的 GA MCP 识别与遥测。维持 emerging / Medium。",
           "note_en": "Gemini CLI 0.60 moves MCP OAuth issuer checks and path-boundary fixes into stable, but this is client hardening rather than a second security vendor's GA MCP detection with telemetry. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-18",
+          "note_zh": "Codex MCP 用户验证、GitHub MCP 采用遥测与 UN Data Commons connector 扩展了身份和观测面，但仍缺第二家安全厂商的 GA 识别产品与互操作 auth spec。维持 emerging / Medium。",
+          "note_en": "Codex MCP user verification, GitHub MCP adoption telemetry and the UN Data Commons connector broaden identity and observability, but a second security vendor's GA detection product and an interoperable auth spec are still missing. Stays emerging / Medium."
         }
       ]
     },
@@ -338,7 +348,7 @@
       "status_note_en": "established (candidate→emerging 2026-08-18; →strengthening 8/20; →established 2026-08-28 — confirmation criterion (a) met: Codex 0.150.0 stable ships agent-initiated cross-task messaging; in the same window Gemini CLI 0.57.0 shipped a2a-server in stable and on npm, making Google the seventh organization with protocol-level interop in a stable runtime)",
       "confidence": "High",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-17",
+      "last_updated": "2026-09-18",
       "retired": false,
       "evidence_zh": [
         "Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）",
@@ -495,6 +505,11 @@
           "date": "2026-09-17",
           "note_zh": "新增证据第 16 条：SWE-bench 分辨率审计、多 agent 分层成本研究与 ScienceBuddy 让 runtime、scaffold 和委派拓扑更可测。它们补充工程决策依据，不改变已 established / High 的采用判断。",
           "note_en": "Evidence item 16 added: the SWE-bench resolution audit, multi-agent decomposition-cost study and ScienceBuddy make runtime, scaffold and delegation topology more measurable. They improve engineering decisions without changing the established / High adoption judgment."
+        },
+        {
+          "date": "2026-09-18",
+          "note_zh": "Anthropic 公布约 3 万并发 agent 与完整两级监控覆盖；GitHub 开始统计 skills、agents 与 MCP 采用；Codex 和 Claude Code 继续完善任务生命周期。新增规模与运营证据，不改变 established / High。",
+          "note_en": "Anthropic reports roughly 30,000 concurrent agents with full two-stage monitor coverage; GitHub begins measuring skills, agents and MCP adoption; Codex and Claude Code improve task lifecycle handling. This adds scale and operations evidence without changing established / High."
         }
       ]
     },
@@ -502,12 +517,12 @@
       "id": "frontier-lab-safety-disclosure-third-party-review",
       "name_zh": "前沿实验室把安全事件披露与第三方独立审查制度化",
       "name_en": "Frontier labs institutionalizing safety-incident disclosure and independent third-party review",
-      "status": "emerging",
-      "status_note_zh": "emerging（2026-09-02 立项：8/26–9/1 五天内三家机构四份独立文件 + 一次国家级机构事件披露，跨组织、跨日期、工程实践可直接落地）",
-      "status_note_en": "emerging (opened 2026-09-02: four independent documents from three organizations plus one national-institute incident disclosure within five days, 8/26-9/1 — cross-org, cross-date, with directly adoptable engineering practices)",
+      "status": "strengthening",
+      "status_note_zh": "strengthening（2026-09-18：OpenAI 把失准案例从零散报告升级为常态化分级披露流程，并一次公开六起跨压缩、凭据和 multi-agent 表面的案例；跨实验室独立审查与标准格式仍未完成）",
+      "status_note_en": "strengthening (2026-09-18: OpenAI turns ad hoc misalignment reports into a recurring tiered disclosure process and publishes six cases spanning compaction, credentials and multi-agent surfaces; cross-lab independent review and a standard format remain incomplete)",
       "confidence": "Medium",
       "first_observed": "2026-08-26",
-      "last_updated": "2026-09-15",
+      "last_updated": "2026-09-18",
       "retired": false,
       "evidence_zh": [
         "OpenAI《The Hugging Face incident and the road ahead》约 37 页技术报告（2026-08-26，一手来源）：完整入侵时间线、四种失配模式、生产 harness 对基础设施攻陷倾向的 >100x 抑制、CoT 监控可提前 >1 天告警、分层 CoT 监控规则、最大前沿 RL run 仍暂停（ev-20260818-04 更新）",
@@ -612,6 +627,11 @@
           "date": "2026-09-17",
           "note_zh": "本窗口没有新的前沿实验室事故披露、METR 审查结果、嵌入式评估员落地或跨厂商报告规范。OPEN-1B 的训练审计属于模型溯源，不改变事故披露判据。维持 emerging / Medium。",
           "note_en": "No new frontier-lab incident disclosure, METR review, embedded-evaluator deployment or cross-vendor reporting standard appeared. OPEN-1B audits training provenance rather than incident disclosure. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-18",
+          "note_zh": "OpenAI 建立三档常态化失准披露流程并公开六起案例，披露从单次长报告变成持续机制。趋势升级为 strengthening / Medium；升 High 仍需 METR 审查结论、第二家实验室同类流程或跨厂商格式。",
+          "note_en": "OpenAI establishes a three-track recurring misalignment-disclosure process and publishes six cases, moving disclosure from one-off reports to an ongoing mechanism. Upgraded to strengthening / Medium; High still requires METR review results, a comparable process at another lab or a cross-vendor format."
         }
       ]
     },
@@ -694,6 +714,11 @@
           "date": "2026-09-17",
           "note_zh": "没有新的自托管执行面或独立采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。JustFit 是本地推理容量研究，不构成企业执行面证据。维持 candidate / Low。",
           "note_en": "No new self-hosted execution plane or independent adoption case appeared, and OpenAI PSP plus Anthropic EFS remain unshipped. JustFit studies local inference capacity rather than an enterprise execution plane. Stays candidate / Low."
+        },
+        {
+          "date": "2026-09-18",
+          "note_zh": "没有新的自托管执行面或独立生产采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。维持 candidate / Low。",
+          "note_en": "No new self-hosted execution plane or independent production adoption case appeared; OpenAI PSP and Anthropic EFS remain unshipped. Stays candidate / Low."
         }
       ]
     },
@@ -766,6 +791,11 @@
           "date": "2026-09-17",
           "note_zh": "本窗口没有新的正式数学验证结论、第三方复现或 Lean 工具链采用数据。ScienceBuddy 属于通用科研 agent，不构成本趋势证据。维持 emerging / Medium。",
           "note_en": "No new formal mathematical validation, third-party reproduction or Lean-toolchain adoption data appeared. ScienceBuddy is a general scientific agent and does not count as evidence for this trend. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-18",
+          "note_zh": "ScienceIDE 与生物分子优化工具包扩展了可验证科研 agent，但没有新的千禧年级数学结论、Lean 形式化证明或独立验收。维持 emerging / Medium。",
+          "note_en": "ScienceIDE and the biomolecular optimization kits expand verifiable scientific agents but add no millennium-scale mathematics result, Lean formalization or independent acceptance. Stays emerging / Medium."
         }
       ]
     },
@@ -778,7 +808,7 @@
       "status_note_en": "emerging (opened 2026-09-15: five cross-organization signals from 9/9-9/14 converge on giving agents a general execution surface while constraining consequences in a separate policy layer — enterprise-permission GA, capability-scoped harnesses, an agent firewall, controlled tool-interface experiments and a live gate)",
       "confidence": "Medium",
       "first_observed": "2026-09-09",
-      "last_updated": "2026-09-17",
+      "last_updated": "2026-09-18",
       "retired": false,
       "evidence_zh": [
         "GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束",
@@ -817,6 +847,11 @@
           "date": "2026-09-17",
           "note_zh": "新增证据第 7 条：Gemini CLI 0.60、Claude Code 2.1.273 与 social-harness 实验继续把路径、身份、消息和后果控制移出模型。仍缺第二个平台跨 shell、MCP、browser 的统一正式策略与采用遥测，维持 emerging / Medium。",
           "note_en": "Evidence item 7 added: Gemini CLI 0.60, Claude Code 2.1.273 and the social-harness experiments continue moving path, identity, message and consequence checks outside the model. A second platform with one GA policy across shell, MCP and browser plus adoption telemetry is still missing. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-18",
+          "note_zh": "Codex 0.155 把 MCP 请求接入本机用户验证并强化授权证据与 WSL 隔离；ASLEval 说明策略必须覆盖完整会话出口；Google CC 给群组 agent 独立身份和权限边界。方向增强，但统一 policy schema 仍缺。维持 emerging / Medium。",
+          "note_en": "Codex 0.155 adds local user verification for MCP requests and strengthens authorization evidence plus WSL isolation; ASLEval shows policy must cover the full session boundary; Google CC gives a group agent its own identity and permission boundary. The direction strengthens, but a unified policy schema is still missing. Stays emerging / Medium."
         }
       ]
     }

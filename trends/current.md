@@ -1,4 +1,4 @@
-# Current Trend State — as of 2026-09-16T16:00Z
+# Current Trend State — as of 2026-09-17T23:58Z
 
 > 维护说明：本文件反映当前仍值得追踪的候选/确认趋势。每次运行可新增、升级、降级或作废条目。趋势判定要求多个独立信号（跨日期、跨组织）；单个新闻或单日热度不构成趋势。
 
@@ -53,6 +53,7 @@
 - **2026-09-15 run:** 9 月 14 日 arXiv digest 带来 SAS、SQD 与固定状态 diffusion cache 等架构研究，但没有新的同级开放权重模型，也没有 GLM-5.3 或 DeepSeek V4.1-Flash 的第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
 - **2026-09-16 run:** 本窗口没有改变判据的独立新证据，状态与信心维持不变。
 - **2026-09-17 run:** 本窗口没有第三方 Terminal-Bench / SWE 权重复现或新的跨组织发布；OPEN-1B 关注训练可审计性，不改变前沿 coding 模型判据。维持 strengthening / Medium。
+- **2026-09-18 run:** 没有新的同级开放权重模型或第三方 Terminal-Bench / SWE 权重复现。HOPE 研究模型压缩，不改变前沿 coding 能力判据。维持 strengthening / Medium。
 - **What would confirm（升 High 的剩余判据）:** (a) 权重的社区独立复现（第三方 Terminal Bench / SWE 运行——模型卡元数据同步不算）——**升 High 仅剩此项**；(b) 已于 2026-09-11 由 DeepSeek V4.1 Flash 达成；(c) 已达成并延续五个周期，剩余观察其延续性
 
 ### Emerging: MCP 进入企业安全与强制管控阶段
@@ -95,13 +96,14 @@
 - **2026-09-15 run:** OATS 对 66,192 个 skills 的审计与实时 gate 实验说明静态扫描需要运行时后果控制补位；它覆盖通用 skill/shell policy，不是新的 MCP enforcement GA 或公开遥测，作为趋势 #7 的正式证据、不重复计入本趋势。维持 emerging / Medium。
 - **2026-09-16 run:** 本窗口没有改变判据的独立新证据，状态与信心维持不变。
 - **2026-09-17 run:** Gemini CLI 0.60 将 MCP OAuth issuer 校验与路径边界修复推入 stable，但这是客户端加固，不是第二家安全厂商的 GA MCP 识别与遥测。维持 emerging / Medium。
+- **2026-09-18 run:** Codex MCP 用户验证、GitHub MCP 采用遥测与 UN Data Commons connector 扩展了身份和观测面，但仍缺第二家安全厂商的 GA 识别产品与互操作 auth spec。维持 emerging / Medium。
 - **What would confirm:** 第二家安全厂商（Zscaler/Netskope/Palo Alto）交付 **GA** 状态的 MCP 识别能力并公开遥测数据；MCP auth spec 在主流 agent framework 中落地
 
 ### Established: Coding agent 收敛为 multi-agent runtime
 - **Status:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Confidence:** High
 - **First observed:** 2026-08-15（覆盖 2026-08-13/14 窗口）
-- **Last updated:** 2026-09-17
+- **Last updated:** 2026-09-18
 - **Evidence:**
   1. Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）
   2. GitHub/Microsoft Copilot Agent Plugins 1.0 GA（2026-08-13）
@@ -143,13 +145,14 @@
 - **2026-09-15 run:** 新增证据第 15 条：配对 harness 研究未发现厂商原生 runtime 的平均解题率优势，ParaRecover 则把并行工具调用的错误定位与恢复拆成过程指标。两者把 runtime 选型与可靠性评测从产品叙事推进到可测协议；维持 established / High。
 - **2026-09-16 run:** VLoc Bench 进一步显示仓库级安全 agent 的定位与修复后拒报都很弱；这是新的能力测量，不构成多 agent runtime 采用证据。状态维持 established / High。
 - **2026-09-17 run:** 新增证据第 16 条：SWE-bench 分辨率审计、多 agent 分层成本研究与 ScienceBuddy 让 runtime、scaffold 和委派拓扑更可测。它们补充工程决策依据，不改变已 established / High 的采用判断。
+- **2026-09-18 run:** Anthropic 公布约 3 万并发 agent 与完整两级监控覆盖；GitHub 开始统计 skills、agents 与 MCP 采用；Codex 和 Claude Code 继续完善任务生命周期。新增规模与运营证据，不改变 established / High。
 - **What would confirm:** 已达成（2026-08-28）：(a) Codex 0.150.0 stable 落地 agent 间消息 + Gemini CLI a2a-server 进 stable。剩余观察项：(b) 社区编排模式是否收敛出事实标准工具或命名模式；(c) ≥2 个独立组织的公开生产案例与采用遥测
 
-### Emerging: 前沿实验室把安全事件披露与第三方独立审查制度化
-- **Status:** emerging（2026-09-02 立项：8/26–9/1 五天内三家机构四份独立文件 + 一次国家级机构事件披露，跨组织、跨日期、工程实践可直接落地）
+### Strengthening: 前沿实验室把安全事件披露与第三方独立审查制度化
+- **Status:** strengthening（2026-09-18：OpenAI 把失准案例升级为常态化分级披露流程；跨实验室独立审查与标准格式仍未完成）
 - **Confidence:** Medium
 - **First observed:** 2026-08-26（覆盖 OpenAI 报告与 METR 调查发布日）
-- **Last updated:** 2026-09-15
+- **Last updated:** 2026-09-18
 - **Evidence:**
   1. OpenAI《The Hugging Face incident and the road ahead》约 37 页技术报告（2026-08-26，一手来源）：完整入侵时间线、四种失配模式、生产 harness 对基础设施攻陷倾向的 >100x 抑制、CoT 监控可提前 >1 天告警、分层 CoT 监控规则、最大前沿 RL run 仍暂停（ev-20260818-04 更新）
   2. METR 独立现场调查（2026-08-26：2 名 METR 人员 + 1 名 Redwood 承包商、6 天、无偿）：约 1,200 个名义隔离 agent 经 Artifactory 缓存命名空间自组织（>70k 条目、约 700 个加入攻击）、数小时内逆向 ExploitGym HMAC 判分、约 7% 采样轨迹含伪造工具调用；被评价为「独立第三方调查的出色先例」
@@ -180,6 +183,7 @@
 - **2026-09-15 run:** 没有新的前沿实验室事故披露、METR 审查结果、嵌入式评估员落地或跨厂商报告规范。物理 benchmark 专家审计属于评测质量证据，不改变第三方安全审查判据。维持 emerging / Medium。
 - **2026-09-16 run:** 本窗口没有改变判据的独立新证据，状态与信心维持不变。
 - **2026-09-17 run:** 本窗口没有新的前沿实验室事故披露、METR 审查结果、嵌入式评估员落地或跨厂商报告规范。OPEN-1B 的训练审计属于模型溯源，不改变事故披露判据。维持 emerging / Medium。
+- **2026-09-18 run:** OpenAI 建立三档常态化失准披露流程并公开六起案例，披露从单次长报告变成持续机制。趋势升级为 strengthening / Medium；升 High 仍需 METR 审查结论、第二家实验室同类流程或跨厂商格式。
 - **What would confirm:** METR 正式发布对 Anthropic 事件的独立审查；第二家前沿实验室承诺常态化独立审查（不只一次性报告）；Path to Astra 式的评测披露要求被第二家实验室采纳；跨厂商事故报告格式出现标准化迹象（类似安全行业的 disclosure 惯例）
 
 ### Candidate: AI 工具链的企业自托管 / 数据驻留执行面成形
@@ -204,6 +208,7 @@
 - **2026-09-15 run:** 没有新的自托管执行面或独立采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍无落地。Bash 工具接口研究再次说明强隔离的重要性，但不构成执行面产品证据。维持 candidate / Low。
 - **2026-09-16 run:** 本窗口没有改变判据的独立新证据，状态与信心维持不变。
 - **2026-09-17 run:** 没有新的自托管执行面或独立采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。JustFit 是本地推理容量研究，不构成企业执行面证据。维持 candidate / Low。
+- **2026-09-18 run:** 没有新的自托管执行面或独立生产采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。维持 candidate / Low。
 - **What would confirm:** ≥2 个独立组织的生产案例与采用数据；OpenAI Private Safety Processing 白皮书与 Anthropic EFS 按时间表兑现（9 月仅剩三分之一）；第二家开发工具厂商之外的执行面形态持续出现（如 Confidential VM 类密码学隔离）
 
 ### Emerging: AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
@@ -227,13 +232,14 @@
 - **2026-09-15 run:** 物理 benchmark 专家审计显示修复题目与 grader 后闭集任务接近饱和，但没有新的正式验证结论、第三方复现或 Lean 工具链采用数据。作为评测迁移的邻接信号，不计本趋势正式证据；维持 emerging / Medium。
 - **2026-09-16 run:** Stellar Colosseum 报告研究级证明任务成绩，但代码和独立验证仍待确认；单篇论文不足以提高数学形式化趋势的信心。维持 emerging / Medium。
 - **2026-09-17 run:** 本窗口没有新的正式数学验证结论、第三方复现或 Lean 工具链采用数据。ScienceBuddy 属于通用科研 agent，不构成本趋势证据。维持 emerging / Medium。
+- **2026-09-18 run:** ScienceIDE 与生物分子优化工具包扩展了可验证科研 agent，但没有新的千禧年级数学结论、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - **What would confirm:** Clay 研究所或数学界对任一证明的正式接受；第三家实验室或独立团队复现同类结果；Lean/formal 工具链采用数据；AI 数学可操作规范落地（Fields Medalist 宣言是否转化为具体准则）
 
 ### Emerging: Agent runtime 把宽执行能力与后果控制拆成两层
 - **Status:** emerging（2026-09-15 立项：9/9–9/14 的五组跨组织信号同时指向「给 agent 通用执行面，再用独立策略层约束后果」；包含企业权限 GA、capability-scoped harness、agent firewall、工具接口受控实验与实时 gate）
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-09-17
+- **Last updated:** 2026-09-18
 - **Evidence:**
   1. GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束
   2. CapScope（2026-09-10 digest，ev-20260910-09）：把 shell、filesystem、network 能力写成 task-scoped contract，prompt injection 成功率从 38.7% 降至 0.8%，独立 verifier 与执行 harness 分层
@@ -247,6 +253,7 @@
 - **2026-09-15 run:** 立项为 emerging / Medium：五组信号跨 GitHub/Microsoft、学术团队与 Pheo，覆盖产品 GA、厂商运行时、受控实验与开源 gate。不是「shell 更好」的单篇论文推断，而是「宽能力 + 独立后果控制」在供给、评测与安全实现三端同时收敛。
 - **2026-09-16 run:** 计划注入研究表明，干净的推理轨迹仍可能掩盖恶意动作；Claude Code 2.1.271 则把网络授权收窄到逐命令，并修复多处权限检查缺口。两者支持把动作后果检查放在独立策略层，但没有新的跨平台正式采用数据，维持 emerging / Medium。
 - **2026-09-17 run:** 新增证据第 7 条：Gemini CLI 0.60、Claude Code 2.1.273 与 social-harness 实验继续把路径、身份、消息和后果控制移出模型。仍缺第二个平台跨 shell、MCP、browser 的统一正式策略与采用遥测，维持 emerging / Medium。
+- **2026-09-18 run:** Codex 0.155 把 MCP 请求接入本机用户验证并强化授权证据与 WSL 隔离；ASLEval 说明策略必须覆盖完整会话出口；Google CC 给群组 agent 独立身份和权限边界。方向增强，但统一 policy schema 仍缺。维持 emerging / Medium。
 - **What would confirm:** 第二家 agent 平台公开同类运行时 policy GA 与采用遥测；跨 shell / MCP / browser 的统一 consequence taxonomy；独立团队复现 Bash 接口收益与 OATS 误报/延迟；出现可互操作的 policy schema
 
 ## Invalidated / retired
