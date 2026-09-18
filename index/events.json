@@ -1,7 +1,7 @@
 {
   "description": "Event index for dedup and cross-run lookup. Key by event_fingerprint.",
-  "last_updated": "2026-09-17T23:58:56Z",
-  "total_events": 181,
+  "last_updated": "2026-09-18T23:21:35Z",
+  "total_events": 187,
   "events": [
     {
       "event_id": "ev-20260813-01",
@@ -257,6 +257,10 @@
         {
           "date": "2026-09-16",
           "note": "2.1.273: opt-in LLM-gateway routing headers, MCP reconnect-failure notices and Remote Control session forking; fixes unanalysed Bash prompts, hidden destructive subshells, managed policy precedence and external memory reads"
+        },
+        {
+          "date": "2026-09-19",
+          "note": "Claude Code 2.1.276-277: proxy regression hotfix; AGENTS.md fallback; proxy egress-boundary mode; stricter compound-command sandbox exclusions; headless/resume/plugin and subagent-framing hardening"
         }
       ]
     },
@@ -438,6 +442,10 @@
         {
           "date": "2026-09-11",
           "note": "0.154.0 stable (9/9): Astra picker+Bedrock, --worktree isolated checkouts, inline Q&A while working, Windows daemon, MCP OAuth refresh coordination, workspace-trust startup hardening; 0.155 alphas no notes; Astra notes still experimental"
+        },
+        {
+          "date": "2026-09-19",
+          "note": "Codex 0.155.1 restores disabled reasoning summaries as the local TUI default for provider compatibility"
         }
       ]
     },
@@ -2261,7 +2269,9 @@
       "fingerprint": "arxiv-2609-17380-open-1b-auditable-training",
       "title": "OPEN-1B makes every training step independently auditable",
       "date": "2026-09-15",
-      "orgs": ["Gensyn"],
+      "orgs": [
+        "Gensyn"
+      ],
       "category": "open-source",
       "file": "events/2026-09-15.json"
     },
@@ -2270,7 +2280,12 @@
       "fingerprint": "arxiv-2609-17394-swebench-resolution-audit",
       "title": "SWE-bench audit finds top coding-agent ranks statistically unresolved",
       "date": "2026-09-15",
-      "orgs": ["Imperial College London", "Hong Kong Polytechnic University", "Korea University", "Jinan University"],
+      "orgs": [
+        "Imperial College London",
+        "Hong Kong Polytechnic University",
+        "Korea University",
+        "Jinan University"
+      ],
       "category": "research",
       "file": "events/2026-09-15.json"
     },
@@ -2279,7 +2294,10 @@
       "fingerprint": "arxiv-2609-17391-flashvector-serving-optimization-agent",
       "title": "FlashVector tunes production serving across kernels, servers and features",
       "date": "2026-09-15",
-      "orgs": ["Unity", "Stanford University"],
+      "orgs": [
+        "Unity",
+        "Stanford University"
+      ],
       "category": "infrastructure",
       "file": "events/2026-09-15.json"
     },
@@ -2288,7 +2306,9 @@
       "fingerprint": "arxiv-2609-17464-agent-decomposition-integrity-yield",
       "title": "Study finds deep agent hierarchies preserve context but lose findings",
       "date": "2026-09-15",
-      "orgs": ["independent research"],
+      "orgs": [
+        "independent research"
+      ],
       "category": "ai-engineering",
       "file": "events/2026-09-15.json"
     },
@@ -2297,7 +2317,9 @@
       "fingerprint": "arxiv-2609-17475-justfit-200k-local-serving",
       "title": "JustFit serves a 200K-token model context on a 24 GiB MacBook",
       "date": "2026-09-15",
-      "orgs": ["independent research"],
+      "orgs": [
+        "independent research"
+      ],
       "category": "infrastructure",
       "file": "events/2026-09-15.json"
     },
@@ -2306,7 +2328,13 @@
       "fingerprint": "arxiv-2609-17523-sciencebuddy-recursive-improvement",
       "title": "ScienceBuddy releases a self-improving scientific-agent workspace",
       "date": "2026-09-15",
-      "orgs": ["PhAI Labs", "Fudan University", "University of Oxford", "Stanford University", "Princeton University"],
+      "orgs": [
+        "PhAI Labs",
+        "Fudan University",
+        "University of Oxford",
+        "Stanford University",
+        "Princeton University"
+      ],
       "category": "agent-framework",
       "file": "events/2026-09-15.json"
     },
@@ -2315,7 +2343,9 @@
       "fingerprint": "arxiv-2609-17527-agent-social-harness",
       "title": "Social-harness study finds cross-owner agents fail even when honest",
       "date": "2026-09-15",
-      "orgs": ["University of Washington"],
+      "orgs": [
+        "University of Washington"
+      ],
       "category": "agent-security",
       "file": "events/2026-09-15.json"
     },
@@ -2324,7 +2354,10 @@
       "fingerprint": "github-ai-scan-without-codeql-default-setup",
       "title": "GitHub expands AI Scan beyond repositories with CodeQL default setup",
       "date": "2026-09-16",
-      "orgs": ["GitHub", "Microsoft"],
+      "orgs": [
+        "GitHub",
+        "Microsoft"
+      ],
       "category": "developer-tools",
       "file": "events/2026-09-16.json"
     },
@@ -2507,7 +2540,84 @@
         "Pydantic"
       ],
       "category": "developer-tools",
+      "file": "events/2026-09-17.json",
+      "updates": [
+        {
+          "date": "2026-09-19",
+          "note": "Pydantic AI 2.45.0 reuses one MCP session and one DynamicToolset resolution per durable run, preserves MCP sampling tool history and reports per-run span usage"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20260917-09",
+      "fingerprint": "arxiv-2609-20812-overclaimbench-agent-completion-claims",
+      "title": "OverclaimBench finds coding agents hide incomplete reviews",
+      "date": "2026-09-17",
+      "orgs": [
+        "Tara Research",
+        "Mila",
+        "Cohere"
+      ],
+      "category": "research",
       "file": "events/2026-09-17.json"
+    },
+    {
+      "event_id": "ev-20260917-10",
+      "fingerprint": "arxiv-2609-20614-inference-engine-fingerprinting-escape",
+      "title": "Study shows models can fingerprint and target their inference engine",
+      "date": "2026-09-17",
+      "orgs": [
+        "Harvard University"
+      ],
+      "category": "agent-security",
+      "file": "events/2026-09-17.json"
+    },
+    {
+      "event_id": "ev-20260917-11",
+      "fingerprint": "arxiv-2609-20625-chronicle-agent-cutpoint-replay",
+      "title": "Chronicle turns failed agent runs into deterministic regression tests",
+      "date": "2026-09-17",
+      "orgs": [
+        "Microsoft"
+      ],
+      "category": "developer-tools",
+      "file": "events/2026-09-17.json"
+    },
+    {
+      "event_id": "ev-20260917-12",
+      "fingerprint": "arxiv-2609-19587-redteaming-auto-mode-agent-blockers",
+      "title": "Red-team study bypasses coding-agent blockers in 79% of trials",
+      "date": "2026-09-17",
+      "orgs": [
+        "Anthropic Fellows Program",
+        "Anthropic"
+      ],
+      "category": "agent-security",
+      "file": "events/2026-09-17.json"
+    },
+    {
+      "event_id": "ev-20260918-01",
+      "fingerprint": "anthropic-accenture-embedded-frontier-evaluation",
+      "title": "Anthropic and Accenture create an embedded frontier-evaluation model",
+      "date": "2026-09-18",
+      "orgs": [
+        "Anthropic",
+        "Accenture",
+        "Faculty"
+      ],
+      "category": "business-policy",
+      "file": "events/2026-09-18.json"
+    },
+    {
+      "event_id": "ev-20260918-02",
+      "fingerprint": "sglang-0-5-20-branch-cache-rl-sampling-simulator",
+      "title": "SGLang 0.5.20 adds branch-aware caching and replayable RL sampling",
+      "date": "2026-09-18",
+      "orgs": [
+        "SGLang"
+      ],
+      "category": "infrastructure",
+      "file": "events/2026-09-18.json"
     }
   ],
   "known_fingerprints_for_dedup": [
@@ -2687,6 +2797,12 @@
     "google-cc-group-agent-identity-permissions",
     "un-system-data-commons-mcp-launch",
     "github-copilot-agentic-customization-adoption-telemetry",
-    "pydantic-ai-2-44-web-fetch-telemetry-security"
+    "pydantic-ai-2-44-web-fetch-telemetry-security",
+    "arxiv-2609-20812-overclaimbench-agent-completion-claims",
+    "arxiv-2609-20614-inference-engine-fingerprinting-escape",
+    "arxiv-2609-20625-chronicle-agent-cutpoint-replay",
+    "arxiv-2609-19587-redteaming-auto-mode-agent-blockers",
+    "anthropic-accenture-embedded-frontier-evaluation",
+    "sglang-0-5-20-branch-cache-rl-sampling-simulator"
   ]
 }
