@@ -1,7 +1,7 @@
 {
   "description": "Event index for dedup and cross-run lookup. Key by event_fingerprint.",
-  "last_updated": "2026-09-18T23:21:35Z",
-  "total_events": 187,
+  "last_updated": "2026-09-19T16:00:30Z",
+  "total_events": 190,
   "events": [
     {
       "event_id": "ev-20260813-01",
@@ -261,6 +261,10 @@
         {
           "date": "2026-09-19",
           "note": "Claude Code 2.1.276-277: proxy regression hotfix; AGENTS.md fallback; proxy egress-boundary mode; stricter compound-command sandbox exclusions; headless/resume/plugin and subagent-framing hardening"
+        },
+        {
+          "date": "2026-09-20",
+          "note": "Claude Code 2.1.278 defaults API, Enterprise and cloud-provider auto mode to the server-side classifier, removes classifier-overhead billing and warns on billed fallback"
         }
       ]
     },
@@ -1803,7 +1807,13 @@
         "academic"
       ],
       "category": "research",
-      "file": "events/2026-09-11.json"
+      "file": "events/2026-09-11.json",
+      "updates": [
+        {
+          "date": "2026-09-20",
+          "note": "GA review overview separates open, resolved and previously missed findings, preserves progress across commits and explains auto-resolution reasons"
+        }
+      ]
     },
     {
       "event_id": "ev-20260911-02",
@@ -1843,7 +1853,7 @@
     {
       "event_id": "ev-20260910-14",
       "fingerprint": "arxiv-2609-08574-sinkprobe-attention-sinks-1m",
-      "title": "SinkProbe: attention sinks at 1M context",
+      "title": "Hybrid attention mechanisms do not fully fix attention sinks at 1M tokens",
       "date": "2026-09-10",
       "orgs": [
         "academic"
@@ -1854,7 +1864,7 @@
     {
       "event_id": "ev-20260910-15",
       "fingerprint": "arxiv-2609-07883-sloweave-deadline-aware-prefill",
-      "title": "SLOWeave deadline-aware prefill chunking",
+      "title": "SLOWeave sizes prefill chunks to decode deadlines with a performance guarantee",
       "date": "2026-09-10",
       "orgs": [
         "academic"
@@ -1865,7 +1875,7 @@
     {
       "event_id": "ev-20260910-16",
       "fingerprint": "arxiv-2609-09133-execcritic-coding-agents",
-      "title": "ExecCritic test-verify-revise coding agents",
+      "title": "ExecCritic separates test-writing from repair and trains both with RL",
       "date": "2026-09-10",
       "orgs": [
         "academic"
@@ -1876,7 +1886,7 @@
     {
       "event_id": "ev-20260910-17",
       "fingerprint": "arxiv-2609-05571-code2skill",
-      "title": "Code2Skill skill synthesis at scale",
+      "title": "Code2Skill distills 19,769 repositories into verified agent skills",
       "date": "2026-09-10",
       "orgs": [
         "academic"
@@ -1887,7 +1897,7 @@
     {
       "event_id": "ev-20260910-18",
       "fingerprint": "arxiv-2609-07314-content-based-addressing-long-context",
-      "title": "Content-based addressing for long context",
+      "title": "Content-based addressing replaces positional stretching for long context",
       "date": "2026-09-10",
       "orgs": [
         "academic"
@@ -1898,7 +1908,7 @@
     {
       "event_id": "ev-20260911-05",
       "fingerprint": "math-and-ai-declaration-fields-medalists",
-      "title": "Math & AI declaration (25 Fields Medalists)",
+      "title": "25 Fields Medalists declare the goals of AI companies and mathematics severely misaligned",
       "date": "2026-09-11",
       "orgs": [
         "academic",
@@ -1910,7 +1920,7 @@
     {
       "event_id": "ev-20260911-06",
       "fingerprint": "arxiv-2609-09793-glm-5-3-flash-refusal-direction-ablation",
-      "title": "Refusal-direction ablation on GLM-5.3-Flash",
+      "title": "A one-direction weight edit strips refusal from the shipped GLM-5.3-Flash weights",
       "date": "2026-09-11",
       "orgs": [
         "academic"
@@ -1921,7 +1931,7 @@
     {
       "event_id": "ev-20260911-07",
       "fingerprint": "arxiv-2609-10715-ncp-archpreview-latent-space",
-      "title": "NCP-ArchPreview latent-space LM",
+      "title": "NCP-ArchPreview trains an 8.9B model to predict concepts, not just tokens",
       "date": "2026-09-11",
       "orgs": [
         "academic"
@@ -1979,7 +1989,7 @@
     {
       "event_id": "ev-20260908-18",
       "fingerprint": "openai-navier-stokes-millennium-solution",
-      "title": "Navier-Stokes Millennium Problem AI solution (OpenAI)",
+      "title": "OpenAI's internal model produces an AI-generated solution to the Navier–Stokes Millennium Problem",
       "date": "2026-09-08",
       "orgs": [
         "OpenAI"
@@ -1990,7 +2000,7 @@
     {
       "event_id": "ev-20260908-19",
       "fingerprint": "alpoge-buckmaster-forced-euler-anthropic-model",
-      "title": "Forced Euler resolution with Anthropic internal model",
+      "title": "Alpöge and Buckmaster resolve the forced Euler problem with an Anthropic internal model",
       "date": "2026-09-08",
       "orgs": [
         "Anthropic",
@@ -2003,7 +2013,7 @@
     {
       "event_id": "ev-20260908-20",
       "fingerprint": "openai-gpt-image-2-5-sunburst-flare",
-      "title": "GPT-Image-2.5 (Sunburst + Flare)",
+      "title": "OpenAI ships GPT-Image-2.5: Sunburst for fidelity, Flare for half the latency",
       "date": "2026-09-08",
       "orgs": [
         "OpenAI"
@@ -2014,7 +2024,7 @@
     {
       "event_id": "ev-20260911-08",
       "fingerprint": "arxiv-2609-09150-agent-collective-behavior-copying",
-      "title": "Copycat dynamics of colluding wiki agents",
+      "title": "Copycat dynamics explain the colluding wiki agents' collective behavior",
       "date": "2026-09-11",
       "orgs": [
         "academic"
@@ -2025,7 +2035,7 @@
     {
       "event_id": "ev-20260911-09",
       "fingerprint": "arxiv-2609-10494-ibib-enterprise-measurement",
-      "title": "IB2 enterprise AI measurement protocol",
+      "title": "IB2: a protocol for scoring enterprise AI systems by serving route, not model ID",
       "date": "2026-09-11",
       "orgs": [
         "academic"
@@ -2036,7 +2046,7 @@
     {
       "event_id": "ev-20260911-10",
       "fingerprint": "openai-habitat-storage-scaling-rust-rewrite",
-      "title": "OpenAI Habitat storage platform + Rust rewrite",
+      "title": "OpenAI's Habitat storage platform: 70M req/s lessons and a 2-engineer Rust rewrite",
       "date": "2026-09-11",
       "orgs": [
         "OpenAI"
@@ -2545,6 +2555,10 @@
         {
           "date": "2026-09-19",
           "note": "Pydantic AI 2.45.0 reuses one MCP session and one DynamicToolset resolution per durable run, preserves MCP sampling tool history and reports per-run span usage"
+        },
+        {
+          "date": "2026-09-20",
+          "note": "Pydantic AI 2.46.0 adds Temporal Workflow Streams, type-safe dynamic argument/output selection and realtime playback plus cost accounting"
         }
       ]
     },
@@ -2617,6 +2631,33 @@
         "SGLang"
       ],
       "category": "infrastructure",
+      "file": "events/2026-09-18.json"
+    },
+    {
+      "event_id": "ev-20260917-13",
+      "fingerprint": "openvino-2026-4-optimum-intel-2-2-multimodal-speculative-decoding",
+      "title": "OpenVINO 2026.4 brings speculative multimodal serving to Intel hardware",
+      "date": "2026-09-17",
+      "orgs": ["Intel", "Hugging Face", "OpenVINO"],
+      "category": "infrastructure",
+      "file": "events/2026-09-17.json"
+    },
+    {
+      "event_id": "ev-20260918-03",
+      "fingerprint": "spacexai-grok-voice-transcribe-2-release",
+      "title": "SpaceXAI halves transcription error without raising API prices",
+      "date": "2026-09-18",
+      "orgs": ["SpaceXAI", "xAI"],
+      "category": "foundation-model",
+      "file": "events/2026-09-18.json"
+    },
+    {
+      "event_id": "ev-20260918-04",
+      "fingerprint": "qwen3-8-livetranslate-speaker-context-realtime",
+      "title": "Qwen3.8-LiveTranslate adds speakers and context to real-time interpreting",
+      "date": "2026-09-18",
+      "orgs": ["Alibaba", "Qwen"],
+      "category": "foundation-model",
       "file": "events/2026-09-18.json"
     }
   ],
@@ -2803,6 +2844,13 @@
     "arxiv-2609-20625-chronicle-agent-cutpoint-replay",
     "arxiv-2609-19587-redteaming-auto-mode-agent-blockers",
     "anthropic-accenture-embedded-frontier-evaluation",
-    "sglang-0-5-20-branch-cache-rl-sampling-simulator"
+    "sglang-0-5-20-branch-cache-rl-sampling-simulator",
+    "arxiv-2609.15989",
+    "arxiv-2609.15982",
+    "arxiv-2609.15939",
+    "arxiv-2609.15820",
+    "openvino-2026-4-optimum-intel-2-2-multimodal-speculative-decoding",
+    "spacexai-grok-voice-transcribe-2-release",
+    "qwen3-8-livetranslate-speaker-context-realtime"
   ]
 }

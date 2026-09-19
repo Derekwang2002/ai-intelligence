@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "provenance": "Primary-source incremental scan through 2026-09-18T23:21:35Z.",
+  "provenance": "Primary-source incremental scan through 2026-09-19T16:00:30Z; two official September 18 model releases were recovered after the prior checkpoint.",
   "events": [
     {
       "event_id": "ev-20260918-01",
@@ -51,6 +51,99 @@
       "technical_impact": 4, "engineering_value": 5, "adoption_signal": 5, "maturity": 4, "verification_cost": 2, "risk": 2,
       "recommendation": "ADOPT",
       "event_fingerprint": "sglang-0-5-20-branch-cache-rl-sampling-simulator"
+    },
+    {
+      "event_id": "ev-20260918-03",
+      "title": "SpaceXAI halves transcription error without raising API prices",
+      "title_zh": "SpaceXAI 将转写错误率减半且不涨 API 价格",
+      "category": "foundation-model",
+      "organization": ["SpaceXAI", "xAI"],
+      "published_at": "2026-09-18",
+      "first_seen_at": "2026-09-19T16:00:30Z",
+      "last_updated_at": "2026-09-19T16:00:30Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://x.ai/news/grok-voice-transcribe-2",
+      "secondary_sources": [
+        "https://docs.x.ai/developers/models/speech-to-text",
+        "https://artificialanalysis.ai/speech-to-text/models/llm-speech"
+      ],
+      "summary": "SpaceXAI released Grok Voice Transcribe 2.0 for batch and streaming speech-to-text. Artificial Analysis reports a 2.3% word error rate on its public index versus 4.0% for version 1.0, while the API price remains $0.10 per audio hour for batch and $0.20 for streaming. The model adds word confidence, diarization, eight-channel transcription, key-term biasing and automatic language switching, and is already used for every Atlassian Loom video.",
+      "why_it_matters": "For voice-agent and media pipelines, this is a material quality gain at a price low enough to change build-versus-buy calculations. Trial it on noisy domain audio and proper nouns before switching defaults; public aggregate accuracy does not replace workload-specific error, latency and privacy testing.",
+      "summary_zh": "SpaceXAI 发布 Grok Voice Transcribe 2.0，支持批量与流式语音转文字。Artificial Analysis 的公开榜单给出 2.3% 词错误率，上一代为 4.0%；API 价格仍是批量每音频小时 0.10 美元、流式 0.20 美元。模型还提供逐词置信度、说话人分离、最多 8 声道转写、关键词偏置与录音内自动切换语言，并已用于 Atlassian Loom 的全部视频。",
+      "summary_en": "SpaceXAI released Grok Voice Transcribe 2.0 for batch and streaming speech-to-text. Artificial Analysis reports a 2.3% word error rate on its public index versus 4.0% for version 1.0, while the API price remains $0.10 per audio hour for batch and $0.20 for streaming. The model adds word confidence, diarization, eight-channel transcription, key-term biasing and automatic language switching, and is already used for every Atlassian Loom video.",
+      "why_it_matters_zh": "对语音 agent 和媒体流水线来说，这是足以影响自建还是采购判断的质量提升，而且价格很低。切换默认模型前，应先用嘈杂的真实业务录音和专有名词做试验；公开综合准确率不能替代本业务的错误率、延迟与隐私测试。",
+      "why_it_matters_en": "For voice-agent and media pipelines, this is a material quality gain at a price low enough to change build-versus-buy calculations. Trial it on noisy domain audio and proper nouns before switching defaults; public aggregate accuracy does not replace workload-specific error, latency and privacy testing.",
+      "technical_details": {
+        "model_id": "grok-voice-transcribe-2.0",
+        "public_accuracy": "Artificial Analysis WER 2.3% versus 4.0% for Grok Voice Transcribe 1.0",
+        "pricing": "$0.10/audio-hour batch; $0.20/audio-hour streaming",
+        "features": "word timestamps and confidence, speaker diarization, up to 8 channels, 100 key terms, smart turn detection",
+        "multilingual": "dozens of languages; detects mid-recording language switches",
+        "adoption": "Atlassian Loom uses the model for every video transcription"
+      },
+      "technical_details_zh": {
+        "模型 ID": "grok-voice-transcribe-2.0",
+        "公开准确率": "Artificial Analysis 词错误率 2.3%；Grok Voice Transcribe 1.0 为 4.0%",
+        "价格": "批量每音频小时 0.10 美元；流式每音频小时 0.20 美元",
+        "能力": "逐词时间戳与置信度、说话人分离、最多 8 声道、100 个关键词、智能轮次结束检测",
+        "多语言": "支持数十种语言；可识别录音中途切换语言",
+        "采用": "Atlassian Loom 的全部视频转写使用该模型"
+      },
+      "tags": ["speech-to-text", "voice-agent", "streaming", "multilingual", "API", "transcription"],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "spacexai-grok-voice-transcribe-2-release"
+    },
+    {
+      "event_id": "ev-20260918-04",
+      "title": "Qwen3.8-LiveTranslate adds speakers and context to real-time interpreting",
+      "title_zh": "Qwen3.8-LiveTranslate 为实时同传补上说话人与上下文",
+      "category": "foundation-model",
+      "organization": ["Alibaba", "Qwen"],
+      "published_at": "2026-09-18",
+      "first_seen_at": "2026-09-19T16:00:30Z",
+      "last_updated_at": "2026-09-19T16:00:30Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://qwen.ai/blog?id=qwen3.8-livetranslate",
+      "secondary_sources": [
+        "https://help.aliyun.com/en/model-studio/qwen3-8-livetranslate-flash-realtime"
+      ],
+      "summary": "Qwen3.8-LiveTranslate upgrades real-time interpreting with speaker separation, bilingual source-and-translation output and long-context disambiguation. Qwen reports average lag falling from 2.8 to 2.3 seconds while retaining 60 input languages; the API produces speech in 29 languages through a 53,248-token context window. The production model is available over Alibaba Cloud Model Studio's WebSocket Realtime API in Beijing and Singapore.",
+      "why_it_matters": "For multilingual meetings, support and live events, speaker identity and terminology consistency often matter more than another small generic translation gain. Trial it with overlapping speakers and domain vocabulary, but compare end-to-end latency and translation quality independently because the headline quality claims are vendor-reported.",
+      "summary_zh": "Qwen3.8-LiveTranslate 为实时同传加入说话人分离、双语原文与译文同步输出，以及利用长上下文消歧。Qwen 称平均延迟从 2.8 秒降到 2.3 秒，同时保留 60 种输入语言；API 可用 29 种语言输出语音，上下文窗口为 53,248 token。正式模型已通过阿里云百炼的 WebSocket Realtime API 在北京与新加坡提供。",
+      "summary_en": "Qwen3.8-LiveTranslate upgrades real-time interpreting with speaker separation, bilingual source-and-translation output and long-context disambiguation. Qwen reports average lag falling from 2.8 to 2.3 seconds while retaining 60 input languages; the API produces speech in 29 languages through a 53,248-token context window. The production model is available over Alibaba Cloud Model Studio's WebSocket Realtime API in Beijing and Singapore.",
+      "why_it_matters_zh": "对多语言会议、客服和直播活动来说，说话人身份与术语一致性往往比通用翻译分数的小幅提升更重要。建议用多人重叠发言和领域词汇试跑，并独立比较端到端延迟与翻译质量，因为核心质量指标仍来自厂商。",
+      "why_it_matters_en": "For multilingual meetings, support and live events, speaker identity and terminology consistency often matter more than another small generic translation gain. Trial it with overlapping speakers and domain vocabulary, but compare end-to-end latency and translation quality independently because the headline quality claims are vendor-reported.",
+      "technical_details": {
+        "model_id": "qwen3.8-livetranslate-flash-realtime",
+        "architecture": "Hybrid-MoE Thinker-Talker with interleaved streaming understanding, text and speech",
+        "languages": "60 input languages; speech output in 29 languages",
+        "latency": "vendor-reported LAAL 2.8s to 2.3s",
+        "context": "53,248 tokens; maximum input 49,152 and output 4,096",
+        "availability": "stable WebSocket Realtime API in Alibaba Cloud Model Studio, Beijing and Singapore"
+      },
+      "technical_details_zh": {
+        "模型 ID": "qwen3.8-livetranslate-flash-realtime",
+        "架构": "Hybrid-MoE Thinker-Talker，以交错方式串联流式理解、文本与语音",
+        "语言": "60 种输入语言；29 种语言语音输出",
+        "延迟": "厂商报告 LAAL 从 2.8 秒降到 2.3 秒",
+        "上下文": "53,248 token；最大输入 49,152、输出 4,096",
+        "可用性": "阿里云百炼北京与新加坡区域的稳定 WebSocket Realtime API"
+      },
+      "tags": ["simultaneous-interpretation", "speech-to-speech", "multilingual", "streaming", "API", "long-context"],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "qwen3-8-livetranslate-speaker-context-realtime"
     }
   ]
 }

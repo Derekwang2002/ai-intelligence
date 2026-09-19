@@ -1,6 +1,6 @@
 {
   "date": "2026-09-17",
-  "provenance": "Primary-source incremental scan through 2026-09-18T23:21:35Z; four high-value arXiv records were recovered after the September 17 batch became queryable.",
+  "provenance": "Primary-source incremental scan through 2026-09-19T16:00:30Z; four high-value arXiv records and the OpenVINO 2026.4 release suite were recovered after their original September 17 publication dates.",
   "events": [
     {
       "event_id": "ev-20260917-01",
@@ -185,18 +185,18 @@
       "organization": ["Pydantic"],
       "published_at": "2026-09-17T04:03:52Z",
       "first_seen_at": "2026-09-17T23:58:56Z",
-      "last_updated_at": "2026-09-18T23:21:35Z",
+      "last_updated_at": "2026-09-19T16:00:30Z",
       "source_type": "github_release",
       "primary_source": "https://github.com/pydantic/pydantic-ai/releases/tag/v2.44.0",
-      "secondary_sources": ["https://github.com/pydantic/pydantic-ai/releases/tag/v1.107.6", "https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-vmxc-h2x2-jmf3", "https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-fpf4-vwcp-v4hp", "https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-22h6-qm39-v87j", "https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-4x9p-g9wm-8q7f", "https://github.com/pydantic/pydantic-ai/releases/tag/v2.45.0"],
+      "secondary_sources": ["https://github.com/pydantic/pydantic-ai/releases/tag/v1.107.6", "https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-vmxc-h2x2-jmf3", "https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-fpf4-vwcp-v4hp", "https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-22h6-qm39-v87j", "https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-4x9p-g9wm-8q7f", "https://github.com/pydantic/pydantic-ai/releases/tag/v2.45.0", "https://github.com/pydantic/pydantic-ai/releases/tag/v2.46.0"],
       "summary": "Pydantic AI 2.44.0 fixes four security issues in web fetching and telemetry. Two bypass network or domain policy through IPv6 zone identifiers or hostname normalization. One attacker-controlled page can trigger quadratic processing and block the event loop. Another can export instructions and output templates even when telemetry content is disabled. Version 1.107.6 backports the fixes.",
       "why_it_matters": "For production agents that fetch arbitrary URLs, these are runtime-boundary flaws rather than cosmetic patches. Upgrade both current and v1 deployments, then test private-address and normalized-hostname cases in local policy. Teams relying on content-redacted telemetry should also review already-exported traces.",
       "summary_zh": "Pydantic AI 2.44.0 修复了四个与 web fetch 和遥测相关的安全问题。其中两个可通过 IPv6 zone identifier 或 hostname 规范化绕过网络/域策略；一个恶意页面可触发二次方处理并阻塞 event loop；另一个会在关闭遥测内容时仍导出指令和输出模板。1.107.6 已回移这些修复。",
       "summary_en": "Pydantic AI 2.44.0 fixes four security issues in web fetching and telemetry. Two bypass network or domain policy through IPv6 zone identifiers or hostname normalization. One attacker-controlled page can trigger quadratic processing and block the event loop. Another can export instructions and output templates even when telemetry content is disabled. Version 1.107.6 backports the fixes.",
       "why_it_matters_zh": "对允许 agent 访问任意 URL 的生产系统来说，这些是运行时边界漏洞，不是普通小修。当前版本与 v1 部署都应升级，并补测私网地址和 hostname 规范化策略。依赖内容脱敏遥测的团队还应审查已导出的 trace。",
       "why_it_matters_en": "For production agents that fetch arbitrary URLs, these are runtime-boundary flaws rather than cosmetic patches. Upgrade both current and v1 deployments, then test private-address and normalized-hostname cases in local policy. Teams relying on content-redacted telemetry should also review already-exported traces.",
-      "technical_details": {"fixed_versions":"2.44.0 and v1 backport 1.107.6","issues":"IPv6 zone SSRF bypass; normalized-host blocklist bypass; quadratic web_fetch; telemetry content leak","severity":"two moderate, two low","action":"upgrade and retest network policy plus telemetry redaction","update_2026_09_19":"2.45.0 holds one MCP session and resolves DynamicToolset once per durable run rather than per durable unit, preserves tool history in MCPSamplingModel, and reports per-run usage on traces. Security recommendation remains ADOPT."},
-      "technical_details_zh": {"修复版本":"2.44.0 与 v1 回移版 1.107.6","问题":"IPv6 zone SSRF 绕过；hostname blocklist 绕过；web_fetch 二次方处理；遥测内容泄露","严重度":"两个 moderate、两个 low","动作":"升级并重测网络策略与遥测脱敏","update_2026_09_19":"2.45.0 在每次 durable run 内只维持一个 MCP session，并只解析一次 DynamicToolset，不再逐 durable unit 重复；MCPSamplingModel 会保留工具历史，trace 记录每次运行自身用量。安全建议维持 ADOPT。"},
+      "technical_details": {"fixed_versions":"2.44.0 and v1 backport 1.107.6","issues":"IPv6 zone SSRF bypass; normalized-host blocklist bypass; quadratic web_fetch; telemetry content leak","severity":"two moderate, two low","action":"upgrade and retest network policy plus telemetry redaction","update_2026_09_19":"2.45.0 holds one MCP session and resolves DynamicToolset once per durable run rather than per durable unit, preserves tool history in MCPSamplingModel, and reports per-run usage on traces. Security recommendation remains ADOPT.","update_2026_09_20":"2.46.0 adds Temporal Workflow Streams for agent events, type-safe dynamic argument and union-output selection, realtime playback completion and cost accounting, and fixes live tool definitions plus failed realtime tool records. Security recommendation remains ADOPT."},
+      "technical_details_zh": {"修复版本":"2.44.0 与 v1 回移版 1.107.6","问题":"IPv6 zone SSRF 绕过；hostname blocklist 绕过；web_fetch 二次方处理；遥测内容泄露","严重度":"两个 moderate、两个 low","动作":"升级并重测网络策略与遥测脱敏","update_2026_09_19":"2.45.0 在每次 durable run 内只维持一个 MCP session，并只解析一次 DynamicToolset，不再逐 durable unit 重复；MCPSamplingModel 会保留工具历史，trace 记录每次运行自身用量。安全建议维持 ADOPT。","update_2026_09_20":"2.46.0 为 agent 事件加入 Temporal Workflow Streams，支持类型安全的动态参数与联合输出选择，并补齐 realtime 播放等待和成本核算；同时修复实时工具失败记录与 live ToolDefinition 分发。安全建议维持 ADOPT。"},
       "tags": ["Pydantic-AI", "SSRF", "web-fetch", "telemetry", "security"],
       "technical_impact": 3, "engineering_value": 5, "adoption_signal": 4, "maturity": 4, "verification_cost": 1, "risk": 4,
       "recommendation": "ADOPT",
@@ -301,6 +301,54 @@
       "technical_impact": 5, "engineering_value": 5, "adoption_signal": 2, "maturity": 2, "verification_cost": 3, "risk": 5,
       "recommendation": "TRIAL",
       "event_fingerprint": "arxiv-2609-19587-redteaming-auto-mode-agent-blockers"
+    },
+    {
+      "event_id": "ev-20260917-13",
+      "title": "OpenVINO 2026.4 brings speculative multimodal serving to Intel hardware",
+      "title_zh": "OpenVINO 2026.4 把多模态推测解码带到 Intel 硬件",
+      "category": "infrastructure",
+      "organization": ["Intel", "Hugging Face", "OpenVINO"],
+      "published_at": "2026-09-17T13:11:50Z",
+      "first_seen_at": "2026-09-19T16:00:30Z",
+      "last_updated_at": "2026-09-19T16:00:30Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/huggingface/optimum-intel/releases/tag/v2.2.0",
+      "secondary_sources": [
+        "https://github.com/openvinotoolkit/openvino.genai/releases/tag/2026.4.0.0",
+        "https://github.com/openvinotoolkit/openvino/releases/tag/2026.4.0",
+        "https://huggingface.co/blog/echarlaix/optimum-intel-v22"
+      ],
+      "summary": "Optimum Intel 2.2 and OpenVINO GenAI 2026.4 add DFlash and multi-token-prediction speculative decoding for recent Qwen and Gemma models, including vision-language paths. The suite also brings paged attention to Mamba 2 hybrids, adds image-generation and speech-recognition pipelines, and exposes per-request vision, audio and embedding timing. It expands local CPU, GPU and NPU support across Mistral 3, DeepSeek-OCR-2, Qwen3.8, Gemma 4 and other multimodal models.",
+      "why_it_matters": "For teams deploying local or edge inference on Intel hardware, this closes several gaps that previously pushed multimodal and hybrid models toward CUDA-centric stacks. Trial it on one production-shaped model and measure end-to-end latency, memory and export fidelity; the release publishes capabilities, not cross-hardware benchmark results.",
+      "summary_zh": "Optimum Intel 2.2 与 OpenVINO GenAI 2026.4 为近期 Qwen、Gemma 模型加入 DFlash 和多 token 预测推测解码，并覆盖视觉语言路径。套件还把分页注意力扩展到 Mamba 2 混合模型，新增图像生成与语音识别流水线，并暴露逐请求的视觉编码、音频编码和嵌入耗时。Mistral 3、DeepSeek-OCR-2、Qwen3.8、Gemma 4 等多模态模型因此可在 Intel CPU、GPU 与 NPU 上走更完整的本地推理链路。",
+      "summary_en": "Optimum Intel 2.2 and OpenVINO GenAI 2026.4 add DFlash and multi-token-prediction speculative decoding for recent Qwen and Gemma models, including vision-language paths. The suite also brings paged attention to Mamba 2 hybrids, adds image-generation and speech-recognition pipelines, and exposes per-request vision, audio and embedding timing. It expands local CPU, GPU and NPU support across Mistral 3, DeepSeek-OCR-2, Qwen3.8, Gemma 4 and other multimodal models.",
+      "why_it_matters_zh": "对在 Intel 硬件上做本地或边缘推理的团队来说，这补上了多模态与混合模型过去更依赖 CUDA 方案的几处缺口。建议先挑一个接近生产负载的模型试跑，实测端到端延迟、内存与导出保真度；这次发布给出了能力清单，但没有跨硬件 benchmark。",
+      "why_it_matters_en": "For teams deploying local or edge inference on Intel hardware, this closes several gaps that previously pushed multimodal and hybrid models toward CUDA-centric stacks. Trial it on one production-shaped model and measure end-to-end latency, memory and export fidelity; the release publishes capabilities, not cross-hardware benchmark results.",
+      "technical_details": {
+        "release_suite": "Optimum Intel 2.2.0, OpenVINO 2026.4, OpenVINO GenAI 2026.4 and NNCF 3.4",
+        "speculative_decoding": "DFlash for Qwen3/3.5/3.6, Qwen3-Coder and Gemma 4; MTP export/runtime paths for Qwen3.5, Qwen3.6 and Qwen3.8-27B; Eagle3 top-k for VLMs",
+        "hybrid_serving": "Mamba 2 paged attention for Granite 4.0 H models on CPU and GPU",
+        "pipelines": "Qwen-Image and Z-Image generation; Fun-ASR speech recognition; expanded VLM video and OCR support",
+        "observability": "per-request vision-encoding, audio-encoding and text-embedding durations",
+        "availability": "Apache-2.0 open-source packages; production release"
+      },
+      "technical_details_zh": {
+        "发布套件": "Optimum Intel 2.2.0、OpenVINO 2026.4、OpenVINO GenAI 2026.4 与 NNCF 3.4",
+        "推测解码": "Qwen3/3.5/3.6、Qwen3-Coder 与 Gemma 4 支持 DFlash；Qwen3.5、Qwen3.6 与 Qwen3.8-27B 支持 MTP 导出和运行；VLM 支持 Eagle3 top-k",
+        "混合模型 serving": "Granite 4.0 H 系列的 Mamba 2 分页注意力可运行于 CPU 与 GPU",
+        "流水线": "Qwen-Image 与 Z-Image 图像生成；Fun-ASR 语音识别；扩展 VLM 视频与 OCR 支持",
+        "可观测性": "逐请求报告视觉编码、音频编码与文本嵌入耗时",
+        "可用性": "Apache-2.0 开源软件包；正式版本"
+      },
+      "tags": ["OpenVINO", "Optimum-Intel", "speculative-decoding", "multimodal", "edge-inference", "Intel"],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "openvino-2026-4-optimum-intel-2-2-multimodal-speculative-decoding"
     }
   ]
 }
