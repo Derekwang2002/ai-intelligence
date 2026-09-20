@@ -1,4 +1,4 @@
-# Current Trend State — as of 2026-09-19T16:00Z
+# Current Trend State — as of 2026-09-20T16:02Z
 
 > 维护说明：本文件反映当前仍值得追踪的候选/确认趋势。每次运行可新增、升级、降级或作废条目。趋势判定要求多个独立信号（跨日期、跨组织）；单个新闻或单日热度不构成趋势。
 
@@ -56,13 +56,14 @@
 - **2026-09-18 run:** 没有新的同级开放权重模型或第三方 Terminal-Bench / SWE 权重复现。HOPE 研究模型压缩，不改变前沿 coding 能力判据。维持 strengthening / Medium。
 - **2026-09-19 run:** SGLang 0.5.20 把 GLM-5.3-Flash、Qwen3.8-Flash-Next 与 DeepSeek-V4-Flash 的 serving 路径打包进 stable，但仍无第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
 - **2026-09-20 run:** Qwen3.8-LiveTranslate 是语音翻译模型，OpenVINO 2026.4 是 serving 工具链；本窗口仍无新的同级开放权重 coding 模型或第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
+- **2026-09-21 run:** Qwen-Image-2.1 是图像生成与编辑模型，没有改变开放权重 coding 模型的能力判据；本窗口仍无第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
 - **What would confirm（升 High 的剩余判据）:** (a) 权重的社区独立复现（第三方 Terminal Bench / SWE 运行——模型卡元数据同步不算）——**升 High 仅剩此项**；(b) 已于 2026-09-11 由 DeepSeek V4.1 Flash 达成；(c) 已达成并延续五个周期，剩余观察其延续性
 
 ### Emerging: MCP 进入企业安全与强制管控阶段
 - **Status:** emerging（2026-08-16 由 candidate 升级）
 - **Confidence:** Medium
 - **First observed:** 2026-08-15（覆盖 2026-08-14 窗口）
-- **Last updated:** 2026-09-15
+- **Last updated:** 2026-09-21
 - **Evidence:**
   1. Cloudflare One Gateway 的 MCP 检测与 enforcement 能力 GA——`experimental.is_mcp`、enforcement 仅 Portal 可用、OAuth 预注册（2026-08-14，一手来源，ev-20260814-03）
   2. Workday Adaptive Planning 第一方 MCP Server 出现在 2026R2 release notes（2026-08-14，官方文档）——企业 SaaS 供给端
@@ -74,6 +75,7 @@
   8. 背景（已核实）：Netskope 2026-03-11 新闻稿宣布 Netskope One AI Security 四件套（含 Agentic Broker——对全部 MCP 交易提供可见性与管控，无论是否受批）「general availability today」，说明 Broker 产品本身自 3 月起为 GA 状态；但 22 个 MCP 数据属性仍在 feature flag 之后、无公开遥测（2026-08-29 核实为覆盖前背景）
   9. Netskope Release 141（notes 页标注 9/1、9/2 检查时未发布、本窗口捕获，经官方 docs 核实，2026-09-05）：AI Command Center 的 Endpoint AI Discovery（beta）经 Netskope Client 发现受管端点上的 AI agent、浏览器/编辑器/桌面扩展与本地模型，并在 beta 中发现端点上使用的 MCP server；AI Guardrails On Demand – Netskope Hosted 转 GA（独立 REST API，与 LiteLLM/Kong/Apigee API 网关集成）；AI Gateway × Enterprise Browser 集成（beta，浏览器侧 LLM 流量集中治理 + 网关令牌吊销的紧急 kill switch）。管控面从网络流量延伸到端点与浏览器，但 Endpoint Discovery 为 beta 且需代表/支持开启；22 个 MCP 数据属性仍未提及移出 feature flag、无公开遥测
   10. 《Scanning the Harness》供应链审计（2026-09-10，arXiv 2609.07360，ev-20260910-08）：3,171 个公开 GitHub 仓库（2,600 份 Claude Code/Cursor/Copilot/Codex 配置 + 511 个已发布技能集）中 16.0% 至少携带一处安全缺陷——9.8% 安装未锁定 MCP server、3.1% 在看似限定的授权后预批准任意执行、3.8% 的技能携带预批准 shell；全部发现经独立重推导与双人裁定，工具、语料清单与裁定结果公开——MCP/skills 配置供应链的首个量化审计，也是安全需求端首个独立学术测量（2026-09-11 核实）
+  11. LiteLLM 1.102.0 稳定版（2026-09-20，ev-20260913-01 更新）：Agent Skills 发现、按用户 MCP 工具授权、客户自管 KMS 与路由遥测进入 stable gateway；证明控制面可试跑，但仍是单一项目且没有互操作 auth/enforcement 规范
 - **Why upgraded:** 多个独立信号来自不同组织、不同日期（网络厂商、企业 SaaS、安全研究），指向同一方向：MCP 正从新兴协议转变为受治理的企业基础设施。
 - **2026-08-17 run:** 核查了 Zscaler/Netskope/Palo Alto 是否已交付 MCP 识别能力，未发现（仅见 SASE 选型对比文章与 Zscaler 自有 MCP server 集成）。确认判据仍未满足。Status/Confidence 维持不变。
 - **2026-08-18 run:** 背景说明：Netskope 的 MCP 安全能力（实时识别 MCP server/client 及 name/ID/URL/version/host/protocol 属性、CCI 风险评分、default-block 策略、DLP）于 2025-12-01 以 Preview 状态宣布，GA 计划 2026 上半年，未检索到带日期的 GA 公告。能力上部分满足第二家厂商判据，但早于本知识库覆盖范围，仅作背景登记。补充背景：2026-07-28 MCP auth spec（OAuth 2.1/OIDC）遭到企业侧阻力（anonymous DCR 批评）；CSA 在 2026 年初记录约 7,000 个暴露的 MCP server，约半数无认证；NSA/DoD 于 2026 年 6 月发布安全设计指引。判据修正为：第二家安全厂商交付 **GA** 状态的 MCP 识别能力 + 公开遥测。Status/Confidence 维持不变。
@@ -101,6 +103,7 @@
 - **2026-09-18 run:** Codex MCP 用户验证、GitHub MCP 采用遥测与 UN Data Commons connector 扩展了身份和观测面，但仍缺第二家安全厂商的 GA 识别产品与互操作 auth spec。维持 emerging / Medium。
 - **2026-09-19 run:** Pydantic AI 2.45 复用 durable run 内的 MCP session，Claude Code 继续收紧 gateway egress；它们改善运行可靠性，但没有新增跨厂商 auth/enforcement 规范。维持 emerging / Medium。
 - **2026-09-20 run:** Pydantic AI 2.46 新增 Temporal agent 事件流，但没有新的 MCP auth/enforcement 规范、第二家安全厂商公开遥测或独立采用数据。维持 emerging / Medium。
+- **2026-09-21 run:** LiteLLM 1.102.0 把按用户 MCP 工具权限和 Skills 发现推进到 stable，满足此前等待稳定版的试跑门槛；但仍没有跨厂商 auth/enforcement 规范或第二家安全厂商公开遥测。维持 emerging / Medium。
 - **What would confirm:** 第二家安全厂商（Zscaler/Netskope/Palo Alto）交付 **GA** 状态的 MCP 识别能力并公开遥测数据；MCP auth spec 在主流 agent framework 中落地
 
 ### Established: Coding agent 收敛为 multi-agent runtime
@@ -152,6 +155,7 @@
 - **2026-09-18 run:** Anthropic 公布约 3 万并发 agent 与完整两级监控覆盖；GitHub 开始统计 skills、agents 与 MCP 采用；Codex 和 Claude Code 继续完善任务生命周期。新增规模与运营证据，不改变 established / High。
 - **2026-09-19 run:** OverclaimBench 与 Chronicle 补上运行完成度核验和可复现回归测试；Claude Code 2.1.277 继续加固 subagent 输出边界。运行时工程继续成熟，维持 established / High。
 - **2026-09-20 run:** Claude Code 2.1.278 与 Pydantic AI 2.46 继续改善运行成本、事件流和实时工具状态，但都是既有 runtime 的增量加固，没有新的跨组织编排原语。维持 established / High。
+- **2026-09-21 run:** LiteLLM 1.102.0 稳定化 gateway 控制面，但没有新的 coding-agent 编排原语或独立生产案例。维持 established / High。
 - **What would confirm:** 已达成（2026-08-28）：(a) Codex 0.150.0 stable 落地 agent 间消息 + Gemini CLI a2a-server 进 stable。剩余观察项：(b) 社区编排模式是否收敛出事实标准工具或命名模式；(c) ≥2 个独立组织的公开生产案例与采用遥测
 
 ### Strengthening: 前沿实验室把安全事件披露与第三方独立审查制度化
@@ -193,6 +197,7 @@
 - **2026-09-18 run:** OpenAI 建立三档常态化失准披露流程并公开六起案例，披露从单次长报告变成持续机制。趋势升级为 strengthening / Medium；升 High 仍需 METR 审查结论、第二家实验室同类流程或跨厂商格式。
 - **2026-09-19 run:** Anthropic 把此前的嵌入式评估承诺落到与 Accenture/Faculty 的正式合作，常设第三方访问从主张变成执行安排。独立性、披露权和部署否决权仍未明确，维持 strengthening / Medium。
 - **2026-09-20 run:** 本窗口没有 METR 审查结论、跨厂商披露格式或嵌入式评估独立性细则。维持 strengthening / Medium。
+- **2026-09-21 run:** 本窗口没有 METR 审查结论、嵌入式评估独立性规则或跨厂商披露格式。维持 strengthening / Medium。
 - **What would confirm:** METR 正式发布对 Anthropic 事件的独立审查；第二家前沿实验室承诺常态化独立审查（不只一次性报告）；Path to Astra 式的评测披露要求被第二家实验室采纳；跨厂商事故报告格式出现标准化迹象（类似安全行业的 disclosure 惯例）
 
 ### Candidate: AI 工具链的企业自托管 / 数据驻留执行面成形
@@ -220,6 +225,7 @@
 - **2026-09-18 run:** 没有新的自托管执行面或独立生产采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。维持 candidate / Low。
 - **2026-09-19 run:** 没有新的自托管执行面或独立生产采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。维持 candidate / Low。
 - **2026-09-20 run:** OpenVINO 2026.4 扩展本地 Intel 推理能力，但不是企业 agent 执行面或独立生产采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。维持 candidate / Low。
+- **2026-09-21 run:** Qwen-Image-2.1 提供本地权重与多套运行时支持，但研究用途许可证和 26–40 GiB 服务显存使它不能证明企业自托管执行面已经成形。维持 candidate / Low。
 - **What would confirm:** ≥2 个独立组织的生产案例与采用数据；OpenAI Private Safety Processing 白皮书与 Anthropic EFS 按时间表兑现（9 月仅剩三分之一）；第二家开发工具厂商之外的执行面形态持续出现（如 Confidential VM 类密码学隔离）
 
 ### Emerging: AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
@@ -246,6 +252,7 @@
 - **2026-09-18 run:** ScienceIDE 与生物分子优化工具包扩展了可验证科研 agent，但没有新的千禧年级数学结论、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - **2026-09-19 run:** 本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - **2026-09-20 run:** 本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
+- **2026-09-21 run:** 本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - **What would confirm:** Clay 研究所或数学界对任一证明的正式接受；第三家实验室或独立团队复现同类结果；Lean/formal 工具链采用数据；AI 数学可操作规范落地（Fields Medalist 宣言是否转化为具体准则）
 
 ### Emerging: Agent runtime 把宽执行能力与后果控制拆成两层
@@ -271,6 +278,7 @@
 - **2026-09-18 run:** Codex 0.155 把 MCP 请求接入本机用户验证并强化授权证据与 WSL 隔离；ASLEval 说明策略必须覆盖完整会话出口；Google CC 给群组 agent 独立身份和权限边界。方向增强，但统一 policy schema 仍缺。维持 emerging / Medium。
 - **2026-09-19 run:** blocking monitor 红队与推理引擎指纹攻击把失效面从单次工具调用扩展到跨 agent、压缩链和 runtime。证据显著增强，但尚无统一 policy schema，维持 emerging / Medium。
 - **2026-09-20 run:** Claude Code 把 auto-mode classifier 默认移到服务端并暴露运行位置，这是同组织控制面加固；仍没有跨 shell / MCP / browser 的统一 policy schema 或公开采用遥测。维持 emerging / Medium。
+- **2026-09-21 run:** LiteLLM 1.102.0 把 MCP 权限控制推进到 stable，但它仍是 gateway 内部策略，没有跨 shell / MCP / browser 的统一 schema 或公开采用遥测。维持 emerging / Medium。
 - **What would confirm:** 第二家 agent 平台公开同类运行时 policy GA 与采用遥测；跨 shell / MCP / browser 的统一 consequence taxonomy；独立团队复现 Bash 接口收益与 OATS 误报/延迟；出现可互操作的 policy schema
 
 ## Invalidated / retired

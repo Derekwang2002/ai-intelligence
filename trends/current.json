@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-19T16:00Z",
+  "as_of": "2026-09-20T16:02Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -184,6 +184,11 @@
           "date": "2026-09-20",
           "note_zh": "Qwen3.8-LiveTranslate 是语音翻译模型，OpenVINO 2026.4 是 serving 工具链；本窗口仍无新的同级开放权重 coding 模型或第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。",
           "note_en": "Qwen3.8-LiveTranslate is a speech-translation model and OpenVINO 2026.4 is serving infrastructure. No new same-tier open-weight coding model or third-party Terminal-Bench/SWE reproduction appeared. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-21",
+          "note_zh": "Qwen-Image-2.1 是图像生成与编辑模型，没有改变开放权重 coding 模型的能力判据；本窗口仍无第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。",
+          "note_en": "Qwen-Image-2.1 is an image-generation and editing model and does not change the open-weight coding capability criteria. No third-party Terminal-Bench or SWE reproduction appeared. Stays strengthening / Medium."
         }
       ]
     },
@@ -196,7 +201,7 @@
       "status_note_en": "emerging (upgraded from candidate on 2026-08-16)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-15",
+      "last_updated": "2026-09-21",
       "retired": false,
       "evidence_zh": [
         "Cloudflare One Gateway 的 MCP 检测与 enforcement 能力 GA——`experimental.is_mcp`、enforcement 仅 Portal 可用、OAuth 预注册（2026-08-14，一手来源，ev-20260814-03）",
@@ -208,7 +213,8 @@
         "背景（已核实）：Zscaler 于 2026-06-09（Zenith Live）发布 Zscaler AI Broker，为 MCP 与 A2A 的 agent 通信提供安全代理，并配套 Agent Registry，可按 agent 查看其被授权访问的资源，定位为零信任 Agentic AI 平台的一部分。这是继 Cloudflare、Netskope 之后第三家 SSE/安全厂商的 MCP 管控能力，但新闻稿未标注 GA 或 preview 状态，也无公开遥测（2026-08-24 核实为覆盖前背景；此前 8/17 复核未检出）",
         "背景（已核实）：Netskope 2026-03-11 新闻稿宣布 Netskope One AI Security 四件套（含 Agentic Broker——对全部 MCP 交易提供可见性与管控，无论是否受批）「general availability today」，说明 Broker 产品本身自 3 月起为 GA 状态；但 22 个 MCP 数据属性仍在 feature flag 之后、无公开遥测（2026-08-29 核实为覆盖前背景）",
         "Netskope Release 141（notes 页标注 9/1、9/2 检查时未发布、本窗口捕获，经官方 docs 核实）：AI Command Center 的 Endpoint AI Discovery（beta）经 Netskope Client 发现受管端点上的 AI agent、浏览器/编辑器/桌面扩展与本地模型，并在 beta 中发现端点上使用的 MCP server；AI Guardrails On Demand – Netskope Hosted 转 GA（独立 REST API，与 LiteLLM/Kong/Apigee API 网关集成）；AI Gateway × Enterprise Browser 集成（beta，浏览器侧 LLM 流量集中治理 + 网关令牌吊销的紧急 kill switch）。管控面从网络流量延伸到端点与浏览器，但 Endpoint Discovery 为 beta 且需代表/支持开启；22 个 MCP 数据属性仍未提及移出 feature flag、无公开遥测（2026-09-05 核实）",
-        "《Scanning the Harness》供应链审计（2026-09-10，arXiv 2609.07360，ev-20260910-08）：3,171 个公开 GitHub 仓库（2,600 份 Claude Code/Cursor/Copilot/Codex 配置 + 511 个已发布技能集）中 16.0% 至少携带一处安全缺陷——9.8% 安装未锁定 MCP server、3.1% 在看似限定的授权后预批准任意执行、3.8% 的技能携带预批准 shell；全部发现经独立重推导与双人裁定，工具、语料清单与裁定结果公开——MCP/skills 配置供应链的首个量化审计，也是安全需求端首个独立学术测量（2026-09-11 核实）"
+        "《Scanning the Harness》供应链审计（2026-09-10，arXiv 2609.07360，ev-20260910-08）：3,171 个公开 GitHub 仓库（2,600 份 Claude Code/Cursor/Copilot/Codex 配置 + 511 个已发布技能集）中 16.0% 至少携带一处安全缺陷——9.8% 安装未锁定 MCP server、3.1% 在看似限定的授权后预批准任意执行、3.8% 的技能携带预批准 shell；全部发现经独立重推导与双人裁定，工具、语料清单与裁定结果公开——MCP/skills 配置供应链的首个量化审计，也是安全需求端首个独立学术测量（2026-09-11 核实）",
+        "LiteLLM 1.102.0 稳定版（2026-09-20，ev-20260913-01 更新）：Agent Skills 发现、按用户 MCP 工具授权、客户自管 KMS 与路由遥测进入 stable gateway；证明控制面可试跑，但仍是单一项目且没有互操作 auth/enforcement 规范"
       ],
       "evidence_en": [
         "Cloudflare One Gateway MCP detection/enforcement GA — `experimental.is_mcp`, Portal-only enforcement, OAuth pre-registration (2026-08-14, primary source, ev-20260814-03)",
@@ -220,7 +226,8 @@
         "Background (verified): Zscaler announced Zscaler AI Broker on 2026-06-09 (Zenith Live), a security broker for agent communication over MCP and A2A, paired with an Agent Registry that shows, per agent, which resources it is authorized to access — part of its Zero Trust platform for Agentic AI. This is the third SSE/security vendor with an MCP enforcement capability after Cloudflare and Netskope, but the press release does not state GA vs. preview status and there is no public telemetry (verified 2026-08-24 as pre-coverage background; the 8/17 check missed it)",
         "Background (verified): Netskope's 2026-03-11 press release announced the Netskope One AI Security suite (incl. Agentic Broker — visibility and control over all MCP transactions, sanctioned or not) as \"generally available today\", meaning the Broker product itself has been GA since March; however the 22 MCP data attributes remain behind a feature flag with no public telemetry (verified 2026-08-29 as pre-coverage background)",
         "Netskope Release 141 (notes page dated 9/1, not yet published at the 9/2 check, captured this window, verified against official docs): AI Command Center's Endpoint AI Discovery (beta) discovers AI agents, browser/editor/desktop extensions and local models on managed endpoints via the Netskope Client, with beta discovery of MCP servers used on endpoints; AI Guardrails On Demand - Netskope Hosted reached GA (standalone REST API integrating with LiteLLM/Kong/Apigee gateways); AI Gateway x Enterprise Browser integration (beta, centralized governance of browser-originated LLM traffic plus an emergency kill switch via gateway token revocation). The enforcement surface extends from network traffic to endpoints and the browser — but Endpoint Discovery is beta and gated behind rep/support enablement; the 22 MCP data attributes are still not mentioned as leaving the feature flag, and there is no public telemetry (verified 2026-09-05)",
-        "The 'Scanning the Harness' supply-chain audit (2026-09-10, arXiv 2609.07360, ev-20260910-08): 16.0% of 3,171 public GitHub repositories (2,600 Claude Code/Cursor/Copilot/Codex configs + 511 published skill sets) carry at least one security defect — 9.8% install unpinned MCP servers, 3.1% pre-approve arbitrary execution behind scoped-looking grants, and 3.8% of skills carry pre-approved shells; every finding was independently re-derived and dual-adjudicated, with tools, corpus manifest and adjudications released — the first quantified audit of the MCP/skills config supply chain and the first independent academic measurement on the security-demand side (verified 2026-09-11)"
+        "The 'Scanning the Harness' supply-chain audit (2026-09-10, arXiv 2609.07360, ev-20260910-08): 16.0% of 3,171 public GitHub repositories (2,600 Claude Code/Cursor/Copilot/Codex configs + 511 published skill sets) carry at least one security defect — 9.8% install unpinned MCP servers, 3.1% pre-approve arbitrary execution behind scoped-looking grants, and 3.8% of skills carry pre-approved shells; every finding was independently re-derived and dual-adjudicated, with tools, corpus manifest and adjudications released — the first quantified audit of the MCP/skills config supply chain and the first independent academic measurement on the security-demand side (verified 2026-09-11)",
+        "LiteLLM 1.102.0 stable (2026-09-20, ev-20260913-01 update): Agent Skills discovery, per-user MCP tool authorization, customer-managed KMS and routing telemetry reach a stable gateway build; this makes the control plane trialable but remains one project without an interoperable auth/enforcement specification"
       ],
       "why_it_matters_zh": "升级依据：多个独立信号来自不同组织、不同日期（网络厂商、企业 SaaS、安全研究），指向同一方向：MCP 正从新兴协议转变为受治理的企业基础设施。",
       "why_it_matters_en": "Why upgraded: multiple independent signals from different organizations and dates (network vendor, enterprise SaaS, security research) point the same way — MCP is moving from a novelty protocol to governed enterprise infrastructure.",
@@ -356,6 +363,11 @@
           "date": "2026-09-20",
           "note_zh": "Pydantic AI 2.46 新增 Temporal agent 事件流，但没有新的 MCP auth/enforcement 规范、第二家安全厂商公开遥测或独立采用数据。维持 emerging / Medium。",
           "note_en": "Pydantic AI 2.46 adds Temporal agent event streams, but no new MCP auth/enforcement specification, second-vendor public telemetry or independent adoption data appeared. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-21",
+          "note_zh": "LiteLLM 1.102.0 把按用户 MCP 工具权限和 Skills 发现推进到 stable，满足此前等待稳定版的试跑门槛；但仍没有跨厂商 auth/enforcement 规范或第二家安全厂商公开遥测。维持 emerging / Medium。",
+          "note_en": "LiteLLM 1.102.0 moves per-user MCP tool permissions and Skills discovery into stable, clearing the earlier trial gate. A cross-vendor auth/enforcement specification and second-vendor public telemetry are still missing. Stays emerging / Medium."
         }
       ]
     },
@@ -540,6 +552,11 @@
           "date": "2026-09-20",
           "note_zh": "Claude Code 2.1.278 与 Pydantic AI 2.46 继续改善运行成本、事件流和实时工具状态，但都是既有 runtime 的增量加固，没有新的跨组织编排原语。维持 established / High。",
           "note_en": "Claude Code 2.1.278 and Pydantic AI 2.46 improve runtime cost, event streaming and realtime tool state, but they are incremental hardening rather than a new cross-organization orchestration primitive. Stays established / High."
+        },
+        {
+          "date": "2026-09-21",
+          "note_zh": "LiteLLM 1.102.0 稳定化 gateway 控制面，但没有新的 coding-agent 编排原语或独立生产案例。维持 established / High。",
+          "note_en": "LiteLLM 1.102.0 stabilizes a gateway control plane without adding a new coding-agent orchestration primitive or independent production case. Stays established / High."
         }
       ]
     },
@@ -674,6 +691,11 @@
           "date": "2026-09-20",
           "note_zh": "本窗口没有 METR 审查结论、跨厂商披露格式或嵌入式评估独立性细则。维持 strengthening / Medium。",
           "note_en": "No METR findings, cross-vendor disclosure format or embedded-evaluator independence rules appeared in this window. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-21",
+          "note_zh": "本窗口没有 METR 审查结论、嵌入式评估独立性规则或跨厂商披露格式。维持 strengthening / Medium。",
+          "note_en": "No METR findings, embedded-evaluator independence rules or cross-vendor disclosure format appeared in this window. Stays strengthening / Medium."
         }
       ]
     },
@@ -771,6 +793,11 @@
           "date": "2026-09-20",
           "note_zh": "OpenVINO 2026.4 扩展本地 Intel 推理能力，但不是企业 agent 执行面或独立生产采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。维持 candidate / Low。",
           "note_en": "OpenVINO 2026.4 expands local Intel inference but is not an enterprise agent execution plane or independent production adoption case. OpenAI PSP and Anthropic EFS remain undelivered. Stays candidate / Low."
+        },
+        {
+          "date": "2026-09-21",
+          "note_zh": "Qwen-Image-2.1 提供本地权重与多套运行时支持，但研究用途许可证和 26–40 GiB 服务显存使它不能证明企业自托管执行面已经成形。维持 candidate / Low。",
+          "note_en": "Qwen-Image-2.1 provides local weights and broad runtime support, but its research-only license and 26-40 GiB serving footprint do not establish an enterprise self-hosted execution plane. Stays candidate / Low."
         }
       ]
     },
@@ -858,6 +885,11 @@
           "date": "2026-09-20",
           "note_zh": "本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。",
           "note_en": "No new millennium-scale mathematics result, Lean formalization or independent acceptance appeared. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-21",
+          "note_zh": "本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。",
+          "note_en": "No new millennium-scale mathematics result, Lean formalization or independent acceptance appeared. Stays emerging / Medium."
         }
       ]
     },
@@ -928,6 +960,11 @@
           "date": "2026-09-20",
           "note_zh": "Claude Code 把 auto-mode classifier 默认移到服务端并暴露运行位置，这是同组织控制面加固；仍没有跨 shell / MCP / browser 的统一 policy schema 或公开采用遥测。维持 emerging / Medium。",
           "note_en": "Claude Code defaults auto-mode classification to the server and exposes where it runs, a same-organization control-plane hardening. There is still no unified shell/MCP/browser policy schema or public adoption telemetry. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-21",
+          "note_zh": "LiteLLM 1.102.0 把 MCP 权限控制推进到 stable，但它仍是 gateway 内部策略，没有跨 shell / MCP / browser 的统一 schema 或公开采用遥测。维持 emerging / Medium。",
+          "note_en": "LiteLLM 1.102.0 moves MCP permission controls into stable, but they remain gateway-local policy without one schema across shell, MCP and browser or public adoption telemetry. Stays emerging / Medium."
         }
       ]
     }

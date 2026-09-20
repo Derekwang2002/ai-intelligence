@@ -1,0 +1,67 @@
+{
+  "date": "2026-09-20",
+  "provenance": "Official Qwen article, public model artifacts and first-party runtime integration records verified during the 2026-09-21 incremental run.",
+  "events": [
+    {
+      "event_id": "ev-20260920-01",
+      "title": "Qwen releases Qwen-Image-2.1 for unified generation and editing",
+      "title_zh": "Qwen 发布统一生成与编辑的 Qwen-Image-2.1",
+      "category": "foundation-model",
+      "organization": [
+        "Alibaba",
+        "Qwen"
+      ],
+      "published_at": "2026-09-20T12:00:00Z",
+      "first_seen_at": "2026-09-20T16:02:09Z",
+      "last_updated_at": "2026-09-20T16:02:09Z",
+      "source_type": "official_blog",
+      "primary_source": "https://qwen.ai/blog?id=qwen-image-2.1",
+      "secondary_sources": [
+        "https://github.com/QwenLM/Qwen-Image-2.1",
+        "https://huggingface.co/Qwen/Qwen-Image-2.1",
+        "https://github.com/sgl-project/sglang/pull/39983"
+      ],
+      "summary": "Qwen-Image-2.1 uses one 7B visual generator for text-to-image generation and image editing. It can generate and edit transparent RGBA assets, accept up to ten reference images, and target local edits with circles, painted annotations or masks. Diffusers, ComfyUI, vLLM-Omni, SGLang and LightX2V added day-zero support. The weights are public, but the Qwen Research License limits them to non-commercial research and evaluation.",
+      "why_it_matters": "For teams building local creative-asset pipelines, one checkpoint can now cover generation, composition, editing and transparent output without switching models. Run a non-commercial proof of concept for typography, identity drift, alpha-edge quality, repeated-edit degradation and target-hardware latency. Commercial teams should treat the model as WATCH until they obtain separate license terms.",
+      "summary_zh": "Qwen-Image-2.1 用一个 7B 视觉生成器同时完成文生图与图像编辑。它可以生成和编辑透明 RGBA 素材，最多接收 10 张参考图，还能用圈选、涂抹标注或蒙版指定局部修改。Diffusers、ComfyUI、vLLM-Omni、SGLang 和 LightX2V 已在发布当天接入。权重可以公开下载，但 Qwen Research License 只允许非商业研究与评估。",
+      "summary_en": "Qwen-Image-2.1 uses one 7B visual generator for text-to-image generation and image editing. It can generate and edit transparent RGBA assets, accept up to ten reference images, and target local edits with circles, painted annotations or masks. Diffusers, ComfyUI, vLLM-Omni, SGLang and LightX2V added day-zero support. The weights are public, but the Qwen Research License limits them to non-commercial research and evaluation.",
+      "why_it_matters_zh": "对搭建本地图像素材流水线的团队来说，一个 checkpoint 现在就能覆盖生成、组合、编辑和透明背景输出，不必频繁切换模型。适合先做非商业 POC，重点测试文字、人物一致性、透明边缘、连续编辑退化和目标硬件延迟。商业团队在拿到单独授权前应保持 WATCH。",
+      "why_it_matters_en": "For teams building local creative-asset pipelines, one checkpoint can now cover generation, composition, editing and transparent output without switching models. Run a non-commercial proof of concept for typography, identity drift, alpha-edge quality, repeated-edit degradation and target-hardware latency. Commercial teams should treat the model as WATCH until they obtain separate license terms.",
+      "technical_details": {
+        "architecture": "7B visual generator with 32 single-stream DiT layers, mixed-granularity attention and reusable prefix KV state",
+        "capabilities": "unified text-to-image and editing; native RGBA generation/editing; up to 10 reference images; circles, painted annotations and masks for local edits",
+        "resolution": "native 2K; official examples include 2048x2048 and multiple landscape/portrait aspect ratios",
+        "runtime_support": "day-zero Diffusers, ComfyUI, vLLM-Omni, SGLang and LightX2V integrations",
+        "serving_measurement": "SGLang reports 8.23s generation and 9.85s editing medians at 1024x1024/40 steps on one RTX PRO 6000 Blackwell, with 40.1 GiB peak device memory; DiT offload lowers peak to 26.1 GiB with higher latency",
+        "license": "Qwen Research License; non-commercial research and evaluation only; commercial use requires a separate license",
+        "benchmark_status": "visual-quality and identity-preservation claims are vendor-reported; no independent quality evaluation was available at scan cutoff"
+      },
+      "technical_details_zh": {
+        "架构": "7B 视觉生成器，包含 32 层 single-stream DiT、混合粒度注意力与可复用的前缀 KV 状态",
+        "能力": "统一文生图与编辑；原生 RGBA 生成和编辑；最多 10 张参考图；支持圈选、涂抹标注和蒙版局部编辑",
+        "分辨率": "原生 2K；官方示例包含 2048x2048 及多种横竖画幅",
+        "运行时支持": "Diffusers、ComfyUI、vLLM-Omni、SGLang 与 LightX2V 在发布当天接入",
+        "服务测量": "SGLang 在单张 RTX PRO 6000 Blackwell 上报告：1024x1024、40 步时生成中位数 8.23 秒、编辑中位数 9.85 秒，峰值显存 40.1 GiB；DiT offload 可将峰值降至 26.1 GiB，但延迟上升",
+        "许可证": "Qwen Research License；只允许非商业研究与评估；商业使用需要单独授权",
+        "评测状态": "视觉质量与人物一致性来自厂商报告；扫描截止时没有独立质量评测"
+      },
+      "tags": [
+        "qwen-image",
+        "image-generation",
+        "image-editing",
+        "rgba",
+        "open-weights",
+        "diffusion",
+        "local-inference"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "qwen-image-2-1-unified-generation-editing-rgba"
+    }
+  ]
+}
