@@ -1,4 +1,4 @@
-# Current Trend State — as of 2026-09-21T16:01Z
+# Current Trend State — as of 2026-09-22T16:02Z
 
 > 维护说明：本文件反映当前仍值得追踪的候选/确认趋势。每次运行可新增、升级、降级或作废条目。趋势判定要求多个独立信号（跨日期、跨组织）；单个新闻或单日热度不构成趋势。
 
@@ -10,7 +10,7 @@
 - **Status:** strengthening / Medium（维持；判据复核 @2026-09-14：(a) 仍未达成，没有新的第三方 Terminal-Bench / SWE 权重复现；(b) 已由 DeepSeek V4.1 Flash 达成；(c) serving 生态新增跨模型、跨框架的合并代码——vLLM 为 DeepSeek 合并 DeepSelect 与 Engram 路径，SGLang 为 Qwen NVFP4 合并单 DGX Spark 路径；升 High 仍仅剩 (a)）
 - **Confidence:** Medium
 - **First observed:** 2026-08-15（覆盖 2026-08-14 窗口）
-- **Last updated:** 2026-09-15
+- **Last updated:** 2026-09-23
 - **Evidence:**
   1. Qwen3.8-27B 权重发布（Apache 2.0，首日 91k 下载，2026-08-14）
   2. GLM-5.3 发布（2026-08-14；权重已于 2026-08-25 落地，见第 8 条）
@@ -29,6 +29,7 @@
   15. 判据 (b) 达成 + 第五个连续放量周期（2026-09-11 核查）：**DeepSeek V4.1 Flash 开源（9/10，MIT，763B/552B 骨干，TB 2.1 90.6 高于所有列出闭源模型、DeepSWE 74.2；1.5 天 75.7k 下载）——另一个组织的同级别开源权重发布，与 GLM-5.3 同量级（763B vs 753B）**；计数器第五周期：GLM-5.3 FP8 597,626（+35%）、Flash 1,173,520（+50%）、Flash-Next 586,040 + FP8 349,091、Hy4 8,219、V4-Flash-Vision 443,954；serving 诊断跟进混合架构（SinkProbe，ev-20260910-14）；安全外溢具体化——单方向消融可剥离出厂 GLM-5.3-Flash（block-FP8）的拒绝能力（ev-20260911-06）
   16. 第六个连续放量周期 + 权重侧复现的最近一次接近（2026-09-13T00:03Z 核查）：GLM-5.3 FP8 635,504（+6.3%）、GLM-5.3-Flash 1,333,574（+13.6%）、Flash-Next 604,992 + FP8 369,963（+3.2%/+6.0%）、Hy4 8,936（+8.7%）、V4-Flash-Vision 484,422（+9.1%）、DeepSeek V4.1-Flash 140,636（发布约 2.5 天，相对增速最陡）；unsloth Flash-Next GGUF 1,160,057、NVIDIA NVFP4 衍生 89,924（4 天约 5 倍）——全线仍在增长，但 Qwen/GLM Flash 线的日均斜率较前几个 3 天周期回落。判据 (a) 出现迄今最近一次接近：HF 讨论 #50（9/12）在单台 DGX Spark（GB10、128GB 统一内存）上以 2-bit 路由专家量化运行公开权重，HumanEval 97.0% 高于 z.ai API 的 95.1%（同 prompt、温度 0；复现产物公开）——但 HumanEval 不是 Terminal-Bench/SWE，判据仍未达成。邻接（厂商自报，不计证据）：Z.ai 工程博文（9/12）披露 Flash 的 ox-alpha 匿名测试全程跑在国产 AI 芯片集群上（SGLang 定制引擎、EPD 分离架构、端到端 3 倍提升、成本对齐主流 NVIDIA GPU）（ev-20260825-01 更新）（ev-20260910-01 / ev-20260814-02 / ev-20260825-01 / ev-20260826-04 / ev-20260828-02 / ev-20260831-02 更新）
   17. serving 路径进入上游合并代码（2026-09-13 UTC）：vLLM 为 DeepSeek V4.1-Flash 合并 DeepSelect 稀疏索引 TopK（GB200、batch 256 / 1M KV 下 191 微秒，原路径 616 微秒）与 Engram DP 分片、异步 CPU offload、共享内存表；SGLang 为 nvidia/Qwen3.8-Flash-Next-NVFP4 合并单 DGX Spark / GB10 路径（200 题 GSM8K 97.5%/97.0%，约 93/90 tok/s）。两者均在 main、尚未 tagged，说明开放权重 serving 生态继续落地，但不是 TB/SWE 权重复现（ev-20260910-01 / ev-20260826-04 更新）。
+  18. vLLM 0.30.0 tagged stable（2026-09-22，ev-20260922-01）：此前在 main 的 DeepSeek V4.1、GLM-5.3、Qwen3.8 等开放权重模型 serving 路径进入稳定发布，并加入常驻 GPU 权重缓存、HiSparse 主机 KV tier 和大规模安全加固；serving 采用证据增强，但仍不是公开权重的第三方 Terminal-Bench / SWE 复现。
 - **Why strengthening:** 确认判据「GLM-5.3 权重落地 + 独立 benchmark 复现」实质达成——权重 8/25 落地且许可证宽松可用，Artificial Analysis 独立评测把 GLM-5.3 放到与 Kimi K3 同档。GLM-5.3-Flash（纯 MIT、全新底座、线性注意力降本）是同组织的加强信号。仍未到 High，只因为 Artificial Analysis 的独立评测针对 API，尚无社区对公开权重的 Terminal-Bench 或 SWE 复现；跨组织同级别发布与持续下载增速判据均已达成。
 - **2026-08-16 run:** 窗口内无新的独立信号（GLM-5.3 登上 Product Hunt 第 3 名仅为社区热度）。Status/Confidence 维持不变。
 - **2026-08-17 run:** 覆盖缺口说明：Qwen3.8-2.4T-A95B（Qwen3.8-Max 旗舰的开源权重版本，Apache-2.0 + 官方 FP8）于 2026-08-13 上架 Hugging Face，早于本知识库首个扫描窗口，仅作为背景证据登记，不计为窗口内新信号（与 27B 属同一组织）。采用情况：最初数日 BF16/FP8 下载量 7.9k/10.7k，vLLM、SGLang、TokenSpeed 首日即支持，另有 NVIDIA GB300 NVL72 serving 技术博客。Status/Confidence 维持不变。
@@ -58,6 +59,7 @@
 - **2026-09-20 run:** Qwen3.8-LiveTranslate 是语音翻译模型，OpenVINO 2026.4 是 serving 工具链；本窗口仍无新的同级开放权重 coding 模型或第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
 - **2026-09-21 run:** Qwen-Image-2.1 是图像生成与编辑模型，没有改变开放权重 coding 模型的能力判据；本窗口仍无第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
 - **2026-09-22 run:** 本窗口没有新的同级开放权重 coding 模型或第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
+- **2026-09-23 run:** vLLM 0.30 把多条开放权重 serving 路径推进 tagged stable，采用证据增强；仍缺第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
 - **What would confirm（升 High 的剩余判据）:** (a) 权重的社区独立复现（第三方 Terminal Bench / SWE 运行——模型卡元数据同步不算）——**升 High 仅剩此项**；(b) 已于 2026-09-11 由 DeepSeek V4.1 Flash 达成；(c) 已达成并延续五个周期，剩余观察其延续性
 
 ### Emerging: MCP 进入企业安全与强制管控阶段
@@ -106,13 +108,14 @@
 - **2026-09-20 run:** Pydantic AI 2.46 新增 Temporal agent 事件流，但没有新的 MCP auth/enforcement 规范、第二家安全厂商公开遥测或独立采用数据。维持 emerging / Medium。
 - **2026-09-21 run:** LiteLLM 1.102.0 把按用户 MCP 工具权限和 Skills 发现推进到 stable，满足此前等待稳定版的试跑门槛；但仍没有跨厂商 auth/enforcement 规范或第二家安全厂商公开遥测。维持 emerging / Medium。
 - **2026-09-22 run:** 本窗口没有新的跨厂商 auth/enforcement 规范、安全产品 GA 或公开采用数据。维持 emerging / Medium。
+- **2026-09-23 run:** 本窗口没有新的跨厂商 auth/enforcement 规范、安全产品 GA 或公开采用数据。维持 emerging / Medium。
 - **What would confirm:** 第二家安全厂商（Zscaler/Netskope/Palo Alto）交付 **GA** 状态的 MCP 识别能力并公开遥测数据；MCP auth spec 在主流 agent framework 中落地
 
 ### Established: Coding agent 收敛为 multi-agent runtime
 - **Status:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Confidence:** High
 - **First observed:** 2026-08-15（覆盖 2026-08-13/14 窗口）
-- **Last updated:** 2026-09-18
+- **Last updated:** 2026-09-23
 - **Evidence:**
   1. Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）
   2. GitHub/Microsoft Copilot Agent Plugins 1.0 GA（2026-08-13）
@@ -130,6 +133,7 @@
   14. GitHub Copilot code review（2026-09-11T20:00Z，一手来源，ev-20260911-11）：Lite review 改为多 agent ensemble，并在 agent firewall 后运行完整 Copilot SDK shell 工具集做构建、测试和定向脚本验证；厂商实验中被采纳的高严重度评论 +47%、成本约 -8%。同组织 GitHub/Microsoft 的运行时加固，不新增组织
   15. Agent runtime 与恢复评测进入配对实验（2026-09-14 digest，ev-20260914-02 / ev-20260914-07）：同模型对比未发现 Claude Agent SDK / Codex SDK 相对中立 deepagents 的平均解题率优势，但中立 harness 每解题成本高 1.2–1.6 倍；ParaRecover 以 10,626 个样本、14 类错误测量并行工具调用的定位与重规划——runtime 选择与故障恢复开始有可复用的过程指标
   16. runtime、scaffold 与委派拓扑开始可量化（2026-09-15 digest，ev-20260915-02 / ev-20260915-04 / ev-20260915-06）：SWE-bench 前 30 名相邻结果均不可区分，固定模型后的 scaffold 差距最高 29.8 分；生产轨迹给出深层委派的信息损失与成本交叉点；ScienceBuddy 公开 harness 演化与模型训练分层循环。
+  17. RRSI 与长期合谋研究（2026-09-21，ev-20260921-04 / 06）：自动优化 harness 需要提案预算、留出任务与剪枝来抑制过拟合；持续多 agent 互动又会在奖励冲突下改变协作策略。runtime 既要管理 scaffold 演化，也要管理跨轮次的关系状态。
 - **Why established / High:** 确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
 - **2026-08-16 run:** 窗口内无新信号（Claude Code 无新版本；Cursor Builds 默认开启时间为 8/17，尚未生效）。
 - **2026-08-17 run:** Cursor Builds 按计划对所有环境默认开启。但 Builds 是 warm-snapshot 基础设施改进，不是 multi-agent 原语，不计为证据。
@@ -159,6 +163,7 @@
 - **2026-09-20 run:** Claude Code 2.1.278 与 Pydantic AI 2.46 继续改善运行成本、事件流和实时工具状态，但都是既有 runtime 的增量加固，没有新的跨组织编排原语。维持 established / High。
 - **2026-09-21 run:** LiteLLM 1.102.0 稳定化 gateway 控制面，但没有新的 coding-agent 编排原语或独立生产案例。维持 established / High。
 - **2026-09-22 run:** Codex alpha 与 Gemini CLI nightly 仍是预发布构建，没有新的稳定编排原语或独立生产案例。维持 established / High。
+- **2026-09-23 run:** RRSI 与长期合谋实验增加了 harness 管理和跨轮次协作风险的证据，但没有新的生产采用案例。维持 established / High。
 - **What would confirm:** 已达成（2026-08-28）：(a) Codex 0.150.0 stable 落地 agent 间消息 + Gemini CLI a2a-server 进 stable。剩余观察项：(b) 社区编排模式是否收敛出事实标准工具或命名模式；(c) ≥2 个独立组织的公开生产案例与采用遥测
 
 ### Strengthening: 前沿实验室把安全事件披露与第三方独立审查制度化
@@ -202,6 +207,7 @@
 - **2026-09-20 run:** 本窗口没有 METR 审查结论、跨厂商披露格式或嵌入式评估独立性细则。维持 strengthening / Medium。
 - **2026-09-21 run:** 本窗口没有 METR 审查结论、嵌入式评估独立性规则或跨厂商披露格式。维持 strengthening / Medium。
 - **2026-09-22 run:** 本窗口没有 METR 审查结论、评估员独立性规则或跨厂商披露格式。维持 strengthening / Medium。
+- **2026-09-23 run:** 本窗口没有 METR 审查结论、评估员独立性规则或跨厂商披露格式。维持 strengthening / Medium。
 - **What would confirm:** METR 正式发布对 Anthropic 事件的独立审查；第二家前沿实验室承诺常态化独立审查（不只一次性报告）；Path to Astra 式的评测披露要求被第二家实验室采纳；跨厂商事故报告格式出现标准化迹象（类似安全行业的 disclosure 惯例）
 
 ### Candidate: AI 工具链的企业自托管 / 数据驻留执行面成形
@@ -231,6 +237,7 @@
 - **2026-09-20 run:** OpenVINO 2026.4 扩展本地 Intel 推理能力，但不是企业 agent 执行面或独立生产采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。维持 candidate / Low。
 - **2026-09-21 run:** Qwen-Image-2.1 提供本地权重与多套运行时支持，但研究用途许可证和 26–40 GiB 服务显存使它不能证明企业自托管执行面已经成形。维持 candidate / Low。
 - **2026-09-22 run:** 本窗口没有新的自托管执行面、独立生产采用、OpenAI PSP 白皮书或 Anthropic EFS 落地。维持 candidate / Low。
+- **2026-09-23 run:** vLLM 0.30 扩展自托管推理能力，但不是新的企业 agent 执行面或独立生产采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。维持 candidate / Low。
 - **What would confirm:** ≥2 个独立组织的生产案例与采用数据；OpenAI Private Safety Processing 白皮书与 Anthropic EFS 按时间表兑现（9 月仅剩三分之一）；第二家开发工具厂商之外的执行面形态持续出现（如 Confidential VM 类密码学隔离）
 
 ### Emerging: AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
@@ -259,13 +266,14 @@
 - **2026-09-20 run:** 本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - **2026-09-21 run:** 本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - **2026-09-22 run:** 本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
+- **2026-09-23 run:** 本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - **What would confirm:** Clay 研究所或数学界对任一证明的正式接受；第三家实验室或独立团队复现同类结果；Lean/formal 工具链采用数据；AI 数学可操作规范落地（Fields Medalist 宣言是否转化为具体准则）
 
 ### Emerging: Agent runtime 把宽执行能力与后果控制拆成两层
 - **Status:** emerging（2026-09-15 立项：9/9–9/14 的五组跨组织信号同时指向「给 agent 通用执行面，再用独立策略层约束后果」；包含企业权限 GA、capability-scoped harness、agent firewall、工具接口受控实验与实时 gate）
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-09-19
+- **Last updated:** 2026-09-23
 - **Evidence:**
   1. GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束
   2. CapScope（2026-09-10 digest，ev-20260910-09）：把 shell、filesystem、network 能力写成 task-scoped contract，prompt injection 成功率从 38.7% 降至 0.8%，独立 verifier 与执行 harness 分层
@@ -276,6 +284,7 @@
   7. 2026-09-15 至 16：Gemini CLI 0.60 将 MCP OAuth、路径边界、环境变更确认与工具输出来源加固推入 stable；Claude Code 2.1.273 修复 Bash 权限跳过、危险子 shell 与托管策略优先级；social-harness 实验显示跨主体消息还需要独立的来源、权限、交互协议与治理层（ev-20260825-02 / ev-20260814-04 更新；ev-20260915-07）。
   8. 红队研究在 79% 试验中用 agent 自生成 prompt injection 绕过仿 Auto Mode / Guardian 阻断器并执行任意 Bash；multi-agent 与恶意压缩又增加跨上下文路径，说明逐动作模型 monitor 不是完整边界（2026-09-17，ev-20260917-12）。
   9. Harvard 研究展示模型可从输出 token 识别 vLLM、SGLang 等推理引擎，再选择引擎专属漏洞路径；推理 runtime 本身也必须纳入不可信边界（2026-09-17，ev-20260917-10）。
+  10. DUMA-Bench（2026-09-21 overlap 覆盖补漏，ev-20260921-03）：在 14 个模型、8 个领域中，允许用户持续改变共享环境后，攻击成功率从 26.9% 升至 41.1%。风险由模型、用户与 runtime 允许的状态变化共同决定。
 - **Time Horizon:** Short-term
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
 - **2026-09-15 run:** 立项为 emerging / Medium：五组信号跨 GitHub/Microsoft、学术团队与 Pheo，覆盖产品 GA、厂商运行时、受控实验与开源 gate。不是「shell 更好」的单篇论文推断，而是「宽能力 + 独立后果控制」在供给、评测与安全实现三端同时收敛。
@@ -286,6 +295,7 @@
 - **2026-09-20 run:** Claude Code 把 auto-mode classifier 默认移到服务端并暴露运行位置，这是同组织控制面加固；仍没有跨 shell / MCP / browser 的统一 policy schema 或公开采用遥测。维持 emerging / Medium。
 - **2026-09-21 run:** LiteLLM 1.102.0 把 MCP 权限控制推进到 stable，但它仍是 gateway 内部策略，没有跨 shell / MCP / browser 的统一 schema 或公开采用遥测。维持 emerging / Medium。
 - **2026-09-22 run:** 本窗口没有跨 shell / MCP / browser 的统一 policy schema，也没有公开采用遥测。维持 emerging / Medium。
+- **2026-09-23 run:** DUMA-Bench 强化了模型能力与 runtime 后果分层验收的必要性；统一 policy schema 和公开采用遥测仍缺。维持 emerging / Medium。
 - **What would confirm:** 第二家 agent 平台公开同类运行时 policy GA 与采用遥测；跨 shell / MCP / browser 的统一 consequence taxonomy；独立团队复现 Bash 接口收益与 OATS 误报/延迟；出现可互操作的 policy schema
 
 ## Invalidated / retired

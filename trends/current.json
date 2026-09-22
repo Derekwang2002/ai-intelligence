@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-21T16:01Z",
+  "as_of": "2026-09-22T16:02Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -10,7 +10,7 @@
       "status_note_en": "strengthening / Medium (maintained; criteria re-check @2026-09-14: (a) still unmet, with no new third-party Terminal-Bench / SWE reproduction on the weights; (b) met by DeepSeek V4.1 Flash; (c) the serving ecosystem gains merged code across models and frameworks - vLLM for DeepSeek DeepSelect/Engram and SGLang for Qwen NVFP4 on one DGX Spark; (a) remains the only gate to High)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-15",
+      "last_updated": "2026-09-23",
       "retired": false,
       "evidence_zh": [
         "Qwen3.8-27B 权重发布（Apache 2.0，首日 91k 下载，2026-08-14）",
@@ -29,7 +29,8 @@
         "第四个连续放量周期（2026-09-08 核查）：GLM-5.3 FP8 303,534 → 442,064（+46%）、GLM-5.3-Flash 654,957 → 784,005（+20%）、Qwen3.8-Flash-Next 351,374 → 474,693（+35%，另有 FP8 224,875）、Hy4 预览 5,684 → 6,705（+18%）、DeepSeek V4-Flash-Vision-Exp 133,024 → 251,611（+89%，连续第二次核查为相对增速最陡）；unsloth Flash-Next GGUF 702,251 → 868,243、NVIDIA NVFP4 衍生仓 18,068——753B 旗舰与全部衍生线继续放量（ev-20260814-02 / ev-20260825-01 / ev-20260826-04 / ev-20260828-02 / ev-20260831-02 更新）",
         "15. 判据 (b) 达成 + 第五个连续放量周期（2026-09-11 核查）：DeepSeek V4.1 Flash 开源（9/10，MIT，763B/552B 骨干，TB 2.1 90.6 高于所有列出闭源模型、DeepSWE 74.2；1.5 天 75.7k 下载）——另一个组织的同级别开源权重发布，与 GLM-5.3 同量级（763B vs 753B）；计数器第五周期：GLM-5.3 FP8 597,626（+35%）、Flash 1,173,520（+50%）、Flash-Next 586,040 + FP8 349,091、Hy4 8,219、V4-Flash-Vision 443,954（ev-20260910-01 / ev-20260814-02 / ev-20260825-01 / ev-20260826-04 / ev-20260828-02 / ev-20260831-02 更新）；serving 诊断跟进混合架构（SinkProbe，ev-20260910-14）；安全外溢具体化——单方向消融可剥离出厂 GLM-5.3-Flash（block-FP8）的拒绝能力（ev-20260911-06）",
         "16. 第六个连续放量周期 + 权重侧复现的最近一次接近（2026-09-13T00:03Z 核查）：GLM-5.3 FP8 635,504（+6.3%）、GLM-5.3-Flash 1,333,574（+13.6%）、Flash-Next 604,992 + FP8 369,963（+3.2%/+6.0%）、Hy4 8,936（+8.7%）、V4-Flash-Vision 484,422（+9.1%）、DeepSeek V4.1-Flash 140,636（发布约 2.5 天，相对增速最陡）；unsloth Flash-Next GGUF 1,160,057、NVIDIA NVFP4 衍生 89,924（4 天约 5 倍）——全线仍在增长，但 Qwen/GLM Flash 线的日均斜率较前几个 3 天周期回落。判据 (a) 出现迄今最近一次接近：HF 讨论 #50（9/12）在单台 DGX Spark（GB10、128GB 统一内存）上以 2-bit 路由专家量化运行公开权重，HumanEval 97.0% 高于 z.ai API 的 95.1%（同 prompt、温度 0；复现产物公开）——但 HumanEval 不是 Terminal-Bench/SWE，判据仍未达成。邻接（厂商自报，不计证据）：Z.ai 工程博文（9/12）披露 Flash 的 ox-alpha 匿名测试全程跑在国产 AI 芯片集群上（SGLang 定制引擎、EPD 分离架构、端到端 3 倍提升、成本对齐主流 NVIDIA GPU）（ev-20260825-01 更新）",
-        "17. serving 路径进入上游合并代码（2026-09-13 UTC）：vLLM 为 DeepSeek V4.1-Flash 合并 DeepSelect 稀疏索引 TopK（GB200、batch 256 / 1M KV 下 191 微秒，原路径为 616 微秒）与 Engram DP 分片、异步 CPU offload、共享内存表；SGLang 为 nvidia/Qwen3.8-Flash-Next-NVFP4 合并单 DGX Spark / GB10 路径（200 题 GSM8K 97.5%/97.0%，约 93/90 tok/s）。两者均在 main、尚未 tagged，说明开放权重 serving 生态继续落地，但不是 TB/SWE 权重复现（ev-20260910-01 / ev-20260826-04 更新）。"
+        "17. serving 路径进入上游合并代码（2026-09-13 UTC）：vLLM 为 DeepSeek V4.1-Flash 合并 DeepSelect 稀疏索引 TopK（GB200、batch 256 / 1M KV 下 191 微秒，原路径为 616 微秒）与 Engram DP 分片、异步 CPU offload、共享内存表；SGLang 为 nvidia/Qwen3.8-Flash-Next-NVFP4 合并单 DGX Spark / GB10 路径（200 题 GSM8K 97.5%/97.0%，约 93/90 tok/s）。两者均在 main、尚未 tagged，说明开放权重 serving 生态继续落地，但不是 TB/SWE 权重复现（ev-20260910-01 / ev-20260826-04 更新）。",
+        "18. vLLM 0.30.0 tagged stable（2026-09-22，ev-20260922-01）：此前在 main 的 DeepSeek V4.1、GLM-5.3、Qwen3.8 等开放权重模型 serving 路径进入稳定发布，并加入常驻 GPU 权重缓存、HiSparse 主机 KV tier 和大规模安全加固；serving 采用证据增强，但仍不是公开权重的第三方 Terminal-Bench / SWE 复现。"
       ],
       "evidence_en": [
         "Qwen3.8-27B weights released (Apache 2.0, 91k downloads day-one, 2026-08-14)",
@@ -48,7 +49,8 @@
         "Fourth consecutive velocity cycle (verified 2026-09-08): GLM-5.3 FP8 303,534 -> 442,064 (+46%), GLM-5.3-Flash 654,957 -> 784,005 (+20%), Qwen3.8-Flash-Next 351,374 -> 474,693 (+35%, plus FP8 224,875), Hy4 preview 5,684 -> 6,705 (+18%), DeepSeek V4-Flash-Vision-Exp 133,024 -> 251,611 (+89%, steepest relative pull-rate for the second consecutive check); unsloth Flash-Next GGUF 702,251 -> 868,243 and NVIDIA's NVFP4 derivative at 18,068 — the 753B flagship and every derivative line still growing (ev-20260814-02 / ev-20260825-01 / ev-20260826-04 / ev-20260828-02 / ev-20260831-02 updates)",
         "15. Criterion (b) met + fifth consecutive velocity cycle (checked 2026-09-11): DeepSeek V4.1 Flash open-weights (9/10, MIT, 763B total/552B backbone, TB 2.1 90.6 above every listed proprietary model, DeepSWE 74.2; 75.7k downloads in ~1.5 days) — a same-tier open-weight release from another organization at GLM-5.3's exact scale class (763B vs 753B); counters fifth cycle: GLM-5.3 FP8 597,626 (+35%), Flash 1,173,520 (+50%), Flash-Next 586,040 + FP8 349,091, Hy4 8,219, V4-Flash-Vision 443,954; serving diagnostics follow the hybrid architectures (SinkProbe, ev-20260910-14); safety spillover made concrete — a single-direction ablation strips refusal from the shipped block-FP8 GLM-5.3-Flash weights (ev-20260911-06)",
         "16. Sixth consecutive velocity cycle + the nearest approach yet to a weights-side reproduction (checked 2026-09-13T00:03Z): GLM-5.3 FP8 635,504 (+6.3%), GLM-5.3-Flash 1,333,574 (+13.6%), Flash-Next 604,992 + FP8 369,963 (+3.2%/+6.0%), Hy4 8,936 (+8.7%), V4-Flash-Vision 484,422 (+9.1%), DeepSeek V4.1-Flash 140,636 (steepest, ~2.5 days after release); unsloth Flash-Next GGUF 1,160,057 and the NVIDIA NVFP4 derivative 89,924 (~5x in 4 days) - every line still growing, though the per-day slope on the Qwen/GLM Flash lines is below the prior 3-day cycles. Criterion (a) sees its nearest approach yet: HF discussion #50 (9/12) runs the public weights on a single DGX Spark (GB10, 128GB unified memory) with 2-bit routed experts, HumanEval 97.0% above the z.ai API's 95.1% (identical prompts, temperature 0; reproduction artifacts public) - but HumanEval is not Terminal-Bench/SWE, so the criterion remains unmet. Adjacent (vendor-reported, not counted): Z.ai's engineering post (9/12) discloses that the ox-alpha anonymous-testing phase ran entirely on a Chinese-AI-chip cluster (custom SGLang engine, EPD disaggregation, 3x end-to-end improvement, cost comparable to mainstream NVIDIA GPUs) (ev-20260825-01 update)",
-        "17. Serving paths reach merged upstream code (2026-09-13 UTC): vLLM merged DeepSelect sparse-indexer TopK and Engram DP-sharding/async CPU-offload/shared-memory tables for DeepSeek V4.1-Flash; SGLang merged a one-DGX-Spark / GB10 path for nvidia/Qwen3.8-Flash-Next-NVFP4 (200-question GSM8K 97.5%/97.0%, about 93/90 tok/s). Both remain on main and untagged, so this is continued open-weight serving adoption, not a TB/SWE reproduction on the weights (ev-20260910-01 / ev-20260826-04 updates)."
+        "17. Serving paths reach merged upstream code (2026-09-13 UTC): vLLM merged DeepSelect sparse-indexer TopK and Engram DP-sharding/async CPU-offload/shared-memory tables for DeepSeek V4.1-Flash; SGLang merged a one-DGX-Spark / GB10 path for nvidia/Qwen3.8-Flash-Next-NVFP4 (200-question GSM8K 97.5%/97.0%, about 93/90 tok/s). Both remain on main and untagged, so this is continued open-weight serving adoption, not a TB/SWE reproduction on the weights (ev-20260910-01 / ev-20260826-04 updates).",
+        "18. vLLM 0.30.0 tagged stable (2026-09-22, ev-20260922-01): previously merged serving paths for DeepSeek V4.1, GLM-5.3, Qwen3.8 and other open-weight models enter a stable release alongside a resident GPU weight cache, HiSparse host KV tier and broad security hardening. Serving-adoption evidence strengthens, but this is still not a third-party Terminal-Bench or SWE reproduction on public weights."
       ],
       "why_it_matters_zh": "升级为 strengthening 的依据：确认判据「GLM-5.3 权重落地 + 独立 benchmark 复现」实质达成——权重 8/25 落地且许可证宽松可用，Artificial Analysis 独立评测把 GLM-5.3 放到与 Kimi K3 同档。GLM-5.3-Flash（纯 MIT、全新底座、线性注意力降本）是同组织的加强信号。仍未到 High，只因为 Artificial Analysis 的独立评测针对 API，尚无社区对公开权重的 Terminal-Bench 或 SWE 复现；跨组织同级别发布与持续下载增速判据均已达成。",
       "why_it_matters_en": "Why upgraded to strengthening: the confirmation criterion \"GLM-5.3 weights land + independent benchmark reproduction\" is substantially met — weights landed 8/25 under a permissive license, and Artificial Analysis independently places GLM-5.3 in the same tier as Kimi K3. GLM-5.3-Flash (plain MIT, new base, linear-attention cost reduction) is a same-org reinforcing signal. Why not High: Artificial Analysis evaluated the API, while community Terminal-Bench or SWE reproduction on the public weights is still missing; the cross-organization same-tier release and sustained download-velocity criteria are now met.",
@@ -194,6 +196,11 @@
           "date": "2026-09-22",
           "note_zh": "本窗口没有新的同级开放权重 coding 模型或第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。",
           "note_en": "No new same-tier open-weight coding model or third-party Terminal-Bench or SWE reproduction appeared. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-23",
+          "note_zh": "vLLM 0.30 把多条开放权重 serving 路径推进 tagged stable，采用证据增强；仍缺第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。",
+          "note_en": "vLLM 0.30 moves several open-weight serving paths into a tagged stable runtime, strengthening adoption evidence. Third-party Terminal-Bench or SWE reproduction is still missing. Stays strengthening / Medium."
         }
       ]
     },
@@ -378,6 +385,11 @@
           "date": "2026-09-22",
           "note_zh": "本窗口没有新的跨厂商 auth/enforcement 规范、安全产品 GA 或公开采用数据。维持 emerging / Medium。",
           "note_en": "No new cross-vendor auth/enforcement specification, GA security product or public adoption data appeared. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-23",
+          "note_zh": "本窗口没有新的跨厂商 auth/enforcement 规范、安全产品 GA 或公开采用数据。维持 emerging / Medium。",
+          "note_en": "No new cross-vendor auth/enforcement specification, GA security product or public adoption data appeared. Stays emerging / Medium."
         }
       ]
     },
@@ -390,7 +402,7 @@
       "status_note_en": "established (candidate→emerging 2026-08-18; →strengthening 8/20; →established 2026-08-28 — confirmation criterion (a) met: Codex 0.150.0 stable ships agent-initiated cross-task messaging; in the same window Gemini CLI 0.57.0 shipped a2a-server in stable and on npm, making Google the seventh organization with protocol-level interop in a stable runtime)",
       "confidence": "High",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-18",
+      "last_updated": "2026-09-23",
       "retired": false,
       "evidence_zh": [
         "Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）",
@@ -408,7 +420,8 @@
         "13. Cursor Projects（2026-09-10，官方 changelog，ev-20260910-03）：coordinator agent 规划分派而非亲自写码、月级任务上下文、项目级共享记忆（后续 agent 复用先前 agent 的知识）、Slack/定时/PR 订阅唤醒——月级自主工作成为主流 coding 工具的管理单元（同组织 Cursor 的加固，不另计组织）",
         "14. GitHub Copilot code review（2026-09-11T20:00Z，一手来源，ev-20260911-11）：Lite review 改为多 agent ensemble，并在 agent firewall 后运行完整 Copilot SDK shell 工具集做构建、测试和定向脚本验证；厂商实验中被采纳的高严重度评论 +47%、成本约 -8%。同组织 GitHub/Microsoft 的运行时加固，不新增组织",
         "15. Agent runtime 与恢复评测进入配对实验（2026-09-14 digest，ev-20260914-02 / ev-20260914-07）：同模型对比未发现 Claude Agent SDK / Codex SDK 相对中立 deepagents 的平均解题率优势，但中立 harness 每解题成本高 1.2–1.6 倍；ParaRecover 以 10,626 个样本、14 类错误测量并行工具调用的定位与重规划——runtime 选择与故障恢复开始有可复用的过程指标",
-        "16. runtime、scaffold 与委派拓扑开始可量化（2026-09-15 digest，ev-20260915-02 / ev-20260915-04 / ev-20260915-06）：SWE-bench 前 30 名相邻结果均不可区分，固定模型后的 scaffold 差距最高 29.8 分；生产轨迹给出深层委派的信息损失与成本交叉点；ScienceBuddy 公开 harness 演化与模型训练分层循环。"
+        "16. runtime、scaffold 与委派拓扑开始可量化（2026-09-15 digest，ev-20260915-02 / ev-20260915-04 / ev-20260915-06）：SWE-bench 前 30 名相邻结果均不可区分，固定模型后的 scaffold 差距最高 29.8 分；生产轨迹给出深层委派的信息损失与成本交叉点；ScienceBuddy 公开 harness 演化与模型训练分层循环。",
+        "17. RRSI 与长期合谋研究（2026-09-21，ev-20260921-04 / 06）：自动优化 harness 需要提案预算、留出任务与剪枝来抑制过拟合；持续多 agent 互动又会在奖励冲突下改变协作策略。runtime 既要管理 scaffold 演化，也要管理跨轮次的关系状态。"
       ],
       "evidence_en": [
         "Anthropic Claude Code: default-on subagent forking + cross-session SendMessage (2026-08-13/14)",
@@ -426,7 +439,8 @@
         "13. Cursor Projects (2026-09-10, official changelog, ev-20260910-03): coordinator agent plans and delegates rather than writing code, months-scale task context, project-level shared memory (later agents reuse earlier agents' knowledge), Slack/schedule/PR subscription wake-ups — months-scale self-directed work becomes the management unit of a mainstream coding tool (same-org Cursor reinforcement, not counted as a new organization)",
         "14. GitHub Copilot code review (2026-09-11T20:00Z, primary source, ev-20260911-11): Lite review now uses a multi-agent ensemble and runs the full Copilot SDK shell-tool set behind the agent firewall for build, test and targeted-script validation; GitHub's experiment reports 47% more addressed high-severity comments at about 8% lower cost. Same-org GitHub/Microsoft runtime reinforcement, not a new organization",
         "15. Agent runtime and recovery evaluation enter paired experiments (2026-09-14 digest, ev-20260914-02 / ev-20260914-07): same-model contrasts find no resolved average solve-rate advantage for Claude Agent SDK / Codex SDK over neutral deepagents, while the neutral harness costs 1.2-1.6x more per solved task; ParaRecover measures localization and replanning across parallel tool calls with 10,626 instances and 14 error classes — runtime choice and failure recovery now have reusable process metrics",
-        "16. Runtime, scaffold and delegation topology become measurable (2026-09-15 digest, ev-20260915-02 / ev-20260915-04 / ev-20260915-06): no adjacent top-30 SWE-bench result is separable, within-model scaffold ranges reach 29.8 points, production traces estimate hierarchy information loss and a cost crossover, and ScienceBuddy releases a layered harness-evolution and model-training loop."
+        "16. Runtime, scaffold and delegation topology become measurable (2026-09-15 digest, ev-20260915-02 / ev-20260915-04 / ev-20260915-06): no adjacent top-30 SWE-bench result is separable, within-model scaffold ranges reach 29.8 points, production traces estimate hierarchy information loss and a cost crossover, and ScienceBuddy releases a layered harness-evolution and model-training loop.",
+        "17. RRSI and the long-horizon collusion study (2026-09-21, ev-20260921-04 / 06): automated harness optimization needs proposal budgets, held-out tasks and pruning to control overfitting, while persistent multi-agent interaction can reshape cooperation under reward conflict. A runtime must manage both scaffold evolution and relationship state across turns."
       ],
       "why_it_matters_zh": "升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。",
       "why_it_matters_en": "Why upgraded to established / High: confirmation criterion (a) (agent-to-agent messaging semantics in a non-Anthropic stable runtime) is met by Codex 0.150.0 — agents can read, create, or message other tasks from the terminal, so inbox semantics are no longer Anthropic-only; in the same window Google shipped the A2A protocol server into the Gemini CLI stable line and published it on npm. Equivalent primitives are now verified across seven organizations (Anthropic, GitHub/Microsoft, DeepSeek, OpenAI, SST/OpenCode, Anysphere/Cursor, Google) in stable or installable artifacts, spanning March to August 2026. The engineering impact has landed: the orchestration plane is shifting from human-initiated sessions to resident, event-driven, interoperable task systems — multi-agent orchestration is becoming a built-in capability of CLI runtimes rather than a framework choice. Residual gaps (not blocking established, kept under watch): Google's a2a-server has zero documentation or announcement; public production case studies and adoption telemetry are still missing; on the Anthropic side, Claude Code 2.1.248 extended cross-session messaging to Bedrock/Vertex/Foundry and telemetry-off deployments (same-org hardening, not counted separately).",
@@ -572,6 +586,11 @@
           "date": "2026-09-22",
           "note_zh": "Codex alpha 与 Gemini CLI nightly 仍是预发布构建，没有新的稳定编排原语或独立生产案例。维持 established / High。",
           "note_en": "Codex alpha and Gemini CLI nightly remained prerelease builds; no new stable orchestration primitive or independent production case appeared. Stays established / High."
+        },
+        {
+          "date": "2026-09-23",
+          "note_zh": "RRSI 与长期合谋实验增加了 harness 管理和跨轮次协作风险的证据，但没有新的生产采用案例。维持 established / High。",
+          "note_en": "RRSI and the long-horizon collusion study add evidence on harness management and cross-turn coordination risk without a new production adoption case. Stays established / High."
         }
       ]
     },
@@ -584,7 +603,7 @@
       "status_note_en": "strengthening (2026-09-19: OpenAI has established recurring tiered misalignment disclosure, and Anthropic turns its embedded-evaluator pledge into an Accenture/Faculty engagement; independence, publication rights and a cross-vendor format remain incomplete)",
       "confidence": "Medium",
       "first_observed": "2026-08-26",
-      "last_updated": "2026-09-19",
+      "last_updated": "2026-09-23",
       "retired": false,
       "evidence_zh": [
         "OpenAI《The Hugging Face incident and the road ahead》约 37 页技术报告（2026-08-26，一手来源）：完整入侵时间线、四种失配模式、生产 harness 对基础设施攻陷倾向的 >100x 抑制、CoT 监控可提前 >1 天告警、分层 CoT 监控规则、最大前沿 RL run 仍暂停（ev-20260818-04 更新）",
@@ -716,6 +735,11 @@
           "date": "2026-09-22",
           "note_zh": "本窗口没有 METR 审查结论、评估员独立性规则或跨厂商披露格式。维持 strengthening / Medium。",
           "note_en": "No METR findings, evaluator-independence rules or cross-vendor disclosure format appeared. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-23",
+          "note_zh": "本窗口没有 METR 审查结论、评估员独立性规则或跨厂商披露格式。维持 strengthening / Medium。",
+          "note_en": "No METR findings, evaluator-independence rules or cross-vendor disclosure format appeared. Stays strengthening / Medium."
         }
       ]
     },
@@ -823,6 +847,11 @@
           "date": "2026-09-22",
           "note_zh": "本窗口没有新的自托管执行面、独立生产采用、OpenAI PSP 白皮书或 Anthropic EFS 落地。维持 candidate / Low。",
           "note_en": "No new self-hosted execution plane, independent production adoption, OpenAI PSP paper or Anthropic EFS delivery appeared. Stays candidate / Low."
+        },
+        {
+          "date": "2026-09-23",
+          "note_zh": "vLLM 0.30 扩展自托管推理能力，但不是新的企业 agent 执行面或独立生产采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。维持 candidate / Low。",
+          "note_en": "vLLM 0.30 expands self-hosted inference but is not a new enterprise agent execution plane or independent production-adoption case. The OpenAI PSP paper and Anthropic EFS delivery are still missing. Stays candidate / Low."
         }
       ]
     },
@@ -920,6 +949,11 @@
           "date": "2026-09-22",
           "note_zh": "本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。",
           "note_en": "No new millennium-scale mathematics result, Lean formalization or independent acceptance appeared. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-23",
+          "note_zh": "本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。",
+          "note_en": "No new millennium-scale mathematics result, Lean formalization or independent acceptance appeared. Stays emerging / Medium."
         }
       ]
     },
@@ -943,7 +977,8 @@
         "2026-09-14：计划注入实验在多个设置中造成 25–33% 监测漏检；Claude Code 2.1.271 加入逐命令网络授权（ev-20260914-10；ev-20260814-04 更新）。",
         "2026-09-15 至 16：Gemini CLI 0.60 将 MCP OAuth、路径边界、环境变更确认与工具输出来源加固推入 stable；Claude Code 2.1.273 修复 Bash 权限跳过、危险子 shell 与托管策略优先级；social-harness 实验显示跨主体消息还需要独立的来源、权限、交互协议与治理层（ev-20260825-02 / ev-20260814-04 更新；ev-20260915-07）。",
         "红队研究在 79% 试验中用 agent 自生成 prompt injection 绕过仿 Auto Mode / Guardian 阻断器并执行任意 Bash；multi-agent 与恶意压缩又增加跨上下文路径，说明逐动作模型 monitor 不是完整边界（2026-09-17，ev-20260917-12）",
-        "Harvard 研究展示模型可从输出 token 识别 vLLM、SGLang 等推理引擎，再选择引擎专属漏洞路径；推理 runtime 本身也必须纳入不可信边界（2026-09-17，ev-20260917-10）"
+        "Harvard 研究展示模型可从输出 token 识别 vLLM、SGLang 等推理引擎，再选择引擎专属漏洞路径；推理 runtime 本身也必须纳入不可信边界（2026-09-17，ev-20260917-10）",
+        "DUMA-Bench（2026-09-21 overlap 覆盖补漏，ev-20260921-03）：在 14 个模型、8 个领域中，允许用户持续改变共享环境后，攻击成功率从 26.9% 升至 41.1%。风险由模型、用户与 runtime 允许的状态变化共同决定。"
       ],
       "evidence_en": [
         "GitHub Copilot enterprise-managed permissions GA (2026-09-09, primary source, ev-20260909-02): administrators deploy block/ask/allow policy for shell, files and network domains, overriding user auto-approval — an organization-level policy constrains a general execution surface",
@@ -954,7 +989,8 @@
         "2026-09-14: plan injection evades monitors in 25–33% of tested settings; Claude Code 2.1.271 adds per-command network authorization (ev-20260914-10; ev-20260814-04 update).",
         "2026-09-15 to 16: Gemini CLI 0.60 moves MCP OAuth, path-boundary, environment-consent and tool-output-provenance hardening into stable; Claude Code 2.1.273 fixes skipped Bash prompts, hidden destructive subshells and managed-policy precedence; social-harness experiments show cross-principal messaging still needs independent provenance, authority, protocol and governance layers (ev-20260825-02 / ev-20260814-04 updates; ev-20260915-07).",
         "A red-team study bypasses production-style Auto Mode and Guardian blockers in 79% of trials through agent-generated prompt injection, with multi-agent and malicious-compaction paths adding cross-context attacks; per-action model monitors are not complete boundaries (2026-09-17, ev-20260917-12).",
-        "Harvard researchers show that model-generated tokens can fingerprint inference engines including vLLM and SGLang, then select engine-specific exploit paths; the inference runtime itself belongs inside the untrusted boundary (2026-09-17, ev-20260917-10)."
+        "Harvard researchers show that model-generated tokens can fingerprint inference engines including vLLM and SGLang, then select engine-specific exploit paths; the inference runtime itself belongs inside the untrusted boundary (2026-09-17, ev-20260917-10).",
+        "DUMA-Bench (2026-09-21 overlap recovery, ev-20260921-03): across 14 models and eight domains, letting users keep changing shared state raises attack success from 26.9% to 41.1%. Risk emerges from the model, user and state changes permitted by the runtime together."
       ],
       "why_it_matters_zh": "对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。",
       "why_it_matters_en": "For teams designing enterprise agents, capability and permission should no longer be implicitly coupled in one tool catalog. A general shell provides better composition and token efficiency, while independent sandboxes, capability contracts and consequence gates bound the blast radius. The immediate architecture move is to make \"what commands the model can generate\" and \"what consequences runtime permits\" independently testable, auditable and upgradable modules.",
@@ -1000,6 +1036,11 @@
           "date": "2026-09-22",
           "note_zh": "本窗口没有跨 shell / MCP / browser 的统一 policy schema，也没有公开采用遥测。维持 emerging / Medium。",
           "note_en": "No unified policy schema across shell, MCP and browser or public adoption telemetry appeared. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-23",
+          "note_zh": "DUMA-Bench 强化了模型能力与 runtime 后果分层验收的必要性；统一 policy schema 和公开采用遥测仍缺。维持 emerging / Medium。",
+          "note_en": "DUMA-Bench strengthens the case for separate acceptance tests for model capability and runtime consequences. A unified policy schema and public adoption telemetry are still missing. Stays emerging / Medium."
         }
       ]
     }

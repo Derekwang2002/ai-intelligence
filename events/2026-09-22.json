@@ -1,0 +1,62 @@
+{
+  "date": "2026-09-22",
+  "provenance": "Incremental scan started 2026-09-22T16:02:37Z; strict window [2026-09-21T16:01:24Z, 2026-09-22T16:02:37Z]. GitHub stable release metadata and release notes were verified against the event index.",
+  "events": [
+    {
+      "event_id": "ev-20260922-01",
+      "title": "vLLM 0.30 speeds restarts and adds a host tier for sparse KV",
+      "title_zh": "vLLM 0.30 加速重启并为稀疏 KV 增加主机层",
+      "category": "open-source",
+      "organization": [
+        "vLLM Project"
+      ],
+      "published_at": "2026-09-22T05:20:54Z",
+      "first_seen_at": "2026-09-22T16:02:37Z",
+      "last_updated_at": "2026-09-22T16:02:37Z",
+      "source_type": "release_notes",
+      "primary_source": "https://github.com/vllm-project/vllm/releases/tag/v0.30.0",
+      "secondary_sources": [],
+      "summary": "vLLM 0.30.0 ships 762 commits from 315 contributors. A persistent per-GPU weight cache lets restarted engines map already sharded and quantized weights over CUDA IPC instead of loading them from disk. HiSparse adds a pinned-host-memory tier for sparse-MLA KV pages, while Model Runner V2 expands pipeline-parallel speculative decoding and cuts one H200 startup path from 28.9 seconds to 8.2 seconds. The release also closes response-amplification, sparse-embedding and media-input denial-of-service paths.",
+      "why_it_matters": "For teams serving large sparse or hybrid models, restart time and GPU KV pressure are now first-class vLLM controls rather than external workarounds. Adopt the security fixes, but stage the upgrade: scale-out endpoints now require an explicit flag, several deprecated variables are gone, YaRN length calculation changed, and some backends now fail fast when they cannot support decode-context parallelism.",
+      "summary_zh": "vLLM 0.30.0 包含 762 个提交，来自 315 位贡献者。常驻的每 GPU 权重缓存让重启后的引擎通过 CUDA IPC 映射已经分片和量化的权重，不必再从磁盘加载。HiSparse 为稀疏 MLA 的 KV 页增加锁页主机内存层；Model Runner V2 扩展了流水线并行下的投机解码，并把一条 H200 启动路径从 28.9 秒压到 8.2 秒。该版本还修复响应放大、稀疏嵌入和媒体输入导致的拒绝服务风险。",
+      "summary_en": "vLLM 0.30.0 ships 762 commits from 315 contributors. A persistent per-GPU weight cache lets restarted engines map already sharded and quantized weights over CUDA IPC instead of loading them from disk. HiSparse adds a pinned-host-memory tier for sparse-MLA KV pages, while Model Runner V2 expands pipeline-parallel speculative decoding and cuts one H200 startup path from 28.9 seconds to 8.2 seconds. The release also closes response-amplification, sparse-embedding and media-input denial-of-service paths.",
+      "why_it_matters_zh": "对服务大型稀疏或混合模型的团队来说，重启时间和 GPU KV 压力已经成为 vLLM 的一等控制项，不再需要额外拼装方案。安全修复值得采用，但升级必须分阶段：scale-out endpoint 现在要显式打开，多项废弃环境变量已移除，YaRN 长度计算发生变化，部分不支持 decode-context parallelism 的后端会直接报错。",
+      "why_it_matters_en": "For teams serving large sparse or hybrid models, restart time and GPU KV pressure are now first-class vLLM controls rather than external workarounds. Adopt the security fixes, but stage the upgrade: scale-out endpoints now require an explicit flag, several deprecated variables are gone, YaRN length calculation changed, and some backends now fail fast when they cannot support decode-context parallelism.",
+      "technical_details": {
+        "release_scale": "762 commits, 315 contributors, 104 new contributors",
+        "fast_start": "persistent per-GPU post-quantization and TP-sharded weight cache; CUDA IPC; FP4 and multi-node TP support",
+        "hisparse": "pinned-host-memory tier for sparse-MLA KV pages with per-request GPU hot buffer and Prometheus counters",
+        "model_runner_v2": "pipeline-parallel MTP/EAGLE3/DFlash/DSpark; adaptive verification; H200 engine init 28.9s to 8.2s in the reported path",
+        "security": "bounded validation-error bodies and sparse embeddings; capped request-controlled video sampling; validated cache_salt; credential redaction",
+        "breaking_changes": "scale-out endpoints require --enable-scale-out; GPTQ g_idx removed; 0.29 deprecations removed; YaRN aligned with Transformers",
+        "artifacts": "CUDA 13.0/12.9, ROCm, CPU and XPU wheels and images"
+      },
+      "technical_details_zh": {
+        "发布规模": "762 个提交、315 位贡献者，其中 104 位首次贡献",
+        "快速启动": "每 GPU 常驻量化后、TP 分片后的权重缓存；通过 CUDA IPC 映射；支持 FP4 与多节点 TP",
+        "HiSparse": "为稀疏 MLA 的 KV 页增加锁页主机内存层、逐请求 GPU 热缓存和 Prometheus 指标",
+        "Model Runner V2": "流水线并行下支持 MTP/EAGLE3/DFlash/DSpark；自适应验证；报告路径中 H200 引擎启动从 28.9 秒降至 8.2 秒",
+        "安全": "限制校验错误响应与稀疏嵌入大小；限制请求控制的视频采样；校验 cache_salt；日志隐藏凭据",
+        "破坏性变更": "scale-out endpoint 需 --enable-scale-out；移除 GPTQ g_idx；移除 0.29 废弃项；YaRN 与 Transformers 对齐",
+        "发布产物": "提供 CUDA 13.0/12.9、ROCm、CPU 与 XPU wheel 和镜像"
+      },
+      "tags": [
+        "vllm",
+        "model-serving",
+        "inference",
+        "kv-cache",
+        "sparse-attention",
+        "security",
+        "release"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 5,
+      "maturity": 4,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "ADOPT",
+      "event_fingerprint": "vllm-v0-30-0-fast-start-hisparse-security"
+    }
+  ]
+}
