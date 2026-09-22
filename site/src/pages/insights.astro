@@ -1,5 +1,21 @@
 ---
-import Insights from '../components/pages/Insights.astro';
+// 洞察页已升级为默认首页，旧路径保留跳转（GitHub Pages 无服务端 301，用 meta refresh；脚本保留 #anchor）
+import { u } from '../lib/url';
+const target = u('/');
 ---
 
-<Insights locale="zh" />
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>页面已移动 · 首页</title>
+    <script is:inline define:vars={{ target }}>
+      location.replace(target + location.hash);
+    </script>
+  </head>
+  <body>
+    <p>洞察页已移至<a href={target}>首页</a>。</p>
+  </body>
+</html>

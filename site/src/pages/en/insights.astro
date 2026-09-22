@@ -1,5 +1,22 @@
 ---
-import Insights from '../../components/pages/Insights.astro';
+// Insights is now the default homepage; keep the old path as a redirect
+// (GitHub Pages has no server-side 301, so use a meta refresh; the script preserves #anchors).
+import { u } from '../../lib/url';
+const target = u('/', 'en');
 ---
 
-<Insights locale="en" />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Moved · Home</title>
+    <script is:inline define:vars={{ target }}>
+      location.replace(target + location.hash);
+    </script>
+  </head>
+  <body>
+    <p>Insights is now the <a href={target}>homepage</a>.</p>
+  </body>
+</html>
