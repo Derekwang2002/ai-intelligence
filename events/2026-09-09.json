@@ -75,13 +75,16 @@
       ],
       "published_at": "2026-09-09T00:00:00Z",
       "first_seen_at": "2026-09-11T18:31:49Z",
-      "last_updated_at": "2026-09-12T02:08:37Z",
+      "last_updated_at": "2026-09-24T16:01:46Z",
       "source_type": "official_docs",
       "primary_source": "https://github.blog/changelog/2026-09-09-enterprise-managed-permissions-for-github-copilot-agent-operations/",
       "secondary_sources": [
         "https://github.blog/changelog/2026-09-08-enterprise-managed-sandbox-in-copilot-for-jetbrains/",
         "https://github.blog/changelog/2026-09-10-copilot-weekly-releases-september-7/",
-        "https://github.blog/changelog/2026-09-11-add-vs-code-agents-to-copilot-usage-metrics/"
+        "https://github.blog/changelog/2026-09-11-add-vs-code-agents-to-copilot-usage-metrics/",
+        "https://github.blog/changelog/2026-09-22-new-features-and-improvements-in-copilot-for-jetbrains/",
+        "https://github.blog/changelog/2026-09-22-opentelemetry-in-the-github-copilot-app/",
+        "https://github.blog/changelog/2026-09-23-local-sandboxing-in-the-github-copilot-app/"
       ],
       "summary": "GitHub made enterprise-managed permissions for Copilot agent operations generally available (Copilot Business + Enterprise; Copilot app, CLI, and VS Code sessions using the Agent Host): admins set block/ask/allow policies for shell commands, file read/edit, and network domains, overriding user/workspace settings, auto-approvals and saved approvals, with per-team policies. A companion JetBrains enterprise-managed sandbox (public preview, 9/8) locks sandbox enablement, filesystem/network access, proxy settings, dev-tool access and macOS Keychain access to org-managed policy. The same-week Copilot release wave added: Jira integration in the Copilot app (issues on a shared canvas feeding investigation/implementation/PR prep), experimental 'Project HydraFusion' adaptive model routing in Copilot CLI, VS Code 1.137 scheduled agent automation (hourly/daily/weekly or on-demand, public preview) plus experimental voice mode, and MAI-Code-1-Flash deprecated in favor of MAI-Code-1.1-Flash.",
       "why_it_matters": "Agent governance has moved from vendor talk to org-policy surfaces: the same block/ask/allow model Claude Code ships as managed settings is now GA across Copilot's app/CLI/IDE fleet, and the JetBrains sandbox preview extends it to the IDE. Combined with scheduled automation, Copilot agents can now run unattended inside org-defined guardrails — the governance half of the always-on agent stack.",
@@ -95,7 +98,8 @@
         "weekly_wave_2026_09_10": "Jira integration in Copilot app (shared canvas -> investigation/implementation/PR); 'Project HydraFusion' experimental adaptive routing in Copilot CLI (/experimental); VS Code 1.137 scheduled agent automation (public preview) + experimental voice mode + Agents-window issue/PR review without opening the repo (experimental)",
         "models": "MAI-Code-1-Flash deprecated across all Copilot surfaces -> MAI-Code-1.1-Flash (admin-enabled via model policy)",
         "usage_metrics_2026_09_11": "GA 1-day and 28-day enterprise/organization reports add daily_active_vscode_agent_users, totals_by_vscode_agent session_count and total_user_messages, plus per-user used_vscode_agent; measures the dedicated VS Code Agents window",
-        "update_2026_09_12": "VS Code Agents-window usage metrics GA @9/11 changelog: enterprise/org 1-day and 28-day reports expose active users, sessions, user messages and per-user adoption (recorded 2026-09-12 run; previously stored under usage_metrics_2026_09_11)."
+        "update_2026_09_12": "VS Code Agents-window usage metrics GA @9/11 changelog: enterprise/org 1-day and 28-day reports expose active users, sessions, user messages and per-user adoption (recorded 2026-09-12 run; previously stored under usage_metrics_2026_09_11).",
+        "update_2026_09_24": "Copilot app adds enterprise-managed OTel export for model/tool/session traces (prompt and response content excluded by default) and per-project local sandbox policies for filesystem, network and credentials; unsupported enforcement fails closed. JetBrains 1.18 adds preview assisted approvals, organization skills/instructions and persistent per-MCP-tool controls. Local sandboxing is off by default and public preview. Stays TRIAL."
       },
       "technical_details_zh": {
         "托管权限 GA": "2026-09-09，GA；Copilot Business + Enterprise；覆盖 Copilot 应用、CLI、Agent Host 上的 VS Code 会话；对 shell 命令、文件读写、网络域 block/ask/allow；覆盖用户/工作区设置、自动批准、已存批准；支持按团队",
@@ -103,7 +107,8 @@
         "9 月 10 日发布波": "Copilot 应用 Jira 集成（共享画布 → 调查/实现/PR）；Copilot CLI 实验性 Project HydraFusion 自适应路由（/experimental）；VS Code 1.137 定时 agent 自动化（公开预览）+ 实验性语音模式 + Agents 窗口不开仓库审 issue/PR（实验性）",
         "模型": "MAI-Code-1-Flash 全线弃用 → MAI-Code-1.1-Flash（管理员经模型策略启用）",
         "2026-09-11 使用指标": "GA 的企业/组织 1 天与 28 天报告新增 daily_active_vscode_agent_users、totals_by_vscode_agent 的 session_count 与 total_user_messages，以及用户级 used_vscode_agent；只统计独立的 VS Code Agents 窗口",
-        "update_2026_09_12": "VS Code Agents 窗口使用指标 GA（9/11 changelog）：企业/组织的 1 天与 28 天报告暴露活跃用户、会话、用户消息与用户级采用情况（2026-09-12 运行记录；此前存于 usage_metrics_2026_09_11 键下）。"
+        "update_2026_09_12": "VS Code Agents 窗口使用指标 GA（9/11 changelog）：企业/组织的 1 天与 28 天报告暴露活跃用户、会话、用户消息与用户级采用情况（2026-09-12 运行记录；此前存于 usage_metrics_2026_09_11 键下）。",
+        "2026-09-24 更新": "Copilot app 增加企业托管 OTel 导出，可记录模型、工具与会话 trace（默认不含 prompt 和 response 内容），并为本地项目增加文件系统、网络与凭据沙箱策略；系统无法执行策略时会直接失败。JetBrains 1.18 增加预览版 assisted approvals、组织技能/指令与持久化的逐 MCP 工具控制。本地沙箱默认关闭且仍为公开预览。维持 TRIAL。"
       },
       "tags": [
         "copilot",
@@ -119,7 +124,8 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "github-copilot-enterprise-agent-permissions-ga"
+      "event_fingerprint": "github-copilot-enterprise-agent-permissions-ga",
+      "update_2026_09_24": "Copilot app adds managed OTel and fail-closed local sandbox policy; JetBrains adds assisted approvals and per-tool MCP controls; stays TRIAL"
     }
   ]
 }

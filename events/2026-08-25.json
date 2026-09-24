@@ -91,12 +91,13 @@
       ],
       "published_at": "2026-08-25T18:37:14Z",
       "first_seen_at": "2026-08-28T00:31:03Z",
-      "last_updated_at": "2026-09-16T16:00:47Z",
+      "last_updated_at": "2026-09-24T16:01:46Z",
       "source_type": "github",
       "primary_source": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.57.0",
       "secondary_sources": [
-        "https://www.npmjs.com/package/@google/gemini-cli-a2a-server",
-        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.60.0"
+        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.60.0",
+        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.61.0",
+        "https://www.npmjs.com/package/@google/gemini-cli-a2a-server"
       ],
       "summary": "Gemini CLI v0.57.0 (stable, 2026-08-25T18:37Z) includes packages/a2a-server — an Agent2Agent protocol server — in its release tag, and the package is published to npm as @google/gemini-cli-a2a-server@0.57.0. The release notes merge a wave of '[SSR Agent]' fixes touching a2a-server tests, TUI execution timeouts, subagent gating and handoff regressions, indicating active maintenance rather than an abandoned experiment. Gemini CLI 0.60.0 later promotes MCP OAuth, path-boundary, environment-consent, tool-output-provenance and sandbox-isolation fixes to stable. There is still no official announcement, documentation page, or usage guidance for the A2A server from Google.",
       "why_it_matters": "Agent-to-agent interop has moved from a main-branch experiment (observed 2026-08-19) to a shipped, installable Google artifact in a stable runtime — a second major organization after Anthropic exposing inter-agent messaging in stable tooling. Because it is undocumented and unannounced, treat it as a directional signal of Google's roadmap, not a build target: the surface can change without notice.",
@@ -113,7 +114,8 @@
         "related_kb": "upgrade of the 2026-08-19 early indication (a2a-server main-branch only) to a stable-line artifact; evidence item for trend coding-agents-multi-agent-runtimes",
         "update_2026_09_08": "Weekend check: no new stable since 0.58.0 (9/1); nightlies advanced from 0.59.x to 0.60.0 (9/5-9/7, same commit hash g85aca163f across those days). a2a-server status unchanged. Stays TRIAL.",
         "update_2026_09_11": "0.59.0 stable (npm 2026-09-08T21:19Z) is security-only: SSRF prevention in MCP OAuth metadata discovery/auth, fail-closed workspace trust, restricted-mode mcpServers filtering; 0.60.0-preview.0 (same day) carries the wider security cluster (WebFetch target validation, MCP OAuth RFC 9207 issuer identification, Seatbelt temp-dir isolation, extension-loader path hardening, NTFS 8.3 mitigation, untrusted-tool-output envelope metadata, CrUX key removal). a2a-server 0.59.0 synced to npm; README remains a 171-byte stub — still zero usage docs. Stays TRIAL.",
-        "update_2026_09_16": "Gemini CLI 0.60.0 reached stable at 2026-09-15T20:31:02Z. The preview security cluster is now supported in the stable line: MCP OAuth RFC 9207 issuer checks, WebFetch destination validation, extension and workspace path-boundary hardening, NTFS 8.3 mitigation, consent for runtime-altering environment changes, provenance metadata for untrusted tool outputs, and isolated sandbox settings directories. The a2a-server remains undocumented. Recommendation stays WATCH for the A2A surface; existing Gemini CLI users should upgrade for the security fixes."
+        "update_2026_09_16": "Gemini CLI 0.60.0 reached stable at 2026-09-15T20:31:02Z. The preview security cluster is now supported in the stable line: MCP OAuth RFC 9207 issuer checks, WebFetch destination validation, extension and workspace path-boundary hardening, NTFS 8.3 mitigation, consent for runtime-altering environment changes, provenance metadata for untrusted tool outputs, and isolated sandbox settings directories. The a2a-server remains undocumented. Recommendation stays WATCH for the A2A surface; existing Gemini CLI users should upgrade for the security fixes.",
+        "update_2026_09_24": "Gemini CLI 0.61.0 stable (2026-09-23T23:59Z) adds indirect-prompt-injection defenses for modified build files and untrusted flags, hardens filesystem boundaries and runtime-state isolation, and preserves explicit versioned Flash model IDs. The a2a-server remains undocumented. Existing users should upgrade for security; A2A remains WATCH."
       },
       "technical_details_zh": {
         "发布": "v0.57.0 stable 于 2026-08-25T18:37:14Z 发布；v0.57.0 tag 树中包含 packages/a2a-server（经 git tree API 核实）",
@@ -124,7 +126,8 @@
         "关联": "8/19 early indication（a2a-server 仅 main 分支）升级为 stable 产物；作为趋势 coding-agents-multi-agent-runtimes 的证据",
         "update_2026_09_08": "周末核查：0.58.0（9/1）后无新 stable；nightly 从 0.59.x 推进到 0.60.0（9/5-9/7，连续数日同一 commit g85aca163f）。a2a-server 状态不变。维持 TRIAL。",
         "update_2026_09_11": "0.59.0 stable（npm 2026-09-08T21:19Z）为纯安全版本：MCP OAuth 元数据发现/认证的 SSRF 防护、workspace trust 失效关闭、受限模式 mcpServers 过滤；0.60.0-preview.0（同日）承载更完整的安全簇（WebFetch 目标校验、MCP OAuth RFC 9207 issuer 识别、Seatbelt 临时目录隔离、扩展加载器路径加固、NTFS 8.3 缓解、不可信工具输出信封元数据、移除 CrUX key）。a2a-server 0.59.0 同步发 npm；README 仍是 171 字节存根——使用文档依旧为零。维持 TRIAL。",
-        "update_2026_09_16": "Gemini CLI 0.60.0 于 2026-09-15T20:31:02Z 进入 stable。preview 中的安全簇正式进入稳定线：MCP OAuth RFC 9207 issuer 校验、WebFetch 目标校验、扩展与工作区路径边界加固、NTFS 8.3 缓解、修改运行时环境变量需确认、不可信工具输出来源元数据，以及隔离沙箱设置目录。a2a-server 仍无文档。A2A 处置仍为 WATCH；现有 Gemini CLI 用户应为安全修复升级。"
+        "update_2026_09_16": "Gemini CLI 0.60.0 于 2026-09-15T20:31:02Z 进入 stable。preview 中的安全簇正式进入稳定线：MCP OAuth RFC 9207 issuer 校验、WebFetch 目标校验、扩展与工作区路径边界加固、NTFS 8.3 缓解、修改运行时环境变量需确认、不可信工具输出来源元数据，以及隔离沙箱设置目录。a2a-server 仍无文档。A2A 处置仍为 WATCH；现有 Gemini CLI 用户应为安全修复升级。",
+        "2026-09-24 更新": "Gemini CLI 0.61.0 stable（2026-09-23T23:59Z）增加针对构建文件修改与不可信参数的间接 prompt injection 防护，加固文件系统边界与运行时状态隔离，并保留显式版本化的 Flash 模型 ID。a2a-server 仍无文档。现有用户应为安全修复升级；A2A 仍为 WATCH。"
       },
       "tags": [
         "gemini-cli",
@@ -144,7 +147,8 @@
       "recommendation": "WATCH",
       "event_fingerprint": "google-gemini-cli-a2a-server-stable",
       "update_2026_09_02": "0.58.0 stable (9/1T20:51Z): macOS Seatbelt sandbox now isolates Docker and container-runtime sockets and binaries (sandbox hardening); a2a-server fix — stale cancellation error cleared on new message turns (a2a-server continues in the stable release line); consistent symlink evaluation in ignore-path handling; top-level safety checkers declared in write-policy configuration; history rollback and retry-nudge fixes. a2a-server documentation still absent (watch item). 0.59.0-preview.0 published 9/1T20:19Z",
-      "update_2026_09_04": "No new stable in window (latest remains 0.58.0, 9/1). Nightlies: 0.59.0-nightly (9/2): web-fetch destination validation + connection routing fix; 0.60.0-nightly (9/4) security cluster — RFC 9207 issuer identification enforced in the MCP OAuth flow, macOS Seatbelt temp-dir isolation, extension-loader path-boundary hardening, hardcoded Google CrUX API key removed from chrome-devtools-mcp. a2a-server docs watch: packages/a2a-server now carries a README.md, but it is a 171-byte 'experimental and under active development' stub — still no usage/setup documentation. Stays TRIAL"
+      "update_2026_09_04": "No new stable in window (latest remains 0.58.0, 9/1). Nightlies: 0.59.0-nightly (9/2): web-fetch destination validation + connection routing fix; 0.60.0-nightly (9/4) security cluster — RFC 9207 issuer identification enforced in the MCP OAuth flow, macOS Seatbelt temp-dir isolation, extension-loader path-boundary hardening, hardcoded Google CrUX API key removed from chrome-devtools-mcp. a2a-server docs watch: packages/a2a-server now carries a README.md, but it is a 171-byte 'experimental and under active development' stub — still no usage/setup documentation. Stays TRIAL",
+      "update_2026_09_24": "Gemini CLI 0.61.0 stable hardens build-file prompt-injection and filesystem/runtime isolation; A2A remains undocumented and WATCH"
     },
     {
       "event_id": "ev-20260825-03",
