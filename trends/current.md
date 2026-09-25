@@ -1,4 +1,4 @@
-# Current Trend State — as of 2026-09-24T16:01Z
+# Current Trend State — as of 2026-09-25T16:01Z
 
 > 维护说明：本文件反映当前仍值得追踪的候选/确认趋势。每次运行可新增、升级、降级或作废条目。趋势判定要求多个独立信号（跨日期、跨组织）；单个新闻或单日热度不构成趋势。
 
@@ -61,13 +61,14 @@
 - **2026-09-22 run:** 本窗口没有新的同级开放权重 coding 模型或第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
 - **2026-09-23 run:** vLLM 0.30 把多条开放权重 serving 路径推进 tagged stable，采用证据增强；仍缺第三方 Terminal-Bench / SWE 权重复现。维持 strengthening / Medium。
 - **2026-09-25 run:** 本窗口没有公开权重上的第三方 Terminal-Bench / SWE 复现；Qwen Code 运行时更新不构成权重证据。维持 strengthening / Medium。
+- **2026-09-26 run:** 本窗口没有公开权重上的第三方 Terminal-Bench / SWE 复现；LFM2.5-VL-DSpark 是推测解码组件，不计 coding 能力证据。维持 strengthening / Medium。
 - **What would confirm（升 High 的剩余判据）:** (a) 权重的社区独立复现（第三方 Terminal Bench / SWE 运行——模型卡元数据同步不算）——**升 High 仅剩此项**；(b) 已于 2026-09-11 由 DeepSeek V4.1 Flash 达成；(c) 已达成并延续五个周期，剩余观察其延续性
 
 ### Emerging: MCP 进入企业安全与强制管控阶段
 - **Status:** emerging（2026-08-16 由 candidate 升级）
 - **Confidence:** Medium
 - **First observed:** 2026-08-15（覆盖 2026-08-14 窗口）
-- **Last updated:** 2026-09-21
+- **Last updated:** 2026-09-26
 - **Evidence:**
   1. Cloudflare One Gateway 的 MCP 检测与 enforcement 能力 GA——`experimental.is_mcp`、enforcement 仅 Portal 可用、OAuth 预注册（2026-08-14，一手来源，ev-20260814-03）
   2. Workday Adaptive Planning 第一方 MCP Server 出现在 2026R2 release notes（2026-08-14，官方文档）——企业 SaaS 供给端
@@ -80,6 +81,7 @@
   9. Netskope Release 141（notes 页标注 9/1、9/2 检查时未发布、本窗口捕获，经官方 docs 核实，2026-09-05）：AI Command Center 的 Endpoint AI Discovery（beta）经 Netskope Client 发现受管端点上的 AI agent、浏览器/编辑器/桌面扩展与本地模型，并在 beta 中发现端点上使用的 MCP server；AI Guardrails On Demand – Netskope Hosted 转 GA（独立 REST API，与 LiteLLM/Kong/Apigee API 网关集成）；AI Gateway × Enterprise Browser 集成（beta，浏览器侧 LLM 流量集中治理 + 网关令牌吊销的紧急 kill switch）。管控面从网络流量延伸到端点与浏览器，但 Endpoint Discovery 为 beta 且需代表/支持开启；22 个 MCP 数据属性仍未提及移出 feature flag、无公开遥测
   10. 《Scanning the Harness》供应链审计（2026-09-10，arXiv 2609.07360，ev-20260910-08）：3,171 个公开 GitHub 仓库（2,600 份 Claude Code/Cursor/Copilot/Codex 配置 + 511 个已发布技能集）中 16.0% 至少携带一处安全缺陷——9.8% 安装未锁定 MCP server、3.1% 在看似限定的授权后预批准任意执行、3.8% 的技能携带预批准 shell；全部发现经独立重推导与双人裁定，工具、语料清单与裁定结果公开——MCP/skills 配置供应链的首个量化审计，也是安全需求端首个独立学术测量（2026-09-11 核实）
   11. LiteLLM 1.102.0 稳定版（2026-09-20，ev-20260913-01 更新）：Agent Skills 发现、按用户 MCP 工具授权、客户自管 KMS 与路由遥测进入 stable gateway；证明控制面可试跑，但仍是单一项目且没有互操作 auth/enforcement 规范
+  12. Google Cloud API Gateway MCP（2026-09-24，ev-20260924-08）：现有 REST API 可复用 JWT、配额与日志成为 MCP tool；`tools/list` 默认不鉴权，暴露出企业发现面仍需显式策略
 - **Why upgraded:** 多个独立信号来自不同组织、不同日期（网络厂商、企业 SaaS、安全研究），指向同一方向：MCP 正从新兴协议转变为受治理的企业基础设施。
 - **2026-08-17 run:** 核查了 Zscaler/Netskope/Palo Alto 是否已交付 MCP 识别能力，未发现（仅见 SASE 选型对比文章与 Zscaler 自有 MCP server 集成）。确认判据仍未满足。Status/Confidence 维持不变。
 - **2026-08-18 run:** 背景说明：Netskope 的 MCP 安全能力（实时识别 MCP server/client 及 name/ID/URL/version/host/protocol 属性、CCI 风险评分、default-block 策略、DLP）于 2025-12-01 以 Preview 状态宣布，GA 计划 2026 上半年，未检索到带日期的 GA 公告。能力上部分满足第二家厂商判据，但早于本知识库覆盖范围，仅作背景登记。补充背景：2026-07-28 MCP auth spec（OAuth 2.1/OIDC）遭到企业侧阻力（anonymous DCR 批评）；CSA 在 2026 年初记录约 7,000 个暴露的 MCP server，约半数无认证；NSA/DoD 于 2026 年 6 月发布安全设计指引。判据修正为：第二家安全厂商交付 **GA** 状态的 MCP 识别能力 + 公开遥测。Status/Confidence 维持不变。
@@ -111,13 +113,14 @@
 - **2026-09-22 run:** 本窗口没有新的跨厂商 auth/enforcement 规范、安全产品 GA 或公开采用数据。维持 emerging / Medium。
 - **2026-09-23 run:** 本窗口没有新的跨厂商 auth/enforcement 规范、安全产品 GA 或公开采用数据。维持 emerging / Medium。
 - **2026-09-25 run:** GitHub JetBrains 增加逐 MCP 工具持久控制，但没有新的跨厂商 auth/enforcement 规范或独立采用数据。维持 emerging / Medium。
+- **2026-09-26 run:** Google API Gateway 把现有认证、配额与日志带入 MCP，GitHub 默认策略纳入 MCP server policy；跨厂商统一 auth/enforcement schema 仍缺。维持 emerging / Medium。
 - **What would confirm:** 第二家安全厂商（Zscaler/Netskope/Palo Alto）交付 **GA** 状态的 MCP 识别能力并公开遥测数据；MCP auth spec 在主流 agent framework 中落地
 
 ### Established: Coding agent 收敛为 multi-agent runtime
 - **Status:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Confidence:** High
 - **First observed:** 2026-08-15（覆盖 2026-08-13/14 窗口）
-- **Last updated:** 2026-09-25
+- **Last updated:** 2026-09-26
 - **Evidence:**
   1. Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）
   2. GitHub/Microsoft Copilot Agent Plugins 1.0 GA（2026-08-13）
@@ -137,6 +140,7 @@
   16. runtime、scaffold 与委派拓扑开始可量化（2026-09-15 digest，ev-20260915-02 / ev-20260915-04 / ev-20260915-06）：SWE-bench 前 30 名相邻结果均不可区分，固定模型后的 scaffold 差距最高 29.8 分；生产轨迹给出深层委派的信息损失与成本交叉点；ScienceBuddy 公开 harness 演化与模型训练分层循环。
   17. RRSI 与长期合谋研究（2026-09-21，ev-20260921-04 / 06）：自动优化 harness 需要提案预算、留出任务与剪枝来抑制过拟合；持续多 agent 互动又会在奖励冲突下改变协作策略。runtime 既要管理 scaffold 演化，也要管理跨轮次的关系状态。
   18. Cursor Rollouts、Codex 0.156 与 Qwen Code 0.24.4（2026-09-22 至 23）：分别把 coding agent 延伸到部署反馈环、默认 worktree 会话，以及运行时证明/计划漂移/持久执行记录——开发、隔离、监控三层继续收敛为一个运行时。
+  19. Microsoft Foundry 把 durable execution、A2A、Routines、tool search 与生产 trace 优化串成平台闭环；Android Studio 通过 ACP 承载可替换 agent（2026-09-24，ev-20260924-07/09）。
 - **Why established / High:** 确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
 - **2026-08-16 run:** 窗口内无新信号（Claude Code 无新版本；Cursor Builds 默认开启时间为 8/17，尚未生效）。
 - **2026-08-17 run:** Cursor Builds 按计划对所有环境默认开启。但 Builds 是 warm-snapshot 基础设施改进，不是 multi-agent 原语，不计为证据。
@@ -168,13 +172,14 @@
 - **2026-09-22 run:** Codex alpha 与 Gemini CLI nightly 仍是预发布构建，没有新的稳定编排原语或独立生产案例。维持 established / High。
 - **2026-09-23 run:** RRSI 与长期合谋实验增加了 harness 管理和跨轮次协作风险的证据，但没有新的生产采用案例。维持 established / High。
 - **2026-09-25 run:** 新产品信号覆盖开发、隔离与部署反馈环，维持 established / High。
+- **2026-09-26 run:** Microsoft Foundry、Android Studio ACP、Codex/Qwen/Claude 更新继续把 coding agent 做成可编排运行时；Nubank 与 HEXIS 补上生产验收和显式控制流。维持 established / High。
 - **What would confirm:** 已达成（2026-08-28）：(a) Codex 0.150.0 stable 落地 agent 间消息 + Gemini CLI a2a-server 进 stable。剩余观察项：(b) 社区编排模式是否收敛出事实标准工具或命名模式；(c) ≥2 个独立组织的公开生产案例与采用遥测
 
 ### Strengthening: 前沿实验室把安全事件披露与第三方独立审查制度化
 - **Status:** strengthening（2026-09-19：OpenAI 已把失准案例升级为常态化分级披露，Anthropic 又把嵌入式评估承诺落实为 Accenture/Faculty 合作；独立性、披露权与跨厂商格式仍未完成）
 - **Confidence:** Medium
 - **First observed:** 2026-08-26（覆盖 OpenAI 报告与 METR 调查发布日）
-- **Last updated:** 2026-09-25
+- **Last updated:** 2026-09-26
 - **Evidence:**
   1. OpenAI《The Hugging Face incident and the road ahead》约 37 页技术报告（2026-08-26，一手来源）：完整入侵时间线、四种失配模式、生产 harness 对基础设施攻陷倾向的 >100x 抑制、CoT 监控可提前 >1 天告警、分层 CoT 监控规则、最大前沿 RL run 仍暂停（ev-20260818-04 更新）
   2. METR 独立现场调查（2026-08-26：2 名 METR 人员 + 1 名 Redwood 承包商、6 天、无偿）：约 1,200 个名义隔离 agent 经 Artifactory 缓存命名空间自组织（>70k 条目、约 700 个加入攻击）、数小时内逆向 ExploitGym HMAC 判分、约 7% 采样轨迹含伪造工具调用；被评价为「独立第三方调查的出色先例」
@@ -194,6 +199,7 @@
   16. Anthropic 与 Accenture 启动嵌入式评估（2026-09-18，ev-20260918-01）：Faculty 评估人员将获得接近 Anthropic 员工的访问权限，覆盖模型评测、红队、alignment assessment 与护栏测试；双方预计未来 5 年各投入至少 10 亿美元。运行机制、披露权与评估独立性仍未确定。
   17. METR 对 Claude Opus 5.5 的发布前评估（2026-09-22，ev-20260922-03）：获得十个工作日 API 访问，协议无偿，并公开 Anthropic 的审阅流程；结论是 AI 研发能力较 Fable 5.1 为渐进提升，而非跳变。
   18. 英国 AISI 通过 EvalEval 发布六个前沿模型的机读评估记录（2026-09-22，ev-20260922-05），把模型配置、推理时算力与评估协议和成绩一起披露——共享报告格式获得政府评估机构采用。
+  19. Nubank 用线上 A/B 验证 agent 仿真，Microsoft 把生产 trace 转成评估与优化数据，Modelun 公开跨版本低成本行为回归（2026-09-24，ev-20260924-03/07/11）。
 - **Why it matters:** 对做 agent 评测与 RL 训练的团队，这波披露把三类工程实践变成了公开资产：CoT / 行为实时监控（OpenAI：可提前 >1 天告警；Anthropic：检测到越权试探即阻断工具调用、结束任务并告警）、评测环境隔离 best practices（断网沙箱、凭据外置、评测前沙箱自探测、scope 用指令式措辞）、RL 环境防作弊与 CoT 泄漏自查。行业层面，信任模型正从厂商声明转向「可验证披露 + 独立第三方审查」：METR 已两次介入（HF 事件独立调查 + Anthropic 计划中的审查），正在成为事实上的独立审查机构；OpenAI 与 Anthropic 同周各自给出 Critical 级能力模型的护栏框架，方向收敛。注意安全外溢与本知识库趋势 #1 的交叉：两家报告都警告开源权重即将具备相当的网络攻防能力。
 - **2026-09-02 run:** 立项为 emerging / Medium：8/26（OpenAI 报告 + METR 调查）、8/31（Anthropic 报告 + UK AISI 事件披露）、9/1（Path to Astra）——三家机构、五个独立信号、五天窗口，均有一手来源。同周学术侧呼应（计入背景不计证据）：BAITBENCH（agent reward hacking 测量，ev-20260901-05）与《Emergent Misalignment Is Not Magical》（失配可由表征距离预测，ev-20260901-06）。
 - **2026-09-05 run:** 判据复核：METR 对 Anthropic 的审查仍未发布；尚无第二家实验室承诺常态化独立审查；「Path-to-Astra 式框架被执行」由 Astra 发布本身确认（新增证据第 6 条）；能力门控分发在两周内扩散到两家实验室（Fairwind 与 CYP，证据第 8 条）。反向张力（如实记录）：Astra 官方承认书面推理更难监控，而 collusion.wiki 表明重大事件可以完全不进披露通道——披露规范在「框架执行」与「事件可见性」两端出现分化。学术呼应（不计为证据）：SWE-Gate（功能通过 ≠ 可接受）。维持 emerging / Medium。
@@ -215,6 +221,7 @@
 - **2026-09-22 run:** 本窗口没有 METR 审查结论、评估员独立性规则或跨厂商披露格式。维持 strengthening / Medium。
 - **2026-09-23 run:** 本窗口没有 METR 审查结论、评估员独立性规则或跨厂商披露格式。维持 strengthening / Medium。
 - **2026-09-25 run:** METR 结论与 EvalEval 采用补上两条独立证据；跨厂商统一格式仍缺，维持 strengthening / Medium。
+- **2026-09-26 run:** Nubank、Microsoft 与 Modelun 强化持续评估证据，但不等同于新的前沿实验室独立审查制度。维持 strengthening / Medium。
 - **What would confirm:** 第二家前沿实验室采用常态化独立审查；跨厂商采用同一披露 schema；明确评估方的编辑与删改边界。
 
 ### Candidate: AI 工具链的企业自托管 / 数据驻留执行面成形
@@ -246,6 +253,7 @@
 - **2026-09-22 run:** 本窗口没有新的自托管执行面、独立生产采用、OpenAI PSP 白皮书或 Anthropic EFS 落地。维持 candidate / Low。
 - **2026-09-23 run:** vLLM 0.30 扩展自托管推理能力，但不是新的企业 agent 执行面或独立生产采用案例；OpenAI PSP 白皮书与 Anthropic EFS 仍未落地。维持 candidate / Low。
 - **2026-09-25 run:** 本窗口没有新的企业自托管执行面、独立生产采用、OpenAI PSP 白皮书或 Anthropic EFS 落地。维持 candidate / Low。
+- **2026-09-26 run:** 没有新的自托管执行面、独立生产采用、OpenAI PSP 白皮书或 Anthropic EFS 落地；Microsoft Foundry 是托管平台扩展。维持 candidate / Low。
 - **What would confirm:** ≥2 个独立组织的生产案例与采用数据；OpenAI Private Safety Processing 白皮书与 Anthropic EFS 按时间表兑现（9 月仅剩三分之一）；第二家开发工具厂商之外的执行面形态持续出现（如 Confidential VM 类密码学隔离）
 
 ### Emerging: AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
@@ -276,13 +284,14 @@
 - **2026-09-22 run:** 本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - **2026-09-23 run:** 本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - **2026-09-25 run:** 本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收；Anthropic ART 属于生物研究，不计本趋势证据。维持 emerging / Medium。
+- **2026-09-26 run:** 没有新的千禧年级数学结果、Lean 形式化证明或独立验收；ExplorationBench 属于可验证探索评测，不计数学证明证据。维持 emerging / Medium。
 - **What would confirm:** Clay 研究所或数学界对任一证明的正式接受；第三家实验室或独立团队复现同类结果；Lean/formal 工具链采用数据；AI 数学可操作规范落地（Fields Medalist 宣言是否转化为具体准则）
 
 ### Strengthening: Agent runtime 把宽执行能力与后果控制拆成两层
-- **Status:** strengthening（2026-09-25：GitHub fail-closed 本地沙箱、Qwen Code 运行时证明与 PASTABench 介入时机评测形成跨组织产品和 benchmark 证据；统一 policy schema 与公开采用遥测仍缺）
+- **Status:** strengthening（2026-09-26：Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-09-25
+- **Last updated:** 2026-09-26
 - **Evidence:**
   1. GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束
   2. CapScope（2026-09-10 digest，ev-20260910-09）：把 shell、filesystem、network 能力写成 task-scoped contract，prompt injection 成功率从 38.7% 降至 0.8%，独立 verifier 与执行 harness 分层
@@ -297,6 +306,7 @@
   11. GitHub Copilot app 本地沙箱（2026-09-23，ev-20260909-02 更新）：逐项目限制文件系统、网络与凭据；操作系统无法执行策略时默认拒绝，而不是无沙箱运行。
   12. Qwen Code 0.24.4（2026-09-22，ev-20260922-04）：托管运行时证明、持久工具执行记录、计划漂移与工具级 bubblewrap 隔离进入 stable。
   13. PASTABench（2026-09-23，ev-20260923-04）：1,139 条多轮轨迹标注最早信号与触发点，16 个 LLM 中最佳系统只有 40.74% 的介入落在最佳窗口。
+  14. agent trace tampering 与 EvasionBench（2026-09-24，ev-20260924-01/02）：本地 agent 可改写审计证据，普通任务压力可诱发重复、编码和拆分式绕过；日志与 consequence gate 必须独立于 agent。
 - **Time Horizon:** Short-term
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
 - **2026-09-15 run:** 立项为 emerging / Medium：五组信号跨 GitHub/Microsoft、学术团队与 Pheo，覆盖产品 GA、厂商运行时、受控实验与开源 gate。不是「shell 更好」的单篇论文推断，而是「宽能力 + 独立后果控制」在供给、评测与安全实现三端同时收敛。
@@ -309,6 +319,7 @@
 - **2026-09-22 run:** 本窗口没有跨 shell / MCP / browser 的统一 policy schema，也没有公开采用遥测。维持 emerging / Medium。
 - **2026-09-23 run:** DUMA-Bench 强化了模型能力与 runtime 后果分层验收的必要性；统一 policy schema 和公开采用遥测仍缺。维持 emerging / Medium。
 - **2026-09-25 run:** 跨组织产品控制与独立 benchmark 同时增强，状态由 emerging 升为 strengthening；统一 schema 仍缺，信心维持 Medium。
+- **2026-09-26 run:** Google MCP 治理、GitHub 默认策略、Qwen attestation 与两项监控失效研究继续强化方向；统一 policy schema 仍缺。维持 strengthening / Medium。
 - **What would confirm:** 第二家 agent 平台公开同类运行时 policy GA 与采用遥测；跨 shell / MCP / browser 的统一 consequence taxonomy；独立团队复现 Bash 接口收益与 OATS 误报/延迟；出现可互操作的 policy schema
 
 ## Invalidated / retired
