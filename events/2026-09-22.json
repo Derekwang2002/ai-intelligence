@@ -161,10 +161,10 @@
       "organization": ["Alibaba", "Qwen"],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-09-25T16:01:00Z",
+      "last_updated_at": "2026-09-26T16:01:48Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
-      "secondary_sources": ["https://github.com/QwenLM/qwen-code/releases/tag/v0.24.5"],
+      "secondary_sources": ["https://github.com/QwenLM/qwen-code/releases/tag/v0.24.5", "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.6"],
       "summary": "Qwen Code 0.24.4 adds a managed runtime attestation contract, persistent managed tool-execution records and plan-drift reporting. It moves bubblewrap sandboxing to individual tool execution, supports SSH workspaces without a remote daemon, and can cap ACP child heaps. The release also adds encrypted connection profiles and safer QR pairing for remote sessions. It was published inside the retrieval overlap and was absent from the previous index.",
       "why_it_matters": "For teams running coding agents across local, remote and managed workers, a sandbox is only one part of the trust story. Attestation, durable execution records and plan-drift checks make it easier to prove which runtime acted and whether the implementation still matches the approved plan. Trial the controls before relying on them for policy enforcement because the release notes do not yet provide independent security validation.",
       "summary_zh": "Qwen Code 0.24.4 增加托管运行时证明协议、持久化的托管工具执行记录，以及计划漂移报告。bubblewrap 沙箱被下沉到单个工具执行层；SSH workspace 不再强制依赖远程 daemon，并可限制 ACP 子进程堆内存。远程会话还增加加密连接配置与更安全的二维码配对。该版本位于检索 overlap 区间，上一轮索引中没有记录。",
@@ -178,7 +178,8 @@
         "plan_control": "records plan inputs and reports drift; excludes unplanned chunks from coverage",
         "sandbox": "bubblewrap moved to tool execution; optional ACP child heap enforcement",
         "remote": "SSH workspace without remote daemon; encrypted connection profiles; expiring QR pairing",
-        "update_2026_09_26": "0.24.5 stable adds a Java attestation client that adopts a Managed Runtime only after verification, real-time trajectory timing and inspection, rebase-stable per-file review verdicts, separate private/group channel policies, byte-based MCP media validation, and stronger ownership fences for stale tool dispatches. Stays TRIAL."
+        "update_2026_09_26": "0.24.5 stable adds a Java attestation client that adopts a Managed Runtime only after verification, real-time trajectory timing and inspection, rebase-stable per-file review verdicts, separate private/group channel policies, byte-based MCP media validation, and stronger ownership fences for stale tool dispatches. Stays TRIAL.",
+        "update_2026_09_27": "0.24.6 stable declares a v2 execute/status/cancel runtime contract, adds guarded Hosted Runtime foundations, a durable managed-session journal with failover, and reconciliation of UNKNOWN executions from runtime evidence. Permission-hook aggregation now chooses the most restrictive decision. Fresh startup time to typeable is halved and RSS falls 60% in the project benchmark. Stays TRIAL."
       },
       "technical_details_zh": {
         "版本": "0.24.4 stable",
@@ -187,7 +188,8 @@
         "计划控制": "记录计划依据并报告漂移；未计划的代码块不计入覆盖率",
         "沙箱": "bubblewrap 下沉到工具执行；可选 ACP 子进程堆限制",
         "远程": "SSH workspace 无需远程 daemon；加密连接配置；带过期时间的二维码配对",
-        "2026-09-26 更新": "0.24.5 stable 新增 Java attestation client，只有验证后才接纳 Managed Runtime；还加入实时轨迹耗时与检查、跨 rebase 保留的逐文件审查结论、私聊/群聊策略分离、按真实 bytes 判断 MCP media，以及过期工具调度的 ownership fence。维持 TRIAL。"
+        "2026-09-26 更新": "0.24.5 stable 新增 Java attestation client，只有验证后才接纳 Managed Runtime；还加入实时轨迹耗时与检查、跨 rebase 保留的逐文件审查结论、私聊/群聊策略分离、按真实 bytes 判断 MCP media，以及过期工具调度的 ownership fence。维持 TRIAL。",
+        "2026-09-27 更新": "0.24.6 stable 定义 v2 execute/status/cancel 运行时协议，加入带防护的 Hosted Runtime 基础、可故障转移的托管会话持久日志，并根据运行时证据核对 UNKNOWN 执行。多个权限 hook 冲突时现在选择最严格结论。项目 benchmark 中首次启动到可输入时间减半，RSS 降低 60%。维持 TRIAL。"
       },
       "tags": ["qwen-code", "coding-agent", "attestation", "sandbox", "plan-drift", "remote-workspace"],
       "technical_impact": 3,

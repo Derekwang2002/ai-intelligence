@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-25T16:01Z",
+  "as_of": "2026-09-26T16:01Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -211,6 +211,11 @@
           "date": "2026-09-26",
           "note_zh": "本窗口没有公开权重上的第三方 Terminal-Bench / SWE 复现；LFM2.5-VL-DSpark 是推测解码组件，不计 coding 能力证据。维持 strengthening / Medium。",
           "note_en": "No third-party Terminal-Bench or SWE reproduction on public weights appeared; LFM2.5-VL-DSpark is a speculative-decoding component, not coding-capability evidence. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-27",
+          "note_zh": "本窗口没有公开权重上的第三方 Terminal-Bench / SWE 复现，也没有新的同级别开放权重模型。维持 strengthening / Medium。",
+          "note_en": "No third-party Terminal-Bench or SWE reproduction on public weights and no new peer open-weight model appeared. Stays strengthening / Medium."
         }
       ]
     },
@@ -412,6 +417,11 @@
           "date": "2026-09-26",
           "note_zh": "Google API Gateway 把现有认证、配额与日志带入 MCP，GitHub 默认策略纳入 MCP server policy；跨厂商统一 auth/enforcement schema 仍缺。维持 emerging / Medium。",
           "note_en": "Google API Gateway brings existing authentication, quotas and logs into MCP, while GitHub's default policy includes MCP-server policy; a cross-vendor auth/enforcement schema is still missing. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-27",
+          "note_zh": "Claude Code 2.1.283 补强 MCP 进度、临时 404 恢复与组织阻止提示，但属于单一客户端可靠性更新，没有形成跨厂商统一授权 schema。维持 emerging / Medium。",
+          "note_en": "Claude Code 2.1.283 improves MCP progress, transient-404 recovery and organization-blocked visibility, but this is one client reliability update rather than a shared cross-vendor authorization schema. Stays emerging / Medium."
         }
       ]
     },
@@ -424,7 +434,7 @@
       "status_note_en": "established (candidate→emerging 2026-08-18; →strengthening 8/20; →established 2026-08-28 — confirmation criterion (a) met: Codex 0.150.0 stable ships agent-initiated cross-task messaging; in the same window Gemini CLI 0.57.0 shipped a2a-server in stable and on npm, making Google the seventh organization with protocol-level interop in a stable runtime)",
       "confidence": "High",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-26",
+      "last_updated": "2026-09-27",
       "retired": false,
       "evidence_zh": [
         "Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）",
@@ -445,7 +455,8 @@
         "16. runtime、scaffold 与委派拓扑开始可量化（2026-09-15 digest，ev-20260915-02 / ev-20260915-04 / ev-20260915-06）：SWE-bench 前 30 名相邻结果均不可区分，固定模型后的 scaffold 差距最高 29.8 分；生产轨迹给出深层委派的信息损失与成本交叉点；ScienceBuddy 公开 harness 演化与模型训练分层循环。",
         "17. RRSI 与长期合谋研究（2026-09-21，ev-20260921-04 / 06）：自动优化 harness 需要提案预算、留出任务与剪枝来抑制过拟合；持续多 agent 互动又会在奖励冲突下改变协作策略。runtime 既要管理 scaffold 演化，也要管理跨轮次的关系状态。",
         "Cursor Rollouts 把 coding agent 延伸到部署监控、渐进发布暂停与回滚 PR 准备；Codex 0.156 默认支持 worktree 会话；Qwen Code 0.24.4 增加运行时证明、计划漂移与持久执行记录（2026-09-22 至 23）",
-        "Microsoft Foundry 把 durable execution、A2A、Routines、tool search 与生产 trace 优化串成平台闭环；Android Studio 通过 ACP 承载可替换 agent（2026-09-24，ev-20260924-07/09）"
+        "Microsoft Foundry 把 durable execution、A2A、Routines、tool search 与生产 trace 优化串成平台闭环；Android Studio 通过 ACP 承载可替换 agent（2026-09-24，ev-20260924-07/09）",
+        "Microsoft Copilot（2026-09-25，ev-20260925-01）把持续运行的 Autopilot、租户内 Managed Runtime、独立身份/记忆/计算机与 FinOps 治理组合成企业工作区；GitHub Memory 与 Qwen Code Hosted Runtime 同日补强跨 agent 记忆和故障转移"
       ],
       "evidence_en": [
         "Anthropic Claude Code: default-on subagent forking + cross-session SendMessage (2026-08-13/14)",
@@ -466,7 +477,8 @@
         "16. Runtime, scaffold and delegation topology become measurable (2026-09-15 digest, ev-20260915-02 / ev-20260915-04 / ev-20260915-06): no adjacent top-30 SWE-bench result is separable, within-model scaffold ranges reach 29.8 points, production traces estimate hierarchy information loss and a cost crossover, and ScienceBuddy releases a layered harness-evolution and model-training loop.",
         "17. RRSI and the long-horizon collusion study (2026-09-21, ev-20260921-04 / 06): automated harness optimization needs proposal budgets, held-out tasks and pruning to control overfitting, while persistent multi-agent interaction can reshape cooperation under reward conflict. A runtime must manage both scaffold evolution and relationship state across turns.",
         "Cursor Rollouts extends coding agents into deployment monitoring, rollout pauses and revert-PR preparation; Codex 0.156 defaults to worktree sessions; Qwen Code 0.24.4 adds runtime attestation, plan drift and durable execution records (September 22-23, 2026)",
-        "Microsoft Foundry connects durable execution, A2A, Routines, tool search and production-trace optimization, while Android Studio hosts replaceable agents through ACP (September 24, 2026, ev-20260924-07/09)"
+        "Microsoft Foundry connects durable execution, A2A, Routines, tool search and production-trace optimization, while Android Studio hosts replaceable agents through ACP (September 24, 2026, ev-20260924-07/09)",
+        "Microsoft Copilot (September 25, 2026, ev-20260925-01) combines persistent Autopilot, tenant-hosted Managed Runtime, separate identity/memory/computer and FinOps governance; same-day GitHub Memory and Qwen Code Hosted Runtime updates strengthen cross-agent memory and failover"
       ],
       "why_it_matters_zh": "升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。",
       "why_it_matters_en": "Why upgraded to established / High: confirmation criterion (a) (agent-to-agent messaging semantics in a non-Anthropic stable runtime) is met by Codex 0.150.0 — agents can read, create, or message other tasks from the terminal, so inbox semantics are no longer Anthropic-only; in the same window Google shipped the A2A protocol server into the Gemini CLI stable line and published it on npm. Equivalent primitives are now verified across seven organizations (Anthropic, GitHub/Microsoft, DeepSeek, OpenAI, SST/OpenCode, Anysphere/Cursor, Google) in stable or installable artifacts, spanning March to August 2026. The engineering impact has landed: the orchestration plane is shifting from human-initiated sessions to resident, event-driven, interoperable task systems — multi-agent orchestration is becoming a built-in capability of CLI runtimes rather than a framework choice. Residual gaps (not blocking established, kept under watch): Google's a2a-server has zero documentation or announcement; public production case studies and adoption telemetry are still missing; on the Anthropic side, Claude Code 2.1.248 extended cross-session messaging to Bedrock/Vertex/Foundry and telemetry-off deployments (same-org hardening, not counted separately).",
@@ -627,6 +639,11 @@
           "date": "2026-09-26",
           "note_zh": "Microsoft Foundry、Android Studio ACP、Codex/Qwen/Claude 更新继续把 coding agent 做成可编排运行时；Nubank 与 HEXIS 补上生产验收和显式控制流。维持 established / High。",
           "note_en": "Microsoft Foundry, Android Studio ACP and Codex/Qwen/Claude updates keep turning coding agents into orchestrated runtimes; Nubank and HEXIS add production qualification and explicit control flow. Stays established / High."
+        },
+        {
+          "date": "2026-09-27",
+          "note_zh": "Microsoft Copilot 把持久 agent、租户内 Managed Runtime、独立身份与花费治理组合成工作区；GitHub 让安全修复记忆跨 autofix、review 与 cloud agent 复用，Qwen Code 增加 Hosted Runtime 与故障转移日志。维持 established / High。",
+          "note_en": "Microsoft Copilot combines persistent agents, tenant-hosted Managed Runtime, separate identity and spend governance; GitHub shares security-fix memory across autofix, review and cloud agent; Qwen Code adds Hosted Runtime foundations and a failover journal. Stays established / High."
         }
       ]
     },
@@ -792,6 +809,11 @@
           "date": "2026-09-26",
           "note_zh": "Nubank、Microsoft 与 Modelun 强化持续评估证据，但不等同于新的前沿实验室独立审查制度；维持 strengthening / Medium。",
           "note_en": "Nubank, Microsoft and Modelun strengthen continuous-evaluation evidence, but do not constitute a new frontier-lab independent-review institution. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-27",
+          "note_zh": "本窗口没有新的前沿实验室安全事件披露、独立第三方审查或共享披露 schema。GitHub Memory 是产品内学习回路，不计本趋势证据。维持 strengthening / Medium。",
+          "note_en": "No new frontier-lab safety disclosure, independent third-party review or shared disclosure schema appeared. GitHub Memory is a product learning loop, not evidence for this trend. Stays strengthening / Medium."
         }
       ]
     },
@@ -914,6 +936,11 @@
           "date": "2026-09-26",
           "note_zh": "没有新的自托管执行面、独立生产采用、OpenAI PSP 白皮书或 Anthropic EFS 落地；Microsoft Foundry 是托管平台扩展。维持 candidate / Low。",
           "note_en": "No new self-hosted execution plane, independent production adoption, OpenAI PSP paper or Anthropic EFS delivery appeared; Microsoft Foundry is a managed-platform expansion. Stays candidate / Low."
+        },
+        {
+          "date": "2026-09-27",
+          "note_zh": "Microsoft Copilot Managed Runtime 可在客户租户内托管执行，但仍由 Microsoft 平台管理，不等同于客户自托管；可作为数据驻留执行面的邻接信号，尚不足以升级。维持 candidate / Low。",
+          "note_en": "Microsoft Copilot Managed Runtime can host execution inside the customer tenant but remains Microsoft-managed rather than customer-operated. It is adjacent data-residency evidence, not enough for an upgrade. Stays candidate / Low."
         }
       ]
     },
@@ -1026,6 +1053,11 @@
           "date": "2026-09-26",
           "note_zh": "没有新的千禧年级数学结果、Lean 形式化证明或独立验收；ExplorationBench 属于可验证探索评测，不计数学证明证据。维持 emerging / Medium。",
           "note_en": "No new Millennium-scale mathematics result, Lean formal proof or independent acceptance appeared; ExplorationBench is verifiable-exploration evaluation, not mathematics-proof evidence. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-27",
+          "note_zh": "本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。",
+          "note_en": "No new Millennium-scale mathematics result, Lean formal proof or independent acceptance appeared. Stays emerging / Medium."
         }
       ]
     },
@@ -1038,7 +1070,7 @@
       "status_note_en": "strengthening / Medium (Google MCP governance, GitHub default policy, Qwen attestation and monitor-failure research strengthen the direction; a unified policy schema and public adoption telemetry are still missing)",
       "confidence": "Medium",
       "first_observed": "2026-09-09",
-      "last_updated": "2026-09-26",
+      "last_updated": "2026-09-27",
       "retired": false,
       "evidence_zh": [
         "GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束",
@@ -1054,7 +1086,8 @@
         "GitHub Copilot app 本地沙箱（2026-09-23）：逐项目限制文件系统、网络与凭据；操作系统无法执行所请求策略时默认拒绝，而不是无沙箱运行",
         "Qwen Code 0.24.4（2026-09-22）：托管运行时证明、持久工具执行记录、计划漂移与工具级 bubblewrap 隔离",
         "PASTABench（2026-09-23）：1,139 条多轮轨迹标注最早信号与触发点，16 个 LLM 中最佳系统只有 40.74% 的介入落在最佳窗口",
-        "agent trace tampering 与 EvasionBench（2026-09-24，ev-20260924-01/02）：本地 agent 可改写审计证据，普通任务压力可诱发重复、编码和拆分式绕过；日志与 consequence gate 必须独立于 agent"
+        "agent trace tampering 与 EvasionBench（2026-09-24，ev-20260924-01/02）：本地 agent 可改写审计证据，普通任务压力可诱发重复、编码和拆分式绕过；日志与 consequence gate 必须独立于 agent",
+        "Claude Code 2.1.283 与 Qwen Code 0.24.6（2026-09-25 至 26）：精确模型 allow/deny、无效沙箱策略默认拒绝、Windows 破坏命令保护，以及最严格权限 hook 聚合；Microsoft Managed Runtime 同时把身份、审计和花费策略下沉到执行面"
       ],
       "evidence_en": [
         "GitHub Copilot enterprise-managed permissions GA (2026-09-09, primary source, ev-20260909-02): administrators deploy block/ask/allow policy for shell, files and network domains, overriding user auto-approval — an organization-level policy constrains a general execution surface",
@@ -1070,7 +1103,8 @@
         "GitHub Copilot app local sandboxing (September 23, 2026): per-project filesystem, network and credential limits; the shell fails closed instead of running unsandboxed when the OS cannot enforce policy",
         "Qwen Code 0.24.4 (September 22, 2026): managed runtime attestation, durable tool-execution records, plan drift and tool-level bubblewrap isolation",
         "PASTABench (September 23, 2026): 1,139 multi-turn trajectories label earliest signal and trigger; the best of 16 LLMs intervenes in the optimal window only 40.74% of the time",
-        "Agent trace tampering and EvasionBench (September 24, 2026, ev-20260924-01/02): local agents can rewrite audit evidence, while ordinary task pressure triggers repeated, encoded and decomposed bypass attempts; logging and consequence gates must remain independent of the agent"
+        "Agent trace tampering and EvasionBench (September 24, 2026, ev-20260924-01/02): local agents can rewrite audit evidence, while ordinary task pressure triggers repeated, encoded and decomposed bypass attempts; logging and consequence gates must remain independent of the agent",
+        "Claude Code 2.1.283 and Qwen Code 0.24.6 (September 25-26, 2026): exact model allow/deny, fail-closed sandbox parsing, Windows destructive-command protection and most-restrictive permission-hook aggregation; Microsoft Managed Runtime also moves identity, audit and spend policy into the execution plane"
       ],
       "why_it_matters_zh": "对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。",
       "why_it_matters_en": "For teams designing enterprise agents, capability and permission should no longer be implicitly coupled in one tool catalog. A general shell provides better composition and token efficiency, while independent sandboxes, capability contracts and consequence gates bound the blast radius. The immediate architecture move is to make \"what commands the model can generate\" and \"what consequences runtime permits\" independently testable, auditable and upgradable modules.",
@@ -1131,6 +1165,11 @@
           "date": "2026-09-26",
           "note_zh": "Google MCP 治理、GitHub 默认策略、Qwen attestation 与两项监控失效研究继续强化方向；统一 policy schema 仍缺。维持 strengthening / Medium。",
           "note_en": "Google MCP governance, GitHub default policy, Qwen attestation and two monitor-failure studies strengthen the direction; a unified policy schema is still missing. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-27",
+          "note_zh": "Claude Code 新增精确模型 allow/deny、无效沙箱策略默认拒绝与 Windows 破坏命令保护；Qwen Code 把冲突权限 hook 合并为最严格结论，Microsoft Managed Runtime 则把身份、审计和花费治理放进执行面。维持 strengthening / Medium。",
+          "note_en": "Claude Code adds exact model allow/deny controls, fail-closed sandbox parsing and destructive-command protection; Qwen Code resolves conflicting permission hooks to the most restrictive outcome; Microsoft Managed Runtime places identity, audit and spend governance in the execution plane. Stays strengthening / Medium."
         }
       ]
     }

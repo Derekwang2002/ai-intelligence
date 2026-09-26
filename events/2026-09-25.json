@@ -1,0 +1,114 @@
+{
+  "date": "2026-09-25",
+  "provenance": "Incremental scan 2026-09-25T16:01:00Z to 2026-09-26T16:01:48Z; official Microsoft and GitHub sources.",
+  "events": [
+    {
+      "event_id": "ev-20260925-01",
+      "title": "Microsoft turns Copilot into a tenant-governed agent workspace",
+      "title_zh": "Microsoft 把 Copilot 扩展为租户治理的 agent 工作区",
+      "category": "ai-agent",
+      "organization": [
+        "Microsoft"
+      ],
+      "published_at": "2026-09-25",
+      "first_seen_at": "2026-09-26T16:01:48Z",
+      "last_updated_at": "2026-09-26T16:01:48Z",
+      "source_type": "official_blog",
+      "primary_source": "https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/",
+      "secondary_sources": [
+        "https://www.microsoft.com/en-us/microsoft-365-copilot/copilot-managed-runtime"
+      ],
+      "summary": "Microsoft introduced a new Copilot structure around Home, Code and Autopilot. Code builds small apps and automations in a sandbox that can be hosted inside the customer tenant. Copilot Managed Runtime provides IT-governed hosting and is in preview. Autopilot is a persistent cloud agent with its own identity, memory, computer and workspace, but it remains private preview; Home and Code also begin in the Frontier program rather than broad GA.",
+      "why_it_matters": "For enterprise teams, the product boundary is shifting from a chat assistant to a governed execution workspace. Treat this as an architecture signal, not a deployment-ready stack: trial Managed Runtime isolation and spending controls first, and require explicit identity, permissions, audit and human escalation before giving Autopilot recurring work.",
+      "summary_zh": "Microsoft 发布了由 Home、Code 与 Autopilot 组成的新 Copilot。Code 可在沙箱中构建小型应用与自动化，并把运行环境放在客户租户内。Copilot Managed Runtime 提供由 IT 治理的托管能力，目前处于 preview。Autopilot 是持续运行的云端 agent，拥有独立身份、记忆、计算机与工作区，但仍是 private preview；Home 与 Code 也先从 Frontier program 开始，而非全面 GA。",
+      "summary_en": "Microsoft introduced a new Copilot structure around Home, Code and Autopilot. Code builds small apps and automations in a sandbox that can be hosted inside the customer tenant. Copilot Managed Runtime provides IT-governed hosting and is in preview. Autopilot is a persistent cloud agent with its own identity, memory, computer and workspace, but it remains private preview; Home and Code also begin in the Frontier program rather than broad GA.",
+      "why_it_matters_zh": "对企业团队来说，产品边界正从聊天助手转向受治理的执行工作区。现阶段应把它看成架构信号，而不是可直接上线的完整栈：先验证 Managed Runtime 的隔离与花费控制，再为 Autopilot 的周期性任务明确身份、权限、审计和人工升级路径。",
+      "why_it_matters_en": "For enterprise teams, the product boundary is shifting from a chat assistant to a governed execution workspace. Treat this as an architecture signal, not a deployment-ready stack: trial Managed Runtime isolation and spending controls first, and require explicit identity, permissions, audit and human escalation before giving Autopilot recurring work.",
+      "technical_details": {
+        "availability": "Managed Runtime preview; Home and Code start in Frontier; Autopilot private preview at month end",
+        "runtime": "sandboxed execution with tenant-hosted option and IT governance",
+        "autopilot": "persistent cloud agent with separate identity, memory, computer and workspace",
+        "governance": "permissions, audit, model-family controls, spending-policy APIs and credit approval workflows",
+        "billing": "Cowork, Code, Autopilot and frontier models use usage-based billing",
+        "plugin_registry": "unified catalog rolling out now; GA across supported surfaces in coming weeks"
+      },
+      "technical_details_zh": {
+        "可用性": "Managed Runtime 为 preview；Home 与 Code 先进入 Frontier；Autopilot 月底进入 private preview",
+        "运行时": "沙箱执行，可选择租户内托管并由 IT 治理",
+        "Autopilot": "持续运行的云端 agent，拥有独立身份、记忆、计算机与工作区",
+        "治理": "权限、审计、模型家族控制、花费策略 API 与额度审批流程",
+        "计费": "Cowork、Code、Autopilot 与前沿模型采用 usage-based billing",
+        "Plugin Registry": "统一目录正在推出，未来数周覆盖支持的产品界面并 GA"
+      },
+      "tags": [
+        "microsoft-copilot",
+        "managed-runtime",
+        "persistent-agent",
+        "sandbox",
+        "enterprise-governance",
+        "finops"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 5,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "microsoft-copilot-home-code-autopilot-managed-runtime"
+    },
+    {
+      "event_id": "ev-20260925-02",
+      "title": "GitHub lets agentic autofix learn repository-specific fix patterns",
+      "title_zh": "GitHub 让 agentic autofix 复用仓库修复经验",
+      "category": "developer-tools",
+      "organization": [
+        "GitHub",
+        "Microsoft"
+      ],
+      "published_at": "2026-09-25",
+      "first_seen_at": "2026-09-26T16:01:48Z",
+      "last_updated_at": "2026-09-26T16:01:48Z",
+      "source_type": "official_changelog",
+      "primary_source": "https://github.blog/changelog/2026-09-25-agentic-autofix-now-uses-copilot-memory/",
+      "secondary_sources": [
+        "https://docs.github.com/en/copilot/concepts/agents/copilot-memory"
+      ],
+      "summary": "GitHub agentic autofix now reads Copilot Memory before resolving a security alert and stores successful fix patterns for later work. The same repository memory can inform Copilot code review and the Copilot cloud agent. Both agentic autofix and Copilot Memory remain in public preview. GitHub does not publish outcome or false-positive data for the memory-assisted flow.",
+      "why_it_matters": "For application-security teams, repository-specific memory could stop the same unsafe pattern from being rediscovered in every alert. Trial it on a limited repository set, review what memories are retained, and compare fix acceptance and regressions against a no-memory baseline before treating learned patterns as policy.",
+      "summary_zh": "GitHub agentic autofix 现在会在处理安全告警前读取 Copilot Memory，并把成功修复方式保存下来，供后续任务复用。同一份仓库记忆还能提供给 Copilot code review 与 Copilot cloud agent。agentic autofix 和 Copilot Memory 都仍处于 public preview。GitHub 尚未公布引入记忆后的修复成功率或误报数据。",
+      "summary_en": "GitHub agentic autofix now reads Copilot Memory before resolving a security alert and stores successful fix patterns for later work. The same repository memory can inform Copilot code review and the Copilot cloud agent. Both agentic autofix and Copilot Memory remain in public preview. GitHub does not publish outcome or false-positive data for the memory-assisted flow.",
+      "why_it_matters_zh": "对应用安全团队来说，仓库级记忆有机会避免每个告警都重新发现同一种不安全模式。建议先在少量仓库试用，审查保存了哪些记忆，并与不使用记忆的基线比较修复接受率和回归，再决定是否把这些经验当成策略。",
+      "why_it_matters_en": "For application-security teams, repository-specific memory could stop the same unsafe pattern from being rediscovered in every alert. Trial it on a limited repository set, review what memories are retained, and compare fix acceptance and regressions against a no-memory baseline before treating learned patterns as policy.",
+      "technical_details": {
+        "availability": "Public Preview",
+        "read_path": "agentic autofix consults existing repository memories before creating a fix",
+        "write_path": "successful fix pattern is stored as a Copilot Memory",
+        "consumers": "agentic autofix, Copilot code review and Copilot cloud agent",
+        "evidence_limit": "no published acceptance, regression or false-positive metrics"
+      },
+      "technical_details_zh": {
+        "可用性": "Public Preview",
+        "读取路径": "agentic autofix 生成修复前读取现有仓库记忆",
+        "写入路径": "成功修复方式保存为 Copilot Memory",
+        "使用方": "agentic autofix、Copilot code review 与 Copilot cloud agent",
+        "证据边界": "尚无公开的接受率、回归或误报指标"
+      },
+      "tags": [
+        "github-copilot",
+        "agentic-autofix",
+        "memory",
+        "application-security",
+        "code-review"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "github-agentic-autofix-copilot-memory"
+    }
+  ]
+}
