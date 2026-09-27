@@ -1,11 +1,11 @@
-# 当前趋势看板 — 2026-09-27T00:44:11Z
+# 当前趋势看板 — 2026-09-27T16:01:12Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-09-23
+- **Last updated:** 2026-09-27
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（维持；判据复核 @2026-09-14：(a) 仍未达成，没有新的第三方 Terminal-Bench / SWE 权重复现；(b) 已由 DeepSeek V4.1 Flash 达成；(c) serving 生态新增跨模型、跨框架的合并代码——vLLM 为 DeepSeek 合并 DeepSelect 与 Engram 路径，SGLang 为 Qwen NVFP4 合并单 DGX Spark 路径；升 High 仍仅剩 (a)）
 - **Why It Matters:** 升级为 strengthening 的依据：确认判据「GLM-5.3 权重落地 + 独立 benchmark 复现」实质达成——权重 8/25 落地且许可证宽松可用，Artificial Analysis 独立评测把 GLM-5.3 放到与 Kimi K3 同档。GLM-5.3-Flash（纯 MIT、全新底座、线性注意力降本）是同组织的加强信号。仍未到 High，只因为 Artificial Analysis 的独立评测针对 API，尚无社区对公开权重的 Terminal-Bench 或 SWE 复现；跨组织同级别发布与持续下载增速判据均已达成。
@@ -31,6 +31,7 @@
 16. 16. 第六个连续放量周期 + 权重侧复现的最近一次接近（2026-09-13T00:03Z 核查）：GLM-5.3 FP8 635,504（+6.3%）、GLM-5.3-Flash 1,333,574（+13.6%）、Flash-Next 604,992 + FP8 369,963（+3.2%/+6.0%）、Hy4 8,936（+8.7%）、V4-Flash-Vision 484,422（+9.1%）、DeepSeek V4.1-Flash 140,636（发布约 2.5 天，相对增速最陡）；unsloth Flash-Next GGUF 1,160,057、NVIDIA NVFP4 衍生 89,924（4 天约 5 倍）——全线仍在增长，但 Qwen/GLM Flash 线的日均斜率较前几个 3 天周期回落。判据 (a) 出现迄今最近一次接近：HF 讨论 #50（9/12）在单台 DGX Spark（GB10、128GB 统一内存）上以 2-bit 路由专家量化运行公开权重，HumanEval 97.0% 高于 z.ai API 的 95.1%（同 prompt、温度 0；复现产物公开）——但 HumanEval 不是 Terminal-Bench/SWE，判据仍未达成。邻接（厂商自报，不计证据）：Z.ai 工程博文（9/12）披露 Flash 的 ox-alpha 匿名测试全程跑在国产 AI 芯片集群上（SGLang 定制引擎、EPD 分离架构、端到端 3 倍提升、成本对齐主流 NVIDIA GPU）（ev-20260825-01 更新）
 17. 17. serving 路径进入上游合并代码（2026-09-13 UTC）：vLLM 为 DeepSeek V4.1-Flash 合并 DeepSelect 稀疏索引 TopK（GB200、batch 256 / 1M KV 下 191 微秒，原路径为 616 微秒）与 Engram DP 分片、异步 CPU offload、共享内存表；SGLang 为 nvidia/Qwen3.8-Flash-Next-NVFP4 合并单 DGX Spark / GB10 路径（200 题 GSM8K 97.5%/97.0%，约 93/90 tok/s）。两者均在 main、尚未 tagged，说明开放权重 serving 生态继续落地，但不是 TB/SWE 权重复现（ev-20260910-01 / ev-20260826-04 更新）。
 18. 18. vLLM 0.30.0 tagged stable（2026-09-22，ev-20260922-01）：此前在 main 的 DeepSeek V4.1、GLM-5.3、Qwen3.8 等开放权重模型 serving 路径进入稳定发布，并加入常驻 GPU 权重缓存、HiSparse 主机 KV tier 和大规模安全加固；serving 采用证据增强，但仍不是公开权重的第三方 Terminal-Bench / SWE 复现。
+19. 19. Hy4 30 天采用复核（2026-09-27，ev-20260828-02）：主仓月下载量从 9 月 11 日的 8,219 增至 22,788（+177%），但仍只有 preview 与 FP8 仓库。HF 展示的榜单元数据缺少可复现运行和具名独立评测方，因此只能加强采用信号，不能满足独立复现判据。
 
 ### 逐次复核
 
@@ -67,6 +68,7 @@
 - 2026-09-26：本窗口没有公开权重上的第三方 Terminal-Bench / SWE 复现；LFM2.5-VL-DSpark 是推测解码组件，不计 coding 能力证据。维持 strengthening / Medium。
 - 2026-09-27：本窗口没有公开权重上的第三方 Terminal-Bench / SWE 复现，也没有新的同级别开放权重模型。维持 strengthening / Medium。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
+- 2026-09-27T16:01:12Z：Hy4 主仓月下载量较 9 月 11 日增长 177%，采用信号增强；完整版与第三方可复现评测仍缺席。维持 strengthening / Medium。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
@@ -129,6 +131,7 @@
 - 2026-09-26：Google API Gateway 把现有认证、配额与日志带入 MCP，GitHub 默认策略纳入 MCP server policy；跨厂商统一 auth/enforcement schema 仍缺。维持 emerging / Medium。
 - 2026-09-27：Claude Code 2.1.283 补强 MCP 进度、临时 404 恢复与组织阻止提示，但属于单一客户端可靠性更新，没有形成跨厂商统一授权 schema。维持 emerging / Medium。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
+- 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
@@ -199,6 +202,7 @@
 - 2026-09-26：Microsoft Foundry、Android Studio ACP、Codex/Qwen/Claude 更新继续把 coding agent 做成可编排运行时；Nubank 与 HEXIS 补上生产验收和显式控制流。维持 established / High。
 - 2026-09-27：Microsoft Copilot 把持久 agent、租户内 Managed Runtime、独立身份与花费治理组合成工作区；GitHub 让安全修复记忆跨 autofix、review 与 cloud agent 复用，Qwen Code 增加 Hosted Runtime 与故障转移日志。维持 established / High。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
+- 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -258,6 +262,7 @@
 - 2026-09-26：Nubank、Microsoft 与 Modelun 强化持续评估证据，但不等同于新的前沿实验室独立审查制度；维持 strengthening / Medium。
 - 2026-09-27：本窗口没有新的前沿实验室安全事件披露、独立第三方审查或共享披露 schema。GitHub Memory 是产品内学习回路，不计本趋势证据。维持 strengthening / Medium。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
+- 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
@@ -301,6 +306,7 @@
 - 2026-09-26：没有新的自托管执行面、独立生产采用、OpenAI PSP 白皮书或 Anthropic EFS 落地；Microsoft Foundry 是托管平台扩展。维持 candidate / Low。
 - 2026-09-27：Microsoft Copilot Managed Runtime 可在客户租户内托管执行，但仍由 Microsoft 平台管理，不等同于客户自托管；可作为数据驻留执行面的邻接信号，尚不足以升级。维持 candidate / Low。
 - 2026-09-27T00:44:11Z：维持候选方向、低置信度。PSP 已有具体配置指南，旧记录中“尚未兑现”的概括需要修正。现有材料仍不足以证明多家独立组织已经在生产中采用。
+- 2026-09-27T16:01:12Z：本次扫描没有新的客户自托管或数据驻留生产证据。维持 candidate / Low。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -341,6 +347,7 @@
 - 2026-09-26：没有新的千禧年级数学结果、Lean 形式化证明或独立验收；ExplorationBench 属于可验证探索评测，不计数学证明证据。维持 emerging / Medium。
 - 2026-09-27：本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
+- 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
@@ -386,5 +393,6 @@
 - 2026-09-26：Google MCP 治理、GitHub 默认策略、Qwen attestation 与两项监控失效研究继续强化方向；统一 policy schema 仍缺。维持 strengthening / Medium。
 - 2026-09-27：Claude Code 新增精确模型 allow/deny、无效沙箱策略默认拒绝与 Windows 破坏命令保护；Qwen Code 把冲突权限 hook 合并为最严格结论，Microsoft Managed Runtime 则把身份、审计和花费治理放进执行面。维持 strengthening / Medium。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
+- 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## Invalidated / retired

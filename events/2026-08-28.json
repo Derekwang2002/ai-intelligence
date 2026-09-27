@@ -14,6 +14,7 @@
       "published_at_note": "Anthropic research page dated 2026-08-28; exact hour not stated (TechCrunch coverage same day). Treated as in-window for the 2026-08-29 run given the 3h retrieval overlap back to 2026-08-27T21:31Z.",
       "first_seen_at": "2026-08-29T11:35:46Z",
       "last_updated_at": "2026-08-29T11:35:46Z",
+      "last_reviewed_at": "2026-09-27T16:01:12Z",
       "source_type": "research_blog",
       "primary_source": "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures",
       "secondary_sources": [
@@ -115,7 +116,8 @@
       "published_at": "2026-08-28T00:00:00Z",
       "published_at_note": "Official Tencent announcement dated 2026-08-28; HF repos tencent/Hy4-preview (+FP8) created 2026-08-27T08:52Z; surfaced on Hacker News front page 2026-08-29T19:33Z (161 points). Coverage-gap recovery: published inside the previous run's window but missed then; first seen 2026-08-30 run.",
       "first_seen_at": "2026-08-30T00:00:20Z",
-      "last_updated_at": "2026-09-11T19:30:00Z",
+      "last_updated_at": "2026-09-27T16:01:12Z",
+      "last_reviewed_at": "2026-09-27T16:01:12Z",
       "source_type": "official_announcement",
       "primary_source": "https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/",
       "secondary_sources": [
@@ -123,33 +125,35 @@
         "https://recipes.vllm.ai/tencent/Hy4-preview",
         "https://news.ycombinator.com/"
       ],
-      "summary": "Tencent released and open-sourced Hy4 preview, its next-generation LLM: a 770B-parameter MoE with 49B active per token and a context window beyond 1M tokens, shipped as standard and FP8 weights under Apache 2.0 (per HF tags; the announcement itself names no license). Target uses are software engineering (planning, debugging, front-end quality), office work (financial and data analysis, cross-document collaboration), game development (playable prototypes from a single prompt) and scientific research. Public benchmark evidence is thin: one internal Tencent blind test with 163 experts over 203 engineering tasks scored Hy4 preview 2.99/4.00, slightly ahead of GLM-5.3 (2.92) and Kimi K3 (2.94). Tencent says the model assisted its own training pipeline and self-optimized its inference stack for a 31.8% end-to-end throughput gain. The full Hy4 is not released yet — a preview-first rollout with the next batch 'soon'. API access via Tencent Cloud TokenHub and OpenRouter at $0.834/M input, $2.501/M output, $0.042/M cached.",
-      "why_it_matters": "This is the third Chinese lab in one week to put major open weights on Hugging Face (Z.ai 8/25, Qwen 8/24-26, Tencent 8/27-28), and at 770B Apache 2.0 it is the closest thing yet to a same-tier, different-organization release for the open-weight frontier — direct evidence for trend #1. But treat capability claims as unverified: no public benchmark scores, one vendor-run blind test, and a preview badge. Serving teams get a vLLM recipe day-0; expect a real read on the model only when public harnesses (SWE-bench, Terminal-Bench) publish runs.",
-      "summary_zh": "腾讯发布并开源了下一代大模型 Hy4 预览版：770B 参数 MoE，每 token 激活 49B，上下文超过 1M token；以标准与 FP8 两种权重上架，许可证为 Apache 2.0（以 HF 标签为准，公告正文未写许可）。主打场景：软件工程（规划、调试、前端质量）、办公（金融与数据分析、跨文档协作）、游戏开发（一句自然语言生成可玩原型）与科学研究。公开 benchmark 证据很薄：仅一项腾讯内部盲测——163 名专家、203 个工程任务，Hy4 预览版 2.99/4.00，略高于 GLM-5.3（2.92）与 Kimi K3（2.94）。官方称模型参与了自己的训练流水线，并自优化推理系统使端到端吞吐提升 31.8%。完整版 Hy4 尚未发布——官方采用 preview-first 策略，下一批「很快」。API 经腾讯云 TokenHub 与 OpenRouter 提供：输入 $0.834/M、输出 $2.501/M、缓存 $0.042/M。",
-      "why_it_matters_zh": "这是一周内第三家在 Hugging Face 放出重要开源权重的中国实验室（Z.ai 8/25、Qwen 8/24-26、腾讯 8/27-28），770B + Apache 2.0 的组合也最接近「同级别、不同组织」的开源前沿发布——趋势 #1 的直接证据。但能力声称未经验证：没有公开 benchmark 分数、只有一项厂商自跑的盲测、且带 preview 标。服务团队有 day-0 的 vLLM recipe 可用；对模型的真实判断要等公开测试框架（SWE-bench、Terminal-Bench）跑出结果。",
-      "summary_en": "Tencent released and open-sourced Hy4 preview, its next-generation LLM: a 770B-parameter MoE with 49B active per token and a context window beyond 1M tokens, shipped as standard and FP8 weights under Apache 2.0 (per HF tags; the announcement itself names no license). Target uses are software engineering (planning, debugging, front-end quality), office work (financial and data analysis, cross-document collaboration), game development (playable prototypes from a single prompt) and scientific research. Public benchmark evidence is thin: one internal Tencent blind test with 163 experts over 203 engineering tasks scored Hy4 preview 2.99/4.00, slightly ahead of GLM-5.3 (2.92) and Kimi K3 (2.94). Tencent says the model assisted its own training pipeline and self-optimized its inference stack for a 31.8% end-to-end throughput gain. The full Hy4 is not released yet — a preview-first rollout with the next batch 'soon'. API access via Tencent Cloud TokenHub and OpenRouter at $0.834/M input, $2.501/M output, $0.042/M cached.",
-      "why_it_matters_en": "This is the third Chinese lab in one week to put major open weights on Hugging Face (Z.ai 8/25, Qwen 8/24-26, Tencent 8/27-28), and at 770B Apache 2.0 it is the closest thing yet to a same-tier, different-organization release for the open-weight frontier — direct evidence for trend #1. But treat capability claims as unverified: no public benchmark scores, one vendor-run blind test, and a preview badge. Serving teams get a vLLM recipe day-0; expect a real read on the model only when public harnesses (SWE-bench, Terminal-Bench) publish runs.",
+      "summary": "Tencent released Hy4 preview as a 770B-parameter MoE with 49B active parameters per token and a context window beyond 1M tokens. Standard and FP8 weights use Apache 2.0. Tencent's announcement reports an internal expert blind test and a 31.8% inference-throughput gain from model-assisted optimization. The Hugging Face page now exposes public leaderboard metadata, including SWE-bench Pro and Terminal-Bench 2.1 scores, but it does not identify a reproducible run or an independent evaluator. The full Hy4 is still absent; only the preview and FP8 repositories are listed.",
+      "why_it_matters": "For teams evaluating open weights, Hy4 now has stronger adoption evidence: the main repository rose from 8,219 to 22,788 monthly downloads since the September 11 check, despite its 780B scale. That is meaningful distribution, but not independent capability validation. Keep it at WATCH until a third party publishes a reproducible run against the public weights or Tencent ships the full model.",
+      "summary_zh": "腾讯发布的 Hy4 预览版是 770B 参数 MoE，每 token 激活 49B，上下文超过 1M token。标准与 FP8 权重采用 Apache 2.0。腾讯公告给出内部专家盲测，并称模型参与推理优化后吞吐提升 31.8%。Hugging Face 页面现在列出 SWE-bench Pro、Terminal-Bench 2.1 等公开榜单元数据，但没有标明可复现的运行记录或独立评测方。完整版 Hy4 仍未出现，目前只有预览版与 FP8 仓库。",
+      "why_it_matters_zh": "对评估开放权重的团队来说，Hy4 的采用信号已经增强：主仓月下载量从 9 月 11 日核查时的 8,219 增至 22,788，对 780B 体量的模型并不算低。但下载量不是能力复现。第三方在公开权重上给出可复现实验，或腾讯发布完整版之前，维持 WATCH。",
+      "summary_en": "Tencent released Hy4 preview as a 770B-parameter MoE with 49B active parameters per token and a context window beyond 1M tokens. Standard and FP8 weights use Apache 2.0. Tencent's announcement reports an internal expert blind test and a 31.8% inference-throughput gain from model-assisted optimization. The Hugging Face page now exposes public leaderboard metadata, including SWE-bench Pro and Terminal-Bench 2.1 scores, but it does not identify a reproducible run or an independent evaluator. The full Hy4 is still absent; only the preview and FP8 repositories are listed.",
+      "why_it_matters_en": "For teams evaluating open weights, Hy4 now has stronger adoption evidence: the main repository rose from 8,219 to 22,788 monthly downloads since the September 11 check, despite its 780B scale. That is meaningful distribution, but not independent capability validation. Keep it at WATCH until a third party publishes a reproducible run against the public weights or Tencent ships the full model.",
       "technical_details": {
         "architecture": "770B total / 49B active MoE; context beyond 1M tokens",
         "license": "Apache 2.0 per Hugging Face tags (announcement text names no license)",
         "artifacts": "tencent/Hy4-preview + tencent/Hy4-preview-FP8 on HF (repos created 2026-08-27T08:52Z); ModelScope mirror; vLLM recipe day-0; downloads ~1.4k main + ~1.3k FP8, 283 likes @2026-08-30",
-        "eval": "internal blind test only: 163 experts, 203 engineering tasks; Hy4 preview 2.99/4.00 vs GLM-5.3 2.92, Kimi K3 2.94; no public benchmark scores (no SWE-bench/Terminal-Bench)",
+        "eval": "Tencent internal blind test: 163 experts, 203 engineering tasks; Hy4 preview 2.99/4.00 vs GLM-5.3 2.92 and Kimi K3 2.94. HF displays leaderboard metadata including SWE-bench Pro 65.7 and Terminal-Bench 2.1 85.4, but provides no reproducible run or named independent evaluator.",
         "self_improvement": "model assisted its own training pipeline; self-optimized inference system +31.8% end-to-end throughput (vendor claim)",
         "api": "Tencent Cloud TokenHub + OpenRouter; $0.834/M input, $2.501/M output, $0.042/M cached; free two weeks on WorkBuddy/CodeBuddy; Hy3 free extended to 2026-09-30",
         "rollout": "preview-first; full Hy4 weights not yet released; next Hy4-series batch 'expected soon'",
         "update_2026_09_08": "Adoption check @2026-09-08: preview repo 6,705 downloads (+18% vs 5,684 @9/5) + 451 likes. Full version still not shipped — tencent's HF org lists only Hy4-preview and Hy4-preview-FP8 (created 8/27); official wording on timing unchanged. Criterion (b) for trend #1 remains unmet. Stays WATCH.",
-        "update_2026_09_11": "Adoption check @2026-09-11: 8,219 downloads (+23% vs 6,705 @9/8) + 467 likes; FP8 3,515; AngelSlim GGUF 230k. Full Hy4 still not shipped; trend #1 criterion (b) instead substantially met by DeepSeek V4.1-Flash (ev-20260910-01). Stays WATCH."
+        "update_2026_09_11": "Adoption check @2026-09-11: 8,219 downloads (+23% vs 6,705 @9/8) + 467 likes; FP8 3,515; AngelSlim GGUF 230k. Full Hy4 still not shipped; trend #1 criterion (b) instead substantially met by DeepSeek V4.1-Flash (ev-20260910-01). Stays WATCH.",
+        "update_2026_09_27": "30-day review: main repo 22,788 monthly downloads (+177% vs 8,219 @9/11), 496 likes; FP8 4,706 downloads. Only preview and FP8 repos exist. HF exposes leaderboard metadata but no reproducible run or named independent evaluator. Stays WATCH."
       },
       "technical_details_zh": {
         "架构": "770B 总参数 / 49B 激活 MoE；上下文超过 1M token",
         "许可证": "以 Hugging Face 标签为准为 Apache 2.0（公告正文未写许可）",
         "产物": "HF tencent/Hy4-preview + FP8（仓库 2026-08-27T08:52Z 创建）；ModelScope 镜像；day-0 vLLM recipe；截至 2026-08-30 主仓约 1.4k 下载、FP8 约 1.3k、283 likes",
-        "评测": "仅内部盲测：163 名专家、203 个工程任务；Hy4 预览版 2.99/4.00，GLM-5.3 2.92、Kimi K3 2.94；无公开 benchmark 分数（未上 SWE-bench/Terminal-Bench）",
+        "评测": "腾讯内部盲测：163 名专家、203 个工程任务；Hy4 预览版 2.99/4.00，GLM-5.3 2.92、Kimi K3 2.94。HF 展示 SWE-bench Pro 65.7、Terminal-Bench 2.1 85.4 等榜单元数据，但没有可复现运行或具名独立评测方。",
         "自我改进": "官方称模型参与自身训练流水线，并自优化推理系统使端到端吞吐 +31.8%（厂商声称）",
         "API": "腾讯云 TokenHub + OpenRouter；输入 $0.834/M、输出 $2.501/M、缓存 $0.042/M；WorkBuddy/CodeBuddy 免费两周；Hy3 免费延长至 2026-09-30",
         "节奏": "preview-first；完整版 Hy4 权重未发布；下一批 Hy4 系列「预计很快」",
         "update_2026_09_08": "采用核查 @2026-09-08：preview 仓库 6,705 下载（较 9/5 的 5,684 +18%）+ 451 likes。完整版仍未发布——tencent 的 HF 组织下仍只有 Hy4-preview 与 Hy4-preview-FP8（8/27 创建）；官方时间口径不变。趋势 #1 判据 (b) 仍未满足。维持 WATCH。",
-        "update_2026_09_11": "采用核查 @2026-09-11：8,219 下载（较 9/8 的 6,705 +23%）+ 467 likes；FP8 3,515；AngelSlim GGUF 230k。Hy4 完整版仍未发布；趋势 #1 判据 (b) 转由 DeepSeek V4.1-Flash 实质达成（ev-20260910-01）。维持 WATCH。"
+        "update_2026_09_11": "采用核查 @2026-09-11：8,219 下载（较 9/8 的 6,705 +23%）+ 467 likes；FP8 3,515；AngelSlim GGUF 230k。Hy4 完整版仍未发布；趋势 #1 判据 (b) 转由 DeepSeek V4.1-Flash 实质达成（ev-20260910-01）。维持 WATCH。",
+        "update_2026_09_27": "30 天复核：主仓月下载量 22,788（较 9/11 的 8,219 +177%），496 likes；FP8 4,706 下载。仍只有预览版与 FP8 仓库。HF 有榜单元数据，但缺少可复现运行或具名独立评测方。维持 WATCH。"
       },
       "tags": [
         "open-weights",
@@ -161,7 +165,7 @@
       ],
       "technical_impact": 3,
       "engineering_value": 3,
-      "adoption_signal": 2,
+      "adoption_signal": 3,
       "maturity": 2,
       "verification_cost": 2,
       "risk": 2,
@@ -176,7 +180,9 @@
         "src-86501c6c2d3499f2",
         "src-8c132669acb050f9"
       ],
-      "project_ids": [],
+      "project_ids": [
+        "hy4"
+      ],
       "scenario_ids": [
         "models",
         "local"
@@ -196,6 +202,20 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260828-02-evidence-adoption-20260927",
+          "claim_zh": "截至 2026-09-27，Hy4 预览版主仓月下载量为 22,788，较 9 月 11 日核查增长 177%；完整版仍未发布。",
+          "claim_en": "As of 2026-09-27, the Hy4 preview main repository records 22,788 monthly downloads, up 177% from the September 11 check; the full model remains unreleased.",
+          "source_ids": [
+            "src-87553218d4be0ba9",
+            "src-f55004a573850a67"
+          ],
+          "event_ids": [
+            "ev-20260828-02"
+          ],
+          "verification": "verified-primary-artifact",
+          "relation": "support"
         }
       ],
       "changes": [
@@ -210,6 +230,18 @@
             "ev-20260828-02-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260828-02-adoption-review-20260927",
+          "kind": "update",
+          "occurred_at": "2026-09-27T16:01:12Z",
+          "discovered_at": "2026-09-27T16:01:12Z",
+          "summary_zh": "Hy4 预览版月下载量增至 22,788，但完整版与独立可复现评测仍缺席。",
+          "summary_en": "Hy4 preview reached 22,788 monthly downloads, but the full model and reproducible independent evaluation remain absent.",
+          "evidence_ids": [
+            "ev-20260828-02-evidence-adoption-20260927"
+          ],
+          "historical": false
         }
       ]
     },

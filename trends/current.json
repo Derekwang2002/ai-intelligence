@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-27T00:44:11Z",
+  "as_of": "2026-09-27T16:01:12Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -10,7 +10,7 @@
       "status_note_en": "strengthening / Medium (maintained; criteria re-check @2026-09-14: (a) still unmet, with no new third-party Terminal-Bench / SWE reproduction on the weights; (b) met by DeepSeek V4.1 Flash; (c) the serving ecosystem gains merged code across models and frameworks - vLLM for DeepSeek DeepSelect/Engram and SGLang for Qwen NVFP4 on one DGX Spark; (a) remains the only gate to High)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-23",
+      "last_updated": "2026-09-27",
       "retired": false,
       "evidence_zh": [
         "Qwen3.8-27B 权重发布（Apache 2.0，首日 91k 下载，2026-08-14）",
@@ -30,7 +30,8 @@
         "15. 判据 (b) 达成 + 第五个连续放量周期（2026-09-11 核查）：DeepSeek V4.1 Flash 开源（9/10，MIT，763B/552B 骨干，TB 2.1 90.6 高于所有列出闭源模型、DeepSWE 74.2；1.5 天 75.7k 下载）——另一个组织的同级别开源权重发布，与 GLM-5.3 同量级（763B vs 753B）；计数器第五周期：GLM-5.3 FP8 597,626（+35%）、Flash 1,173,520（+50%）、Flash-Next 586,040 + FP8 349,091、Hy4 8,219、V4-Flash-Vision 443,954（ev-20260910-01 / ev-20260814-02 / ev-20260825-01 / ev-20260826-04 / ev-20260828-02 / ev-20260831-02 更新）；serving 诊断跟进混合架构（SinkProbe，ev-20260910-14）；安全外溢具体化——单方向消融可剥离出厂 GLM-5.3-Flash（block-FP8）的拒绝能力（ev-20260911-06）",
         "16. 第六个连续放量周期 + 权重侧复现的最近一次接近（2026-09-13T00:03Z 核查）：GLM-5.3 FP8 635,504（+6.3%）、GLM-5.3-Flash 1,333,574（+13.6%）、Flash-Next 604,992 + FP8 369,963（+3.2%/+6.0%）、Hy4 8,936（+8.7%）、V4-Flash-Vision 484,422（+9.1%）、DeepSeek V4.1-Flash 140,636（发布约 2.5 天，相对增速最陡）；unsloth Flash-Next GGUF 1,160,057、NVIDIA NVFP4 衍生 89,924（4 天约 5 倍）——全线仍在增长，但 Qwen/GLM Flash 线的日均斜率较前几个 3 天周期回落。判据 (a) 出现迄今最近一次接近：HF 讨论 #50（9/12）在单台 DGX Spark（GB10、128GB 统一内存）上以 2-bit 路由专家量化运行公开权重，HumanEval 97.0% 高于 z.ai API 的 95.1%（同 prompt、温度 0；复现产物公开）——但 HumanEval 不是 Terminal-Bench/SWE，判据仍未达成。邻接（厂商自报，不计证据）：Z.ai 工程博文（9/12）披露 Flash 的 ox-alpha 匿名测试全程跑在国产 AI 芯片集群上（SGLang 定制引擎、EPD 分离架构、端到端 3 倍提升、成本对齐主流 NVIDIA GPU）（ev-20260825-01 更新）",
         "17. serving 路径进入上游合并代码（2026-09-13 UTC）：vLLM 为 DeepSeek V4.1-Flash 合并 DeepSelect 稀疏索引 TopK（GB200、batch 256 / 1M KV 下 191 微秒，原路径为 616 微秒）与 Engram DP 分片、异步 CPU offload、共享内存表；SGLang 为 nvidia/Qwen3.8-Flash-Next-NVFP4 合并单 DGX Spark / GB10 路径（200 题 GSM8K 97.5%/97.0%，约 93/90 tok/s）。两者均在 main、尚未 tagged，说明开放权重 serving 生态继续落地，但不是 TB/SWE 权重复现（ev-20260910-01 / ev-20260826-04 更新）。",
-        "18. vLLM 0.30.0 tagged stable（2026-09-22，ev-20260922-01）：此前在 main 的 DeepSeek V4.1、GLM-5.3、Qwen3.8 等开放权重模型 serving 路径进入稳定发布，并加入常驻 GPU 权重缓存、HiSparse 主机 KV tier 和大规模安全加固；serving 采用证据增强，但仍不是公开权重的第三方 Terminal-Bench / SWE 复现。"
+        "18. vLLM 0.30.0 tagged stable（2026-09-22，ev-20260922-01）：此前在 main 的 DeepSeek V4.1、GLM-5.3、Qwen3.8 等开放权重模型 serving 路径进入稳定发布，并加入常驻 GPU 权重缓存、HiSparse 主机 KV tier 和大规模安全加固；serving 采用证据增强，但仍不是公开权重的第三方 Terminal-Bench / SWE 复现。",
+        "19. Hy4 30 天采用复核（2026-09-27，ev-20260828-02）：主仓月下载量从 9 月 11 日的 8,219 增至 22,788（+177%），但仍只有 preview 与 FP8 仓库。HF 展示的榜单元数据缺少可复现运行和具名独立评测方，因此只能加强采用信号，不能满足独立复现判据。"
       ],
       "evidence_en": [
         "Qwen3.8-27B weights released (Apache 2.0, 91k downloads day-one, 2026-08-14)",
@@ -50,7 +51,8 @@
         "15. Criterion (b) met + fifth consecutive velocity cycle (checked 2026-09-11): DeepSeek V4.1 Flash open-weights (9/10, MIT, 763B total/552B backbone, TB 2.1 90.6 above every listed proprietary model, DeepSWE 74.2; 75.7k downloads in ~1.5 days) — a same-tier open-weight release from another organization at GLM-5.3's exact scale class (763B vs 753B); counters fifth cycle: GLM-5.3 FP8 597,626 (+35%), Flash 1,173,520 (+50%), Flash-Next 586,040 + FP8 349,091, Hy4 8,219, V4-Flash-Vision 443,954; serving diagnostics follow the hybrid architectures (SinkProbe, ev-20260910-14); safety spillover made concrete — a single-direction ablation strips refusal from the shipped block-FP8 GLM-5.3-Flash weights (ev-20260911-06)",
         "16. Sixth consecutive velocity cycle + the nearest approach yet to a weights-side reproduction (checked 2026-09-13T00:03Z): GLM-5.3 FP8 635,504 (+6.3%), GLM-5.3-Flash 1,333,574 (+13.6%), Flash-Next 604,992 + FP8 369,963 (+3.2%/+6.0%), Hy4 8,936 (+8.7%), V4-Flash-Vision 484,422 (+9.1%), DeepSeek V4.1-Flash 140,636 (steepest, ~2.5 days after release); unsloth Flash-Next GGUF 1,160,057 and the NVIDIA NVFP4 derivative 89,924 (~5x in 4 days) - every line still growing, though the per-day slope on the Qwen/GLM Flash lines is below the prior 3-day cycles. Criterion (a) sees its nearest approach yet: HF discussion #50 (9/12) runs the public weights on a single DGX Spark (GB10, 128GB unified memory) with 2-bit routed experts, HumanEval 97.0% above the z.ai API's 95.1% (identical prompts, temperature 0; reproduction artifacts public) - but HumanEval is not Terminal-Bench/SWE, so the criterion remains unmet. Adjacent (vendor-reported, not counted): Z.ai's engineering post (9/12) discloses that the ox-alpha anonymous-testing phase ran entirely on a Chinese-AI-chip cluster (custom SGLang engine, EPD disaggregation, 3x end-to-end improvement, cost comparable to mainstream NVIDIA GPUs) (ev-20260825-01 update)",
         "17. Serving paths reach merged upstream code (2026-09-13 UTC): vLLM merged DeepSelect sparse-indexer TopK and Engram DP-sharding/async CPU-offload/shared-memory tables for DeepSeek V4.1-Flash; SGLang merged a one-DGX-Spark / GB10 path for nvidia/Qwen3.8-Flash-Next-NVFP4 (200-question GSM8K 97.5%/97.0%, about 93/90 tok/s). Both remain on main and untagged, so this is continued open-weight serving adoption, not a TB/SWE reproduction on the weights (ev-20260910-01 / ev-20260826-04 updates).",
-        "18. vLLM 0.30.0 tagged stable (2026-09-22, ev-20260922-01): previously merged serving paths for DeepSeek V4.1, GLM-5.3, Qwen3.8 and other open-weight models enter a stable release alongside a resident GPU weight cache, HiSparse host KV tier and broad security hardening. Serving-adoption evidence strengthens, but this is still not a third-party Terminal-Bench or SWE reproduction on public weights."
+        "18. vLLM 0.30.0 tagged stable (2026-09-22, ev-20260922-01): previously merged serving paths for DeepSeek V4.1, GLM-5.3, Qwen3.8 and other open-weight models enter a stable release alongside a resident GPU weight cache, HiSparse host KV tier and broad security hardening. Serving-adoption evidence strengthens, but this is still not a third-party Terminal-Bench or SWE reproduction on public weights.",
+        "19. Hy4 30-day adoption review (2026-09-27, ev-20260828-02): monthly downloads rose from 8,219 on September 11 to 22,788 (+177%), but only preview and FP8 repositories exist. HF leaderboard metadata lacks a reproducible run and named independent evaluator, so this strengthens adoption evidence without satisfying the independent-reproduction criterion."
       ],
       "why_it_matters_zh": "升级为 strengthening 的依据：确认判据「GLM-5.3 权重落地 + 独立 benchmark 复现」实质达成——权重 8/25 落地且许可证宽松可用，Artificial Analysis 独立评测把 GLM-5.3 放到与 Kimi K3 同档。GLM-5.3-Flash（纯 MIT、全新底座、线性注意力降本）是同组织的加强信号。仍未到 High，只因为 Artificial Analysis 的独立评测针对 API，尚无社区对公开权重的 Terminal-Bench 或 SWE 复现；跨组织同级别发布与持续下载增速判据均已达成。",
       "why_it_matters_en": "Why upgraded to strengthening: the confirmation criterion \"GLM-5.3 weights land + independent benchmark reproduction\" is substantially met — weights landed 8/25 under a permissive license, and Artificial Analysis independently places GLM-5.3 in the same tier as Kimi K3. GLM-5.3-Flash (plain MIT, new base, linear-attention cost reduction) is a same-org reinforcing signal. Why not High: Artificial Analysis evaluated the API, while community Terminal-Bench or SWE reproduction on the public weights is still missing; the cross-organization same-tier release and sustained download-velocity criteria are now met.",
@@ -222,6 +224,12 @@
           "run_started_at": "2026-09-27T00:44:11Z",
           "note_zh": "补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。",
           "note_en": "The follow-up scan found no new independent signal sufficient to change this trend. Status and confidence are unchanged; the GPT-6 image-encoding fix is an engineering update to an existing release."
+        },
+        {
+          "date": "2026-09-27",
+          "run_started_at": "2026-09-27T16:01:12Z",
+          "note_zh": "Hy4 主仓月下载量较 9 月 11 日增长 177%，采用信号增强；完整版与第三方可复现评测仍缺席。维持 strengthening / Medium。",
+          "note_en": "Hy4 monthly downloads rose 177% from the September 11 check, strengthening adoption evidence. The full model and reproducible third-party evaluation remain absent. Stays strengthening / Medium."
         }
       ],
       "evidence": [
@@ -403,10 +411,24 @@
           "source_ids": [],
           "relation": "support",
           "verification": "historical"
+        },
+        {
+          "id": "tev-hy4-adoption-20260927",
+          "claim_zh": "Hy4 30 天采用复核：主仓月下载量增至 22,788，但完整版与第三方可复现评测仍缺席。",
+          "claim_en": "Hy4's 30-day adoption review found 22,788 monthly downloads, while the full model and reproducible third-party evaluation remain absent.",
+          "event_ids": [
+            "ev-20260828-02"
+          ],
+          "source_ids": [
+            "src-87553218d4be0ba9",
+            "src-f55004a573850a67"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifact"
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "last_reviewed_at": "2026-09-27T16:01:12Z",
       "time_horizon": "Emerging"
     },
     {
@@ -618,6 +640,12 @@
           "run_started_at": "2026-09-27T00:44:11Z",
           "note_zh": "补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。",
           "note_en": "The follow-up scan found no new independent signal sufficient to change this trend. Status and confidence are unchanged; the GPT-6 image-encoding fix is an engineering update to an existing release."
+        },
+        {
+          "date": "2026-09-27",
+          "run_started_at": "2026-09-27T16:01:12Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -667,7 +695,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "last_reviewed_at": "2026-09-27T16:01:12Z",
       "time_horizon": "Emerging"
     },
     {
@@ -895,6 +923,12 @@
           "run_started_at": "2026-09-27T00:44:11Z",
           "note_zh": "补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。",
           "note_en": "The follow-up scan found no new independent signal sufficient to change this trend. Status and confidence are unchanged; the GPT-6 image-encoding fix is an engineering update to an existing release."
+        },
+        {
+          "date": "2026-09-27",
+          "run_started_at": "2026-09-27T16:01:12Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -1046,7 +1080,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "last_reviewed_at": "2026-09-27T16:01:12Z",
       "time_horizon": "Sustained"
     },
     {
@@ -1222,6 +1256,12 @@
           "run_started_at": "2026-09-27T00:44:11Z",
           "note_zh": "补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。",
           "note_en": "The follow-up scan found no new independent signal sufficient to change this trend. Status and confidence are unchanged; the GPT-6 image-encoding fix is an engineering update to an existing release."
+        },
+        {
+          "date": "2026-09-27",
+          "run_started_at": "2026-09-27T16:01:12Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -1392,7 +1432,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "last_reviewed_at": "2026-09-27T16:01:12Z",
       "time_horizon": "Emerging"
     },
     {
@@ -1527,6 +1567,12 @@
           "run_started_at": "2026-09-27T00:44:11Z",
           "note_zh": "维持候选方向、低置信度。PSP 已有具体配置指南，旧记录中“尚未兑现”的概括需要修正。现有材料仍不足以证明多家独立组织已经在生产中采用。",
           "note_en": "Remains candidate with Low confidence. PSP now has concrete setup documentation, correcting the earlier blanket claim of non-delivery. Independent production adoption across organizations is still unproven."
+        },
+        {
+          "date": "2026-09-27",
+          "run_started_at": "2026-09-27T16:01:12Z",
+          "note_zh": "本次扫描没有新的客户自托管或数据驻留生产证据。维持 candidate / Low。",
+          "note_en": "This scan found no new production evidence for customer-operated or data-resident execution. Stays candidate / Low."
         }
       ],
       "evidence": [
@@ -1610,7 +1656,7 @@
           "historical": false
         }
       ],
-      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "last_reviewed_at": "2026-09-27T16:01:12Z",
       "time_horizon": "Emerging"
     },
     {
@@ -1733,6 +1779,12 @@
           "run_started_at": "2026-09-27T00:44:11Z",
           "note_zh": "补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。",
           "note_en": "The follow-up scan found no new independent signal sufficient to change this trend. Status and confidence are unchanged; the GPT-6 image-encoding fix is an engineering update to an existing release."
+        },
+        {
+          "date": "2026-09-27",
+          "run_started_at": "2026-09-27T16:01:12Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -1782,7 +1834,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "last_reviewed_at": "2026-09-27T16:01:12Z",
       "time_horizon": "Emerging"
     },
     {
@@ -1900,6 +1952,12 @@
           "run_started_at": "2026-09-27T00:44:11Z",
           "note_zh": "补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。",
           "note_en": "The follow-up scan found no new independent signal sufficient to change this trend. Status and confidence are unchanged; the GPT-6 image-encoding fix is an engineering update to an existing release."
+        },
+        {
+          "date": "2026-09-27",
+          "run_started_at": "2026-09-27T16:01:12Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -2029,7 +2087,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "last_reviewed_at": "2026-09-27T16:01:12Z",
       "time_horizon": "Emerging"
     }
   ]
