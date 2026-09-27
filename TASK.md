@@ -33,3 +33,15 @@
 - 下一次仍从上一次成功 checkpoint 重新扫描
 
 完成后，在对话中输出简短摘要，列出扫描窗口、新增事件、更新事件、跳过重复项、更新的文件，以及 checkpoint 是否成功推进。
+
+## MATRIX v2 产出与发布检查
+
+同时遵守 AGENTS.md §20，读取 `projects/catalog.json`、`sources/catalog.json`、`topics/catalog.json`、`reviews/queue.json` 与最近成功的 `briefings/`、`logs/run-*.json`。
+
+- 固定入口抓取：`node scripts/collect-sources.mjs --started=<current_run_started_at>`。抓取结果仍需实际阅读，固定入口之外继续做领域搜索。
+- 将新事实关联项目、证据与来源；写稳定的变化记录，保证更新旧事件也能出现在今日和未读列表。
+- 处理到期复核及每周定向补漏；未完成项保留待处理，不通过机械更新时间掩盖遗漏。
+- 每次运行生成 `briefings/<run-id>.json`，最多 5 个必读，双语理由；旧事件更新合并成同一阅读条目。
+- 同步趋势证据、反面材料、判断修正与研究专题。没有新证据时明确说明，不能强制生成变化。
+- 用 `logs/run-<id>.json` 保存完整运行门禁状态。先执行 `node scripts/finalize-run.mjs --manifest=<path>` 预检，再加 `--commit` 原子推进 checkpoint；之后重新构建页面。
+- 任一必需阶段失败均保留 checkpoint，按失败日志恢复，网站继续提供上次有效知识库。

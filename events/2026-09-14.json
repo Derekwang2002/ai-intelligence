@@ -56,7 +56,47 @@
       "verification_cost": 3,
       "risk": 4,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-11999-bash-vs-typed-agent-tools"
+      "event_fingerprint": "arxiv-2609-11999-bash-vs-typed-agent-tools",
+      "source_ids": [
+        "src-9cf6280d29f09787",
+        "src-c3fa837af25eea50"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-01-evidence-summary",
+          "claim_zh": "Microsoft 与 Carnegie Mellon 用 Opus 4.8 和 GPT-5.5，在 TheAgentCompany 与 APEX-Agents 上比较五种 agent 工具接口。单独使用 Bash 比 typed tools 高 21.8–24.5 分和 4.8–7.4 分，同时少用 19–72% 的 token。给 Bash 叠加 typed tools 或持久化的自生成工具，没有带来可检测的总体收益。程序化工具调用能收窄动作范围，也比直接 typed calls 省 token，但质量和成本效率通常仍落后于 Bash。",
+          "claim_en": "Microsoft and Carnegie Mellon compare five agent tool interfaces on TheAgentCompany and APEX-Agents using Opus 4.8 and GPT-5.5. Bash alone beats typed tools by 21.8–24.5 points on TheAgentCompany and 4.8–7.4 points on APEX-Agents while consuming 19–72% fewer tokens. Adding typed tools or persistent synthesized tools to Bash produces no detectable pooled gain. Programmatic tool calling narrows the action surface and uses fewer tokens than direct typed calls, but usually trails Bash on quality and cost efficiency.",
+          "source_ids": [
+            "src-9cf6280d29f09787"
+          ],
+          "event_ids": [
+            "ev-20260914-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-01-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T00:00:00Z",
+          "discovered_at": "2026-09-14T16:02:27Z",
+          "summary_zh": "研究发现 shell 胜过企业 agent 的 typed tools",
+          "summary_en": "Study finds shell access beats typed tools on enterprise agent tasks",
+          "evidence_ids": [
+            "ev-20260914-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-02",
@@ -111,7 +151,48 @@
       "verification_cost": 4,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-11987-native-vs-neutral-agent-harness"
+      "event_fingerprint": "arxiv-2609-11987-native-vs-neutral-agent-harness",
+      "source_ids": [
+        "src-dfa08e5e09c578c5",
+        "src-7119b73b1cedd224"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-02-evidence-summary",
+          "claim_zh": "这项配对研究固定模型，在每组 80 个私有仓库任务与训练截止后竞赛题上，对比 Claude Agent SDK、Codex SDK 与中立的 LangGraph/deepagents harness。792 次有效运行中，厂商原生 harness 没有呈现可确认的平均解题率优势：Opus 4.8 为 -1.25 分，GPT-5.5 为 +1.25 分，两组置信区间都跨过零。中立 harness 的工具调用约多一倍，按观测用量计算，每解出一题的成本高 1.2–1.6 倍。论文还纠正了自身早期对 cache token 的统计错误。",
+          "claim_en": "A paired study holds the model fixed while comparing Claude Agent SDK and Codex SDK against a neutral LangGraph/deepagents harness on 80 private repository and post-cutoff contest tasks per contrast. Across 792 graded runs, neither vendor-native harness shows a resolved average solve-rate advantage: the paired differences are -1.25 points for Opus 4.8 and +1.25 points for GPT-5.5, with both confidence intervals crossing zero. Neutral harnesses make about twice as many tool calls and cost 1.2–1.6 times more per solved task on observed usage. The paper also corrects its own earlier cache-token accounting defect.",
+          "source_ids": [
+            "src-dfa08e5e09c578c5"
+          ],
+          "event_ids": [
+            "ev-20260914-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T00:00:00Z",
+          "discovered_at": "2026-09-14T16:02:27Z",
+          "summary_zh": "Harness 研究未发现厂商原生 coding 优势",
+          "summary_en": "Harness study finds no average vendor-native coding advantage",
+          "evidence_ids": [
+            "ev-20260914-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-03",
@@ -167,7 +248,47 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-12001-agent-skill-runtime-consequence-gate"
+      "event_fingerprint": "arxiv-2609-12001-agent-skill-runtime-consequence-gate",
+      "source_ids": [
+        "src-f5086934fec9b244",
+        "src-7e351bfebf0031b8",
+        "src-ba935600b4c935fb"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-03-evidence-summary",
+          "claim_zh": "这项研究分析了 66,192 个 ClawHub skill 版本，把「产物是否恶意」与「这台机器是否允许该动作」分开处理。705 个被所有扫描器判为 clean 的 skills 来自 135 个发布者，仍会指示策略敏感动作，主要是拉取并执行远程代码；对 100 个样本的人工审计估算检测器精度为 92%。在真实 agent 运行中，34.7% 的命令引入了 skill 代码块里从未出现的后果类型。确定性的运行时 resolver 在 53 个会产生命令的 clean skills 中拦下全部 23 次禁用动作，中位端到端 hook 延迟为 67.6 毫秒。",
+          "claim_en": "A study of 66,192 ClawHub skill versions separates artifact maliciousness from whether an action is allowed on a specific machine. It finds 705 unanimously clean skills from 135 publishers that still document policy-relevant actions, mostly fetching and executing remote code; a 100-skill audit estimates 92% detector precision. In live runs, 34.7% of agent commands introduced a consequence class absent from the skill's code blocks. A deterministic runtime resolver stopped all 23 forbidden actions attempted across 53 command-producing clean skills, with 67.6 ms median end-to-end hook latency.",
+          "source_ids": [
+            "src-f5086934fec9b244"
+          ],
+          "event_ids": [
+            "ev-20260914-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-03-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T00:00:00Z",
+          "discovered_at": "2026-09-14T16:02:27Z",
+          "summary_zh": "运行时 gate 拦住 clean skills 的越权动作",
+          "summary_en": "Runtime gate blocks policy-breaking actions from clean agent skills",
+          "evidence_ids": [
+            "ev-20260914-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-04",
@@ -224,7 +345,47 @@
       "verification_cost": 4,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-12471-amd-kernel-vault-rocm-agent-data"
+      "event_fingerprint": "arxiv-2609-12471-amd-kernel-vault-rocm-agent-data",
+      "source_ids": [
+        "src-347a04fedc5368a3",
+        "src-a6d7eef979d2684d",
+        "src-e1c4a4caaff7f256"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-04-evidence-summary",
+          "claim_zh": "AMD 发布 AMDKernelVault：面向新一代 CDNA GPU 的 HIP 与 Triton kernel 生成训练框架和开放语料。内容包括 62,153 个经执行验证的 HIP 样本、39,893 个 Triton kernels，以及 2,377 条来自实际 ROCm Libraries 的问答数据。团队用监督微调与执行反馈强化学习训练 Qwen3-8B，在固定预算下的 PyTorch-to-HIP、TritonBench-G 和 ROCmBench 正确率领先对比模型，但编译率和速度指标并非全面领先。",
+          "claim_en": "AMD publishes AMDKernelVault, an open training framework and corpus for HIP and Triton kernel generation on recent CDNA GPUs. The release includes 62,153 execution-verified HIP samples, 39,893 Triton kernels and 2,377 production-grounded ROCm Libraries QA entries. A Qwen3-8B model trained with supervised fine-tuning and execution-aware reinforcement learning leads the compared models on PyTorch-to-HIP, TritonBench-G and ROCmBench correctness under fixed budgets. It does not lead every compilation or speed metric.",
+          "source_ids": [
+            "src-347a04fedc5368a3"
+          ],
+          "event_ids": [
+            "ev-20260914-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-04-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T00:00:00Z",
+          "discovered_at": "2026-09-14T16:02:27Z",
+          "summary_zh": "AMD 发布可训练 ROCm kernel agent 的验证数据",
+          "summary_en": "AMD releases execution-verified data for training ROCm kernel agents",
+          "evidence_ids": [
+            "ev-20260914-04-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-05",
@@ -279,7 +440,47 @@
       "verification_cost": 5,
       "risk": 4,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-13141-sas-end-to-end-sparse-attention"
+      "event_fingerprint": "arxiv-2609-13141-sas-end-to-end-sparse-attention",
+      "source_ids": [
+        "src-8962a4e53d14944f",
+        "src-bdbe45871bf992a8"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-05-evidence-summary",
+          "claim_zh": "SAS 不再逐层蒸馏 dense attention 分布，而是把 selector 的连续分数注入注意力 logits，让语言建模损失直接更新 selector。团队对 OLMo3-7B 继续训练约 500 亿 token，平均下游分数为 43.28，接近 dense base 的 43.88，并高于蒸馏基线的 41.68。LongBench 平均分 30.0，与对比中最强的稀疏方法并列，也高于 dense base 的 29.0。代码已公开，但扫描截止时仓库没有声明许可证。",
+          "claim_en": "SAS replaces layer-wise dense-attention distillation with a gated sparse-attention mechanism whose selector scores receive gradients directly from the language-modeling loss. The team continues pretraining OLMo3-7B for about 50 billion tokens and reports an average downstream score of 43.28, close to the dense base at 43.88 and ahead of its distillation baseline at 41.68. LongBench averages 30.0, tied with the strongest compared sparse method and above the dense base at 29.0. Code is public, but the repository has no declared license at the scan cutoff.",
+          "source_ids": [
+            "src-8962a4e53d14944f"
+          ],
+          "event_ids": [
+            "ev-20260914-05"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-05-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T00:00:00Z",
+          "discovered_at": "2026-09-14T16:02:27Z",
+          "summary_zh": "SAS 用语言建模损失直接训练稀疏注意力 selector",
+          "summary_en": "SAS trains sparse attention selectors directly from language loss",
+          "evidence_ids": [
+            "ev-20260914-05-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-06",
@@ -335,7 +536,46 @@
       "verification_cost": 5,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-13134-sqd-subquadratic-disaggregation"
+      "event_fingerprint": "arxiv-2609-13134-sqd-subquadratic-disaggregation",
+      "source_ids": [
+        "src-81646b820a4b2be3",
+        "src-37a53e0561078f96"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-06-evidence-summary",
+          "claim_zh": "SQD 不再把 decode 当作一个整体，也不只按 attention 与 FFN 拆分，而是按二次与子二次注意力阶段分配硬件。在调整后的 8×B200 代理系统上，GLM-5.2、Nemotron 3 Ultra 与 Gemma 4 31B 相对最强纯 GPU 基线的每瓦 token 提升 31–56%。经 B200 结果校准的 Rubin + LPX 分析模型预计可把可达延迟收紧 1.2–1.5 倍，并把 attention-FFN disaggregation 的吞吐最多提高 3.6 倍。代理系统修改了 decode 设备特性，未来硬件的大部分结果仍是模型推演，不是生产实测。",
+          "claim_en": "SQD disaggregates decode by quadratic and subquadratic attention stages instead of treating decode as one pool or splitting only attention from feed-forward work. On an adjusted eight-B200 proxy, it improves tokens per joule by 31–56% over the strongest GPU-only baselines across GLM-5.2, Nemotron 3 Ultra and Gemma 4 31B. A validated analytical model of Rubin plus LPX projects 1.2–1.5 times tighter achievable latency and up to 3.6 times the throughput of attention-FFN disaggregation. The proxy modifies decode-device characteristics and most future-system results are modeled, not production measurements.",
+          "source_ids": [
+            "src-81646b820a4b2be3"
+          ],
+          "event_ids": [
+            "ev-20260914-06"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-06-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T00:00:00Z",
+          "discovered_at": "2026-09-14T16:02:27Z",
+          "summary_zh": "SQD 按子二次注意力阶段拆分 decode",
+          "summary_en": "SQD splits decode around subquadratic attention stages",
+          "evidence_ids": [
+            "ev-20260914-06-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-07",
@@ -389,7 +629,48 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-12345-pararecover-parallel-tool-errors"
+      "event_fingerprint": "arxiv-2609-12345-pararecover-parallel-tool-errors",
+      "source_ids": [
+        "src-074c66702be20693",
+        "src-10107e33e9bdcc73"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-07-evidence-summary",
+          "claim_zh": "ParaRecover 不只看最终任务是否成功，而是评测 agent 能否定位并修复并行工具分支中的中间故障。10,626 个样本覆盖依赖规划、工具选择与参数匹配等 14 类错误。SDE rubric 分别衡量结构完整性、诊断推理与重新规划策略。对十多个模型的测试显示，多轮错误传播、隐式工具失败和精确重规划仍是普遍弱项；MIT 代码与数据已公开。",
+          "claim_en": "ParaRecover moves agent evaluation from final success to the process of diagnosing and recovering from failures across parallel tool branches. Its 10,626 instances cover 14 error types spanning dependency planning, tool selection and argument matching. The SDE rubric scores structural integrity, diagnostic reasoning and replanning strategy. Tests on more than ten models find persistent weakness in multi-turn error propagation, implicit failures and precise replanning; MIT-licensed code and data are public.",
+          "source_ids": [
+            "src-074c66702be20693"
+          ],
+          "event_ids": [
+            "ev-20260914-07"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-07-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T00:00:00Z",
+          "discovered_at": "2026-09-14T16:02:27Z",
+          "summary_zh": "ParaRecover 评测并行工具调用的故障恢复",
+          "summary_en": "ParaRecover evaluates recovery across parallel tool-call failures",
+          "evidence_ids": [
+            "ev-20260914-07-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-08",
@@ -445,7 +726,47 @@
       "verification_cost": 4,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-13009-physics-benchmark-expert-audit"
+      "event_fingerprint": "arxiv-2609-13009-physics-benchmark-expert-audit",
+      "source_ids": [
+        "src-b27850c9f4110c81",
+        "src-adf9c0625d350ec4"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-08-evidence-summary",
+          "claim_zh": "领域专家重新评阅 GPT-5.6 Sol、Fable 5 与 Gemini 3.1 Pro 在六个物理 benchmark 上的结果，把模型错误、题目缺陷、参考答案错误与评分器错误分开。公开来源 benchmark 中，原本判错的 152 个审计案例里有 148 个其实是 benchmark 或 grader 问题。修复或排除缺陷后，GPT-5.6 Sol 在 HLE-Physics 的 mean@4 从 47.3% 升至 78.7%，CMT-Benchmark 从 61.0% 升至 87.2%；保留 CritPt 题目的修正 pass@4 达 94.4%。修正分数基于保留或修复后的子集，不能直接当作原排行榜的同口径替换。",
+          "claim_en": "Domain experts re-grade six physics benchmarks for GPT-5.6 Sol, Fable 5 and Gemini 3.1 Pro, separating model errors from broken questions, reference solutions and graders. On audited public-source cases initially marked wrong, 148 of 152 are benchmark or grader errors. After repair or exclusion, GPT-5.6 Sol rises from 47.3% to 78.7% mean@4 on HLE-Physics and from 61.0% to 87.2% on CMT-Benchmark; corrected pass@4 on retained CritPt tasks reaches 94.4%. The corrected scores use retained or repaired subsets, so they are not a direct like-for-like leaderboard replacement.",
+          "source_ids": [
+            "src-b27850c9f4110c81"
+          ],
+          "event_ids": [
+            "ev-20260914-08"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-08-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T00:00:00Z",
+          "discovered_at": "2026-09-14T16:02:27Z",
+          "summary_zh": "专家审计发现物理 benchmark 低估前沿模型",
+          "summary_en": "Expert audit finds physics benchmarks understate frontier models",
+          "evidence_ids": [
+            "ev-20260914-08-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-09",
@@ -501,7 +822,48 @@
       "verification_cost": 5,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-11998-block-diffusion-constant-state-cache"
+      "event_fingerprint": "arxiv-2609-11998-block-diffusion-constant-state-cache",
+      "source_ids": [
+        "src-85207316c63386ce",
+        "src-8fdd2146e6d3697e"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-09-evidence-summary",
+          "claim_zh": "这项受控研究用同一份 3000 亿 token 数据，分别预训练 attention、Mamba 与 hybrid 三个 3B block-diffusion 模型，并通过统一的 cached decoding 接口对比。只有 Mamba 的状态 cache 不随上下文长度增长。在 256K tokens 下，它约占 7.5 GB、每步 6.8 毫秒；attention 则为 82 GB、29 毫秒，单流吞吐高 2.6 倍，总吞吐高 14 倍。Mamba 与 hybrid 在训练长度的 8–16 倍仍能完成检索，而 attention 在 2 倍处失效，且未测得质量损失。",
+          "claim_en": "A controlled study pretrains attention, Mamba and hybrid 3B block-diffusion models on the same 300 billion tokens and exposes them through one cached decoding interface. Only the Mamba state cache stays constant with context length. At 256K tokens it uses about 7.5 GB and 6.8 ms per step, versus 82 GB and 29 ms for attention, yielding 2.6 times single-stream and 14 times aggregate throughput. Mamba and hybrid models retain retrieval at 8–16 times training length while attention collapses at twice the training length, with no measured quality loss.",
+          "source_ids": [
+            "src-85207316c63386ce"
+          ],
+          "event_ids": [
+            "ev-20260914-09"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-09-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T00:00:00Z",
+          "discovered_at": "2026-09-14T16:02:27Z",
+          "summary_zh": "固定状态 cache 消除 block diffusion 上下文增长",
+          "summary_en": "Constant-state cache makes block-diffusion context length independent",
+          "evidence_ids": [
+            "ev-20260914-09-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-10",
@@ -547,7 +909,46 @@
       "verification_cost": 3,
       "risk": 3,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609.15989"
+      "event_fingerprint": "arxiv-2609.15989",
+      "source_ids": [
+        "src-b9cb000d2011fade"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-10-evidence-summary",
+          "claim_zh": "研究者把听起来无害的恶意计划放入模型上下文。模型会照着做，还把计划改写成自己的推理。多个测试中，监测器漏掉了 25–33% 的攻击。在一项任务里，让监测器也看到注入内容反而降低了检出率。这是受控实验，尚非生产事故。",
+          "claim_en": "Researchers plant benign-sounding harmful plans in an actor model’s context. The actor follows the plan and restates it as its own reasoning, while monitors miss 25–33% of attacks across tested settings. Giving a monitor the injected plan can reduce detection further in one task. The evidence comes from controlled benchmarks, not production incidents.",
+          "source_ids": [
+            "src-b9cb000d2011fade"
+          ],
+          "event_ids": [
+            "ev-20260914-10"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-10-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T18:33:27Z",
+          "discovered_at": "2026-09-15T16:00:31Z",
+          "summary_zh": "研究发现注入的计划能绕过思维链监测",
+          "summary_en": "Study shows injected plans can evade chain-of-thought monitors",
+          "evidence_ids": [
+            "ev-20260914-10-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-11",
@@ -595,7 +996,46 @@
       "verification_cost": 4,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609.15982"
+      "event_fingerprint": "arxiv-2609.15982",
+      "source_ids": [
+        "src-3d845f818a94227e"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-11-evidence-summary",
+          "claim_zh": "Gavel 用两个训练过的线性映射读取冻结 Qwen3-32B 的任务与 skill 表示。它先筛选候选 skill，不必把整个目录塞进提示词，再让模型判断候选项。在公开评测和 372 条模拟轨迹上，书面任务最多提高 13.4 分，运行中触发 skill 最多提高 21.9 分。论文目前未链接公开实现。",
+          "claim_en": "Gavel reads task and skill representations from a frozen Qwen3-32B with two trained linear maps. It shortlists skills without loading the whole catalog into the prompt, then resumes model inference to judge candidates. On public benchmarks and a new 372-trajectory set, it improves routing by up to 13.4 points on written tasks and 21.9 points during agent rollouts against tested disclosure and retrieval baselines. No public implementation is linked yet.",
+          "source_ids": [
+            "src-3d845f818a94227e"
+          ],
+          "event_ids": [
+            "ev-20260914-11"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-11-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T17:58:27Z",
+          "discovered_at": "2026-09-15T16:00:31Z",
+          "summary_zh": "Gavel 从冻结模型中读取 skill 路由信号",
+          "summary_en": "Gavel reads skill-routing signals from a frozen model",
+          "evidence_ids": [
+            "ev-20260914-11-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-12",
@@ -643,7 +1083,46 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609.15939"
+      "event_fingerprint": "arxiv-2609.15939",
+      "source_ids": [
+        "src-0311c7d3cb6fda6f"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-12-evidence-summary",
+          "claim_zh": "VLoc Bench 把 290 个仓库中的 500 个真实漏洞配成修复前后快照。agent 只拿到漏洞类别说明和只读终端，需要找出受影响文件，或确认修复后已不存在。27 个模型和四种静态分析工具中，最佳 File F1 仅 0.229；38.4% 的任务无人定位正确。修复后，较强的定位器也会误报。",
+          "claim_en": "VLoc Bench pairs vulnerable and patched snapshots for 500 real vulnerabilities across 290 repositories. Agents receive a weakness description and read-only terminal access, then identify affected files or say the patch removed the flaw. Across 27 models and four static analyzers, the best File F1 reaches only 0.229; in 38.4% of tasks no tested model finds a correct location. Even stronger locators can report unsupported files after a fix.",
+          "source_ids": [
+            "src-0311c7d3cb6fda6f"
+          ],
+          "event_ids": [
+            "ev-20260914-12"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-12-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T17:44:51Z",
+          "discovered_at": "2026-09-15T16:00:31Z",
+          "summary_zh": "VLoc Bench 发现 agent 难以定位漏洞代码",
+          "summary_en": "VLoc Bench finds agents struggle to locate vulnerable code",
+          "evidence_ids": [
+            "ev-20260914-12-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260914-13",
@@ -689,7 +1168,46 @@
       "verification_cost": 4,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609.15820"
+      "event_fingerprint": "arxiv-2609.15820",
+      "source_ids": [
+        "src-6d2c6c27e8110b43"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260914-13-evidence-summary",
+          "claim_zh": "AlgoEvo 让 agent 根据执行反馈检查并修改候选代码。skill hub 把领域知识与搜索引擎分开，任务树记录成功和失败路径。作者在六项任务上报告：结果达到或超过专用搜索方法，评测次数和 token 用量更低。摘要没有给出精确幅度，也未提供公开实现。",
+          "claim_en": "AlgoEvo lets an agent inspect and edit executable candidates as tests return feedback. A skill hub separates design knowledge from the search engine, while a task tree records failed and successful paths. Across six benchmark tasks, the authors report matching or exceeding specialized search methods with fewer evaluations and tokens. The abstract does not supply exact deltas or a public implementation.",
+          "source_ids": [
+            "src-6d2c6c27e8110b43"
+          ],
+          "event_ids": [
+            "ev-20260914-13"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260914-13-published",
+          "kind": "new",
+          "occurred_at": "2026-09-14T16:24:27Z",
+          "discovered_at": "2026-09-15T16:00:31Z",
+          "summary_zh": "AlgoEvo 利用执行反馈调整算法搜索",
+          "summary_en": "AlgoEvo adapts algorithm search using execution feedback",
+          "evidence_ids": [
+            "ev-20260914-13-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

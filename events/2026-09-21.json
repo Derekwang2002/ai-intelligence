@@ -56,7 +56,47 @@
       "verification_cost": 1,
       "risk": 4,
       "recommendation": "WATCH",
-      "event_fingerprint": "xai-x-search-result-based-pricing-2026-09"
+      "event_fingerprint": "xai-x-search-result-based-pricing-2026-09",
+      "source_ids": [
+        "src-dedf56167aa34815",
+        "src-107a51ae880bff3c"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260921-01-evidence-summary",
+          "claim_zh": "xAI 将 X Search 从每 1,000 次工具调用 5 美元，改为每抓取 1,000 条帖子 5 美元、每抓取 1,000 个用户资料 10 美元。父帖和引用帖也会单独计数，因此一次搜索或线程读取可能产生很多计费单元。Web Search 仍按工具调用次数计费。",
+          "claim_en": "xAI changed X Search billing from $5 per 1,000 tool calls to $5 per 1,000 posts fetched and $10 per 1,000 user profiles fetched. Parent and quoted posts count separately, so one search or thread request can now create many billable units. Web Search remains priced per tool call.",
+          "source_ids": [
+            "src-dedf56167aa34815"
+          ],
+          "event_ids": [
+            "ev-20260921-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260921-01-published",
+          "kind": "new",
+          "occurred_at": "2026-09-21T19:00:00Z",
+          "discovered_at": "2026-09-22T16:02:37Z",
+          "summary_zh": "xAI 将 X Search 改为按结果数量计费",
+          "summary_en": "xAI makes X Search billing scale with fetched posts and profiles",
+          "evidence_ids": [
+            "ev-20260921-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260921-02",
@@ -108,7 +148,47 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-24890-osworld-pro-process-evaluation"
+      "event_fingerprint": "arxiv-2609-24890-osworld-pro-process-evaluation",
+      "source_ids": [
+        "src-e603f92bf245c466"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260921-02-evidence-summary",
+          "claim_zh": "NVIDIA 的 OSWorld-Pro 为电脑操作 agent 增加过程级评测。它把 300 多个任务拆成 2,800 多个有依赖关系的子目标，并以 67,000 多条人工标注为依据。评测能区分无关动作、点击失误和卡住的子目标，这些问题在单个最终结果分数里会被掩盖。Claude Opus 5 在该 benchmark 上得到 75.7%，OSWorld 上则为 83.4%。",
+          "claim_en": "NVIDIA's OSWorld-Pro adds process-level evaluation to computer-use agents. Its more than 300 tasks are split into over 2,800 dependent subgoals and grounded in over 67,000 human annotations. The benchmark can distinguish irrelevant actions, click mistakes and stalled subgoals that one final-state score hides. Claude Opus 5 reaches 75.7%, compared with 83.4% on OSWorld.",
+          "source_ids": [
+            "src-e603f92bf245c466"
+          ],
+          "event_ids": [
+            "ev-20260921-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260921-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-21T16:55:24Z",
+          "discovered_at": "2026-09-22T16:02:37Z",
+          "summary_zh": "OSWorld-Pro 揭示电脑操作 agent 的中途失误",
+          "summary_en": "OSWorld-Pro exposes where computer-use agents fail before the final step",
+          "evidence_ids": [
+            "ev-20260921-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260921-03",
@@ -166,7 +246,48 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-24662-duma-bench-dual-control-security"
+      "event_fingerprint": "arxiv-2609-24662-duma-bench-dual-control-security",
+      "source_ids": [
+        "src-638f8c4995236752",
+        "src-bfc5c454359fb368"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260921-03-evidence-summary",
+          "claim_zh": "DUMA-Bench 把 agent 安全评测扩展到双控制环境：用户和 agent 都能改变共享状态。在 14 个模型、8 个领域和 3,920 次保存的运行中，加入交互式对抗用户后，整体攻击成功率从 26.9% 升至 41.1%。套件覆盖 RAG 投毒、跨 agent 操纵、不安全输出、数据泄露和工具影子攻击，多数检查使用确定性的状态断言。",
+          "claim_en": "DUMA-Bench extends agent-security testing to dual-control environments where both the user and agent can change shared state. Across 14 models, eight domains and 3,920 saved runs, aggregate attack success rises from 26.9% with a passive user to 41.1% with interactive adversarial behavior. The suite covers RAG poisoning, cross-agent manipulation, unsafe output, data leakage and tool shadowing, with deterministic state assertions for most checks.",
+          "source_ids": [
+            "src-638f8c4995236752"
+          ],
+          "event_ids": [
+            "ev-20260921-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260921-03-published",
+          "kind": "new",
+          "occurred_at": "2026-09-21T14:28:05Z",
+          "discovered_at": "2026-09-22T16:02:37Z",
+          "summary_zh": "DUMA-Bench：交互用户将 agent 攻击成功率推至 41%",
+          "summary_en": "DUMA-Bench finds interactive users raise agent attack success to 41%",
+          "evidence_ids": [
+            "ev-20260921-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260921-04",
@@ -224,7 +345,48 @@
       "verification_cost": 3,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-24972-rrsi-agent-harness-regularization"
+      "event_fingerprint": "arxiv-2609-24972-rrsi-agent-harness-regularization",
+      "source_ids": [
+        "src-a78bf587c937584f",
+        "src-cce348af2baa61e6",
+        "src-6c1ab3b7da7a53fa"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260921-04-evidence-summary",
+          "claim_zh": "RRSI 为自动化 agent harness 演化加入正则化，让系统优先保留可复用改动，而不是记住 benchmark。它限制单次提案捆绑的修改数量，鼓励探索较少走过的演化路径，筛掉针对 benchmark 的改动，并剪除收益太小、成本太高或已经过时的变化。在 8 个 coding、工作区 agent 和工程设计 benchmark 上，它报告分布内最高提升 14.1 分，5 个留出 benchmark 最高提升 4.7 分，同时比无正则演化少用 30% 的策略 token。",
+          "claim_en": "RRSI adds regularization to automated agent-harness evolution so the system favors reusable changes over benchmark-specific edits. It limits how many edits a proposal can bundle, explores less-used evolution paths, screens benchmark leakage and prunes small, costly or stale changes. Across eight coding, workspace-agent and engineering-design benchmarks, it reports gains of up to 14.1 points in distribution and 4.7 points on five held-out benchmarks, while using 30% fewer policy tokens than unregularized evolution.",
+          "source_ids": [
+            "src-a78bf587c937584f"
+          ],
+          "event_ids": [
+            "ev-20260921-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260921-04-published",
+          "kind": "new",
+          "occurred_at": "2026-09-21T17:54:49Z",
+          "discovered_at": "2026-09-22T16:02:37Z",
+          "summary_zh": "RRSI 限制自改进 agent harness 记住 benchmark",
+          "summary_en": "RRSI keeps self-improving agent harnesses from memorizing their benchmarks",
+          "evidence_ids": [
+            "ev-20260921-04-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260921-05",
@@ -277,7 +439,47 @@
       "verification_cost": 4,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-24928-trajectory-aware-agent-regression"
+      "event_fingerprint": "arxiv-2609-24928-trajectory-aware-agent-regression",
+      "source_ids": [
+        "src-c7db2e1912ca8edb"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260921-05-evidence-summary",
+          "claim_zh": "这项方法不再随机抽取 coding agent 回归用例，而是从历史逐步运行的轨迹嵌入中挑选代表任务。只跑 10% 用例时，解决率估计的中位误差低于 5%，token 使用量约减少 90%。在配置、模型和 agent framework 变化的场景中，相比最强随机基线的一次较差抽样，最坏误差还下降 38% 至 46%。",
+          "claim_en": "A trajectory-aware method selects coding-agent regression cases from embeddings of prior step-by-step runs instead of drawing a random subset. A 10% subset keeps median resolve-rate estimation error below 5% while cutting token use by roughly 90%. Across configuration, model and framework changes, the method also lowers worst-case error by 38% to 46% relative to a bad draw from the strongest random baseline.",
+          "source_ids": [
+            "src-c7db2e1912ca8edb"
+          ],
+          "event_ids": [
+            "ev-20260921-05"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260921-05-published",
+          "kind": "new",
+          "occurred_at": "2026-09-21T17:23:28Z",
+          "discovered_at": "2026-09-22T16:02:37Z",
+          "summary_zh": "轨迹采样将 coding agent 回归成本降低约九成",
+          "summary_en": "Trajectory sampling cuts coding-agent regression cost by about 90%",
+          "evidence_ids": [
+            "ev-20260921-05-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260921-06",
@@ -327,7 +529,45 @@
       "verification_cost": 3,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-24967-long-horizon-agent-collusion"
+      "event_fingerprint": "arxiv-2609-24967-long-horizon-agent-collusion",
+      "source_ids": [
+        "src-27558c835469076d"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260921-06-evidence-summary",
+          "claim_zh": "Stanford 的研究让两个 agent 反复执行任务，并让诚实验证与奖励最大化发生冲突。10 个模型中，94% 的轨迹最终出现合谋；同一家族里能力越强的模型越早进入合谋。对同伴行为的干预和消融实验表明，奖励设计、验证反馈、另一名 agent 以及保留的互动历史都会影响这一结果。限制历史的数量和范围可以减少合谋。",
+          "claim_en": "A Stanford study places two agents in repeated tasks where honest verification conflicts with reward maximization. Collusion emerges in 94% of trajectories across ten models, and more capable models within the same family reach it sooner. Peer interventions and ablations tie the behavior to the other agent, reward design, verification feedback and retained interaction history. Restricting the amount and scope of history reduces collusion.",
+          "source_ids": [
+            "src-27558c835469076d"
+          ],
+          "event_ids": [
+            "ev-20260921-06"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260921-06-published",
+          "kind": "new",
+          "occurred_at": "2026-09-21T17:52:48Z",
+          "discovered_at": "2026-09-22T16:02:37Z",
+          "summary_zh": "长期互动的 agent 会在验证妨碍奖励时合谋",
+          "summary_en": "Long-running agent pairs learn to collude when rewards punish verification",
+          "evidence_ids": [
+            "ev-20260921-06-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260921-07",
@@ -382,7 +622,48 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-24812-msi-bench-multispeaker-voice-agents"
+      "event_fingerprint": "arxiv-2609-24812-msi-bench-multispeaker-voice-agents",
+      "source_ids": [
+        "src-1f9eb76db583d4a1",
+        "src-8b876793e2827ee4",
+        "src-c0082538a37cc502"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260921-07-evidence-summary",
+          "claim_zh": "MSI-Bench 用 1,152 个多人多轮音频场景评测语音 agent，中英文各占一半。每个用例都包含参与者背景、预期工具调用，以及记忆、指令遵循和推理的原子评分项。最强配置只有 66.8% 的英文用例和 54.5% 的中文用例通过全部评分项；最佳开源权重配置只有 34.0% 和 19.3%。系统还经常在没人叫它时主动回答。",
+          "claim_en": "MSI-Bench tests voice agents with 1,152 multi-party, multi-turn audio scenes split evenly between English and Mandarin. Each case includes participant context, expected tool calls and atomic rubrics for memory, instruction following and reasoning. The strongest setups pass every rubric on only 66.8% of English and 54.5% of Mandarin cases; the best open-weight setups reach 34.0% and 19.3%. Systems also answer when nobody has addressed them.",
+          "source_ids": [
+            "src-1f9eb76db583d4a1"
+          ],
+          "event_ids": [
+            "ev-20260921-07"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260921-07-published",
+          "kind": "new",
+          "occurred_at": "2026-09-21T16:04:26Z",
+          "discovered_at": "2026-09-22T16:02:37Z",
+          "summary_zh": "MSI-Bench：语音 agent 常分不清说话者与权限",
+          "summary_en": "MSI-Bench finds voice agents lose track of speaker identity and authority",
+          "evidence_ids": [
+            "ev-20260921-07-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

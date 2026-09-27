@@ -77,7 +77,48 @@
         "测试模型": "Mistral Medium 3.5、Z.ai GLM-5.2（验证模型无关的主张）",
         "注意": "基准数字为厂商自报；测的是文档密集场景（财报、公告）；公告未给出定价",
         "与知识库的关系": "首个把 agentic 检索循环做成产品的厂商发布；同日的学术呼应 DeepWeaver（arXiv 2608.18988）登记为早期迹象观察项，不立趋势"
-      }
+      },
+      "source_ids": [
+        "src-afd54bbe19c44fc2",
+        "src-45a8e83834f24852"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260820-01-evidence-summary",
+          "claim_zh": "Agentic Search 是 Mistral 面向 AI 系统的检索层。它不做一次性分块检索，而是让模型在既有搜索索引上多步循环，用 search、open、navigate、read、grep 五个类文件系统工具在复杂文档里查找、核对并验证信息。交付有两条路：开源的 Mistral Search Toolkit 负责数据摄取、嵌入和索引，可部署在云端或本地；Studio 和 Vibe 里内置开箱即用的库，GitHub 上还有 Search Starter App 可按默认配置建本地索引。整个设计模型无关、不需要微调，检索质量随模型能力提升，不会被分块策略封顶。官方自报数据（默认未调优）：FinanceBench（SEC 财报）正确率从 26.7% 升到 86%，OfficeQA Pro（Treasury Bulletins）从 6.3% 升到 51.9%，p90 延迟最高降 39.6%，token 用量最多省三分之一；测试用了 Mistral Medium 3.5 和 Z.ai GLM-5.2。",
+          "claim_en": "Agentic Search is Mistral's retrieval layer for AI systems. Instead of one-shot chunk retrieval, the model runs a multi-step loop over an existing search index, using five file-system-like tools (search, open, navigate, read, grep) to find, inspect, and verify information inside complex documents. It ships two ways: the open Mistral Search Toolkit for ingesting, embedding, and indexing data in the cloud or on-premises, plus ready-to-use libraries inside Studio and Vibe and a Search Starter App on GitHub. The design is model-agnostic and needs no fine-tuning, so retrieval quality scales with model capability rather than being capped by the chunking strategy. Mistral reports large gains on default, untuned settings: FinanceBench (SEC filings) correctness from 26.7% to 86%, OfficeQA Pro (Treasury Bulletins) from 6.3% to 51.9%, p90 latency down up to 39.6%, and token use down up to one-third, tested with both Mistral Medium 3.5 and Z.ai GLM-5.2.",
+          "source_ids": [
+            "src-afd54bbe19c44fc2"
+          ],
+          "event_ids": [
+            "ev-20260820-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260820-01-published",
+          "kind": "new",
+          "occurred_at": "2026-08-20",
+          "discovered_at": "2026-08-21T00:00:37Z",
+          "summary_zh": "Mistral 发布多步文档检索层 Agentic Search",
+          "summary_en": "Mistral launches Agentic Search, a multi-step document retrieval layer",
+          "evidence_ids": [
+            "ev-20260820-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260820-02",
@@ -147,7 +188,49 @@
         "定位": "问题出在被量化的 transformer 主干，不是输出投影；效应只出现在语义相近的干扰项下，数值对照组中方向反转",
         "代码": "github.com/ShayanShahrabi/compress-and-forget（代码与数据已发布）",
         "与知识库的关系": "量化与 agent 上下文的交叉问题；与 KV-cache 回滚一致性（ev-20260818-03）开启的「服务层隐藏行为变化」证据线互补"
-      }
+      },
+      "source_ids": [
+        "src-d771b692ae3df32f",
+        "src-0a6264c9ecd44565",
+        "src-854417621ea9327c"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260820-02-evidence-summary",
+          "claim_zh": "论文研究一个部署层面的问题：训练后量化是开源权重模型的默认部署方式，它会不会加剧前摄干扰（proactive interference）。前摄干扰指一个值被覆写的次数越多，模型越难回忆起它的最新版本，类似人类的工作记忆。作者用三种精度（FP16、INT8、INT4/NF4，走 bitsandbytes）在三个指令微调模型（Qwen2.5-7B-Instruct、Mistral-7B-Instruct-v0.3、Phi-3.5-mini-instruct）上跑固定检索任务。结果：INT4 在高干扰下显著拉低所有模型的准确率，Qwen2.5-7B 从 81.0% 跌到 68.3%；常被默认安全的 INT8 在三个模型中的两个上也有较小但真实的损失。消融实验把效应定位到被量化的 transformer 主干而非输出投影，且只在语义相近的干扰项下出现；same-key intrusion 错误从 21.5% 升到 24.6%（p = 4.8e-7），配对 McNemar 检验 p ≤ 2.6e-6。结论很直白：就算聚合 benchmark 看起来没变化，4-bit 量化也会悄悄拖累依赖长、可更新、语义密集上下文的应用。代码和数据已公开。",
+          "claim_en": "The paper asks whether post-training quantization, the default deployment path for open-weight models, worsens proactive interference (PI): the more times a value is overwritten, the harder it becomes for the model to recall its latest version, much like human working memory. The authors tested three precisions (FP16, INT8, INT4/NF4 via bitsandbytes) on three instruction-tuned models (Qwen2.5-7B-Instruct, Mistral-7B-Instruct-v0.3, Phi-3.5-mini-instruct) with a fixed retrieval task. INT4 significantly cut accuracy under high interference in every model; Qwen2.5-7B fell from 81.0% to 68.3%. INT8, often assumed safe, showed a smaller but real penalty in two of the three models. Ablations trace the effect to the quantized transformer backbone rather than the output projection, and it appears only with semantically similar distractors; same-key intrusion errors rose from 21.5% to 24.6% (p = 4.8e-7), with paired McNemar's tests at p <= 2.6e-6. The takeaway: even when aggregate benchmark accuracy looks flat, 4-bit quantization can quietly tax applications that rely on long, updatable, semantically dense contexts. Code and data are released.",
+          "source_ids": [
+            "src-d771b692ae3df32f"
+          ],
+          "event_ids": [
+            "ev-20260820-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260820-02-published",
+          "kind": "new",
+          "occurred_at": "2026-08-20",
+          "discovered_at": "2026-08-21T00:00:37Z",
+          "summary_zh": "Compress and Forget：4-bit 量化放大前摄干扰",
+          "summary_en": "Compress and Forget: 4-bit quantization worsens recall of overwritten values",
+          "evidence_ids": [
+            "ev-20260820-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260820-03",
@@ -209,7 +292,48 @@
         "缓解": "把求解卸载给工具可显著削减 token 用量；建议给每个请求配预算上限",
         "注意": "攻击侧的学术研究；价值在 gateway / 服务层防御；摘要页未见代码链接",
         "与知识库的关系": "服务层安全证据线；成本耗尽向量，与 KV-cache 回滚（ev-20260818-03）、Cloudflare MCP enforcement（ev-20260814-03）以来的加固主线互补"
-      }
+      },
+      "source_ids": [
+        "src-5cb999500bc2355b",
+        "src-0a6264c9ecd44565"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260820-03-evidence-summary",
+          "claim_zh": "此前针对大推理模型（LRM）的拒绝服务攻击都要依赖模型反馈：反复查询目标，或者专门训练一个攻击模型，代价高、收益还打折。SMTrap 提出一种作者称为搜索放大（search amplification）的思路：拿 SMT（Satisfiability Modulo Theories）求解器的冲突计数当廉价的外部信号，引导合成推理量巨大的约束满足问题（CSP）查询。依据的观察是，LRM 解 CSP 靠试错加回溯，实例的 SMT 冲突计数越高，回溯越深、输出越长。整套框架只用 CPU：不查询目标模型、不训练攻击模型、不用 GPU。在七个前沿模型上的评测据报告达到现有最强的 LRM-DoS 效果，数倍于既有基线。作者还演示了一种基于工具的缓解办法：把求解卸载给工具，能显著减少 token 用量。",
+          "claim_en": "Earlier denial-of-service attacks on large reasoning models (LRMs) depend on model feedback — repeatedly querying the target or training a dedicated attack model — which is costly and limits leverage. SMTrap introduces what the authors call search amplification: conflict counts from an SMT (Satisfiability Modulo Theories) solver act as a cheap external signal to guide the synthesis of inference-heavy constraint-satisfaction-problem (CSP) queries. The key observation is that LRMs solve CSPs by trial-and-backtracking search, so higher SMT conflict counts on a CSP instance correlate with more extensive backtracking and substantially longer outputs. The framework is lightweight and CPU-only: no queries to the target model, no attack-model training, no GPU compute. Evaluations across seven frontier models reportedly show state-of-the-art LRM-DoS capability, several times stronger than existing baselines. The authors also demonstrate a tool-based mitigation — offloading the solving to a tool — that significantly cuts token usage.",
+          "source_ids": [
+            "src-5cb999500bc2355b"
+          ],
+          "event_ids": [
+            "ev-20260820-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260820-03-published",
+          "kind": "new",
+          "occurred_at": "2026-08-20",
+          "discovered_at": "2026-08-21T00:00:37Z",
+          "summary_zh": "SMTrap：只用 CPU、无需反馈的推理模型算力耗尽攻击",
+          "summary_en": "SMTrap: CPU-only, feedback-free attacks exhaust large reasoning models",
+          "evidence_ids": [
+            "ev-20260820-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

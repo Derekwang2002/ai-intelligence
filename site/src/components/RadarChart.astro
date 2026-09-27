@@ -4,6 +4,7 @@ import { t, locTitle, type Locale } from '../lib/i18n';
 import { QUADRANTS, quadLabel } from '../lib/quadrants';
 import { selectRadar, RING_ORDER, RING_IDX, RADAR_WINDOW_DAYS } from '../lib/radar';
 import { shortLabel, labelWidth } from '../lib/shortLabel';
+import { intel, words } from '../lib/intelligence';
 
 interface Props {
   events: any[];
@@ -13,7 +14,7 @@ interface Props {
 const { events, locale = 'zh' } = Astro.props;
 
 // 窗口 + 每环上限选择在 lib/radar.ts（Insights 页计数共用同一份逻辑）
-const sel = selectRadar(events);
+const sel = selectRadar(events, intel.report_date);
 
 // 扇区底色与清单色标：站点无类别色相，这里给象限一组双主题可读的中饱和色
 const QUAD_COLOR: Record<string, string> = {
@@ -148,13 +149,14 @@ const wedge = (i: number) => {
 
 <div class="radar-overview-head">
   <span class="legend-note">{t(locale, 'radar.legendNote')}</span>
+  <span class="legend-note">{words(locale,`近 30 天共 ${sel.windowTotal} 项 · 图示 ${sel.shownTotal} 项`,`30-day total: ${sel.windowTotal} · Shown: ${sel.shownTotal}`)}</span>
   <span class="radar-filters" id="radar-filters" hidden data-clear-label={t(locale, 'insights.filterClear')}></span>
 </div>
 
 <div class="radar-layout">
   <section class="card radar-overview">
     <figure class="radar-figure">
-      <svg class="radar-svg" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={t(locale, 'insights.radarTimeAria')}>
+      <svg class="radar-svg" viewBox={`0 0 ${W} ${H}`} role="group" aria-label={t(locale, 'insights.radarTimeAria')}>
         {QUADRANTS.map((q, i) => <path class="wedge" d={wedge(i)} fill={QUAD_COLOR[q.id]} />)}
         {RING_ORDER.map((_, i) => <circle class="axis-line" cx={CX} cy={CY} r={(i + 1) * THICK} fill="none" />)}
         <line class="axis-line" x1={CX - R} y1={CY} x2={CX + R} y2={CY} />

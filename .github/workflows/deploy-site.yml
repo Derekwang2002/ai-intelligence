@@ -9,8 +9,19 @@ on:
       - 'trends/**'
       - 'index/**'
       - 'state.json'
+      - 'projects/**'
+      - 'sources/**'
+      - 'topics/**'
+      - 'briefings/**'
+      - 'reviews/**'
+      - 'config/**'
+      - 'scripts/**'
+      - 'TASK.md'
+      - 'AGENTS.md'
       - 'site/**'
       - '.github/workflows/deploy-site.yml'
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -19,7 +30,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -45,20 +56,31 @@ jobs:
         env:
           # Project Pages serve under /<repo-name>/
           ASTRO_BASE: /${{ github.event.repository.name }}
-        run: npm run build
+        run: npm run check
+
+      - name: Install browser test runtime
+        working-directory: site
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify reading flows
+        working-directory: site
+        run: npm run test:browser
 
       - name: Configure Pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v6
         with:
           # Pages 站点未启用时自动开启（Source = GitHub Actions）
           enablement: true
 
       - name: Upload artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
         with:
           path: site/dist
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:

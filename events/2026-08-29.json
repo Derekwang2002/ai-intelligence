@@ -7,7 +7,9 @@
       "title": "SARA splits action induction from execution authorization in tool-using agents",
       "title_zh": "SARA：把动作诱导与执行授权分开，防工具输出注入",
       "category": "research",
-      "organization": ["academic"],
+      "organization": [
+        "academic"
+      ],
       "published_at": "2026-08-29T00:00:00Z",
       "published_at_note": "arXiv 2608.27146 submitted 2026-08-27; announced in the Fri 28 Aug digest (~2026-08-29T00:00Z). No institutional affiliations listed.",
       "first_seen_at": "2026-08-29T11:35:46Z",
@@ -35,7 +37,14 @@
         "代码": "论文页未给出",
         "arXiv": "2608.27146，2026-08-27 提交"
       },
-      "tags": ["agent-security", "prompt-injection", "tool-calling", "mcp", "authorization", "research"],
+      "tags": [
+        "agent-security",
+        "prompt-injection",
+        "tool-calling",
+        "mcp",
+        "authorization",
+        "research"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -43,14 +52,55 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2608-27146-sara-action-authorization-split"
+      "event_fingerprint": "arxiv-2608-27146-sara-action-authorization-split",
+      "source_ids": [
+        "src-4fbe16de0c3f294b"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260829-01-evidence-summary",
+          "claim_zh": "论文（arXiv 2608.27146）认为工具增强型 agent 的注入风险源于把两个运行时角色混在一起：从观察中诱导动作，与授权执行。SARA 把两者拆开：一个上下文隔离的 Action Probe 负责暴露工具输出中的动作诱导语义，并跨步骤持久记录动作来源；真正的工具调用只依据用户目标与已授权成功执行产生的审计证据放行，约束覆盖目标、执行链与参数三层。No-History-Promotion 机制防止历史重复把动作来源「洗」成执行授权。在 AgentDojo 与 AgentDyn 上，四个主设置的攻击成功率均不超过 0.63%，任务可用性保持竞争力，且跨 agent 骨干一致。",
+          "claim_en": "The paper (arXiv 2608.27146) argues that injection risk in tool-augmented agents comes from conflating two runtime roles: inducing actions from observations and authorizing executions. SARA separates them. A context-isolated Action Probe exposes action-inducing semantics in tool outputs and persistently records action-origin provenance across steps, while actual tool calls are authorized only against the user objective and audited evidence from authorized successful executions, under goal, execution-chain and argument-level support constraints. No-History-Promotion prevents historical recurrence from laundering action origins into execution authority. Across AgentDojo and AgentDyn, attack success stays at or below 0.63% in four primary settings with competitive task utility, consistently across agent backbones.",
+          "source_ids": [
+            "src-4fbe16de0c3f294b"
+          ],
+          "event_ids": [
+            "ev-20260829-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260829-01-published",
+          "kind": "new",
+          "occurred_at": "2026-08-29T00:00:00Z",
+          "discovered_at": "2026-08-29T11:35:46Z",
+          "summary_zh": "SARA：把动作诱导与执行授权分开，防工具输出注入",
+          "summary_en": "SARA splits action induction from execution authorization in tool-using agents",
+          "evidence_ids": [
+            "ev-20260829-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260829-02",
       "title": "HarnessLens evolves agent harnesses under a verification budget",
       "title_zh": "HarnessLens：在验证预算内自动演化 agent harness",
       "category": "research",
-      "organization": ["academic"],
+      "organization": [
+        "academic"
+      ],
       "published_at": "2026-08-29T00:00:00Z",
       "published_at_note": "arXiv 2608.27311 submitted 2026-08-27; announced in the Fri 28 Aug digest (~2026-08-29T00:00Z). No institutional affiliations listed.",
       "first_seen_at": "2026-08-29T11:35:46Z",
@@ -80,7 +130,13 @@
         "代码": "https://github.com/jhxu5214/HarnessLens",
         "arXiv": "2608.27311，2026-08-27 提交"
       },
-      "tags": ["agent-harness", "coding-agent", "optimization", "evaluation", "research"],
+      "tags": [
+        "agent-harness",
+        "coding-agent",
+        "optimization",
+        "evaluation",
+        "research"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -88,14 +144,56 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2608-27311-harnesslens-budget-aware-harness-evolution"
+      "event_fingerprint": "arxiv-2608-27311-harnesslens-budget-aware-harness-evolution",
+      "source_ids": [
+        "src-9e2fff352ea6fa7c",
+        "src-b0389630033911d7"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260829-02-evidence-summary",
+          "claim_zh": "自动 harness 演化通常把每个候选修改在固定任务集上全部打分，总分容易掩盖局部回归。HarnessLens 改为联合探索任务空间与用户可配置组件，从执行轨迹导出候选修改，再通过可归因证据门只在与行为相关的任务上验证候选。在 3 个 agent harness、4 个 benchmark 上，留出集平均性能提升 7.6-13.6%，评估预算显著低于 propose-and-verify 基线。代码已在 GitHub 开源。",
+          "claim_en": "Automated harness evolution usually scores every candidate modification on a fixed task set, letting aggregate scores hide specific regressions. HarnessLens instead jointly explores the task space and user-configurable components, derives candidate modifications from execution trajectories, and verifies each candidate only on behavior-relevant tasks selected through an attributable-evidence gate. Across three agent harnesses and four benchmarks it improves average held-out performance by 7.6-13.6% while consuming substantially less evaluation budget than propose-and-verify baselines. Code is released on GitHub.",
+          "source_ids": [
+            "src-9e2fff352ea6fa7c"
+          ],
+          "event_ids": [
+            "ev-20260829-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260829-02-published",
+          "kind": "new",
+          "occurred_at": "2026-08-29T00:00:00Z",
+          "discovered_at": "2026-08-29T11:35:46Z",
+          "summary_zh": "HarnessLens：在验证预算内自动演化 agent harness",
+          "summary_en": "HarnessLens evolves agent harnesses under a verification budget",
+          "evidence_ids": [
+            "ev-20260829-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260829-03",
       "title": "TwinKV repairs KV cache eviction using key redundancy, not attention",
       "title_zh": "TwinKV：按键冗余修复 KV 缓存驱逐，而非注意力分数",
       "category": "research",
-      "organization": ["academic"],
+      "organization": [
+        "academic"
+      ],
       "published_at": "2026-08-29T00:00:00Z",
       "published_at_note": "arXiv 2608.27128 submitted 2026-08-27; announced in the Fri 28 Aug digest (~2026-08-29T00:00Z). No institutional affiliations listed.",
       "first_seen_at": "2026-08-29T11:35:46Z",
@@ -121,7 +219,14 @@
         "结果": "Qwen3-4B；LongBench / LooGLE / RULER + MMLU-Pro 无损对照；压缩比 0.3/0.5/0.7；与 4 种策略组合：2 种多数配置获益、1 种基本持平、1 种近上限自适应基线仅少数获益",
         "arXiv": "2608.27128，2026-08-27 提交"
       },
-      "tags": ["kv-cache", "long-context", "inference", "serving", "eviction", "research"],
+      "tags": [
+        "kv-cache",
+        "long-context",
+        "inference",
+        "serving",
+        "eviction",
+        "research"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -129,7 +234,46 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2608-27128-twinkv-eviction-repair-pass"
+      "event_fingerprint": "arxiv-2608-27128-twinkv-eviction-repair-pass",
+      "source_ids": [
+        "src-d7ea4477639fba56"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260829-03-evidence-summary",
+          "claim_zh": "受控留一探针显示：注意力大小与一个 token 对答案的因果贡献无关（Spearman rho = -0.004），动摇了主流基于注意力的 KV 驱逐方法的前提。TwinKV 是免训练的修复通道，可叠加在任意驱逐策略上：它找出被驱逐但键没有存活近重复的 token（孤儿）与保留但信息已在他处重复的 token（冗余供体），在不动原预算与打分规则的前提下互换。在 Qwen3-4B 上与四种近期策略组合，覆盖 LongBench、LooGLE、RULER 与 MMLU-Pro 无损对照、压缩比 0.3/0.5/0.7：两种策略下多数配置获益，第三种基本持平，第四种自适应基线已近性能上限、仅少数配置获益。",
+          "claim_en": "A controlled leave-one-out probe finds that attention magnitude is unrelated to a token's causal contribution to the answer (Spearman rho = -0.004), undermining the premise behind dominant attention-based KV eviction. TwinKV is a training-free repair pass that composes on top of any eviction policy: it detects evicted tokens whose keys have no surviving near-duplicate (orphans) and retained tokens whose information is duplicated elsewhere (redundant donors), then swaps them while preserving the original budget and scoring rule. Composed with four recent policies on Qwen3-4B across LongBench, LooGLE, RULER and an MMLU-Pro no-harm control at compression ratios 0.3/0.5/0.7, it improves a majority of configurations for two policies, is near-even for a third, and helps only a minority for an adaptive baseline already near its performance ceiling.",
+          "source_ids": [
+            "src-d7ea4477639fba56"
+          ],
+          "event_ids": [
+            "ev-20260829-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260829-03-published",
+          "kind": "new",
+          "occurred_at": "2026-08-29T00:00:00Z",
+          "discovered_at": "2026-08-29T11:35:46Z",
+          "summary_zh": "TwinKV：按键冗余修复 KV 缓存驱逐，而非注意力分数",
+          "summary_en": "TwinKV repairs KV cache eviction using key redundancy, not attention",
+          "evidence_ids": [
+            "ev-20260829-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

@@ -3,142 +3,36 @@ import Base from '../../layouts/Base.astro';
 import RecBadge from '../RecBadge.astro';
 import ScoreBars from '../ScoreBars.astro';
 import DetailTable from '../DetailTable.astro';
-import { u, fmtDateTime } from '../../lib/url';
-import { t, loc, locTitle, catLabel, type Locale, type UiKey } from '../../lib/i18n';
-import events from '../../data/generated/events.json';
-
-interface Props {
-  event: any;
-  locale?: Locale;
-}
-
-const { event, locale = 'zh' } = Astro.props;
-const updateKeys = Object.keys(event).filter((k) => /^update_/.test(k));
-const idx = events.findIndex((e: any) => e.event_id === event.event_id);
-const newer = idx > 0 ? events[idx - 1] : null;
-const older = idx >= 0 && idx < events.length - 1 ? events[idx + 1] : null;
-const summary = loc(event, 'summary', locale);
-const whyItMatters = loc(event, 'why_it_matters', locale);
-const recHintKey = `rec.${event.recommendation}` as UiKey;
-// 中文模式优先使用技术细节的中文展示镜像（AGENTS.md §6 双语约定）
-const techDetails = (locale === 'zh' && event.technical_details_zh) ? event.technical_details_zh : event.technical_details;
+import SourceLinks from '../SourceLinks.astro';
+import EvidenceList from '../EvidenceList.astro';
+import ReaderActions from '../ReaderActions.astro';
+import {intel,pick,words,stageLabel,changeLabel} from '../../lib/intelligence';
+import {u,fmtDateTime,fmtDate} from '../../lib/url';
+import {catLabel} from '../../lib/i18n';
+const {event:e,locale='zh'}=Astro.props;
+const details=locale==='zh'?e.technical_details_zh:e.technical_details;
+const legacy=Object.entries(e).filter(([k])=>/^update_/.test(k));
+const availability=Object.entries(details||{}).find(([k])=>/^(availability|可用性|发布状态)$/i.test(k));
+const changes=(e.changes||[]).filter((c:any)=>c.kind!=='new');
+const currentSourceIds=[...new Set([...(e.evidence||[]).filter((v:any)=>!v.superseded_by&&v.verification!=='historical').flatMap((v:any)=>v.source_ids||[]),...(e.source_ids||[])])];
+const purposes=[{title:words(locale,'发布与参考','Release & context'),kinds:['release','announcement','reference']},{title:words(locale,'使用与部署','Use & deploy'),kinds:['documentation','code','weights']},{title:words(locale,'验证与限制','Evidence & limitations'),kinds:['paper','evaluation','community']}];
 ---
-
-<Base title={locTitle(event, locale).slice(0, 80)} locale={locale}>
-  <div class="article-head flush">
-    <div class="back-row">
-      <a class="btn-ghost btn-sm" href={u('/events/', locale)}>{t(locale, 'events.back')}</a>
-      <span class="cat-chip">{catLabel(event.category, locale)}</span>
-      <span class="mono" style="font-size: 12px;">{event.event_id}</span>
-    </div>
-    <h1>{locTitle(event, locale)}</h1>
-    <div class="meta-row">
-      <span class="mono" style="font-size: 12.5px;">{event.published_at}</span>
-      {(event.organization ?? []).map((o: string) => <span class="tag">{o}</span>)}
-      <RecBadge rec={event.recommendation} locale={locale} />
-      <span style="color: var(--text-faint); font-size: 12.5px;">{t(locale, recHintKey)}</span>
-    </div>
-  </div>
-
-  <div class="detail-grid">
-    <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
-      <div class="article-body">
-        <div class="section-title">{t(locale, 'events.summary')}</div>
-        <p style="margin: 0; color: var(--text); font-size: 15px; line-height: 1.9;">{summary}</p>
-
-        {whyItMatters && (
-          <>
-            <div class="section-title">{t(locale, 'events.why')}</div>
-            <blockquote style="margin: 0; padding: 2px 0 2px 18px; border-left: 2px solid var(--accent); color: var(--text-muted); font-size: 14.5px; line-height: 1.85;">
-              {whyItMatters}
-            </blockquote>
-          </>
-        )}
-
-        {techDetails && Object.keys(techDetails).length > 0 && (
-          <>
-            <div class="section-title">{t(locale, 'events.details')}</div>
-            <DetailTable obj={techDetails} />
-          </>
-        )}
-
-        {updateKeys.length > 0 && (
-          <>
-            <div class="section-title">{t(locale, 'events.updates')}</div>
-            <div style="display: flex; flex-direction: column; gap: 9px;">
-              {updateKeys.map((k) => (
-                <div style="padding: 11px 16px; font-size: 13.5px; color: var(--text-muted); line-height: 1.8; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px;">
-                  <span class="mono" style="color: var(--text-faint); margin-right: 8px; font-size: 11.5px;">{k.replace(/^update_/, '').replace(/_/g, '-')}</span>
-                  {event[k]}
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-
-        {(event.tags ?? []).length > 0 && (
-          <>
-            <div class="section-title">{t(locale, 'events.tags')}</div>
-            <div style="display: flex; flex-wrap: wrap; gap: 7px 14px;">
-              {event.tags.map((tag: string) => <span class="tag">{tag}</span>)}
-            </div>
-          </>
-        )}
-      </div>
-    </div>
-
-    <div class="side-stack">
-      <div class="card side-box">
-        <h3>{t(locale, 'events.scores')} · {event.recommendation}</h3>
-        <ScoreBars scores={event} locale={locale} />
-        <div style="margin-top: 14px; font-size: 12.5px;">
-          <a href={`${u('/about/', locale)}#scores`} style="color: var(--text-faint);">{t(locale, 'events.scoreGuide')}</a>
-        </div>
-      </div>
-
-      <div class="card side-box">
-        <h3>{t(locale, 'events.sources')}</h3>
-        <div class="src-list">
-          {event.primary_source && (
-            <div class="src">
-              <span class="tag-tier tag-primary">PRIMARY</span>
-              <a href={event.primary_source} target="_blank" rel="noopener">{event.primary_source}</a>
-            </div>
-          )}
-          {(event.secondary_sources ?? []).map((s: string) => (
-            <div class="src">
-              <span class="tag-tier tag-secondary">SEC</span>
-              <a href={s} target="_blank" rel="noopener">{s}</a>
-            </div>
-          ))}
-        </div>
-        {event.source_type && <div style="margin-top: 12px; font-size: 12px; color: var(--text-faint);">{t(locale, 'events.sourceType')}<span class="mono">{event.source_type}</span></div>}
-      </div>
-
-      <div class="card side-box">
-        <h3>{t(locale, 'events.meta')}</h3>
-        <table class="kv-table">
-          <tr><th>{t(locale, 'events.publishedAt')}</th><td class="mono">{event.published_at}</td></tr>
-          <tr><th>{t(locale, 'events.firstSeen')}</th><td class="mono">{fmtDateTime(event.first_seen_at, locale)}</td></tr>
-          <tr><th>{t(locale, 'events.lastUpdated')}</th><td class="mono">{fmtDateTime(event.last_updated_at, locale)}</td></tr>
-          <tr><th>Fingerprint</th><td class="mono" style="font-size: 11px; word-break: break-all;">{event.event_fingerprint}</td></tr>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <nav class="prevnext" aria-label={t(locale, 'events.prevNextAria')}>
-    {newer ? (
-      <a class="pn-link" href={u(`/events/${newer.event_id}/`, locale)}>
-        <span class="pn-dir">← {t(locale, 'events.newer')} · {newer.date}</span>
-        <span class="pn-title">{locTitle(newer, locale)}</span>
-      </a>
-    ) : <span></span>}
-    {older ? (
-      <a class="pn-link next" href={u(`/events/${older.event_id}/`, locale)}>
-        <span class="pn-dir">{t(locale, 'events.older')} · {older.date} →</span>
-        <span class="pn-title">{locTitle(older, locale)}</span>
-      </a>
-    ) : <span></span>}
-  </nav>
+<Base title={locale==='zh'?e.title_zh:e.title} locale={locale}>
+<header class="editorial-head event-head"><a class="eyebrow" href={u('/events/',locale)}>← {words(locale,'事件库','EVENT LIBRARY')} / {catLabel(e.category,locale)}</a><h1>{locale==='zh'?e.title_zh:e.title}</h1><div class="head-links"><span>{fmtDate(e.published_at)}</span><span>{stageLabel(e.evidence_stage,locale)}</span><RecBadge rec={e.recommendation} locale={locale}/></div><ReaderActions locale={locale} bookmark={`event:${e.event_id}`}/>
+<p class="lead">{pick(e,'summary',locale)}</p><SourceLinks ids={currentSourceIds.slice(0,2)} compact locale={locale}/>
+{availability&&<p class="availability"><b>{words(locale,'可用状态：','Availability: ')}</b>{String(availability[1])}</p>}
+{e.record_origin==='historical-migration'&&<p class="archive-provenance">{words(locale,'本文来自既有扫描档案。迁移保留原判断，不代表在迁移时重新核验。','Imported from the existing research archive. Migration preserves the recorded judgment and is not a fresh verification.')}</p>}
+</header>
+<div class="research-grid"><div>
+<section class="reading-section"><h2>{words(locale,'对你意味着什么','What this means for you')}</h2><p>{pick(e,'why_it_matters',locale)}</p><div class="scenario-links">{(e.scenario_ids||[]).map((id:string)=>{const s=intel.scenarios.find((s:any)=>s.id===id);return <a href={u(`/following/?scenario=${id}`,locale)}>{pick(s,'name',locale)} →</a>})}</div></section>
+{e.evidence_stage==='frontier'&&<section class="frontier-note"><div class="eyebrow">{words(locale,'前沿观察','FRONTIER WATCH')}</div><h2>{words(locale,'公开材料与效果验证，分开看。','Public artifacts and validated results are different.')}</h2><p>{words(locale,'已记录的事实是工作及其材料已公开。论文或作者报告的效果不自动等于独立复现。下一步关注可复用代码、任务设置和第三方验证。','The recorded fact is the public work and its artifacts. Author-reported outcomes do not establish independent reproduction. Next checks include usable code, task conditions and third-party validation.')}</p></section>}
+<section class="reading-section"><h2>{words(locale,'证据与关联材料','Evidence & related material')}</h2><EvidenceList evidence={(e.evidence||[]).filter((v:any)=>!v.superseded_by)} locale={locale}/></section>
+{changes.length>0&&<section class="reading-section"><h2>{words(locale,'后续变化','Subsequent changes')}</h2>{changes.map((c:any)=><article class="evidence-item"><span class="eyebrow">{changeLabel(c.kind,locale)} · {fmtDate(c.occurred_at)}</span><p>{pick(c,'summary',locale)}</p>{c.before&&<p>{pick(c,'before',locale)||c.before} → {pick(c,'after',locale)||c.after}</p>}</article>)}</section>}
+<details class="matrix-fold preference-fold"><summary>{words(locale,'技术细节与六维评分','Technical details & scores')}</summary><div class="fold-body"><DetailTable obj={details||{}}/><ScoreBars scores={e} locale={locale}/></div></details>
+{legacy.length>0&&<details class="matrix-fold preference-fold"><summary>{words(locale,'历史更新原文','Historical update notes')}</summary><div class="fold-body">{legacy.map(([key,v])=><p><time>{key.replace('update_','').replaceAll('_','-')}</time> · {String(v)}</p>)}</div></details>}
+</div><aside class="research-aside">
+{(e.project_ids||[]).length>0&&<section><h2>{words(locale,'持续追踪','Keep following')}</h2>{e.project_ids.map((id:string)=>{const p=intel.projects.find((p:any)=>p.id===id);return <div class="related-project"><a href={u(`/projects/${id}/`,locale)}>{pick(p,'name',locale)} →</a><ReaderActions locale={locale} follow={`project:${id}`}/></div>})}</section>}
+{purposes.map(p=>{const ids=(e.source_ids||[]).filter((id:string)=>p.kinds.includes(intel.sources.find((s:any)=>s.id===id)?.kind));return ids.length>0&&<section><h2>{p.title}</h2><SourceLinks ids={ids} locale={locale}/></section>})}
+<section><h2>{words(locale,'记录信息','Record information')}</h2><p>{words(locale,'发现于','Discovered')} {fmtDateTime(e.first_seen_at,locale)}</p><p>{words(locale,'实质更新','Material update')} {fmtDateTime(e.last_updated_at,locale)}</p><p class="muted">{e.event_id}</p></section>
+</aside></div>
 </Base>

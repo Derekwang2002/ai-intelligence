@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import ChangeFeed from '../ChangeFeed.astro';
+import {intel,words,pick} from '../../lib/intelligence';
+import {u,fmtDateTime} from '../../lib/url';
+const {locale='zh'}=Astro.props;
+const latest=intel.briefings.find((b:any)=>!b.baseline);
+---
+<Base title={words(locale,'今日简报','Today')} locale={locale}>
+ <header class="editorial-head today-head workspace-head">
+  <div><div class="eyebrow">{words(locale,'情报工作台','INTELLIGENCE WORKSPACE')}</div><h1>{words(locale,'今日简报','Today’s briefing')}</h1><p class="lead">{words(locale,'重要变化、原始依据与下一步判断。','Material changes, original sources, and what comes next.')}</p></div>
+  <div class="workspace-actions"><a class="quiet-button" href={u('/search/',locale)}>{words(locale,'搜索情报','Search intelligence')} <span aria-hidden="true">⌕</span></a><a class="quiet-button" href={u('/daily/',locale)}>{words(locale,'日报归档','Briefing archive')} →</a></div>
+ </header>
+ <div class="workspace-status"><a href={u('/sources/',locale)}><span class="status-dot" aria-hidden="true"></span>{words(locale,'资料截至','As of')} {fmtDateTime(intel.as_of,locale)} · CST</a><span>{words(locale,'基于已完成的扫描','From completed scans')}</span></div>
+ <p class="freshness-note" data-as-of={intel.as_of} hidden></p>
+ <div class="today-workspace">
+  <section class="workspace-feed" aria-label={words(locale,'情报更新','Intelligence updates')}><ChangeFeed locale={locale}/></section>
+  <aside class="workspace-rail">
+   <section class="glass-panel rail-panel"><div class="rail-heading"><h2>{words(locale,'本期覆盖','Scan coverage')}</h2><a href={u('/sources/',locale)} aria-label={words(locale,'查看来源与覆盖','View sources and coverage')}>↗</a></div><p>{latest?.[`coverage_${locale}`]}</p><a class="rail-action" href={u('/sources/',locale)}>{words(locale,'检查记录与原始来源','Checks & original sources')} →</a></section>
+   <section class="glass-panel rail-panel"><div class="rail-heading"><h2>{words(locale,'持续研究','Ongoing research')}</h2><span>{intel.topics.length}</span></div><div class="rail-list">{intel.topics.map((t:any)=><a href={u(`/topics/${t.id}/`,locale)}><span>{pick(t,'question',locale)}</span><span aria-hidden="true">↗</span></a>)}</div><a class="rail-action" href={u('/insights/',locale)}>{words(locale,'全部洞察','All insights')} →</a></section>
+   <section class="glass-panel rail-panel"><div class="rail-heading"><h2>{words(locale,'按你的工作关注','Follow your workflow')}</h2></div><div class="rail-scenarios">{intel.scenarios.map((s:any)=><a href={u(`/following/?scenario=${s.id}`,locale)}>{pick(s,'name',locale)} <span aria-hidden="true">＋</span></a>)}</div><a class="rail-action" href={u('/following/',locale)}>{words(locale,'管理关注与收藏','Manage follows & saved items')} →</a></section>
+  </aside>
+ </div>
+</Base>

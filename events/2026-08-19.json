@@ -65,7 +65,49 @@
         "Steering": "后续消息排队到下一次工具调用再生效，不再打断；'Send now' 或双击 ⏎",
         "背景": "延续云端 agent / cloud subagents 这条线（约 2026-06-17 起的环境初始化 + cloud subagents）；接 Builds（8/13）与 Origin 托管（8/17）",
         "与知识库的关系": "趋势 coding-agents-multi-agent-runtimes 的窗口内证据（新组织：Cursor；新原语：事件驱动唤醒、每个 subagent 一台 VM）；也延伸了单一厂商垂直整合的早期迹象（Builds 8/13 → Origin 8/17 → 常驻系统 8/19）"
-      }
+      },
+      "source_ids": [
+        "src-ce4a7eb28f92bcf6",
+        "src-b28194f531afc390",
+        "src-fa42e42f5ea26e54"
+      ],
+      "project_ids": [
+        "cursor"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260819-01-evidence-summary",
+          "claim_zh": "Cursor 这次发布把云端 agent 从按需会话升级为常驻系统：agent 作为一个系统自主构建和交付软件。核心原语是 Subscriptions——agent 订阅 PR、Slack 讨论串或定时任务等事件源，有事发生时被唤醒。agent 会自动订阅自己创建的 PR 并推进到底，包括修 CI 和回复 bot 评论；该能力目前仅限云端 agent。同批上线的还有：custom modes 可把任意 skill 固定为常驻模式；每个 subagent 运行在自己的虚拟机上，拿到项目的隔离副本和干净上下文，支持 swarm 并行；/goal 给 agent 一个长期目标，一直做到完全完成，可与 custom mode 和 /loop 组合。引导方式（steering）也改了：后续消息排队到下一次工具调用再生效，不再打断 agent 正在执行的动作。",
+          "claim_en": "Cursor shipped a release that turns cloud agents from on-demand sessions into an always-on system that builds and ships software on its own. The core primitive is Subscriptions: an agent subscribes to an event source such as a PR, a Slack thread, or a schedule, and wakes when something happens. Agents automatically subscribe to the PRs they create and drive them to completion, fixing CI and addressing bot comments; this is cloud-agents-only for now. The same release adds custom modes (any skill pinned as an always-on mode in chat), subagents that each run on their own VM with an isolated project copy and clean context (swarm patterns supported), and /goal, a long-lived objective the agent works toward until complete, pairable with custom modes and /loop. Steering changed too: follow-up messages now queue until the next tool call instead of interrupting the agent mid-action.",
+          "source_ids": [
+            "src-ce4a7eb28f92bcf6"
+          ],
+          "event_ids": [
+            "ev-20260819-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260819-01-published",
+          "kind": "new",
+          "occurred_at": "2026-08-19",
+          "discovered_at": "2026-08-20T00:00:23Z",
+          "summary_zh": "Cursor 把云端 agent 升级为事件驱动的常驻系统",
+          "summary_en": "Cursor turns cloud agents into an always-on event-driven system",
+          "evidence_ids": [
+            "ev-20260819-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260819-02",
@@ -142,7 +184,47 @@
         "适配": "在 Qwen3.6-27B 上做 SFT；repair-conditioned 训练对若干任务有帮助；泛化不均；数据覆盖、平衡与教师质量比规模更关键",
         "代码": "摘要页无仓库链接；宣称 benchmark 为可审计 testbed",
         "与知识库的关系": "延续 arXiv 2608.12700 合约级验证器（ev-20260813-06）开启的 GPU-kernel × LLM 证据线"
-      }
+      },
+      "source_ids": [
+        "src-e31de72c7d91eae1",
+        "src-0a6264c9ecd44565"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260819-02-evidence-summary",
+          "claim_zh": "PTXBench 是一个评测并改造 LLM 做 GPU kernel 优化的 benchmark，目标是架构特定的 PTX（NVIDIA 的底层中间表示）。它在 H100 和 B200 上测 GEMM 与 attention 负载，看三件事：功能是否正确、选中的目标指令运行时是否真的执行、相对 cuBLAS/cuDNN 这类前沿库的加速比。主要结论偏负面：没有一个被测模型能稳定追平调优库；复杂的 attention 反向传播负载上成功率明显下降；目标指令真的执行了，也不等于性能有竞争力。作者还用 repair-conditioned SFT 改造 Qwen3.6-27B，若干任务有改善但泛化不稳；数据覆盖度、平衡性和推理教师的质量比数据规模更关键。PTXBench 把自己定位为可审计的试验台，用来度量并改进 LLM 利用新 GPU 架构的能力。",
+          "claim_en": "PTXBench is a benchmark for evaluating and adapting LLMs on GPU kernel optimization with architecture-specific PTX, NVIDIA's low-level IR. On GEMM and attention workloads across H100 and B200, it measures three things: functional correctness, whether the selected target instructions actually execute at runtime, and speedup over frontier libraries such as cuBLAS and cuDNN. The headline finding is negative: no evaluated model consistently matches the tuned libraries, success rates fall sharply on complex attention-backward workloads, and executing the target instructions does not translate into competitive performance. The authors also adapt Qwen3.6-27B with repair-conditioned SFT, which improves several tasks but generalizes unevenly; data coverage, balance, and reasoning-teacher quality matter beyond dataset size. PTXBench is positioned as an auditable testbed for measuring and improving how well LLMs exploit evolving GPU architectures.",
+          "source_ids": [
+            "src-e31de72c7d91eae1"
+          ],
+          "event_ids": [
+            "ev-20260819-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260819-02-published",
+          "kind": "new",
+          "occurred_at": "2026-08-19",
+          "discovered_at": "2026-08-20T00:00:23Z",
+          "summary_zh": "PTXBench：模型能写出特殊 PTX 指令，却跑不赢调优库",
+          "summary_en": "PTXBench: LLMs emit exotic PTX instructions but can't beat tuned libraries",
+          "evidence_ids": [
+            "ev-20260819-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260819-03",
@@ -207,7 +289,47 @@
         ],
         "产物": "发布完整的逐条回复归档与逐条评分输出",
         "与知识库的关系": "DeepSeek V4-Pro 定价/GA 事件（ev-20260813-02）开启的强制迁移时代的实用配套；方法可直接用作迁移验收门禁"
-      }
+      },
+      "source_ids": [
+        "src-9fd5e747d32468a9",
+        "src-0a6264c9ecd44565"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260819-03-evidence-summary",
+          "claim_zh": "一项实证研究：商用 LLM API 迁移时，聚合 benchmark 分数到底掩盖了什么。作者在 GPT-5.4 → GPT-5.6 Sol 产品序列上做了三次成对升级，用 900 个公开 benchmark 条目（研究生级知识、奥数、指令遵循），每条目每模型查询 50 次，在错误发现率（FDR）控制和实际显著性阈值下，把每条目判定为可靠改进、可靠回退、实际等价或不确定。结果是九个迁移-benchmark 组合里改进与回退并存：聚合净涨最高 7.3 个百分点的升级，仍含至多 8.3% 的可靠回退条目；聚合净跌的升级也含至多 10.7% 的可靠改进条目。指令遵循上，最近一次迁移在严格评分下回退 3.9 分，宽松评分下只剩 0.04 分——评分口径一松，回退就「消失」了。完整的逐条回复归档和逐条评分输出已公开。",
+          "claim_en": "An empirical software-engineering study of what aggregate benchmark scores hide during commercial LLM API migrations. The authors ran three pairwise upgrades in the GPT-5.4 → GPT-5.6 Sol product sequence over 900 public benchmark items (graduate-level knowledge, olympiad mathematics, instruction following), querying each item 50 times per model, and classified every item as reliably improved, reliably regressed, practically equivalent, or inconclusive under false-discovery-rate control with a practical-significance threshold. Reliable improvements and regressions coexist in all nine migration-benchmark cells: upgrade edges with aggregate gains of up to 7.3 percentage points still contain up to 8.3% reliably regressed items, and aggregate-loss edges contain up to 10.7% reliably improved ones. On instruction following, the latest migration's 3.9-point regression under strict scoring shrinks to 0.04 under loose scoring, so scoring strictness alone can make a regression disappear. The complete response-level archive and per-item scoring outputs are released.",
+          "source_ids": [
+            "src-9fd5e747d32468a9"
+          ],
+          "event_ids": [
+            "ev-20260819-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260819-03-published",
+          "kind": "new",
+          "occurred_at": "2026-08-19",
+          "discovered_at": "2026-08-20T00:00:23Z",
+          "summary_zh": "研究：聚合涨分掩盖 LLM API 迁移中的条目级回退",
+          "summary_en": "Aggregate benchmark gains hide per-item regressions in LLM API migrations",
+          "evidence_ids": [
+            "ev-20260819-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260819-04",
@@ -292,7 +414,48 @@
         "与知识库的关系": "与 DeepSeek V4-Pro GA 定价（ev-20260813-02）同属模型获取/定价线；长上下文 agent 负载候选",
         "Google 平台上架（8/21 更新）": "2026-08-21：Google Enterprise Agent Platform，经 Model Garden 提供；500K 上下文；推理强度 low/medium/high/xhigh；输入 $2.00/M、缓存 $0.50/M、输出 $6.00/M（与 Bedrock 全球 profile 持平）；模型卡 hosted 在 Google 文档站 + Cloud console 上架"
       },
-      "update_2026_08_21": "Coverage-gap recovery (2026-08-24 run): xAI officially announced on 2026-08-21 that Grok 4.6 is also available on Google Enterprise Agent Platform via Model Garden - 500K context, reasoning effort low/medium/high/xhigh, pricing $2.00/M input, $0.50/M cached input, $6.00/M output, matching the Bedrock global cross-region profile (primary: x.ai/news/grok-4-6-vertex-ai). Second hyperscaler marketplace within three days (Bedrock 8/19, Google 8/21); surfaced via 8/23 aggregator digest, missed by the 8/22 run. Event scope extended from Bedrock-only to multi-cloud availability; recommendation stays TRIAL."
+      "update_2026_08_21": "Coverage-gap recovery (2026-08-24 run): xAI officially announced on 2026-08-21 that Grok 4.6 is also available on Google Enterprise Agent Platform via Model Garden - 500K context, reasoning effort low/medium/high/xhigh, pricing $2.00/M input, $0.50/M cached input, $6.00/M output, matching the Bedrock global cross-region profile (primary: x.ai/news/grok-4-6-vertex-ai). Second hyperscaler marketplace within three days (Bedrock 8/19, Google 8/21); surfaced via 8/23 aggregator digest, missed by the 8/22 run. Event scope extended from Bedrock-only to multi-cloud availability; recommendation stays TRIAL.",
+      "source_ids": [
+        "src-9c30f88a2b1e9266",
+        "src-7babcbb32ea86929",
+        "src-f2610a1bfd1fbf1f"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260819-04-evidence-summary",
+          "claim_zh": "Amazon Bedrock 上架 xAI 的 Grok 4.6：500K token 上下文的前沿模型，主打编码、agent 任务和知识工作，强调长时间运行的 agent。模型提供四档推理强度（默认 low，可选 medium、high、xhigh），接受文本和图像输入、输出文本，可通过 Responses、Chat Completions 和 Converse 三个 API 访问，支持前缀缓存（prompt caching）与推理。同步上线两个跨区域推理 profile：us.xai.grok-4.6 用于美国数据驻留；global.xai.grok-4.6 在无驻留约束时全球路由。定价方面，区域内与美国 profile 输入 $2.20/M、输出 $6.60/M、缓存读 $0.55/M；全球跨区域 profile 输入 $2.00/M、输出 $6.00/M、缓存读 $0.50/M。不支持服务端工具调用、结构化输出、智能提示路由和 application inference profiles。更新（8/21）：xAI 又把 Grok 4.6 带上 Google Enterprise Agent Platform（经 Model Garden 提供）——同样 500K 上下文、四档推理强度，定价输入 $2.00、缓存 $0.50、输出 $6.00 每百万 token，与 Bedrock 全球跨区域 profile 持平。",
+          "claim_en": "Amazon Bedrock added xAI's Grok 4.6, a frontier model with a 500K-token context window positioned for coding, agentic tasks, and knowledge work, with emphasis on long-running agents. It offers four configurable reasoning effort levels (low by default, then medium, high, and xhigh), accepts text and image input, returns text, and is accessible through the Responses, Chat Completions, and Converse APIs with prompt caching and reasoning support. Two cross-region inference profiles launched: us.xai.grok-4.6 for US data residency, and global.xai.grok-4.6, which routes anywhere worldwide when no residency constraints apply. Pricing is $2.20/M input, $6.60/M output, and $0.55/M cache read for in-region and US geo profiles, and $2.00/M, $6.00/M, and $0.50/M for the global cross-region profile. Not supported: server-side tool use, structured outputs, intelligent prompt routing, and application inference profiles. Update (2026-08-21): xAI also brought Grok 4.6 to Google Enterprise Agent Platform via Model Garden - same 500K context and four reasoning-effort levels, priced at $2.00/M input, $0.50/M cached input and $6.00/M output, matching the Bedrock global cross-region profile.",
+          "source_ids": [
+            "src-9c30f88a2b1e9266"
+          ],
+          "event_ids": [
+            "ev-20260819-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260819-04-published",
+          "kind": "new",
+          "occurred_at": "2026-08-19",
+          "discovered_at": "2026-08-21T00:00:37Z",
+          "summary_zh": "Grok 4.6 相继上架 Bedrock 与 Google 企业 agent 平台",
+          "summary_en": "Grok 4.6 goes multi-cloud: Bedrock first, then Google Enterprise Agent Platform",
+          "evidence_ids": [
+            "ev-20260819-04-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

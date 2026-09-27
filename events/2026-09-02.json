@@ -51,7 +51,48 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-00196-whale-joint-harness-weight-optimization"
+      "event_fingerprint": "arxiv-2609-00196-whale-joint-harness-weight-optimization",
+      "source_ids": [
+        "src-fce22edd91fcb1e6",
+        "src-b91d75ff5d4147c0",
+        "src-5641270869d4f622"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260902-01-evidence-summary",
+          "claim_zh": "WHALE（Weight-Harness Alternating LEarning，arXiv 2609.00196，9 月 2 日周三 digest）在两个阶段间交替：在当前 harness 下更新模型（在线拒绝采样微调），再在更新后的模型上搜索更好的 harness。出发点是 agent 表现同时取决于权重与可执行的 harness 代码，单独优化任何一方都会被冻结的另一方卡住——权重更新会改变哪个 harness 有效，harness 更新也会改变哪些模型能力被暴露出来。既有的联合适配工作只优化权重与文本提示，不碰更广义的 harness。",
+          "claim_en": "WHALE (Weight-Harness Alternating LEarning, arXiv 2609.00196, Wed 2 Sep digest) alternates two phases: updating the model under the current harness (online rejection-sampling fine-tuning), then searching for a better harness under the updated model. The premise is that agent performance depends jointly on weights and executable harness code, so optimizing either in isolation leaves the system bottlenecked by the frozen counterpart — weight updates change which harness is effective, and harness updates change which model capabilities get exposed. Prior joint-adaptation work optimized weights and textual prompts but left the broader harness fixed.",
+          "source_ids": [
+            "src-fce22edd91fcb1e6"
+          ],
+          "event_ids": [
+            "ev-20260902-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260902-01-published",
+          "kind": "new",
+          "occurred_at": "2026-09-02T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "WHALE：把模型权重与 agent harness 放在一起协同优化",
+          "summary_en": "WHALE co-optimizes model weights and the agent harness",
+          "evidence_ids": [
+            "ev-20260902-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260902-02",
@@ -104,7 +145,48 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-00891-cachebridge-cross-model-kv-transfer"
+      "event_fingerprint": "arxiv-2609-00891-cachebridge-cross-model-kv-transfer",
+      "source_ids": [
+        "src-5fa6f4c97c68c87c",
+        "src-3c86b4a536043353"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260902-02-evidence-summary",
+          "claim_zh": "CacheBridge（arXiv 2609.00891，9 月 2 日周三 digest）解决请求在多个 LLM 之间流转时的共享前缀重算问题：在保留闭式仿射映射器在线部署接口的同时，协同设计架构索引的映射器支撑、注意力对齐的校准与有界映射器构造。它改进了 Full-Head Mapping——后者每个目标头都从所有源头映射，对架构差异敏感，映射器的存储与应用成本随层支持增长。同一窗口还有独立并行工作《A Universal Context-Reuse Layer for Cross-Model KV Sharing》（2608.30963，9 月 1 日周二 digest），研究跨规模、跨架构、跨注意力配置、跨 tokenizer、跨模型家族的 KV 转译。",
+          "claim_en": "CacheBridge (arXiv 2609.00891, Wed 2 Sep digest) avoids shared-prefix replay when routing requests between LLMs: it co-designs architecture-indexed mapper support, attention-aligned calibration, and bounded mapper construction while retaining a closed-form affine-mapper interface that translates source-model KV caches into target-model caches online. It improves on Full-Head Mapping, whose per-head-from-every-head design is sensitive to architectural differences and whose mapper cost grows with layer support. The same window carries an independent companion: 'A Universal Context-Reuse Layer for Cross-Model KV Sharing' (2608.30963, Tue 1 Sep digest), which studies cross-model KV translation across differences in scale, architecture, attention configuration, tokenizer, and model family.",
+          "source_ids": [
+            "src-5fa6f4c97c68c87c"
+          ],
+          "event_ids": [
+            "ev-20260902-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260902-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-02T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "CacheBridge：跨模型架构迁移 KV 缓存",
+          "summary_en": "CacheBridge transfers KV caches across different model architectures",
+          "evidence_ids": [
+            "ev-20260902-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260902-03",
@@ -152,7 +234,46 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-00949-tool-calling-action-class-calibration"
+      "event_fingerprint": "arxiv-2609-00949-tool-calling-action-class-calibration",
+      "source_ids": [
+        "src-5bb0da9d4ad14ac4"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260902-03-evidence-summary",
+          "claim_zh": "《Calibration is the Bottleneck》（arXiv 2609.00949，9 月 2 日周三 digest）把多轮工具调用失效分解为两个正交模式（在 TOOL_CALL / ASK / REFUSE / CONFIRM 四类动作空间上）：动作类型失准（miscalibration）与动作执行失败。论文引入自揭示上界 Acc <= GAR（Gold Action Recall），越界即暴露 state-grader 对失准的掩盖。背景是：在公开工具调用基准上，开源权重模型的总准确率已接近甚至超过闭源前沿模型，但总分会把截然不同的多轮情形平均掉。",
+          "claim_en": "'Calibration is the Bottleneck' (arXiv 2609.00949, Wed 2 Sep digest) decomposes multi-turn tool-calling failures into two orthogonal modes over a four-class action space (TOOL_CALL / ASK / REFUSE / CONFIRM): action-class miscalibration and action-execution failure. It introduces a self-revealing upper bound, Acc <= GAR (Gold Action Recall), where bound violations expose state-grader masking of miscalibration. The context: on public tool-calling benchmarks, open-weight models now approach or surpass closed-source frontier models in aggregate accuracy, but aggregate numbers average over very different multi-turn situations.",
+          "source_ids": [
+            "src-5bb0da9d4ad14ac4"
+          ],
+          "event_ids": [
+            "ev-20260902-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260902-03-published",
+          "kind": "new",
+          "occurred_at": "2026-09-02T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "工具调用研究：瓶颈在动作类型校准而非执行",
+          "summary_en": "Tool-calling study finds action-class calibration, not execution, is the bottleneck",
+          "evidence_ids": [
+            "ev-20260902-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260902-04",
@@ -198,7 +319,46 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-00275-irreversibility-budget-agent-fleets"
+      "event_fingerprint": "arxiv-2609-00275-irreversibility-budget-agent-fleets",
+      "source_ids": [
+        "src-4b8bb3ae26a196bb"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260902-04-evidence-summary",
+          "claim_zh": "《The Irreversibility Budget》（arXiv 2609.00275，9 月 2 日周三 digest）提出由可信运行时为每个委托方（principal）跨 agent、工作流与租户维护一份「剩余在险价值」的累计账本。把不可逆性当作一等资源：运行时对每个效应（转出的钱、部署的代码、删除的数据、披露的信息）收取其剩余损失，累计将超出预算时拒绝边际效应。动机是：现有控制逐个检查效应，一支「每个动作都单独获授权」的 agent 集群仍可能在共享触发条件下把委托方的风险刷爆，而每个局部闸门都显示正常。",
+          "claim_en": "'The Irreversibility Budget' (arXiv 2609.00275, Wed 2 Sep digest) proposes a cumulative account of residual value-at-risk that a trusted runtime maintains per principal across agents, workflows, and tenants. Treating irreversibility as a first-class resource, the runtime charges each effect (money moved, code deployed, data deleted, information disclosed) its residual loss and denies the marginal effect once the aggregate would overdraw the budget. The motivation: current controls check one effect at a time, so a fleet of individually authorized agents can overdraw its principal's risk under a shared trigger while every local gate stays correct.",
+          "source_ids": [
+            "src-4b8bb3ae26a196bb"
+          ],
+          "event_ids": [
+            "ev-20260902-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260902-04-published",
+          "kind": "new",
+          "occurred_at": "2026-09-02T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "不可逆预算：给 agent 集群做不了的事定价",
+          "summary_en": "The Irreversibility Budget prices agent effects a fleet cannot undo",
+          "evidence_ids": [
+            "ev-20260902-04-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260902-05",
@@ -253,7 +413,46 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "amd-instella-moe-technical-report"
+      "event_fingerprint": "amd-instella-moe-technical-report",
+      "source_ids": [
+        "src-4e89b97b210c2aba",
+        "src-4a484b68c75d2ff3"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260902-05-evidence-summary",
+          "claim_zh": "AMD 发布 Instella-MoE 技术报告（arXiv 2609.00791，9 月 2 日周三 digest）：完全开放的 16B 总参 / 2.8B 激活 MoE，从头在 AMD Instinct MI300X 与 MI325X GPU 上训练。模型结合 Gated Multi-head Latent Attention 与 FarSkip-Collective 连接结构，走多阶段流水线：预训练、中训、长上下文扩展、带反馈数据筛选的 SFT、DPO、以及 Multi-Teacher On-Policy Distillation 的 RL。",
+          "claim_en": "AMD published the Instella-MoE technical report (arXiv 2609.00791, Wed 2 Sep digest): a fully open 16B-total / 2.8B-active MoE trained from scratch on AMD Instinct MI300X and MI325X GPUs. It combines Gated Multi-head Latent Attention and FarSkip-Collective connectivity, and was built through a multi-stage pipeline: pre-training, mid-training, long-context extension, SFT with feedback-driven data curation, DPO, and RL with Multi-Teacher On-Policy Distillation.",
+          "source_ids": [
+            "src-4e89b97b210c2aba"
+          ],
+          "event_ids": [
+            "ev-20260902-05"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260902-05-published",
+          "kind": "new",
+          "occurred_at": "2026-09-02T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "AMD 开源 Instella-MoE：完全在 Instinct GPU 上训练的 16B MoE",
+          "summary_en": "AMD open-sources Instella-MoE, a 16B MoE trained entirely on Instinct GPUs",
+          "evidence_ids": [
+            "ev-20260902-05-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260902-06",
@@ -310,7 +509,49 @@
       "verification_cost": 1,
       "risk": 2,
       "recommendation": "ADOPT",
-      "event_fingerprint": "google-gemini-3-8-flash-flash-cyber-release"
+      "event_fingerprint": "google-gemini-3-8-flash-flash-cyber-release",
+      "source_ids": [
+        "src-ef239918f16e1482",
+        "src-6a5ff55c6918f815"
+      ],
+      "project_ids": [
+        "gemini"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260902-06-evidence-summary",
+          "claim_zh": "Google 发布 Gemini 3.8 Flash——官方称「最智能的主力模型」，六周内第三个 Flash，速度与成本档位与 3.7 Flash 相同，在软件工程、agentic 任务与专业领域多步推理上提升：HLE-Verified 54.9%；DeepSWE v1.1 上以零头成本胜过多数更大的前沿模型。同期发布的 Gemini 3.8 Flash Cyber 是 Google 最强网络安全模型——前沿级漏洞发现与自动修补——仅通过 Fairwind 计划向受信任防御者（政府机构、关键基础设施运营方、软件维护方）开放：CWE-Bench（Collinear）pass@1 47.2%，对比某领先前沿模型的 47.8% 但成本显著更低；Chrome 正确补丁数是更大商业模型的 2.6 倍；Wiz 内部渗透基准召回率 +7.5-9.7 个百分点、成本低 2.3-5.2 倍；Google Cloud 漏洞研究团队不到 2 小时找到一个关键基础漏洞。3.8 Flash 介绍期定价：输入 $0.75/M、输出 $3.75/M（至 2026-12-31，之后 $1.50/$7.50）。可用范围覆盖 Antigravity、Gemini API、Stitch、Gemini Enterprise 与 AI Pro/Ultra；3.7 Flash 继续服务效率优先场景（3.8 Flash 在复杂任务上耗更多 token，可调低 effort 档）。两模型均按 Frontier Safety Framework 携带 CBRN 与网络攻击防护，并改进了提示注入鲁棒性（Gray Swan 度量）。Gemini 3.8 Flash 已于 9/3 进入 GitHub Copilot。",
+          "claim_en": "Google launched Gemini 3.8 Flash, its 'most intelligent workhorse model' — the third Flash release in six weeks — at the same speed and cost class as 3.7 Flash, with gains in software engineering, agentic tasks, and multi-step specialized reasoning. HLE-Verified 54.9%; on DeepSWE v1.1 it beats most larger frontier models at a fraction of the cost. Alongside it, Gemini 3.8 Flash Cyber is Google's most capable cybersecurity model — frontier-level vulnerability detection and automated patching — available only to trusted defenders (government authorities, critical-infrastructure operators, software maintainers) via the Fairwind Program: CWE-Bench (Collinear) pass@1 47.2% vs a leading frontier model's 47.8% at significantly lower cost; 2.6x more correct Chrome patches than much larger commercial models; Wiz reports +7.5-9.7% recall on internal pentest benchmarks at 2.3-5.2x lower cost; Google Cloud Vulnerability Research found a critical foundational vulnerability in under 2 hours. Intro pricing for 3.8 Flash: $0.75/M input and $3.75/M output until 2026-12-31, then $1.50/$7.50. Available across Antigravity, Gemini API, Stitch, Gemini Enterprise, and AI Pro/Ultra; 3.7 Flash remains supported for efficiency-first workloads (3.8 Flash uses more tokens on complex tasks, with lower effort levels available). Both models carry CBRN and cyber-offense safeguards under the Frontier Safety Framework plus improved prompt-injection robustness (Gray Swan). Gemini 3.8 Flash reached GitHub Copilot on 9/3.",
+          "source_ids": [
+            "src-ef239918f16e1482"
+          ],
+          "event_ids": [
+            "ev-20260902-06"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260902-06-published",
+          "kind": "new",
+          "occurred_at": "2026-09-02T00:00:00Z",
+          "discovered_at": "2026-09-05T00:00:21Z",
+          "summary_zh": "Google 发布 Gemini 3.8 Flash 与受控分发的 Flash Cyber 安全模型",
+          "summary_en": "Google ships Gemini 3.8 Flash and a gated Flash Cyber security model",
+          "evidence_ids": [
+            "ev-20260902-06-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260902-07",
@@ -362,7 +603,47 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "cursor-self-hosted-machines"
+      "event_fingerprint": "cursor-self-hosted-machines",
+      "source_ids": [
+        "src-b28194f531afc390"
+      ],
+      "project_ids": [
+        "cursor"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260902-07-evidence-summary",
+          "claim_zh": "Cursor 发布「Self-hosted machines」（9/2 changelog）：云代理的工具执行完全保留在客户自己的网络内——代码库、构建产物与密钥都不离开内部基础设施。调度采用动态资源池：个人的「My Machines」、可扩展的团队池、空闲 worker 休眠。云代理可以跑在既有沙箱上——AWS Lambda、Coder、Cloudflare、Daytona、Modal、Namespace、Vercel、E2B；computer use 支持自托管 Linux 与 Mac 机器。",
+          "claim_en": "Cursor shipped 'Self-hosted machines' (9/2 changelog): tool execution for cloud agents stays entirely on the customer's own network — codebases, build artifacts, and secrets remain on internal infrastructure. Scheduling is a dynamic pool: personal 'My Machines', scalable team pools, and idle-worker hibernation. Cloud agents can run on existing sandboxes — AWS Lambda, Coder, Cloudflare, Daytona, Modal, Namespace, Vercel, E2B — and computer use works on self-hosted Linux and Mac machines.",
+          "source_ids": [
+            "src-b28194f531afc390"
+          ],
+          "event_ids": [
+            "ev-20260902-07"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260902-07-published",
+          "kind": "new",
+          "occurred_at": "2026-09-02T00:00:00Z",
+          "discovered_at": "2026-09-05T00:00:21Z",
+          "summary_zh": "Cursor 云代理支持自托管机器，执行留在自己基础设施里",
+          "summary_en": "Cursor adds self-hosted machines so cloud agents run on your own infra",
+          "evidence_ids": [
+            "ev-20260902-07-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260902-08",
@@ -415,7 +696,47 @@
       "verification_cost": 1,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "meta-muse-spark-1-3"
+      "event_fingerprint": "meta-muse-spark-1-3",
+      "source_ids": [
+        "src-0da9cac4e3887c0c"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260902-08-evidence-summary",
+          "claim_zh": "Meta 超级智能实验室发布 Muse Spark 1.3（9/2），Muse Spark 线的 agentic coding 迭代：长时程任务续航更好、能从杂乱或冲突来源自行生成上下文、主动修补计划缺口、自记录学习；协作行为（对模糊提示追问、卡住时求助、后果性动作前确认）；长指令少丢约束；杂波单线程上下文（含打断）内路由更好；对自身知识边界更自省（「撞到墙而不是编造结果」）；编码输出更干净、少绕弯。Meta 工程师对比 1.2：工具调用少约 20%、token 少约 25%。已在 Muse Code 与 Meta Model API 可用（两平台均有 max reasoning 变体）；预告了 Muse Spark 开源权重发布但未给日期。",
+          "claim_en": "Meta Superintelligence Labs shipped Muse Spark 1.3 (9/2), an agentic-coding iteration of the Muse Spark line: better long-horizon task sustainment, generating its own context from messy or conflicting sources, proactively correcting plan gaps, and self-tracking learnings; collaboration behaviors (clarifying questions on ambiguous prompts, asking for help when stuck, confirming before consequential actions); fewer dropped constraints on long-form instructions; better routing inside messy single-threaded contexts including interruptions; improved self-awareness of knowledge limits ('hitting hurdles rather than hallucinating outcomes'); and cleaner coding output with fewer unnecessary turns. Meta engineer comparisons vs 1.2: ~20% fewer tool calls and ~25% fewer tokens. Available in Muse Code and the Meta Model API (max-reasoning variant live on both); a Muse Spark open-weights release is teased but undated.",
+          "source_ids": [
+            "src-0da9cac4e3887c0c"
+          ],
+          "event_ids": [
+            "ev-20260902-08"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260902-08-published",
+          "kind": "new",
+          "occurred_at": "2026-09-02T00:00:00Z",
+          "discovered_at": "2026-09-05T00:00:21Z",
+          "summary_zh": "Meta 迭代 Muse Spark：面向长时程 agentic coding",
+          "summary_en": "Meta iterates Muse Spark toward long-horizon agentic coding",
+          "evidence_ids": [
+            "ev-20260902-08-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

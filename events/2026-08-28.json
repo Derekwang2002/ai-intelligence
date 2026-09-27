@@ -60,7 +60,49 @@
       "verification_cost": 3,
       "risk": 1,
       "recommendation": "WATCH",
-      "event_fingerprint": "anthropic-automated-alignment-researchers-2026-08"
+      "event_fingerprint": "anthropic-automated-alignment-researchers-2026-08",
+      "source_ids": [
+        "src-a9acbff7bd542e61",
+        "src-9f49e2c2ea792062",
+        "src-963536afdd44118d",
+        "src-06cbaf185cf76fb8"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260828-01-evidence-summary",
+          "claim_zh": "Anthropic 报告：让 Claude 扮演自动化对齐研究员，自主跑完整研究闭环——检索文献、提方法与数据、训练、测试——对学生模型做针对 10 类对齐失败的 post-training，另有监督 agent 审查每个提议方法、Opus 4.8 充当作弊监视器。结果是在不损伤受检能力的前提下找到全部 10 类失败的修复方案：欺骗性维度平均关闭 85% 的安全差距（150+ 次尝试），6 名资深人类研究员平均只关闭 20%，Claude 的最佳欺骗修复方法比人类最佳提议高 20%。生产级测试中，Sonnet 5 对早期 Opus 4.8 checkpoint 做 post-training，60 小时、50+ 实验后达到接近生产线的对齐水平，胜出配方只用 2,000 出头训练样本——比标准对齐流程少约 15,000 倍。收益在循环中从未见过的留出评测、对抗式多轮模拟（Petri）以及大至 4.7 倍的模型上保持。研究 harness 已开源。",
+          "claim_en": "Anthropic reports that Claude, running as an automated alignment researcher, autonomously executed research loops — literature search, method and data proposal, training, testing — to post-train student models against 10 categories of alignment failure, with a monitoring agent reviewing every proposed method and an Opus 4.8 cheat monitor auditing transcripts. It found fixes for all 10 failure categories without degrading the checked capabilities, closing on average 85% of the deception safety gap across 150+ attempts; six experienced human researchers closed 20% on average, and Claude's best deception method beat the best human proposal by 20%. In a production-scale test, Sonnet 5 post-training an early Opus 4.8 checkpoint matched near-production alignment in 60 hours across 50+ experiments, with the winning recipe using just over 2,000 training examples — roughly 15,000x fewer than a standard alignment run. Gains held on held-out evaluations never shown during the loop, on adversarial multi-turn simulation (Petri), and on models up to 4.7x larger. The research harness is open-sourced.",
+          "source_ids": [
+            "src-a9acbff7bd542e61"
+          ],
+          "event_ids": [
+            "ev-20260828-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260828-01-published",
+          "kind": "new",
+          "occurred_at": "2026-08-28T00:00:00Z",
+          "discovered_at": "2026-08-29T11:35:46Z",
+          "summary_zh": "Anthropic：自动化研究员关闭了 85% 的欺骗性安全差距",
+          "summary_en": "Anthropic: automated researchers closed 85% of the deception safety gap",
+          "evidence_ids": [
+            "ev-20260828-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260828-02",
@@ -127,7 +169,49 @@
       "event_fingerprint": "tencent-hy4-preview-open-weights",
       "update_2026_08_31": "Adoption & follow-up check @2026-08-31T00:00Z: downloads 2,123 main (+~700 vs the 8/30 sample) + 319 likes; FP8 1,469 — modest velocity compared with the GLM-5.3-Flash cohort. No full Hy4 release yet; the announcement still only says the next batch is expected 'soon' (community speculates ~2.5 months to GA from the Hy3 precedent). Verification note: aggregators (datalearner etc.) list public benchmark scores (Terminal Bench 2.1 85.4, SWE-Bench Pro 65.7) that do NOT appear in the official announcement or the HF model card — unverified, not counted; the official page still shows only the internal blind test. Community GGUF compression to ~200GB claimed at ~98% performance retention (unverified). Recommendation stays WATCH.",
       "update_2026_09_02": "adoption check @2026-09-02T00:0xZ: 3,516 downloads (+66% vs 2,123 @8/31) + 383 likes — continued but still modest vs the GLM-5.3-Flash cohort; full Hy4 not shipped ('soon' unchanged), no official public benchmarks. Trend #1 criterion (b) candidate status unchanged. Stays WATCH",
-      "update_2026_09_05": "Adoption check @2026-09-05: 5,684 downloads (+62% vs 9/2) + 430 likes; FP8 2,666. Full Hy4 still not shipped (tencent org's latest repos remain Hy4-preview/Hy4-preview-FP8 from 8/27; flagship line still Hy3 from July). Third-party quantization ecosystem growing despite the preview: AngelSlim/Hy4-preview-GGUF 109,240 downloads; mlx-community 4bit; inferencerlabs MLX Q4i (9/2); anemll FlashMoE-STQ1_0 (9/3). Stays WATCH"
+      "update_2026_09_05": "Adoption check @2026-09-05: 5,684 downloads (+62% vs 9/2) + 430 likes; FP8 2,666. Full Hy4 still not shipped (tencent org's latest repos remain Hy4-preview/Hy4-preview-FP8 from 8/27; flagship line still Hy3 from July). Third-party quantization ecosystem growing despite the preview: AngelSlim/Hy4-preview-GGUF 109,240 downloads; mlx-community 4bit; inferencerlabs MLX Q4i (9/2); anemll FlashMoE-STQ1_0 (9/3). Stays WATCH",
+      "source_ids": [
+        "src-f55004a573850a67",
+        "src-87553218d4be0ba9",
+        "src-86501c6c2d3499f2",
+        "src-8c132669acb050f9"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260828-02-evidence-summary",
+          "claim_zh": "腾讯发布并开源了下一代大模型 Hy4 预览版：770B 参数 MoE，每 token 激活 49B，上下文超过 1M token；以标准与 FP8 两种权重上架，许可证为 Apache 2.0（以 HF 标签为准，公告正文未写许可）。主打场景：软件工程（规划、调试、前端质量）、办公（金融与数据分析、跨文档协作）、游戏开发（一句自然语言生成可玩原型）与科学研究。公开 benchmark 证据很薄：仅一项腾讯内部盲测——163 名专家、203 个工程任务，Hy4 预览版 2.99/4.00，略高于 GLM-5.3（2.92）与 Kimi K3（2.94）。官方称模型参与了自己的训练流水线，并自优化推理系统使端到端吞吐提升 31.8%。完整版 Hy4 尚未发布——官方采用 preview-first 策略，下一批「很快」。API 经腾讯云 TokenHub 与 OpenRouter 提供：输入 $0.834/M、输出 $2.501/M、缓存 $0.042/M。",
+          "claim_en": "Tencent released and open-sourced Hy4 preview, its next-generation LLM: a 770B-parameter MoE with 49B active per token and a context window beyond 1M tokens, shipped as standard and FP8 weights under Apache 2.0 (per HF tags; the announcement itself names no license). Target uses are software engineering (planning, debugging, front-end quality), office work (financial and data analysis, cross-document collaboration), game development (playable prototypes from a single prompt) and scientific research. Public benchmark evidence is thin: one internal Tencent blind test with 163 experts over 203 engineering tasks scored Hy4 preview 2.99/4.00, slightly ahead of GLM-5.3 (2.92) and Kimi K3 (2.94). Tencent says the model assisted its own training pipeline and self-optimized its inference stack for a 31.8% end-to-end throughput gain. The full Hy4 is not released yet — a preview-first rollout with the next batch 'soon'. API access via Tencent Cloud TokenHub and OpenRouter at $0.834/M input, $2.501/M output, $0.042/M cached.",
+          "source_ids": [
+            "src-f55004a573850a67"
+          ],
+          "event_ids": [
+            "ev-20260828-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260828-02-published",
+          "kind": "new",
+          "occurred_at": "2026-08-28T00:00:00Z",
+          "discovered_at": "2026-08-30T00:00:20Z",
+          "summary_zh": "腾讯开源 Hy4 预览版：770B MoE，Apache 2.0，1M 上下文",
+          "summary_en": "Tencent open-weights Hy4 preview: 770B MoE under Apache 2.0",
+          "evidence_ids": [
+            "ev-20260828-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260828-03",
@@ -186,7 +270,50 @@
       "risk": 4,
       "recommendation": "WATCH",
       "event_fingerprint": "openai-cursor-model-contract-windown",
-      "update_2026_08_29": "Coverage-gap recovery (statements dated 8/29, first seen 2026-08-31 run; wccftech 2026-08-29T15:22Z): Anthropic co-founder & Chief Compute Officer Tom Brown (X, 8/29) — Cursor 'has been a trusted partner of Anthropic since Sonnet 3.5', Anthropic will 'continue to increase compute to support Claude models in Cursor', 'excited for what comes next with them at SpaceX'; Cursor CEO Michael Truell (X, 8/29) — OpenAI models serve about 5% of Cursor user traffic and his team is 'speaking with the OpenAI team to resolve this'. Partially answers the watch item on who fills the Cursor model gap: Anthropic publicly commits to expanding Claude capacity in Cursor; Google models remain available; no xAI statement found. Recommendation stays WATCH."
+      "update_2026_08_29": "Coverage-gap recovery (statements dated 8/29, first seen 2026-08-31 run; wccftech 2026-08-29T15:22Z): Anthropic co-founder & Chief Compute Officer Tom Brown (X, 8/29) — Cursor 'has been a trusted partner of Anthropic since Sonnet 3.5', Anthropic will 'continue to increase compute to support Claude models in Cursor', 'excited for what comes next with them at SpaceX'; Cursor CEO Michael Truell (X, 8/29) — OpenAI models serve about 5% of Cursor user traffic and his team is 'speaking with the OpenAI team to resolve this'. Partially answers the watch item on who fills the Cursor model gap: Anthropic publicly commits to expanding Claude capacity in Cursor; Google models remain available; no xAI statement found. Recommendation stays WATCH.",
+      "source_ids": [
+        "src-b42ac281ecaf56c0",
+        "src-a92920b325e5f957",
+        "src-dcb45c8eee29d813",
+        "src-6e03c30408fa8acb"
+      ],
+      "project_ids": [
+        "cursor"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260828-03-evidence-summary",
+          "claim_zh": "OpenAI 宣布已通知 SpaceX：打算终止向 Cursor 提供 OpenAI 模型的合同，拟定切断日期 2026-11-12——这是协议下能给的最长通知期。给出的理由是：SpaceX 600 亿美元收购 Anysphere 交割后，OpenAI 表示无法确信 SpaceX 会在服务条款内使用其技术，并援引与马斯克系公司的既往经历（Twitter 违反 ToS；马斯克在宣誓作证时承认 xAI 违反过 OpenAI ToS）。这份定制协议含有限时的控制权变更取消窗口；OpenAI 称会把取消时点压到最后，但不再向 Cursor 提供未来的模型——明确点名了对即将发布的 Astra 的使用问责。开发者仍可在 Cursor 内通过自带 OpenAI API key（BYOK）或 Codex IDE 扩展继续使用 OpenAI 模型。",
+          "claim_en": "OpenAI announced it has notified SpaceX that it intends to wind down the contract providing OpenAI models to Cursor, with a proposed shutoff date of 2026-11-12 — the maximum notice available under the agreement. The reason given: after SpaceX's $60B acquisition of Anysphere closed, OpenAI says it cannot be confident SpaceX will use its technology within the terms of service, citing prior experience with Musk companies (Twitter's ToS breach; Musk admitting under oath that xAI violated OpenAI's ToS). The custom agreement includes a limited change-of-control cancellation window; OpenAI says it will hold the cancellation to the latest possible date while declining to provide future models to Cursor — explicitly naming accountability concerns around the upcoming model Astra. Developers can keep using OpenAI models inside Cursor via their own API key (bring-your-own-key) or the Codex IDE extension.",
+          "source_ids": [
+            "src-b42ac281ecaf56c0"
+          ],
+          "event_ids": [
+            "ev-20260828-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260828-03-published",
+          "kind": "new",
+          "occurred_at": "2026-08-28T00:00:00Z",
+          "discovered_at": "2026-08-30T00:00:20Z",
+          "summary_zh": "OpenAI 将于 11 月 12 日切断 Cursor 的模型合同供应",
+          "summary_en": "OpenAI will cut off Cursor's bundled model access on November 12",
+          "evidence_ids": [
+            "ev-20260828-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

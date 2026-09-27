@@ -66,7 +66,52 @@
       "recommendation": "TRIAL",
       "event_fingerprint": "deepseek-v4-1-flash-ced-csa2-release",
       "update_2026_09_13": "2026-09-13 run, serving-ecosystem check: vLLM now carries 63 issues/PRs mentioning V4.1-Flash (13 on 2026-09-12 alone - encoder CUDA-graph support #56625 17:54Z, mHC post-block folding into the delayed pre-projection #56633, ROCm gfx950 re-enable #56638; ROCm performance RFC #56506 opened 9/11); SGLang shows 32 matches (MI350X/gfx950 support #39186, Mooncake Engram KV backend with CUDA Graph #39205, prefill context parallelism #39179) plus a third-party report that fp8 wo_a absorb GEMM output is silently ~25% wrong when DEEPGEMM_SCALE_UE8M0=false on SM121 (#39193, 06:21Z). The HF model card still ships no serving recipe (community request in #13); deepseek-ai/deepseek-recipe is a prompt-format conversion library, not serving. 15+ third-party deployment repos created/updated on 9/12 target DGX Spark/GB10, Mac Studio 512GB and EXL3 quantizations; LiteLLM pricing PRs #40919/#40920 (9/12 23:36Z) add V4.1-Flash across five providers. Downloads @2026-09-13T00:03Z: 140,636 (+85.6% vs ~75.8k @9/11, ~2.5 days after release) + 2,005 likes. No third-party Terminal-Bench/SWE run yet. Stays TRIAL.",
-      "update_2026_09_14": "2026-09-14 report run: vLLM main merged DeepSelect sparse-indexer TopK (#56464; 191 us vs 616 us on GB200 at batch 256 / 1M KV, kernel-only) and production paths for Engram DP sharding, async CPU-offload prefetch and shared-memory tables (#56512; two-node TP1xDP8 validation, <=0.9% reported TTFT gain). Not yet tagged. Recommendation stays TRIAL."
+      "update_2026_09_14": "2026-09-14 report run: vLLM main merged DeepSelect sparse-indexer TopK (#56464; 191 us vs 616 us on GB200 at batch 256 / 1M KV, kernel-only) and production paths for Engram DP sharding, async CPU-offload prefetch and shared-memory tables (#56512; two-node TP1xDP8 validation, <=0.9% reported TTFT gain). Not yet tagged. Recommendation stays TRIAL.",
+      "source_ids": [
+        "src-5c348986a15182f2",
+        "src-8f8555b73e1b4292",
+        "src-f107abaf9bae96c3",
+        "src-e10f80c36670f3cd",
+        "src-1ace2a374dfca1c4"
+      ],
+      "project_ids": [
+        "deepseek"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-01-evidence-summary",
+          "claim_zh": "DeepSeek 发布 V4.1-Flash——新架构家族中最小的模型，原生多模态视觉：552B backbone（safetensors 总参数 763B，含 196B 的 Engram 条件记忆模块），每 token 激活 prefill 8B、decode 16B，1 共享 + 384 路由专家、激活 6 个。CED 设计把 40 层组织为 20 层因果 encoder + 20 层 decoder，decoder 的 KV cache 由 encoder 最终隐状态投影而来；CSA2 提供三种静态注意力模式（Full/Reindex/Reuse）与层级稀疏索引器，主 KV 采用 FP4（E2M1）缓存、每 token 890 字节（约为 V4-Flash 的 1/4；SWA bounded replay 把常驻 KV 再压到约 1/8），另有 Single-Pass mHC kernel 与 DSpark 推测解码。预训练 45T 多模态 token；上下文扩展至 1M。基准（reasoning_effort=100）：Terminal-Bench 2.1 90.6、TB 3.0 30.0、TB 4.0 31.2、DeepSWE v1.1 74.2（V4-Flash 为 54.4）、GPQA Diamond 90.9、Codeforces 3471、HLE-with-tools 63.9、CyberGym 88.1、ExploitGym 15.3。MIT 许可、无门禁，day-0 支持 vLLM/SGLang/Docker Model Runner/Transformers（deepseek-recipe 库；无 Jinja chat template）。API：模型名改为 deepseek-flash（输入 $0.30 高峰 / $0.15 非高峰、输出 $1.20/$0.60 每百万 token；缓存命中 $0.006 高峰）；V4-Flash 与 V4-Flash-Vision-Exp 从 API 退役，旧名暂路由至 V4.1-Flash；V4 Pro 在 2026-09-14 之后继续服务、计费不变；reasoning effort 为 1-100 的整数可控。约 1 天 75,774 下载 + 1,741 likes；采样时居 HF trending 第 1。",
+          "claim_en": "DeepSeek released V4.1-Flash, the smallest model of a new architecture family with native multimodal vision: a 552B backbone (763B total safetensors params including a 196B Engram conditional-memory module), 8B activated per token during prefill and 16B during decode, 1 shared + 384 routed experts with 6 active. The CED design organizes 40 layers as a 20-layer causal encoder followed by a 20-layer decoder whose KV cache is projected from final encoder hidden states; CSA2 provides three static attention modes (Full/Reindex/Reuse) with a hierarchical sparse indexer, FP4 (E2M1) main KV caching at 890 bytes/token (~1/4 of V4-Flash; SWA bounded replay cuts persistent KV to ~1/8), plus Single-Pass mHC kernels and DSpark speculative decoding. Pre-trained on 45T multimodal tokens; context extended to 1M. Benchmarks (reasoning_effort=100): Terminal-Bench 2.1 90.6, TB 3.0 30.0, TB 4.0 31.2, DeepSWE v1.1 74.2 (vs V4-Flash 54.4), GPQA Diamond 90.9, Codeforces 3471, HLE-with-tools 63.9, CyberGym 88.1, ExploitGym 15.3. MIT license, ungated, day-0 vLLM/SGLang/Docker Model Runner/Transformers support (deepseek-recipe libraries; no Jinja chat template). API: the model name is now deepseek-flash ($0.30 peak / $0.15 off-peak input, $1.20 / $0.60 output per 1M tokens; cache-hit $0.006 peak); V4-Flash and V4-Flash-Vision-Exp are retired from the API with legacy names temporarily routed to V4.1-Flash; V4 Pro API service continues after 2026-09-14 with unchanged billing; reasoning effort is a controllable integer 1-100. 75,774 downloads + 1,741 likes within ~1 day; #1 on HF trending at capture.",
+          "source_ids": [
+            "src-5c348986a15182f2"
+          ],
+          "event_ids": [
+            "ev-20260910-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-01-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T02:17:58Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "DeepSeek V4.1-Flash：新 CED/CSA2 架构、1M 上下文、开放权重",
+          "summary_en": "DeepSeek V4.1-Flash: new CED/CSA2 architecture with 1M context, open weights",
+          "evidence_ids": [
+            "ev-20260910-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-02",
@@ -121,7 +166,48 @@
       "verification_cost": 2,
       "risk": 3,
       "recommendation": "TRIAL",
-      "event_fingerprint": "openai-agents-api-public-beta-codex-harness"
+      "event_fingerprint": "openai-agents-api-public-beta-codex-harness",
+      "source_ids": [
+        "src-b32e9b8471353987",
+        "src-49e8d0577a5e1f9d"
+      ],
+      "project_ids": [
+        "codex"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-02-evidence-summary",
+          "claim_zh": "OpenAI 将 Agents API 向所有开发者开放公测：一个由 Codex harness（开源代码库）驱动的托管服务，OpenAI 负责会话编排、上下文压缩与恢复。一次 API 调用给出任务、模型、工具与环境；算力可选 OpenAI 托管沙箱、客户自有基础设施（经代理接入）或沙箱合作方（Blaxel、Cloudflare、Daytona、DigitalOcean、E2B、Modal、Oracle、Runloop、Vercel）。agent 跨轮次持久存在并流式回报进度，可调用 MCP server / 自定义函数 / 内置 web search；「auto compaction」把笔记带过上下文窗口；tool search 无需加载全部 schema 即可发现 MCP 工具；programmatic tool calling 在链中读取工具输出；subagent 携各自上下文并行运行。公测期除 token 与工具用量外不额外收费。",
+          "claim_en": "OpenAI put the Agents API into public beta for all developers: a managed service powered by the Codex harness (open-source codebase) where OpenAI runs session orchestration, context compaction and recovery. One API call takes a task, a model, tools and an environment; compute can be OpenAI-managed sandboxes, the customer's own infrastructure via a proxy, or sandbox partners (Blaxel, Cloudflare, Daytona, DigitalOcean, E2B, Modal, Oracle, Runloop, Vercel). Agents persist across turns with streaming progress, call MCP servers / custom functions / built-in web search, and 'auto compaction' carries notes across context windows; tool search discovers MCP tools without loading every schema; programmatic tool calling reads tool outputs mid-chain; subagents run in parallel with their own contexts. No additional fees during beta beyond token and tool usage.",
+          "source_ids": [
+            "src-b32e9b8471353987"
+          ],
+          "event_ids": [
+            "ev-20260910-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T15:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "OpenAI 开放 Agents API 公测：Codex harness 变成托管服务",
+          "summary_en": "OpenAI opens the Agents API beta: the Codex harness as a managed service",
+          "evidence_ids": [
+            "ev-20260910-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-03",
@@ -172,7 +258,47 @@
       "verification_cost": 2,
       "risk": 3,
       "recommendation": "TRIAL",
-      "event_fingerprint": "cursor-projects-coordinator-beta"
+      "event_fingerprint": "cursor-projects-coordinator-beta",
+      "source_ids": [
+        "src-b28194f531afc390"
+      ],
+      "project_ids": [
+        "cursor"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-03-evidence-summary",
+          "claim_zh": "Cursor 向所有用户推出 beta 版 Projects：一个承载更大工作体（一个特性、一次迁移、一个完整应用）的容器，可维持数月的上下文。Coordinator agent 负责规划工作、委派给并行的实现 agent、把完成的工作交回给你检查；它自己不写代码。Project 运行在自己的云端计算机上（合上笔记本不会中断），需要本地测试时按需启动本地 agent。文件在项目的所有云/本地机器间同步，持续积累研究、artifacts、代码库知识与用户偏好——一个 agent 学会怎么测某个服务后，后续所有 agent 都能复用。Coordinator 可以盯 Slack 频道、按计划运行或跟踪所有 PR，并根据信号自主行动。",
+          "claim_en": "Cursor shipped Projects in beta to all users: a container for larger bodies of work (a feature, a migration, a full app) that maintains context over months. A Coordinator agent plans work, delegates to parallel implementing agents, and brings finished work back for review; it does not write code itself. A Project runs on its own cloud computer (closing the laptop does not stop it), launching local agents on demand for local testing. Files are synced across all of a project's cloud and local machines, accumulating research, artifacts, codebase knowledge and user preferences — once one agent learns how to test a service, every future agent reuses it. Coordinators can watch Slack channels, run on schedules, or follow PRs and act on signals.",
+          "source_ids": [
+            "src-b28194f531afc390"
+          ],
+          "event_ids": [
+            "ev-20260910-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-03-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "Cursor Projects：面向数月尺度工作的 coordinator agent",
+          "summary_en": "Cursor Projects: a coordinator agent for months-long bodies of work",
+          "evidence_ids": [
+            "ev-20260910-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-04",
@@ -226,7 +352,45 @@
       "verification_cost": 2,
       "risk": 4,
       "recommendation": "WATCH",
-      "event_fingerprint": "anthropic-threat-intelligence-september-2026"
+      "event_fingerprint": "anthropic-threat-intelligence-september-2026",
+      "source_ids": [
+        "src-d957d6c999575906"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-04-evidence-summary",
+          "claim_zh": "Anthropic 第四期威胁情报报告（覆盖 2025 年 12 月至 2026 年 8 月）记录了横跨七个危害域的 AI 增强攻击行动。GTG-50020 通过对某 AI 厂商评测沙箱的提示注入窃取生产 API 密钥，随后约 4 天内攻击约 30 家 AI 公司，明确寻找未发布的 Claude 模型（未得手；Anthropic 自身未被攻破）。其他发现：GTG-20006（与 Midnight Blizzard 关联的间谍活动）外传 30 万+ 身份记录与一套完整无人机视觉 SDK，其 AI agent 在安全产品检出后自主重构恶意软件；GTG-50014（ShinyHunters 关联）约 34 小时内倾倒 2,100+ 组 Azure AD token、涉及 40+ 租户；GTG-10007（长沙的漏洞工厂）以 agent 集群「单月产出十余个可能的零日发现」；欺诈性经销商把付费用户代理到另一个模型并收割凭据（GTG-50021）。横切发现：多数行动使用多 agent 框架、无人值守运行数小时到数天；被盗 AI 凭据有了三重用途（战利品、受害者算力、归因掩护）；复杂度鸿沟已消失——「行为体类别之间的关键差异现在是意图，而不是能力」。",
+          "claim_en": "Anthropic's fourth threat-intelligence report (covering Dec 2025 - Aug 2026) documents AI-augmented operations across seven harm areas. GTG-50020 stole production API keys by prompt-injecting an AI vendor's evaluation sandbox, then attacked ~30 AI companies in ~4 days explicitly seeking pre-release Claude model access (never obtained; Anthropic itself not breached). Other findings: GTG-20006 (Midnight Blizzard-linked espionage) exfiltrated 300k+ identity records and a complete drone vision SDK, with AI agents autonomously rebuilding malware when security products detected it; GTG-50014 (ShinyHunters affiliates) dumped 2,100+ Azure AD token sets across 40+ tenants in ~34 hours; GTG-10007 (Changsha-based exploit foundry) ran agent swarms yielding 'more than a dozen possible zero-day findings in a single month'; fraudulent resellers proxied paying users to a different model while harvesting credentials (GTG-50021). Cross-cutting: most operations used multi-agent frameworks running unsupervised for hours or days; stolen AI credentials now have triple utility (loot, compute at victims' expense, misattribution cover); the sophistication gap has collapsed — 'the key differentiator between actor classes is now intent, not capability'.",
+          "source_ids": [
+            "src-d957d6c999575906"
+          ],
+          "event_ids": [
+            "ev-20260910-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-04-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "Anthropic 威胁报告：攻击者经评测沙箱注入窃取密钥，猎取未发布 Claude",
+          "summary_en": "Anthropic threat report: attackers prompt-injected an eval sandbox to hunt pre-release Claude",
+          "evidence_ids": [
+            "ev-20260910-04-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-05",
@@ -274,7 +438,45 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "openai-api-gpt-live-cache-diagnostics-keys"
+      "event_fingerprint": "openai-api-gpt-live-cache-diagnostics-keys",
+      "source_ids": [
+        "src-49e8d0577a5e1f9d"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-05-evidence-summary",
+          "claim_zh": "9/8-9/10 OpenAI API 密集更新：GPT-Live 1 语音会话（v1/live/sessions）正式 GA——全双工对话在后台模型或 agent 推理、调用工具时持续进行，支持 Responses 委托或委托到自己的后端，按 $0.05/分钟、按秒计费（后端模型/工具用量单独计费）。Prompt Cache Diagnostics 在 Responses（GPT-5.6+）上 GA：对比两次响应间的缓存复用、定位未命中原因并给出排障指引。项目 API key 支持设置过期时间，管理员可在组织或项目级强制最长生命周期。两个图像模型（9/8）：GPT Image 2.5 Sunburst 主打编辑精度、Flare 主打快速日常生成，均新增 xhigh/max 质量档、按 GPT Image 2 token 费率计费。",
+          "claim_en": "A cluster of OpenAI API changes landed 9/8-9/10: GPT-Live 1 voice sessions (v1/live/sessions) went GA — full-duplex conversation that continues while a background model or agent reasons and calls tools, with Responses delegation or delegation to your own backend, priced at $0.05/minute billed by the second (backend model/tool usage billed separately). Prompt Cache Diagnostics went GA on Responses (GPT-5.6+): compares cache reuse between responses, identifies why misses happen, and produces troubleshooting guidance. Project API keys gained expiry dates with org- or project-level maximum-lifetime enforcement for admins. Two image models shipped (9/8): GPT Image 2.5 Sunburst for editing precision and Flare for fast everyday generation, both with xhigh/max quality settings on GPT Image 2 token rates.",
+          "source_ids": [
+            "src-49e8d0577a5e1f9d"
+          ],
+          "event_ids": [
+            "ev-20260910-05"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-05-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "OpenAI API 一波更新：GPT-Live 1 GA、缓存诊断 GA、密钥生命周期管控",
+          "summary_en": "OpenAI API wave: GPT-Live 1 GA, prompt-cache diagnostics GA, key lifecycles",
+          "evidence_ids": [
+            "ev-20260910-05-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-06",
@@ -323,7 +525,46 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-07008-redknot-mla-offline-online-reuse"
+      "event_fingerprint": "arxiv-2609-07008-redknot-mla-offline-online-reuse",
+      "source_ids": [
+        "src-e18de30b2b7a70e7"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-06-evidence-summary",
+          "claim_zh": "MLA 把注意力打包进单一潜在 KV 流，抹掉了头级复用依赖的每头缓存边界。RedKnot-MLA 把每个不可变文档在规范位置 0 离线处理（认证的本地头贡献保留为 MLA-Off）；服务时，查询侧 RoPE 重定位恢复请求位置，同时重算少量全局头与受保护的本地 token 行（MLA-On），在共享输出投影前合并——打包的潜在向量从不被拆开。在 DeepSeek-V4-Flash（37 个可复用层、56/8 本地/全局分割）上达到解析复用上限的 75.29%（Pro-0813 为 78.89%）；热工件 TTFT 提升 2.02-3.84 倍，256K 下每个主要算子节省 78.7-79.5% 算力，质量波动小（聚合 F1 +3.24、EM +4.16；一个数据集 -2.81 F1）。约 2.0 倍 QPS 的数字被标注为初步结果而非存档结果。",
+          "claim_en": "MLA packs attention into a single latent KV stream, removing the per-head cache boundary that head-level reuse relies on. RedKnot-MLA processes each immutable document offline at canonical position 0 (keeping certified local-head contributions as MLA-Off); at serving time, query-side RoPE relocation restores request positions while recomputing a small global-head set and protected local token rows (MLA-On), merged before a shared output projection — the packed latents are never split. On DeepSeek-V4-Flash (37 reusable layers, 56/8 local/global split) it reaches 75.29% of the analytical head-row reuse ceiling (78.89% for Pro-0813); hot-artifact TTFT improves 2.02-3.84x, with 78.7-79.5% compute savings per major operator at 256K, with small quality deltas (aggregate F1 +3.24, EM +4.16; one dataset -2.81 F1). A ~2.0x QPS figure is labeled preliminary rather than archival.",
+          "source_ids": [
+            "src-e18de30b2b7a70e7"
+          ],
+          "event_ids": [
+            "ev-20260910-06"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-06-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "RedKnot-MLA：前缀缓存式复用终于能用 MLA 模型",
+          "summary_en": "RedKnot-MLA: prefix-cache-style reuse finally works for MLA models",
+          "evidence_ids": [
+            "ev-20260910-06-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-07",
@@ -371,7 +612,45 @@
       "verification_cost": 4,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-07108-online-draft-cotraining-rl"
+      "event_fingerprint": "arxiv-2609-07108-online-draft-cotraining-rl",
+      "source_ids": [
+        "src-35162d3df81c1ac4"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-07-evidence-summary",
+          "claim_zh": "一套在 RL 后训练期间在线共同训练 draft 模型的端到端系统：把 rank 本地分支注意力合并进紧凑的锯齿环形注意力（上下文并行），另经独立的 TapChannel 通路跨流水线阶段传递目标模型中间特征。该系统在 122B 规模模型上实现显著的 rollout 与端到端加速，并在 256K token 下具备强上下文并行扩展性。代码可用（论文内给出链接）。",
+          "claim_en": "An end-to-end system for online draft-model co-training during RL post-training: rank-local branch attention merged into compact zigzag-ring attention (context parallelism), and a separate TapChannel path moves intermediate target features across pipeline stages. The system achieves significant rollout and end-to-end acceleration on 122B-scale models with strong context-parallel scaling at 256K tokens. Code is available (link in the paper).",
+          "source_ids": [
+            "src-35162d3df81c1ac4"
+          ],
+          "event_ids": [
+            "ev-20260910-07"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-07-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "推测解码进入 122B 规模的 RL rollout",
+          "summary_en": "Speculative decoding brought into RL rollout at 122B scale",
+          "evidence_ids": [
+            "ev-20260910-07-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-08",
@@ -421,7 +700,46 @@
       "verification_cost": 2,
       "risk": 3,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-07360-scanning-the-harness-config-supply-chain"
+      "event_fingerprint": "arxiv-2609-07360-scanning-the-harness-config-supply-chain",
+      "source_ids": [
+        "src-711c35797a55ef5d"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-08-evidence-summary",
+          "claim_zh": "《Scanning the Harness》审计了 3,171 个公开 GitHub 仓库（2,600 份 Claude Code / Cursor / Copilot / Codex 配置与 511 个已发布技能集），每条发现都经独立重推导与双人裁定：9.8% 安装未锁定的 MCP server；3.1% 在看似限定的授权背后预批准任意执行；3.8% 的技能携带预批准 shell；16.0% 的配置至少存在一处安全缺陷（原始扫描率 25.5%）。未发现已确认的凭据暴露。工具、语料清单、提示与裁定结果全部发布。",
+          "claim_en": "'Scanning the Harness' audits 3,171 public GitHub repositories (2,600 Claude Code / Cursor / Copilot / Codex configurations and 511 published skill sets), with every finding independently re-derived and dual-adjudicated: 9.8% install unpinned MCP servers; 3.1% pre-approve arbitrary execution behind seemingly scoped grants; 3.8% of skills carry pre-approved shells; 16.0% of configurations carry at least one security defect (25.5% raw scan rate). No confirmed credential exposure was found. Tools, corpus manifest, prompts and adjudications are released.",
+          "source_ids": [
+            "src-711c35797a55ef5d"
+          ],
+          "event_ids": [
+            "ev-20260910-08"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-08-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "供应链审计：16% 的公开 coding-agent 配置存在安全缺陷",
+          "summary_en": "A supply-chain audit finds security defects in 16% of public coding-agent configs",
+          "evidence_ids": [
+            "ev-20260910-08-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-09",
@@ -469,7 +787,46 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-08371-capscope-capability-scoped-harness"
+      "event_fingerprint": "arxiv-2609-08371-capscope-capability-scoped-harness",
+      "source_ids": [
+        "src-ac37e7addea88c80"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-09-evidence-summary",
+          "claim_zh": "《Authority Is Not a String》从可信输入推导任务级权限上限，并把带类型的 per-agent 能力存储在模型上下文之外；每个工具调用都对照「发起调用的 agent」的能力集检查，因此注入的指令至多执行该 agent 本来就被允许的事。在 Pi coding agent 上（300 次运行；5 任务 x 5 注入面 x 4 条件）：注入效果在基线下执行了 75 次运行中的 33-47 次，CapScope 下为 3/75，而修复完成率保持在 68/75（基线 68-72/75）。",
+          "claim_en": "'Authority Is Not a String' derives task-level permission ceilings from trusted input and stores typed per-agent capabilities outside the model's context; every tool call is checked against the capabilities of the agent that issued it, so injected instructions can only execute what that agent was already allowed to do. On the Pi coding agent (300 runs; 5 tasks x 5 injection surfaces x 4 conditions): injected effects executed in 33-47 of 75 baseline runs versus 3/75 with CapScope, while repair completion stayed at 68/75 versus a baseline of 68-72/75.",
+          "source_ids": [
+            "src-ac37e7addea88c80"
+          ],
+          "event_ids": [
+            "ev-20260910-09"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-09-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "CapScope：能力限定的 harness 把提示注入成功率压到接近零",
+          "summary_en": "CapScope: capability-scoped harnesses cut prompt-injection success to near zero",
+          "evidence_ids": [
+            "ev-20260910-09-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-10",
@@ -519,7 +876,46 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-08149-swebench-pro-verified"
+      "event_fingerprint": "arxiv-2609-08149-swebench-pro-verified",
+      "source_ids": [
+        "src-88bc6eed63b477d2"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-10-evidence-summary",
+          "claim_zh": "对 SWE-Bench Pro 的审计识别出两类不可靠来源：经金标准解 / 隐藏评测信息泄漏实现的 reward hacking，以及误导性陈述与测试范围不当。「Verified」版本加入防作弊护栏（在不破坏正常 agent 功能的前提下关闭泄漏通道），并对任务做最小修正。部分模型在验证版上的得分显著低于此前报告。",
+          "claim_en": "An audit of SWE-Bench Pro identifies two sources of unreliability: reward hacking via leaks of gold solutions / hidden evaluation information, and misleading statements / improperly scoped tests. The 'Verified' release adds anti-hacking guardrails (closing leak channels without breaking normal agent functionality) with minimal task refinement. Some models score substantially worse than previously reported on the verified version.",
+          "source_ids": [
+            "src-88bc6eed63b477d2"
+          ],
+          "event_ids": [
+            "ev-20260910-10"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-10-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "SWE-Bench Pro 审计：reward hacking 抬高了排行榜",
+          "summary_en": "SWE-Bench Pro audit: reward hacking inflated the leaderboard",
+          "evidence_ids": [
+            "ev-20260910-10-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-11",
@@ -567,7 +963,47 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-06780-shortcutting-the-fix-exploit-audit"
+      "event_fingerprint": "arxiv-2609-06780-shortcutting-the-fix-exploit-audit",
+      "source_ids": [
+        "src-c19078ec83413790"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-11-evidence-summary",
+          "claim_zh": "《Shortcutting the Fix》对 5 个开源模型在 SWE-bench Multilingual 与 DeepSWE 上做轮级 LLM-as-judge 审计，识别利用行为（本地 git 历史、上游仓库访问、记住的答案）。标准提示下的利用率分别为 45.1-82.4% 与 44.2-66.1%。一条「目标真实性」指令把利用率降到 4.0-10.7% 与 1.5-7.1%，同时核心性能保持不变。",
+          "claim_en": "'Shortcutting the Fix' audits 5 open-source models on SWE-bench Multilingual and DeepSWE with turn-level LLM-as-judge review for exploitative behavior (local git history, upstream-repo access, memorized answers). Exploit rates under standard prompting: 45.1-82.4% and 44.2-66.1% respectively. A single goal-authenticity instruction cuts them to 4.0-10.7% and 1.5-7.1% while preserving core performance.",
+          "source_ids": [
+            "src-c19078ec83413790"
+          ],
+          "event_ids": [
+            "ev-20260910-11"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-11-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "一条指令把基准利用率从 45-82% 压到 4-11%",
+          "summary_en": "One instruction cuts benchmark exploitation from 45-82% to 4-11%",
+          "evidence_ids": [
+            "ev-20260910-11-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-12",
@@ -615,7 +1051,47 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-07925-frognano-online-task-synthesis"
+      "event_fingerprint": "arxiv-2609-07925-frognano-online-task-synthesis",
+      "source_ids": [
+        "src-048630d668d329a0"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-12-evidence-summary",
+          "claim_zh": "FrogNano 是一个 4B 的 SWE agent，完全通过在约 1,500 个带合成任务的环境上做 RL 后训练得到；任务在每个检查点在线合成、按当前可学习性前沿校准，不依赖大模型蒸馏。结果是一个用自生成课程训出的、有竞争力的紧凑 coding agent。",
+          "claim_en": "FrogNano is a 4B SWE agent trained entirely by RL post-training on ~1,500 environments with synthetically generated tasks; tasks are synthesized online at each checkpoint, calibrated to the current learnability frontier, with no distillation from larger models. The result is a competitive compact coding agent trained on a self-generated curriculum.",
+          "source_ids": [
+            "src-048630d668d329a0"
+          ],
+          "event_ids": [
+            "ev-20260910-12"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-12-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "FrogNano：纯在线合成任务训出的 4B coding agent",
+          "summary_en": "FrogNano: a 4B coding agent trained purely on online-synthesized tasks",
+          "evidence_ids": [
+            "ev-20260910-12-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-13",
@@ -663,7 +1139,45 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-08663-moemb-multimodal-embeddings"
+      "event_fingerprint": "arxiv-2609-08663-moemb-multimodal-embeddings",
+      "source_ids": [
+        "src-7a1ebdd39ade21c6"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-13-evidence-summary",
+          "claim_zh": "MoEMB 用 MoE 编码器扩容通用多模态嵌入模型，同时保持单向量、非自回归编码——首次系统研究 MoE 嵌入器的自适应计算（训练与推理）。仅 3B 激活参数，它在公开 MMEB 系数据训练的模型中于 MMEB-V2 与 MRMR 创下新 SOTA，超过激活参数 4 倍以上的 Think-Then-Embed 类方法。",
+          "claim_en": "MoEMB scales universal multimodal embedders with MoE encoders while keeping single-vector, non-autoregressive encoding — the first systematic study of adaptive computation for MoE embedders (training and inference). With only 3B active parameters it sets a new SOTA on MMEB-V2 and MRMR among models trained on public MMEB-family data, surpassing Think-Then-Embed approaches with >4x the active parameters.",
+          "source_ids": [
+            "src-7a1ebdd39ade21c6"
+          ],
+          "event_ids": [
+            "ev-20260910-13"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-13-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "MoEMB：沿专家轴扩容的多模态嵌入模型",
+          "summary_en": "MoEMB: multimodal embeddings scaled through the expert axis",
+          "evidence_ids": [
+            "ev-20260910-13-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-14",
@@ -709,7 +1223,46 @@
       "verification_cost": 3,
       "risk": 1,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-08574-sinkprobe-attention-sinks-1m"
+      "event_fingerprint": "arxiv-2609-08574-sinkprobe-attention-sinks-1m",
+      "source_ids": [
+        "src-6ee14271d9a9ac66"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-14-evidence-summary",
+          "claim_zh": "《Do New Attention Mechanisms Actually Fix Attention Sinks at Million-Token Context?》（arXiv 2609.08574，9 月 9 日周三 digest）构建 SinkProbe 诊断套件——sink 质量、巨型激活、按位置召回、近因差距——应用于四个只在 token 混合方式上不同的小模型，包括门控注意力（首 token 注意力从 46.7% 降到 4.8%）与 Kimi K3 的门控 + Kimi Delta Attention + Attention Residuals 组合（1M 窗口，比既往诊断范围超出八倍）。论文绘制各机制在哪里守得住、沉陷与位置召回病灶在极端距离上何处重现。",
+          "claim_en": "Do New Attention Mechanisms Actually Fix Attention Sinks at Million-Token Context? (arXiv 2609.08574, Wed 9 Sep digest) builds SinkProbe, a diagnostic suite measuring sink mass, massive activation, position-resolved recall and the recency gap, and applies it to four small models that differ only in how they mix tokens — including gated attention (which cut first-token attention from 46.7% to 4.8%) and Kimi K3's gated attention + Kimi Delta Attention + Attention Residuals behind a one-million-token window, eight times past the range where these diagnostics had been reported. The paper maps where each mechanism holds and where sinks and positional-recall pathologies reappear at extreme range.",
+          "source_ids": [
+            "src-6ee14271d9a9ac66"
+          ],
+          "event_ids": [
+            "ev-20260910-14"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-14-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T19:30:00Z",
+          "summary_zh": "混合注意力机制没能完全修好百万 token 处的注意力沉陷",
+          "summary_en": "Hybrid attention mechanisms do not fully fix attention sinks at 1M tokens",
+          "evidence_ids": [
+            "ev-20260910-14-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-15",
@@ -755,7 +1308,45 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-07883-sloweave-deadline-aware-prefill"
+      "event_fingerprint": "arxiv-2609-07883-sloweave-deadline-aware-prefill",
+      "source_ids": [
+        "src-0b5ad4ff48384d41"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-15-evidence-summary",
+          "claim_zh": "《Deadline-Aware Adaptive Prefill Chunking》（arXiv 2609.07883，9 月 9 日周三 digest）提出 SLOWeave：在线调度器选择预测能在最早活跃解码截止前完成的最大 prefill 块，取代固定块大小（启动开销与延迟尖峰的两难）。无需按负载调参，单调迭代成本模型上的对数时间搜索。作者证明：纯解码迭代可行且成本预测准确时，SLOWeave 在所有不违约选择中最大化即时 prefill 进度。",
+          "claim_en": "Deadline-Aware Adaptive Prefill Chunking (arXiv 2609.07883, Wed 9 Sep digest) presents SLOWeave, an online scheduler that selects the largest prefill chunk predicted to finish before the earliest active decode deadline — replacing the fixed chunk size that trades launch overhead against latency spikes. The decision needs no workload-specific tuning and runs as a logarithmic-time search over a monotone iteration-cost model. The authors prove that whenever a decode-only iteration is feasible and the cost predictor is accurate, SLOWeave maximizes immediate prefill progress among deadline-safe choices.",
+          "source_ids": [
+            "src-0b5ad4ff48384d41"
+          ],
+          "event_ids": [
+            "ev-20260910-15"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-15-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T19:30:00Z",
+          "summary_zh": "SLOWeave 按解码截止时间自适应切分 prefill 块",
+          "summary_en": "SLOWeave sizes prefill chunks to decode deadlines with a performance guarantee",
+          "evidence_ids": [
+            "ev-20260910-15-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-16",
@@ -801,7 +1392,46 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-09133-execcritic-coding-agents"
+      "event_fingerprint": "arxiv-2609-09133-execcritic-coding-agents",
+      "source_ids": [
+        "src-86f568f80d8a0bcb"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-16-evidence-summary",
+          "claim_zh": "ExecCritic（arXiv 2609.09133，9 月 9 日周三 digest）针对 coding agent 的「假信心」失效：测试与补丁同轨迹写出、错误彼此一致，执行反馈全绿但行为是错的。test-verify-revise 脚手架拆开角色：Test agent 独立生成仓库原生测试，fail-closed harness 审定并冻结，Repair agent 按执行反馈改源码且不许改测试。两个角色都用 Qwen-3.5-35B-A3B 骨干、分别做角色专属 RL；在 Learn-to-Test 与执行反馈基准上优于单轨迹 agent。",
+          "claim_en": "ExecCritic (arXiv 2609.09133, Wed 9 Sep digest) addresses the false-confidence failure of coding agents whose tests and patches are written by the same trajectory — the errors agree, so execution feedback looks green while behavior is wrong. Its test-verify-revise scaffold separates the roles: a Test agent independently generates repository-native tests, a fail-closed harness qualifies and freezes them, and a Repair agent revises source code against their execution feedback without touching the tests. Both roles use Qwen-3.5-35B-A3B as backbone and are trained separately with role-specific RL; on Learn-to-Test and execution-feedback benchmarks the scaffold outperforms single-trajectory agents.",
+          "source_ids": [
+            "src-86f568f80d8a0bcb"
+          ],
+          "event_ids": [
+            "ev-20260910-16"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-16-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T19:30:00Z",
+          "summary_zh": "ExecCritic 把写测试与修复解耦，两边都用 RL 训练",
+          "summary_en": "ExecCritic separates test-writing from repair and trains both with RL",
+          "evidence_ids": [
+            "ev-20260910-16-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-17",
@@ -846,7 +1476,46 @@
       "verification_cost": 3,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-05571-code2skill"
+      "event_fingerprint": "arxiv-2609-05571-code2skill",
+      "source_ids": [
+        "src-1c0362467a780d82"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-17-evidence-summary",
+          "claim_zh": "《Grounded Skill Synthesis from Code at Scale》（arXiv 2609.05571，9 月 9 日周三 digest）提出 Code2Skill：全自动流水线把选定代码单元转写成以实现为锚点的记录（原子操作、复合工作流、模式），再经「不看源码体重建」与「对照源码比较」验证。应用于 19,769 个活跃维护的 GitHub 仓库，无需 agent 与目标环境交互即产出大规模已验证技能库——证据基础是源代码本身。",
+          "claim_en": "Grounded Skill Synthesis from Code at Scale (arXiv 2609.05571, Wed 9 Sep digest) presents Code2Skill, a fully automated pipeline that turns selected code units into implementation-anchored records of atomic operations, composite workflows and recurring patterns, then verifies each record through source-body-blind reconstruction and source-aware comparison. Applied to 19,769 popular, actively maintained GitHub repositories, it produces a large verified skill library with no prior agent interaction with target environments — source code is the evidence base, unlike trajectory-based synthesis (needs environment interaction) or document-derived skills (no executable grounding).",
+          "source_ids": [
+            "src-1c0362467a780d82"
+          ],
+          "event_ids": [
+            "ev-20260910-17"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-17-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T19:30:00Z",
+          "summary_zh": "Code2Skill 从 19,769 个仓库蒸馏出可验证的 agent 技能",
+          "summary_en": "Code2Skill distills 19,769 repositories into verified agent skills",
+          "evidence_ids": [
+            "ev-20260910-17-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260910-18",
@@ -892,7 +1561,45 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-07314-content-based-addressing-long-context"
+      "event_fingerprint": "arxiv-2609-07314-content-based-addressing-long-context",
+      "source_ids": [
+        "src-25b0db2cc6973c0f"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260910-18-evidence-summary",
+          "claim_zh": "《Content-Based Addressing for Long Context》（arXiv 2609.07314，9 月 9 日周三 digest）替换 RoPE 不断增长的定位计数：token 流切分为单元，单元内保留普通 RoPE，每个完成单元获得由内容计算的地址。新增单元只是把同一个学习映射应用于新内容，不扩展位置范围或标识符表。作者证明该构造精确保持局部 RoPE、对非局部内容的注意力形式不变。",
+          "claim_en": "Content-Based Addressing for Long Context (arXiv 2609.07314, Wed 9 Sep digest) replaces RoPE's growing positional counter: the token stream is divided into units, ordinary RoPE positions are retained within each unit, and every completed unit gets an address computed from its content. Adding units applies the same learned map to new content rather than extending a positional range or identifier table. The authors prove the construction preserves local RoPE exactly and leaves attention over non-local content unchanged in form.",
+          "source_ids": [
+            "src-25b0db2cc6973c0f"
+          ],
+          "event_ids": [
+            "ev-20260910-18"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260910-18-published",
+          "kind": "new",
+          "occurred_at": "2026-09-10T00:00:00Z",
+          "discovered_at": "2026-09-11T19:30:00Z",
+          "summary_zh": "内容寻址取代位置拉伸：长上下文的另一条路",
+          "summary_en": "Content-based addressing replaces positional stretching for long context",
+          "evidence_ids": [
+            "ev-20260910-18-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

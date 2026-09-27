@@ -1,6 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import EventCard from '../EventCard.astro';
+import {words,pick} from '../../lib/intelligence';
+import SourceLinks from '../SourceLinks.astro';
+import {u} from '../../lib/url';
 import { t, catLabel, type Locale, type UiKey } from '../../lib/i18n';
 import events from '../../data/generated/events.json';
 import aggregates from '../../data/generated/aggregates.json';
@@ -65,7 +68,9 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
     </p>
   </div>
 
+  <details class="matrix-fold preference-fold"><summary>{words(locale,'工程精选：值得投入一次验证的工作','Engineering picks: worth a focused experiment')}</summary><div class="fold-body"><p class="muted">{words(locale,'依据工程价值与公开材料选择；不以热度或转载量排名。','Selected for engineering value and public artifacts, not attention or reposts.')}</p>{events.filter((e:any)=>e.editorial_pick).slice(0,3).map((e:any)=><article class="evidence-item"><h3><a href={u(`/events/${e.event_id}/`,locale)}>{locale==='zh'?e.title_zh:e.title}</a></h3><p>{pick(e.editorial_pick,'reason',locale)}</p><SourceLinks ids={e.editorial_pick.source_ids} locale={locale}/></article>)}</div></details>
   <div class="filter-bar">
+    <div class="filter-field"><label for="f-stage">{words(locale,'证据阶段','Evidence stage')}</label><select id="f-stage"><option value="">{words(locale,'全部','All')}</option><option value="verified">{words(locale,'已核实动态','Verified announcements')}</option><option value="frontier">{words(locale,'前沿观察','Frontier watch')}</option></select></div>
     <div class="filter-field">
       <span class="filter-label" id="f-cat-label">{t(locale, 'events.catLabel')}</span>
       <select id="f-cat" aria-labelledby="f-cat-label">
@@ -89,7 +94,7 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
     <span class="filter-count" id="f-count" aria-live="polite" data-suffix={t(locale, 'events.countSuffix')}></span>
   </div>
 
-  <div class="card ev-cal">
+  <details class="matrix-fold calendar-panel"><summary>{words(locale,'按日期查找','Browse by date')}</summary><div class="fold-body"><div class="card ev-cal">
     <div class="ev-cal-head">
       {t(locale, 'events.calendar')}
       <span class="legend-note">{t(locale, 'events.calendarNote')}</span>
@@ -119,6 +124,8 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
     </div>
   </div>
 
+  </div></details>
+
   <div id="event-list">
     {dateGroups.map(([date, list], i) => (
       <details class="ev-group" data-group={date} open={i < EV_OPEN}>
@@ -144,6 +151,7 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
   const search = document.getElementById('f-search') as HTMLInputElement;
   const cat = document.getElementById('f-cat') as HTMLSelectElement;
   const org = document.getElementById('f-org') as HTMLSelectElement;
+  const stage = document.getElementById('f-stage') as HTMLSelectElement;
   const chipsWrap = document.getElementById('f-rec-chips');
   const count = document.getElementById('f-count');
   const list = document.getElementById('event-list');
@@ -180,7 +188,7 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
         // 卡片默认不显示简介；仅当关键词命中摘要时揭开并取消截断，解释“为什么搜到它”
         if (el.classList.contains('summary')) {
           const hit = !!re && text.toLowerCase().includes(q);
-          el.hidden = !hit;
+          el.hidden = false;
           el.classList.toggle('has-hit', hit);
         }
       }
@@ -201,7 +209,7 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
       }
     };
 
-    const filtering = () => !!(search.value.trim() || cat.value || org.value || rec);
+    const filtering = () => !!(search.value.trim() || cat.value || org.value || stage.value || rec);
     const apply = (skipScroll = false) => {
       // 筛选会收缩页面高度：先回顶部再展示结果，避免滚动钳位造成的跳动（日历跳转时不跳）
       if (!skipScroll && window.scrollY > 240) window.scrollTo({ top: 0, behavior: 'instant' });
@@ -216,7 +224,7 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
           (!q || (card.dataset.q ?? '').includes(q)) &&
           (!cat.value || card.dataset.cat === cat.value) &&
           (!org.value || (card.dataset.org ?? '').split('|').includes(org.value)) &&
-          (!rec || card.dataset.rec === rec);
+          (!rec || card.dataset.rec === rec) && (!stage.value || card.dataset.stage === stage.value);
         card.hidden = !ok;
         paint(card, ok ? raw : '');
         if (ok) visible++;
@@ -236,6 +244,7 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
         search.value = '';
         cat.value = '';
         org.value = '';
+        stage.value = '';
         rec = '';
         for (const c of chipsWrap.querySelectorAll('.fchip')) c.classList.toggle('active', (c as HTMLElement).dataset.rec === '');
         apply(true);
@@ -253,7 +262,7 @@ const recCounts = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'].map((r) => ({
       if (!prefersReduced && document.startViewTransition) document.startViewTransition(apply);
       else apply();
     };
-    for (const el of [search, cat, org]) el.addEventListener('input', runApply);
+    for (const el of [search, cat, org, stage]) el.addEventListener('input', runApply);
     chipsWrap.addEventListener('click', (ev) => {
       const chip = (ev.target as HTMLElement).closest<HTMLElement>('.fchip');
       if (!chip) return;

@@ -9,6 +9,9 @@ interface Props {
 }
 const { locale = 'zh' } = Astro.props;
 
+// Archive previews are plain text; full citations stay on the reading page.
+const previewText = (value: unknown) => String(value ?? '').replace(/\[([^\]]+)\]\(https?:\/\/[^)]+\)/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1');
+
 // 日期字符串按 UTC 解析，避免本地时区把星期几算偏一天。
 function weekday(date: string): string {
   const d = new Date(`${date}T00:00:00Z`);
@@ -54,6 +57,9 @@ const byMonth = monthKeys.map((mk) => [mk, daily.filter((d: any) => String(d.dat
     <p class="desc">{t(locale, 'daily.desc')}</p>
   </div>
 
+  <details class="matrix-fold calendar-panel">
+    <summary>{t(locale, 'daily.calendar')}</summary>
+    <div class="fold-body">
   <div class="card dl-cal">
     <div class="ev-cal-head">
       {t(locale, 'daily.calendar')}
@@ -79,6 +85,9 @@ const byMonth = monthKeys.map((mk) => [mk, daily.filter((d: any) => String(d.dat
       ))}
     </div>
   </div>
+
+    </div>
+  </details>
 
   <div id="daily-list">
     {byMonth.map(([mk, list], mi) => (
@@ -110,9 +119,9 @@ const byMonth = monthKeys.map((mk) => [mk, daily.filter((d: any) => String(d.dat
                             {t(locale, h.kind === 'new' ? 'daily.kindNew' : 'daily.kindUpdate')}
                           </span>
                         )}
-                        <span class="d-hl-title">{h.title}</span>
+                        <span class="d-hl-title">{previewText(h.title)}</span>
                       </span>
-                      {h.body && <span class="d-hl-body">{h.body}</span>}
+                      {h.body && <span class="d-hl-body">{previewText(h.body)}</span>}
                     </span>
                   ))}
                   {extra > 0 && <span class="d-more">{t(locale, 'daily.moreItems').replace('{n}', String(extra))}</span>}

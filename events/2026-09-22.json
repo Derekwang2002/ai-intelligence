@@ -56,37 +56,89 @@
       "verification_cost": 3,
       "risk": 3,
       "recommendation": "ADOPT",
-      "event_fingerprint": "vllm-v0-30-0-fast-start-hisparse-security"
+      "event_fingerprint": "vllm-v0-30-0-fast-start-hisparse-security",
+      "source_ids": [
+        "src-3762ff1d2e307774"
+      ],
+      "project_ids": [
+        "vllm"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260922-01-evidence-summary",
+          "claim_zh": "vLLM 0.30.0 包含 762 个提交，来自 315 位贡献者。常驻的每 GPU 权重缓存让重启后的引擎通过 CUDA IPC 映射已经分片和量化的权重，不必再从磁盘加载。HiSparse 为稀疏 MLA 的 KV 页增加锁页主机内存层；Model Runner V2 扩展了流水线并行下的投机解码，并把一条 H200 启动路径从 28.9 秒压到 8.2 秒。该版本还修复响应放大、稀疏嵌入和媒体输入导致的拒绝服务风险。",
+          "claim_en": "vLLM 0.30.0 ships 762 commits from 315 contributors. A persistent per-GPU weight cache lets restarted engines map already sharded and quantized weights over CUDA IPC instead of loading them from disk. HiSparse adds a pinned-host-memory tier for sparse-MLA KV pages, while Model Runner V2 expands pipeline-parallel speculative decoding and cuts one H200 startup path from 28.9 seconds to 8.2 seconds. The release also closes response-amplification, sparse-embedding and media-input denial-of-service paths.",
+          "source_ids": [
+            "src-3762ff1d2e307774"
+          ],
+          "event_ids": [
+            "ev-20260922-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260922-01-published",
+          "kind": "new",
+          "occurred_at": "2026-09-22T05:20:54Z",
+          "discovered_at": "2026-09-22T16:02:37Z",
+          "summary_zh": "vLLM 0.30 加速重启并为稀疏 KV 增加主机层",
+          "summary_en": "vLLM 0.30 speeds restarts and adds a host tier for sparse KV",
+          "evidence_ids": [
+            "ev-20260922-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ],
+      "editorial_pick": {
+        "reason_zh": "对服务大型稀疏或混合模型的团队来说，重启时间和 GPU KV 压力已经成为 vLLM 的一等控制项，不再需要额外拼装方案。安全修复值得采用，但升级必须分阶段：scale-out endpoint 现在要显式打开，多项废弃环境变量已移除，YaRN 长度计算发生变化，部分不支持 decode-context parallelism 的后端会直接报错。",
+        "reason_en": "For teams serving large sparse or hybrid models, restart time and GPU KV pressure are now first-class vLLM controls rather than external workarounds. Adopt the security fixes, but stage the upgrade: scale-out endpoints now require an explicit flag, several deprecated variables are gone, YaRN length calculation changed, and some backends now fail fast when they cannot support decode-context parallelism.",
+        "source_ids": [
+          "src-3762ff1d2e307774"
+        ]
+      }
     },
     {
       "event_id": "ev-20260922-02",
       "title": "OpenAI releases GPT-6 Sol and Luna for coding and high-volume agents",
       "title_zh": "OpenAI 发布面向编码与高吞吐 agent 的 GPT-6 Sol 和 Luna",
       "category": "foundation-model",
-      "organization": ["OpenAI"],
+      "organization": [
+        "OpenAI"
+      ],
       "published_at": "2026-09-22T18:16:00Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-09-24T16:01:46Z",
+      "last_updated_at": "2026-09-27T00:44:11Z",
       "source_type": "official_announcement",
       "primary_source": "https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna/1399925",
       "secondary_sources": [
         "https://developers.openai.com/api/docs/models/gpt-6-sol",
         "https://developers.openai.com/api/docs/pricing",
-        "https://github.com/openai/codex/releases/tag/rust-v0.156.1"
+        "https://github.com/openai/codex/releases/tag/rust-v0.156.1",
+        "https://developers.openai.com/api/docs/changelog"
       ],
-      "summary": "OpenAI released GPT-6 Sol for complex coding and agent workflows and GPT-6 Luna for high-volume, cost-sensitive work. Both expose a 1.05M-token context window, 128K maximum output, multimodal input, built-in tools and reasoning levels from none through max. Standard short-context prices are $2/$10 per million input/output tokens for Sol and $0.10/$0.50 for Luna. Both are available through the API and supported paid-plan surfaces including Codex.",
-      "why_it_matters": "For teams routing agent workloads, the relevant choice is no longer one flagship model versus a cheap fallback. Sol and Luna provide two first-party operating points with the same tool and long-context surface, so teams can route by task difficulty without rewriting the harness. Trial them on completed-task cost, not token price alone.",
-      "summary_zh": "OpenAI 发布 GPT-6 Sol 和 GPT-6 Luna。Sol 面向复杂编码与 agent 工作流，Luna 面向高吞吐、成本敏感的任务。两者都提供 105 万 token 上下文、最多 12.8 万 token 输出、多模态输入、内置工具，以及从 none 到 max 的推理档位。短上下文标准价分别为 Sol 每百万输入/输出 token 2/10 美元，Luna 为 0.10/0.50 美元；API 与 Codex 等付费入口已经可用。",
-      "summary_en": "OpenAI released GPT-6 Sol for complex coding and agent workflows and GPT-6 Luna for high-volume, cost-sensitive work. Both expose a 1.05M-token context window, 128K maximum output, multimodal input, built-in tools and reasoning levels from none through max. Standard short-context prices are $2/$10 per million input/output tokens for Sol and $0.10/$0.50 for Luna. Both are available through the API and supported paid-plan surfaces including Codex.",
-      "why_it_matters_zh": "对做 agent 路由的团队来说，选择已经不再只是一个旗舰模型加一个廉价兜底。Sol 与 Luna 共享工具和长上下文接口，却提供两个明显不同的成本档位，可以按任务难度分流而不必重写 harness。试用时应比较单个完成任务的总成本，不能只看 token 单价。",
-      "why_it_matters_en": "For teams routing agent workloads, the relevant choice is no longer one flagship model versus a cheap fallback. Sol and Luna provide two first-party operating points with the same tool and long-context surface, so teams can route by task difficulty without rewriting the harness. Trial them on completed-task cost, not token price alone.",
+      "summary": "OpenAI released GPT-6 Sol and Luna for complex coding and cost-sensitive, high-volume work. Both support multimodal inputs and long context through the API and surfaces including Codex. A subsequent image-encoding fix warrants revisiting earlier visual evaluations.",
+      "why_it_matters": "Compare task-level cost and reliability before routing workloads. Revisit failed image-input cases before changing adoption decisions.",
+      "summary_zh": "OpenAI 发布 GPT-6 Sol 和 GPT-6 Luna，分别面向复杂编码与成本敏感的高吞吐任务。两者提供多模态输入和长上下文，并已接入 API 与 Codex 等入口。官方随后记录了图像编码修复。曾经评估视觉任务的团队应重新核对结果。",
+      "summary_en": "OpenAI released GPT-6 Sol and Luna for complex coding and cost-sensitive, high-volume work. Both support multimodal inputs and long context through the API and surfaces including Codex. A subsequent image-encoding fix warrants revisiting earlier visual evaluations.",
+      "why_it_matters_zh": "对做模型路由的团队来说，应在自己的任务上比较完成成本与可靠性。涉及图像输入时，先重跑此前的失败样例，再决定路由和采用等级。",
+      "why_it_matters_en": "Compare task-level cost and reliability before routing workloads. Revisit failed image-input cases before changing adoption decisions.",
       "technical_details": {
         "models": "gpt-6-sol and gpt-6-luna",
         "context": "1.05M tokens; 128K maximum output",
         "standard_pricing": "Sol $2 input / $10 output; Luna $0.10 input / $0.50 output per 1M tokens",
         "capabilities": "multimodal input, built-in tools, reasoning effort none through max",
         "availability": "API, ChatGPT Work and Codex on eligible paid plans",
-        "safety": "OpenAI classifies both High but below Critical for cyber and bio/chemical capability"
+        "safety": "OpenAI classifies both High but below Critical for cyber and bio/chemical capability",
+        "image_encoding_fix": "Official changelog dated September 25; no improvement magnitude reported."
       },
       "technical_details_zh": {
         "模型": "gpt-6-sol 与 gpt-6-luna",
@@ -94,9 +146,18 @@
         "标准价格": "Sol 每百万 token 输入 2 美元、输出 10 美元；Luna 输入 0.10 美元、输出 0.50 美元",
         "能力": "多模态输入、内置工具、none 至 max 推理档位",
         "可用性": "API、ChatGPT Work 与符合条件的 Codex 付费计划",
-        "安全分级": "OpenAI 将两者的网络安全与生物/化学能力评为 High，但未达到 Critical"
+        "安全分级": "OpenAI 将两者的网络安全与生物/化学能力评为 High，但未达到 Critical",
+        "图像编码修复": "官方 changelog 日期为 9 月 25 日；未披露改善幅度。"
       },
-      "tags": ["openai", "gpt-6", "coding", "agent", "long-context", "model-routing", "api"],
+      "tags": [
+        "openai",
+        "gpt-6",
+        "coding",
+        "agent",
+        "long-context",
+        "model-routing",
+        "api"
+      ],
       "technical_impact": 4,
       "engineering_value": 5,
       "adoption_signal": 4,
@@ -104,14 +165,89 @@
       "verification_cost": 3,
       "risk": 3,
       "recommendation": "TRIAL",
-      "event_fingerprint": "openai-gpt-6-sol-luna-release"
+      "event_fingerprint": "openai-gpt-6-sol-luna-release",
+      "source_ids": [
+        "src-c12530ce8eec01bd",
+        "src-e3a5934e3172ec52",
+        "src-00eaf917ab1113cf",
+        "src-6e556c3af2807b57",
+        "src-49e8d0577a5e1f9d"
+      ],
+      "project_ids": [
+        "gpt-6"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration-with-verified-update",
+      "evidence": [
+        {
+          "id": "ev-20260922-02-evidence-summary",
+          "claim_zh": "OpenAI 发布 GPT-6 Sol 和 GPT-6 Luna。Sol 面向复杂编码与 agent 工作流，Luna 面向高吞吐、成本敏感的任务。两者都提供 105 万 token 上下文、最多 12.8 万 token 输出、多模态输入、内置工具，以及从 none 到 max 的推理档位。短上下文标准价分别为 Sol 每百万输入/输出 token 2/10 美元，Luna 为 0.10/0.50 美元；API 与 Codex 等付费入口已经可用。",
+          "claim_en": "OpenAI released GPT-6 Sol for complex coding and agent workflows and GPT-6 Luna for high-volume, cost-sensitive work. Both expose a 1.05M-token context window, 128K maximum output, multimodal input, built-in tools and reasoning levels from none through max. Standard short-context prices are $2/$10 per million input/output tokens for Sol and $0.10/$0.50 for Luna. Both are available through the API and supported paid-plan surfaces including Codex.",
+          "source_ids": [
+            "src-c12530ce8eec01bd"
+          ],
+          "event_ids": [
+            "ev-20260922-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        },
+        {
+          "id": "ev-20260922-02-image-fix-evidence",
+          "claim_zh": "OpenAI 在 9 月 25 日记录了 GPT-6 Sol / Luna 的图像编码修复。涉及图像输入的评估需要重跑，旧结果可能受该问题影响。",
+          "claim_en": "OpenAI documented a GPT-6 Sol/Luna image-encoding fix on September 25. Recheck image-input evaluations that may have been affected.",
+          "source_ids": [
+            "src-49e8d0577a5e1f9d"
+          ],
+          "event_ids": [
+            "ev-20260922-02"
+          ],
+          "relation": "support",
+          "verification": "official-claim"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260922-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-22T18:16:00Z",
+          "discovered_at": "2026-09-24T16:01:46Z",
+          "summary_zh": "OpenAI 发布面向编码与高吞吐 agent 的 GPT-6 Sol 和 Luna",
+          "summary_en": "OpenAI releases GPT-6 Sol and Luna for coding and high-volume agents",
+          "evidence_ids": [
+            "ev-20260922-02-evidence-summary"
+          ],
+          "historical": true
+        },
+        {
+          "id": "ev-20260922-02-image-encoding-fix-20260925",
+          "kind": "update",
+          "occurred_at": "2026-09-25",
+          "discovered_at": "2026-09-27T00:44:11Z",
+          "summary_zh": "OpenAI 在 9 月 25 日记录了 GPT-6 Sol / Luna 的图像编码修复。涉及图像输入的评估需要重跑，旧结果可能受该问题影响。",
+          "summary_en": "OpenAI documented a GPT-6 Sol/Luna image-encoding fix on September 25. Recheck image-input evaluations that may have been affected.",
+          "evidence_ids": [
+            "ev-20260922-02-image-fix-evidence"
+          ],
+          "historical": false,
+          "importance": "major",
+          "recovery": "targeted-gap-review"
+        }
+      ],
+      "last_reviewed_at": "2026-09-27T00:44:11Z"
     },
     {
       "event_id": "ev-20260922-03",
       "title": "Anthropic releases Claude Opus 5.5 with lower agent costs",
       "title_zh": "Anthropic 发布 Claude Opus 5.5 并降低 agent 成本",
       "category": "foundation-model",
-      "organization": ["Anthropic"],
+      "organization": [
+        "Anthropic"
+      ],
       "published_at": "2026-09-22",
       "first_seen_at": "2026-09-24T16:01:46Z",
       "last_updated_at": "2026-09-24T16:01:46Z",
@@ -143,7 +279,15 @@
         "外部评估": "METR 无偿协议，获得十个工作日 API 访问；结论为初步 AI 研发能力评估",
         "可用性": "Anthropic API、AWS、Google Cloud、Azure、Claude Code 与 GitHub Copilot"
       },
-      "tags": ["anthropic", "claude", "opus-5.5", "coding", "agent", "pricing", "external-evaluation"],
+      "tags": [
+        "anthropic",
+        "claude",
+        "opus-5.5",
+        "coding",
+        "agent",
+        "pricing",
+        "external-evaluation"
+      ],
       "technical_impact": 4,
       "engineering_value": 5,
       "adoption_signal": 4,
@@ -151,20 +295,68 @@
       "verification_cost": 3,
       "risk": 3,
       "recommendation": "TRIAL",
-      "event_fingerprint": "anthropic-claude-opus-5-5-release"
+      "event_fingerprint": "anthropic-claude-opus-5-5-release",
+      "source_ids": [
+        "src-0dd3bed5c7dd1c27",
+        "src-f7250600fd3f1a40",
+        "src-23966244d47d35ba"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260922-03-evidence-summary",
+          "claim_zh": "Anthropic 发布 Claude Opus 5.5，这是 Claude 5.5 系列首个模型。每百万输入/输出 token 价格为 4/20 美元，缓存读取降至 0.20 美元，输出速度比 Opus 5 快 30% 以上；Anthropic 称典型任务总成本约低 40%。厂商报告其 Terminal-Bench 4.0 得分 66.4%、FrontierCode v1.1 得分 54.4%，同时提醒小幅 benchmark 差距越来越难代表真实体验。METR 获得了十个工作日的发布前 API 访问，判断它相对 Fable 5.1 是渐进改进，而不是能力跳变。",
+          "claim_en": "Anthropic released Claude Opus 5.5 as the first model in the Claude 5.5 family. It costs $4/$20 per million input/output tokens, cuts cache reads to $0.20, and is over 30% faster than Opus 5; Anthropic reports about 40% lower cost on typical workloads. The company reports 66.4% on Terminal-Bench 4.0 and 54.4% on FrontierCode v1.1, while warning that small benchmark margins are becoming less reliable. METR received ten business days of predeployment API access and described the AI-R&D gain over Fable 5.1 as incremental rather than discontinuous.",
+          "source_ids": [
+            "src-0dd3bed5c7dd1c27"
+          ],
+          "event_ids": [
+            "ev-20260922-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260922-03-published",
+          "kind": "new",
+          "occurred_at": "2026-09-22",
+          "discovered_at": "2026-09-24T16:01:46Z",
+          "summary_zh": "Anthropic 发布 Claude Opus 5.5 并降低 agent 成本",
+          "summary_en": "Anthropic releases Claude Opus 5.5 with lower agent costs",
+          "evidence_ids": [
+            "ev-20260922-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260922-04",
       "title": "Qwen Code 0.24.4 adds runtime attestation and plan-drift checks",
       "title_zh": "Qwen Code 0.24.4 增加运行时证明与计划漂移检查",
       "category": "developer-tools",
-      "organization": ["Alibaba", "Qwen"],
+      "organization": [
+        "Alibaba",
+        "Qwen"
+      ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
       "last_updated_at": "2026-09-26T16:01:48Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
-      "secondary_sources": ["https://github.com/QwenLM/qwen-code/releases/tag/v0.24.5", "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.6"],
+      "secondary_sources": [
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.5",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.6"
+      ],
       "summary": "Qwen Code 0.24.4 adds a managed runtime attestation contract, persistent managed tool-execution records and plan-drift reporting. It moves bubblewrap sandboxing to individual tool execution, supports SSH workspaces without a remote daemon, and can cap ACP child heaps. The release also adds encrypted connection profiles and safer QR pairing for remote sessions. It was published inside the retrieval overlap and was absent from the previous index.",
       "why_it_matters": "For teams running coding agents across local, remote and managed workers, a sandbox is only one part of the trust story. Attestation, durable execution records and plan-drift checks make it easier to prove which runtime acted and whether the implementation still matches the approved plan. Trial the controls before relying on them for policy enforcement because the release notes do not yet provide independent security validation.",
       "summary_zh": "Qwen Code 0.24.4 增加托管运行时证明协议、持久化的托管工具执行记录，以及计划漂移报告。bubblewrap 沙箱被下沉到单个工具执行层；SSH workspace 不再强制依赖远程 daemon，并可限制 ACP 子进程堆内存。远程会话还增加加密连接配置与更安全的二维码配对。该版本位于检索 overlap 区间，上一轮索引中没有记录。",
@@ -191,7 +383,14 @@
         "2026-09-26 更新": "0.24.5 stable 新增 Java attestation client，只有验证后才接纳 Managed Runtime；还加入实时轨迹耗时与检查、跨 rebase 保留的逐文件审查结论、私聊/群聊策略分离、按真实 bytes 判断 MCP media，以及过期工具调度的 ownership fence。维持 TRIAL。",
         "2026-09-27 更新": "0.24.6 stable 定义 v2 execute/status/cancel 运行时协议，加入带防护的 Hosted Runtime 基础、可故障转移的托管会话持久日志，并根据运行时证据核对 UNKNOWN 执行。多个权限 hook 冲突时现在选择最严格结论。项目 benchmark 中首次启动到可输入时间减半，RSS 降低 60%。维持 TRIAL。"
       },
-      "tags": ["qwen-code", "coding-agent", "attestation", "sandbox", "plan-drift", "remote-workspace"],
+      "tags": [
+        "qwen-code",
+        "coding-agent",
+        "attestation",
+        "sandbox",
+        "plan-drift",
+        "remote-workspace"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 3,
@@ -199,14 +398,91 @@
       "verification_cost": 3,
       "risk": 3,
       "recommendation": "TRIAL",
-      "event_fingerprint": "qwen-code-0-24-4-runtime-attestation"
+      "event_fingerprint": "qwen-code-0-24-4-runtime-attestation",
+      "source_ids": [
+        "src-f5d5f5b22f45e8b3",
+        "src-826169a7ece8e695",
+        "src-35e812e2fe0e58e1"
+      ],
+      "project_ids": [
+        "qwen-code"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260922-04-evidence-summary",
+          "claim_zh": "Qwen Code 0.24.4 增加托管运行时证明协议、持久化的托管工具执行记录，以及计划漂移报告。bubblewrap 沙箱被下沉到单个工具执行层；SSH workspace 不再强制依赖远程 daemon，并可限制 ACP 子进程堆内存。远程会话还增加加密连接配置与更安全的二维码配对。该版本位于检索 overlap 区间，上一轮索引中没有记录。",
+          "claim_en": "Qwen Code 0.24.4 adds a managed runtime attestation contract, persistent managed tool-execution records and plan-drift reporting. It moves bubblewrap sandboxing to individual tool execution, supports SSH workspaces without a remote daemon, and can cap ACP child heaps. The release also adds encrypted connection profiles and safer QR pairing for remote sessions. It was published inside the retrieval overlap and was absent from the previous index.",
+          "source_ids": [
+            "src-f5d5f5b22f45e8b3"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        },
+        {
+          "id": "ev-20260922-04-evidence-recorded-20260927",
+          "claim_zh": "Qwen Code 0.24.6 增加托管会话日志、故障转移和未知执行状态核对。",
+          "claim_en": "Qwen Code 0.24.6 adds a durable session journal, failover and reconciliation of unknown executions.",
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "source_ids": [
+            "src-35e812e2fe0e58e1"
+          ],
+          "relation": "support",
+          "verification": "historical"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260922-04-published",
+          "kind": "new",
+          "occurred_at": "2026-09-22T15:15:06Z",
+          "discovered_at": "2026-09-24T16:01:46Z",
+          "summary_zh": "Qwen Code 0.24.4 增加运行时证明与计划漂移检查",
+          "summary_en": "Qwen Code 0.24.4 adds runtime attestation and plan-drift checks",
+          "evidence_ids": [
+            "ev-20260922-04-evidence-summary"
+          ],
+          "historical": true
+        },
+        {
+          "id": "ev-20260922-04-update-recorded-20260927",
+          "kind": "update",
+          "occurred_at": "2026-09-26T00:42:00Z",
+          "discovered_at": "2026-09-26T16:01:48Z",
+          "summary_zh": "Qwen Code 0.24.6 增加托管会话日志、故障转移和未知执行状态核对。",
+          "summary_en": "Qwen Code 0.24.6 adds a durable session journal, failover and reconciliation of unknown executions.",
+          "evidence_ids": [
+            "ev-20260922-04-evidence-recorded-20260927"
+          ],
+          "historical": true
+        }
+      ],
+      "editorial_pick": {
+        "reason_zh": "对同时运行本地、远程和托管 coding agent 的团队来说，沙箱只是信任链的一部分。运行时证明、持久执行记录与计划漂移检查，让团队更容易确认究竟由哪个运行时执行，以及实现是否仍符合已批准计划。发布说明尚无独立安全验证，因此应先试用这些控制项，再决定是否把它们当成强制策略。",
+        "reason_en": "For teams running coding agents across local, remote and managed workers, a sandbox is only one part of the trust story. Attestation, durable execution records and plan-drift checks make it easier to prove which runtime acted and whether the implementation still matches the approved plan. Trial the controls before relying on them for policy enforcement because the release notes do not yet provide independent security validation.",
+        "source_ids": [
+          "src-f5d5f5b22f45e8b3"
+        ]
+      }
     },
     {
       "event_id": "ev-20260922-05",
       "title": "UK AISI publishes reproducible frontier evaluations through EvalEval",
       "title_zh": "英国 AISI 通过 EvalEval 发布可复现的前沿模型评估",
       "category": "business-policy",
-      "organization": ["UK AI Security Institute", "Hugging Face"],
+      "organization": [
+        "UK AI Security Institute",
+        "Hugging Face"
+      ],
       "published_at": "2026-09-22",
       "first_seen_at": "2026-09-24T16:01:46Z",
       "last_updated_at": "2026-09-24T16:01:46Z",
@@ -233,7 +509,14 @@
         "Benchmark": "HealthBench、FrontierMath、Humanity's Last Exam、SWE-Bench Pro、Terminal-Bench 2.0 与两项网络安全评估",
         "记录上下文": "模型配置、推理时算力与评估协议"
       },
-      "tags": ["evaluation", "evaleval", "aisi", "transparency", "benchmark", "policy"],
+      "tags": [
+        "evaluation",
+        "evaleval",
+        "aisi",
+        "transparency",
+        "benchmark",
+        "policy"
+      ],
       "technical_impact": 3,
       "engineering_value": 3,
       "adoption_signal": 2,
@@ -241,7 +524,46 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "WATCH",
-      "event_fingerprint": "uk-aisi-evaleval-reproducible-frontier-evaluations"
+      "event_fingerprint": "uk-aisi-evaleval-reproducible-frontier-evaluations",
+      "source_ids": [
+        "src-e9f63aa1f7aaa02f"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260922-05-evidence-summary",
+          "claim_zh": "英国 AI Security Institute 开始通过 EvalEval 的共享 schema 与 Evaluation Cards 发布经过核验的前沿模型结果。首批数据覆盖六个前沿模型，以及 HealthBench、FrontierMath、Humanity's Last Exam、SWE-Bench Pro、Terminal-Bench 2.0 和两项网络安全评估。每条记录都带有配置上下文与评估方法，不再只有一个排行榜分数。该工作还分析了推理时算力与评估协议如何改变最终成绩。",
+          "claim_en": "The UK AI Security Institute is publishing verified frontier-model results through EvalEval's shared schema and Evaluation Cards. The first release covers six frontier models across HealthBench, FrontierMath, Humanity's Last Exam, SWE-Bench Pro, Terminal-Bench 2.0 and two cyber evaluations. Each record carries configuration context and evaluation methods instead of only a leaderboard number. The publication also examines how inference-time compute and protocol choices change reported performance.",
+          "source_ids": [
+            "src-e9f63aa1f7aaa02f"
+          ],
+          "event_ids": [
+            "ev-20260922-05"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260922-05-published",
+          "kind": "new",
+          "occurred_at": "2026-09-22",
+          "discovered_at": "2026-09-24T16:01:46Z",
+          "summary_zh": "英国 AISI 通过 EvalEval 发布可复现的前沿模型评估",
+          "summary_en": "UK AISI publishes reproducible frontier evaluations through EvalEval",
+          "evidence_ids": [
+            "ev-20260922-05-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

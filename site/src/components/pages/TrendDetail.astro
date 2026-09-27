@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import EvidenceList from '../EvidenceList.astro';
+import ReaderActions from '../ReaderActions.astro';
+import {pick,words,trendStatus,confidenceLabel} from '../../lib/intelligence';
+import {u,fmtDate} from '../../lib/url';
+const {locale='zh',trend:t}=Astro.props;
+const supporting=(t.evidence||[]).filter((e:any)=>e.relation!=='counter'&&!e.superseded_by);
+const counter=(t.evidence||[]).filter((e:any)=>e.relation==='counter');
+const changes=(t.changes||[]).filter((c:any)=>c.before&&c.after);
+---
+<Base title={pick(t,'name',locale)} locale={locale}>
+<header class="editorial-head"><a class="eyebrow" href={u('/insights/#trends',locale)}>← {words(locale,'趋势','TRENDS')}</a><h1>{pick(t,'name',locale)}</h1><p class="lead">{pick(t,'why_it_matters',locale)}</p><div class="head-links"><span>{trendStatus(t.status,locale)} · {words(locale,'置信度','Confidence')} {confidenceLabel(t.confidence,locale)}</span><span>{words(locale,'最近实质更新','Material update')} {t.last_updated}</span></div><ReaderActions locale={locale} follow={`trend:${t.id}`} bookmark={`trend:${t.id}`}/></header>
+<div class="research-grid"><div><section class="reading-section"><h2>{words(locale,'当前判断','Current judgment')}</h2><p>{pick(t,'status_note',locale)}</p><p class="muted">{words(locale,'生命周期说明方向所处阶段，置信度说明证据强度。最近没有消息不等于方向失效。','Lifecycle describes the stage; confidence describes evidence strength. A quiet period alone does not invalidate a direction.')}</p></section>
+<section class="reading-section"><h2>{words(locale,'支持证据','Supporting evidence')}</h2><EvidenceList evidence={supporting.slice(-3)} locale={locale}/>{supporting.length>3&&<details class="matrix-fold"><summary>{words(locale,'展开更早证据','Earlier evidence')} · {supporting.length-3}</summary><div class="fold-body"><EvidenceList evidence={supporting.slice(0,-3)} locale={locale}/></div></details>}</section>
+<section class="reading-section"><h2>{words(locale,'反面证据与验证缺口','Counter-evidence & gaps')}</h2>{counter.length?<EvidenceList evidence={counter} locale={locale}/>:<p>{words(locale,'尚未记录结构化反面证据。这不表示不存在反例；以下验证条件仍需满足。','No structured counter-evidence is recorded. This does not establish the absence of counterexamples; the following verification conditions remain open.')}</p>}<p>{pick(t,'what_would_confirm',locale)}</p></section>
+<section class="reading-section"><h2>{words(locale,'判断修正','Changes in judgment')}</h2>{changes.length?changes.map((c:any)=><article class="evidence-item"><time>{fmtDate(c.occurred_at)}</time><p>{pick(c,'before',locale)||c.before} → {pick(c,'after',locale)||c.after}</p><p>{pick(c,'summary',locale)}</p></article>):<p class="muted">{words(locale,'暂无可追溯的结构化修正。旧快照仍可从洞察页查看，不根据当前状态推测过去判断。','No structured revision is available. Historical snapshots remain accessible from Insights; past judgments are not inferred from the current state.')}</p>}</section>
+<details class="matrix-fold preference-fold"><summary>{words(locale,'完整历史说明与复核记录','Historical notes & review log')}</summary><div class="fold-body"><ol>{(t[`evidence_${locale}`]||[]).map((s:string)=><li>{s}</li>)}</ol><h3>{words(locale,'逐次复核','Review log')}</h3><ol>{(t.updates||[]).map((v:any)=><li><time>{v.date}</time> · {pick(v,'note',locale)}</li>)}</ol></div></details>
+</div><aside class="research-aside"><section><h2>{words(locale,'接下来观察什么','What to watch next')}</h2><p>{pick(t,'what_would_confirm',locale)}</p><p class="muted">{words(locale,'首次观察','First observed')} · {t.first_observed}</p></section></aside></div>
+</Base>

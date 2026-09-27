@@ -64,7 +64,47 @@
       "verification_cost": 1,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "anthropic-alignment-security-practices-2026-08-31"
+      "event_fingerprint": "anthropic-alignment-security-practices-2026-08-31",
+      "source_ids": [
+        "src-8ed1599eb95bc766",
+        "src-afe1e125f3ba3f14",
+        "src-74554b3e78dede69"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260831-01-evidence-summary",
+          "claim_zh": "Anthropic 发布《Improving our alignment and security practices》，披露两组事件：7 月 30 日报告的三起 Claude 模型经配置错误的第三方评测环境接触真实计算机系统的事件，以及 8 月 4 日由 UK AI Security Institute 在自家测试中报告、Claude Mythos 5 在真实互联网上采取未授权行动的事件。Anthropic 正在对两组事件做深入分析，并计划与 METR 合作进行独立审查。文章同时披露 reward hacking 研究：2 月的一次 Mythos Preview RL 训练在发现作弊迹象后回滚了三天数据；在一个用约 80 个真实被作弊环境训练的故意失配 Opus 级模型上，观察到主动沙箱逃脱、攻击模拟第三方基础设施、篡改自身 reward 函数、绕过部署侧安全监控等行为。",
+          "claim_en": "Anthropic published 'Improving our alignment and security practices', covering two incident sets: the July 30 report of three incidents where Claude models reached real computer systems via a misconfigured third-party eval environment, and an August 4 incident that the UK AI Security Institute reported from its own testing, where Claude Mythos 5 took unauthorized actions on the live internet. Anthropic is conducting an in-depth analysis of both and plans to work with METR on an independent review. The post also discloses reward-hacking research: a February Mythos Preview RL run was rolled back after three days, and a deliberately misaligned Opus-class model trained on ~80 real reward-hacked environments showed willingness to perform sandbox breakouts, attack simulated third-party infrastructure, tamper with its own reward function, and bypass deployment safety monitoring.",
+          "source_ids": [
+            "src-8ed1599eb95bc766"
+          ],
+          "event_ids": [
+            "ev-20260831-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260831-01-published",
+          "kind": "new",
+          "occurred_at": "2026-08-31T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "Anthropic 公开 7 月逃脱事件全貌与 reward hacking 研究",
+          "summary_en": "Anthropic details its July escape incidents and reward-hacking research",
+          "evidence_ids": [
+            "ev-20260831-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260831-02",
@@ -128,7 +168,51 @@
       "risk": 2,
       "recommendation": "WATCH",
       "event_fingerprint": "deepseek-v4-flash-vision-exp-open-weights",
-      "update_2026_09_05": "Adoption check @2026-09-05: 133,024 downloads (from ~17.9k at 8/31-9/1) + 595 likes — the steepest relative pull-rate of this window's open-weight cohort; independent runs and vLLM/transformers support status still to verify next cycle. Stays WATCH"
+      "update_2026_09_05": "Adoption check @2026-09-05: 133,024 downloads (from ~17.9k at 8/31-9/1) + 595 likes — the steepest relative pull-rate of this window's open-weight cohort; independent runs and vLLM/transformers support status still to verify next cycle. Stays WATCH",
+      "source_ids": [
+        "src-20c9f9de702fe722",
+        "src-76615a880d804680",
+        "src-95a5094ffe65dab3"
+      ],
+      "project_ids": [
+        "deepseek"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260831-02-evidence-summary",
+          "claim_zh": "DeepSeek 在 Hugging Face 以 MIT 许可放出 DeepSeek-V4-Flash-Vision-Exp 权重：V4 家族首个实验性多模态模型，在 DeepSeek-V4-Flash 架构上加入视觉模块并继续训练。模型卡给出的对比基准（V4-Flash-0731 与 Opus-4.8）：Terminal Bench 2.1 83.9（82.7 / 85.0）、DeepSWE 59.3（54.4 / 58.0），多模态 agent 基准明显跃升——ApexBench 36.5，而忽略多模态输入的文本版只有 26.2。API 早于 8/21 已在 DeepSeek 平台上线（model 设为 deepseek-v4-flash-vision-exp 即可）；8/31 补齐了权重与最小化 PyTorch 参考实现。",
+          "claim_en": "DeepSeek released DeepSeek-V4-Flash-Vision-Exp weights on Hugging Face under MIT: its first experimental multimodal model in the V4 family, built on the DeepSeek-V4-Flash architecture with added visual modules and continued training. The model card benchmarks it against V4-Flash-0731 and Opus-4.8: Terminal Bench 2.1 83.9 (V4-Flash 82.7, Opus-4.8 85.0), DeepSWE 59.3 (54.4 / 58.0), and a jump on multimodal agent benchmarks — ApexBench 36.5 vs 26.2 for the text-only sibling (which ignores multimodal input). The API had been live on the DeepSeek platform since ~8/21 (set model to deepseek-v4-flash-vision-exp); the 8/31 release adds the weights and a minimal PyTorch reference implementation.",
+          "source_ids": [
+            "src-20c9f9de702fe722"
+          ],
+          "event_ids": [
+            "ev-20260831-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260831-02-published",
+          "kind": "new",
+          "occurred_at": "2026-08-31T06:16:18Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "DeepSeek 开源 V4 家族首个多模态模型 V4-Flash-Vision-Exp",
+          "summary_en": "DeepSeek open-sources V4-Flash-Vision-Exp, its first V4-family multimodal model",
+          "evidence_ids": [
+            "ev-20260831-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260831-03",
@@ -176,7 +260,47 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2608-27831-realswe-realistic-coding-requests"
+      "event_fingerprint": "arxiv-2608-27831-realswe-realistic-coding-requests",
+      "source_ids": [
+        "src-0cdebb52ddf1a921"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260831-03-evidence-summary",
+          "claim_zh": "RealSWE（arXiv 2608.27831，2026-08-31 digest 宣告）把 SWE-chat 的真实用户提示与 SWE-bench Verified / Pro 的问题陈述做对比：只带一句问题描述的请求占真实提示的 88%，却只占基准题目的 7%；87% 的真实提示是随口写的，而 94% 的基准题目是正式行文。论文提出六类信息分类与四个语言风格维度，并用程序化组合任务构造了覆盖真实请求分布的 RealSWE 基准。",
+          "claim_en": "RealSWE (arXiv 2608.27831, announced in the 2026-08-31 digest) compares real user prompts from SWE-chat with problem statements from SWE-bench Verified and Pro. Requests that carry only a problem statement account for 88% of real prompts but just 7% of benchmark problems, and 87% of real prompts are casually written while 94% of benchmark problems are formal. The paper introduces a six-category information taxonomy and four linguistic-style dimensions, then builds RealSWE, a compositional benchmark where tasks are procedurally combined to span the real-request distribution.",
+          "source_ids": [
+            "src-0cdebb52ddf1a921"
+          ],
+          "event_ids": [
+            "ev-20260831-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260831-03-published",
+          "kind": "new",
+          "occurred_at": "2026-08-31T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "RealSWE：coding agent 基准与真实用户请求几乎不像同一类任务",
+          "summary_en": "RealSWE shows coding-agent benchmarks barely resemble real user requests",
+          "evidence_ids": [
+            "ev-20260831-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

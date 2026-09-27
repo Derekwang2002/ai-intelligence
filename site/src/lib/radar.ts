@@ -15,10 +15,11 @@ export const RING_IDX: Record<string, number> = { ADOPT: 0, TRIAL: 1, WATCH: 2, 
 
 const DAY = 86400000;
 
-// 活动日期：last_updated_at 晚于发布日时以更新为准（复核过的事件值得留在雷达上）
+// 活动日期只取发布或实质更新；独立复核时间不进入雷达窗口。
 export function activityDate(e: any): string {
-  const pub = String(e?.published_date ?? '').slice(0, 10);
-  const upd = String(e?.last_updated_at ?? '').slice(0, 10);
+  const date = (v: string) => !v || v.length === 10 ? v : new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(v));
+  const pub = date(String(e?.published_at ?? e?.published_date ?? ''));
+  const upd = date(String(e?.last_updated_at ?? ''));
   return /^\d{4}-\d{2}-\d{2}$/.test(upd) && upd > pub ? upd : pub;
 }
 
@@ -48,7 +49,7 @@ function byScoreThenDate(a: RadarItem, b: RadarItem): number {
   return b.act.localeCompare(a.act) || String(a.e.event_id).localeCompare(String(b.e.event_id));
 }
 
-export function selectRadar(events: any[]): RadarSelection {
+export function selectRadar(events: any[], asOf?: string): RadarSelection {
   // 每个 fingerprint 只保留一个实体，取活动日期最新的一条
   const byFp = new Map<string, any>();
   for (const e of events) {
@@ -58,10 +59,10 @@ export function selectRadar(events: any[]): RadarSelection {
   }
   const unique = [...byFp.values()];
 
-  // 窗口以数据集内最新活动日期为锚（不用构建时间，保证构建可复现）
-  const maxDate = unique.map(activityDate).sort().at(-1) ?? '1970-01-01';
+  // 以成功扫描的资料截至日为锚，无新事件时旧条目仍应自然老化。
+  const maxDate = asOf ?? unique.map(activityDate).sort().at(-1) ?? '1970-01-01';
   const cutoffT = new Date(`${maxDate}T00:00:00Z`).getTime() - (RADAR_WINDOW_DAYS - 1) * DAY;
-  const inWindow = unique.filter((e) => new Date(`${activityDate(e)}T00:00:00Z`).getTime() >= cutoffT);
+  const inWindow = unique.filter((e) => activityDate(e) <= maxDate && new Date(`${activityDate(e)}T00:00:00Z`).getTime() >= cutoffT);
   const cutoff = new Date(cutoffT).toISOString().slice(0, 10);
 
   // 按象限 × 环分组，组内评分排序后截断到 RING_CAP

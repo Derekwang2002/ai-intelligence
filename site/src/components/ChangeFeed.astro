@@ -1,0 +1,39 @@
+---
+import {intel,words,pick,changeLabel} from '../lib/intelligence';
+import {u} from '../lib/url';
+import SourceLinks from './SourceLinks.astro';
+const {locale='zh',following=false,changes=intel.changes,controls=true}=Astro.props;
+const groups=new Map<string,any[]>();
+for(const c of changes){const key=`${c.object_type}:${c.object_id}`;if(!groups.has(key))groups.set(key,[]);groups.get(key)!.push(c);}
+const highlights=new Map(intel.briefings.filter((b:any)=>!b.baseline).flatMap((b:any)=>b.highlights.map((h:any,i:number)=>[h.change_id,{...h,rank:i}])));
+const entries=[...groups.values()].sort((a,b)=>Math.min(...a.map(c=>(highlights.get(c.id) as any)?.rank??99))-Math.min(...b.map(c=>(highlights.get(c.id) as any)?.rank??99)));
+---
+<section class="change-feed" data-feed data-following={following?'true':'false'} data-version={intel.as_of} data-locale={locale}>
+ {controls&&<div class="reading-controls" role="group" aria-label={words(locale,'阅读范围','Reading range')}>
+  <button data-range="today" class="fchip active" aria-pressed="true">{words(locale,'今天','Today')}</button>
+  <button data-range="week" class="fchip" aria-pressed="false">{words(locale,'最近七天','Past seven days')}</button>
+  <button data-range="unread" class="fchip" aria-pressed="false">{words(locale,'自上次读完','Since last read')}</button>
+  <span class="feed-count" aria-live="polite"></span>
+ </div>}
+ <p class="feed-empty empty-state" hidden>{words(locale,following?'当前范围内没有关注对象的新变化。可以调整时间范围，或去项目和洞察页添加关注。':'当前范围内没有新的重要变化。可以查看最近七天，或阅读最近一期简报。',following?'No changes from your follows in this range. Change the range or follow a project or insight.':'No important changes in this range. Explore the past week or the latest briefing.')}
+ <a href={u(`/daily/${intel.report_date}/`,locale)}>{words(locale,'最近一期简报','Latest briefing')} →</a></p>
+ <div class="feed-items">{entries.map(list=>{
+ const c=list[0];
+ const keys=[...(c.topic_ids||[]).map((id:string)=>`topic:${id}`),...c.project_ids.map((id:string)=>`project:${id}`),...c.scenario_ids.map((id:string)=>`scenario:${id}`),...c.trend_ids.map((id:string)=>`trend:${id}`),...intel.topics.filter((t:any)=>t.trend_ids.some((id:string)=>c.trend_ids.includes(id))).map((t:any)=>`topic:${t.id}`)];
+ const labels=Object.fromEntries(keys.map(key=>{const [type,id]=key.split(':');const item=type==='scenario'?intel.scenarios.find((s:any)=>s.id===id):intel.search.find((s:any)=>s.type===type&&s.id===id);return [key,pick(item,type==='scenario'?'name':'title',locale)||id]}));
+ return <article class="brief-item" data-feed-item data-follow-keys={JSON.stringify(keys)} data-follow-labels={JSON.stringify(labels)} hidden={controls&&!list.some(c=>c.date===intel.report_date)}>
+  <div class="brief-meta"><span class="change-kind">{changeLabel(c.kind,locale)}</span><time>{c.date}</time><span class="feed-reason"></span></div>
+  <h2><a href={u(c.path,locale)}>{pick(c,'title',locale)}</a></h2>
+  <div class="changes"><div class="latest-change"></div><details class="matrix-fold change-history" hidden><summary></summary><div class="fold-body"></div></details>{list.map((v:any)=><div data-change={JSON.stringify({id:v.id,date:v.date,historical:v.historical||false,kind:v.kind,highlight:highlights.has(v.id),importance:v.importance})}>
+    <p class="change-summary">{pick(v,'summary',locale)}</p>
+    {highlights.has(v.id)&&<p class="editor-note">{words(locale,'为什么读：','Why read: ')}{pick(highlights.get(v.id),'reason',locale)}</p>}
+    {v.before&&v.after&&<p>{pick(v,'before',locale)||v.before} → {pick(v,'after',locale)||v.after}</p>}
+    <SourceLinks ids={v.source_ids.slice(0,2)} compact locale={locale}/>
+    <button class="text-button" data-read={v.id}>{words(locale,'标为已读','Mark read')}</button>
+  </div>)}</div>
+  <a class="text-link" href={u(c.path,locale)}>{words(locale,'查看详情与证据','Details & evidence')} →</a>
+ </article>})}</div>
+ {following&&<div class="global-feed-items" hidden><h3>{words(locale,'全局重大变化','Major developments')}</h3><p class="muted">{words(locale,'这些变化影响范围较广，即使未关注相关对象也会保留。','These have wider implications and remain visible regardless of your follows.')}</p></div>}
+ <div class="reading-end"><span>{words(locale,'这一屏的变化，到这里就读完了。','You have reached the end of this page.')}</span><button class="quiet-button" data-complete>{words(locale,'以上内容已读','Mark this page read')}</button></div>
+ <button class="quiet-button feed-more" hidden>{words(locale,'再看十条','Show ten more')}</button>
+</section>

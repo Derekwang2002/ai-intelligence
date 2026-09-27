@@ -15,18 +15,13 @@ import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { marked } from 'marked';
+import { renderMarkdown } from './lib/markdown.mjs';
+import { loadKnowledge, projectKnowledge } from './lib/load-knowledge.mjs';
+import { publicationGate } from './lib/run-gate.mjs';
+import { reportDate } from './lib/intelligence.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const OUT = path.resolve(ROOT, 'site/src/data/generated');
-
-marked.setOptions({ gfm: true, breaks: false });
-
-function renderMarkdown(md) {
-  const html = marked.parse(md);
-  // External links open in a new tab; keep internal anchors untouched.
-  return html.replace(/<a href="https?:/g, '<a target="_blank" rel="noopener" href="');
-}
 
 async function readJson(file) {
   return JSON.parse(await readFile(file, 'utf8'));
@@ -49,7 +44,7 @@ async function readDirJson(dir) {
 
 function publishedDate(e) {
   const raw = String(e.published_at || '');
-  return /^\d{4}-\d{2}-\d{2}/.test(raw) ? raw.slice(0, 10) : e._fileDate;
+  return reportDate(raw);
 }
 
 async function loadEvents() {
@@ -324,6 +319,10 @@ async function loadTrends() {
 /* ---------- main ---------- */
 
 async function main() {
+  const knowledge = await loadKnowledge(ROOT);
+  const publicationErrors = publicationGate(knowledge.briefings, knowledge.state.last_successful_run_at, process.env.MATRIX_PENDING_RUN);
+  if (publicationErrors.length) throw new Error(publicationErrors.join('\n'));
+  const intelligence = projectKnowledge(knowledge);
   const [events, daily, trends] = await Promise.all([loadEvents(), loadDaily(), loadTrends()]);
   const stateFile = path.join(ROOT, 'state.json');
   const state = existsSync(stateFile) ? await readJson(stateFile) : {};
@@ -340,11 +339,15 @@ async function main() {
   const write = (name, data) => writeFile(path.join(OUT, name), JSON.stringify(data));
   await Promise.all([
     write('events.json', events),
+    write('intelligence.json', intelligence),
     write('aggregates.json', aggregates),
     write('daily.json', daily),
     write('trends.json', trends),
     write('state.json', siteState),
   ]);
+
+  await mkdir(path.join(ROOT, 'site/public/data'), { recursive: true });
+  await writeFile(path.join(ROOT, 'site/public/data/search.json'), JSON.stringify(intelligence.search));
 
   console.log(
     `[prepare-data] ${events.length} events, ${daily.length} daily reports, ` +

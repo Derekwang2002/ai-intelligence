@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import ReaderActions from '../ReaderActions.astro';
+import SourceLinks from '../SourceLinks.astro';
+import events from '../../data/generated/events.json';
+import {intel,pick,words} from '../../lib/intelligence';
+import {u,fmtDate} from '../../lib/url';
+const {locale='zh',project:p}=Astro.props;
+const related=events.filter(e=>p.event_ids.includes(e.event_id)).sort((a,b)=>b.last_updated_at.localeCompare(a.last_updated_at));
+const latest:any=related.find(e=>e.event_id===p.current_judgment_event_id)||related[0];
+const changes=intel.changes.filter((c:any)=>c.object_type==='event'&&p.event_ids.includes(c.object_id)&&c.kind!=='new');
+const tech=locale==='zh'?latest?.technical_details_zh:latest?.technical_details;
+const availability=Object.entries(tech||{}).filter(([k])=>/可用|开放|部署|许可|成本|定价|availability|licens|pricing|deploy/i.test(k));
+const reviews=intel.reviews.filter((r:any)=>p.event_ids.includes(r.event_id)&&(r.status==='pending'||r.next_review_at));
+---
+<Base title={pick(p,'name',locale)} locale={locale}>
+<header class="editorial-head"><a class="eyebrow" href={u('/projects/',locale)}>← {words(locale,'项目档案','PROJECTS')}</a><h1>{pick(p,'name',locale)}</h1><p class="lead">{latest?pick(latest,'why_it_matters',locale):''}</p><ReaderActions locale={locale} follow={`project:${p.id}`} bookmark={`project:${p.id}`}/><p class="muted">{words(locale,'档案最近实质更新','Last material update')} · {fmtDate(p.as_of)}</p></header>
+<div class="research-grid"><div>
+ <section class="reading-section"><h2>{words(locale,'当前依据','Current basis')}</h2>{latest&&<><p>{pick(latest,'summary',locale)}</p><p><span class="rec-pill">{latest.recommendation}</span> <a href={u(`/events/${latest.event_id}/`,locale)}>{words(locale,'查看这项建议的背景与限制','Read the basis and limits of this recommendation')} →</a></p></>}
+ <div class="scenario-links">{p.scenario_ids.map((id:string)=>{const s=intel.scenarios.find((s:any)=>s.id===id);return <a href={u(`/following/?scenario=${id}`,locale)}>{pick(s,'name',locale)} →</a>})}</div></section>
+ {availability.length>0&&<section class="reading-section"><h2>{words(locale,'可用性与采用条件','Availability & adoption')}</h2><dl class="fact-list">{availability.map(([k,v])=><div><dt>{k}</dt><dd>{typeof v==='object'?JSON.stringify(v):String(v)}</dd></div>)}</dl></section>}
+ {changes.length>0&&<section class="reading-section"><h2>{words(locale,'近期变化','Recent changes')}</h2>{changes.slice(0,5).map((c:any)=><article class="evidence-item"><time>{c.date}</time><p>{pick(c,'summary',locale)}</p><SourceLinks ids={c.source_ids} compact locale={locale}/></article>)}</section>}
+ <section class="reading-section"><h2>{words(locale,'进展时间线','Timeline')}</h2><div class="timeline">{related.map((e:any)=><article><time>{fmtDate(e.last_updated_at)}</time><h3><a href={u(`/events/${e.event_id}/`,locale)}>{locale==='zh'?e.title_zh:e.title}</a></h3><p>{pick(e,'summary',locale)}</p><SourceLinks ids={e.source_ids.slice(0,1)} compact locale={locale}/></article>)}</div></section>
+</div><aside class="research-aside"><section><h2>{words(locale,'外部资源','External resources')}</h2><SourceLinks ids={[...new Set([...(p.official_source_ids||[]),...(latest?.source_ids||[])])].slice(0,6)} locale={locale}/><p>{words(locale,'档案复核','Record reviewed')} · {(p.last_reviewed_at?fmtDate(p.last_reviewed_at):null)||words(locale,'未记录','Not recorded')}</p></section>
+<section><h2>{words(locale,'下一观察点','What to check next')}</h2><p>{words(locale,'后续复核关注可用阶段、公开产物和独立验证。没有新证据时不会自动提高建议等级。','Follow-ups check availability, public artifacts and independent evidence. Recommendations do not improve without new evidence.')}</p>{reviews.length>0?<p>{reviews.length} {words(locale,'项复核待处理；排队不代表已经核验。','pending checks. Queued does not mean verified.')}</p>:<p>{words(locale,'当前没有排队中的复核。','No follow-up is currently queued.')}</p>}</section>
+</aside></div>
+</Base>

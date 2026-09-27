@@ -7,4 +7,5 @@ const base = process.env.ASTRO_BASE?.replace(/\/+$/, '') || '/';
 export default defineConfig({
   site: 'https://derekwang2002.github.io',
   base,
+  devToolbar: { enabled: false },
 });

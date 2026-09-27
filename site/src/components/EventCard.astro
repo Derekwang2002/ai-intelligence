@@ -24,14 +24,14 @@ const shownTags = allTags.slice(0, 2);
 const hiddenItems = [...orgs.slice(2), ...allTags.slice(2)];
 ---
 
-<a class="event-card" href={href} data-cat={event.category} data-rec={event.recommendation} data-org={(event.organization ?? []).join('|')} data-tags={(event.tags ?? []).join('|')} data-q={`${event.title} ${event.title_zh ?? ''} ${event.summary ?? ''} ${event.summary_zh ?? ''} ${(event.organization ?? []).join(' ')} ${(event.tags ?? []).join(' ')}`.toLowerCase()}>
+<a class="event-card" href={href} data-stage={event.evidence_stage} data-cat={event.category} data-rec={event.recommendation} data-org={(event.organization ?? []).join('|')} data-tags={(event.tags ?? []).join('|')} data-q={`${event.title} ${event.title_zh ?? ''} ${event.summary ?? ''} ${event.summary_zh ?? ''} ${(event.organization ?? []).join(' ')} ${(event.tags ?? []).join(' ')}`.toLowerCase()}>
   <div class="top">
     <span class="date">{event.published_date}</span>
     <span class="cat-chip">{catLabel(event.category, locale)}</span>
     <RecBadge rec={event.recommendation} locale={locale} />
   </div>
   <h3>{title}</h3>
-  {!compact && summary && <p class="summary" hidden>{summary}</p>}
+  {!compact && summary && <p class="summary">{summary}</p>}
   <div class="bottom">
     {shownOrgs.map((org: string) => <span class="tag">{org}</span>)}
     {shownTags.map((tag: string) => <span class="tag">{tag}</span>)}

@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import ReaderActions from '../ReaderActions.astro';
+import EvidenceList from '../EvidenceList.astro';
+import {intel,pick,words} from '../../lib/intelligence';
+import {u,fmtDate} from '../../lib/url';
+const {locale='zh',topic:t}=Astro.props;
+const evidence=t.evidence_ids.map((id:string)=>intel.evidence.find((e:any)=>e.id===id)).filter(Boolean);
+const supporting=evidence.filter((e:any)=>e.relation!=='counter');const counter=evidence.filter((e:any)=>e.relation==='counter');
+---
+<Base title={pick(t,'question',locale)} locale={locale}>
+<header class="editorial-head"><a class="eyebrow" href={u('/insights/#topics',locale)}>← {words(locale,'研究专题','RESEARCH TOPICS')}</a><h1>{pick(t,'question',locale)}</h1><p class="lead">{pick(t,'answer',locale)}</p><p class="muted">{words(locale,'资料截至','As of')} {fmtDate(t.as_of)} · {words(locale,'基于档案证据的分析','Analysis based on archive evidence')}</p><ReaderActions locale={locale} follow={`topic:${t.id}`} bookmark={`topic:${t.id}`}/></header>
+<div class="research-grid"><div><section class="reading-section"><h2>{words(locale,'适用边界','Scope of the answer')}</h2><p>{pick(t,'boundary',locale)}</p></section><section class="reading-section"><h2>{words(locale,'开放问题','Open questions')}</h2><ul>{t[`questions_${locale}`].map((q:string)=><li>{q}</li>)}</ul></section><section class="reading-section"><h2>{words(locale,'支持材料','Supporting material')}</h2><EvidenceList evidence={supporting.slice(-3)} locale={locale}/>{supporting.length>3&&<details class="matrix-fold"><summary>{words(locale,'更多证据','More evidence')} · {supporting.length-3}</summary><div class="fold-body"><EvidenceList evidence={supporting.slice(0,-3)} locale={locale}/></div></details>}</section><section class="reading-section"><h2>{words(locale,'反面材料','Counter-evidence')}</h2>{counter.length?<EvidenceList evidence={counter} locale={locale}/>:<p>{words(locale,'目前尚未记录直接反证，不能据此认定结论已经成立。独立复现与实际部署仍是下一步验证重点。','No direct counter-evidence is recorded. That alone does not establish the conclusion. Independent reproduction and actual deployments remain the next checks.')}</p>}</section></div>
+<aside class="research-aside"><section><h2>{words(locale,'复核条件','Review trigger')}</h2><p>{pick(t,'review_trigger',locale)}</p></section><h2>{words(locale,'相关趋势','Related trends')}</h2>{t.trend_ids.map((id:string)=>{const tr=intel.trends.find((v:any)=>v.id===id);return <p><a href={u(`/trends/${id}/`,locale)}>{pick(tr,'name',locale)} →</a></p>})}<p class="muted">{words(locale,'专题随扫描任务更新。关注仅保存阅读偏好，不启动额外研究或通知。','Topics are updated by scheduled research. Following saves a preference; it does not start a separate investigation or notification.')}</p></aside></div>
+</Base>

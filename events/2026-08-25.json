@@ -79,7 +79,52 @@
       "update_2026_09_02": "adoption check @2026-09-02T00:0xZ: 441,348 downloads (+27% vs 346,516 @8/31, ~8 days after listing) + 1,878 likes; unsloth GLM-5.3-Flash-GGUF derivative at 63,718 downloads (repo created 8/26). Deployment-friction threads on HF (vLLM crash 'pe_dim must be 64 for fp8_ds_mla' on RTX PRO 6000 Blackwell #19, missing Glm5NextTextLinearAttention module #26, single-MI300 serving #34) plus a community hands-on coding/agentic test (#32) show real deployment activity but also an immature serving path; independent long-context throughput numbers still absent. Stays TRIAL",
       "update_2026_09_05": "Adoption check @2026-09-05: 654,957 downloads (+48% vs 9/2) + 2,044 likes; unsloth GLM-5.3-Flash-GGUF at 85,158. Discussion #38 (9/2) is a genuine third-party deployment report: FP8 on 2x L40S (sm_89) + EPYC 9845 with setup notes, patches and throughput numbers — the first independent throughput data point for the Flash line (long-context-specific throughput still absent); #40 reports unsloth Q3 tokens/s roughly doubling with low VRAM + sufficient RAM. Stays TRIAL",
       "update_2026_09_12": "2026-09-12 third-pass backfill: security-relevant research on these weights — refusal-direction ablation (arXiv 2609.09793, ev-20260911-06) survives MoE + block-FP8: editing the attention, dense and routed-expert writers together removes ~0.7+ of refusal with only a few hundred contrastive prompts; open-weight deployments should place safety enforcement outside the weights. Adoption @2026-09-11: 1,173,520 downloads + 2,245 likes; discussions #39-#48 remain deployment threads (SGLang image, unsloth Q3 throughput), still no third-party TB/SWE reproduction.",
-      "update_2026_09_13": "2026-09-13 run: (1) Engineering post (z.ai/blog/glm-5.3-flash, published 2026-09-12T02:17:01Z - deferred by the previous run's cutoff): the ox-alpha anonymous-testing phase (most popular model of the week on OpenCode/OpenRouter) was served entirely on a large-scale Chinese-AI-chip cluster with high-bandwidth interconnect; a dedicated SGLang-based inference engine (kernels iterated with a GLM-5.3 infrastructure agent diagnosing bottlenecks) combines intra-node tensor parallelism, ReplaySSM, W8A8 quantization, hybrid INT8/FP8/BF16 cache quantization and Layer Split, fronted by an Encode-Prefill-Decode (EPD) disaggregated architecture - 3x end-to-end serving improvement over the initial baseline on the same hardware, with hardware efficiency and per-token cost claimed comparable to mainstream NVIDIA GPUs (vendor figures). New architecture details: 45 layers and 18B activated vs GLM-4.5's 92/32B at similar total params; IndexPool pools the four indexer key vectors into one to cut indexer latency/memory at 1M context; attention compute 3.0x lower and KV cache 4.4x smaller than GLM-5.3 (vendor). (2) HF discussion #50 (2026-09-12T21:43:59Z) is the strongest weights-side independent reproduction yet: one ASUS Ascent GX10 (DGX Spark-class GB10, 128GB unified memory) runs the model via the vLLM-Moet fork with 2-bit routed experts (tensor-symmetric codes {-4,-1,1,4}, one scale per 32 weights, GPTQ-calibrated on real code) plus a 2GiB FP4 hot-expert pool - HumanEval 97.0% (159/164) vs 95.1% on the z.ai API under identical prompts and temperature 0, HumanEval+ 93.9% vs 89.6%; ~29 tok/s code decode (DFlash2 drafter, k=7), ~640 tok/s prefill, 200K context with zero preemptions at a 198K prompt, 99.6 GiB model footprint; reproduction artifacts public (github.com/lrozewicz/vLLM-Moet-GB10). Still HumanEval, not Terminal-Bench/SWE - the TB/SWE reproduction gate for trend #1 remains open. (3) Counters @2026-09-13T00:03Z: 1,333,574 downloads (+13.6% vs 9/11) + 2,276 likes. Stays TRIAL."
+      "update_2026_09_13": "2026-09-13 run: (1) Engineering post (z.ai/blog/glm-5.3-flash, published 2026-09-12T02:17:01Z - deferred by the previous run's cutoff): the ox-alpha anonymous-testing phase (most popular model of the week on OpenCode/OpenRouter) was served entirely on a large-scale Chinese-AI-chip cluster with high-bandwidth interconnect; a dedicated SGLang-based inference engine (kernels iterated with a GLM-5.3 infrastructure agent diagnosing bottlenecks) combines intra-node tensor parallelism, ReplaySSM, W8A8 quantization, hybrid INT8/FP8/BF16 cache quantization and Layer Split, fronted by an Encode-Prefill-Decode (EPD) disaggregated architecture - 3x end-to-end serving improvement over the initial baseline on the same hardware, with hardware efficiency and per-token cost claimed comparable to mainstream NVIDIA GPUs (vendor figures). New architecture details: 45 layers and 18B activated vs GLM-4.5's 92/32B at similar total params; IndexPool pools the four indexer key vectors into one to cut indexer latency/memory at 1M context; attention compute 3.0x lower and KV cache 4.4x smaller than GLM-5.3 (vendor). (2) HF discussion #50 (2026-09-12T21:43:59Z) is the strongest weights-side independent reproduction yet: one ASUS Ascent GX10 (DGX Spark-class GB10, 128GB unified memory) runs the model via the vLLM-Moet fork with 2-bit routed experts (tensor-symmetric codes {-4,-1,1,4}, one scale per 32 weights, GPTQ-calibrated on real code) plus a 2GiB FP4 hot-expert pool - HumanEval 97.0% (159/164) vs 95.1% on the z.ai API under identical prompts and temperature 0, HumanEval+ 93.9% vs 89.6%; ~29 tok/s code decode (DFlash2 drafter, k=7), ~640 tok/s prefill, 200K context with zero preemptions at a 198K prompt, 99.6 GiB model footprint; reproduction artifacts public (github.com/lrozewicz/vLLM-Moet-GB10). Still HumanEval, not Terminal-Bench/SWE - the TB/SWE reproduction gate for trend #1 remains open. (3) Counters @2026-09-13T00:03Z: 1,333,574 downloads (+13.6% vs 9/11) + 2,276 likes. Stays TRIAL.",
+      "source_ids": [
+        "src-5302786105ea2e93",
+        "src-e800ee9ae57a1b53",
+        "src-e73a961a2af515c5",
+        "src-b02205ef3bed091f",
+        "src-3efbd9eb24461e51"
+      ],
+      "project_ids": [
+        "glm"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260825-01-evidence-summary",
+          "claim_zh": "Z.ai 在 Hugging Face 以 MIT 许可放出 GLM-5.3-Flash：320B 总参 / 18B 激活的原生多模态 MoE，也是 GLM-5 系列首个从全新底座训练的模型（不再沿用 GLM-5.2 基座）。模型混合稀疏注意力与线性注意力以压低长上下文服务成本，引入 Manifold-Constrained Hyper-Connections（mHC），预训练语料为 30T token 多模态数据。官方称其以 GLM-5.2 十分之一的价格全面超过 GLM-5.2，在 coding 与 agentic 基准上接近 Claude Opus 4.8；Artificial Analysis 独立评测给出 Intelligence Index 57（8/26 上架）。vLLM、SGLang、Transformers、KTransformers、vLLM-Ascend 均已 day-0 支持。",
+          "claim_en": "Z.ai released GLM-5.3-Flash weights under MIT on Hugging Face: a 320B-total / 18B-active natively multimodal MoE, the first GLM-5-series model trained from a newly built base rather than GLM-5.2. It combines sparse and linear attention to cut long-context serving cost and adds Manifold-Constrained Hyper-Connections, pre-trained on a 30T-token multimodal corpus. Z.ai claims it beats GLM-5.2 across benchmarks at one-tenth the price and approaches Claude Opus 4.8 on coding and agentic tasks; Artificial Analysis independently scored it 57 on their Intelligence Index (added 2026-08-26). vLLM, SGLang, Transformers, KTransformers and vLLM-Ascend support shipped day-0.",
+          "source_ids": [
+            "src-5302786105ea2e93"
+          ],
+          "event_ids": [
+            "ev-20260825-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260825-01-published",
+          "kind": "new",
+          "occurred_at": "2026-08-25T06:45:05Z",
+          "discovered_at": "2026-08-28T00:31:03Z",
+          "summary_zh": "Z.ai 开源 GLM-5.3-Flash（全新底座、MIT 许可）",
+          "summary_en": "Z.ai open-sources GLM-5.3-Flash (new base, hybrid attention, MIT)",
+          "evidence_ids": [
+            "ev-20260825-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260825-02",
@@ -148,7 +193,50 @@
       "event_fingerprint": "google-gemini-cli-a2a-server-stable",
       "update_2026_09_02": "0.58.0 stable (9/1T20:51Z): macOS Seatbelt sandbox now isolates Docker and container-runtime sockets and binaries (sandbox hardening); a2a-server fix — stale cancellation error cleared on new message turns (a2a-server continues in the stable release line); consistent symlink evaluation in ignore-path handling; top-level safety checkers declared in write-policy configuration; history rollback and retry-nudge fixes. a2a-server documentation still absent (watch item). 0.59.0-preview.0 published 9/1T20:19Z",
       "update_2026_09_04": "No new stable in window (latest remains 0.58.0, 9/1). Nightlies: 0.59.0-nightly (9/2): web-fetch destination validation + connection routing fix; 0.60.0-nightly (9/4) security cluster — RFC 9207 issuer identification enforced in the MCP OAuth flow, macOS Seatbelt temp-dir isolation, extension-loader path-boundary hardening, hardcoded Google CrUX API key removed from chrome-devtools-mcp. a2a-server docs watch: packages/a2a-server now carries a README.md, but it is a 171-byte 'experimental and under active development' stub — still no usage/setup documentation. Stays TRIAL",
-      "update_2026_09_24": "Gemini CLI 0.61.0 stable hardens build-file prompt-injection and filesystem/runtime isolation; A2A remains undocumented and WATCH"
+      "update_2026_09_24": "Gemini CLI 0.61.0 stable hardens build-file prompt-injection and filesystem/runtime isolation; A2A remains undocumented and WATCH",
+      "source_ids": [
+        "src-2776a34d5c8a01b1",
+        "src-f01b0db479c6b0a8",
+        "src-2865ccba82e97c06",
+        "src-dd576e7859210e25"
+      ],
+      "project_ids": [
+        "gemini-cli"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260825-02-evidence-summary",
+          "claim_zh": "Gemini CLI v0.57.0 stable（2026-08-25T18:37Z）的发布 tag 中包含 packages/a2a-server（Agent2Agent 协议 server），且该包已以 @google/gemini-cli-a2a-server@0.57.0 发布到 npm。Release notes 合并了一大批「[SSR Agent]」修复，涉及 a2a-server 测试、TUI 执行超时、subagent 开关与交接回归，说明这是持续维护的功能而非废弃实验。Gemini CLI 0.60.0 随后把 MCP OAuth、路径边界、环境变更确认、工具输出来源和沙箱隔离修复推入 stable。Google 仍未给出 A2A server 的官方公告、文档页面或使用指引。",
+          "claim_en": "Gemini CLI v0.57.0 (stable, 2026-08-25T18:37Z) includes packages/a2a-server — an Agent2Agent protocol server — in its release tag, and the package is published to npm as @google/gemini-cli-a2a-server@0.57.0. The release notes merge a wave of '[SSR Agent]' fixes touching a2a-server tests, TUI execution timeouts, subagent gating and handoff regressions, indicating active maintenance rather than an abandoned experiment. Gemini CLI 0.60.0 later promotes MCP OAuth, path-boundary, environment-consent, tool-output-provenance and sandbox-isolation fixes to stable. There is still no official announcement, documentation page, or usage guidance for the A2A server from Google.",
+          "source_ids": [
+            "src-2776a34d5c8a01b1"
+          ],
+          "event_ids": [
+            "ev-20260825-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260825-02-published",
+          "kind": "new",
+          "occurred_at": "2026-08-25T18:37:14Z",
+          "discovered_at": "2026-08-28T00:31:03Z",
+          "summary_zh": "Gemini CLI 0.57.0 稳定版把 A2A server 打进发布线",
+          "summary_en": "Gemini CLI 0.57.0 ships the A2A server package in its stable line",
+          "evidence_ids": [
+            "ev-20260825-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260825-03",
@@ -205,7 +293,49 @@
       "verification_cost": 2,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "openai-jalapeno-first-benchmark-results"
+      "event_fingerprint": "openai-jalapeno-first-benchmark-results",
+      "source_ids": [
+        "src-b9406ae170bd9133",
+        "src-855db08b75f6ecde",
+        "src-0c7fd51720556fba"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "local",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260825-03-evidence-summary",
+          "claim_zh": "Jalapeño 是 OpenAI 的第一颗自研推理芯片，与 Broadcom 合作设计（6 月 24 日首发，TSMC 3nm，借助 AI 约九个月完成设计）。8 月 25 日在 Hot Chips 上，OpenAI 给出公开的 SemiAnalysis InferenceX 基准首批结果：对比 Nvidia GB200 与 GB300 系统，Jalapeño 峰值每瓦多完成 1.5-1.9 倍的 AI 工作，端到端延迟低 1.7-3.6 倍，交互式负载性能高 2.1-4.1 倍（对比负载：GB200 跑 GPT-OSS，GB300 跑 DeepSeek R1 与 Kimi K2.5）。芯片额定 700W，生产档持续功耗不超过 550W。AI 生成的 kernel 在部分模块上比人类专家快 1.5-1.8 倍。计划 2026 年底以很小批量首次部署，后续有第二代、第三代路线图；Nvidia GPU 仍是 OpenAI 算力的主体。",
+          "claim_en": "Jalapeño is OpenAI's first custom inference chip, designed with Broadcom (unveiled 2026-06-24, TSMC 3nm, roughly a nine-month design cycle with AI assistance). At Hot Chips on 2026-08-25 OpenAI presented first results on the public SemiAnalysis InferenceX benchmark: against Nvidia GB200 and GB300 systems, Jalapeño delivered 1.5-1.9x more AI work per watt at peak and 1.7-3.6x lower end-to-end latency, with 2.1-4.1x higher performance for interactive workloads (GPT-OSS on GB200; DeepSeek R1 and Kimi K2.5 on GB300 as comparison points). The chip is rated at 700W and sustains at most 550W in production profiles. AI-generated kernels beat human experts by 1.5-1.8x on selected blocks of the stack. First deployment is planned for the end of 2026 in very small volumes, with second- and third-generation parts on the roadmap; Nvidia GPUs remain the bulk of OpenAI's fleet.",
+          "source_ids": [
+            "src-b9406ae170bd9133"
+          ],
+          "event_ids": [
+            "ev-20260825-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260825-03-published",
+          "kind": "new",
+          "occurred_at": "2026-08-25T00:00:00Z",
+          "discovered_at": "2026-08-30T00:00:20Z",
+          "summary_zh": "OpenAI 自研推理芯片 Jalapeño 首批实测领先 Nvidia 同类",
+          "summary_en": "OpenAI's Jalapeño chip posts first benchmark wins over Nvidia systems",
+          "evidence_ids": [
+            "ev-20260825-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

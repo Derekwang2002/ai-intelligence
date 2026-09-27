@@ -73,7 +73,50 @@
       "risk": 2,
       "recommendation": "ADOPT",
       "event_fingerprint": "anthropic-claude-fable-mythos-5-1-launch",
-      "update_2026_09_04": "Third-party eval + tooling follow-up: Artificial Analysis model page (captured 9/5; eval reflected ~9/2) scores Fable 5.1 at 57 on the Intelligence Index, ranked #1 of 202 listed models, $6.12 per Intelligence Index task — AA flags it as 'particularly expensive when comparing to other models of similar price' despite the cache-read cut. Claude Code 2.1.260 (9/3) fixed Fable 5.1 in the /model picker, fable agents ignoring the [1m] tag (silently running 200K windows), and a tool-result prompt-cache miss on Fable 5.1; 1M-context auto-compact improved. Recommendation stays ADOPT"
+      "update_2026_09_04": "Third-party eval + tooling follow-up: Artificial Analysis model page (captured 9/5; eval reflected ~9/2) scores Fable 5.1 at 57 on the Intelligence Index, ranked #1 of 202 listed models, $6.12 per Intelligence Index task — AA flags it as 'particularly expensive when comparing to other models of similar price' despite the cache-read cut. Claude Code 2.1.260 (9/3) fixed Fable 5.1 in the /model picker, fable agents ignoring the [1m] tag (silently running 200K windows), and a tool-result prompt-cache miss on Fable 5.1; 1M-context auto-compact improved. Recommendation stays ADOPT",
+      "source_ids": [
+        "src-e7232d52f37fd859",
+        "src-79752d666a235005",
+        "src-818105d11d28ab14",
+        "src-b08e81a050da109c"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260901-01-evidence-summary",
+          "claim_zh": "Anthropic 发布 Claude Fable 5.1——面向 coding 与知识工作的最强模型，全平台 GA（API 为 claude-fable-5-1，另覆盖 AWS、GCP、Azure），并成为 Claude Code 的默认 Fable 模型。定价维持输入 $10/M、输出 $50/M，但缓存读取从 $1.00/M 降到 $0.25/M：典型负载比 Fable 5 便宜约 25%，缓存占比高的 agentic 负载最多省约 45%。基准：Terminal-Bench 4.0 55.8%（Fable 5 为 42.0，GPT-5.6 Sol 为 37.3）、Terminal-Bench-Science 0.1 52.6% 对 GPT-5.6 Sol 的 22.4、GPQA 88.5（新 SOTA）、无工具 HLE 60.9。同一模型以 Mythos 5.1 名义走信任访问计划（生物方向 LSVP 由美国政府参与，cyber 方向 CYP），具备 Anthropic 最强 cyber 能力但低于其下一个生物风险层级。同场发布 Enterprise Frontier Safeguards（与 ZDR 等效的隐私 + 护栏，2026 秋起分阶段）与 EU AI Act 要求的输出水印（8 月 2 日后发布的模型适用，Fable 5.1 已带）及私有预览的检测 API。",
+          "claim_en": "Anthropic launched Claude Fable 5.1, its most advanced model for coding and knowledge work, GA on all platforms (claude-fable-5-1 on the API, plus AWS, GCP, Azure) and made it the default Fable model in Claude Code. Pricing keeps $10/M input and $50/M output but cuts cache reads from $1.00/M to $0.25/M, making typical workloads ~25% cheaper than Fable 5 and highly cache-heavy agentic workloads up to ~45% cheaper. Benchmarks: Terminal-Bench 4.0 55.8% (Fable 5 42.0, GPT-5.6 Sol 37.3), Terminal-Bench-Science 0.1 52.6% vs GPT-5.6 Sol 22.4, GPQA 88.5 (new SOTA), HLE 60.9 without tools. The same model ships as Mythos 5.1 for trusted-access programs (bio via LSVP with the US government, cyber via CYP), with stronger cyber capabilities but below Anthropic's next bio risk tier. Anthropic also announced Enterprise Frontier Safeguards (ZDR-equivalent privacy with safeguards, phases starting fall 2026) and, for models released after Aug 2 2026 (Fable 5.1 included), output watermarking per the EU AI Act with a detection API in private preview.",
+          "source_ids": [
+            "src-e7232d52f37fd859"
+          ],
+          "event_ids": [
+            "ev-20260901-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260901-01-published",
+          "kind": "new",
+          "occurred_at": "2026-09-01T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "Anthropic 发布 Claude Fable 5.1，缓存读取降价 75%",
+          "summary_en": "Anthropic launches Claude Fable 5.1 with 75% cheaper cache reads",
+          "evidence_ids": [
+            "ev-20260901-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260901-02",
@@ -126,7 +169,45 @@
       "risk": 3,
       "recommendation": "WATCH",
       "event_fingerprint": "openai-path-to-astra-critical-capability-framework",
-      "update_2026_09_03": "Framework executed: GPT-6 Astra launched 9/3 (ev-20260903-01) as the first model to meet the Critical cyber threshold — the launch version ships safeguards that refuse advanced-cyber tasks (e.g. PoC exploit creation), with Daybreak expanding access under less restrictive safeguards in the coming weeks; OpenAI also discloses Astra's written reasoning is harder to monitor than GPT-5.6 Sol's (fewer written steps), with misalignment monitoring live in production for Astra-class models. The 'launch gated on safeguard deployment' reading held"
+      "update_2026_09_03": "Framework executed: GPT-6 Astra launched 9/3 (ev-20260903-01) as the first model to meet the Critical cyber threshold — the launch version ships safeguards that refuse advanced-cyber tasks (e.g. PoC exploit creation), with Daybreak expanding access under less restrictive safeguards in the coming weeks; OpenAI also discloses Astra's written reasoning is harder to monitor than GPT-5.6 Sol's (fewer written steps), with misalignment monitoring live in production for Astra-class models. The 'launch gated on safeguard deployment' reading held",
+      "source_ids": [
+        "src-f2694bfa96c49e91",
+        "src-818105d11d28ab14",
+        "src-039a4975e102cb53"
+      ],
+      "project_ids": [],
+      "scenario_ids": [],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260901-02-evidence-summary",
+          "claim_zh": "OpenAI 发布《Path to Astra: critical capabilities and frontier safeguards》，宣布 Astra 将是其在 Preparedness Framework 下首个达到 Critical 网络安全能力阈值的模型，并给出发布所需的更强护栏细则。框架吸收了 Hugging Face 事件（ev-20260818-04）的教训，覆盖攻击者驱动与失效驱动两类威胁建模、agentic 模型接触关键系统的风险映射，以及随时间跟踪 cyber 能力的行动阈值。",
+          "claim_en": "OpenAI published 'Path to Astra: critical capabilities and frontier safeguards', announcing that Astra will be the first OpenAI model to meet the Critical cybersecurity capability threshold under its Preparedness Framework, and detailing the stronger safeguards required for release. Building on lessons from the Hugging Face incident (ev-20260818-04), the framework covers threat modeling with both attacker-driven and failure-driven scenarios, risk mapping of where agentic models touch critical systems, and action thresholds for how cyber capabilities are tracked over time.",
+          "source_ids": [
+            "src-f2694bfa96c49e91"
+          ],
+          "event_ids": [
+            "ev-20260901-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260901-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-01T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "OpenAI 宣布 Astra 为首个达到 Critical 能力阈值的模型并更新护栏",
+          "summary_en": "OpenAI declares Astra its first Critical-capability model with new safeguards",
+          "evidence_ids": [
+            "ev-20260901-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260901-03",
@@ -184,7 +265,49 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2608-30320-qwen3-8-next-architecture-design"
+      "event_fingerprint": "arxiv-2608-30320-qwen3-8-next-architecture-design",
+      "source_ids": [
+        "src-b078e5a2f74e2e6d",
+        "src-eb79656c925ccbff"
+      ],
+      "project_ids": [
+        "qwen"
+      ],
+      "scenario_ids": [
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260901-03-evidence-summary",
+          "claim_zh": "Qwen 团队发布 Qwen3.8-Flash-Next 的设计与消融研究（arXiv 2608.30320，9 月 1 日周二 digest）：125B 参数、6B 激活的稀疏 MoE，另有 51B n-gram 嵌入表放在加速器之外。在 14 项预训练基准上，它有 8 项超过 397B-A17B 前代，其余最多落后 2.6 分——而激活参数只有三分之一、训练 token 只有三分之一、训练 FLOPs 约为九分之一。token 混合层在 Gated DeltaNet 与全局注意力间交替（每四层一个全注意力层）；继续预训练阶段，这些全注意力层替换为 Qwen Sparse Attention，用压缩轻量索引器按微块粒度对上下文打分。",
+          "claim_en": "The Qwen team published the design and ablation study behind Qwen3.8-Flash-Next (arXiv 2608.30320, Tue 1 Sep digest): a sparse MoE with 125B parameters, 6B activated, plus 51B of n-gram embedding tables held off the accelerator. On fourteen pre-training benchmarks it beats the 397B-A17B predecessor on eight and trails on the rest by at most 2.6 points — at one-third the activated parameters, one-third the training tokens, and roughly one-ninth of the training FLOPs. Token mixing layers alternate Gated DeltaNet with global attention (one full-attention layer in four); at continued pre-training those full-attention layers are replaced by Qwen Sparse Attention, which scores context at micro-block granularity via a compressed lightweight indexer.",
+          "source_ids": [
+            "src-b078e5a2f74e2e6d"
+          ],
+          "event_ids": [
+            "ev-20260901-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260901-03-published",
+          "kind": "new",
+          "occurred_at": "2026-09-01T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "Qwen 团队公开 Qwen3.8-Flash-Next 架构与约 1/9 训练 FLOPs 的账",
+          "summary_en": "Qwen team documents the Qwen3.8-Flash-Next architecture and its 1/9 training-FLOP economics",
+          "evidence_ids": [
+            "ev-20260901-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260901-04",
@@ -238,7 +361,48 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2608-30310-tail-replay-hybrid-prefix-caching"
+      "event_fingerprint": "arxiv-2608-30310-tail-replay-hybrid-prefix-caching",
+      "source_ids": [
+        "src-727f0b81d1b84d8b",
+        "src-65132c6a7ec49e0f",
+        "src-148c6c4e315ab497"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260901-04-evidence-summary",
+          "claim_zh": "Tail-Replay（arXiv 2608.30310，9 月 1 日周二 digest）为全注意力与线性注意力交替的混合 LLM 实现了 token 级前缀复用。全注意力的 KV 缓存可以按 token 寻址，但线性注意力的循环状态无法回滚到任意位置，因此现有混合模型前缀缓存只能存循环状态检查点、只在检查点对齐的位置复用。Tail-Replay 从最近的状态检查点重放序列尾部，使前缀复用可以在任意 token 边界发生，解除离散边界限制。同一期 digest 还有 DASC（2608.30386）：利用 Gated DeltaNet 与 Kimi Delta Attention 中不同头、不同信道的「保持时标」差异，压缩混合模型的循环状态检查点。",
+          "claim_en": "Tail-Replay (arXiv 2608.30310, Tue 1 Sep digest) enables token-level prefix reuse for hybrid LLMs that interleave full-attention and linear-attention layers. Full-attention KV caches are token-addressable, but linear-attention recurrent states cannot roll back to arbitrary boundaries, so existing hybrid prefix caching stores recurrent-state checkpoints and only reuses prefixes at checkpoint-aligned positions. Tail-Replay replays the tail of the sequence from the nearest state checkpoint, allowing prefix reuse at any token boundary, removing the discrete-boundary constraint. The same digest carries DASC (2608.30386), which compresses hybrid recurrent-state checkpoints by exploiting per-head/per-channel 'retention horizons' in Gated DeltaNet and Kimi Delta Attention.",
+          "source_ids": [
+            "src-727f0b81d1b84d8b"
+          ],
+          "event_ids": [
+            "ev-20260901-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260901-04-published",
+          "kind": "new",
+          "occurred_at": "2026-09-01T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "Tail-Replay 让混合注意力模型的前缀缓存不再受检查点限制",
+          "summary_en": "Tail-Replay brings unconstrained prefix caching to hybrid attention LLMs",
+          "evidence_ids": [
+            "ev-20260901-04-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260901-05",
@@ -286,7 +450,47 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2608-30724-baitbench-agent-reward-hacking"
+      "event_fingerprint": "arxiv-2608-30724-baitbench-agent-reward-hacking",
+      "source_ids": [
+        "src-3c105e2f6e19c8a5"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260901-05-evidence-summary",
+          "claim_zh": "BAITBENCH（arXiv 2608.30724，9 月 1 日周二 digest）测量自主 ML 实验中的 agent reward hacking：三个合成表格 ML 任务各埋一个可选捷径——能抬高公开测试分数但在隐藏测试集上失败，且使用捷径不违反任何明文规则。用两阶段 judge 流程对七个前沿 agent 打分，量化它们为刷分走捷径的频率，直指 AI 驱动研发中「结果可信度」的问题。",
+          "claim_en": "BAITBENCH (arXiv 2608.30724, Tue 1 Sep digest) measures agent reward hacking in autonomous ML experimentation: three synthetic tabular ML tasks each contain an optional shortcut that inflates the public test score while failing a hidden test set, and using it breaks no stated rule. Across seven frontier agents scored by a two-stage judge pipeline, the suite quantifies how often agents exploit the shortcut for inflated scores — a direct probe of the honesty-of-results problem in AI-driven R&D.",
+          "source_ids": [
+            "src-3c105e2f6e19c8a5"
+          ],
+          "event_ids": [
+            "ev-20260901-05"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260901-05-published",
+          "kind": "new",
+          "occurred_at": "2026-09-01T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "BAITBENCH：前沿 agent 有多大概率走植入的捷径",
+          "summary_en": "BAITBENCH measures how often frontier agents take the planted shortcut",
+          "evidence_ids": [
+            "ev-20260901-05-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260901-06",
@@ -332,7 +536,45 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2608-29118-emergent-misalignment-predictable"
+      "event_fingerprint": "arxiv-2608-29118-emergent-misalignment-predictable",
+      "source_ids": [
+        "src-4b929a34dfc1151b"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260901-06-evidence-summary",
+          "claim_zh": "《Emergent Misalignment Is Not Magical》（arX 2608.29118，9 月 1 日周二 digest）重新审视「在狭窄有害数据集上微调会产出广泛失配模型」的现象。既有工作把它框定为意外，用一般性失配方向或习得的「邪恶人格」来解释。本文证明涌现式失配是可预测、依赖数据分布的泛化现象：训练后的「evilness」高度可由表征距离预测——评估提示在底座模型表征空间中离训练数据越近，失配行为越容易出现。",
+          "claim_en": "'Emergent Misalignment Is Not Magical' (arXiv 2608.29118, Tue 1 Sep digest) re-examines the phenomenon where fine-tuning on narrowly harmful datasets produces broadly misaligned models. Prior work framed it as unexpected and explained it via general misalignment directions or an acquired 'evil persona'. This paper shows emergent misalignment is a predictable, data-dependent generalization phenomenon: post-training 'evilness' is highly predictable from representational distance — the closer an evaluation prompt sits to the training data in the base model's representation space, the more the misaligned behavior surfaces.",
+          "source_ids": [
+            "src-4b929a34dfc1151b"
+          ],
+          "event_ids": [
+            "ev-20260901-06"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260901-06-published",
+          "kind": "new",
+          "occurred_at": "2026-09-01T00:00:00Z",
+          "discovered_at": "2026-09-02T00:01:14Z",
+          "summary_zh": "研究：涌现式失配可以从训练数据距离预测",
+          "summary_en": "Study: emergent misalignment is predictable from training-data distance",
+          "evidence_ids": [
+            "ev-20260901-06-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

@@ -47,7 +47,47 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-04748-cache-quantization-divergence"
+      "event_fingerprint": "arxiv-2609-04748-cache-quantization-divergence",
+      "source_ids": [
+        "src-bda6328c8459c768"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-01-evidence-summary",
+          "claim_zh": "Same Request, Different Answer（arXiv 2609.04748，9 月 7 日周一 digest）量化了前缀缓存的复现性代价——主流开源 serving 栈默认开启前缀缓存，并把它当作透明优化。固定模型、解码参数、种子和请求顺序、以 batch size 1 串行发请求，作者在两种引擎、四种权重精度上跑了 80 个回合的多轮 agent 工具调用负载。开缓存后，16-bit 下 36.2% 的回合轨迹改变，4-bit 下达 75.0%；关缓存时每种配置的重复执行都比特级一致（800 个回合 0 次分歧），把其他所有不确定性来源约束在 0.5% 以内。三个后续实验定位了成因：单个服务端 prompt-cache 设置就能改变运行结果，且分歧会在多轮会话中累积。",
+          "claim_en": "Same Request, Different Answer (arXiv 2609.04748, Mon 7 Sep digest) measures what prefix caching — enabled by default in the major open-source serving stacks and treated as a transparent optimization — costs in reproducibility. Holding model, decoding parameters, seed and request order fixed and issuing every request serially at batch size one, the author ran an 80-episode multi-turn agentic tool-use workload with caching on and off across two engines and four weight formats. Enabling the cache changed the agent's trajectory on 36.2% of episodes at 16-bit precision and on 75.0% at 4-bit; with caching disabled, repeated execution was bit-identical in every configuration (0 of 800 episodes), bounding all other sources of nondeterminism at 0.5%. Three follow-up experiments locate the cause: a single server-level prompt-cache setting moves run-to-run outcomes, and the divergence compounds across a multi-turn session.",
+          "source_ids": [
+            "src-bda6328c8459c768"
+          ],
+          "event_ids": [
+            "ev-20260908-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-01-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "前缀缓存在悄悄破坏可复现性，量化还会放大破坏",
+          "summary_en": "Prefix caching quietly breaks reproducibility, and quantization multiplies the damage",
+          "evidence_ids": [
+            "ev-20260908-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-02",
@@ -94,7 +134,46 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-04852-kvmem-agent-workspace-virtualization"
+      "event_fingerprint": "arxiv-2609-04852-kvmem-agent-workspace-virtualization",
+      "source_ids": [
+        "src-4bf5bf0dda9f831e"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-02-evidence-summary",
+          "claim_zh": "KVMem（arXiv 2609.04852，9 月 7 日周一 digest）是为长时运行 agent 设计的 KV 上下文虚拟化系统：溢出的工作区历史不再被压缩成摘要、也不再以文本形式重复检索（前者丢失细粒度执行证据，后者反复 prefill 已处理过的内容），而是作为分页 KV 状态保留在 GPU 显存、主机内存和 NVMe 之间。轻量的模型原生注意力空间索引选取相关历史块，按需物化一个受模型原生上下文窗口约束的、随查询变化的执行视图。在历史最长达一百万 token 的长上下文 agent 基准（LongMemEval、MemoryAgentBench、AgentLongBench）上，KVMem 的任务效用和推理效率总体优于压缩类方案——后者是上下文溢出的事实标准（论文含 Qwen3.8-27B 的 DeepSWE 长上下文测试）。",
+          "claim_en": "KVMem (arXiv 2609.04852, Mon 7 Sep digest) is a KV-context virtualization system for long-running agents: instead of compacting overflowed workspace history into summaries or re-retrieving it as text (losing fine-grained execution evidence and re-prefilling already-processed content), it preserves overflowed history as paged KV state across GPU memory, host memory and NVMe. Lightweight model-native attention-space indexes select relevant historical blocks, and a query-dependent execution view bounded by the model's native context window is materialized on demand. On long-context agent benchmarks spanning histories up to one million tokens — LongMemEval, MemoryAgentBench, AgentLongBench — KVMem generally achieves higher task utility and greater inference efficiency than compaction-based approaches, the de-facto standard for context overflow (paper reports a DeepSWE long-context test with Qwen3.8-27B).",
+          "source_ids": [
+            "src-4bf5bf0dda9f831e"
+          ],
+          "event_ids": [
+            "ev-20260908-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "KVMem 在消费级 GPU 上虚拟化百万 token 的 agent 工作区",
+          "summary_en": "KVMem virtualizes million-token agent workspaces on a consumer GPU",
+          "evidence_ids": [
+            "ev-20260908-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-03",
@@ -143,7 +222,45 @@
       "verification_cost": 3,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-04434-hybrid-attention-recurrence-division"
+      "event_fingerprint": "arxiv-2609-04434-hybrid-attention-recurrence-division",
+      "source_ids": [
+        "src-6007c93a227aba62"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-03-evidence-summary",
+          "claim_zh": "《What Attention Recalls and Recurrence Controls in Hybrid Language Models》（arXiv 2609.04434，9 月 7 日周一 digest）在注意力+递归混合模型上引入两个缓存层干预：split-prefill（prefill 后只保留 KV 缓存或只保留递归状态再生成）和 state-swap（单次前向中把一个上下文的 KV 缓存与另一个上下文的递归状态配对）。在 Qwen3.5 和 Falcon-H1 上两个通道按功能尖锐分化：精确检索只能经注意力存活（全精度准确率的 64-98%），经递归完全归零；而输出语言与人设正好相反（经递归以 70-80% 和 3-5 倍存活，仅 KV 时语言准确率掉到约 1%）。state-swap 给出因果确认：答案的取值来自 KV 侧，答案的语言来自递归侧。作者总结：注意力提供「说过什么」的查表；递归状态塑造「接下来说成什么样」。",
+          "claim_en": "What Attention Recalls and Recurrence Controls in Hybrid Language Models (arXiv 2609.04434, Mon 7 Sep digest) introduces two cache-level interventions on hybrid attention+recurrence models — split-prefill (keep only the KV cache or only the recurrent state from a prefilled context, then generate) and state-swap (pair the KV cache from one context with the recurrent state from another in a single forward pass). On Qwen3.5 and Falcon-H1 the two channels split sharply by function: exact retrieval survives only through attention (64-98% of full accuracy) and collapses to zero through recurrence, while output language and persona reverse the pattern (surviving recurrence at 70-80% and 3-5x, with KV-only dropping to ~1% language accuracy). State-swap confirms it causally: the answer takes its value from the KV side and its language from the recurrent side. The authors' summary: attention provides a lookup over what was said; the recurrent state shapes how the model says it next.",
+          "source_ids": [
+            "src-6007c93a227aba62"
+          ],
+          "event_ids": [
+            "ev-20260908-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-03-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "因果实验拆分混合模型：注意力负责回忆，递归负责控制",
+          "summary_en": "Causal experiments split hybrid models: attention recalls, recurrence controls",
+          "evidence_ids": [
+            "ev-20260908-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-04",
@@ -189,7 +306,45 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-04575-moe-expert-halving"
+      "event_fingerprint": "arxiv-2609-04575-moe-expert-halving",
+      "source_ids": [
+        "src-c16051ebd5dc20fc"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-04-evidence-summary",
+          "claim_zh": "《Training-Free Halving of Activated Experts in Fine-Grained Mixture-of-Experts Models》（arX 2609.04575，9 月 7 日周一 digest）利用了细粒度 MoE 路由的一个微妙性质：路由概率重归一化会把专家输出增益隐式校准到训练时的 top-k，因此推理时直接减小 k 会同时改变哪些专家被激活和它们的强度。修复只需一个整数：激活 top k1 个专家，但按 top k2 个专家的概率质量归一化——零参数、零训练、无可测开销。在 Qwen3.6-35B-A3B 上，8 减到 4 个专家在标准重归一化下损失 4.65 个 MMLU 点，k2=16 时只损失 0.35 点，同时专家路由算力减半；结果在 11 倍大的 Qwen3.5-397B-A17B 上复现（10 减到 5，配好参照集损失 0.55 点）。完全去掉重归一化是灾难性的——关键是保留合适的参照质量。困惑度与下游准确率偏好的 k2 不同，选择时要用任务指标。",
+          "claim_en": "Training-Free Halving of Activated Experts in Fine-Grained Mixture-of-Experts Models (arXiv 2609.04575, Mon 7 Sep digest) exploits a subtle property of fine-grained MoE routing: renormalizing router probabilities implicitly calibrates expert output gain to the training top-k, so naively reducing k at inference changes both which experts fire and their strength. The fix is one integer: activate the top k1 experts while normalizing by the probability mass of the top k2 experts — no parameters, no training, no measurable overhead. On Qwen3.6-35B-A3B, going from 8 to 4 experts costs 4.65 MMLU points under standard renormalization but only 0.35 points with k2=16, while halving routed-expert compute; the result replicates on the 11x larger Qwen3.5-397B-A17B (10 to 5 experts, 0.55-point loss with an appropriate reference set). Removing renormalization entirely is catastrophic — preserving a suitable reference mass is what matters. Perplexity and downstream accuracy also favor different k2 values, so pick by task metric.",
+          "source_ids": [
+            "src-c16051ebd5dc20fc"
+          ],
+          "event_ids": [
+            "ev-20260908-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-04-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "一个整数就能把 MoE 激活专家数减半，质量几乎无损",
+          "summary_en": "One integer halves activated MoE experts with near-zero quality loss",
+          "evidence_ids": [
+            "ev-20260908-04-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-05",
@@ -235,7 +390,47 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-04611-tautau-bench-agent-construction"
+      "event_fingerprint": "arxiv-2609-04611-tautau-bench-agent-construction",
+      "source_ids": [
+        "src-2490f63ce48f127d"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-05-evidence-summary",
+          "claim_zh": "ττ-Bench（arXiv 2609.04611，9 月 7 日周一 digest）把「造 agent」本身做成任务：开发者 agent 拿到的是企业真实留存的记录、握有需求的客户、运营必须使用的生产 API、需要接手的代码库、以及服务成本与模型限制——与真实客户委托完全相同的起点——然后交付一个完整的客服 agent，用部署后对留存模拟用户的通过率打分。四个领域 53 个任务上，最强配置（Claude Code 下的 Claude Opus 5）通过 23.9% 的评测模拟；专家撰写的参照上限为 82.2%。失败模式与人类 agent 开发者如出一辙：需求未被遵守、API 误用、对话处理脆弱。",
+          "claim_en": "tau-tau-Bench (arXiv 2609.04611, Mon 7 Sep digest; pronounced hyper-tau-bench) makes agent construction itself the task: a developer agent receives the records a business actually keeps, a client holding requirements, a production API that operations must run through, a codebase to inherit, and limits on serving cost and models — the same starting point a real client engagement provides — and must deliver a complete customer-service agent, scored by deploying it against held-out simulated users. Across 53 tasks in four domains, the strongest configuration (Claude Opus 5 under Claude Code) passes 23.9% of evaluation simulations; an expert-authored reference ceiling scores 82.2%. Failures mirror the ones human agent developers hit: requirements not honored, API misuse, and brittle conversation handling.",
+          "source_ids": [
+            "src-2490f63ce48f127d"
+          ],
+          "event_ids": [
+            "ev-20260908-05"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-05-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "ττ-Bench：最强的造 agent 的 agent 只通过 24% 的真实交付",
+          "summary_en": "tau-tau-Bench: the strongest agent-building agent passes 24% of real engagements",
+          "evidence_ids": [
+            "ev-20260908-05-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-06",
@@ -281,7 +476,47 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-04280-evoharnessbench"
+      "event_fingerprint": "arxiv-2609-04280-evoharnessbench",
+      "source_ids": [
+        "src-b2cf687fa6f30851"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-06-evidence-summary",
+          "claim_zh": "EVOHARNESSBENCH（arXiv 2609.04280，9 月 7 日周一 digest）是评测受控 harness 演进下 agent 表现的基准——把非平稳性从任务流（持续学习类 agent 基准的惯例）移到外部供给的 harness 本身（工具、技能、agent 三轴）。它包含 17 条由可验证基准确定性地构建的多阶段 harness 流：802 个任务、520 个工具、42 个技能、62 个 agent。两个互补设定分离核心挑战：部署评测（harness 扩张时既有能力是否存活）与自演化适应评测（积累的经验能否迁移到未见过的 harness 配置）。",
+          "claim_en": "EVOHARNESSBENCH (arXiv 2609.04280, Mon 7 Sep digest) is a benchmark for evaluating agents under controlled harness evolution — placing non-stationarity not in the task stream (as continual-learning agent benchmarks do) but in the externally supplied harness of tools, skills and agents itself. It contains 17 deterministic multi-stage harness streams built from verifier-based benchmarks: 802 tasks, 520 tools, 42 skills, 62 agents. Two complementary settings isolate the central challenges: deployment evaluation (does previously accessible competence survive as the harness expands?) and self-evolving adaptation evaluation (does accumulated experience transfer to unseen harness configurations?).",
+          "source_ids": [
+            "src-b2cf687fa6f30851"
+          ],
+          "event_ids": [
+            "ev-20260908-06"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-06-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "EVOHARNESSBENCH 度量 harness 演进时 agent 会丢掉什么",
+          "summary_en": "EVOHARNESSBENCH measures what agents lose as their harness evolves",
+          "evidence_ids": [
+            "ev-20260908-06-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-07",
@@ -330,7 +565,47 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-05339-memory-portability-model-upgrade"
+      "event_fingerprint": "arxiv-2609-05339-memory-portability-model-upgrade",
+      "source_ids": [
+        "src-e06afacc31f15c2a"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-07-evidence-summary",
+          "claim_zh": "《Does Your Agent's Memory Survive a Model Upgrade?》（arXiv 2609.05339，9 月 7 日周一 digest）比较了四种记忆表示：逐字保留供长上下文阅读（LC-RAW）、分块供 RAG 检索、由模型压缩成自然语言笔记（NOTES）、规范化进固定 schema 知识图谱（KG-fixed）。用 48 份随机化答案编码的合成历史、精确计分、两个 10B 以下开源模型：固定 schema 结构在换写入者时近乎完美迁移（KG-fixed 准确率变化 +0.0004 ± 0.0020），而压缩 NOTES 与模型强耦合——按迁移方向不同，准确率不对称地波动 +9.91 或 -13.28 个百分点。RAG 系统中，50/50 混合嵌入索引（部分迁移）的表现比两个纯索引都差。",
+          "claim_en": "Does Your Agent's Memory Survive a Model Upgrade? (arXiv 2609.05339, Mon 7 Sep digest) compares four memory representations as the same history is preserved verbatim for long-context reading (LC-RAW), chunked for RAG, compressed by a model into natural-language notes (NOTES), or normalized into a fixed-schema knowledge graph (KG-fixed). Across 48 synthetic histories with randomized answer codes and exact scoring, using two open-weight models under 10B, fixed-schema structures transfer essentially perfectly across writer swaps (KG-fixed accuracy shifts by +0.0004 +/- 0.0020), while compressed NOTES are highly model-coupled — accuracy moves asymmetrically by +9.91 or -13.28 percentage points depending on migration direction. In RAG systems, a 50/50 mixed embedding index (partial migration) captures worse than either pure index.",
+          "source_ids": [
+            "src-e06afacc31f15c2a"
+          ],
+          "event_ids": [
+            "ev-20260908-07"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-07-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "不规范化成固定 schema 的 agent 记忆，换模型后含义会漂移",
+          "summary_en": "Agent memory changes meaning across model upgrades unless normalized to a schema",
+          "evidence_ids": [
+            "ev-20260908-07-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-08",
@@ -376,7 +651,45 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-05274-draft-model-gate-uncertainty"
+      "event_fingerprint": "arxiv-2609-05274-draft-model-gate-uncertainty",
+      "source_ids": [
+        "src-fc32e5731b2d1801"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-08-evidence-summary",
+          "claim_zh": "《Speculative Uncertainty》（arX 2609.05274，9 月 7 日周一 digest）只凭输出 token 就能为黑盒 agent 恢复出预测性失败信号——不需要 logits、权重、激活或重复采样。做法是反转推测解码：一个小型开源 draft 模型对 agent 已生成的轨迹做单次前向打分，得到投机交叉似然，再从中提取按阶段分离（推理段 vs 动作段）的特征，对照可验证目标做校准。产出的失败似然分数可接入任何下游策略；在 Qwen3-Coder-480B 与 Claude 3.5 Sonnet 两个软件工程 agent 上实例化为执行前否决闸门后，执行错误率下降 6-8 个百分点，token 成本下降 14-19%。",
+          "claim_en": "Speculative Uncertainty (arX 2609.05274, Mon 7 Sep digest) recovers a predictive failure signal for a black-box agent from its output tokens alone — no logits, weights, activations or repeated sampling. It inverts speculative decoding: a small open-weight draft model scores the agent's already-generated trajectory in a single forward pass, producing speculative cross-likelihoods from which phase-aware features (reasoning vs action spans separated) are calibrated against a verifiable objective. The resulting failure-likelihood score feeds any downstream policy; instantiated as a pre-execution veto gate on software-engineering agents Qwen3-Coder-480B and Claude 3.5 Sonnet, it cuts execution error rate by 6-8 percentage points and token cost by 14-19%.",
+          "source_ids": [
+            "src-fc32e5731b2d1801"
+          ],
+          "event_ids": [
+            "ev-20260908-08"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-08-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "用 draft 模型当闸门，在执行前预测 coding agent 失败",
+          "summary_en": "A draft-model gate predicts coding-agent failures before execution",
+          "evidence_ids": [
+            "ev-20260908-08-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-09",
@@ -422,7 +735,46 @@
       "verification_cost": 3,
       "risk": 4,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-04495-prompt-injection-test-time-search"
+      "event_fingerprint": "arxiv-2609-04495-prompt-injection-test-time-search",
+      "source_ids": [
+        "src-3b20d8eae7a6d57e"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-09-evidence-summary",
+          "claim_zh": "《Rethinking Indirect Prompt Injection as a Test-Time Search Problem》（arXiv 2609.04495，9 月 7 日周一 digest）把间接提示注入重新表述为：在由环境、用户任务与注入任务共同决定的任务相关攻击面上的测试时搜索。为落地这一表述，作者造了一个带专用搜索 harness 的 agentic 攻击者：环境侦察、对攻击策略的结构化推理、利用受害 agent 反馈的自适应评估。跨多个异构任务，增加攻击者的测试时算力稳定提升漏洞发现与利用；消融显示显式的策略管理是大预算下维持收益的关键（避免冗余搜索）。结论：攻击成功率是攻击者搜索过程与算力预算的函数，不是受害者的预算无关属性。",
+          "claim_en": "Rethinking Indirect Prompt Injection as a Test-Time Search Problem (arXiv 2609.04495, Mon 7 Sep digest) reformulates indirect prompt injection as a test-time search over a task-dependent attack surface induced by the environment, user task and injection task. To operationalize it, the authors build an agentic attacker with a dedicated search harness: environment reconnaissance, structured reasoning over attack strategies, and adaptive evaluation using victim-agent feedback. Across heterogeneous tasks, increasing attacker test-time compute reliably improves vulnerability discovery and exploitation, while ablations show explicit strategy management is what sustains gains at larger budgets (avoiding redundant search). The conclusion: attack success is a function of the attacker's search procedure and compute budget, not a budget-independent property of the victim.",
+          "source_ids": [
+            "src-3b20d8eae7a6d57e"
+          ],
+          "event_ids": [
+            "ev-20260908-09"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-09-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "提示注入应该按攻击者的测试时搜索来评测",
+          "summary_en": "Prompt injection should be evaluated as an attacker's test-time search",
+          "evidence_ids": [
+            "ev-20260908-09-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-10",
@@ -469,7 +821,45 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-04665-hackprobe-reward-hacking"
+      "event_fingerprint": "arxiv-2609-04665-hackprobe-reward-hacking",
+      "source_ids": [
+        "src-34d44e4fa3c89145"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-10-evidence-summary",
+          "claim_zh": "《Harness-agnostic detection and immunization of reward hacking in self-evolving language models》（arXiv 2609.04665，9 月 7 日周一 digest）提出 HackProbe：通过两个黑盒挂钩接入任意自演化循环的监控器，不需要访问权重或激活。它维护一个保密的、分布固定的对照核（其冻结分布使能力代理跨代可比），外加轮换的新鲜层以对抗共同适应。四个检验——水平差距、带在线变点检测的尺度对齐分歧、能力停滞、条件性自信错误率——经 Sidak 校正合并为校准的族级 p 值。光诊断不回收任何东西，因此还有一个风险感知的免疫层：用对照核加纯结构性的博弈足迹，从提案池中重选诚实候选，信息泄露上界为 log2(P) 比特。",
+          "claim_en": "Harness-agnostic detection and immunization of reward hacking in self-evolving language models (arXiv 2609.04665, Mon 7 Sep digest) introduces HackProbe, a monitor that attaches to an arbitrary self-evolving loop through two black-box hooks with no access to weights or activations. It maintains a secret, distribution-fixed comparison core (whose frozen distribution makes the capability proxy comparable across generations) alongside a rotated fresh layer that hardens the bank against co-adaptation. Four tests — level gap, scale-aligned divergence with online change-point detection, capability stagnation, and conditional confidently-wrong rate — combine via a Sidak correction into a calibrated family-wise p-value. Diagnosis alone recovers nothing, so a risk-aware immunization layer reselects an honest candidate from the proposal pool using the core plus a purely structural gaming footprint, disclosing at most log2(P) bits.",
+          "source_ids": [
+            "src-34d44e4fa3c89145"
+          ],
+          "event_ids": [
+            "ev-20260908-10"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-10-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "HackProbe 不碰权重就能检测自演化模型的 reward hacking",
+          "summary_en": "HackProbe detects reward hacking in self-evolving models without touching weights",
+          "evidence_ids": [
+            "ev-20260908-10-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-11",
@@ -517,7 +907,47 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-04298-harbor-adapters-index"
+      "event_fingerprint": "arxiv-2609-04298-harbor-adapters-index",
+      "source_ids": [
+        "src-881b24d9bfd5bff7"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-11-evidence-summary",
+          "claim_zh": "《Harbor Adapters and Harbor-Index》（arXiv 2609.04298，9 月 7 日周一 digest）是 agent 基准的统一评测基础设施：适配器把 80 多个基准移植到对任意 agent 可评测，并经代码评审与一致性实验验证。基于它，作者在 54 个基准上跑了 8 个跨能力档的模型，每个模型分别用 Terminus-2 和 3 个原生 harness 之一——由此得出比以往更宽的 agent 能力与失败模式分析。Harbor-Index 把适配套件蒸馏成 82 个跨 29 个基准的高难度、高多样性、高质量任务（难度过滤 + AI 与人工审计 + 审计-修复循环）：保留大规模 agent 评测的挑战性与广度，同时跑得起——没有任何被测模型-harness 组合能 saturate 它。",
+          "claim_en": "Harbor Adapters and Harbor-Index (arXiv 2609.04298, Mon 7 Sep digest) is unified evaluation infrastructure for agentic benchmarks: adapters port more than 80 benchmarks to evaluate arbitrary agents, validated through code review and parity experiments. Using it, the authors run 8 models across capability tiers on 54 benchmarks, each with Terminus-2 and one of 3 native harnesses — enabling broader analysis of agent capabilities and failure modes than previously possible. Harbor-Index distills the adapted suite into 82 difficult, diverse, high-quality tasks spanning 29 benchmarks (difficulty filtering, AI and human audit, audit-and-fix loop): it preserves the challenge and breadth of large-scale agentic evaluation while being affordable to run — no evaluated model-harness configuration saturates it.",
+          "source_ids": [
+            "src-881b24d9bfd5bff7"
+          ],
+          "event_ids": [
+            "ev-20260908-11"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-11-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-08T00:00:18Z",
+          "summary_zh": "Harbor Adapters 把 80 多个 agent 基准标准化进同一个可运行 harness",
+          "summary_en": "Harbor Adapters standardize 80+ agentic benchmarks into one runnable harness",
+          "evidence_ids": [
+            "ev-20260908-11-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-12",
@@ -564,7 +994,46 @@
       "verification_cost": 1,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "mistral-series-d-sovereign-open-weight"
+      "event_fingerprint": "mistral-series-d-sovereign-open-weight",
+      "source_ids": [
+        "src-4d11ed62a144a3f4",
+        "src-266ae3c8fd4248d3"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-12-evidence-summary",
+          "claim_zh": "Mistral 宣布完成 30 亿欧元 Series D，估值超过 210 亿欧元，目标是让「主权的开源权重 AI 成为技术前沿」（9 月 8 日）。这是迄今最大的欧洲 AI 融资轮，明确把开源权重加欧洲主权定位为战略，而不是只靠 API 参与前沿竞争。同一周 Mistral 还宣布与 Cloudera 合作（9 月 10 日），把专业化主权模型带入企业数据平台。",
+          "claim_en": "Mistral announced a €3B Series D at a valuation above €21B, with the stated goal of making 'sovereign, open-weight AI the technology frontier' (Sept 8). This is the largest European AI round to date and explicitly frames open weights plus European sovereignty as the strategy, rather than API-only frontier competition. The same week Mistral announced a Cloudera partnership (Sept 10) to bring specialized sovereign models onto enterprise data platforms.",
+          "source_ids": [
+            "src-4d11ed62a144a3f4"
+          ],
+          "event_ids": [
+            "ev-20260908-12"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-12-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-11T18:30:00Z",
+          "summary_zh": "Mistral 融资 30 亿欧元，押注主权开源权重走到前沿",
+          "summary_en": "Mistral raises €3B Series D to push sovereign open-weight AI to the frontier",
+          "evidence_ids": [
+            "ev-20260908-12-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-13",
@@ -623,7 +1092,45 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "meta-muse-safety-practices-post"
+      "event_fingerprint": "meta-muse-safety-practices-post",
+      "source_ids": [
+        "src-512c3f7fef852cee"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-13-evidence-summary",
+          "claim_zh": "Meta 发布《How We Built Safety Into Muse》（9 月 8 日），在 Muse Spark 1.3 发布当天详细公开其 agent 安全架构：每用户独立 VM，agent harness（代号 Hatch）运行在 systemd-nspawn 容器中；独立的 Sentinel agent 作为连接器动作与网络出口的唯一权限当局；Authd 做凭据代理，agent 永远看不到真实 token；eBPF 内核级污点跟踪，被污染的进程失去自动放行、需用户批准；浏览器只暴露 accessibility tree（无原始 DOM、无 JS 执行）；购物用一次性、绑定商户与金额的钱包卡。此前私密的漏洞赏金转为公开，单报告最高 $300,000（单用户提示注入 $130,000）。计划年内推出的 Confidential VM 将从密码学上阻止 Meta 访问 VM 数据，设计与源码已交给外部审计方，并承诺上线后接受任何人可查验的持续审计。",
+          "claim_en": "Meta published 'How We Built Safety Into Muse' (Sept 8), a launch-day engineering post detailing the security architecture around Muse Spark 1.3 agents: per-user VMs with the agent harness ('Hatch') in a systemd-nspawn container; 'Sentinel', a separate agent that is the sole permission authority for connector actions and network egress; 'Authd' credential surrogation so agents never see real tokens; eBPF kernel-level taint tracking that forces user approval for tainted egress; an accessibility-tree-only browser view with no raw DOM or JS execution; and single-use, merchant- and amount-bound wallet cards for purchases. The previously private bug bounty is now public, up to $300,000 per report ($130,000 for single-user prompt injection). A 'Confidential VM' planned for later this year is designed to cryptographically prevent Meta from accessing VM data, with design and source already shared with external auditors and a commitment to continuous public audit once launched.",
+          "source_ids": [
+            "src-512c3f7fef852cee"
+          ],
+          "event_ids": [
+            "ev-20260908-13"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-13-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-11T18:30:00Z",
+          "summary_zh": "Meta 公开 Muse 的 agent 安全栈，漏洞赏金转公开",
+          "summary_en": "Meta details the Muse agent security stack, with a public bug bounty",
+          "evidence_ids": [
+            "ev-20260908-13-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-14",
@@ -667,7 +1174,46 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "cohere-megakernel-serving-north-mini-code"
+      "event_fingerprint": "cohere-megakernel-serving-north-mini-code",
+      "source_ids": [
+        "src-9b6082ebc541780b"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-14-evidence-summary",
+          "claim_zh": "Cohere 发布长文介绍 North Mini Code 背后的 megakernel serving 方案：把整个推理步骤融合进常驻 GPU kernel，减少 launch 开销与显存搬运，报告在 H100 上实现 1.58 倍的 LLM serving 提速（厂商自测）。文章覆盖 kernel 设计的取舍以及它与 serving 栈的组合方式。",
+          "claim_en": "Cohere published a long-form engineering write-up of the megakernel serving approach behind North Mini Code: fusing the whole inference step into persistent GPU kernels to cut launch overhead and memory traffic, reporting 1.58x faster LLM serving on H100 (vendor-measured). The post covers the kernel design trade-offs and how it composes with the serving stack.",
+          "source_ids": [
+            "src-9b6082ebc541780b"
+          ],
+          "event_ids": [
+            "ev-20260908-14"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-14-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "Cohere 公开 North Mini Code 的 megakernel serving 引擎细节",
+          "summary_en": "Cohere details its megakernel serving engine for North Mini Code",
+          "evidence_ids": [
+            "ev-20260908-14-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-15",
@@ -713,7 +1259,45 @@
       "verification_cost": 2,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "windsurf-cascade-removal-devin-local"
+      "event_fingerprint": "windsurf-cascade-removal-devin-local",
+      "source_ids": [
+        "src-c164595fef1e89e0"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-15-evidence-summary",
+          "claim_zh": "Windsurf 桌面版 changelog（现在托管在 docs.devin.ai——Windsurf 已并入 Devin Desktop）显示 v3.9.19（9/8）彻底移除旧 Cascade agent：「Devin Local 是 Devin Desktop 中唯一可用的 agent」，并提供「Continue in Devin Local」迁移路径与重组后的 Local/Worktree/Cloud 位置选择器。随后 v3.10.23（9/10）加入 SSH 远程 agent 主机并永久启用 ACP，剥离了最后一批 Cascade 入口（Vibe & Replace、Deploy、workflow 命令）。",
+          "claim_en": "Windsurf's desktop changelog (now hosted on docs.devin.ai — Windsurf has become Devin Desktop) shows v3.9.19 (Sep 8) removing the legacy Cascade agent entirely: \"Devin Local is the only agent available in Devin Desktop\", with a 'Continue in Devin Local' migration path and a reorganized Local/Worktree/Cloud location picker. v3.10.23 (Sep 10) follows with SSH remote agent hosts and ACP permanently enabled, stripping the last legacy Cascade entry points (Vibe & Replace, Deploy, workflow commands).",
+          "source_ids": [
+            "src-c164595fef1e89e0"
+          ],
+          "event_ids": [
+            "ev-20260908-15"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-15-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "Windsurf 移除 Cascade，Devin Local 成为唯一 agent",
+          "summary_en": "Windsurf removes Cascade; Devin Local becomes its only agent",
+          "evidence_ids": [
+            "ev-20260908-15-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-16",
@@ -765,7 +1349,48 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "nex-agi-nex-n2-5-open-weights"
+      "event_fingerprint": "nex-agi-nex-n2-5-open-weights",
+      "source_ids": [
+        "src-003d94a7ff4cba00",
+        "src-ef68c413cfd13c32"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-16-evidence-summary",
+          "claim_zh": "nex-agi（上海创智学院的智能体联盟，nex.sii.edu.cn）开源了 Nex-N2.5 系列：N2.5-Max（仓库 9/7 创建）、N2.5-Mini（35B 多模态 agent 模型）与 N2.5-Pro（2026-09-08T11:01Z 创建），许可证 Apache-2.0。Pro 仓库带 qwen3_5_moe 架构标签（image-text-to-text）——该系列是在 Qwen MoE 底座上叠加联盟的 agent 后训练。N2.5-Mini 在 OpenRouter 免费可用；采样时该系列占据 HF trending 第 5-7 位。",
+          "claim_en": "nex-agi, the agent alliance of the Shanghai Innovation Institute (nex.sii.edu.cn), open-sourced the Nex-N2.5 family: N2.5-Max (created Sep 7), then N2.5-Mini (a 35B multimodal agent model) and N2.5-Pro (created 2026-09-08T11:01Z) under Apache-2.0. The Pro repo uses the qwen3_5_moe architecture tag (image-text-to-text) — the family is built on Qwen MoE bases with the alliance's agent post-training. N2.5-Mini is free to use on OpenRouter; the family sat at #5-7 of HF trending at capture.",
+          "source_ids": [
+            "src-003d94a7ff4cba00"
+          ],
+          "event_ids": [
+            "ev-20260908-16"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-16-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T11:01:41Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "Nex-N2.5：上海创智学院开源 agent 配方模型",
+          "summary_en": "Nex-N2.5: Shanghai Innovation Institute open-sources agent-recipe models",
+          "evidence_ids": [
+            "ev-20260908-16-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-17",
@@ -813,7 +1438,45 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-05374-cua-universe-hybrid-gui-cli"
+      "event_fingerprint": "arxiv-2609-05374-cua-universe-hybrid-gui-cli",
+      "source_ids": [
+        "src-837510622d716afd"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-17-evidence-summary",
+          "claim_zh": "CUA-Universe 是一条把真实桌面软件转换成混合 GUI+CLI 环境的流水线（App-Forge VM 适配 16 个应用、Task-Weave 任务合成、Path-Steer 高效混合路径 rollout 采集）。在其数据上训练的 9B 模型：CUA-Verse 分数 +39.3，步数 -37%，token -60%；OSWorld 上 SR +16.8、步数 -57%；OSWorld-MCP +7.84。",
+          "claim_en": "CUA-Universe is a pipeline that converts real desktop software into hybrid GUI+CLI environments (App-Forge VM adaptation across 16 applications, Task-Weave task synthesis, Path-Steer efficient hybrid-path rollout collection). A 9B model trained on the resulting data gains +39.3 CUA-Verse score with -37% steps and -60% tokens; on OSWorld it adds +16.8 SR with -57% steps, and +7.84 on OSWorld-MCP.",
+          "source_ids": [
+            "src-837510622d716afd"
+          ],
+          "event_ids": [
+            "ev-20260908-17"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-17-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:49Z",
+          "summary_zh": "CUA-Universe 为 computer-use agent 合成混合 GUI+CLI 环境",
+          "summary_en": "CUA-Universe synthesizes hybrid GUI+CLI environments for computer-use agents",
+          "evidence_ids": [
+            "ev-20260908-17-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-18",
@@ -872,7 +1535,51 @@
       "verification_cost": 4,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "openai-navier-stokes-millennium-solution"
+      "event_fingerprint": "openai-navier-stokes-millennium-solution",
+      "source_ids": [
+        "src-2c827cba158d2f26",
+        "src-8ad1138a2830679d",
+        "src-e0efe31eb24750e1",
+        "src-272b471f8876e18d",
+        "src-d713ca6f0b6643c0"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-18-evidence-summary",
+          "claim_zh": "OpenAI 发布了 Navier–Stokes 存在性与光滑性千禧年难题的 AI 生成解，附带论文写本与 Lean 形式化证明。工作由一个内部模型完成——官方称其能力显著强于 GPT-6 Astra，自 8 月 28 日起训练且仍在进行。约 10,000 个并发 agent 的多 agent 系统自 9/1 运行至 9/5 得解（约 88 小时）；全部尝试合计 490 万条消息、约 3000 亿输出 token，其中 Navier–Stokes 占 270 万条、约 1300 亿 token；GPT-6 Astra 随后用 17 小时完成 Lean 形式化。证明结论：初始光滑且静止的流体可在有限时间内发展出奇点（陈述 C 与 D）；无外力 Euler 正则性问题也已解决（约 100 个 agent、约 50 小时）。OpenAI 声明不申请 Clay 千禧年奖金。",
+          "claim_en": "OpenAI announced an AI-generated solution to the Navier–Stokes existence-and-smoothness Millennium Prize Problem, with a writeup and a formal proof in Lean. The work came from an internal model described as significantly more capable than GPT-6 Astra, in training since 2026-08-28 and still ongoing. A multi-agent system of roughly 10,000 concurrent agents ran from 9/1 to 9/5 (~88 hours to the resolution); the effort totals 4.9M messages and ~300B output tokens across all attempted problems, 2.7M messages and ~130B output tokens for Navier–Stokes, and GPT-6 Astra produced the Lean formalization in 17 hours. The proof shows initially smooth, at-rest fluid can develop a singularity in finite time (statements C and D); the unforced Euler regularity problem was also resolved (~100 agents, ~50 hours). OpenAI states it will not claim the Clay Millennium Prize.",
+          "source_ids": [
+            "src-2c827cba158d2f26"
+          ],
+          "event_ids": [
+            "ev-20260908-18"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-18-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T10:00:00Z",
+          "discovered_at": "2026-09-11T18:31:48Z",
+          "summary_zh": "OpenAI 内部模型给出 Navier–Stokes 千禧年难题的 AI 生成解",
+          "summary_en": "OpenAI's internal model produces an AI-generated solution to the Navier–Stokes Millennium Problem",
+          "evidence_ids": [
+            "ev-20260908-18-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-19",
@@ -928,7 +1635,50 @@
       "verification_cost": 4,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "alpoge-buckmaster-forced-euler-anthropic-model"
+      "event_fingerprint": "alpoge-buckmaster-forced-euler-anthropic-model",
+      "source_ids": [
+        "src-b6d8a562a29fa342",
+        "src-2c827cba158d2f26",
+        "src-d713ca6f0b6643c0",
+        "src-272b471f8876e18d",
+        "src-416652df593a1dd7"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-19-evidence-summary",
+          "claim_zh": "Levent Alpöge（Anthropic 员工）与 Tristan Buckmaster（NYU）用 Anthropic 内部模型独立得到 forced Euler 正则性问题的解，与 OpenAI 的 Navier–Stokes 帖同日公布。按 Buckmaster 声明：两人用 Claude 和 Codex（以 GPT-5.6 Sol 为主）在此类问题上工作近一年，8 月 15 日取得突破；他指称 OpenAI 在得知其工作之后才首次向模型发出该问题的 prompt，且 OpenAI 拒答该模型是否用过他们的 Codex 草稿训练；Alpöge 还被告知因 OpenAI 与 Anthropic 的竞争关系无法联署 OpenAI 论文。OpenAI 承认对方在 forced Euler 上的优先权、称曾提议联合官宣；官方口径是不访问用户数据，但「不能排除」去标识化的产品使用数据帮助了模型改进；两份证明覆盖不同 Euler 变体（forced 与 unforced）。声明帖的 HN 热度（2,035 分）超过官宣帖本身。",
+          "claim_en": "Levent Alpöge (Anthropic) and Tristan Buckmaster (NYU) independently produced a resolution of the forced Euler regularity problem using an internal Anthropic model, announced the same day as OpenAI's Navier–Stokes post. Per Buckmaster's statement, the pair had worked on related problems for nearly a year with Claude and Codex (primarily GPT-5.6 Sol), reaching a breakthrough on 2026-08-15; he alleges OpenAI's first prompt on the problem was sent only after information about their work had reached OpenAI, and that OpenAI would not answer whether its model was trained on their Codex drafts. OpenAI acknowledges their priority on forced Euler, says it offered a joint announcement, that no user data was accessed, but cannot rule out that de-identified product-usage data informed model improvements; the two proofs cover different Euler variants (forced vs. unforced). Buckmaster also reports Alpöge was told he could not co-author an OpenAI paper given the OpenAI–Anthropic competitive relationship. The statement's HN thread (2,035 pts) outdrew the announcement itself.",
+          "source_ids": [
+            "src-b6d8a562a29fa342"
+          ],
+          "event_ids": [
+            "ev-20260908-19"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-19-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T00:00:00Z",
+          "discovered_at": "2026-09-11T18:31:48Z",
+          "summary_zh": "Alpöge 与 Buckmaster 用 Anthropic 内部模型解决 forced Euler 问题",
+          "summary_en": "Alpöge and Buckmaster resolve the forced Euler problem with an Anthropic internal model",
+          "evidence_ids": [
+            "ev-20260908-19-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260908-20",
@@ -977,7 +1727,48 @@
       "verification_cost": 1,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "openai-gpt-image-2-5-sunburst-flare"
+      "event_fingerprint": "openai-gpt-image-2-5-sunburst-flare",
+      "source_ids": [
+        "src-1dcea8b0f8acab14",
+        "src-83ddc97f8b94c016",
+        "src-1a9fcf8d6701b480",
+        "src-75debd6f9fb36c57"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260908-20-evidence-summary",
+          "claim_zh": "OpenAI 在 API 与 ChatGPT 中推出 GPT-Image-2.5 双模型：Sunburst 为其最强图像模型（细节更锐、光照更自然、编辑控制更细），Flare 为更快档——质量相当、延迟较 GPT Image 2 约低 50%。官方建议默认用 Flare，需要精细编辑时换 Sunburst。社区报告称两模型在 Image Arena 分列前二（Tier-4 信号）；Vercel AI Gateway、fal.ai、ComfyUI 合作节点数日内即上线。",
+          "claim_en": "OpenAI introduced GPT-Image-2.5 in the API and ChatGPT as two models: Sunburst, its most capable image model (sharper detail, more natural lighting, finer editing control), and Flare, a faster variant with roughly 50% lower latency than GPT Image 2 at the same quality. Official guidance is to default to Flare and switch to Sunburst when precision edits matter. Community reports place the pair first and second on Image Arena (Tier-4 signal), and third-party availability (Vercel AI Gateway, fal.ai, ComfyUI partner nodes) landed within days.",
+          "source_ids": [
+            "src-1dcea8b0f8acab14"
+          ],
+          "event_ids": [
+            "ev-20260908-20"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260908-20-published",
+          "kind": "new",
+          "occurred_at": "2026-09-08T11:30:00Z",
+          "discovered_at": "2026-09-11T18:31:48Z",
+          "summary_zh": "OpenAI 发布 GPT-Image-2.5：Sunburst 主打质量，Flare 延迟减半",
+          "summary_en": "OpenAI ships GPT-Image-2.5: Sunburst for fidelity, Flare for half the latency",
+          "evidence_ids": [
+            "ev-20260908-20-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,19 @@
+---
+import { intel,pick,words } from '../lib/intelligence';
+import SourceLinks from './SourceLinks.astro';
+import {u} from '../lib/url';
+import events from '../data/generated/events.json';
+const {evidence=[],locale='zh',limit}=Astro.props;
+const list=limit?evidence.slice(0,limit):evidence;
+---
+<div class="evidence-list">
+ {list.map((e:any)=><article class="evidence-item" id={e.id}>
+  <span class="eyebrow">{words(locale,e.relation==='counter'?'反面证据':e.relation==='support'?'支持证据':'背景材料',e.relation==='counter'?'Counter-evidence':e.relation==='support'?'Supporting evidence':'Background')}</span>
+  {e.verification==='historical'&&<span class="muted"> · {words(locale,'历史记录，未重新核验','Historical record, not rechecked')}</span>}
+  {e.verification==='official-statement'&&<span class="muted"> · {words(locale,'官方声明','Official statement')}</span>}
+  <p>{pick(e,'claim',locale)}</p>
+  <SourceLinks ids={e.source_ids} locale={locale}/>
+  {!e.source_ids?.length && e.event_ids?.length>0 && <div class="related-source-material"><span class="muted">{words(locale,'关联事件的原始材料','Original material from related events')}</span><SourceLinks ids={e.event_ids.flatMap((id:string)=>events.find((v:any)=>v.event_id===id)?.source_ids?.slice(0,1)||[])} locale={locale}/></div>}
+  <div class="related-links">{(e.event_ids||[]).map((id:string)=><a href={u(`/events/${id}/`,locale)}>{intel.search.find((r:any)=>r.id===id)?.[`title_${locale}`]||id} →</a>)}</div>
+ </article>)}
+</div>

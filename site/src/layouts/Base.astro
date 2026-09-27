@@ -2,6 +2,9 @@
 import { u, logicalPath } from '../lib/url';
 import { t, type Locale } from '../lib/i18n';
 import '../styles/global.css';
+import '../styles/intelligence.css';
+import '../styles/glass.css';
+import { words } from '../lib/intelligence';
 
 interface Props {
   title?: string;
@@ -13,14 +16,11 @@ const { title, locale = 'zh' } = Astro.props;
 const description = Astro.props.description ?? t(locale, 'site.description');
 
 const navItems = [
-  {
-    href: u('/', locale),
-    label: t(locale, 'nav.insights'),
-    // 洞察页即默认首页；/insights 为旧路径跳转，/radar 与 /trends 已并入首页（meta refresh 跳转），趋势快照归档仍挂在 /trends/archive/ 下
-    match: (p: string) => p === '/' || p.startsWith('/insights') || p.startsWith('/radar') || p.startsWith('/trends'),
-  },
-  { href: u('/daily/', locale), label: t(locale, 'nav.daily'), match: (p: string) => p.startsWith('/daily') },
-  { href: u('/events/', locale), label: t(locale, 'nav.events'), match: (p: string) => p.startsWith('/events') },
+  {href:u('/',locale),label:words(locale,'今日','Today'),match:(p:string)=>p==='/'||p.startsWith('/daily')},
+  {href:u('/events/',locale),label:words(locale,'事件','Events'),match:(p:string)=>p.startsWith('/events')},
+  {href:u('/projects/',locale),label:words(locale,'项目','Projects'),match:(p:string)=>p.startsWith('/projects')},
+  {href:u('/insights/',locale),label:words(locale,'洞察','Insights'),match:(p:string)=>['/insights','/trends','/topics','/radar'].some(v=>p.startsWith(v))},
+  {href:u('/following/',locale),label:words(locale,'关注','Following'),match:(p:string)=>p.startsWith('/following')},
 ];
 
 const pathname = logicalPath(Astro.url.pathname);
@@ -43,7 +43,7 @@ const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
       (() => {
         // ?theme=light|dark 可强制指定主题（测试/分享用），否则用手动选择，再否则跟随系统
         const forced = new URLSearchParams(location.search).get('theme');
-        const stored = forced === 'light' || forced === 'dark' ? forced : localStorage.getItem('theme');
+        const stored = forced === 'light' || forced === 'dark' ? forced : (() => { try { return localStorage.getItem('theme'); } catch { return null; } })();
         const theme =
           stored === 'light' || stored === 'dark'
             ? stored
@@ -54,7 +54,7 @@ const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
       })();
     </script>
   </head>
-  <body>
+  <body data-interface="glass">
     <header class={hasHeaderSearch ? 'site-header has-search' : 'site-header'}>
       <div class="container inner">
         <a class="brand" href={u('/', locale)}>
@@ -77,6 +77,7 @@ const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
             <a href={item.href} class={item.match(pathname) ? 'active' : ''} aria-current={item.match(pathname) ? 'page' : undefined}>{item.label}</a>
           ))}
           <div class="nav-utils">
+            <a class="global-search-link" href={u('/search/',locale)} aria-label={words(locale,'搜索所有内容','Search everything')} title={words(locale,'搜索所有内容','Search everything')}><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></a>
             <a class="lang-switch" href={langSwitchHref} hreflang={otherLocale === 'en' ? 'en' : 'zh-CN'} aria-label={t(locale, 'nav.langSwitchAria')}>{t(locale, 'nav.langSwitch')}</a>
             <button class="theme-toggle" id="theme-toggle" type="button" aria-label={t(locale, 'theme.toggle')} title={t(locale, 'theme.toggle')}>
               <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -93,6 +94,7 @@ const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
     </header>
 
     <main class="container page">
+      <p id="reader-status" role="status" class="reader-status" hidden></p>
       <slot />
     </main>
 
@@ -102,6 +104,7 @@ const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
           {t(locale, 'footer.line1')}
         </div>
         <div class="links">
+          <a href={u('/sources/', locale)}>{words(locale,'来源与覆盖','Sources & coverage')}</a>
           <a href={u('/about/', locale)}>{t(locale, 'footer.guide')}</a>
           <a href="https://github.com/Derekwang2002/ai-intelligence" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -109,11 +112,12 @@ const pageTitle = title ? `${title} · MATRIX` : t(locale, 'site.titleSuffix');
     </footer>
 
     <script>
+      import '../lib/reader';
       const btn = document.getElementById('theme-toggle');
       btn?.addEventListener('click', () => {
         const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
         document.documentElement.dataset.theme = next;
-        localStorage.setItem('theme', next);
+        try { localStorage.setItem('theme', next); } catch {}
       });
     </script>
   </body>

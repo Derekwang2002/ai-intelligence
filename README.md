@@ -1,4 +1,4 @@
-# AI Intelligence Radar
+# MATRIX — AI Intelligence Radar
 
 一个由 AI agent 驱动的本地增量式 AI Intelligence 知识库，持续追踪 AI 模型、Agent、AI Engineering、开源生态、研究、基础设施与开发者工具领域的重要变化，并长期沉淀为技术决策依据。
 
@@ -7,6 +7,12 @@
 ```text
 Events -> Signals -> Trends -> Decisions
 ```
+
+## MATRIX v2 网站
+
+网站提供「今日 / 事件 / 项目 / 洞察 / 关注」五条入口：增量阅读、项目档案、可点击趋势证据、持续研究专题、来源覆盖，以及本地关注/收藏/已读。继续使用 Astro 静态生成，无账号、数据库或在线模型调用。
+
+开发与数据维护见 [v2 产品与数据契约](docs/intelligence-v2.md)。运行 `npm --prefix site run check` 校验关联数据、单元测试与全部页面；`npm --prefix site run test:browser` 验证阅读交互。
 
 ## 核心原则
 

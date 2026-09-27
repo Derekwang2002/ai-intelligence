@@ -741,3 +741,51 @@ Checkpoint updated:
 - `prefers-reduced-motion` 时必须无动画，状态变更立即生效（模块内已处理，调用方不用管）。
 - 不用纯 CSS 的 `::details-content` 过渡：展开方向依赖较新浏览器，行为不稳定。
 - 程序化开合（筛选联动、日历跳转等设置 `details.open`）不经过动画，保持即时——动画只服务用户主动的点击开合。
+
+## 20. MATRIX v2 — 关联数据与阅读产品契约
+
+原有增量窗口、去重、双语和 checkpoint 规则继续适用。网站仍为只读投影。
+
+### 数据入口
+
+- `projects/catalog.json`：稳定项目 ID、名称/别名、类型、关联事件与来源、`current_judgment_event_id`（当前判断的事件依据）、`official_source_ids` 与独立的 `last_reviewed_at`。只关联明确的产品，不把整家公司视为同一项目。
+- `sources/catalog.json`：规范 URL、标题、材料类型、发布主体、官方关系（true/false/null）、检查记录。主来源与补充来源都可能是一手材料；未知关系保留 null。
+- `topics/catalog.json`：长期研究问题、双语回答/边界/开放问题/`review_trigger`、趋势与证据引用。每次扫描复核相关专题，有新的回答才新增变化记录。
+- `briefings/*.json`：每次成功扫描一份结构化阅读版本，包括实际变化 ID、最多 5 个必读及双语入选理由。`baseline` 或 `historical` 不构成新的未读通知。
+- `reviews/queue.json`：到期复核队列。承诺日期优先，否则公开后第 7/30 天复核。排队不表示核验完成。
+- `config/source-monitors.json`：固定官方信息入口。它补充 `radar.yaml` 的全领域搜索，不能替代模型、开源、研究、基础设施等领域的主动发现。
+
+### 事件与证据
+
+事件在原字段之外维护 `source_ids`、`project_ids`、`scenario_ids`、`evidence_stage`、`evidence`、`changes`。
+
+- `evidence_stage`: `verified`（发布事实已核查）、`frontier`（公开研究/实验，效果仍待独立验证）、`legacy`（尚未完成分类）。事实已核查不代表性能主张已独立复现。
+- `evidence[]`: `id`, `claim_zh/en`, `source_ids`, `event_ids`, `relation`（support/counter/background）, `verification`。
+- `changes[]`: `id`, `kind`（new/update/correction/recommendation/trend）, `occurred_at`, `discovered_at`, `summary_zh/en`, `evidence_ids`, `historical`。纠正或评级变化另存 `before` / `after`；重大变化可设置 `importance: major`。
+- 变化 ID 稳定、追加式维护。重跑不得新建相同变化；例行复核、迁移、排版与翻译修订不得产生变化记录。
+- `last_updated_at` 仅用于实质变化；例行检查写 `last_reviewed_at`，不得机械刷新雷达活跃度。
+- 场景固定为 `agents`、`models`、`local`、`research`。说明应明确面向谁、适用条件与限制，不能只给无条件推荐。
+- 来源链接须对应具体材料。转载不算独立验证；厂商 benchmark 必须标为厂商报告。
+- `editorial_pick`（可选）：`reason_zh/en` 和 `source_ids`。若称“低关注”，还必须有可核查的关注度依据，否则仅称“工程精选”。
+
+### 趋势与专题
+
+保留趋势顺序和稳定编号，继续同步中英快照、`current.json` 与 `current.md`。更新 JSON 后执行 `node scripts/render-current-trends.mjs`，保持人读看板与结构化状态一致。结构化 `evidence` 补充旧 `evidence_zh/en`，未关联的旧说明保留原文；禁止为了生成引用而猜测来源。
+
+- 每项证据分别注明支持、反对或背景；没有反证记录不等于不存在反证。
+- 项目、趋势、专题都可保存上述 `changes` 数组。专题回答改变、建议改变、趋势判断改变需要理由和证据；没有实质变化仅更新复核记录。
+- 趋势置信度、生命周期与近期活动是不同概念。安静期不自动降级。
+- 每次扫描必须对所有活跃趋势记录复核结论；只有实质证据影响判断时才进入首页变化流。
+
+### 每次执行
+
+1. 记录开始时间并读取 checkpoint。可用 `node scripts/collect-sources.mjs --started=<UTC>` 抓取固定入口；失败入口必须通过实际可读的替代路径完成检查，保留失败及恢复记录。
+2. 对抓取材料实际阅读、判断日期和差异，补足 `radar.yaml` 领域搜索。HTTP 200、内容哈希变化本身不能证明有新情报。
+3. 消费到期复核任务，按证据更新结果和下一次复核时间；未检查不能标完成。对无结果的复核保留待处理状态。
+4. 距上次定向补漏满 7 天时，复核近 30 天的重要候选与遗漏来源。记录覆盖范围；不足以完成时保持到期状态，不虚报完成。
+5. 先完成事实、关系、变化、专题、日报和趋势文件，再生成阅读简报。0 条必读是有效结果，不能强行凑数。
+6. 在 `logs/run-<id>.json` 保存窗口、入口检查、候选处置、各阶段状态、持久化文件和恢复说明。人读简报不包含请求过程与堆栈。
+7. `node scripts/validate-intelligence.mjs` 必须通过；先运行 `node scripts/finalize-run.mjs --manifest=logs/run-<id>.json` 进行包含测试和构建的预检，再执行 `node scripts/finalize-run.mjs --manifest=logs/run-<id>.json --commit`。该工具最后原子更新 checkpoint，遇到并行 checkpoint 变化则拒绝推进。
+8. checkpoint 成功后重新构建站点以投影新截止时间。网站展示各来源实际覆盖，禁止把未检查写成无变化。
+
+迁移工具 `node scripts/migrate-intelligence.mjs` 默认只预演，`--write` 才写入。迁移和构建均不得推进 checkpoint。具体数据契约与恢复流程见 `docs/intelligence-v2.md`。

@@ -7,7 +7,9 @@
       "title": "OPEN-1B makes every training step independently auditable",
       "title_zh": "OPEN-1B 让每个训练步骤都可独立审计",
       "category": "open-source",
-      "organization": ["Gensyn"],
+      "organization": [
+        "Gensyn"
+      ],
       "published_at": "2026-09-15T16:23:08Z",
       "first_seen_at": "2026-09-16T16:00:47Z",
       "last_updated_at": "2026-09-16T16:00:47Z",
@@ -40,7 +42,13 @@
         "许可证": "代码仓库为 Apache-2.0",
         "局限": "仅验证 1B 规模；回放仍信任固定的编译算子与产物"
       },
-      "tags": ["open-model", "training", "reproducibility", "audit", "model-provenance"],
+      "tags": [
+        "open-model",
+        "training",
+        "reproducibility",
+        "audit",
+        "model-provenance"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 2,
@@ -48,14 +56,60 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-17380-open-1b-auditable-training"
+      "event_fingerprint": "arxiv-2609-17380-open-1b-auditable-training",
+      "source_ids": [
+        "src-a46f4053e6518a8c",
+        "src-b8663c1d47312969",
+        "src-5b6c2f56f7b178d9",
+        "src-766565fcc5d778aa"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260915-01-evidence-summary",
+          "claim_zh": "Gensyn 发布 OPEN-1B：模型有 16.1 亿参数，使用 4000 亿 token 训练，每个优化步骤都记录状态哈希。固定顺序的算子、数据流和与拓扑无关的规约，使 CPU、CUDA 与 Metal 能复现完全一致的结果。项目公开完整语料、810 个 checkpoint、训练代码与审计回放工具。志愿者可在普通硬件上核验单个步骤，不必重跑整个训练任务。",
+          "claim_en": "Gensyn releases OPEN-1B, a 1.61B-parameter model trained on 400B tokens with a state hash for every optimizer step. Its fixed-order kernels, data stream and topology-independent reductions reproduce the same bits across CPU, CUDA and Metal. The release includes the full corpus, 810 checkpoints, training code and an audit-replay harness. A volunteer can verify one step on commodity hardware instead of rerunning the full training job.",
+          "source_ids": [
+            "src-a46f4053e6518a8c"
+          ],
+          "event_ids": [
+            "ev-20260915-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260915-01-published",
+          "kind": "new",
+          "occurred_at": "2026-09-15T16:23:08Z",
+          "discovered_at": "2026-09-16T16:00:47Z",
+          "summary_zh": "OPEN-1B 让每个训练步骤都可独立审计",
+          "summary_en": "OPEN-1B makes every training step independently auditable",
+          "evidence_ids": [
+            "ev-20260915-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260915-02",
       "title": "SWE-bench audit finds top coding-agent ranks statistically unresolved",
       "title_zh": "SWE-bench 审计发现头部 agent 排名难以区分",
       "category": "research",
-      "organization": ["Imperial College London", "Hong Kong Polytechnic University", "Korea University", "Jinan University"],
+      "organization": [
+        "Imperial College London",
+        "Hong Kong Polytechnic University",
+        "Korea University",
+        "Jinan University"
+      ],
       "published_at": "2026-09-15T16:29:12Z",
       "first_seen_at": "2026-09-16T16:00:47Z",
       "last_updated_at": "2026-09-16T16:00:47Z",
@@ -87,7 +141,13 @@
         "产物": "公开冻结输入、脚本、规范化设计和分层结果",
         "局限": "观察性审计；无法拒绝差异不等于证明等价"
       },
-      "tags": ["coding-agent", "SWE-bench", "evaluation", "benchmark", "scaffold"],
+      "tags": [
+        "coding-agent",
+        "SWE-bench",
+        "evaluation",
+        "benchmark",
+        "scaffold"
+      ],
       "technical_impact": 4,
       "engineering_value": 5,
       "adoption_signal": 3,
@@ -95,20 +155,67 @@
       "verification_cost": 2,
       "risk": 1,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-17394-swebench-resolution-audit"
+      "event_fingerprint": "arxiv-2609-17394-swebench-resolution-audit",
+      "source_ids": [
+        "src-467da1ec65b3689a",
+        "src-58b9ffcd27a11005",
+        "src-3ce924af7e6f30b0"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260915-02-evidence-summary",
+          "claim_zh": "研究者用逐题判定结果审计 254 个 SWE-bench 提交，覆盖四个 split。在 Verified 上，前 30 名的 29 组相邻结果没有一组能被精确配对检验区分。前十名共同解出 285 题、共同失败 51 题，只剩 164 题提供区分信息。固定模型后，不同 scaffold 的观测差距最高达 29.8 分，大于前 30 名整体 8.8 分的跨度。",
+          "claim_en": "Researchers audit 254 public SWE-bench submissions across four splits using their per-instance verdicts. On Verified, none of the 29 adjacent pairs in the top 30 is distinguishable by an exact paired test. The top ten share 285 successes and 51 failures, leaving only 164 informative tasks. Holding the model fixed, observed scaffold ranges reach 29.8 points, larger than the 8.8-point spread across the top 30.",
+          "source_ids": [
+            "src-467da1ec65b3689a"
+          ],
+          "event_ids": [
+            "ev-20260915-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260915-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-15T16:29:12Z",
+          "discovered_at": "2026-09-16T16:00:47Z",
+          "summary_zh": "SWE-bench 审计发现头部 agent 排名难以区分",
+          "summary_en": "SWE-bench audit finds top coding-agent ranks statistically unresolved",
+          "evidence_ids": [
+            "ev-20260915-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260915-03",
       "title": "FlashVector tunes production serving across kernels, servers and features",
       "title_zh": "FlashVector 跨算子、服务与特征层优化生产 serving",
       "category": "infrastructure",
-      "organization": ["Unity", "Stanford University"],
+      "organization": [
+        "Unity",
+        "Stanford University"
+      ],
       "published_at": "2026-09-15T16:27:45Z",
       "first_seen_at": "2026-09-16T16:00:47Z",
       "last_updated_at": "2026-09-16T16:00:47Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.17391",
-      "secondary_sources": ["https://arxiv.org/html/2609.17391v1"],
+      "secondary_sources": [
+        "https://arxiv.org/html/2609.17391v1"
+      ],
       "summary": "Unity reports deploying FlashVector across its advertising model-serving stack. The agent optimizes CUDA kernels, PyTorch graphs, NVIDIA Triton C++ code, Python feature transforms and serving parameters in one closed loop. Reported production gains reach 2x throughput and 1.98x lower latency on the model server, plus 1.6x throughput on the feature store. The paper does not release the system or an independent reproduction.",
       "why_it_matters": "For inference teams, the useful unit of optimization is the full serving path, not only a GPU kernel. This is a production signal that agents can search across languages and layers while checking service-level constraints. The closed implementation and vendor-reported measurements keep it at WATCH until another team can reproduce the workflow.",
       "summary_zh": "Unity 报告已在广告模型 serving 栈部署 FlashVector。该 agent 在同一个闭环中优化 CUDA 算子、PyTorch 计算图、NVIDIA Triton C++、Python 特征处理和服务参数。生产环境报告的最高收益为模型服务吞吐翻倍、延迟提速 1.98 倍，特征存储吞吐提升 1.6 倍。论文未公开系统，也没有独立复现。",
@@ -129,7 +236,13 @@
         "特征存储": "最高吞吐 1.6 倍",
         "可用性": "仅论文；实现未公开"
       },
-      "tags": ["model-serving", "optimization-agent", "GPU", "Triton", "production"],
+      "tags": [
+        "model-serving",
+        "optimization-agent",
+        "GPU",
+        "Triton",
+        "production"
+      ],
       "technical_impact": 4,
       "engineering_value": 5,
       "adoption_signal": 3,
@@ -137,20 +250,65 @@
       "verification_cost": 5,
       "risk": 3,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2609-17391-flashvector-serving-optimization-agent"
+      "event_fingerprint": "arxiv-2609-17391-flashvector-serving-optimization-agent",
+      "source_ids": [
+        "src-97b02e99d1029e30",
+        "src-50bc13f73014ee11"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260915-03-evidence-summary",
+          "claim_zh": "Unity 报告已在广告模型 serving 栈部署 FlashVector。该 agent 在同一个闭环中优化 CUDA 算子、PyTorch 计算图、NVIDIA Triton C++、Python 特征处理和服务参数。生产环境报告的最高收益为模型服务吞吐翻倍、延迟提速 1.98 倍，特征存储吞吐提升 1.6 倍。论文未公开系统，也没有独立复现。",
+          "claim_en": "Unity reports deploying FlashVector across its advertising model-serving stack. The agent optimizes CUDA kernels, PyTorch graphs, NVIDIA Triton C++ code, Python feature transforms and serving parameters in one closed loop. Reported production gains reach 2x throughput and 1.98x lower latency on the model server, plus 1.6x throughput on the feature store. The paper does not release the system or an independent reproduction.",
+          "source_ids": [
+            "src-97b02e99d1029e30"
+          ],
+          "event_ids": [
+            "ev-20260915-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260915-03-published",
+          "kind": "new",
+          "occurred_at": "2026-09-15T16:27:45Z",
+          "discovered_at": "2026-09-16T16:00:47Z",
+          "summary_zh": "FlashVector 跨算子、服务与特征层优化生产 serving",
+          "summary_en": "FlashVector tunes production serving across kernels, servers and features",
+          "evidence_ids": [
+            "ev-20260915-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260915-04",
       "title": "Study finds deep agent hierarchies preserve context but lose findings",
       "title_zh": "研究发现深层 agent 分工保住上下文却丢失发现",
       "category": "ai-engineering",
-      "organization": ["independent research"],
+      "organization": [
+        "independent research"
+      ],
       "published_at": "2026-09-15T17:04:09Z",
       "first_seen_at": "2026-09-16T16:00:47Z",
       "last_updated_at": "2026-09-16T16:00:47Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.17464",
-      "secondary_sources": ["https://arxiv.org/html/2609.17464v1"],
+      "secondary_sources": [
+        "https://arxiv.org/html/2609.17464v1"
+      ],
       "summary": "A trace study models how findings survive through multi-agent delegation trees. Across 600 production research traces, each extra layer loses information, and one in sixteen annotated handoffs drifts off target. Two tiers beat a flat agent on cost only above roughly 403 findings under the measured parameters. A separate 743,819-tool-call analysis finds that production agents delegate early rather than in response to a filling context.",
       "why_it_matters": "For teams designing multi-agent workflows, hierarchy depth should be a measured budget decision rather than a default architecture. Keep fan-out wide, summaries explicit and depth small unless the task is large enough for context cost to dominate. The underlying production corpus is not released, so the numerical threshold needs local validation.",
       "summary_zh": "这项轨迹研究建立模型，衡量发现经过多层 agent 委派后还能保留多少。600 条生产 research 轨迹显示，每多一层都会丢信息；在 1,012 条标注轨迹中，约每 16 次交接就有一次偏题。按测得参数，只有发现数量超过约 403 个时，两层结构的成本收益才超过单 agent。对 743,819 次工具调用的分析还发现，生产系统通常在任务早期决定委派，而不是等上下文变满后再调整。",
@@ -173,7 +331,13 @@
         "成本交叉点": "约 403 个发现后，两层结构超过单层",
         "局限": "单作者分析；生产语料与代码包未公开链接"
       },
-      "tags": ["multi-agent", "delegation", "context", "cost", "research-agent"],
+      "tags": [
+        "multi-agent",
+        "delegation",
+        "context",
+        "cost",
+        "research-agent"
+      ],
       "technical_impact": 4,
       "engineering_value": 5,
       "adoption_signal": 2,
@@ -181,14 +345,56 @@
       "verification_cost": 4,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-17464-agent-decomposition-integrity-yield"
+      "event_fingerprint": "arxiv-2609-17464-agent-decomposition-integrity-yield",
+      "source_ids": [
+        "src-fdce75e4b21151de",
+        "src-57734c5a558a81f9"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260915-04-evidence-summary",
+          "claim_zh": "这项轨迹研究建立模型，衡量发现经过多层 agent 委派后还能保留多少。600 条生产 research 轨迹显示，每多一层都会丢信息；在 1,012 条标注轨迹中，约每 16 次交接就有一次偏题。按测得参数，只有发现数量超过约 403 个时，两层结构的成本收益才超过单 agent。对 743,819 次工具调用的分析还发现，生产系统通常在任务早期决定委派，而不是等上下文变满后再调整。",
+          "claim_en": "A trace study models how findings survive through multi-agent delegation trees. Across 600 production research traces, each extra layer loses information, and one in sixteen annotated handoffs drifts off target. Two tiers beat a flat agent on cost only above roughly 403 findings under the measured parameters. A separate 743,819-tool-call analysis finds that production agents delegate early rather than in response to a filling context.",
+          "source_ids": [
+            "src-fdce75e4b21151de"
+          ],
+          "event_ids": [
+            "ev-20260915-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260915-04-published",
+          "kind": "new",
+          "occurred_at": "2026-09-15T17:04:09Z",
+          "discovered_at": "2026-09-16T16:00:47Z",
+          "summary_zh": "研究发现深层 agent 分工保住上下文却丢失发现",
+          "summary_en": "Study finds deep agent hierarchies preserve context but lose findings",
+          "evidence_ids": [
+            "ev-20260915-04-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260915-05",
       "title": "JustFit serves a 200K-token model context on a 24 GiB MacBook",
       "title_zh": "JustFit 让 24 GiB Mac 跑通 200K 上下文",
       "category": "infrastructure",
-      "organization": ["independent research"],
+      "organization": [
+        "independent research"
+      ],
       "published_at": "2026-09-15T17:15:48Z",
       "first_seen_at": "2026-09-16T16:00:47Z",
       "last_updated_at": "2026-09-16T16:00:47Z",
@@ -220,7 +426,13 @@
         "速度": "冷预填充约 48 分钟；极限下 4.99 tok/s；全程约 103 分钟",
         "可复现性": "公开分支持续变化；历史实验环境记录不完整"
       },
-      "tags": ["local-inference", "MLX", "long-context", "KV-cache", "Apple-Silicon"],
+      "tags": [
+        "local-inference",
+        "MLX",
+        "long-context",
+        "KV-cache",
+        "Apple-Silicon"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -228,14 +440,60 @@
       "verification_cost": 3,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-17475-justfit-200k-local-serving"
+      "event_fingerprint": "arxiv-2609-17475-justfit-200k-local-serving",
+      "source_ids": [
+        "src-546a8405fc67974a",
+        "src-4f5d81088b774eff",
+        "src-6a2627b7b1dbcc77"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260915-05-evidence-summary",
+          "claim_zh": "JustFit 在 MLX runtime 中组合压缩 KV 执行、组件换入换出和保留状态的 serving 切换。在 24 GiB M4 Pro MacBook 上，Qwen3.8-27B MXFP4 连续三次完成 196K 输入加 16K 输出。这把单请求可完成上下文提高到论文所列 mlx-vlm 基线的 6.93 倍。极限上下文一次约需 103 分钟，因此结果主要证明容量，不代表交互速度。",
+          "claim_en": "JustFit combines compressed KV execution, component swapping and state-preserving serving transitions in an MLX runtime. On a 24 GiB M4 Pro MacBook, Qwen3.8-27B MXFP4 completes 196K input tokens plus 16K output tokens in three runs. That raises completed single-request context 6.93x over the stated mlx-vlm baseline. Extreme-context runs take about 103 minutes, so the result establishes capacity more than interactive speed.",
+          "source_ids": [
+            "src-546a8405fc67974a"
+          ],
+          "event_ids": [
+            "ev-20260915-05"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260915-05-published",
+          "kind": "new",
+          "occurred_at": "2026-09-15T17:15:48Z",
+          "discovered_at": "2026-09-16T16:00:47Z",
+          "summary_zh": "JustFit 让 24 GiB Mac 跑通 200K 上下文",
+          "summary_en": "JustFit serves a 200K-token model context on a 24 GiB MacBook",
+          "evidence_ids": [
+            "ev-20260915-05-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260915-06",
       "title": "ScienceBuddy releases a self-improving scientific-agent workspace",
       "title_zh": "ScienceBuddy 发布可持续改进的科研 agent 工作台",
       "category": "agent-framework",
-      "organization": ["PhAI Labs", "Fudan University", "University of Oxford", "Stanford University", "Princeton University"],
+      "organization": [
+        "PhAI Labs",
+        "Fudan University",
+        "University of Oxford",
+        "Stanford University",
+        "Princeton University"
+      ],
       "published_at": "2026-09-15T17:55:28Z",
       "first_seen_at": "2026-09-16T16:00:47Z",
       "last_updated_at": "2026-09-16T16:00:47Z",
@@ -265,7 +523,13 @@
         "可用性": "公开产品站点与 GitHub 仓库",
         "局限": "作者自测案例；没有独立生产力或安全评估"
       },
-      "tags": ["research-agent", "self-improvement", "harness", "reinforcement-learning", "open-source"],
+      "tags": [
+        "research-agent",
+        "self-improvement",
+        "harness",
+        "reinforcement-learning",
+        "open-source"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -273,14 +537,57 @@
       "verification_cost": 3,
       "risk": 4,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-17523-sciencebuddy-recursive-improvement"
+      "event_fingerprint": "arxiv-2609-17523-sciencebuddy-recursive-improvement",
+      "source_ids": [
+        "src-8ed7a0f4faed007f",
+        "src-183cf95d003c87b1",
+        "src-71e1a92780fbfcc6"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260915-06-evidence-summary",
+          "claim_zh": "ScienceBuddy 把研究者的请求、反馈和执行证据转成新任务与评测规则。内层循环在模型不变时修改 agent harness；外层循环再用改进后的 harness 强化模型。作者公开工作台与代码，并展示四类科研任务案例。现有证据仍是作者自测的小规模案例，不是独立生产力研究。",
+          "claim_en": "ScienceBuddy turns researcher requests, feedback and execution evidence into new tasks and evaluation rubrics. Its inner loop edits the agent harness while holding the model fixed; an outer loop reinforces the model under the improved harness. The authors release the workspace and code with case studies across four scientific task families. The evidence remains a small author-run set rather than an independent productivity study.",
+          "source_ids": [
+            "src-8ed7a0f4faed007f"
+          ],
+          "event_ids": [
+            "ev-20260915-06"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260915-06-published",
+          "kind": "new",
+          "occurred_at": "2026-09-15T17:55:28Z",
+          "discovered_at": "2026-09-16T16:00:47Z",
+          "summary_zh": "ScienceBuddy 发布可持续改进的科研 agent 工作台",
+          "summary_en": "ScienceBuddy releases a self-improving scientific-agent workspace",
+          "evidence_ids": [
+            "ev-20260915-06-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260915-07",
       "title": "Social-harness study finds cross-owner agents fail even when honest",
       "title_zh": "Social harness 发现诚实 agent 跨主体协作仍会失败",
       "category": "agent-security",
-      "organization": ["University of Washington"],
+      "organization": [
+        "University of Washington"
+      ],
       "published_at": "2026-09-15T17:57:27Z",
       "first_seen_at": "2026-09-16T16:00:47Z",
       "last_updated_at": "2026-09-16T16:00:47Z",
@@ -312,7 +619,13 @@
         "方案": "五层：身份、可靠通信、动作护栏、交互规范与治理",
         "产物": "公开配套仓库与部分轨迹"
       },
-      "tags": ["multi-agent", "A2A", "trust", "agent-security", "protocol"],
+      "tags": [
+        "multi-agent",
+        "A2A",
+        "trust",
+        "agent-security",
+        "protocol"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 1,
@@ -320,7 +633,47 @@
       "verification_cost": 3,
       "risk": 4,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2609-17527-agent-social-harness"
+      "event_fingerprint": "arxiv-2609-17527-agent-social-harness",
+      "source_ids": [
+        "src-084e9226b7085f5b",
+        "src-d7abf69f5654408a",
+        "src-377f9cb1907f3e68"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260915-07-evidence-summary",
+          "claim_zh": "University of Washington 测试了代表不同主体、跨信任边界协商日程的 agent。即使所有 agent 都诚实，参与者增加后成功率也会明显下降；一组配置从单人时的 90% 降到七人时的 0%。恶意 agent 还能利用未经验证的说法、社会压力和分散的日历查询绕过模型安全训练。论文提出五层 social harness，覆盖身份、顺序通信、动作护栏、协议规范与治理。",
+          "claim_en": "University of Washington tests agents that schedule meetings across separate owners and trust boundaries. Honest-agent success often falls as group size grows; one configuration drops from 90% to 0% when moving from one to seven participants. Malicious agents exploit unverified claims, social pressure and fragmented calendar disclosure despite model safety training. The paper proposes a five-layer social harness for identity, ordered communication, action guards, protocol norms and governance.",
+          "source_ids": [
+            "src-084e9226b7085f5b"
+          ],
+          "event_ids": [
+            "ev-20260915-07"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260915-07-published",
+          "kind": "new",
+          "occurred_at": "2026-09-15T17:57:27Z",
+          "discovered_at": "2026-09-16T16:00:47Z",
+          "summary_zh": "Social harness 发现诚实 agent 跨主体协作仍会失败",
+          "summary_en": "Social-harness study finds cross-owner agents fail even when honest",
+          "evidence_ids": [
+            "ev-20260915-07-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

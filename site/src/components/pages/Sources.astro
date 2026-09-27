@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import {intel,words,sourceLabel} from '../../lib/intelligence';
+import {fmtDateTime} from '../../lib/url';
+const {locale='zh'}=Astro.props;
+const sources=[...intel.sources].sort((a:any,b:any)=>(b.last_checked_at||'').localeCompare(a.last_checked_at||'')||a.title.localeCompare(b.title));
+const briefing=intel.briefings[0];
+const status=(s:any)=>{const last=s.checks?.at(-1);return last?.status||'unknown';};
+const labels:any={unknown:words(locale,'未重新检查','Not rechecked'),success:words(locale,'已检查','Checked'),changed:words(locale,'有变化','Changed'),unchanged:words(locale,'无变化','Unchanged'),failed:words(locale,'检查失败','Check failed'),not_checked:words(locale,'未检查','Not checked')};
+---
+<Base title={words(locale,'来源与覆盖','Sources & coverage')} locale={locale}>
+<header class="editorial-head"><div class="eyebrow">MATRIX / SOURCES</div><h1>{words(locale,'来源与覆盖','Sources & coverage')}</h1><p class="lead">{words(locale,'这里展示引用材料和实际检查记录。没有检查记录，不代表来源已被核验。','Referenced material and recorded checks. The absence of a check is not evidence of verification.')}</p><p class="muted">{words(locale,'知识库截至','Knowledge as of')} {fmtDateTime(intel.as_of,locale)} · CST</p></header>
+<section class="coverage-summary"><h2>{words(locale,'最近一期检查范围','Latest coverage')}</h2><p>{briefing?.[`coverage_${locale}`]}</p>{briefing?.window&&<p class="muted">{fmtDateTime(briefing.window.start,locale)} — {fmtDateTime(briefing.window.end,locale)} · Asia/Shanghai</p>}<p>{words(locale,'来源可访问，只说明材料可以读取；官方发布和性能主张的独立验证是两回事。','Reachability only means material can be read. An official announcement and independent verification of its claims are different things.')}</p><p>{words(locale,'历史引用保留原文入口。旧扫描没有结构化检查日志的，显示为未重新检查。','Historical references retain original links. Sources without structured check logs are shown as not rechecked.')}</p></section>
+<div class="source-filter"><label for="source-search">{words(locale,'查找来源','Find a source')}</label><input id="source-search" type="search" placeholder={words(locale,'标题、网站或材料类型','Title, website or material type')}/><span id="source-count" aria-live="polite"></span></div>
+<div class="source-directory">{sources.map((s:any,i:number)=><article data-source-row data-query={`${s.title} ${s.publisher} ${s.kind} ${sourceLabel(s.kind,locale)}`.toLowerCase()} hidden={i>=25}><div class="source-directory-meta"><span>{sourceLabel(s.kind,locale)}</span><span>{labels[status(s)]}</span></div><h2><a href={s.url} target="_blank" rel="noopener noreferrer" title={words(locale,'在新标签页打开','Opens in a new tab')}>{s.title} ↗</a></h2><p>{s.publisher} · {s.official===true?words(locale,'官方材料','Official material'):s.official===false?words(locale,'独立或社区材料','Independent or community material'):words(locale,'发布主体关系尚未分类','Publisher relationship not classified')}</p>{s.last_checked_at&&<p class="muted">{words(locale,'最近检查','Last checked')} {fmtDateTime(s.last_checked_at,locale)}</p>}</article>)}</div><button class="quiet-button" id="source-more">{words(locale,'再看 25 条','Show 25 more')}</button>
+</Base>
+<script>
+const input=document.getElementById('source-search') as HTMLInputElement;const rows=[...document.querySelectorAll<HTMLElement>('[data-source-row]')];let limit=25;function apply(){let n=0;for(const row of rows){const matches=row.dataset.query?.includes(input.value.toLowerCase().trim());row.hidden=!matches||n>=limit;if(matches)n++;}document.getElementById('source-count')!.textContent=`${Math.min(limit,n)} / ${n}`;document.getElementById('source-more')!.hidden=n<=limit;}input?.addEventListener('input',()=>{limit=25;apply();});document.getElementById('source-more')?.addEventListener('click',()=>{limit+=25;apply();});apply();
+</script>

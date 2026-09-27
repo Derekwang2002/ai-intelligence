@@ -1,37 +1,28 @@
-# AI Intelligence Radar — Site
+# MATRIX — AI Intelligence Site
 
-知识库（`events/`、`daily/`、`trends/`、`index/`、`state.json`）的只读静态站点，基于 [Astro](https://astro.build)。
-
-> 架构与选型的完整说明见 [`docs/site-architecture.md`](../docs/site-architecture.md)。
-
-## 视图
+Astro 静态站，知识库的只读投影。中文默认，英文使用 `/en/`；支持明暗主题、手机阅读和本地个人偏好。
 
 | 路由 | 内容 |
-|---|---|
-| `/` | 概览：统计、观察清单、最新事件、活跃趋势、活动图、建议分布 |
-| `/events/` | 事件时间线（搜索 + 类别 / 组织 / 建议筛选） |
-| `/events/[id]/` | 事件详情：摘要、why it matters、技术细节、benchmark、六维评分、分层来源 |
-| `/radar/` | 技术雷达：四象限 × ADOPT/TRIAL/WATCH/IGNORE 四环 |
-| `/trends/` | 趋势看板（生命周期状态、置信度、证据链）+ 历史快照 |
-| `/daily/` | 中文日报阅读页 |
+| --- | --- |
+| `/` | 今日简报、最近七天、自上次读完 |
+| `/events/` | 搜索、分类、前沿观察；永久事件详情链接 |
+| `/projects/` | 持续项目档案 |
+| `/insights/` | 趋势、技术雷达、研究专题 |
+| `/following/` | 本地关注、收藏、已读及导入导出 |
+| `/sources/` | 引用材料及实际检查记录 |
+| `/search/` | 事件、项目、趋势、专题统一搜索 |
+| `/daily/` | 双语日报归档 |
 
-## 本地开发
-
-```bash
-cd site
-npm install
-npm run dev      # 自动先跑 scripts/prepare-data.mjs，再启动 dev server
+```sh
+npm ci
+npm run dev
+npm run check
+npx playwright install chromium
+npm run test:browser
 ```
 
-## 数据管线
+数据准备在开发/构建前校验知识库并生成 `src/data/generated/` 和 `public/data/search.json`。这两处不入 Git。知识库变更后重新执行准备脚本，或重启开发服务。
 
-`scripts/prepare-data.mjs` 在 dev/build 前运行，把知识库文件投影为 `src/data/generated/*.json`（已 gitignore，不入库）。知识库文件永远不会被站点修改。
+GitHub Pages 设置 `ASTRO_BASE=/ai-intelligence`，所有内部路径经过同一个 URL helper。PR 运行校验、单元测试、构建及浏览器检查，main 检查成功才部署。
 
-## 部署
-
-push 到 `main`（或手动触发 `.github/workflows/deploy-site.yml`）会自动构建并发布到 GitHub Pages：
-`https://derekwang2002.github.io/ai-intelligence/`。
-
-首次使用需在仓库 Settings → Pages 中把 Source 设为 **GitHub Actions**。
-
-主题支持浅色 / 深色切换（跟随系统 + 手动切换，记忆在 localStorage）。
+完整契约与恢复流程：[intelligence-v2.md](../docs/intelligence-v2.md)。历史架构讨论：[site-architecture.md](../docs/site-architecture.md)，其中旧路由描述以本文件为准。

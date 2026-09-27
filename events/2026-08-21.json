@@ -78,7 +78,47 @@
         },
         "档位": "Batch/Flex 标准价 5 折；Fast 模式标准价 2 倍",
         "背景": "GPT-5.6 家族 2026-08-18 GA（Sol/Terra/Luna）；Luna 支撑 Replit Free Mode（8/18-19 发布，属此前背景）；与 DeepSeek V4-Pro 自 2026-08-16 的涨价方向相反（ev-20260813-02 更新）"
-      }
+      },
+      "source_ids": [
+        "src-e19fbb75eb44457e",
+        "src-00eaf917ab1113cf",
+        "src-cb57833330903fce"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260821-01-evidence-summary",
+          "claim_zh": "OpenAI 于 8 月 21 日更新 GPT-5.6 官方公告页：GPT-5.6 Sol 的 API 与 credit 价格在未来三个月下调超 20%。API 定价页显示，Sol 促销价为短上下文 $4.00/1M 输入、$20.00/1M 输出，长上下文 $8.00/$30.00，缓存输入按输入价的 10% 计费，并注明促销价「至少持续到 2026 年 11 月 21 日」。同家族的 Terra 为 $2.00/$12.00，Luna 为 $0.20/$1.20（均为短上下文价）；Batch/Flex 档为标准价 5 折（Sol $2.00/$10.00），Fast 模式为 2 倍。GPT-5.6 家族（Sol/Terra/Luna）于 2026-08-18 GA，Luna 定位低成本档，支撑了 Replit 在 8/18-19 发布的 Free Mode。此次降价与 DeepSeek V4-Pro 自 2026-08-16 起的大幅涨价方向相反。",
+          "claim_en": "OpenAI updated the GPT-5.6 announcement page on August 21: API and credit pricing for GPT-5.6 Sol drops by over 20% for the next three months. The API pricing page lists promotional Sol pricing of $4.00 per 1M input / $20.00 per 1M output tokens for short context ($8.00/$30.00 long context), cached input at 10% of the input price, and states the promotional pricing is available 'at least through November 21, 2026'. Family context: Terra at $2.00/$12.00 and Luna at $0.20/$1.20 (short context); Batch and Flex tiers are 50% off standard (Sol $2.00/$10.00); Fast mode is 2x. The GPT-5.6 family (Sol/Terra/Luna) reached GA on 2026-08-18, with Luna positioned as the low-cost tier powering Replit's Free Mode (announced 8/18-19, just before this window). The cut moves in the opposite direction to DeepSeek V4-Pro's large price increase effective 2026-08-16.",
+          "source_ids": [
+            "src-e19fbb75eb44457e"
+          ],
+          "event_ids": [
+            "ev-20260821-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260821-01-published",
+          "kind": "new",
+          "occurred_at": "2026-08-21",
+          "discovered_at": "2026-08-22T00:00:33Z",
+          "summary_zh": "OpenAI 下调 GPT-5.6 Sol API 与 credit 价格超 20%，为期三个月",
+          "summary_en": "OpenAI cuts GPT-5.6 Sol API and credit prices by over 20% for three months",
+          "evidence_ids": [
+            "ev-20260821-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260821-02",
@@ -139,7 +179,47 @@
         ],
         "启示": "部署前需要细粒度行为评估；只看聚合 perplexity/accuracy 不够",
         "与知识库的关系": "延续 ev-20260820-02（arXiv 2608.18578，2026-08-20）开辟的压缩 × 行为研究线；独立团队得出同一元结论"
-      }
+      },
+      "source_ids": [
+        "src-686338f11ee7189c",
+        "src-0a6264c9ecd44565"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260821-02-evidence-summary",
+          "claim_zh": "这篇论文对 3 个 LLM 和 11 种压缩方法做了系统评估，考察的是聚合指标（perplexity、accuracy）容易掩盖的三个维度：知识保持、模型置信度、社会偏见。主要发现有三个。第一，压缩对常见知识（head knowledge，高频出现的常识内容）的损害明显大于长尾知识（tail knowledge）。第二，压缩后的模型对刚丢失的知识给出错误答案时往往依然很自信，校准在不知不觉中劣化。第三，聚合偏见分数看似稳定，背后却可能是各人口子群体刻板偏好方向相反的移动相互抵消。结论是压缩会带来聚合指标看不见的不对称行为变化，部署前必须做细粒度评估。",
+          "claim_en": "A systematic evaluation of 3 LLMs and 11 compression methods, measuring effects on knowledge retention, model confidence, and social bias that aggregate metrics (perplexity, accuracy) mask. Findings: compression disproportionately reduces relative retention of head knowledge compared to tail knowledge; compressed models often remain substantially confident in incorrect answers on newly lost knowledge, so calibration quietly degrades; and stable aggregate bias scores can conceal substantial, opposing shifts in stereotypical preferences across demographic subgroups. The conclusion: compression produces asymmetric behavioral changes that aggregate measures cannot see, so granular evaluation is required before deployment.",
+          "source_ids": [
+            "src-686338f11ee7189c"
+          ],
+          "event_ids": [
+            "ev-20260821-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260821-02-published",
+          "kind": "new",
+          "occurred_at": "2026-08-21",
+          "discovered_at": "2026-08-22T00:00:33Z",
+          "summary_zh": "研究显示 LLM 压缩会悄悄损害常见知识和校准",
+          "summary_en": "Study: LLM compression quietly hurts common knowledge and calibration",
+          "evidence_ids": [
+            "ev-20260821-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260821-03",
@@ -216,7 +296,48 @@
         "基准测试": "7 个公开 tool/skill 使用数据集，含资源不相交（resource-disjoint）测试",
         "代码": "github.com/EIT-NLP/ReCache",
         "与知识库的关系": "agent × KV-cache 研究线的成本一侧；正确性一侧见 ev-20260818-03（arXiv 2608.15939）"
-      }
+      },
+      "source_ids": [
+        "src-14c78957048addd4",
+        "src-d875506fd7a02a00"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260821-03-evidence-summary",
+          "claim_zh": "在 agent 负载里，tool/skill schema 会以不同组合、不同顺序反复出现，标准的前缀缓存因此无法复用它们的 KV 状态。ReCache 的做法是把每个资源的表示独立缓存：resource-wise attention 去掉跨资源交互并给资源分配局部位置，得到组合不变（composition-invariant）的 KV block；资源的可见范围被限制在按贡献选出的 layer-KV-head-group 路由上，再通过结构化和语义剪枝只保留调用关键字段。在 7 个公开 tool/skill 使用数据集组成的 benchmark 上（含资源不相交测试），resource-wise attention 与 dense 调用性能持平（Inv-F1 82.3% vs 82.4%），同时首 token 延迟（TTFT）加速 3.655 倍；完整框架把已分配的 KV-tensor 内存降低 92.43%，attention 加速 1.423 倍。代码已开源：github.com/EIT-NLP/ReCache。",
+          "claim_en": "Agent workloads repeatedly encode tool and skill schemas that recur across requests in different combinations and orders, so standard prefix caching cannot reuse their KV states. ReCache caches each resource's representation independently: resource-wise attention removes cross-resource interactions and assigns resource-local positions, producing composition-invariant KV blocks; visibility is restricted to contribution-selected layer-KV-head-group routes, and structural plus semantic pruning keeps only invocation-critical fields. On a benchmark assembled from seven public tool/skill-use datasets (including resource-disjoint tests), resource-wise attention matches dense invocation performance (82.3% vs 82.4% Inv-F1) while delivering a 3.655x time-to-first-token speedup; the full framework cuts allocated KV-tensor memory by 92.43% and accelerates attention by 1.423x. Code is available at github.com/EIT-NLP/ReCache.",
+          "source_ids": [
+            "src-14c78957048addd4"
+          ],
+          "event_ids": [
+            "ev-20260821-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260821-03-published",
+          "kind": "new",
+          "occurred_at": "2026-08-21",
+          "discovered_at": "2026-08-22T00:00:33Z",
+          "summary_zh": "ReCache：让 agent 反复拼装的 tool schema 也能复用 KV cache",
+          "summary_en": "ReCache makes KV cache reusable for tool-heavy LLM agents",
+          "evidence_ids": [
+            "ev-20260821-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260821-04",
@@ -281,7 +402,48 @@
           "长度/成本匹配对照：+15 至 +32 点可归因于状态结构本身"
         ],
         "与知识库的关系": "与 ev-20260820-02（arXiv 2608.18578）同属被覆写值召回研究线；本周评估盲区集群的第三篇"
-      }
+      },
+      "source_ids": [
+        "src-9f38e290485b966c",
+        "src-0a6264c9ecd44565"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260821-04-evidence-summary",
+          "claim_zh": "论文提出，有效的 agent 记忆系统必须能追踪世界状态的变化：事实、约束和决策会在长交互中被不断修订，答案必须反映当前状态，而不是已被取代的旧状态。作者把这一能力定义为状态追踪（state tracking），并发布 StateMemBench：234 个多会话场景、两种对话长度区间。评测采用闭集评分（closed-pool grading，在固定候选中判定答案反映的是当前状态、被取代状态还是其他失败），从构造上把状态追踪失败与其他错误区分开。现有记忆系统、RAG 基线和长上下文基线表现都不理想。论文提出的 StateMem 是状态优先（state-first）的记忆方法，显式追踪取代关系和关系依赖；当前状态准确率较最强同 backbone 基线提升 1.8 倍（DeepSeek-V4-Flash 上 0.205 → 0.363），较最强记忆系统提升 1.6 倍（Qwen-3.5-9B 上 0.149 → 0.233）。作为轻量的单次调用封装，StateMem 可以套在六个现有记忆/检索后端上，把当前状态准确率提升 +32 至 +67 点；长度与成本匹配的对照显示，其中 +15 至 +32 点来自状态结构本身而非新增上下文。",
+          "claim_en": "The paper argues an effective agent memory system must track the evolving state of the world: as facts, constraints, and decisions are revised over a long interaction, answers must reflect the current state, not a superseded one. It defines this as state tracking and releases StateMemBench: 234 multi-session scenarios across two conversation-length regimes, with closed-pool grading that scores whether an answer reflects the current state, a superseded state, or fails otherwise — separating state-tracking failures from other errors by construction. Existing memory systems, retrieval-augmented baselines, and long-context baselines all struggle. The proposed StateMem, a state-first memory that explicitly tracks supersession and relational dependencies, improves current-state accuracy 1.8x over the strongest same-backbone baseline (0.205 -> 0.363 on DeepSeek-V4-Flash) and 1.6x over the strongest memory system (0.149 -> 0.233 on Qwen-3.5-9B). As a lightweight single-call wrapper over six existing memory/retrieval backends, it lifts current-state accuracy by +32 to +67 points, and a length- and cost-matched control attributes +15 to +32 of those points to state structure rather than added context.",
+          "source_ids": [
+            "src-9f38e290485b966c"
+          ],
+          "event_ids": [
+            "ev-20260821-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260821-04-published",
+          "kind": "new",
+          "occurred_at": "2026-08-21",
+          "discovered_at": "2026-08-22T00:00:33Z",
+          "summary_zh": "StateMemBench：现有 agent 记忆系统跟不上不断变化的状态",
+          "summary_en": "StateMemBench shows agent memory systems can't track a changing world",
+          "evidence_ids": [
+            "ev-20260821-04-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

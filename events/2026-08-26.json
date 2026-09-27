@@ -57,7 +57,47 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "TRIAL",
-      "event_fingerprint": "arxiv-2608-23041-autosaddler-harness-optimization"
+      "event_fingerprint": "arxiv-2608-23041-autosaddler-harness-optimization",
+      "source_ids": [
+        "src-0e6ab64a450f50c2",
+        "src-ad5732584a030ad6"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260826-01-evidence-summary",
+          "claim_zh": "AutoSaddler（arXiv 2608.23041）把 agent harness 的改进当作离线学习问题：从执行轨迹的小批量失败信号中挖掘问题，生成把 harness——prompt、工具配置、控制逻辑——当代码来改的结构化补丁，再通过验证挑选更新。在 GAIA2、SWE-Bench Pro、Terminal-Bench 2.0 上分别比基础 harness 提升 9.0、9.6、10.0 个百分点。消融实验显示收益来自两点：深挖式调试优于浅层反思，泛化导向的筛选优于针对单条轨迹的修补。代码已随项目站开源。",
+          "claim_en": "AutoSaddler (arXiv 2608.23041) treats agent-harness improvement as an offline learning problem: it mines failure signals from mini-batches of execution traces, generates structured patches that treat the harness — prompts, tool configurations, control logic — as code, and selects updates through validation. It improved the base harness by 9.0, 9.6 and 10.0 percentage points on GAIA2, SWE-Bench Pro and Terminal-Bench 2.0 respectively. Ablations attribute the gains to deep debugging over shallow reflection and to generalization-aware selection over trajectory-specific repair. Code is released via the project site.",
+          "source_ids": [
+            "src-0e6ab64a450f50c2"
+          ],
+          "event_ids": [
+            "ev-20260826-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260826-01-published",
+          "kind": "new",
+          "occurred_at": "2026-08-26T00:00:00Z",
+          "discovered_at": "2026-08-28T00:31:03Z",
+          "summary_zh": "AutoSaddler：从失败轨迹自动改进 agent harness",
+          "summary_en": "AutoSaddler learns agent-harness fixes from failure traces",
+          "evidence_ids": [
+            "ev-20260826-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260826-02",
@@ -112,7 +152,47 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2608-23078-agentweave-tool-routing"
+      "event_fingerprint": "arxiv-2608-23078-agentweave-tool-routing",
+      "source_ids": [
+        "src-ddfe05752df311ec"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260826-02-evidence-summary",
+          "claim_zh": "AgentWeave（arXiv 2608.23078）是一个确定性的推理前路由层：在下游模型不变的前提下，先用资格、需求、能力与路由信号过滤候选工具集，再做 function calling。在 48 个全新 BFCL V4 多函数任务上（冻结的 Hammer2.1-1.5b 模型），它取得 6/48 成功，而全量工具、随机 top-8、语义 top-8 三个基线均为 0/48（McNemar p=0.03125）；同时少暴露 70.18% 的工具、少用 61.70% 的输入 token、平均本地推理延迟降低 50.95%。作者自己将其定位为 BFCL 衍生的路由压力测试，不是榜单结果，绝对成功率仍然很低。",
+          "claim_en": "AgentWeave (arXiv 2608.23078) is a deterministic pre-inference routing layer that shrinks the candidate tool set an LLM sees, filtering on eligibility, requirement, capability and routing signals before an unchanged downstream model does function calling. On 48 fresh BFCL V4 multiple-function tasks with the frozen Hammer2.1-1.5b model it reached 6/48 successes versus 0/48 for all-tools, random-top-8 and semantic-top-8 baselines (McNemar p=0.03125), while exposing 70.18% fewer tools, using 61.70% fewer input tokens and cutting mean local-model latency by 50.95%. The authors themselves frame it as a BFCL-derived routing-pressure study, not a leaderboard result, and absolute success stays low.",
+          "source_ids": [
+            "src-ddfe05752df311ec"
+          ],
+          "event_ids": [
+            "ev-20260826-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260826-02-published",
+          "kind": "new",
+          "occurred_at": "2026-08-26T00:00:00Z",
+          "discovered_at": "2026-08-28T00:31:03Z",
+          "summary_zh": "AgentWeave：推理前先筛工具列表，压低 agent 成本",
+          "summary_en": "AgentWeave filters the tool list before reasoning to cut agent cost",
+          "evidence_ids": [
+            "ev-20260826-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260826-03",
@@ -166,7 +246,47 @@
       "verification_cost": 3,
       "risk": 1,
       "recommendation": "WATCH",
-      "event_fingerprint": "arxiv-2608-22960-scae-process-eval-coding-agents"
+      "event_fingerprint": "arxiv-2608-22960-scae-process-eval-coding-agents",
+      "source_ids": [
+        "src-f320aa2844e1e536"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260826-03-evidence-summary",
+          "claim_zh": "论文（arXiv 2608.22960）把 coding agent 的过程评估拆为 action、task、step 三层，并用 SCAE 实现 step 级因果归因——一个建立在 agent 执行结构因果模型上的重放式估计器，结合前缀条件识别、重放/干预式估计与对 judge 信息量的受控操纵。在 12 个仓库的 499 段文件定位轨迹上发现：下一步行动主要由执行历史驱动，而非代码图转移；全轨迹 LLM judge 存在系统性 collider bias——它们倾向于奖励语义相关性，而不是经过认证的因果贡献。",
+          "claim_en": "The paper (arXiv 2608.22960) separates process evaluation of coding agents into action, task and step levels, and instantiates step-level causal attribution with SCAE, a replay-based estimator built on a structural causal model of agent execution that combines prefix-conditioned identification, replay/intervention-based estimation and controlled manipulation of judge information. Across 499 file-localization episodes from 12 repositories it finds that next actions are driven mainly by execution provenance rather than code-graph transitions, and that full-trace LLM judges show systematic collider bias — they tend to reward semantic relevance rather than certified causal contribution.",
+          "source_ids": [
+            "src-f320aa2844e1e536"
+          ],
+          "event_ids": [
+            "ev-20260826-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260826-03-published",
+          "kind": "new",
+          "occurred_at": "2026-08-26T00:00:00Z",
+          "discovered_at": "2026-08-28T00:31:03Z",
+          "summary_zh": "研究：LLM 过程评估打的是语义相关性，不是因果贡献",
+          "summary_en": "Study: full-trace process judges score relevance, not causal contribution",
+          "evidence_ids": [
+            "ev-20260826-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260826-04",
@@ -241,7 +361,50 @@
       "update_2026_08_31": "Adoption check @2026-08-31T00:00Z: 121,976 downloads (+133% vs the 52,341 @8/30 sample, ~7 days after listing) + 4,384 likes (+97) — the display counter finally moved after appearing frozen between the 8/29 and 8/30 samples. Sustained-velocity data point for trend #1 criterion (c). Recommendation stays WATCH.",
       "update_2026_09_02": "adoption check @2026-09-02T00:0xZ: 207,941 downloads (+70% vs 121,976 @8/31, ~9 days after listing) + 4,635 likes; FP8 variant 130,451; unsloth GGUF derivative 431,339 (repo created 8/26). slotstream (Show HN 9/1, 147 pts) runs the 104GB 4-bit weights on a 48GB M5 Pro at ~12 tok/s warm decode (32GB peak, SSD streaming, single Swift binary, Ollama/OpenAI-compatible APIs) — independent community serving tooling, though still not a benchmark reproduction. Architecture now documented in the Qwen3.8-Next design paper (arXiv 2608.30320, ev-20260901-03): 125B/6B active + 51B n-gram embeddings, ~1/9 training FLOPs vs the 397B-A17B predecessor at comparable quality. Stays WATCH",
       "update_2026_09_05": "Adoption check @2026-09-05: 351,374 downloads (+69% vs 9/2) + FP8 repo 186,676 (+43%) + 4,871 likes; unsloth/Qwen3.8-Flash-Next-GGUF at 702,251 — now exceeds Qwen's own main repo; nvidia/Qwen3.8-Flash-Next-NVFP4 created 9/2 (NVIDIA publishing an NVFP4 derivative); mudler APEX GGUF derivative 9/4. Quantization recipe research catching up: Minima NVFP4 W4A4 across a Qwen3.8-27B hybrid incl. GDN layers (ev-20260905-03). Stays WATCH",
-      "update_2026_09_14": "2026-09-14 report run: SGLang main merged a reproducible single-DGX-Spark path for NVIDIA's NVFP4 derivative (#39126). The narrow 200-question GSM8K check reported 97.5%/97.0% with/without MTP and 92.87/89.53 tok/s, but this is TP=1, main-branch-only and not a controlled comparison. Recommendation stays WATCH."
+      "update_2026_09_14": "2026-09-14 report run: SGLang main merged a reproducible single-DGX-Spark path for NVIDIA's NVFP4 derivative (#39126). The narrow 200-question GSM8K check reported 97.5%/97.0% with/without MTP and 92.87/89.53 tok/s, but this is TP=1, main-branch-only and not a controlled comparison. Recommendation stays WATCH.",
+      "source_ids": [
+        "src-eb79656c925ccbff",
+        "src-78e4674f2cf6d07c",
+        "src-9b70750e6a64615e"
+      ],
+      "project_ids": [
+        "qwen"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260826-04-evidence-summary",
+          "claim_zh": "Qwen3.8-Flash-Next 是一个实验性开源权重多模态模型，预演 Qwen4 计划采用的架构：125B 语言模型（每 token 激活 6B），外加 51B n-gram 嵌入表与 4B 多 token 预测头（BF16 合计约 180B）。注意力为混合式——Gated DeltaNet 线性注意力为主、每 4 层插一层 Qwen Sparse Attention；原生 262,144 token 上下文，YaRN 可扩到 1M。模型卡 benchmark 上领先 Qwen3.8-27B 与 DeepSeek-V4-Flash-0731（DeepSWE 1.1 58.7、SWE-bench Pro 62.5、LiveCodeBench v6 91.9、GPQA Diamond 91.7）。以 qwen-community-1.0 自定义许可发布，提供 Transformers / vLLM / SGLang 三种后训练权重形态；官方定位中 Qwen3.8-Flash 是它的生产对应版本。",
+          "claim_en": "Qwen3.8-Flash-Next is an experimental open-weight multimodal model previewing the architecture planned for Qwen4: a 125B-parameter LM with 6B activated, plus a 51B n-gram embedding table and a 4B multi-token-prediction head (~180B total in BF16). Attention is hybrid — Gated DeltaNet linear attention with Qwen Sparse Attention every 4th layer — with 262,144 tokens of native context extensible to 1M via YaRN. The card benchmarks it ahead of Qwen3.8-27B and DeepSeek-V4-Flash-0731 on agentic suites (DeepSWE 1.1 58.7, SWE-bench Pro 62.5, LiveCodeBench v6 91.9, GPQA Diamond 91.7). It ships as post-trained weights for Transformers, vLLM and SGLang under the custom qwen-community-1.0 license, with the official Qwen3.8-Flash positioned as its production counterpart.",
+          "source_ids": [
+            "src-eb79656c925ccbff"
+          ],
+          "event_ids": [
+            "ev-20260826-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260826-04-published",
+          "kind": "new",
+          "occurred_at": "2026-08-26T00:00:00Z",
+          "discovered_at": "2026-08-29T11:35:46Z",
+          "summary_zh": "Qwen 开源 Flash-Next，预演 Qwen4 架构",
+          "summary_en": "Qwen open-weights Flash-Next, an architecture preview for Qwen4",
+          "evidence_ids": [
+            "ev-20260826-04-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260826-05",
@@ -299,7 +462,51 @@
       "verification_cost": 2,
       "risk": 2,
       "recommendation": "ADOPT",
-      "event_fingerprint": "vllm-v0-28-0-release"
+      "event_fingerprint": "vllm-v0-28-0-release",
+      "source_ids": [
+        "src-99ece13e787f3487",
+        "src-781fde0ef0fa2dd3"
+      ],
+      "project_ids": [
+        "vllm",
+        "deepseek",
+        "kimi"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260826-05-evidence-summary",
+          "claim_zh": "vLLM 0.28.0（584 个提交、270 位贡献者、其中 76 位新加入）的主线是 Kimi-K3 性能攻坚：Decode Context Parallel 支持、融合 FlashKDA decode/prefill kernel、合并 all-gather（kernel 级提速 1.5-3 倍）、自适应投机 token 预算（DSpark 首 token 延迟改善约 60%）、可选共享专家分片（每卡省约 17 GiB 显存）。DeepSeek V4 侧稀疏 MLA 在纯 decode、MTP 与 DSpark 投机解码上全链路打通，另有 AMD Quark NVFP4 与 ROCm 支持。其余亮点：DFlash2 投机解码带候选选择器、Model Runner V2 成熟化（E/P/D 分离部署、权重 offload）、分层 KV cache offload（含磁盘）、Rust 前端 + gRPC（protobuf schema 上 Buf）、新默认值（max_num_batched_tokens 8192->16384、Mamba 默认开前缀缓存）。破坏性变更：bitsandbytes 迁出为外部插件、Transformers 升到 5.15.0、移除废弃 API。",
+          "claim_en": "vLLM 0.28.0 (584 commits from 270 contributors, 76 new) is dominated by a Kimi-K3 performance push: Decode Context Parallel support, fused FlashKDA decode/prefill kernels, combined all-gathers with 1.5-3x kernel-level speedup, an adaptive speculative token budget delivering ~60% better DSpark TTFT, and optional shared-expert sharding saving ~17 GiB per GPU. DeepSeek V4 gets sparse MLA working end-to-end for plain decode, MTP and DSpark speculative decoding, plus AMD Quark NVFP4 and ROCm enablement. Other headline items: DFlash2 speculative decoding with a candidate selector, Model Runner V2 maturation (E/P/D disaggregation, weight offloading), tiered KV-cache offloading including disk, a Rust frontend with gRPC (protobuf schemas on Buf), and new defaults (max_num_batched_tokens 8192->16384, Mamba prefix caching on by default). Breaking changes: bitsandbytes support moved to an out-of-tree plugin, Transformers bumped to 5.15.0, deprecated APIs removed.",
+          "source_ids": [
+            "src-99ece13e787f3487"
+          ],
+          "event_ids": [
+            "ev-20260826-05"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260826-05-published",
+          "kind": "new",
+          "occurred_at": "2026-08-26T09:46:30Z",
+          "discovered_at": "2026-08-30T00:00:20Z",
+          "summary_zh": "vLLM 0.28.0 发布：Kimi-K3 与 DeepSeek V4 服务优化成主线",
+          "summary_en": "vLLM 0.28.0 lands a big-model serving push for Kimi-K3 and DeepSeek V4",
+          "evidence_ids": [
+            "ev-20260826-05-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

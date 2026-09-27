@@ -94,7 +94,53 @@
           "transformers",
           "Ollama"
         ]
-      }
+      },
+      "source_ids": [
+        "src-ca26bca182f697df",
+        "src-29578a85932db50f",
+        "src-5d65f8860b9d67d8",
+        "src-bc290ba394fd0d91",
+        "src-7346779b5c521928"
+      ],
+      "project_ids": [
+        "qwen"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260814-01-evidence-summary",
+          "claim_zh": "Alibaba 发布 Qwen3.8-27B 开源权重，这是 8 月 3 日 Qwen3.8-Max 发布时承诺的 Qwen3.8 家族开源版本。它是一个 27.8B 稠密视觉语言模型，采用混合注意力（Gated DeltaNet + Gated Attention），支持图像、视频、文本输入，协议为 Apache 2.0。原生上下文 262,144 token，可通过 YaRN 扩展到 1M。默认开启 thinking，可用 reasoning_effort 调节（xhigh/medium/low）。",
+          "claim_en": "Alibaba released the open weights of Qwen3.8-27B, the open sibling of the Qwen3.8 family promised at the Aug 3 Qwen3.8-Max launch. It is a dense 27.8B vision-language model with hybrid attention (Gated DeltaNet + Gated Attention), taking image, video and text input, under Apache 2.0. Native context is 262,144 tokens, extensible to 1M via YaRN. Thinking is on by default, with reasoning_effort control (xhigh/medium/low).",
+          "source_ids": [
+            "src-ca26bca182f697df"
+          ],
+          "event_ids": [
+            "ev-20260814-01"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260814-01-published",
+          "kind": "new",
+          "occurred_at": "2026-08-14T15:00:01Z",
+          "discovered_at": "2026-08-15T12:26:05Z",
+          "summary_zh": "Alibaba 开源 Qwen3.8-27B，原生 262K 上下文",
+          "summary_en": "Alibaba open-sources Qwen3.8-27B with native 262K context",
+          "evidence_ids": [
+            "ev-20260814-01-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260814-02",
@@ -173,7 +219,53 @@
       "update_2026_08_29": "Model card on HF fully rewritten (repo 'Initial commit 0828' at 2026-08-27T17:16:16Z, coverage-gap recovery): complete benchmark table with per-benchmark footnotes is now public — states GLM-5.3 uses the same base model as GLM-5.2 (all gains from post-training); Terminal Bench 2.1 88.2 / TB 3.0 28.3 / DeepSWE v1.1 66.9 / CyberGym 84.5 / ExploitGym 105@2h / HLE w-tools 62.5 / GDPval-AA v2 1769; FrontierSWE 78.1 evaluated by Proximal; most evals run in a Claude Code 2.1.207 harness. Community PRs #2 (2026-08-28T15:22Z) and #3 (2026-08-29T09:51Z) added .eval_results YAML metadata mirroring model-card numbers (source field: 'Model Card') — HF metadata normalization, NOT independent reproduction of the weights; trend #1 criterion (a) remains open. Downloads @2026-08-29T11:35Z: FP8 repo 8,804 (30d, effectively all-time) + 1,207 likes; BF16 repo 482. Recommendation stays TRIAL.",
       "update_2026_08_31": "Adoption & reproduction check @2026-08-31T00:00Z: FP8 repo downloads jumped from 8,804 (8/29 sample) to 50,116 (~5.7x in ~2 days), likes 1,207 -> 1,336 — the 753B flagship artifact is now being pulled at scale alongside the Flash variant. HF discussions #7-#9 (8/29-30) remain minor (release-cadence question, citation error, praise); still no third-party Terminal Bench / SWE reproduction of the weights — trend #1 criterion (a) unmet. Recommendation stays TRIAL.",
       "update_2026_09_02": "adoption & reproduction check @2026-09-02T00:0xZ: FP8 repo 50,116 -> 94,403 downloads (+88% in ~2 days, ~8 days after listing), likes 1,336 -> 1,466; BF16 repo now also public. HF discussions #10-#15 (8/31-9/1) are still metadata-sync PRs (TB 2.1/3.0 harness notes, Toolathlon-Verified eval result) and refusal complaints ('Safety Maxxed to oblivion') — no third-party Terminal Bench / SWE reproduction; trend #1 criterion (a) still unmet. Ecosystem note: Baseten's 9/1 'efficient frontier of LLM inference' blog uses GLM-5.3 as its canonical agentic-coding serving example (conceptual framework; no Flash-specific throughput numbers). Stays TRIAL",
-      "update_2026_09_05": "Adoption & reproduction check @2026-09-05: FP8 repo 94,403 -> 303,534 downloads (+222% in ~3 days, 30d window), likes 1,466 -> 1,695; unsloth/GLM-5.3-GGUF derivative at 164,424. Discussions #16-#19 (9/2-9/4): #16 merged eval-results metadata PR (HF staff, terminal-bench-3.0 dataset pointer), #17 spam upload, #18 an independent quantization-fidelity measurement (KL vs reference on frozen tokens) — a genuine independent measurement but NOT a Terminal-Bench/SWE reproduction, #19 instruction-following complaint; trend #1 criterion (a) remains unmet. Stays TRIAL"
+      "update_2026_09_05": "Adoption & reproduction check @2026-09-05: FP8 repo 94,403 -> 303,534 downloads (+222% in ~3 days, 30d window), likes 1,466 -> 1,695; unsloth/GLM-5.3-GGUF derivative at 164,424. Discussions #16-#19 (9/2-9/4): #16 merged eval-results metadata PR (HF staff, terminal-bench-3.0 dataset pointer), #17 spam upload, #18 an independent quantization-fidelity measurement (KL vs reference on frozen tokens) — a genuine independent measurement but NOT a Terminal-Bench/SWE reproduction, #19 instruction-following complaint; trend #1 criterion (a) remains unmet. Stays TRIAL",
+      "source_ids": [
+        "src-1988761466109b07",
+        "src-7e6c3dd9add107ae",
+        "src-6aef77ac8a2d7e2a",
+        "src-ecb8f0dc7a1d654b",
+        "src-276b093b837b9e92"
+      ],
+      "project_ids": [
+        "glm"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260814-02-evidence-summary",
+          "claim_zh": "智谱发布 GLM-5.3，沿用 GLM-5.2 的同一基座，提升全部来自后训练（官方称「scaling post-training 是我们唯一做的事」）。官方将其定位为最强开源权重编程模型，主攻网络安全和 agent 能力：与中国安全团队合作，在 269 个项目中发现 2,436 个漏洞，并在 cvd.z.ai 公开登记。模型现已通过 GLM Coding Plan 提供，兼容 Claude Code 和 OpenCode。API 即将上线，开源权重计划在约 2 周的安全审查之后放出。",
+          "claim_en": "Zhipu released GLM-5.3, built on the same base as GLM-5.2 with all gains coming from post-training ('scaling post-training is all we did'). It is positioned as the strongest open-weights coding model, with a heavy cybersecurity and agentic focus: working with Chinese security teams, it found 2,436 vulnerabilities across 269 projects, published in the public registry cvd.z.ai. The model is available now via the GLM Coding Plan, which works with Claude Code and OpenCode. The API is 'coming soon', and the open weights are planned for ~2 weeks out, after security reviews.",
+          "source_ids": [
+            "src-1988761466109b07"
+          ],
+          "event_ids": [
+            "ev-20260814-02"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260814-02-published",
+          "kind": "new",
+          "occurred_at": "2026-08-14",
+          "discovered_at": "2026-08-15T12:26:05Z",
+          "summary_zh": "智谱发布 GLM-5.3，号称最强开源权重编程模型",
+          "summary_en": "Zhipu releases GLM-5.3, claiming the strongest open-weights coding model",
+          "evidence_ids": [
+            "ev-20260814-02-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260814-03",
@@ -228,7 +320,48 @@
         "管控": "Traffic Source 选择器；基线规则拦截非 mcp_portal 的 MCP 流量",
         "Agents SDK": "v0.20.0：作为 client 和 server 均支持 2026-07-28 无状态规范，Workers 内置 createMcpHandler",
         "前提": "Gateway 需开启 TLS 解密"
-      }
+      },
+      "source_ids": [
+        "src-25f97e26ea36c89e",
+        "src-83a65a27ca773b80"
+      ],
+      "project_ids": [
+        "mcp"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260814-03-evidence-summary",
+          "claim_zh": "Cloudflare 在 Zero Trust Gateway 中原生支持对 MCP 流量的识别、监控和管控，用于发现影子 MCP（shadow MCP，未经批准私自接入的 MCP 服务器）并阻断它们。检测依据是 MCP-Protocol-Version HTTP 头：MCP 2025-11-25 规范要求携带该头，2026-07-28 无状态规范中每个 POST 都会带，并新增了 Mcp-Method/Mcp-Name。所有 Zero Trust 客户都可以使用新的 experimental.is_mcp 布尔选择器，并配有独立的 MCP dashboard。通过 Traffic Source 选择器可以实现仅放行 Portal 的管控，MCP Portals 支持预注册 OAuth client。Agents SDK v0.20.0 作为 client 和 server 均已支持 2026-07-28 无状态规范。",
+          "claim_en": "Cloudflare added first-class identification, monitoring, and control of MCP traffic to its Zero Trust Gateway, targeting shadow-MCP discovery and blocking of unapproved servers. Detection keys on the MCP-Protocol-Version HTTP header: the MCP 2025-11-25 spec requires it, and the 2026-07-28 stateless spec puts it on every POST while adding Mcp-Method/Mcp-Name. A new experimental.is_mcp boolean selector is available to all Zero Trust customers, with a dedicated MCP dashboard. Traffic Source selectors enable Portal-only enforcement, and MCP Portals support pre-registered OAuth clients. Agents SDK v0.20.0 supports the stateless 2026-07-28 spec as both client and server.",
+          "source_ids": [
+            "src-25f97e26ea36c89e"
+          ],
+          "event_ids": [
+            "ev-20260814-03"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260814-03-published",
+          "kind": "new",
+          "occurred_at": "2026-08-14",
+          "discovered_at": "2026-08-15T12:26:05Z",
+          "summary_zh": "Cloudflare One Gateway 上线 MCP 流量检测与管控",
+          "summary_en": "Cloudflare One Gateway adds MCP traffic detection and enforcement",
+          "evidence_ids": [
+            "ev-20260814-03-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260814-04",
@@ -332,7 +465,94 @@
       "update_2026_09_13": "2.1.270 released 2026-09-12T18:52:44Z (npm): single hotfix - read-only git commands in Bash no longer unexpectedly request permission after the session has been running for a while (regression introduced in 2.1.269). No other documented changes.",
       "update_2026_09_24": "Claude Code 2.1.280/281: Opus 5.5 default, symlink-write hardening, OTel detail, Bedrock role/guardrail gateway controls and stricter auto-mode review; stays ADOPT",
       "update_2026_09_26": "Claude Code 2.1.282: managed-policy fail-safe fixes, approval replay hardening, session recovery and gateway failover resilience; stays ADOPT",
-      "update_2026_09_27": "Claude Code 2.1.283: exact model allow/deny controls, prompt-level gateway correlation, fail-closed sandbox parsing, Windows destructive-command protection and restart-safe cloud sessions; stays ADOPT"
+      "update_2026_09_27": "Claude Code 2.1.283: exact model allow/deny controls, prompt-level gateway correlation, fail-closed sandbox parsing, Windows destructive-command protection and restart-safe cloud sessions; stays ADOPT",
+      "source_ids": [
+        "src-3d68ad8e1324eb33",
+        "src-90ee76df68d8eab9",
+        "src-b56da077d21ad4f4",
+        "src-861b32064a74b3b8",
+        "src-ba3341f9799b1e8e",
+        "src-6726c9df5fadbf36",
+        "src-5744b97e5a176886",
+        "src-733392711551a1c3",
+        "src-8f9e2f8ba8bd1533",
+        "src-01cd6a498d377caf",
+        "src-369721da4af03abe",
+        "src-23966244d47d35ba",
+        "src-6eff16a1336643fb",
+        "src-ea47242bcd03cf52",
+        "src-fafece65903b65aa",
+        "src-35ab415a8fa4d23e"
+      ],
+      "project_ids": [
+        "claude-code"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260814-04-evidence-summary",
+          "claim_zh": "Claude Code 连续两个版本把它推向多 agent 形态。subagent fork 默认开启：fork 出的 subagent 继承完整会话和 prompt cache，非 teammate 的 agent 在后台启动。新增跨会话 agent 间消息：通过 @-mention 向指定存活会话 SendMessage（v2.1.224+），走本地 socket，只传消息。这批版本还带来 GitLab MR 支持和 plugin marketplace、secret 脱敏，以及多项安全修复（PowerShell $PSDefaultParameterValues 覆写、Cygwin symlink 绕过、嵌套 git 仓库信任继承、/tmp socket 加固）。2.1.233 为沙箱中的 Bash 增加 cgroup 内存限制（CLAUDE_CODE_TOOL_MEMORY_LIMIT），新增可选的 forward_user_identity 用于网关花费归因，并修复 MCP v2 重连；Opus 4.8/Sonnet 5/Fable 5/Mythos 5+ 移除了 todo 工具。Claude Code 2.1.271 为沙箱中的 Bash、PowerShell 和 Monitor 加入逐命令 allowed_domains。2.1.273 新增可选的网关路由 header、MCP 重连失败通知和 Remote Control 会话 fork。它还修复了策略优先级、无法完整分析的 Bash 命令跳过询问、子 shell 隐藏危险删除，以及外部记忆目录被读取等问题。",
+          "claim_en": "Two rapid Claude Code releases push it toward multi-agent operation. Subagent forking is now on by default: a 'fork' subagent inherits the full conversation and prompt cache, and non-teammate agent spawns run in the background. Agents can message each other across sessions via @-mentions (SendMessage to named live sessions, v2.1.224+, local sockets, messages only). Also in these releases: GitLab MR support and plugin marketplaces, secret redaction, and multiple security fixes (PowerShell $PSDefaultParameterValues overwrite, Cygwin symlink bypass, nested-git-repo trust inheritance, /tmp socket hardening). 2.1.233 adds cgroup memory limits for sandboxed Bash (CLAUDE_CODE_TOOL_MEMORY_LIMIT), opt-in forward_user_identity for gateway spend attribution, and an MCP v2 reconnect fix; todo tools are removed for Opus 4.8/Sonnet 5/Fable 5/Mythos 5+. Claude Code 2.1.271 adds per-command allowed_domains for sandboxed Bash, PowerShell and Monitor. It fixes policy reuse after credential switches, unreadable managed MCP policy fail-open, several Bash permission-check gaps, MCP OAuth registration handling, and cloud subagent calls after worker restarts. Version 2.1.273 adds optional gateway routing headers, reconnect-failure notices for MCP, and Remote Control session forking. It also fixes policy precedence, unanalysed Bash permission prompts, hidden destructive subshells and external memory-directory reads.",
+          "source_ids": [
+            "src-3d68ad8e1324eb33"
+          ],
+          "event_ids": [
+            "ev-20260814-04"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        },
+        {
+          "id": "ev-20260814-04-evidence-recorded-20260927",
+          "claim_zh": "Claude Code 2.1.283 补强精确模型治理、沙箱拒绝策略和重启后的执行一致性。",
+          "claim_en": "Claude Code 2.1.283 strengthens exact model governance, sandbox denial policies and execution consistency after restart.",
+          "event_ids": [
+            "ev-20260814-04"
+          ],
+          "source_ids": [
+            "src-35ab415a8fa4d23e"
+          ],
+          "relation": "support",
+          "verification": "historical"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260814-04-published",
+          "kind": "new",
+          "occurred_at": "2026-08-14",
+          "discovered_at": "2026-08-15T12:26:05Z",
+          "summary_zh": "Claude Code 默认开启 subagent fork，新增跨会话消息",
+          "summary_en": "Claude Code enables subagent forking by default, adds cross-session messaging",
+          "evidence_ids": [
+            "ev-20260814-04-evidence-summary"
+          ],
+          "historical": true
+        },
+        {
+          "id": "ev-20260814-04-update-recorded-20260927",
+          "kind": "update",
+          "occurred_at": "2026-09-25T21:50:12Z",
+          "discovered_at": "2026-09-26T16:01:48Z",
+          "summary_zh": "Claude Code 2.1.283 补强精确模型治理、沙箱拒绝策略和重启后的执行一致性。",
+          "summary_en": "Claude Code 2.1.283 strengthens exact model governance, sandbox denial policies and execution consistency after restart.",
+          "evidence_ids": [
+            "ev-20260814-04-evidence-recorded-20260927"
+          ],
+          "historical": true
+        }
+      ],
+      "editorial_pick": {
+        "reason_zh": "对搭 agent 工作流的人来说，Claude Code 正在变成事实上的本地多 agent 运行时：fork 默认开启，跨会话消息原生支持。带资源限制的沙箱执行和按用户的花费归因，正是企业落地前卡着的功能，现在开始补齐。",
+        "reason_en": "For people building agent workflows, Claude Code is becoming a de facto local multi-agent runtime: forking is on by default and cross-session messaging is built in. Resource-capped sandboxed execution and per-user spend attribution are exactly the features blocking enterprise adoption, and they are now landing.",
+        "source_ids": [
+          "src-3d68ad8e1324eb33"
+        ]
+      }
     },
     {
       "event_id": "ev-20260814-05",
@@ -390,7 +610,48 @@
       },
       "update_2026_08_22": "2026-08-22 run ecosystem check (GitHub, in-window observation): main repo deepseek-ai/deepseek-harness at 181,199 stars (created 2026-08-13 — roughly 168k gained in ~9 days); derivative ecosystem now measurable: anywhere-labs/deepseek-harness-desktop 17.5k, awesome-dsh-plugin 11.2k, yjh051108/dsh-routing-suite 6.6k, zhu1090093659/dsh-web-ui 5.4k, xiaobright/dsh-anchored-standard 3.7k — desktop clients, curated plugin lists, routing suites and presets all shipped within the first week. Star velocity alone remains Tier-4 signal, but the breadth of independent derivative tooling (5+ repos above 3.5k) is real ecosystem formation; maturity still developer preview with breaking changes expected. Recommendation stays WATCH (revisit TRIAL once the API/plugin surface stabilizes).",
       "update_2026_09_02": "ecosystem check @2026-09-02: 208,280 stars (+3,600 vs 204,680 @8/31; ~+1,800/day, velocity stable vs the +1,290/day prior sample). DeepSeek API docs now describe DeepSeek Harness as 'developer preview for agent harness developers worldwide'. Stays WATCH pending API/plugin surface stabilization",
-      "update_2026_09_05": "Ecosystem check @2026-09-05: 212,230 stars (+3,950 over 3 days, ~+1,300/day — slower than the prior ~1,800/day pace); last push 2026-09-04. Stays WATCH"
+      "update_2026_09_05": "Ecosystem check @2026-09-05: 212,230 stars (+3,950 over 3 days, ~+1,300/day — slower than the prior ~1,800/day pace); last push 2026-09-04. Stays WATCH",
+      "source_ids": [
+        "src-890a56b0d2aff0c9",
+        "src-0640b06f10ba848e"
+      ],
+      "project_ids": [
+        "deepseek"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260814-05-evidence-summary",
+          "claim_zh": "DeepSeek 把自己的 agent harness（内部跑 benchmark 用的框架）以 MIT 协议开源。这是一个基于 Cordis 框架的 TypeScript/Node monorepo，采用「一切皆插件」的架构，被外界视为对 Claude Code 的公开挑战。运行方式是 npx @deepseek-ai/dsh web，Web UI 在 127.0.0.1:3080。配置兼容 AGENTS.md/CLAUDE.md。目前还是 developer preview，官方明确警告会有破坏性变更。",
+          "claim_en": "DeepSeek open-sourced its agent harness — the framework behind its own benchmark runs — under MIT. It is a TypeScript/Node monorepo built on the Cordis framework with an everything-is-a-plugin architecture, positioned as an open challenge to Claude Code. It runs via npx @deepseek-ai/dsh web, with the Web UI at 127.0.0.1:3080. Config is compatible with AGENTS.md/CLAUDE.md. This is a developer preview, and DeepSeek explicitly warns of breaking changes.",
+          "source_ids": [
+            "src-890a56b0d2aff0c9"
+          ],
+          "event_ids": [
+            "ev-20260814-05"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260814-05-published",
+          "kind": "new",
+          "occurred_at": "2026-08-14",
+          "discovered_at": "2026-08-15T12:26:05Z",
+          "summary_zh": "DeepSeek 开源 agent 运行时 Harness（dsh）",
+          "summary_en": "DeepSeek open-sources its agent runtime Harness (dsh) under MIT",
+          "evidence_ids": [
+            "ev-20260814-05-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260814-06",
@@ -445,7 +706,45 @@
         "达成协议": "2026-06-16",
         "正式完成": "2026-08-14",
         "首个合作产品": "Grok 4.6（2026-08-12）"
-      }
+      },
+      "source_ids": [
+        "src-7cb38fddc594f085"
+      ],
+      "project_ids": [
+        "cursor"
+      ],
+      "scenario_ids": [],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260814-06-evidence-summary",
+          "claim_zh": "Cursor 宣布收购正式完成：这是一笔 2026-06-16 达成的 600 亿美元全股票交易。Cursor 现在可以使用「全球最大规模的 GPU 集群」，8 月 12 日发布的 Grok 4.6 被视为双方合作的早期产物。管理层和组织细节未披露。",
+          "claim_en": "Cursor announced the acquisition has officially closed: a $60B all-stock deal first agreed on 2026-06-16. Cursor now has access to 'the largest fleet of GPUs in the world', and Grok 4.6 (shipped Aug 12) is cited as an early product of the partnership. No leadership or org details were disclosed.",
+          "source_ids": [
+            "src-7cb38fddc594f085"
+          ],
+          "event_ids": [
+            "ev-20260814-06"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260814-06-published",
+          "kind": "new",
+          "occurred_at": "2026-08-14",
+          "discovered_at": "2026-08-15T12:26:05Z",
+          "summary_zh": "SpaceX 以 600 亿美元完成对 Cursor 的收购",
+          "summary_en": "SpaceX closes $60B acquisition of Cursor (Anysphere)",
+          "evidence_ids": [
+            "ev-20260814-06-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260814-07",
@@ -491,7 +790,46 @@
         "适用范围": "2026-08-02 及之后发布的 Claude 模型；更早模型处于过渡期",
         "机制": "嵌入生成文本中，机器可读"
       },
-      "update_2026_09_02": "rollout update (via the 9/1 Fable 5.1 launch): EU AI Act Article 50(2) obligations apply to models placed on the market after 2026-08-02 — Claude Fable 5.1 is the first tracked Anthropic launch shipping with output watermarking enabled, and Anthropic's watermark detection API is now in private preview (access on request). Watermark detection for provenance marking is becoming an integration surface for EU-facing deployments"
+      "update_2026_09_02": "rollout update (via the 9/1 Fable 5.1 launch): EU AI Act Article 50(2) obligations apply to models placed on the market after 2026-08-02 — Claude Fable 5.1 is the first tracked Anthropic launch shipping with output watermarking enabled, and Anthropic's watermark detection API is now in private preview (access on request). Watermark detection for provenance marking is becoming an integration surface for EU-facing deployments",
+      "source_ids": [
+        "src-f6aa679babd7a46a",
+        "src-187c66384a1460ae"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260814-07-evidence-summary",
+          "claim_zh": "Anthropic 公布了 Claude 文本水印的技术机制：水印不可见、机器可读，适用于 2026-08-02 及之后发布的所有 Claude 模型，更早的模型处于过渡期。",
+          "claim_en": "Anthropic published the technical mechanism behind Claude's invisible, machine-readable text watermarking, applying to all Claude models launched on/after 2026-08-02 (older models in transition).",
+          "source_ids": [
+            "src-f6aa679babd7a46a"
+          ],
+          "event_ids": [
+            "ev-20260814-07"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260814-07-published",
+          "kind": "new",
+          "occurred_at": "2026-08-14",
+          "discovered_at": "2026-08-15T12:26:05Z",
+          "summary_zh": "Anthropic 详解 Claude 文本水印的工作原理",
+          "summary_en": "Anthropic explains how Claude's text watermark works",
+          "evidence_ids": [
+            "ev-20260814-07-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     },
     {
       "event_id": "ev-20260814-08",
@@ -543,7 +881,47 @@
           "Fedora"
         ],
         "内置": "Codex"
-      }
+      },
+      "source_ids": [
+        "src-3930e8dede7666d8"
+      ],
+      "project_ids": [
+        "codex"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "historical-migration",
+      "evidence": [
+        {
+          "id": "ev-20260814-08-evidence-summary",
+          "claim_zh": "8 月 14 日的 ChatGPT release notes：Linux 桌面版进入公开预览（Ubuntu/Debian/Fedora），内置 Codex。同期更新还有交互式测验、项目记忆设置变更、Free/Go 网页档的 Think 模式和 Android 听写。没有模型、API 或定价变更。",
+          "claim_en": "The Aug 14 ChatGPT release notes bring the desktop app to Linux in public preview (Ubuntu/Debian/Fedora), with Codex built in. Also included: interactive quizzes, project-memory setting changes, 'Think' mode on Free/Go web tiers, and Android dictation. No model, API, or pricing changes.",
+          "source_ids": [
+            "src-3930e8dede7666d8"
+          ],
+          "event_ids": [
+            "ev-20260814-08"
+          ],
+          "verification": "historical",
+          "relation": "background"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260814-08-published",
+          "kind": "new",
+          "occurred_at": "2026-08-14",
+          "discovered_at": "2026-08-15T12:26:05Z",
+          "summary_zh": "ChatGPT Linux 桌面版进入公开预览，内置 Codex",
+          "summary_en": "ChatGPT desktop for Linux enters public preview with Codex",
+          "evidence_ids": [
+            "ev-20260814-08-evidence-summary"
+          ],
+          "historical": true
+        }
+      ]
     }
   ]
 }

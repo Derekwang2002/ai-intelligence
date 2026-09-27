@@ -1,0 +1,8 @@
+---
+import { words } from '../lib/intelligence';
+const {locale='zh',follow,bookmark}=Astro.props;
+---
+<div class="reader-actions">
+ {follow&&<button class="quiet-button" data-follow={follow} aria-pressed="false">{words(locale,'＋ 关注','＋ Follow')}</button>}
+ {bookmark&&<button class="quiet-button" data-bookmark={bookmark} aria-pressed="false">{words(locale,'收藏','Save')}</button>}
+</div>

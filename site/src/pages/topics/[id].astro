@@ -1,0 +1,6 @@
+---
+import Page from '../../components/pages/TopicDetail.astro';
+import { intel } from '../../lib/intelligence';
+export function getStaticPaths() { return intel.topics.map((item:any)=>({params:{id:item.id},props:{topic:item}})); }
+---
+<Page topic={Astro.props.topic} locale="zh" />

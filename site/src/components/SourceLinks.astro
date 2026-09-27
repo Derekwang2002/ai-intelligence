@@ -1,0 +1,8 @@
+---
+import { sourceById, sourceLabel, words } from '../lib/intelligence';
+const {ids=[],locale='zh',compact=false}=Astro.props;
+const sources=[...new Set(ids)].map((id:any)=>sourceById(id)).filter(Boolean);
+---
+<div class:list={['source-links',{compact}]}>
+ {sources.map((s:any)=><a href={s.url} target="_blank" rel="noopener noreferrer" title={words(locale,'外部来源 · 在新标签页打开','External source · Opens in a new tab')}><span class="source-kind">{s.official===true?words(locale,'官方 · ','Official · '):''}{sourceLabel(s.kind,locale)}</span><span class="source-title">{s.title}</span><span aria-hidden="true">↗</span></a>)}
+</div>

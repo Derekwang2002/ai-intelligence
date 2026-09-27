@@ -1,0 +1,281 @@
+{
+  "id": "2026-09-27T00-44-11Z",
+  "run_started_at": "2026-09-27T00:44:11Z",
+  "previous_checkpoint": "2026-09-26T16:01:48Z",
+  "window": {
+    "start": "2026-09-26T16:01:48Z",
+    "end": "2026-09-27T00:44:11Z",
+    "overlap_start": "2026-09-26T13:01:48.000Z"
+  },
+  "status": "validated",
+  "checks": [
+    {
+      "id": "anthropic-news",
+      "url": "https://www.anthropic.com/news",
+      "title": "Anthropic news",
+      "kind": "announcement",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:09.077Z",
+      "content_hash": "2bb78e8b786852a36cbc1b11107f6735bc224ad33e272dabadd80ee1b446af8d",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/anthropic-news.txt",
+      "analysis_status": "complete",
+      "note": "Newest visible research story is Sep 23; no new retained announcement in this window."
+    },
+    {
+      "id": "arxiv-ai",
+      "url": "https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=20",
+      "title": "arXiv AI recent submissions",
+      "kind": "paper",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:10.453Z",
+      "content_hash": "dfbc0b05811033557a380811c6b0dde75de40070ccdf3a7b9a6bfdb5173650b1",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/arxiv-ai.txt",
+      "analysis_status": "complete",
+      "note": "Newest returned cs.AI submissions are Sep 24; no in-window paper was returned."
+    },
+    {
+      "id": "claude-code-releases",
+      "url": "https://api.github.com/repos/anthropics/claude-code/releases?per_page=5",
+      "title": "Claude Code releases",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:09.375Z",
+      "content_hash": "a1d4613b07370fdc7790f586141f42bc31636ee34626febf7478d7594901d421",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/claude-code-releases.txt",
+      "analysis_status": "complete",
+      "note": "Latest stable v2.1.283 is already recorded; no later stable version appears in the captured releases."
+    },
+    {
+      "id": "codex-releases",
+      "url": "https://api.github.com/repos/openai/codex/releases?per_page=5",
+      "title": "Codex releases",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:09.376Z",
+      "content_hash": "0729f4f1d77b82533e74c0bc3af111c61d99952fd5554850692b136a8cd2e588",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/codex-releases.txt",
+      "analysis_status": "complete",
+      "note": "Three in-window alpha artifacts have no substantive release highlights; excluded from the briefing."
+    },
+    {
+      "id": "gemini-cli-releases",
+      "url": "https://api.github.com/repos/google-gemini/gemini-cli/releases?per_page=5",
+      "title": "Gemini CLI releases",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:10.121Z",
+      "content_hash": "330bbfbd5d729fec74a2c5aefbf8a055106cfc35a0369591d65f59e2544be057",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/gemini-cli-releases.txt",
+      "analysis_status": "complete",
+      "note": "Only previously known nightly/preview releases appear in this capture."
+    },
+    {
+      "id": "github-changelog",
+      "url": "https://github.blog/changelog/",
+      "title": "GitHub changelog",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:09.374Z",
+      "content_hash": "7abc4274ce29b1d2a190b60e41288e98ed148798be49aa68b9e9ddebbbcfbaa9",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/github-changelog.txt",
+      "analysis_status": "complete",
+      "note": "Latest dated entries are Sep 25, including previously stored autofix memory and weekly releases."
+    },
+    {
+      "id": "google-ai",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/",
+      "title": "Google AI blog",
+      "kind": "announcement",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:09.078Z",
+      "content_hash": "5ccbdaee01c172e83a521f18128e516ce9cc249cfa43b6ae80694ab45a73b098",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/google-ai.txt",
+      "analysis_status": "complete",
+      "note": "Reviewed AI landing page and targeted discovery searches; no timestamp-verified new item retained in this window."
+    },
+    {
+      "id": "hf-blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "title": "Hugging Face blog",
+      "kind": "announcement",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:10.452Z",
+      "content_hash": "7621b28c21f71077f81daea50e8158eb6fe1257908d9d5e35bfb7589c6fffef6",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/hf-blog.txt",
+      "analysis_status": "complete",
+      "note": "Latest feed entry is Sep 24; no newer post in the captured feed."
+    },
+    {
+      "id": "openai-api",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "title": "OpenAI API changelog",
+      "kind": "documentation",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:09.058Z",
+      "content_hash": "8f84daf9868aabee497df03eff6efdd0fcd4e538a6cdb4802b4b43f69717a2b2",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/openai-api.txt",
+      "analysis_status": "complete",
+      "note": "Official changelog includes the Sep 25 image-encoding fix, recovered as an update to the existing model release."
+    },
+    {
+      "id": "qwen-code-releases",
+      "url": "https://api.github.com/repos/QwenLM/qwen-code/releases?per_page=5",
+      "title": "Qwen Code releases",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:10.120Z",
+      "content_hash": "2486688912d0070dea6a1cfbf4797a8ee41f332ffcd2941f5546db72659cc78d",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/qwen-code-releases.txt",
+      "analysis_status": "complete",
+      "note": "Stable 0.24.6 is already recorded. A new nightly is not a new stable release."
+    },
+    {
+      "id": "vllm-releases",
+      "url": "https://api.github.com/repos/vllm-project/vllm/releases?per_page=5",
+      "title": "vLLM releases",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-09-27T00:46:10.121Z",
+      "content_hash": "aec067cbfe2c84fda064a6a8354713f168e6bc8396c0ac60a132d6c057e1d089",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/vllm-releases.txt",
+      "analysis_status": "complete",
+      "note": "Latest stable remains 0.30.0 from Sep 22; no later stable fix confirmed."
+    },
+    {
+      "id": "psp-review",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "title": "Private Safety Processing guide",
+      "kind": "documentation",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-09-27T00:53:52.042Z",
+      "capture": "logs/captures/2026-09-27T00-44-11Z/private-safety-processing.txt",
+      "analysis_status": "complete",
+      "note": "Corrected old content-handling and availability description; no undated rollout treated as a new launch."
+    }
+  ],
+  "candidate_decisions": [
+    {
+      "candidate": "GPT-6 image-encoding fix",
+      "decision": "update-existing",
+      "event_id": "ev-20260922-02",
+      "published_at": "2026-09-25",
+      "reason": "targeted-gap-recovery; official date retained"
+    },
+    {
+      "candidate": "Codex alpha .5, .6 and 0.158.0-alpha.15.2",
+      "decision": "filtered",
+      "count": 3,
+      "reason": "prerelease artifacts without material highlights"
+    },
+    {
+      "candidate": "Qwen Code nightly 20260926",
+      "decision": "filtered",
+      "count": 1,
+      "reason": "nightly, not stable 0.24.7"
+    },
+    {
+      "candidate": "Claude Code 2.1.283 / Qwen Code 0.24.6 / vLLM 0.30 / GitHub autofix memory",
+      "decision": "duplicate",
+      "count": 4,
+      "reason": "already indexed, no new material change"
+    },
+    {
+      "candidate": "CLM and purported new Strands launch",
+      "decision": "deferred",
+      "count": 2,
+      "reason": "outside window or no verified new release timestamp; aggregate reporting is not release evidence"
+    },
+    {
+      "candidate": "PSP documentation scheduled review",
+      "decision": "correct-existing",
+      "event_id": "ev-20260818-05",
+      "reason": "Prior content-handling and availability claims contradict current official guide; no known publication date."
+    }
+  ],
+  "stages": {
+    "retrieval": true,
+    "verification": true,
+    "deduplication": true,
+    "analysis": true,
+    "reports": true,
+    "persistence": true
+  },
+  "written_files": [
+    "events/2026-09-22.json",
+    "projects/catalog.json",
+    "sources/catalog.json",
+    "topics/catalog.json",
+    "reviews/queue.json",
+    "index/events.json",
+    "trends/current.json",
+    "trends/current.md",
+    "trends/2026-09-27.md",
+    "trends/2026-09-27.en.md",
+    "daily/2026-09-27.md",
+    "daily/2026-09-27.en.md",
+    "briefings/2026-09-27T00-44-11Z.json",
+    "events/2026-08-18.json"
+  ],
+  "gap_review": {
+    "last_completed_at": "2026-09-27T00:44:11Z",
+    "next_due_at": "2026-10-04",
+    "scope": "Targeted 30-day official model-changelog and related source check, not a full historical rescan.",
+    "recovered_event_ids": [
+      "ev-20260922-02"
+    ]
+  },
+  "source_discovery": {
+    "areas": [
+      "foundation models",
+      "agents",
+      "engineering",
+      "research",
+      "infrastructure",
+      "business/policy"
+    ],
+    "method": "targeted public web searches; primary artifacts checked for retained claims",
+    "retained_new_events": 0,
+    "updated_events": 2,
+    "duplicates_skipped": 4
+  },
+  "summary_en": "Controlled integration scan: 11 official entry points plus a scheduled documentation review; no new entity, one recovered GPT-6 image-encoding fix and one PSP correction, four duplicates skipped. No evidence-supported new trend. The related enterprise execution-plane trend evidence was corrected without upgrading status or confidence.",
+  "review_queue": {
+    "reviewed_event_ids": [
+      "ev-20260818-05"
+    ],
+    "tasks_completed": 2,
+    "next_review_at": "2026-10-04",
+    "remaining": "Other imported overdue tasks remain pending; no unperformed checks are claimed."
+  },
+  "trend_corrections": [
+    "enterprise-self-hosted-execution-planes"
+  ],
+  "site_acceptance": {
+    "unit_tests_passed": 14,
+    "browser_tests_passed": 15,
+    "build_pages": 646,
+    "viewports": [
+      360,
+      768,
+      1440
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "subpath": "/ai-intelligence",
+    "migration_second_pass_changed_files": 0
+  }
+}
