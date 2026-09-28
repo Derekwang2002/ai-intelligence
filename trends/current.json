@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-27T16:01:12Z",
+  "as_of": "2026-09-28T16:03:45Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -230,6 +230,12 @@
           "run_started_at": "2026-09-27T16:01:12Z",
           "note_zh": "Hy4 主仓月下载量较 9 月 11 日增长 177%，采用信号增强；完整版与第三方可复现评测仍缺席。维持 strengthening / Medium。",
           "note_en": "Hy4 monthly downloads rose 177% from the September 11 check, strengthening adoption evidence. The full model and reproducible third-party evaluation remain absent. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-28",
+          "run_started_at": "2026-09-28T16:03:45Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -428,7 +434,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T16:01:12Z",
+      "last_reviewed_at": "2026-09-28T16:03:45Z",
       "time_horizon": "Emerging"
     },
     {
@@ -440,7 +446,7 @@
       "status_note_en": "emerging (upgraded from candidate on 2026-08-16)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-26",
+      "last_updated": "2026-09-28",
       "retired": false,
       "evidence_zh": [
         "Cloudflare One Gateway 的 MCP 检测与 enforcement 能力 GA——`experimental.is_mcp`、enforcement 仅 Portal 可用、OAuth 预注册（2026-08-14，一手来源，ev-20260814-03）",
@@ -454,7 +460,9 @@
         "Netskope Release 141（notes 页标注 9/1、9/2 检查时未发布、本窗口捕获，经官方 docs 核实）：AI Command Center 的 Endpoint AI Discovery（beta）经 Netskope Client 发现受管端点上的 AI agent、浏览器/编辑器/桌面扩展与本地模型，并在 beta 中发现端点上使用的 MCP server；AI Guardrails On Demand – Netskope Hosted 转 GA（独立 REST API，与 LiteLLM/Kong/Apigee API 网关集成）；AI Gateway × Enterprise Browser 集成（beta，浏览器侧 LLM 流量集中治理 + 网关令牌吊销的紧急 kill switch）。管控面从网络流量延伸到端点与浏览器，但 Endpoint Discovery 为 beta 且需代表/支持开启；22 个 MCP 数据属性仍未提及移出 feature flag、无公开遥测（2026-09-05 核实）",
         "《Scanning the Harness》供应链审计（2026-09-10，arXiv 2609.07360，ev-20260910-08）：3,171 个公开 GitHub 仓库（2,600 份 Claude Code/Cursor/Copilot/Codex 配置 + 511 个已发布技能集）中 16.0% 至少携带一处安全缺陷——9.8% 安装未锁定 MCP server、3.1% 在看似限定的授权后预批准任意执行、3.8% 的技能携带预批准 shell；全部发现经独立重推导与双人裁定，工具、语料清单与裁定结果公开——MCP/skills 配置供应链的首个量化审计，也是安全需求端首个独立学术测量（2026-09-11 核实）",
         "LiteLLM 1.102.0 稳定版（2026-09-20，ev-20260913-01 更新）：Agent Skills 发现、按用户 MCP 工具授权、客户自管 KMS 与路由遥测进入 stable gateway；证明控制面可试跑，但仍是单一项目且没有互操作 auth/enforcement 规范",
-        "Google Cloud API Gateway MCP（2026-09-24，ev-20260924-08）：现有 REST API 可复用 JWT、配额与日志成为 MCP tool；`tools/list` 默认不鉴权，暴露出企业发现面仍需显式策略"
+        "Google Cloud API Gateway MCP（2026-09-24，ev-20260924-08）：现有 REST API 可复用 JWT、配额与日志成为 MCP tool；`tools/list` 默认不鉴权，暴露出企业发现面仍需显式策略",
+        "Codex 0.158.0 stable（2026-09-28，ev-20260818-02 更新）：预注册 MCP OAuth client 可配置 client secret，企业身份接入进入稳定客户端。",
+        "LiteLLM 1.103.0 stable（2026-09-28，ev-20260913-01 更新）：新增 RFC 8693 token exchange、MCP client allowlist、在线 session 查看与强制凭据撤销。"
       ],
       "evidence_en": [
         "Cloudflare One Gateway MCP detection/enforcement GA — `experimental.is_mcp`, Portal-only enforcement, OAuth pre-registration (2026-08-14, primary source, ev-20260814-03)",
@@ -468,7 +476,9 @@
         "Netskope Release 141 (notes page dated 9/1, not yet published at the 9/2 check, captured this window, verified against official docs): AI Command Center's Endpoint AI Discovery (beta) discovers AI agents, browser/editor/desktop extensions and local models on managed endpoints via the Netskope Client, with beta discovery of MCP servers used on endpoints; AI Guardrails On Demand - Netskope Hosted reached GA (standalone REST API integrating with LiteLLM/Kong/Apigee gateways); AI Gateway x Enterprise Browser integration (beta, centralized governance of browser-originated LLM traffic plus an emergency kill switch via gateway token revocation). The enforcement surface extends from network traffic to endpoints and the browser — but Endpoint Discovery is beta and gated behind rep/support enablement; the 22 MCP data attributes are still not mentioned as leaving the feature flag, and there is no public telemetry (verified 2026-09-05)",
         "The 'Scanning the Harness' supply-chain audit (2026-09-10, arXiv 2609.07360, ev-20260910-08): 16.0% of 3,171 public GitHub repositories (2,600 Claude Code/Cursor/Copilot/Codex configs + 511 published skill sets) carry at least one security defect — 9.8% install unpinned MCP servers, 3.1% pre-approve arbitrary execution behind scoped-looking grants, and 3.8% of skills carry pre-approved shells; every finding was independently re-derived and dual-adjudicated, with tools, corpus manifest and adjudications released — the first quantified audit of the MCP/skills config supply chain and the first independent academic measurement on the security-demand side (verified 2026-09-11)",
         "LiteLLM 1.102.0 stable (2026-09-20, ev-20260913-01 update): Agent Skills discovery, per-user MCP tool authorization, customer-managed KMS and routing telemetry reach a stable gateway build; this makes the control plane trialable but remains one project without an interoperable auth/enforcement specification",
-        "Google Cloud API Gateway MCP (September 24, 2026, ev-20260924-08): existing REST APIs become MCP tools while reusing JWT, quotas and logs; unauthenticated-by-default `tools/list` shows that enterprise discovery still needs explicit policy"
+        "Google Cloud API Gateway MCP (September 24, 2026, ev-20260924-08): existing REST APIs become MCP tools while reusing JWT, quotas and logs; unauthenticated-by-default `tools/list` shows that enterprise discovery still needs explicit policy",
+        "Codex 0.158.0 stable (September 28, 2026, ev-20260818-02 update): pre-registered MCP OAuth clients can provide client secrets, bringing enterprise identity integration into a stable client.",
+        "LiteLLM 1.103.0 stable (September 28, 2026, ev-20260913-01 update): adds RFC 8693 token exchange, MCP client allowlists, live-session inspection and forced credential revocation."
       ],
       "why_it_matters_zh": "升级依据：多个独立信号来自不同组织、不同日期（网络厂商、企业 SaaS、安全研究），指向同一方向：MCP 正从新兴协议转变为受治理的企业基础设施。",
       "why_it_matters_en": "Why upgraded: multiple independent signals from different organizations and dates (network vendor, enterprise SaaS, security research) point the same way — MCP is moving from a novelty protocol to governed enterprise infrastructure.",
@@ -646,6 +656,12 @@
           "run_started_at": "2026-09-27T16:01:12Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-09-28",
+          "run_started_at": "2026-09-28T16:03:45Z",
+          "note_zh": "Codex 0.158.0 支持预注册 MCP OAuth client secret；LiteLLM 1.103.0 增加 RFC 8693 token exchange、client allowlist 与在线 session 撤销。企业身份与会话治理继续进入稳定产品，但跨厂商 schema 和公开生产遥测仍缺。维持 emerging / Medium。",
+          "note_en": "Codex 0.158.0 supports client secrets for pre-registered MCP OAuth clients; LiteLLM 1.103.0 adds RFC 8693 token exchange, client allowlists and live-session revocation. Enterprise identity and session governance continue entering stable products, but cross-vendor schemas and public production telemetry remain absent. Stays emerging / Medium."
         }
       ],
       "evidence": [
@@ -692,10 +708,37 @@
           "source_ids": [],
           "relation": "support",
           "verification": "historical"
+        },
+        {
+          "id": "tev-codex-0158-mcp-auth",
+          "claim_zh": "Codex 0.158.0 stable（2026-09-28，ev-20260818-02 更新）：预注册 MCP OAuth client 可配置 client secret，企业身份接入进入稳定客户端。",
+          "claim_en": "Codex 0.158.0 stable (September 28, 2026, ev-20260818-02 update): pre-registered MCP OAuth clients can provide client secrets, bringing enterprise identity integration into a stable client.",
+          "source_ids": [
+            "src-b6ce910accbcbcac"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "tev-litellm-1103-mcp-control",
+          "claim_zh": "LiteLLM 1.103.0 stable（2026-09-28，ev-20260913-01 更新）：新增 RFC 8693 token exchange、MCP client allowlist、在线 session 查看与强制凭据撤销。",
+          "claim_en": "LiteLLM 1.103.0 stable (September 28, 2026, ev-20260913-01 update): adds RFC 8693 token exchange, MCP client allowlists, live-session inspection and forced credential revocation.",
+          "source_ids": [
+            "src-e97c05fc290cdfc6",
+            "src-bab7a3f49d318472"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T16:01:12Z",
+      "last_reviewed_at": "2026-09-28T16:03:45Z",
       "time_horizon": "Emerging"
     },
     {
@@ -929,6 +972,12 @@
           "run_started_at": "2026-09-27T16:01:12Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-09-28",
+          "run_started_at": "2026-09-28T16:03:45Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -1080,7 +1129,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T16:01:12Z",
+      "last_reviewed_at": "2026-09-28T16:03:45Z",
       "time_horizon": "Sustained"
     },
     {
@@ -1262,6 +1311,12 @@
           "run_started_at": "2026-09-27T16:01:12Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-09-28",
+          "run_started_at": "2026-09-28T16:03:45Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -1432,7 +1487,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T16:01:12Z",
+      "last_reviewed_at": "2026-09-28T16:03:45Z",
       "time_horizon": "Emerging"
     },
     {
@@ -1573,6 +1628,12 @@
           "run_started_at": "2026-09-27T16:01:12Z",
           "note_zh": "本次扫描没有新的客户自托管或数据驻留生产证据。维持 candidate / Low。",
           "note_en": "This scan found no new production evidence for customer-operated or data-resident execution. Stays candidate / Low."
+        },
+        {
+          "date": "2026-09-28",
+          "run_started_at": "2026-09-28T16:03:45Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -1656,7 +1717,7 @@
           "historical": false
         }
       ],
-      "last_reviewed_at": "2026-09-27T16:01:12Z",
+      "last_reviewed_at": "2026-09-28T16:03:45Z",
       "time_horizon": "Emerging"
     },
     {
@@ -1785,6 +1846,12 @@
           "run_started_at": "2026-09-27T16:01:12Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-09-28",
+          "run_started_at": "2026-09-28T16:03:45Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -1834,7 +1901,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T16:01:12Z",
+      "last_reviewed_at": "2026-09-28T16:03:45Z",
       "time_horizon": "Emerging"
     },
     {
@@ -1846,7 +1913,7 @@
       "status_note_en": "strengthening / Medium (Google MCP governance, GitHub default policy, Qwen attestation and monitor-failure research strengthen the direction; a unified policy schema and public adoption telemetry are still missing)",
       "confidence": "Medium",
       "first_observed": "2026-09-09",
-      "last_updated": "2026-09-27",
+      "last_updated": "2026-09-28",
       "retired": false,
       "evidence_zh": [
         "GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束",
@@ -1863,7 +1930,9 @@
         "Qwen Code 0.24.4（2026-09-22）：托管运行时证明、持久工具执行记录、计划漂移与工具级 bubblewrap 隔离",
         "PASTABench（2026-09-23）：1,139 条多轮轨迹标注最早信号与触发点，16 个 LLM 中最佳系统只有 40.74% 的介入落在最佳窗口",
         "agent trace tampering 与 EvasionBench（2026-09-24，ev-20260924-01/02）：本地 agent 可改写审计证据，普通任务压力可诱发重复、编码和拆分式绕过；日志与 consequence gate 必须独立于 agent",
-        "Claude Code 2.1.283 与 Qwen Code 0.24.6（2026-09-25 至 26）：精确模型 allow/deny、无效沙箱策略默认拒绝、Windows 破坏命令保护，以及最严格权限 hook 聚合；Microsoft Managed Runtime 同时把身份、审计和花费策略下沉到执行面"
+        "Claude Code 2.1.283 与 Qwen Code 0.24.6（2026-09-25 至 26）：精确模型 allow/deny、无效沙箱策略默认拒绝、Windows 破坏命令保护，以及最严格权限 hook 聚合；Microsoft Managed Runtime 同时把身份、审计和花费策略下沉到执行面",
+        "Codex 0.158.0（2026-09-28，ev-20260818-02 更新）：高权限命令默认启用终端输入审批，并修复 Windows、Linux 与 macOS 的多处沙箱边界。",
+        "LiteLLM 1.103.0（2026-09-28，ev-20260913-01 更新）：MCP-aware 护栏、client allowlist、session 撤销与上游凭据 fail-closed 把控制留在 gateway runtime。"
       ],
       "evidence_en": [
         "GitHub Copilot enterprise-managed permissions GA (2026-09-09, primary source, ev-20260909-02): administrators deploy block/ask/allow policy for shell, files and network domains, overriding user auto-approval — an organization-level policy constrains a general execution surface",
@@ -1880,7 +1949,9 @@
         "Qwen Code 0.24.4 (September 22, 2026): managed runtime attestation, durable tool-execution records, plan drift and tool-level bubblewrap isolation",
         "PASTABench (September 23, 2026): 1,139 multi-turn trajectories label earliest signal and trigger; the best of 16 LLMs intervenes in the optimal window only 40.74% of the time",
         "Agent trace tampering and EvasionBench (September 24, 2026, ev-20260924-01/02): local agents can rewrite audit evidence, while ordinary task pressure triggers repeated, encoded and decomposed bypass attempts; logging and consequence gates must remain independent of the agent",
-        "Claude Code 2.1.283 and Qwen Code 0.24.6 (September 25-26, 2026): exact model allow/deny, fail-closed sandbox parsing, Windows destructive-command protection and most-restrictive permission-hook aggregation; Microsoft Managed Runtime also moves identity, audit and spend policy into the execution plane"
+        "Claude Code 2.1.283 and Qwen Code 0.24.6 (September 25-26, 2026): exact model allow/deny, fail-closed sandbox parsing, Windows destructive-command protection and most-restrictive permission-hook aggregation; Microsoft Managed Runtime also moves identity, audit and spend policy into the execution plane",
+        "Codex 0.158.0 (September 28, 2026, ev-20260818-02 update): terminal-input approval is on by default for elevated commands, with sandbox-boundary fixes across Windows, Linux and macOS.",
+        "LiteLLM 1.103.0 (September 28, 2026, ev-20260913-01 update): MCP-aware guardrails, client allowlists, session revocation and fail-closed upstream credentials keep control in the gateway runtime."
       ],
       "why_it_matters_zh": "对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。",
       "why_it_matters_en": "For teams designing enterprise agents, capability and permission should no longer be implicitly coupled in one tool catalog. A general shell provides better composition and token efficiency, while independent sandboxes, capability contracts and consequence gates bound the blast radius. The immediate architecture move is to make \"what commands the model can generate\" and \"what consequences runtime permits\" independently testable, auditable and upgradable modules.",
@@ -1958,6 +2029,12 @@
           "run_started_at": "2026-09-27T16:01:12Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-09-28",
+          "run_started_at": "2026-09-28T16:03:45Z",
+          "note_zh": "Codex 0.158.0 默认要求高权限命令经过终端输入审批并修复跨平台沙箱边界；LiteLLM 1.103.0 增加 MCP-aware 护栏和凭据 fail-closed。方向继续增强，但仍缺统一 policy schema。维持 strengthening / Medium。",
+          "note_en": "Codex 0.158.0 enables terminal-input approval by default for elevated commands and fixes cross-platform sandbox boundaries; LiteLLM 1.103.0 adds MCP-aware guardrails and fail-closed credentials. The direction strengthens, but a unified policy schema is still missing. Stays strengthening / Medium."
         }
       ],
       "evidence": [
@@ -2084,10 +2161,37 @@
           "source_ids": [],
           "relation": "support",
           "verification": "historical"
+        },
+        {
+          "id": "tev-codex-0158-runtime-policy",
+          "claim_zh": "Codex 0.158.0（2026-09-28，ev-20260818-02 更新）：高权限命令默认启用终端输入审批，并修复 Windows、Linux 与 macOS 的多处沙箱边界。",
+          "claim_en": "Codex 0.158.0 (September 28, 2026, ev-20260818-02 update): terminal-input approval is on by default for elevated commands, with sandbox-boundary fixes across Windows, Linux and macOS.",
+          "source_ids": [
+            "src-b6ce910accbcbcac"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "tev-litellm-1103-runtime-policy",
+          "claim_zh": "LiteLLM 1.103.0（2026-09-28，ev-20260913-01 更新）：MCP-aware 护栏、client allowlist、session 撤销与上游凭据 fail-closed 把控制留在 gateway runtime。",
+          "claim_en": "LiteLLM 1.103.0 (September 28, 2026, ev-20260913-01 update): MCP-aware guardrails, client allowlists, session revocation and fail-closed upstream credentials keep control in the gateway runtime.",
+          "source_ids": [
+            "src-e97c05fc290cdfc6",
+            "src-bab7a3f49d318472"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-27T16:01:12Z",
+      "last_reviewed_at": "2026-09-28T16:03:45Z",
       "time_horizon": "Emerging"
     }
   ]

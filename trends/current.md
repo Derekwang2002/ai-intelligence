@@ -1,4 +1,4 @@
-# 当前趋势看板 — 2026-09-27T16:01:12Z
+# 当前趋势看板 — 2026-09-28T16:03:45Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
@@ -69,13 +69,14 @@
 - 2026-09-27：本窗口没有公开权重上的第三方 Terminal-Bench / SWE 复现，也没有新的同级别开放权重模型。维持 strengthening / Medium。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：Hy4 主仓月下载量较 9 月 11 日增长 177%，采用信号增强；完整版与第三方可复现评测仍缺席。维持 strengthening / Medium。
+- 2026-09-28T16:03:45Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
 - **Status:** emerging
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-09-26
+- **Last updated:** 2026-09-28
 - **Time Horizon:** Emerging
 - **当前判断:** emerging（2026-08-16 由 candidate 升级）
 - **Why It Matters:** 升级依据：多个独立信号来自不同组织、不同日期（网络厂商、企业 SaaS、安全研究），指向同一方向：MCP 正从新兴协议转变为受治理的企业基础设施。
@@ -95,6 +96,8 @@
 10. 《Scanning the Harness》供应链审计（2026-09-10，arXiv 2609.07360，ev-20260910-08）：3,171 个公开 GitHub 仓库（2,600 份 Claude Code/Cursor/Copilot/Codex 配置 + 511 个已发布技能集）中 16.0% 至少携带一处安全缺陷——9.8% 安装未锁定 MCP server、3.1% 在看似限定的授权后预批准任意执行、3.8% 的技能携带预批准 shell；全部发现经独立重推导与双人裁定，工具、语料清单与裁定结果公开——MCP/skills 配置供应链的首个量化审计，也是安全需求端首个独立学术测量（2026-09-11 核实）
 11. LiteLLM 1.102.0 稳定版（2026-09-20，ev-20260913-01 更新）：Agent Skills 发现、按用户 MCP 工具授权、客户自管 KMS 与路由遥测进入 stable gateway；证明控制面可试跑，但仍是单一项目且没有互操作 auth/enforcement 规范
 12. Google Cloud API Gateway MCP（2026-09-24，ev-20260924-08）：现有 REST API 可复用 JWT、配额与日志成为 MCP tool；`tools/list` 默认不鉴权，暴露出企业发现面仍需显式策略
+13. Codex 0.158.0 stable（2026-09-28，ev-20260818-02 更新）：预注册 MCP OAuth client 可配置 client secret，企业身份接入进入稳定客户端。
+14. LiteLLM 1.103.0 stable（2026-09-28，ev-20260913-01 更新）：新增 RFC 8693 token exchange、MCP client allowlist、在线 session 查看与强制凭据撤销。
 
 ### 逐次复核
 
@@ -132,6 +135,7 @@
 - 2026-09-27：Claude Code 2.1.283 补强 MCP 进度、临时 404 恢复与组织阻止提示，但属于单一客户端可靠性更新，没有形成跨厂商统一授权 schema。维持 emerging / Medium。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
+- 2026-09-28T16:03:45Z：Codex 0.158.0 支持预注册 MCP OAuth client secret；LiteLLM 1.103.0 增加 RFC 8693 token exchange、client allowlist 与在线 session 撤销。企业身份与会话治理继续进入稳定产品，但跨厂商 schema 和公开生产遥测仍缺。维持 emerging / Medium。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
@@ -203,6 +207,7 @@
 - 2026-09-27：Microsoft Copilot 把持久 agent、租户内 Managed Runtime、独立身份与花费治理组合成工作区；GitHub 让安全修复记忆跨 autofix、review 与 cloud agent 复用，Qwen Code 增加 Hosted Runtime 与故障转移日志。维持 established / High。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
+- 2026-09-28T16:03:45Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -263,6 +268,7 @@
 - 2026-09-27：本窗口没有新的前沿实验室安全事件披露、独立第三方审查或共享披露 schema。GitHub Memory 是产品内学习回路，不计本趋势证据。维持 strengthening / Medium。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
+- 2026-09-28T16:03:45Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
@@ -307,6 +313,7 @@
 - 2026-09-27：Microsoft Copilot Managed Runtime 可在客户租户内托管执行，但仍由 Microsoft 平台管理，不等同于客户自托管；可作为数据驻留执行面的邻接信号，尚不足以升级。维持 candidate / Low。
 - 2026-09-27T00:44:11Z：维持候选方向、低置信度。PSP 已有具体配置指南，旧记录中“尚未兑现”的概括需要修正。现有材料仍不足以证明多家独立组织已经在生产中采用。
 - 2026-09-27T16:01:12Z：本次扫描没有新的客户自托管或数据驻留生产证据。维持 candidate / Low。
+- 2026-09-28T16:03:45Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -348,13 +355,14 @@
 - 2026-09-27：本窗口没有新的千禧年级数学结果、Lean 形式化证明或独立验收。维持 emerging / Medium。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
+- 2026-09-28T16:03:45Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-09-27
+- **Last updated:** 2026-09-28
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -377,6 +385,8 @@
 13. PASTABench（2026-09-23）：1,139 条多轮轨迹标注最早信号与触发点，16 个 LLM 中最佳系统只有 40.74% 的介入落在最佳窗口
 14. agent trace tampering 与 EvasionBench（2026-09-24，ev-20260924-01/02）：本地 agent 可改写审计证据，普通任务压力可诱发重复、编码和拆分式绕过；日志与 consequence gate 必须独立于 agent
 15. Claude Code 2.1.283 与 Qwen Code 0.24.6（2026-09-25 至 26）：精确模型 allow/deny、无效沙箱策略默认拒绝、Windows 破坏命令保护，以及最严格权限 hook 聚合；Microsoft Managed Runtime 同时把身份、审计和花费策略下沉到执行面
+16. Codex 0.158.0（2026-09-28，ev-20260818-02 更新）：高权限命令默认启用终端输入审批，并修复 Windows、Linux 与 macOS 的多处沙箱边界。
+17. LiteLLM 1.103.0（2026-09-28，ev-20260913-01 更新）：MCP-aware 护栏、client allowlist、session 撤销与上游凭据 fail-closed 把控制留在 gateway runtime。
 
 ### 逐次复核
 
@@ -394,5 +404,6 @@
 - 2026-09-27：Claude Code 新增精确模型 allow/deny、无效沙箱策略默认拒绝与 Windows 破坏命令保护；Qwen Code 把冲突权限 hook 合并为最严格结论，Microsoft Managed Runtime 则把身份、审计和花费治理放进执行面。维持 strengthening / Medium。
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
+- 2026-09-28T16:03:45Z：Codex 0.158.0 默认要求高权限命令经过终端输入审批并修复跨平台沙箱边界；LiteLLM 1.103.0 增加 MCP-aware 护栏和凭据 fail-closed。方向继续增强，但仍缺统一 policy schema。维持 strengthening / Medium。
 
 ## Invalidated / retired

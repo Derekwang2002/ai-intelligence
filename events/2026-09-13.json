@@ -13,13 +13,15 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-09-20T16:02:09Z",
+      "last_updated_at": "2026-09-28T16:03:45Z",
       "source_type": "pypi",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
         "https://github.com/BerriAI/litellm/tree/v1.102.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.102.0-rc.1",
-        "https://pypi.org/project/litellm/1.102.0rc1/"
+        "https://pypi.org/project/litellm/1.102.0rc1/",
+        "https://pypi.org/project/litellm/1.103.0/",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.103.0"
       ],
       "summary": "LiteLLM 1.102.0 has reached the stable PyPI channel with the Agent Skills, Codex and Claude Code gateway setup, per-user MCP permissions, customer-managed KMS and routing telemetry introduced in its release candidate. Stabilization backports also fix request-parameter leakage, streamed spend tracking, retry behavior and team budget propagation. The release is now suitable for a controlled production-like trial rather than an RC-only proof of concept.",
       "why_it_matters": "For teams standardizing multiple coding agents behind one gateway, the earlier wait-for-stable gate is now satisfied. Trial the release with production-shaped identity, budget and failure-path tests, especially permission parity across MCP tool discovery and execution, guardrail fail-closed behavior, spend accounting and rollback.",
@@ -35,7 +37,8 @@
         "observability": "response headers expose the routed model, savings and complexity-routing decisions",
         "reliability": "fixes cover spend double counting, Redis circuit-breaker state, streamed Bedrock spend buffering, secret redaction and fail-closed guardrail paths",
         "stabilization": "backports fix request-parameter leakage, image/mask form handling, routing callback binding, streamed spend tracking, clean-snapshot fallback retries and team budget propagation",
-        "availability": "stable 1.102.0 is installable from PyPI"
+        "availability": "stable 1.102.0 is installable from PyPI",
+        "update_2026_09_28": "LiteLLM 1.103.0 stable (PyPI artifacts from 2026-09-27T17:47Z; GitHub release 2026-09-28T05:43Z): explicit Claude Code gateway endpoint, RFC 8693 IdP JWT token exchange, MCP client allowlists, live-session inspection and forced credential revocation, fail-closed upstream credentials, MCP-aware guardrails, Fuse v2 routing and budget/accounting fixes. The large RC aggregation requires production-shaped regression testing. Stays TRIAL."
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -45,7 +48,8 @@
         "可观测性": "响应 header 暴露实际路由模型、节省金额与复杂度路由决策",
         "可靠性": "修复费用重复计算、Redis 熔断器状态、Bedrock 流式费用缓冲、密钥脱敏与护栏 fail-closed 路径",
         "稳定化修复": "回移修复请求参数泄漏、图片/蒙版表单处理、路由 callback 绑定、流式费用统计、clean-snapshot fallback 重试与团队预算继承",
-        "可用性": "稳定版 1.102.0 已可从 PyPI 安装"
+        "可用性": "稳定版 1.102.0 已可从 PyPI 安装",
+        "2026-09-28 更新": "LiteLLM 1.103.0 stable（PyPI 产物始于 2026-09-27T17:47Z；GitHub release 为 2026-09-28T05:43Z）：新增 Claude Code gateway endpoint、RFC 8693 IdP JWT token exchange、MCP client allowlist、在线 session 查看与强制凭据撤销、上游凭据 fail-closed、MCP-aware 护栏、Fuse v2 路由及预算/计费修复。该版本汇总了很长的 RC 变更区间，仍需按生产形态做回归。维持 TRIAL。"
       },
       "tags": [
         "litellm",
@@ -67,7 +71,9 @@
         "src-d94800da37345499",
         "src-034a68a2e548bdd4",
         "src-e8afc252446a299e",
-        "src-7cbc44e76e6e7be0"
+        "src-7cbc44e76e6e7be0",
+        "src-e97c05fc290cdfc6",
+        "src-bab7a3f49d318472"
       ],
       "project_ids": [
         "mcp"
@@ -90,6 +96,20 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-103-evidence",
+          "claim_zh": "LiteLLM 1.103.0 稳定版加入 Claude Code gateway、RFC 8693 token exchange、MCP client allowlist、在线 session 撤销与 MCP-aware 护栏，并修复多项路由和预算计费问题。",
+          "claim_en": "LiteLLM 1.103.0 stable adds a Claude Code gateway, RFC 8693 token exchange, MCP client allowlists, live-session revocation and MCP-aware guardrails, alongside routing and budget-accounting fixes.",
+          "source_ids": [
+            "src-e97c05fc290cdfc6",
+            "src-bab7a3f49d318472"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -104,8 +124,22 @@
             "ev-20260913-01-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-103-stable",
+          "kind": "update",
+          "occurred_at": "2026-09-27T17:47:52.235Z",
+          "discovered_at": "2026-09-28T16:03:45Z",
+          "summary_zh": "LiteLLM 1.103 加强 Claude Code gateway、MCP session 与身份管控",
+          "summary_en": "LiteLLM 1.103 strengthens Claude Code gateway, MCP sessions and identity controls",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-103-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL"
     }
   ]
 }

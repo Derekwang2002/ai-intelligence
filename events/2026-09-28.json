@@ -1,0 +1,162 @@
+{
+  "date": "2026-09-28",
+  "provenance": "Primary-source incremental scan for 2026-09-28T16:03:45Z.",
+  "events": [
+    {
+      "event_id": "ev-20260928-01",
+      "title": "H Company releases Holo4 to work across screens, code and APIs",
+      "title_zh": "H Company 发布跨屏幕、代码和 API 的 Holo4",
+      "category": "ai-agent",
+      "organization": [
+        "H Company"
+      ],
+      "published_at": "2026-09-28T00:00:00Z",
+      "published_at_note": "Official newsroom article:published_time; HF companion post published 2026-09-28T09:44:05Z.",
+      "first_seen_at": "2026-09-28T16:03:45Z",
+      "last_updated_at": "2026-09-28T16:03:45Z",
+      "source_type": "primary",
+      "primary_source": "https://hcompany.ai/newsroom/holo4",
+      "secondary_sources": [
+        "https://huggingface.co/blog/Hcompany/holo4",
+        "https://huggingface.co/Hcompany/Holo4-27B",
+        "https://huggingface.co/Hcompany/Holo4-35B-A3B",
+        "https://huggingface.co/datasets/Hcompany/trajectories",
+        "https://github.com/hcompai/hai-agents-python",
+        "https://huggingface.co/collections/Hcompany/holo4"
+      ],
+      "summary": "H Company released two Holo4 vision-language agents that use one harness across desktop, web and Android interfaces, code execution, MCP and conventional APIs. The dense 27B and 35B-A3B MoE models are available through an API, ungated weights, a public harness and published evaluation trajectories. H Company reports strong OSWorld results, but OSWorld 2.0 was run once and most public AutomationBench tasks came from the split used to collect training data. The 27B license is non-commercial CC BY-NC 4.0, while the 35B-A3B model uses Apache 2.0.",
+      "why_it_matters": "For computer-use teams, this is an unusually inspectable release because the weights, harness and step-by-step trajectories ship together. Trial the Apache-2.0 35B-A3B model first for commercial evaluation, even though its vendor-reported long-workflow score is weaker. Treat the 27B model as research-only without a separate commercial license, and rerun OSWorld 2.0 plus the 120 held-out AutomationBench tasks before accepting cost or quality claims.",
+      "summary_zh": "H Company 发布两款 Holo4 视觉语言 agent，用同一套 harness 操作桌面、网页和 Android 界面，也能执行代码、调用 MCP 与常规 API。27B dense 与 35B-A3B MoE 两个模型都提供 API、免申请权重、公开 harness 和评测轨迹。厂商给出的 OSWorld 成绩很高，但 OSWorld 2.0 只跑了一次，AutomationBench 公开集的大部分任务又来自训练数据收集所用的 split。27B 使用限制商业用途的 CC BY-NC 4.0，35B-A3B 才是 Apache 2.0。",
+      "summary_en": "H Company released two Holo4 vision-language agents that use one harness across desktop, web and Android interfaces, code execution, MCP and conventional APIs. The dense 27B and 35B-A3B MoE models are available through an API, ungated weights, a public harness and published evaluation trajectories. H Company reports strong OSWorld results, but OSWorld 2.0 was run once and most public AutomationBench tasks came from the split used to collect training data. The 27B license is non-commercial CC BY-NC 4.0, while the 35B-A3B model uses Apache 2.0.",
+      "why_it_matters_zh": "对构建 computer-use agent 的团队来说，这次发布难得地同时给出权重、harness 与逐步轨迹，复核门槛明显更低。商业评估应优先试 Apache-2.0 的 35B-A3B，哪怕它的厂商长流程成绩更弱；27B 在没有单独商业许可时只适合研究。接受成本和能力结论前，应在自己的 harness 里重跑一小段 OSWorld 2.0 与 120 个 held-out AutomationBench 任务。",
+      "why_it_matters_en": "For computer-use teams, this is an unusually inspectable release because the weights, harness and step-by-step trajectories ship together. Trial the Apache-2.0 35B-A3B model first for commercial evaluation, even though its vendor-reported long-workflow score is weaker. Treat the 27B model as research-only without a separate commercial license, and rerun OSWorld 2.0 plus the 120 held-out AutomationBench tasks before accepting cost or quality claims.",
+      "technical_details": {
+        "models": "Holo4-27B dense based on Qwen3.8-27B; Holo4-35B-A3B MoE based on Qwen3.6-35B-A3B",
+        "context_window": 262144,
+        "interfaces": "desktop, web, Android, code execution, MCP and conventional APIs",
+        "training": "about 10,000 synthetic/collected tasks; supervised learning plus asynchronous online reinforcement learning",
+        "availability": "H Models API; ungated BF16/FP8/NVFP4/GGUF weights; public hai-agents harness; public evaluation trajectories",
+        "licenses": {
+          "Holo4-27B": "CC BY-NC 4.0",
+          "Holo4-35B-A3B": "Apache 2.0"
+        },
+        "vendor_benchmarks": {
+          "OSWorld": "27B 85.2%; 35B-A3B 80.8%",
+          "OSWorld 2.0": "27B 61.7% partial / 41.5% success; 35B-A3B 30.9% / 12.3%",
+          "AutomationBench": "public: 27B 45.4%, 35B-A3B 34.5%; held-out 120: 49.3%, 31.7%"
+        },
+        "benchmark_limits": "OSWorld 2.0 and ALE-CLI are single runs; 480/600 public AutomationBench tasks are from the training-data collection split; no official private-set result; cross-model table mixes harnesses and effort levels"
+      },
+      "technical_details_zh": {
+        "模型": "Holo4-27B dense 基于 Qwen3.8-27B；Holo4-35B-A3B MoE 基于 Qwen3.6-35B-A3B",
+        "上下文窗口": 262144,
+        "操作界面": "桌面、网页、Android、代码执行、MCP 与常规 API",
+        "训练": "约 10,000 个合成/采集任务；监督学习加异步在线强化学习",
+        "可用性": "H Models API；免申请 BF16/FP8/NVFP4/GGUF 权重；公开 hai-agents harness；公开评测轨迹",
+        "许可证": {
+          "Holo4-27B": "CC BY-NC 4.0",
+          "Holo4-35B-A3B": "Apache 2.0"
+        },
+        "厂商 benchmark": {
+          "OSWorld": "27B 85.2%；35B-A3B 80.8%",
+          "OSWorld 2.0": "27B 61.7% partial / 41.5% success；35B-A3B 30.9% / 12.3%",
+          "AutomationBench": "公开集：27B 45.4%、35B-A3B 34.5%；held-out 120：49.3%、31.7%"
+        },
+        "benchmark 局限": "OSWorld 2.0 与 ALE-CLI 都只跑一次；AutomationBench 公开集 600 个任务中 480 个来自训练数据收集 split；没有官方 private-set 结果；跨模型表混用 harness 与 effort level"
+      },
+      "tags": [
+        "holo4",
+        "computer-use",
+        "gui-agent",
+        "vision-language-model",
+        "mcp",
+        "code-execution",
+        "open-weights"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "hcompany-holo4-generalist-computer-use-open-weights",
+      "source_ids": [
+        "src-fd04330e22fc5cb6",
+        "src-09d1d26fa19dd694",
+        "src-acd43f38167ba02e",
+        "src-16083a0225a60882",
+        "src-b5dab1881ac1069e",
+        "src-7e1537574014a156",
+        "src-37f3f55d3429f9dc"
+      ],
+      "project_ids": [
+        "holo4"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20260928-01-release-evidence",
+          "claim_zh": "Holo4 的 API、两套权重、公开 harness 与评测轨迹已可访问；两款模型的许可证分别为 CC BY-NC 4.0 与 Apache 2.0。",
+          "claim_en": "Holo4 is available through an API, two weight releases, a public harness and evaluation trajectories; the two model licenses are CC BY-NC 4.0 and Apache 2.0.",
+          "source_ids": [
+            "src-fd04330e22fc5cb6",
+            "src-09d1d26fa19dd694",
+            "src-acd43f38167ba02e",
+            "src-16083a0225a60882",
+            "src-b5dab1881ac1069e",
+            "src-7e1537574014a156",
+            "src-37f3f55d3429f9dc"
+          ],
+          "event_ids": [
+            "ev-20260928-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260928-01-benchmark-limit-evidence",
+          "claim_zh": "厂商说明 OSWorld 2.0 只跑一次，AutomationBench 公开集 600 个任务中 480 个来自训练数据收集 split，且尚无 official private-set 结果。",
+          "claim_en": "The vendor says OSWorld 2.0 was run once, 480 of 600 public AutomationBench tasks came from the training-data collection split, and no official private-set result is available.",
+          "source_ids": [
+            "src-fd04330e22fc5cb6",
+            "src-09d1d26fa19dd694"
+          ],
+          "event_ids": [
+            "ev-20260928-01"
+          ],
+          "relation": "background",
+          "verification": "vendor-reported-limitation"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260928-01-published",
+          "kind": "new",
+          "occurred_at": "2026-09-28T00:00:00Z",
+          "discovered_at": "2026-09-28T16:03:45Z",
+          "summary_zh": "H Company 发布跨 GUI、代码、MCP 与 API 的 Holo4 开放权重 agent",
+          "summary_en": "H Company releases open-weight Holo4 agents across GUI, code, MCP and APIs",
+          "evidence_ids": [
+            "ev-20260928-01-release-evidence",
+            "ev-20260928-01-benchmark-limit-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "editorial_pick": {
+        "reason_zh": "工程精选：权重、harness 与逐步轨迹同时发布，但许可证和 benchmark 切分必须先核对。",
+        "reason_en": "Engineering pick: weights, harness and trajectories ship together, but license and benchmark splits need explicit review.",
+        "source_ids": [
+          "src-fd04330e22fc5cb6",
+          "src-09d1d26fa19dd694"
+        ]
+      }
+    }
+  ]
+}

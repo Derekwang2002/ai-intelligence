@@ -1,0 +1,281 @@
+{
+  "id": "2026-09-28T16-03-45Z",
+  "run_started_at": "2026-09-28T16:03:45Z",
+  "previous_checkpoint": "2026-09-27T16:01:12Z",
+  "window": {
+    "start": "2026-09-27T16:01:12Z",
+    "end": "2026-09-28T16:03:45Z",
+    "overlap_start": "2026-09-27T13:01:12.000Z"
+  },
+  "status": "validated",
+  "checks": [
+    {
+      "id": "anthropic-news",
+      "url": "https://www.anthropic.com/news",
+      "title": "Anthropic news",
+      "kind": "announcement",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-28T16:04:06.388Z",
+      "content_hash": "6386895623930342c2bc456fcfc627c8cad1fdc4583af062cfa8333be353264c",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/anthropic-news.txt",
+      "analysis_status": "complete",
+      "note": "Newest visible newsroom item remains September 23; no retained in-window announcement."
+    },
+    {
+      "id": "arxiv-ai",
+      "url": "https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=20",
+      "title": "arXiv AI recent submissions",
+      "kind": "paper",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-28T16:04:07.758Z",
+      "content_hash": "b5130adc02d4e211c4d677a50952b1fcff9c19492f41f253ba5f96f1e3d74285",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/arxiv-ai.txt",
+      "analysis_status": "complete",
+      "note": "The feed returned September 25 submissions, all before the canonical window; no in-window cs.AI submission was retained."
+    },
+    {
+      "id": "claude-code-releases",
+      "url": "https://api.github.com/repos/anthropics/claude-code/releases?per_page=5",
+      "title": "Claude Code releases",
+      "kind": "release",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-28T16:04:06.777Z",
+      "content_hash": "e7e1adfa5f8df9ddfb73508335e5f52166d81265f10d30966b70dcaa65c3fcd6",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/claude-code-releases.txt",
+      "analysis_status": "complete",
+      "note": "Latest stable remains v2.1.283 from September 25 and is already recorded."
+    },
+    {
+      "id": "codex-releases",
+      "url": "https://api.github.com/repos/openai/codex/releases?per_page=5",
+      "title": "Codex releases",
+      "kind": "release",
+      "required": true,
+      "status": "changed",
+      "checked_at": "2026-09-28T16:04:06.778Z",
+      "content_hash": "1d72a945c53896115fef03da0af61ee7e8fc475f7c80cf3470ab8f4b6503646a",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/codex-releases.txt",
+      "analysis_status": "complete",
+      "note": "Stable 0.158.0 was merged into the existing Codex event; three in-window alpha artifacts were filtered as prereleases."
+    },
+    {
+      "id": "gemini-cli-releases",
+      "url": "https://api.github.com/repos/google-gemini/gemini-cli/releases?per_page=5",
+      "title": "Gemini CLI releases",
+      "kind": "release",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-28T16:04:07.450Z",
+      "content_hash": "cc41bd445ce372e86039435978d357dd40cfe789deadaa596111aa3c8e8a6a03",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/gemini-cli-releases.txt",
+      "analysis_status": "complete",
+      "note": "Only a 0.63 nightly appears in-window; no new stable or preview release was retained."
+    },
+    {
+      "id": "github-changelog",
+      "url": "https://github.blog/changelog/",
+      "title": "GitHub changelog",
+      "kind": "release",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-28T16:04:06.776Z",
+      "content_hash": "432c55c157abfd3d37790114882331de573685791c4971d9c7beab94cfc153a9",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/github-changelog.txt",
+      "analysis_status": "complete",
+      "note": "Latest dated entries remain September 25 and are already recorded."
+    },
+    {
+      "id": "google-ai",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/",
+      "title": "Google AI blog",
+      "kind": "announcement",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-28T16:04:06.389Z",
+      "content_hash": "e5788ac4b02e285c674c43658c7c966c0caeead31aa9acad72ae993aa0316663",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/google-ai.txt",
+      "analysis_status": "complete",
+      "note": "No new engineering-relevant article in the canonical window was visible in the captured page."
+    },
+    {
+      "id": "hf-blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "title": "Hugging Face blog",
+      "kind": "announcement",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-28T16:04:07.756Z",
+      "content_hash": "788d31f308a8dc37c87b757c0f2b78ee31722c8dc39a054a5f55288b288dcbfd",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/hf-blog.txt",
+      "analysis_status": "complete",
+      "note": "Latest feed entry remains September 24; no in-window post was retained."
+    },
+    {
+      "id": "openai-api",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "title": "OpenAI API changelog",
+      "kind": "documentation",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-28T16:04:06.365Z",
+      "content_hash": "20232b58769bc259cc347d95371f04f2f8769e481ca16c670dba2b32ba8f52be",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/openai-api.txt",
+      "analysis_status": "complete",
+      "note": "No new dated API changelog item was found in the canonical window."
+    },
+    {
+      "id": "qwen-code-releases",
+      "url": "https://api.github.com/repos/QwenLM/qwen-code/releases?per_page=5",
+      "title": "Qwen Code releases",
+      "kind": "release",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-28T16:04:07.448Z",
+      "content_hash": "a1049891beff46b66252c1283a60ddf9180105c171f898435d24626f9067541d",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/qwen-code-releases.txt",
+      "analysis_status": "complete",
+      "note": "Stable 0.24.6 remains the newest stable release and is already recorded."
+    },
+    {
+      "id": "vllm-releases",
+      "url": "https://api.github.com/repos/vllm-project/vllm/releases?per_page=5",
+      "title": "vLLM releases",
+      "kind": "release",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-28T16:04:07.450Z",
+      "content_hash": "c78566e945e3ff7e499600b9d561627e421913e7a3422716bddd16b75262b709",
+      "capture": "logs/captures/2026-09-28T16-03-45Z/vllm-releases.txt",
+      "analysis_status": "complete",
+      "note": "Latest stable remains 0.30.0; no later fix is tagged."
+    }
+  ],
+  "candidate_decisions": [
+    {
+      "candidate": "H Company Holo4",
+      "decision": "new-event",
+      "event_id": "ev-20260928-01",
+      "reason": "API, ungated weights, harness and trajectories are public; license and benchmark limitations are explicit. Rated TRIAL."
+    },
+    {
+      "candidate": "Codex 0.158.0 stable",
+      "decision": "update-existing",
+      "event_id": "ev-20260818-02",
+      "reason": "Stable release adds enterprise MCP/exec-server authentication, default terminal-input approval and substantive sandbox fixes."
+    },
+    {
+      "candidate": "LiteLLM 1.103.0 stable",
+      "decision": "update-existing",
+      "event_id": "ev-20260913-01",
+      "reason": "Stable release adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes."
+    },
+    {
+      "candidate": "Codex alpha builds",
+      "decision": "filtered",
+      "count": 6,
+      "reason": "Prerelease artifacts around the 0.158 stable and 0.159 development lines."
+    },
+    {
+      "candidate": "Gemini CLI 0.63 nightly",
+      "decision": "filtered",
+      "count": 1,
+      "reason": "Nightly artifact; no new stable release."
+    },
+    {
+      "candidate": "LiteLLM 1.104 RC",
+      "decision": "filtered",
+      "count": 1,
+      "reason": "Prerelease immediately following the retained 1.103 stable."
+    },
+    {
+      "candidate": "llama.cpp rolling builds",
+      "decision": "filtered",
+      "count": 13,
+      "reason": "High-frequency prerelease artifacts without one documented end-to-end change that clears the event threshold."
+    },
+    {
+      "candidate": "September 21 research seven-day reviews",
+      "decision": "reviewed-no-change",
+      "count": 6,
+      "reason": "Artifacts remain available where previously published, but no independent reproduction changed maturity or recommendation."
+    }
+  ],
+  "stages": {
+    "retrieval": true,
+    "verification": true,
+    "deduplication": true,
+    "analysis": true,
+    "reports": true,
+    "persistence": true
+  },
+  "written_files": [
+    "events/2026-08-18.json",
+    "events/2026-09-13.json",
+    "events/2026-09-28.json",
+    "projects/catalog.json",
+    "sources/catalog.json",
+    "topics/catalog.json",
+    "reviews/queue.json",
+    "index/events.json",
+    "trends/current.json",
+    "trends/current.md",
+    "trends/2026-09-29.md",
+    "trends/2026-09-29.en.md",
+    "daily/2026-09-29.md",
+    "daily/2026-09-29.en.md",
+    "briefings/2026-09-28T16-03-45Z.json",
+    "logs/research-20260928T160345Z.md"
+  ],
+  "gap_review": {
+    "last_completed_at": "2026-09-27T00:44:11Z",
+    "next_due_at": "2026-10-04",
+    "scope": "No new gap review was due; today's six newly due seven-day research reviews were completed."
+  },
+  "source_discovery": {
+    "areas": [
+      "foundation models",
+      "agents",
+      "engineering",
+      "open source",
+      "research",
+      "infrastructure",
+      "business/policy"
+    ],
+    "method": "Fixed monitors plus targeted primary-source searches and official release APIs.",
+    "retained_new_events": 1,
+    "updated_events": 2,
+    "duplicates_skipped": 21
+  },
+  "review_queue": {
+    "reviewed_event_ids": [
+      "ev-20260921-02",
+      "ev-20260921-03",
+      "ev-20260921-04",
+      "ev-20260921-05",
+      "ev-20260921-06",
+      "ev-20260921-07"
+    ],
+    "tasks_completed": 6,
+    "next_review_at": "2026-09-30",
+    "remaining": "Older imported overdue tasks remain pending; no unperformed review is claimed."
+  },
+  "site_acceptance": {
+    "unit_tests_passed": 14,
+    "browser_tests_passed": 16,
+    "build_pages": 660,
+    "viewports": [
+      360,
+      768,
+      1440
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "subpath": "/ai-intelligence"
+  },
+  "summary_en": "Incremental scan of 11 fixed official sources plus primary-source discovery: one new Holo4 event, Codex 0.158.0 and LiteLLM 1.103.0 updates, and six completed seven-day research reviews. Twenty-one prerelease artifacts were filtered. No new trend emerged; trends #2 and #7 gained supporting evidence without status or confidence changes."
+}
