@@ -1,4 +1,4 @@
-# 当前趋势看板 — 2026-09-28T16:03:45Z
+# 当前趋势看板 — 2026-09-29T16:01:24Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
@@ -70,13 +70,14 @@
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：Hy4 主仓月下载量较 9 月 11 日增长 177%，采用信号增强；完整版与第三方可复现评测仍缺席。维持 strengthening / Medium。
 - 2026-09-28T16:03:45Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
+- 2026-09-29T16:01:24Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
 - **Status:** emerging
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-09-28
+- **Last updated:** 2026-09-29
 - **Time Horizon:** Emerging
 - **当前判断:** emerging（2026-08-16 由 candidate 升级）
 - **Why It Matters:** 升级依据：多个独立信号来自不同组织、不同日期（网络厂商、企业 SaaS、安全研究），指向同一方向：MCP 正从新兴协议转变为受治理的企业基础设施。
@@ -136,13 +137,14 @@
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 - 2026-09-28T16:03:45Z：Codex 0.158.0 支持预注册 MCP OAuth client secret；LiteLLM 1.103.0 增加 RFC 8693 token exchange、client allowlist 与在线 session 撤销。企业身份与会话治理继续进入稳定产品，但跨厂商 schema 和公开生产遥测仍缺。维持 emerging / Medium。
+- 2026-09-29T16:01:24Z：MCP TypeScript SDK 2.2.0 在 token 请求前校验 issuer，并将列表接口默认改为自动翻页；Claude Code 2.1.284 同时补上 `private_key_jwt` IdP 认证与 MCP 批量重连。企业身份与恢复能力继续增强，但跨厂商 schema 与公开生产遥测仍缺。维持 emerging / Medium。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
 - **Status:** established
 - **Confidence:** High
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-09-27
+- **Last updated:** 2026-09-29
 - **Time Horizon:** Sustained
 - **当前判断:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Why It Matters:** 升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
@@ -208,6 +210,7 @@
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 - 2026-09-28T16:03:45Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
+- 2026-09-29T16:01:24Z：Codex 0.159.0 加入运行中转向与 item 级历史分页；Qwen Code 0.24.7 将 workspace identity、执行凭据和接管恢复推入 stable。multi-agent runtime 已建立，互操作仍缺。维持 established / High。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -269,6 +272,7 @@
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 - 2026-09-28T16:03:45Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
+- 2026-09-29T16:01:24Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
@@ -314,6 +318,7 @@
 - 2026-09-27T00:44:11Z：维持候选方向、低置信度。PSP 已有具体配置指南，旧记录中“尚未兑现”的概括需要修正。现有材料仍不足以证明多家独立组织已经在生产中采用。
 - 2026-09-27T16:01:12Z：本次扫描没有新的客户自托管或数据驻留生产证据。维持 candidate / Low。
 - 2026-09-28T16:03:45Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
+- 2026-09-29T16:01:24Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -356,13 +361,14 @@
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 - 2026-09-28T16:03:45Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
+- 2026-09-29T16:01:24Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-09-28
+- **Last updated:** 2026-09-29
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -405,5 +411,6 @@
 - 2026-09-27T00:44:11Z：补充扫描未发现足以改变本趋势判断的新独立信号。维持状态与置信度；GPT-6 图像编码修复属于既有模型的工程更新。
 - 2026-09-27T16:01:12Z：本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。
 - 2026-09-28T16:03:45Z：Codex 0.158.0 默认要求高权限命令经过终端输入审批并修复跨平台沙箱边界；LiteLLM 1.103.0 增加 MCP-aware 护栏和凭据 fail-closed。方向继续增强，但仍缺统一 policy schema。维持 strengthening / Medium。
+- 2026-09-29T16:01:24Z：Codex 0.159.0 保留获批命令的文件系统拒绝规则并保护 `.aws`；Claude Code 提供单次目录外读取许可；Qwen Code 补上执行凭据与重启后核对。控制继续下沉到 runtime，统一 policy schema 仍缺。维持 strengthening / Medium。
 
 ## Invalidated / retired

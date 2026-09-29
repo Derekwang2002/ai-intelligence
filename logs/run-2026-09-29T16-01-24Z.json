@@ -1,0 +1,345 @@
+{
+  "id": "2026-09-29T16-01-24Z",
+  "run_started_at": "2026-09-29T16:01:24Z",
+  "previous_checkpoint": "2026-09-28T16:03:45Z",
+  "window": {
+    "start": "2026-09-28T16:03:45Z",
+    "end": "2026-09-29T16:01:24Z",
+    "overlap_start": "2026-09-28T13:03:45.000Z"
+  },
+  "status": "validated",
+  "checks": [
+    {
+      "id": "anthropic-news",
+      "url": "https://www.anthropic.com/news",
+      "title": "Anthropic news",
+      "kind": "announcement",
+      "required": true,
+      "status": "changed",
+      "checked_at": "2026-09-29T16:01:36.559Z",
+      "content_hash": "2e60a4bcb7005101fafc9eff19d58a126e4bf112a8d26218e4011333ea2f1bfb",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/anthropic-news.txt",
+      "analysis_status": "complete",
+      "note": "Claude Sonnet 5.5 was published in-window and retained."
+    },
+    {
+      "id": "arxiv-ai",
+      "url": "https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=20",
+      "title": "arXiv AI recent submissions",
+      "kind": "paper",
+      "required": true,
+      "status": "changed",
+      "checked_at": "2026-09-29T16:01:37.857Z",
+      "content_hash": "089e97b4d789a731f45f7da5235fe7efe79af2abbfe728c3ecae9399599a2c18",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/arxiv-ai.txt",
+      "analysis_status": "complete",
+      "note": "Twenty in-window submissions were reviewed; four high-value papers were retained."
+    },
+    {
+      "id": "claude-code-releases",
+      "url": "https://api.github.com/repos/anthropics/claude-code/releases?per_page=5",
+      "title": "Claude Code releases",
+      "kind": "release",
+      "required": true,
+      "status": "changed",
+      "checked_at": "2026-09-29T16:01:36.888Z",
+      "content_hash": "8b84565bfed274f8a1f131181f3086b32d1868e688a19c3881910e16237601ff",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/claude-code-releases.txt",
+      "analysis_status": "complete",
+      "note": "Stable 2.1.284 was merged into the existing Claude Code event and also confirms Sonnet 5.5 availability."
+    },
+    {
+      "id": "codex-releases",
+      "url": "https://api.github.com/repos/openai/codex/releases?per_page=5",
+      "title": "Codex releases",
+      "kind": "release",
+      "required": true,
+      "status": "changed",
+      "checked_at": "2026-09-29T16:01:36.890Z",
+      "content_hash": "d4e30771bfe2ddc84daf8595f3f64bc48b2751535edae90ff3736ed95d7c7ccb",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/codex-releases.txt",
+      "analysis_status": "complete",
+      "note": "Stable 0.159.0 was merged into the existing Codex event; three 0.160 alpha artifacts were filtered."
+    },
+    {
+      "id": "gemini-cli-releases",
+      "url": "https://api.github.com/repos/google-gemini/gemini-cli/releases?per_page=5",
+      "title": "Gemini CLI releases",
+      "kind": "release",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-29T16:01:37.605Z",
+      "content_hash": "acb987c575b4b1ba20f1e1ccbf64bffea1ece67e851df2181bcd21e04c66498c",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/gemini-cli-releases.txt",
+      "analysis_status": "complete",
+      "note": "Only a 0.63 nightly appeared in-window; no stable release was retained."
+    },
+    {
+      "id": "github-changelog",
+      "url": "https://github.blog/changelog/",
+      "title": "GitHub changelog",
+      "kind": "release",
+      "required": true,
+      "status": "changed",
+      "checked_at": "2026-09-29T16:01:36.886Z",
+      "content_hash": "51b75348f50d56e540cb00ad6a2b54519779739e0bbab9e0f0b2f7a580cc642c",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/github-changelog.txt",
+      "analysis_status": "complete",
+      "note": "GitHub Copilot availability for Sonnet 5.5 was merged into the model release rather than duplicated."
+    },
+    {
+      "id": "google-ai",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/",
+      "title": "Google AI blog",
+      "kind": "announcement",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-29T16:01:36.559Z",
+      "content_hash": "e285d82be582b233d232f61c9a0f5038cdd759e89d2f7c00c301d32578b5bde5",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/google-ai.txt",
+      "analysis_status": "complete",
+      "note": "No engineering-relevant in-window release was found in the captured page."
+    },
+    {
+      "id": "hf-blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "title": "Hugging Face blog",
+      "kind": "announcement",
+      "required": true,
+      "status": "changed",
+      "checked_at": "2026-09-29T16:01:37.856Z",
+      "content_hash": "3dc76113a36b0e962771ccc09238b47244e313cd4e10c565dbabe8cc574fa225",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/hf-blog.txt",
+      "analysis_status": "complete",
+      "note": "Kumo Tabular was retained; an old ProvenanceGuard paper resurfacing as a blog post was filtered."
+    },
+    {
+      "id": "openai-api",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "title": "OpenAI API changelog",
+      "kind": "documentation",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-29T16:01:36.535Z",
+      "content_hash": "56fffbd44d01a9314b42d905dac7f725e5982a3aedc892dbd9db9b37a30b3aef",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/openai-api.txt",
+      "analysis_status": "complete",
+      "note": "No new dated API changelog item was found in-window."
+    },
+    {
+      "id": "qwen-code-releases",
+      "url": "https://api.github.com/repos/QwenLM/qwen-code/releases?per_page=5",
+      "title": "Qwen Code releases",
+      "kind": "release",
+      "required": true,
+      "status": "changed",
+      "checked_at": "2026-09-29T16:01:37.603Z",
+      "content_hash": "84b24e80abc58e1c93b86a62c942a2273f69a2f8f453179b15c208f444857b98",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/qwen-code-releases.txt",
+      "analysis_status": "complete",
+      "note": "Stable 0.24.7 was merged into the existing Qwen Code event; companion SDK and desktop artifacts were deduplicated."
+    },
+    {
+      "id": "vllm-releases",
+      "url": "https://api.github.com/repos/vllm-project/vllm/releases?per_page=5",
+      "title": "vLLM releases",
+      "kind": "release",
+      "required": true,
+      "status": "unchanged",
+      "checked_at": "2026-09-29T16:01:37.606Z",
+      "content_hash": "02e811afea40d0056b5424607e3e3da659d94a6bbe08732f60191a04f257ac67",
+      "capture": "logs/captures/2026-09-29T16-01-24Z/vllm-releases.txt",
+      "analysis_status": "complete",
+      "note": "Latest stable remains 0.30.0; no later tagged fix was published."
+    }
+  ],
+  "candidate_decisions": [
+    {
+      "candidate": "Claude Sonnet 5.5",
+      "decision": "new-event",
+      "event_id": "ev-20260928-02",
+      "reason": "Broad API/cloud availability, unchanged token price and material vendor-reported speed/cost gains; rated TRIAL pending workload-specific validation."
+    },
+    {
+      "candidate": "NVIDIA Kumo Tabular",
+      "decision": "new-event",
+      "event_id": "ev-20260929-01",
+      "reason": "Ungated weights and inference code make the zero-training tabular model testable; rated TRIAL because leaderboard claims are vendor-run and training artifacts are incomplete."
+    },
+    {
+      "candidate": "Telescopic Language Models",
+      "decision": "new-event",
+      "event_id": "ev-20260928-03",
+      "reason": "Novel elastic-depth training; rated WATCH because evidence is limited to a 200M proxy and the linked repository has no implementation."
+    },
+    {
+      "candidate": "TokenCast",
+      "decision": "new-event",
+      "event_id": "ev-20260928-04",
+      "reason": "Actionable live cost forecasting; rated WATCH because savings are from offline replay and the linked repository is still a placeholder."
+    },
+    {
+      "candidate": "KV-streams",
+      "decision": "new-event",
+      "event_id": "ev-20260928-05",
+      "reason": "Large reported post-training speedup and a new auditability tradeoff; rated WATCH with no public code."
+    },
+    {
+      "candidate": "Failure-Transparent Agents",
+      "decision": "new-event",
+      "event_id": "ev-20260928-06",
+      "reason": "Human-annotated evidence and MIT-licensed artifacts support a cheap structured reporting contract; rated TRIAL for bounded evaluation."
+    },
+    {
+      "candidate": "MCP TypeScript SDK 2.2.0",
+      "decision": "new-event",
+      "event_id": "ev-20260928-07",
+      "reason": "OAuth issuer validation and automatic pagination are security- and migration-relevant; rated TRIAL with explicit regression tests."
+    },
+    {
+      "candidate": "OpenAI Python SDK 3.20.0",
+      "decision": "new-event",
+      "event_id": "ev-20260928-08",
+      "reason": "Hosted-agent credential, policy and streaming contracts are concrete, but API support guarantees remain unclear; rated WATCH."
+    },
+    {
+      "candidate": "Codex 0.159.0 stable",
+      "decision": "update-existing",
+      "event_id": "ev-20260818-02",
+      "reason": "In-flight steering plus substantive sandbox and local-process boundary fixes."
+    },
+    {
+      "candidate": "Qwen Code 0.24.7 stable",
+      "decision": "update-existing",
+      "event_id": "ev-20260922-04",
+      "reason": "Workspace-bound managed runtime, receipts, recovery and public session contracts."
+    },
+    {
+      "candidate": "Claude Code 2.1.284 stable",
+      "decision": "update-existing",
+      "event_id": "ev-20260814-04",
+      "reason": "One-off read approval, gateway identity, MCP recovery and spend-policy controls."
+    },
+    {
+      "candidate": "Codex 0.160 alpha builds",
+      "decision": "filtered",
+      "count": 3,
+      "reason": "Prerelease artifacts after the retained 0.159 stable."
+    },
+    {
+      "candidate": "Gemini CLI 0.63 nightly",
+      "decision": "filtered",
+      "count": 1,
+      "reason": "Nightly artifact; no stable release."
+    },
+    {
+      "candidate": "Qwen Code desktop and SDK companion releases",
+      "decision": "duplicate-merged",
+      "count": 2,
+      "reason": "Same 0.24.7 source tree and bundled CLI; merged into one product update."
+    },
+    {
+      "candidate": "GitHub Copilot Sonnet 5.5 availability",
+      "decision": "duplicate-merged",
+      "count": 1,
+      "reason": "Availability signal merged into the Claude Sonnet 5.5 event."
+    },
+    {
+      "candidate": "Holo4 model card update",
+      "decision": "duplicate-skipped",
+      "count": 1,
+      "reason": "Already stored as ev-20260928-01 in the previous successful run."
+    },
+    {
+      "candidate": "Ollama 0.35.0 SystemOne endpoint",
+      "decision": "filtered-prerelease",
+      "count": 1,
+      "reason": "Probability-first decision endpoint is explicitly prerelease; wait for stable availability and calibration evidence."
+    },
+    {
+      "candidate": "ProvenanceGuard Hugging Face article",
+      "decision": "filtered-old",
+      "count": 1,
+      "reason": "The underlying paper was published in June; the article adds no new code, dataset or evaluation result."
+    },
+    {
+      "candidate": "Progressive Disclosure of Agent Skills",
+      "decision": "filtered",
+      "count": 1,
+      "reason": "Relevant early indication, but the short report provides no public artifact or decision-grade quantitative result in the accessible material."
+    },
+    {
+      "candidate": "Other arXiv cs.AI submissions",
+      "decision": "filtered",
+      "count": 15,
+      "reason": "Outside focus, missing artifacts or insufficient engineering value for this brief."
+    },
+    {
+      "candidate": "September 30 due reviews",
+      "decision": "reviewed-no-change",
+      "count": 5,
+      "reason": "Two 30-day and three seven-day reviews found no evidence sufficient to change maturity or recommendation."
+    }
+  ],
+  "stages": {
+    "retrieval": true,
+    "verification": true,
+    "deduplication": true,
+    "analysis": true,
+    "reports": true,
+    "persistence": true
+  },
+  "written_files": [
+    "events/2026-08-14.json",
+    "events/2026-08-18.json",
+    "events/2026-09-22.json",
+    "events/2026-09-28.json",
+    "events/2026-09-29.json",
+    "projects/catalog.json",
+    "sources/catalog.json",
+    "topics/catalog.json",
+    "reviews/queue.json",
+    "index/events.json",
+    "trends/current.json",
+    "trends/current.md",
+    "trends/2026-09-30.md",
+    "trends/2026-09-30.en.md",
+    "daily/2026-09-30.md",
+    "daily/2026-09-30.en.md",
+    "briefings/2026-09-29T16-01-24Z.json",
+    "logs/research-2026-09-29.md"
+  ],
+  "gap_review": {
+    "last_completed_at": "2026-09-27T00:44:11Z",
+    "next_due_at": "2026-10-04",
+    "scope": "No gap review was due; five newly due reviews (two 30-day, three seven-day) were completed."
+  },
+  "source_discovery": {
+    "areas": [
+      "foundation models",
+      "agents",
+      "engineering",
+      "open source",
+      "research",
+      "infrastructure",
+      "business/policy"
+    ],
+    "method": "Eleven fixed monitors plus targeted primary-source searches and official release APIs.",
+    "retained_new_events": 8,
+    "updated_events": 3,
+    "duplicates_skipped": 4
+  },
+  "review_queue": {
+    "reviewed_event_ids": [
+      "ev-20260831-01",
+      "ev-20260831-03",
+      "ev-20260923-03",
+      "ev-20260923-04",
+      "ev-20260923-05"
+    ],
+    "tasks_completed": 5,
+    "next_review_at": "2026-10-01",
+    "remaining": "Older imported overdue tasks remain pending; no unperformed review is claimed."
+  },
+  "summary_en": "Incremental scan of 11 fixed official sources plus primary-source discovery: eight new events, three stable-tool updates and five completed due reviews. Claude Sonnet 5.5 and Kumo Tabular lead the release set; MCP and OpenAI SDK changes expose new operational contracts, while four research papers add bounded frontier signals. No new trend met the threshold."
+}

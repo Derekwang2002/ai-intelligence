@@ -350,12 +350,13 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-09-26T16:01:48Z",
+      "last_updated_at": "2026-09-29T16:01:24Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
       "secondary_sources": [
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.5",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.6"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.6",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.7"
       ],
       "summary": "Qwen Code 0.24.4 adds a managed runtime attestation contract, persistent managed tool-execution records and plan-drift reporting. It moves bubblewrap sandboxing to individual tool execution, supports SSH workspaces without a remote daemon, and can cap ACP child heaps. The release also adds encrypted connection profiles and safer QR pairing for remote sessions. It was published inside the retrieval overlap and was absent from the previous index.",
       "why_it_matters": "For teams running coding agents across local, remote and managed workers, a sandbox is only one part of the trust story. Attestation, durable execution records and plan-drift checks make it easier to prove which runtime acted and whether the implementation still matches the approved plan. Trial the controls before relying on them for policy enforcement because the release notes do not yet provide independent security validation.",
@@ -371,7 +372,8 @@
         "sandbox": "bubblewrap moved to tool execution; optional ACP child heap enforcement",
         "remote": "SSH workspace without remote daemon; encrypted connection profiles; expiring QR pairing",
         "update_2026_09_26": "0.24.5 stable adds a Java attestation client that adopts a Managed Runtime only after verification, real-time trajectory timing and inspection, rebase-stable per-file review verdicts, separate private/group channel policies, byte-based MCP media validation, and stronger ownership fences for stale tool dispatches. Stays TRIAL.",
-        "update_2026_09_27": "0.24.6 stable declares a v2 execute/status/cancel runtime contract, adds guarded Hosted Runtime foundations, a durable managed-session journal with failover, and reconciliation of UNKNOWN executions from runtime evidence. Permission-hook aggregation now chooses the most restrictive decision. Fresh startup time to typeable is halved and RSS falls 60% in the project benchmark. Stays TRIAL."
+        "update_2026_09_27": "0.24.6 stable declares a v2 execute/status/cancel runtime contract, adds guarded Hosted Runtime foundations, a durable managed-session journal with failover, and reconciliation of UNKNOWN executions from runtime evidence. Permission-hook aggregation now chooses the most restrictive decision. Fresh startup time to typeable is halved and RSS falls 60% in the project benchmark. Stays TRIAL.",
+        "update_2026_09_29": "0.24.7 stable makes Managed Runtime sessions workspace-bound, persists local execution receipts, reconciles in-flight work after takeover/reboot, exposes public Session/Turn/task contracts, and adds optional worktree sessions. It also adds a remote desktop node_repl relay, structured memory recall, Landlock fallback, safe concurrent Code Mode calls, and fixes stale-worktree sweeps that could delete untracked or ignored files. Stays TRIAL."
       },
       "technical_details_zh": {
         "版本": "0.24.4 stable",
@@ -381,7 +383,8 @@
         "沙箱": "bubblewrap 下沉到工具执行；可选 ACP 子进程堆限制",
         "远程": "SSH workspace 无需远程 daemon；加密连接配置；带过期时间的二维码配对",
         "2026-09-26 更新": "0.24.5 stable 新增 Java attestation client，只有验证后才接纳 Managed Runtime；还加入实时轨迹耗时与检查、跨 rebase 保留的逐文件审查结论、私聊/群聊策略分离、按真实 bytes 判断 MCP media，以及过期工具调度的 ownership fence。维持 TRIAL。",
-        "2026-09-27 更新": "0.24.6 stable 定义 v2 execute/status/cancel 运行时协议，加入带防护的 Hosted Runtime 基础、可故障转移的托管会话持久日志，并根据运行时证据核对 UNKNOWN 执行。多个权限 hook 冲突时现在选择最严格结论。项目 benchmark 中首次启动到可输入时间减半，RSS 降低 60%。维持 TRIAL。"
+        "2026-09-27 更新": "0.24.6 stable 定义 v2 execute/status/cancel 运行时协议，加入带防护的 Hosted Runtime 基础、可故障转移的托管会话持久日志，并根据运行时证据核对 UNKNOWN 执行。多个权限 hook 冲突时现在选择最严格结论。项目 benchmark 中首次启动到可输入时间减半，RSS 降低 60%。维持 TRIAL。",
+        "2026-09-29 更新": "0.24.7 stable 将 Managed Runtime session 绑定到 workspace，持久化本地执行凭据，在接管或重启后核对进行中的工作，并公开 Session/Turn/task contract 与可选 worktree session。该版还加入远程桌面 node_repl relay、结构化记忆召回、Landlock fallback、Code Mode 安全调用并发，以及可能误删未跟踪或 ignored 文件的过期 worktree 清理修复。维持 TRIAL。"
       },
       "tags": [
         "qwen-code",
@@ -402,7 +405,8 @@
       "source_ids": [
         "src-f5d5f5b22f45e8b3",
         "src-826169a7ece8e695",
-        "src-35e812e2fe0e58e1"
+        "src-35e812e2fe0e58e1",
+        "src-50ecef795d7295a5"
       ],
       "project_ids": [
         "qwen-code"
@@ -438,6 +442,19 @@
           ],
           "relation": "support",
           "verification": "historical"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-24-7-evidence",
+          "claim_zh": "Qwen Code 0.24.7 把 workspace identity、执行凭据、接管/重启核对和公开 Session/Turn contract 推入稳定版，并修复 worktree 清理误删未跟踪文件的问题。",
+          "claim_en": "Qwen Code 0.24.7 moves workspace identity, execution receipts, takeover/reboot reconciliation and public Session/Turn contracts into stable, while fixing worktree cleanup that could delete untracked files.",
+          "source_ids": [
+            "src-50ecef795d7295a5"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -464,6 +481,19 @@
             "ev-20260922-04-evidence-recorded-20260927"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-24-7-stable",
+          "kind": "update",
+          "occurred_at": "2026-09-29T14:02:21Z",
+          "discovered_at": "2026-09-29T16:01:24Z",
+          "summary_zh": "Qwen Code 0.24.7 补齐 Managed Runtime 的 workspace 身份与故障恢复",
+          "summary_en": "Qwen Code 0.24.7 completes workspace identity and recovery paths for Managed Runtime",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-24-7-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {

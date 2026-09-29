@@ -137,7 +137,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-09-28T16:03:45Z",
+      "last_updated_at": "2026-09-29T16:01:24Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [
@@ -146,7 +146,8 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.155.1",
         "https://github.com/openai/codex/releases/tag/rust-v0.156.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.156.1",
-        "https://github.com/openai/codex/releases/tag/rust-v0.158.0"
+        "https://github.com/openai/codex/releases/tag/rust-v0.158.0",
+        "https://github.com/openai/codex/releases/tag/rust-v0.159.0"
       ],
       "summary": "Codex CLI 0.148.0 (stable) is headlined by session forking: `codex exec fork` branches an existing session, and the TUI resume picker can now archive and restore sessions. Hooks can run commands asynchronously and invoke MCP tools. Amazon Bedrock Runtime becomes a built-in provider, with AWS profile and region selection and GPT-5.6 routing; `/status`, status lines and terminal titles now show estimated thread credits and cost. Also new: `/export` saves a conversation as markdown to the clipboard or a file, and prompts can be drafted while the TUI starts up. Fixes cover stale instructions after model switching, resumed sessions restoring cwd and approval policy, reconnection through provider outages, MCP recovery after OAuth re-auth, and sandbox restrictions that now fail closed for denied or unreadable paths on Linux and Windows.",
       "why_it_matters": "Three engineering-relevant moves land in one release. Session forking reaches the stable channel, extending Codex's multi-agent primitives from subagent spawning to exec-level branch-and-parallel workflows. Async hooks that can call MCP tools turn Codex into a programmable orchestration point. And a built-in Bedrock provider gives AWS shops a first-party path to Codex models, while `/status` cost visibility closes a long-standing budgeting gap.",
@@ -175,7 +176,8 @@
         "update_2026_09_19": "0.155.1 stable (2026-09-18T20:03Z): restores disabled reasoning summaries as the local TUI default so providers without reasoning-summary support no longer reject new sessions; explicit user settings are still honored. Recommendation remains ADOPT.",
         "update_2026_09_24": "0.156.0 stable (2026-09-22T19:51Z) makes worktree sessions the default in the agent command center, adds fullscreen transcript search/copying, a /usage analytics dashboard, default-on voice conversations, and a local background-server updater. It closes Windows inbound-network, privileged socket and macOS read-only-handle sandbox gaps. 0.156.1 adds GPT-6 Sol/Luna routing. Recommendation remains ADOPT.",
         "update_2026_09_26": "0.157.0 stable (2026-09-25T02:31Z) enables automatic background-server startup, remote/background-session /import and cross-app conversation forking. Network policy now remains enforced across redirects and ongoing HTTP/WebSocket traffic; local Unix MCP servers are restricted to stdio descriptors, daemon socket paths are masked through ancestor mounts, and gateway OAuth storage/error handling is hardened. Stays ADOPT.",
-        "update_2026_09_28": "0.158.0 stable (2026-09-28T05:07Z): pre-registered MCP OAuth clients can supply client secrets; direct exec-server WebSocket links support bearer tokens; terminal-input approval is enabled by default for elevated commands. Sandbox fixes cover ordinary Windows 10 paths, rejected stored credentials, large permission policies, nested Linux writable roots, Git metadata protections and macOS path aliases. Stays ADOPT."
+        "update_2026_09_28": "0.158.0 stable (2026-09-28T05:07Z): pre-registered MCP OAuth clients can supply client secrets; direct exec-server WebSocket links support bearer tokens; terminal-input approval is enabled by default for elevated commands. Sandbox fixes cover ordinary Windows 10 paths, rejected stored credentials, large permission policies, nested Linux writable roots, Git metadata protections and macOS path aliases. Stays ADOPT.",
+        "update_2026_09_29": "0.159.0 stable (2026-09-29T08:05Z) adds opt-in instant interruption for steering during responses and long code-mode calls, item-anchored app-server pagination, and improved Mermaid rendering. It preserves explicit filesystem denials on approved commands, protects .aws under writable roots, fixes macOS TLS/proxy behavior in networked sandboxes and suppresses stray Windows console windows for MCP/code-mode processes. Stays ADOPT."
       },
       "tags": [
         "codex",
@@ -218,7 +220,8 @@
         "update_2026_09_19": "0.155.1 stable（2026-09-18T20:03Z）：本地 TUI 新会话默认关闭 reasoning summary，避免不支持该参数的 provider 拒绝请求；用户显式设置仍会保留。维持 ADOPT。",
         "2026-09-24 更新": "0.156.0 stable（2026-09-22T19:51Z）让 agent 任务面板默认支持 worktree 会话，增加全屏转录搜索/复制、/usage 分析面板、默认开启的语音对话与本地后台服务更新。该版本修复 Windows 入站网络、特权 socket 与 macOS 只读句柄相关的沙箱缺口。0.156.1 增加 GPT-6 Sol/Luna 路由。维持 ADOPT。",
         "2026-09-26 更新": "0.157.0 stable（2026-09-25T02:31Z）默认启动后台服务，支持远程/后台会话 `/import` 与跨应用会话 fork。网络策略会贯穿重定向及持续 HTTP/WebSocket 流量；Unix 本地 MCP server 被限制为 stdio descriptor，daemon socket 路径在祖先挂载中会被遮蔽，gateway OAuth 存储与错误脱敏也得到加固。维持 ADOPT。",
-        "2026-09-28 更新": "0.158.0 stable（2026-09-28T05:07Z）：预注册 MCP OAuth client 可配置 client secret，直连 exec-server 的 WebSocket 支持 bearer token；高权限命令默认启用终端输入审批。沙箱修复覆盖 Windows 10 常规路径、被拒绝的已存凭据、大型权限策略、Linux 嵌套可写目录、Git 元数据保护与 macOS 路径别名。维持 ADOPT。"
+        "2026-09-28 更新": "0.158.0 stable（2026-09-28T05:07Z）：预注册 MCP OAuth client 可配置 client secret，直连 exec-server 的 WebSocket 支持 bearer token；高权限命令默认启用终端输入审批。沙箱修复覆盖 Windows 10 常规路径、被拒绝的已存凭据、大型权限策略、Linux 嵌套可写目录、Git 元数据保护与 macOS 路径别名。维持 ADOPT。",
+        "2026-09-29 更新": "0.159.0 stable（2026-09-29T08:05Z）加入可选的即时中断，可在模型回答或长时间 code-mode 调用中途转向；app-server 支持从指定 item 分页读取历史，Mermaid 渲染也更完整。获批命令会保留显式文件系统拒绝规则，可写根目录下的 `.aws` 默认受保护；网络沙箱修复 macOS TLS/proxy，Windows MCP/code-mode 子进程不再弹出多余控制台窗口。维持 ADOPT。"
       },
       "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
       "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
@@ -234,7 +237,8 @@
         "src-028ae8f2158c4c5c",
         "src-6131601860cd8845",
         "src-6e556c3af2807b57",
-        "src-b6ce910accbcbcac"
+        "src-b6ce910accbcbcac",
+        "src-9b9d615d7fb6df0b"
       ],
       "project_ids": [
         "codex"
@@ -270,6 +274,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-159-evidence",
+          "claim_zh": "Codex 0.159.0 稳定版加入运行中即时转向与 app-server 历史分页，并保留命令的文件系统拒绝规则、保护 `.aws`、修复 macOS 网络沙箱与 Windows MCP 进程边界。",
+          "claim_en": "Codex 0.159.0 stable adds in-flight steering and app-server history pagination while preserving filesystem denials, protecting `.aws`, and fixing macOS network-sandbox and Windows MCP process boundaries.",
+          "source_ids": [
+            "src-9b9d615d7fb6df0b"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -294,6 +311,19 @@
           "summary_en": "Codex 0.158.0 hardens MCP authentication, command approval and cross-platform sandboxes",
           "evidence_ids": [
             "ev-20260818-02-codex-0-158-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-159-stable",
+          "kind": "update",
+          "occurred_at": "2026-09-29T08:05:42Z",
+          "discovered_at": "2026-09-29T16:01:24Z",
+          "summary_zh": "Codex 0.159.0 增加运行中转向并收紧本地执行边界",
+          "summary_en": "Codex 0.159.0 adds in-flight steering and tightens local execution boundaries",
+          "evidence_ids": [
+            "ev-20260818-02-codex-0-159-evidence"
           ],
           "historical": false,
           "importance": "major"

@@ -1,0 +1,126 @@
+{
+  "date": "2026-09-29",
+  "provenance": "Primary-source incremental scan for 2026-09-29T16:01:24Z.",
+  "events": [
+    {
+      "event_id": "ev-20260929-01",
+      "title": "NVIDIA releases Kumo Tabular for zero-training table prediction",
+      "title_zh": "NVIDIA 发布免训练表格预测模型 Kumo Tabular",
+      "category": "foundation-model",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-09-29T15:30:38Z",
+      "first_seen_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-09-29T16:01:24Z",
+      "source_type": "primary",
+      "primary_source": "https://huggingface.co/blog/nvidia/kumo-tabular",
+      "secondary_sources": [
+        "https://huggingface.co/nvidia/Kumo-Tabular",
+        "https://github.com/NVIDIA/structured-data-models"
+      ],
+      "summary": "NVIDIA released Kumo Tabular, an open-weight tabular foundation model that predicts classification or regression targets from labeled rows in one forward pass without task-specific training or feature engineering. Three models span 28M to 215M parameters and were pretrained entirely on synthetic tables. NVIDIA reports first-place aggregate results on TabArena, BeyondArena, TALENT and ScoringBench. The weights are ungated under OpenMDW-1.1 and inference code is Apache-2.0, but the training recipe and synthetic-data generator are promised rather than available.",
+      "why_it_matters": "For teams maintaining many small gradient-boosted models, Kumo Tabular is a credible candidate for cold-start and low-label baselines. Trial the Medium model on held-out tables and calibration, then compare end-to-end latency and GPU cost with tuned tree ensembles. Do not treat the four leaderboard wins as independent confirmation: they are vendor-run, and performance can degrade outside the training ranges or under context/query distribution shift.",
+      "summary_zh": "NVIDIA 发布开放权重表格基础模型 Kumo Tabular。它把带标签的行当作上下文，用一次前向计算完成分类或回归，无需针对任务训练或做特征工程。三种模型规模从 28M 到 215M 参数，全部用合成表格预训练。NVIDIA 报告它在 TabArena、BeyondArena、TALENT 与 ScoringBench 的综合排名均为第一。权重免申请并使用 OpenMDW-1.1，推理代码为 Apache-2.0；训练配方与合成数据生成器则仍停留在“即将发布”。",
+      "summary_en": "NVIDIA released Kumo Tabular, an open-weight tabular foundation model that predicts classification or regression targets from labeled rows in one forward pass without task-specific training or feature engineering. Three models span 28M to 215M parameters and were pretrained entirely on synthetic tables. NVIDIA reports first-place aggregate results on TabArena, BeyondArena, TALENT and ScoringBench. The weights are ungated under OpenMDW-1.1 and inference code is Apache-2.0, but the training recipe and synthetic-data generator are promised rather than available.",
+      "why_it_matters_zh": "对维护大量小型梯度提升树模型的团队来说，Kumo Tabular 值得作为冷启动和少标签基线。可以先用 Medium 版本在留出表格上验证准确率与校准，再把端到端延迟和 GPU 成本与调优后的树模型比较。不要把四个 leaderboard 第一当成独立验证：这些都是厂商运行，超出训练范围或 context/query 分布变化时性能可能下降。",
+      "why_it_matters_en": "For teams maintaining many small gradient-boosted models, Kumo Tabular is a credible candidate for cold-start and low-label baselines. Trial the Medium model on held-out tables and calibration, then compare end-to-end latency and GPU cost with tuned tree ensembles. Do not treat the four leaderboard wins as independent confirmation: they are vendor-run, and performance can degrade outside the training ranges or under context/query distribution shift.",
+      "technical_details": {
+        "sizes": "28M to 215M parameters; Small, Medium and Large",
+        "tasks": "classification and regression from labeled context rows",
+        "training": "synthetic Structural Causal Model tables only; about 35M/71M/137M tables",
+        "context_scale": "training stages extend to 60,000 rows and 100 columns",
+        "vendor_benchmarks": "ranked first overall on TabArena, BeyondArena, TALENT and ScoringBench",
+        "availability": "ungated weights plus GPU-native structured-data-models library",
+        "licenses": {
+          "weights": "OpenMDW-1.1",
+          "code": "Apache-2.0"
+        },
+        "limits": "numerical/categorical inputs; up to 10 classes per forward pass before error-correcting extension; shift and out-of-range tables can degrade accuracy; training recipe/data generator not yet released"
+      },
+      "technical_details_zh": {
+        "规模": "28M 至 215M 参数；Small、Medium、Large",
+        "任务": "根据带标签 context 行执行分类与回归",
+        "训练": "只用 Structural Causal Model 合成表格；约 35M/71M/137M 张表",
+        "context 规模": "训练阶段扩展到 60,000 行、100 列",
+        "厂商 benchmark": "TabArena、BeyondArena、TALENT、ScoringBench 综合排名第一",
+        "可用性": "免申请权重，加 GPU 原生 structured-data-models 库",
+        "许可证": {
+          "权重": "OpenMDW-1.1",
+          "代码": "Apache-2.0"
+        },
+        "限制": "输入限数值/类别列；单次前向最多 10 类，更多类别靠纠错编码扩展；分布变化或超出训练范围会降准；训练配方和数据生成器尚未发布"
+      },
+      "tags": [
+        "kumo-tabular",
+        "tabular-foundation-model",
+        "classification",
+        "regression",
+        "open-weights",
+        "synthetic-data"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-kumo-tabular-foundation-model-release",
+      "source_ids": [
+        "src-dc53fce90c6f36f5",
+        "src-359d2d1cb7202de8",
+        "src-838b849529054edd"
+      ],
+      "project_ids": [
+        "kumo-tabular"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20260929-01-release-evidence",
+          "claim_zh": "NVIDIA 发布开放权重表格基础模型 Kumo Tabular。它把带标签的行当作上下文，用一次前向计算完成分类或回归，无需针对任务训练或做特征工程。三种模型规模从 28M 到 215M 参数，全部用合成表格预训练。NVIDIA 报告它在 TabArena、BeyondArena、TALENT 与 ScoringBench 的综合排名均为第一。权重免申请并使用 OpenMDW-1.1，推理代码为 Apache-2.0；训练配方与合成数据生成器则仍停留在“即将发布”。",
+          "claim_en": "NVIDIA released Kumo Tabular, an open-weight tabular foundation model that predicts classification or regression targets from labeled rows in one forward pass without task-specific training or feature engineering. Three models span 28M to 215M parameters and were pretrained entirely on synthetic tables. NVIDIA reports first-place aggregate results on TabArena, BeyondArena, TALENT and ScoringBench. The weights are ungated under OpenMDW-1.1 and inference code is Apache-2.0, but the training recipe and synthetic-data generator are promised rather than available.",
+          "source_ids": [
+            "src-dc53fce90c6f36f5",
+            "src-359d2d1cb7202de8",
+            "src-838b849529054edd"
+          ],
+          "event_ids": [
+            "ev-20260929-01"
+          ],
+          "relation": "support",
+          "verification": "verified-release-vendor-benchmarks"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260929-01-published",
+          "kind": "new",
+          "occurred_at": "2026-09-29T15:30:38Z",
+          "discovered_at": "2026-09-29T16:01:24Z",
+          "summary_zh": "NVIDIA 发布免训练表格预测模型 Kumo Tabular",
+          "summary_en": "NVIDIA releases Kumo Tabular for zero-training table prediction",
+          "evidence_ids": [
+            "ev-20260929-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "editorial_pick": {
+        "reason_zh": "工程精选：开放权重把表格冷启动变成一次前向计算，但先和树模型做留出集对照。",
+        "reason_en": "Engineering pick: open weights turn tabular cold starts into one forward pass; compare against tree baselines first.",
+        "source_ids": [
+          "src-dc53fce90c6f36f5",
+          "src-359d2d1cb7202de8",
+          "src-838b849529054edd"
+        ]
+      }
+    }
+  ]
+}

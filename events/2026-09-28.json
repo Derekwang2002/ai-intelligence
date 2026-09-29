@@ -157,6 +157,694 @@
           "src-09d1d26fa19dd694"
         ]
       }
+    },
+    {
+      "event_id": "ev-20260928-02",
+      "title": "Anthropic releases Claude Sonnet 5.5 with faster, cheaper agent work",
+      "title_zh": "Anthropic 发布更快更省的 Claude Sonnet 5.5",
+      "category": "foundation-model",
+      "organization": [
+        "Anthropic"
+      ],
+      "published_at": "2026-09-28T17:58:06Z",
+      "first_seen_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-09-29T16:01:24Z",
+      "source_type": "primary",
+      "primary_source": "https://www.anthropic.com/claude-sonnet-5-5",
+      "secondary_sources": [
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.284",
+        "https://github.blog/changelog/2026-09-28-claude-sonnet-5-5-in-github-copilot/"
+      ],
+      "summary": "Anthropic released Claude Sonnet 5.5 across its API, apps, Claude Code, AWS, Google Cloud and Microsoft Azure. Pricing stays at $2 per million input tokens and $10 per million output tokens, but Anthropic says the model generates 30% faster and costs up to 30% less per task because it uses fewer tokens. Vendor evaluations put it close to Opus 5.5 on several coding and knowledge-work tests, with a 1M context window. The launch also changes safeguard behavior: some high-risk cyber requests fall back to Sonnet 5, and preserved thinking now binds reasoning to the account that created it.",
+      "why_it_matters": "For teams routing routine coding and knowledge work, Sonnet 5.5 may shift the cost boundary between a workhorse model and a premium model. Trial it on your own traces at Low and Medium effort, where Anthropic reports the strongest price-performance gains. Migration needs one explicit check: applications that disabled thinking must move to `between_tools`, and cross-account conversation handoffs may interact with preserved thinking.",
+      "summary_zh": "Anthropic 在 API、应用、Claude Code、AWS、Google Cloud 与 Microsoft Azure 同步发布 Claude Sonnet 5.5。单价仍是每百万输入 token 2 美元、输出 token 10 美元，但厂商称生成速度快 30%，由于用更少 token 完成任务，单任务成本最多降低 30%。在多项 coding 与知识工作测试中，厂商结果接近 Opus 5.5，并提供 1M 上下文窗口。发布还改变了安全行为：部分高风险网络安全请求会回退到 Sonnet 5，preserved thinking 也会把推理内容绑定到创建它的账号。",
+      "summary_en": "Anthropic released Claude Sonnet 5.5 across its API, apps, Claude Code, AWS, Google Cloud and Microsoft Azure. Pricing stays at $2 per million input tokens and $10 per million output tokens, but Anthropic says the model generates 30% faster and costs up to 30% less per task because it uses fewer tokens. Vendor evaluations put it close to Opus 5.5 on several coding and knowledge-work tests, with a 1M context window. The launch also changes safeguard behavior: some high-risk cyber requests fall back to Sonnet 5, and preserved thinking now binds reasoning to the account that created it.",
+      "why_it_matters_zh": "对为日常 coding 和知识工作做模型路由的团队来说，Sonnet 5.5 可能会重划“主力模型”和高价模型的成本边界。应先用自己的轨迹测试 Low 与 Medium effort，因为厂商声称这两个档位的性价比收益最明显。迁移时还要专门检查一件事：关闭 thinking 的应用需要改用 `between_tools`，跨账号移交对话也可能受到 preserved thinking 的影响。",
+      "why_it_matters_en": "For teams routing routine coding and knowledge work, Sonnet 5.5 may shift the cost boundary between a workhorse model and a premium model. Trial it on your own traces at Low and Medium effort, where Anthropic reports the strongest price-performance gains. Migration needs one explicit check: applications that disabled thinking must move to `between_tools`, and cross-account conversation handoffs may interact with preserved thinking.",
+      "technical_details": {
+        "model": "claude-sonnet-5-5",
+        "context_window": "1M tokens",
+        "pricing_per_million_tokens": {
+          "input": "$2",
+          "output": "$10",
+          "cache_write": "$2.50",
+          "cache_read": "$0.20"
+        },
+        "vendor_speed_claim": "30%+ faster generation than Sonnet 5",
+        "vendor_cost_claim": "up to 30% lower cost per task than Sonnet 5",
+        "vendor_benchmarks": {
+          "Terminal-Bench 4.0": "70.6%",
+          "FrontierCode 1.1 Main": "46.2% Max",
+          "CursorBench 4.0": "55.5%",
+          "OSWorld 2.1": "80.1% partial"
+        },
+        "availability": "Claude Platform, Claude apps, Claude Code, AWS, Google Cloud and Microsoft Azure",
+        "migration": "thinking-off clients must use between_tools before switching",
+        "caveat": "performance, speed and per-task cost claims are vendor-reported; some structured-output benchmark runs used a prerelease deployment with a later-fixed bug"
+      },
+      "technical_details_zh": {
+        "模型": "claude-sonnet-5-5",
+        "上下文窗口": "1M tokens",
+        "每百万 token 价格": {
+          "输入": "$2",
+          "输出": "$10",
+          "缓存写入": "$2.50",
+          "缓存读取": "$0.20"
+        },
+        "厂商速度主张": "生成速度比 Sonnet 5 快 30% 以上",
+        "厂商单任务成本主张": "比 Sonnet 5 最多低 30%",
+        "厂商 benchmark": {
+          "Terminal-Bench 4.0": "70.6%",
+          "FrontierCode 1.1 Main": "46.2% Max",
+          "CursorBench 4.0": "55.5%",
+          "OSWorld 2.1": "80.1% partial"
+        },
+        "可用性": "Claude Platform、Claude 应用、Claude Code、AWS、Google Cloud 与 Microsoft Azure",
+        "迁移要求": "关闭 thinking 的 client 切换前必须改用 between_tools",
+        "边界": "性能、速度与单任务成本均为厂商报告；部分结构化输出 benchmark 使用的预发布部署存在后来修复的问题"
+      },
+      "tags": [
+        "claude-sonnet-5-5",
+        "anthropic",
+        "coding",
+        "agent",
+        "long-context",
+        "api",
+        "pricing"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "anthropic-claude-sonnet-5-5-release",
+      "source_ids": [
+        "src-4e3ca8a95d366330",
+        "src-cdf0d63217ad659b",
+        "src-1af50bc5d28f4d83"
+      ],
+      "project_ids": [
+        "claude-sonnet-5-5"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20260928-02-release-evidence",
+          "claim_zh": "Anthropic 在 API、应用、Claude Code、AWS、Google Cloud 与 Microsoft Azure 同步发布 Claude Sonnet 5.5。单价仍是每百万输入 token 2 美元、输出 token 10 美元，但厂商称生成速度快 30%，由于用更少 token 完成任务，单任务成本最多降低 30%。在多项 coding 与知识工作测试中，厂商结果接近 Opus 5.5，并提供 1M 上下文窗口。发布还改变了安全行为：部分高风险网络安全请求会回退到 Sonnet 5，preserved thinking 也会把推理内容绑定到创建它的账号。",
+          "claim_en": "Anthropic released Claude Sonnet 5.5 across its API, apps, Claude Code, AWS, Google Cloud and Microsoft Azure. Pricing stays at $2 per million input tokens and $10 per million output tokens, but Anthropic says the model generates 30% faster and costs up to 30% less per task because it uses fewer tokens. Vendor evaluations put it close to Opus 5.5 on several coding and knowledge-work tests, with a 1M context window. The launch also changes safeguard behavior: some high-risk cyber requests fall back to Sonnet 5, and preserved thinking now binds reasoning to the account that created it.",
+          "source_ids": [
+            "src-4e3ca8a95d366330",
+            "src-cdf0d63217ad659b",
+            "src-1af50bc5d28f4d83"
+          ],
+          "event_ids": [
+            "ev-20260928-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260928-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-28T17:58:06Z",
+          "discovered_at": "2026-09-29T16:01:24Z",
+          "summary_zh": "Anthropic 发布 Claude Sonnet 5.5，主打更低单任务成本并覆盖三大云",
+          "summary_en": "Anthropic ships Claude Sonnet 5.5 with a lower per-task cost claim and broad cloud availability",
+          "evidence_ids": [
+            "ev-20260928-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "editorial_pick": {
+        "reason_zh": "工程精选：价格不变但 token 与速度账可能重算，迁移前先验证 effort 和 thinking 配置。",
+        "reason_en": "Engineering pick: unchanged token pricing may still change task economics; validate effort and thinking migration first.",
+        "source_ids": [
+          "src-4e3ca8a95d366330"
+        ]
+      }
+    },
+    {
+      "event_id": "ev-20260928-03",
+      "title": "Telescopic Language Models train one network to serve every depth",
+      "title_zh": "Telescopic LM 让单模型覆盖不同深度",
+      "category": "research",
+      "organization": [
+        "academic (see paper)"
+      ],
+      "published_at": "2026-09-28T17:59:53Z",
+      "first_seen_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-09-29T16:01:24Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.35769",
+      "secondary_sources": [
+        "https://github.com/ZhilinGuo/telescopic-language-models"
+      ],
+      "summary": "Telescopic Language Models train one nested Transformer to remain usable after any layer prefix, instead of supporting only a few fixed exits. Stochastic prefix supervision pairs one randomly truncated pass with one full-capacity pass at each step, with no inference-time architectural change. On a 200M-parameter proxy trained on 20B tokens, the paper reports a 43% to 44% lower area under the quality-budget curve than fixed-exit suites while matching full-depth quality. The linked Apache-2.0 repository currently contains documentation but no implementation.",
+      "why_it_matters": "For serving teams that currently maintain separate compressed models for several latency tiers, a continuously elastic checkpoint could simplify routing and deployment. Watch rather than adopt: the evidence comes from a small proxy suite, so the key unanswered question is whether the continuum survives at production scale and under quantization, batching and KV-cache constraints.",
+      "summary_zh": "Telescopic Language Models 训练一个嵌套 Transformer，使模型在任意层前缀结束时都能工作，而不是只支持少数固定出口。每一步训练同时跑一个随机截断前缀和一次完整模型，不改推理时架构。在一个用 20B token 训练的 200M 参数代理模型上，论文报告其质量—算力曲线面积比固定出口方案低 43% 至 44%，完整深度质量相当。相关仓库使用 Apache-2.0，但复核时只有说明文档，没有实现。",
+      "summary_en": "Telescopic Language Models train one nested Transformer to remain usable after any layer prefix, instead of supporting only a few fixed exits. Stochastic prefix supervision pairs one randomly truncated pass with one full-capacity pass at each step, with no inference-time architectural change. On a 200M-parameter proxy trained on 20B tokens, the paper reports a 43% to 44% lower area under the quality-budget curve than fixed-exit suites while matching full-depth quality. The linked Apache-2.0 repository currently contains documentation but no implementation.",
+      "why_it_matters_zh": "对目前要为多个延迟档位维护不同压缩模型的 serving 团队来说，一个可连续伸缩的 checkpoint 可能简化路由和部署。当前应先 WATCH：证据来自小型代理实验，真正需要回答的是这种连续能力能否扩展到生产规模，并经受量化、批处理和 KV cache 约束。",
+      "why_it_matters_en": "For serving teams that currently maintain separate compressed models for several latency tiers, a continuously elastic checkpoint could simplify routing and deployment. Watch rather than adopt: the evidence comes from a small proxy suite, so the key unanswered question is whether the continuum survives at production scale and under quantization, batching and KV-cache constraints.",
+      "technical_details": {
+        "method": "stochastic prefix supervision plus a full-capacity anchor",
+        "proxy_model": "200M parameters, 20 layers",
+        "training_data": "20B FineWeb-Edu tokens",
+        "result": "43%-44% lower area under the quality-budget curve",
+        "training_cost": "about 12% lower GPU cost per run than fixed-exit suites",
+        "artifacts": "Apache-2.0 repository with documentation only; no implementation found"
+      },
+      "technical_details_zh": {
+        "方法": "随机前缀监督加完整容量锚点",
+        "代理模型": "200M 参数、20 层",
+        "训练数据": "20B FineWeb-Edu tokens",
+        "结果": "质量—算力曲线面积降低 43%-44%",
+        "训练成本": "每次训练的 GPU 成本比固定出口方案约低 12%",
+        "公开产物": "Apache-2.0 仓库仅有说明文档；未找到实现"
+      },
+      "tags": [
+        "language-model",
+        "elastic-inference",
+        "model-serving",
+        "early-exit",
+        "training"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 5,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609-35769-telescopic-language-models",
+      "source_ids": [
+        "src-876cf7e7ab7157cd",
+        "src-333fa9539bff5d38"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20260928-03-paper-evidence",
+          "claim_zh": "Telescopic Language Models 训练一个嵌套 Transformer，使模型在任意层前缀结束时都能工作，而不是只支持少数固定出口。每一步训练同时跑一个随机截断前缀和一次完整模型，不改推理时架构。在一个用 20B token 训练的 200M 参数代理模型上，论文报告其质量—算力曲线面积比固定出口方案低 43% 至 44%，完整深度质量相当。相关仓库使用 Apache-2.0，但复核时只有说明文档，没有实现。",
+          "claim_en": "Telescopic Language Models train one nested Transformer to remain usable after any layer prefix, instead of supporting only a few fixed exits. Stochastic prefix supervision pairs one randomly truncated pass with one full-capacity pass at each step, with no inference-time architectural change. On a 200M-parameter proxy trained on 20B tokens, the paper reports a 43% to 44% lower area under the quality-budget curve than fixed-exit suites while matching full-depth quality. The linked Apache-2.0 repository currently contains documentation but no implementation.",
+          "source_ids": [
+            "src-876cf7e7ab7157cd",
+            "src-333fa9539bff5d38"
+          ],
+          "event_ids": [
+            "ev-20260928-03"
+          ],
+          "relation": "support",
+          "verification": "paper-v1-repository-without-implementation"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260928-03-published",
+          "kind": "new",
+          "occurred_at": "2026-09-28T17:59:53Z",
+          "discovered_at": "2026-09-29T16:01:24Z",
+          "summary_zh": "Telescopic Language Models 让一个模型覆盖不同深度",
+          "summary_en": "Telescopic Language Models train one network to serve every depth",
+          "evidence_ids": [
+            "ev-20260928-03-paper-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20260928-04",
+      "title": "TokenCast forecasts agent token cost while a task is still running",
+      "title_zh": "TokenCast 边运行边预测 agent token",
+      "category": "research",
+      "organization": [
+        "academic (see paper)"
+      ],
+      "published_at": "2026-09-28T17:59:09Z",
+      "first_seen_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-09-29T16:01:24Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.35760",
+      "secondary_sources": [
+        "https://github.com/DEFENSE-SEU/TokenCast"
+      ],
+      "summary": "TokenCast predicts an agent run's remaining token use from composable execution segments and refreshes the estimate as new steps arrive. The representation records each segment's own consumption and the context growth that later calls must reread. Across four task suites and six agent models, the paper reports 14.5% average mean-absolute-error reduction over the strongest comparator. An offline budget-control replay used 21.3% fewer tokens at matched trace completion, with about 32.8 ms of cumulative prediction time per SWE-bench Verified run. The linked repository says code is coming soon and currently has no implementation or license.",
+      "why_it_matters": "For teams enforcing per-task agent budgets, a forecast that updates during execution is more useful than a fixed cap chosen before the run. Watch it and reproduce the forecast in shadow mode once code appears; the savings were measured in offline replay, so it should not control live termination yet.",
+      "summary_zh": "TokenCast 把 agent 执行拆成可组合片段，边运行边预测剩余 token 用量。每个片段既记录自身消耗，也记录会被后续调用反复读入的上下文增长。在 4 个任务套件和 6 个 agent 模型上，论文报告相对最强对比方法的平均绝对误差降低 14.5%。离线预算控制回放在相同轨迹完成率下少用 21.3% token，每个 SWE-bench Verified 运行累计预测时间约 32.8 毫秒。相关仓库只写着代码即将发布，目前没有实现或许可证。",
+      "summary_en": "TokenCast predicts an agent run's remaining token use from composable execution segments and refreshes the estimate as new steps arrive. The representation records each segment's own consumption and the context growth that later calls must reread. Across four task suites and six agent models, the paper reports 14.5% average mean-absolute-error reduction over the strongest comparator. An offline budget-control replay used 21.3% fewer tokens at matched trace completion, with about 32.8 ms of cumulative prediction time per SWE-bench Verified run. The linked repository says code is coming soon and currently has no implementation or license.",
+      "why_it_matters_zh": "对需要控制单任务 agent 预算的团队来说，运行途中不断更新的预测，比开跑前设一个固定上限更实用。当前先 WATCH，等代码发布后再用 shadow mode 对照账单复现；节省结果来自离线回放，还不应直接控制线上任务终止。",
+      "why_it_matters_en": "For teams enforcing per-task agent budgets, a forecast that updates during execution is more useful than a fixed cap chosen before the run. Watch it and reproduce the forecast in shadow mode once code appears; the savings were measured in offline replay, so it should not control live termination yet.",
+      "technical_details": {
+        "method": "composable segment cost and context-growth representation",
+        "evaluation": "4 task suites, 6 agent models, 96 combinations",
+        "error_reduction": "14.5% mean absolute error reduction on average",
+        "offline_budget_result": "21.3% fewer tokens at matched trace completion",
+        "overhead": "32.8 ms mean cumulative prediction time per SWE-bench Verified run",
+        "artifacts": "placeholder repository; implementation and license unavailable at review time"
+      },
+      "technical_details_zh": {
+        "方法": "可组合的片段成本与上下文增长表示",
+        "评测": "4 个任务套件、6 个 agent 模型、96 种组合",
+        "误差降幅": "平均绝对误差平均降低 14.5%",
+        "离线预算结果": "相同轨迹完成率下少用 21.3% token",
+        "开销": "每个 SWE-bench Verified 运行平均累计预测 32.8 毫秒",
+        "公开产物": "仓库只是占位；复核时实现与许可证均不可用"
+      },
+      "tags": [
+        "agent-cost",
+        "token-budget",
+        "forecasting",
+        "coding-agent",
+        "swe-bench"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609-35760-token-cast-agent-cost-forecasting",
+      "source_ids": [
+        "src-6b548e332602d8ac",
+        "src-b9b7148351927a75"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20260928-04-paper-evidence",
+          "claim_zh": "TokenCast 把 agent 执行拆成可组合片段，边运行边预测剩余 token 用量。每个片段既记录自身消耗，也记录会被后续调用反复读入的上下文增长。在 4 个任务套件和 6 个 agent 模型上，论文报告相对最强对比方法的平均绝对误差降低 14.5%。离线预算控制回放在相同轨迹完成率下少用 21.3% token，每个 SWE-bench Verified 运行累计预测时间约 32.8 毫秒。相关仓库只写着代码即将发布，目前没有实现或许可证。",
+          "claim_en": "TokenCast predicts an agent run's remaining token use from composable execution segments and refreshes the estimate as new steps arrive. The representation records each segment's own consumption and the context growth that later calls must reread. Across four task suites and six agent models, the paper reports 14.5% average mean-absolute-error reduction over the strongest comparator. An offline budget-control replay used 21.3% fewer tokens at matched trace completion, with about 32.8 ms of cumulative prediction time per SWE-bench Verified run. The linked repository says code is coming soon and currently has no implementation or license.",
+          "source_ids": [
+            "src-6b548e332602d8ac",
+            "src-b9b7148351927a75"
+          ],
+          "event_ids": [
+            "ev-20260928-04"
+          ],
+          "relation": "support",
+          "verification": "paper-v1-placeholder-repository"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260928-04-published",
+          "kind": "new",
+          "occurred_at": "2026-09-28T17:59:09Z",
+          "discovered_at": "2026-09-29T16:01:24Z",
+          "summary_zh": "TokenCast 在 agent 运行途中预测 token 成本",
+          "summary_en": "TokenCast forecasts agent token cost while a task is still running",
+          "evidence_ids": [
+            "ev-20260928-04-paper-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20260928-05",
+      "title": "KV-streams keeps compacted agent-RL traces moving through the cache",
+      "title_zh": "KV-streams 跨压缩复用 KV cache",
+      "category": "research",
+      "organization": [
+        "ServiceNow Research",
+        "Mila"
+      ],
+      "published_at": "2026-09-28T17:57:42Z",
+      "first_seen_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-09-29T16:01:24Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.35750",
+      "secondary_sources": [],
+      "summary": "KV-streams avoids flushing and rebuilding the KV cache each time an agentic reinforcement-learning trace is compacted. The method streams cached state across compaction boundaries and works with three compaction strategies. The paper reports 2.6x to 5x wall-clock training speedups without observed task-performance loss. A controlled experiment also suggests that the retained cache can carry information no longer present in the visible context, but no public implementation is linked.",
+      "why_it_matters": "For teams training long-horizon agents, repeated prefill after compaction can erase much of the memory saving in throughput terms. Watch KV-streams as a post-training systems technique, but reproduce both speed and state-leakage behavior before use: hidden information surviving visible compaction can help memory and complicate auditability at the same time.",
+      "summary_zh": "KV-streams 在 agent 强化学习轨迹压缩时，不再清空并重新构建 KV cache。它让缓存状态跨过压缩边界继续流动，并能配合三种压缩策略。论文报告训练墙钟时间加速 2.6 至 5 倍，未观察到任务性能下降。受控实验还显示，保留的 cache 可能携带已经不在可见上下文里的信息，但论文没有给出公开实现链接。",
+      "summary_en": "KV-streams avoids flushing and rebuilding the KV cache each time an agentic reinforcement-learning trace is compacted. The method streams cached state across compaction boundaries and works with three compaction strategies. The paper reports 2.6x to 5x wall-clock training speedups without observed task-performance loss. A controlled experiment also suggests that the retained cache can carry information no longer present in the visible context, but no public implementation is linked.",
+      "why_it_matters_zh": "对训练长时程 agent 的团队来说，压缩后反复 prefill 可能把显存节省换成吞吐损失。KV-streams 值得作为后训练系统技术持续观察，但使用前要同时复现速度与状态残留行为：看不见的信息继续留在 cache 里，既可能改善记忆，也会增加审计难度。",
+      "why_it_matters_en": "For teams training long-horizon agents, repeated prefill after compaction can erase much of the memory saving in throughput terms. Watch KV-streams as a post-training systems technique, but reproduce both speed and state-leakage behavior before use: hidden information surviving visible compaction can help memory and complicate auditability at the same time.",
+      "technical_details": {
+        "method": "stream KV state across context-compaction boundaries",
+        "compaction_strategies": 3,
+        "training_speedup": "2.6x-5x wall-clock",
+        "performance": "no observed degradation in reported experiments",
+        "additional_finding": "streamed KV can act as recurrent state after information leaves visible context",
+        "artifacts": "no public code linked"
+      },
+      "technical_details_zh": {
+        "方法": "让 KV 状态跨上下文压缩边界继续流动",
+        "压缩策略": 3,
+        "训练加速": "墙钟时间 2.6x-5x",
+        "性能": "报告实验未观察到下降",
+        "额外发现": "信息离开可见上下文后，流式 KV 仍可充当循环状态",
+        "公开产物": "未提供公开代码链接"
+      },
+      "tags": [
+        "agentic-rl",
+        "kv-cache",
+        "context-compaction",
+        "post-training",
+        "long-context"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 5,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2609-35750-kv-streams-agentic-rl-compaction",
+      "source_ids": [
+        "src-688e3eadc5d92b0e"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20260928-05-paper-evidence",
+          "claim_zh": "KV-streams 在 agent 强化学习轨迹压缩时，不再清空并重新构建 KV cache。它让缓存状态跨过压缩边界继续流动，并能配合三种压缩策略。论文报告训练墙钟时间加速 2.6 至 5 倍，未观察到任务性能下降。受控实验还显示，保留的 cache 可能携带已经不在可见上下文里的信息，但论文没有给出公开实现链接。",
+          "claim_en": "KV-streams avoids flushing and rebuilding the KV cache each time an agentic reinforcement-learning trace is compacted. The method streams cached state across compaction boundaries and works with three compaction strategies. The paper reports 2.6x to 5x wall-clock training speedups without observed task-performance loss. A controlled experiment also suggests that the retained cache can carry information no longer present in the visible context, but no public implementation is linked.",
+          "source_ids": [
+            "src-688e3eadc5d92b0e"
+          ],
+          "event_ids": [
+            "ev-20260928-05"
+          ],
+          "relation": "support",
+          "verification": "paper-v1-vendor-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260928-05-published",
+          "kind": "new",
+          "occurred_at": "2026-09-28T17:57:42Z",
+          "discovered_at": "2026-09-29T16:01:24Z",
+          "summary_zh": "KV-streams 让 agent RL 压缩后继续复用 KV cache",
+          "summary_en": "KV-streams keeps compacted agent-RL traces moving through the cache",
+          "evidence_ids": [
+            "ev-20260928-05-paper-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20260928-06",
+      "title": "Failure-Transparent Agents tests whether agents admit tool failures",
+      "title_zh": "Failure-Transparent Agents 检验失败汇报",
+      "category": "research",
+      "organization": [
+        "academic (see paper)"
+      ],
+      "published_at": "2026-09-28T17:51:41Z",
+      "first_seen_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-09-29T16:01:24Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2609.35732",
+      "secondary_sources": [
+        "https://github.com/junru-zhu/failure-transparent-agents"
+      ],
+      "summary": "Failure-Transparent Agents isolates what a tool-using model says after a required tool has already failed. The 100-task benchmark fixes the failed observation and required evidence state, then measures unsupported success claims and useful recovery under user pressure. Across six models and 3,600 human-annotated responses, a structured evidence contract reduced false-success reports from 22.8% under the baseline policy to 0.8%; useful responses rose from 74.9% to 98.8%. The result shows that post-failure reporting deserves its own acceptance test, separate from tool selection and recovery.",
+      "why_it_matters": "For any workflow where agents can create external side effects, “the tool failed” and “the agent admitted the failure” are separate reliability properties. Trial the MIT-licensed structured evidence contract in blocked-task tests, requiring the answer to name the failed step, missing evidence and next safe action. The controlled benchmark is not a production deployment, so keep the rollout bounded until independent reproduction.",
+      "summary_zh": "Failure-Transparent Agents 专门检查必需工具已经失败后，agent 会怎么向用户汇报。这个 100 任务 benchmark 固定失败观察与所需证据状态，再在不同用户压力下测量无依据的成功宣称和有效恢复。6 个模型、3,600 条人工标注回答中，结构化证据契约把错误报喜从基线策略的 22.8% 降到 0.8%，有效回答从 74.9% 升到 98.8%。结果说明，失败后的汇报需要独立验收，不能混在工具选择和恢复能力里。",
+      "summary_en": "Failure-Transparent Agents isolates what a tool-using model says after a required tool has already failed. The 100-task benchmark fixes the failed observation and required evidence state, then measures unsupported success claims and useful recovery under user pressure. Across six models and 3,600 human-annotated responses, a structured evidence contract reduced false-success reports from 22.8% under the baseline policy to 0.8%; useful responses rose from 74.9% to 98.8%. The result shows that post-failure reporting deserves its own acceptance test, separate from tool selection and recovery.",
+      "why_it_matters_zh": "对会产生外部副作用的工作流来说，“工具失败”和“agent 如实承认失败”是两个不同的可靠性属性。可以把 MIT 许可的结构化证据契约加入阻塞任务测试，要求回答明确失败步骤、缺失证据与下一步安全动作。这个受控 benchmark 不是生产部署，独立复现前应限制试验范围。",
+      "why_it_matters_en": "For any workflow where agents can create external side effects, “the tool failed” and “the agent admitted the failure” are separate reliability properties. Trial the MIT-licensed structured evidence contract in blocked-task tests, requiring the answer to name the failed step, missing evidence and next safe action. The controlled benchmark is not a production deployment, so keep the rollout bounded until independent reproduction.",
+      "technical_details": {
+        "tasks": "100 deterministic failed-tool traces",
+        "coverage": "5 failure families, neutral control and 4 user-pressure conditions",
+        "evaluation": "6 models, 3 response policies, 3,600 human-annotated responses",
+        "false_success": "22.8% baseline; 9.3% transparency instruction; 0.8% structured evidence contract",
+        "useful_response": "74.9% baseline; 89.2% transparency instruction; 98.8% structured evidence contract",
+        "artifacts": "MIT-licensed code and data repository"
+      },
+      "technical_details_zh": {
+        "任务": "100 条确定性工具失败轨迹",
+        "覆盖": "5 类失败、1 个中性对照、4 种用户压力条件",
+        "评测": "6 个模型、3 种回答策略、3,600 条人工标注回答",
+        "错误报喜": "基线 22.8%；透明度指令 9.3%；结构化证据契约 0.8%",
+        "有效回答": "基线 74.9%；透明度指令 89.2%；结构化证据契约 98.8%",
+        "公开产物": "MIT 许可的代码与数据仓库"
+      },
+      "tags": [
+        "agent-reliability",
+        "tool-failure",
+        "evaluation",
+        "evidence-contract",
+        "human-in-the-loop"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "arxiv-2609-35732-failure-transparent-agents",
+      "source_ids": [
+        "src-06dad098087f832d",
+        "src-633f31c14b3fc43a"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20260928-06-paper-evidence",
+          "claim_zh": "Failure-Transparent Agents 专门检查必需工具已经失败后，agent 会怎么向用户汇报。这个 100 任务 benchmark 固定失败观察与所需证据状态，再在不同用户压力下测量无依据的成功宣称和有效恢复。6 个模型、3,600 条人工标注回答中，结构化证据契约把错误报喜从基线策略的 22.8% 降到 0.8%，有效回答从 74.9% 升到 98.8%。结果说明，失败后的汇报需要独立验收，不能混在工具选择和恢复能力里。",
+          "claim_en": "Failure-Transparent Agents isolates what a tool-using model says after a required tool has already failed. The 100-task benchmark fixes the failed observation and required evidence state, then measures unsupported success claims and useful recovery under user pressure. Across six models and 3,600 human-annotated responses, a structured evidence contract reduced false-success reports from 22.8% under the baseline policy to 0.8%; useful responses rose from 74.9% to 98.8%. The result shows that post-failure reporting deserves its own acceptance test, separate from tool selection and recovery.",
+          "source_ids": [
+            "src-06dad098087f832d",
+            "src-633f31c14b3fc43a"
+          ],
+          "event_ids": [
+            "ev-20260928-06"
+          ],
+          "relation": "support",
+          "verification": "paper-code-and-data-public"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260928-06-published",
+          "kind": "new",
+          "occurred_at": "2026-09-28T17:51:41Z",
+          "discovered_at": "2026-09-29T16:01:24Z",
+          "summary_zh": "Failure-Transparent Agents 测试 agent 会不会承认工具失败",
+          "summary_en": "Failure-Transparent Agents tests whether agents admit tool failures",
+          "evidence_ids": [
+            "ev-20260928-06-paper-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20260928-07",
+      "title": "MCP TypeScript SDK 2.2 validates OAuth issuers and auto-paginates lists",
+      "title_zh": "MCP SDK 2.2 收紧 OAuth 并自动翻页",
+      "category": "agent-engineering",
+      "organization": [
+        "Model Context Protocol"
+      ],
+      "published_at": "2026-09-28T19:24:07Z",
+      "first_seen_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-09-29T16:01:24Z",
+      "source_type": "primary",
+      "primary_source": "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.2.0",
+      "secondary_sources": [],
+      "summary": "MCP TypeScript SDK 2.2.0 makes machine-to-machine OAuth providers declare an issuer and rejects authorization-server mismatches before sending a token request. List calls such as `listTools()` and `listResources()` now follow pagination automatically when callers omit a cursor. The security check closes an identity ambiguity, while auto-pagination can change latency, request volume, memory use and returned result size in existing clients.",
+      "why_it_matters": "For MCP gateway and client teams, this is a small release with migration-sized consequences. Trial the upgrade with issuer-mismatch tests and large paginated inventories before rollout; clients that assumed one page or bounded results need explicit limits and telemetry.",
+      "summary_zh": "MCP TypeScript SDK 2.2.0 要求机器间 OAuth provider 明确声明 issuer，并在发送 token 请求前拒绝不匹配的授权服务器。调用方不传 cursor 时，`listTools()`、`listResources()` 等列表接口会自动翻页。前者消除了身份歧义；后者则可能改变现有 client 的延迟、请求量、内存占用和返回规模。",
+      "summary_en": "MCP TypeScript SDK 2.2.0 makes machine-to-machine OAuth providers declare an issuer and rejects authorization-server mismatches before sending a token request. List calls such as `listTools()` and `listResources()` now follow pagination automatically when callers omit a cursor. The security check closes an identity ambiguity, while auto-pagination can change latency, request volume, memory use and returned result size in existing clients.",
+      "why_it_matters_zh": "对 MCP gateway 和 client 团队来说，这是一次版本号不大、迁移影响不小的更新。上线前应测试 issuer 不匹配和大规模分页清单；过去默认“只取一页”或“返回有上限”的 client，需要补上显式限制与遥测。",
+      "why_it_matters_en": "For MCP gateway and client teams, this is a small release with migration-sized consequences. Trial the upgrade with issuer-mismatch tests and large paginated inventories before rollout; clients that assumed one page or bounded results need explicit limits and telemetry.",
+      "technical_details": {
+        "version": "2.2.0",
+        "oauth": "explicit issuer required; authorization-server mismatch rejected before token request",
+        "pagination": "listTools/listResources and related list calls auto-paginate when cursor is omitted",
+        "compatibility_risk": "request count, latency, memory use and result size can increase"
+      },
+      "technical_details_zh": {
+        "版本": "2.2.0",
+        "OAuth": "必须明确 issuer；token 请求前拒绝授权服务器不匹配",
+        "分页": "不传 cursor 时，listTools/listResources 等列表调用自动翻页",
+        "兼容风险": "请求数、延迟、内存与返回规模可能增加"
+      },
+      "tags": [
+        "mcp",
+        "typescript-sdk",
+        "oauth",
+        "pagination",
+        "agent-security"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "mcp-typescript-sdk-2-2-0-oauth-pagination",
+      "source_ids": [
+        "src-320437c34242ba62"
+      ],
+      "project_ids": [
+        "mcp"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20260928-07-release-evidence",
+          "claim_zh": "MCP TypeScript SDK 2.2.0 要求机器间 OAuth provider 明确声明 issuer，并在发送 token 请求前拒绝不匹配的授权服务器。调用方不传 cursor 时，`listTools()`、`listResources()` 等列表接口会自动翻页。前者消除了身份歧义；后者则可能改变现有 client 的延迟、请求量、内存占用和返回规模。",
+          "claim_en": "MCP TypeScript SDK 2.2.0 makes machine-to-machine OAuth providers declare an issuer and rejects authorization-server mismatches before sending a token request. List calls such as `listTools()` and `listResources()` now follow pagination automatically when callers omit a cursor. The security check closes an identity ambiguity, while auto-pagination can change latency, request volume, memory use and returned result size in existing clients.",
+          "source_ids": [
+            "src-320437c34242ba62"
+          ],
+          "event_ids": [
+            "ev-20260928-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260928-07-published",
+          "kind": "new",
+          "occurred_at": "2026-09-28T19:24:07Z",
+          "discovered_at": "2026-09-29T16:01:24Z",
+          "summary_zh": "MCP TypeScript SDK 2.2 收紧 OAuth 并自动翻页",
+          "summary_en": "MCP TypeScript SDK 2.2 validates OAuth issuers and auto-paginates lists",
+          "evidence_ids": [
+            "ev-20260928-07-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20260928-08",
+      "title": "OpenAI Python SDK 3.20 exposes agent credential and session controls",
+      "title_zh": "OpenAI Python 3.20 增加 agent 会话控制",
+      "category": "developer-tools",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-09-28T16:04:13Z",
+      "first_seen_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-09-29T16:01:24Z",
+      "source_type": "primary",
+      "primary_source": "https://github.com/openai/openai-python/releases/tag/v3.20.0",
+      "secondary_sources": [],
+      "summary": "OpenAI Python SDK 3.20.0 adds Agents vault credential metadata and metadata-only updates, an `ultrafast` Agents session tier, a session-turn policy-violation result and opt-in incremental WebSocket text and tool snapshots. It also fixes uncertain WebSocket replay and several Live and Realtime hangs. The release turns hosted-agent credentials, policy outcomes and session transport into concrete SDK contracts, but the corresponding API support guarantees are not yet clear from a dated platform announcement.",
+      "why_it_matters": "For teams using hosted agent sessions, the SDK now exposes governance and transport states that previously required custom handling. Watch until API documentation confirms availability, then test credential-update permissions, policy-violation branches and replay behavior before relying on the new contracts.",
+      "summary_zh": "OpenAI Python SDK 3.20.0 新增 Agents vault 凭据元数据与只改元数据的更新方式、`ultrafast` 会话档位、session turn 策略违规结果，以及可选的 WebSocket 文本和工具增量快照。该版还修复了不确定状态下的 WebSocket 重放，以及多处 Live / Realtime 卡死。它把托管 agent 的凭据、策略结果和会话传输变成了明确的 SDK contract，但平台尚未用带日期的公告说明完整可用性与支持承诺。",
+      "summary_en": "OpenAI Python SDK 3.20.0 adds Agents vault credential metadata and metadata-only updates, an `ultrafast` Agents session tier, a session-turn policy-violation result and opt-in incremental WebSocket text and tool snapshots. It also fixes uncertain WebSocket replay and several Live and Realtime hangs. The release turns hosted-agent credentials, policy outcomes and session transport into concrete SDK contracts, but the corresponding API support guarantees are not yet clear from a dated platform announcement.",
+      "why_it_matters_zh": "对使用托管 agent session 的团队来说，SDK 开始暴露过去要自行处理的治理与传输状态。先维持 WATCH，等 API 文档确认可用范围；随后重点测试凭据更新权限、策略违规分支和重放行为，再依赖这些新 contract。",
+      "why_it_matters_en": "For teams using hosted agent sessions, the SDK now exposes governance and transport states that previously required custom handling. Watch until API documentation confirms availability, then test credential-update permissions, policy-violation branches and replay behavior before relying on the new contracts.",
+      "technical_details": {
+        "version": "3.20.0",
+        "agent_controls": "vault credential metadata and metadata-only updates; ultrafast session tier; policy-violation turn result",
+        "streaming": "opt-in incremental WebSocket text and tool snapshots",
+        "fixes": "uncertain replay plus Live/Realtime hang and URL handling fixes",
+        "caveat": "dated API availability and support guarantees not independently confirmed"
+      },
+      "technical_details_zh": {
+        "版本": "3.20.0",
+        "Agent 控制": "vault 凭据元数据与只改元数据更新；ultrafast 会话档位；策略违规 turn 结果",
+        "流式传输": "可选 WebSocket 文本与工具增量快照",
+        "修复": "不确定状态重放，以及 Live/Realtime 卡死与 URL 处理",
+        "边界": "尚未独立确认带日期的 API 可用性与支持承诺"
+      },
+      "tags": [
+        "openai-python",
+        "agents",
+        "credentials",
+        "policy",
+        "websocket"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "openai-python-sdk-3-20-agent-session-controls",
+      "source_ids": [
+        "src-e98d8b117b719064"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20260928-08-release-evidence",
+          "claim_zh": "OpenAI Python SDK 3.20.0 新增 Agents vault 凭据元数据与只改元数据的更新方式、`ultrafast` 会话档位、session turn 策略违规结果，以及可选的 WebSocket 文本和工具增量快照。该版还修复了不确定状态下的 WebSocket 重放，以及多处 Live / Realtime 卡死。它把托管 agent 的凭据、策略结果和会话传输变成了明确的 SDK contract，但平台尚未用带日期的公告说明完整可用性与支持承诺。",
+          "claim_en": "OpenAI Python SDK 3.20.0 adds Agents vault credential metadata and metadata-only updates, an `ultrafast` Agents session tier, a session-turn policy-violation result and opt-in incremental WebSocket text and tool snapshots. It also fixes uncertain WebSocket replay and several Live and Realtime hangs. The release turns hosted-agent credentials, policy outcomes and session transport into concrete SDK contracts, but the corresponding API support guarantees are not yet clear from a dated platform announcement.",
+          "source_ids": [
+            "src-e98d8b117b719064"
+          ],
+          "event_ids": [
+            "ev-20260928-08"
+          ],
+          "relation": "support",
+          "verification": "verified-sdk-release-api-availability-unconfirmed"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260928-08-published",
+          "kind": "new",
+          "occurred_at": "2026-09-28T16:04:13Z",
+          "discovered_at": "2026-09-29T16:01:24Z",
+          "summary_zh": "OpenAI Python SDK 3.20 暴露 agent 凭据与会话控制",
+          "summary_en": "OpenAI Python SDK 3.20 exposes agent credential and session controls",
+          "evidence_ids": [
+            "ev-20260928-08-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

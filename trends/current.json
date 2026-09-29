@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-28T16:03:45Z",
+  "as_of": "2026-09-29T16:01:24Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -236,6 +236,12 @@
           "run_started_at": "2026-09-28T16:03:45Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-09-29",
+          "run_started_at": "2026-09-29T16:01:24Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -434,7 +440,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-28T16:03:45Z",
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
       "time_horizon": "Emerging"
     },
     {
@@ -446,7 +452,7 @@
       "status_note_en": "emerging (upgraded from candidate on 2026-08-16)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-28",
+      "last_updated": "2026-09-29",
       "retired": false,
       "evidence_zh": [
         "Cloudflare One Gateway 的 MCP 检测与 enforcement 能力 GA——`experimental.is_mcp`、enforcement 仅 Portal 可用、OAuth 预注册（2026-08-14，一手来源，ev-20260814-03）",
@@ -662,6 +668,12 @@
           "run_started_at": "2026-09-28T16:03:45Z",
           "note_zh": "Codex 0.158.0 支持预注册 MCP OAuth client secret；LiteLLM 1.103.0 增加 RFC 8693 token exchange、client allowlist 与在线 session 撤销。企业身份与会话治理继续进入稳定产品，但跨厂商 schema 和公开生产遥测仍缺。维持 emerging / Medium。",
           "note_en": "Codex 0.158.0 supports client secrets for pre-registered MCP OAuth clients; LiteLLM 1.103.0 adds RFC 8693 token exchange, client allowlists and live-session revocation. Enterprise identity and session governance continue entering stable products, but cross-vendor schemas and public production telemetry remain absent. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-09-29",
+          "run_started_at": "2026-09-29T16:01:24Z",
+          "note_zh": "MCP TypeScript SDK 2.2.0 在 token 请求前校验 issuer，并将列表接口默认改为自动翻页；Claude Code 2.1.284 同时补上 `private_key_jwt` IdP 认证与 MCP 批量重连。企业身份与恢复能力继续增强，但跨厂商 schema 与公开生产遥测仍缺。维持 emerging / Medium。",
+          "note_en": "MCP TypeScript SDK 2.2.0 validates issuers before token requests and auto-paginates list calls; Claude Code 2.1.284 also adds private_key_jwt IdP authentication and bulk MCP reconnect. Enterprise identity and recovery keep improving, but cross-vendor schemas and public production telemetry remain absent. Stays emerging / Medium."
         }
       ],
       "evidence": [
@@ -735,10 +747,25 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "tev-mcp-sdk-2-2-claude-code-284",
+          "claim_zh": "MCP TypeScript SDK 2.2.0 校验 OAuth issuer 并改变列表分页行为；Claude Code 2.1.284 支持 private_key_jwt 与 MCP 批量重连。",
+          "claim_en": "MCP TypeScript SDK 2.2.0 validates OAuth issuers and changes list pagination, while Claude Code 2.1.284 adds private_key_jwt and bulk MCP reconnect.",
+          "source_ids": [
+            "src-320437c34242ba62",
+            "src-cdf0d63217ad659b"
+          ],
+          "event_ids": [
+            "ev-20260928-07",
+            "ev-20260814-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-28T16:03:45Z",
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
       "time_horizon": "Emerging"
     },
     {
@@ -750,7 +777,7 @@
       "status_note_en": "established (candidate→emerging 2026-08-18; →strengthening 8/20; →established 2026-08-28 — confirmation criterion (a) met: Codex 0.150.0 stable ships agent-initiated cross-task messaging; in the same window Gemini CLI 0.57.0 shipped a2a-server in stable and on npm, making Google the seventh organization with protocol-level interop in a stable runtime)",
       "confidence": "High",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-27",
+      "last_updated": "2026-09-29",
       "retired": false,
       "evidence_zh": [
         "Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）",
@@ -978,6 +1005,12 @@
           "run_started_at": "2026-09-28T16:03:45Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-09-29",
+          "run_started_at": "2026-09-29T16:01:24Z",
+          "note_zh": "Codex 0.159.0 加入运行中转向与 item 级历史分页；Qwen Code 0.24.7 将 workspace identity、执行凭据和接管恢复推入 stable。multi-agent runtime 已建立，互操作仍缺。维持 established / High。",
+          "note_en": "Codex 0.159.0 adds in-flight steering and item-level history pagination; Qwen Code 0.24.7 moves workspace identity, execution receipts and takeover recovery into stable. Multi-agent runtimes remain established, while interoperability is still missing. Stays established / High."
         }
       ],
       "evidence": [
@@ -1126,10 +1159,25 @@
           "source_ids": [],
           "relation": "support",
           "verification": "historical"
+        },
+        {
+          "id": "tev-codex-qwen-runtime-20260929",
+          "claim_zh": "Codex 0.159.0 与 Qwen Code 0.24.7 分别补上运行中转向/历史分页，以及 workspace identity/执行凭据/接管恢复。",
+          "claim_en": "Codex 0.159.0 and Qwen Code 0.24.7 add in-flight steering/history pagination and workspace identity/execution receipts/takeover recovery, respectively.",
+          "source_ids": [
+            "src-9b9d615d7fb6df0b",
+            "src-50ecef795d7295a5"
+          ],
+          "event_ids": [
+            "ev-20260818-02",
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-28T16:03:45Z",
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
       "time_horizon": "Sustained"
     },
     {
@@ -1317,6 +1365,12 @@
           "run_started_at": "2026-09-28T16:03:45Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-09-29",
+          "run_started_at": "2026-09-29T16:01:24Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -1487,7 +1541,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-28T16:03:45Z",
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
       "time_horizon": "Emerging"
     },
     {
@@ -1634,6 +1688,12 @@
           "run_started_at": "2026-09-28T16:03:45Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-09-29",
+          "run_started_at": "2026-09-29T16:01:24Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -1717,7 +1777,7 @@
           "historical": false
         }
       ],
-      "last_reviewed_at": "2026-09-28T16:03:45Z",
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
       "time_horizon": "Emerging"
     },
     {
@@ -1852,6 +1912,12 @@
           "run_started_at": "2026-09-28T16:03:45Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-09-29",
+          "run_started_at": "2026-09-29T16:01:24Z",
+          "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
+          "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
         }
       ],
       "evidence": [
@@ -1901,7 +1967,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-28T16:03:45Z",
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
       "time_horizon": "Emerging"
     },
     {
@@ -1913,7 +1979,7 @@
       "status_note_en": "strengthening / Medium (Google MCP governance, GitHub default policy, Qwen attestation and monitor-failure research strengthen the direction; a unified policy schema and public adoption telemetry are still missing)",
       "confidence": "Medium",
       "first_observed": "2026-09-09",
-      "last_updated": "2026-09-28",
+      "last_updated": "2026-09-29",
       "retired": false,
       "evidence_zh": [
         "GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束",
@@ -2035,6 +2101,12 @@
           "run_started_at": "2026-09-28T16:03:45Z",
           "note_zh": "Codex 0.158.0 默认要求高权限命令经过终端输入审批并修复跨平台沙箱边界；LiteLLM 1.103.0 增加 MCP-aware 护栏和凭据 fail-closed。方向继续增强，但仍缺统一 policy schema。维持 strengthening / Medium。",
           "note_en": "Codex 0.158.0 enables terminal-input approval by default for elevated commands and fixes cross-platform sandbox boundaries; LiteLLM 1.103.0 adds MCP-aware guardrails and fail-closed credentials. The direction strengthens, but a unified policy schema is still missing. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-09-29",
+          "run_started_at": "2026-09-29T16:01:24Z",
+          "note_zh": "Codex 0.159.0 保留获批命令的文件系统拒绝规则并保护 `.aws`；Claude Code 提供单次目录外读取许可；Qwen Code 补上执行凭据与重启后核对。控制继续下沉到 runtime，统一 policy schema 仍缺。维持 strengthening / Medium。",
+          "note_en": "Codex 0.159.0 preserves filesystem denials and protects `.aws`; Claude Code adds one-off permission for reads outside the workspace; Qwen Code adds execution receipts and post-reboot reconciliation. Controls keep moving into runtimes, but a unified policy schema remains absent. Stays strengthening / Medium."
         }
       ],
       "evidence": [
@@ -2188,10 +2260,27 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "tev-runtime-policy-20260929",
+          "claim_zh": "Codex、Claude Code 与 Qwen Code 的稳定版分别新增文件系统拒绝保留、单次外部读取许可，以及执行凭据/恢复核对。",
+          "claim_en": "Stable Codex, Claude Code and Qwen Code releases add preserved filesystem denials, one-off external-read permission, and execution-receipt/recovery reconciliation.",
+          "source_ids": [
+            "src-9b9d615d7fb6df0b",
+            "src-cdf0d63217ad659b",
+            "src-50ecef795d7295a5"
+          ],
+          "event_ids": [
+            "ev-20260818-02",
+            "ev-20260814-04",
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-09-28T16:03:45Z",
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
       "time_horizon": "Emerging"
     }
   ]
