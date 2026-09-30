@@ -55,11 +55,41 @@ export function sourceTitle(url) {
   if (u.hostname === 'arxiv.org') return `arXiv ${path.at(-1)}`;
   return `${u.hostname.replace(/^www\./, '')} · ${(path.at(-1) || 'Overview').replace(/[-_]/g, ' ')}`;
 }
+// Candidate and recall dispositions (AGENTS.md §20). Detail belongs in reason_code, not new values.
+export const RUN_DECISIONS = ['new-event', 'update-existing', 'duplicate', 'correction', 'filtered', 'out-of-scope', 'deferred', 'reviewed-no-change'];
+export const DECISIONS_CITING_EVENT = ['new-event', 'update-existing', 'duplicate', 'correction'];
+export const RECOMMENDATIONS = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'];
+export const SHORT_LABEL_MAX = 24;
+const chars = value => [...String(value ?? '')].length;
+export function taxonomyErrors(taxonomy) {
+  const errors = [];
+  if (!Number.isFinite(Date.parse(taxonomy.rules_effective_at))) errors.push('taxonomy: invalid rules_effective_at');
+  for (const [alias, target] of Object.entries(taxonomy.category_aliases || {})) if (!taxonomy.categories.includes(target)) errors.push(`taxonomy: category alias ${alias} -> unknown ${target}`);
+  for (const [alias, target] of Object.entries(taxonomy.source_type_aliases || {})) if (!taxonomy.source_types.includes(target)) errors.push(`taxonomy: source_type alias ${alias} -> unknown ${target}`);
+  return errors;
+}
+// Rules for events first seen after taxonomy.rules_effective_at; history stays as recorded.
+export function eventRuleErrors(e, taxonomy) {
+  const errors = [], id = `event ${e.event_id}`;
+  const hint = (aliases, value) => aliases?.[value] ? ` (use "${aliases[value]}")` : '';
+  if (!taxonomy.categories.includes(e.category)) errors.push(`${id}: category "${e.category}" is not in config/taxonomy.json${hint(taxonomy.category_aliases, e.category)}`);
+  if (!taxonomy.source_types.includes(e.source_type)) errors.push(`${id}: source_type "${e.source_type}" is not in config/taxonomy.json${hint(taxonomy.source_type_aliases, e.source_type)}`);
+  if (!e.organization?.length) errors.push(`${id}: organization is empty`);
+  for (const org of e.organization || []) if (taxonomy.organization_aliases?.[org]) errors.push(`${id}: organization "${org}" should be "${taxonomy.organization_aliases[org]}"`);
+  for (const lang of ['zh', 'en']) {
+    const label = e[`short_label_${lang}`];
+    if (typeof label !== 'string' || !label.trim()) errors.push(`${id}: missing short_label_${lang}`);
+    else if (chars(label) > SHORT_LABEL_MAX) errors.push(`${id}: short_label_${lang} exceeds ${SHORT_LABEL_MAX} characters`);
+  }
+  if (e.maturity <= 2 && e.recommendation === 'ADOPT') errors.push(`${id}: maturity ${e.maturity} cannot be ADOPT`);
+  if (e.maturity <= 2 && e.recommendation === 'TRIAL') for (const lang of ['zh', 'en']) if (!e[`trial_reason_${lang}`]?.trim()) errors.push(`${id}: TRIAL at maturity ${e.maturity} needs trial_reason_${lang}`);
+  return errors;
+}
 export function materialChanges(events, trends, topics=[], projects=[]) {
   return [[events,'event'],[trends,'trend'],[topics,'topic'],[projects,'project']].flatMap(([items,type])=>items.flatMap(item=>(item.changes||[]).map(c=>({...c,object_type:type,object_id:item.event_id||item.id}))));
 }
-export function validateKnowledge({ events, projects, sources, trends, topics, briefings, reviews }) {
-  const errors = [];
+export function validateKnowledge({ events, projects, sources, trends, topics, briefings, reviews, taxonomy }) {
+  const errors = taxonomy ? taxonomyErrors(taxonomy) : [];
   const unique = (items, key, type) => {
     const ids = new Set();
     for (const item of items) { if (!item[key] || ids.has(item[key])) errors.push(`${type}: missing/duplicate ${item[key]}`); ids.add(item[key]); }
@@ -92,6 +122,8 @@ export function validateKnowledge({ events, projects, sources, trends, topics, b
     if (e.summary !== e.summary_en || e.why_it_matters !== e.why_it_matters_en) errors.push(`event ${e.event_id}: English aliases differ`);
     refs(e.project_ids, pids, e.event_id); refs(e.source_ids, sids, e.event_id);
     if (!['verified', 'frontier', 'legacy'].includes(e.evidence_stage)) errors.push(`event ${e.event_id}: evidence_stage`);
+    if (!RECOMMENDATIONS.includes(e.recommendation)) errors.push(`event ${e.event_id}: recommendation "${e.recommendation}"`);
+    if (taxonomy && Date.parse(e.first_seen_at) >= Date.parse(taxonomy.rules_effective_at)) errors.push(...eventRuleErrors(e, taxonomy));
   }
   for (const ev of evidence) { bilingual(ev, ['claim'], ev.id); refs(ev.source_ids, sids, ev.id); refs(ev.event_ids, eids, ev.id); if (!ev.source_ids?.length && !ev.event_ids?.length) errors.push(`evidence ${ev.id}: no references`); }
   for (const c of changes) {

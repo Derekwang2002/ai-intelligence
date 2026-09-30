@@ -45,7 +45,7 @@ const perQuadCount = new Map<string, number>();
 const blips: Blip[] = sel.items.map((it) => {
   const no = (perQuadCount.get(it.quad) ?? 0) + 1;
   perQuadCount.set(it.quad, no);
-  const label = shortLabel(it.e);
+  const label = shortLabel(it.e, locale);
   return {
     no,
     rec: it.ring,

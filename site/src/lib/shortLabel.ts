@@ -1,11 +1,13 @@
-// 事件的图内短标签：从英文规范标题提取"头部"（产品/论文名），
-// 去掉开头组织名与动作词、尾巴修饰。用于雷达图/泳道图的悬停标签与矩阵单元格。
-// 数据局限：标题不是为短标签写的，过长时截断；将来若要更高质量可在知识库侧加 curated 字段。
+// 事件的图内短标签：优先使用知识库里人工撰写的 short_label_zh / short_label_en
+// （2026-09-30 起新事件必填，见 config/taxonomy.json）。旧事件没有该字段时，
+// 才从英文规范标题提取"头部"（产品/论文名），去掉开头组织名与动作词、尾巴修饰；过长时截断。
 
 const ACTION_VERBS = /^(?:launches?|releases?|unveils?|adds?|introduces?|previews?|open-?sources?|ships?|announces?|explains?|发布|推出|开源|上线|详解|预览)\s+/i;
 const TRAILING = /\s+(?:stable|ga|preview|beta|general availability)$/i;
 
-export function shortLabel(e: any): string {
+export function shortLabel(e: any, locale: 'zh' | 'en' = 'en'): string {
+  const curated = String(e?.[`short_label_${locale}`] ?? e?.short_label_en ?? '').trim();
+  if (curated) return curated;
   const orgs: string[] = e?.organization ?? [];
   let head = String(e?.title ?? '').trim();
   if (!head) return orgs[0] ?? '';

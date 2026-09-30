@@ -76,7 +76,12 @@ ai-intelligence/
 
 默认 overlap 由 `config/radar.yaml` 的 `time_window.overlap_hours` 控制。
 
-Overlap 只用于检索，不代表 overlap 区间内容可以重复写入结果。
+Overlap 的作用是兜住上一轮因索引延迟、时区或抓取延迟而漏掉的内容，只禁止重复写入，不禁止新内容入库。Overlap 区间内的候选按以下规则处理：
+
+- 已在事件库或上一轮 manifest 的 `candidate_decisions` 中出现 → 按去重处理（`duplicate` / `update-existing`，并填写已有 `event_id`）。
+- 从未出现过 → 视为上一轮漏检，按正常标准评估；达到门槛就入库，决策记为 `new-event` 并加 `"late_discovery": true`。**不得以「早于 checkpoint」为由排除。**
+- 早于 overlap 起点、但由召回自检（§20）或定向补漏发现的重要遗漏，同样按 `late_discovery` 补录；其余旧内容记为 `filtered`，`reason_code: old`。
+- 声称「已入库 / 重复」时必须写出对应的 `event_id`。不能写出就说明没有入库，按新候选处理。
 
 所有候选事件必须用以下字段去重：
 
@@ -193,9 +198,19 @@ events/YYYY-MM-DD.json
   "verification_cost": 0,
   "risk": 0,
   "recommendation": "",
-  "event_fingerprint": ""
+  "event_fingerprint": "",
+  "short_label_zh": "",
+  "short_label_en": ""
 }
 ```
+
+受控取值与新增字段（`config/taxonomy.json` 的 `rules_effective_at` 之后首次入库的事件由 `validate-intelligence` 强制校验）：
+
+- `category` 只能取 `config/taxonomy.json` 的 `categories`；`source_type` 只能取 `source_types`。别名表只用于归一历史数据，新事件不得使用别名或自造新值。需要新分类时先改 taxonomy 并确认 `site/src/lib/quadrants.ts` 已覆盖，否则雷达会静默丢弃该事件。
+- `organization` 写规范名称，不写 `organization_aliases` 中的别名（例如写 `Cursor` 而不是 `Anysphere`，写 `academic` 而不是 `academic (see paper)`）。
+- `short_label_zh` / `short_label_en`：雷达图与清单上显示的短名，≤ 24 个字符，写产品、模型或论文名本身（如 `Holo4`、`Claude Sonnet 5.5`、`StateMemBench`），不要写成动词短语或截断的标题。
+- `trial_reason_zh` / `trial_reason_en`：`maturity ≤ 2` 却给 `TRIAL` 时必填，见 §16.2。
+- `late_discovery`（可选，布尔）：overlap 或召回自检补录的上轮漏检事件，见 §3。
 
 事件日期归属规则：
 
@@ -244,6 +259,7 @@ events/YYYY-MM-DD.json
 3. 一句只讲一件事。摘要 3–5 个短句；禁止括号套括号；背景信息另起一句，不用破折号硬接。
 4. 数字只保留决策相关的：幅度、对比、日期。「82.3% vs 82.4%」这类并列细节放 `technical_details`，不进摘要。
 5. `why_it_matters` 用「对做 X 的人来说，这意味着 Y」的视角写，落到具体行动或决策；不写「这值得关注」之类的空话。
+6. 难点解释：日报里对当天最难懂的 1–3 个概念，在所在条目内用一两句白话说清「它是什么、难在哪、为什么影响判断」。例如「held-out 拆分（训练时没见过的那部分题目）才能说明泛化，公开集成绩可能是背出来的」。解释写在日报条目或 `technical_details` 里，不写进 `summary`，也不单独开章节。
 
 ### 英文写作
 
@@ -679,6 +695,15 @@ Risk 综合考虑 license、security、vendor lock-in、API stability、privacy�
 - 不再重要的条目任其自然老化出雷达，不要为了「保留在雷达上」而机械刷新 `last_updated_at`。
 - 等级有变化时在当日日报 Tech Radar 小节记录（见 7.1）。
 
+### 16.2 评级硬规则
+
+TRIAL 的意思是「值得团队花时间做 POC」，不是「看起来有意思」。前两条由校验脚本对新事件强制执行，后两条靠编辑判断：
+
+- `maturity ≤ 2` 的事件不得给 `ADOPT`。
+- `maturity ≤ 2` 的事件给 `TRIAL` 时，必须填写 `trial_reason_zh/en`，写清「团队在一天之内能用什么公开材料验证什么」。写不出来就给 `WATCH`。
+- 没有公开代码、权重或可调用 API 的论文和预告，最高 `WATCH`。
+- 召回自检里社区热度高、但判断不值得投入的条目（例如热门但缺乏可验证证据的项目），入库并标 `IGNORE`，写明原因。「热但不值得」本身是读者需要的判断，不要静默丢弃。
+
 ## 17. Run Report
 
 每次运行结束时，在对话中输出简短执行摘要：
@@ -693,6 +718,7 @@ Retrieval overlap:
 New events:
 Updated events:
 Duplicates skipped:
+Recall audit: (matched / previously handled / newly dispositioned, by disposition)
 Daily files updated:
 Event files updated:
 Trend files updated:
@@ -713,7 +739,8 @@ Checkpoint updated:
 
 - 是否从上次成功 checkpoint 开始？
 - 是否避免时间缺口？
-- 是否处理 overlap 去重？
+- 是否处理 overlap 去重？overlap 里上一轮没见过的新内容是否正常评估入库，而不是因「早于 checkpoint」被排除？
+- 召回自检列出的每一条是否都有处置？声称「已入库 / 重复」的条目是否都写了真实存在的 `event_id`？
 - 是否确认事件真实发生在目标区间？
 - 是否把旧新闻误认为新新闻？
 - 是否优先找到 primary source？
@@ -753,7 +780,8 @@ Checkpoint updated:
 - `topics/catalog.json`：长期研究问题、双语回答/边界/开放问题/`review_trigger`、趋势与证据引用。每次扫描复核相关专题，有新的回答才新增变化记录。
 - `briefings/*.json`：每次成功扫描一份结构化阅读版本，包括实际变化 ID、最多 5 个必读及双语入选理由。`baseline` 或 `historical` 不构成新的未读通知。
 - `reviews/queue.json`：到期复核队列。承诺日期优先，否则公开后第 7/30 天复核。排队不表示核验完成。
-- `config/source-monitors.json`：固定官方信息入口。它补充 `radar.yaml` 的全领域搜索，不能替代模型、开源、研究、基础设施等领域的主动发现。
+- `config/source-monitors.json`：固定官方信息入口。它补充 `radar.yaml` 的全领域搜索，不能替代模型、开源、研究、基础设施等领域的主动发现。`required: true` 的入口必须抓取成功并读完才能推进 checkpoint；`required: false` 的入口失败不阻塞，但抓取成功的同样必须读完（`analysis_status: complete`）。`hf-org-*` 列出各实验室在 Hugging Face 上最新建立的仓库，开放权重发布通常最先出现在这里。
+- `config/taxonomy.json`：分类、来源类型、组织别名与新规则生效时间（`rules_effective_at`），见 §6。`scripts/normalize-taxonomy.mjs` 默认只预演，`--write` 才把历史数据里的别名改成规范值；归一不产生变化记录，也不刷新 `last_updated_at`。
 
 ### 事件与证据
 
@@ -767,6 +795,23 @@ Checkpoint updated:
 - 场景固定为 `agents`、`models`、`local`、`research`。说明应明确面向谁、适用条件与限制，不能只给无条件推荐。
 - 来源链接须对应具体材料。转载不算独立验证；厂商 benchmark 必须标为厂商报告。
 - `editorial_pick`（可选）：`reason_zh/en` 和 `source_ids`。若称“低关注”，还必须有可核查的关注度依据，否则仅称“工程精选”。
+
+### 候选处置词表
+
+run manifest 的 `candidate_decisions[].decision` 与 `recall_audit.items[].disposition` 只允许以下取值，细分原因写进 `reason_code`（如 `prerelease`、`old`、`minor-patch`、`derivative`），不要自造新的 decision 值：
+
+| 取值 | 含义 | 必填 `event_id` |
+| --- | --- | --- |
+| `new-event` | 新建事件（含 `late_discovery` 补录） | 是 |
+| `update-existing` | 并入已有事件并记录变化 | 是 |
+| `duplicate` | 与已有事件相同，无新信息 | 是 |
+| `correction` | 纠正已有事件 | 是 |
+| `filtered` | 在范围内但未达门槛 | 否 |
+| `out-of-scope` | 不属于本项目关注范围（评论文章、泛社会新闻等） | 否 |
+| `deferred` | 证据不足，下次继续看；召回自检会再次列出 | 否 |
+| `reviewed-no-change` | 例行复核无变化 | 否 |
+
+`finalize-run` 会拒绝未知取值，以及引用不存在事件的 `new-event` / `update-existing` / `duplicate` / `correction`。
 
 ### 趋势与专题
 
@@ -785,7 +830,8 @@ Checkpoint updated:
 4. 距上次定向补漏满 7 天时，复核近 30 天的重要候选与遗漏来源。记录覆盖范围；不足以完成时保持到期状态，不虚报完成。
 5. 先完成事实、关系、变化、专题、日报和趋势文件，再生成阅读简报。0 条必读是有效结果，不能强行凑数。
 6. 在 `logs/run-<id>.json` 保存窗口、入口检查、候选处置、各阶段状态、持久化文件和恢复说明。人读简报不包含请求过程与堆栈。
-7. `node scripts/validate-intelligence.mjs` 必须通过；先运行 `node scripts/finalize-run.mjs --manifest=logs/run-<id>.json` 进行包含测试和构建的预检，再执行 `node scripts/finalize-run.mjs --manifest=logs/run-<id>.json --commit`。该工具最后原子更新 checkpoint，遇到并行 checkpoint 变化则拒绝推进。
-8. checkpoint 成功后重新构建站点以投影新截止时间。网站展示各来源实际覆盖，禁止把未检查写成无变化。
+7. 召回自检：完成自己的检索和入库后，运行 `node scripts/recall-audit.mjs --manifest=logs/run-<id>.json`。它把近 72 小时 Hacker News 高分 AI 帖子和 Hugging Face 热门新模型与事件库比对，URL 或模型 ID 已在库中的自动算作覆盖，往期已处置的跳过，其余写进 `recall_audit.items`。对每一条填写 `disposition`（取值见上表）、`reason`，需要时填 `event_id`；`suggested_event_ids` 只是提示，要自己核对。HN / HF 只是注意力信号，事实仍以一手来源为准。信号抓取失败时，在对应 `sources[].recovery` 写明替代检查方式。发现真实漏报时按 §3 的 `late_discovery` 补录，并重跑本脚本确认。
+8. `node scripts/validate-intelligence.mjs` 必须通过；先运行 `node scripts/finalize-run.mjs --manifest=logs/run-<id>.json` 进行包含测试和构建的预检，再执行 `node scripts/finalize-run.mjs --manifest=logs/run-<id>.json --commit`。该工具最后原子更新 checkpoint，遇到并行 checkpoint 变化、缺少召回自检、有未处置条目、未读完的已抓取入口，或处置词表 / `event_id` 不合规时，都拒绝推进。
+9. checkpoint 成功后重新构建站点以投影新截止时间。网站展示各来源实际覆盖，禁止把未检查写成无变化。
 
 迁移工具 `node scripts/migrate-intelligence.mjs` 默认只预演，`--write` 才写入。迁移和构建均不得推进 checkpoint。具体数据契约与恢复流程见 `docs/intelligence-v2.md`。

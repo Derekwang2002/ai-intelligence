@@ -20,6 +20,9 @@ MATRIX 继续以文件知识库为唯一来源，Astro 在构建时生成只读�
 - `briefings/<run-id>.json`: `{id,as_of,date,change_ids,highlights:[{change_id,reason_zh,reason_en}],coverage_zh,coverage_en}`。最多五个必读，且必须引用本次真实变化。历史恢复使用 historical；迁移基线使用 baseline。
 - `reviews/queue.json`: `{version:1,reviews:[{id,event_id,due_at,trigger,status,last_result,last_checked_at}]}`。状态 pending/completed；无结果复核更新下次时间而不虚报完成。官方承诺日期优先，否则第 7/30 天。
 
+- `config/taxonomy.json`: `{version:1,rules_effective_at,categories,category_aliases,source_types,source_type_aliases,organization_aliases}`。`rules_effective_at` 之后首次入库的事件必须使用规范 category / source_type / organization，带 ≤24 字符的 `short_label_zh/en`；`maturity ≤ 2` 时不得 ADOPT，TRIAL 必须带 `trial_reason_zh/en`。历史事件保持原样，可用 `normalize-taxonomy.mjs` 归一别名。
+- run manifest `recall_audit`: `{checked_at,window,thresholds,sources:[{id,status,count?,error?,recovery?}],matched:[{id,title,event_ids}],previously_handled,items:[{id,signal,title,url,score,published_at,suggested_event_ids,disposition,event_id,reason}]}`。`candidate_decisions[].decision` 与 `items[].disposition` 只能取 AGENTS.md §20 词表。
+
 `summary` 与 `summary_en`、`why_it_matters` 与 `why_it_matters_en` 保持一致。所有新读者文案必须双语。未实质变化不修改 `last_updated_at`；检查时间单独记录。
 
 ## 构建与工具
@@ -28,6 +31,8 @@ MATRIX 继续以文件知识库为唯一来源，Astro 在构建时生成只读�
 node scripts/migrate-intelligence.mjs          # 差异预演
 node scripts/migrate-intelligence.mjs --write  # 幂等迁移，不改 checkpoint
 node scripts/validate-intelligence.mjs
+node scripts/recall-audit.mjs --manifest=logs/run-<id>.json   # 召回自检，写回 manifest
+node scripts/normalize-taxonomy.mjs            # 历史别名归一预演；--write 写入
 npm --prefix site run check                    # 校验 + 单元测试 + 完整构建
 npm --prefix site run dev -- --host 127.0.0.1
 npm --prefix site run test:browser             # 对本地 4321 的浏览器验证
@@ -43,8 +48,9 @@ npm --prefix site run test:browser             # 对本地 4321 的浏览器验�
 2. Agent 实际阅读材料，结合 `radar.yaml` 全领域搜索完成日期核实、去重及候选判定。固定入口覆盖不能被当作整个 AI 领域覆盖。
 3. 到期任务检查、每周近三十天定向补漏与事件分析共享证据。记录具体覆盖范围，未处理任务保持 pending。
 4. 写入事件及所有关联数据、双语日报和趋势快照、当前趋势与索引、来源检查记录、复核队列和本次简报。准备 run manifest，标明每阶段完成状态、候选处置和已写文件。
-5. `node scripts/finalize-run.mjs --manifest=logs/run-<id>.json` 预检；确认真实完成后加 `--commit`。工具检查必需来源、双语报告结构、文件清单、数据引用、索引，再执行测试/构建，并用并发 checkpoint 比较防止覆盖其他扫描。
-6. checkpoint 是最后一次持久化知识库写入，值是运行开始时间。最后重新构建站点生成新的资料截至时间。
+5. `node scripts/recall-audit.mjs --manifest=logs/run-<id>.json` 召回自检：近 72 小时 HN 高分 AI 帖子与 HF 热门新模型逐条比对事件库，未覆盖的必须写处置；真实漏报补录后重跑。
+6. `node scripts/finalize-run.mjs --manifest=logs/run-<id>.json` 预检；确认真实完成后加 `--commit`。工具检查必需来源、已抓取的非必需来源是否读完、召回自检是否全部处置、候选处置词表与 `event_id` 引用、双语报告结构、文件清单、数据引用、索引，再执行测试/构建，并用并发 checkpoint 比较防止覆盖其他扫描。
+7. checkpoint 是最后一次持久化知识库写入，值是运行开始时间。最后重新构建站点生成新的资料截至时间。
 
 任一失败保留旧 checkpoint，日志记录失败阶段和恢复方案。失败抓取可以使用实际可读的官方页面或 web 工具替代，记录原失败与替代方法；不能直接把失败改成成功。恢复后重跑去重，不重复生成变化。
 

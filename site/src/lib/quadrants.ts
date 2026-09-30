@@ -7,10 +7,10 @@ export interface Quadrant {
   cats: string[];
 }
 
-// 映射必须覆盖知识库出现的所有 category：未命中的事件会被雷达静默丢弃。
+// 映射必须覆盖 config/taxonomy.json 的规范分类及其历史别名：未命中的事件会被雷达静默丢弃（有单测守护）。
 export const QUADRANTS: Quadrant[] = [
   { id: 'models', labelKey: 'radar.quad.models', cats: ['foundation-model', 'research'] },
-  { id: 'agents', labelKey: 'radar.quad.agents', cats: ['agent-security', 'agent', 'ai-engineering', 'computer-use', 'safety'] },
+  { id: 'agents', labelKey: 'radar.quad.agents', cats: ['ai-agent', 'agent-security', 'ai-engineering', 'agent', 'agent-framework', 'agent-engineering', 'computer-use', 'safety'] },
   { id: 'infra', labelKey: 'radar.quad.infra', cats: ['open-source', 'infrastructure'] },
   { id: 'tools', labelKey: 'radar.quad.tools', cats: ['developer-tools', 'business', 'business-policy'] },
 ];

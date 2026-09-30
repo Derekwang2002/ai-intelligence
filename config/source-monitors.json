@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "notes": "required=true entries must be fetched and analysed before the checkpoint can advance. required=false entries widen coverage: a failure does not block the run, but anything fetched must still be analysed (analysis_status=complete). The hf-org-* feeds list an organisation's newest Hugging Face repositories, which is where open-weight releases appear first.",
   "monitors": [
     {"id":"openai-api","url":"https://developers.openai.com/api/docs/changelog","title":"OpenAI API changelog","kind":"documentation","required":true},
     {"id":"anthropic-news","url":"https://www.anthropic.com/news","title":"Anthropic news","kind":"announcement","required":true},
@@ -11,6 +12,34 @@
     {"id":"gemini-cli-releases","url":"https://api.github.com/repos/google-gemini/gemini-cli/releases?per_page=5","title":"Gemini CLI releases","kind":"release","required":true},
     {"id":"vllm-releases","url":"https://api.github.com/repos/vllm-project/vllm/releases?per_page=5","title":"vLLM releases","kind":"release","required":true},
     {"id":"hf-blog","url":"https://huggingface.co/blog/feed.xml","title":"Hugging Face blog","kind":"announcement","required":true},
-    {"id":"arxiv-ai","url":"https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=20","title":"arXiv AI recent submissions","kind":"paper","required":true}
+    {"id":"arxiv-ai","url":"https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=20","title":"arXiv AI recent submissions","kind":"paper","required":true},
+
+    {"id":"openai-news","url":"https://openai.com/news/rss.xml","title":"OpenAI news feed","kind":"announcement","required":false},
+    {"id":"google-models-research","url":"https://blog.google/innovation-and-ai/models-and-research/rss/","title":"Google models and research feed (Gemini, DeepMind)","kind":"announcement","required":false},
+    {"id":"xai-release-notes","url":"https://docs.x.ai/developers/release-notes.md","title":"xAI API release notes (Markdown; the HTML page is client-rendered)","kind":"documentation","required":false},
+    {"id":"meta-ai-blog","url":"https://ai.meta.com/blog/","title":"Meta AI blog","kind":"announcement","required":false},
+    {"id":"mistral-news","url":"https://mistral.ai/rss.xml","title":"Mistral AI news feed","kind":"announcement","required":false},
+    {"id":"deepseek-updates","url":"https://api-docs.deepseek.com/updates","title":"DeepSeek API updates","kind":"documentation","required":false},
+    {"id":"nvidia-developer-blog","url":"https://developer.nvidia.com/blog/feed","title":"NVIDIA developer blog feed","kind":"announcement","required":false},
+    {"id":"microsoft-research","url":"https://www.microsoft.com/en-us/research/feed/","title":"Microsoft Research feed","kind":"announcement","required":false},
+
+    {"id":"hf-org-deepseek-ai","url":"https://huggingface.co/api/models?author=deepseek-ai&sort=createdAt&direction=-1&limit=10","title":"DeepSeek Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-qwen","url":"https://huggingface.co/api/models?author=Qwen&sort=createdAt&direction=-1&limit=10","title":"Qwen Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-xiaomimimo","url":"https://huggingface.co/api/models?author=XiaomiMiMo&sort=createdAt&direction=-1&limit=10","title":"Xiaomi MiMo Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-moonshotai","url":"https://huggingface.co/api/models?author=moonshotai&sort=createdAt&direction=-1&limit=10","title":"Moonshot AI Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-zai-org","url":"https://huggingface.co/api/models?author=zai-org&sort=createdAt&direction=-1&limit=10","title":"Z.ai Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-mistralai","url":"https://huggingface.co/api/models?author=mistralai&sort=createdAt&direction=-1&limit=10","title":"Mistral AI Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-meta-llama","url":"https://huggingface.co/api/models?author=meta-llama&sort=createdAt&direction=-1&limit=10","title":"Meta Llama Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-nvidia","url":"https://huggingface.co/api/models?author=nvidia&sort=createdAt&direction=-1&limit=10","title":"NVIDIA Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-tencent","url":"https://huggingface.co/api/models?author=tencent&sort=createdAt&direction=-1&limit=10","title":"Tencent Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-google","url":"https://huggingface.co/api/models?author=google&sort=createdAt&direction=-1&limit=10","title":"Google Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-minimaxai","url":"https://huggingface.co/api/models?author=MiniMaxAI&sort=createdAt&direction=-1&limit=10","title":"MiniMax Hugging Face repositories","kind":"weights","required":false},
+    {"id":"hf-org-bytedance-seed","url":"https://huggingface.co/api/models?author=ByteDance-Seed&sort=createdAt&direction=-1&limit=10","title":"ByteDance Seed Hugging Face repositories","kind":"weights","required":false},
+
+    {"id":"ollama-releases","url":"https://api.github.com/repos/ollama/ollama/releases?per_page=5","title":"Ollama releases","kind":"release","required":false},
+    {"id":"litellm-releases","url":"https://api.github.com/repos/BerriAI/litellm/releases?per_page=5","title":"LiteLLM releases","kind":"release","required":false},
+    {"id":"sglang-releases","url":"https://api.github.com/repos/sgl-project/sglang/releases?per_page=5","title":"SGLang releases","kind":"release","required":false},
+    {"id":"mcp-typescript-sdk-releases","url":"https://api.github.com/repos/modelcontextprotocol/typescript-sdk/releases?per_page=5","title":"MCP TypeScript SDK releases","kind":"release","required":false},
+    {"id":"mcp-python-sdk-releases","url":"https://api.github.com/repos/modelcontextprotocol/python-sdk/releases?per_page=5","title":"MCP Python SDK releases","kind":"release","required":false}
   ]
 }

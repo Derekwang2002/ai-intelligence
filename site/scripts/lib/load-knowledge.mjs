@@ -8,11 +8,11 @@ export async function loadKnowledge(root) {
     const files = (await readdir(path.join(root,dir))).filter(f=>f.endsWith('.json')).sort();
     return Promise.all(files.map(f=>read(`${dir}/${f}`)));
   };
-  const [buckets,p,s,t,topics,briefings,r,state] = await Promise.all([
+  const [buckets,p,s,t,topics,briefings,r,state,taxonomy] = await Promise.all([
     collection('events'),read('projects/catalog.json'),read('sources/catalog.json'),read('trends/current.json'),
-    read('topics/catalog.json'),collection('briefings'),read('reviews/queue.json'),read('state.json'),
+    read('topics/catalog.json'),collection('briefings'),read('reviews/queue.json'),read('state.json'),read('config/taxonomy.json'),
   ]);
-  const data = { events:buckets.flatMap(b=>b.events), projects:p.projects, sources:s.sources, trends:t.trends, topics:topics.topics, briefings, reviews:r.reviews, state };
+  const data = { events:buckets.flatMap(b=>b.events), projects:p.projects, sources:s.sources, trends:t.trends, topics:topics.topics, briefings, reviews:r.reviews, state, taxonomy };
   const errors=validateKnowledge(data);
   if(errors.length) throw new Error(errors.join('\n'));
   return data;
