@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-29T16:01:24Z",
+  "as_of": "2026-10-01T16:01:43Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -10,7 +10,7 @@
       "status_note_en": "strengthening / Medium (maintained; criteria re-check @2026-09-14: (a) still unmet, with no new third-party Terminal-Bench / SWE reproduction on the weights; (b) met by DeepSeek V4.1 Flash; (c) the serving ecosystem gains merged code across models and frameworks - vLLM for DeepSeek DeepSelect/Engram and SGLang for Qwen NVFP4 on one DGX Spark; (a) remains the only gate to High)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-27",
+      "last_updated": "2026-10-02",
       "retired": false,
       "evidence_zh": [
         "Qwen3.8-27B 权重发布（Apache 2.0，首日 91k 下载，2026-08-14）",
@@ -242,6 +242,11 @@
           "run_started_at": "2026-09-29T16:01:24Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-10-02",
+          "note_zh": "本次复核没有发现足以改变状态或置信度的新信号。",
+          "note_en": "No new signals changed the status or confidence in this run."
         }
       ],
       "evidence": [
@@ -452,7 +457,7 @@
       "status_note_en": "emerging (upgraded from candidate on 2026-08-16)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-29",
+      "last_updated": "2026-10-02",
       "retired": false,
       "evidence_zh": [
         "Cloudflare One Gateway 的 MCP 检测与 enforcement 能力 GA——`experimental.is_mcp`、enforcement 仅 Portal 可用、OAuth 预注册（2026-08-14，一手来源，ev-20260814-03）",
@@ -674,6 +679,11 @@
           "run_started_at": "2026-09-29T16:01:24Z",
           "note_zh": "MCP TypeScript SDK 2.2.0 在 token 请求前校验 issuer，并将列表接口默认改为自动翻页；Claude Code 2.1.284 同时补上 `private_key_jwt` IdP 认证与 MCP 批量重连。企业身份与恢复能力继续增强，但跨厂商 schema 与公开生产遥测仍缺。维持 emerging / Medium。",
           "note_en": "MCP TypeScript SDK 2.2.0 validates issuers before token requests and auto-paginates list calls; Claude Code 2.1.284 also adds private_key_jwt IdP authentication and bulk MCP reconnect. Enterprise identity and recovery keep improving, but cross-vendor schemas and public production telemetry remain absent. Stays emerging / Medium."
+        },
+        {
+          "date": "2026-10-02",
+          "note_zh": "本次复核没有发现足以改变状态或置信度的新信号。",
+          "note_en": "No new signals changed the status or confidence in this run."
         }
       ],
       "evidence": [
@@ -777,7 +787,7 @@
       "status_note_en": "established (candidate→emerging 2026-08-18; →strengthening 8/20; →established 2026-08-28 — confirmation criterion (a) met: Codex 0.150.0 stable ships agent-initiated cross-task messaging; in the same window Gemini CLI 0.57.0 shipped a2a-server in stable and on npm, making Google the seventh organization with protocol-level interop in a stable runtime)",
       "confidence": "High",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-09-29",
+      "last_updated": "2026-10-02",
       "retired": false,
       "evidence_zh": [
         "Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）",
@@ -799,7 +809,8 @@
         "17. RRSI 与长期合谋研究（2026-09-21，ev-20260921-04 / 06）：自动优化 harness 需要提案预算、留出任务与剪枝来抑制过拟合；持续多 agent 互动又会在奖励冲突下改变协作策略。runtime 既要管理 scaffold 演化，也要管理跨轮次的关系状态。",
         "Cursor Rollouts 把 coding agent 延伸到部署监控、渐进发布暂停与回滚 PR 准备；Codex 0.156 默认支持 worktree 会话；Qwen Code 0.24.4 增加运行时证明、计划漂移与持久执行记录（2026-09-22 至 23）",
         "Microsoft Foundry 把 durable execution、A2A、Routines、tool search 与生产 trace 优化串成平台闭环；Android Studio 通过 ACP 承载可替换 agent（2026-09-24，ev-20260924-07/09）",
-        "Microsoft Copilot（2026-09-25，ev-20260925-01）把持续运行的 Autopilot、租户内 Managed Runtime、独立身份/记忆/计算机与 FinOps 治理组合成企业工作区；GitHub Memory 与 Qwen Code Hosted Runtime 同日补强跨 agent 记忆和故障转移"
+        "Microsoft Copilot（2026-09-25，ev-20260925-01）把持续运行的 Autopilot、租户内 Managed Runtime、独立身份/记忆/计算机与 FinOps 治理组合成企业工作区；GitHub Memory 与 Qwen Code Hosted Runtime 同日补强跨 agent 记忆和故障转移",
+        "2026-09-29：GPT-6.1 Sol 在 Responses API 提供 beta 多 agent 委派，OpenAI Agents API 同日加入可恢复的托管浏览器 session（ev-20260929-02、ev-20260910-02）。"
       ],
       "evidence_en": [
         "Anthropic Claude Code: default-on subagent forking + cross-session SendMessage (2026-08-13/14)",
@@ -821,7 +832,8 @@
         "17. RRSI and the long-horizon collusion study (2026-09-21, ev-20260921-04 / 06): automated harness optimization needs proposal budgets, held-out tasks and pruning to control overfitting, while persistent multi-agent interaction can reshape cooperation under reward conflict. A runtime must manage both scaffold evolution and relationship state across turns.",
         "Cursor Rollouts extends coding agents into deployment monitoring, rollout pauses and revert-PR preparation; Codex 0.156 defaults to worktree sessions; Qwen Code 0.24.4 adds runtime attestation, plan drift and durable execution records (September 22-23, 2026)",
         "Microsoft Foundry connects durable execution, A2A, Routines, tool search and production-trace optimization, while Android Studio hosts replaceable agents through ACP (September 24, 2026, ev-20260924-07/09)",
-        "Microsoft Copilot (September 25, 2026, ev-20260925-01) combines persistent Autopilot, tenant-hosted Managed Runtime, separate identity/memory/computer and FinOps governance; same-day GitHub Memory and Qwen Code Hosted Runtime updates strengthen cross-agent memory and failover"
+        "Microsoft Copilot (September 25, 2026, ev-20260925-01) combines persistent Autopilot, tenant-hosted Managed Runtime, separate identity/memory/computer and FinOps governance; same-day GitHub Memory and Qwen Code Hosted Runtime updates strengthen cross-agent memory and failover",
+        "2026-09-29: GPT-6.1 Sol adds beta multi-agent delegation in the Responses API, while the OpenAI Agents API adds resumable hosted-browser sessions (ev-20260929-02, ev-20260910-02)."
       ],
       "why_it_matters_zh": "升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。",
       "why_it_matters_en": "Why upgraded to established / High: confirmation criterion (a) (agent-to-agent messaging semantics in a non-Anthropic stable runtime) is met by Codex 0.150.0 — agents can read, create, or message other tasks from the terminal, so inbox semantics are no longer Anthropic-only; in the same window Google shipped the A2A protocol server into the Gemini CLI stable line and published it on npm. Equivalent primitives are now verified across seven organizations (Anthropic, GitHub/Microsoft, DeepSeek, OpenAI, SST/OpenCode, Anysphere/Cursor, Google) in stable or installable artifacts, spanning March to August 2026. The engineering impact has landed: the orchestration plane is shifting from human-initiated sessions to resident, event-driven, interoperable task systems — multi-agent orchestration is becoming a built-in capability of CLI runtimes rather than a framework choice. Residual gaps (not blocking established, kept under watch): Google's a2a-server has zero documentation or announcement; public production case studies and adoption telemetry are still missing; on the Anthropic side, Claude Code 2.1.248 extended cross-session messaging to Bedrock/Vertex/Foundry and telemetry-off deployments (same-org hardening, not counted separately).",
@@ -1011,6 +1023,11 @@
           "run_started_at": "2026-09-29T16:01:24Z",
           "note_zh": "Codex 0.159.0 加入运行中转向与 item 级历史分页；Qwen Code 0.24.7 将 workspace identity、执行凭据和接管恢复推入 stable。multi-agent runtime 已建立，互操作仍缺。维持 established / High。",
           "note_en": "Codex 0.159.0 adds in-flight steering and item-level history pagination; Qwen Code 0.24.7 moves workspace identity, execution receipts and takeover recovery into stable. Multi-agent runtimes remain established, while interoperability is still missing. Stays established / High."
+        },
+        {
+          "date": "2026-10-02",
+          "note_zh": "GPT-6.1 Sol 的 beta 多 agent 委派与托管浏览器 Agents API 增加了新的生产控制面；Claude Code 和 Gemini CLI 稳定版继续补强恢复与权限事件顺序。",
+          "note_en": "GPT-6.1 Sol beta multi-agent delegation and the hosted-browser Agents API add another production control plane; Claude Code and Gemini CLI stable releases tighten recovery and permission ordering."
         }
       ],
       "evidence": [
@@ -1174,6 +1191,21 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "tev-coding-runtimes-openai-20261002",
+          "claim_zh": "2026-09-29：GPT-6.1 Sol 在 Responses API 提供 beta 多 agent 委派，OpenAI Agents API 同日加入可恢复的托管浏览器 session（ev-20260929-02、ev-20260910-02）。",
+          "claim_en": "2026-09-29: GPT-6.1 Sol adds beta multi-agent delegation in the Responses API, while the OpenAI Agents API adds resumable hosted-browser sessions (ev-20260929-02, ev-20260910-02).",
+          "event_ids": [
+            "ev-20260929-02",
+            "ev-20260910-02"
+          ],
+          "source_ids": [
+            "src-d6b9f5e651b1891e",
+            "src-25183e2b01dde1f5"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [],
@@ -1189,7 +1221,7 @@
       "status_note_en": "strengthening / Medium (METR publishes Opus 5.5 predeployment findings, access duration and unpaid terms; UK AISI publishes configuration-rich machine-readable results through EvalEval. Findings and reproducible reporting both gain evidence, but a cross-vendor schema is still missing)",
       "confidence": "Medium",
       "first_observed": "2026-08-26",
-      "last_updated": "2026-09-26",
+      "last_updated": "2026-10-02",
       "retired": false,
       "evidence_zh": [
         "OpenAI《The Hugging Face incident and the road ahead》约 37 页技术报告（2026-08-26，一手来源）：完整入侵时间线、四种失配模式、生产 harness 对基础设施攻陷倾向的 >100x 抑制、CoT 监控可提前 >1 天告警、分层 CoT 监控规则、最大前沿 RL run 仍暂停（ev-20260818-04 更新）",
@@ -1371,6 +1403,11 @@
           "run_started_at": "2026-09-29T16:01:24Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-10-02",
+          "note_zh": "本次复核没有发现足以改变状态或置信度的新信号。",
+          "note_en": "No new signals changed the status or confidence in this run."
         }
       ],
       "evidence": [
@@ -1553,7 +1590,7 @@
       "status_note_en": "Remains candidate with Low confidence. PSP now has concrete setup documentation, correcting the earlier blanket claim of non-delivery. Independent production adoption across organizations is still unproven.",
       "confidence": "Low",
       "first_observed": "2026-08-18",
-      "last_updated": "2026-09-27",
+      "last_updated": "2026-10-02",
       "retired": false,
       "evidence_zh": [
         "历史说明（已于 2026-09-27 复核修正）：OpenAI 重申 ZDR 并发布 Private Safety Processing 预览（2026-08-18，一手来源，ev-20260818-05）：无留存推理 + 安全工具的承诺形态，白皮书按计划应在 9 月发布（截至本次运行仍未发布）",
@@ -1694,6 +1731,11 @@
           "run_started_at": "2026-09-29T16:01:24Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-10-02",
+          "note_zh": "本次复核没有发现足以改变状态或置信度的新信号。",
+          "note_en": "No new signals changed the status or confidence in this run."
         }
       ],
       "evidence": [
@@ -1789,7 +1831,7 @@
       "status_note_en": "emerging (opened 2026-09-12: three Millennium-scale results from three parties within eight days — FLT, Navier-Stokes, forced Euler — all using Lean/formal verification as the trust layer, plus a public response from the mathematics community; disputes and verification status recorded honestly)",
       "confidence": "Medium",
       "first_observed": "2026-09-04",
-      "last_updated": "2026-09-15",
+      "last_updated": "2026-10-02",
       "retired": false,
       "evidence_zh": [
         "Anthropic 端到端形式化费马大定理（2026-09-04，一手来源，ev-20260904-01）：1300 万行 Lean、29.5k 定理、约 60 亿输出 token、11 天，Prove2Me + Claude Code 多 agent 编排，代码开源",
@@ -1918,6 +1960,11 @@
           "run_started_at": "2026-09-29T16:01:24Z",
           "note_zh": "本次扫描没有发现足以改变判断的新独立信号。维持状态与置信度。",
           "note_en": "This scan found no new independent signal sufficient to change the assessment. Status and confidence remain unchanged."
+        },
+        {
+          "date": "2026-10-02",
+          "note_zh": "本次复核没有发现足以改变状态或置信度的新信号。",
+          "note_en": "No new signals changed the status or confidence in this run."
         }
       ],
       "evidence": [
@@ -1979,7 +2026,7 @@
       "status_note_en": "strengthening / Medium (Google MCP governance, GitHub default policy, Qwen attestation and monitor-failure research strengthen the direction; a unified policy schema and public adoption telemetry are still missing)",
       "confidence": "Medium",
       "first_observed": "2026-09-09",
-      "last_updated": "2026-09-29",
+      "last_updated": "2026-10-02",
       "retired": false,
       "evidence_zh": [
         "GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束",
@@ -1998,7 +2045,8 @@
         "agent trace tampering 与 EvasionBench（2026-09-24，ev-20260924-01/02）：本地 agent 可改写审计证据，普通任务压力可诱发重复、编码和拆分式绕过；日志与 consequence gate 必须独立于 agent",
         "Claude Code 2.1.283 与 Qwen Code 0.24.6（2026-09-25 至 26）：精确模型 allow/deny、无效沙箱策略默认拒绝、Windows 破坏命令保护，以及最严格权限 hook 聚合；Microsoft Managed Runtime 同时把身份、审计和花费策略下沉到执行面",
         "Codex 0.158.0（2026-09-28，ev-20260818-02 更新）：高权限命令默认启用终端输入审批，并修复 Windows、Linux 与 macOS 的多处沙箱边界。",
-        "LiteLLM 1.103.0（2026-09-28，ev-20260913-01 更新）：MCP-aware 护栏、client allowlist、session 撤销与上游凭据 fail-closed 把控制留在 gateway runtime。"
+        "LiteLLM 1.103.0（2026-09-28，ev-20260913-01 更新）：MCP-aware 护栏、client allowlist、session 撤销与上游凭据 fail-closed 把控制留在 gateway runtime。",
+        "2026-09-29 至 30 日：OpenAI Agents API 把来源审批和登录交给应用；Claude Code 2.1.286 在组织关闭 Remote Control 后主动断开现有会话（ev-20260910-02、ev-20260814-04）。"
       ],
       "evidence_en": [
         "GitHub Copilot enterprise-managed permissions GA (2026-09-09, primary source, ev-20260909-02): administrators deploy block/ask/allow policy for shell, files and network domains, overriding user auto-approval — an organization-level policy constrains a general execution surface",
@@ -2017,7 +2065,8 @@
         "Agent trace tampering and EvasionBench (September 24, 2026, ev-20260924-01/02): local agents can rewrite audit evidence, while ordinary task pressure triggers repeated, encoded and decomposed bypass attempts; logging and consequence gates must remain independent of the agent",
         "Claude Code 2.1.283 and Qwen Code 0.24.6 (September 25-26, 2026): exact model allow/deny, fail-closed sandbox parsing, Windows destructive-command protection and most-restrictive permission-hook aggregation; Microsoft Managed Runtime also moves identity, audit and spend policy into the execution plane",
         "Codex 0.158.0 (September 28, 2026, ev-20260818-02 update): terminal-input approval is on by default for elevated commands, with sandbox-boundary fixes across Windows, Linux and macOS.",
-        "LiteLLM 1.103.0 (September 28, 2026, ev-20260913-01 update): MCP-aware guardrails, client allowlists, session revocation and fail-closed upstream credentials keep control in the gateway runtime."
+        "LiteLLM 1.103.0 (September 28, 2026, ev-20260913-01 update): MCP-aware guardrails, client allowlists, session revocation and fail-closed upstream credentials keep control in the gateway runtime.",
+        "Sep 29–30, 2026: OpenAI Agents API assigns origin approval and sign-in to the application; Claude Code 2.1.286 disconnects live Remote Control sessions after organization policy disables them (ev-20260910-02, ev-20260814-04)."
       ],
       "why_it_matters_zh": "对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。",
       "why_it_matters_en": "For teams designing enterprise agents, capability and permission should no longer be implicitly coupled in one tool catalog. A general shell provides better composition and token efficiency, while independent sandboxes, capability contracts and consequence gates bound the blast radius. The immediate architecture move is to make \"what commands the model can generate\" and \"what consequences runtime permits\" independently testable, auditable and upgradable modules.",
@@ -2107,6 +2156,11 @@
           "run_started_at": "2026-09-29T16:01:24Z",
           "note_zh": "Codex 0.159.0 保留获批命令的文件系统拒绝规则并保护 `.aws`；Claude Code 提供单次目录外读取许可；Qwen Code 补上执行凭据与重启后核对。控制继续下沉到 runtime，统一 policy schema 仍缺。维持 strengthening / Medium。",
           "note_en": "Codex 0.159.0 preserves filesystem denials and protects `.aws`; Claude Code adds one-off permission for reads outside the workspace; Qwen Code adds execution receipts and post-reboot reconciliation. Controls keep moving into runtimes, but a unified policy schema remains absent. Stays strengthening / Medium."
+        },
+        {
+          "date": "2026-10-02",
+          "note_zh": "OpenAI Agents API 把来源审批和登录明确交给应用；Claude Code 2.1.286 则让运行中的 Remote Control 在策略撤销后立即断开。",
+          "note_en": "OpenAI Agents API makes origin approval and authentication explicit application responsibilities; Claude Code 2.1.286 enforces Remote Control policy revocation during live sessions."
         }
       ],
       "evidence": [
@@ -2274,6 +2328,21 @@
             "ev-20260818-02",
             "ev-20260814-04",
             "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "tev-runtime-controls-browser-20261002",
+          "claim_zh": "2026-09-29 至 30 日：OpenAI Agents API 把来源审批和登录交给应用；Claude Code 2.1.286 在组织关闭 Remote Control 后主动断开现有会话（ev-20260910-02、ev-20260814-04）。",
+          "claim_en": "Sep 29–30, 2026: OpenAI Agents API assigns origin approval and sign-in to the application; Claude Code 2.1.286 disconnects live Remote Control sessions after organization policy disables them (ev-20260910-02, ev-20260814-04).",
+          "event_ids": [
+            "ev-20260910-02",
+            "ev-20260814-04"
+          ],
+          "source_ids": [
+            "src-25183e2b01dde1f5",
+            "src-80da4486dbf0594b"
           ],
           "relation": "support",
           "verification": "verified-primary-source"

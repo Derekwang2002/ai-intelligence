@@ -859,6 +859,104 @@
       ],
       "next_action_zh": "等 API 文档确认可用范围，再测试凭据更新权限、策略违规分支和重放行为。",
       "next_action_en": "Wait for API documentation to confirm availability, then test credential updates, policy-violation branches and replay."
+    },
+    {
+      "first_seen_at": "2026-10-01T16:01:43Z",
+      "last_updated_at": "2026-10-01T16:01:43Z",
+      "secondary_sources": [],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 2,
+      "scenario_ids": [
+        "local",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "event_id": "ev-20260928-09",
+      "title": "Ollama adds probability-first decision models for local routing",
+      "title_zh": "Ollama 为本地路由加入概率决策模型",
+      "category": "ai-engineering",
+      "organization": [
+        "Ollama"
+      ],
+      "published_at": "2026-09-28T21:23:22Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/ollama/ollama/releases/tag/v0.35.0",
+      "summary_zh": "Ollama 0.35.0 稳定版新增 `/v1/systemone`，让 decision model 直接返回选项、概率与分数，而不是生成文本。首批支持 Nimble 与 Tev1，可用于工单分类、模型路由和内容判断。接口提供 choice、noul 与 score 三类问题。该稳定版上一轮被误判为预发布，本次按漏检补录。",
+      "summary_en": "Ollama 0.35.0 stable adds `/v1/systemone`, letting decision models return choices, probabilities and scores instead of generated text. Nimble and Tev1 are the first supported models for ticket triage, model routing and classification. The API exposes choice, noul and score questions. The prior run mistakenly treated this stable release as prerelease, so this run records it as a late discovery.",
+      "why_it_matters_zh": "对需要本地分类或路由的团队来说，结构化概率输出比提示模型吐标签更容易校准、设阈值和做回退。先用一组有人工标签的数据检查校准误差、拒答阈值和延迟；不要只看单次置信度。",
+      "why_it_matters_en": "For teams doing local classification or routing, structured probabilities are easier to calibrate, threshold and fall back than labels parsed from generated text. Test calibration error, abstention thresholds and latency on labeled data before relying on confidence values.",
+      "technical_details": {
+        "version": "0.35.0 stable",
+        "endpoint": "/v1/systemone",
+        "outputs": "choices, probabilities, confidence and ordered scores",
+        "models": "Nimble and Tev1",
+        "question_types": "choice, noul and score",
+        "availability": "local Ollama runtime"
+      },
+      "technical_details_zh": {
+        "版本": "0.35.0 stable",
+        "接口": "/v1/systemone",
+        "输出": "选项、概率、置信度与有序分数",
+        "模型": "Nimble、Tev1",
+        "问题类型": "choice、noul、score",
+        "可用性": "本地 Ollama runtime"
+      },
+      "tags": [
+        "ollama",
+        "decision-models",
+        "model-routing",
+        "classification",
+        "local-ai"
+      ],
+      "recommendation": "TRIAL",
+      "event_fingerprint": "ollama-0-35-systemone-decision-models",
+      "source_ids": [
+        "src-872457bb1f6a4e1a"
+      ],
+      "project_ids": [
+        "ollama"
+      ],
+      "late_discovery": true,
+      "short_label_zh": "Ollama Decision Models",
+      "short_label_en": "Ollama Decision Models",
+      "next_action_zh": "用一组有人工标签的数据测试概率校准、拒答阈值、延迟和模型回退。",
+      "next_action_en": "Test probability calibration, abstention thresholds, latency and model fallback on a labeled dataset.",
+      "summary": "Ollama 0.35.0 stable adds `/v1/systemone`, letting decision models return choices, probabilities and scores instead of generated text. Nimble and Tev1 are the first supported models for ticket triage, model routing and classification. The API exposes choice, noul and score questions. The prior run mistakenly treated this stable release as prerelease, so this run records it as a late discovery.",
+      "why_it_matters": "For teams doing local classification or routing, structured probabilities are easier to calibrate, threshold and fall back than labels parsed from generated text. Test calibration error, abstention thresholds and latency on labeled data before relying on confidence values.",
+      "evidence": [
+        {
+          "id": "ev-20260928-09-release-evidence",
+          "claim_zh": "Ollama 0.35.0 稳定版新增 `/v1/systemone`，让 decision model 直接返回选项、概率与分数，而不是生成文本。首批支持 Nimble 与 Tev1，可用于工单分类、模型路由和内容判断。接口提供 choice、noul 与 score 三类问题。该稳定版上一轮被误判为预发布，本次按漏检补录。",
+          "claim_en": "Ollama 0.35.0 stable adds `/v1/systemone`, letting decision models return choices, probabilities and scores instead of generated text. Nimble and Tev1 are the first supported models for ticket triage, model routing and classification. The API exposes choice, noul and score questions. The prior run mistakenly treated this stable release as prerelease, so this run records it as a late discovery.",
+          "source_ids": [
+            "src-872457bb1f6a4e1a"
+          ],
+          "event_ids": [
+            "ev-20260928-09"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260928-09-published",
+          "kind": "new",
+          "occurred_at": "2026-09-28T21:23:22Z",
+          "discovered_at": "2026-10-01T16:01:43Z",
+          "summary_zh": "Ollama 为本地路由加入概率决策模型",
+          "summary_en": "Ollama adds probability-first decision models for local routing",
+          "evidence_ids": [
+            "ev-20260928-09-release-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

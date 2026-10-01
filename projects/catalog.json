@@ -31,24 +31,28 @@
         "src-fafece65903b65aa",
         "src-35ab415a8fa4d23e",
         "src-57f842e49c5467e5",
-        "src-cdf0d63217ad659b"
+        "src-cdf0d63217ad659b",
+        "src-ff1ca072bf39e471",
+        "src-80da4486dbf0594b"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
         "src-57f842e49c5467e5",
-        "src-cdf0d63217ad659b"
+        "src-cdf0d63217ad659b",
+        "src-ff1ca072bf39e471",
+        "src-80da4486dbf0594b"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "last_reviewed_at": "2026-10-01T16:01:43Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "Claude Code 已是成熟的本地多 agent 运行时：subagent fork、跨会话消息、沙箱资源限制和网关身份治理都在稳定版里。9 月下旬的 2.1.283 和 2.1.284 继续补强模型治理、沙箱拒绝策略与 MCP 恢复。",
-        "judgment_en": "Claude Code is a mature local multi-agent runtime: subagent forking, cross-session messaging, sandbox resource limits and gateway identity controls are all in stable releases. Versions 2.1.283 and 2.1.284 in late September tightened model governance, sandbox denial policies and MCP recovery.",
-        "next_action_zh": "升级到 2.1.284 前，回归读取审批、沙箱拒绝策略和 MCP 断线恢复。",
-        "next_action_en": "Before moving to 2.1.284, regression-test read approvals, sandbox denial policies and MCP reconnection.",
+        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.285/286 加强 provider 限制、Remote Control 撤权和凭据脱敏；managed settings 不可读时仍需外部启动检查。",
+        "judgment_en": "Claude Code is a mature local multi-agent runtime. Versions 2.1.285/286 strengthen provider restrictions, Remote Control revocation and credential redaction; unreadable managed settings still require an external startup check.",
+        "next_action_zh": "升级到 2.1.286，并验证 managed settings、provider allowlist 与 Remote Control 撤权。",
+        "next_action_en": "Upgrade to 2.1.286 and independently verify readable managed settings, provider allowlists and Remote Control revocation at startup.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-01T16:01:43Z"
       }
     },
     {
@@ -164,26 +168,28 @@
         "src-49e8d0577a5e1f9d",
         "src-bdf55218ea016a0a",
         "src-b6ce910accbcbcac",
-        "src-9b9d615d7fb6df0b"
+        "src-9b9d615d7fb6df0b",
+        "src-25183e2b01dde1f5"
       ],
-      "current_judgment_event_id": "ev-20260818-02",
+      "current_judgment_event_id": "ev-20260910-02",
       "official_source_ids": [
         "src-bdf55218ea016a0a",
         "src-b6ce910accbcbcac",
-        "src-9b9d615d7fb6df0b"
+        "src-9b9d615d7fb6df0b",
+        "src-25183e2b01dde1f5",
+        "src-49e8d0577a5e1f9d"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "last_reviewed_at": "2026-10-01T16:01:43Z",
       "judgment": {
-        "recommendation": "ADOPT",
-        "judgment_zh": "Codex CLI 稳定版已有会话 fork、agent 任务面板、可调用 MCP 的异步 hooks 和 Bedrock provider。0.158 与 0.159 又加固了 MCP 认证、命令审批和本地沙箱，并支持运行中转向。托管的 Agents API 仍在公测。",
-        "judgment_en": "The stable Codex CLI has session forking, an agent task dashboard, async hooks that can call MCP tools and a Bedrock provider. Versions 0.158 and 0.159 hardened MCP authentication, command approval and the local sandbox, and added in-flight steering. The hosted Agents API is still in public beta.",
-        "next_action_zh": "升级到 0.159 前回归命令审批、沙箱拒绝规则和运行中转向；Agents API 只做试点。",
-        "next_action_en": "Before moving to 0.159, regression-test command approvals, sandbox denials and in-flight steering; keep the Agents API to pilots.",
+        "recommendation": "TRIAL",
+        "judgment_zh": "Agents API 已把托管浏览器、来源审批、登录交接和 session 恢复组合成可用 contract。它能减少基础设施工作，但凭据、审计和副作用确认必须由应用端严格验证。",
+        "judgment_en": "The Agents API now combines hosted browsing, origin approval, sign-in handoff and session recovery into a usable contract. It reduces infrastructure work, but applications must validate credential boundaries, audit and side-effect confirmation.",
+        "next_action_zh": "用测试账号跑一次带登录的只读任务，核对凭据边界、默认拒绝、断线恢复和完整审计。",
+        "next_action_en": "Run one read-only signed-in task with a test account and verify credential boundaries, fail-closed approval, recovery and audit.",
         "basis_event_ids": [
-          "ev-20260818-02",
           "ev-20260910-02"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-01T16:01:43Z"
       }
     },
     {
@@ -263,24 +269,26 @@
         "src-a4bfff6863e329e9",
         "src-bfc007a5bd946944",
         "src-f4f49ba070cb61b6",
-        "src-695ca5d6496fefc7"
+        "src-695ca5d6496fefc7",
+        "src-09bc1aebce65c96b"
       ],
       "current_judgment_event_id": "ev-20260825-02",
       "official_source_ids": [
-        "src-695ca5d6496fefc7"
+        "src-695ca5d6496fefc7",
+        "src-09bc1aebce65c96b"
       ],
-      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "last_reviewed_at": "2026-10-01T16:01:43Z",
       "judgment": {
         "recommendation": "WATCH",
-        "judgment_zh": "Gemini CLI 0.57 稳定版把 A2A server 打进了发布线，但没有文档和公告，接口随时可能变化。构建文件提示注入拦截在 9 月 12 日只出现在 nightly 版中。",
-        "judgment_en": "Gemini CLI 0.57 ships an A2A server in a stable release, but without documentation or an announcement, so the interface can change at any time. Prompt-injection blocking for build files was only seen in a nightly build on September 12.",
-        "next_action_zh": "把 A2A 能力当作路线图信号，不要依赖；等官方文档或稳定版说明出现再评估。",
-        "next_action_en": "Treat the A2A server as a roadmap signal, not a dependency; re-evaluate once official docs or stable release notes describe it.",
+        "judgment_zh": "Gemini CLI 0.62.0 的 OAuth、终端与 ACP 权限修复适合现有用户升级。A2A server 虽在稳定包里，仍无文档和兼容承诺，不宜作为生产依赖。",
+        "judgment_en": "Gemini CLI 0.62.0 brings useful OAuth, terminal and ACP permission fixes for existing users. The A2A server ships in stable packages but still lacks documentation and compatibility commitments, so it is not a production dependency.",
+        "next_action_zh": "升级到 0.62.0，回归 OAuth 刷新、终端退出和 ACP 权限事件顺序；A2A 继续只做隔离实验。",
+        "next_action_en": "Upgrade to 0.62.0 and test OAuth refresh, terminal exit and ACP permission-event order; keep A2A experiments isolated.",
         "basis_event_ids": [
           "ev-20260825-02",
           "ev-20260912-01"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-01T16:01:43Z"
       }
     },
     {
@@ -630,7 +638,8 @@
       "event_ids": [
         "ev-20260813-01",
         "ev-20260827-02",
-        "ev-20260902-06"
+        "ev-20260902-06",
+        "ev-20260930-01"
       ],
       "source_ids": [
         "src-48a389c50c9bee68",
@@ -642,22 +651,24 @@
         "src-3b883af04aa0dea6",
         "src-8b7187ea84cf5f19",
         "src-ef239918f16e1482",
-        "src-6a5ff55c6918f815"
+        "src-6a5ff55c6918f815",
+        "src-8a18dee8ca8f941c"
       ],
-      "current_judgment_event_id": "ev-20260902-06",
-      "official_source_ids": [],
-      "last_reviewed_at": null,
+      "current_judgment_event_id": "ev-20260930-01",
+      "official_source_ids": [
+        "src-8a18dee8ca8f941c"
+      ],
+      "last_reviewed_at": "2026-10-01T16:01:43Z",
       "judgment": {
-        "recommendation": "ADOPT",
-        "judgment_zh": "Gemini 3.8 Flash 是当前的主力档模型，介绍价重画了 coding agent 路由的性价比线；受控分发的 Flash Cyber 面向安全团队。复杂任务上的 token 用量有所上升。",
-        "judgment_en": "Gemini 3.8 Flash is the current workhorse tier, and its introductory price resets the price-performance line for coding-agent routing; the gated Flash Cyber model targets security teams. Token usage rises on complex tasks.",
-        "next_action_zh": "按任务完成成本而不是单价比较，切换前测量复杂任务上的 token 用量。",
-        "next_action_en": "Compare cost per completed task rather than list price, and measure token usage on complex tasks before switching.",
+        "recommendation": "WATCH",
+        "judgment_zh": "Gemini 4 Argon 展示 1M 输出 token 和强 coding/网络安全结果，但目前只向可信防御团队开放。介绍价有明确到期后的翻倍计划，公开 API 前无法做独立工程验证。",
+        "judgment_en": "Gemini 4 Argon shows a 1M-token output ceiling and strong coding and cybersecurity results, but access is limited to trusted defenders. Introductory prices are scheduled to double, and independent engineering tests must wait for a public API.",
+        "next_action_zh": "等待公开 API 与稳定计价，再用固定预算测试长轨迹成功率、漂移和人工审计成本。",
+        "next_action_en": "Wait for public API access and stable pricing, then test long-run success, drift and human-audit cost under a fixed budget.",
         "basis_event_ids": [
-          "ev-20260902-06",
-          "ev-20260827-02"
+          "ev-20260930-01"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-01T16:01:43Z"
       }
     },
     {
@@ -703,28 +714,36 @@
       ],
       "pattern": "GPT-6",
       "event_ids": [
-        "ev-20260922-02"
+        "ev-20260922-02",
+        "ev-20260929-02"
       ],
       "source_ids": [
         "src-c12530ce8eec01bd",
         "src-e3a5934e3172ec52",
         "src-00eaf917ab1113cf",
         "src-6e556c3af2807b57",
+        "src-49e8d0577a5e1f9d",
+        "src-d6b9f5e651b1891e",
+        "src-dc29f748affb82a8"
+      ],
+      "current_judgment_event_id": "ev-20260929-02",
+      "official_source_ids": [
+        "src-d6b9f5e651b1891e",
+        "src-dc29f748affb82a8",
         "src-49e8d0577a5e1f9d"
       ],
-      "current_judgment_event_id": "ev-20260922-02",
-      "official_source_ids": [],
-      "last_reviewed_at": null,
+      "last_reviewed_at": "2026-10-01T16:01:43Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "GPT-6 Sol 和 Luna 面向编码与高吞吐 agent。OpenAI 在 9 月 25 日修复了一个图像编码问题，此前涉及图像输入的评估结果可能受到影响。",
-        "judgment_en": "GPT-6 Sol and Luna target coding and high-throughput agents. OpenAI fixed an image-encoding issue on September 25, so earlier evaluations involving image input may be affected.",
-        "next_action_zh": "在自己的任务上比较完成成本和可靠性；涉及图像输入的旧评估先重跑。",
-        "next_action_en": "Compare task-level cost and reliability on your own workloads, and rerun earlier evaluations that involve image input.",
+        "judgment_zh": "GPT-6.1 Sol 以 Sol 价位接近 Astra 的 coding、computer-use 与专业任务能力，并已开放 API。厂商 benchmark 很强，但多 agent 仍是 beta，安全分级也更高。",
+        "judgment_en": "GPT-6.1 Sol brings near-Astra coding, computer-use and professional-task capability to Sol pricing and is available by API. Vendor benchmarks are strong, but multi-agent remains beta and the safety classification is higher.",
+        "next_action_zh": "用真实轨迹与 GPT-6 Sol、Astra 比较任务成功率、事实错误、token 和单任务成本。",
+        "next_action_en": "Compare real traces against GPT-6 Sol and Astra on success, factual errors, tokens and cost per completed task.",
         "basis_event_ids": [
-          "ev-20260922-02"
+          "ev-20260922-02",
+          "ev-20260929-02"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-01T16:01:43Z"
       }
     },
     {
@@ -914,6 +933,140 @@
           "ev-20260928-08"
         ],
         "reviewed_at": "2026-10-01T07:57:01Z"
+      }
+    },
+    {
+      "id": "ollama",
+      "name_zh": "Ollama",
+      "name_en": "Ollama",
+      "type": "framework",
+      "aliases": [
+        "Ollama"
+      ],
+      "pattern": "Ollama",
+      "event_ids": [
+        "ev-20260928-09"
+      ],
+      "source_ids": [
+        "src-872457bb1f6a4e1a"
+      ],
+      "official_source_ids": [
+        "src-872457bb1f6a4e1a"
+      ],
+      "last_reviewed_at": "2026-10-01T16:01:43Z",
+      "current_judgment_event_id": "ev-20260928-09",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Ollama 0.35.0 把概率优先的 decision model 带到本地运行时，适合路由与分类试验。现阶段只支持少量模型，概率仍需用自有标签做校准。",
+        "judgment_en": "Ollama 0.35.0 brings probability-first decision models to the local runtime for routing and classification trials. Model choice is limited and probabilities still require calibration on local labels.",
+        "next_action_zh": "用一组有人工标签的数据测试概率校准、拒答阈值、延迟和模型回退。",
+        "next_action_en": "Test probability calibration, abstention thresholds, latency and model fallback on a labeled dataset.",
+        "basis_event_ids": [
+          "ev-20260928-09"
+        ],
+        "reviewed_at": "2026-10-01T16:01:43Z"
+      }
+    },
+    {
+      "id": "cua-speedrun",
+      "name_zh": "cua-speedrun",
+      "name_en": "cua-speedrun",
+      "type": "benchmark",
+      "aliases": [
+        "cua-speedrun"
+      ],
+      "pattern": "cua-speedrun",
+      "event_ids": [
+        "ev-20260930-02"
+      ],
+      "source_ids": [
+        "src-91772ef36d929d16",
+        "src-d4f873d8b0a64a60"
+      ],
+      "official_source_ids": [
+        "src-91772ef36d929d16",
+        "src-d4f873d8b0a64a60"
+      ],
+      "last_reviewed_at": "2026-10-01T16:01:43Z",
+      "current_judgment_event_id": "ev-20260930-02",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "cua-speedrun 是公开的 computer-use agent 速度、成本与成功率统一评测栈。论文结果仍是作者报告，但公开基础设施足以在一天内做小规模复现。",
+        "judgment_en": "cua-speedrun is a public, standardized stack for measuring computer-use agent speed, cost and success. Results remain author-reported, but the open infrastructure supports a one-day bounded reproduction.",
+        "next_action_zh": "一天内用公开 harness 重跑 20 个代表任务，核对成功率、墙钟时间和单任务成本是否可复现。",
+        "next_action_en": "Within one day, rerun 20 representative tasks with the public harness and check success, wall time and cost per task.",
+        "basis_event_ids": [
+          "ev-20260930-02"
+        ],
+        "reviewed_at": "2026-10-01T16:01:43Z"
+      }
+    },
+    {
+      "id": "olmo-core",
+      "name_zh": "Olmo-core",
+      "name_en": "Olmo-core",
+      "type": "framework",
+      "aliases": [
+        "Olmo-core"
+      ],
+      "pattern": "Olmo-core",
+      "event_ids": [
+        "ev-20261001-01"
+      ],
+      "source_ids": [
+        "src-f928531f96372519",
+        "src-2db32d5d28bd533f",
+        "src-6e102a4967e3ee1b"
+      ],
+      "official_source_ids": [
+        "src-f928531f96372519",
+        "src-2db32d5d28bd533f",
+        "src-6e102a4967e3ee1b"
+      ],
+      "last_reviewed_at": "2026-10-01T16:01:43Z",
+      "current_judgment_event_id": "ev-20261001-01",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Olmo-core 3 是少见的开放万亿参数 MoE 训练参考栈，代码和设计都可检查。公开吞吐是短时随机路由结果，团队应先在较小集群验证持续训练行为。",
+        "judgment_en": "Olmo-core 3 is a rare open reference stack for trillion-parameter MoE training, with inspectable code and design. Published throughput is based on short random-routing tests, so teams should validate sustained behavior on smaller clusters first.",
+        "next_action_zh": "先在 8–32 张现有 GPU 上验证路由均衡、checkpoint 恢复、通信占比和持续吞吐。",
+        "next_action_en": "Validate routing balance, checkpoint recovery, communication share and sustained throughput on 8–32 existing GPUs first.",
+        "basis_event_ids": [
+          "ev-20261001-01"
+        ],
+        "reviewed_at": "2026-10-01T16:01:43Z"
+      }
+    },
+    {
+      "id": "openai-dots",
+      "name_zh": "OpenAI Dots",
+      "name_en": "OpenAI Dots",
+      "type": "product",
+      "aliases": [
+        "OpenAI Dots"
+      ],
+      "pattern": "OpenAI Dots|Dots",
+      "event_ids": [
+        "ev-20260929-03"
+      ],
+      "source_ids": [
+        "src-dec620cb7225d243"
+      ],
+      "official_source_ids": [
+        "src-dec620cb7225d243"
+      ],
+      "last_reviewed_at": "2026-10-01T16:01:43Z",
+      "current_judgment_event_id": "ev-20260929-03",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "Dots 已把持续运行、应用连接和独立云端电脑做成可用产品，但访问、后续计价和企业治理仍在变化。",
+        "judgment_en": "Dots productize persistent execution, app connections and individual cloud computers, but access, later pricing and enterprise governance remain unsettled.",
+        "next_action_zh": "等待后续计价和企业控制说明，再复核真实任务完成率、撤权、审计与应用连接边界。",
+        "next_action_en": "Wait for post-trial pricing and enterprise controls, then reassess task completion, revocation, audit and app boundaries.",
+        "basis_event_ids": [
+          "ev-20260929-03"
+        ],
+        "reviewed_at": "2026-10-01T16:01:43Z"
       }
     }
   ]

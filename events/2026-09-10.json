@@ -123,25 +123,30 @@
       ],
       "published_at": "2026-09-10T15:00:00Z",
       "first_seen_at": "2026-09-11T18:31:49Z",
-      "last_updated_at": "2026-09-11T18:31:49Z",
+      "last_updated_at": "2026-10-01T16:01:43Z",
       "source_type": "official_blog",
       "primary_source": "https://openai.com/index/introducing-the-agents-api/",
       "secondary_sources": [
-        "https://developers.openai.com/api/docs/changelog"
+        "https://developers.openai.com/api/docs/changelog",
+        "https://developers.openai.com/api/docs/guides/agents-api/tools/computer-use"
       ],
-      "summary": "OpenAI put the Agents API into public beta for all developers: a managed service powered by the Codex harness (open-source codebase) where OpenAI runs session orchestration, context compaction and recovery. One API call takes a task, a model, tools and an environment; compute can be OpenAI-managed sandboxes, the customer's own infrastructure via a proxy, or sandbox partners (Blaxel, Cloudflare, Daytona, DigitalOcean, E2B, Modal, Oracle, Runloop, Vercel). Agents persist across turns with streaming progress, call MCP servers / custom functions / built-in web search, and 'auto compaction' carries notes across context windows; tool search discovers MCP tools without loading every schema; programmatic tool calling reads tool outputs mid-chain; subagents run in parallel with their own contexts. No additional fees during beta beyond token and tool usage.",
-      "why_it_matters": "The harness — orchestration, compaction, sandboxing, recovery — is now a product surface rather than something every team rebuilds. The own-infrastructure option makes the execution plane a real procurement axis (vendor sandbox vs your cloud vs partners), and the open-source harness plus managed twin removes the lock-in argument that usually blocks adoption. Expect the internal 'agent loop' layer of many stacks to be re-evaluated against this.",
-      "summary_zh": "OpenAI 将 Agents API 向所有开发者开放公测：一个由 Codex harness（开源代码库）驱动的托管服务，OpenAI 负责会话编排、上下文压缩与恢复。一次 API 调用给出任务、模型、工具与环境；算力可选 OpenAI 托管沙箱、客户自有基础设施（经代理接入）或沙箱合作方（Blaxel、Cloudflare、Daytona、DigitalOcean、E2B、Modal、Oracle、Runloop、Vercel）。agent 跨轮次持久存在并流式回报进度，可调用 MCP server / 自定义函数 / 内置 web search；「auto compaction」把笔记带过上下文窗口；tool search 无需加载全部 schema 即可发现 MCP 工具；programmatic tool calling 在链中读取工具输出；subagent 携各自上下文并行运行。公测期除 token 与工具用量外不额外收费。",
-      "summary_en": "OpenAI put the Agents API into public beta for all developers: a managed service powered by the Codex harness (open-source codebase) where OpenAI runs session orchestration, context compaction and recovery. One API call takes a task, a model, tools and an environment; compute can be OpenAI-managed sandboxes, the customer's own infrastructure via a proxy, or sandbox partners (Blaxel, Cloudflare, Daytona, DigitalOcean, E2B, Modal, Oracle, Runloop, Vercel). Agents persist across turns with streaming progress, call MCP servers / custom functions / built-in web search, and 'auto compaction' carries notes across context windows; tool search discovers MCP tools without loading every schema; programmatic tool calling reads tool outputs mid-chain; subagents run in parallel with their own contexts. No additional fees during beta beyond token and tool usage.",
-      "why_it_matters_zh": "harness（编排、压缩、沙箱、恢复）变成了产品面，不再是每个团队自己重建的那一层。自有基础设施选项让执行面成为真实的采购轴线（厂商沙箱 vs 自己的云 vs 合作方）；开源 harness 加托管双形态也拆掉了通常阻碍采用的锁定顾虑。可以预期很多技术栈里的「agent loop」层会拿它重新对表。",
-      "why_it_matters_en": "The harness — orchestration, compaction, sandboxing, recovery — is now a product surface rather than something every team rebuilds. The own-infrastructure option makes the execution plane a real procurement axis (vendor sandbox vs your cloud vs partners), and the open-source harness plus managed twin removes the lock-in argument that usually blocks adoption. Expect the internal 'agent loop' layer of many stacks to be re-evaluated against this.",
+      "summary": "OpenAI expanded the Agents API hosted runtime with computer use. The browser runs in an OpenAI-hosted environment while the application handles origin approval and sign-in fields, and interrupted work can resume the same session. Only the main agent can request authentication; email, password and verification codes are supported, but passkeys and QR sign-in are not.",
+      "why_it_matters": "For browser-agent builders, origin approval, sign-in handoff and recovery now share one runtime contract. Before production, verify credentials stay outside model context, approvals fail closed, audit is complete, and side effects require human confirmation.",
+      "summary_zh": "OpenAI Agents API 已从托管 agent 运行时扩展到 computer use。浏览器运行在 OpenAI 托管环境，应用负责来源审批和登录字段，断线后可恢复同一 session。只有主 agent 能请求认证；当前支持邮箱、密码和验证码，不支持 passkey 或二维码登录。",
+      "summary_en": "OpenAI expanded the Agents API hosted runtime with computer use. The browser runs in an OpenAI-hosted environment while the application handles origin approval and sign-in fields, and interrupted work can resume the same session. Only the main agent can request authentication; email, password and verification codes are supported, but passkeys and QR sign-in are not.",
+      "why_it_matters_zh": "对构建浏览器 agent 的团队来说，来源审批、登录交接和恢复已进入同一运行 contract。上线前仍要验证凭据不进入模型上下文、审批默认拒绝、审计完整，并在副作用操作前增加人工确认。",
+      "why_it_matters_en": "For browser-agent builders, origin approval, sign-in handoff and recovery now share one runtime contract. Before production, verify credentials stay outside model context, approvals fail closed, audit is complete, and side effects require human confirmation.",
       "technical_details": {
         "status": "public beta, all developers; page publishedTime 2026-09-10T15:00Z",
         "harness": "managed service powered by the Codex harness (open-source codebase); OpenAI runs orchestration, compaction, recovery",
         "compute_options": "OpenAI-managed sandbox / own infrastructure via proxy / sandbox partners: Blaxel, Cloudflare, Daytona, DigitalOcean, E2B, Modal, Oracle, Runloop, Vercel",
         "features": "persistent sessions with streaming progress; MCP servers + custom functions + built-in web search; auto compaction (notes across context windows); tool search; programmatic tool calling; parallel subagents with own contexts",
         "pricing": "no additional fee during beta; pay for tokens and tools",
-        "related": "GPT-Live 1 GA, prompt cache diagnostics GA, API key expiry, GPT Image 2.5 Sunburst/Flare shipped in the same changelog window (see ev-20260910-05)"
+        "related": "GPT-Live 1 GA, prompt cache diagnostics GA, API key expiry, GPT Image 2.5 Sunburst/Flare shipped in the same changelog window (see ev-20260910-05)",
+        "hosted_browser": "OpenAI-hosted browser with resumable sessions",
+        "authentication": "application renders authentication fields; main agent only",
+        "unsupported": "passkeys and QR-code sign-in",
+        "approval": "application approves requested origins"
       },
       "technical_details_zh": {
         "状态": "公测，面向所有开发者；页面 publishedTime 2026-09-10T15:00Z",
@@ -149,7 +154,11 @@
         "算力选项": "OpenAI 托管沙箱 / 经代理的自有基础设施 / 沙箱合作方：Blaxel、Cloudflare、Daytona、DigitalOcean、E2B、Modal、Oracle、Runloop、Vercel",
         "功能": "持久会话 + 流式进度；MCP server + 自定义函数 + 内置 web search；auto compaction（跨上下文窗口笔记）；tool search；programmatic tool calling；并行 subagent 各自带上下文",
         "定价": "公测期无额外费用；只为 token 与工具用量付费",
-        "关联": "同一 changelog 窗口还有 GPT-Live 1 GA、prompt cache 诊断 GA、API key 过期、GPT Image 2.5 Sunburst/Flare（见 ev-20260910-05）"
+        "关联": "同一 changelog 窗口还有 GPT-Live 1 GA、prompt cache 诊断 GA、API key 过期、GPT Image 2.5 Sunburst/Flare（见 ev-20260910-05）",
+        "托管浏览器": "OpenAI 托管并支持 session 恢复",
+        "认证": "应用渲染认证字段；仅主 agent 可请求",
+        "不支持": "passkey 与二维码登录",
+        "来源审批": "应用审批 agent 请求访问的来源"
       },
       "tags": [
         "agent-platform",
@@ -169,7 +178,8 @@
       "event_fingerprint": "openai-agents-api-public-beta-codex-harness",
       "source_ids": [
         "src-b32e9b8471353987",
-        "src-49e8d0577a5e1f9d"
+        "src-49e8d0577a5e1f9d",
+        "src-25183e2b01dde1f5"
       ],
       "project_ids": [
         "codex"
@@ -192,6 +202,20 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260910-02-hosted-browser-evidence",
+          "claim_zh": "Agents API 的托管浏览器把来源审批、登录和 session 恢复交给应用协同处理。",
+          "claim_en": "The Agents API hosted browser coordinates application-managed origin approval, sign-in and session recovery.",
+          "source_ids": [
+            "src-25183e2b01dde1f5",
+            "src-49e8d0577a5e1f9d"
+          ],
+          "event_ids": [
+            "ev-20260910-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -206,8 +230,25 @@
             "ev-20260910-02-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260910-02-hosted-browser",
+          "kind": "update",
+          "occurred_at": "2026-09-29T10:00:00Z",
+          "discovered_at": "2026-10-01T16:01:43Z",
+          "summary_zh": "Agents API 加入带来源审批和登录交接的托管浏览器",
+          "summary_en": "Agents API adds hosted browsing with origin approval and sign-in handoff",
+          "evidence_ids": [
+            "ev-20260910-02-hosted-browser-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "short_label_zh": "Agents API",
+      "short_label_en": "Agents API",
+      "next_action_zh": "用测试账号跑一次带登录的只读任务，核对凭据边界、默认拒绝、断线恢复和完整审计。",
+      "next_action_en": "Run one read-only signed-in task with a test account and verify credential boundaries, fail-closed approval, recovery and audit."
     },
     {
       "event_id": "ev-20260910-03",

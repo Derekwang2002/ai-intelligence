@@ -123,6 +123,218 @@
       },
       "next_action_zh": "用 Medium 版本在留出表格上与调优后的树模型比较准确率、校准、延迟和 GPU 成本。",
       "next_action_en": "Compare the Medium model with tuned tree ensembles on held-out tables: accuracy, calibration, latency and GPU cost."
+    },
+    {
+      "first_seen_at": "2026-10-01T16:01:43Z",
+      "last_updated_at": "2026-10-01T16:01:43Z",
+      "secondary_sources": [
+        "https://deploymentsafety.openai.com/gpt-6-1-sol/awareness-of-cot-monitoring-reduces-monitorability",
+        "https://developers.openai.com/api/docs/changelog"
+      ],
+      "technical_impact": 5,
+      "engineering_value": 5,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 3,
+      "risk": 4,
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "event_id": "ev-20260929-02",
+      "title": "OpenAI releases GPT-6.1 Sol near Astra capability at lower cost",
+      "title_zh": "OpenAI 发布低成本 GPT-6.1 Sol",
+      "category": "foundation-model",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-09-29T10:00:00Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/introducing-gpt-6-1-sol",
+      "summary_zh": "OpenAI 发布 GPT-6.1 Sol，并已在 API、ChatGPT Work 与 Codex 提供。标准价为每百万输入 token 2 美元、缓存输入 0.10 美元、输出 10 美元。厂商测试称它在 coding、computer use 与专业任务上接近 GPT-6 Astra，但价格约为五分之一。Responses API 另提供 beta 多 agent 委派。",
+      "summary_en": "OpenAI released GPT-6.1 Sol in the API, ChatGPT Work and Codex. Standard prices are $2 per million input tokens, $0.10 cached input and $10 output. OpenAI reports near-GPT-6 Astra capability on coding, computer use and professional work at about one-fifth of Astra token prices. The Responses API also exposes beta multi-agent delegation.",
+      "why_it_matters_zh": "对做高频 coding agent 和专业工作流的团队来说，GPT-6.1 Sol 可能把 Astra 留给最难任务，把大部分轨迹下放到更便宜的档位。先按完成任务成本、事实错误率和工具失败恢复做路由实验。",
+      "why_it_matters_en": "For high-volume coding agents and professional workflows, GPT-6.1 Sol may reserve Astra for the hardest tasks while moving most trajectories to a cheaper tier. Route by completed-task cost, factual error rate and tool-failure recovery rather than token price alone.",
+      "technical_details": {
+        "model": "gpt-6.1-sol",
+        "availability": "OpenAI API, ChatGPT Work and Codex; not Chat at launch",
+        "pricing_per_million_tokens": {
+          "input": 2,
+          "cached_input": 0.1,
+          "cache_write": 2.5,
+          "output": 10
+        },
+        "context_pricing_threshold": "standard prices shown for prompts up to 272K input tokens",
+        "vendor_results": "matches Astra on DeepSWE v1.1 at about one-fifth cost; within 2.1 points on OSWorld 2.0 at about one-seventh task cost",
+        "multi_agent": "beta delegation in Responses API",
+        "safety": "Critical cybersecurity and High biological/chemical capability under OpenAI Preparedness Framework"
+      },
+      "technical_details_zh": {
+        "模型": "gpt-6.1-sol",
+        "可用性": "OpenAI API、ChatGPT Work、Codex；首发不在 Chat",
+        "每百万_token_价格": {
+          "输入": 2,
+          "缓存输入": 0.1,
+          "缓存写入": 2.5,
+          "输出": 10
+        },
+        "上下文计价门槛": "所列标准价适用于最多 272K 输入 token",
+        "厂商结果": "DeepSWE v1.1 以约五分之一成本接近 Astra；OSWorld 2.0 相差 2.1 点，单任务成本约七分之一",
+        "多_agent": "Responses API beta 委派",
+        "安全分级": "OpenAI Preparedness Framework 下网络安全为 Critical、生物化学为 High"
+      },
+      "tags": [
+        "gpt-6.1-sol",
+        "coding",
+        "computer-use",
+        "multi-agent",
+        "api",
+        "model-routing"
+      ],
+      "recommendation": "TRIAL",
+      "event_fingerprint": "openai-gpt-6-1-sol-release",
+      "source_ids": [
+        "src-d6b9f5e651b1891e",
+        "src-dc29f748affb82a8",
+        "src-49e8d0577a5e1f9d"
+      ],
+      "project_ids": [
+        "gpt-6"
+      ],
+      "short_label_zh": "GPT-6.1 Sol",
+      "short_label_en": "GPT-6.1 Sol",
+      "next_action_zh": "用真实轨迹与 GPT-6 Sol、Astra 比较任务成功率、事实错误、token 和单任务成本。",
+      "next_action_en": "Compare real traces against GPT-6 Sol and Astra on success, factual errors, tokens and cost per completed task.",
+      "summary": "OpenAI released GPT-6.1 Sol in the API, ChatGPT Work and Codex. Standard prices are $2 per million input tokens, $0.10 cached input and $10 output. OpenAI reports near-GPT-6 Astra capability on coding, computer use and professional work at about one-fifth of Astra token prices. The Responses API also exposes beta multi-agent delegation.",
+      "why_it_matters": "For high-volume coding agents and professional workflows, GPT-6.1 Sol may reserve Astra for the hardest tasks while moving most trajectories to a cheaper tier. Route by completed-task cost, factual error rate and tool-failure recovery rather than token price alone.",
+      "evidence": [
+        {
+          "id": "ev-20260929-02-release-evidence",
+          "claim_zh": "OpenAI 发布 GPT-6.1 Sol，并已在 API、ChatGPT Work 与 Codex 提供。标准价为每百万输入 token 2 美元、缓存输入 0.10 美元、输出 10 美元。厂商测试称它在 coding、computer use 与专业任务上接近 GPT-6 Astra，但价格约为五分之一。Responses API 另提供 beta 多 agent 委派。",
+          "claim_en": "OpenAI released GPT-6.1 Sol in the API, ChatGPT Work and Codex. Standard prices are $2 per million input tokens, $0.10 cached input and $10 output. OpenAI reports near-GPT-6 Astra capability on coding, computer use and professional work at about one-fifth of Astra token prices. The Responses API also exposes beta multi-agent delegation.",
+          "source_ids": [
+            "src-d6b9f5e651b1891e",
+            "src-dc29f748affb82a8",
+            "src-49e8d0577a5e1f9d"
+          ],
+          "event_ids": [
+            "ev-20260929-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260929-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-29T10:00:00Z",
+          "discovered_at": "2026-10-01T16:01:43Z",
+          "summary_zh": "OpenAI 发布低成本 GPT-6.1 Sol",
+          "summary_en": "OpenAI releases GPT-6.1 Sol near Astra capability at lower cost",
+          "evidence_ids": [
+            "ev-20260929-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "first_seen_at": "2026-10-01T16:01:43Z",
+      "last_updated_at": "2026-10-01T16:01:43Z",
+      "secondary_sources": [],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 4,
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "event_id": "ev-20260929-03",
+      "title": "OpenAI launches Dots as always-on cloud agents",
+      "title_zh": "OpenAI 推出持续运行的云端 agent Dots",
+      "category": "ai-agent",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-09-29T17:00:00Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/introducing-dots/",
+      "summary_zh": "OpenAI 推出 Dots。每个 Dot 都有独立云端电脑，可连接应用，并在多次对话之间持续工作。产品由 GPT-6 Astra 驱动，用户可以设定自主范围并复核结果。首批面向部分 Pro 与 Business Premium 用户，Enterprise 需管理员开启 beta；一个月后的使用价格尚未公布。",
+      "summary_en": "OpenAI launched Dots, always-on agents with individual cloud computers that can connect apps and continue work between conversations. Dots use GPT-6 Astra while users define autonomy and review results. Rollout is limited to eligible Pro and Business Premium users, with an administrator-enabled Enterprise beta; usage terms after the first free month are not published.",
+      "why_it_matters_zh": "对设计长期运行 agent 的团队来说，Dots 把持续计算、应用连接和人工复核做成产品形态。但访问范围、后续计费和企业控制仍在变化，暂时只应观察真实任务完成率、撤权和审计能力。",
+      "why_it_matters_en": "For long-running agent teams, Dots productize persistent compute, app connections and human review. Access, later pricing and enterprise controls are still moving, so watch real task completion, revocation and audit behavior before investing.",
+      "technical_details": {
+        "runtime": "one cloud computer per Dot",
+        "model": "GPT-6 Astra",
+        "continuity": "continues work between conversations",
+        "controls": "users define autonomy and review results",
+        "availability": "gradual Pro and Business Premium rollout; Enterprise administrator-enabled beta",
+        "pricing": "free for the first month; later terms unpublished"
+      },
+      "technical_details_zh": {
+        "运行环境": "每个 Dot 一台云端电脑",
+        "模型": "GPT-6 Astra",
+        "持续性": "可跨对话继续工作",
+        "控制": "用户设定自主范围并复核结果",
+        "可用性": "逐步向 Pro 与 Business Premium 开放；Enterprise 需管理员开启 beta",
+        "计价": "首月免费，后续条款未公布"
+      },
+      "tags": [
+        "dots",
+        "always-on-agents",
+        "cloud-computer",
+        "long-running-agents"
+      ],
+      "recommendation": "WATCH",
+      "event_fingerprint": "openai-dots-always-on-cloud-agents",
+      "source_ids": [
+        "src-dec620cb7225d243"
+      ],
+      "project_ids": [
+        "openai-dots"
+      ],
+      "short_label_zh": "OpenAI Dots",
+      "short_label_en": "OpenAI Dots",
+      "next_action_zh": "等待后续计价和企业控制说明，再复核真实任务完成率、撤权、审计与应用连接边界。",
+      "next_action_en": "Wait for post-trial pricing and enterprise controls, then reassess task completion, revocation, audit and app boundaries.",
+      "summary": "OpenAI launched Dots, always-on agents with individual cloud computers that can connect apps and continue work between conversations. Dots use GPT-6 Astra while users define autonomy and review results. Rollout is limited to eligible Pro and Business Premium users, with an administrator-enabled Enterprise beta; usage terms after the first free month are not published.",
+      "why_it_matters": "For long-running agent teams, Dots productize persistent compute, app connections and human review. Access, later pricing and enterprise controls are still moving, so watch real task completion, revocation and audit behavior before investing.",
+      "evidence": [
+        {
+          "id": "ev-20260929-03-release-evidence",
+          "claim_zh": "OpenAI 推出 Dots。每个 Dot 都有独立云端电脑，可连接应用，并在多次对话之间持续工作。产品由 GPT-6 Astra 驱动，用户可以设定自主范围并复核结果。首批面向部分 Pro 与 Business Premium 用户，Enterprise 需管理员开启 beta；一个月后的使用价格尚未公布。",
+          "claim_en": "OpenAI launched Dots, always-on agents with individual cloud computers that can connect apps and continue work between conversations. Dots use GPT-6 Astra while users define autonomy and review results. Rollout is limited to eligible Pro and Business Premium users, with an administrator-enabled Enterprise beta; usage terms after the first free month are not published.",
+          "source_ids": [
+            "src-dec620cb7225d243"
+          ],
+          "event_ids": [
+            "ev-20260929-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260929-03-published",
+          "kind": "new",
+          "occurred_at": "2026-09-29T17:00:00Z",
+          "discovered_at": "2026-10-01T16:01:43Z",
+          "summary_zh": "OpenAI 推出持续运行的云端 agent Dots",
+          "summary_en": "OpenAI launches Dots as always-on cloud agents",
+          "evidence_ids": [
+            "ev-20260929-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

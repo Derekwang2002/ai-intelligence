@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-01",
+  "provenance": "Primary-source incremental scan for 2026-10-01T16-01-43Z.",
+  "events": [
+    {
+      "first_seen_at": "2026-10-01T16:01:43Z",
+      "last_updated_at": "2026-10-01T16:01:43Z",
+      "secondary_sources": [
+        "https://allenai.org/papers/olmocore3",
+        "https://github.com/allenai/olmo-core"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 5,
+      "risk": 3,
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "event_id": "ev-20261001-01",
+      "title": "Ai2 opens Olmo-core 3 for trillion-parameter MoE training",
+      "title_zh": "Ai2 开源万亿参数 MoE 训练栈 Olmo-core 3",
+      "category": "infrastructure",
+      "organization": [
+        "Ai2"
+      ],
+      "published_at": "2026-10-01T15:01:43Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/blog/allenai/olmocore3",
+      "summary_zh": "Ai2 发布 Olmo-core 3，重写开放 MoE 训练栈，让专家常驻 GPU，并用数据并行、张量并行、流水线并行与专家并行共同扩展。作者在 512 张 NVIDIA B300 上运行了 1.2T 参数、每 token 激活 58.36B 参数的配置。代码完全开放；性能数字来自随机路由、短时测量，不代表持续训练吞吐。",
+      "summary_en": "Ai2 released Olmo-core 3, a redesigned open MoE training stack that keeps experts resident on GPUs and combines data, tensor, pipeline and expert parallelism. Ai2 ran a 1.2T-parameter configuration with 58.36B active parameters per token across 512 NVIDIA B300 GPUs. The code is fully open, but the published throughput uses random routing and short measurements rather than sustained training.",
+      "why_it_matters_zh": "对训练自有 MoE 的团队来说，这提供了可检查、可改造的超大规模参考实现，不必只依赖厂商私有栈。先在 8–32 张现有 GPU 上验证路由均衡、checkpoint 恢复、通信占比和持续吞吐，再考虑扩大规模。",
+      "why_it_matters_en": "For teams training their own MoEs, this is an inspectable, adaptable large-scale reference stack rather than a vendor-only system. Validate routing balance, checkpoint recovery, communication share and sustained throughput on 8–32 existing GPUs before scaling out.",
+      "technical_details": {
+        "architecture": "DDP-based MoE stack with expert, tensor and pipeline parallelism",
+        "largest_test": "1.2T total parameters, 58.36B active per token, 512 NVIDIA B300 GPUs",
+        "peak": "858 TFLOP/s/GPU in short random-routing tests",
+        "expert_scaling": "8 to 128 experts, four selected per token; 6B to 47B total capacity with under 5% throughput loss in one benchmark",
+        "precision": "MXFP8 support",
+        "license": "Apache-2.0 code"
+      },
+      "technical_details_zh": {
+        "架构": "基于 DDP 的 MoE 栈，组合专家、张量与流水线并行",
+        "最大测试": "1.2T 总参数、每 token 激活 58.36B 参数、512 张 NVIDIA B300",
+        "峰值": "短时随机路由测试为 858 TFLOP/s/GPU",
+        "专家扩展": "8 增至 128 个专家，每 token 选 4 个；单项测试总容量从 6B 增至 47B，吞吐下降不足 5%",
+        "精度": "支持 MXFP8",
+        "许可证": "Apache-2.0 代码"
+      },
+      "tags": [
+        "olmo-core-3",
+        "moe",
+        "distributed-training",
+        "open-source",
+        "mxfp8"
+      ],
+      "recommendation": "TRIAL",
+      "event_fingerprint": "ai2-olmo-core-3-moe-training-stack",
+      "source_ids": [
+        "src-f928531f96372519",
+        "src-2db32d5d28bd533f",
+        "src-6e102a4967e3ee1b"
+      ],
+      "project_ids": [
+        "olmo-core"
+      ],
+      "short_label_zh": "Olmo-core 3",
+      "short_label_en": "Olmo-core 3",
+      "next_action_zh": "先在 8–32 张现有 GPU 上验证路由均衡、checkpoint 恢复、通信占比和持续吞吐。",
+      "next_action_en": "Validate routing balance, checkpoint recovery, communication share and sustained throughput on 8–32 existing GPUs first.",
+      "summary": "Ai2 released Olmo-core 3, a redesigned open MoE training stack that keeps experts resident on GPUs and combines data, tensor, pipeline and expert parallelism. Ai2 ran a 1.2T-parameter configuration with 58.36B active parameters per token across 512 NVIDIA B300 GPUs. The code is fully open, but the published throughput uses random routing and short measurements rather than sustained training.",
+      "why_it_matters": "For teams training their own MoEs, this is an inspectable, adaptable large-scale reference stack rather than a vendor-only system. Validate routing balance, checkpoint recovery, communication share and sustained throughput on 8–32 existing GPUs before scaling out.",
+      "evidence": [
+        {
+          "id": "ev-20261001-01-release-evidence",
+          "claim_zh": "Ai2 发布 Olmo-core 3，重写开放 MoE 训练栈，让专家常驻 GPU，并用数据并行、张量并行、流水线并行与专家并行共同扩展。作者在 512 张 NVIDIA B300 上运行了 1.2T 参数、每 token 激活 58.36B 参数的配置。代码完全开放；性能数字来自随机路由、短时测量，不代表持续训练吞吐。",
+          "claim_en": "Ai2 released Olmo-core 3, a redesigned open MoE training stack that keeps experts resident on GPUs and combines data, tensor, pipeline and expert parallelism. Ai2 ran a 1.2T-parameter configuration with 58.36B active parameters per token across 512 NVIDIA B300 GPUs. The code is fully open, but the published throughput uses random routing and short measurements rather than sustained training.",
+          "source_ids": [
+            "src-f928531f96372519",
+            "src-2db32d5d28bd533f",
+            "src-6e102a4967e3ee1b"
+          ],
+          "event_ids": [
+            "ev-20261001-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261001-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-01T15:01:43Z",
+          "discovered_at": "2026-10-01T16:01:43Z",
+          "summary_zh": "Ai2 开源万亿参数 MoE 训练栈 Olmo-core 3",
+          "summary_en": "Ai2 opens Olmo-core 3 for trillion-parameter MoE training",
+          "evidence_ids": [
+            "ev-20261001-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}
