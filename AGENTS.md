@@ -200,7 +200,9 @@ events/YYYY-MM-DD.json
   "recommendation": "",
   "event_fingerprint": "",
   "short_label_zh": "",
-  "short_label_en": ""
+  "short_label_en": "",
+  "next_action_zh": "",
+  "next_action_en": ""
 }
 ```
 
@@ -209,8 +211,19 @@ events/YYYY-MM-DD.json
 - `category` 只能取 `config/taxonomy.json` 的 `categories`；`source_type` 只能取 `source_types`。别名表只用于归一历史数据，新事件不得使用别名或自造新值。需要新分类时先改 taxonomy 并确认 `site/src/lib/quadrants.ts` 已覆盖，否则雷达会静默丢弃该事件。
 - `organization` 写规范名称，不写 `organization_aliases` 中的别名（例如写 `Cursor` 而不是 `Anysphere`，写 `academic` 而不是 `academic (see paper)`）。
 - `short_label_zh` / `short_label_en`：雷达图与清单上显示的短名，≤ 24 个字符，写产品、模型或论文名本身（如 `Holo4`、`Claude Sonnet 5.5`、`StateMemBench`），不要写成动词短语或截断的标题。
-- `trial_reason_zh` / `trial_reason_en`：`maturity ≤ 2` 却给 `TRIAL` 时必填，见 §16.2。
+- `trial_reason_zh` / `trial_reason_en`：旧字段，已由 `next_action` 取代；`maturity ≤ 2` 却给 `TRIAL` 时，`next_action` 必须写成一天内可完成的验证，见 §16.2。
 - `late_discovery`（可选，布尔）：overlap 或召回自检补录的上轮漏检事件，见 §3。
+
+决策字段与摘要纪律（`decision_rules_effective_at` 之后**首次入库或实质更新**的事件由校验强制执行）：
+
+- `next_action_zh` / `next_action_en`：首页卡片上的「建议动作」，一句祈使句，写给要做决定的工程师，落到具体对象和条件。中文 ≤ 80 字，英文 ≤ 200 字符。按等级写法不同：
+  - ADOPT：怎么采用或升级，升级前要回归什么。
+  - TRIAL：一天内能做的验证，用什么公开材料、测什么指标。
+  - WATCH：等到什么信号再重新评估。
+  - IGNORE：为什么不必投入。
+- 更新已有事件时，`next_action` 要按新情况重写，不要沿用旧版本的建议。
+- `summary_zh` ≤ 320 字、`summary_en` ≤ 800 字符。summary 只讲「这件事是什么」。**更新事件时不要把版本流水追加进 summary**：新版本的内容写进 `changes[]`，必要的版本细节放进 `technical_details`。已经写成长流水账的旧事件，下次更新时顺手压缩到上限以内。
+- 被实质更新的旧事件同样需要 `short_label_zh/en`。
 
 事件日期归属规则：
 
@@ -700,7 +713,7 @@ Risk 综合考虑 license、security、vendor lock-in、API stability、privacy�
 TRIAL 的意思是「值得团队花时间做 POC」，不是「看起来有意思」。前两条由校验脚本对新事件强制执行，后两条靠编辑判断：
 
 - `maturity ≤ 2` 的事件不得给 `ADOPT`。
-- `maturity ≤ 2` 的事件给 `TRIAL` 时，必须填写 `trial_reason_zh/en`，写清「团队在一天之内能用什么公开材料验证什么」。写不出来就给 `WATCH`。
+- `maturity ≤ 2` 的事件给 `TRIAL` 时，`next_action_zh/en` 必须写清「团队在一天之内能用什么公开材料验证什么」（旧事件的 `trial_reason_zh/en` 同样有效）。写不出来就给 `WATCH`。
 - 没有公开代码、权重或可调用 API 的论文和预告，最高 `WATCH`。
 - 召回自检里社区热度高、但判断不值得投入的条目（例如热门但缺乏可验证证据的项目），入库并标 `IGNORE`，写明原因。「热但不值得」本身是读者需要的判断，不要静默丢弃。
 
@@ -775,7 +788,7 @@ Checkpoint updated:
 
 ### 数据入口
 
-- `projects/catalog.json`：稳定项目 ID、名称/别名、类型、关联事件与来源、`current_judgment_event_id`（当前判断的事件依据）、`official_source_ids` 与独立的 `last_reviewed_at`。只关联明确的产品，不把整家公司视为同一项目。
+- `projects/catalog.json`：稳定项目 ID、名称/别名、类型、关联事件与来源、`current_judgment_event_id`（当前判断的事件依据）、`official_source_ids` 与独立的 `last_reviewed_at`。只关联明确的产品，不把整家公司视为同一项目。每个项目有自己的 `judgment`（见下文「项目判断」），项目页和项目卡片以它为主。
 - `sources/catalog.json`：规范 URL、标题、材料类型、发布主体、官方关系（true/false/null）、检查记录。主来源与补充来源都可能是一手材料；未知关系保留 null。
 - `topics/catalog.json`：长期研究问题、双语回答/边界/开放问题/`review_trigger`、趋势与证据引用。每次扫描复核相关专题，有新的回答才新增变化记录。
 - `briefings/*.json`：每次成功扫描一份结构化阅读版本，包括实际变化 ID、最多 5 个必读及双语入选理由。`baseline` 或 `historical` 不构成新的未读通知。
@@ -795,6 +808,25 @@ Checkpoint updated:
 - 场景固定为 `agents`、`models`、`local`、`research`。说明应明确面向谁、适用条件与限制，不能只给无条件推荐。
 - 来源链接须对应具体材料。转载不算独立验证；厂商 benchmark 必须标为厂商报告。
 - `editorial_pick`（可选）：`reason_zh/en` 和 `source_ids`。若称“低关注”，还必须有可核查的关注度依据，否则仅称“工程精选”。
+
+### 项目判断
+
+项目是长期产品（工具、模型家族、协议）的主单元。项目的等级和结论属于项目本身，**不从某条事件继承**：按名称自动关联的事件可能只是「提到」这个项目（例如 vLLM 的发布提到 Kimi-K3），它的评级不能当作项目的评级。
+
+```json
+"judgment": {
+  "recommendation": "ADOPT | TRIAL | WATCH | IGNORE",
+  "judgment_zh": "", "judgment_en": "",
+  "next_action_zh": "", "next_action_en": "",
+  "basis_event_ids": ["ev-..."],
+  "reviewed_at": "ISO 8601"
+}
+```
+
+- `judgment_*`：2–3 句，说清「它现在是什么状态、适合谁、主要限制」。中文 ≤ 200 字，英文 ≤ 500 字符。不写版本流水，版本变化在项目时间线里看。
+- `next_action_*`：可选，规则同事件的 `next_action`。
+- `basis_event_ids`：支撑这个判断的事件，必须是该项目 `event_ids` 里的事件。
+- 项目的任何事件在 `decision_rules_effective_at` 之后发生变化（新事件、更新、纠正、评级调整），本次运行都必须复核这个项目的判断：内容不变也要把 `reviewed_at` 更新到本次运行时间；结论或等级变了，就重写并在项目 `changes[]` 记一条 `recommendation` 变化（带 `before` / `after`）。校验会拒绝 `reviewed_at` 早于项目最新变化的情况。
 
 ### 候选处置词表
 

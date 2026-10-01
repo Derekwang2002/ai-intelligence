@@ -1,11 +1,27 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ReaderActions from '../ReaderActions.astro';
+import RecBadge from '../RecBadge.astro';
 import {intel,pick,words} from '../../lib/intelligence';
-import {u,fmtDate} from '../../lib/url';
+import {u} from '../../lib/url';
+import {splitLead} from '../../lib/reader-store.mjs';
+import eventList from '../../data/generated/events.json';
 const {locale='zh'}=Astro.props;
+const typeLabel:any={'developer-tool':['开发工具','Developer tool'],framework:['框架','Framework'],'model-family':['模型家族','Model family'],model:['模型','Model'],'agent-model':['Agent 模型','Agent model'],protocol:['协议','Protocol'],sdk:['SDK','SDK']};
+const events:any=Object.fromEntries(eventList.map((e:any)=>[e.event_id,e]));
+const eventTitle=(e:any)=>e?(locale==='zh'?e.title_zh:e.title):'';
+// One line per tile: the written judgment, or the basis event's title until a judgment exists.
+const oneLine=(p:any)=>p.judgment?splitLead(pick(p.judgment,'judgment',locale))[0]:eventTitle(events[p.basis_event_id]);
+const projects=[...intel.projects].sort((a:any,b:any)=>(b.last_change?.date||'').localeCompare(a.last_change?.date||''));
 ---
 <Base title={words(locale,'项目档案','Projects')} locale={locale}>
-<header class="editorial-head"><div class="eyebrow">MATRIX / PROJECTS</div><h1>{words(locale,'项目档案','Projects')}</h1><p class="lead">{words(locale,'模型、工具与协议的持续档案。看当前状态，也看一路如何走来。','Living records of models, tools and protocols. See their current state and how they got here.')}</p></header>
-<div class="project-grid">{intel.projects.map((p:any)=><article class="project-tile"><div class="eyebrow">{words(locale,({'developer-tool':'开发工具',framework:'框架','model-family':'模型家族',protocol:'协议'}[p.type]||p.type),p.type.replaceAll('-',' '))}</div><h2><a href={u(`/projects/${p.id}/`,locale)}>{pick(p,'name',locale)}</a></h2><p>{p.event_ids.length} {words(locale,'条相关事件','related events')} · {fmtDate(p.as_of)}</p><ReaderActions locale={locale} follow={`project:${p.id}`}/><a class="text-link" href={u(`/projects/${p.id}/`,locale)}>{words(locale,'查看档案','Open record')} →</a></article>)}</div>
+<header class="editorial-head"><div class="eyebrow">MATRIX / PROJECTS</div><h1>{words(locale,'项目档案','Projects')}</h1><p class="lead">{words(locale,'模型、工具与协议的持续档案。看当前判断，也看一路如何走来。','Living records of models, tools and protocols. See the current judgment and how it got here.')}</p></header>
+<div class="project-grid">{projects.map((p:any)=><article class="project-tile">
+ <div class="tile-head"><div class="eyebrow">{(typeLabel[p.type]||[p.type,p.type])[locale==='zh'?0:1]}</div>{p.recommendation&&<RecBadge rec={p.recommendation} locale={locale}/>}</div>
+ <h2><a href={u(`/projects/${p.id}/`,locale)}>{pick(p,'name',locale)}</a></h2>
+ <p class="tile-judgment">{oneLine(p)}</p>
+ {p.last_change&&<p class="tile-change">{words(locale,'最近变化','Latest change')} · {p.last_change.date}：{splitLead(pick(p.last_change,'summary',locale))[0]}</p>}
+ <ReaderActions locale={locale} follow={`project:${p.id}`}/>
+ <a class="text-link" href={u(`/projects/${p.id}/`,locale)}>{words(locale,'查看档案','Open record')} →</a>
+</article>)}</div>
 </Base>

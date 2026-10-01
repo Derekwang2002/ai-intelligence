@@ -12,7 +12,8 @@ MATRIX 继续以文件知识库为唯一来源，Astro 在构建时生成只读�
 
 ## 数据契约
 
-- `projects/catalog.json`: `{version:1, projects:[{id,name_zh,name_en,type,aliases,event_ids,source_ids,changes?}]}`。稳定 ID 必须来自明确项目身份；研究论文可以暂不归属项目。
+- `projects/catalog.json`: `{version:1, projects:[{id,name_zh,name_en,type,aliases,event_ids,source_ids,judgment?,changes?}]}`。稳定 ID 必须来自明确项目身份；研究论文可以暂不归属项目。`judgment` 为 `{recommendation,judgment_zh/en,next_action_zh/en?,basis_event_ids,reviewed_at}`，是项目自己的等级与结论，不从事件继承；`decision_rules_effective_at` 之后项目事件有变化时，`reviewed_at` 必须不早于最新变化。
+- 事件决策字段：`next_action_zh/en`（≤80 字 / 200 字符）。`decision_rules_effective_at` 之后首次入库或实质更新的事件必须提供，同时 `summary_zh` ≤ 320 字、`summary_en` ≤ 800 字符，并带 `short_label_zh/en`。
 - `sources/catalog.json`: `{version:1,sources:[{id,url,title,publisher,kind,official,verification,published_at,last_checked_at,checks}]}`。`official` 可为空；材料类型与官方身份分开。`checks` 记录 `checked_at/status/method/note/content_hash?`。状态为 success/changed/unchanged/failed/not_checked。没有记录显示未知；“成功访问”不意味着结论核实。
 - 事件 `evidence[]`: `{id,claim_zh,claim_en,source_ids,event_ids,relation,verification}`。证据必须有实际引用。趋势使用相同结构，并保留旧文本数组；未准确映射的历史文本不生成链接。
 - 对象 `changes[]`: `{id,kind,occurred_at,discovered_at,summary_zh,summary_en,evidence_ids,historical,before?,after?,importance?}`。支持事件、项目、趋势、专题。kind 仅为 new/update/correction/recommendation/trend；routine review 不允许进入变化列表。correction/recommendation 必须保存 before/after。

@@ -2,6 +2,7 @@
 import {intel,words,pick,changeLabel} from '../lib/intelligence';
 import {u} from '../lib/url';
 import SourceLinks from './SourceLinks.astro';
+import RecBadge from './RecBadge.astro';
 import {splitLead} from '../lib/reader-store.mjs';
 const {locale='zh',following=false,changes=intel.changes,controls=true}=Astro.props;
 // Default view = the latest completed briefing (briefings are sorted newest first).
@@ -30,13 +31,14 @@ const entries=[...groups.values()].sort((a,b)=>Math.min(...a.map(c=>(highlights.
  const headline=first.kind!=='new'?splitLead(pick(first,'summary',locale))[0]:''; const keys=[...(c.topic_ids||[]).map((id:string)=>`topic:${id}`),...c.project_ids.map((id:string)=>`project:${id}`),...c.scenario_ids.map((id:string)=>`scenario:${id}`),...c.trend_ids.map((id:string)=>`trend:${id}`),...intel.topics.filter((t:any)=>t.trend_ids.some((id:string)=>c.trend_ids.includes(id))).map((t:any)=>`topic:${t.id}`)];
  const labels=Object.fromEntries(keys.map(key=>{const [type,id]=key.split(':');const item=type==='scenario'?intel.scenarios.find((s:any)=>s.id===id):intel.search.find((s:any)=>s.type===type&&s.id===id);return [key,pick(item,type==='scenario'?'name':'title',locale)||id]}));
  return <article class="brief-item" data-feed-item data-follow-keys={JSON.stringify(keys)} data-follow-labels={JSON.stringify(labels)} hidden={controls&&!list.some(v=>latestIds.has(v.id))}>
-  <div class="brief-meta"><span class="change-kind">{changeLabel(first.kind,locale)}</span><time>{first.date}</time><span class="feed-reason"></span></div>
+  <div class="brief-meta"><span class="change-kind">{changeLabel(first.kind,locale)}</span><time>{first.date}</time><span class="feed-reason"></span>{c.recommendation&&<span class="brief-tier"><RecBadge rec={c.recommendation} locale={locale}/></span>}</div>
   <h2><a href={u(c.path,locale)} data-title={pick(c,'title',locale)}>{headline||pick(c,'title',locale)}</a></h2>
   <p class="brief-parent" hidden={!headline}>{(parentLabel[c.object_type]||parentLabel.event)[locale==='zh'?0:1]}<a href={u(c.path,locale)}>{pick(c,'title',locale)}</a></p>
+  {pick(c,'next_action',locale)&&<p class="brief-action"><span>{words(locale,'建议动作','Next step')}</span>{pick(c,'next_action',locale)}</p>}
   <div class="changes"><div class="latest-change"></div><details class="matrix-fold change-history" hidden><summary></summary><div class="fold-body"></div></details>{list.map((v:any)=><div data-change={JSON.stringify({id:v.id,date:v.date,historical:v.historical||false,kind:v.kind,highlight:highlights.has(v.id),importance:v.importance,latest:latestIds.has(v.id),lead:v.kind==='new'?'':splitLead(pick(v,'summary',locale))[0]})}>
     {(()=>{const full=pick(v,'summary',locale),rest=splitLead(full)[1],text=v===first&&headline?rest:full;return <p class="change-summary" data-full={full} data-rest={rest} hidden={!text}>{text}</p>;})()}
     {highlights.has(v.id)&&<p class="editor-note">{words(locale,'为什么读：','Why read: ')}{pick(highlights.get(v.id),'reason',locale)}</p>}
-    {v.before&&v.after&&<p>{pick(v,'before',locale)||v.before} → {pick(v,'after',locale)||v.after}</p>}
+    {v.before&&v.after&&<p class={v.kind==='recommendation'?'tier-shift':undefined}>{v.kind==='recommendation'&&words(locale,'建议调整：','Recommendation: ')}{pick(v,'before',locale)||v.before} → {pick(v,'after',locale)||v.after}</p>}
     <SourceLinks ids={v.source_ids.slice(0,2)} compact locale={locale}/>
     <button class="text-button" data-read={v.id}>{words(locale,'标为已读','Mark read')}</button>
   </div>)}</div>

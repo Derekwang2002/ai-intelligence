@@ -60,10 +60,32 @@ export const RUN_DECISIONS = ['new-event', 'update-existing', 'duplicate', 'corr
 export const DECISIONS_CITING_EVENT = ['new-event', 'update-existing', 'duplicate', 'correction'];
 export const RECOMMENDATIONS = ['ADOPT', 'TRIAL', 'WATCH', 'IGNORE'];
 export const SHORT_LABEL_MAX = 24;
+// Reader-facing length limits (characters). Summaries say what the thing is; history goes to changes[].
+export const LIMITS = { summary_zh: 320, summary_en: 800, next_action_zh: 80, next_action_en: 200, judgment_zh: 200, judgment_en: 500 };
 const chars = value => [...String(value ?? '')].length;
+const after = (value, threshold) => Number.isFinite(Date.parse(value)) && Date.parse(value) >= Date.parse(threshold);
+function textErrors(obj, key, id, required) {
+  const errors = [];
+  for (const lang of ['zh', 'en']) {
+    const value = obj?.[`${key}_${lang}`], limit = LIMITS[`${key}_${lang}`];
+    if (typeof value !== 'string' || !value.trim()) { if (required) errors.push(`${id}: missing ${key}_${lang}`); }
+    else if (chars(value) > limit) errors.push(`${id}: ${key}_${lang} has ${chars(value)} characters (limit ${limit})`);
+  }
+  return errors;
+}
+function shortLabelErrors(e, id) {
+  const errors = [];
+  for (const lang of ['zh', 'en']) {
+    const label = e[`short_label_${lang}`];
+    if (typeof label !== 'string' || !label.trim()) errors.push(`${id}: missing short_label_${lang}`);
+    else if (chars(label) > SHORT_LABEL_MAX) errors.push(`${id}: short_label_${lang} exceeds ${SHORT_LABEL_MAX} characters`);
+  }
+  return errors;
+}
 export function taxonomyErrors(taxonomy) {
   const errors = [];
   if (!Number.isFinite(Date.parse(taxonomy.rules_effective_at))) errors.push('taxonomy: invalid rules_effective_at');
+  if (taxonomy.decision_rules_effective_at !== undefined && !Number.isFinite(Date.parse(taxonomy.decision_rules_effective_at))) errors.push('taxonomy: invalid decision_rules_effective_at');
   for (const [alias, target] of Object.entries(taxonomy.category_aliases || {})) if (!taxonomy.categories.includes(target)) errors.push(`taxonomy: category alias ${alias} -> unknown ${target}`);
   for (const [alias, target] of Object.entries(taxonomy.source_type_aliases || {})) if (!taxonomy.source_types.includes(target)) errors.push(`taxonomy: source_type alias ${alias} -> unknown ${target}`);
   return errors;
@@ -76,13 +98,27 @@ export function eventRuleErrors(e, taxonomy) {
   if (!taxonomy.source_types.includes(e.source_type)) errors.push(`${id}: source_type "${e.source_type}" is not in config/taxonomy.json${hint(taxonomy.source_type_aliases, e.source_type)}`);
   if (!e.organization?.length) errors.push(`${id}: organization is empty`);
   for (const org of e.organization || []) if (taxonomy.organization_aliases?.[org]) errors.push(`${id}: organization "${org}" should be "${taxonomy.organization_aliases[org]}"`);
-  for (const lang of ['zh', 'en']) {
-    const label = e[`short_label_${lang}`];
-    if (typeof label !== 'string' || !label.trim()) errors.push(`${id}: missing short_label_${lang}`);
-    else if (chars(label) > SHORT_LABEL_MAX) errors.push(`${id}: short_label_${lang} exceeds ${SHORT_LABEL_MAX} characters`);
-  }
+  errors.push(...shortLabelErrors(e, id));
   if (e.maturity <= 2 && e.recommendation === 'ADOPT') errors.push(`${id}: maturity ${e.maturity} cannot be ADOPT`);
-  if (e.maturity <= 2 && e.recommendation === 'TRIAL') for (const lang of ['zh', 'en']) if (!e[`trial_reason_${lang}`]?.trim()) errors.push(`${id}: TRIAL at maturity ${e.maturity} needs trial_reason_${lang}`);
+  // next_action doubles as the one-day verification for an early TRIAL (AGENTS.md §16.2).
+  if (e.maturity <= 2 && e.recommendation === 'TRIAL') for (const lang of ['zh', 'en']) if (!e[`trial_reason_${lang}`]?.trim() && !e[`next_action_${lang}`]?.trim()) errors.push(`${id}: TRIAL at maturity ${e.maturity} needs next_action_${lang} (or trial_reason_${lang})`);
+  return errors;
+}
+// Decision fields for events first seen or materially updated after decision_rules_effective_at:
+// every card states what to do next, and summaries stay short instead of accumulating version logs.
+export function eventDecisionErrors(e) {
+  const id = `event ${e.event_id}`;
+  return [...textErrors(e, 'next_action', id, true), ...textErrors(e, 'summary', id, false), ...shortLabelErrors(e, id)];
+}
+// A project's own current judgment; it is never inherited from whichever event matched its name.
+export function projectJudgmentErrors(p) {
+  const j = p.judgment, id = `project ${p.id}`;
+  if (!j) return [];
+  const errors = [...textErrors(j, 'judgment', id, true), ...textErrors(j, 'next_action', id, false)];
+  if (!RECOMMENDATIONS.includes(j.recommendation)) errors.push(`${id}: judgment recommendation "${j.recommendation}"`);
+  if (!j.basis_event_ids?.length) errors.push(`${id}: judgment needs basis_event_ids`);
+  for (const ev of j.basis_event_ids || []) if (!p.event_ids.includes(ev)) errors.push(`${id}: judgment basis ${ev} is not one of its events`);
+  if (!Number.isFinite(Date.parse(j.reviewed_at))) errors.push(`${id}: judgment needs reviewed_at`);
   return errors;
 }
 export function materialChanges(events, trends, topics=[], projects=[]) {
@@ -124,6 +160,16 @@ export function validateKnowledge({ events, projects, sources, trends, topics, b
     if (!['verified', 'frontier', 'legacy'].includes(e.evidence_stage)) errors.push(`event ${e.event_id}: evidence_stage`);
     if (!RECOMMENDATIONS.includes(e.recommendation)) errors.push(`event ${e.event_id}: recommendation "${e.recommendation}"`);
     if (taxonomy && Date.parse(e.first_seen_at) >= Date.parse(taxonomy.rules_effective_at)) errors.push(...eventRuleErrors(e, taxonomy));
+    const decided = taxonomy?.decision_rules_effective_at;
+    if (decided && (after(e.first_seen_at, decided) || after(e.last_updated_at, decided))) errors.push(...eventDecisionErrors(e));
+  }
+  // When a project's events change after the decision rules date, its judgment must be re-reviewed.
+  const latestChange = new Map(events.map(e => [e.event_id, (e.changes || []).map(c => c.discovered_at).filter(Boolean).sort().at(-1)]));
+  for (const p of projects) {
+    errors.push(...projectJudgmentErrors(p));
+    const decided = taxonomy?.decision_rules_effective_at;
+    const latest = [...(p.event_ids || []).map(id => latestChange.get(id)), ...(p.changes || []).map(c => c.discovered_at)].filter(Boolean).sort().at(-1);
+    if (decided && after(latest, decided) && !(p.judgment && Date.parse(p.judgment.reviewed_at) >= Date.parse(latest))) errors.push(`project ${p.id}: judgment must be reviewed after its latest change (${latest})`);
   }
   for (const ev of evidence) { bilingual(ev, ['claim'], ev.id); refs(ev.source_ids, sids, ev.id); refs(ev.event_ids, eids, ev.id); if (!ev.source_ids?.length && !ev.event_ids?.length) errors.push(`evidence ${ev.id}: no references`); }
   for (const c of changes) {
@@ -137,5 +183,5 @@ export function validateKnowledge({ events, projects, sources, trends, topics, b
   for (const t of topics) { bilingual(t, ['question', 'answer', 'boundary'], t.id); refs(t.trend_ids, tids, t.id); refs(t.evidence_ids, evids, t.id); }
   for (const b of briefings) { refs(b.change_ids, cids, b.id); if (b.highlights.length > 5) errors.push(`briefing ${b.id}: more than five highlights`); for (const h of b.highlights) { refs([h.change_id], new Set(b.change_ids), b.id); bilingual(h, ['reason'], b.id); } }
   for (const r of reviews) { if (!eids.has(r.event_id)) errors.push(`review ${r.id}: unknown event`); }
-  return errors;
+  return [...new Set(errors)];
 }

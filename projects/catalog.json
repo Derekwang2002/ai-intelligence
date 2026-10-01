@@ -38,7 +38,18 @@
         "src-57f842e49c5467e5",
         "src-cdf0d63217ad659b"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z"
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "judgment": {
+        "recommendation": "ADOPT",
+        "judgment_zh": "Claude Code 已是成熟的本地多 agent 运行时：subagent fork、跨会话消息、沙箱资源限制和网关身份治理都在稳定版里。9 月下旬的 2.1.283 和 2.1.284 继续补强模型治理、沙箱拒绝策略与 MCP 恢复。",
+        "judgment_en": "Claude Code is a mature local multi-agent runtime: subagent forking, cross-session messaging, sandbox resource limits and gateway identity controls are all in stable releases. Versions 2.1.283 and 2.1.284 in late September tightened model governance, sandbox denial policies and MCP recovery.",
+        "next_action_zh": "升级到 2.1.284 前，回归读取审批、沙箱拒绝策略和 MCP 断线恢复。",
+        "next_action_en": "Before moving to 2.1.284, regression-test read approvals, sandbox denial policies and MCP reconnection.",
+        "basis_event_ids": [
+          "ev-20260814-04"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "qwen-code",
@@ -64,7 +75,18 @@
         "src-d1954e69a0e7a84a",
         "src-50ecef795d7295a5"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z"
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Qwen Code 正在补齐托管运行时：运行时证明、持久执行记录和计划漂移检查之后，0.24.6 与 0.24.7 又加入会话日志、故障转移和 workspace 身份。这些控制还没有独立的安全验证。",
+        "judgment_en": "Qwen Code is filling out a managed runtime: after attestation, durable execution records and plan-drift checks, versions 0.24.6 and 0.24.7 added session journals, failover and workspace identity. None of these controls has independent security validation yet.",
+        "next_action_zh": "在非关键仓库试用 Managed Runtime，任务中途重启 worker，确认有副作用的工具不会重复执行。",
+        "next_action_en": "Trial Managed Runtime on a non-critical repository and restart workers mid-task to confirm side-effecting tools do not run twice.",
+        "basis_event_ids": [
+          "ev-20260922-04"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "github-copilot",
@@ -101,7 +123,21 @@
       ],
       "current_judgment_event_id": "ev-20260813-04",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Copilot 的重心已从补全转向受管控的 agent 平台：企业级托管权限、agent 采用遥测和多 agent code review 都已 GA。跨 agent 共享修复记忆仍是早期功能。",
+        "judgment_en": "Copilot has shifted from completion to a governed agent platform: enterprise-managed permissions, agent adoption telemetry and multi-agent code review are generally available. Shared repair memory across agents is still early.",
+        "next_action_zh": "企业团队先开启托管权限和采用遥测；修复记忆只在试点仓库开启，并跟踪回归与错误经验的扩散。",
+        "next_action_en": "Turn on managed permissions and adoption telemetry first; enable repair memory only in pilot repositories and track regressions and the spread of wrong lessons.",
+        "basis_event_ids": [
+          "ev-20260909-02",
+          "ev-20260917-07",
+          "ev-20260911-11",
+          "ev-20260925-02"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "codex",
@@ -136,7 +172,19 @@
         "src-b6ce910accbcbcac",
         "src-9b9d615d7fb6df0b"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z"
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "judgment": {
+        "recommendation": "ADOPT",
+        "judgment_zh": "Codex CLI 稳定版已有会话 fork、agent 任务面板、可调用 MCP 的异步 hooks 和 Bedrock provider。0.158 与 0.159 又加固了 MCP 认证、命令审批和本地沙箱，并支持运行中转向。托管的 Agents API 仍在公测。",
+        "judgment_en": "The stable Codex CLI has session forking, an agent task dashboard, async hooks that can call MCP tools and a Bedrock provider. Versions 0.158 and 0.159 hardened MCP authentication, command approval and the local sandbox, and added in-flight steering. The hosted Agents API is still in public beta.",
+        "next_action_zh": "升级到 0.159 前回归命令审批、沙箱拒绝规则和运行中转向；Agents API 只做试点。",
+        "next_action_en": "Before moving to 0.159, regression-test command approvals, sandbox denials and in-flight steering; keep the Agents API to pilots.",
+        "basis_event_ids": [
+          "ev-20260818-02",
+          "ev-20260910-02"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "cursor",
@@ -178,7 +226,21 @@
       ],
       "current_judgment_event_id": "ev-20260923-01",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Cursor 正把 coding agent 从编辑器延伸到常驻的云端执行：自托管执行机、面向长期工作的 Projects、部署监控与安全审查都已推出。商业上有两个变量：SpaceX 已完成收购，OpenAI 将在 11 月 12 日停止向 Cursor 供应合同模型。",
+        "judgment_en": "Cursor is extending its coding agent from the editor to always-on cloud execution: self-hosted workers, Projects for months-long work, deployment monitoring and security review have all shipped. Two business variables remain: SpaceX has completed its acquisition, and OpenAI will stop supplying contracted models to Cursor on November 12.",
+        "next_action_zh": "部署监控先用只通知模式，暂停和回滚保留人工审批；依赖 OpenAI 模型的团队提前准备替代。",
+        "next_action_en": "Run deployment monitoring in notify-only mode with human approval for pause or revert; teams relying on OpenAI models should line up alternatives.",
+        "basis_event_ids": [
+          "ev-20260923-01",
+          "ev-20260902-07",
+          "ev-20260910-03",
+          "ev-20260828-03"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "gemini-cli",
@@ -207,7 +269,19 @@
       "official_source_ids": [
         "src-695ca5d6496fefc7"
       ],
-      "last_reviewed_at": "2026-09-27T00:44:11Z"
+      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "Gemini CLI 0.57 稳定版把 A2A server 打进了发布线，但没有文档和公告，接口随时可能变化。构建文件提示注入拦截在 9 月 12 日只出现在 nightly 版中。",
+        "judgment_en": "Gemini CLI 0.57 ships an A2A server in a stable release, but without documentation or an announcement, so the interface can change at any time. Prompt-injection blocking for build files was only seen in a nightly build on September 12.",
+        "next_action_zh": "把 A2A 能力当作路线图信号，不要依赖；等官方文档或稳定版说明出现再评估。",
+        "next_action_en": "Treat the A2A server as a roadmap signal, not a dependency; re-evaluate once official docs or stable release notes describe it.",
+        "basis_event_ids": [
+          "ev-20260825-02",
+          "ev-20260912-01"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "pydantic-ai",
@@ -234,7 +308,18 @@
       ],
       "current_judgment_event_id": "ev-20260917-08",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "ADOPT",
+        "judgment_zh": "Pydantic AI 修复了 web fetch 策略绕过和遥测内容泄露，这是运行时边界漏洞，不是小修。2.51.0 又加入 GPT-Live 支持和实时上下文用量，并降低了 agent graph 开销。",
+        "judgment_en": "Pydantic AI fixed a web-fetch policy bypass and telemetry content leaks, which are runtime-boundary flaws rather than cosmetic patches. Version 2.51.0 added GPT-Live support and realtime context usage and reduced agent graph overhead.",
+        "next_action_zh": "当前版本和 v1 部署都升级，补测私网地址与 hostname 规范化策略，并审查已导出的 trace。",
+        "next_action_en": "Upgrade current and v1 deployments, test private-address and normalized-hostname policies, and review already-exported traces.",
+        "basis_event_ids": [
+          "ev-20260917-08"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "vllm",
@@ -259,7 +344,19 @@
       "official_source_ids": [
         "src-c0d419c5c752474a"
       ],
-      "last_reviewed_at": "2026-09-27T00:44:11Z"
+      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "judgment": {
+        "recommendation": "ADOPT",
+        "judgment_zh": "vLLM 是开放权重模型的默认服务栈：0.28 把 Kimi-K3 与 DeepSeek V4 的专属优化做进主线，0.30 加快了重启，并为稀疏 KV 增加主机层。0.30 有多项不兼容变更。",
+        "judgment_en": "vLLM is the default serving stack for open-weight models: 0.28 brought model-specific work for Kimi-K3 and DeepSeek V4 into the mainline, and 0.30 speeds up restarts and adds a host tier for sparse KV. Version 0.30 has several breaking changes.",
+        "next_action_zh": "分阶段升级到 0.30：显式开启 scale-out endpoint，检查已移除的环境变量和 YaRN 长度计算变化。",
+        "next_action_en": "Stage the 0.30 upgrade: enable scale-out endpoints explicitly and check removed environment variables and the YaRN length change.",
+        "basis_event_ids": [
+          "ev-20260922-01",
+          "ev-20260826-05"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "sglang",
@@ -280,7 +377,18 @@
       ],
       "current_judgment_event_id": "ev-20260918-02",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "ADOPT",
+        "judgment_zh": "SGLang 0.5.20 同时改进了可回放的 RL 采样、分支密集场景的前缀复用和不占 GPU 的容量规划，适合推理与 post-training 团队。",
+        "judgment_en": "SGLang 0.5.20 improves replayable RL sampling, prefix reuse for branch-heavy workloads and capacity planning without GPUs, which suits inference and post-training teams.",
+        "next_action_zh": "上线前测试 Responses 存储默认值的变化，以及旧 prefill context parallel 路径被移除后的兼容性。",
+        "next_action_en": "Before rollout, test the changed Responses storage default and the removal of the legacy prefill context-parallel path.",
+        "basis_event_ids": [
+          "ev-20260918-02"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "deepseek",
@@ -317,7 +425,19 @@
       ],
       "current_judgment_event_id": "ev-20260910-01",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "DeepSeek V4 家族是开放权重 agentic coding 的主要选项：V4-Pro 已 GA 并原生支持 Responses API，V4.1-Flash 以 1M 上下文、开放权重和低价发布，厂商称其在 Terminal-Bench 2.1 上领先。agent 运行时 Harness 和多模态 V4-Flash-Vision-Exp 仍是早期项目。",
+        "judgment_en": "The DeepSeek V4 family is a leading option for open-weight agentic coding: V4-Pro is generally available with native Responses API support, and V4.1-Flash ships with a 1M context, open weights and low pricing, with a vendor-reported lead on Terminal-Bench 2.1. The Harness agent runtime and the multimodal V4-Flash-Vision-Exp are still early.",
+        "next_action_zh": "在自己的 coding 任务上比较 V4.1-Flash 的完成率与成本；自托管前评估 deepseek-recipe 运行时的集成成本。",
+        "next_action_en": "Compare V4.1-Flash completion rate and cost on your own coding tasks; assess the deepseek-recipe runtime integration cost before self-hosting.",
+        "basis_event_ids": [
+          "ev-20260910-01",
+          "ev-20260813-02"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "qwen",
@@ -354,7 +474,20 @@
       ],
       "current_judgment_event_id": "ev-20260920-01",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Qwen 同时推进几条产品线：开放权重的 Qwen3.8-27B（262K 上下文）、实时同传 Qwen3.8-LiveTranslate，以及统一生成与编辑的 Qwen-Image-2.1。下一代 Qwen4 架构目前只通过 Flash-Next 预演。",
+        "judgment_en": "Qwen is advancing several lines at once: the open-weight Qwen3.8-27B with a 262K context, Qwen3.8-LiveTranslate for live interpretation, and Qwen-Image-2.1 for unified generation and editing. The next-generation Qwen4 architecture has only been previewed through Flash-Next.",
+        "next_action_zh": "按产品线分别评估：文本模型在自有任务上测；Qwen-Image-2.1 商业使用前先确认授权条款。",
+        "next_action_en": "Evaluate each line separately: test the text models on your own tasks, and confirm license terms before any commercial use of Qwen-Image-2.1.",
+        "basis_event_ids": [
+          "ev-20260814-01",
+          "ev-20260918-04",
+          "ev-20260920-01"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "glm",
@@ -385,7 +518,20 @@
       ],
       "current_judgment_event_id": "ev-20260825-01",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "GLM-5.3 与 GLM-5.3-Flash 是这一轮中国前沿开放权重里许可最宽松的（MIT），Flash 用混合稀疏-线性注意力压低长上下文的服务成本。已有研究显示，单方向的权重编辑就能去掉 Flash 的拒绝能力。",
+        "judgment_en": "GLM-5.3 and GLM-5.3-Flash carry the most permissive license (MIT) in the current wave of Chinese frontier open weights, and Flash uses hybrid sparse-linear attention to cut long-context serving cost. Research has shown that a single-direction weight edit can strip Flash of its refusals.",
+        "next_action_zh": "自托管前确认 serving 栈版本要求，在自己的长上下文任务上测单位成本；对外服务要自己补护栏。",
+        "next_action_en": "Check serving-stack version requirements, measure unit cost on your own long-context tasks, and add your own guardrails before serving it externally.",
+        "basis_event_ids": [
+          "ev-20260825-01",
+          "ev-20260814-02",
+          "ev-20260911-06"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "mcp",
@@ -425,7 +571,21 @@
       "official_source_ids": [
         "src-320437c34242ba62"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z"
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "MCP 已进入企业治理阶段：流量检测与管控、采用遥测、网关和把现有 REST API 暴露为 MCP 工具的方案都已出现。MCP TypeScript SDK 2.2 收紧了 OAuth issuer 校验，并让列表接口自动翻页。",
+        "judgment_en": "MCP has entered its enterprise-governance phase: traffic inspection and control, adoption telemetry, gateways and ways to expose existing REST APIs as MCP tools have all appeared. The MCP TypeScript SDK 2.2 tightens OAuth issuer checks and auto-paginates list calls.",
+        "next_action_zh": "升级 SDK 2.2 前测试 issuer 不匹配和大规模分页；默认只取一页的 client 要补上显式上限。",
+        "next_action_en": "Before adopting SDK 2.2, test issuer mismatches and large paginated inventories, and give clients that assumed one page explicit limits.",
+        "basis_event_ids": [
+          "ev-20260928-07",
+          "ev-20260917-07",
+          "ev-20260814-03",
+          "ev-20260924-08"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "kimi",
@@ -445,7 +605,18 @@
       ],
       "current_judgment_event_id": "ev-20260826-05",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "档案里还没有 Kimi 模型本身的发布记录，只记录到 vLLM 0.28 为 Kimi-K3 加入了专属服务优化。这说明 Kimi-K3 已能在主流服务栈上自托管，但能力与许可需要另行核实。",
+        "judgment_en": "The archive has no release record for the Kimi models themselves, only vLLM 0.28 adding model-specific serving work for Kimi-K3. That shows Kimi-K3 can be self-hosted on a mainstream stack, but its capability and license still need separate verification.",
+        "next_action_zh": "自托管 Kimi-K3 的团队先升级到 vLLM 0.28 或更新版本；采用前到官方渠道核实许可和评测。",
+        "next_action_en": "Teams self-hosting Kimi-K3 should be on vLLM 0.28 or later; verify the license and evaluations through official channels before adopting it.",
+        "basis_event_ids": [
+          "ev-20260826-05"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "gemini",
@@ -475,7 +646,19 @@
       ],
       "current_judgment_event_id": "ev-20260902-06",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "ADOPT",
+        "judgment_zh": "Gemini 3.8 Flash 是当前的主力档模型，介绍价重画了 coding agent 路由的性价比线；受控分发的 Flash Cyber 面向安全团队。复杂任务上的 token 用量有所上升。",
+        "judgment_en": "Gemini 3.8 Flash is the current workhorse tier, and its introductory price resets the price-performance line for coding-agent routing; the gated Flash Cyber model targets security teams. Token usage rises on complex tasks.",
+        "next_action_zh": "按任务完成成本而不是单价比较，切换前测量复杂任务上的 token 用量。",
+        "next_action_en": "Compare cost per completed task rather than list price, and measure token usage on complex tasks before switching.",
+        "basis_event_ids": [
+          "ev-20260902-06",
+          "ev-20260827-02"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "microsoft-copilot",
@@ -495,7 +678,18 @@
       ],
       "current_judgment_event_id": "ev-20260925-01",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "Microsoft 把 Copilot 扩展为租户治理的 agent 工作区：Code 负责构建，Managed Runtime 负责沙箱与托管，Autopilot 负责持续运行。现阶段它是架构信号，还不是可以直接上线的完整栈。",
+        "judgment_en": "Microsoft is turning Copilot into a tenant-governed agent workspace: Code builds, Managed Runtime handles sandboxing and hosting, and Autopilot runs recurring work. For now it is an architecture signal rather than a deployment-ready stack.",
+        "next_action_zh": "先验证 Managed Runtime 的隔离和花费控制，再给 Autopilot 的周期任务配置身份、审计和人工升级路径。",
+        "next_action_en": "Verify Managed Runtime isolation and spend controls first, then give Autopilot recurring work only with explicit identity, audit and human escalation.",
+        "basis_event_ids": [
+          "ev-20260925-01"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "gpt-6",
@@ -520,7 +714,18 @@
       ],
       "current_judgment_event_id": "ev-20260922-02",
       "official_source_ids": [],
-      "last_reviewed_at": null
+      "last_reviewed_at": null,
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "GPT-6 Sol 和 Luna 面向编码与高吞吐 agent。OpenAI 在 9 月 25 日修复了一个图像编码问题，此前涉及图像输入的评估结果可能受到影响。",
+        "judgment_en": "GPT-6 Sol and Luna target coding and high-throughput agents. OpenAI fixed an image-encoding issue on September 25, so earlier evaluations involving image input may be affected.",
+        "next_action_zh": "在自己的任务上比较完成成本和可靠性；涉及图像输入的旧评估先重跑。",
+        "next_action_en": "Compare task-level cost and reliability on your own workloads, and rerun earlier evaluations that involve image input.",
+        "basis_event_ids": [
+          "ev-20260922-02"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "hy4",
@@ -546,7 +751,18 @@
         "src-f55004a573850a67",
         "src-87553218d4be0ba9"
       ],
-      "last_reviewed_at": "2026-09-27T16:01:12Z"
+      "last_reviewed_at": "2026-09-27T16:01:12Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "腾讯 Hy4 预览版是 Apache 2.0、1M 上下文的超大 MoE 开放权重模型，主仓月下载量已增至 22,788。完整版尚未发布，也还没有可复现的独立评测。",
+        "judgment_en": "Tencent Hy4 preview is a very large Apache 2.0 MoE with a 1M context, and its main repository has reached 22,788 monthly downloads. The full model has not shipped and there is no reproducible independent evaluation yet.",
+        "next_action_zh": "等第三方在公开权重上给出可复现结果，或腾讯发布完整版，再重新评估。",
+        "next_action_en": "Re-evaluate once a third party publishes a reproducible run on the public weights or Tencent ships the full model.",
+        "basis_event_ids": [
+          "ev-20260828-02"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "holo4",
@@ -581,7 +797,18 @@
         "src-7e1537574014a156",
         "src-37f3f55d3429f9dc"
       ],
-      "last_reviewed_at": "2026-09-28T16:03:45Z"
+      "last_reviewed_at": "2026-09-28T16:03:45Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Holo4 同时公开了权重、harness 和逐步轨迹，一个模型就能操作 GUI、执行代码并调用 MCP 与 API。27B 使用非商业许可，35B-A3B 是 Apache 2.0；厂商成绩存在单次运行和训练 split 重叠的问题。",
+        "judgment_en": "Holo4 ships weights, a harness and step-by-step trajectories together, and one model can operate GUIs, run code and call MCP or APIs. The 27B model is non-commercial while 35B-A3B is Apache 2.0, and the vendor scores include single runs and overlap with training splits.",
+        "next_action_zh": "商业评估先试 35B-A3B，在自己的 harness 里重跑一小段 OSWorld 2.0 和 120 个 held-out 任务。",
+        "next_action_en": "For commercial evaluation start with 35B-A3B, and rerun a slice of OSWorld 2.0 plus the 120 held-out AutomationBench tasks in your own harness.",
+        "basis_event_ids": [
+          "ev-20260928-01"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "claude-sonnet-5-5",
@@ -607,7 +834,18 @@
         "src-cdf0d63217ad659b",
         "src-1af50bc5d28f4d83"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z"
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Sonnet 5.5 单价不变，厂商称速度快 30%、单任务成本最多低 30%，可能重划主力模型和高价模型的成本边界。迁移有行为变化：关闭 thinking 的应用要改用 between_tools。",
+        "judgment_en": "Sonnet 5.5 keeps its token prices while Anthropic reports 30% faster output and up to 30% lower cost per task, which may move the line between workhorse and premium models. Migration changes behavior: applications that disabled thinking must move to between_tools.",
+        "next_action_zh": "用自己的轨迹测 Low 和 Medium effort；迁移前检查 between_tools 和 preserved thinking 的影响。",
+        "next_action_en": "Test your own traces at Low and Medium effort, and check between_tools and preserved thinking before migrating.",
+        "basis_event_ids": [
+          "ev-20260928-02"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "kumo-tabular",
@@ -632,7 +870,18 @@
         "src-359d2d1cb7202de8",
         "src-838b849529054edd"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z"
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Kumo Tabular 是开放权重的表格基础模型，把带标签的行当作上下文，一次前向计算完成分类或回归。四个榜单第一都是厂商自测，训练配方和合成数据生成器尚未公开。",
+        "judgment_en": "Kumo Tabular is an open-weight tabular foundation model that reads labeled rows as context and classifies or regresses in one forward pass. All four leaderboard wins are vendor-run, and the training recipe and synthetic-data generator are not yet public.",
+        "next_action_zh": "用 Medium 版本在留出表格上与调优后的树模型比较准确率、校准、延迟和 GPU 成本。",
+        "next_action_en": "Compare the Medium model with tuned tree ensembles on held-out tables for accuracy, calibration, latency and GPU cost.",
+        "basis_event_ids": [
+          "ev-20260929-01"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     },
     {
       "id": "openai-python-sdk",
@@ -654,7 +903,18 @@
       "official_source_ids": [
         "src-e98d8b117b719064"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z"
+      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "OpenAI Python SDK 3.20 开始暴露托管 agent 会话的治理与传输状态，但 API 文档还没有确认这些能力的可用范围。",
+        "judgment_en": "OpenAI Python SDK 3.20 exposes governance and transport states for hosted agent sessions, but the API documentation has not yet confirmed where these capabilities are available.",
+        "next_action_zh": "等 API 文档确认可用范围，再测试凭据更新权限、策略违规分支和重放行为。",
+        "next_action_en": "Wait for API documentation to confirm availability, then test credential updates, policy-violation branches and replay.",
+        "basis_event_ids": [
+          "ev-20260928-08"
+        ],
+        "reviewed_at": "2026-10-01T07:57:01Z"
+      }
     }
   ]
 }

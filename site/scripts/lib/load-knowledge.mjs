@@ -27,7 +27,12 @@ export function projectKnowledge(data) {
   const activity=e=>e.last_updated_at||e.published_at;
   const projectedProjects=projects.map(p=>{
     const related=p.event_ids.map(id=>byId.get(id)).filter(Boolean).sort((a,b)=>activity(b).localeCompare(activity(a)));
-    return {...p,latest_event_id:related[0]?.event_id,as_of:related[0]?activity(related[0]):null,scenario_ids:[...new Set(related.flatMap(e=>e.scenario_ids||[]))]};
+    // The project's own judgment wins; until one is written, fall back to its basis event and say so.
+    const basis=byId.get(p.judgment?.basis_event_ids?.[0])||byId.get(p.current_judgment_event_id)||related[0];
+    const lastChange=related.flatMap(e=>(e.changes||[]).map(c=>({...c,event_id:e.event_id,title_zh:e.title_zh,title_en:e.title,next_action_zh:e.next_action_zh,next_action_en:e.next_action_en}))).sort((a,b)=>b.discovered_at.localeCompare(a.discovered_at))[0];
+    return {...p,latest_event_id:related[0]?.event_id,as_of:related[0]?activity(related[0]):null,scenario_ids:[...new Set(related.flatMap(e=>e.scenario_ids||[]))],
+      recommendation:p.judgment?.recommendation||basis?.recommendation||null,judgment_written:Boolean(p.judgment),basis_event_id:basis?.event_id||null,
+      last_change:lastChange?{id:lastChange.id,kind:lastChange.kind,date:reportDate(lastChange.discovered_at),event_id:lastChange.event_id,summary_zh:lastChange.kind==='new'?lastChange.title_zh:lastChange.summary_zh,summary_en:lastChange.kind==='new'?lastChange.title_en:lastChange.summary_en}:null};
   });
   const changes=materialChanges(events,trends,topics,projects).map(c=>{
     const event=c.object_type==='event'?byId.get(c.object_id):null;
@@ -40,7 +45,7 @@ export function projectKnowledge(data) {
       path:event?eventPath(event.event_id):`/${c.object_type==='trend'?'trends':c.object_type==='topic'?'topics':'projects'}/${c.object_id}/`, project_ids:project?[project.id]:event?.project_ids||[],
       scenario_ids:event?.scenario_ids||[],topic_ids:topic?[topic.id]:[],trend_ids:topic?topic.trend_ids:trend?[trend.id]:trends.filter(t=>t.evidence?.some(v=>v.event_ids?.includes(c.object_id))).map(t=>t.id),
       source_ids:[...new Set(ev.flatMap(e=>e.source_ids||[]))],importance:c.importance||'normal',
-      recommendation:event?.recommendation,stage:event?.evidence_stage||'verified'};
+      recommendation:event?.recommendation||project?.judgment?.recommendation,next_action_zh:event?.next_action_zh||project?.judgment?.next_action_zh,next_action_en:event?.next_action_en||project?.judgment?.next_action_en,stage:event?.evidence_stage||'verified'};
   }).sort((a,b)=>b.discovered_at.localeCompare(a.discovered_at)||a.id.localeCompare(b.id));
   const search=[
     ...events.map(e=>({id:e.event_id,type:'event',title_zh:e.title_zh,title_en:e.title,summary_zh:e.summary_zh,summary_en:e.summary_en,date:reportDate(activity(e)),path:eventPath(e.event_id)})),
