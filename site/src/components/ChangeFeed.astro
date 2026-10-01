@@ -2,15 +2,21 @@
 import {intel,words,pick,changeLabel} from '../lib/intelligence';
 import {u} from '../lib/url';
 import SourceLinks from './SourceLinks.astro';
+import {splitLead} from '../lib/reader-store.mjs';
 const {locale='zh',following=false,changes=intel.changes,controls=true}=Astro.props;
+// Default view = the latest completed briefing (briefings are sorted newest first).
+const latestBrief=intel.briefings.find((b:any)=>!b.baseline&&!b.historical);
+const latestIds=new Set<string>(latestBrief?.change_ids||[]);
+const parentLabel:any={event:['原事件：','Original story: '],trend:['趋势：','Trend: '],topic:['专题：','Topic: '],project:['项目：','Project: ']};
 const groups=new Map<string,any[]>();
 for(const c of changes){const key=`${c.object_type}:${c.object_id}`;if(!groups.has(key))groups.set(key,[]);groups.get(key)!.push(c);}
 const highlights=new Map(intel.briefings.filter((b:any)=>!b.baseline).flatMap((b:any)=>b.highlights.map((h:any,i:number)=>[h.change_id,{...h,rank:i}])));
 const entries=[...groups.values()].sort((a,b)=>Math.min(...a.map(c=>(highlights.get(c.id) as any)?.rank??99))-Math.min(...b.map(c=>(highlights.get(c.id) as any)?.rank??99)));
 ---
-<section class="change-feed" data-feed data-following={following?'true':'false'} data-version={intel.as_of} data-locale={locale}>
+<section class="change-feed" data-feed data-following={following?'true':'false'} data-version={intel.as_of} data-locale={locale} data-latest-date={latestBrief?.date}>
  {controls&&<div class="reading-controls" role="group" aria-label={words(locale,'阅读范围','Reading range')}>
-  <button data-range="today" class="fchip active" aria-pressed="true">{words(locale,'今天','Today')}</button>
+  <button data-range="latest" class="fchip active" aria-pressed="true">{words(locale,'最新一期','Latest briefing')}</button>
+  <button data-range="today" class="fchip" aria-pressed="false">{words(locale,'今天','Today')}</button>
   <button data-range="week" class="fchip" aria-pressed="false">{words(locale,'最近七天','Past seven days')}</button>
   <button data-range="unread" class="fchip" aria-pressed="false">{words(locale,'自上次读完','Since last read')}</button>
   <span class="feed-count" aria-live="polite"></span>
@@ -19,13 +25,16 @@ const entries=[...groups.values()].sort((a,b)=>Math.min(...a.map(c=>(highlights.
  <a href={u(`/daily/${intel.report_date}/`,locale)}>{words(locale,'最近一期简报','Latest briefing')} →</a></p>
  <div class="feed-items">{entries.map(list=>{
  const c=list[0];
- const keys=[...(c.topic_ids||[]).map((id:string)=>`topic:${id}`),...c.project_ids.map((id:string)=>`project:${id}`),...c.scenario_ids.map((id:string)=>`scenario:${id}`),...c.trend_ids.map((id:string)=>`trend:${id}`),...intel.topics.filter((t:any)=>t.trend_ids.some((id:string)=>c.trend_ids.includes(id))).map((t:any)=>`topic:${t.id}`)];
+ // Updates lead with what changed; the story they belong to becomes a context line.
+ const first=(controls&&list.find(v=>latestIds.has(v.id)))||c;
+ const headline=first.kind!=='new'?splitLead(pick(first,'summary',locale))[0]:''; const keys=[...(c.topic_ids||[]).map((id:string)=>`topic:${id}`),...c.project_ids.map((id:string)=>`project:${id}`),...c.scenario_ids.map((id:string)=>`scenario:${id}`),...c.trend_ids.map((id:string)=>`trend:${id}`),...intel.topics.filter((t:any)=>t.trend_ids.some((id:string)=>c.trend_ids.includes(id))).map((t:any)=>`topic:${t.id}`)];
  const labels=Object.fromEntries(keys.map(key=>{const [type,id]=key.split(':');const item=type==='scenario'?intel.scenarios.find((s:any)=>s.id===id):intel.search.find((s:any)=>s.type===type&&s.id===id);return [key,pick(item,type==='scenario'?'name':'title',locale)||id]}));
- return <article class="brief-item" data-feed-item data-follow-keys={JSON.stringify(keys)} data-follow-labels={JSON.stringify(labels)} hidden={controls&&!list.some(c=>c.date===intel.report_date)}>
-  <div class="brief-meta"><span class="change-kind">{changeLabel(c.kind,locale)}</span><time>{c.date}</time><span class="feed-reason"></span></div>
-  <h2><a href={u(c.path,locale)}>{pick(c,'title',locale)}</a></h2>
-  <div class="changes"><div class="latest-change"></div><details class="matrix-fold change-history" hidden><summary></summary><div class="fold-body"></div></details>{list.map((v:any)=><div data-change={JSON.stringify({id:v.id,date:v.date,historical:v.historical||false,kind:v.kind,highlight:highlights.has(v.id),importance:v.importance})}>
-    <p class="change-summary">{pick(v,'summary',locale)}</p>
+ return <article class="brief-item" data-feed-item data-follow-keys={JSON.stringify(keys)} data-follow-labels={JSON.stringify(labels)} hidden={controls&&!list.some(v=>latestIds.has(v.id))}>
+  <div class="brief-meta"><span class="change-kind">{changeLabel(first.kind,locale)}</span><time>{first.date}</time><span class="feed-reason"></span></div>
+  <h2><a href={u(c.path,locale)} data-title={pick(c,'title',locale)}>{headline||pick(c,'title',locale)}</a></h2>
+  <p class="brief-parent" hidden={!headline}>{(parentLabel[c.object_type]||parentLabel.event)[locale==='zh'?0:1]}<a href={u(c.path,locale)}>{pick(c,'title',locale)}</a></p>
+  <div class="changes"><div class="latest-change"></div><details class="matrix-fold change-history" hidden><summary></summary><div class="fold-body"></div></details>{list.map((v:any)=><div data-change={JSON.stringify({id:v.id,date:v.date,historical:v.historical||false,kind:v.kind,highlight:highlights.has(v.id),importance:v.importance,latest:latestIds.has(v.id),lead:v.kind==='new'?'':splitLead(pick(v,'summary',locale))[0]})}>
+    {(()=>{const full=pick(v,'summary',locale),rest=splitLead(full)[1],text=v===first&&headline?rest:full;return <p class="change-summary" data-full={full} data-rest={rest} hidden={!text}>{text}</p>;})()}
     {highlights.has(v.id)&&<p class="editor-note">{words(locale,'为什么读：','Why read: ')}{pick(highlights.get(v.id),'reason',locale)}</p>}
     {v.before&&v.after&&<p>{pick(v,'before',locale)||v.before} → {pick(v,'after',locale)||v.after}</p>}
     <SourceLinks ids={v.source_ids.slice(0,2)} compact locale={locale}/>

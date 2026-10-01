@@ -1,4 +1,4 @@
-import {emptyState,loadState,saveState,toggleValue,normalizeState,selectChanges,STORAGE_KEY} from './reader-store.mjs';
+import {emptyState,loadState,saveState,toggleValue,normalizeState,selectChanges,RANGES,STORAGE_KEY} from './reader-store.mjs';
 import {attachFoldAnim} from './detailsFold';
 const zh=document.documentElement.lang!=='en';
 const w=(a:string,b:string)=>zh?a:b;
@@ -34,10 +34,11 @@ for(const node of document.querySelectorAll<HTMLElement>('[data-as-of]')){
  if(Date.now()-new Date(node.dataset.asOf!).getTime()>36*3600*1000){node.hidden=false;node.textContent=w('资料已超过 36 小时未更新，以下为最近一次成功扫描的结果。','Data has not been refreshed for over 36 hours. This is the latest successful scan.');}
 }
 for(const feed of document.querySelectorAll<HTMLElement>('[data-feed]')){
- let range=state.completed_version||state.read.length?'unread':'today';
+ // Returning readers start at what they have not read; everyone else at the latest briefing.
+ let range=state.completed_version||state.read.length?'unread':'latest';
  let count=10;
  const params=new URLSearchParams(location.search);
- const requested=params.get('range');if(['today','week','unread'].includes(requested||''))range=requested!;
+ const requested=params.get('range');const explicit=RANGES.includes(requested||'');if(explicit)range=requested!;
  const requestedDate=params.get('date');let date=requestedDate&&/^\d{4}-\d{2}-\d{2}$/.test(requestedDate)?requestedDate:undefined;
  if(date)range='today';
  let visibleIds:string[]=[];
@@ -65,6 +66,11 @@ for(const feed of document.querySelectorAll<HTMLElement>('[data-feed]')){
    for(const row of rows)row.node.hidden=!selected.some((r:any)=>r.id===row.id);
    if(ok){
     const first=selected[0];el.querySelector('time')!.textContent=first.date;
+    const titleLink=el.querySelector<HTMLAnchorElement>('h2 a'),parent=el.querySelector<HTMLElement>('.brief-parent');
+    const headline=first.kind!=='new'&&first.lead;
+    if(titleLink)titleLink.textContent=headline||titleLink.dataset.title||titleLink.textContent;
+    if(parent)parent.hidden=!headline;
+    for(const row of rows){const summary=row.node.querySelector<HTMLElement>('.change-summary');if(!summary)continue;const text=(row.id===first.id&&headline?summary.dataset.rest:summary.dataset.full)||'';summary.textContent=text;summary.hidden=!text;}
     const latest=el.querySelector('.latest-change'),history=el.querySelector('.change-history .fold-body');
     if(latest&&history){for(const row of rows)(row.id===first.id?latest:history).append(row.node);const fold=el.querySelector<HTMLElement>('.change-history')!;fold.hidden=selected.length<2;fold.querySelector('summary')!.textContent=w(`本范围另有 ${selected.length-1} 次变化`,`${selected.length-1} more changes in this range`);}
     const label=el.querySelector('.change-kind');if(label)label.textContent=first.kind==='new'?w('新事件','New'):first.kind==='trend'?w('趋势变化','Trend'):['correction','recommendation'].includes(first.kind)?w('判断变化','Judgment change'):w('重要更新','Update');
@@ -83,12 +89,15 @@ for(const feed of document.querySelectorAll<HTMLElement>('[data-feed]')){
   const more=feed.querySelector<HTMLElement>('.feed-more');if(more)more.hidden=matched<=count;
   const globalSection=feed.querySelector<HTMLElement>('.global-feed-items');if(globalSection)globalSection.hidden=!globalSection.querySelector('[data-feed-item]:not([hidden])');
   const end=feed.querySelector<HTMLElement>('.reading-end');if(end)end.hidden=matched===0;
-  const counter=feed.querySelector('.feed-count');if(counter)counter.textContent=`${Math.min(matched,count)} / ${matched} ${w('项变化','stories')}${date?' · '+date:''}`;
+  const counter=feed.querySelector('.feed-count');if(counter)counter.textContent=`${Math.min(matched,count)} / ${matched} ${w('项变化','stories')}${date?' · '+date:range==='latest'&&feed.dataset.latestDate?' · '+feed.dataset.latestDate:''}`;
+  return matched;
  }
  feed.querySelectorAll<HTMLButtonElement>('[data-range]').forEach(b=>b.addEventListener('click',()=>{range=b.dataset.range!;date=undefined;count=10;apply();}));
  feed.querySelector('.feed-more')?.addEventListener('click',()=>{count+=10;apply();});
  feed.querySelector('[data-complete]')?.addEventListener('click',()=>{state={...state,read:[...new Set([...state.read,...visibleIds])],completed_version:feed.dataset.version};persist();announce(w('已记住以上内容。后续新增变化仍会显示。','This page is marked read. Subsequent changes will still appear.'));});
- window.addEventListener('matrix:reader',apply);apply();
+ window.addEventListener('matrix:reader',apply);
+ // An automatically chosen range must never open on an empty page.
+ if(apply()===0&&!explicit&&!date&&range!=='latest'){range='latest';apply();}
 }
 // Personal controls operate on explicit actions only; imports are validated before replacement.
 document.getElementById('export-reader')?.addEventListener('click',()=>{

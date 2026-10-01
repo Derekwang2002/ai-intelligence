@@ -5,6 +5,7 @@ import SourceLinks from '../SourceLinks.astro';
 import events from '../../data/generated/events.json';
 import {intel,pick,words} from '../../lib/intelligence';
 import {u,fmtDate} from '../../lib/url';
+import {feedPath} from '../../lib/feeds';
 const {locale='zh',project:p}=Astro.props;
 const related=events.filter(e=>p.event_ids.includes(e.event_id)).sort((a,b)=>b.last_updated_at.localeCompare(a.last_updated_at));
 const latest:any=related.find(e=>e.event_id===p.current_judgment_event_id)||related[0];
@@ -14,7 +15,7 @@ const availability=Object.entries(tech||{}).filter(([k])=>/可用|开放|部署|
 const reviews=intel.reviews.filter((r:any)=>p.event_ids.includes(r.event_id)&&(r.status==='pending'||r.next_review_at));
 ---
 <Base title={pick(p,'name',locale)} locale={locale}>
-<header class="editorial-head"><a class="eyebrow" href={u('/projects/',locale)}>← {words(locale,'项目档案','PROJECTS')}</a><h1>{pick(p,'name',locale)}</h1><p class="lead">{latest?pick(latest,'why_it_matters',locale):''}</p><ReaderActions locale={locale} follow={`project:${p.id}`} bookmark={`project:${p.id}`}/><p class="muted">{words(locale,'档案最近实质更新','Last material update')} · {fmtDate(p.as_of)}</p></header>
+<header class="editorial-head"><a class="eyebrow" href={u('/projects/',locale)}>← {words(locale,'项目档案','PROJECTS')}</a><h1>{pick(p,'name',locale)}</h1><p class="lead">{latest?pick(latest,'why_it_matters',locale):''}</p><ReaderActions locale={locale} follow={`project:${p.id}`} bookmark={`project:${p.id}`} feed={feedPath({type:'project',id:p.id},locale)}/><p class="muted">{words(locale,'档案最近实质更新','Last material update')} · {fmtDate(p.as_of)}</p></header>
 <div class="research-grid"><div>
  <section class="reading-section"><h2>{words(locale,'当前依据','Current basis')}</h2>{latest&&<><p>{pick(latest,'summary',locale)}</p><p><span class="rec-pill">{latest.recommendation}</span> <a href={u(`/events/${latest.event_id}/`,locale)}>{words(locale,'查看这项建议的背景与限制','Read the basis and limits of this recommendation')} →</a></p></>}
  <div class="scenario-links">{p.scenario_ids.map((id:string)=>{const s=intel.scenarios.find((s:any)=>s.id===id);return <a href={u(`/following/?scenario=${id}`,locale)}>{pick(s,'name',locale)} →</a>})}</div></section>

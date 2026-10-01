@@ -17,8 +17,19 @@ export function loadState(storage) {
 }
 export function saveState(storage,state){try {storage.setItem(STORAGE_KEY,JSON.stringify(normalizeState(state)));return true;}catch{return false;}}
 export function toggleValue(state,key,value) {return {...state,[key]:state[key].includes(value)?state[key].filter(v=>v!==value):[...state[key],value]};}
-export function selectChanges(changes,{range='today',today,read=[],date}) {
+// latest = the changes of the most recent completed briefing, so the default view is never
+// empty just because the calendar day moved on or a scan failed.
+export const RANGES=['latest','today','week','unread'];
+export function selectChanges(changes,{range='latest',today,read=[],date}) {
  const week=new Date(`${today}T00:00:00Z`);week.setUTCDate(week.getUTCDate()-6);
  const start=week.toISOString().slice(0,10);
- return changes.filter(c=>range==='unread'?!c.historical&&!read.includes(c.id):range==='week'?c.date>=start&&c.date<=today:c.date===(date||today));
+ if(date)return changes.filter(c=>c.date===date);
+ return changes.filter(c=>range==='latest'?c.latest:range==='unread'?!c.historical&&!read.includes(c.id):range==='week'?c.date>=start&&c.date<=today:c.date===today);
+}
+// Updates lead with what changed; the original story title becomes context.
+export function splitLead(text) {
+ const s=String(text||'').trim();
+ const m=s.match(/^([\s\S]+?(?:[。！？!?]|\.(?=\s|$)))\s*([\s\S]*)$/);
+ if(!m)return [s,''];
+ return [m[1].replace(/[。.]$/,''),m[2].trim()];
 }

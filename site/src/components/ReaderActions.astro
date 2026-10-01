@@ -1,8 +1,9 @@
 ---
 import { words } from '../lib/intelligence';
-const {locale='zh',follow,bookmark}=Astro.props;
+const {locale='zh',follow,bookmark,feed}=Astro.props;
 ---
 <div class="reader-actions">
  {follow&&<button class="quiet-button" data-follow={follow} aria-pressed="false">{words(locale,'＋ 关注','＋ Follow')}</button>}
  {bookmark&&<button class="quiet-button" data-bookmark={bookmark} aria-pressed="false">{words(locale,'收藏','Save')}</button>}
+ {feed&&<a class="quiet-button" href={feed} title={words(locale,'用 RSS 阅读器订阅，有新变化时推送','Subscribe in a feed reader to get new changes')}>{words(locale,'RSS 订阅','RSS')}</a>}
 </div>
