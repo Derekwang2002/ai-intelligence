@@ -40,19 +40,20 @@
         "src-57f842e49c5467e5",
         "src-cdf0d63217ad659b",
         "src-ff1ca072bf39e471",
-        "src-80da4486dbf0594b"
+        "src-80da4486dbf0594b",
+        "src-d320458473217aca"
       ],
-      "last_reviewed_at": "2026-10-01T16:01:43Z",
+      "last_reviewed_at": "2026-10-02T16:00:56Z",
       "judgment": {
         "recommendation": "ADOPT",
         "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.285/286 加强 provider 限制、Remote Control 撤权和凭据脱敏；managed settings 不可读时仍需外部启动检查。",
         "judgment_en": "Claude Code is a mature local multi-agent runtime. Versions 2.1.285/286 strengthen provider restrictions, Remote Control revocation and credential redaction; unreadable managed settings still require an external startup check.",
-        "next_action_zh": "升级到 2.1.286，并验证 managed settings、provider allowlist 与 Remote Control 撤权。",
-        "next_action_en": "Upgrade to 2.1.286 and independently verify readable managed settings, provider allowlists and Remote Control revocation at startup.",
+        "next_action_zh": "升级到 2.1.287 前回归危险 shell、symlink、MCP 权限上限与 prompt_text 遥测脱敏。",
+        "next_action_en": "Before 2.1.287, regress shell, symlink and MCP permission boundaries and prompt_text telemetry redaction.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-01T16:01:43Z"
+        "reviewed_at": "2026-10-02T16:00:56Z"
       }
     },
     {
@@ -125,22 +126,22 @@
         "src-2653f5794fb9985f",
         "src-772a8c6a7cc04043"
       ],
-      "current_judgment_event_id": "ev-20260813-04",
-      "official_source_ids": [],
-      "last_reviewed_at": null,
+      "current_judgment_event_id": "ev-20260909-02",
+      "official_source_ids": ["src-c13e48d5c84eed36", "src-aaf9c1204da16c29", "src-81cdc3555a833682"],
+      "last_reviewed_at": "2026-10-02T16:00:56Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "Copilot 的重心已从补全转向受管控的 agent 平台：企业级托管权限、agent 采用遥测和多 agent code review 都已 GA。跨 agent 共享修复记忆仍是早期功能。",
         "judgment_en": "Copilot has shifted from completion to a governed agent platform: enterprise-managed permissions, agent adoption telemetry and multi-agent code review are generally available. Shared repair memory across agents is still early.",
-        "next_action_zh": "企业团队先开启托管权限和采用遥测；修复记忆只在试点仓库开启，并跟踪回归与错误经验的扩散。",
-        "next_action_en": "Turn on managed permissions and adoption telemetry first; enable repair memory only in pilot repositories and track regressions and the spread of wrong lessons.",
+        "next_action_zh": "在一次性 profile 中测试一个可逆桌面任务和一个带 checkpoint 的动态工作流。",
+        "next_action_en": "Test one reversible desktop task and one checkpointed dynamic workflow in a disposable profile.",
         "basis_event_ids": [
           "ev-20260909-02",
           "ev-20260917-07",
           "ev-20260911-11",
           "ev-20260925-02"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-02T16:00:56Z"
       }
     },
     {
@@ -169,7 +170,8 @@
         "src-bdf55218ea016a0a",
         "src-b6ce910accbcbcac",
         "src-9b9d615d7fb6df0b",
-        "src-25183e2b01dde1f5"
+        "src-25183e2b01dde1f5",
+        "src-e61beeca9f37dec1"
       ],
       "current_judgment_event_id": "ev-20260910-02",
       "official_source_ids": [
@@ -179,7 +181,7 @@
         "src-25183e2b01dde1f5",
         "src-49e8d0577a5e1f9d"
       ],
-      "last_reviewed_at": "2026-10-01T16:01:43Z",
+      "last_reviewed_at": "2026-10-02T16:00:56Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "Agents API 已把托管浏览器、来源审批、登录交接和 session 恢复组合成可用 contract。它能减少基础设施工作，但凭据、审计和副作用确认必须由应用端严格验证。",
@@ -189,7 +191,7 @@
         "basis_event_ids": [
           "ev-20260910-02"
         ],
-        "reviewed_at": "2026-10-01T16:01:43Z"
+        "reviewed_at": "2026-10-02T16:00:56Z"
       }
     },
     {
@@ -384,18 +386,18 @@
         "src-0f607943d6da27d6"
       ],
       "current_judgment_event_id": "ev-20260918-02",
-      "official_source_ids": [],
-      "last_reviewed_at": null,
+      "official_source_ids": ["src-9b2f8ba750283adb"],
+      "last_reviewed_at": "2026-10-02T16:00:56Z",
       "judgment": {
-        "recommendation": "ADOPT",
-        "judgment_zh": "SGLang 0.5.20 同时改进了可回放的 RL 采样、分支密集场景的前缀复用和不占 GPU 的容量规划，适合推理与 post-training 团队。",
-        "judgment_en": "SGLang 0.5.20 improves replayable RL sampling, prefix reuse for branch-heavy workloads and capacity planning without GPUs, which suits inference and post-training teams.",
-        "next_action_zh": "上线前测试 Responses 存储默认值的变化，以及旧 prefill context parallel 路径被移除后的兼容性。",
-        "next_action_en": "Before rollout, test the changed Responses storage default and the removal of the legacy prefill context-parallel path.",
+        "recommendation": "TRIAL",
+        "judgment_zh": "SGLang 0.5.21 增加运行时 prefill/decode 角色切换并默认启用 Rust 缓存核心，但新性能数字仍需按实际负载复现。",
+        "judgment_en": "SGLang 0.5.21 adds runtime prefill/decode role switching and enables the Rust cache core by default, but its new performance claims still need workload-specific reproduction.",
+        "next_action_zh": "复现 TTFT 与 prefill 吞吐，并完成 breaking changes 清单后再上线。",
+        "next_action_en": "Reproduce TTFT and prefill throughput and complete the breaking-change checklist before rollout.",
         "basis_event_ids": [
           "ev-20260918-02"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-02T16:00:56Z"
       }
     },
     {
@@ -1067,6 +1069,50 @@
           "ev-20260929-03"
         ],
         "reviewed_at": "2026-10-01T16:01:43Z"
+      }
+    },
+    {
+      "id": "astabrief",
+      "name_zh": "AstaBrief",
+      "name_en": "AstaBrief",
+      "type": "model",
+      "aliases": ["AstaBrief-8B", "AstaBrief_8B"],
+      "pattern": "AstaBrief",
+      "event_ids": ["ev-20261002-01"],
+      "source_ids": ["src-d185427efe0f1914", "src-92005d4a84bd525c", "src-d9172aa3703c8655"],
+      "official_source_ids": ["src-d185427efe0f1914", "src-92005d4a84bd525c", "src-d9172aa3703c8655"],
+      "last_reviewed_at": "2026-10-02T16:00:56Z",
+      "current_judgment_event_id": "ev-20261002-01",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "AstaBrief-8B 是可下载、许可宽松的引文报告模型，但引文质量和较小的人评样本仍需独立核验。",
+        "judgment_en": "AstaBrief-8B is a downloadable, permissively licensed cited-report model, but citation quality and the small human study still need independent verification.",
+        "next_action_zh": "在一天内用本地论文集测引文精确率、召回率、延迟与过度归纳。",
+        "next_action_en": "In one day, test citation precision, recall, latency and overclaiming on a local paper corpus.",
+        "basis_event_ids": ["ev-20261002-01"],
+        "reviewed_at": "2026-10-02T16:00:56Z"
+      }
+    },
+    {
+      "id": "pixelumm",
+      "name_zh": "PixelUMM",
+      "name_en": "PixelUMM",
+      "type": "model",
+      "aliases": ["PixelUMM-15B"],
+      "pattern": "PixelUMM",
+      "event_ids": ["ev-20261001-02"],
+      "source_ids": ["src-9f0246a4f7cf94f1", "src-2f1c47d9985475a7", "src-7c450930a8255936"],
+      "official_source_ids": ["src-9f0246a4f7cf94f1", "src-2f1c47d9985475a7", "src-7c450930a8255936"],
+      "last_reviewed_at": "2026-10-02T16:00:56Z",
+      "current_judgment_event_id": "ev-20261001-02",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "PixelUMM 的统一像素空间架构可检查，但 checkpoint 为非商业许可，训练配方和生产证据都不完整。",
+        "judgment_en": "PixelUMM's unified pixel-space architecture is inspectable, but its checkpoint is noncommercial and both the training recipe and production evidence are incomplete.",
+        "next_action_zh": "等待完整训练配方、商业许可或独立复现后再投入算力。",
+        "next_action_en": "Wait for a complete training recipe, commercial license or independent reproduction before allocating compute.",
+        "basis_event_ids": ["ev-20261001-02"],
+        "reviewed_at": "2026-10-02T16:00:56Z"
       }
     }
   ]

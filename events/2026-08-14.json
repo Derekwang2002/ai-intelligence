@@ -373,7 +373,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-10-01T16:01:43Z",
+      "last_updated_at": "2026-10-02T16:00:56Z",
       "source_type": "primary",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -394,7 +394,8 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.283",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.284",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.285",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.286"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.286",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.287"
       ],
       "summary": "Claude Code is now a mature local multi-agent runtime with subagent forking, cross-session messaging, sandbox resource limits and gateway governance in stable releases. Version 2.1.285 adds provider allowlists and a WebFetch kill switch while fixing OAuth, permission callbacks and Artifact boundaries. Version 2.1.286 fixes session recovery, Remote Control policy revocation, MCP credential redaction and spend accounting.",
       "why_it_matters": "For enterprise coding-agent operators, provider restrictions, Remote Control revocation and credential redaction directly affect governance. Because OS-denied managed settings now warn and continue, deployments still need an external policy check.",
@@ -491,7 +492,8 @@
         "src-35ab415a8fa4d23e",
         "src-cdf0d63217ad659b",
         "src-ff1ca072bf39e471",
-        "src-80da4486dbf0594b"
+        "src-80da4486dbf0594b",
+        "src-d320458473217aca"
       ],
       "project_ids": [
         "claude-code"
@@ -554,6 +556,15 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-287-evidence",
+          "claim_zh": "Claude Code 2.1.287 加入 Claude Mods 与内置 observer side-agent，并修复危险 rm、symlink 写入和 MCP 权限边界。",
+          "claim_en": "Claude Code 2.1.287 adds Claude Mods and a built-in observer side-agent while fixing dangerous rm, symlink-write and MCP permission boundaries.",
+          "source_ids": ["src-d320458473217aca"],
+          "event_ids": ["ev-20260814-04"],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -606,6 +617,17 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-287",
+          "kind": "update",
+          "occurred_at": "2026-10-01T18:00:22Z",
+          "discovered_at": "2026-10-02T16:00:56Z",
+          "summary_zh": "2.1.287 增加 Mods 与 observer side-agent，并修复多项本地执行边界。",
+          "summary_en": "Version 2.1.287 adds Mods and an observer side-agent while fixing local execution boundaries.",
+          "evidence_ids": ["ev-20260814-04-claude-2-1-287-evidence"],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -615,8 +637,8 @@
           "src-3d68ad8e1324eb33"
         ]
       },
-      "next_action_zh": "升级到 2.1.286，并验证 managed settings、provider allowlist 与 Remote Control 撤权。",
-      "next_action_en": "Upgrade to 2.1.286 and independently verify readable managed settings, provider allowlists and Remote Control revocation at startup.",
+      "next_action_zh": "升级到 2.1.287 前回归危险 shell、symlink、MCP 权限上限，并确认 prompt_text 遥测已脱敏。",
+      "next_action_en": "Before upgrading to 2.1.287, regress dangerous shell, symlink and MCP permission boundaries and confirm prompt_text telemetry is redacted.",
       "short_label_zh": "Claude Code",
       "short_label_en": "Claude Code"
     },

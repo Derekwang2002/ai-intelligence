@@ -95,22 +95,22 @@
     },
     {
       "event_id": "ev-20260918-02",
-      "title": "SGLang 0.5.20 adds branch-aware caching and replayable RL sampling",
-      "title_zh": "SGLang 0.5.20 加入分支缓存与可回放 RL 采样",
+      "title": "SGLang 0.5.21 makes serving roles switchable at runtime",
+      "title_zh": "SGLang 0.5.21 支持运行时切换推理角色",
       "category": "infrastructure",
       "organization": [
         "SGLang"
       ],
       "published_at": "2026-09-18T22:41:33Z",
       "first_seen_at": "2026-09-18T23:21:35Z",
-      "last_updated_at": "2026-09-18T23:21:35Z",
+      "last_updated_at": "2026-10-02T16:00:56Z",
       "source_type": "github_release",
       "primary_source": "https://github.com/sgl-project/sglang/releases/tag/v0.5.20",
-      "secondary_sources": [],
-      "summary": "SGLang 0.5.20 ships exact sampling masks for reproducible RL rollouts, a unified radix tree that preserves sliding-window state at branch points, and a CPU-only simulator that runs the real scheduler and cache logic. On a DeepSeek-V4-Flash shared-prefix test, the new cache raised token hits from 43.8% to 60.8% and cut mean TTFT from 1.57 to 1.07 seconds. The release also makes Responses API storage opt-in and adds production support for several new hybrid and diffusion models.",
+      "secondary_sources": ["https://github.com/sgl-project/sglang/releases/tag/v0.5.21"],
+      "summary": "SGLang 0.5.21 lets workers switch between prefill and decode roles at runtime without a restart and makes its Rust unified radix-tree cache the default. It adds decision and score API endpoints, rejects request-supplied chat templates by default and tightens unpickling. Vendor tests report lower TTFT and higher prefill throughput on two new model families, but the gains still need workload-specific reproduction.",
       "why_it_matters": "For inference and post-training teams, one release improves three hard operational surfaces: replayable sampling, branch-heavy prefix reuse and capacity planning without GPUs. Upgrade tests should cover the breaking Responses storage default and removed legacy prefill context-parallel path before production rollout.",
-      "summary_zh": "SGLang 0.5.20 新增可精确回放 RL rollout 的 sampling mask、在分支点保留滑动窗口状态的统一 radix tree，以及运行真实 scheduler 与缓存逻辑的 CPU-only simulator。在 DeepSeek-V4-Flash 共享前缀测试中，新缓存把 token 命中率从 43.8% 提高到 60.8%，平均首 token 延迟从 1.57 秒降到 1.07 秒。Responses API 的结果存储改为显式开启，并新增多种混合与 diffusion 模型的生产支持。",
-      "summary_en": "SGLang 0.5.20 ships exact sampling masks for reproducible RL rollouts, a unified radix tree that preserves sliding-window state at branch points, and a CPU-only simulator that runs the real scheduler and cache logic. On a DeepSeek-V4-Flash shared-prefix test, the new cache raised token hits from 43.8% to 60.8% and cut mean TTFT from 1.57 to 1.07 seconds. The release also makes Responses API storage opt-in and adds production support for several new hybrid and diffusion models.",
+      "summary_zh": "SGLang 0.5.21 允许 worker 无需重启就在 prefill 与 decode 角色间切换，并把 Rust 版统一 radix-tree 缓存设为默认。它新增 decision 与 score API，默认拒绝请求自带的 chat template，并收紧反序列化限制。厂商测试显示两类新模型的首 token 延迟或 prefill 吞吐有所改善，但仍需按实际负载复现。",
+      "summary_en": "SGLang 0.5.21 lets workers switch between prefill and decode roles at runtime without a restart and makes its Rust unified radix-tree cache the default. It adds decision and score API endpoints, rejects request-supplied chat templates by default and tightens unpickling. Vendor tests report lower TTFT and higher prefill throughput on two new model families, but the gains still need workload-specific reproduction.",
       "why_it_matters_zh": "对推理与 post-training 团队来说，这一个版本同时改善三类难题：可回放采样、分支密集型前缀复用，以及不占 GPU 的容量规划。上线前要重点测试 Responses 存储默认值变化，以及旧 prefill context parallel 路径被移除带来的兼容性。",
       "why_it_matters_en": "For inference and post-training teams, one release improves three hard operational surfaces: replayable sampling, branch-heavy prefix reuse and capacity planning without GPUs. Upgrade tests should cover the breaking Responses storage default and removed legacy prefill context-parallel path before production rollout.",
       "technical_details": {
@@ -143,10 +143,11 @@
       "maturity": 4,
       "verification_cost": 2,
       "risk": 2,
-      "recommendation": "ADOPT",
+      "recommendation": "TRIAL",
       "event_fingerprint": "sglang-0-5-20-branch-cache-rl-sampling-simulator",
       "source_ids": [
-        "src-0f607943d6da27d6"
+        "src-0f607943d6da27d6",
+        "src-9b2f8ba750283adb"
       ],
       "project_ids": [
         "sglang"
@@ -170,6 +171,15 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260918-02-sglang-0-5-21-evidence",
+          "claim_zh": "SGLang 0.5.21 支持运行时切换 prefill/decode 角色，并默认启用 Rust 版统一缓存核心。",
+          "claim_en": "SGLang 0.5.21 supports runtime prefill/decode role switching and enables the Rust unified cache core by default.",
+          "source_ids": ["src-9b2f8ba750283adb"],
+          "event_ids": ["ev-20260918-02"],
+          "verification": "verified-primary-source",
+          "relation": "support"
         }
       ],
       "changes": [
@@ -184,8 +194,23 @@
             "ev-20260918-02-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260918-02-sglang-0-5-21",
+          "kind": "update",
+          "occurred_at": "2026-10-02T01:09:04Z",
+          "discovered_at": "2026-10-02T16:00:56Z",
+          "summary_zh": "0.5.21 增加运行时角色切换、默认 Rust 缓存核心与新的决策 API。",
+          "summary_en": "Version 0.5.21 adds runtime role switching, the default Rust cache core and new decision APIs.",
+          "evidence_ids": ["ev-20260918-02-sglang-0-5-21-evidence"],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "short_label_zh": "SGLang 0.5.21",
+      "short_label_en": "SGLang 0.5.21",
+      "next_action_zh": "用一个代表负载复现 TTFT 与 prefill 吞吐，并完成 breaking changes 清单后再上线。",
+      "next_action_en": "Reproduce TTFT and prefill throughput on one representative workload and complete the breaking-change checklist before rollout."
     },
     {
       "event_id": "ev-20260918-03",

@@ -137,7 +137,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-10-02T16:00:56Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [
@@ -147,12 +147,13 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.156.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.156.1",
         "https://github.com/openai/codex/releases/tag/rust-v0.158.0",
-        "https://github.com/openai/codex/releases/tag/rust-v0.159.0"
+        "https://github.com/openai/codex/releases/tag/rust-v0.159.0",
+        "https://github.com/openai/codex/releases/tag/rust-v0.160.0"
       ],
-      "summary": "Codex CLI 0.148.0 (stable) is headlined by session forking: `codex exec fork` branches an existing session, and the TUI resume picker can now archive and restore sessions. Hooks can run commands asynchronously and invoke MCP tools. Amazon Bedrock Runtime becomes a built-in provider, with AWS profile and region selection and GPT-5.6 routing; `/status`, status lines and terminal titles now show estimated thread credits and cost. Also new: `/export` saves a conversation as markdown to the clipboard or a file, and prompts can be drafted while the TUI starts up. Fixes cover stale instructions after model switching, resumed sessions restoring cwd and approval policy, reconnection through provider outages, MCP recovery after OAuth re-auth, and sandbox restrictions that now fail closed for denied or unreadable paths on Linux and Windows.",
+      "summary": "Codex CLI has evolved into a resumable multi-agent runtime with session forking, cross-session messaging, programmable hooks, managed worktrees and a built-in Bedrock provider. Version 0.160.0 adds optional Guardian retrieval of prior user instructions and handoff context, projectless sessions under workspace policy, permission-preserving resume and stronger reconnect and SQLite recovery.",
       "why_it_matters": "Three engineering-relevant moves land in one release. Session forking reaches the stable channel, extending Codex's multi-agent primitives from subagent spawning to exec-level branch-and-parallel workflows. Async hooks that can call MCP tools turn Codex into a programmable orchestration point. And a built-in Bedrock provider gives AWS shops a first-party path to Codex models, while `/status` cost visibility closes a long-standing budgeting gap.",
-      "summary_zh": "Codex CLI 0.148.0 稳定版发布，主打会话分叉：用 `codex exec fork` 可以从现有会话开出分支，TUI 的恢复选择器也支持归档和恢复会话。hooks 现在可以异步执行命令，还能调用 MCP 工具。Amazon Bedrock Runtime 成为内置 provider，支持 AWS profile、区域选择和 GPT-5.6 路由；`/status`、状态栏和终端标题会显示会话的预估 credits 和成本。其他新增：`/export` 把对话导出为 markdown（到剪贴板或文件），TUI 启动期间就能先起草 prompt。修复包括：模型切换后残留旧指令、恢复会话时还原工作目录与 approval policy、provider 故障期间的重连、OAuth 重新认证后的 MCP 恢复；Linux 和 Windows 沙箱对被拒或不可读的路径改为默认拒绝（fail closed）。",
-      "summary_en": "Codex CLI 0.148.0 (stable) is headlined by session forking: `codex exec fork` branches an existing session, and the TUI resume picker can now archive and restore sessions. Hooks can run commands asynchronously and invoke MCP tools. Amazon Bedrock Runtime becomes a built-in provider, with AWS profile and region selection and GPT-5.6 routing; `/status`, status lines and terminal titles now show estimated thread credits and cost. Also new: `/export` saves a conversation as markdown to the clipboard or a file, and prompts can be drafted while the TUI starts up. Fixes cover stale instructions after model switching, resumed sessions restoring cwd and approval policy, reconnection through provider outages, MCP recovery after OAuth re-auth, and sandbox restrictions that now fail closed for denied or unreadable paths on Linux and Windows.",
+      "summary_zh": "Codex CLI 已从单轮工具扩展为可恢复的多 agent 运行时，具备会话分叉、跨会话消息、可编程 hooks、托管 worktree 与内置 Bedrock provider。0.160.0 增加可选的 Guardian 历史指令与 handoff 上下文召回、受工作区策略约束的无项目会话、保留权限的恢复，以及更稳的重连和 SQLite 卡顿恢复。",
+      "summary_en": "Codex CLI has evolved into a resumable multi-agent runtime with session forking, cross-session messaging, programmable hooks, managed worktrees and a built-in Bedrock provider. Version 0.160.0 adds optional Guardian retrieval of prior user instructions and handoff context, projectless sessions under workspace policy, permission-preserving resume and stronger reconnect and SQLite recovery.",
       "why_it_matters_zh": "对用 Codex 搭多 agent 工作流的人来说，这一个版本里有三件事值得注意。会话分叉进入稳定通道，Codex 的多 agent 原语从 subagent 派生扩展到了 exec 级别的分支与并行。能调用 MCP 工具的异步 hooks，让 Codex 变成一个可编程的编排点。内置 Bedrock provider 给 AWS 团队一条跑 Codex 模型的第一方路径，`/status` 的成本显示也补上了长期缺失的预算管理环节。",
       "why_it_matters_en": "Three engineering-relevant moves land in one release. Session forking reaches the stable channel, extending Codex's multi-agent primitives from subagent spawning to exec-level branch-and-parallel workflows. Async hooks that can call MCP tools turn Codex into a programmable orchestration point. And a built-in Bedrock provider gives AWS shops a first-party path to Codex models, while `/status` cost visibility closes a long-standing budgeting gap.",
       "technical_details": {
@@ -177,7 +178,8 @@
         "update_2026_09_24": "0.156.0 stable (2026-09-22T19:51Z) makes worktree sessions the default in the agent command center, adds fullscreen transcript search/copying, a /usage analytics dashboard, default-on voice conversations, and a local background-server updater. It closes Windows inbound-network, privileged socket and macOS read-only-handle sandbox gaps. 0.156.1 adds GPT-6 Sol/Luna routing. Recommendation remains ADOPT.",
         "update_2026_09_26": "0.157.0 stable (2026-09-25T02:31Z) enables automatic background-server startup, remote/background-session /import and cross-app conversation forking. Network policy now remains enforced across redirects and ongoing HTTP/WebSocket traffic; local Unix MCP servers are restricted to stdio descriptors, daemon socket paths are masked through ancestor mounts, and gateway OAuth storage/error handling is hardened. Stays ADOPT.",
         "update_2026_09_28": "0.158.0 stable (2026-09-28T05:07Z): pre-registered MCP OAuth clients can supply client secrets; direct exec-server WebSocket links support bearer tokens; terminal-input approval is enabled by default for elevated commands. Sandbox fixes cover ordinary Windows 10 paths, rejected stored credentials, large permission policies, nested Linux writable roots, Git metadata protections and macOS path aliases. Stays ADOPT.",
-        "update_2026_09_29": "0.159.0 stable (2026-09-29T08:05Z) adds opt-in instant interruption for steering during responses and long code-mode calls, item-anchored app-server pagination, and improved Mermaid rendering. It preserves explicit filesystem denials on approved commands, protects .aws under writable roots, fixes macOS TLS/proxy behavior in networked sandboxes and suppresses stray Windows console windows for MCP/code-mode processes. Stays ADOPT."
+        "update_2026_09_29": "0.159.0 stable (2026-09-29T08:05Z) adds opt-in instant interruption for steering during responses and long code-mode calls, item-anchored app-server pagination, and improved Mermaid rendering. It preserves explicit filesystem denials on approved commands, protects .aws under writable roots, fixes macOS TLS/proxy behavior in networked sandboxes and suppresses stray Windows console windows for MCP/code-mode processes. Stays ADOPT.",
+        "update_2026_10_02": "0.160.0 adds opt-in Guardian retrieval of prior user instructions and handoff context, projectless sessions under workspace policy, permission-preserving resume, and reconnect/SQLite recovery fixes."
       },
       "tags": [
         "codex",
@@ -221,7 +223,8 @@
         "2026-09-24 更新": "0.156.0 stable（2026-09-22T19:51Z）让 agent 任务面板默认支持 worktree 会话，增加全屏转录搜索/复制、/usage 分析面板、默认开启的语音对话与本地后台服务更新。该版本修复 Windows 入站网络、特权 socket 与 macOS 只读句柄相关的沙箱缺口。0.156.1 增加 GPT-6 Sol/Luna 路由。维持 ADOPT。",
         "2026-09-26 更新": "0.157.0 stable（2026-09-25T02:31Z）默认启动后台服务，支持远程/后台会话 `/import` 与跨应用会话 fork。网络策略会贯穿重定向及持续 HTTP/WebSocket 流量；Unix 本地 MCP server 被限制为 stdio descriptor，daemon socket 路径在祖先挂载中会被遮蔽，gateway OAuth 存储与错误脱敏也得到加固。维持 ADOPT。",
         "2026-09-28 更新": "0.158.0 stable（2026-09-28T05:07Z）：预注册 MCP OAuth client 可配置 client secret，直连 exec-server 的 WebSocket 支持 bearer token；高权限命令默认启用终端输入审批。沙箱修复覆盖 Windows 10 常规路径、被拒绝的已存凭据、大型权限策略、Linux 嵌套可写目录、Git 元数据保护与 macOS 路径别名。维持 ADOPT。",
-        "2026-09-29 更新": "0.159.0 stable（2026-09-29T08:05Z）加入可选的即时中断，可在模型回答或长时间 code-mode 调用中途转向；app-server 支持从指定 item 分页读取历史，Mermaid 渲染也更完整。获批命令会保留显式文件系统拒绝规则，可写根目录下的 `.aws` 默认受保护；网络沙箱修复 macOS TLS/proxy，Windows MCP/code-mode 子进程不再弹出多余控制台窗口。维持 ADOPT。"
+        "2026-09-29 更新": "0.159.0 stable（2026-09-29T08:05Z）加入可选的即时中断，可在模型回答或长时间 code-mode 调用中途转向；app-server 支持从指定 item 分页读取历史，Mermaid 渲染也更完整。获批命令会保留显式文件系统拒绝规则，可写根目录下的 `.aws` 默认受保护；网络沙箱修复 macOS TLS/proxy，Windows MCP/code-mode 子进程不再弹出多余控制台窗口。维持 ADOPT。",
+        "2026-10-02 更新": "0.160.0 增加可选的 Guardian 历史指令与 handoff 上下文召回、受工作区策略约束的无项目会话、保留权限的恢复，以及重连和 SQLite 卡顿修复。"
       },
       "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
       "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
@@ -238,7 +241,8 @@
         "src-6131601860cd8845",
         "src-6e556c3af2807b57",
         "src-b6ce910accbcbcac",
-        "src-9b9d615d7fb6df0b"
+        "src-9b9d615d7fb6df0b",
+        "src-e61beeca9f37dec1"
       ],
       "project_ids": [
         "codex"
@@ -287,6 +291,15 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-160-evidence",
+          "claim_zh": "Codex 0.160.0 增加可选的 Guardian 历史上下文召回，并改善恢复、重连与长任务可靠性。",
+          "claim_en": "Codex 0.160.0 adds opt-in Guardian retrieval of prior context and improves resume, reconnect and long-running reliability.",
+          "source_ids": ["src-e61beeca9f37dec1"],
+          "event_ids": ["ev-20260818-02"],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -327,11 +340,24 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-160-stable",
+          "kind": "update",
+          "occurred_at": "2026-10-01T20:19:13Z",
+          "discovered_at": "2026-10-02T16:00:56Z",
+          "summary_zh": "Codex 0.160.0 加入 Guardian 历史上下文召回并改善恢复可靠性",
+          "summary_en": "Codex 0.160.0 adds Guardian context retrieval and improves resume reliability",
+          "evidence_ids": ["ev-20260818-02-codex-0-160-evidence"],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "Codex 0.158.0: MCP OAuth client secrets, authenticated exec-server WebSockets, default terminal-input approval and cross-platform sandbox fixes; stays ADOPT",
-      "next_action_zh": "升级到 0.159 前回归命令审批、沙箱拒绝规则和运行中转向。",
-      "next_action_en": "Before moving to 0.159, regression-test command approvals, sandbox denial rules and in-flight steering."
+      "next_action_zh": "启用 Guardian 前测试错误历史召回，并回归长任务的 resume、reconnect 与权限保留。",
+      "next_action_en": "Before enabling Guardian, test unwanted history recall and regress resume, reconnect and permission preservation for long-running jobs."
+      ,"short_label_zh": "Codex CLI 0.160"
+      ,"short_label_en": "Codex CLI 0.160"
     },
     {
       "event_id": "ev-20260818-03",

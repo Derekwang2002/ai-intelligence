@@ -1,0 +1,451 @@
+{
+  "id": "2026-10-02T16-00-56Z",
+  "run_started_at": "2026-10-02T16:00:56Z",
+  "previous_checkpoint": "2026-10-01T16:01:43Z",
+  "window": {
+    "start": "2026-10-01T16:01:43Z",
+    "end": "2026-10-02T16:00:56Z",
+    "overlap_start": "2026-10-01T13:01:43Z"
+  },
+  "status": "ready-for-recall-audit",
+  "stages": {
+    "retrieval": true,
+    "verification": true,
+    "deduplication": true,
+    "analysis": true,
+    "reports": true,
+    "persistence": true
+  },
+  "checks": [
+    {
+      "id": "openai-api",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; API deprecation schedule retained as a separate official-doc event."
+    },
+    {
+      "id": "anthropic-news",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; no separate in-window model or API event met the threshold."
+    },
+    {
+      "id": "google-ai",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; Project Suncatcher was outside the current developer and deployable-infrastructure scope."
+    },
+    {
+      "id": "github-changelog",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; Copilot computer use and dynamic workflows updated the existing governance event."
+    },
+    {
+      "id": "claude-code-releases",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; stable 2.1.287 updated ev-20260814-04."
+    },
+    {
+      "id": "codex-releases",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; stable 0.160.0 updated ev-20260818-02; later alphas were filtered."
+    },
+    {
+      "id": "qwen-code-releases",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; nightly and small patch churn was filtered."
+    },
+    {
+      "id": "gemini-cli-releases",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; previews and nightlies were filtered."
+    },
+    {
+      "id": "vllm-releases",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; no new stable material event was retained."
+    },
+    {
+      "id": "hf-blog",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; AstaBrief retained, AutoSynthData deferred pending reusable artifacts."
+    },
+    {
+      "id": "arxiv-ai",
+      "required": true,
+      "status": "changed",
+      "analysis_status": "complete",
+      "note": "Read; Argo-Bench and KaliBench retained with public artifacts."
+    }
+  ],
+  "candidate_decisions": [
+    {
+      "candidate": "AstaBrief-8B",
+      "decision": "new-event",
+      "event_id": "ev-20261002-01",
+      "reason_code": "public-model-and-workflow"
+    },
+    {
+      "candidate": "PixelUMM weights",
+      "decision": "new-event",
+      "event_id": "ev-20261001-02",
+      "reason_code": "public-checkpoint-late-discovery"
+    },
+    {
+      "candidate": "KaliBench",
+      "decision": "new-event",
+      "event_id": "ev-20261001-03",
+      "reason_code": "public-evaluation-artifacts"
+    },
+    {
+      "candidate": "Argo-Bench",
+      "decision": "new-event",
+      "event_id": "ev-20261001-04",
+      "reason_code": "outcome-based-agent-evaluation"
+    },
+    {
+      "candidate": "OpenAI API model and speech deprecations",
+      "decision": "new-event",
+      "event_id": "ev-20261001-05",
+      "reason_code": "concrete-migration-deadlines"
+    },
+    {
+      "candidate": "Cloudflare Clef and Clef-flash",
+      "decision": "new-event",
+      "event_id": "ev-20261001-06",
+      "reason_code": "recall-audit-open-weights"
+    },
+    {
+      "candidate": "DeepSeek Harness",
+      "decision": "new-event",
+      "event_id": "ev-20261002-02",
+      "reason_code": "recall-audit-public-preview"
+    },
+    {
+      "candidate": "SGLang 0.5.21",
+      "decision": "update-existing",
+      "event_id": "ev-20260918-02",
+      "reason_code": "stable-runtime-update"
+    },
+    {
+      "candidate": "Claude Code 2.1.287",
+      "decision": "update-existing",
+      "event_id": "ev-20260814-04",
+      "reason_code": "stable-runtime-and-security-update"
+    },
+    {
+      "candidate": "Codex CLI 0.160.0",
+      "decision": "update-existing",
+      "event_id": "ev-20260818-02",
+      "reason_code": "stable-context-and-recovery-update"
+    },
+    {
+      "candidate": "GitHub Copilot computer use and dynamic workflows",
+      "decision": "update-existing",
+      "event_id": "ev-20260909-02",
+      "reason_code": "desktop-actions-and-programmable-workflows"
+    },
+    {
+      "candidate": "Olmo-core 3 overlap",
+      "decision": "duplicate",
+      "event_id": "ev-20261001-01",
+      "reason_code": "already-indexed"
+    },
+    {
+      "candidate": "AutoSynthData",
+      "decision": "deferred",
+      "reason_code": "no-reusable-implementation"
+    },
+    {
+      "candidate": "PixelDiT2 repository",
+      "decision": "deferred",
+      "reason_code": "incomplete-release"
+    },
+    {
+      "candidate": "Google Project Suncatcher",
+      "decision": "out-of-scope",
+      "reason_code": "satellite-hardware-prototype"
+    },
+    {
+      "candidate": "Gemini CLI previews and nightlies",
+      "decision": "filtered",
+      "reason_code": "prerelease"
+    },
+    {
+      "candidate": "Codex 0.162 alphas",
+      "decision": "filtered",
+      "reason_code": "prerelease"
+    },
+    {
+      "candidate": "LiteLLM dev and RC builds",
+      "decision": "filtered",
+      "reason_code": "prerelease-or-minor"
+    },
+    {
+      "candidate": "OpenCode and Qwen Code daily patches",
+      "decision": "filtered",
+      "reason_code": "minor-release-churn"
+    },
+    {
+      "candidate": "GitHub Copilot VS Code September roundup",
+      "decision": "filtered",
+      "reason_code": "recap-of-existing-events"
+    },
+    {
+      "candidate": "Other fixed-monitor items",
+      "decision": "filtered",
+      "reason_code": "old-minor-or-insufficient-value"
+    }
+  ],
+  "written_files": [
+    "events/2026-08-14.json",
+    "events/2026-08-18.json",
+    "events/2026-09-09.json",
+    "events/2026-09-18.json",
+    "events/2026-10-01.json",
+    "events/2026-10-02.json",
+    "daily/2026-10-03.md",
+    "daily/2026-10-03.en.md",
+    "trends/2026-10-03.md",
+    "trends/2026-10-03.en.md",
+    "trends/current.json",
+    "trends/current.md",
+    "index/events.json",
+    "sources/catalog.json",
+    "projects/catalog.json",
+    "reviews/queue.json",
+    "briefings/2026-10-02T16-00-56Z.json",
+    "logs/research-2026-10-02.md",
+    "logs/run-2026-10-02T16-00-56Z.json"
+  ],
+  "gap_review": {
+    "status": "not-due",
+    "last_completed_at": "2026-09-27T00:44:11Z",
+    "next_due_at": "2026-10-04"
+  },
+  "summary_en": "Seven new events and four updates: AstaBrief, PixelUMM, Clef, DeepSeek Harness, outcome-based agent benchmarks, API migration deadlines, programmable coding-agent workflows and dynamic inference serving. No new trend met the threshold.",
+  "recall_audit": {
+    "checked_at": "2026-10-02T16:30:47.163Z",
+    "window": {
+      "from": "2026-09-29T16:00:56.000Z",
+      "to": "2026-10-02T16:00:56Z"
+    },
+    "thresholds": {
+      "min_points": 150,
+      "hf_limit": 30,
+      "hf_max_age_days": 14
+    },
+    "sources": [
+      {
+        "id": "hn",
+        "status": "success",
+        "count": 18
+      },
+      {
+        "id": "hf-trending",
+        "status": "success",
+        "count": 11
+      }
+    ],
+    "matched": [
+      {
+        "id": "hn:49913571",
+        "title": "Gemini 4 Argon",
+        "event_ids": [
+          "ev-20260930-01"
+        ]
+      },
+      {
+        "id": "hn:49896586",
+        "title": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
+        "event_ids": [
+          "ev-20260929-02"
+        ]
+      },
+      {
+        "id": "hn:49896604",
+        "title": "Dots: Always-on agents",
+        "event_ids": [
+          "ev-20260929-03"
+        ]
+      },
+      {
+        "id": "hn:49923692",
+        "title": "Clef: Open-weight decision models, and new RL fine-tuning platform",
+        "event_ids": [
+          "ev-20261001-06"
+        ]
+      },
+      {
+        "id": "hn:49929489",
+        "title": "DeepSeek Harness Desktop for macOS and Windows",
+        "event_ids": [
+          "ev-20261002-02"
+        ]
+      },
+      {
+        "id": "hf:Cloudflare/clef",
+        "title": "Cloudflare/clef",
+        "event_ids": [
+          "ev-20261001-06"
+        ]
+      }
+    ],
+    "previously_handled": 14,
+    "items": [
+      {
+        "id": "hn:49897075",
+        "signal": "hn",
+        "title": "GLM-5.3 and the spread of advanced cyber capabilities",
+        "url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+        "discussion_url": "https://news.ycombinator.com/item?id=49897075",
+        "score": 251,
+        "published_at": "2026-09-29T17:31:26Z",
+        "suggested_event_ids": [
+          "ev-20260918-02",
+          "ev-20260911-06",
+          "ev-20260908-11"
+        ],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "The independent cyber-capability report predates the overlap and still needs reconciliation with the existing GLM security event and primary model evidence."
+      },
+      {
+        "id": "hn:49921050",
+        "signal": "hn",
+        "title": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
+        "url": "https://www.cnbc.com/2026/09/30/ftc-ai-probe-openai-anthropic.html",
+        "discussion_url": "https://news.ycombinator.com/item?id=49921050",
+        "score": 205,
+        "published_at": "2026-10-01T13:00:55Z",
+        "suggested_event_ids": [
+          "ev-20260921-03",
+          "ev-20260917-08",
+          "ev-20260912-02"
+        ],
+        "disposition": "filtered",
+        "event_id": null,
+        "reason": "Secondary report about an investigation announced before the overlap; no new order, rule or developer-access change was verified."
+      },
+      {
+        "id": "hn:49924618",
+        "signal": "hn",
+        "title": "Vote on which of Hacker News' challenges for AI have been met",
+        "url": "https://stoppels.ch/goalposts/",
+        "discussion_url": "https://news.ycombinator.com/item?id=49924618",
+        "score": 188,
+        "published_at": "2026-10-01T17:32:43Z",
+        "suggested_event_ids": [
+          "ev-20260905-07",
+          "ev-20260813-06"
+        ],
+        "disposition": "out-of-scope",
+        "event_id": null,
+        "reason": "Community voting page, not a primary technical release, benchmark artifact or adoption signal."
+      },
+      {
+        "id": "hn:49919910",
+        "signal": "hn",
+        "title": "GPT-Synopsys: Frontier Intelligence to Revolutionize Chip Design",
+        "url": "https://news.synopsys.com/2026-09-30-OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design",
+        "discussion_url": "https://news.ycombinator.com/item?id=49919910",
+        "score": 186,
+        "published_at": "2026-10-01T10:21:36Z",
+        "suggested_event_ids": [],
+        "disposition": "filtered",
+        "event_id": null,
+        "reason": "Pre-overlap partnership announcement with marketing claims but no public model, API contract, benchmark or reusable engineering artifact."
+      },
+      {
+        "id": "hn:49922729",
+        "signal": "hn",
+        "title": "Figma restricts MCP access to whitelisted clients, excluding Pi",
+        "url": "https://twitter.com/GayaniFigma/status/2105295629941350454",
+        "discussion_url": "https://news.ycombinator.com/item?id=49922729",
+        "score": 183,
+        "published_at": "2026-10-01T15:10:46Z",
+        "suggested_event_ids": [
+          "ev-20260928-07",
+          "ev-20260928-01",
+          "ev-20260924-08"
+        ],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "A social-media claim about MCP client whitelisting was not backed by durable official documentation during this run."
+      },
+      {
+        "id": "hn:49922437",
+        "signal": "hn",
+        "title": "Context Language Models",
+        "url": "https://arxiv.org/abs/2609.37725",
+        "discussion_url": "https://news.ycombinator.com/item?id=49922437",
+        "score": 167,
+        "published_at": "2026-10-01T14:51:33Z",
+        "suggested_event_ids": [
+          "ev-20260928-01",
+          "ev-20260916-09",
+          "ev-20260908-07"
+        ],
+        "disposition": "filtered",
+        "event_id": null,
+        "reason": "Pre-overlap single paper without a newly verified public implementation or independent engineering adoption signal."
+      },
+      {
+        "id": "hf:Cloudflare/clef-flash",
+        "signal": "hf",
+        "title": "Cloudflare/clef-flash",
+        "model_id": "Cloudflare/clef-flash",
+        "url": "https://huggingface.co/Cloudflare/clef-flash",
+        "score": 212,
+        "published_at": "2026-09-30T21:15:36.000Z",
+        "suggested_event_ids": [],
+        "disposition": "duplicate",
+        "event_id": "ev-20261001-06",
+        "reason": "Clef-flash is one of the two model variants represented by the Cloudflare Clef release event."
+      },
+      {
+        "id": "hf:FermionResearch/Phonon-2",
+        "signal": "hf",
+        "title": "FermionResearch/Phonon-2",
+        "model_id": "FermionResearch/Phonon-2",
+        "url": "https://huggingface.co/FermionResearch/Phonon-2",
+        "score": 143,
+        "published_at": "2026-09-28T11:48:47.000Z",
+        "suggested_event_ids": [],
+        "disposition": "filtered",
+        "event_id": null,
+        "reason": "Trending upload lacked enough verified benchmark provenance, technical differentiation and independent adoption evidence."
+      },
+      {
+        "id": "hf:XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B",
+        "signal": "hf",
+        "title": "XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B",
+        "model_id": "XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B",
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B",
+        "score": 133,
+        "published_at": "2026-09-21T18:18:40.000Z",
+        "suggested_event_ids": [],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "The official-looking distillation upload still needs release documentation, license and benchmark verification."
+      }
+    ]
+  }
+}
