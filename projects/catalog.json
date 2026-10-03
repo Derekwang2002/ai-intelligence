@@ -33,7 +33,8 @@
         "src-57f842e49c5467e5",
         "src-cdf0d63217ad659b",
         "src-ff1ca072bf39e471",
-        "src-80da4486dbf0594b"
+        "src-80da4486dbf0594b",
+        "src-da2d811b9d25331f"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -41,19 +42,20 @@
         "src-cdf0d63217ad659b",
         "src-ff1ca072bf39e471",
         "src-80da4486dbf0594b",
-        "src-d320458473217aca"
+        "src-d320458473217aca",
+        "src-da2d811b9d25331f"
       ],
-      "last_reviewed_at": "2026-10-02T16:00:56Z",
+      "last_reviewed_at": "2026-10-03T16:01:57Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.285/286 加强 provider 限制、Remote Control 撤权和凭据脱敏；managed settings 不可读时仍需外部启动检查。",
-        "judgment_en": "Claude Code is a mature local multi-agent runtime. Versions 2.1.285/286 strengthen provider restrictions, Remote Control revocation and credential redaction; unreadable managed settings still require an external startup check.",
-        "next_action_zh": "升级到 2.1.287 前回归危险 shell、symlink、MCP 权限上限与 prompt_text 遥测脱敏。",
-        "next_action_en": "Before 2.1.287, regress shell, symlink and MCP permission boundaries and prompt_text telemetry redaction.",
+        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.288 改善长会话恢复，并收紧危险命令、hook 与超大 MCP 输出后的执行边界。",
+        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.288 improves long-session recovery and tightens execution boundaries around dangerous commands, hooks and oversized MCP output.",
+        "next_action_zh": "升级到 2.1.288 前回归危险 shell、hook 序列化、超大 MCP 输出和压缩后恢复。",
+        "next_action_en": "Before 2.1.288, regress dangerous shell, hook serialization, oversized MCP output and post-compaction recovery.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-02T16:00:56Z"
+        "reviewed_at": "2026-10-03T16:01:57Z"
       }
     },
     {
@@ -124,24 +126,25 @@
         "src-74fc977f691fc146",
         "src-553eb3c867220f4c",
         "src-2653f5794fb9985f",
-        "src-772a8c6a7cc04043"
+        "src-772a8c6a7cc04043",
+        "src-70fa5b461d34e63d"
       ],
       "current_judgment_event_id": "ev-20260909-02",
-      "official_source_ids": ["src-c13e48d5c84eed36", "src-aaf9c1204da16c29", "src-81cdc3555a833682"],
-      "last_reviewed_at": "2026-10-02T16:00:56Z",
+      "official_source_ids": ["src-c13e48d5c84eed36", "src-aaf9c1204da16c29", "src-81cdc3555a833682", "src-70fa5b461d34e63d"],
+      "last_reviewed_at": "2026-10-03T16:01:57Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Copilot 的重心已从补全转向受管控的 agent 平台：企业级托管权限、agent 采用遥测和多 agent code review 都已 GA。跨 agent 共享修复记忆仍是早期功能。",
-        "judgment_en": "Copilot has shifted from completion to a governed agent platform: enterprise-managed permissions, agent adoption telemetry and multi-agent code review are generally available. Shared repair memory across agents is still early.",
-        "next_action_zh": "在一次性 profile 中测试一个可逆桌面任务和一个带 checkpoint 的动态工作流。",
-        "next_action_en": "Test one reversible desktop task and one checkpointed dynamic workflow in a disposable profile.",
+        "judgment_zh": "Copilot 已从补全转向可编排的 agent 平台。Code review 现在能从 REST 或 GraphQL 触发并逐请求设置 effort，适合纳入 CI，但应先核对有效发现率和成本。",
+        "judgment_en": "Copilot has shifted from completion to an orchestrable agent platform. Code review can now be triggered through REST or GraphQL with per-request effort, making CI integration practical but still requiring quality and cost checks.",
+        "next_action_zh": "从 CI 对同一组 PR 触发 Balanced 与 High review，对比时延、成本和有效发现率。",
+        "next_action_en": "Trigger Balanced and High reviews for the same PR set from CI and compare latency, cost and useful-finding rate.",
         "basis_event_ids": [
           "ev-20260909-02",
           "ev-20260917-07",
           "ev-20260911-11",
           "ev-20260925-02"
         ],
-        "reviewed_at": "2026-10-02T16:00:56Z"
+        "reviewed_at": "2026-10-03T16:01:57Z"
       }
     },
     {
@@ -575,26 +578,30 @@
         "src-c64dbca137fd7b90",
         "src-e97c05fc290cdfc6",
         "src-bab7a3f49d318472",
-        "src-320437c34242ba62"
+        "src-320437c34242ba62",
+        "src-781657bf5c42e86e",
+        "src-987dd82c392616be"
       ],
       "current_judgment_event_id": "ev-20260928-07",
       "official_source_ids": [
-        "src-320437c34242ba62"
+        "src-320437c34242ba62",
+        "src-781657bf5c42e86e",
+        "src-987dd82c392616be"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "last_reviewed_at": "2026-10-03T16:01:57Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "MCP 已进入企业治理阶段：流量检测与管控、采用遥测、网关和把现有 REST API 暴露为 MCP 工具的方案都已出现。MCP TypeScript SDK 2.2 收紧了 OAuth issuer 校验，并让列表接口自动翻页。",
-        "judgment_en": "MCP has entered its enterprise-governance phase: traffic inspection and control, adoption telemetry, gateways and ways to expose existing REST APIs as MCP tools have all appeared. The MCP TypeScript SDK 2.2 tightens OAuth issuer checks and auto-paginates list calls.",
-        "next_action_zh": "升级 SDK 2.2 前测试 issuer 不匹配和大规模分页；默认只取一页的 client 要补上显式上限。",
-        "next_action_en": "Before adopting SDK 2.2, test issuer mismatches and large paginated inventories, and give clients that assumed one page explicit limits.",
+        "judgment_zh": "MCP 已进入企业治理阶段。SDK 2.3 进一步收紧重定向、token audience、连接生命周期和 SSE 负载边界，但会影响复用 server 或 transport 的旧实现。",
+        "judgment_en": "MCP has entered its enterprise-governance phase. SDK 2.3 further tightens redirects, token audiences, connection lifecycles and SSE payload limits, but can break older implementations that reuse servers or transports.",
+        "next_action_zh": "回归跨域重定向、token audience、超大 SSE 负载、transport 复用和断线重连。",
+        "next_action_en": "Regress cross-origin redirects, token audiences, oversized SSE payloads, transport reuse and reconnection.",
         "basis_event_ids": [
           "ev-20260928-07",
           "ev-20260917-07",
           "ev-20260814-03",
           "ev-20260924-08"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-03T16:01:57Z"
       }
     },
     {
@@ -1114,6 +1121,71 @@
         "basis_event_ids": ["ev-20261001-02"],
         "reviewed_at": "2026-10-02T16:00:56Z"
       }
+    },
+    {
+      "id": "strands-decider",
+      "name_zh": "Strands Decider",
+      "name_en": "Strands Decider",
+      "type": "model",
+      "aliases": ["Decider 2B", "strands-decider-2B-hobson-v19"],
+      "pattern": "Strands Decider|Decider 2B",
+      "event_ids": ["ev-20261001-07"],
+      "source_ids": ["src-0d2b759c8ff8305d", "src-c8f8b9392c4c7378", "src-dded56d8e0c63fac"],
+      "official_source_ids": ["src-0d2b759c8ff8305d", "src-c8f8b9392c4c7378", "src-dded56d8e0c63fac"],
+      "last_reviewed_at": "2026-10-03T16:01:57Z",
+      "current_judgment_event_id": "ev-20261001-07",
+      "judgment": {"recommendation":"TRIAL","judgment_zh":"Strands Decider 是公开权重、训练代码与评测记录齐全的小型 decision model，适合验证 agent 路由和工具选择，但作者指标仍需在真实分布上复现。","judgment_en":"Strands Decider is a small decision model with public weights, training code and evaluation records, suitable for agent routing and tool-selection trials; author results still need reproduction on real distributions.","next_action_zh":"一天内用真实路由与工具选择样本比较延迟、校准、拒答率和错误代价。","next_action_en":"In one day, compare latency, calibration, abstention and error cost on real routing and tool-selection samples.","basis_event_ids":["ev-20261001-07"],"reviewed_at":"2026-10-03T16:01:57Z"}
+    },
+    {
+      "id": "mai-speech",
+      "name_zh": "MAI Speech",
+      "name_en": "MAI Speech",
+      "type": "model",
+      "aliases": ["MAI-Transcribe-2-Streaming", "MAI-Voice-2.1", "MAI-Voice-2.1-Flash"],
+      "pattern": "MAI-(Transcribe|Voice)",
+      "event_ids": ["ev-20261001-08"],
+      "source_ids": ["src-036e4d20b5ff262a"],
+      "official_source_ids": ["src-036e4d20b5ff262a"],
+      "last_reviewed_at": "2026-10-03T16:01:57Z",
+      "current_judgment_event_id": "ev-20261001-08",
+      "judgment": {"recommendation":"TRIAL","judgment_zh":"MAI Speech 提供可调用的低延迟流式转写与语音合成，并公布价格；多语质量和真实通话中的打断恢复仍需独立验证。","judgment_en":"MAI Speech offers callable low-latency streaming transcription and synthesis with published pricing; multilingual quality and interruption recovery on real calls still need independent validation.","next_action_zh":"一天内用中英混合真实通话测首 token 延迟、错误率、打断恢复、自然度和每轮成本。","next_action_en":"In one day, test mixed Chinese-English calls for first-token latency, error rate, interruption recovery, naturalness and per-turn cost.","basis_event_ids":["ev-20261001-08"],"reviewed_at":"2026-10-03T16:01:57Z"}
+    },
+    {
+      "id": "index-translate",
+      "name_zh": "Index-Translate",
+      "name_en": "Index-Translate",
+      "type": "model",
+      "aliases": ["Index-Translate-35B-A3B-preview"],
+      "pattern": "Index-Translate",
+      "event_ids": ["ev-20261002-03"],
+      "source_ids": ["src-748a2fd231dec419", "src-92abdc3f2d63b38a", "src-d94a87d65bed3c96"],
+      "official_source_ids": ["src-748a2fd231dec419", "src-92abdc3f2d63b38a", "src-d94a87d65bed3c96"],
+      "last_reviewed_at": "2026-10-03T16:01:57Z",
+      "current_judgment_event_id": "ev-20261002-03",
+      "judgment": {"recommendation":"TRIAL","judgment_zh":"Index-Translate 公开了 Apache-2.0 预览权重和推理代码，能直接验证术语与结构化输出约束；厂商基准和预览状态不支持直接上线。","judgment_en":"Index-Translate provides Apache-2.0 preview weights and inference code for direct tests of terminology and structured-output constraints; vendor-only benchmarks and preview status do not support production use.","next_action_zh":"一天内跑术语、JSON 与低资源语言样本，对比质量、约束遵循、延迟和显存。","next_action_en":"In one day, run terminology, JSON and low-resource samples and compare quality, constraint following, latency and memory.","basis_event_ids":["ev-20261002-03"],"reviewed_at":"2026-10-03T16:01:57Z"}
+    },
+    {
+      "id": "ui-venus",
+      "name_zh": "UI-Venus",
+      "name_en": "UI-Venus",
+      "type": "model",
+      "aliases": ["UI-Venus-2", "UI-Venus-2-9B"],
+      "pattern": "UI-Venus",
+      "event_ids": ["ev-20260903-02"],
+      "source_ids": ["src-e189623dcf92020a", "src-e7f44d6587d92cd8", "src-5f4cb613bda51b45"],
+      "official_source_ids": ["src-e7f44d6587d92cd8", "src-5f4cb613bda51b45"],
+      "last_reviewed_at": "2026-10-03T16:01:57Z",
+      "current_judgment_event_id": "ev-20260903-02",
+      "judgment": {"recommendation":"TRIAL","judgment_zh":"UI-Venus-2 的 9B 权重与框架已公开，可在隔离环境验证跨界面任务；权重许可证仍待确认，不能用于商业部署。","judgment_en":"UI-Venus-2's 9B weights and framework are public for isolated cross-interface evaluation, but the weight license remains pending and blocks commercial deployment.","next_action_zh":"一天内在隔离环境跑移动、网页和桌面任务；商业使用前等待明确许可证。","next_action_en":"In one day, run mobile, web and desktop tasks in isolation; wait for a clear license before commercial use.","basis_event_ids":["ev-20260903-02"],"reviewed_at":"2026-10-03T16:01:57Z"}
+    },
+    {
+      "id":"kolibri","name_zh":"Kolibri","name_en":"Kolibri","type":"model","aliases":["Kolibri-1"],"pattern":"Kolibri","event_ids":["ev-20261003-01"],"source_ids":["src-e2fde687321fd689","src-dab27c54d8c92fb4","src-1aa277cbb9e40c9f"],"official_source_ids":["src-e2fde687321fd689","src-dab27c54d8c92fb4","src-1aa277cbb9e40c9f"],"last_reviewed_at":"2026-10-03T16:01:57Z","current_judgment_event_id":"ev-20261003-01","judgment":{"recommendation":"TRIAL","judgment_zh":"Kolibri 为德英双语 RAG、工具调用和长文档提供开放权重与 serving plugin，厂商评测仍需独立复现。","judgment_en":"Kolibri provides open weights and a serving plugin for German-English RAG, tool calling and long documents; vendor evaluations still need independent reproduction.","next_action_zh":"一天内比较德英双语 RAG、工具调用、262K 长文质量、延迟和显存。","next_action_en":"In one day, compare German-English RAG, tool calling, 262K document quality, latency and memory.","basis_event_ids":["ev-20261003-01"],"reviewed_at":"2026-10-03T16:01:57Z"}
+    },
+    {
+      "id":"naive-n0-5-flash","name_zh":"Naive-N0.5-Flash","name_en":"Naive-N0.5-Flash","type":"model","aliases":["Naive N0.5 Flash"],"pattern":"Naive-N0\\.5-Flash","event_ids":["ev-20260927-01"],"source_ids":["src-962ab47b05879e8f","src-149f28fc3b524606"],"official_source_ids":["src-962ab47b05879e8f","src-149f28fc3b524606"],"last_reviewed_at":"2026-10-03T16:01:57Z","current_judgment_event_id":"ev-20260927-01","judgment":{"recommendation":"TRIAL","judgment_zh":"Naive-N0.5-Flash 是原生 1M 上下文的开放稀疏模型，但约 315 GB 权重和厂商基准把试验限定在 FP8 集群。","judgment_en":"Naive-N0.5-Flash is an open sparse model with native 1M context, but roughly 315 GB of weights and vendor benchmarks limit trials to FP8 clusters.","next_action_zh":"一天内在 FP8 集群测 128K/1M 质量、首 token、吞吐、显存和输出一致性。","next_action_en":"In one day on an FP8 cluster, test 128K/1M quality, first token, throughput, memory and output parity.","basis_event_ids":["ev-20260927-01"],"reviewed_at":"2026-10-03T16:01:57Z"}
+    },
+    {
+      "id":"dwarfstar-ds4","name_zh":"DwarfStar ds4","name_en":"DwarfStar ds4","type":"infrastructure","aliases":["ds4","DwarfStar 4"],"pattern":"DwarfStar|\\bds4\\b","event_ids":["ev-20261002-04"],"source_ids":["src-3eacb4655aba2497","src-94f7add19cb43287"],"official_source_ids":["src-3eacb4655aba2497","src-94f7add19cb43287"],"last_reviewed_at":"2026-10-03T16:01:57Z","current_judgment_event_id":"ev-20261002-04","judgment":{"recommendation":"TRIAL","judgment_zh":"ds4 在高内存工作站上为少数大型 MoE 提供专用本地运行时和明显采用信号，但模型范围窄且仍是 beta。","judgment_en":"ds4 offers a specialized local runtime and strong adoption signal for a few large MoEs on high-memory workstations, but model coverage is narrow and the software remains beta.","next_action_zh":"一天内在目标硬件测加载、首 token、长上下文吞吐、重启恢复和输出一致性。","next_action_en":"In one day on target hardware, test load time, first token, long-context throughput, restart recovery and output parity.","basis_event_ids":["ev-20261002-04"],"reviewed_at":"2026-10-03T16:01:57Z"}
     }
   ]
 }

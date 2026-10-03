@@ -682,41 +682,31 @@
     },
     {
       "event_id": "ev-20260928-07",
-      "title": "MCP TypeScript SDK 2.2 validates OAuth issuers and auto-paginates lists",
-      "title_zh": "MCP SDK 2.2 收紧 OAuth 并自动翻页",
+      "title": "MCP SDKs 2.3 tighten transport and OAuth boundaries",
+      "title_zh": "MCP SDK 2.3 收紧传输与 OAuth 边界",
       "category": "ai-agent",
       "organization": [
         "Model Context Protocol"
       ],
       "published_at": "2026-09-28T19:24:07Z",
       "first_seen_at": "2026-09-29T16:01:24Z",
-      "last_updated_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-10-03T16:01:57Z",
       "source_type": "primary",
-      "primary_source": "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.2.0",
-      "secondary_sources": [],
-      "summary": "MCP TypeScript SDK 2.2.0 makes machine-to-machine OAuth providers declare an issuer and rejects authorization-server mismatches before sending a token request. List calls such as `listTools()` and `listResources()` now follow pagination automatically when callers omit a cursor. The security check closes an identity ambiguity, while auto-pagination can change latency, request volume, memory use and returned result size in existing clients.",
-      "why_it_matters": "For MCP gateway and client teams, this is a small release with migration-sized consequences. Trial the upgrade with issuer-mismatch tests and large paginated inventories before rollout; clients that assumed one page or bounded results need explicit limits and telemetry.",
-      "summary_zh": "MCP TypeScript SDK 2.2.0 要求机器间 OAuth provider 明确声明 issuer，并在发送 token 请求前拒绝不匹配的授权服务器。调用方不传 cursor 时，`listTools()`、`listResources()` 等列表接口会自动翻页。前者消除了身份歧义；后者则可能改变现有 client 的延迟、请求量、内存占用和返回规模。",
-      "summary_en": "MCP TypeScript SDK 2.2.0 makes machine-to-machine OAuth providers declare an issuer and rejects authorization-server mismatches before sending a token request. List calls such as `listTools()` and `listResources()` now follow pagination automatically when callers omit a cursor. The security check closes an identity ambiguity, while auto-pagination can change latency, request volume, memory use and returned result size in existing clients.",
-      "why_it_matters_zh": "对 MCP gateway 和 client 团队来说，这是一次版本号不大、迁移影响不小的更新。上线前应测试 issuer 不匹配和大规模分页清单；过去默认“只取一页”或“返回有上限”的 client，需要补上显式限制与遥测。",
-      "why_it_matters_en": "For MCP gateway and client teams, this is a small release with migration-sized consequences. Trial the upgrade with issuer-mismatch tests and large paginated inventories before rollout; clients that assumed one page or bounded results need explicit limits and telemetry.",
-      "technical_details": {
-        "version": "2.2.0",
-        "oauth": "explicit issuer required; authorization-server mismatch rejected before token request",
-        "pagination": "listTools/listResources and related list calls auto-paginate when cursor is omitted",
-        "compatibility_risk": "request count, latency, memory use and result size can increase"
-      },
-      "technical_details_zh": {
-        "版本": "2.2.0",
-        "OAuth": "必须明确 issuer；token 请求前拒绝授权服务器不匹配",
-        "分页": "不传 cursor 时，listTools/listResources 等列表调用自动翻页",
-        "兼容风险": "请求数、延迟、内存与返回规模可能增加"
-      },
+      "primary_source": "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/2.3.0",
+      "secondary_sources": ["https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.3.0", "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.2.0"],
+      "summary": "MCP TypeScript and Python SDK 2.3 releases tighten connection, OAuth and payload boundaries. TypeScript redirects stay same-origin by default, can validate token audiences and enforce tool-input element limits; server and transport objects now have a one-request lifecycle. Python rejects invalid MCP headers during registration and caps SSE events at 1 MiB by default.",
+      "why_it_matters": "For MCP client and gateway teams, the security defaults are useful but the transport lifecycle can break shared server instances. Test redirects, audiences, oversized payloads and reconnection before rollout.",
+      "summary_zh": "MCP TypeScript 与 Python SDK 2.3 收紧连接、OAuth 与负载边界。TypeScript 默认只跟随同源重定向，可校验 token audience，并限制工具输入元素数量；server 与 transport 对象改为一次请求生命周期。Python 会在注册时拒绝无效 MCP header，并默认把 SSE event 限制为 1 MiB。",
+      "summary_en": "MCP TypeScript and Python SDK 2.3 releases tighten connection, OAuth and payload boundaries. TypeScript redirects stay same-origin by default, can validate token audiences and enforce tool-input element limits; server and transport objects now have a one-request lifecycle. Python rejects invalid MCP headers during registration and caps SSE events at 1 MiB by default.",
+      "why_it_matters_zh": "对 MCP client 与 gateway 团队来说，新的安全默认值有价值，但 transport 生命周期变化会破坏共享 server 实例。上线前要覆盖重定向、audience、超大负载与重连。",
+      "why_it_matters_en": "For MCP client and gateway teams, the security defaults are useful but the transport lifecycle can break shared server instances. Test redirects, audiences, oversized payloads and reconnection before rollout.",
+      "technical_details": {"versions":"TypeScript 2.3.0 / package line 1.32.0; Python 2.3.0", "typescript_security":"same-origin redirects by default; expectedResource audience validation; maxToolInputElements", "typescript_lifecycle":"server and transport are single-connection/single-request objects", "python_security":"invalid x-mcp-header rejected during registration", "python_limits":"SSE event default maximum 1 MiB, configurable", "compatibility_risk":"shared server/transport reuse and oversized SSE payloads can break"},
+      "technical_details_zh": {"版本":"TypeScript 2.3.0 / package line 1.32.0；Python 2.3.0", "TypeScript 安全":"默认同源重定向；expectedResource audience 校验；maxToolInputElements", "TypeScript 生命周期":"server 与 transport 只能服务一个连接或请求", "Python 安全":"注册时拒绝无效 x-mcp-header", "Python 限制":"SSE event 默认上限 1 MiB，可配置", "兼容风险":"复用 server/transport 或发送超大 SSE 负载可能失效"},
       "tags": [
         "mcp",
         "typescript-sdk",
         "oauth",
-        "pagination",
+        "transport",
         "agent-security"
       ],
       "technical_impact": 3,
@@ -728,7 +718,9 @@
       "recommendation": "TRIAL",
       "event_fingerprint": "mcp-typescript-sdk-2-2-0-oauth-pagination",
       "source_ids": [
-        "src-320437c34242ba62"
+        "src-320437c34242ba62",
+        "src-781657bf5c42e86e",
+        "src-987dd82c392616be"
       ],
       "project_ids": [
         "mcp"
@@ -750,6 +742,15 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260928-07-sdk-2-3-evidence",
+          "claim_zh": "MCP TypeScript 与 Python SDK 2.3 收紧重定向、audience、连接生命周期和 SSE 负载边界。",
+          "claim_en": "MCP TypeScript and Python SDK 2.3 tighten redirect, audience, connection-lifecycle and SSE payload boundaries.",
+          "source_ids": ["src-781657bf5c42e86e", "src-987dd82c392616be"],
+          "event_ids": ["ev-20260928-07"],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -765,10 +766,23 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260928-07-sdk-2-3",
+          "kind": "update",
+          "occurred_at": "2026-10-02T17:28:00Z",
+          "discovered_at": "2026-10-03T16:01:57Z",
+          "summary_zh": "TypeScript 与 Python SDK 2.3 收紧传输、OAuth 与负载边界。",
+          "summary_en": "TypeScript and Python SDK 2.3 tighten transport, OAuth and payload boundaries.",
+          "evidence_ids": ["ev-20260928-07-sdk-2-3-evidence"],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "next_action_zh": "升级前测试 issuer 不匹配和大规模分页；默认只取一页的 client 要补上显式上限和遥测。",
-      "next_action_en": "Before upgrading, test issuer mismatches and large paginated inventories; give clients that assumed one page explicit limits and telemetry."
+      "next_action_zh": "一天内回归跨域重定向、token audience、超大 SSE 负载、transport 复用和断线重连。",
+      "next_action_en": "In one day, regress cross-origin redirects, token audiences, oversized SSE payloads, transport reuse and reconnection.",
+      "short_label_zh": "MCP SDK 2.3",
+      "short_label_en": "MCP SDK 2.3"
     },
     {
       "event_id": "ev-20260928-08",

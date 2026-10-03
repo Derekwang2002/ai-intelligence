@@ -889,11 +889,12 @@
       ],
       "published_at": "2026-09-11T20:00:07Z",
       "first_seen_at": "2026-09-12T02:08:37Z",
-      "last_updated_at": "2026-09-19T16:00:30Z",
+      "last_updated_at": "2026-10-03T16:01:57Z",
       "source_type": "official_docs",
       "primary_source": "https://github.blog/changelog/2026-09-11-auto-resolution-and-analysis-updates-in-copilot-code-review/",
       "secondary_sources": [
-        "https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience"
+        "https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience",
+        "https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level/"
       ],
       "summary": "GitHub changed Copilot code review from a file-reading reviewer into an agent that can run builds, tests, targeted scripts, tools and APIs behind the Copilot agent firewall. Lite reviews now use an ensemble of agents and merge their findings into one review. GitHub reports 47% more addressed high-severity comments, 31% more medium-severity comments and about 8% lower review cost in its experiments. Copilot also auto-resolves addressed threads and writes commit messages for applied fixes.",
       "why_it_matters": "For teams already using Copilot review, validation is moving from static inspection toward execution-backed review without requiring the highest effort tier. Trial it on repositories with reliable tests and compare high-severity precision, runtime and false positives against the previous Lite baseline.",
@@ -906,14 +907,16 @@
         "lite_ensemble": "Multiple review agents contribute perspectives and GitHub merges their findings into one Lite review",
         "vendor_experiment": "+47% addressed high-severity comments; +31% medium; +11% low; review cost about -8%",
         "workflow": "Auto-resolves comments after a later commit addresses them; generates context-specific commit messages for applied suggestions",
-        "update_2026_09_20": "The GA review overview separates open, resolved-since-last-review and previously missed findings, preserves progress across commits, records review effort and severity, honors replies that keep a finding open, and explains auto-resolution as Won't Fix or Incorrect."
+        "update_2026_09_20": "The GA review overview separates open, resolved-since-last-review and previously missed findings, preserves progress across commits, records review effort and severity, honors replies that keep a finding open, and explains auto-resolution as Won't Fix or Incorrect.",
+        "update_2026_10_03": "REST and GraphQL APIs can request Copilot code review with per-request effort. Balanced is now the default GA effort level."
       },
       "technical_details_zh": {
         "review 运行时": "在 Copilot agent firewall 后使用完整 Copilot SDK shell 工具集；可运行构建、测试、定向脚本，并查询可用工具与 API",
         "Lite 多 agent": "多个 review agent 分别分析，GitHub 将结果合并为一份 Lite review",
         "厂商实验": "被采纳的高严重度评论 +47%；中严重度 +31%；低严重度 +11%；review 成本约 -8%",
         "工作流": "后续 commit 修复问题后自动关闭评论；为采纳的建议生成针对本次变更的 commit message",
-        "update_2026_09_20": "GA review 总览区分未解决、上次 review 后已解决、此前漏检三类发现，跨 commit 保留进度，并显示 review effort 与严重度；回复要求保留的问题不会被自动关闭，自动关闭会标注 Won't Fix 或 Incorrect。"
+        "update_2026_09_20": "GA review 总览区分未解决、上次 review 后已解决、此前漏检三类发现，跨 commit 保留进度，并显示 review effort 与严重度；回复要求保留的问题不会被自动关闭，自动关闭会标注 Won't Fix 或 Incorrect。",
+        "update_2026_10_03": "REST 与 GraphQL API 可触发 Copilot code review，并按请求指定 effort；Balanced 成为 GA 默认档。"
       },
       "tags": [
         "copilot",
@@ -933,7 +936,8 @@
       "event_fingerprint": "github-copilot-review-shell-tools-agent-ensemble",
       "source_ids": [
         "src-f5b7434d849eacf1",
-        "src-90422616cebb86f4"
+        "src-90422616cebb86f4",
+        "src-70fa5b461d34e63d"
       ],
       "project_ids": [
         "github-copilot"
@@ -957,6 +961,15 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260911-11-api-evidence",
+          "claim_zh": "GitHub 已开放通过 REST 与 GraphQL API 触发 Copilot code review，并允许逐请求设置 effort。",
+          "claim_en": "GitHub now lets REST and GraphQL clients request Copilot code review and set effort per request.",
+          "source_ids": ["src-70fa5b461d34e63d"],
+          "event_ids": ["ev-20260911-11"],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -971,8 +984,23 @@
             "ev-20260911-11-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260911-11-api",
+          "kind": "update",
+          "occurred_at": "2026-10-02T00:00:00Z",
+          "discovered_at": "2026-10-03T16:01:57Z",
+          "summary_zh": "Copilot code review 开放 REST 与 GraphQL 调用，并支持逐请求 effort。",
+          "summary_en": "Copilot code review adds REST and GraphQL access with per-request effort.",
+          "evidence_ids": ["ev-20260911-11-api-evidence"],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "short_label_zh": "Copilot Code Review",
+      "short_label_en": "Copilot Code Review",
+      "next_action_zh": "一天内从 CI 触发同一组 PR 的 Balanced 与 High review，对比时延、成本和有效发现率。",
+      "next_action_en": "In one day, trigger Balanced and High reviews for the same PR set from CI and compare latency, cost and useful-finding rate."
     },
     {
       "event_id": "ev-20260911-12",
