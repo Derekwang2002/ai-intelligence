@@ -34,7 +34,8 @@
         "src-cdf0d63217ad659b",
         "src-ff1ca072bf39e471",
         "src-80da4486dbf0594b",
-        "src-da2d811b9d25331f"
+        "src-da2d811b9d25331f",
+        "src-ec08581411bc9dc6"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -43,19 +44,20 @@
         "src-ff1ca072bf39e471",
         "src-80da4486dbf0594b",
         "src-d320458473217aca",
-        "src-da2d811b9d25331f"
+        "src-da2d811b9d25331f",
+        "src-ec08581411bc9dc6"
       ],
-      "last_reviewed_at": "2026-10-03T16:01:57Z",
+      "last_reviewed_at": "2026-10-04T16:02:19Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.288 改善长会话恢复，并收紧危险命令、hook 与超大 MCP 输出后的执行边界。",
-        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.288 improves long-session recovery and tightens execution boundaries around dangerous commands, hooks and oversized MCP output.",
-        "next_action_zh": "升级到 2.1.288 前回归危险 shell、hook 序列化、超大 MCP 输出和压缩后恢复。",
-        "next_action_en": "Before 2.1.288, regress dangerous shell, hook serialization, oversized MCP output and post-compaction recovery.",
+        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.289 堵住嵌套命令、变量前缀与符号链接读取的策略绕过路径。",
+        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.289 closes policy bypasses around nested commands, variable prefixes and symlink reads.",
+        "next_action_zh": "升级前回归嵌套 shell、裸变量赋值、IDE 符号链接读取和 managed MCP 描述。",
+        "next_action_en": "Before upgrading, regress nested shell, bare assignments, IDE symlink reads and managed MCP descriptions.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-03T16:01:57Z"
+        "reviewed_at": "2026-10-04T16:02:19Z"
       }
     },
     {
@@ -130,7 +132,12 @@
         "src-70fa5b461d34e63d"
       ],
       "current_judgment_event_id": "ev-20260909-02",
-      "official_source_ids": ["src-c13e48d5c84eed36", "src-aaf9c1204da16c29", "src-81cdc3555a833682", "src-70fa5b461d34e63d"],
+      "official_source_ids": [
+        "src-c13e48d5c84eed36",
+        "src-aaf9c1204da16c29",
+        "src-81cdc3555a833682",
+        "src-70fa5b461d34e63d"
+      ],
       "last_reviewed_at": "2026-10-03T16:01:57Z",
       "judgment": {
         "recommendation": "TRIAL",
@@ -389,7 +396,9 @@
         "src-0f607943d6da27d6"
       ],
       "current_judgment_event_id": "ev-20260918-02",
-      "official_source_ids": ["src-9b2f8ba750283adb"],
+      "official_source_ids": [
+        "src-9b2f8ba750283adb"
+      ],
       "last_reviewed_at": "2026-10-02T16:00:56Z",
       "judgment": {
         "recommendation": "TRIAL",
@@ -580,7 +589,10 @@
         "src-bab7a3f49d318472",
         "src-320437c34242ba62",
         "src-781657bf5c42e86e",
-        "src-987dd82c392616be"
+        "src-987dd82c392616be",
+        "src-49b5951c067cceb3",
+        "src-75ffc0e085a2eee1",
+        "src-d9a9c33752a345db"
       ],
       "current_judgment_event_id": "ev-20260928-07",
       "official_source_ids": [
@@ -588,7 +600,7 @@
         "src-781657bf5c42e86e",
         "src-987dd82c392616be"
       ],
-      "last_reviewed_at": "2026-10-03T16:01:57Z",
+      "last_reviewed_at": "2026-10-04T16:02:19Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "MCP 已进入企业治理阶段。SDK 2.3 进一步收紧重定向、token audience、连接生命周期和 SSE 负载边界，但会影响复用 server 或 transport 的旧实现。",
@@ -601,7 +613,7 @@
           "ev-20260814-03",
           "ev-20260924-08"
         ],
-        "reviewed_at": "2026-10-03T16:01:57Z"
+        "reviewed_at": "2026-10-04T16:02:19Z"
       }
     },
     {
@@ -854,7 +866,8 @@
       "source_ids": [
         "src-4e3ca8a95d366330",
         "src-cdf0d63217ad659b",
-        "src-1af50bc5d28f4d83"
+        "src-1af50bc5d28f4d83",
+        "src-4d947df5f3d74f68"
       ],
       "current_judgment_event_id": "ev-20260928-02",
       "official_source_ids": [
@@ -862,17 +875,17 @@
         "src-cdf0d63217ad659b",
         "src-1af50bc5d28f4d83"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "last_reviewed_at": "2026-10-04T16:02:19Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Sonnet 5.5 单价不变，厂商称速度快 30%、单任务成本最多低 30%，可能重划主力模型和高价模型的成本边界。迁移有行为变化：关闭 thinking 的应用要改用 between_tools。",
-        "judgment_en": "Sonnet 5.5 keeps its token prices while Anthropic reports 30% faster output and up to 30% lower cost per task, which may move the line between workhorse and premium models. Migration changes behavior: applications that disabled thinking must move to between_tools.",
-        "next_action_zh": "用自己的轨迹测 Low 和 Medium effort；迁移前检查 between_tools 和 preserved thinking 的影响。",
-        "next_action_en": "Test your own traces at Low and Medium effort, and check between_tools and preserved thinking before migrating.",
+        "judgment_zh": "Sonnet 5.5 的单任务成本对 effort 很敏感；独立评测显示 maximum effort 可能比 Sonnet 5 更贵。",
+        "judgment_en": "Sonnet 5.5 task cost is effort-sensitive; independent evaluation found maximum effort can cost more than Sonnet 5.",
+        "next_action_zh": "用自有轨迹比较 low、medium 与 maximum effort 的质量、输出 token、时延和成本。",
+        "next_action_en": "Compare low, medium and maximum effort on your traces for quality, output tokens, latency and cost.",
         "basis_event_ids": [
           "ev-20260928-02"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-04T16:02:19Z"
       }
     },
     {
@@ -925,23 +938,27 @@
         "ev-20260928-08"
       ],
       "source_ids": [
-        "src-e98d8b117b719064"
+        "src-e98d8b117b719064",
+        "src-4bbe4a7146766080",
+        "src-b601306efd6751e3"
       ],
       "current_judgment_event_id": "ev-20260928-08",
       "official_source_ids": [
-        "src-e98d8b117b719064"
+        "src-e98d8b117b719064",
+        "src-4bbe4a7146766080",
+        "src-b601306efd6751e3"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "last_reviewed_at": "2026-10-04T16:02:19Z",
       "judgment": {
-        "recommendation": "WATCH",
-        "judgment_zh": "OpenAI Python SDK 3.20 开始暴露托管 agent 会话的治理与传输状态，但 API 文档还没有确认这些能力的可用范围。",
-        "judgment_en": "OpenAI Python SDK 3.20 exposes governance and transport states for hosted agent sessions, but the API documentation has not yet confirmed where these capabilities are available.",
-        "next_action_zh": "等 API 文档确认可用范围，再测试凭据更新权限、策略违规分支和重放行为。",
-        "next_action_en": "Wait for API documentation to confirm availability, then test credential updates, policy-violation branches and replay.",
+        "recommendation": "TRIAL",
+        "judgment_zh": "Agents Vault API 已有公开文档，secret 通过网络代理按 host 注入，可以进入受控试验。",
+        "judgment_en": "The Agents Vault API is publicly documented; secrets are injected by a network proxy per allowed host, enabling a controlled trial.",
+        "next_action_zh": "测试 secret 不可见、host 白名单、轮换、撤销和日志脱敏。",
+        "next_action_en": "Test secret non-disclosure, host allowlists, rotation, revocation and log redaction.",
         "basis_event_ids": [
           "ev-20260928-08"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-04T16:02:19Z"
       }
     },
     {
@@ -957,23 +974,25 @@
         "ev-20260928-09"
       ],
       "source_ids": [
-        "src-872457bb1f6a4e1a"
+        "src-872457bb1f6a4e1a",
+        "src-86745252420db893"
       ],
       "official_source_ids": [
-        "src-872457bb1f6a4e1a"
+        "src-872457bb1f6a4e1a",
+        "src-86745252420db893"
       ],
-      "last_reviewed_at": "2026-10-01T16:01:43Z",
+      "last_reviewed_at": "2026-10-04T16:02:19Z",
       "current_judgment_event_id": "ev-20260928-09",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "Ollama 0.35.0 把概率优先的 decision model 带到本地运行时，适合路由与分类试验。现阶段只支持少量模型，概率仍需用自有标签做校准。",
         "judgment_en": "Ollama 0.35.0 brings probability-first decision models to the local runtime for routing and classification trials. Model choice is limited and probabilities still require calibration on local labels.",
-        "next_action_zh": "用一组有人工标签的数据测试概率校准、拒答阈值、延迟和模型回退。",
-        "next_action_en": "Test probability calibration, abstention thresholds, latency and model fallback on a labeled dataset.",
+        "next_action_zh": "验证概率校准，并确认客户端不会给 decision-only 模型展示 chat、tools 或 thinking。",
+        "next_action_en": "Validate calibration and confirm clients do not offer chat, tools or thinking to decision-only models.",
         "basis_event_ids": [
           "ev-20260928-09"
         ],
-        "reviewed_at": "2026-10-01T16:01:43Z"
+        "reviewed_at": "2026-10-04T16:02:19Z"
       }
     },
     {
@@ -1083,11 +1102,24 @@
       "name_zh": "AstaBrief",
       "name_en": "AstaBrief",
       "type": "model",
-      "aliases": ["AstaBrief-8B", "AstaBrief_8B"],
+      "aliases": [
+        "AstaBrief-8B",
+        "AstaBrief_8B"
+      ],
       "pattern": "AstaBrief",
-      "event_ids": ["ev-20261002-01"],
-      "source_ids": ["src-d185427efe0f1914", "src-92005d4a84bd525c", "src-d9172aa3703c8655"],
-      "official_source_ids": ["src-d185427efe0f1914", "src-92005d4a84bd525c", "src-d9172aa3703c8655"],
+      "event_ids": [
+        "ev-20261002-01"
+      ],
+      "source_ids": [
+        "src-d185427efe0f1914",
+        "src-92005d4a84bd525c",
+        "src-d9172aa3703c8655"
+      ],
+      "official_source_ids": [
+        "src-d185427efe0f1914",
+        "src-92005d4a84bd525c",
+        "src-d9172aa3703c8655"
+      ],
       "last_reviewed_at": "2026-10-02T16:00:56Z",
       "current_judgment_event_id": "ev-20261002-01",
       "judgment": {
@@ -1096,7 +1128,9 @@
         "judgment_en": "AstaBrief-8B is a downloadable, permissively licensed cited-report model, but citation quality and the small human study still need independent verification.",
         "next_action_zh": "在一天内用本地论文集测引文精确率、召回率、延迟与过度归纳。",
         "next_action_en": "In one day, test citation precision, recall, latency and overclaiming on a local paper corpus.",
-        "basis_event_ids": ["ev-20261002-01"],
+        "basis_event_ids": [
+          "ev-20261002-01"
+        ],
         "reviewed_at": "2026-10-02T16:00:56Z"
       }
     },
@@ -1105,11 +1139,23 @@
       "name_zh": "PixelUMM",
       "name_en": "PixelUMM",
       "type": "model",
-      "aliases": ["PixelUMM-15B"],
+      "aliases": [
+        "PixelUMM-15B"
+      ],
       "pattern": "PixelUMM",
-      "event_ids": ["ev-20261001-02"],
-      "source_ids": ["src-9f0246a4f7cf94f1", "src-2f1c47d9985475a7", "src-7c450930a8255936"],
-      "official_source_ids": ["src-9f0246a4f7cf94f1", "src-2f1c47d9985475a7", "src-7c450930a8255936"],
+      "event_ids": [
+        "ev-20261001-02"
+      ],
+      "source_ids": [
+        "src-9f0246a4f7cf94f1",
+        "src-2f1c47d9985475a7",
+        "src-7c450930a8255936"
+      ],
+      "official_source_ids": [
+        "src-9f0246a4f7cf94f1",
+        "src-2f1c47d9985475a7",
+        "src-7c450930a8255936"
+      ],
       "last_reviewed_at": "2026-10-02T16:00:56Z",
       "current_judgment_event_id": "ev-20261001-02",
       "judgment": {
@@ -1118,7 +1164,9 @@
         "judgment_en": "PixelUMM's unified pixel-space architecture is inspectable, but its checkpoint is noncommercial and both the training recipe and production evidence are incomplete.",
         "next_action_zh": "等待完整训练配方、商业许可或独立复现后再投入算力。",
         "next_action_en": "Wait for a complete training recipe, commercial license or independent reproduction before allocating compute.",
-        "basis_event_ids": ["ev-20261001-02"],
+        "basis_event_ids": [
+          "ev-20261001-02"
+        ],
         "reviewed_at": "2026-10-02T16:00:56Z"
       }
     },
@@ -1127,65 +1175,422 @@
       "name_zh": "Strands Decider",
       "name_en": "Strands Decider",
       "type": "model",
-      "aliases": ["Decider 2B", "strands-decider-2B-hobson-v19"],
+      "aliases": [
+        "Decider 2B",
+        "strands-decider-2B-hobson-v19"
+      ],
       "pattern": "Strands Decider|Decider 2B",
-      "event_ids": ["ev-20261001-07"],
-      "source_ids": ["src-0d2b759c8ff8305d", "src-c8f8b9392c4c7378", "src-dded56d8e0c63fac"],
-      "official_source_ids": ["src-0d2b759c8ff8305d", "src-c8f8b9392c4c7378", "src-dded56d8e0c63fac"],
+      "event_ids": [
+        "ev-20261001-07"
+      ],
+      "source_ids": [
+        "src-0d2b759c8ff8305d",
+        "src-c8f8b9392c4c7378",
+        "src-dded56d8e0c63fac"
+      ],
+      "official_source_ids": [
+        "src-0d2b759c8ff8305d",
+        "src-c8f8b9392c4c7378",
+        "src-dded56d8e0c63fac"
+      ],
       "last_reviewed_at": "2026-10-03T16:01:57Z",
       "current_judgment_event_id": "ev-20261001-07",
-      "judgment": {"recommendation":"TRIAL","judgment_zh":"Strands Decider 是公开权重、训练代码与评测记录齐全的小型 decision model，适合验证 agent 路由和工具选择，但作者指标仍需在真实分布上复现。","judgment_en":"Strands Decider is a small decision model with public weights, training code and evaluation records, suitable for agent routing and tool-selection trials; author results still need reproduction on real distributions.","next_action_zh":"一天内用真实路由与工具选择样本比较延迟、校准、拒答率和错误代价。","next_action_en":"In one day, compare latency, calibration, abstention and error cost on real routing and tool-selection samples.","basis_event_ids":["ev-20261001-07"],"reviewed_at":"2026-10-03T16:01:57Z"}
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Strands Decider 是公开权重、训练代码与评测记录齐全的小型 decision model，适合验证 agent 路由和工具选择，但作者指标仍需在真实分布上复现。",
+        "judgment_en": "Strands Decider is a small decision model with public weights, training code and evaluation records, suitable for agent routing and tool-selection trials; author results still need reproduction on real distributions.",
+        "next_action_zh": "一天内用真实路由与工具选择样本比较延迟、校准、拒答率和错误代价。",
+        "next_action_en": "In one day, compare latency, calibration, abstention and error cost on real routing and tool-selection samples.",
+        "basis_event_ids": [
+          "ev-20261001-07"
+        ],
+        "reviewed_at": "2026-10-03T16:01:57Z"
+      }
     },
     {
       "id": "mai-speech",
       "name_zh": "MAI Speech",
       "name_en": "MAI Speech",
       "type": "model",
-      "aliases": ["MAI-Transcribe-2-Streaming", "MAI-Voice-2.1", "MAI-Voice-2.1-Flash"],
+      "aliases": [
+        "MAI-Transcribe-2-Streaming",
+        "MAI-Voice-2.1",
+        "MAI-Voice-2.1-Flash"
+      ],
       "pattern": "MAI-(Transcribe|Voice)",
-      "event_ids": ["ev-20261001-08"],
-      "source_ids": ["src-036e4d20b5ff262a"],
-      "official_source_ids": ["src-036e4d20b5ff262a"],
+      "event_ids": [
+        "ev-20261001-08"
+      ],
+      "source_ids": [
+        "src-036e4d20b5ff262a"
+      ],
+      "official_source_ids": [
+        "src-036e4d20b5ff262a"
+      ],
       "last_reviewed_at": "2026-10-03T16:01:57Z",
       "current_judgment_event_id": "ev-20261001-08",
-      "judgment": {"recommendation":"TRIAL","judgment_zh":"MAI Speech 提供可调用的低延迟流式转写与语音合成，并公布价格；多语质量和真实通话中的打断恢复仍需独立验证。","judgment_en":"MAI Speech offers callable low-latency streaming transcription and synthesis with published pricing; multilingual quality and interruption recovery on real calls still need independent validation.","next_action_zh":"一天内用中英混合真实通话测首 token 延迟、错误率、打断恢复、自然度和每轮成本。","next_action_en":"In one day, test mixed Chinese-English calls for first-token latency, error rate, interruption recovery, naturalness and per-turn cost.","basis_event_ids":["ev-20261001-08"],"reviewed_at":"2026-10-03T16:01:57Z"}
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "MAI Speech 提供可调用的低延迟流式转写与语音合成，并公布价格；多语质量和真实通话中的打断恢复仍需独立验证。",
+        "judgment_en": "MAI Speech offers callable low-latency streaming transcription and synthesis with published pricing; multilingual quality and interruption recovery on real calls still need independent validation.",
+        "next_action_zh": "一天内用中英混合真实通话测首 token 延迟、错误率、打断恢复、自然度和每轮成本。",
+        "next_action_en": "In one day, test mixed Chinese-English calls for first-token latency, error rate, interruption recovery, naturalness and per-turn cost.",
+        "basis_event_ids": [
+          "ev-20261001-08"
+        ],
+        "reviewed_at": "2026-10-03T16:01:57Z"
+      }
     },
     {
       "id": "index-translate",
       "name_zh": "Index-Translate",
       "name_en": "Index-Translate",
       "type": "model",
-      "aliases": ["Index-Translate-35B-A3B-preview"],
+      "aliases": [
+        "Index-Translate-35B-A3B-preview"
+      ],
       "pattern": "Index-Translate",
-      "event_ids": ["ev-20261002-03"],
-      "source_ids": ["src-748a2fd231dec419", "src-92abdc3f2d63b38a", "src-d94a87d65bed3c96"],
-      "official_source_ids": ["src-748a2fd231dec419", "src-92abdc3f2d63b38a", "src-d94a87d65bed3c96"],
+      "event_ids": [
+        "ev-20261002-03"
+      ],
+      "source_ids": [
+        "src-748a2fd231dec419",
+        "src-92abdc3f2d63b38a",
+        "src-d94a87d65bed3c96"
+      ],
+      "official_source_ids": [
+        "src-748a2fd231dec419",
+        "src-92abdc3f2d63b38a",
+        "src-d94a87d65bed3c96"
+      ],
       "last_reviewed_at": "2026-10-03T16:01:57Z",
       "current_judgment_event_id": "ev-20261002-03",
-      "judgment": {"recommendation":"TRIAL","judgment_zh":"Index-Translate 公开了 Apache-2.0 预览权重和推理代码，能直接验证术语与结构化输出约束；厂商基准和预览状态不支持直接上线。","judgment_en":"Index-Translate provides Apache-2.0 preview weights and inference code for direct tests of terminology and structured-output constraints; vendor-only benchmarks and preview status do not support production use.","next_action_zh":"一天内跑术语、JSON 与低资源语言样本，对比质量、约束遵循、延迟和显存。","next_action_en":"In one day, run terminology, JSON and low-resource samples and compare quality, constraint following, latency and memory.","basis_event_ids":["ev-20261002-03"],"reviewed_at":"2026-10-03T16:01:57Z"}
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Index-Translate 公开了 Apache-2.0 预览权重和推理代码，能直接验证术语与结构化输出约束；厂商基准和预览状态不支持直接上线。",
+        "judgment_en": "Index-Translate provides Apache-2.0 preview weights and inference code for direct tests of terminology and structured-output constraints; vendor-only benchmarks and preview status do not support production use.",
+        "next_action_zh": "一天内跑术语、JSON 与低资源语言样本，对比质量、约束遵循、延迟和显存。",
+        "next_action_en": "In one day, run terminology, JSON and low-resource samples and compare quality, constraint following, latency and memory.",
+        "basis_event_ids": [
+          "ev-20261002-03"
+        ],
+        "reviewed_at": "2026-10-03T16:01:57Z"
+      }
     },
     {
       "id": "ui-venus",
       "name_zh": "UI-Venus",
       "name_en": "UI-Venus",
       "type": "model",
-      "aliases": ["UI-Venus-2", "UI-Venus-2-9B"],
+      "aliases": [
+        "UI-Venus-2",
+        "UI-Venus-2-9B"
+      ],
       "pattern": "UI-Venus",
-      "event_ids": ["ev-20260903-02"],
-      "source_ids": ["src-e189623dcf92020a", "src-e7f44d6587d92cd8", "src-5f4cb613bda51b45"],
-      "official_source_ids": ["src-e7f44d6587d92cd8", "src-5f4cb613bda51b45"],
+      "event_ids": [
+        "ev-20260903-02"
+      ],
+      "source_ids": [
+        "src-e189623dcf92020a",
+        "src-e7f44d6587d92cd8",
+        "src-5f4cb613bda51b45"
+      ],
+      "official_source_ids": [
+        "src-e7f44d6587d92cd8",
+        "src-5f4cb613bda51b45"
+      ],
       "last_reviewed_at": "2026-10-03T16:01:57Z",
       "current_judgment_event_id": "ev-20260903-02",
-      "judgment": {"recommendation":"TRIAL","judgment_zh":"UI-Venus-2 的 9B 权重与框架已公开，可在隔离环境验证跨界面任务；权重许可证仍待确认，不能用于商业部署。","judgment_en":"UI-Venus-2's 9B weights and framework are public for isolated cross-interface evaluation, but the weight license remains pending and blocks commercial deployment.","next_action_zh":"一天内在隔离环境跑移动、网页和桌面任务；商业使用前等待明确许可证。","next_action_en":"In one day, run mobile, web and desktop tasks in isolation; wait for a clear license before commercial use.","basis_event_ids":["ev-20260903-02"],"reviewed_at":"2026-10-03T16:01:57Z"}
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "UI-Venus-2 的 9B 权重与框架已公开，可在隔离环境验证跨界面任务；权重许可证仍待确认，不能用于商业部署。",
+        "judgment_en": "UI-Venus-2's 9B weights and framework are public for isolated cross-interface evaluation, but the weight license remains pending and blocks commercial deployment.",
+        "next_action_zh": "一天内在隔离环境跑移动、网页和桌面任务；商业使用前等待明确许可证。",
+        "next_action_en": "In one day, run mobile, web and desktop tasks in isolation; wait for a clear license before commercial use.",
+        "basis_event_ids": [
+          "ev-20260903-02"
+        ],
+        "reviewed_at": "2026-10-03T16:01:57Z"
+      }
     },
     {
-      "id":"kolibri","name_zh":"Kolibri","name_en":"Kolibri","type":"model","aliases":["Kolibri-1"],"pattern":"Kolibri","event_ids":["ev-20261003-01"],"source_ids":["src-e2fde687321fd689","src-dab27c54d8c92fb4","src-1aa277cbb9e40c9f"],"official_source_ids":["src-e2fde687321fd689","src-dab27c54d8c92fb4","src-1aa277cbb9e40c9f"],"last_reviewed_at":"2026-10-03T16:01:57Z","current_judgment_event_id":"ev-20261003-01","judgment":{"recommendation":"TRIAL","judgment_zh":"Kolibri 为德英双语 RAG、工具调用和长文档提供开放权重与 serving plugin，厂商评测仍需独立复现。","judgment_en":"Kolibri provides open weights and a serving plugin for German-English RAG, tool calling and long documents; vendor evaluations still need independent reproduction.","next_action_zh":"一天内比较德英双语 RAG、工具调用、262K 长文质量、延迟和显存。","next_action_en":"In one day, compare German-English RAG, tool calling, 262K document quality, latency and memory.","basis_event_ids":["ev-20261003-01"],"reviewed_at":"2026-10-03T16:01:57Z"}
+      "id": "kolibri",
+      "name_zh": "Kolibri",
+      "name_en": "Kolibri",
+      "type": "model",
+      "aliases": [
+        "Kolibri-1"
+      ],
+      "pattern": "Kolibri",
+      "event_ids": [
+        "ev-20261003-01"
+      ],
+      "source_ids": [
+        "src-e2fde687321fd689",
+        "src-dab27c54d8c92fb4",
+        "src-1aa277cbb9e40c9f"
+      ],
+      "official_source_ids": [
+        "src-e2fde687321fd689",
+        "src-dab27c54d8c92fb4",
+        "src-1aa277cbb9e40c9f"
+      ],
+      "last_reviewed_at": "2026-10-03T16:01:57Z",
+      "current_judgment_event_id": "ev-20261003-01",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Kolibri 为德英双语 RAG、工具调用和长文档提供开放权重与 serving plugin，厂商评测仍需独立复现。",
+        "judgment_en": "Kolibri provides open weights and a serving plugin for German-English RAG, tool calling and long documents; vendor evaluations still need independent reproduction.",
+        "next_action_zh": "一天内比较德英双语 RAG、工具调用、262K 长文质量、延迟和显存。",
+        "next_action_en": "In one day, compare German-English RAG, tool calling, 262K document quality, latency and memory.",
+        "basis_event_ids": [
+          "ev-20261003-01"
+        ],
+        "reviewed_at": "2026-10-03T16:01:57Z"
+      }
     },
     {
-      "id":"naive-n0-5-flash","name_zh":"Naive-N0.5-Flash","name_en":"Naive-N0.5-Flash","type":"model","aliases":["Naive N0.5 Flash"],"pattern":"Naive-N0\\.5-Flash","event_ids":["ev-20260927-01"],"source_ids":["src-962ab47b05879e8f","src-149f28fc3b524606"],"official_source_ids":["src-962ab47b05879e8f","src-149f28fc3b524606"],"last_reviewed_at":"2026-10-03T16:01:57Z","current_judgment_event_id":"ev-20260927-01","judgment":{"recommendation":"TRIAL","judgment_zh":"Naive-N0.5-Flash 是原生 1M 上下文的开放稀疏模型，但约 315 GB 权重和厂商基准把试验限定在 FP8 集群。","judgment_en":"Naive-N0.5-Flash is an open sparse model with native 1M context, but roughly 315 GB of weights and vendor benchmarks limit trials to FP8 clusters.","next_action_zh":"一天内在 FP8 集群测 128K/1M 质量、首 token、吞吐、显存和输出一致性。","next_action_en":"In one day on an FP8 cluster, test 128K/1M quality, first token, throughput, memory and output parity.","basis_event_ids":["ev-20260927-01"],"reviewed_at":"2026-10-03T16:01:57Z"}
+      "id": "naive-n0-5-flash",
+      "name_zh": "Naive-N0.5-Flash",
+      "name_en": "Naive-N0.5-Flash",
+      "type": "model",
+      "aliases": [
+        "Naive N0.5 Flash"
+      ],
+      "pattern": "Naive-N0\\.5-Flash",
+      "event_ids": [
+        "ev-20260927-01"
+      ],
+      "source_ids": [
+        "src-962ab47b05879e8f",
+        "src-149f28fc3b524606"
+      ],
+      "official_source_ids": [
+        "src-962ab47b05879e8f",
+        "src-149f28fc3b524606"
+      ],
+      "last_reviewed_at": "2026-10-03T16:01:57Z",
+      "current_judgment_event_id": "ev-20260927-01",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Naive-N0.5-Flash 是原生 1M 上下文的开放稀疏模型，但约 315 GB 权重和厂商基准把试验限定在 FP8 集群。",
+        "judgment_en": "Naive-N0.5-Flash is an open sparse model with native 1M context, but roughly 315 GB of weights and vendor benchmarks limit trials to FP8 clusters.",
+        "next_action_zh": "一天内在 FP8 集群测 128K/1M 质量、首 token、吞吐、显存和输出一致性。",
+        "next_action_en": "In one day on an FP8 cluster, test 128K/1M quality, first token, throughput, memory and output parity.",
+        "basis_event_ids": [
+          "ev-20260927-01"
+        ],
+        "reviewed_at": "2026-10-03T16:01:57Z"
+      }
     },
     {
-      "id":"dwarfstar-ds4","name_zh":"DwarfStar ds4","name_en":"DwarfStar ds4","type":"infrastructure","aliases":["ds4","DwarfStar 4"],"pattern":"DwarfStar|\\bds4\\b","event_ids":["ev-20261002-04"],"source_ids":["src-3eacb4655aba2497","src-94f7add19cb43287"],"official_source_ids":["src-3eacb4655aba2497","src-94f7add19cb43287"],"last_reviewed_at":"2026-10-03T16:01:57Z","current_judgment_event_id":"ev-20261002-04","judgment":{"recommendation":"TRIAL","judgment_zh":"ds4 在高内存工作站上为少数大型 MoE 提供专用本地运行时和明显采用信号，但模型范围窄且仍是 beta。","judgment_en":"ds4 offers a specialized local runtime and strong adoption signal for a few large MoEs on high-memory workstations, but model coverage is narrow and the software remains beta.","next_action_zh":"一天内在目标硬件测加载、首 token、长上下文吞吐、重启恢复和输出一致性。","next_action_en":"In one day on target hardware, test load time, first token, long-context throughput, restart recovery and output parity.","basis_event_ids":["ev-20261002-04"],"reviewed_at":"2026-10-03T16:01:57Z"}
+      "id": "dwarfstar-ds4",
+      "name_zh": "DwarfStar ds4",
+      "name_en": "DwarfStar ds4",
+      "type": "infrastructure",
+      "aliases": [
+        "ds4",
+        "DwarfStar 4"
+      ],
+      "pattern": "DwarfStar|\\bds4\\b",
+      "event_ids": [
+        "ev-20261002-04"
+      ],
+      "source_ids": [
+        "src-3eacb4655aba2497",
+        "src-94f7add19cb43287"
+      ],
+      "official_source_ids": [
+        "src-3eacb4655aba2497",
+        "src-94f7add19cb43287"
+      ],
+      "last_reviewed_at": "2026-10-03T16:01:57Z",
+      "current_judgment_event_id": "ev-20261002-04",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "ds4 在高内存工作站上为少数大型 MoE 提供专用本地运行时和明显采用信号，但模型范围窄且仍是 beta。",
+        "judgment_en": "ds4 offers a specialized local runtime and strong adoption signal for a few large MoEs on high-memory workstations, but model coverage is narrow and the software remains beta.",
+        "next_action_zh": "一天内在目标硬件测加载、首 token、长上下文吞吐、重启恢复和输出一致性。",
+        "next_action_en": "In one day on target hardware, test load time, first token, long-context throughput, restart recovery and output parity.",
+        "basis_event_ids": [
+          "ev-20261002-04"
+        ],
+        "reviewed_at": "2026-10-03T16:01:57Z"
+      }
+    },
+    {
+      "id": "thinkingbox",
+      "name_zh": "ThinkingBox",
+      "name_en": "ThinkingBox",
+      "type": "benchmark",
+      "aliases": [
+        "ThinkingBox"
+      ],
+      "pattern": "ThinkingBox",
+      "event_ids": [
+        "ev-20261003-02"
+      ],
+      "source_ids": [
+        "src-bd1136d0fcfd6f13",
+        "src-7788a97fe3dcde9f",
+        "src-c366bc9e734b45fe",
+        "src-f6309e2e2530ba7c"
+      ],
+      "current_judgment_event_id": "ev-20261003-02",
+      "official_source_ids": [
+        "src-bd1136d0fcfd6f13",
+        "src-7788a97fe3dcde9f",
+        "src-c366bc9e734b45fe",
+        "src-f6309e2e2530ba7c"
+      ],
+      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "ThinkingBox 直接核验数据库终态与副作用，公开 harness 已足够进入重复性试验。",
+        "judgment_en": "ThinkingBox directly grades terminal state and side effects; the public harness is ready for repeatability trials.",
+        "next_action_zh": "一天内选 10 个工作流各跑 5 次，对比 pass@1、数据库终态和多余副作用。",
+        "next_action_en": "In one day, run 10 workflows five times each and compare pass@1, terminal database state and extra side effects.",
+        "basis_event_ids": [
+          "ev-20261003-02"
+        ],
+        "reviewed_at": "2026-10-04T16:02:19Z"
+      }
+    },
+    {
+      "id": "diarizationlm",
+      "name_zh": "DiarizationLM",
+      "name_en": "DiarizationLM",
+      "type": "model",
+      "aliases": [
+        "DiarizationLM"
+      ],
+      "pattern": "DiarizationLM",
+      "event_ids": [
+        "ev-20261004-01"
+      ],
+      "source_ids": [
+        "src-2dffbc59426e5ae0",
+        "src-e7e8e10c818adcd6"
+      ],
+      "current_judgment_event_id": "ev-20261004-01",
+      "official_source_ids": [
+        "src-2dffbc59426e5ae0",
+        "src-e7e8e10c818adcd6"
+      ],
+      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "DiarizationLM 提供本地可跑权重，适合验证说话人标签修正，但会议证据仍小。",
+        "judgment_en": "DiarizationLM ships runnable local weights for speaker-label correction, but meeting evidence remains small.",
+        "next_action_zh": "一天内用公开 GGUF 跑一组双人通话和多人会议，比较 WDER、cpWER、延迟、内存与说话人漂移。",
+        "next_action_en": "In one day, run the public GGUF on calls and meetings, comparing WDER, cpWER, latency, memory and speaker drift.",
+        "basis_event_ids": [
+          "ev-20261004-01"
+        ],
+        "reviewed_at": "2026-10-04T16:02:19Z"
+      }
+    },
+    {
+      "id": "strata",
+      "name_zh": "Strata",
+      "name_en": "Strata",
+      "type": "framework",
+      "aliases": [
+        "Strata"
+      ],
+      "pattern": "Strata",
+      "event_ids": [
+        "ev-20260924-12"
+      ],
+      "source_ids": [
+        "src-89be4e220d9f6acb"
+      ],
+      "current_judgment_event_id": "ev-20260924-12",
+      "official_source_ids": [
+        "src-89be4e220d9f6acb"
+      ],
+      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Strata 的采用增长与异构 serving 设计值得试验，性能与低比特质量仍需独立验证。",
+        "judgment_en": "Strata merits a trial for adoption and heterogeneous serving, while speed and low-bit quality need independent checks.",
+        "next_action_zh": "一天内在一台 12–24 GB GPU 主机对比 Q2 与官方端点的质量、TTFT、速度、内存和重启行为。",
+        "next_action_en": "In one day, compare Q2 with the official endpoint on a 12–24 GB GPU, measuring quality, TTFT, speed, memory and restart behavior.",
+        "basis_event_ids": [
+          "ev-20260924-12"
+        ],
+        "reviewed_at": "2026-10-04T16:02:19Z"
+      }
+    },
+    {
+      "id": "ataraxos",
+      "name_zh": "Ataraxos",
+      "name_en": "Ataraxos",
+      "type": "research",
+      "aliases": [
+        "Ataraxos"
+      ],
+      "pattern": "Ataraxos",
+      "event_ids": [
+        "ev-20260930-03"
+      ],
+      "source_ids": [
+        "src-bd0d48ffade1a4e7",
+        "src-03dddcc866a982e1",
+        "src-bfe2fef73f1bc65d"
+      ],
+      "current_judgment_event_id": "ev-20260930-03",
+      "official_source_ids": [
+        "src-bd0d48ffade1a4e7",
+        "src-03dddcc866a982e1",
+        "src-bfe2fef73f1bc65d"
+      ],
+      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "Ataraxos 有论文和训练代码，但没有 checkpoint，当前只应观察。",
+        "judgment_en": "Ataraxos has a paper and training code but no checkpoint, so it remains watch-only.",
+        "next_action_zh": "等预训练 checkpoint 或独立训练复现公开后，再评估它对隐藏信息规划任务的可迁移性。",
+        "next_action_en": "Reassess transfer to hidden-information planning after pretrained checkpoints or an independent training reproduction appears.",
+        "basis_event_ids": [
+          "ev-20260930-03"
+        ],
+        "reviewed_at": "2026-10-04T16:02:19Z"
+      }
+    },
+    {
+      "id": "figma-mcp",
+      "name_zh": "Figma hosted MCP",
+      "name_en": "Figma hosted MCP",
+      "type": "protocol-integration",
+      "aliases": [
+        "Figma hosted MCP"
+      ],
+      "pattern": "Figma hosted MCP",
+      "event_ids": [
+        "ev-20261001-09"
+      ],
+      "source_ids": [
+        "src-75ffc0e085a2eee1",
+        "src-d9a9c33752a345db"
+      ],
+      "current_judgment_event_id": "ev-20261001-09",
+      "official_source_ids": [
+        "src-75ffc0e085a2eee1",
+        "src-d9a9c33752a345db"
+      ],
+      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "Figma hosted MCP 使用客户端白名单，接入前必须确认目录资格。",
+        "judgment_en": "Figma hosted MCP uses a client allowlist, so catalog eligibility must be checked before integration.",
+        "next_action_zh": "依赖 hosted Figma MCP 前确认客户端仍在 Catalog；未列入时改用受支持的 desktop 路径或加入 waitlist。",
+        "next_action_en": "Before relying on hosted Figma MCP, verify the client remains listed; otherwise use a supported desktop path or join the waitlist.",
+        "basis_event_ids": [
+          "ev-20261001-09"
+        ],
+        "reviewed_at": "2026-10-04T16:02:19Z"
+      }
     }
   ]
 }

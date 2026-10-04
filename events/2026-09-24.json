@@ -846,7 +846,7 @@
           "summary_zh": "Android Studio 向 ACP 兼容 agent 开放 IDE 上下文",
           "summary_en": "Android Studio opens its IDE context to ACP-compatible agents",
           "evidence_ids": [
-            "ev-20260924-09-evidence-summary"
+            "ev-20260924-10-evidence-summary"
           ],
           "historical": true
         }
@@ -1041,6 +1041,101 @@
           "historical": true
         }
       ]
+    },
+    {
+      "event_id": "ev-20260924-12",
+      "title": "Strata runs Qwen3.8-Flash-Next on 12 GB gaming GPUs",
+      "title_zh": "Strata 让 Qwen3.8-Flash-Next 跑在 12 GB 游戏显卡上",
+      "category": "infrastructure",
+      "organization": [
+        "community"
+      ],
+      "published_at": "2026-09-24T16:40:20Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/Niko1221/Strata",
+      "secondary_sources": [],
+      "summary": "Strata is an MIT-licensed inference engine that distributes Qwen3.8-Flash-Next experts across GPU, RAM, CPU and SSD. It exposes OpenAI- and Anthropic-compatible local endpoints and documents a 12 GB GPU, 32 GB RAM and about 80 GB SSD floor. Author benchmarks report 60–94 output tokens per second on recent gaming GPUs.",
+      "why_it_matters": "For teams evaluating very large sparse models locally, Strata offers a concrete heterogeneous-memory serving design and agent-compatible APIs. Rapid repository adoption warrants a trial, but self-reported speed and aggressive quantization require quality and restart tests.",
+      "summary_zh": "Strata 是 MIT 许可的推理引擎，把 Qwen3.8-Flash-Next 的 experts 分布到 GPU、内存、CPU 与 SSD。它提供 OpenAI 和 Anthropic 兼容的本地端点，最低配置为 12 GB GPU、32 GB 内存与约 80 GB SSD。作者在近期游戏显卡上报告每秒 60–94 个输出 token。",
+      "why_it_matters_zh": "对想在本地评估超大稀疏模型的团队来说，Strata 给出了可落地的异构内存 serving 方案和 agent 兼容 API。仓库采用增长很快，值得试验；但速度仍是作者自测，激进量化也必须核对质量与重启行为。",
+      "technical_details": {
+        "license": "MIT",
+        "hardware_floor": "12 GB supported GPU, 32 GB RAM, ~80 GB SSD",
+        "interfaces": "OpenAI- and Anthropic-compatible APIs",
+        "author_speed": "94 tok/s RTX 5070 Q2_0; 60 tok/s RX 9070 XT",
+        "adoption": "about 9.1k GitHub stars and 831 forks at review"
+      },
+      "technical_details_zh": {
+        "许可证": "MIT",
+        "最低硬件": "12 GB 受支持 GPU、32 GB 内存、约 80 GB SSD",
+        "接口": "兼容 OpenAI 与 Anthropic API",
+        "作者速度": "RTX 5070 Q2_0 为 94 tok/s；RX 9070 XT 为 60 tok/s",
+        "采用信号": "复核时约 9.1k GitHub stars、831 forks"
+      },
+      "tags": [
+        "Strata",
+        "Qwen3.8-Flash-Next",
+        "local-inference",
+        "MoE"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 5,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "strata-qwen38-flash-next-local-serving",
+      "source_ids": [
+        "src-89be4e220d9f6acb"
+      ],
+      "project_ids": [
+        "strata"
+      ],
+      "scenario_ids": [
+        "infrastructure",
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "short_label_zh": "Strata",
+      "short_label_en": "Strata",
+      "next_action_zh": "一天内在一台 12–24 GB GPU 主机对比 Q2 与官方端点的质量、TTFT、速度、内存和重启行为。",
+      "next_action_en": "In one day, compare Q2 with the official endpoint on a 12–24 GB GPU, measuring quality, TTFT, speed, memory and restart behavior.",
+      "evidence": [
+        {
+          "id": "ev-20260924-12-release-evidence",
+          "claim_zh": "Strata 的公开材料与可用边界已由一手来源核验。",
+          "claim_en": "Strata artifacts and availability boundaries were verified from primary sources.",
+          "source_ids": [
+            "src-89be4e220d9f6acb"
+          ],
+          "event_ids": [
+            "ev-20260924-12"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260924-12-published",
+          "kind": "new",
+          "occurred_at": "2026-09-24T16:40:20Z",
+          "discovered_at": "2026-10-04T16:02:19Z",
+          "summary_zh": "Strata 让 Qwen3.8-Flash-Next 跑在 12 GB 游戏显卡上",
+          "summary_en": "Strata runs Qwen3.8-Flash-Next on 12 GB gaming GPUs",
+          "evidence_ids": [
+            "ev-20260924-12-release-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-04T16:02:19Z",
+      "last_updated_at": "2026-10-04T16:02:19Z",
+      "summary_en": "Strata is an MIT-licensed inference engine that distributes Qwen3.8-Flash-Next experts across GPU, RAM, CPU and SSD. It exposes OpenAI- and Anthropic-compatible local endpoints and documents a 12 GB GPU, 32 GB RAM and about 80 GB SSD floor. Author benchmarks report 60–94 output tokens per second on recent gaming GPUs.",
+      "why_it_matters_en": "For teams evaluating very large sparse models locally, Strata offers a concrete heterogeneous-memory serving design and agent-compatible APIs. Rapid repository adoption warrants a trial, but self-reported speed and aggressive quantization require quality and restart tests."
     }
   ]
 }

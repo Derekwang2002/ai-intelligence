@@ -111,22 +111,45 @@
       "title": "PixelUMM opens a single pixel-space model for understanding and generation",
       "title_zh": "PixelUMM 开源统一理解与生成的像素空间模型",
       "category": "research",
-      "organization": ["academic"],
+      "organization": [
+        "academic"
+      ],
       "published_at": "2026-10-01T21:40:34Z",
       "first_seen_at": "2026-10-02T16:00:56Z",
       "last_updated_at": "2026-10-02T16:00:56Z",
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/pixelumm/PixelUMM",
-      "secondary_sources": ["https://github.com/PixelUMM/PixelUMM", "https://arxiv.org/abs/2509.24361"],
+      "secondary_sources": [
+        "https://github.com/PixelUMM/PixelUMM",
+        "https://arxiv.org/abs/2509.24361"
+      ],
       "summary": "The PixelUMM team released code and a 15.2B-parameter checkpoint for one autoregressive model that reads and generates images and video directly in pixel space. The design removes a separate vision encoder and VAE, but the public repository provides inference, evaluation and only a small illustrative training example. The checkpoint carries a noncommercial NVIDIA license.",
       "why_it_matters": "For multimodal research teams, PixelUMM is a concrete test of whether one backbone can replace separate understanding and generation pipelines. Its licensing and incomplete training recipe keep it out of production evaluation for now.",
       "summary_zh": "PixelUMM 团队发布代码和 15.2B 参数 checkpoint，用同一个自回归模型直接在像素空间读取并生成图像和视频。它不再单独使用视觉编码器和 VAE，但公开仓库目前主要覆盖推理、评测和小型示例训练。checkpoint 采用 NVIDIA 非商业许可证。",
       "summary_en": "The PixelUMM team released code and a 15.2B-parameter checkpoint for one autoregressive model that reads and generates images and video directly in pixel space. The design removes a separate vision encoder and VAE, but the public repository provides inference, evaluation and only a small illustrative training example. The checkpoint carries a noncommercial NVIDIA license.",
       "why_it_matters_zh": "对多模态研究团队来说，PixelUMM 提供了一个可运行样本，用来检验单一 backbone 能否替代分离的理解与生成流水线。许可证与不完整的训练配方意味着它暂不适合生产评估。",
       "why_it_matters_en": "For multimodal research teams, PixelUMM is a concrete test of whether one backbone can replace separate understanding and generation pipelines. Its licensing and incomplete training recipe keep it out of production evaluation for now.",
-      "technical_details": {"parameters": "15.2B", "design": "single autoregressive transformer over raw pixel representations for image and video understanding and generation", "artifacts": "checkpoint, inference and evaluation code, plus a four-step toy training example", "license": "NVIDIA One-Way Noncommercial License for the checkpoint", "validation": "research results; no independent production validation"},
-      "technical_details_zh": {"参数量": "15.2B", "设计": "单一自回归 transformer 直接处理像素表示，统一图像与视频理解和生成", "公开材料": "checkpoint、推理与评测代码，以及四步示例训练", "许可证": "checkpoint 使用 NVIDIA One-Way Noncommercial License", "验证状态": "研究结果，尚无独立生产验证"},
-      "tags": ["PixelUMM", "multimodal", "pixel-space", "image-generation", "video"],
+      "technical_details": {
+        "parameters": "15.2B",
+        "design": "single autoregressive transformer over raw pixel representations for image and video understanding and generation",
+        "artifacts": "checkpoint, inference and evaluation code, plus a four-step toy training example",
+        "license": "NVIDIA One-Way Noncommercial License for the checkpoint",
+        "validation": "research results; no independent production validation"
+      },
+      "technical_details_zh": {
+        "参数量": "15.2B",
+        "设计": "单一自回归 transformer 直接处理像素表示，统一图像与视频理解和生成",
+        "公开材料": "checkpoint、推理与评测代码，以及四步示例训练",
+        "许可证": "checkpoint 使用 NVIDIA One-Way Noncommercial License",
+        "验证状态": "研究结果，尚无独立生产验证"
+      },
+      "tags": [
+        "PixelUMM",
+        "multimodal",
+        "pixel-space",
+        "image-generation",
+        "video"
+      ],
       "technical_impact": 4,
       "engineering_value": 2,
       "adoption_signal": 2,
@@ -135,38 +158,99 @@
       "risk": 4,
       "recommendation": "WATCH",
       "event_fingerprint": "pixelumm-15b-pixel-space-unified-model-weights",
-      "source_ids": ["src-9f0246a4f7cf94f1", "src-2f1c47d9985475a7", "src-7c450930a8255936"],
-      "project_ids": ["pixelumm"],
-      "scenario_ids": ["models", "research"],
+      "source_ids": [
+        "src-9f0246a4f7cf94f1",
+        "src-2f1c47d9985475a7",
+        "src-7c450930a8255936"
+      ],
+      "project_ids": [
+        "pixelumm"
+      ],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
       "evidence_stage": "frontier",
       "short_label_zh": "PixelUMM",
       "short_label_en": "PixelUMM",
       "next_action_zh": "等完整训练配方、商业许可或独立复现出现后，再评估是否投入算力。",
       "next_action_en": "Reassess after a complete training recipe, commercial license or independent reproduction appears.",
-      "evidence": [{"id": "ev-20261001-02-release-evidence", "claim_zh": "PixelUMM 已公开 15.2B checkpoint、推理与评测代码，但训练材料和许可限制仍明显。", "claim_en": "PixelUMM has released a 15.2B checkpoint plus inference and evaluation code, with material training and license constraints.", "source_ids": ["src-9f0246a4f7cf94f1", "src-2f1c47d9985475a7", "src-7c450930a8255936"], "event_ids": ["ev-20261001-02"], "relation": "support", "verification": "verified-primary-source"}],
-      "changes": [{"id": "ev-20261001-02-published", "kind": "new", "occurred_at": "2026-10-01T21:40:34Z", "discovered_at": "2026-10-02T16:00:56Z", "summary_zh": "PixelUMM 公开统一像素空间模型的代码与 checkpoint", "summary_en": "PixelUMM releases code and a checkpoint for a unified pixel-space model", "evidence_ids": ["ev-20261001-02-release-evidence"], "historical": false, "importance": "major"}]
+      "evidence": [
+        {
+          "id": "ev-20261001-02-release-evidence",
+          "claim_zh": "PixelUMM 已公开 15.2B checkpoint、推理与评测代码，但训练材料和许可限制仍明显。",
+          "claim_en": "PixelUMM has released a 15.2B checkpoint plus inference and evaluation code, with material training and license constraints.",
+          "source_ids": [
+            "src-9f0246a4f7cf94f1",
+            "src-2f1c47d9985475a7",
+            "src-7c450930a8255936"
+          ],
+          "event_ids": [
+            "ev-20261001-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261001-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-01T21:40:34Z",
+          "discovered_at": "2026-10-02T16:00:56Z",
+          "summary_zh": "PixelUMM 公开统一像素空间模型的代码与 checkpoint",
+          "summary_en": "PixelUMM releases code and a checkpoint for a unified pixel-space model",
+          "evidence_ids": [
+            "ev-20261001-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "event_id": "ev-20261001-03",
       "title": "KaliBench tests whether language models can compose security commands",
       "title_zh": "KaliBench 检验模型能否组合安全工具命令",
       "category": "research",
-      "organization": ["academic"],
+      "organization": [
+        "academic"
+      ],
       "published_at": "2026-10-01T17:59:55Z",
       "first_seen_at": "2026-10-02T16:00:56Z",
       "last_updated_at": "2026-10-02T16:00:56Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2610.02206",
-      "secondary_sources": ["https://github.com/kali-bench/KaliBench"],
+      "secondary_sources": [
+        "https://github.com/kali-bench/KaliBench"
+      ],
       "summary": "KaliBench introduces 8,504 verified query-command pairs spanning 1,642 Kali Linux subtools and 23 capability dimensions. It separates 3,504 training examples from 5,000 held-out tests and releases scoring, Docker evaluation, data and RedSage-K training recipes. In the authors' evaluation, the best unrestricted open-weight model remained below 42% accuracy.",
       "why_it_matters": "For teams building security agents, KaliBench turns command construction into a reproducible capability test with public artifacts. A one-day baseline can reveal whether a model understands exact flags and composition before anyone grants it a live shell.",
       "summary_zh": "KaliBench 发布 8,504 组经过核验的自然语言与命令对，覆盖 1,642 个 Kali Linux 子工具和 23 个能力维度。数据分为 3,504 条训练样本与 5,000 条 held-out 测试，并公开评分、Docker 评测、数据及 RedSage-K 训练方案。作者测试中，最强的无限制开放权重模型准确率仍低于 42%。",
       "summary_en": "KaliBench introduces 8,504 verified query-command pairs spanning 1,642 Kali Linux subtools and 23 capability dimensions. It separates 3,504 training examples from 5,000 held-out tests and releases scoring, Docker evaluation, data and RedSage-K training recipes. In the authors' evaluation, the best unrestricted open-weight model remained below 42% accuracy.",
       "why_it_matters_zh": "对安全 agent 团队来说，KaliBench 把命令组合能力变成可复现的公开测试。先跑一天基线，就能在授予真实 shell 权限前发现模型是否真正理解参数与工具组合。",
       "why_it_matters_en": "For teams building security agents, KaliBench turns command construction into a reproducible capability test with public artifacts. A one-day baseline can reveal whether a model understands exact flags and composition before anyone grants it a live shell.",
-      "technical_details": {"dataset": "8,504 verified query-command pairs; 3,504 train and 5,000 held-out", "coverage": "1,642 Kali Linux subtools across 23 dimensions", "artifacts": "data, exact scoring, Docker evaluation and SFT/GRPO recipes", "author_result": "best unrestricted open-weight model below 42% accuracy", "safety": "evaluation can score command structure without granting a model a live target"},
-      "technical_details_zh": {"数据集": "8,504 组核验样本；3,504 条训练、5,000 条 held-out 测试", "覆盖范围": "1,642 个 Kali Linux 子工具、23 个能力维度", "公开材料": "数据、精确评分、Docker 评测与 SFT/GRPO 方案", "作者结果": "最强无限制开放权重模型准确率低于 42%", "安全边界": "可先评分命令结构，不必给模型真实攻击目标"},
-      "tags": ["KaliBench", "agent-evaluation", "cybersecurity", "tool-use", "benchmark"],
+      "technical_details": {
+        "dataset": "8,504 verified query-command pairs; 3,504 train and 5,000 held-out",
+        "coverage": "1,642 Kali Linux subtools across 23 dimensions",
+        "artifacts": "data, exact scoring, Docker evaluation and SFT/GRPO recipes",
+        "author_result": "best unrestricted open-weight model below 42% accuracy",
+        "safety": "evaluation can score command structure without granting a model a live target"
+      },
+      "technical_details_zh": {
+        "数据集": "8,504 组核验样本；3,504 条训练、5,000 条 held-out 测试",
+        "覆盖范围": "1,642 个 Kali Linux 子工具、23 个能力维度",
+        "公开材料": "数据、精确评分、Docker 评测与 SFT/GRPO 方案",
+        "作者结果": "最强无限制开放权重模型准确率低于 42%",
+        "安全边界": "可先评分命令结构，不必给模型真实攻击目标"
+      },
+      "tags": [
+        "KaliBench",
+        "agent-evaluation",
+        "cybersecurity",
+        "tool-use",
+        "benchmark"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 2,
@@ -175,38 +259,96 @@
       "risk": 3,
       "recommendation": "TRIAL",
       "event_fingerprint": "kalibench-security-command-composition-benchmark",
-      "source_ids": ["src-aea24e1ee72601fd", "src-69000f6d6a5c168b"],
+      "source_ids": [
+        "src-aea24e1ee72601fd",
+        "src-69000f6d6a5c168b"
+      ],
       "project_ids": [],
-      "scenario_ids": ["security", "research"],
+      "scenario_ids": [
+        "security",
+        "research"
+      ],
       "evidence_stage": "frontier",
       "short_label_zh": "KaliBench",
       "short_label_en": "KaliBench",
       "next_action_zh": "用公开 Docker 评测在一天内测试候选模型，记录精确命令正确率和高风险参数错误。",
       "next_action_en": "Run the public Docker evaluation for one day and record exact-command accuracy and dangerous flag errors.",
-      "evidence": [{"id": "ev-20261001-03-release-evidence", "claim_zh": "KaliBench 已公开数据、评分、Docker 评测和训练方案。", "claim_en": "KaliBench releases its data, scoring, Docker evaluation and training recipes.", "source_ids": ["src-aea24e1ee72601fd", "src-69000f6d6a5c168b"], "event_ids": ["ev-20261001-03"], "relation": "support", "verification": "verified-primary-source"}],
-      "changes": [{"id": "ev-20261001-03-published", "kind": "new", "occurred_at": "2026-10-01T17:59:55Z", "discovered_at": "2026-10-02T16:00:56Z", "summary_zh": "KaliBench 公开安全命令组合评测", "summary_en": "KaliBench releases a security command-composition benchmark", "evidence_ids": ["ev-20261001-03-release-evidence"], "historical": false, "importance": "major"}]
+      "evidence": [
+        {
+          "id": "ev-20261001-03-release-evidence",
+          "claim_zh": "KaliBench 已公开数据、评分、Docker 评测和训练方案。",
+          "claim_en": "KaliBench releases its data, scoring, Docker evaluation and training recipes.",
+          "source_ids": [
+            "src-aea24e1ee72601fd",
+            "src-69000f6d6a5c168b"
+          ],
+          "event_ids": [
+            "ev-20261001-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261001-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-01T17:59:55Z",
+          "discovered_at": "2026-10-02T16:00:56Z",
+          "summary_zh": "KaliBench 公开安全命令组合评测",
+          "summary_en": "KaliBench releases a security command-composition benchmark",
+          "evidence_ids": [
+            "ev-20261001-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "event_id": "ev-20261001-04",
       "title": "Argo-Bench grades data agents by the business actions they produce",
       "title_zh": "Argo-Bench 按业务行动结果评测数据 agent",
       "category": "research",
-      "organization": ["academic"],
+      "organization": [
+        "academic"
+      ],
       "published_at": "2026-10-01T17:35:44Z",
       "first_seen_at": "2026-10-02T16:00:56Z",
       "last_updated_at": "2026-10-02T16:00:56Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2610.02122",
-      "secondary_sources": ["https://github.com/argo-bench/argo-bench", "https://huggingface.co/datasets/argo-bench/warehouse"],
+      "secondary_sources": [
+        "https://github.com/argo-bench/argo-bench",
+        "https://huggingface.co/datasets/argo-bench/warehouse"
+      ],
       "summary": "Argo-Bench releases 210 enterprise-style data tasks over a synthetic warehouse with 235 tables and 7.5 billion rows. It scores the filings and operational actions produced by an agent rather than the plausibility of its prose. Across 14 tested models, the strongest system reached at least 95% on only 34.8% of tasks and averaged 59.5%, according to the authors.",
       "why_it_matters": "For teams deploying data agents, this benchmark tests whether a system can reconstruct business state and take the right downstream action, not merely write a convincing SQL explanation. The public harness and warehouse make a bounded internal-model comparison possible.",
       "summary_zh": "Argo-Bench 发布 210 个企业数据任务，基于含 235 张表、75 亿行数据的合成仓库。它评分的是 agent 最终生成的申报与业务行动，而不是文字说明是否听起来合理。作者对 14 个模型的测试中，最强系统仅在 34.8% 的任务上达到至少 95 分，平均为 59.5 分。",
       "summary_en": "Argo-Bench releases 210 enterprise-style data tasks over a synthetic warehouse with 235 tables and 7.5 billion rows. It scores the filings and operational actions produced by an agent rather than the plausibility of its prose. Across 14 tested models, the strongest system reached at least 95% on only 34.8% of tasks and averaged 59.5%, according to the authors.",
       "why_it_matters_zh": "对部署数据 agent 的团队来说，这套评测检查系统能否还原业务状态并执行正确的下游行动，而不只是写出看似合理的 SQL 解释。公开 harness 与数据仓库可用于受控比较内部候选模型。",
       "why_it_matters_en": "For teams deploying data agents, this benchmark tests whether a system can reconstruct business state and take the right downstream action, not merely write a convincing SQL explanation. The public harness and warehouse make a bounded internal-model comparison possible.",
-      "technical_details": {"tasks": 210, "warehouse": "235 tables and 7.5 billion synthetic rows; 71 GiB public dataset", "evaluation": "outcome-based grading of filings and operational actions", "author_result": "best of 14 models averaged 59.5%; at least 95% on 34.8% of tasks", "artifacts": "Apache-2.0 harness, CC-BY warehouse and 20 reference solutions; answer keys remain server-side"},
-      "technical_details_zh": {"任务数": 210, "数据仓库": "235 张表、75 亿行合成数据；公开数据约 71 GiB", "评测方式": "按申报和业务行动结果评分", "作者结果": "14 个模型中最强者平均 59.5%；34.8% 任务达到至少 95%", "公开材料": "Apache-2.0 harness、CC-BY 数据仓库和 20 个参考方案；答案留在服务端"},
-      "tags": ["Argo-Bench", "data-agent", "agent-evaluation", "enterprise-data", "benchmark"],
+      "technical_details": {
+        "tasks": 210,
+        "warehouse": "235 tables and 7.5 billion synthetic rows; 71 GiB public dataset",
+        "evaluation": "outcome-based grading of filings and operational actions",
+        "author_result": "best of 14 models averaged 59.5%; at least 95% on 34.8% of tasks",
+        "artifacts": "Apache-2.0 harness, CC-BY warehouse and 20 reference solutions; answer keys remain server-side"
+      },
+      "technical_details_zh": {
+        "任务数": 210,
+        "数据仓库": "235 张表、75 亿行合成数据；公开数据约 71 GiB",
+        "评测方式": "按申报和业务行动结果评分",
+        "作者结果": "14 个模型中最强者平均 59.5%；34.8% 任务达到至少 95%",
+        "公开材料": "Apache-2.0 harness、CC-BY 数据仓库和 20 个参考方案；答案留在服务端"
+      },
+      "tags": [
+        "Argo-Bench",
+        "data-agent",
+        "agent-evaluation",
+        "enterprise-data",
+        "benchmark"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 2,
@@ -215,23 +357,62 @@
       "risk": 2,
       "recommendation": "TRIAL",
       "event_fingerprint": "argo-bench-outcome-graded-enterprise-data-agents",
-      "source_ids": ["src-c84dc311ce76aba9", "src-927953adf34096eb", "src-fedf611e16de6a91"],
+      "source_ids": [
+        "src-c84dc311ce76aba9",
+        "src-927953adf34096eb",
+        "src-fedf611e16de6a91"
+      ],
       "project_ids": [],
-      "scenario_ids": ["enterprise", "research"],
+      "scenario_ids": [
+        "enterprise",
+        "research"
+      ],
       "evidence_stage": "frontier",
       "short_label_zh": "Argo-Bench",
       "short_label_en": "Argo-Bench",
       "next_action_zh": "在一天内用公开 harness 跑 5–10 个代表任务，比较业务结果正确率、成本与失败恢复。",
       "next_action_en": "Run 5–10 representative tasks with the public harness in one day and compare outcome accuracy, cost and recovery.",
-      "evidence": [{"id": "ev-20261001-04-release-evidence", "claim_zh": "Argo-Bench 已公开任务、harness 与大型合成数据仓库，并按最终业务行动评分。", "claim_en": "Argo-Bench releases tasks, a harness and a large synthetic warehouse with outcome-based grading.", "source_ids": ["src-c84dc311ce76aba9", "src-927953adf34096eb", "src-fedf611e16de6a91"], "event_ids": ["ev-20261001-04"], "relation": "support", "verification": "verified-primary-source"}],
-      "changes": [{"id": "ev-20261001-04-published", "kind": "new", "occurred_at": "2026-10-01T17:35:44Z", "discovered_at": "2026-10-02T16:00:56Z", "summary_zh": "Argo-Bench 公开按业务行动结果评分的数据 agent 评测", "summary_en": "Argo-Bench releases an outcome-graded data-agent benchmark", "evidence_ids": ["ev-20261001-04-release-evidence"], "historical": false, "importance": "major"}]
+      "evidence": [
+        {
+          "id": "ev-20261001-04-release-evidence",
+          "claim_zh": "Argo-Bench 已公开任务、harness 与大型合成数据仓库，并按最终业务行动评分。",
+          "claim_en": "Argo-Bench releases tasks, a harness and a large synthetic warehouse with outcome-based grading.",
+          "source_ids": [
+            "src-c84dc311ce76aba9",
+            "src-927953adf34096eb",
+            "src-fedf611e16de6a91"
+          ],
+          "event_ids": [
+            "ev-20261001-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261001-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-01T17:35:44Z",
+          "discovered_at": "2026-10-02T16:00:56Z",
+          "summary_zh": "Argo-Bench 公开按业务行动结果评分的数据 agent 评测",
+          "summary_en": "Argo-Bench releases an outcome-graded data-agent benchmark",
+          "evidence_ids": [
+            "ev-20261001-04-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "event_id": "ev-20261001-05",
       "title": "OpenAI sets 2027 shutdown dates for Codex and speech API models",
       "title_zh": "OpenAI 为 Codex 与语音 API 模型设定 2027 下线日期",
       "category": "business-policy",
-      "organization": ["OpenAI"],
+      "organization": [
+        "OpenAI"
+      ],
       "published_at": "2026-10-01T00:00:00Z",
       "first_seen_at": "2026-10-02T16:00:56Z",
       "last_updated_at": "2026-10-02T16:00:56Z",
@@ -244,9 +425,25 @@
       "summary_en": "OpenAI added retirement dates for several pinned API model IDs. GPT-5.3-Codex, GPT-5.4-nano and GPT-5.1 are scheduled to shut down on April 1, 2027. TTS-1, TTS-1-HD and GPT-4o-mini-TTS snapshots are scheduled to shut down on January 6, 2027, with newer GPT-6 and realtime models listed as replacements.",
       "why_it_matters_zh": "使用固定模型 ID 的团队现在有了明确迁移期限。需要提前安排质量、延迟、成本与语音体验回归，而不是临近下线时只替换别名。",
       "why_it_matters_en": "Teams using pinned model IDs now have concrete migration deadlines. Quality, latency, cost and voice regressions need scheduled tests rather than a last-minute alias swap.",
-      "technical_details": {"coding_models_shutdown": "2027-04-01: gpt-5.3-codex, gpt-5.4-nano and gpt-5.1", "speech_models_shutdown": "2027-01-06: tts-1, tts-1-hd and gpt-4o-mini-tts snapshots", "replacement_direction": "GPT-6 family and gpt-realtime-2.1-mini as documented", "notice": "about three to six months depending on model"},
-      "technical_details_zh": {"代码模型下线": "2027-04-01：gpt-5.3-codex、gpt-5.4-nano、gpt-5.1", "语音模型下线": "2027-01-06：tts-1、tts-1-hd、gpt-4o-mini-tts 快照", "替代方向": "文档列出的 GPT-6 系列与 gpt-realtime-2.1-mini", "通知周期": "依模型约三至六个月"},
-      "tags": ["OpenAI", "API", "deprecation", "migration", "speech"],
+      "technical_details": {
+        "coding_models_shutdown": "2027-04-01: gpt-5.3-codex, gpt-5.4-nano and gpt-5.1",
+        "speech_models_shutdown": "2027-01-06: tts-1, tts-1-hd and gpt-4o-mini-tts snapshots",
+        "replacement_direction": "GPT-6 family and gpt-realtime-2.1-mini as documented",
+        "notice": "about three to six months depending on model"
+      },
+      "technical_details_zh": {
+        "代码模型下线": "2027-04-01：gpt-5.3-codex、gpt-5.4-nano、gpt-5.1",
+        "语音模型下线": "2027-01-06：tts-1、tts-1-hd、gpt-4o-mini-tts 快照",
+        "替代方向": "文档列出的 GPT-6 系列与 gpt-realtime-2.1-mini",
+        "通知周期": "依模型约三至六个月"
+      },
+      "tags": [
+        "OpenAI",
+        "API",
+        "deprecation",
+        "migration",
+        "speech"
+      ],
       "technical_impact": 2,
       "engineering_value": 4,
       "adoption_signal": 4,
@@ -255,87 +452,265 @@
       "risk": 3,
       "recommendation": "WATCH",
       "event_fingerprint": "openai-api-deprecations-october-2026",
-      "source_ids": ["src-bab0e18b2802152d"],
+      "source_ids": [
+        "src-bab0e18b2802152d"
+      ],
       "project_ids": [],
-      "scenario_ids": ["models", "enterprise"],
+      "scenario_ids": [
+        "models",
+        "enterprise"
+      ],
       "evidence_stage": "verified",
       "short_label_zh": "OpenAI API 弃用",
       "short_label_en": "OpenAI API deprecations",
       "next_action_zh": "盘点生产环境中的受影响模型 ID，并在 2026 年底前排期质量、延迟与成本回归。",
       "next_action_en": "Inventory affected production model IDs and schedule quality, latency and cost regressions before year-end 2026.",
-      "evidence": [{"id": "ev-20261001-05-deprecation-evidence", "claim_zh": "OpenAI 官方弃用表给出了受影响模型与 2027 年的停止服务日期。", "claim_en": "OpenAI's official deprecation table lists the affected models and 2027 shutdown dates.", "source_ids": ["src-bab0e18b2802152d"], "event_ids": ["ev-20261001-05"], "relation": "support", "verification": "verified-primary-source"}],
-      "changes": [{"id": "ev-20261001-05-published", "kind": "new", "occurred_at": "2026-10-01T00:00:00Z", "discovered_at": "2026-10-02T16:00:56Z", "summary_zh": "OpenAI 公布多组 API 模型的 2027 年下线日期", "summary_en": "OpenAI publishes 2027 shutdown dates for several API models", "evidence_ids": ["ev-20261001-05-deprecation-evidence"], "historical": false, "importance": "major"}]
+      "evidence": [
+        {
+          "id": "ev-20261001-05-deprecation-evidence",
+          "claim_zh": "OpenAI 官方弃用表给出了受影响模型与 2027 年的停止服务日期。",
+          "claim_en": "OpenAI's official deprecation table lists the affected models and 2027 shutdown dates.",
+          "source_ids": [
+            "src-bab0e18b2802152d"
+          ],
+          "event_ids": [
+            "ev-20261001-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261001-05-published",
+          "kind": "new",
+          "occurred_at": "2026-10-01T00:00:00Z",
+          "discovered_at": "2026-10-02T16:00:56Z",
+          "summary_zh": "OpenAI 公布多组 API 模型的 2027 年下线日期",
+          "summary_en": "OpenAI publishes 2027 shutdown dates for several API models",
+          "evidence_ids": [
+            "ev-20261001-05-deprecation-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "event_id": "ev-20261001-06",
       "title": "Cloudflare opens Clef decision models for fast structured routing",
       "title_zh": "Cloudflare 开源用于快速结构化路由的 Clef 模型",
       "category": "foundation-model",
-      "organization": ["Cloudflare"],
+      "organization": [
+        "Cloudflare"
+      ],
       "published_at": "2026-10-01T00:00:00Z",
       "first_seen_at": "2026-10-02T16:00:56Z",
       "last_updated_at": "2026-10-02T16:00:56Z",
       "source_type": "official_blog",
       "primary_source": "https://blog.cloudflare.com/clef-decision-models/",
-      "secondary_sources": ["https://huggingface.co/Cloudflare/clef"],
+      "secondary_sources": [
+        "https://huggingface.co/Cloudflare/clef"
+      ],
       "summary": "Cloudflare released Clef and Clef-flash, Apache-2.0 decision models that return bounded typed outputs for routing and classification. They are Jev-API compatible, available as open weights and hosted on Workers AI. Clef adds image input and a 64k context window; author benchmarks report median latency of 209.3 ms for Clef and 38.8 ms for Clef-flash.",
       "why_it_matters": "For agent teams, a small deterministic decision model can move routine routing out of a general LLM's hot path. The public weights and API compatibility make a one-day latency, calibration and abstention comparison practical.",
       "summary_zh": "Cloudflare 发布 Clef 与 Clef-flash，两款以 Apache-2.0 开源的 decision model，可为路由和分类返回有边界的类型化结果。模型兼容 Jev API，可下载权重，也可在 Workers AI 调用。Clef 支持图像输入和 64k 上下文；作者测试的中位延迟分别为 209.3 ms 与 38.8 ms。",
       "summary_en": "Cloudflare released Clef and Clef-flash, Apache-2.0 decision models that return bounded typed outputs for routing and classification. They are Jev-API compatible, available as open weights and hosted on Workers AI. Clef adds image input and a 64k context window; author benchmarks report median latency of 209.3 ms for Clef and 38.8 ms for Clef-flash.",
       "why_it_matters_zh": "对 agent 团队来说，小型、较确定的 decision model 可以把常规路由移出通用 LLM 的热路径。公开权重与 API 兼容性让一天内比较延迟、校准和拒答率成为可能。",
       "why_it_matters_en": "For agent teams, a small deterministic decision model can move routine routing out of a general LLM's hot path. The public weights and API compatibility make a one-day latency, calibration and abstention comparison practical.",
-      "technical_details": {"models":"Clef and Clef-flash", "availability":"Apache-2.0 weights and Workers AI hosting", "compatibility":"Jev API", "context":"64k for Clef", "author_latency":"median 209.3 ms Clef; 38.8 ms Clef-flash", "modalities":"text and image classification"},
-      "technical_details_zh": {"模型":"Clef 与 Clef-flash", "可用性":"Apache-2.0 权重与 Workers AI 托管", "兼容性":"Jev API", "上下文":"Clef 为 64k", "作者延迟":"中位数 Clef 209.3 ms；Clef-flash 38.8 ms", "模态":"文本与图像分类"},
-      "tags": ["Clef", "decision-model", "routing", "structured-output", "open-weight"],
-      "technical_impact": 3, "engineering_value": 4, "adoption_signal": 3, "maturity": 3, "verification_cost": 2, "risk": 2,
+      "technical_details": {
+        "models": "Clef and Clef-flash",
+        "availability": "Apache-2.0 weights and Workers AI hosting",
+        "compatibility": "Jev API",
+        "context": "64k for Clef",
+        "author_latency": "median 209.3 ms Clef; 38.8 ms Clef-flash",
+        "modalities": "text and image classification"
+      },
+      "technical_details_zh": {
+        "模型": "Clef 与 Clef-flash",
+        "可用性": "Apache-2.0 权重与 Workers AI 托管",
+        "兼容性": "Jev API",
+        "上下文": "Clef 为 64k",
+        "作者延迟": "中位数 Clef 209.3 ms；Clef-flash 38.8 ms",
+        "模态": "文本与图像分类"
+      },
+      "tags": [
+        "Clef",
+        "decision-model",
+        "routing",
+        "structured-output",
+        "open-weight"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
       "recommendation": "TRIAL",
       "event_fingerprint": "cloudflare-clef-decision-models-open-weights",
-      "source_ids": ["src-c0a0a5f5affd2692", "src-e4ec1e84959ae2fd"],
-      "project_ids": [], "scenario_ids": ["agents", "models"], "evidence_stage": "verified", "late_discovery": true,
-      "short_label_zh": "Clef", "short_label_en": "Clef",
+      "source_ids": [
+        "src-c0a0a5f5affd2692",
+        "src-e4ec1e84959ae2fd"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "short_label_zh": "Clef",
+      "short_label_en": "Clef",
       "next_action_zh": "一天内用真实路由样本比较 Clef、Clef-flash 与现有模型的延迟、校准、拒答率和成本。",
       "next_action_en": "In one day, compare Clef, Clef-flash and the current router on latency, calibration, abstention and cost.",
-      "evidence": [{"id":"ev-20261001-06-release-evidence","claim_zh":"Cloudflare 已公开 Clef 权重、Jev 兼容接口与 Workers AI 托管。","claim_en":"Cloudflare released Clef weights, a Jev-compatible interface and Workers AI hosting.","source_ids":["src-c0a0a5f5affd2692","src-e4ec1e84959ae2fd"],"event_ids":["ev-20261001-06"],"relation":"support","verification":"verified-primary-source"}],
-      "changes": [{"id":"ev-20261001-06-published","kind":"new","occurred_at":"2026-10-01T00:00:00Z","discovered_at":"2026-10-02T16:00:56Z","summary_zh":"Cloudflare 开源 Clef decision model","summary_en":"Cloudflare opens Clef decision models","evidence_ids":["ev-20261001-06-release-evidence"],"historical":false,"importance":"major"}]
+      "evidence": [
+        {
+          "id": "ev-20261001-06-release-evidence",
+          "claim_zh": "Cloudflare 已公开 Clef 权重、Jev 兼容接口与 Workers AI 托管。",
+          "claim_en": "Cloudflare released Clef weights, a Jev-compatible interface and Workers AI hosting.",
+          "source_ids": [
+            "src-c0a0a5f5affd2692",
+            "src-e4ec1e84959ae2fd"
+          ],
+          "event_ids": [
+            "ev-20261001-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261001-06-published",
+          "kind": "new",
+          "occurred_at": "2026-10-01T00:00:00Z",
+          "discovered_at": "2026-10-02T16:00:56Z",
+          "summary_zh": "Cloudflare 开源 Clef decision model",
+          "summary_en": "Cloudflare opens Clef decision models",
+          "evidence_ids": [
+            "ev-20261001-06-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "event_id": "ev-20261001-07",
       "title": "Strands releases a 2B open decision model for agent control",
       "title_zh": "Strands 发布 2B 开源 decision model 控制 agent 决策",
       "category": "foundation-model",
-      "organization": ["Strands Agents"],
+      "organization": [
+        "Strands Agents"
+      ],
       "published_at": "2026-10-01T00:00:00Z",
       "first_seen_at": "2026-10-03T16:01:57Z",
       "last_updated_at": "2026-10-03T16:01:57Z",
       "source_type": "official_blog",
       "primary_source": "https://strandsagents.com/blog/introducing-strands-decider/",
-      "secondary_sources": ["https://github.com/strands-labs/strands-decider", "https://huggingface.co/StrandsAgents/strands-decider-2B-hobson-v19"],
+      "secondary_sources": [
+        "https://github.com/strands-labs/strands-decider",
+        "https://huggingface.co/StrandsAgents/strands-decider-2B-hobson-v19"
+      ],
       "summary": "Strands released Decider 2B, an Apache-2.0 model that chooses among typed actions in one forward pass without text decoding. It combines a Qwen3.5-2B backbone, a small pointer head and LoRA adapters. Weights, training code, data and evaluation records are public; author tests report 72.3% accuracy and 115 ms median latency on an RTX 3090.",
       "why_it_matters": "For agent builders, a compact decision model can replace general-purpose generation in routing, tool selection and guardrails. The public training and evaluation artifacts make latency, calibration and abstention independently testable in a day.",
       "summary_zh": "Strands 发布 Decider 2B，一款以 Apache-2.0 开源的 decision model。它不用生成文本，只需一次前向计算就在类型化动作中做选择。模型由 Qwen3.5-2B 主干、小型 pointer head 和 LoRA 组成；权重、训练代码、数据与评测记录均已公开。作者测试给出 72.3% 准确率和 RTX 3090 上 115 ms 中位延迟。",
       "summary_en": "Strands released Decider 2B, an Apache-2.0 model that chooses among typed actions in one forward pass without text decoding. It combines a Qwen3.5-2B backbone, a small pointer head and LoRA adapters. Weights, training code, data and evaluation records are public; author tests report 72.3% accuracy and 115 ms median latency on an RTX 3090.",
       "why_it_matters_zh": "对 agent 开发团队来说，小型 decision model 可以把路由、工具选择和护栏从通用文本生成中拆出来。公开的训练与评测材料让团队能在一天内独立核对延迟、校准和拒答表现。",
       "why_it_matters_en": "For agent builders, a compact decision model can replace general-purpose generation in routing, tool selection and guardrails. The public training and evaluation artifacts make latency, calibration and abstention independently testable in a day.",
-      "technical_details": {"architecture":"Qwen3.5-2B torso plus an approximately 1M-parameter pointer head and rank-16 LoRA", "parameters":"1.9B", "output":"typed action selection in one forward pass; no text decoding", "license":"Apache-2.0", "artifacts":"weights, training code, datasets and research record", "author_results":"JevBench 167/231 (72.3%); Brier 0.342; ECE 0.052", "author_latency":"median 115 ms on RTX 3090; 153 ms on M3 Pro"},
-      "technical_details_zh": {"架构":"Qwen3.5-2B 主干 + 约 100 万参数 pointer head + rank-16 LoRA", "参数量":"1.9B", "输出":"一次前向计算选择类型化动作；不生成文本", "许可证":"Apache-2.0", "公开材料":"权重、训练代码、数据集与研究记录", "作者结果":"JevBench 167/231（72.3%）；Brier 0.342；ECE 0.052", "作者延迟":"RTX 3090 中位 115 ms；M3 Pro 153 ms"},
-      "tags": ["Strands-Decider", "decision-model", "routing", "tool-selection", "open-weight"],
-      "technical_impact": 3, "engineering_value": 4, "adoption_signal": 3, "maturity": 3, "verification_cost": 2, "risk": 2,
+      "technical_details": {
+        "architecture": "Qwen3.5-2B torso plus an approximately 1M-parameter pointer head and rank-16 LoRA",
+        "parameters": "1.9B",
+        "output": "typed action selection in one forward pass; no text decoding",
+        "license": "Apache-2.0",
+        "artifacts": "weights, training code, datasets and research record",
+        "author_results": "JevBench 167/231 (72.3%); Brier 0.342; ECE 0.052",
+        "author_latency": "median 115 ms on RTX 3090; 153 ms on M3 Pro"
+      },
+      "technical_details_zh": {
+        "架构": "Qwen3.5-2B 主干 + 约 100 万参数 pointer head + rank-16 LoRA",
+        "参数量": "1.9B",
+        "输出": "一次前向计算选择类型化动作；不生成文本",
+        "许可证": "Apache-2.0",
+        "公开材料": "权重、训练代码、数据集与研究记录",
+        "作者结果": "JevBench 167/231（72.3%）；Brier 0.342；ECE 0.052",
+        "作者延迟": "RTX 3090 中位 115 ms；M3 Pro 153 ms"
+      },
+      "tags": [
+        "Strands-Decider",
+        "decision-model",
+        "routing",
+        "tool-selection",
+        "open-weight"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
       "recommendation": "TRIAL",
       "event_fingerprint": "strands-decider-2b-open-decision-model",
-      "source_ids": ["src-0d2b759c8ff8305d", "src-c8f8b9392c4c7378", "src-dded56d8e0c63fac"],
-      "project_ids": ["strands-decider"], "scenario_ids": ["agents", "models"], "evidence_stage": "verified", "late_discovery": true,
-      "short_label_zh": "Strands Decider", "short_label_en": "Strands Decider",
+      "source_ids": [
+        "src-0d2b759c8ff8305d",
+        "src-c8f8b9392c4c7378",
+        "src-dded56d8e0c63fac"
+      ],
+      "project_ids": [
+        "strands-decider"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "short_label_zh": "Strands Decider",
+      "short_label_en": "Strands Decider",
       "next_action_zh": "一天内用真实路由与工具选择样本，对比现有模型的延迟、校准、拒答率和错误代价。",
       "next_action_en": "In one day, compare it with the current router on real routing and tool-selection samples, measuring latency, calibration, abstention and error cost.",
-      "evidence": [{"id":"ev-20261001-07-release-evidence","claim_zh":"Strands 已公开 Decider 2B 的权重、训练代码、数据与评测记录。","claim_en":"Strands released Decider 2B weights, training code, data and evaluation records.","source_ids":["src-0d2b759c8ff8305d","src-c8f8b9392c4c7378","src-dded56d8e0c63fac"],"event_ids":["ev-20261001-07"],"relation":"support","verification":"verified-primary-source"}],
-      "changes": [{"id":"ev-20261001-07-published","kind":"new","occurred_at":"2026-10-01T00:00:00Z","discovered_at":"2026-10-03T16:01:57Z","summary_zh":"Strands 发布 Decider 2B 开放权重 decision model","summary_en":"Strands releases the open-weight Decider 2B decision model","evidence_ids":["ev-20261001-07-release-evidence"],"historical":false,"importance":"major"}]
+      "evidence": [
+        {
+          "id": "ev-20261001-07-release-evidence",
+          "claim_zh": "Strands 已公开 Decider 2B 的权重、训练代码、数据与评测记录。",
+          "claim_en": "Strands released Decider 2B weights, training code, data and evaluation records.",
+          "source_ids": [
+            "src-0d2b759c8ff8305d",
+            "src-c8f8b9392c4c7378",
+            "src-dded56d8e0c63fac"
+          ],
+          "event_ids": [
+            "ev-20261001-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261001-07-published",
+          "kind": "new",
+          "occurred_at": "2026-10-01T00:00:00Z",
+          "discovered_at": "2026-10-03T16:01:57Z",
+          "summary_zh": "Strands 发布 Decider 2B 开放权重 decision model",
+          "summary_en": "Strands releases the open-weight Decider 2B decision model",
+          "evidence_ids": [
+            "ev-20261001-07-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "event_id": "ev-20261001-08",
       "title": "Microsoft releases streaming speech models with 100 ms partials",
       "title_zh": "Microsoft 发布首批结果约 100 ms 的流式语音模型",
       "category": "foundation-model",
-      "organization": ["Microsoft"],
+      "organization": [
+        "Microsoft"
+      ],
       "published_at": "2026-10-01T00:00:00Z",
       "first_seen_at": "2026-10-03T16:01:57Z",
       "last_updated_at": "2026-10-03T16:01:57Z",
@@ -348,19 +723,179 @@
       "summary_en": "Microsoft released MAI-Transcribe-2-Streaming plus MAI-Voice-2.1 and MAI-Voice-2.1-Flash. The transcription model supports 60 languages, continuous language detection and initial partials just over 100 ms. Voice covers 23 languages and 26 locales; Flash targets 45 seconds of audio in 150 ms. The models are callable through Microsoft Foundry and public playgrounds.",
       "why_it_matters_zh": "对语音 agent 团队来说，低延迟的部分转写与快速语音合成能缩短轮次等待，也减少多供应商拼接。公开价格和可调用 API 使端到端延迟与多语质量可以直接验证。",
       "why_it_matters_en": "For voice-agent teams, low-latency partial transcription and fast synthesis can reduce turn-taking delay without assembling separate providers. Published pricing and accessible APIs make an end-to-end latency and multilingual quality test practical.",
-      "technical_details": {"transcription":"60 languages; continuous language detection; first partials just over 100 ms", "transcription_price":"$0.54 per audio hour introductory price through year-end", "voice":"23 languages and 26 locales", "voice_2_1_price":"$22 per million characters", "voice_flash":"45 seconds of audio in 150 ms; $15 per million characters", "availability":"Microsoft Foundry and public playgrounds; voice also on OpenRouter; LiveKit announced"},
-      "technical_details_zh": {"转写":"60 种语言；连续语言检测；首次部分结果略高于 100 ms", "转写价格":"年底前引入价每音频小时 0.54 美元", "语音合成":"23 种语言、26 个地区", "Voice 2.1 价格":"每百万字符 22 美元", "Voice Flash":"150 ms 生成 45 秒音频；每百万字符 15 美元", "可用性":"Microsoft Foundry 与公开 playground；语音模型也在 OpenRouter，LiveKit 已预告"},
-      "tags": ["MAI-Transcribe", "MAI-Voice", "speech-to-text", "text-to-speech", "streaming"],
-      "technical_impact": 3, "engineering_value": 4, "adoption_signal": 3, "maturity": 3, "verification_cost": 2, "risk": 3,
+      "technical_details": {
+        "transcription": "60 languages; continuous language detection; first partials just over 100 ms",
+        "transcription_price": "$0.54 per audio hour introductory price through year-end",
+        "voice": "23 languages and 26 locales",
+        "voice_2_1_price": "$22 per million characters",
+        "voice_flash": "45 seconds of audio in 150 ms; $15 per million characters",
+        "availability": "Microsoft Foundry and public playgrounds; voice also on OpenRouter; LiveKit announced"
+      },
+      "technical_details_zh": {
+        "转写": "60 种语言；连续语言检测；首次部分结果略高于 100 ms",
+        "转写价格": "年底前引入价每音频小时 0.54 美元",
+        "语音合成": "23 种语言、26 个地区",
+        "Voice 2.1 价格": "每百万字符 22 美元",
+        "Voice Flash": "150 ms 生成 45 秒音频；每百万字符 15 美元",
+        "可用性": "Microsoft Foundry 与公开 playground；语音模型也在 OpenRouter，LiveKit 已预告"
+      },
+      "tags": [
+        "MAI-Transcribe",
+        "MAI-Voice",
+        "speech-to-text",
+        "text-to-speech",
+        "streaming"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
       "recommendation": "TRIAL",
       "event_fingerprint": "microsoft-mai-transcribe-streaming-voice-2-1",
-      "source_ids": ["src-036e4d20b5ff262a"],
-      "project_ids": ["mai-speech"], "scenario_ids": ["models", "agents"], "evidence_stage": "verified", "late_discovery": true,
-      "short_label_zh": "MAI Speech", "short_label_en": "MAI Speech",
+      "source_ids": [
+        "src-036e4d20b5ff262a"
+      ],
+      "project_ids": [
+        "mai-speech"
+      ],
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "short_label_zh": "MAI Speech",
+      "short_label_en": "MAI Speech",
       "next_action_zh": "一天内用中英混合真实通话测首 token 延迟、转写错误率、打断恢复、合成自然度与每轮成本。",
       "next_action_en": "In one day, test real mixed Chinese-English calls for first-token latency, transcription error, interruption recovery, voice quality and per-turn cost.",
-      "evidence": [{"id":"ev-20261001-08-release-evidence","claim_zh":"Microsoft 已公布三款语音模型的语言覆盖、延迟、价格与调用入口。","claim_en":"Microsoft published language coverage, latency, pricing and access paths for the three speech models.","source_ids":["src-036e4d20b5ff262a"],"event_ids":["ev-20261001-08"],"relation":"support","verification":"verified-primary-source"}],
-      "changes": [{"id":"ev-20261001-08-published","kind":"new","occurred_at":"2026-10-01T00:00:00Z","discovered_at":"2026-10-03T16:01:57Z","summary_zh":"Microsoft 发布流式转写与新一代语音合成模型","summary_en":"Microsoft releases streaming transcription and new speech synthesis models","evidence_ids":["ev-20261001-08-release-evidence"],"historical":false,"importance":"major"}]
+      "evidence": [
+        {
+          "id": "ev-20261001-08-release-evidence",
+          "claim_zh": "Microsoft 已公布三款语音模型的语言覆盖、延迟、价格与调用入口。",
+          "claim_en": "Microsoft published language coverage, latency, pricing and access paths for the three speech models.",
+          "source_ids": [
+            "src-036e4d20b5ff262a"
+          ],
+          "event_ids": [
+            "ev-20261001-08"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261001-08-published",
+          "kind": "new",
+          "occurred_at": "2026-10-01T00:00:00Z",
+          "discovered_at": "2026-10-03T16:01:57Z",
+          "summary_zh": "Microsoft 发布流式转写与新一代语音合成模型",
+          "summary_en": "Microsoft releases streaming transcription and new speech synthesis models",
+          "evidence_ids": [
+            "ev-20261001-08-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261001-09",
+      "title": "Figma limits its hosted MCP server to catalog-listed clients",
+      "title_zh": "Figma 将 hosted MCP server 限于目录内客户端",
+      "category": "ai-agent",
+      "organization": [
+        "Figma"
+      ],
+      "published_at": "2026-10-01T15:10:46Z",
+      "source_type": "official_docs",
+      "primary_source": "https://developers.figma.com/docs/figma-mcp-server/",
+      "secondary_sources": [
+        "https://www.figma.com/mcp-catalog/"
+      ],
+      "summary": "Figma documents that only clients listed in its MCP Catalog may connect to the hosted Figma MCP server. Developers of new clients must join a waitlist. The current catalog includes Claude, Claude Code, ChatGPT, Codex, Cursor, Xcode beta and VS Code.",
+      "why_it_matters": "For teams integrating design tools through MCP, protocol compatibility alone does not guarantee hosted access. Client allowlisting creates a product-level dependency that must be checked before choosing the hosted path.",
+      "summary_zh": "Figma 官方文档明确：只有列入 MCP Catalog 的客户端才能连接 hosted Figma MCP server，新客户端开发者需要加入 waitlist。当前目录包括 Claude、Claude Code、ChatGPT、Codex、Cursor、Xcode beta 和 VS Code。",
+      "why_it_matters_zh": "对通过 MCP 接入设计工具的团队来说，协议兼容不等于一定能访问 hosted 服务。客户端白名单形成了产品层依赖，选 hosted 路径前必须确认目标客户端仍在目录中。",
+      "technical_details": {
+        "policy": "hosted server accepts catalog-listed clients only",
+        "developer_path": "new client developers join a waitlist",
+        "listed_clients": "Claude, Claude Code, ChatGPT, Codex, Cursor, Xcode beta, VS Code",
+        "timestamp_note": "official docs expose no publication timestamp; prior community signal time preserved"
+      },
+      "technical_details_zh": {
+        "策略": "hosted server 仅接受目录内客户端",
+        "开发者路径": "新客户端开发者加入 waitlist",
+        "已列客户端": "Claude、Claude Code、ChatGPT、Codex、Cursor、Xcode beta、VS Code",
+        "时间说明": "官方文档未提供发布时间；沿用此前社区信号时间"
+      },
+      "tags": [
+        "Figma",
+        "MCP",
+        "allowlist",
+        "hosted-service"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 3,
+      "verification_cost": 1,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "figma-hosted-mcp-client-catalog-allowlist",
+      "source_ids": [
+        "src-75ffc0e085a2eee1",
+        "src-d9a9c33752a345db"
+      ],
+      "project_ids": [
+        "figma-mcp"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "short_label_zh": "Figma hosted MCP",
+      "short_label_en": "Figma hosted MCP",
+      "next_action_zh": "依赖 hosted Figma MCP 前确认客户端仍在 Catalog；未列入时改用受支持的 desktop 路径或加入 waitlist。",
+      "next_action_en": "Before relying on hosted Figma MCP, verify the client remains listed; otherwise use a supported desktop path or join the waitlist.",
+      "evidence": [
+        {
+          "id": "ev-20261001-09-release-evidence",
+          "claim_zh": "Figma hosted MCP 的公开材料与可用边界已由一手来源核验。",
+          "claim_en": "Figma hosted MCP artifacts and availability boundaries were verified from primary sources.",
+          "source_ids": [
+            "src-75ffc0e085a2eee1",
+            "src-d9a9c33752a345db"
+          ],
+          "event_ids": [
+            "ev-20261001-09"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261001-09-published",
+          "kind": "new",
+          "occurred_at": "2026-10-01T15:10:46Z",
+          "discovered_at": "2026-10-04T16:02:19Z",
+          "summary_zh": "Figma 将 hosted MCP server 限于目录内客户端",
+          "summary_en": "Figma limits its hosted MCP server to catalog-listed clients",
+          "evidence_ids": [
+            "ev-20261001-09-release-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-04T16:02:19Z",
+      "last_updated_at": "2026-10-04T16:02:19Z",
+      "summary_en": "Figma documents that only clients listed in its MCP Catalog may connect to the hosted Figma MCP server. Developers of new clients must join a waitlist. The current catalog includes Claude, Claude Code, ChatGPT, Codex, Cursor, Xcode beta and VS Code.",
+      "why_it_matters_en": "For teams integrating design tools through MCP, protocol compatibility alone does not guarantee hosted access. Client allowlisting creates a product-level dependency that must be checked before choosing the hosted path."
     }
   ]
 }

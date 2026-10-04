@@ -168,19 +168,20 @@
       ],
       "published_at": "2026-09-28T17:58:06Z",
       "first_seen_at": "2026-09-29T16:01:24Z",
-      "last_updated_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-10-04T16:02:19Z",
       "source_type": "primary",
       "primary_source": "https://www.anthropic.com/claude-sonnet-5-5",
       "secondary_sources": [
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.284",
-        "https://github.blog/changelog/2026-09-28-claude-sonnet-5-5-in-github-copilot/"
+        "https://github.blog/changelog/2026-09-28-claude-sonnet-5-5-in-github-copilot/",
+        "https://artificialanalysis.ai/articles/claude-sonnet-5-5/"
       ],
-      "summary": "Anthropic released Claude Sonnet 5.5 across its API, apps, Claude Code, AWS, Google Cloud and Microsoft Azure. Pricing stays at $2 per million input tokens and $10 per million output tokens, but Anthropic says the model generates 30% faster and costs up to 30% less per task because it uses fewer tokens. Vendor evaluations put it close to Opus 5.5 on several coding and knowledge-work tests, with a 1M context window. The launch also changes safeguard behavior: some high-risk cyber requests fall back to Sonnet 5, and preserved thinking now binds reasoning to the account that created it.",
-      "why_it_matters": "For teams routing routine coding and knowledge work, Sonnet 5.5 may shift the cost boundary between a workhorse model and a premium model. Trial it on your own traces at Low and Medium effort, where Anthropic reports the strongest price-performance gains. Migration needs one explicit check: applications that disabled thinking must move to `between_tools`, and cross-account conversation handoffs may interact with preserved thinking.",
-      "summary_zh": "Anthropic 在 API、应用、Claude Code、AWS、Google Cloud 与 Microsoft Azure 同步发布 Claude Sonnet 5.5。单价仍是每百万输入 token 2 美元、输出 token 10 美元，但厂商称生成速度快 30%，由于用更少 token 完成任务，单任务成本最多降低 30%。在多项 coding 与知识工作测试中，厂商结果接近 Opus 5.5，并提供 1M 上下文窗口。发布还改变了安全行为：部分高风险网络安全请求会回退到 Sonnet 5，preserved thinking 也会把推理内容绑定到创建它的账号。",
-      "summary_en": "Anthropic released Claude Sonnet 5.5 across its API, apps, Claude Code, AWS, Google Cloud and Microsoft Azure. Pricing stays at $2 per million input tokens and $10 per million output tokens, but Anthropic says the model generates 30% faster and costs up to 30% less per task because it uses fewer tokens. Vendor evaluations put it close to Opus 5.5 on several coding and knowledge-work tests, with a 1M context window. The launch also changes safeguard behavior: some high-risk cyber requests fall back to Sonnet 5, and preserved thinking now binds reasoning to the account that created it.",
-      "why_it_matters_zh": "对为日常 coding 和知识工作做模型路由的团队来说，Sonnet 5.5 可能会重划“主力模型”和高价模型的成本边界。应先用自己的轨迹测试 Low 与 Medium effort，因为厂商声称这两个档位的性价比收益最明显。迁移时还要专门检查一件事：关闭 thinking 的应用需要改用 `between_tools`，跨账号移交对话也可能受到 preserved thinking 的影响。",
-      "why_it_matters_en": "For teams routing routine coding and knowledge work, Sonnet 5.5 may shift the cost boundary between a workhorse model and a premium model. Trial it on your own traces at Low and Medium effort, where Anthropic reports the strongest price-performance gains. Migration needs one explicit check: applications that disabled thinking must move to `between_tools`, and cross-account conversation handoffs may interact with preserved thinking.",
+      "summary": "Claude Sonnet 5.5 is broadly available at $2 per million input tokens and $10 per million output tokens. Anthropic reports faster, lower-cost agent work, but Artificial Analysis found that maximum effort used about 193k output tokens per task and cost roughly $7.60, around 50% more than Sonnet 5 in its suite. Cost savings therefore depend on effort and workload.",
+      "why_it_matters": "For model-routing teams, the vendor cost claim should not be treated as a universal discount. Benchmark low, medium and maximum effort on your own traces and route by quality-adjusted task cost.",
+      "summary_zh": "Claude Sonnet 5.5 已在多家平台提供，输入与输出单价分别为每百万 token 2 美元和 10 美元。Anthropic 报告 agent 任务更快、更省，但 Artificial Analysis 在 maximum effort 下测得每项任务约输出 19.3 万 token、成本约 7.60 美元，比 Sonnet 5 高约 50%。是否省钱取决于 effort 与具体工作负载。",
+      "summary_en": "Claude Sonnet 5.5 is broadly available at $2 per million input tokens and $10 per million output tokens. Anthropic reports faster, lower-cost agent work, but Artificial Analysis found that maximum effort used about 193k output tokens per task and cost roughly $7.60, around 50% more than Sonnet 5 in its suite. Cost savings therefore depend on effort and workload.",
+      "why_it_matters_zh": "对做模型路由的团队来说，厂商成本主张不能当成普遍折扣。应在自己的轨迹上比较 low、medium 与 maximum effort，再按质量校正后的单任务成本路由。",
+      "why_it_matters_en": "For model-routing teams, the vendor cost claim should not be treated as a universal discount. Benchmark low, medium and maximum effort on your own traces and route by quality-adjusted task cost.",
       "technical_details": {
         "model": "claude-sonnet-5-5",
         "context_window": "1M tokens",
@@ -200,7 +201,8 @@
         },
         "availability": "Claude Platform, Claude apps, Claude Code, AWS, Google Cloud and Microsoft Azure",
         "migration": "thinking-off clients must use between_tools before switching",
-        "caveat": "performance, speed and per-task cost claims are vendor-reported; some structured-output benchmark runs used a prerelease deployment with a later-fixed bug"
+        "caveat": "performance, speed and per-task cost claims are vendor-reported; some structured-output benchmark runs used a prerelease deployment with a later-fixed bug",
+        "update_2026_10_05_independent-cost-review": "Artificial Analysis reports score 56 at max effort, about 193k output tokens and $7.60 per task, roughly 50% more than Sonnet 5 in its workload."
       },
       "technical_details_zh": {
         "模型": "claude-sonnet-5-5",
@@ -221,7 +223,8 @@
         },
         "可用性": "Claude Platform、Claude 应用、Claude Code、AWS、Google Cloud 与 Microsoft Azure",
         "迁移要求": "关闭 thinking 的 client 切换前必须改用 between_tools",
-        "边界": "性能、速度与单任务成本均为厂商报告；部分结构化输出 benchmark 使用的预发布部署存在后来修复的问题"
+        "边界": "性能、速度与单任务成本均为厂商报告；部分结构化输出 benchmark 使用的预发布部署存在后来修复的问题",
+        "2026-10-05 更新 independent-cost-review": "Artificial Analysis 报告 maximum effort 得分 56，每项任务约输出 19.3 万 token、成本 7.60 美元，在其工作负载上比 Sonnet 5 约高 50%。"
       },
       "tags": [
         "claude-sonnet-5-5",
@@ -243,7 +246,8 @@
       "source_ids": [
         "src-4e3ca8a95d366330",
         "src-cdf0d63217ad659b",
-        "src-1af50bc5d28f4d83"
+        "src-1af50bc5d28f4d83",
+        "src-4d947df5f3d74f68"
       ],
       "project_ids": [
         "claude-sonnet-5-5"
@@ -268,6 +272,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260928-02-independent-cost-review-evidence",
+          "claim_zh": "独立评测显示 Sonnet 5.5 的 maximum effort 可能更贵",
+          "claim_en": "Independent evaluation finds Sonnet 5.5 maximum effort can cost more",
+          "source_ids": [
+            "src-4d947df5f3d74f68"
+          ],
+          "event_ids": [
+            "ev-20260928-02"
+          ],
+          "relation": "counter",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -283,6 +300,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260928-02-independent-cost-review",
+          "kind": "update",
+          "occurred_at": "2026-09-28T00:00:00Z",
+          "discovered_at": "2026-10-04T16:02:19Z",
+          "summary_zh": "独立评测显示 Sonnet 5.5 的 maximum effort 可能更贵",
+          "summary_en": "Independent evaluation finds Sonnet 5.5 maximum effort can cost more",
+          "evidence_ids": [
+            "ev-20260928-02-independent-cost-review-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -292,8 +322,10 @@
           "src-4e3ca8a95d366330"
         ]
       },
-      "next_action_zh": "用自己的轨迹测 Low 和 Medium effort 的成本与质量；迁移前检查 between_tools 和 preserved thinking。",
-      "next_action_en": "Run your own traces at Low and Medium effort to compare cost and quality; check between_tools and preserved thinking before migrating."
+      "next_action_zh": "用自有轨迹比较 low、medium 与 maximum effort 的成功率、输出 token、时延和单任务成本。",
+      "next_action_en": "Compare low, medium and maximum effort on your own traces for success, output tokens, latency and cost per task.",
+      "short_label_zh": "Claude Sonnet 5.5",
+      "short_label_en": "Claude Sonnet 5.5"
     },
     {
       "event_id": "ev-20260928-03",
@@ -693,15 +725,32 @@
       "last_updated_at": "2026-10-03T16:01:57Z",
       "source_type": "primary",
       "primary_source": "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/2.3.0",
-      "secondary_sources": ["https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.3.0", "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.2.0"],
+      "secondary_sources": [
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.3.0",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.2.0"
+      ],
       "summary": "MCP TypeScript and Python SDK 2.3 releases tighten connection, OAuth and payload boundaries. TypeScript redirects stay same-origin by default, can validate token audiences and enforce tool-input element limits; server and transport objects now have a one-request lifecycle. Python rejects invalid MCP headers during registration and caps SSE events at 1 MiB by default.",
       "why_it_matters": "For MCP client and gateway teams, the security defaults are useful but the transport lifecycle can break shared server instances. Test redirects, audiences, oversized payloads and reconnection before rollout.",
       "summary_zh": "MCP TypeScript 与 Python SDK 2.3 收紧连接、OAuth 与负载边界。TypeScript 默认只跟随同源重定向，可校验 token audience，并限制工具输入元素数量；server 与 transport 对象改为一次请求生命周期。Python 会在注册时拒绝无效 MCP header，并默认把 SSE event 限制为 1 MiB。",
       "summary_en": "MCP TypeScript and Python SDK 2.3 releases tighten connection, OAuth and payload boundaries. TypeScript redirects stay same-origin by default, can validate token audiences and enforce tool-input element limits; server and transport objects now have a one-request lifecycle. Python rejects invalid MCP headers during registration and caps SSE events at 1 MiB by default.",
       "why_it_matters_zh": "对 MCP client 与 gateway 团队来说，新的安全默认值有价值，但 transport 生命周期变化会破坏共享 server 实例。上线前要覆盖重定向、audience、超大负载与重连。",
       "why_it_matters_en": "For MCP client and gateway teams, the security defaults are useful but the transport lifecycle can break shared server instances. Test redirects, audiences, oversized payloads and reconnection before rollout.",
-      "technical_details": {"versions":"TypeScript 2.3.0 / package line 1.32.0; Python 2.3.0", "typescript_security":"same-origin redirects by default; expectedResource audience validation; maxToolInputElements", "typescript_lifecycle":"server and transport are single-connection/single-request objects", "python_security":"invalid x-mcp-header rejected during registration", "python_limits":"SSE event default maximum 1 MiB, configurable", "compatibility_risk":"shared server/transport reuse and oversized SSE payloads can break"},
-      "technical_details_zh": {"版本":"TypeScript 2.3.0 / package line 1.32.0；Python 2.3.0", "TypeScript 安全":"默认同源重定向；expectedResource audience 校验；maxToolInputElements", "TypeScript 生命周期":"server 与 transport 只能服务一个连接或请求", "Python 安全":"注册时拒绝无效 x-mcp-header", "Python 限制":"SSE event 默认上限 1 MiB，可配置", "兼容风险":"复用 server/transport 或发送超大 SSE 负载可能失效"},
+      "technical_details": {
+        "versions": "TypeScript 2.3.0 / package line 1.32.0; Python 2.3.0",
+        "typescript_security": "same-origin redirects by default; expectedResource audience validation; maxToolInputElements",
+        "typescript_lifecycle": "server and transport are single-connection/single-request objects",
+        "python_security": "invalid x-mcp-header rejected during registration",
+        "python_limits": "SSE event default maximum 1 MiB, configurable",
+        "compatibility_risk": "shared server/transport reuse and oversized SSE payloads can break"
+      },
+      "technical_details_zh": {
+        "版本": "TypeScript 2.3.0 / package line 1.32.0；Python 2.3.0",
+        "TypeScript 安全": "默认同源重定向；expectedResource audience 校验；maxToolInputElements",
+        "TypeScript 生命周期": "server 与 transport 只能服务一个连接或请求",
+        "Python 安全": "注册时拒绝无效 x-mcp-header",
+        "Python 限制": "SSE event 默认上限 1 MiB，可配置",
+        "兼容风险": "复用 server/transport 或发送超大 SSE 负载可能失效"
+      },
       "tags": [
         "mcp",
         "typescript-sdk",
@@ -747,8 +796,13 @@
           "id": "ev-20260928-07-sdk-2-3-evidence",
           "claim_zh": "MCP TypeScript 与 Python SDK 2.3 收紧重定向、audience、连接生命周期和 SSE 负载边界。",
           "claim_en": "MCP TypeScript and Python SDK 2.3 tighten redirect, audience, connection-lifecycle and SSE payload boundaries.",
-          "source_ids": ["src-781657bf5c42e86e", "src-987dd82c392616be"],
-          "event_ids": ["ev-20260928-07"],
+          "source_ids": [
+            "src-781657bf5c42e86e",
+            "src-987dd82c392616be"
+          ],
+          "event_ids": [
+            "ev-20260928-07"
+          ],
           "relation": "support",
           "verification": "verified-primary-source"
         }
@@ -774,7 +828,9 @@
           "discovered_at": "2026-10-03T16:01:57Z",
           "summary_zh": "TypeScript 与 Python SDK 2.3 收紧传输、OAuth 与负载边界。",
           "summary_en": "TypeScript and Python SDK 2.3 tighten transport, OAuth and payload boundaries.",
-          "evidence_ids": ["ev-20260928-07-sdk-2-3-evidence"],
+          "evidence_ids": [
+            "ev-20260928-07-sdk-2-3-evidence"
+          ],
           "historical": false,
           "importance": "major"
         }
@@ -794,29 +850,34 @@
       ],
       "published_at": "2026-09-28T16:04:13Z",
       "first_seen_at": "2026-09-29T16:01:24Z",
-      "last_updated_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-10-04T16:02:19Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/openai-python/releases/tag/v3.20.0",
-      "secondary_sources": [],
-      "summary": "OpenAI Python SDK 3.20.0 adds Agents vault credential metadata and metadata-only updates, an `ultrafast` Agents session tier, a session-turn policy-violation result and opt-in incremental WebSocket text and tool snapshots. It also fixes uncertain WebSocket replay and several Live and Realtime hangs. The release turns hosted-agent credentials, policy outcomes and session transport into concrete SDK contracts, but the corresponding API support guarantees are not yet clear from a dated platform announcement.",
-      "why_it_matters": "For teams using hosted agent sessions, the SDK now exposes governance and transport states that previously required custom handling. Watch until API documentation confirms availability, then test credential-update permissions, policy-violation branches and replay behavior before relying on the new contracts.",
-      "summary_zh": "OpenAI Python SDK 3.20.0 新增 Agents vault 凭据元数据与只改元数据的更新方式、`ultrafast` 会话档位、session turn 策略违规结果，以及可选的 WebSocket 文本和工具增量快照。该版还修复了不确定状态下的 WebSocket 重放，以及多处 Live / Realtime 卡死。它把托管 agent 的凭据、策略结果和会话传输变成了明确的 SDK contract，但平台尚未用带日期的公告说明完整可用性与支持承诺。",
-      "summary_en": "OpenAI Python SDK 3.20.0 adds Agents vault credential metadata and metadata-only updates, an `ultrafast` Agents session tier, a session-turn policy-violation result and opt-in incremental WebSocket text and tool snapshots. It also fixes uncertain WebSocket replay and several Live and Realtime hangs. The release turns hosted-agent credentials, policy outcomes and session transport into concrete SDK contracts, but the corresponding API support guarantees are not yet clear from a dated platform announcement.",
-      "why_it_matters_zh": "对使用托管 agent session 的团队来说，SDK 开始暴露过去要自行处理的治理与传输状态。先维持 WATCH，等 API 文档确认可用范围；随后重点测试凭据更新权限、策略违规分支和重放行为，再依赖这些新 contract。",
-      "why_it_matters_en": "For teams using hosted agent sessions, the SDK now exposes governance and transport states that previously required custom handling. Watch until API documentation confirms availability, then test credential-update permissions, policy-violation branches and replay behavior before relying on the new contracts.",
+      "secondary_sources": [
+        "https://developers.openai.com/api/docs/guides/agents-api/tools/vaults",
+        "https://developers.openai.com/api/reference/python/resources/beta/subresources/agents/subresources/vaults"
+      ],
+      "summary": "OpenAI Python SDK 3.20 exposes Agents vault credential metadata, policy-violation results and session transport controls. OpenAI now documents the Vault API: sandboxes receive placeholders rather than raw credentials, and a network proxy injects secrets only for allowed hosts. The public API documentation clears the prior availability gate for a controlled trial.",
+      "why_it_matters": "For hosted-agent teams, vaults reduce direct secret exposure while keeping network use policy-bound. A trial should still verify allowed-host enforcement, rotation, revocation and whether logs remain secret-free.",
+      "summary_zh": "OpenAI Python SDK 3.20 暴露 Agents vault 凭据元数据、策略违规结果与会话传输控制。OpenAI 现已公开 Vault API 文档：沙箱只拿到占位符，网络代理仅向允许的 host 注入 secret。公开文档满足了此前的可用性门槛，可以进入受控试验。",
+      "summary_en": "OpenAI Python SDK 3.20 exposes Agents vault credential metadata, policy-violation results and session transport controls. OpenAI now documents the Vault API: sandboxes receive placeholders rather than raw credentials, and a network proxy injects secrets only for allowed hosts. The public API documentation clears the prior availability gate for a controlled trial.",
+      "why_it_matters_zh": "对托管 agent 团队来说，vault 可以减少 secret 直接暴露，并把网络使用限制在策略允许范围。试验仍需验证 host 白名单、轮换、撤销，以及日志是否始终不含 secret。",
+      "why_it_matters_en": "For hosted-agent teams, vaults reduce direct secret exposure while keeping network use policy-bound. A trial should still verify allowed-host enforcement, rotation, revocation and whether logs remain secret-free.",
       "technical_details": {
         "version": "3.20.0",
         "agent_controls": "vault credential metadata and metadata-only updates; ultrafast session tier; policy-violation turn result",
         "streaming": "opt-in incremental WebSocket text and tool snapshots",
         "fixes": "uncertain replay plus Live/Realtime hang and URL handling fixes",
-        "caveat": "dated API availability and support guarantees not independently confirmed"
+        "caveat": "dated API availability and support guarantees not independently confirmed",
+        "update_2026_10_05_vault-docs": "Vault retrieval does not return the secret; the sandbox receives a placeholder and the network proxy injects credentials only for allowed hosts."
       },
       "technical_details_zh": {
         "版本": "3.20.0",
         "Agent 控制": "vault 凭据元数据与只改元数据更新；ultrafast 会话档位；策略违规 turn 结果",
         "流式传输": "可选 WebSocket 文本与工具增量快照",
         "修复": "不确定状态重放，以及 Live/Realtime 卡死与 URL 处理",
-        "边界": "尚未独立确认带日期的 API 可用性与支持承诺"
+        "边界": "尚未独立确认带日期的 API 可用性与支持承诺",
+        "2026-10-05 更新 vault-docs": "Vault 读取不返回 secret；沙箱收到占位符，网络代理仅向允许的 host 注入凭据。"
       },
       "tags": [
         "openai-python",
@@ -831,10 +892,12 @@
       "maturity": 3,
       "verification_cost": 3,
       "risk": 3,
-      "recommendation": "WATCH",
+      "recommendation": "TRIAL",
       "event_fingerprint": "openai-python-sdk-3-20-agent-session-controls",
       "source_ids": [
-        "src-e98d8b117b719064"
+        "src-e98d8b117b719064",
+        "src-4bbe4a7146766080",
+        "src-b601306efd6751e3"
       ],
       "project_ids": [],
       "scenario_ids": [
@@ -854,6 +917,20 @@
           ],
           "relation": "support",
           "verification": "verified-sdk-release-api-availability-unconfirmed"
+        },
+        {
+          "id": "ev-20260928-08-vault-docs-evidence",
+          "claim_zh": "OpenAI 公开 Agents Vault API 文档，满足试验门槛",
+          "claim_en": "OpenAI publishes Agents Vault API docs, clearing the trial gate",
+          "source_ids": [
+            "src-4bbe4a7146766080",
+            "src-b601306efd6751e3"
+          ],
+          "event_ids": [
+            "ev-20260928-08"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -869,15 +946,32 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260928-08-vault-docs",
+          "kind": "update",
+          "occurred_at": "2026-10-04T16:02:19Z",
+          "discovered_at": "2026-10-04T16:02:19Z",
+          "summary_zh": "OpenAI 公开 Agents Vault API 文档，满足试验门槛",
+          "summary_en": "OpenAI publishes Agents Vault API docs, clearing the trial gate",
+          "evidence_ids": [
+            "ev-20260928-08-vault-docs-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "next_action_zh": "等 API 文档确认可用范围，再测试凭据更新权限、策略违规分支和重放行为。",
-      "next_action_en": "Wait for API documentation to confirm availability, then test credential updates, policy-violation branches and replay."
+      "next_action_zh": "一天内测试 secret 不可见、host 白名单、轮换、撤销和 policy-violation 分支，并检查日志不含 secret。",
+      "next_action_en": "In one day, test secret non-disclosure, host allowlists, rotation, revocation and policy-violation branches, checking logs remain secret-free.",
+      "short_label_zh": "OpenAI Python SDK",
+      "short_label_en": "OpenAI Python SDK"
     },
     {
       "first_seen_at": "2026-10-01T16:01:43Z",
-      "last_updated_at": "2026-10-01T16:01:43Z",
-      "secondary_sources": [],
+      "last_updated_at": "2026-10-04T16:02:19Z",
+      "secondary_sources": [
+        "https://github.com/ollama/ollama/releases/tag/v0.35.1"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 3,
@@ -909,7 +1003,8 @@
         "outputs": "choices, probabilities, confidence and ordered scores",
         "models": "Nimble and Tev1",
         "question_types": "choice, noul and score",
-        "availability": "local Ollama runtime"
+        "availability": "local Ollama runtime",
+        "update_2026_10_05_ollama-0-35-1": "0.35.1 preserves Modelfile CAPABILITY declarations through import, inheritance and export; show/list advertise decision-only models so clients avoid offering chat, tools or thinking; web-search cap rises from 3 to 10."
       },
       "technical_details_zh": {
         "版本": "0.35.0 stable",
@@ -917,7 +1012,8 @@
         "输出": "选项、概率、置信度与有序分数",
         "模型": "Nimble、Tev1",
         "问题类型": "choice、noul、score",
-        "可用性": "本地 Ollama runtime"
+        "可用性": "本地 Ollama runtime",
+        "2026-10-05 更新 ollama-0-35-1": "0.35.1 让 Modelfile CAPABILITY 在导入、继承与导出时保留；show/list 会标明仅支持 decision 的模型，避免客户端误提供 chat、tools 或 thinking；web search 上限从 3 提到 10。"
       },
       "tags": [
         "ollama",
@@ -929,7 +1025,8 @@
       "recommendation": "TRIAL",
       "event_fingerprint": "ollama-0-35-systemone-decision-models",
       "source_ids": [
-        "src-872457bb1f6a4e1a"
+        "src-872457bb1f6a4e1a",
+        "src-86745252420db893"
       ],
       "project_ids": [
         "ollama"
@@ -937,8 +1034,8 @@
       "late_discovery": true,
       "short_label_zh": "Ollama Decision Models",
       "short_label_en": "Ollama Decision Models",
-      "next_action_zh": "用一组有人工标签的数据测试概率校准、拒答阈值、延迟和模型回退。",
-      "next_action_en": "Test probability calibration, abstention thresholds, latency and model fallback on a labeled dataset.",
+      "next_action_zh": "用自有标签集验证概率校准，并确认客户端不会给 decision-only 模型展示 chat、tools 或 thinking。",
+      "next_action_en": "Validate probability calibration on local labels and confirm clients do not offer chat, tools or thinking to decision-only models.",
       "summary": "Ollama 0.35.0 stable adds `/v1/systemone`, letting decision models return choices, probabilities and scores instead of generated text. Nimble and Tev1 are the first supported models for ticket triage, model routing and classification. The API exposes choice, noul and score questions. The prior run mistakenly treated this stable release as prerelease, so this run records it as a late discovery.",
       "why_it_matters": "For teams doing local classification or routing, structured probabilities are easier to calibrate, threshold and fall back than labels parsed from generated text. Test calibration error, abstention thresholds and latency on labeled data before relying on confidence values.",
       "evidence": [
@@ -948,6 +1045,19 @@
           "claim_en": "Ollama 0.35.0 stable adds `/v1/systemone`, letting decision models return choices, probabilities and scores instead of generated text. Nimble and Tev1 are the first supported models for ticket triage, model routing and classification. The API exposes choice, noul and score questions. The prior run mistakenly treated this stable release as prerelease, so this run records it as a late discovery.",
           "source_ids": [
             "src-872457bb1f6a4e1a"
+          ],
+          "event_ids": [
+            "ev-20260928-09"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260928-09-ollama-0-35-1-evidence",
+          "claim_zh": "Ollama 0.35.1 让客户端识别 decision model 能力",
+          "claim_en": "Ollama 0.35.1 lets clients recognize decision-model capability",
+          "source_ids": [
+            "src-86745252420db893"
           ],
           "event_ids": [
             "ev-20260928-09"
@@ -968,6 +1078,19 @@
             "ev-20260928-09-release-evidence"
           ],
           "historical": true,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20260928-09-ollama-0-35-1",
+          "kind": "update",
+          "occurred_at": "2026-09-29T20:14:22Z",
+          "discovered_at": "2026-10-04T16:02:19Z",
+          "summary_zh": "Ollama 0.35.1 让客户端识别 decision model 能力",
+          "summary_en": "Ollama 0.35.1 lets clients recognize decision-model capability",
+          "evidence_ids": [
+            "ev-20260928-09-ollama-0-35-1-evidence"
+          ],
+          "historical": false,
           "importance": "major"
         }
       ]

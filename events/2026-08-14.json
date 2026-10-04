@@ -373,7 +373,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-10-03T16:01:57Z",
+      "last_updated_at": "2026-10-04T16:02:19Z",
       "source_type": "primary",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -396,14 +396,15 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.285",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.286",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.287",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.288"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.288",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.289"
       ],
-      "summary": "Claude Code is a mature local multi-agent runtime with session recovery, sandboxing and gateway governance. Version 2.1.288 adds bounded code-review findings and strengthens resume and auto-compaction recovery. It also fixes duplicate MCP execution on oversized output, makes hook-state serialization fail closed and prompts for dangerous removal hidden inside `bash -c`.",
-      "why_it_matters": "For coding-agent operators, this release reduces duplicate side effects and policy gaps during long sessions. Upgrade only after regressing destructive shell commands, hook serialization, oversized MCP output and recovery from compaction.",
-      "summary_zh": "Claude Code 已形成成熟的本地多 agent 运行时，覆盖会话恢复、沙箱和网关治理。2.1.288 增加 code review 发现数上限，并改善 resume 与自动压缩后的恢复。版本还修复超大输出导致 MCP 工具重复执行，让 hook 状态序列化失败时默认拒绝，并会拦截藏在 `bash -c` 中的危险删除。",
-      "summary_en": "Claude Code is a mature local multi-agent runtime with session recovery, sandboxing and gateway governance. Version 2.1.288 adds bounded code-review findings and strengthens resume and auto-compaction recovery. It also fixes duplicate MCP execution on oversized output, makes hook-state serialization fail closed and prompts for dangerous removal hidden inside `bash -c`.",
-      "why_it_matters_zh": "对运行 coding agent 的团队来说，这次更新减少长会话里的重复副作用和策略缺口。升级前应回归危险 shell、hook 序列化、超大 MCP 输出，以及压缩后的恢复。",
-      "why_it_matters_en": "For coding-agent operators, this release reduces duplicate side effects and policy gaps during long sessions. Upgrade only after regressing destructive shell commands, hook serialization, oversized MCP output and recovery from compaction.",
+      "summary": "Claude Code is a mature local multi-agent runtime with session recovery, sandboxing and gateway governance. Version 2.1.289 closes deny-rule gaps around nested commands, environment-variable prefixes and symlinked IDE reads. It also prevents user plugins from rewriting managed MCP sign-in descriptions and adds stable teammate-agent lifecycle APIs.",
+      "why_it_matters": "For coding-agent operators, this release closes concrete policy-bypass paths on managed machines while improving teammate orchestration. Upgrade after regressing nested shell rules, bare assignments, symlink reads and managed MCP descriptions.",
+      "summary_zh": "Claude Code 已形成成熟的本地多 agent 运行时，覆盖会话恢复、沙箱和网关治理。2.1.289 修复嵌套命令、环境变量前缀与 IDE 符号链接读取绕过 deny 规则的问题。版本还阻止用户插件改写组织托管的 MCP 登录说明，并加入稳定的 teammate agent 生命周期 API。",
+      "summary_en": "Claude Code is a mature local multi-agent runtime with session recovery, sandboxing and gateway governance. Version 2.1.289 closes deny-rule gaps around nested commands, environment-variable prefixes and symlinked IDE reads. It also prevents user plugins from rewriting managed MCP sign-in descriptions and adds stable teammate-agent lifecycle APIs.",
+      "why_it_matters_zh": "对运行 coding agent 的团队来说，这次更新堵住托管设备上的具体策略绕过路径，同时改善 teammate 编排。升级前应回归嵌套 shell、裸变量赋值、符号链接读取和 managed MCP 描述。",
+      "why_it_matters_en": "For coding-agent operators, this release closes concrete policy-bypass paths on managed machines while improving teammate orchestration. Upgrade after regressing nested shell rules, bare assignments, symlink reads and managed MCP descriptions.",
       "technical_details": {
         "forking": "default on; inherits conversation + prompt cache",
         "messaging": "SendMessage via @-mentions across live sessions; no history/files/permissions exchange",
@@ -422,7 +423,8 @@
         "update_2026_09_27": "2.1.283 (2026-09-25T21:50Z) adds exact-version allowlists plus explicit deniedModels, prompt-level gateway correlation and opt-in MCP/Web tool output in OTel. It also fails closed on invalid nested sandbox policy, blocks destructive Windows commands against roots/home, keeps MCP progress after backgrounding, and prevents cloud-session duplicate actions after restart. Stays ADOPT.",
         "update_2026_09_29": "Claude Code 2.1.284 stable adds one-read-only approval outside working directories, /mcp reconnect all, visible gateway spend limits, private_key_jwt identity-provider authentication, direct Google Cloud OTLP export and managed-model policy warnings. It retries damaged streams and overloads, compacts again when necessary and waits for reconnecting MCP tools on resume. Sonnet 5.5 becomes the default Sonnet. Stays ADOPT.",
         "update_2026_10_02": "2.1.285 adds allowedProviders and a WebFetch kill switch; fixes OAuth refresh, permission callbacks and Artifact boundaries. 2.1.286 fixes session recovery, Remote Control policy revocation, MCP credential redaction and spend accounting. OS-denied managed settings warn and continue; malformed files still stop sessions.",
-        "update_2026_10_03": "2.1.288 adds --max-findings for code review, resume/autocompact recovery and MCP OAuth scope re-authentication. It prevents duplicate MCP calls after oversized or unparseable output, fails closed when PreToolUse/PermissionRequest hook state cannot be serialized, and prompts for destructive rm hidden in bash -c."
+        "update_2026_10_03": "2.1.288 adds --max-findings for code review, resume/autocompact recovery and MCP OAuth scope re-authentication. It prevents duplicate MCP calls after oversized or unparseable output, fails closed when PreToolUse/PermissionRequest hook state cannot be serialized, and prompts for destructive rm hidden in bash -c.",
+        "update_2026_10_05_claude-2-1-289": "2.1.289 fixes nested deny/ask loss, environment-prefix and bare-assignment Bash matching, symlinked IDE reads and managed MCP description rewriting; adds agent.spawn plus stable teammate IDs/status."
       },
       "update_2026_08_17": "2.1.234 (2026-08-17, in-window): rejects Windows NT-namespace (\\??\\) paths across remote file reads, session restore, CLAUDE.md includes, workflow scripts and uploads — hardens pre-approval file accesses against the NTLM credential-leak vector; GitLab MR footer badge (draft/pending/green states, glab repos); auto-continue sessions when usage limit resets (toggle in /config); claude-api skill context cost cut from ~200k+ to ~25k tokens; selection:clear keybinding; CLAUDE_CODE_PROJECT_DIR_NAME env var; many Remote Control / permission-preview / TUI fixes.",
       "update_2026_08_18": "2.1.235 (2026-08-18, in-window): security-relevant fix — Shift+Tab in the permission prompt's comment field no longer wrongly grants session-wide edit permission; new optional `spellcheck` setting (aspell/hunspell/ispell); fix for whole-prompt-cache invalidation when a language server disconnects mid-session; nested markdown list misalignment fix (depth 3+); lower memory/CPU usage for background cloud sessions (/ultrareview); permission dialogs now display exactly what a grant covers; VS Code focus fix after window restore. Recommendation stays ADOPT; upgrading also picks up the 2.1.234 NTLM hardening.",
@@ -460,7 +462,8 @@
         "2026-09-27 更新": "2.1.283（2026-09-25T21:50Z）新增精确版本 allowlist 与显式 deniedModels、按 prompt 关联网关请求，以及可选的 MCP/Web 工具输出 OTel。版本还让无效的嵌套沙箱策略默认拒绝，阻止 Windows 破坏性命令删除根目录或 home，保留转入后台后的 MCP 进度，并避免云会话重启后重复执行。维持 ADOPT。",
         "2026-09-29 更新": "Claude Code 2.1.284 stable 增加工作目录外单次读取审批、`/mcp reconnect all`、可见的 gateway 花费上限、`private_key_jwt` 身份提供商认证、Google Cloud OTLP 直传和托管模型策略告警。它会重试损坏响应流与过载错误，必要时再次压缩，并在恢复会话时等待 MCP 工具重连。Sonnet 5.5 成为默认 Sonnet。维持 ADOPT。",
         "2026-10-02 更新": "2.1.285 新增 allowedProviders 与 WebFetch 总开关，修复 OAuth、权限回调和 Artifact 边界。2.1.286 修复 session 恢复、Remote Control 撤权、MCP 凭据脱敏和计费。OS 拒绝读取 managed settings 时会告警后继续；格式错误仍会阻止启动。",
-        "2026-10-03 更新": "2.1.288 为 code review 增加 --max-findings，改善 resume、自动压缩恢复与 MCP OAuth scope 重新认证；修复超大或不可解析输出后的 MCP 重复调用，让 PreToolUse/PermissionRequest hook 状态无法序列化时默认拒绝，并拦截藏在 bash -c 中的危险 rm。"
+        "2026-10-03 更新": "2.1.288 为 code review 增加 --max-findings，改善 resume、自动压缩恢复与 MCP OAuth scope 重新认证；修复超大或不可解析输出后的 MCP 重复调用，让 PreToolUse/PermissionRequest hook 状态无法序列化时默认拒绝，并拦截藏在 bash -c 中的危险 rm。",
+        "2026-10-05 更新 claude-2-1-289": "2.1.289 修复嵌套 deny/ask 丢失、环境变量前缀与裸赋值的 Bash 匹配、IDE 符号链接读取和 managed MCP 描述改写；新增 agent.spawn 与稳定 teammate ID/状态。"
       },
       "update_2026_08_20": "2.1.237 + 2.1.238 (both 2026-08-20, in-window). 2.1.237: fixed prompt caching for sessions using an LLM gateway or custom base URL (directly relevant to gateway deployments); added a built-in 'Concise' output style ('Claude leads with results and skips preamble and narration') selectable via /config. 2.1.238: fixed unbounded memory growth in long interactive sessions — subagent tool results are now freed after leaving the recent display window, directly relevant to long-running multi-agent sessions; plugin marketplaces gained `headersHelper` for URL marketplaces/catalog entries (mints short-lived HTTP headers such as tokens for catalog and same-origin archive fetches, shown to the user first with [y/N] confirmation, no inherited credential env vars) — private/enterprise plugin distribution; self-hosted runner `--defer-shutdown-max-min` (keep serving attached sessions on SIGTERM, then park and exit) and `--proxy-authorization-command`/`--proxy-authorization-file` for proxies needing a fresh Proxy-Authorization header per connection; numerous Remote Control fixes (mid-turn messages vanishing from transcripts, model picks on phone/web not updating the terminal, 'login expired' on brief network hiccups now retries, crashed-session reuse, env-var leaks, per-task Stop, ListAgents/SendMessage wrongly reporting 'not connected' in server mode); cross-session messaging hardening (refused inboxes now report 'refused'; rate-limited/dropped messages notify the sender instead of vanishing); MCP fixes (stdio servers no longer receive server/discover before initialize — lazy servers no longer start on every open; elicitation dialogs fixed for URLs over 4,096 chars; disabled servers listed without health-checking). Recommendation stays ADOPT.",
       "update_2026_08_21": "2.1.239 (2026-08-21T17:18Z, in-window). Cost/estimation: /cost, the status line and --max-budget-usd now include the 1.1x US-only-inference premium for data-residency workspaces; the usage-limit message now states when the session or weekly limit resets. Bedrock: fixed streaming behind proxies that strip the response Content-Type header (which silently doubled billed API calls by re-running every turn non-streaming) and fixed startup hangs behind an HTTPS proxy with SSO profiles + awsAuthRefresh. Cloud sessions: plugins synced from claude.ai now show as name@synced and work with `claude plugin enable/disable <name>@synced` (never overriding a same-named locally installed plugin); fixed remote MCP servers staying failed after a transient 5xx on mid-session reconnect; fixed resuming out of plan mode after an idle worker restart. Multi-agent/messaging refinements (same primitive family, not new primitives): ListAgents now lists live teammates and tells a session its own peer name; SendMessage to your own name now says so; fixed sessions titled with a leading / being unaddressable; fixed runaway Remote Control session-title syncing (2.1.232 regression). /goal: repeat check-ins on long-running background work now back off (30 min -> 1 h -> 2 h); `claude --resume` restores the active goal. Also: Alpine/musl native add-ons (paste/clipboard/audio), `/claude-api upgrade` for anthropic 0.x -> 1.x Python migration, MCP elicitation form scroll fix in fullscreen, OpenTelemetry trace-fragmentation fix for hook-deferred tool calls, vim-mode agent-view Escape fix. Recommendation stays ADOPT.",
@@ -497,7 +500,8 @@
         "src-ff1ca072bf39e471",
         "src-80da4486dbf0594b",
         "src-d320458473217aca",
-        "src-da2d811b9d25331f"
+        "src-da2d811b9d25331f",
+        "src-ec08581411bc9dc6"
       ],
       "project_ids": [
         "claude-code"
@@ -565,8 +569,12 @@
           "id": "ev-20260814-04-claude-2-1-287-evidence",
           "claim_zh": "Claude Code 2.1.287 加入 Claude Mods 与内置 observer side-agent，并修复危险 rm、symlink 写入和 MCP 权限边界。",
           "claim_en": "Claude Code 2.1.287 adds Claude Mods and a built-in observer side-agent while fixing dangerous rm, symlink-write and MCP permission boundaries.",
-          "source_ids": ["src-d320458473217aca"],
-          "event_ids": ["ev-20260814-04"],
+          "source_ids": [
+            "src-d320458473217aca"
+          ],
+          "event_ids": [
+            "ev-20260814-04"
+          ],
           "relation": "support",
           "verification": "verified-primary-source"
         },
@@ -574,8 +582,25 @@
           "id": "ev-20260814-04-claude-2-1-288-evidence",
           "claim_zh": "Claude Code 2.1.288 收紧危险命令与 hook 边界，并修复超大 MCP 输出后的重复执行。",
           "claim_en": "Claude Code 2.1.288 tightens dangerous-command and hook boundaries and fixes duplicate execution after oversized MCP output.",
-          "source_ids": ["src-da2d811b9d25331f"],
-          "event_ids": ["ev-20260814-04"],
+          "source_ids": [
+            "src-da2d811b9d25331f"
+          ],
+          "event_ids": [
+            "ev-20260814-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-289-evidence",
+          "claim_zh": "Claude Code 2.1.289 修复多条 deny 规则绕过路径",
+          "claim_en": "Claude Code 2.1.289 closes several deny-rule bypasses",
+          "source_ids": [
+            "src-ec08581411bc9dc6"
+          ],
+          "event_ids": [
+            "ev-20260814-04"
+          ],
           "relation": "support",
           "verification": "verified-primary-source"
         }
@@ -638,7 +663,9 @@
           "discovered_at": "2026-10-02T16:00:56Z",
           "summary_zh": "2.1.287 增加 Mods 与 observer side-agent，并修复多项本地执行边界。",
           "summary_en": "Version 2.1.287 adds Mods and an observer side-agent while fixing local execution boundaries.",
-          "evidence_ids": ["ev-20260814-04-claude-2-1-287-evidence"],
+          "evidence_ids": [
+            "ev-20260814-04-claude-2-1-287-evidence"
+          ],
           "historical": false,
           "importance": "major"
         },
@@ -649,7 +676,22 @@
           "discovered_at": "2026-10-03T16:01:57Z",
           "summary_zh": "2.1.288 修复超大 MCP 输出后的重复执行并收紧危险命令边界。",
           "summary_en": "Version 2.1.288 fixes duplicate execution after oversized MCP output and tightens dangerous-command boundaries.",
-          "evidence_ids": ["ev-20260814-04-claude-2-1-288-evidence"],
+          "evidence_ids": [
+            "ev-20260814-04-claude-2-1-288-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-289",
+          "kind": "update",
+          "occurred_at": "2026-10-03T23:07:17Z",
+          "discovered_at": "2026-10-04T16:02:19Z",
+          "summary_zh": "Claude Code 2.1.289 修复多条 deny 规则绕过路径",
+          "summary_en": "Claude Code 2.1.289 closes several deny-rule bypasses",
+          "evidence_ids": [
+            "ev-20260814-04-claude-2-1-289-evidence"
+          ],
           "historical": false,
           "importance": "major"
         }
@@ -661,8 +703,8 @@
           "src-3d68ad8e1324eb33"
         ]
       },
-      "next_action_zh": "升级到 2.1.288 前回归危险 shell、hook 序列化、超大 MCP 输出和压缩后恢复。",
-      "next_action_en": "Before upgrading to 2.1.288, regress dangerous shell, hook serialization, oversized MCP output and post-compaction recovery.",
+      "next_action_zh": "升级到 2.1.289 前回归嵌套 shell、裸变量赋值、IDE 符号链接读取和 managed MCP 登录描述。",
+      "next_action_en": "Before 2.1.289, regress nested shell, bare assignments, IDE symlink reads and managed MCP sign-in descriptions.",
       "short_label_zh": "Claude Code",
       "short_label_en": "Claude Code"
     },

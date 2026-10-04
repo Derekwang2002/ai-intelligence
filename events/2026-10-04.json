@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-04",
+  "provenance": "AI Intelligence incremental scan",
+  "events": [
+    {
+      "event_id": "ev-20261004-01",
+      "title": "Google opens a 4B model that repairs speaker labels in transcripts",
+      "title_zh": "Google 开源 4B 模型修正转写中的说话人标签",
+      "category": "foundation-model",
+      "organization": [
+        "Google"
+      ],
+      "published_at": "2026-10-04T13:06:04Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/google/DiarizationLM-Gemma-4-E4B-v1",
+      "secondary_sources": [
+        "https://github.com/google/speaker-id/tree/master/DiarizationLM"
+      ],
+      "summary": "Google released DiarizationLM-Gemma-4-E4B-v1 under Apache-2.0. The 4B model post-processes ASR and diarization output, with BF16 and two 4-bit GGUF variants for local use. Author tests report lower word diarization error and cpWER on Fisher, Callhome, ICSI and AMI, although the meeting test sets are small.",
+      "why_it_matters": "For speech teams, a local post-processor can improve speaker attribution without retraining the upstream ASR stack. Public GGUF files make latency, memory and identity-drift checks practical on representative calls and meetings.",
+      "summary_zh": "Google 以 Apache-2.0 发布 DiarizationLM-Gemma-4-E4B-v1。这个 4B 模型对 ASR 与说话人分离结果做后处理，并提供 BF16 和两个 4-bit GGUF 版本供本地运行。作者测试在 Fisher、Callhome、ICSI 与 AMI 上都降低了 WDER 和 cpWER，但会议测试集较小。",
+      "why_it_matters_zh": "对语音团队来说，本地后处理模型可以在不重训上游 ASR 的情况下修正说话人归属。公开 GGUF 让团队能直接用真实通话和会议检查延迟、内存与身份漂移。",
+      "technical_details": {
+        "parameters": "4B dense",
+        "license": "Apache-2.0",
+        "artifacts": "BF16 ~16 GB; Q4_K_M 5.30 GB; Q4_0 5.15 GB",
+        "author_WDER": "Fisher 5.32→2.99; Callhome 7.74→4.92; ICSI 14.70→14.10; AMI 15.68→14.89",
+        "test_limit": "ICSI 3 meetings; AMI 16 meetings",
+        "support": "not an officially supported Google product"
+      },
+      "technical_details_zh": {
+        "参数量": "4B dense",
+        "许可证": "Apache-2.0",
+        "权重": "BF16 约 16 GB；Q4_K_M 5.30 GB；Q4_0 5.15 GB",
+        "作者报告_WDER": "Fisher 5.32→2.99；Callhome 7.74→4.92；ICSI 14.70→14.10；AMI 15.68→14.89",
+        "测试限制": "ICSI 3 场会议；AMI 16 场会议",
+        "支持状态": "不是 Google 官方支持产品"
+      },
+      "tags": [
+        "DiarizationLM",
+        "speaker-diarization",
+        "ASR",
+        "GGUF"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "google-diarizationlm-gemma-4-e4b-v1",
+      "source_ids": [
+        "src-2dffbc59426e5ae0",
+        "src-e7e8e10c818adcd6"
+      ],
+      "project_ids": [
+        "diarizationlm"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "short_label_zh": "DiarizationLM",
+      "short_label_en": "DiarizationLM",
+      "next_action_zh": "一天内用公开 GGUF 跑一组双人通话和多人会议，比较 WDER、cpWER、延迟、内存与说话人漂移。",
+      "next_action_en": "In one day, run the public GGUF on calls and meetings, comparing WDER, cpWER, latency, memory and speaker drift.",
+      "evidence": [
+        {
+          "id": "ev-20261004-01-release-evidence",
+          "claim_zh": "DiarizationLM 的公开材料与可用边界已由一手来源核验。",
+          "claim_en": "DiarizationLM artifacts and availability boundaries were verified from primary sources.",
+          "source_ids": [
+            "src-2dffbc59426e5ae0",
+            "src-e7e8e10c818adcd6"
+          ],
+          "event_ids": [
+            "ev-20261004-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261004-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-04T13:06:04Z",
+          "discovered_at": "2026-10-04T16:02:19Z",
+          "summary_zh": "Google 开源 4B 模型修正转写中的说话人标签",
+          "summary_en": "Google opens a 4B model that repairs speaker labels in transcripts",
+          "evidence_ids": [
+            "ev-20261004-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-04T16:02:19Z",
+      "last_updated_at": "2026-10-04T16:02:19Z",
+      "summary_en": "Google released DiarizationLM-Gemma-4-E4B-v1 under Apache-2.0. The 4B model post-processes ASR and diarization output, with BF16 and two 4-bit GGUF variants for local use. Author tests report lower word diarization error and cpWER on Fisher, Callhome, ICSI and AMI, although the meeting test sets are small.",
+      "why_it_matters_en": "For speech teams, a local post-processor can improve speaker attribution without retraining the upstream ASR stack. Public GGUF files make latency, memory and identity-drift checks practical on representative calls and meetings."
+    }
+  ]
+}
