@@ -12,10 +12,12 @@
       ],
       "published_at": "2026-09-22T05:20:54Z",
       "first_seen_at": "2026-09-22T16:02:37Z",
-      "last_updated_at": "2026-09-22T16:02:37Z",
+      "last_updated_at": "2026-10-05T16:01:12Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/vllm-project/vllm/releases/tag/v0.30.0",
-      "secondary_sources": [],
+      "secondary_sources": [
+        "https://github.com/vllm-project/vllm/releases/tag/v0.31.0"
+      ],
       "summary": "vLLM 0.30.0 ships 762 commits from 315 contributors. A persistent per-GPU weight cache lets restarted engines map already sharded and quantized weights over CUDA IPC instead of loading them from disk. HiSparse adds a pinned-host-memory tier for sparse-MLA KV pages, while Model Runner V2 expands pipeline-parallel speculative decoding and cuts one H200 startup path from 28.9 seconds to 8.2 seconds. The release also closes response-amplification, sparse-embedding and media-input denial-of-service paths.",
       "why_it_matters": "For teams serving large sparse or hybrid models, restart time and GPU KV pressure are now first-class vLLM controls rather than external workarounds. Adopt the security fixes, but stage the upgrade: scale-out endpoints now require an explicit flag, several deprecated variables are gone, YaRN length calculation changed, and some backends now fail fast when they cannot support decode-context parallelism.",
       "summary_zh": "vLLM 0.30.0 包含 762 个提交，来自 315 位贡献者。常驻的每 GPU 权重缓存让重启后的引擎通过 CUDA IPC 映射已经分片和量化的权重，不必再从磁盘加载。HiSparse 为稀疏 MLA 的 KV 页增加锁页主机内存层；Model Runner V2 扩展了流水线并行下的投机解码，并把一条 H200 启动路径从 28.9 秒压到 8.2 秒。该版本还修复响应放大、稀疏嵌入和媒体输入导致的拒绝服务风险。",
@@ -29,7 +31,8 @@
         "model_runner_v2": "pipeline-parallel MTP/EAGLE3/DFlash/DSpark; adaptive verification; H200 engine init 28.9s to 8.2s in the reported path",
         "security": "bounded validation-error bodies and sparse embeddings; capped request-controlled video sampling; validated cache_salt; credential redaction",
         "breaking_changes": "scale-out endpoints require --enable-scale-out; GPTQ g_idx removed; 0.29 deprecations removed; YaRN aligned with Transformers",
-        "artifacts": "CUDA 13.0/12.9, ROCm, CPU and XPU wheels and images"
+        "artifacts": "CUDA 13.0/12.9, ROCm, CPU and XPU wheels and images",
+        "update_2026_10_05": "v0.31 adds vllm preload with DP and MTP support, experimental CRIU initialized-engine snapshots, more Model Runner V2 speculative decoding, large-scale scheduling controls and HiSparse fixes. It rejects request-level multimodal processor and media I/O kwargs unless explicitly trusted, separates cache-hash key sources and hashes the LoRA path. Several flags and defaults changed."
       },
       "technical_details_zh": {
         "发布规模": "762 个提交、315 位贡献者，其中 104 位首次贡献",
@@ -38,7 +41,8 @@
         "Model Runner V2": "流水线并行下支持 MTP/EAGLE3/DFlash/DSpark；自适应验证；报告路径中 H200 引擎启动从 28.9 秒降至 8.2 秒",
         "安全": "限制校验错误响应与稀疏嵌入大小；限制请求控制的视频采样；校验 cache_salt；日志隐藏凭据",
         "破坏性变更": "scale-out endpoint 需 --enable-scale-out；移除 GPTQ g_idx；移除 0.29 废弃项；YaRN 与 Transformers 对齐",
-        "发布产物": "提供 CUDA 13.0/12.9、ROCm、CPU 与 XPU wheel 和镜像"
+        "发布产物": "提供 CUDA 13.0/12.9、ROCm、CPU 与 XPU wheel 和镜像",
+        "2026-10-05 更新": "v0.31 为 vllm preload 增加 DP 与 MTP 支持，并提供实验性的 CRIU 初始化引擎快照；Model Runner V2、投机解码、大规模调度和 HiSparse 也继续补齐。请求级多模态处理与媒体 I/O 参数现在默认拒绝，除非显式信任；缓存哈希会区分额外 key 的来源并纳入 LoRA 路径。多项 flag 与默认值发生变化。"
       },
       "tags": [
         "vllm",
@@ -58,7 +62,8 @@
       "recommendation": "ADOPT",
       "event_fingerprint": "vllm-v0-30-0-fast-start-hisparse-security",
       "source_ids": [
-        "src-3762ff1d2e307774"
+        "src-3762ff1d2e307774",
+        "src-9668af85ed2e1acf"
       ],
       "project_ids": [
         "vllm"
@@ -82,6 +87,15 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260922-01-vllm-0-31-evidence",
+          "claim_zh": "vLLM 0.31 将快速重启扩展到 DP 与 MTP，并提供实验性的初始化引擎快照；该版本还默认拒绝请求级多模态处理参数，并加固 prefix cache 与 LoRA 的哈希边界。",
+          "claim_en": "vLLM 0.31 extends fast restart to DP and MTP and adds experimental initialized-engine snapshots; it also rejects request-level multimodal processor options by default and hardens prefix-cache and LoRA hash boundaries.",
+          "source_ids": ["src-9668af85ed2e1acf"],
+          "event_ids": ["ev-20260922-01"],
+          "verification": "verified-primary-source",
+          "relation": "support"
         }
       ],
       "changes": [
@@ -96,8 +110,23 @@
             "ev-20260922-01-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260922-01-vllm-0-31",
+          "kind": "update",
+          "occurred_at": "2026-10-05T06:44:55Z",
+          "discovered_at": "2026-10-05T16:01:12Z",
+          "summary_zh": "vLLM 0.31 扩展快速重启，并默认收紧多模态请求边界。",
+          "summary_en": "vLLM 0.31 extends fast restart and tightens multimodal request boundaries by default.",
+          "evidence_ids": ["ev-20260922-01-vllm-0-31-evidence"],
+          "historical": false,
+          "importance": "major"
         }
       ],
+      "short_label_zh": "vLLM 0.31",
+      "short_label_en": "vLLM 0.31",
+      "next_action_zh": "分阶段升级 0.31，回归 preload、快照恢复、多模态参数拒绝、LoRA 缓存隔离和已变更的 flag。",
+      "next_action_en": "Stage the 0.31 upgrade and regress preload, snapshot restore, multimodal-option rejection, LoRA cache isolation and changed flags.",
       "editorial_pick": {
         "reason_zh": "对服务大型稀疏或混合模型的团队来说，重启时间和 GPU KV 压力已经成为 vLLM 的一等控制项，不再需要额外拼装方案。安全修复值得采用，但升级必须分阶段：scale-out endpoint 现在要显式打开，多项废弃环境变量已移除，YaRN 长度计算发生变化，部分不支持 decode-context parallelism 的后端会直接报错。",
         "reason_en": "For teams serving large sparse or hybrid models, restart time and GPU KV pressure are now first-class vLLM controls rather than external workarounds. Adopt the security fixes, but stage the upgrade: scale-out endpoints now require an explicit flag, several deprecated variables are gone, YaRN length calculation changed, and some backends now fail fast when they cannot support decode-context parallelism.",
@@ -350,13 +379,14 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-09-29T16:01:24Z",
+      "last_updated_at": "2026-10-05T16:01:12Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
       "secondary_sources": [
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.5",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.6",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.7"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.7",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.0"
       ],
       "summary": "Qwen Code 0.24.4 adds a managed runtime attestation contract, persistent managed tool-execution records and plan-drift reporting. It moves bubblewrap sandboxing to individual tool execution, supports SSH workspaces without a remote daemon, and can cap ACP child heaps. The release also adds encrypted connection profiles and safer QR pairing for remote sessions. It was published inside the retrieval overlap and was absent from the previous index.",
       "why_it_matters": "For teams running coding agents across local, remote and managed workers, a sandbox is only one part of the trust story. Attestation, durable execution records and plan-drift checks make it easier to prove which runtime acted and whether the implementation still matches the approved plan. Trial the controls before relying on them for policy enforcement because the release notes do not yet provide independent security validation.",
@@ -373,7 +403,8 @@
         "remote": "SSH workspace without remote daemon; encrypted connection profiles; expiring QR pairing",
         "update_2026_09_26": "0.24.5 stable adds a Java attestation client that adopts a Managed Runtime only after verification, real-time trajectory timing and inspection, rebase-stable per-file review verdicts, separate private/group channel policies, byte-based MCP media validation, and stronger ownership fences for stale tool dispatches. Stays TRIAL.",
         "update_2026_09_27": "0.24.6 stable declares a v2 execute/status/cancel runtime contract, adds guarded Hosted Runtime foundations, a durable managed-session journal with failover, and reconciliation of UNKNOWN executions from runtime evidence. Permission-hook aggregation now chooses the most restrictive decision. Fresh startup time to typeable is halved and RSS falls 60% in the project benchmark. Stays TRIAL.",
-        "update_2026_09_29": "0.24.7 stable makes Managed Runtime sessions workspace-bound, persists local execution receipts, reconciles in-flight work after takeover/reboot, exposes public Session/Turn/task contracts, and adds optional worktree sessions. It also adds a remote desktop node_repl relay, structured memory recall, Landlock fallback, safe concurrent Code Mode calls, and fixes stale-worktree sweeps that could delete untracked or ignored files. Stays TRIAL."
+        "update_2026_09_29": "0.24.7 stable makes Managed Runtime sessions workspace-bound, persists local execution receipts, reconciles in-flight work after takeover/reboot, exposes public Session/Turn/task contracts, and adds optional worktree sessions. It also adds a remote desktop node_repl relay, structured memory recall, Landlock fallback, safe concurrent Code Mode calls, and fixes stale-worktree sweeps that could delete untracked or ignored files. Stays TRIAL.",
+        "update_2026_10_05": "0.25.0 stable adds local workspace-agent collaboration and A2A sharing, a broker contract, private hosted MCP servers, durable shell results, cold-session restore, file history and undo, concurrent Bash, and Mem0. Recovery and approval fixes cover duplicate side effects, replay gaps and hosted-runtime boundaries. Stays TRIAL."
       },
       "technical_details_zh": {
         "版本": "0.24.4 stable",
@@ -384,7 +415,8 @@
         "远程": "SSH workspace 无需远程 daemon；加密连接配置；带过期时间的二维码配对",
         "2026-09-26 更新": "0.24.5 stable 新增 Java attestation client，只有验证后才接纳 Managed Runtime；还加入实时轨迹耗时与检查、跨 rebase 保留的逐文件审查结论、私聊/群聊策略分离、按真实 bytes 判断 MCP media，以及过期工具调度的 ownership fence。维持 TRIAL。",
         "2026-09-27 更新": "0.24.6 stable 定义 v2 execute/status/cancel 运行时协议，加入带防护的 Hosted Runtime 基础、可故障转移的托管会话持久日志，并根据运行时证据核对 UNKNOWN 执行。多个权限 hook 冲突时现在选择最严格结论。项目 benchmark 中首次启动到可输入时间减半，RSS 降低 60%。维持 TRIAL。",
-        "2026-09-29 更新": "0.24.7 stable 将 Managed Runtime session 绑定到 workspace，持久化本地执行凭据，在接管或重启后核对进行中的工作，并公开 Session/Turn/task contract 与可选 worktree session。该版还加入远程桌面 node_repl relay、结构化记忆召回、Landlock fallback、Code Mode 安全调用并发，以及可能误删未跟踪或 ignored 文件的过期 worktree 清理修复。维持 TRIAL。"
+        "2026-09-29 更新": "0.24.7 stable 将 Managed Runtime session 绑定到 workspace，持久化本地执行凭据，在接管或重启后核对进行中的工作，并公开 Session/Turn/task contract 与可选 worktree session。该版还加入远程桌面 node_repl relay、结构化记忆召回、Landlock fallback、Code Mode 安全调用并发，以及可能误删未跟踪或 ignored 文件的过期 worktree 清理修复。维持 TRIAL。",
+        "2026-10-05 更新": "0.25.0 stable 增加本地 workspace-agent 协作与 A2A 分享、broker contract、私有 hosted MCP server、持久 shell 结果、冷会话恢复、文件历史与撤销、并发 Bash 和 Mem0。恢复与审批修复覆盖重复副作用、回放缺口和托管运行时边界。维持 TRIAL。"
       },
       "tags": [
         "qwen-code",
@@ -406,7 +438,8 @@
         "src-f5d5f5b22f45e8b3",
         "src-826169a7ece8e695",
         "src-35e812e2fe0e58e1",
-        "src-50ecef795d7295a5"
+        "src-50ecef795d7295a5",
+        "src-b6a4eeb38db18715"
       ],
       "project_ids": [
         "qwen-code"
@@ -455,6 +488,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-25-evidence",
+          "claim_zh": "Qwen Code 0.25.0 把多 agent 协作、A2A 分享、私有 hosted MCP、持久 shell 结果和冷会话恢复推入稳定版，并继续修补重放与审批边界。",
+          "claim_en": "Qwen Code 0.25.0 moves multi-agent collaboration, A2A sharing, private hosted MCP, durable shell results and cold-session restore into stable while continuing to harden replay and approval boundaries.",
+          "source_ids": [
+            "src-b6a4eeb38db18715"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -494,6 +540,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-25-stable",
+          "kind": "update",
+          "occurred_at": "2026-10-05T09:44:40Z",
+          "discovered_at": "2026-10-05T16:01:12Z",
+          "summary_zh": "Qwen Code 0.25.0 扩展多 agent 协作与故障恢复",
+          "summary_en": "Qwen Code 0.25.0 expands multi-agent collaboration and failure recovery",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-25-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -503,8 +562,10 @@
           "src-f5d5f5b22f45e8b3"
         ]
       },
-      "next_action_zh": "在非关键仓库试用 Managed Runtime，任务中途重启 worker，确认有副作用的工具不会重复执行。",
-      "next_action_en": "Trial Managed Runtime on a non-critical repository and restart workers mid-task to confirm side-effecting tools do not run twice."
+      "short_label_zh": "Qwen Code 0.25",
+      "short_label_en": "Qwen Code 0.25",
+      "next_action_zh": "在非关键仓库跑一天协作任务，重启 worker，并核对审批、shell 结果与有副作用工具是否重复执行。",
+      "next_action_en": "Run a one-day collaborative task in a non-critical repository, restart workers, and verify approvals, shell results, and side effects are not replayed."
     },
     {
       "event_id": "ev-20260922-05",

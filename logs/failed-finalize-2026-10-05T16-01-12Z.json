@@ -1,0 +1,26 @@
+{
+  "run_started_at": "2026-10-05T16:01:12Z",
+  "run_failed_at": "2026-10-05T16:44:02.389Z",
+  "error_stage": "finalization",
+  "error_summary": "Validation/test/build failed:\n\n> ai-intelligence-site@1.0.0 check\n> npm run validate && npm test && npm run build && npm run check:links\n\n\n> ai-intelligence-site@1.0.0 validate\n> node ../scripts/validate-intelligence.mjs\n\nValidated 256 events, 574 sources, 42 projects, 7 trends, 3 topics.\n\n> ai-intelligence-site@1.0.0 test\n> node --test tests/*.test.mjs\n\n✔ canonical sources discard trackers but preserve meaningful query parameters (0.685125ms)\n✔ date-only dates stay literal and timestamps normalize to report timezone (6.790084ms)\n✔ historical evidence only resolves existing explicit IDs (0.312125ms)\n✔ migration references and bilingual content validate together (89.732916ms)\n✔ routine reviews cannot create a material change (30.668708ms)\n✔ migration changes are excluded from unread while late discoveries remain visible (0.165083ms)\n✔ following, saved, and read are independent and imports reject malformed data (0.116875ms)\n✔ blocked or damaged browser storage degrades without throwing (0.094458ms)\n✔ markdown strips unsafe content and retains readable external citations (7.266125ms)\n✔ checkpoint gate refuses a failed source, incomplete stage and concurrent checkpoint (0.151292ms)\n✔ uncommitted output cannot publish and only the named candidate can be preflighted (0.053584ms)\n✔ duplicate entities and repeated change IDs fail persistence validation (30.44025ms)\n✔ corrections preserve earlier judgment and evidence; routine review timestamps do not become activity (54.847125ms)\n✔ frontier verification and recommendation changes retain explicit evidence and independent IDs (41.10325ms)\n✔ checkpoint gate requires a decided recall audit and analysis of every fetched source (0.205791ms)\n✔ decisions use the fixed vocabulary and any claim about an existing event cites a real one (0.090083ms)\n✔ events first seen after the rules date need canonical taxonomy, short labels and a TRIAL reason (53.498917ms)\n✔ radar quadrants cover every category in use, in the taxonomy and its aliases (18.08675ms)\n✔ recall audit matches by URL or model id, only hints by tokens, and skips handled items (0.468583ms)\n✔ recall signals keep AI stories and drop quantised or uncensored re-uploads (0.338125ms)\n✔ the default reading range is the latest briefing, independent of the calendar day (0.053167ms)\n✔ update headlines take the first sentence of the change summary (0.108917ms)\n✔ daily archive cards read bullet or paragraph executive summaries (0.384917ms)\n✔ RSS output escapes text, drops invalid XML characters and keeps stable GUIDs (0.137542ms)\n✔ events first seen or materially updated after the decision date need a next step and a short summary (44.524667ms)\n✔ an early TRIAL can use next_action as its one-day verification (17.148042ms)\n✖ project judgments are the project’s own, cite its events, and are re-reviewed after its events change (53.053459ms)\nℹ tests 27\nℹ suites 0\nℹ pass 26\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 581.108\n\n✖ failing tests:\n\ntest at tests/intelligence.test.mjs:50:1\n✖ project judgments are the project’s own, cite its events, and are re-reviewed after its events change (53.053459ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n  + actual - expected\n  \n  + [\n  +   'project vllm: judgment must be reviewed after its latest change (2026-10-05T16:01:12Z)'\n  + ]\n  - []\n  \n      at TestContext.<anonymous> (file:///Users/derek/Documents/Github/ai-intelligence/site/tests/intelligence.test.mjs:50:1610)\n      at async Test.run (node:internal/test_runner/test:1389:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: [ 'project vllm: judgment must be reviewed after its latest change (2026-10-05T16:01:12Z)' ],\n    expected: [],\n    operator: 'deepStrictEqual',\n    diff: 'simple'\n  }\n\n",
+  "written_files": [
+    "events/2026-08-18.json",
+    "events/2026-09-22.json",
+    "events/2026-10-02.json",
+    "events/2026-10-05.json",
+    "daily/2026-10-06.md",
+    "daily/2026-10-06.en.md",
+    "trends/2026-10-06.md",
+    "trends/2026-10-06.en.md",
+    "trends/current.json",
+    "trends/current.md",
+    "index/events.json",
+    "briefings/2026-10-05T16-01-12Z.json",
+    "projects/catalog.json",
+    "sources/catalog.json",
+    "reviews/queue.json",
+    "logs/research-2026-10-05.md",
+    "logs/run-2026-10-05T16-01-12Z.json"
+  ],
+  "recovery": "Correct the failed stage; checkpoint is unchanged. Rerun validation and finalization."
+}

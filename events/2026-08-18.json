@@ -596,25 +596,27 @@
       "published_at": "2026-08-18",
       "published_at_note": "Coverage-gap recovery: official publishedTime 2026-08-18T22:00:00Z (inside the [2026-08-18, 2026-08-19] scan window), surfaced 2026-08-22 via retrospective retrieval; TechCrunch covered 8/19; in-depth white paper planned for September.",
       "first_seen_at": "2026-08-22T00:00:33Z",
-      "last_updated_at": "2026-09-27T00:44:11Z",
+      "last_updated_at": "2026-10-05T16:01:12Z",
       "source_type": "primary",
       "primary_source": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
       "secondary_sources": [
         "https://techcrunch.com/2026/08/19/openai-seeks-to-one-up-anthropic-with-new-customer-privacy-protections/",
         "https://www.csoonline.com/article/4212398/openai-adds-an-ai-safety-layer-to-detect-misuse-without-retaining-enterprise-data.html",
         "https://securityboulevard.com/2026/08/openai-unveils-private-safety-processing-to-detect-ai-misuse-without-storing-enterprise-data/",
-        "https://developers.openai.com/api/docs/guides/private-safety-processing"
+        "https://developers.openai.com/api/docs/guides/private-safety-processing",
+        "https://developers.openai.com/api/docs/guides/your-data"
       ],
-      "summary": "A documentation review corrects the earlier Private Safety Processing description. Selected prompts and responses are encrypted in customer storage and automatically reviewed inside a protected runtime without human access. Setup is documented for ZDR-approved organizations; this is not a dated new-launch announcement.",
-      "why_it_matters": "Enterprise teams should assess the actual retention and review architecture. ZDR does not mean that content is stored nowhere. Keep WATCH until storage, key and access requirements are evaluated; no independent deployment validation was completed.",
-      "summary_zh": "复核当前官方文档后，修正此前对 Private Safety Processing 的描述。所选请求和响应会加密写入客户存储，在禁止人员访问的受保护运行环境中接受自动审核。已获 ZDR 批准的组织有配置入口；文档没有给出本次开放的发布日期，不据此认定为今日发布。",
-      "summary_en": "A documentation review corrects the earlier Private Safety Processing description. Selected prompts and responses are encrypted in customer storage and automatically reviewed inside a protected runtime without human access. Setup is documented for ZDR-approved organizations; this is not a dated new-launch announcement.",
-      "why_it_matters_zh": "企业团队应按实际留存和审核架构评估部署条件，不能把 ZDR 理解为任何地方都不存储内容。维持 WATCH，先核对自身存储、密钥和访问要求；本次没有完成独立部署验证。",
-      "why_it_matters_en": "Enterprise teams should assess the actual retention and review architecture. ZDR does not mean that content is stored nowhere. Keep WATCH until storage, key and access requirements are evaluated; no independent deployment validation was completed.",
+      "summary": "OpenAI began a phased rollout of Private Safety Processing for approved API customers on September 22. Selected prompts and responses remain encrypted in customer-controlled AWS S3, Azure Blob or Google Cloud Storage and are reviewed automatically inside a protected runtime without human access. Official setup guides now cover all three clouds.",
+      "why_it_matters": "Enterprise teams can now evaluate a concrete deployment path instead of a preview. ZDR still does not mean that content is stored nowhere: teams must assess customer-side retention, keys and cloud permissions. Keep WATCH until access is approved and an end-to-end deployment is independently validated.",
+      "summary_zh": "OpenAI 已于 9 月 22 日开始分阶段向获批 API 客户开放 Private Safety Processing。所选请求和响应仍会加密写入客户控制的 AWS S3、Azure Blob 或 Google Cloud Storage，并在禁止人员访问的受保护运行环境中自动审核。官方现已提供三家云的配置指南。",
+      "summary_en": "OpenAI began a phased rollout of Private Safety Processing for approved API customers on September 22. Selected prompts and responses remain encrypted in customer-controlled AWS S3, Azure Blob or Google Cloud Storage and are reviewed automatically inside a protected runtime without human access. Official setup guides now cover all three clouds.",
+      "why_it_matters_zh": "企业团队现在可以评估一条具体部署路径，而不再只是等待预览。ZDR 仍不等于任何地方都不存储内容，团队必须核对客户侧留存、密钥与云权限。维持 WATCH，直到申请获批并完成端到端独立验证。",
+      "why_it_matters_en": "Enterprise teams can now evaluate a concrete deployment path instead of a preview. ZDR still does not mean that content is stored nowhere: teams must assess customer-side retention, keys and cloud permissions. Keep WATCH until access is approved and an end-to-end deployment is independently validated.",
       "technical_details": {
-        "availability": "Setup documented for ZDR-approved organizations; rollout date not established",
-        "content_handling": "Customer-side encrypted retention and protected automated review; no human access",
-        "reviewed_on": "2026-09-27",
+        "availability": "Phased rollout began 2026-09-22 for approved API customers",
+        "cloud_setup": "AWS S3, Azure Blob Storage and Google Cloud Storage",
+        "content_handling": "Customer-controlled encrypted retention, up to 30 days, with protected automated review and no human access",
+        "reviewed_on": "2026-10-05",
         "independent_validation": false
       },
       "tags": [
@@ -635,9 +637,10 @@
       "recommendation": "WATCH",
       "event_fingerprint": "openai-zdr-private-safety-processing",
       "technical_details_zh": {
-        "可用性": "已获 ZDR 批准的组织有配置指南；开放日期未确认",
-        "内容处理": "客户侧加密留存与受保护的自动审核；禁止人员访问",
-        "复核日期": "2026-09-27",
+        "可用性": "已于 2026-09-22 开始分阶段向获批 API 客户开放",
+        "云端配置": "AWS S3、Azure Blob Storage 与 Google Cloud Storage",
+        "内容处理": "客户控制的加密留存最长 30 天；在受保护环境中自动审核，禁止人员访问",
+        "复核日期": "2026-10-05",
         "独立验证": false
       },
       "source_ids": [
@@ -645,7 +648,8 @@
         "src-17dbd10bfec3e0c9",
         "src-a997ecb8a088178a",
         "src-5705db46354c5be0",
-        "src-11573a96e181db32"
+        "src-11573a96e181db32",
+        "src-2aca780af5aa59ce"
       ],
       "project_ids": [],
       "scenario_ids": [],
@@ -678,6 +682,20 @@
           ],
           "verification": "official-statement",
           "relation": "counter"
+        },
+        {
+          "id": "ev-20260818-05-psp-rollout-20261005",
+          "claim_zh": "OpenAI 官方数据控制文档确认 PSP 已于 9 月 22 日开始分阶段开放，Private Safety Processing 指南提供 AWS、Azure 与 Google Cloud 的客户存储配置。",
+          "claim_en": "OpenAI's data-controls documentation confirms PSP began phased rollout on September 22, while the Private Safety Processing guide documents customer storage setup for AWS, Azure and Google Cloud.",
+          "source_ids": [
+            "src-11573a96e181db32",
+            "src-2aca780af5aa59ce"
+          ],
+          "event_ids": [
+            "ev-20260818-05"
+          ],
+          "verification": "verified-primary-source",
+          "relation": "support"
         }
       ],
       "changes": [
@@ -712,9 +730,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260818-05-psp-rollout",
+          "kind": "update",
+          "occurred_at": "2026-09-22",
+          "discovered_at": "2026-10-05T16:01:12Z",
+          "summary_zh": "Private Safety Processing 开始分阶段开放，并补齐三家云的部署指南",
+          "summary_en": "Private Safety Processing begins phased rollout with setup guides for three clouds",
+          "evidence_ids": [
+            "ev-20260818-05-psp-rollout-20261005"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "last_reviewed_at": "2026-09-27T00:44:11Z"
+      "last_reviewed_at": "2026-10-05T16:01:12Z",
+      "short_label_zh": "Private Safety",
+      "short_label_en": "Private Safety",
+      "next_action_zh": "等账号获批后，用非敏感流量跑一天验证，核对三家云的密钥、留存和访问日志。",
+      "next_action_en": "After approval, run a one-day non-sensitive validation and verify cloud keys, retention and access logs."
     }
   ]
 }

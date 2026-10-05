@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-05",
+  "provenance": "Incremental scan started 2026-10-05T16:01:12Z; primary sources verified.",
+  "events": [
+    {
+      "event_id": "ev-20261005-01",
+      "title": "OpenAI launches opt-in textGrain watermarking for API output",
+      "title_zh": "OpenAI 为 API 输出推出可选 textGrain 水印",
+      "category": "business-policy",
+      "organization": ["OpenAI"],
+      "published_at": "2026-10-05T15:00:00Z",
+      "first_seen_at": "2026-10-05T16:01:12Z",
+      "last_updated_at": "2026-10-05T16:01:12Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/eu-text-provenance/",
+      "secondary_sources": [
+        "https://cdn.openai.com/pdf/e9508624-d767-41b6-a26d-e34ca798ada6/textgrain-entropy-calibrated-watermarking-for-language-model-text.pdf",
+        "https://developers.openai.com/api/docs/guides/content-provenance"
+      ],
+      "summary": "OpenAI launched textGrain, an invisible statistical watermark for generated text. API customers can opt in globally for selected models, while eligible ChatGPT and Codex output in the EU will gain watermarks over the following weeks. Detector access is initially restricted to approved researchers and expert organizations. OpenAI plans to publish the implementation, but no public code was available at launch.",
+      "why_it_matters": "For teams with EU provenance obligations, textGrain creates a deployable provider-side signal but not a reliable authorship test. Keep it on WATCH until detector access broadens and independent tests measure false positives, translation and editing resistance on real content.",
+      "summary_zh": "OpenAI 推出 textGrain，为生成文本加入不可见的统计水印。全球 API 客户可在部分模型上主动开启；欧盟地区符合条件的 ChatGPT 与 Codex 输出将在未来数周逐步加入水印。检测器首批只向获批研究人员和专业机构开放。OpenAI 计划公开实现，但发布时没有可用代码。",
+      "summary_en": "OpenAI launched textGrain, an invisible statistical watermark for generated text. API customers can opt in globally for selected models, while eligible ChatGPT and Codex output in the EU will gain watermarks over the following weeks. Detector access is initially restricted to approved researchers and expert organizations. OpenAI plans to publish the implementation, but no public code was available at launch.",
+      "why_it_matters_zh": "对需要满足欧盟内容溯源要求的团队来说，textGrain 提供了可部署的厂商侧信号，但不能当作可靠的作者身份判断。检测器开放范围扩大、且有独立测试验证真实文本上的误报、翻译和编辑耐受性后，再评估接入。",
+      "why_it_matters_en": "For teams with EU provenance obligations, textGrain creates a deployable provider-side signal but not a reliable authorship test. Keep it on WATCH until detector access broadens and independent tests measure false positives, translation and editing resistance on real content.",
+      "technical_details": {
+        "availability": "API opt-in for selected models from 2026-10-05; phased EU rollout for eligible ChatGPT and Codex output",
+        "detector_access": "approved researchers and expert organizations only at launch",
+        "method": "entropy-calibrated keyed statistical watermark in token choices",
+        "reported_detection": "about 80% at 200 tokens and 95% at 400 tokens on psychology passages, at a 1% target false-positive rate",
+        "editing_limit": "10% synonym replacement lowered reported detection from about 92% to 66%; 25% lowered it to 17%",
+        "public_artifact": "technical report and API documentation; implementation promised but not released"
+      },
+      "technical_details_zh": {
+        "可用性": "2026-10-05 起部分模型支持 API 主动开启；欧盟符合条件的 ChatGPT 与 Codex 输出分阶段上线",
+        "检测器权限": "发布时仅限获批研究人员与专业机构",
+        "方法": "在 token 选择中加入按熵校准、带密钥的统计水印",
+        "厂商检测结果": "心理学文本约 200 token 时检测率 80%，400 token 时 95%；目标误报率 1%",
+        "编辑限制": "替换 10% 同义词后，报告检测率约从 92% 降至 66%；替换 25% 后降至 17%",
+        "公开材料": "技术报告与 API 文档；实现承诺开源但尚未发布"
+      },
+      "tags": ["textgrain", "watermarking", "content-provenance", "eu-ai-act", "api"],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "openai-textgrain-eu-text-watermarking",
+      "short_label_zh": "textGrain",
+      "short_label_en": "textGrain",
+      "next_action_zh": "等检测器扩大开放并出现独立误报与编辑耐受测试后，再评估生产接入。",
+      "next_action_en": "Reassess production integration after detector access expands and independent false-positive and editing-resistance tests appear.",
+      "source_ids": [
+        "src-d2b5b29b4c815525",
+        "src-a51f9ad7d1108bf4",
+        "src-5391d8bf13643a97"
+      ],
+      "project_ids": ["textgrain"],
+      "scenario_ids": ["models"],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261005-01-release-evidence",
+          "claim_zh": "OpenAI 已为部分 API 模型提供可选 textGrain 水印，并开始欧盟分阶段部署；检测器仍限获批机构，编辑会明显降低检测率。",
+          "claim_en": "OpenAI now offers opt-in textGrain watermarking for selected API models and is phasing it into EU products; detector access remains restricted and editing materially lowers detection.",
+          "source_ids": ["src-d2b5b29b4c815525", "src-a51f9ad7d1108bf4", "src-5391d8bf13643a97"],
+          "event_ids": ["ev-20261005-01"],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261005-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-05T15:00:00Z",
+          "discovered_at": "2026-10-05T16:01:12Z",
+          "summary_zh": "OpenAI 推出可选 textGrain 文本水印",
+          "summary_en": "OpenAI launches opt-in textGrain text watermarking",
+          "evidence_ids": ["ev-20261005-01-release-evidence"],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

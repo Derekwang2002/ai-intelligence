@@ -77,24 +77,26 @@
         "src-826169a7ece8e695",
         "src-35e812e2fe0e58e1",
         "src-d1954e69a0e7a84a",
-        "src-50ecef795d7295a5"
+        "src-50ecef795d7295a5",
+        "src-b6a4eeb38db18715"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
         "src-d1954e69a0e7a84a",
-        "src-50ecef795d7295a5"
+        "src-50ecef795d7295a5",
+        "src-b6a4eeb38db18715"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "last_reviewed_at": "2026-10-05T16:36:00Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Qwen Code 正在补齐托管运行时：运行时证明、持久执行记录和计划漂移检查之后，0.24.6 与 0.24.7 又加入会话日志、故障转移和 workspace 身份。这些控制还没有独立的安全验证。",
-        "judgment_en": "Qwen Code is filling out a managed runtime: after attestation, durable execution records and plan-drift checks, versions 0.24.6 and 0.24.7 added session journals, failover and workspace identity. None of these controls has independent security validation yet.",
-        "next_action_zh": "在非关键仓库试用 Managed Runtime，任务中途重启 worker，确认有副作用的工具不会重复执行。",
-        "next_action_en": "Trial Managed Runtime on a non-critical repository and restart workers mid-task to confirm side-effecting tools do not run twice.",
+        "judgment_zh": "Qwen Code 0.25 已把多 agent 协作、A2A 分享、私有 hosted MCP、持久 shell 结果和冷会话恢复推入稳定版。恢复与审批边界持续完善，但仍缺少独立安全验证。",
+        "judgment_en": "Qwen Code 0.25 moves multi-agent collaboration, A2A sharing, private hosted MCP, durable shell results and cold-session restore into stable. Recovery and approval boundaries keep improving, but independent security validation is still missing.",
+        "next_action_zh": "在非关键仓库跑一天协作任务，重启 worker，并核对审批、shell 结果与有副作用工具是否重复执行。",
+        "next_action_en": "Run a one-day collaborative task in a non-critical repository, restart workers, and verify approvals, shell results, and side effects are not replayed.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-05T16:36:00Z"
       }
     },
     {
@@ -351,31 +353,31 @@
       ],
       "pattern": "\\bvLLM\\b",
       "event_ids": [
-        "ev-20260826-05",
         "ev-20260922-01"
       ],
       "source_ids": [
         "src-99ece13e787f3487",
         "src-781fde0ef0fa2dd3",
         "src-3762ff1d2e307774",
-        "src-c0d419c5c752474a"
+        "src-c0d419c5c752474a",
+        "src-9668af85ed2e1acf"
       ],
       "current_judgment_event_id": "ev-20260922-01",
       "official_source_ids": [
-        "src-c0d419c5c752474a"
+        "src-c0d419c5c752474a",
+        "src-9668af85ed2e1acf"
       ],
-      "last_reviewed_at": "2026-09-27T00:44:11Z",
+      "last_reviewed_at": "2026-10-05T16:36:00Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "vLLM 是开放权重模型的默认服务栈：0.28 把 Kimi-K3 与 DeepSeek V4 的专属优化做进主线，0.30 加快了重启，并为稀疏 KV 增加主机层。0.30 有多项不兼容变更。",
-        "judgment_en": "vLLM is the default serving stack for open-weight models: 0.28 brought model-specific work for Kimi-K3 and DeepSeek V4 into the mainline, and 0.30 speeds up restarts and adds a host tier for sparse KV. Version 0.30 has several breaking changes.",
-        "next_action_zh": "分阶段升级到 0.30：显式开启 scale-out endpoint，检查已移除的环境变量和 YaRN 长度计算变化。",
-        "next_action_en": "Stage the 0.30 upgrade: enable scale-out endpoints explicitly and check removed environment variables and the YaRN length change.",
+        "judgment_zh": "vLLM 0.31 继续把快速启动和服务安全做进主线：preload 覆盖 DP/MTP，加入实验性 CRIU 快照，并默认拒绝每请求多模态参数。版本仍含多项不兼容变更。",
+        "judgment_en": "vLLM 0.31 keeps moving fast startup and safer serving into the mainline: preload covers DP/MTP, experimental CRIU snapshots arrive, and per-request multimodal parameters are rejected by default. The release still carries breaking changes.",
+        "next_action_zh": "分阶段升级 0.31，回归 preload、快照恢复、多模态参数拒绝、LoRA 缓存隔离和已变更的 flag。",
+        "next_action_en": "Stage the 0.31 upgrade and regress preload, snapshot recovery, multimodal argument rejection, LoRA cache isolation and changed flags.",
         "basis_event_ids": [
-          "ev-20260922-01",
-          "ev-20260826-05"
+          "ev-20260922-01"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-05T16:36:00Z"
       }
     },
     {
@@ -911,7 +913,7 @@
         "src-359d2d1cb7202de8",
         "src-838b849529054edd"
       ],
-      "last_reviewed_at": "2026-09-29T16:01:24Z",
+      "last_reviewed_at": "2026-10-05T16:01:12Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "Kumo Tabular 是开放权重的表格基础模型，把带标签的行当作上下文，一次前向计算完成分类或回归。四个榜单第一都是厂商自测，训练配方和合成数据生成器尚未公开。",
@@ -921,7 +923,7 @@
         "basis_event_ids": [
           "ev-20260929-01"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-05T16:01:12Z"
       }
     },
     {
@@ -1590,6 +1592,64 @@
           "ev-20261001-09"
         ],
         "reviewed_at": "2026-10-04T16:02:19Z"
+      }
+    },
+    {
+      "id": "textgrain",
+      "name_zh": "textGrain",
+      "name_en": "textGrain",
+      "type": "technology",
+      "aliases": [
+        "textGrain"
+      ],
+      "pattern": "textGrain",
+      "event_ids": [
+        "ev-20261005-01"
+      ],
+      "source_ids": [
+        "src-d2b5b29b4c815525",
+        "src-a51f9ad7d1108bf4",
+        "src-5391d8bf13643a97"
+      ],
+      "current_judgment_event_id": "ev-20261005-01",
+      "official_source_ids": [
+        "src-d2b5b29b4c815525",
+        "src-a51f9ad7d1108bf4",
+        "src-5391d8bf13643a97"
+      ],
+      "last_reviewed_at": "2026-10-05T16:36:00Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "textGrain 已进入 API opt-in 与欧盟产品分阶段开放，但短文本、改写和封闭检测器限制了独立验证。",
+        "judgment_en": "textGrain has entered API opt-in and phased EU product rollout, but short text, rewriting attacks and a restricted detector limit independent validation.",
+        "next_action_zh": "等检测器开放后，用业务文本测试短文本、同义改写和误报，再决定是否接入内容溯源。",
+        "next_action_en": "Wait for detector access, then test short text, synonym edits and false positives on domain samples before adopting provenance checks.",
+        "basis_event_ids": [
+          "ev-20261005-01"
+        ],
+        "reviewed_at": "2026-10-05T16:36:00Z"
+      }
+    },
+    {
+      "id": "autotrust-decision-models",
+      "name_zh": "AutoTrust 决策模型",
+      "name_en": "AutoTrust decision models",
+      "type": "model-family",
+      "aliases": ["GEV-26B-Decide", "JEV-27B-VL"],
+      "pattern": "AutoTrust|GEV-26B-Decide|JEV-27B-VL",
+      "event_ids": ["ev-20261002-05"],
+      "source_ids": ["src-82ed428159c76108", "src-7073395c0f949110"],
+      "current_judgment_event_id": "ev-20261002-05",
+      "official_source_ids": ["src-82ed428159c76108", "src-7073395c0f949110"],
+      "last_reviewed_at": "2026-10-05T16:36:00Z",
+      "judgment": {
+        "recommendation": "IGNORE",
+        "judgment_zh": "下载量很高，但可复现和独立评测不足，现阶段不值得投入。",
+        "judgment_en": "Downloads are high, but reproducible and independent evaluation is insufficient, so the models do not merit investment yet.",
+        "next_action_zh": "暂不投入；等公开可复现 benchmark 或独立评测后再重新评估。",
+        "next_action_en": "Do not invest yet; reassess after a reproducible benchmark package or independent evaluation appears.",
+        "basis_event_ids": ["ev-20261002-05"],
+        "reviewed_at": "2026-10-05T16:36:00Z"
       }
     }
   ]
