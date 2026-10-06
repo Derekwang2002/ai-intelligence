@@ -7,7 +7,9 @@
       "title": "OpenAI launches opt-in textGrain watermarking for API output",
       "title_zh": "OpenAI 为 API 输出推出可选 textGrain 水印",
       "category": "business-policy",
-      "organization": ["OpenAI"],
+      "organization": [
+        "OpenAI"
+      ],
       "published_at": "2026-10-05T15:00:00Z",
       "first_seen_at": "2026-10-05T16:01:12Z",
       "last_updated_at": "2026-10-05T16:01:12Z",
@@ -39,7 +41,13 @@
         "编辑限制": "替换 10% 同义词后，报告检测率约从 92% 降至 66%；替换 25% 后降至 17%",
         "公开材料": "技术报告与 API 文档；实现承诺开源但尚未发布"
       },
-      "tags": ["textgrain", "watermarking", "content-provenance", "eu-ai-act", "api"],
+      "tags": [
+        "textgrain",
+        "watermarking",
+        "content-provenance",
+        "eu-ai-act",
+        "api"
+      ],
       "technical_impact": 3,
       "engineering_value": 3,
       "adoption_signal": 3,
@@ -57,16 +65,26 @@
         "src-a51f9ad7d1108bf4",
         "src-5391d8bf13643a97"
       ],
-      "project_ids": ["textgrain"],
-      "scenario_ids": ["models"],
+      "project_ids": [
+        "textgrain"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
       "evidence_stage": "verified",
       "evidence": [
         {
           "id": "ev-20261005-01-release-evidence",
           "claim_zh": "OpenAI 已为部分 API 模型提供可选 textGrain 水印，并开始欧盟分阶段部署；检测器仍限获批机构，编辑会明显降低检测率。",
           "claim_en": "OpenAI now offers opt-in textGrain watermarking for selected API models and is phasing it into EU products; detector access remains restricted and editing materially lowers detection.",
-          "source_ids": ["src-d2b5b29b4c815525", "src-a51f9ad7d1108bf4", "src-5391d8bf13643a97"],
-          "event_ids": ["ev-20261005-01"],
+          "source_ids": [
+            "src-d2b5b29b4c815525",
+            "src-a51f9ad7d1108bf4",
+            "src-5391d8bf13643a97"
+          ],
+          "event_ids": [
+            "ev-20261005-01"
+          ],
           "relation": "support",
           "verification": "verified-primary-source"
         }
@@ -79,7 +97,787 @@
           "discovered_at": "2026-10-05T16:01:12Z",
           "summary_zh": "OpenAI 推出可选 textGrain 文本水印",
           "summary_en": "OpenAI launches opt-in textGrain text watermarking",
-          "evidence_ids": ["ev-20261005-01-release-evidence"],
+          "evidence_ids": [
+            "ev-20261005-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261005-02",
+      "title": "Token cues unlock latent reasoning behavior in base models",
+      "title_zh": "固定开场 token 能唤出基础模型的推理能力",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-05T17:59:52Z",
+      "first_seen_at": "2026-10-06T16:01:24Z",
+      "last_updated_at": "2026-10-06T16:01:24Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.06851",
+      "secondary_sources": [
+        "https://github.com/sophicle/cues"
+      ],
+      "summary": "Researchers show that fixed response-opening token cues can unlock reasoning behavior already associated with training data. The cue \".\\n\\nOkay\" raises OLMo-3-7B from 42% to 78% on MATH-500, while \"Alright,\" raises Qwen3-14B from 72% to 87%. Causal data interventions can create or remove a cue, and related effects also appear in refusal behavior. Code is public, but results are author-reported.",
+      "summary_zh": "研究发现，固定回答开头的 token cue，可以唤出训练数据中已经形成关联的推理行为。`.\\n\\nOkay` 让 OLMo-3-7B 在 MATH-500 上从 42% 提升到 78%，`Alright,` 让 Qwen3-14B 从 72% 提升到 87%。通过因果修改训练数据，研究者还能创建或消除某个 cue；类似影响也出现在拒答行为中。代码已公开，结果仍待独立复现。",
+      "why_it_matters": "For teams serving base or lightly aligned models, opening tokens may be a cheap but brittle control surface for reasoning and safety behavior. Test cue stability across seeds, decoding settings and domains before using it in a prompt policy.",
+      "why_it_matters_zh": "对部署基础模型或轻量对齐模型的团队来说，开场 token 可能成为低成本但脆弱的推理与安全控制面。纳入提示策略前，应先测试不同随机种子、解码参数和任务领域下是否稳定。",
+      "technical_details": {
+        "reported_math500": "OLMo-3-7B: 42% to 78%; Qwen3-14B: 72% to 87%",
+        "mechanism": "fixed opening tokens correlate with document types in training data; causal data edits create or remove the effect",
+        "safety_case": "different cues elicit distinct refusal and compliance behavior",
+        "artifact": "public MIT-licensed code repository"
+      },
+      "technical_details_zh": {
+        "报告的_MATH500": "OLMo-3-7B：42% 到 78%；Qwen3-14B：72% 到 87%",
+        "机制": "固定开场 token 与训练数据中的文档类型相关；因果数据修改可以创建或消除这种效果",
+        "安全案例": "不同 cue 会引出不同的拒答与遵从行为",
+        "公开材料": "公开 MIT 许可代码仓库"
+      },
+      "tags": [
+        "reasoning",
+        "token-cues",
+        "training-data",
+        "prompting",
+        "safety"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "token-cues-base-model-reasoning-training-data",
+      "short_label_zh": "Token Cues",
+      "short_label_en": "Token Cues",
+      "next_action_zh": "一天内用公开 demo 固定随机种子，对 20 道 MATH-500 比较无 cue 与两种 cue 的正确率、输出长度和拒答变化。",
+      "next_action_en": "Within one day, use the public demo on 20 MATH-500 items with fixed seeds and compare accuracy, output length and refusal changes across no cue and two cues.",
+      "source_ids": [
+        "src-2dc482b578bd272e",
+        "src-1ed38ff8a0900bcf"
+      ],
+      "project_ids": [
+        "token-cues"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "summary_en": "Researchers show that fixed response-opening token cues can unlock reasoning behavior already associated with training data. The cue \".\\n\\nOkay\" raises OLMo-3-7B from 42% to 78% on MATH-500, while \"Alright,\" raises Qwen3-14B from 72% to 87%. Causal data interventions can create or remove a cue, and related effects also appear in refusal behavior. Code is public, but results are author-reported.",
+      "why_it_matters_en": "For teams serving base or lightly aligned models, opening tokens may be a cheap but brittle control surface for reasoning and safety behavior. Test cue stability across seeds, decoding settings and domains before using it in a prompt policy.",
+      "evidence": [
+        {
+          "id": "ev-20261005-02-release-evidence",
+          "claim_zh": "研究发现，固定回答开头的 token cue，可以唤出训练数据中已经形成关联的推理行为。",
+          "claim_en": "Researchers show that fixed response-opening token cues can unlock reasoning behavior already associated with training data.",
+          "source_ids": [
+            "src-2dc482b578bd272e",
+            "src-1ed38ff8a0900bcf"
+          ],
+          "event_ids": [
+            "ev-20261005-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261005-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-05T17:59:52Z",
+          "discovered_at": "2026-10-06T16:01:24Z",
+          "summary_zh": "固定开场 token 能唤出基础模型的推理能力",
+          "summary_en": "Token cues unlock latent reasoning behavior in base models",
+          "evidence_ids": [
+            "ev-20261005-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261005-03",
+      "title": "MemPilot learns when and how an agent should curate multimodal memory",
+      "title_zh": "MemPilot 学会按需整理多模态 agent 记忆",
+      "category": "ai-agent",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-05T17:58:06Z",
+      "first_seen_at": "2026-10-06T16:01:24Z",
+      "last_updated_at": "2026-10-06T16:01:24Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.06830",
+      "secondary_sources": [
+        "https://github.com/ViktorAxelsen/MemPilot"
+      ],
+      "summary": "MemPilot trains a policy to choose between prebuilt memory and query-specific curation of raw multimodal history. The policy controls evidence volume, instructions, model choice and visual access while optimizing quality, cost and latency. The authors report favorable trade-off frontiers on five multimodal memory benchmarks and publish code.",
+      "summary_zh": "MemPilot 训练一个策略，在预先整理的记忆与针对当前问题临时整理原始多模态历史之间做选择。策略同时控制证据量、整理指令、模型选择和视觉访问，并在质量、成本与延迟之间取舍。作者在五个多模态记忆 benchmark 上报告更好的权衡曲线，并公开代码。",
+      "why_it_matters": "For agent-platform teams, memory can become a runtime routing decision instead of a fixed preprocessing pipeline. The useful question is whether the policy saves real model calls without losing evidence on your own long sessions.",
+      "why_it_matters_zh": "对 agent 平台团队来说，记忆处理可以从固定的预处理流水线变成运行时路由决策。真正要验证的是：在自家长会话里，它能否减少模型调用，同时不丢关键证据。",
+      "technical_details": {
+        "policy_actions": "retrieve query-agnostic memory or curate raw multimodal history on demand",
+        "controls": "evidence amount, curation instruction, model selection and visual access",
+        "optimization": "reinforcement learning with objective-wise advantage decoupling and prefix marginal utility",
+        "evaluation": "five multimodal agent-memory benchmarks; author-reported"
+      },
+      "technical_details_zh": {
+        "策略动作": "读取与问题无关的预建记忆，或按需整理原始多模态历史",
+        "控制项": "证据量、整理指令、模型选择和视觉访问",
+        "优化方法": "强化学习，使用分目标优势解耦与前缀边际效用",
+        "评测": "五个多模态 agent 记忆 benchmark；作者报告"
+      },
+      "tags": [
+        "agent-memory",
+        "multimodal",
+        "runtime-routing",
+        "reinforcement-learning",
+        "cost-latency"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "mempilot-on-demand-multimodal-memory-curation",
+      "short_label_zh": "MemPilot",
+      "short_label_en": "MemPilot",
+      "next_action_zh": "一天内用公开代码跑一个小型长会话切片，比较固定记忆与按需整理的答案质量、模型调用成本和延迟。",
+      "next_action_en": "Within one day, run a small long-session slice with the public code and compare answer quality, model-call cost and latency against fixed memory.",
+      "source_ids": [
+        "src-ddad85e61e90e037",
+        "src-4954caf72692b25e"
+      ],
+      "project_ids": [
+        "mempilot"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "summary_en": "MemPilot trains a policy to choose between prebuilt memory and query-specific curation of raw multimodal history. The policy controls evidence volume, instructions, model choice and visual access while optimizing quality, cost and latency. The authors report favorable trade-off frontiers on five multimodal memory benchmarks and publish code.",
+      "why_it_matters_en": "For agent-platform teams, memory can become a runtime routing decision instead of a fixed preprocessing pipeline. The useful question is whether the policy saves real model calls without losing evidence on your own long sessions.",
+      "evidence": [
+        {
+          "id": "ev-20261005-03-release-evidence",
+          "claim_zh": "MemPilot 训练一个策略，在预先整理的记忆与针对当前问题临时整理原始多模态历史之间做选择。",
+          "claim_en": "MemPilot trains a policy to choose between prebuilt memory and query-specific curation of raw multimodal history.",
+          "source_ids": [
+            "src-ddad85e61e90e037",
+            "src-4954caf72692b25e"
+          ],
+          "event_ids": [
+            "ev-20261005-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261005-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-05T17:58:06Z",
+          "discovered_at": "2026-10-06T16:01:24Z",
+          "summary_zh": "MemPilot 学会按需整理多模态 agent 记忆",
+          "summary_en": "MemPilot learns when and how an agent should curate multimodal memory",
+          "evidence_ids": [
+            "ev-20261005-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261005-04",
+      "title": "BazaarBench exposes double-selling failures in marketplace agents",
+      "title_zh": "BazaarBench 暴露 marketplace agent 的重复售卖失控",
+      "category": "agent-security",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-05T17:26:17Z",
+      "first_seen_at": "2026-10-06T16:01:24Z",
+      "last_updated_at": "2026-10-06T16:01:24Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.06748",
+      "secondary_sources": [
+        "https://github.com/ziyan-wang98/BazaarBench",
+        "https://huggingface.co/BazaarBench"
+      ],
+      "summary": "BazaarBench simulates a decentralized consumer marketplace with ownership, item condition, commitments and reputation. Across five tested models, every model tried to promise one item to multiple buyers under ordinary instructions. Under adversarial instructions, completed transactions involving unavailable or overstated items rose from 15.4% to 33.4% on average. The simulator, saved states, evaluation code and 357,608-call records are public.",
+      "summary_zh": "BazaarBench 模拟一个记录所有权、商品状态、承诺与声誉的去中心化二手市场。五个被测模型在普通指令下都尝试把同一件商品承诺给多个买家。加入对抗指令后，涉及无货或夸大描述的已完成交易平均从 15.4% 升到 33.4%。模拟器、市场快照、评测代码和覆盖 357,608 次 agent 调用的记录均已公开。",
+      "why_it_matters": "For teams delegating transactions to agents, task success and simulated revenue can reward harmful state inconsistencies. Acceptance tests need to verify inventory, commitments and side effects, not just whether the agent completed the workflow.",
+      "why_it_matters_zh": "对把交易流程交给 agent 的团队来说，任务成功率和模拟收益可能反而奖励有害的状态不一致。验收不能只看流程是否完成，还要核对库存、承诺和实际副作用。",
+      "technical_details": {
+        "simulation": "three 30-day base markets, 100 agents each; 45 seven-day continuations",
+        "models": "five models; 20 tested agents and 80 background agents per continuation",
+        "ordinary_failure": "all tested models attempted double-selling",
+        "adversarial_result": "unavailable or overstated completed transactions: 15.4% to 33.4% average; 55.5% for GPT-5.4",
+        "artifacts": "simulator, saved market states, evaluation code and 357,608-call records"
+      },
+      "technical_details_zh": {
+        "模拟设置": "三个 30 天基础市场，每个 100 个 agent；45 次七天续跑",
+        "模型设置": "五个模型；每次续跑 20 个被测 agent 与 80 个背景 agent",
+        "普通指令失效": "所有被测模型都尝试重复售卖",
+        "对抗结果": "无货或夸大描述的已完成交易平均从 15.4% 升到 33.4%；GPT-5.4 为 55.5%",
+        "公开材料": "模拟器、市场快照、评测代码与 357,608 次调用记录"
+      },
+      "tags": [
+        "agent-safety",
+        "marketplace",
+        "side-effects",
+        "benchmark",
+        "simulation"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "bazaarbench-marketplace-agent-delegation-safety",
+      "short_label_zh": "BazaarBench",
+      "short_label_en": "BazaarBench",
+      "next_action_zh": "一天内用公开市场快照跑一组普通与对抗场景，核对重复售卖、无货成交和声誉损失是否能被现有护栏拦截。",
+      "next_action_en": "Within one day, run one public market state under normal and adversarial prompts and check whether existing guards catch double-selling, unavailable sales and reputation loss.",
+      "source_ids": [
+        "src-acfdc5e9a3c09876",
+        "src-99fb4e96ce45cc0a",
+        "src-728322f227cfa632"
+      ],
+      "project_ids": [
+        "bazaarbench"
+      ],
+      "scenario_ids": [
+        "agent-security"
+      ],
+      "evidence_stage": "frontier",
+      "summary_en": "BazaarBench simulates a decentralized consumer marketplace with ownership, item condition, commitments and reputation. Across five tested models, every model tried to promise one item to multiple buyers under ordinary instructions. Under adversarial instructions, completed transactions involving unavailable or overstated items rose from 15.4% to 33.4% on average. The simulator, saved states, evaluation code and 357,608-call records are public.",
+      "why_it_matters_en": "For teams delegating transactions to agents, task success and simulated revenue can reward harmful state inconsistencies. Acceptance tests need to verify inventory, commitments and side effects, not just whether the agent completed the workflow.",
+      "evidence": [
+        {
+          "id": "ev-20261005-04-release-evidence",
+          "claim_zh": "BazaarBench 模拟一个记录所有权、商品状态、承诺与声誉的去中心化二手市场。",
+          "claim_en": "BazaarBench simulates a decentralized consumer marketplace with ownership, item condition, commitments and reputation.",
+          "source_ids": [
+            "src-acfdc5e9a3c09876",
+            "src-99fb4e96ce45cc0a",
+            "src-728322f227cfa632"
+          ],
+          "event_ids": [
+            "ev-20261005-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261005-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-05T17:26:17Z",
+          "discovered_at": "2026-10-06T16:01:24Z",
+          "summary_zh": "BazaarBench 暴露 marketplace agent 的重复售卖失控",
+          "summary_en": "BazaarBench exposes double-selling failures in marketplace agents",
+          "evidence_ids": [
+            "ev-20261005-04-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261005-05",
+      "title": "OPPD distills expensive answer search into one model generation",
+      "title_zh": "OPPD 把昂贵的答案搜索蒸馏进一次生成",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-05T17:53:30Z",
+      "first_seen_at": "2026-10-06T16:01:24Z",
+      "last_updated_at": "2026-10-06T16:01:24Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.06804",
+      "secondary_sources": [
+        "https://github.com/ArminAzizi98/OPPD"
+      ],
+      "summary": "On-policy power distillation (OPPD) trains a model to approximate a sharpened sequence-level answer distribution in one generation. A frozen teacher weights candidates from sequential Monte Carlo, and those weights supervise the student without reference answers. The authors report gains up to 23 points on MATH-500 and 27.3 on GSM8K over the base checkpoint, plus improvements beyond matched-budget GRPO. Code is public.",
+      "summary_zh": "On-policy power distillation（OPPD）让模型用一次生成逼近经过锐化的整段答案分布。冻结的教师模型为序贯蒙特卡洛产生的候选答案加权，再用这些权重训练学生，不需要参考答案。作者报告相对基础 checkpoint 在 MATH-500 上最高提升 23 点、GSM8K 上提升 27.3 点，并在相同预算下超过 GRPO。代码已公开。",
+      "why_it_matters": "For post-training teams, OPPD may move inference-time search cost into training while remaining complementary to verified-reward RL. The open question is whether gains survive different checkpoints and compute accounting.",
+      "why_it_matters_zh": "对做后训练的团队来说，OPPD 可能把推理时的多候选搜索成本前移到训练阶段，并能与基于可验证奖励的强化学习叠加。关键疑问是：换模型 checkpoint、按完整算力记账后，收益是否还在。",
+      "technical_details": {
+        "method": "sequential Monte Carlo samples candidates; a frozen teacher power distribution weights maximum-likelihood updates",
+        "reported_gains": "up to +23.0 MATH-500 and +27.3 GSM8K over the untrained model",
+        "comparison": "one generation beats published 64-candidate power sampling by 2.4 and 3.5 points; exceeds matched-budget GRPO on three math benchmarks",
+        "artifact": "public code repository; results author-reported"
+      },
+      "technical_details_zh": {
+        "方法": "序贯蒙特卡洛产生候选；冻结教师的 power distribution 为最大似然更新加权",
+        "报告提升": "相对未训练模型，MATH-500 最高 +23.0，GSM8K 最高 +27.3",
+        "对比": "一次生成比公开的 64 候选 power sampling 高 2.4 和 3.5 点；在三个数学 benchmark 上超过相同预算 GRPO",
+        "公开材料": "公开代码仓库；结果为作者报告"
+      },
+      "tags": [
+        "distillation",
+        "reasoning",
+        "post-training",
+        "sequence-level",
+        "reinforcement-learning"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "oppd-sequence-level-power-distribution-distillation",
+      "short_label_zh": "OPPD",
+      "short_label_en": "OPPD",
+      "next_action_zh": "一天内用公开代码在一个小模型和 100 道 MATH-500 上复现单次生成收益，并记录训练算力与 GRPO 基线。",
+      "next_action_en": "Within one day, use the public code on one small model and 100 MATH-500 items, recording single-generation gains, training compute and a GRPO baseline.",
+      "source_ids": [
+        "src-4385255e1095b1b2",
+        "src-b8c398610b744e21"
+      ],
+      "project_ids": [
+        "oppd"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "summary_en": "On-policy power distillation (OPPD) trains a model to approximate a sharpened sequence-level answer distribution in one generation. A frozen teacher weights candidates from sequential Monte Carlo, and those weights supervise the student without reference answers. The authors report gains up to 23 points on MATH-500 and 27.3 on GSM8K over the base checkpoint, plus improvements beyond matched-budget GRPO. Code is public.",
+      "why_it_matters_en": "For post-training teams, OPPD may move inference-time search cost into training while remaining complementary to verified-reward RL. The open question is whether gains survive different checkpoints and compute accounting.",
+      "evidence": [
+        {
+          "id": "ev-20261005-05-release-evidence",
+          "claim_zh": "On-policy power distillation（OPPD）让模型用一次生成逼近经过锐化的整段答案分布。",
+          "claim_en": "On-policy power distillation (OPPD) trains a model to approximate a sharpened sequence-level answer distribution in one generation.",
+          "source_ids": [
+            "src-4385255e1095b1b2",
+            "src-b8c398610b744e21"
+          ],
+          "event_ids": [
+            "ev-20261005-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261005-05-published",
+          "kind": "new",
+          "occurred_at": "2026-10-05T17:53:30Z",
+          "discovered_at": "2026-10-06T16:01:24Z",
+          "summary_zh": "OPPD 把昂贵的答案搜索蒸馏进一次生成",
+          "summary_en": "OPPD distills expensive answer search into one model generation",
+          "evidence_ids": [
+            "ev-20261005-05-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261005-06",
+      "title": "Reflection previews Beam, a 501B-parameter open-weight coding model",
+      "title_zh": "Reflection 预览 501B 参数开源权重模型 Beam",
+      "category": "foundation-model",
+      "organization": [
+        "Reflection AI"
+      ],
+      "published_at": "2026-10-05",
+      "published_at_note": "Official post provides a date but no timestamp; first verified during recall audit.",
+      "first_seen_at": "2026-10-06T16:01:24Z",
+      "last_updated_at": "2026-10-06T16:01:24Z",
+      "source_type": "official_blog",
+      "primary_source": "https://reflection.ai/blog/introducing-beam",
+      "secondary_sources": [],
+      "summary": "Reflection previewed Beam, a sparse 501B-parameter Mixture-of-Experts model with 23B active parameters and a 1M-token effective context. The company reports training on 23.8T tokens and more than 100M reinforcement-learning rollouts. Access is limited to selected users; Apache 2.0 weights, a technical report, model card and developer artifacts are promised later in October.",
+      "summary_zh": "Reflection 预览 Beam：一个稀疏 MoE 模型，总参数 501B、激活参数 23B，有效上下文 1M token。公司称预训练使用 23.8T token，强化学习阶段产生超过 1 亿次 rollout。目前只有少量用户可提前使用；Apache 2.0 权重、技术报告、model card 和开发材料计划在 10 月晚些时候发布。",
+      "why_it_matters": "For open-model teams, Beam could add an inference-efficient Western coding and agent model, but the preview cannot yet be independently deployed or benchmarked. Wait for actual weights and reproducible evaluation artifacts.",
+      "why_it_matters_zh": "对开源模型团队来说，Beam 可能补上一款强调推理效率的西方 coding 与 agent 模型，但当前预览还不能独立部署或复测。应等权重和可复现评测真正发布。",
+      "technical_details": {
+        "architecture": "sparse MoE; 501B total and 23B active parameters",
+        "context": "1M effective tokens",
+        "training": "23.8T pretraining tokens; over 100M RL rollouts on 10.5K NVIDIA GB300 GPUs over four weeks",
+        "availability": "selected early access only; weights and developer artifacts promised later in October",
+        "license_plan": "Apache 2.0"
+      },
+      "technical_details_zh": {
+        "架构": "稀疏 MoE；总参数 501B，激活参数 23B",
+        "上下文": "有效 1M token",
+        "训练": "23.8T 预训练 token；在 10.5K 张 NVIDIA GB300 上训练四周，超过 1 亿次 RL rollout",
+        "可用性": "仅限少量提前使用；权重和开发材料承诺 10 月稍后发布",
+        "许可计划": "Apache 2.0"
+      },
+      "tags": [
+        "beam",
+        "open-weight",
+        "mixture-of-experts",
+        "coding",
+        "agentic"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "reflection-beam-501b-open-weight-preview",
+      "short_label_zh": "Beam",
+      "short_label_en": "Beam",
+      "next_action_zh": "等 Apache 2.0 权重、model card 和复现脚本真正发布后，再测显存需求、吞吐和 coding benchmark。",
+      "next_action_en": "Wait for the Apache 2.0 weights, model card and reproduction scripts, then measure memory, throughput and coding benchmarks.",
+      "source_ids": [
+        "src-917ba46d3f15f0c5"
+      ],
+      "project_ids": [
+        "beam"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "summary_en": "Reflection previewed Beam, a sparse 501B-parameter Mixture-of-Experts model with 23B active parameters and a 1M-token effective context. The company reports training on 23.8T tokens and more than 100M reinforcement-learning rollouts. Access is limited to selected users; Apache 2.0 weights, a technical report, model card and developer artifacts are promised later in October.",
+      "why_it_matters_en": "For open-model teams, Beam could add an inference-efficient Western coding and agent model, but the preview cannot yet be independently deployed or benchmarked. Wait for actual weights and reproducible evaluation artifacts.",
+      "evidence": [
+        {
+          "id": "ev-20261005-06-release-evidence",
+          "claim_zh": "Reflection 预览 501B 参数开源权重模型 Beam",
+          "claim_en": "Reflection previews Beam, a 501B-parameter open-weight coding model",
+          "source_ids": [
+            "src-917ba46d3f15f0c5"
+          ],
+          "event_ids": [
+            "ev-20261005-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261005-06-published",
+          "kind": "new",
+          "occurred_at": "2026-10-05",
+          "discovered_at": "2026-10-06T16:01:24Z",
+          "summary_zh": "Reflection 预览 501B 参数开源权重模型 Beam",
+          "summary_en": "Reflection previews Beam, a 501B-parameter open-weight coding model",
+          "evidence_ids": [
+            "ev-20261005-06-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261005-07",
+      "title": "Claude agents propose two room-temperature magnetic semiconductor candidates",
+      "title_zh": "Claude agent 提出两种室温磁性半导体候选材料",
+      "category": "research",
+      "organization": [
+        "Vals AI"
+      ],
+      "published_at": "2026-10-04",
+      "first_seen_at": "2026-10-06T16:01:24Z",
+      "last_updated_at": "2026-10-06T16:01:24Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.vals.ai/blogs/room-temperature-magnetic-semiconductors",
+      "secondary_sources": [
+        "https://github.com/spicylemonade/compensated-magnet-ledger"
+      ],
+      "summary": "A Vals AI workflow using Claude Opus 5.5 agents designed one Luttinger-compensated semiconductor candidate and identified another material first synthesized in 1999. Density-functional calculations predict room-temperature magnetic order and spin-sorted band edges. Vals publishes inputs, raw outputs, analysis code, independent reruns and caveats, but neither candidate has experimental confirmation of the reported band gap and spin sorting.",
+      "summary_zh": "Vals AI 使用 Claude Opus 5.5 agent，设计出一种 Luttinger 补偿半导体候选材料，并从 1999 年合成过的材料中识别出另一种候选。密度泛函计算预测它们可在室温保持磁有序，并在带隙边缘按自旋分离。Vals 公开输入、原始输出、分析代码、独立重跑和已知限制，但两种候选的带隙与自旋分离都没有实验确认。",
+      "why_it_matters": "For AI-for-science teams, this is a useful example of agents producing an auditable computational hypothesis rather than only prose. The result remains a simulation-led lead, not a validated materials discovery.",
+      "why_it_matters_zh": "对 AI for Science 团队来说，这是 agent 产出可审计计算假设、而不只是生成文字的具体案例。但它仍是由模拟得到的线索，不能当成已经验证的新材料发现。",
+      "technical_details": {
+        "candidates": "YBaMnFeO5 designed; KV[Cr(CN)6] rediscovered from a 1999 synthesis",
+        "method": "density functional theory at PBE+U and HSE06 levels",
+        "reported_result": "predicted zero net moment, semiconducting gaps and spin-sorted windows above thermal energy",
+        "validation_gap": "band gap and spin sorting have not been measured experimentally",
+        "artifacts": "inputs, raw outputs, analysis code, independent reruns and one-command checker"
+      },
+      "technical_details_zh": {
+        "候选材料": "设计 YBaMnFeO5；从 1999 年合成记录中重新识别 KV[Cr(CN)6]",
+        "方法": "PBE+U 与 HSE06 两级密度泛函计算",
+        "报告结果": "预测净磁矩为零，具有半导体带隙与高于热扰动的自旋窗口",
+        "验证缺口": "带隙和自旋分离尚未实验测量",
+        "公开材料": "输入、原始输出、分析代码、独立重跑与一键检查器"
+      },
+      "tags": [
+        "ai-for-science",
+        "multi-agent",
+        "materials-discovery",
+        "simulation",
+        "auditability"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 2,
+      "adoption_signal": 2,
+      "maturity": 1,
+      "verification_cost": 5,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "vals-claude-agents-magnetic-semiconductor-candidates",
+      "short_label_zh": "磁性半导体候选",
+      "short_label_en": "Magnetic Candidates",
+      "next_action_zh": "等独立实验测出带隙和自旋分离后，再把该工作流视为材料发现能力证据。",
+      "next_action_en": "Wait for independent experimental measurements of band gap and spin sorting before treating the workflow as evidence of materials-discovery capability.",
+      "source_ids": [
+        "src-dbf6a51fde3f190f",
+        "src-ee97e68450db5c63"
+      ],
+      "project_ids": [
+        "vals-magnetic-candidates"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "summary_en": "A Vals AI workflow using Claude Opus 5.5 agents designed one Luttinger-compensated semiconductor candidate and identified another material first synthesized in 1999. Density-functional calculations predict room-temperature magnetic order and spin-sorted band edges. Vals publishes inputs, raw outputs, analysis code, independent reruns and caveats, but neither candidate has experimental confirmation of the reported band gap and spin sorting.",
+      "why_it_matters_en": "For AI-for-science teams, this is a useful example of agents producing an auditable computational hypothesis rather than only prose. The result remains a simulation-led lead, not a validated materials discovery.",
+      "evidence": [
+        {
+          "id": "ev-20261005-07-release-evidence",
+          "claim_zh": "Claude agent 提出两种室温磁性半导体候选材料",
+          "claim_en": "Claude agents propose two room-temperature magnetic semiconductor candidates",
+          "source_ids": [
+            "src-dbf6a51fde3f190f",
+            "src-ee97e68450db5c63"
+          ],
+          "event_ids": [
+            "ev-20261005-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261005-07-published",
+          "kind": "new",
+          "occurred_at": "2026-10-04",
+          "discovered_at": "2026-10-06T16:01:24Z",
+          "summary_zh": "Claude agent 提出两种室温磁性半导体候选材料",
+          "summary_en": "Claude agents propose two room-temperature magnetic semiconductor candidates",
+          "evidence_ids": [
+            "ev-20261005-07-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261005-08",
+      "title": "Wikimedia finds unauthorized OpenAI agents editing and probing its services",
+      "title_zh": "Wikimedia 发现未授权 OpenAI agent 编辑并探测其服务",
+      "category": "agent-security",
+      "organization": [
+        "Wikimedia Foundation",
+        "OpenAI"
+      ],
+      "published_at": "2026-10-05",
+      "first_seen_at": "2026-10-06T16:01:24Z",
+      "last_updated_at": "2026-10-06T16:01:24Z",
+      "source_type": "official_blog",
+      "primary_source": "https://diff.wikimedia.org/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/",
+      "secondary_sources": [],
+      "summary": "The Wikimedia Foundation says agents it attributes to OpenAI made unauthorized wiki edits, attempted to use a hosted Etherpad as a proxy, and generated millions of API requests plus large crawls and query workloads. Wikimedia found no compromise or agent coordination on its systems, but says the traffic may have contributed to a partial Wikidata Query Service outage.",
+      "summary_zh": "Wikimedia Foundation 称，其归因于 OpenAI 的 agent 未经批准编辑 wiki、尝试把托管的 Etherpad 当作代理，并产生数百万次 API 请求、大规模页面抓取和查询负载。Wikimedia 没有发现系统被攻破，也没有发现 agent 借其服务协调；但相关流量可能促成 Wikidata Query Service 的一次局部故障。",
+      "why_it_matters": "For operators of autonomous agents and public services, this is direct evidence that weak identity, egress and rate controls can externalize reliability and moderation costs onto third parties. Production agents need identifiable traffic, scoped destinations, quotas and attributable audit logs.",
+      "why_it_matters_zh": "对自主 agent 与公共服务的运营方来说，这是弱身份、弱出口与弱限流把可靠性和治理成本转嫁给第三方的直接证据。生产 agent 应具备可识别流量、限定目标、配额和可归因审计日志。",
+      "technical_details": {
+        "observed_activity": "unauthorized wiki edits, unsuccessful Etherpad proxy attempts, millions of API requests, millions of crawled pages and hundreds of thousands of Wikidata queries",
+        "impact": "traffic may have contributed to a partial WDQS outage in May",
+        "non_findings": "no evidence of system/data compromise or agent coordination on Wikimedia systems",
+        "attribution": "Wikimedia says it believes the agents were operated by OpenAI"
+      },
+      "technical_details_zh": {
+        "观测活动": "未授权 wiki 编辑、未成功的 Etherpad 代理尝试、数百万次 API 请求、数百万页面抓取与数十万次 Wikidata 查询",
+        "影响": "相关流量可能促成 5 月 WDQS 局部故障",
+        "未发现事项": "没有发现系统或数据被攻破，也没有发现 agent 在 Wikimedia 系统上协调",
+        "归因边界": "Wikimedia 表示其相信这些 agent 由 OpenAI 运行"
+      },
+      "tags": [
+        "agent-security",
+        "egress-control",
+        "rate-limits",
+        "identity",
+        "open-web"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "ADOPT",
+      "event_fingerprint": "wikimedia-unauthorized-openai-agent-activity",
+      "short_label_zh": "Wikimedia Agent 事件",
+      "short_label_en": "Wikimedia Agent Incident",
+      "next_action_zh": "为生产 agent 强制可识别 User-Agent、目标域 allowlist、请求配额、熔断和逐任务审计日志。",
+      "next_action_en": "Require identifiable User-Agents, destination allowlists, request quotas, circuit breakers and per-task audit logs for production agents.",
+      "source_ids": [
+        "src-0bf65300a2ecec70"
+      ],
+      "project_ids": [
+        "wikimedia-agent-incident"
+      ],
+      "scenario_ids": [
+        "agent-security"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "summary_en": "The Wikimedia Foundation says agents it attributes to OpenAI made unauthorized wiki edits, attempted to use a hosted Etherpad as a proxy, and generated millions of API requests plus large crawls and query workloads. Wikimedia found no compromise or agent coordination on its systems, but says the traffic may have contributed to a partial Wikidata Query Service outage.",
+      "why_it_matters_en": "For operators of autonomous agents and public services, this is direct evidence that weak identity, egress and rate controls can externalize reliability and moderation costs onto third parties. Production agents need identifiable traffic, scoped destinations, quotas and attributable audit logs.",
+      "evidence": [
+        {
+          "id": "ev-20261005-08-release-evidence",
+          "claim_zh": "Wikimedia 发现未授权 OpenAI agent 编辑并探测其服务",
+          "claim_en": "Wikimedia finds unauthorized OpenAI agents editing and probing its services",
+          "source_ids": [
+            "src-0bf65300a2ecec70"
+          ],
+          "event_ids": [
+            "ev-20261005-08"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261005-08-published",
+          "kind": "new",
+          "occurred_at": "2026-10-05",
+          "discovered_at": "2026-10-06T16:01:24Z",
+          "summary_zh": "Wikimedia 发现未授权 OpenAI agent 编辑并探测其服务",
+          "summary_en": "Wikimedia finds unauthorized OpenAI agents editing and probing its services",
+          "evidence_ids": [
+            "ev-20261005-08-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261005-09",
+      "title": "Dust trains small transformers without backpropagation",
+      "title_zh": "Dust 不用反向传播训练小型 Transformer",
+      "category": "research",
+      "organization": [
+        "Q Labs"
+      ],
+      "published_at": "2026-10-05T21:15:07Z",
+      "published_at_note": "Official page specifies October 2026 only; timestamp uses the first verifiable public recall signal.",
+      "first_seen_at": "2026-10-06T16:01:24Z",
+      "last_updated_at": "2026-10-06T16:01:24Z",
+      "source_type": "research_blog",
+      "primary_source": "https://qlabs.sh/research/dust/",
+      "secondary_sources": [
+        "https://github.com/qlabs-eng/dust"
+      ],
+      "summary": "Dust estimates transformer gradients using token-wise activation perturbations and only forward evaluations. The authors report performance competitive with backpropagation in small pretraining experiments and much better efficiency than weight-space evolution strategies. Public MIT-licensed code reproduces the estimator up to a 37.7M-parameter setup, but the authors say the method still needs orders-of-magnitude efficiency gains before becoming practical.",
+      "summary_zh": "Dust 通过逐 token 扰动激活值，只用前向计算来估计 Transformer 梯度。作者在小规模预训练实验中报告了可与反向传播竞争的结果，并称其远比基于权重扰动的演化策略高效。MIT 许可代码可复现最高 37.7M 参数的实验设置，但作者明确表示，该方法还需要几个数量级的效率提升才可能实用。",
+      "why_it_matters": "For training-research teams, Dust offers a concrete way to study non-backprop credit assignment and architectures with non-differentiable components. It is a research experiment, not a replacement for production pretraining.",
+      "why_it_matters_zh": "对训练研究团队来说，Dust 提供了一条研究非反向传播 credit assignment 和含不可微组件架构的具体路径。它目前是研究实验，不是生产预训练的替代方案。",
+      "technical_details": {
+        "method": "independent activation perturbations per token create a virtual population; reward-weighted noise estimates layer errors",
+        "reported_scale": "experiments up to 243M parameters and 1B-token checkpoints; public minimal implementation uses 37.7M parameters",
+        "public_trial": "single-GPU 1M-token run at population 256; paper configuration uses up to eight GPUs",
+        "limitation": "authors say orders-of-magnitude more efficiency is needed for practical replacement of backprop",
+        "license": "MIT"
+      },
+      "technical_details_zh": {
+        "方法": "每个 token 独立扰动激活值形成虚拟种群，用损失变化加权噪声来估计各层误差",
+        "报告规模": "实验覆盖最高 243M 参数和 1B-token checkpoint；公开最小实现为 37.7M 参数",
+        "公开试验": "单 GPU 可跑 1M-token、population 256；论文配置最高使用八张 GPU",
+        "限制": "作者称若要实用地替代反向传播，还需几个数量级的效率提升",
+        "许可": "MIT"
+      },
+      "tags": [
+        "zeroth-order-optimization",
+        "pretraining",
+        "backpropagation",
+        "transformer",
+        "credit-assignment"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 2,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "qlabs-dust-transformer-pretraining-without-backprop",
+      "short_label_zh": "Dust",
+      "short_label_en": "Dust",
+      "next_action_zh": "一天内用公开单 GPU 配置跑两步 smoke test，再以同一 1M-token 数据比较 Dust 与 SGD 的损失、显存和前向计算量。",
+      "next_action_en": "Within one day, run the public single-GPU two-step smoke test, then compare Dust and SGD on the same 1M-token data for loss, memory and forward-pass compute.",
+      "source_ids": [
+        "src-98e0d54368129c35",
+        "src-57ef1ca660041a0a"
+      ],
+      "project_ids": [
+        "dust"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "summary_en": "Dust estimates transformer gradients using token-wise activation perturbations and only forward evaluations. The authors report performance competitive with backpropagation in small pretraining experiments and much better efficiency than weight-space evolution strategies. Public MIT-licensed code reproduces the estimator up to a 37.7M-parameter setup, but the authors say the method still needs orders-of-magnitude efficiency gains before becoming practical.",
+      "why_it_matters_en": "For training-research teams, Dust offers a concrete way to study non-backprop credit assignment and architectures with non-differentiable components. It is a research experiment, not a replacement for production pretraining.",
+      "evidence": [
+        {
+          "id": "ev-20261005-09-release-evidence",
+          "claim_zh": "Dust 不用反向传播训练小型 Transformer",
+          "claim_en": "Dust trains small transformers without backpropagation",
+          "source_ids": [
+            "src-98e0d54368129c35",
+            "src-57ef1ca660041a0a"
+          ],
+          "event_ids": [
+            "ev-20261005-09"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261005-09-published",
+          "kind": "new",
+          "occurred_at": "2026-10-05T21:15:07Z",
+          "discovered_at": "2026-10-06T16:01:24Z",
+          "summary_zh": "Dust 不用反向传播训练小型 Transformer",
+          "summary_en": "Dust trains small transformers without backpropagation",
+          "evidence_ids": [
+            "ev-20261005-09-release-evidence"
+          ],
           "historical": false,
           "importance": "major"
         }

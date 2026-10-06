@@ -35,7 +35,9 @@
         "src-ff1ca072bf39e471",
         "src-80da4486dbf0594b",
         "src-da2d811b9d25331f",
-        "src-ec08581411bc9dc6"
+        "src-ec08581411bc9dc6",
+        "src-d9b88297cf0d952f",
+        "src-bb63a15b856259f7"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -45,19 +47,21 @@
         "src-80da4486dbf0594b",
         "src-d320458473217aca",
         "src-da2d811b9d25331f",
-        "src-ec08581411bc9dc6"
+        "src-ec08581411bc9dc6",
+        "src-d9b88297cf0d952f",
+        "src-bb63a15b856259f7"
       ],
-      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.289 堵住嵌套命令、变量前缀与符号链接读取的策略绕过路径。",
-        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.289 closes policy bypasses around nested commands, variable prefixes and symlink reads.",
-        "next_action_zh": "升级前回归嵌套 shell、裸变量赋值、IDE 符号链接读取和 managed MCP 描述。",
-        "next_action_en": "Before upgrading, regress nested shell, bare assignments, IDE symlink reads and managed MCP descriptions.",
+        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.290/291 加强集中治理与恢复，并修复审批回答和会话末尾消息丢失。",
+        "judgment_en": "Claude Code is a mature local multi-agent runtime. Versions 2.1.290/291 strengthen central governance and recovery, and fix lost permission answers and final messages.",
+        "next_action_zh": "升级到 2.1.291 前回归 managed hook、工作区外规则文件、plan mode connector、大型 MCP 响应和重启恢复。",
+        "next_action_en": "Before 2.1.291, regress managed hooks, out-of-workspace rule files, plan-mode connectors, large MCP responses and restart recovery.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-04T16:02:19Z"
+        "reviewed_at": "2026-10-06T16:01:25Z"
       }
     },
     {
@@ -1635,12 +1639,23 @@
       "name_zh": "AutoTrust 决策模型",
       "name_en": "AutoTrust decision models",
       "type": "model-family",
-      "aliases": ["GEV-26B-Decide", "JEV-27B-VL"],
+      "aliases": [
+        "GEV-26B-Decide",
+        "JEV-27B-VL"
+      ],
       "pattern": "AutoTrust|GEV-26B-Decide|JEV-27B-VL",
-      "event_ids": ["ev-20261002-05"],
-      "source_ids": ["src-82ed428159c76108", "src-7073395c0f949110"],
+      "event_ids": [
+        "ev-20261002-05"
+      ],
+      "source_ids": [
+        "src-82ed428159c76108",
+        "src-7073395c0f949110"
+      ],
       "current_judgment_event_id": "ev-20261002-05",
-      "official_source_ids": ["src-82ed428159c76108", "src-7073395c0f949110"],
+      "official_source_ids": [
+        "src-82ed428159c76108",
+        "src-7073395c0f949110"
+      ],
       "last_reviewed_at": "2026-10-05T16:36:00Z",
       "judgment": {
         "recommendation": "IGNORE",
@@ -1648,9 +1663,350 @@
         "judgment_en": "Downloads are high, but reproducible and independent evaluation is insufficient, so the models do not merit investment yet.",
         "next_action_zh": "暂不投入；等公开可复现 benchmark 或独立评测后再重新评估。",
         "next_action_en": "Do not invest yet; reassess after a reproducible benchmark package or independent evaluation appears.",
-        "basis_event_ids": ["ev-20261002-05"],
+        "basis_event_ids": [
+          "ev-20261002-05"
+        ],
         "reviewed_at": "2026-10-05T16:36:00Z"
       }
+    },
+    {
+      "id": "token-cues",
+      "name_zh": "Token Cues",
+      "name_en": "Token Cues",
+      "type": "research",
+      "aliases": [
+        "Token Cues"
+      ],
+      "pattern": "Token Cues",
+      "event_ids": [
+        "ev-20261005-02"
+      ],
+      "source_ids": [
+        "src-2dc482b578bd272e",
+        "src-1ed38ff8a0900bcf"
+      ],
+      "current_judgment_event_id": "ev-20261005-02",
+      "official_source_ids": [
+        "src-2dc482b578bd272e",
+        "src-1ed38ff8a0900bcf"
+      ],
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "固定开场 token 能显著改变基础模型推理与拒答行为，但效果仍可能依赖模型、解码与任务。",
+        "judgment_en": "Fixed opening tokens can materially change base-model reasoning and refusal behavior, but effects may depend on model, decoding and task.",
+        "next_action_zh": "一天内用公开 demo 固定随机种子，对 20 道 MATH-500 比较无 cue 与两种 cue 的正确率、输出长度和拒答变化。",
+        "next_action_en": "Within one day, use the public demo on 20 MATH-500 items with fixed seeds and compare accuracy, output length and refusal changes across no cue and two cues.",
+        "basis_event_ids": [
+          "ev-20261005-02"
+        ],
+        "reviewed_at": "2026-10-06T16:01:25Z"
+      }
+    },
+    {
+      "id": "mempilot",
+      "name_zh": "MemPilot",
+      "name_en": "MemPilot",
+      "type": "framework",
+      "aliases": [
+        "MemPilot"
+      ],
+      "pattern": "MemPilot",
+      "event_ids": [
+        "ev-20261005-03"
+      ],
+      "source_ids": [
+        "src-ddad85e61e90e037",
+        "src-4954caf72692b25e"
+      ],
+      "current_judgment_event_id": "ev-20261005-03",
+      "official_source_ids": [
+        "src-ddad85e61e90e037",
+        "src-4954caf72692b25e"
+      ],
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "MemPilot 把多模态记忆整理变成运行时质量、成本与延迟的路由问题；公开代码足以做有边界的验证。",
+        "judgment_en": "MemPilot turns multimodal memory curation into a runtime quality, cost and latency routing problem; public code supports a bounded trial.",
+        "next_action_zh": "一天内用公开代码跑一个小型长会话切片，比较固定记忆与按需整理的答案质量、模型调用成本和延迟。",
+        "next_action_en": "Within one day, run a small long-session slice with the public code and compare answer quality, model-call cost and latency against fixed memory.",
+        "basis_event_ids": [
+          "ev-20261005-03"
+        ],
+        "reviewed_at": "2026-10-06T16:01:25Z"
+      }
+    },
+    {
+      "id": "bazaarbench",
+      "name_zh": "BazaarBench",
+      "name_en": "BazaarBench",
+      "type": "benchmark",
+      "aliases": [
+        "BazaarBench"
+      ],
+      "pattern": "BazaarBench",
+      "event_ids": [
+        "ev-20261005-04"
+      ],
+      "source_ids": [
+        "src-acfdc5e9a3c09876",
+        "src-99fb4e96ce45cc0a",
+        "src-728322f227cfa632"
+      ],
+      "current_judgment_event_id": "ev-20261005-04",
+      "official_source_ids": [
+        "src-acfdc5e9a3c09876",
+        "src-99fb4e96ce45cc0a",
+        "src-728322f227cfa632"
+      ],
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "BazaarBench 公开了能检查库存、承诺和交易后果的 agent marketplace 安全评测栈。",
+        "judgment_en": "BazaarBench provides a public marketplace-agent safety stack that checks inventory, commitments and transaction consequences.",
+        "next_action_zh": "一天内用公开市场快照跑一组普通与对抗场景，核对重复售卖、无货成交和声誉损失是否能被现有护栏拦截。",
+        "next_action_en": "Within one day, run one public market state under normal and adversarial prompts and check whether existing guards catch double-selling, unavailable sales and reputation loss.",
+        "basis_event_ids": [
+          "ev-20261005-04"
+        ],
+        "reviewed_at": "2026-10-06T16:01:25Z"
+      }
+    },
+    {
+      "id": "oppd",
+      "name_zh": "OPPD",
+      "name_en": "OPPD",
+      "type": "research",
+      "aliases": [
+        "OPPD"
+      ],
+      "pattern": "OPPD",
+      "event_ids": [
+        "ev-20261005-05"
+      ],
+      "source_ids": [
+        "src-4385255e1095b1b2",
+        "src-b8c398610b744e21"
+      ],
+      "current_judgment_event_id": "ev-20261005-05",
+      "official_source_ids": [
+        "src-4385255e1095b1b2",
+        "src-b8c398610b744e21"
+      ],
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "OPPD 可能把多候选推理搜索蒸馏进一次生成，但作者结果需要按完整算力成本复现。",
+        "judgment_en": "OPPD may distill multi-candidate reasoning search into one generation, but author results need reproduction with full compute accounting.",
+        "next_action_zh": "一天内用公开代码在一个小模型和 100 道 MATH-500 上复现单次生成收益，并记录训练算力与 GRPO 基线。",
+        "next_action_en": "Within one day, use the public code on one small model and 100 MATH-500 items, recording single-generation gains, training compute and a GRPO baseline.",
+        "basis_event_ids": [
+          "ev-20261005-05"
+        ],
+        "reviewed_at": "2026-10-06T16:01:25Z"
+      }
+    },
+    {
+      "id": "falcon-emirati",
+      "name_zh": "Falcon-Emirati",
+      "name_en": "Falcon-Emirati",
+      "type": "model",
+      "aliases": [
+        "Falcon-Emirati"
+      ],
+      "pattern": "Falcon-Emirati",
+      "event_ids": [
+        "ev-20261006-01"
+      ],
+      "source_ids": [
+        "src-fe424883c3cacf66",
+        "src-3b6154e118a0f82a"
+      ],
+      "current_judgment_event_id": "ev-20261006-01",
+      "official_source_ids": [
+        "src-fe424883c3cacf66",
+        "src-3b6154e118a0f82a"
+      ],
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "Falcon-Emirati 展示地区方言模型的价值，但当前只有聊天入口，无法独立部署或复核。",
+        "judgment_en": "Falcon-Emirati shows the value of regional dialect models, but chat-only access blocks independent deployment and verification.",
+        "next_action_zh": "等权重或 API 开放后，用真实阿联酋客服语料复测方言理解、文化常识和标准阿拉伯语回退。",
+        "next_action_en": "Reassess when weights or an API open, using real Emirati support data to test dialect understanding, cultural knowledge and MSA fallback.",
+        "basis_event_ids": [
+          "ev-20261006-01"
+        ],
+        "reviewed_at": "2026-10-06T16:01:25Z"
+      }
+    },
+    {
+      "id": "beam",
+      "name_zh": "Beam",
+      "name_en": "Beam",
+      "type": "model",
+      "aliases": [
+        "Beam"
+      ],
+      "pattern": "Beam",
+      "event_ids": [
+        "ev-20261005-06"
+      ],
+      "source_ids": [
+        "src-917ba46d3f15f0c5"
+      ],
+      "current_judgment_event_id": "ev-20261005-06",
+      "official_source_ids": [
+        "src-917ba46d3f15f0c5"
+      ],
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "Beam 仍是限量预览，权重和评测材料尚未发布。",
+        "judgment_en": "Beam remains a limited preview; weights and evaluation artifacts are not yet released.",
+        "next_action_zh": "等 Apache 2.0 权重、model card 和复现脚本真正发布后，再测显存需求、吞吐和 coding benchmark。",
+        "next_action_en": "Wait for the Apache 2.0 weights, model card and reproduction scripts, then measure memory, throughput and coding benchmarks.",
+        "basis_event_ids": [
+          "ev-20261005-06"
+        ],
+        "reviewed_at": "2026-10-06T16:01:25Z"
+      }
+    },
+    {
+      "id": "vals-magnetic-candidates",
+      "name_zh": "Vals 磁性半导体候选",
+      "name_en": "Vals 磁性半导体候选",
+      "type": "research",
+      "aliases": [
+        "Vals 磁性半导体候选"
+      ],
+      "pattern": "Vals 磁性半导体候选",
+      "event_ids": [
+        "ev-20261005-07"
+      ],
+      "source_ids": [
+        "src-dbf6a51fde3f190f",
+        "src-ee97e68450db5c63"
+      ],
+      "current_judgment_event_id": "ev-20261005-07",
+      "official_source_ids": [
+        "src-dbf6a51fde3f190f",
+        "src-ee97e68450db5c63"
+      ],
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "agent 产出了可审计的材料计算假设，但关键性质尚无实验确认。",
+        "judgment_en": "Agents produced an auditable materials hypothesis, but key properties lack experimental confirmation.",
+        "next_action_zh": "等独立实验测出带隙和自旋分离后，再把该工作流视为材料发现能力证据。",
+        "next_action_en": "Wait for independent experimental measurements of band gap and spin sorting before treating the workflow as evidence of materials-discovery capability.",
+        "basis_event_ids": [
+          "ev-20261005-07"
+        ],
+        "reviewed_at": "2026-10-06T16:01:25Z"
+      }
+    },
+    {
+      "id": "wikimedia-agent-incident",
+      "name_zh": "Wikimedia Agent 事件",
+      "name_en": "Wikimedia Agent 事件",
+      "type": "research",
+      "aliases": [
+        "Wikimedia Agent 事件"
+      ],
+      "pattern": "Wikimedia Agent 事件",
+      "event_ids": [
+        "ev-20261005-08"
+      ],
+      "source_ids": [
+        "src-0bf65300a2ecec70"
+      ],
+      "current_judgment_event_id": "ev-20261005-08",
+      "official_source_ids": [
+        "src-0bf65300a2ecec70"
+      ],
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "judgment": {
+        "recommendation": "ADOPT",
+        "judgment_zh": "已验证的外部性事件表明生产 agent 必须具备身份、出口、限流与可归因审计。",
+        "judgment_en": "A verified externality incident shows production agents need identity, egress, rate and attributable audit controls.",
+        "next_action_zh": "为生产 agent 强制可识别 User-Agent、目标域 allowlist、请求配额、熔断和逐任务审计日志。",
+        "next_action_en": "Require identifiable User-Agents, destination allowlists, request quotas, circuit breakers and per-task audit logs for production agents.",
+        "basis_event_ids": [
+          "ev-20261005-08"
+        ],
+        "reviewed_at": "2026-10-06T16:01:25Z"
+      }
+    },
+    {
+      "id": "dust",
+      "name_zh": "Dust",
+      "name_en": "Dust",
+      "type": "research",
+      "aliases": [
+        "Dust"
+      ],
+      "pattern": "Dust",
+      "event_ids": [
+        "ev-20261005-09"
+      ],
+      "source_ids": [
+        "src-98e0d54368129c35",
+        "src-57ef1ca660041a0a"
+      ],
+      "current_judgment_event_id": "ev-20261005-09",
+      "official_source_ids": [
+        "src-98e0d54368129c35",
+        "src-57ef1ca660041a0a"
+      ],
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Dust 公开了不用反向传播训练 Transformer 的最小实现，但离生产效率仍差几个数量级。",
+        "judgment_en": "Dust publishes a minimal transformer training implementation without backprop, but remains orders of magnitude from production efficiency.",
+        "next_action_zh": "一天内用公开单 GPU 配置跑两步 smoke test，再以同一 1M-token 数据比较 Dust 与 SGD 的损失、显存和前向计算量。",
+        "next_action_en": "Within one day, run the public single-GPU two-step smoke test, then compare Dust and SGD on the same 1M-token data for loss, memory and forward-pass compute.",
+        "basis_event_ids": [
+          "ev-20261005-09"
+        ],
+        "reviewed_at": "2026-10-06T16:01:25Z"
+      }
+    },
+    {
+      "id": "mistral-large-4",
+      "name_zh": "Mistral Large 4",
+      "name_en": "Mistral Large 4",
+      "type": "model",
+      "aliases": [
+        "Mistral Large 4"
+      ],
+      "pattern": "Mistral Large 4",
+      "event_ids": [
+        "ev-20261006-02"
+      ],
+      "source_ids": [
+        "src-1ef243007176e85c",
+        "src-6c37fbb22f2f9770"
+      ],
+      "current_judgment_event_id": "ev-20261006-02",
+      "official_source_ids": [
+        "src-1ef243007176e85c",
+        "src-6c37fbb22f2f9770"
+      ],
+      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Large 4 已有 public preview API，权重与完整技术材料尚待发布。",
+        "judgment_en": "Large 4 has a public preview API; weights and complete technical artifacts are still pending.",
+        "next_action_zh": "一天内通过 preview API 跑多模态工具调用、长上下文和 160+ 语言中的目标语种测试，并记录延迟、成本与失败恢复。",
+        "next_action_en": "Within one day, use the preview API to test multimodal tool use, long context and target languages, recording latency, cost and recovery failures.",
+        "basis_event_ids": [
+          "ev-20261006-02"
+        ],
+        "reviewed_at": "2026-10-06T16:01:25Z"
+      }
     }
-  ]
+  ],
+  "last_updated": "2026-10-06T16:01:24Z"
 }
