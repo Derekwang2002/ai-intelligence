@@ -896,6 +896,111 @@
       "last_updated_at": "2026-10-04T16:02:19Z",
       "summary_en": "Figma documents that only clients listed in its MCP Catalog may connect to the hosted Figma MCP server. Developers of new clients must join a waitlist. The current catalog includes Claude, Claude Code, ChatGPT, Codex, Cursor, Xcode beta and VS Code.",
       "why_it_matters_en": "For teams integrating design tools through MCP, protocol compatibility alone does not guarantee hosted access. Client allowlisting creates a product-level dependency that must be checked before choosing the hosted path."
+    },
+    {
+      "event_id": "ev-20261001-10",
+      "title": "EMA Lightning releases a compact streaming Turkish speech model",
+      "title_zh": "EMA Lightning 发布小型流式土耳其语语音模型",
+      "category": "open-source",
+      "organization": [
+        "open-source community"
+      ],
+      "published_at": "2026-10-01T14:18:49Z",
+      "first_seen_at": "2026-10-07T22:04:39Z",
+      "last_updated_at": "2026-10-06T19:52:35Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/canberkkkkkk/ema-lightning",
+      "secondary_sources": [
+        "https://github.com/canberk7/ema-lightning"
+      ],
+      "summary": "EMA Lightning releases Apache 2.0 weights and code for an 8.6M-parameter Turkish text-to-speech stack with streaming, CPU support and a shared GPU scheduler. The model card reports 0.92% WER on Freya-TR-Eval, 3.86 ms to first audio and 440x real-time generation on an RTX 4090. Training used about 1,000 hours of private single-speaker audio.",
+      "summary_en": "EMA Lightning releases Apache 2.0 weights and code for an 8.6M-parameter Turkish text-to-speech stack with streaming, CPU support and a shared GPU scheduler. The model card reports 0.92% WER on Freya-TR-Eval, 3.86 ms to first audio and 440x real-time generation on an RTX 4090. Training used about 1,000 hours of private single-speaker audio.",
+      "summary_zh": "EMA Lightning 以 Apache 2.0 公开 8.6M 参数的土耳其语 TTS 权重与代码，支持流式输出、CPU 运行和共享 GPU 调度。模型卡报告 Freya-TR-Eval WER 为 0.92%，RTX 4090 首段音频延迟 3.86 毫秒，生成速度为实时的 440 倍。训练使用约 1,000 小时未公开的单说话人语音。",
+      "why_it_matters": "For teams serving Turkish speech, this is a small, inspectable alternative with unusually low reported latency. The benchmark and cost numbers are author-run, and the private training corpus limits data-provenance review, so production use needs independent quality and safety testing.",
+      "why_it_matters_en": "For teams serving Turkish speech, this is a small, inspectable alternative with unusually low reported latency. The benchmark and cost numbers are author-run, and the private training corpus limits data-provenance review, so production use needs independent quality and safety testing.",
+      "why_it_matters_zh": "对提供土耳其语语音服务的团队来说，这是体积小、可检查且报告延迟很低的替代方案。benchmark 与成本均由作者测量，私有训练语料也限制了数据来源审查，生产使用前必须独立测试质量与安全。",
+      "technical_details": {
+        "parameters": "5.6M acoustic model plus 3M decoder; about 34 MB total",
+        "license": "Apache 2.0",
+        "language": "Turkish",
+        "reported_quality": "0.92% WER on Freya-TR-Eval",
+        "reported_speed": "3.86 ms first audio and 440x real time on RTX 4090; about 6x real time on CPU",
+        "training_data": "about 1,000 hours of private single-speaker Turkish speech",
+        "artifacts": "Hugging Face weights, GitHub code and pip package"
+      },
+      "technical_details_zh": {
+        "参数": "5.6M 声学模型加 3M decoder；总计约 34 MB",
+        "许可": "Apache 2.0",
+        "语言": "土耳其语",
+        "作者报告质量": "Freya-TR-Eval WER 0.92%",
+        "作者报告速度": "RTX 4090 首段音频 3.86 毫秒、实时 440 倍；CPU 约实时 6 倍",
+        "训练数据": "约 1,000 小时未公开的单说话人土耳其语语音",
+        "公开材料": "Hugging Face 权重、GitHub 代码与 pip 包"
+      },
+      "tags": [
+        "tts",
+        "turkish",
+        "speech",
+        "streaming",
+        "open-weight"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "ema-lightning-compact-streaming-turkish-tts",
+      "short_label_zh": "EMA Lightning",
+      "short_label_en": "EMA Lightning",
+      "next_action_zh": "一天内用公开权重在自有土耳其语样本上测 WER、首段延迟、并发和异常文本，并审查私有训练数据带来的使用边界。",
+      "next_action_en": "Within one day, run the public weights on owned Turkish samples for WER, first-audio latency, concurrency and malformed text, and review limits from private training data.",
+      "source_ids": [
+        "src-4c03269d7f1a2e7f",
+        "src-afab7424da484a7e"
+      ],
+      "project_ids": [
+        "ema-lightning"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "recall-audit",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261001-10-artifact-evidence",
+          "claim_zh": "EMA Lightning 公开 8.6M 参数土耳其语流式 TTS 的权重、代码与作者 benchmark。",
+          "claim_en": "EMA Lightning publishes weights, code and author-run benchmarks for an 8.6M-parameter streaming Turkish TTS stack.",
+          "source_ids": [
+            "src-4c03269d7f1a2e7f",
+            "src-afab7424da484a7e"
+          ],
+          "event_ids": [
+            "ev-20261001-10"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261001-10-published",
+          "kind": "new",
+          "occurred_at": "2026-10-01T14:18:49Z",
+          "discovered_at": "2026-10-07T22:04:39Z",
+          "summary_zh": "EMA Lightning 公开小型流式土耳其语 TTS 权重与代码",
+          "summary_en": "EMA Lightning publishes compact streaming Turkish TTS weights and code",
+          "evidence_ids": [
+            "ev-20261001-10-artifact-evidence"
+          ],
+          "historical": false,
+          "importance": "major",
+          "recovery": "recall-audit"
+        }
+      ]
     }
   ]
 }

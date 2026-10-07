@@ -1136,6 +1136,105 @@
       "last_updated_at": "2026-10-04T16:02:19Z",
       "summary_en": "Strata is an MIT-licensed inference engine that distributes Qwen3.8-Flash-Next experts across GPU, RAM, CPU and SSD. It exposes OpenAI- and Anthropic-compatible local endpoints and documents a 12 GB GPU, 32 GB RAM and about 80 GB SSD floor. Author benchmarks report 60–94 output tokens per second on recent gaming GPUs.",
       "why_it_matters_en": "For teams evaluating very large sparse models locally, Strata offers a concrete heterogeneous-memory serving design and agent-compatible APIs. Rapid repository adoption warrants a trial, but self-reported speed and aggressive quantization require quality and restart tests."
+    },
+    {
+      "event_id": "ev-20260924-13",
+      "title": "openTPU runs open models on a fully inspectable FPGA accelerator",
+      "title_zh": "openTPU 在可审计 FPGA 加速器上运行开放模型",
+      "category": "infrastructure",
+      "organization": [
+        "open-source community"
+      ],
+      "published_at": "2026-09-24T12:26:10Z",
+      "first_seen_at": "2026-10-07T22:04:39Z",
+      "last_updated_at": "2026-10-07T11:24:40Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/FeSens/openTPU",
+      "secondary_sources": [],
+      "summary": "openTPU publishes an Apache 2.0 accelerator stack spanning SystemVerilog RTL, an instruction set, simulator, compiler, host tools and profiler. The project runs ten open models on a Kintex-7 PCIe FPGA and reports bit-for-bit agreement between the card and simulator. An October 7 update added Hugging Face golden-model validation and fixes from a whole-code assessment.",
+      "summary_en": "openTPU publishes an Apache 2.0 accelerator stack spanning SystemVerilog RTL, an instruction set, simulator, compiler, host tools and profiler. The project runs ten open models on a Kintex-7 PCIe FPGA and reports bit-for-bit agreement between the card and simulator. An October 7 update added Hugging Face golden-model validation and fixes from a whole-code assessment.",
+      "summary_zh": "openTPU 以 Apache 2.0 公开完整加速器栈，包括 SystemVerilog RTL、指令集、模拟器、编译器、主机工具和 profiler。项目在 Kintex-7 PCIe FPGA 上运行十个开放模型，并报告板卡与模拟器逐位一致。10 月 7 日更新加入 Hugging Face golden model 校验，并修复一次全代码审查发现的问题。",
+      "why_it_matters": "For inference-infrastructure engineers, this is a compact, inspectable path from model operators to hardware behavior rather than a competitive production accelerator. The unusual FPGA card, vendor toolchain and author-run measurements limit immediate adoption.",
+      "why_it_matters_en": "For inference-infrastructure engineers, this is a compact, inspectable path from model operators to hardware behavior rather than a competitive production accelerator. The unusual FPGA card, vendor toolchain and author-run measurements limit immediate adoption.",
+      "why_it_matters_zh": "对推理基础设施工程师来说，它提供了从模型算子到硬件行为都可检查的紧凑实现，更适合作为学习和验证平台，而不是生产加速器替代品。特殊 FPGA 板卡、厂商工具链和作者自测限制了直接采用。",
+      "technical_details": {
+        "hardware": "Xilinx Kintex-7 xc7k480t PCIe card with two DDR3 channels",
+        "stack": "SystemVerilog RTL, ISA, bit-exact simulator, kernel language/compiler, host software and profiler",
+        "models": "Ten open models including Qwen3, Qwen3.5, LFM2.5, Gemma 4, SmolLM3 and Phi-4-mini",
+        "reported_validation": "Card and ISA simulator produce bit-identical tokens and logits; quantized golden comparison is near its numerical floor",
+        "reported_throughput": "LFM2.5-230M up to 82.1 wall tok/s; larger models are slower",
+        "license": "Apache 2.0"
+      },
+      "technical_details_zh": {
+        "硬件": "Xilinx Kintex-7 xc7k480t PCIe 板卡，双 DDR3 通道",
+        "软件栈": "SystemVerilog RTL、指令集、逐位模拟器、kernel 语言与编译器、主机软件和 profiler",
+        "模型": "十个开放模型，包括 Qwen3、Qwen3.5、LFM2.5、Gemma 4、SmolLM3 和 Phi-4-mini",
+        "作者报告校验": "板卡与 ISA 模拟器生成逐位一致的 token 和 logits；量化 golden model 对比接近数值误差下限",
+        "作者报告吞吐": "LFM2.5-230M 最高 82.1 wall tok/s；更大模型明显更慢",
+        "许可": "Apache 2.0"
+      },
+      "tags": [
+        "fpga",
+        "accelerator",
+        "inference",
+        "compiler",
+        "open-source"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "opentpu-open-fpga-ai-accelerator-stack",
+      "short_label_zh": "openTPU",
+      "short_label_en": "openTPU",
+      "next_action_zh": "一天内先用 ISA simulator 跑公开小模型和 golden 校验；只有已有兼容板卡时再编译 bitstream，记录工具链时间与误差。",
+      "next_action_en": "Within one day, run a public small model and golden validation in the ISA simulator; compile a bitstream only with compatible hardware, recording toolchain time and error.",
+      "source_ids": [
+        "src-576ded508c0bb401"
+      ],
+      "project_ids": [
+        "opentpu"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "late-discovery",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20260924-13-repository-evidence",
+          "claim_zh": "openTPU 公开完整 FPGA 加速器栈，并提供模拟器、板卡与 Hugging Face golden model 之间的校验路径。",
+          "claim_en": "openTPU exposes a complete FPGA accelerator stack with validation across its simulator, physical card and a Hugging Face golden model.",
+          "source_ids": [
+            "src-576ded508c0bb401"
+          ],
+          "event_ids": [
+            "ev-20260924-13"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260924-13-published",
+          "kind": "new",
+          "occurred_at": "2026-09-24T12:26:10Z",
+          "discovered_at": "2026-10-07T22:04:39Z",
+          "summary_zh": "openTPU 公开从编译器到 FPGA 板卡的完整 AI 加速器栈",
+          "summary_en": "openTPU publishes a complete AI accelerator stack from compiler to FPGA card",
+          "evidence_ids": [
+            "ev-20260924-13-repository-evidence"
+          ],
+          "historical": false,
+          "importance": "major",
+          "recovery": "recall-audit"
+        }
+      ]
     }
   ]
 }

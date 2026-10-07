@@ -92,8 +92,12 @@
           "id": "ev-20260922-01-vllm-0-31-evidence",
           "claim_zh": "vLLM 0.31 将快速重启扩展到 DP 与 MTP，并提供实验性的初始化引擎快照；该版本还默认拒绝请求级多模态处理参数，并加固 prefix cache 与 LoRA 的哈希边界。",
           "claim_en": "vLLM 0.31 extends fast restart to DP and MTP and adds experimental initialized-engine snapshots; it also rejects request-level multimodal processor options by default and hardens prefix-cache and LoRA hash boundaries.",
-          "source_ids": ["src-9668af85ed2e1acf"],
-          "event_ids": ["ev-20260922-01"],
+          "source_ids": [
+            "src-9668af85ed2e1acf"
+          ],
+          "event_ids": [
+            "ev-20260922-01"
+          ],
           "verification": "verified-primary-source",
           "relation": "support"
         }
@@ -118,7 +122,9 @@
           "discovered_at": "2026-10-05T16:01:12Z",
           "summary_zh": "vLLM 0.31 扩展快速重启，并默认收紧多模态请求边界。",
           "summary_en": "vLLM 0.31 extends fast restart and tightens multimodal request boundaries by default.",
-          "evidence_ids": ["ev-20260922-01-vllm-0-31-evidence"],
+          "evidence_ids": [
+            "ev-20260922-01-vllm-0-31-evidence"
+          ],
           "historical": false,
           "importance": "major"
         }
@@ -145,14 +151,15 @@
       ],
       "published_at": "2026-09-22T18:16:00Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-09-27T00:44:11Z",
+      "last_updated_at": "2026-10-07T22:04:39Z",
       "source_type": "official_announcement",
       "primary_source": "https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna/1399925",
       "secondary_sources": [
         "https://developers.openai.com/api/docs/models/gpt-6-sol",
         "https://developers.openai.com/api/docs/pricing",
         "https://github.com/openai/codex/releases/tag/rust-v0.156.1",
-        "https://developers.openai.com/api/docs/changelog"
+        "https://developers.openai.com/api/docs/changelog",
+        "https://openai.com/index/gpt-6-for-everyone"
       ],
       "summary": "OpenAI released GPT-6 Sol and Luna for complex coding and cost-sensitive, high-volume work. Both support multimodal inputs and long context through the API and surfaces including Codex. A subsequent image-encoding fix warrants revisiting earlier visual evaluations.",
       "why_it_matters": "Compare task-level cost and reliability before routing workloads. Revisit failed image-input cases before changing adoption decisions.",
@@ -167,7 +174,8 @@
         "capabilities": "multimodal input, built-in tools, reasoning effort none through max",
         "availability": "API, ChatGPT Work and Codex on eligible paid plans",
         "safety": "OpenAI classifies both High but below Critical for cyber and bio/chemical capability",
-        "image_encoding_fix": "Official changelog dated September 25; no improvement magnitude reported."
+        "image_encoding_fix": "Official changelog dated September 25; no improvement magnitude reported.",
+        "update_2026_10_07": "GPT-6 rolls out globally in ChatGPT with streamable native interactive UI components and progressive follow-up reasoning. Sol powers paid tiers and Luna powers Free/Go; this changes Chat only, not Work or Codex models."
       },
       "technical_details_zh": {
         "模型": "gpt-6-sol 与 gpt-6-luna",
@@ -176,7 +184,8 @@
         "能力": "多模态输入、内置工具、none 至 max 推理档位",
         "可用性": "API、ChatGPT Work 与符合条件的 Codex 付费计划",
         "安全分级": "OpenAI 将两者的网络安全与生物/化学能力评为 High，但未达到 Critical",
-        "图像编码修复": "官方 changelog 日期为 9 月 25 日；未披露改善幅度。"
+        "图像编码修复": "官方 changelog 日期为 9 月 25 日；未披露改善幅度。",
+        "2026_10_07_更新": "GPT-6 在 ChatGPT 全球推出可流式生成的原生交互 UI，并支持先答后继续推理。付费层使用 Sol，Free/Go 使用 Luna；此次只改变 Chat，不改变 Work 或 Codex 的模型。"
       },
       "tags": [
         "openai",
@@ -193,14 +202,17 @@
       "maturity": 4,
       "verification_cost": 3,
       "risk": 3,
-      "recommendation": "TRIAL",
-      "event_fingerprint": "openai-gpt-6-sol-luna-release",
+  "recommendation": "TRIAL",
+  "event_fingerprint": "openai-gpt-6-sol-luna-release",
+  "short_label_zh": "GPT-6 Intelligent UI",
+  "short_label_en": "GPT-6 Intelligent UI",
       "source_ids": [
         "src-c12530ce8eec01bd",
         "src-e3a5934e3172ec52",
         "src-00eaf917ab1113cf",
         "src-6e556c3af2807b57",
-        "src-49e8d0577a5e1f9d"
+        "src-49e8d0577a5e1f9d",
+        "src-a097ef0d441a7216"
       ],
       "project_ids": [
         "gpt-6"
@@ -225,8 +237,8 @@
           "verification": "historical",
           "relation": "background"
         },
-        {
-          "id": "ev-20260922-02-image-fix-evidence",
+    {
+      "id": "ev-20260922-02-image-fix-evidence",
           "claim_zh": "OpenAI 在 9 月 25 日记录了 GPT-6 Sol / Luna 的图像编码修复。涉及图像输入的评估需要重跑，旧结果可能受该问题影响。",
           "claim_en": "OpenAI documented a GPT-6 Sol/Luna image-encoding fix on September 25. Recheck image-input evaluations that may have been affected.",
           "source_ids": [
@@ -236,8 +248,21 @@
             "ev-20260922-02"
           ],
           "relation": "support",
-          "verification": "official-claim"
-        }
+      "verification": "official-claim"
+    },
+    {
+      "id": "ev-20260922-02-intelligent-ui-evidence",
+      "claim_zh": "OpenAI 在 ChatGPT 为 GPT-6 推出可流式生成的原生交互 UI 与渐进式后续推理。",
+      "claim_en": "OpenAI brings streamable native interactive UI and progressive follow-up reasoning to GPT-6 in ChatGPT.",
+      "source_ids": [
+        "src-a097ef0d441a7216"
+      ],
+      "event_ids": [
+        "ev-20260922-02"
+      ],
+      "relation": "support",
+      "verification": "verified-primary-source"
+    }
       ],
       "changes": [
         {
@@ -265,9 +290,24 @@
           "historical": false,
           "importance": "major",
           "recovery": "targeted-gap-review"
+        },
+        {
+          "id": "ev-20260922-02-intelligent-ui",
+          "kind": "update",
+          "occurred_at": "2026-10-07T00:00:00Z",
+          "discovered_at": "2026-10-07T22:04:39Z",
+          "summary_zh": "GPT-6 在 ChatGPT 推出原生交互 UI 与渐进式后续推理。",
+          "summary_en": "GPT-6 brings native interactive UI and progressive follow-up reasoning to ChatGPT.",
+      "evidence_ids": [
+        "ev-20260922-02-intelligent-ui-evidence"
+      ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "last_reviewed_at": "2026-09-27T00:44:11Z"
+      "last_reviewed_at": "2026-10-07T22:04:39Z",
+      "next_action_zh": "用真实解释、比较和计算任务检查 Intelligent UI 的正确性、无障碍、降级文本与数据边界。",
+      "next_action_en": "Test Intelligent UI on real explanation, comparison and calculator tasks for correctness, accessibility, text fallback and data boundaries."
     },
     {
       "event_id": "ev-20260922-03",

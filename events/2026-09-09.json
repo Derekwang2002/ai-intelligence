@@ -113,7 +113,7 @@
       ],
       "published_at": "2026-09-09T00:00:00Z",
       "first_seen_at": "2026-09-11T18:31:49Z",
-      "last_updated_at": "2026-10-02T16:00:56Z",
+      "last_updated_at": "2026-10-07T22:04:39Z",
       "source_type": "official_docs",
       "primary_source": "https://github.blog/changelog/2026-09-09-enterprise-managed-permissions-for-github-copilot-agent-operations/",
       "secondary_sources": [
@@ -125,7 +125,9 @@
         "https://github.blog/changelog/2026-09-23-local-sandboxing-in-the-github-copilot-app/",
         "https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps/",
         "https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/",
-        "https://github.com/github/copilot-cli/releases/tag/v1.0.91"
+        "https://github.com/github/copilot-cli/releases/tag/v1.0.91",
+        "https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available",
+        "https://github.blog/changelog/2026-10-07-discover-local-models-in-github-copilot-cli"
       ],
       "summary": "GitHub Copilot now combines enterprise-managed block, ask and allow policies with local sandboxing, adoption telemetry and scheduled agent automation. October previews add approval-gated desktop computer use and code-defined dynamic workflows with parallel agents, structured results, verification and checkpoints. CLI 1.0.91 also tightens sandbox certificate handling and read-only pipeline classification.",
       "why_it_matters": "Agent governance has moved from vendor talk to org-policy surfaces: the same block/ask/allow model Claude Code ships as managed settings is now GA across Copilot's app/CLI/IDE fleet, and the JetBrains sandbox preview extends it to the IDE. Combined with scheduled automation, Copilot agents can now run unattended inside org-defined guardrails — the governance half of the always-on agent stack.",
@@ -142,7 +144,8 @@
         "update_2026_09_12": "VS Code Agents-window usage metrics GA @9/11 changelog: enterprise/org 1-day and 28-day reports expose active users, sessions, user messages and per-user adoption (recorded 2026-09-12 run; previously stored under usage_metrics_2026_09_11).",
         "update_2026_09_24": "Copilot app adds enterprise-managed OTel export for model/tool/session traces (prompt and response content excluded by default) and per-project local sandbox policies for filesystem, network and credentials; unsupported enforcement fails closed. JetBrains 1.18 adds preview assisted approvals, organization skills/instructions and persistent per-MCP-tool controls. Local sandboxing is off by default and public preview. Stays TRIAL.",
         "update_2026_09_26": "A new global default lets enterprises choose enabled, disabled or organization-controlled behavior for current and future eligible GA Copilot features, Code Review and MCP-server policy. It takes effect October 22, preserves explicit choices and keeps previews opt-in. Stays TRIAL; admins should set the default before enforcement begins.",
-        "update_2026_10_02": "Public previews add approval-gated desktop computer use and code-defined dynamic workflows with parallel agents, structured results, verification and checkpoints; CLI 1.0.91 adds sandbox CA lifecycle commands and tighter read-only pipeline classification."
+        "update_2026_10_02": "Public previews add approval-gated desktop computer use and code-defined dynamic workflows with parallel agents, structured results, verification and checkpoints; CLI 1.0.91 adds sandbox CA lifecycle commands and tighter read-only pipeline classification.",
+        "update_2026_10_07": "Local sandboxing is GA across Copilot CLI, app and VS Code Agent Host with organization-enforced MXC policies. CLI 1.0.94-0 discovers tool-calling Ollama models; local selection does not disable GitHub telemetry unless offline mode is explicitly enabled."
       },
       "technical_details_zh": {
         "托管权限 GA": "2026-09-09，GA；Copilot Business + Enterprise；覆盖 Copilot 应用、CLI、Agent Host 上的 VS Code 会话；对 shell 命令、文件读写、网络域 block/ask/allow；覆盖用户/工作区设置、自动批准、已存批准；支持按团队",
@@ -153,7 +156,8 @@
         "update_2026_09_12": "VS Code Agents 窗口使用指标 GA（9/11 changelog）：企业/组织的 1 天与 28 天报告暴露活跃用户、会话、用户消息与用户级采用情况（2026-09-12 运行记录；此前存于 usage_metrics_2026_09_11 键下）。",
         "2026-09-24 更新": "Copilot app 增加企业托管 OTel 导出，可记录模型、工具与会话 trace（默认不含 prompt 和 response 内容），并为本地项目增加文件系统、网络与凭据沙箱策略；系统无法执行策略时会直接失败。JetBrains 1.18 增加预览版 assisted approvals、组织技能/指令与持久化的逐 MCP 工具控制。本地沙箱默认关闭且仍为公开预览。维持 TRIAL。",
         "2026-09-26 更新": "新的全局默认策略允许企业对当前及未来符合条件的 GA Copilot 功能、Code Review 与 MCP server policy 统一选择 enabled、disabled 或交给组织决定。策略将于 10 月 22 日生效，保留已有显式选择，preview 仍需主动启用。维持 TRIAL；管理员应在执行前设定默认值。",
-        "2026-10-02 更新": "公开预览新增需审批的桌面 computer use，以及支持并行 agent、结构化结果、验证与 checkpoint 的代码化动态工作流；CLI 1.0.91 增加沙箱 CA 生命周期命令并收紧只读流水线判定。"
+        "2026-10-02 更新": "公开预览新增需审批的桌面 computer use，以及支持并行 agent、结构化结果、验证与 checkpoint 的代码化动态工作流；CLI 1.0.91 增加沙箱 CA 生命周期命令并收紧只读流水线判定。",
+        "2026_10_07_更新": "本地沙箱在 Copilot CLI、应用与 VS Code Agent Host 全面 GA，可由组织通过 MXC 强制策略。CLI 1.0.94-0 可发现支持工具调用的 Ollama 模型；选择本地模型不会自动关闭 GitHub 遥测，仍需显式启用 offline mode。"
       },
       "tags": [
         "copilot",
@@ -179,10 +183,12 @@
         "src-28ba300194033bae",
         "src-18036a2d23f1f849",
         "src-cf4f876c079667fa",
-    "src-63e0251438a40139",
-    "src-c13e48d5c84eed36",
-    "src-aaf9c1204da16c29",
-    "src-81cdc3555a833682"
+        "src-63e0251438a40139",
+        "src-c13e48d5c84eed36",
+        "src-aaf9c1204da16c29",
+        "src-81cdc3555a833682",
+        "src-1e174328109aea32",
+        "src-8241d56116d90ff3"
       ],
       "project_ids": [
         "github-copilot"
@@ -210,10 +216,30 @@
           "id": "ev-20260909-02-computer-use-workflows-evidence",
           "claim_zh": "GitHub Copilot 公开预览桌面 computer use 与代码化动态工作流，并提供审批、组织禁用和 checkpoint。",
           "claim_en": "GitHub Copilot previews desktop computer use and code-defined dynamic workflows with approvals, organization controls and checkpoints.",
-          "source_ids": ["src-c13e48d5c84eed36", "src-aaf9c1204da16c29", "src-81cdc3555a833682"],
-          "event_ids": ["ev-20260909-02"],
+          "source_ids": [
+            "src-c13e48d5c84eed36",
+            "src-aaf9c1204da16c29",
+            "src-81cdc3555a833682"
+          ],
+          "event_ids": [
+            "ev-20260909-02"
+          ],
           "verification": "verified-primary-source",
           "relation": "support"
+        },
+        {
+          "id": "ev-20260909-02-local-sandbox-ga-evidence",
+          "claim_zh": "GitHub Copilot 将本地 sandbox 推向 GA，并让 CLI 发现 Ollama 模型。",
+          "claim_en": "GitHub Copilot makes local sandboxing GA and lets its CLI discover Ollama models.",
+          "source_ids": [
+            "src-1e174328109aea32",
+            "src-8241d56116d90ff3"
+          ],
+          "event_ids": [
+            "ev-20260909-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -236,15 +262,31 @@
           "discovered_at": "2026-10-02T16:00:56Z",
           "summary_zh": "Copilot 新增桌面 computer use 与代码化动态工作流公开预览",
           "summary_en": "Copilot previews desktop computer use and code-defined dynamic workflows",
-          "evidence_ids": ["ev-20260909-02-computer-use-workflows-evidence"],
+          "evidence_ids": [
+            "ev-20260909-02-computer-use-workflows-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20260909-02-local-sandbox-ga",
+          "kind": "update",
+          "occurred_at": "2026-10-07",
+          "discovered_at": "2026-10-07T22:04:39Z",
+          "summary_zh": "GitHub Copilot 本地沙箱转为 GA，并让 CLI 发现 Ollama 本地模型。",
+          "summary_en": "GitHub Copilot makes local sandboxing GA and lets its CLI discover Ollama models.",
+          "evidence_ids": [
+            "ev-20260909-02-local-sandbox-ga-evidence"
+          ],
           "historical": false,
           "importance": "major"
         }
       ],
       "short_label_zh": "Copilot Agent 治理",
       "short_label_en": "Copilot agent governance",
-      "next_action_zh": "在一次性 profile 中跑一个可逆桌面任务和一个带 checkpoint 的动态工作流，记录误操作与审批覆盖。",
-      "next_action_en": "Run one reversible desktop task and one checkpointed workflow in a disposable profile; record unintended actions and approval coverage."
+      "next_action_zh": "先强制启用 MXC 沙箱，再用 Ollama 跑一组工具调用任务，核对文件、网络、凭据与遥测边界。",
+      "next_action_en": "Require MXC sandboxing, then run tool-use tasks with Ollama and verify filesystem, network, credential and telemetry boundaries.",
+      "last_reviewed_at": "2026-10-07T22:04:39Z"
     }
   ]
 }

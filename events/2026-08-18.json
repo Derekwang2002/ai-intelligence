@@ -137,7 +137,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-10-02T16:00:56Z",
+      "last_updated_at": "2026-10-07T22:04:39Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [
@@ -148,7 +148,8 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.156.1",
         "https://github.com/openai/codex/releases/tag/rust-v0.158.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.159.0",
-        "https://github.com/openai/codex/releases/tag/rust-v0.160.0"
+        "https://github.com/openai/codex/releases/tag/rust-v0.160.0",
+        "https://github.com/openai/codex/releases/tag/rust-v0.161.0"
       ],
       "summary": "Codex CLI has evolved into a resumable multi-agent runtime with session forking, cross-session messaging, programmable hooks, managed worktrees and a built-in Bedrock provider. Version 0.160.0 adds optional Guardian retrieval of prior user instructions and handoff context, projectless sessions under workspace policy, permission-preserving resume and stronger reconnect and SQLite recovery.",
       "why_it_matters": "Three engineering-relevant moves land in one release. Session forking reaches the stable channel, extending Codex's multi-agent primitives from subagent spawning to exec-level branch-and-parallel workflows. Async hooks that can call MCP tools turn Codex into a programmable orchestration point. And a built-in Bedrock provider gives AWS shops a first-party path to Codex models, while `/status` cost visibility closes a long-standing budgeting gap.",
@@ -179,7 +180,8 @@
         "update_2026_09_26": "0.157.0 stable (2026-09-25T02:31Z) enables automatic background-server startup, remote/background-session /import and cross-app conversation forking. Network policy now remains enforced across redirects and ongoing HTTP/WebSocket traffic; local Unix MCP servers are restricted to stdio descriptors, daemon socket paths are masked through ancestor mounts, and gateway OAuth storage/error handling is hardened. Stays ADOPT.",
         "update_2026_09_28": "0.158.0 stable (2026-09-28T05:07Z): pre-registered MCP OAuth clients can supply client secrets; direct exec-server WebSocket links support bearer tokens; terminal-input approval is enabled by default for elevated commands. Sandbox fixes cover ordinary Windows 10 paths, rejected stored credentials, large permission policies, nested Linux writable roots, Git metadata protections and macOS path aliases. Stays ADOPT.",
         "update_2026_09_29": "0.159.0 stable (2026-09-29T08:05Z) adds opt-in instant interruption for steering during responses and long code-mode calls, item-anchored app-server pagination, and improved Mermaid rendering. It preserves explicit filesystem denials on approved commands, protects .aws under writable roots, fixes macOS TLS/proxy behavior in networked sandboxes and suppresses stray Windows console windows for MCP/code-mode processes. Stays ADOPT.",
-        "update_2026_10_02": "0.160.0 adds opt-in Guardian retrieval of prior user instructions and handoff context, projectless sessions under workspace policy, permission-preserving resume, and reconnect/SQLite recovery fixes."
+        "update_2026_10_02": "0.160.0 adds opt-in Guardian retrieval of prior user instructions and handoff context, projectless sessions under workspace policy, permission-preserving resume, and reconnect/SQLite recovery fixes.",
+        "update_2026_10_07": "0.161.0 makes GPT-6.1 Sol the default in bundled and Bedrock catalogs, adds Bedrock multi-agent V2/Ultra and GovCloud, improves remote-session authentication, preserves replay/world-state history and hardens approval/sandbox boundaries."
       },
       "tags": [
         "codex",
@@ -224,7 +226,8 @@
         "2026-09-26 更新": "0.157.0 stable（2026-09-25T02:31Z）默认启动后台服务，支持远程/后台会话 `/import` 与跨应用会话 fork。网络策略会贯穿重定向及持续 HTTP/WebSocket 流量；Unix 本地 MCP server 被限制为 stdio descriptor，daemon socket 路径在祖先挂载中会被遮蔽，gateway OAuth 存储与错误脱敏也得到加固。维持 ADOPT。",
         "2026-09-28 更新": "0.158.0 stable（2026-09-28T05:07Z）：预注册 MCP OAuth client 可配置 client secret，直连 exec-server 的 WebSocket 支持 bearer token；高权限命令默认启用终端输入审批。沙箱修复覆盖 Windows 10 常规路径、被拒绝的已存凭据、大型权限策略、Linux 嵌套可写目录、Git 元数据保护与 macOS 路径别名。维持 ADOPT。",
         "2026-09-29 更新": "0.159.0 stable（2026-09-29T08:05Z）加入可选的即时中断，可在模型回答或长时间 code-mode 调用中途转向；app-server 支持从指定 item 分页读取历史，Mermaid 渲染也更完整。获批命令会保留显式文件系统拒绝规则，可写根目录下的 `.aws` 默认受保护；网络沙箱修复 macOS TLS/proxy，Windows MCP/code-mode 子进程不再弹出多余控制台窗口。维持 ADOPT。",
-        "2026-10-02 更新": "0.160.0 增加可选的 Guardian 历史指令与 handoff 上下文召回、受工作区策略约束的无项目会话、保留权限的恢复，以及重连和 SQLite 卡顿修复。"
+        "2026-10-02 更新": "0.160.0 增加可选的 Guardian 历史指令与 handoff 上下文召回、受工作区策略约束的无项目会话、保留权限的恢复，以及重连和 SQLite 卡顿修复。",
+        "2026_10_07_更新": "0.161.0 将 GPT-6.1 Sol 设为内置与 Bedrock catalog 默认模型，加入 Bedrock multi-agent V2、Ultra 与 GovCloud，并强化远程会话认证、重放/world-state 历史及审批/沙箱边界。"
       },
       "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
       "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
@@ -242,7 +245,8 @@
         "src-6e556c3af2807b57",
         "src-b6ce910accbcbcac",
         "src-9b9d615d7fb6df0b",
-        "src-e61beeca9f37dec1"
+        "src-e61beeca9f37dec1",
+        "src-b08e03422c923828"
       ],
       "project_ids": [
         "codex"
@@ -296,8 +300,25 @@
           "id": "ev-20260818-02-codex-0-160-evidence",
           "claim_zh": "Codex 0.160.0 增加可选的 Guardian 历史上下文召回，并改善恢复、重连与长任务可靠性。",
           "claim_en": "Codex 0.160.0 adds opt-in Guardian retrieval of prior context and improves resume, reconnect and long-running reliability.",
-          "source_ids": ["src-e61beeca9f37dec1"],
-          "event_ids": ["ev-20260818-02"],
+          "source_ids": [
+            "src-e61beeca9f37dec1"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260818-02-codex-0161-evidence",
+          "claim_zh": "Codex 0.161.0 扩展 Bedrock 多 agent 支持，并强化远程会话与 sandbox 边界。",
+          "claim_en": "Codex 0.161.0 expands Bedrock multi-agent support and hardens remote sessions and sandbox boundaries.",
+          "source_ids": [
+            "src-b08e03422c923828"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
           "relation": "support",
           "verification": "verified-primary-source"
         }
@@ -348,16 +369,32 @@
           "discovered_at": "2026-10-02T16:00:56Z",
           "summary_zh": "Codex 0.160.0 加入 Guardian 历史上下文召回并改善恢复可靠性",
           "summary_en": "Codex 0.160.0 adds Guardian context retrieval and improves resume reliability",
-          "evidence_ids": ["ev-20260818-02-codex-0-160-evidence"],
+          "evidence_ids": [
+            "ev-20260818-02-codex-0-160-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20260818-02-codex-0161",
+          "kind": "update",
+          "occurred_at": "2026-10-07T15:58:45Z",
+          "discovered_at": "2026-10-07T22:04:39Z",
+          "summary_zh": "Codex 0.161.0 扩大 Bedrock 多 agent 支持并加固远程会话与沙箱边界。",
+          "summary_en": "Codex 0.161.0 expands Bedrock multi-agent support and hardens remote sessions and sandbox boundaries.",
+          "evidence_ids": [
+            "ev-20260818-02-codex-0161-evidence"
+          ],
           "historical": false,
           "importance": "major"
         }
       ],
       "update_2026_09_28": "Codex 0.158.0: MCP OAuth client secrets, authenticated exec-server WebSockets, default terminal-input approval and cross-platform sandbox fixes; stays ADOPT",
-      "next_action_zh": "启用 Guardian 前测试错误历史召回，并回归长任务的 resume、reconnect 与权限保留。",
-      "next_action_en": "Before enabling Guardian, test unwanted history recall and regress resume, reconnect and permission preservation for long-running jobs."
-      ,"short_label_zh": "Codex CLI 0.160"
-      ,"short_label_en": "Codex CLI 0.160"
+      "next_action_zh": "升级到 0.161.0 前回归 Bedrock 多 agent、远程认证、resume 历史、审批与跨平台沙箱。",
+      "next_action_en": "Before 0.161.0, regress Bedrock multi-agent, remote authentication, resume history, approvals and cross-platform sandboxes.",
+      "short_label_zh": "Codex CLI 0.160",
+      "short_label_en": "Codex CLI 0.160",
+      "last_reviewed_at": "2026-10-07T22:04:39Z"
     },
     {
       "event_id": "ev-20260818-03",

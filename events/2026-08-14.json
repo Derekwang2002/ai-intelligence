@@ -373,7 +373,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-10-06T16:01:24Z",
+      "last_updated_at": "2026-10-07T22:04:39Z",
       "source_type": "primary",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -399,7 +399,9 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.288",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.289",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.290",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.291"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.291",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.292",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.293"
       ],
       "summary": "Claude Code is a mature local multi-agent runtime with session recovery, sandboxing and gateway governance. Versions 2.1.290 and 2.1.291 add centrally governed plugin hooks and Managed Agents onboarding, close read, plan-mode and MCP policy gaps, bound memory on large HTTP tool responses, and fix lost permission answers and final messages.",
       "why_it_matters": "For coding-agent operators, these releases tighten centrally managed execution policy and repair failure modes that can lose approvals or session output. Upgrade after testing managed hooks, external rule-file reads, large MCP responses and restart recovery.",
@@ -427,7 +429,8 @@
         "update_2026_10_02": "2.1.285 adds allowedProviders and a WebFetch kill switch; fixes OAuth refresh, permission callbacks and Artifact boundaries. 2.1.286 fixes session recovery, Remote Control policy revocation, MCP credential redaction and spend accounting. OS-denied managed settings warn and continue; malformed files still stop sessions.",
         "update_2026_10_03": "2.1.288 adds --max-findings for code review, resume/autocompact recovery and MCP OAuth scope re-authentication. It prevents duplicate MCP calls after oversized or unparseable output, fails closed when PreToolUse/PermissionRequest hook state cannot be serialized, and prompts for destructive rm hidden in bash -c.",
         "update_2026_10_05_claude-2-1-289": "2.1.289 fixes nested deny/ask loss, environment-prefix and bare-assignment Bash matching, symlinked IDE reads and managed MCP description rewriting; adds agent.spawn plus stable teammate IDs/status.",
-        "update_2026_10_06_claude_2_1_290_291": "2.1.290 adds centrally governed plugin hooks, Managed Agents onboarding and attachment, and fixes plan-mode connector auto-approval, external symlinked rule loading, MCP organization-policy enforcement, unbounded memory on large HTTP MCP responses, deny-rule gaps and scheduled/background recovery. 2.1.291 fixes permission answers dropped by 2.1.290 and final session messages lost on quit since 2.1.288."
+        "update_2026_10_06_claude_2_1_290_291": "2.1.290 adds centrally governed plugin hooks, Managed Agents onboarding and attachment, and fixes plan-mode connector auto-approval, external symlinked rule loading, MCP organization-policy enforcement, unbounded memory on large HTTP MCP responses, deny-rule gaps and scheduled/background recovery. 2.1.291 fixes permission answers dropped by 2.1.290 and final session messages lost on quit since 2.1.288.",
+        "update_2026_10_07": "2.1.292 adds one-step policy-checked marketplace installs and per-subagent effort. 2.1.293 adds Haiku 5.5, subagent type visibility, eager mod tools, compaction-state fixes, HTTP MCP leak repair and queued-message protection."
       },
       "update_2026_08_17": "2.1.234 (2026-08-17, in-window): rejects Windows NT-namespace (\\??\\) paths across remote file reads, session restore, CLAUDE.md includes, workflow scripts and uploads — hardens pre-approval file accesses against the NTLM credential-leak vector; GitLab MR footer badge (draft/pending/green states, glab repos); auto-continue sessions when usage limit resets (toggle in /config); claude-api skill context cost cut from ~200k+ to ~25k tokens; selection:clear keybinding; CLAUDE_CODE_PROJECT_DIR_NAME env var; many Remote Control / permission-preview / TUI fixes.",
       "update_2026_08_18": "2.1.235 (2026-08-18, in-window): security-relevant fix — Shift+Tab in the permission prompt's comment field no longer wrongly grants session-wide edit permission; new optional `spellcheck` setting (aspell/hunspell/ispell); fix for whole-prompt-cache invalidation when a language server disconnects mid-session; nested markdown list misalignment fix (depth 3+); lower memory/CPU usage for background cloud sessions (/ultrareview); permission dialogs now display exactly what a grant covers; VS Code focus fix after window restore. Recommendation stays ADOPT; upgrading also picks up the 2.1.234 NTLM hardening.",
@@ -467,7 +470,8 @@
         "2026-10-02 更新": "2.1.285 新增 allowedProviders 与 WebFetch 总开关，修复 OAuth、权限回调和 Artifact 边界。2.1.286 修复 session 恢复、Remote Control 撤权、MCP 凭据脱敏和计费。OS 拒绝读取 managed settings 时会告警后继续；格式错误仍会阻止启动。",
         "2026-10-03 更新": "2.1.288 为 code review 增加 --max-findings，改善 resume、自动压缩恢复与 MCP OAuth scope 重新认证；修复超大或不可解析输出后的 MCP 重复调用，让 PreToolUse/PermissionRequest hook 状态无法序列化时默认拒绝，并拦截藏在 bash -c 中的危险 rm。",
         "2026-10-05 更新 claude-2-1-289": "2.1.289 修复嵌套 deny/ask 丢失、环境变量前缀与裸赋值的 Bash 匹配、IDE 符号链接读取和 managed MCP 描述改写；新增 agent.spawn 与稳定 teammate ID/状态。",
-        "2026-10-06 更新": "2.1.290 新增集中管控的 plugin hook、Managed Agents 引导与 attach；修复 plan mode connector 自动批准、工作区外符号链接规则文件载入、MCP 组织策略、大型 HTTP MCP 响应内存无上限、deny 规则缺口及定时/后台任务恢复。2.1.291 修复 2.1.290 丢失权限回答，以及自 2.1.288 起退出时丢失会话末尾消息的问题。"
+        "2026-10-06 更新": "2.1.290 新增集中管控的 plugin hook、Managed Agents 引导与 attach；修复 plan mode connector 自动批准、工作区外符号链接规则文件载入、MCP 组织策略、大型 HTTP MCP 响应内存无上限、deny 规则缺口及定时/后台任务恢复。2.1.291 修复 2.1.290 丢失权限回答，以及自 2.1.288 起退出时丢失会话末尾消息的问题。",
+        "2026_10_07_更新": "2.1.292 增加受策略检查的一步式 marketplace 安装与逐 subagent effort；2.1.293 接入 Haiku 5.5、暴露 subagent 类型、支持 mod 工具预加载，并修复压缩状态、HTTP MCP 内存泄漏与排队消息丢失。"
       },
       "update_2026_08_20": "2.1.237 + 2.1.238 (both 2026-08-20, in-window). 2.1.237: fixed prompt caching for sessions using an LLM gateway or custom base URL (directly relevant to gateway deployments); added a built-in 'Concise' output style ('Claude leads with results and skips preamble and narration') selectable via /config. 2.1.238: fixed unbounded memory growth in long interactive sessions — subagent tool results are now freed after leaving the recent display window, directly relevant to long-running multi-agent sessions; plugin marketplaces gained `headersHelper` for URL marketplaces/catalog entries (mints short-lived HTTP headers such as tokens for catalog and same-origin archive fetches, shown to the user first with [y/N] confirmation, no inherited credential env vars) — private/enterprise plugin distribution; self-hosted runner `--defer-shutdown-max-min` (keep serving attached sessions on SIGTERM, then park and exit) and `--proxy-authorization-command`/`--proxy-authorization-file` for proxies needing a fresh Proxy-Authorization header per connection; numerous Remote Control fixes (mid-turn messages vanishing from transcripts, model picks on phone/web not updating the terminal, 'login expired' on brief network hiccups now retries, crashed-session reuse, env-var leaks, per-task Stop, ListAgents/SendMessage wrongly reporting 'not connected' in server mode); cross-session messaging hardening (refused inboxes now report 'refused'; rate-limited/dropped messages notify the sender instead of vanishing); MCP fixes (stdio servers no longer receive server/discover before initialize — lazy servers no longer start on every open; elicitation dialogs fixed for URLs over 4,096 chars; disabled servers listed without health-checking). Recommendation stays ADOPT.",
       "update_2026_08_21": "2.1.239 (2026-08-21T17:18Z, in-window). Cost/estimation: /cost, the status line and --max-budget-usd now include the 1.1x US-only-inference premium for data-residency workspaces; the usage-limit message now states when the session or weekly limit resets. Bedrock: fixed streaming behind proxies that strip the response Content-Type header (which silently doubled billed API calls by re-running every turn non-streaming) and fixed startup hangs behind an HTTPS proxy with SSO profiles + awsAuthRefresh. Cloud sessions: plugins synced from claude.ai now show as name@synced and work with `claude plugin enable/disable <name>@synced` (never overriding a same-named locally installed plugin); fixed remote MCP servers staying failed after a transient 5xx on mid-session reconnect; fixed resuming out of plan mode after an idle worker restart. Multi-agent/messaging refinements (same primitive family, not new primitives): ListAgents now lists live teammates and tells a session its own peer name; SendMessage to your own name now says so; fixed sessions titled with a leading / being unaddressable; fixed runaway Remote Control session-title syncing (2.1.232 regression). /goal: repeat check-ins on long-running background work now back off (30 min -> 1 h -> 2 h); `claude --resume` restores the active goal. Also: Alpine/musl native add-ons (paste/clipboard/audio), `/claude-api upgrade` for anthropic 0.x -> 1.x Python migration, MCP elicitation form scroll fix in fullscreen, OpenTelemetry trace-fragmentation fix for hook-deferred tool calls, vim-mode agent-view Escape fix. Recommendation stays ADOPT.",
@@ -507,7 +511,9 @@
         "src-da2d811b9d25331f",
         "src-ec08581411bc9dc6",
         "src-d9b88297cf0d952f",
-        "src-bb63a15b856259f7"
+        "src-bb63a15b856259f7",
+        "src-0c734930a759f57a",
+        "src-0ba886b07133e21d"
       ],
       "project_ids": [
         "claude-code"
@@ -623,6 +629,20 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-292-293-evidence",
+          "claim_zh": "Claude Code 2.1.292/293 增加 per-subagent effort、Haiku 5.5 与长任务可靠性修复。",
+          "claim_en": "Claude Code 2.1.292/293 add per-subagent effort, Haiku 5.5 and long-task reliability fixes.",
+          "source_ids": [
+            "src-0c734930a759f57a",
+            "src-0ba886b07133e21d"
+          ],
+          "event_ids": [
+            "ev-20260814-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -727,6 +747,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-292-293",
+          "kind": "update",
+          "occurred_at": "2026-10-07T18:10:20Z",
+          "discovered_at": "2026-10-07T22:04:39Z",
+          "summary_zh": "Claude Code 2.1.292/293 增加逐 subagent effort、Haiku 5.5 与多项长任务可靠性修复。",
+          "summary_en": "Claude Code 2.1.292/293 add per-subagent effort, Haiku 5.5 and long-task reliability fixes.",
+          "evidence_ids": [
+            "ev-20260814-04-claude-2-1-292-293-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -736,10 +769,11 @@
           "src-3d68ad8e1324eb33"
         ]
       },
-      "next_action_zh": "升级到 2.1.291 前回归 managed hook、工作区外规则文件、plan mode connector、大型 MCP 响应和重启恢复。",
-      "next_action_en": "Before 2.1.291, regress managed hooks, out-of-workspace rule files, plan-mode connectors, large MCP responses and restart recovery.",
+      "next_action_zh": "升级到 2.1.293 前回归 marketplace 策略、subagent effort、压缩续跑、HTTP MCP 长连接和后台排队消息。",
+      "next_action_en": "Before 2.1.293, regress marketplace policy, subagent effort, compaction resume, long-lived HTTP MCP and queued background messages.",
       "short_label_zh": "Claude Code",
-      "short_label_en": "Claude Code"
+      "short_label_en": "Claude Code",
+      "last_reviewed_at": "2026-10-07T22:04:39Z"
     },
     {
       "event_id": "ev-20260814-05",
