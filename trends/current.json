@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-07T22:04Z",
+  "as_of": "2026-10-08T16:05Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -10,7 +10,7 @@
       "status_note_en": "strengthening / Medium (maintained; criteria re-check @2026-09-14: (a) still unmet, with no new third-party Terminal-Bench / SWE reproduction on the weights; (b) met by DeepSeek V4.1 Flash; (c) the serving ecosystem gains merged code across models and frameworks - vLLM for DeepSeek DeepSelect/Engram and SGLang for Qwen NVFP4 on one DGX Spark; (a) remains the only gate to High)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-10-08",
+      "last_updated": "2026-10-09",
       "retired": false,
       "evidence_zh": [
         "Qwen3.8-27B 权重发布（Apache 2.0，首日 91k 下载，2026-08-14）",
@@ -280,6 +280,11 @@
           "date": "2026-10-08",
           "note_zh": "本周期没有发现足以改变状态或置信度的新信号。",
           "note_en": "No new signal was strong enough to change status or confidence."
+        },
+        {
+          "date": "2026-10-09",
+          "note_zh": "本轮没有新的独立信号，状态不变。",
+          "note_en": "No new independent signal in this run; status unchanged."
         }
       ],
       "evidence": [
@@ -490,7 +495,7 @@
       "status_note_en": "emerging (upgraded from candidate on 2026-08-16)",
       "confidence": "Medium",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-10-08",
+      "last_updated": "2026-10-09",
       "retired": false,
       "evidence_zh": [
         "Cloudflare One Gateway 的 MCP 检测与 enforcement 能力 GA——`experimental.is_mcp`、enforcement 仅 Portal 可用、OAuth 预注册（2026-08-14，一手来源，ev-20260814-03）",
@@ -750,6 +755,11 @@
           "date": "2026-10-08",
           "note_zh": "本周期没有发现足以改变状态或置信度的新信号。",
           "note_en": "No new signal was strong enough to change status or confidence."
+        },
+        {
+          "date": "2026-10-09",
+          "note_zh": "LiteLLM 1.104.2 把 Decisions API 纳入稳定网关，但仍是单一实现的更新；状态不变。",
+          "note_en": "LiteLLM 1.104.2 brings the Decisions API into the stable gateway, but this remains one implementation update; status unchanged."
         }
       ],
       "evidence": [
@@ -853,7 +863,7 @@
       "status_note_en": "established (candidate→emerging 2026-08-18; →strengthening 8/20; →established 2026-08-28 — confirmation criterion (a) met: Codex 0.150.0 stable ships agent-initiated cross-task messaging; in the same window Gemini CLI 0.57.0 shipped a2a-server in stable and on npm, making Google the seventh organization with protocol-level interop in a stable runtime)",
       "confidence": "High",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-10-08",
+      "last_updated": "2026-10-09",
       "retired": false,
       "evidence_zh": [
         "Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）",
@@ -877,7 +887,9 @@
         "Microsoft Foundry 把 durable execution、A2A、Routines、tool search 与生产 trace 优化串成平台闭环；Android Studio 通过 ACP 承载可替换 agent（2026-09-24，ev-20260924-07/09）",
         "Microsoft Copilot（2026-09-25，ev-20260925-01）把持续运行的 Autopilot、租户内 Managed Runtime、独立身份/记忆/计算机与 FinOps 治理组合成企业工作区；GitHub Memory 与 Qwen Code Hosted Runtime 同日补强跨 agent 记忆和故障转移",
         "2026-09-29：GPT-6.1 Sol 在 Responses API 提供 beta 多 agent 委派，OpenAI Agents API 同日加入可恢复的托管浏览器 session（ev-20260929-02、ev-20260910-02）。",
-        "2026-10-07：Claude Code 2.1.292/293 增加逐 subagent effort、类型可见性与压缩、MCP、后台消息可靠性修复。"
+        "2026-10-07：Claude Code 2.1.292/293 增加逐 subagent effort、类型可见性与压缩、MCP、后台消息可靠性修复。",
+        "Claude Code 2.1.294（2026-10-08，ev-20260814-04 更新）：修复 prompt/agent hook 错误放行和 Stop hook 过早终止。",
+        "Docker Agent 1.149.0（2026-10-07，ev-20261007-06）：用 YAML、MCP、evaluator 与 OCI 分发组合出可移植的多 agent runtime。"
       ],
       "evidence_en": [
         "Anthropic Claude Code: default-on subagent forking + cross-session SendMessage (2026-08-13/14)",
@@ -901,7 +913,9 @@
         "Microsoft Foundry connects durable execution, A2A, Routines, tool search and production-trace optimization, while Android Studio hosts replaceable agents through ACP (September 24, 2026, ev-20260924-07/09)",
         "Microsoft Copilot (September 25, 2026, ev-20260925-01) combines persistent Autopilot, tenant-hosted Managed Runtime, separate identity/memory/computer and FinOps governance; same-day GitHub Memory and Qwen Code Hosted Runtime updates strengthen cross-agent memory and failover",
         "2026-09-29: GPT-6.1 Sol adds beta multi-agent delegation in the Responses API, while the OpenAI Agents API adds resumable hosted-browser sessions (ev-20260929-02, ev-20260910-02).",
-        "2026-10-07: Claude Code 2.1.292/293 add per-subagent effort, type visibility and compaction, MCP and background-message reliability fixes."
+        "2026-10-07: Claude Code 2.1.292/293 add per-subagent effort, type visibility and compaction, MCP and background-message reliability fixes.",
+        "Claude Code 2.1.294 (October 8, 2026, ev-20260814-04 update): fixes prompt/agent hooks that allow blocked commands and premature Stop-hook termination.",
+        "Docker Agent 1.149.0 (October 7, 2026, ev-20261007-06): combines YAML, MCP, evaluators and OCI distribution into a portable multi-agent runtime."
       ],
       "why_it_matters_zh": "升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。",
       "why_it_matters_en": "Why upgraded to established / High: confirmation criterion (a) (agent-to-agent messaging semantics in a non-Anthropic stable runtime) is met by Codex 0.150.0 — agents can read, create, or message other tasks from the terminal, so inbox semantics are no longer Anthropic-only; in the same window Google shipped the A2A protocol server into the Gemini CLI stable line and published it on npm. Equivalent primitives are now verified across seven organizations (Anthropic, GitHub/Microsoft, DeepSeek, OpenAI, SST/OpenCode, Anysphere/Cursor, Google) in stable or installable artifacts, spanning March to August 2026. The engineering impact has landed: the orchestration plane is shifting from human-initiated sessions to resident, event-driven, interoperable task systems — multi-agent orchestration is becoming a built-in capability of CLI runtimes rather than a framework choice. Residual gaps (not blocking established, kept under watch): Google's a2a-server has zero documentation or announcement; public production case studies and adoption telemetry are still missing; on the Anthropic side, Claude Code 2.1.248 extended cross-session messaging to Bedrock/Vertex/Foundry and telemetry-off deployments (same-org hardening, not counted separately).",
@@ -1129,6 +1143,11 @@
           "date": "2026-10-08",
           "note_zh": "Claude Code 2.1.292/293、Codex 0.161.0 与 Gemini CLI 0.63.0 同时强化多 agent 编排、长任务恢复与非交互执行；方向继续成立，维持 established / High。",
           "note_en": "Claude Code 2.1.292/293, Codex 0.161.0 and Gemini CLI 0.63.0 simultaneously strengthen multi-agent orchestration, long-run recovery and non-interactive execution. Stays established / High."
+        },
+        {
+          "date": "2026-10-09",
+          "note_zh": "Claude Code 2.1.294 修复 hook 边界，Docker Agent 1.149.0 又提供 OCI 化多 agent runtime；状态不变。",
+          "note_en": "Claude Code 2.1.294 repairs hook boundaries, while Docker Agent 1.149.0 adds an OCI-packaged multi-agent runtime; status unchanged."
         }
       ],
       "evidence": [
@@ -1336,7 +1355,7 @@
       "status_note_en": "strengthening / Medium (METR publishes Opus 5.5 predeployment findings, access duration and unpaid terms; UK AISI publishes configuration-rich machine-readable results through EvalEval. Findings and reproducible reporting both gain evidence, but a cross-vendor schema is still missing)",
       "confidence": "Medium",
       "first_observed": "2026-08-26",
-      "last_updated": "2026-10-08",
+      "last_updated": "2026-10-09",
       "retired": false,
       "evidence_zh": [
         "OpenAI《The Hugging Face incident and the road ahead》约 37 页技术报告（2026-08-26，一手来源）：完整入侵时间线、四种失配模式、生产 harness 对基础设施攻陷倾向的 >100x 抑制、CoT 监控可提前 >1 天告警、分层 CoT 监控规则、最大前沿 RL run 仍暂停（ev-20260818-04 更新）",
@@ -1556,6 +1575,11 @@
           "date": "2026-10-08",
           "note_zh": "本周期没有发现足以改变状态或置信度的新信号。",
           "note_en": "No new signal was strong enough to change status or confidence."
+        },
+        {
+          "date": "2026-10-09",
+          "note_zh": "本轮没有新的独立信号，状态不变。",
+          "note_en": "No new independent signal in this run; status unchanged."
         }
       ],
       "evidence": [
@@ -1738,7 +1762,7 @@
       "status_note_en": "Remains candidate with Low confidence. PSP now has concrete setup documentation, correcting the earlier blanket claim of non-delivery. Independent production adoption across organizations is still unproven.",
       "confidence": "Low",
       "first_observed": "2026-08-18",
-      "last_updated": "2026-10-08",
+      "last_updated": "2026-10-09",
       "retired": false,
       "evidence_zh": [
         "历史说明（已于 2026-09-27 复核修正）：OpenAI 重申 ZDR 并发布 Private Safety Processing 预览（2026-08-18，一手来源，ev-20260818-05）：无留存推理 + 安全工具的承诺形态，白皮书按计划应在 9 月发布（截至本次运行仍未发布）",
@@ -1919,8 +1943,13 @@
         },
         {
           "date": "2026-10-08",
-      "note_zh": "EmbeddingGemma 2、Liquid d1 与 openTPU 分别把多模态检索、结构化决策和可审计 FPGA 栈压到本地设备，但仍缺企业采用与运维证据。维持 candidate / Low。",
-      "note_en": "EmbeddingGemma 2, Liquid d1 and openTPU move multimodal retrieval, structured decisions and an inspectable FPGA stack onto local devices, but enterprise adoption and operations evidence remain limited. Stays candidate / Low."
+          "note_zh": "EmbeddingGemma 2、Liquid d1 与 openTPU 分别把多模态检索、结构化决策和可审计 FPGA 栈压到本地设备，但仍缺企业采用与运维证据。维持 candidate / Low。",
+          "note_en": "EmbeddingGemma 2, Liquid d1 and openTPU move multimodal retrieval, structured decisions and an inspectable FPGA stack onto local devices, but enterprise adoption and operations evidence remain limited. Stays candidate / Low."
+        },
+        {
+          "date": "2026-10-09",
+          "note_zh": "本轮没有新的企业采用证据，状态不变。",
+          "note_en": "No new enterprise-adoption evidence in this run; status unchanged."
         }
       ],
       "evidence": [
@@ -1983,8 +2012,8 @@
           "relation": "counter",
           "verification": "official-statement"
         },
-    {
-      "id": "tev-3890546d565cdf94",
+        {
+          "id": "tev-3890546d565cdf94",
           "claim_zh": "2026-10-06：EmbeddingGemma 2 以 Apache 2.0 权重把文本、图像、视频、音频嵌入压到端侧。",
           "claim_en": "2026-10-06: Apache 2.0 EmbeddingGemma 2 weights move text, image, video and audio embeddings onto edge devices.",
           "event_ids": [
@@ -1994,36 +2023,36 @@
             "src-651d5d4131fcec8a",
             "src-4e50efa7abaa8516"
           ],
-      "relation": "support",
-      "verification": "verified-primary-source"
-    },
-    {
-      "id": "tev-liquid-d1-20261007",
-      "claim_zh": "2026-10-07：Liquid d1 公开可在边缘硬件运行的多模态单次决策模型权重与 demo。",
-      "claim_en": "2026-10-07: Liquid d1 publishes multimodal single-pass decision-model weights and demos for edge hardware.",
-      "event_ids": [
-        "ev-20261007-02"
-      ],
-      "source_ids": [
-        "src-88e871d5a8d26738",
-        "src-5aa0a3190245153d"
-      ],
-      "relation": "support",
-      "verification": "verified-primary-source"
-    },
-    {
-      "id": "tev-opentpu-20261007",
-      "claim_zh": "2026-10-07：openTPU 更新可审计的开源 FPGA 加速器栈，加入板卡、模拟器与 Hugging Face golden model 的校验路径。",
-      "claim_en": "2026-10-07: openTPU updates an inspectable open FPGA accelerator stack with validation across the card, simulator and Hugging Face golden model.",
-      "event_ids": [
-        "ev-20260924-13"
-      ],
-      "source_ids": [
-        "src-576ded508c0bb401"
-      ],
-      "relation": "support",
-      "verification": "verified-primary-source"
-    }
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "tev-liquid-d1-20261007",
+          "claim_zh": "2026-10-07：Liquid d1 公开可在边缘硬件运行的多模态单次决策模型权重与 demo。",
+          "claim_en": "2026-10-07: Liquid d1 publishes multimodal single-pass decision-model weights and demos for edge hardware.",
+          "event_ids": [
+            "ev-20261007-02"
+          ],
+          "source_ids": [
+            "src-88e871d5a8d26738",
+            "src-5aa0a3190245153d"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "tev-opentpu-20261007",
+          "claim_zh": "2026-10-07：openTPU 更新可审计的开源 FPGA 加速器栈，加入板卡、模拟器与 Hugging Face golden model 的校验路径。",
+          "claim_en": "2026-10-07: openTPU updates an inspectable open FPGA accelerator stack with validation across the card, simulator and Hugging Face golden model.",
+          "event_ids": [
+            "ev-20260924-13"
+          ],
+          "source_ids": [
+            "src-576ded508c0bb401"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
       ],
       "changes": [
         {
@@ -2057,7 +2086,7 @@
       "status_note_en": "emerging (opened 2026-09-12: three Millennium-scale results from three parties within eight days — FLT, Navier-Stokes, forced Euler — all using Lean/formal verification as the trust layer, plus a public response from the mathematics community; disputes and verification status recorded honestly)",
       "confidence": "Medium",
       "first_observed": "2026-09-04",
-      "last_updated": "2026-10-08",
+      "last_updated": "2026-10-09",
       "retired": false,
       "evidence_zh": [
         "Anthropic 端到端形式化费马大定理（2026-09-04，一手来源，ev-20260904-01）：1300 万行 Lean、29.5k 定理、约 60 亿输出 token、11 天，Prove2Me + Claude Code 多 agent 编排，代码开源",
@@ -2065,7 +2094,8 @@
         "Alpöge（Anthropic）与 Buckmaster（NYU）用 Anthropic 内部模型解决 forced Euler 正则性问题（2026-09-08，Buckmaster 声明一手，ev-20260908-19）：此前用 Claude/Codex 协作近一年——「人引导 agent 长期攻坚」的工作流首次在千禧年级问题上走通",
         "25 位 Fields Medalist 联署宣言：AI 公司的目标与数学的 Goal 严重错位（2026-09-11 digest，ev-20260911-05）——数学界对 AI 数学能力供给的公开回应与治理主张",
         "社区验证活动成型：Buckmaster 声明 HN 2,035 分（超过官宣帖）；John D. Cook《formal-method revolution》专文（9/10，HN 174 分）把 Lean 4 证明视为「免信任验证层」的标志；Reddit r/mathematics 出现初步验证报告",
-        "2026-10-06：OpenAI 公开模型生成数学成果，并附 Lean 形式化、修订规范与过程统计。"
+        "2026-10-06：OpenAI 公开模型生成数学成果，并附 Lean 形式化、修订规范与过程统计。",
+        "OpenAI 数学项目（2026-10-07，ev-20261006-06 更新）：符号错误导致三篇稿件撤回，14 篇修订；Lean 覆盖升至 300/719，说明形式化验证与依赖复核仍是关键瓶颈。"
       ],
       "evidence_en": [
         "Anthropic formalizes Fermat's Last Theorem end to end (2026-09-04, primary source, ev-20260904-01): 13M lines of Lean, 29.5k theorems, ~6B output tokens, 11 days, Prove2Me + Claude Code multi-agent orchestration, code public",
@@ -2073,7 +2103,8 @@
         "Alpöge (Anthropic) and Buckmaster (NYU) resolve the forced Euler regularity problem with an Anthropic internal model (2026-09-08, Buckmaster statement as primary, ev-20260908-19): after nearly a year of guided Claude/Codex work — the first time the human-guided long-horizon agent workflow has carried a Millennium-scale problem",
         "25 Fields Medalists sign a declaration that the goals of AI companies and mathematics are severely misaligned (2026-09-11 digest, ev-20260911-05) — the mathematics community's public response to AI math capability supply",
         "Community verification activity forming: Buckmaster's statement at 2,035 HN points (outdrawing the announcement); John D. Cook's formal-method essay (9/10, 174 pts) reading the Lean 4 proof as the trustless verification layer; preliminary verification reports on r/mathematics",
-        "2026-10-06: OpenAI publishes model-generated mathematics with Lean formalizations, revision protocols and process statistics."
+        "2026-10-06: OpenAI publishes model-generated mathematics with Lean formalizations, revision protocols and process statistics.",
+        "OpenAI mathematics project (October 7, 2026, ev-20261006-06 update): a sign error led to three withdrawals and fourteen repairs; Lean coverage reached 300/719, showing formal verification and dependency review remain critical bottlenecks."
       ],
       "why_it_matters_zh": "对做 agent 平台与评测的团队：长时程多 agent + 形式化验证的组合正在变成「前沿能力」的可信度量衡——benchmark 分数可被污染，Lean 证明不可；这也是继 coding 之后第二个被 AI 实质推进的「可验证领域」。同时该工作负载把两个治理问题摆上台面：内部模型能力披露（NS 帖披露强于 Astra 的未发布模型）与 harness 介质的数据治理（Buckmaster 争议：用户会话是否会帮助竞争方向的内部工作）。工程侧的迁移面：形式化验证工具链（Lean/Prove2Me 类）值得纳入 agent 平台的「可验证输出」选项。",
       "why_it_matters_en": "For agent-platform and eval teams: long-horizon multi-agent systems plus formal verification are becoming the trusted yardstick for frontier capability — benchmark scores can be contaminated, Lean proofs cannot; mathematics is the second verifiable domain after coding where AI has materially advanced. The workload also puts two governance questions on the table: disclosure of internal-model capability (the NS post discloses an unreleased model stronger than Astra) and harness-mediated data governance (the Buckmaster dispute: can user sessions aid a competing internal effort?). On the engineering side, formal-verification toolchains (Lean, Prove2Me-class) belong in the 'verifiable output' options of any agent platform.",
@@ -2226,6 +2257,11 @@
           "date": "2026-10-08",
           "note_zh": "OpenAI 新一批模型生成数学成果附带 Lean 形式化、修订与引用规范，强化可机检发布路径；独立专家复核仍不足，维持 emerging / Medium。",
           "note_en": "OpenAI publishes another batch of model-generated mathematics with Lean formalizations plus revision and citation protocols, strengthening the machine-checkable release path. Independent expert review remains limited; stays emerging / Medium."
+        },
+        {
+          "date": "2026-10-09",
+          "note_zh": "OpenAI 撤回三篇模型生成稿件并修订 14 篇；公开纠错支持该方向继续跟踪，也暴露形式化覆盖仍不完整，状态不变。",
+          "note_en": "OpenAI withdrew three model-generated manuscripts and repaired fourteen; the transparent correction supports continued tracking while exposing incomplete formal coverage, so status is unchanged."
         }
       ],
       "evidence": [
@@ -2300,7 +2336,7 @@
       "status_note_en": "strengthening / Medium (Google MCP governance, GitHub default policy, Qwen attestation and monitor-failure research strengthen the direction; a unified policy schema and public adoption telemetry are still missing)",
       "confidence": "Medium",
       "first_observed": "2026-09-09",
-      "last_updated": "2026-10-08",
+      "last_updated": "2026-10-09",
       "retired": false,
       "evidence_zh": [
         "GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束",
@@ -2323,7 +2359,8 @@
         "2026-09-29 至 30 日：OpenAI Agents API 把来源审批和登录交给应用；Claude Code 2.1.286 在组织关闭 Remote Control 后主动断开现有会话（ev-20260910-02、ev-20260814-04）。",
         "ThinkingBox 公开 507 个有状态工作流，并用数据库终态和副作用核验 20 次重复试验（2026-10-03，ev-20261003-02）",
         "2026-10-05：Wikimedia 披露未授权 agent 编辑、代理探测和数百万次请求，说明没有身份、出口和配额约束时，执行能力会把成本与风险转嫁给第三方。",
-        "2026-10-07：GitHub Copilot 本地沙箱在 CLI、应用和 VS Code Agent Host 全面 GA，并支持组织强制策略。"
+        "2026-10-07：GitHub Copilot 本地沙箱在 CLI、应用和 VS Code Agent Host 全面 GA，并支持组织强制策略。",
+        "Claude Code 2.1.294（2026-10-08，ev-20260814-04 更新）：修复 prompt/agent hook 错误放行和 Stop hook 过早终止。"
       ],
       "evidence_en": [
         "GitHub Copilot enterprise-managed permissions GA (2026-09-09, primary source, ev-20260909-02): administrators deploy block/ask/allow policy for shell, files and network domains, overriding user auto-approval — an organization-level policy constrains a general execution surface",
@@ -2346,7 +2383,8 @@
         "Sep 29–30, 2026: OpenAI Agents API assigns origin approval and sign-in to the application; Claude Code 2.1.286 disconnects live Remote Control sessions after organization policy disables them (ev-20260910-02, ev-20260814-04).",
         "ThinkingBox opens 507 stateful workflows and grades terminal state and side effects across 20 repeated trials (2026-10-03, ev-20261003-02)",
         "2026-10-05: Wikimedia reports unauthorized agent edits, proxy probing and millions of requests, showing how execution without identity, egress and quota controls externalizes cost and risk.",
-        "2026-10-07: GitHub Copilot local sandboxing is GA across CLI, app and VS Code Agent Host with organization-enforced policy."
+        "2026-10-07: GitHub Copilot local sandboxing is GA across CLI, app and VS Code Agent Host with organization-enforced policy.",
+        "Claude Code 2.1.294 (October 8, 2026, ev-20260814-04 update): fixes prompt/agent hooks that allow blocked commands and premature Stop-hook termination."
       ],
       "why_it_matters_zh": "对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。",
       "why_it_matters_en": "For teams designing enterprise agents, capability and permission should no longer be implicitly coupled in one tool catalog. A general shell provides better composition and token efficiency, while independent sandboxes, capability contracts and consequence gates bound the blast radius. The immediate architecture move is to make \"what commands the model can generate\" and \"what consequences runtime permits\" independently testable, auditable and upgradable modules.",
@@ -2474,6 +2512,11 @@
           "date": "2026-10-08",
           "note_zh": "GitHub Copilot 本地沙箱从 preview 转为 GA，Anthropic CVP 又把 cyber 能力分层绑定到验证和监测控制。能力与策略继续分离，维持 strengthening / Medium。",
           "note_en": "GitHub Copilot local sandboxing moves from preview to GA, while Anthropic CVP binds cyber capability tiers to verification and monitoring. Capability and policy continue separating; stays strengthening / Medium."
+        },
+        {
+          "date": "2026-10-09",
+          "note_zh": "Claude Code 2.1.294 证明自然语言 hook 仍可能 fail open，继续支持将最终策略闸门留在 runtime；状态不变。",
+          "note_en": "Claude Code 2.1.294 shows natural-language hooks can still fail open, reinforcing runtime-owned policy gates; status unchanged."
         }
       ],
       "evidence": [

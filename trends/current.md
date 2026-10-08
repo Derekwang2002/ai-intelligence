@@ -1,11 +1,11 @@
-# 当前趋势看板 — 2026-10-07T22:04Z
+# 当前趋势看板 — 2026-10-08T16:05Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-10-08
+- **Last updated:** 2026-10-09
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（维持；判据复核 @2026-09-14：(a) 仍未达成，没有新的第三方 Terminal-Bench / SWE 权重复现；(b) 已由 DeepSeek V4.1 Flash 达成；(c) serving 生态新增跨模型、跨框架的合并代码——vLLM 为 DeepSeek 合并 DeepSelect 与 Engram 路径，SGLang 为 Qwen NVFP4 合并单 DGX Spark 路径；升 High 仍仅剩 (a)）
 - **Why It Matters:** 升级为 strengthening 的依据：确认判据「GLM-5.3 权重落地 + 独立 benchmark 复现」实质达成——权重 8/25 落地且许可证宽松可用，Artificial Analysis 独立评测把 GLM-5.3 放到与 Kimi K3 同档。GLM-5.3-Flash（纯 MIT、全新底座、线性注意力降本）是同组织的加强信号。仍未到 High，只因为 Artificial Analysis 的独立评测针对 API，尚无社区对公开权重的 Terminal-Bench 或 SWE 复现；跨组织同级别发布与持续下载增速判据均已达成。
@@ -78,13 +78,14 @@
 - 2026-10-05T16:01:12Z：本周期没有发现足以改变状态或置信度的新信号。
 - 2026-10-06T16:01:24Z：本周期没有发现足以改变状态或置信度的新信号。
 - 2026-10-08：本周期没有发现足以改变状态或置信度的新信号。
+- 2026-10-09：本轮没有新的独立信号，状态不变。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
 - **Status:** emerging
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-10-08
+- **Last updated:** 2026-10-09
 - **Time Horizon:** Emerging
 - **当前判断:** emerging（2026-08-16 由 candidate 升级）
 - **Why It Matters:** 升级依据：多个独立信号来自不同组织、不同日期（网络厂商、企业 SaaS、安全研究），指向同一方向：MCP 正从新兴协议转变为受治理的企业基础设施。
@@ -152,13 +153,14 @@
 - 2026-10-05T16:01:12Z：MCP TypeScript SDK 2.3.1 只是兼容性补丁，本周期没有足以改变状态或置信度的新信号。
 - 2026-10-06T16:01:24Z：本周期没有发现足以改变状态或置信度的新信号。
 - 2026-10-08：本周期没有发现足以改变状态或置信度的新信号。
+- 2026-10-09：LiteLLM 1.104.2 把 Decisions API 纳入稳定网关，但仍是单一实现的更新；状态不变。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
 - **Status:** established
 - **Confidence:** High
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-10-08
+- **Last updated:** 2026-10-09
 - **Time Horizon:** Sustained
 - **当前判断:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Why It Matters:** 升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
@@ -188,6 +190,8 @@
 20. Microsoft Copilot（2026-09-25，ev-20260925-01）把持续运行的 Autopilot、租户内 Managed Runtime、独立身份/记忆/计算机与 FinOps 治理组合成企业工作区；GitHub Memory 与 Qwen Code Hosted Runtime 同日补强跨 agent 记忆和故障转移
 21. 2026-09-29：GPT-6.1 Sol 在 Responses API 提供 beta 多 agent 委派，OpenAI Agents API 同日加入可恢复的托管浏览器 session（ev-20260929-02、ev-20260910-02）。
 22. 2026-10-07：Claude Code 2.1.292/293 增加逐 subagent effort、类型可见性与压缩、MCP、后台消息可靠性修复。
+23. Claude Code 2.1.294（2026-10-08，ev-20260814-04 更新）：修复 prompt/agent hook 错误放行和 Stop hook 过早终止。
+24. Docker Agent 1.149.0（2026-10-07，ev-20261007-06）：用 YAML、MCP、evaluator 与 OCI 分发组合出可移植的多 agent runtime。
 
 ### 逐次复核
 
@@ -234,13 +238,14 @@
 - 2026-10-05T16:01:12Z：Qwen Code 0.25 把本地 workspace-agent 协作、A2A 分享、私有 hosted MCP 与冷会话恢复推入稳定版。趋势维持 established / High。
 - 2026-10-06T16:01:24Z：Claude Code 2.1.290/291 把集中式 hook 治理、Managed Agents 与重启恢复继续推入成熟运行时。趋势维持 established / High。
 - 2026-10-08：Claude Code 2.1.292/293、Codex 0.161.0 与 Gemini CLI 0.63.0 同时强化多 agent 编排、长任务恢复与非交互执行；方向继续成立，维持 established / High。
+- 2026-10-09：Claude Code 2.1.294 修复 hook 边界，Docker Agent 1.149.0 又提供 OCI 化多 agent runtime；状态不变。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-08-26
-- **Last updated:** 2026-10-08
+- **Last updated:** 2026-10-09
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（METR 公布 Opus 5.5 发布前评估、访问期与无偿协议；英国 AISI 通过 EvalEval 发布带配置的机读评估记录。评估结论与可复现格式都有新证据，但跨厂商统一 schema 仍缺）
 - **Why It Matters:** 对做 agent 评测与 RL 训练的团队，这波披露把三类工程实践变成了公开资产：CoT / 行为实时监控（OpenAI：可提前 >1 天告警；Anthropic：检测到越权试探即阻断工具调用、结束任务并告警）、评测环境隔离 best practices（断网沙箱、凭据外置、评测前沙箱自探测、scope 用指令式措辞）、RL 环境防作弊与 CoT 泄漏自查。行业层面，信任模型正从厂商声明转向「可验证披露 + 独立第三方审查」：METR 已两次介入（HF 事件独立调查 + Anthropic 计划中的审查），正在成为事实上的独立审查机构；OpenAI 与 Anthropic 同周各自给出 Critical 级能力模型的护栏框架，方向收敛。注意安全外溢与本知识库趋势 #1 的交叉：两家报告都警告开源权重即将具备相当的网络攻防能力。
@@ -303,13 +308,14 @@
 - 2026-10-05T16:01:12Z：本周期没有发现足以改变状态或置信度的新信号。
 - 2026-10-06T16:01:24Z：本周期没有发现足以改变状态或置信度的新信号。
 - 2026-10-08：本周期没有发现足以改变状态或置信度的新信号。
+- 2026-10-09：本轮没有新的独立信号，状态不变。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
 - **Status:** candidate
 - **Confidence:** Low
 - **First observed:** 2026-08-18
-- **Last updated:** 2026-10-08
+- **Last updated:** 2026-10-09
 - **Time Horizon:** Emerging
 - **当前判断:** 维持候选方向、低置信度。PSP 已有具体配置指南，旧记录中“尚未兑现”的概括需要修正。现有材料仍不足以证明多家独立组织已经在生产中采用。
 - **Why It Matters:** 对需要控制数据和执行边界的团队，选型应同时检查模型能力与部署条件。厂商提供配置指南可以支持试点，但不能替代自身的部署验收与独立采用证据。
@@ -358,13 +364,14 @@
 - 2026-10-05T16:01:12Z：本周期没有发现足以改变状态或置信度的新信号。
 - 2026-10-06T16:01:24Z：本周期没有发现足以改变状态或置信度的新信号。
 - 2026-10-08：EmbeddingGemma 2、Liquid d1 与 openTPU 分别把多模态检索、结构化决策和可审计 FPGA 栈压到本地设备，但仍缺企业采用与运维证据。维持 candidate / Low。
+- 2026-10-09：本轮没有新的企业采用证据，状态不变。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
 - **Status:** emerging
 - **Confidence:** Medium
 - **First observed:** 2026-09-04
-- **Last updated:** 2026-10-08
+- **Last updated:** 2026-10-09
 - **Time Horizon:** Emerging
 - **当前判断:** emerging（2026-09-12 立项：8 天内三家主体产出三个千禧年级结果——FLT、Navier–Stokes、forced Euler——全部以 Lean/形式化验证作信任层，并有数学界的公开回应；争议与验证状态如实记录）
 - **Why It Matters:** 对做 agent 平台与评测的团队：长时程多 agent + 形式化验证的组合正在变成「前沿能力」的可信度量衡——benchmark 分数可被污染，Lean 证明不可；这也是继 coding 之后第二个被 AI 实质推进的「可验证领域」。同时该工作负载把两个治理问题摆上台面：内部模型能力披露（NS 帖披露强于 Astra 的未发布模型）与 harness 介质的数据治理（Buckmaster 争议：用户会话是否会帮助竞争方向的内部工作）。工程侧的迁移面：形式化验证工具链（Lean/Prove2Me 类）值得纳入 agent 平台的「可验证输出」选项。
@@ -378,6 +385,7 @@
 4. 25 位 Fields Medalist 联署宣言：AI 公司的目标与数学的 Goal 严重错位（2026-09-11 digest，ev-20260911-05）——数学界对 AI 数学能力供给的公开回应与治理主张
 5. 社区验证活动成型：Buckmaster 声明 HN 2,035 分（超过官宣帖）；John D. Cook《formal-method revolution》专文（9/10，HN 174 分）把 Lean 4 证明视为「免信任验证层」的标志；Reddit r/mathematics 出现初步验证报告
 6. 2026-10-06：OpenAI 公开模型生成数学成果，并附 Lean 形式化、修订规范与过程统计。
+7. OpenAI 数学项目（2026-10-07，ev-20261006-06 更新）：符号错误导致三篇稿件撤回，14 篇修订；Lean 覆盖升至 300/719，说明形式化验证与依赖复核仍是关键瓶颈。
 
 ### 逐次复核
 
@@ -409,13 +417,14 @@
 - 2026-10-05T16:01:12Z：本周期没有发现足以改变状态或置信度的新信号。
 - 2026-10-06T16:01:24Z：本周期没有发现足以改变状态或置信度的新信号。
 - 2026-10-08：OpenAI 新一批模型生成数学成果附带 Lean 形式化、修订与引用规范，强化可机检发布路径；独立专家复核仍不足，维持 emerging / Medium。
+- 2026-10-09：OpenAI 撤回三篇模型生成稿件并修订 14 篇；公开纠错支持该方向继续跟踪，也暴露形式化覆盖仍不完整，状态不变。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-10-08
+- **Last updated:** 2026-10-09
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -444,6 +453,7 @@
 19. ThinkingBox 公开 507 个有状态工作流，并用数据库终态和副作用核验 20 次重复试验（2026-10-03，ev-20261003-02）
 20. 2026-10-05：Wikimedia 披露未授权 agent 编辑、代理探测和数百万次请求，说明没有身份、出口和配额约束时，执行能力会把成本与风险转嫁给第三方。
 21. 2026-10-07：GitHub Copilot 本地沙箱在 CLI、应用和 VS Code Agent Host 全面 GA，并支持组织强制策略。
+22. Claude Code 2.1.294（2026-10-08，ev-20260814-04 更新）：修复 prompt/agent hook 错误放行和 Stop hook 过早终止。
 
 ### 逐次复核
 
@@ -470,5 +480,6 @@
 - 2026-10-05T16:01:12Z：Qwen Code 0.25 继续强化恢复、审批与副作用边界；vLLM 0.31 默认拒绝每请求多模态参数。两项信号支持运行时控制收紧，状态与置信度不变。
 - 2026-10-06T16:01:24Z：Wikimedia 披露未授权 agent 编辑、代理探测与大规模请求；Claude Code 收紧运行时策略，BazaarBench 检查交易后果。三项独立信号强化能力与后果控制分离，状态与置信度不变。
 - 2026-10-08：GitHub Copilot 本地沙箱从 preview 转为 GA，Anthropic CVP 又把 cyber 能力分层绑定到验证和监测控制。能力与策略继续分离，维持 strengthening / Medium。
+- 2026-10-09：Claude Code 2.1.294 证明自然语言 hook 仍可能 fail open，继续支持将最终策略闸门留在 runtime；状态不变。
 
 ## Invalidated / retired

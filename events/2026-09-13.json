@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-10-04T16:02:19Z",
+      "last_updated_at": "2026-10-08T16:05:30Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -22,14 +22,15 @@
         "https://pypi.org/project/litellm/1.102.0rc1/",
         "https://pypi.org/project/litellm/1.103.0/",
         "https://github.com/BerriAI/litellm/releases/tag/v1.103.0",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.104.0"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.104.0",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.104.2"
       ],
-      "summary": "LiteLLM 1.104.0 stable strengthens gateway startup, identity revocation, MCP routing and spend-accounting reliability. It signs Docker images, rejects empty or publicly known master keys, checks breached passwords and fixes stale deactivated-user caches. MCP workers can now execute tools without first serving tools/list, while failed spend batches no longer replay indefinitely.",
-      "why_it_matters": "For teams using an LLM gateway as a policy boundary, these fixes reduce weak-secret, stale-identity, worker-routing and accounting failure modes. Keep the release in a production-shaped trial and verify image signatures plus revocation paths.",
-      "summary_zh": "LiteLLM 1.104.0 稳定版加强网关启动、身份撤销、MCP 路由与成本记账可靠性。它为 Docker image 签名，拒绝空值或公开已知的 master key，检查泄露密码，并修复停用用户缓存未及时失效的问题。MCP worker 不再要求先处理 tools/list 才能执行工具，失败的 spend batch 也不会无限重放。",
-      "summary_en": "LiteLLM 1.104.0 stable strengthens gateway startup, identity revocation, MCP routing and spend-accounting reliability. It signs Docker images, rejects empty or publicly known master keys, checks breached passwords and fixes stale deactivated-user caches. MCP workers can now execute tools without first serving tools/list, while failed spend batches no longer replay indefinitely.",
-      "why_it_matters_zh": "对把 LLM gateway 当作策略边界的团队来说，这些修复减少弱密钥、过期身份、worker 路由和记账故障。仍应在接近生产的环境试用，并核验 image 签名与撤销路径。",
-      "why_it_matters_en": "For teams using an LLM gateway as a policy boundary, these fixes reduce weak-secret, stale-identity, worker-routing and accounting failure modes. Keep the release in a production-shaped trial and verify image signatures plus revocation paths.",
+      "summary": "LiteLLM 1.104.2 brings the OpenAI-compatible Decisions API and the OpenAI Decisions provider into the stable release line. The gateway can now expose `/v1/decisions` and `/v1/systemone`, extending its existing identity, MCP routing and spend controls to decision-model traffic.",
+      "why_it_matters": "For teams centralizing model access, this avoids a separate gateway path for structured decisions. Trial it with schema validation, authentication, routing fallback and spend attribution before exposing the endpoints to production agents.",
+      "summary_zh": "LiteLLM 1.104.2 把 OpenAI 兼容的 Decisions API 与 OpenAI Decisions provider 带入稳定版。网关现可暴露 `/v1/decisions` 和 `/v1/systemone`，让既有身份、MCP 路由与成本控制覆盖决策模型流量。",
+      "summary_en": "LiteLLM 1.104.2 brings the OpenAI-compatible Decisions API and the OpenAI Decisions provider into the stable release line. The gateway can now expose `/v1/decisions` and `/v1/systemone`, extending its existing identity, MCP routing and spend controls to decision-model traffic.",
+      "why_it_matters_zh": "对集中管理模型访问的团队来说，这能避免为结构化决策另建网关通道。面向生产 agent 开放前，应验证 schema、身份认证、路由回退和成本归属。",
+      "why_it_matters_en": "For teams centralizing model access, this avoids a separate gateway path for structured decisions. Trial it with schema validation, authentication, routing fallback and spend attribution before exposing the endpoints to production agents.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -40,7 +41,8 @@
         "stabilization": "backports fix request-parameter leakage, image/mask form handling, routing callback binding, streamed spend tracking, clean-snapshot fallback retries and team budget propagation",
         "availability": "stable 1.102.0 is installable from PyPI",
         "update_2026_09_28": "LiteLLM 1.103.0 stable (PyPI artifacts from 2026-09-27T17:47Z; GitHub release 2026-09-28T05:43Z): explicit Claude Code gateway endpoint, RFC 8693 IdP JWT token exchange, MCP client allowlists, live-session inspection and forced credential revocation, fail-closed upstream credentials, MCP-aware guardrails, Fuse v2 routing and budget/accounting fixes. The large RC aggregation requires production-shaped regression testing. Stays TRIAL.",
-        "update_2026_10_05_litellm-1-104": "1.104.0 signs Docker images, rejects weak master keys, detects breached passwords, refreshes deactivated JWT user state, fixes MCP worker routing and stops unresendable spend-batch replay."
+        "update_2026_10_05_litellm-1-104": "1.104.0 signs Docker images, rejects weak master keys, detects breached passwords, refreshes deactivated JWT user state, fixes MCP worker routing and stops unresendable spend-batch replay.",
+        "update_2026_10_08": "1.104.2 stable backports `/v1/systemone`, the OpenAI-compatible `/v1/decisions` endpoint and the OpenAI Decisions provider from the development line."
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -52,7 +54,8 @@
         "稳定化修复": "回移修复请求参数泄漏、图片/蒙版表单处理、路由 callback 绑定、流式费用统计、clean-snapshot fallback 重试与团队预算继承",
         "可用性": "稳定版 1.102.0 已可从 PyPI 安装",
         "2026-09-28 更新": "LiteLLM 1.103.0 stable（PyPI 产物始于 2026-09-27T17:47Z；GitHub release 为 2026-09-28T05:43Z）：新增 Claude Code gateway endpoint、RFC 8693 IdP JWT token exchange、MCP client allowlist、在线 session 查看与强制凭据撤销、上游凭据 fail-closed、MCP-aware 护栏、Fuse v2 路由及预算/计费修复。该版本汇总了很长的 RC 变更区间，仍需按生产形态做回归。维持 TRIAL。",
-        "2026-10-05 更新 litellm-1-104": "1.104.0 为 Docker image 签名，拒绝弱 master key，检测泄露密码，刷新停用 JWT 用户状态，修复 MCP worker 路由，并停止无法重发的 spend batch 重放。"
+        "2026-10-05 更新 litellm-1-104": "1.104.0 为 Docker image 签名，拒绝弱 master key，检测泄露密码，刷新停用 JWT 用户状态，修复 MCP worker 路由，并停止无法重发的 spend batch 重放。",
+        "2026-10-08 更新": "1.104.2 稳定版从开发线回移 `/v1/systemone`、OpenAI 兼容的 `/v1/decisions` endpoint 与 OpenAI Decisions provider。"
       },
       "tags": [
         "litellm",
@@ -77,7 +80,8 @@
         "src-7cbc44e76e6e7be0",
         "src-e97c05fc290cdfc6",
         "src-bab7a3f49d318472",
-        "src-49b5951c067cceb3"
+        "src-49b5951c067cceb3",
+        "src-5f6db8b0b36e1913"
       ],
       "project_ids": [
         "mcp"
@@ -127,6 +131,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-104-2-evidence",
+          "claim_zh": "LiteLLM 1.104.2 稳定版加入 OpenAI 兼容 Decisions endpoint 与 provider。",
+          "claim_en": "LiteLLM 1.104.2 stable adds OpenAI-compatible Decisions endpoints and provider support.",
+          "source_ids": [
+            "src-5f6db8b0b36e1913"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -167,11 +184,24 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-104-2",
+          "kind": "update",
+          "occurred_at": "2026-10-08T08:39:07Z",
+          "discovered_at": "2026-10-08T16:05:30Z",
+          "summary_zh": "LiteLLM 1.104.2 稳定版加入 Decisions API",
+          "summary_en": "LiteLLM 1.104.2 stable adds the Decisions API",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-104-2-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "在预生产环境核验 cosign 签名、弱密钥拒绝、用户停用、MCP 多 worker 路由和 Redis 记账恢复。",
-      "next_action_en": "In staging, verify cosign signatures, weak-key rejection, user deactivation, multi-worker MCP routing and Redis spend recovery.",
+      "next_action_zh": "一天内在预生产网关调用 `/v1/decisions`，检查 schema、认证、路由回退和成本归属后再开放给 agent。",
+      "next_action_en": "Within one day, call `/v1/decisions` through staging and verify schema, authentication, fallback routing and spend attribution before agent access.",
       "short_label_zh": "LiteLLM",
       "short_label_en": "LiteLLM"
     }

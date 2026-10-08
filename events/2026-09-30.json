@@ -315,6 +315,123 @@
       "last_updated_at": "2026-10-04T16:02:19Z",
       "summary_en": "Ataraxos combines dynamically damped self-play reinforcement learning with decision-time search for hidden-information games. It beat Pim Niemeijer 15–1 with four draws and went 38–2 at the 2025 Stratego World Championship. Training and belief-model code are public, but pretrained checkpoints are not.",
       "why_it_matters_en": "For researchers building simulator-backed planning agents, Ataraxos is evidence that training dynamics and search can reduce the data needed for large hidden-information games. Without checkpoints or an independent reproduction, the result is not yet a practical trial target."
+    },
+    {
+      "event_id": "ev-20260930-04",
+      "title": "Whistle runs multilingual speech recognition in a 16.9 MB edge model",
+      "title_zh": "Whistle 用 16.9 MB 模型在端侧运行多语种语音识别",
+      "category": "open-source",
+      "organization": [
+        "Cactus Compute"
+      ],
+      "published_at": "2026-09-30T17:13:26Z",
+      "first_seen_at": "2026-10-08T16:05:30Z",
+      "last_updated_at": "2026-10-08T16:05:30Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/Cactus-Compute/whistle",
+      "secondary_sources": [
+        "https://github.com/cactus-compute/needle"
+      ],
+      "summary": "Cactus Compute released Whistle, a 16.9 MB Apache-2.0 speech model for seven languages. The same CPU runtime can return transcripts, word timestamps and frame-level speech embeddings without a GPU, with Python, C, platform binaries and WebAssembly deployment paths. Benchmarks are author-reported.",
+      "summary_zh": "Cactus Compute 发布 Whistle：一个 16.9 MB、Apache-2.0 的七语种语音模型。它可在同一套 CPU runtime 中输出转写、词级时间戳和帧级语音嵌入，不依赖 GPU，并提供 Python、C、平台 binary 与 WebAssembly 部署路径。benchmark 仍是作者报告。",
+      "why_it_matters": "For teams that need private or offline speech features on constrained devices, Whistle combines transcription and embeddings in one small artifact with an inspectable runtime. Trial it on real accents, noise, silence, keyword bias and target-device thermals before replacing established ASR.",
+      "why_it_matters_zh": "对需要在受限设备上做隐私优先或离线语音功能的团队来说，Whistle 用一个小型产物同时提供转写与嵌入，并有可检查 runtime。替换成熟 ASR 前，应在真实口音、噪声、静音、关键词偏置和目标设备温升上复测。",
+      "technical_details": {
+        "size": "16.9 MB model artifact",
+        "languages": [
+          "English",
+          "German",
+          "French",
+          "Spanish",
+          "Italian",
+          "Dutch",
+          "Polish"
+        ],
+        "outputs": "transcription, word timestamps with probabilities, and 80 ms frame speech embeddings",
+        "runtime": "CPU-only C++ runtime with Python, C, platform binaries and WebAssembly paths",
+        "reported_evaluation": "WER over 86,174 utterances; comparisons use author-published Whisper and Moonshine figures",
+        "community_signal": "2,594 downloads and 161 likes at review time"
+      },
+      "technical_details_zh": {
+        "体积": "16.9 MB 模型产物",
+        "语言": [
+          "英语",
+          "德语",
+          "法语",
+          "西班牙语",
+          "意大利语",
+          "荷兰语",
+          "波兰语"
+        ],
+        "输出": "转写、带概率的词级时间戳、每 80 ms 一帧的语音嵌入",
+        "运行方式": "CPU-only C++ runtime，提供 Python、C、平台 binary 与 WebAssembly 路径",
+        "报告的评测": "在 86,174 条语音上测 WER；Whisper 与 Moonshine 对照数字来自各自作者",
+        "社区信号": "复核时 2,594 downloads、161 likes"
+      },
+      "tags": [
+        "speech-recognition",
+        "on-device",
+        "edge-ai",
+        "webassembly",
+        "quantization"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "cactus-whistle-16-9mb-on-device-asr",
+      "short_label_zh": "Whistle",
+      "short_label_en": "Whistle",
+      "next_action_zh": "一天内在目标设备用真实口音、噪声、静音和关键词样本复测 WER、首 token 延迟、内存与温升。",
+      "next_action_en": "Within one day, test real accents, noise, silence and keywords on the target device, measuring WER, first-token latency, memory and thermals.",
+      "source_ids": [
+        "src-2d9c5e9e87efff73",
+        "src-e1739cedc6f9ead7"
+      ],
+      "project_ids": [
+        "whistle"
+      ],
+      "scenario_ids": [
+        "open-source"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20260930-04-release-evidence",
+          "claim_zh": "Whistle 公开 16.9 MB 七语种权重与 CPU runtime，支持转写、时间戳和语音嵌入。",
+          "claim_en": "Whistle publishes a 16.9 MB seven-language model and CPU runtime for transcription, timestamps and speech embeddings.",
+          "source_ids": [
+            "src-2d9c5e9e87efff73",
+            "src-e1739cedc6f9ead7"
+          ],
+          "event_ids": [
+            "ev-20260930-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260930-04-published",
+          "kind": "new",
+          "occurred_at": "2026-09-30T17:13:26Z",
+          "discovered_at": "2026-10-08T16:05:30Z",
+          "summary_zh": "Whistle 用 16.9 MB 模型在端侧运行多语种语音识别",
+          "summary_en": "Whistle runs multilingual speech recognition in a 16.9 MB edge model",
+          "evidence_ids": [
+            "ev-20260930-04-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary_en": "Cactus Compute released Whistle, a 16.9 MB Apache-2.0 speech model for seven languages. The same CPU runtime can return transcripts, word timestamps and frame-level speech embeddings without a GPU, with Python, C, platform binaries and WebAssembly deployment paths. Benchmarks are author-reported.",
+      "why_it_matters_en": "For teams that need private or offline speech features on constrained devices, Whistle combines transcription and embeddings in one small artifact with an inspectable runtime. Trial it on real accents, noise, silence, keyword bias and target-device thermals before replacing established ASR."
     }
   ]
 }

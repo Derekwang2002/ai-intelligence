@@ -501,23 +501,27 @@
       "published_at": "2026-10-06T12:00:00Z",
       "source_type": "research_blog",
       "primary_source": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
-      "secondary_sources": [],
+      "secondary_sources": [
+        "https://github.com/openai/math/blob/main/history.md"
+      ],
       "late_discovery": true,
-      "summary_en": "OpenAI published a collection of mathematical results produced by an internal frontier model, including Lean formalizations for many proofs, revision and citation protocols, ten reasoning summaries, attempt statistics and rough compute estimates. The model itself is not yet public, and the mathematical claims still require independent expert review.",
-      "summary_zh": "OpenAI 发布一组内部前沿模型生成的数学成果。材料包含多项证明的 Lean 形式化、论文修订与引用规范、10 份推理摘要、尝试次数统计和粗略算力估计。生成这些成果的模型尚未开放，数学主张仍需独立专家复核。",
-      "why_it_matters_en": "For AI-for-math teams, machine-checkable formalizations and revision protocols make frontier claims more auditable than prose-only announcements. The unavailable model and incomplete independent review keep this at WATCH.",
-      "why_it_matters_zh": "对 AI 数学团队来说，可机检的形式化证明与修订规范让前沿主张比只发文章更可审计。模型未开放、独立复核尚不完整，因此先列为 WATCH。",
+      "summary_en": "OpenAI published model-generated mathematical results with Lean formalizations and a public revision history. On October 7 it withdrew three manuscripts after a sign error invalidated one construction and two dependent papers, repaired fourteen others, updated thirteen dependencies and raised top-line Lean coverage to 300 of 719 results.",
+      "summary_zh": "OpenAI 发布模型生成的数学成果、Lean 形式化与公开修订记录。10 月 7 日，团队因一个符号错误使核心构造和两篇依赖论文失效，撤回三篇稿件；另修订 14 篇、更新 13 篇依赖，并将 top-line 结果的 Lean 覆盖提高到 719 项中的 300 项。",
+      "why_it_matters_en": "For AI-for-math teams, the withdrawals show why formal coverage, dependency tracking and independent expert review must be release gates rather than optional evidence. The transparent correction process is useful, but the unavailable model and substantial proof repairs keep the work at WATCH.",
+      "why_it_matters_zh": "对 AI 数学团队来说，这次撤稿说明形式化覆盖、依赖追踪和独立专家复核必须成为发布闸门，而不是可选证据。公开纠错流程值得肯定，但模型未开放且修订规模较大，仍应列为 WATCH。",
       "technical_details": {
         "artifacts": "papers, Lean formalizations, revision and citation protocol, 10 reasoning summaries",
         "reported_compute": "roughly three hours of ChatGPT Pro thinking per result on average",
         "availability": "results public; producing model not public",
-        "verification_limit": "formalization covers many, not necessarily all, proofs; expert review ongoing"
+        "verification_limit": "formalization covers many, not necessarily all, proofs; expert review ongoing",
+        "update_2026_10_08": "Three manuscripts withdrawn after a sign error invalidated a construction and two dependent papers; 14 manuscripts repaired, 13 dependency citations updated, and top-line Lean coverage reported at 300/719 (~42%)."
       },
       "technical_details_zh": {
         "公开材料": "论文、Lean 形式化、修订与引用规范、10 份推理摘要",
         "报告算力": "每项成果平均约等于 ChatGPT Pro 三小时思考量",
         "可用性": "成果公开；生成模型未开放",
-        "验证边界": "Lean 覆盖许多但未必全部证明；专家复核仍在继续"
+        "验证边界": "Lean 覆盖许多但未必全部证明；专家复核仍在继续",
+        "2026-10-08 更新": "一个符号错误使核心构造与两篇依赖论文失效，三篇稿件被撤回；另修订 14 篇、更新 13 篇依赖引用，top-line Lean 覆盖为 300/719（约 42%）。"
       },
       "tags": [
         "mathematics",
@@ -535,10 +539,11 @@
       "event_fingerprint": "openai-model-generated-math-lean-release-october-2026",
       "short_label_zh": "OpenAI 数学成果",
       "short_label_en": "OpenAI Math Results",
-      "next_action_zh": "等独立数学评审和更多 Lean 覆盖后，再判断模型是否能稳定产出可复核的新结果。",
-      "next_action_en": "Reassess after independent mathematical review and broader Lean coverage establish reproducible novel results.",
+      "next_action_zh": "等待独立数学评审覆盖撤稿后的依赖图，并核查关键结论是否有完整 Lean 证明后再重新评估。",
+      "next_action_en": "Reassess after independent reviewers cover the post-withdrawal dependency graph and critical claims have complete Lean proofs.",
       "source_ids": [
-        "src-00427e47df5ef306"
+        "src-00427e47df5ef306",
+        "src-8fdb962b6a49acb6"
       ],
       "project_ids": [],
       "scenario_ids": [
@@ -552,6 +557,19 @@
           "claim_en": "OpenAI publishes model-generated mathematics, Lean formalizations and process artifacts.",
           "source_ids": [
             "src-00427e47df5ef306"
+          ],
+          "event_ids": [
+            "ev-20261006-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261006-06-withdrawals-evidence",
+          "claim_zh": "OpenAI 因符号错误撤回三篇稿件、修订 14 篇，并报告 Lean 覆盖达到 300/719。",
+          "claim_en": "OpenAI withdrew three manuscripts after a sign error, repaired fourteen and reported Lean coverage of 300/719 top-line results.",
+          "source_ids": [
+            "src-8fdb962b6a49acb6"
           ],
           "event_ids": [
             "ev-20261006-06"
@@ -573,12 +591,118 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20261006-06-withdrawals",
+          "kind": "update",
+          "occurred_at": "2026-10-07",
+          "discovered_at": "2026-10-08T16:05:30Z",
+          "summary_zh": "OpenAI 撤回三篇模型生成的数学稿件并修订 14 篇",
+          "summary_en": "OpenAI withdraws three model-generated math manuscripts and repairs fourteen",
+          "evidence_ids": [
+            "ev-20261006-06-withdrawals-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "first_seen_at": "2026-10-07T22:04:39Z",
-      "last_updated_at": "2026-10-07T22:04:39Z",
-      "summary": "OpenAI published a collection of mathematical results produced by an internal frontier model, including Lean formalizations for many proofs, revision and citation protocols, ten reasoning summaries, attempt statistics and rough compute estimates. The model itself is not yet public, and the mathematical claims still require independent expert review.",
-      "why_it_matters": "For AI-for-math teams, machine-checkable formalizations and revision protocols make frontier claims more auditable than prose-only announcements. The unavailable model and incomplete independent review keep this at WATCH."
+      "last_updated_at": "2026-10-08T16:05:30Z",
+      "summary": "OpenAI published model-generated mathematical results with Lean formalizations and a public revision history. On October 7 it withdrew three manuscripts after a sign error invalidated one construction and two dependent papers, repaired fourteen others, updated thirteen dependencies and raised top-line Lean coverage to 300 of 719 results.",
+      "why_it_matters": "For AI-for-math teams, the withdrawals show why formal coverage, dependency tracking and independent expert review must be release gates rather than optional evidence. The transparent correction process is useful, but the unavailable model and substantial proof repairs keep the work at WATCH."
+    },
+    {
+      "event_id": "ev-20261006-07",
+      "title": "Unofficial GLM-5.3 derivative targets two DGX Spark systems",
+      "title_zh": "非官方 GLM-5.3 衍生模型面向双 DGX Spark",
+      "category": "open-source",
+      "organization": [
+        "community"
+      ],
+      "published_at": "2026-10-06T22:49:26Z",
+      "first_seen_at": "2026-10-08T16:05:30Z",
+      "last_updated_at": "2026-10-08T16:05:30Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/autotrust/GLM5.3-Flash-E224-DGX-Spark",
+      "secondary_sources": [],
+      "summary": "An unofficial derivative prunes GLM-5.3-Flash from 288 to 224 routed experts and quantizes routed experts to NVFP4, producing a 141 GiB weight footprint intended for two DGX Spark systems. The card reports benchmarks from a B200, not the target Spark hardware, and explicitly labels Spark throughput and memory behavior as estimates.",
+      "summary_zh": "一个非官方衍生版本把 GLM-5.3-Flash 的 routed expert 从 288 个裁到 224 个，并把 routed expert 量化为 NVFP4，权重约 141 GiB，目标是两台 DGX Spark。模型卡的 benchmark 来自 B200，而不是目标 Spark；Spark 的吞吐与内存表现被明确标为估算。",
+      "why_it_matters": "For most teams, this is a narrow, expensive deployment recipe whose central target claim has not been measured on the target hardware. High community interest does not justify engineering investment until independent two-Spark results and quality regressions are available.",
+      "why_it_matters_zh": "对多数团队来说，这是面向小众且昂贵硬件组合的部署配方，核心主张还没有在目标硬件上实测。社区热度不能替代证据；在出现独立的双 Spark 结果和质量回归前，不值得投入工程时间。",
+      "technical_details": {
+        "derivation": "unofficial GLM-5.3-Flash derivative; 224 of 288 routed experts retained; NVFP4 routed experts",
+        "footprint": "151.5 GB on disk / 141 GiB weight memory; target is two 128 GB DGX Spark systems",
+        "reported_validation": "accuracy and throughput measured on one B200",
+        "target_limit": "two-Spark memory and throughput are estimated, not measured",
+        "community_signal": "5,422 downloads and 274 likes at review time"
+      },
+      "technical_details_zh": {
+        "衍生方式": "非官方 GLM-5.3-Flash 衍生版；保留 288 个 routed expert 中的 224 个；routed expert 使用 NVFP4",
+        "体积": "磁盘 151.5 GB / 权重内存 141 GiB；目标为两台 128 GB DGX Spark",
+        "报告的验证": "准确率与吞吐在单张 B200 上测得",
+        "目标环境限制": "双 Spark 内存与吞吐为估算，未实测",
+        "社区信号": "复核时 5,422 downloads、274 likes"
+      },
+      "tags": [
+        "glm-5.3-flash",
+        "dgx-spark",
+        "nvfp4",
+        "expert-pruning",
+        "unofficial-derivative"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 1,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 5,
+      "risk": 4,
+      "recommendation": "IGNORE",
+      "event_fingerprint": "autotrust-glm-5-3-flash-e224-dgx-spark-derivative",
+      "short_label_zh": "GLM-5.3 E224",
+      "short_label_en": "GLM-5.3 E224",
+      "next_action_zh": "暂不投入；等第三方在两台 DGX Spark 上公开吞吐、显存余量和完整质量回归后再评估。",
+      "next_action_en": "Do not invest yet; reassess after independent two-DGX-Spark throughput, memory-headroom and full quality-regression results are public.",
+      "source_ids": [
+        "src-6361f7853c1e4cad"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "open-source"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261006-07-release-evidence",
+          "claim_zh": "非官方 GLM-5.3 E224 衍生模型公开权重，但双 DGX Spark 目标尚未实测。",
+          "claim_en": "The unofficial GLM-5.3 E224 derivative publishes weights, but its two-DGX-Spark target remains untested.",
+          "source_ids": [
+            "src-6361f7853c1e4cad"
+          ],
+          "event_ids": [
+            "ev-20261006-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261006-07-published",
+          "kind": "new",
+          "occurred_at": "2026-10-06T22:49:26Z",
+          "discovered_at": "2026-10-08T16:05:30Z",
+          "summary_zh": "非官方 GLM-5.3 衍生模型面向双 DGX Spark",
+          "summary_en": "Unofficial GLM-5.3 derivative targets two DGX Spark systems",
+          "evidence_ids": [
+            "ev-20261006-07-release-evidence"
+          ],
+          "historical": false,
+          "importance": "minor"
+        }
+      ],
+      "summary_en": "An unofficial derivative prunes GLM-5.3-Flash from 288 to 224 routed experts and quantizes routed experts to NVFP4, producing a 141 GiB weight footprint intended for two DGX Spark systems. The card reports benchmarks from a B200, not the target Spark hardware, and explicitly labels Spark throughput and memory behavior as estimates.",
+      "why_it_matters_en": "For most teams, this is a narrow, expensive deployment recipe whose central target claim has not been measured on the target hardware. High community interest does not justify engineering investment until independent two-Spark results and quality regressions are available."
     }
   ]
 }

@@ -39,7 +39,8 @@
         "src-d9b88297cf0d952f",
         "src-bb63a15b856259f7",
         "src-0c734930a759f57a",
-        "src-0ba886b07133e21d"
+        "src-0ba886b07133e21d",
+        "src-0dfdf17053d5d17a"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -53,19 +54,20 @@
         "src-d9b88297cf0d952f",
         "src-bb63a15b856259f7",
         "src-0c734930a759f57a",
-        "src-0ba886b07133e21d"
+        "src-0ba886b07133e21d",
+        "src-0dfdf17053d5d17a"
       ],
-      "last_reviewed_at": "2026-10-07T22:04:40Z",
+      "last_reviewed_at": "2026-10-08T16:05:31Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.292/293 增加逐 subagent effort、Haiku 5.5 与压缩、MCP、后台消息可靠性修复。",
-        "judgment_en": "Claude Code is a mature local multi-agent runtime. Versions 2.1.292/293 add per-subagent effort, Haiku 5.5 and compaction, MCP and background-message reliability fixes.",
-        "next_action_zh": "升级到 2.1.293 前回归 marketplace 策略、subagent effort、压缩续跑、HTTP MCP 和后台消息。",
-        "next_action_en": "Before 2.1.293, regress marketplace policy, subagent effort, compaction resume, HTTP MCP and background messages.",
+        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.294 修复自然语言 hook 可能错误放行命令，并减少 Stop hook 提前结束任务。",
+        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.294 fixes natural-language hooks that could allow blocked commands and reduces premature Stop-hook termination.",
+        "next_action_zh": "升级后回放 allow/block hook 用例，并验证长任务 subagent 的 Stop hook。",
+        "next_action_en": "After upgrading, replay allow/block hook cases and verify Stop hooks on long-running subagents.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-07T22:04:40Z"
+        "reviewed_at": "2026-10-08T16:05:31Z"
       }
     },
     {
@@ -610,7 +612,8 @@
         "src-987dd82c392616be",
         "src-49b5951c067cceb3",
         "src-75ffc0e085a2eee1",
-        "src-d9a9c33752a345db"
+        "src-d9a9c33752a345db",
+        "src-5f6db8b0b36e1913"
       ],
       "current_judgment_event_id": "ev-20260928-07",
       "official_source_ids": [
@@ -618,20 +621,20 @@
         "src-781657bf5c42e86e",
         "src-987dd82c392616be"
       ],
-      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "last_reviewed_at": "2026-10-08T16:05:31Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "MCP 已进入企业治理阶段。SDK 2.3 进一步收紧重定向、token audience、连接生命周期和 SSE 负载边界，但会影响复用 server 或 transport 的旧实现。",
-        "judgment_en": "MCP has entered its enterprise-governance phase. SDK 2.3 further tightens redirects, token audiences, connection lifecycles and SSE payload limits, but can break older implementations that reuse servers or transports.",
-        "next_action_zh": "回归跨域重定向、token audience、超大 SSE 负载、transport 复用和断线重连。",
-        "next_action_en": "Regress cross-origin redirects, token audiences, oversized SSE payloads, transport reuse and reconnection.",
+        "judgment_zh": "MCP 已进入企业治理阶段。LiteLLM 1.104.2 又把 Decisions API 纳入同一网关，使身份、路由与成本控制可覆盖结构化决策流量。",
+        "judgment_en": "MCP has entered its enterprise-governance phase. LiteLLM 1.104.2 brings the Decisions API under the same gateway, extending identity, routing and spend controls to structured decisions.",
+        "next_action_zh": "在预生产回归 Decisions schema、认证、fallback、MCP 路由和成本归属。",
+        "next_action_en": "In staging, regress Decisions schemas, authentication, fallback, MCP routing and spend attribution.",
         "basis_event_ids": [
+          "ev-20260913-01",
           "ev-20260928-07",
           "ev-20260917-07",
-          "ev-20260814-03",
-          "ev-20260924-08"
+          "ev-20260814-03"
         ],
-        "reviewed_at": "2026-10-04T16:02:19Z"
+        "reviewed_at": "2026-10-08T16:05:31Z"
       }
     },
     {
@@ -2255,7 +2258,75 @@
         ],
         "reviewed_at": "2026-10-07T22:04:40Z"
       }
+    },
+    {
+      "id": "docker-agent",
+      "name_zh": "Docker Agent",
+      "name_en": "Docker Agent",
+      "type": "developer-tool",
+      "aliases": [
+        "docker-agent"
+      ],
+      "pattern": "Docker Agent",
+      "event_ids": [
+        "ev-20261007-06"
+      ],
+      "source_ids": [
+        "src-286c732492720fc1",
+        "src-768589be16131508"
+      ],
+      "current_judgment_event_id": "ev-20261007-06",
+      "official_source_ids": [
+        "src-286c732492720fc1",
+        "src-768589be16131508"
+      ],
+      "last_reviewed_at": "2026-10-08T16:05:31Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Docker Agent 将 YAML agent、多 agent、MCP、评估与 OCI 分发放进同一套 Apache-2.0 runtime，值得与现有编排栈做小规模比较。",
+        "judgment_en": "Docker Agent combines YAML agents, multi-agent delegation, MCP, evaluation and OCI distribution in one Apache-2.0 runtime, warranting a small comparison with the existing orchestration stack.",
+        "next_action_zh": "一天内重建一个双 agent 流程，检查 OCI 可复现性、MCP 隔离和密钥处理。",
+        "next_action_en": "Within one day, rebuild a two-agent workflow and inspect OCI reproducibility, MCP isolation and secret handling.",
+        "basis_event_ids": [
+          "ev-20261007-06"
+        ],
+        "reviewed_at": "2026-10-08T16:05:31Z"
+      }
+    },
+    {
+      "id": "whistle",
+      "name_zh": "Whistle",
+      "name_en": "Whistle",
+      "type": "open-source",
+      "aliases": [
+        "Cactus Whistle"
+      ],
+      "pattern": "Whistle",
+      "event_ids": [
+        "ev-20260930-04"
+      ],
+      "source_ids": [
+        "src-2d9c5e9e87efff73",
+        "src-e1739cedc6f9ead7"
+      ],
+      "current_judgment_event_id": "ev-20260930-04",
+      "official_source_ids": [
+        "src-2d9c5e9e87efff73",
+        "src-e1739cedc6f9ead7"
+      ],
+      "last_reviewed_at": "2026-10-08T16:05:31Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Whistle 用 16.9 MB CPU 模型提供七语种转写、时间戳和语音嵌入，公开产物足以在目标设备复测。",
+        "judgment_en": "Whistle provides seven-language transcription, timestamps and speech embeddings in a 16.9 MB CPU model, with public artifacts suitable for target-device testing.",
+        "next_action_zh": "一天内在目标设备复测 WER、首 token 延迟、内存与温升。",
+        "next_action_en": "Within one day, test WER, first-token latency, memory and thermals on the target device.",
+        "basis_event_ids": [
+          "ev-20260930-04"
+        ],
+        "reviewed_at": "2026-10-08T16:05:31Z"
+      }
     }
   ],
-  "last_updated": "2026-10-06T16:01:24Z"
+  "last_updated": "2026-10-08T16:05:30Z"
 }

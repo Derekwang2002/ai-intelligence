@@ -200,6 +200,390 @@
       "summary": "Liquid AI released d1-3B and experimental d1-omni-600M weights for single-pass typed decisions instead of token generation. d1-3B accepts text and images; d1-omni adds text-image or text-audio inputs. Liquid reports 8 ms per decision on an RTX 4090 and 50 ms on Jetson Orin Nano for d1-3B, with public demos and code loaded through trust_remote_code.",
       "why_it_matters": "For routing, moderation and edge inspection, a compact model can move structured decisions off the generative path and reduce latency. The benchmarks are vendor-run, the custom LFM license needs review and trust_remote_code expands the execution boundary.",
       "evidence_stage": "verified"
+    },
+    {
+      "event_id": "ev-20261007-03",
+      "title": "ExpDis separates exploration from optimization in RLVR",
+      "title_zh": "ExpDis 将 RLVR 的探索与优化拆开",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-07T17:59:26Z",
+      "first_seen_at": "2026-10-08T16:05:30Z",
+      "last_updated_at": "2026-10-08T16:05:30Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.10536",
+      "secondary_sources": [
+        "https://github.com/SaifPunjwani/Exploration-Distillation",
+        "https://huggingface.co/SaifPunjwani/expdis-checkpoints"
+      ],
+      "summary": "Exploration-Distillation trains novelty-seeking explorer policies, filters their correct trajectories and distills them into a separate student that optimizes without the novelty bonus. The authors report gains over DAPO at the same wall-clock budget across seven math benchmarks and two model families, with more diverse correct solutions.",
+      "summary_zh": "Exploration-Distillation 先训练追求新颖解法的 explorer，再筛出正确轨迹，蒸馏给不带新颖性奖励的独立 student。作者报告：在相同 wall-clock 预算下，ExpDis 在七个数学 benchmark、两个模型家族上优于 DAPO，并生成更多样的正确解法。",
+      "why_it_matters": "For teams training reasoning models, the method offers a way to scale exploration without letting sparse verifiable rewards damage the production policy. The public code and checkpoints make a small independent replication possible, but the reported gains remain author evidence.",
+      "why_it_matters_zh": "对训练推理模型的团队来说，这种拆分可以扩大探索，同时避免稀疏的可验证奖励损伤最终策略。代码与 checkpoint 已公开，能做小规模独立复现，但目前性能提升仍来自作者报告。",
+      "technical_details": {
+        "method": "novelty-bonused explorers -> correctness and quality filtering -> distillation into a separate student",
+        "reported_evaluation": "seven mathematical reasoning benchmarks and two model families; DAPO baseline at equal wall-clock budget",
+        "availability": "Apache-2.0 code and checkpoints are public",
+        "evidence_limit": "author-reported preprint; no independent replication found"
+      },
+      "technical_details_zh": {
+        "方法": "带新颖性奖励的 explorer → 正确性与质量筛选 → 蒸馏到独立 student",
+        "报告的评测": "七个数学推理 benchmark、两个模型家族；与相同 wall-clock 预算的 DAPO 比较",
+        "可用性": "Apache-2.0 代码与 checkpoint 已公开",
+        "证据限制": "作者报告的预印本；未发现独立复现"
+      },
+      "tags": [
+        "rlvr",
+        "reasoning",
+        "exploration",
+        "distillation",
+        "reinforcement-learning"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "expdis-decoupled-exploration-optimization-rlvr",
+      "short_label_zh": "ExpDis",
+      "short_label_en": "ExpDis",
+      "next_action_zh": "一天内运行公开 CPU 测试，并用 checkpoint 在小型数学集对比 baseline 的 pass@k、答案正确率与解法多样性。",
+      "next_action_en": "Within one day, run the public CPU tests and compare the checkpoint with a baseline on pass@k, answer accuracy and solution diversity.",
+      "source_ids": [
+        "src-35945dbbe1e7e74a",
+        "src-d4f8a7cfa8173560",
+        "src-21cbb7b5f830f38e"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261007-03-release-evidence",
+          "claim_zh": "ExpDis 公开论文、Apache-2.0 代码和 checkpoint，并报告在等时预算下优于 DAPO。",
+          "claim_en": "ExpDis publishes a paper, Apache-2.0 code and checkpoints, reporting gains over DAPO at equal wall-clock budget.",
+          "source_ids": [
+            "src-35945dbbe1e7e74a",
+            "src-d4f8a7cfa8173560",
+            "src-21cbb7b5f830f38e"
+          ],
+          "event_ids": [
+            "ev-20261007-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261007-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-07T17:59:26Z",
+          "discovered_at": "2026-10-08T16:05:30Z",
+          "summary_zh": "ExpDis 将 RLVR 的探索与优化拆开",
+          "summary_en": "ExpDis separates exploration from optimization in RLVR",
+          "evidence_ids": [
+            "ev-20261007-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary_en": "Exploration-Distillation trains novelty-seeking explorer policies, filters their correct trajectories and distills them into a separate student that optimizes without the novelty bonus. The authors report gains over DAPO at the same wall-clock budget across seven math benchmarks and two model families, with more diverse correct solutions.",
+      "why_it_matters_en": "For teams training reasoning models, the method offers a way to scale exploration without letting sparse verifiable rewards damage the production policy. The public code and checkpoints make a small independent replication possible, but the reported gains remain author evidence."
+    },
+    {
+      "event_id": "ev-20261007-04",
+      "title": "SciExam tests whether agents can build climate models without known answers",
+      "title_zh": "SciExam 检验 agent 能否在未知答案下构建气候模型",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-07T17:52:52Z",
+      "first_seen_at": "2026-10-08T16:05:30Z",
+      "last_updated_at": "2026-10-08T16:05:30Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.10513",
+      "secondary_sources": [
+        "https://github.com/ylzhang2447/SciExam-ENSO-code"
+      ],
+      "summary": "SciExam for ENSO gives agents six hours to build low-order climate models from real observations without a known target answer. Hidden graders test statistics, reconstruction of unobserved variables and forecasts on held-out years. Six of twelve tested agent systems reportedly beat the published-model baseline, and the authors release the benchmark and grading code.",
+      "summary_zh": "SciExam for ENSO 给 agent 六小时，让它们基于真实观测构建低阶气候模型，而不是追一个已知答案。隐藏 grader 检查统计特征、未观测变量重建与留出年份预测。十二套 agent 中有六套据作者报告超过已发表模型 baseline；benchmark 与评分代码已经公开。",
+      "why_it_matters": "For teams evaluating research agents, SciExam measures whether an agent can produce a model that survives unseen scientific tests, not merely match a rubric. The public package supports regrading, but claims about scientific usefulness still need domain-expert and independent replication.",
+      "why_it_matters_zh": "对评估科研 agent 的团队来说，SciExam 检查的是模型能否通过未见过的科学测试，而不只是贴合 rubric。公开包支持重新评分，但科学价值仍需领域专家与独立复现确认。",
+      "technical_details": {
+        "task": "build low-order stochastic ENSO models from real observations within six hours",
+        "grading": "hidden tests for ENSO statistics, unobserved-variable reconstruction and held-out-year forecasting",
+        "reported_result": "6 of 12 agent systems scored above the published-model baseline",
+        "availability": "MIT code; benchmark data under CC BY 4.0 with third-party data terms; Docker and grader included"
+      },
+      "technical_details_zh": {
+        "任务": "六小时内基于真实观测构建低阶 ENSO 随机模型",
+        "评分": "隐藏测试检查 ENSO 统计、未观测变量重建和留出年份预测",
+        "报告的结果": "十二套 agent 中六套超过已发表模型 baseline",
+        "可用性": "MIT 代码；benchmark 数据为 CC BY 4.0，但受第三方数据条款约束；含 Docker 与 grader"
+      },
+      "tags": [
+        "scientific-agents",
+        "agent-evaluation",
+        "climate-modeling",
+        "hidden-grader",
+        "held-out-evaluation"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "sciexam-enso-hidden-scientific-agent-evaluation",
+      "short_label_zh": "SciExam for ENSO",
+      "short_label_en": "SciExam for ENSO",
+      "next_action_zh": "一天内用公开 Docker 重评一个最终 run，检查隐藏 split、数据许可和 held-out 年份是否真正隔离。",
+      "next_action_en": "Within one day, use the public Docker image to regrade one final run and inspect hidden splits, data terms and held-out-year isolation.",
+      "source_ids": [
+        "src-d90a8e0869dee55c",
+        "src-002820a97a41ae7e"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261007-04-release-evidence",
+          "claim_zh": "SciExam 公开论文、benchmark 与评分代码，并报告十二套 agent 中六套超过已发表模型 baseline。",
+          "claim_en": "SciExam publishes the paper, benchmark and grading code, reporting that six of twelve agent systems beat the published-model baseline.",
+          "source_ids": [
+            "src-d90a8e0869dee55c",
+            "src-002820a97a41ae7e"
+          ],
+          "event_ids": [
+            "ev-20261007-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261007-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-07T17:52:52Z",
+          "discovered_at": "2026-10-08T16:05:30Z",
+          "summary_zh": "SciExam 检验 agent 能否在未知答案下构建气候模型",
+          "summary_en": "SciExam tests whether agents can build climate models without known answers",
+          "evidence_ids": [
+            "ev-20261007-04-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary_en": "SciExam for ENSO gives agents six hours to build low-order climate models from real observations without a known target answer. Hidden graders test statistics, reconstruction of unobserved variables and forecasts on held-out years. Six of twelve tested agent systems reportedly beat the published-model baseline, and the authors release the benchmark and grading code.",
+      "why_it_matters_en": "For teams evaluating research agents, SciExam measures whether an agent can produce a model that survives unseen scientific tests, not merely match a rubric. The public package supports regrading, but claims about scientific usefulness still need domain-expert and independent replication."
+    },
+    {
+      "event_id": "ev-20261007-05",
+      "title": "RunningTab keeps workspace-agent obligations outside the context window",
+      "title_zh": "RunningTab 在上下文窗口外追踪 agent 的交付义务",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-07T17:16:56Z",
+      "first_seen_at": "2026-10-08T16:05:30Z",
+      "last_updated_at": "2026-10-08T16:05:30Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.10444",
+      "secondary_sources": [],
+      "summary": "RunningTab adds an environment-side record to direct workspace interaction. It tracks task requirements, excerpts with provenance and listed-but-unopened files, then blocks finishing while obligations remain unresolved. The authors report consistent gains over plain workspace interaction and model-maintained records across three benchmarks and three LLMs.",
+      "summary_zh": "RunningTab 为直接 workspace 交互增加环境侧记录。它追踪任务要求、带来源的摘录，以及已列出但未打开的文件，并在义务未解决时阻止结束。作者报告：在三个 benchmark、三个 LLM 上，它持续优于普通 workspace 交互和由模型自己维护的记录。",
+      "why_it_matters": "For teams building long-running file agents, this suggests that completeness state belongs in the runtime, not only in model context. Without public code or a harness, the design is actionable as an architecture signal but not yet ready for a team POC.",
+      "why_it_matters_zh": "对构建长时程文件 agent 的团队来说，这说明完成度状态应由 runtime 保存，而不能只留在模型上下文里。由于没有公开代码或 harness，目前更适合作为架构信号，还不值得安排团队 POC。",
+      "technical_details": {
+        "mechanism": "environment-side requirements, provenance excerpts, unopened-file candidates and a finish check",
+        "reported_evaluation": "three benchmarks and three LLMs; consistent gains over plain direct workspace interaction and model-side records",
+        "availability": "paper only; no public code or evaluation harness found",
+        "evidence_limit": "author-reported preprint"
+      },
+      "technical_details_zh": {
+        "机制": "环境侧 requirements、带来源摘录、未打开文件候选与 finish check",
+        "报告的评测": "三个 benchmark、三个 LLM；持续优于普通直接 workspace 交互与模型侧记录",
+        "可用性": "仅论文；未发现公开代码或评测 harness",
+        "证据限制": "作者报告的预印本"
+      },
+      "tags": [
+        "workspace-agents",
+        "context-engineering",
+        "provenance",
+        "long-running-agents",
+        "completion-checks"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "runningtab-environment-side-workspace-agent-record",
+      "short_label_zh": "RunningTab",
+      "short_label_en": "RunningTab",
+      "next_action_zh": "等待作者公开代码或 harness 后，再用多文件报告任务复测需求遗漏率、来源追踪和 finish check。",
+      "next_action_en": "Reassess when code or a harness is public, then test requirement omissions, provenance tracking and finish checks on multi-file reports.",
+      "source_ids": [
+        "src-2693d3bb7a86b5b4"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261007-05-release-evidence",
+          "claim_zh": "RunningTab 提出环境侧任务记录，并报告在三个 benchmark、三个 LLM 上持续提升。",
+          "claim_en": "RunningTab introduces an environment-side task record and reports consistent gains across three benchmarks and three LLMs.",
+          "source_ids": [
+            "src-2693d3bb7a86b5b4"
+          ],
+          "event_ids": [
+            "ev-20261007-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261007-05-published",
+          "kind": "new",
+          "occurred_at": "2026-10-07T17:16:56Z",
+          "discovered_at": "2026-10-08T16:05:30Z",
+          "summary_zh": "RunningTab 在上下文窗口外追踪 agent 的交付义务",
+          "summary_en": "RunningTab keeps workspace-agent obligations outside the context window",
+          "evidence_ids": [
+            "ev-20261007-05-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary_en": "RunningTab adds an environment-side record to direct workspace interaction. It tracks task requirements, excerpts with provenance and listed-but-unopened files, then blocks finishing while obligations remain unresolved. The authors report consistent gains over plain workspace interaction and model-maintained records across three benchmarks and three LLMs.",
+      "why_it_matters_en": "For teams building long-running file agents, this suggests that completeness state belongs in the runtime, not only in model context. Without public code or a harness, the design is actionable as an architecture signal but not yet ready for a team POC."
+    },
+    {
+      "event_id": "ev-20261007-06",
+      "title": "Docker Agent packages multi-agent workflows as OCI artifacts",
+      "title_zh": "Docker Agent 将多 agent 工作流打包为 OCI 产物",
+      "category": "developer-tools",
+      "organization": [
+        "Docker"
+      ],
+      "published_at": "2026-10-07T14:55:39Z",
+      "first_seen_at": "2026-10-08T16:05:30Z",
+      "last_updated_at": "2026-10-08T16:05:30Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/docker/docker-agent/releases/tag/v1.149.0",
+      "secondary_sources": [
+        "https://github.com/docker/docker-agent"
+      ],
+      "summary": "Docker Agent is an Apache-2.0 CLI plugin and runtime for declarative YAML agents, multi-agent delegation, MCP tools, RAG and OCI distribution. Version 1.149.0 adds GitHub-hosted skill loading, a dedicated evaluator backend, OpenAI Decisions evaluation and complete debug-tool hook coverage. The repository had about 4,162 stars at review time.",
+      "summary_zh": "Docker Agent 是 Apache-2.0 的 CLI plugin 与 runtime，用 YAML 定义 agent，支持多 agent 委派、MCP、RAG 和 OCI 分发。1.149.0 新增 GitHub skill 加载、独立 evaluator backend、OpenAI Decisions 评估，并补齐 debug tool 的 hook 链。复核时仓库约有 4,162 stars。",
+      "why_it_matters": "For platform teams already using Docker, this combines agent configuration, local or cloud models, evaluation and portable packaging in one inspectable runtime. Trial it against existing orchestration on isolation, reproducibility, secret handling and OCI promotion.",
+      "why_it_matters_zh": "对已经使用 Docker 的平台团队来说，它把 agent 配置、本地或云模型、评估与可移植打包放进同一套可检查 runtime。应拿它与现有编排方案比较隔离性、可复现性、密钥处理和 OCI 晋级流程。",
+      "technical_details": {
+        "runtime": "Docker CLI plugin or standalone binary; declarative YAML agents with multi-agent delegation",
+        "tooling": "built-in tools, MCP, RAG, hooks and model-provider routing",
+        "distribution": "agent packages can be pushed to and pulled from OCI registries",
+        "release_1_149": "GitHub skill loading, evaluator backend, OpenAI Decisions evaluation and complete debug-tool hook transforms",
+        "adoption": "about 4,162 GitHub stars and 491 forks at review time"
+      },
+      "technical_details_zh": {
+        "运行方式": "Docker CLI plugin 或独立 binary；用 YAML 定义 agent 与多 agent 委派",
+        "工具": "内置工具、MCP、RAG、hook 与模型 provider 路由",
+        "分发": "agent 包可推送到 OCI registry，也可从中拉取",
+        "版本_1_149": "GitHub skill 加载、evaluator backend、OpenAI Decisions 评估与完整 debug-tool hook transform",
+        "采用信号": "复核时约 4,162 GitHub stars、491 forks"
+      },
+      "tags": [
+        "docker",
+        "multi-agent",
+        "mcp",
+        "oci",
+        "agent-runtime",
+        "evaluation"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "docker-agent-oci-multi-agent-runtime-1-149",
+      "short_label_zh": "Docker Agent",
+      "short_label_en": "Docker Agent",
+      "next_action_zh": "一天内用 YAML 重建一个现有双 agent 流程，比较 OCI 可复现性、MCP 隔离、密钥暴露和 evaluator 稳定性。",
+      "next_action_en": "Within one day, rebuild one existing two-agent workflow in YAML and compare OCI reproducibility, MCP isolation, secret exposure and evaluator stability.",
+      "source_ids": [
+        "src-768589be16131508",
+        "src-286c732492720fc1"
+      ],
+      "project_ids": [
+        "docker-agent"
+      ],
+      "scenario_ids": [
+        "developer-tools"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261007-06-release-evidence",
+          "claim_zh": "Docker Agent 1.149.0 公开 Apache-2.0 runtime，并新增 skill 加载、evaluator 与 Decisions 支持。",
+          "claim_en": "Docker Agent 1.149.0 publishes an Apache-2.0 runtime with skill loading, evaluator and Decisions support.",
+          "source_ids": [
+            "src-768589be16131508",
+            "src-286c732492720fc1"
+          ],
+          "event_ids": [
+            "ev-20261007-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261007-06-published",
+          "kind": "new",
+          "occurred_at": "2026-10-07T14:55:39Z",
+          "discovered_at": "2026-10-08T16:05:30Z",
+          "summary_zh": "Docker Agent 将多 agent 工作流打包为 OCI 产物",
+          "summary_en": "Docker Agent packages multi-agent workflows as OCI artifacts",
+          "evidence_ids": [
+            "ev-20261007-06-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary_en": "Docker Agent is an Apache-2.0 CLI plugin and runtime for declarative YAML agents, multi-agent delegation, MCP tools, RAG and OCI distribution. Version 1.149.0 adds GitHub-hosted skill loading, a dedicated evaluator backend, OpenAI Decisions evaluation and complete debug-tool hook coverage. The repository had about 4,162 stars at review time.",
+      "why_it_matters_en": "For platform teams already using Docker, this combines agent configuration, local or cloud models, evaluation and portable packaging in one inspectable runtime. Trial it against existing orchestration on isolation, reproducibility, secret handling and OCI promotion."
     }
   ]
 }
