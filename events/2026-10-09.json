@@ -1,0 +1,305 @@
+{
+  "date": "2026-10-09",
+  "provenance": "Incremental scan with primary-source verification.",
+  "events": [
+    {
+      "event_id": "ev-20261009-01",
+      "title": "Qwen releases an eight-step turbo image model",
+      "title_zh": "Qwen 发布八步生成的图像 Turbo 模型",
+      "category": "foundation-model",
+      "organization": [
+        "Qwen"
+      ],
+      "published_at": "2026-10-09T04:50:01Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo",
+      "secondary_sources": [],
+      "summary_zh": "Qwen 公开 Qwen-Image-2.1-Turbo 权重。它以 7B 视觉生成架构在八个去噪步骤完成文生图和图像编辑，沿用 QwenImage21Pipeline，并支持最高 2K 级输出。模型卡没有给出与基础版的对比 benchmark。",
+      "summary_en": "Qwen released Qwen-Image-2.1-Turbo weights. The 7B visual-generation model handles text-to-image and editing in eight denoising steps, uses the existing QwenImage21Pipeline and supports outputs up to the 2K class. The model card provides no comparative benchmark against the base model.",
+      "why_it_matters_zh": "对需要本地图片生成的团队来说，八步采样可能显著缩短延迟，但速度、显存、文字渲染和编辑保真仍需实测。自定义许可证和最新 Diffusers 源码依赖也必须先审查。",
+      "why_it_matters_en": "For teams needing local image generation, eight-step sampling may cut latency materially, but speed, memory, text rendering and edit fidelity need direct testing. Review the custom license and dependency on unreleased Diffusers source first.",
+      "technical_details": {
+        "parameters": "7B visual-generation architecture",
+        "sampling": "8 denoising steps; CFG 1 by default",
+        "tasks": "text-to-image and image editing",
+        "resolution": "up to 2K-class output",
+        "runtime": "QwenImage21Pipeline; requires latest Diffusers source at release",
+        "license": "custom qwen-research license",
+        "benchmark": "no comparative benchmark in model card"
+      },
+      "technical_details_zh": {
+        "参数": "7B 视觉生成架构",
+        "采样": "8 个去噪步骤；默认 CFG 1",
+        "任务": "文生图与图像编辑",
+        "分辨率": "最高 2K 级输出",
+        "运行时": "QwenImage21Pipeline；发布时需要最新 Diffusers 源码",
+        "许可证": "自定义 qwen-research license",
+        "评测": "模型卡未提供对比 benchmark"
+      },
+      "tags": [
+        "open-weight",
+        "image-generation",
+        "image-editing",
+        "diffusers",
+        "low-latency"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "qwen-image-2-1-turbo-eight-step-open-weights",
+      "short_label_zh": "Qwen-Image-2.1-Turbo",
+      "short_label_en": "Qwen-Image-2.1-Turbo",
+      "next_action_zh": "一天内用固定生成与编辑集对比基础版的延迟、显存、文字渲染和编辑保真。",
+      "next_action_en": "Within one day, compare latency, memory, text rendering and edit fidelity with the base model on fixed generation and editing prompts.",
+      "source_ids": [
+        "src-167c7efa09e6db36"
+      ],
+      "project_ids": [
+        "qwen"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261009-01-release-evidence",
+          "claim_zh": "Qwen 公开 Qwen-Image-2.1-Turbo 权重，模型卡给出八步采样与 Diffusers 用法。",
+          "claim_en": "Qwen released Qwen-Image-2.1-Turbo weights with eight-step sampling and Diffusers usage in the model card.",
+          "source_ids": [
+            "src-167c7efa09e6db36"
+          ],
+          "event_ids": [
+            "ev-20261009-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261009-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-09T04:50:01Z",
+          "discovered_at": "2026-10-09T15:56:33Z",
+          "summary_zh": "Qwen 发布八步生成的图像 Turbo 模型",
+          "summary_en": "Qwen releases an eight-step turbo image model",
+          "evidence_ids": [
+            "ev-20261009-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-09T15:56:33Z",
+      "last_updated_at": "2026-10-09T15:56:33Z",
+      "summary": "Qwen released Qwen-Image-2.1-Turbo weights. The 7B visual-generation model handles text-to-image and editing in eight denoising steps, uses the existing QwenImage21Pipeline and supports outputs up to the 2K class. The model card provides no comparative benchmark against the base model.",
+      "why_it_matters": "For teams needing local image generation, eight-step sampling may cut latency materially, but speed, memory, text rendering and edit fidelity need direct testing. Review the custom license and dependency on unreleased Diffusers source first."
+    },
+    {
+      "event_id": "ev-20261009-02",
+      "title": "Tencent releases one parser for documents, charts, audio and video",
+      "title_zh": "Tencent 发布统一解析文档、图表、音视频的模型",
+      "category": "foundation-model",
+      "organization": [
+        "Tencent"
+      ],
+      "published_at": "2026-10-09T06:42:18Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/tencent/Youtu-Parsing-Omni",
+      "secondary_sources": [],
+      "summary_zh": "Tencent 公开 5B 参数 Youtu-Parsing-Omni 权重，可把文档、自然图像、图表、几何题、音频与视频解析为结构化 JSON。模型卡提供 Transformers 与 vLLM 用法，并报告 OmniDocBench 和 OmniParsingBench 成绩；评测代码仍标注 TBD。",
+      "summary_en": "Tencent released the 5B Youtu-Parsing-Omni weights, which parse documents, natural images, charts, geometry, audio and video into structured JSON. The model card includes Transformers and vLLM usage and reports OmniDocBench and OmniParsingBench results, while evaluation code is still marked TBD.",
+      "why_it_matters_zh": "对做多模态摄取流水线的团队来说，一个模型覆盖多种输入可减少路由和 schema 拼接。由于 benchmark 仍是厂商报告、评测代码未开放且许可证自定义，先在自有混合样本上做小规模复核。",
+      "why_it_matters_en": "For multimodal ingestion pipelines, one model across input types could reduce routing and schema stitching. Benchmarks are vendor-reported, evaluation code is not yet public and the license is custom, so start with a small test on your own mixed inputs.",
+      "technical_details": {
+        "parameters": "5B",
+        "inputs": "documents, natural images, charts, geometry, audio and video",
+        "output": "structured JSON",
+        "runtime": "Transformers custom code and vLLM plugin examples",
+        "vendor_results": "OmniDocBench v1.6 96.96; OmniParsingBench 75.08",
+        "evaluation_code": "TBD in model card",
+        "license": "custom Youtu license"
+      },
+      "technical_details_zh": {
+        "参数": "5B",
+        "输入": "文档、自然图像、图表、几何题、音频与视频",
+        "输出": "结构化 JSON",
+        "运行时": "Transformers 自定义代码与 vLLM plugin 示例",
+        "厂商结果": "OmniDocBench v1.6 96.96；OmniParsingBench 75.08",
+        "评测代码": "模型卡标注 TBD",
+        "许可证": "自定义 Youtu license"
+      },
+      "tags": [
+        "open-weight",
+        "document-parsing",
+        "ocr",
+        "multimodal",
+        "structured-output",
+        "vllm"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "tencent-youtu-parsing-omni-5b-open-weights",
+      "short_label_zh": "Youtu-Parsing-Omni",
+      "short_label_en": "Youtu-Parsing-Omni",
+      "next_action_zh": "一天内用公开权重跑文档、图表、音频和视频各一组样本，测 JSON 合法率、准确率、延迟和显存。",
+      "next_action_en": "Within one day, run public weights on document, chart, audio and video samples and measure JSON validity, accuracy, latency and memory.",
+      "source_ids": [
+        "src-1cbfc46844b39240"
+      ],
+      "project_ids": [
+        "youtu-parsing-omni"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261009-02-release-evidence",
+          "claim_zh": "Tencent 公开 Youtu-Parsing-Omni 权重、推理示例和厂商 benchmark。",
+          "claim_en": "Tencent released Youtu-Parsing-Omni weights, inference examples and vendor benchmarks.",
+          "source_ids": [
+            "src-1cbfc46844b39240"
+          ],
+          "event_ids": [
+            "ev-20261009-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261009-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-09T06:42:18Z",
+          "discovered_at": "2026-10-09T15:56:33Z",
+          "summary_zh": "Tencent 发布统一解析文档、图表、音视频的模型",
+          "summary_en": "Tencent releases one parser for documents, charts, audio and video",
+          "evidence_ids": [
+            "ev-20261009-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-09T15:56:33Z",
+      "last_updated_at": "2026-10-09T15:56:33Z",
+      "summary": "Tencent released the 5B Youtu-Parsing-Omni weights, which parse documents, natural images, charts, geometry, audio and video into structured JSON. The model card includes Transformers and vLLM usage and reports OmniDocBench and OmniParsingBench results, while evaluation code is still marked TBD.",
+      "why_it_matters": "For multimodal ingestion pipelines, one model across input types could reduce routing and schema stitching. Benchmarks are vendor-reported, evaluation code is not yet public and the license is custom, so start with a small test on your own mixed inputs."
+    },
+    {
+      "event_id": "ev-20261009-03",
+      "title": "Ai2 reallocates scarce GPUs with budget-weighted fair sharing",
+      "title_zh": "Ai2 用预算加权公平共享重分配稀缺 GPU",
+      "category": "infrastructure",
+      "organization": [
+        "Allen Institute for AI"
+      ],
+      "published_at": "2026-10-09T15:20:29Z",
+      "source_type": "research_blog",
+      "primary_source": "https://huggingface.co/blog/allenai/impactful-scheduling",
+      "secondary_sources": [],
+      "summary_zh": "Ai2 将 GPU 集群从静态优先级队列改为按预算加权的分层公平共享，并加入最短运行时间契约和历史轨迹模拟。其 30 天生产数据称，98% 应分配 GPU 小时得到兑现，集群利用率保持 98%，debug 任务 P90 排队从两小时降到 30 秒。",
+      "summary_en": "Ai2 replaced static GPU priority queues with hierarchical, budget-weighted fair sharing, minimum-runtime contracts and simulation on historical traces. Its 30-day production data reports delivery of 98% of owed GPU hours, 98% cluster occupancy and a drop in debug-task P90 queue time from two hours to 30 seconds.",
+      "why_it_matters_zh": "对算力长期供不应求的研究平台来说，这说明公平性、利用率和交互延迟可以用同一调度模型权衡，而不是靠人工抢占。文章没有公开 scheduler 或 simulator，适合借鉴指标与契约，暂不建议直接照搬。",
+      "why_it_matters_en": "For research platforms with persistent GPU scarcity, this shows fairness, utilization and interactive latency can be balanced in one scheduling model instead of manual preemption. The scheduler and simulator are not public, so reuse the metrics and contract ideas rather than copying the implementation.",
+      "technical_details": {
+        "demand": "2-3x available GPU supply",
+        "policy": "hierarchical budget-weighted fair share plus minimum-runtime contracts",
+        "production_window": "30 days",
+        "reported_results": "98% owed GPU hours delivered; 13 of 15 allocations at least 95%; 98% occupancy",
+        "debug_queue_p90": "2 hours to 30 seconds",
+        "largest_h100_job": "median 5 minutes to 24 seconds; P90 2.8 hours to 1.8 hours",
+        "human_repairs": "down 74%",
+        "availability": "architecture article; no public scheduler or simulator found"
+      },
+      "technical_details_zh": {
+        "供需": "需求为可用 GPU 的 2 至 3 倍",
+        "策略": "分层预算加权公平共享 + 最短运行时间契约",
+        "生产窗口": "30 天",
+        "报告的结果": "兑现 98% 应分配 GPU 小时；15 个配额中 13 个达到至少 95%；利用率 98%",
+        "debug_排队_P90": "2 小时降至 30 秒",
+        "最大_H100_任务": "中位数 5 分钟降至 24 秒；P90 2.8 小时降至 1.8 小时",
+        "人工修复": "减少 74%",
+        "可用性": "架构文章；未发现公开 scheduler 或 simulator"
+      },
+      "tags": [
+        "gpu-scheduling",
+        "fair-share",
+        "cluster-utilization",
+        "simulation",
+        "research-infrastructure"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "ai2-budget-weighted-gpu-fair-share-scheduling",
+      "short_label_zh": "Ai2 GPU 调度",
+      "short_label_en": "Ai2 GPU scheduling",
+      "next_action_zh": "先用历史排队日志模拟预算公平率、debug P90 和占用率；等实现公开后再考虑替换生产 scheduler。",
+      "next_action_en": "First simulate budget fairness, debug P90 and occupancy on historical queues; consider replacing the production scheduler only after implementation details are public.",
+      "source_ids": [
+        "src-e05551817b225bef"
+      ],
+      "project_ids": [
+        "ai2-gpu-scheduling"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261009-03-release-evidence",
+          "claim_zh": "Ai2 公开 30 天生产调度数据，报告兑现 98% 应分配 GPU 小时并保持 98% 利用率。",
+          "claim_en": "Ai2 published 30 days of production scheduling data, reporting 98% delivery of owed GPU hours at 98% occupancy.",
+          "source_ids": [
+            "src-e05551817b225bef"
+          ],
+          "event_ids": [
+            "ev-20261009-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261009-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-09T15:20:29Z",
+          "discovered_at": "2026-10-09T15:56:33Z",
+          "summary_zh": "Ai2 用预算加权公平共享重分配稀缺 GPU",
+          "summary_en": "Ai2 reallocates scarce GPUs with budget-weighted fair sharing",
+          "evidence_ids": [
+            "ev-20261009-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-09T15:56:33Z",
+      "last_updated_at": "2026-10-09T15:56:33Z",
+      "summary": "Ai2 replaced static GPU priority queues with hierarchical, budget-weighted fair sharing, minimum-runtime contracts and simulation on historical traces. Its 30-day production data reports delivery of 98% of owed GPU hours, 98% cluster occupancy and a drop in debug-task P90 queue time from two hours to 30 seconds.",
+      "why_it_matters": "For research platforms with persistent GPU scarcity, this shows fairness, utilization and interactive latency can be balanced in one scheduling model instead of manual preemption. The scheduler and simulator are not public, so reuse the metrics and contract ideas rather than copying the implementation."
+    }
+  ]
+}

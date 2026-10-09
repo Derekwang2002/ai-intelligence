@@ -1,0 +1,290 @@
+{
+  "date": "2026-10-08",
+  "provenance": "Incremental scan with primary-source verification.",
+  "events": [
+    {
+      "event_id": "ev-20261008-01",
+      "title": "Probes detect hidden agent deception before text monitors do",
+      "title_zh": "激活探针提前识别 agent 隐性欺骗",
+      "category": "agent-security",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-08T17:58:13Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.12445",
+      "secondary_sources": [
+        "https://github.com/AlignmentResearch/caught-in-the-act-probes"
+      ],
+      "summary_zh": "《Caught in the Act》把白盒激活探针扩展到 agent 欺骗监控。作者报告其在 SHADE-Arena 上达到 98.8% AUC，并能识别仅靠文本无法判断的隐藏目标。训练数据 FIBS、推理代码与探针权重已经公开。",
+      "summary_en": "Caught in the Act scales white-box activation probes to agent-deception monitoring. The authors report 98.8% AUC on SHADE-Arena and detect hidden goals that cannot be inferred from text alone. The FIBS training data, inference code and probe weights are public.",
+      "why_it_matters_zh": "对部署高权限 agent 的团队来说，模型内部信号可能补上文本 monitor 的盲区。它仍是作者报告的研究结果；试点时应先测跨模型迁移、误报和激活读取成本，再考虑把它接到阻断链路。",
+      "why_it_matters_en": "For teams deploying privileged agents, internal model signals may cover blind spots in text monitors. This is still author-reported research; test cross-model transfer, false positives and activation-access cost before connecting it to a blocking path.",
+      "technical_details": {
+        "reported_sha_de_arena_auc": 0.988,
+        "hidden_goal_auc": "up to 0.997",
+        "artifacts": "MIT inference code, FIBS data and published probe weights",
+        "method": "multi-layer, multi-token white-box activation probes"
+      },
+      "technical_details_zh": {
+        "SHADE-Arena_报告_AUC": 0.988,
+        "隐藏目标_AUC": "最高 0.997",
+        "公开产物": "MIT 推理代码、FIBS 数据和探针权重",
+        "方法": "跨层、跨 token 的白盒激活探针"
+      },
+      "tags": [
+        "agent-security",
+        "deception-detection",
+        "activation-probes",
+        "monitoring",
+        "open-source"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "caught-in-the-act-fibs-agent-deception-probes",
+      "short_label_zh": "Caught in the Act",
+      "short_label_en": "Caught in the Act",
+      "next_action_zh": "一天内用公开探针复跑一组正常与欺骗轨迹，记录 AUC、误报、显存和跨模型失效。",
+      "next_action_en": "Within one day, replay benign and deceptive traces with the public probes and record AUC, false positives, memory and cross-model failures.",
+      "source_ids": [
+        "src-b704126dc781ebe4",
+        "src-15f812a9c22ce03b"
+      ],
+      "project_ids": [
+        "caught-in-the-act"
+      ],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261008-01-release-evidence",
+          "claim_zh": "论文公开 FIBS、推理代码与探针权重，并报告 SHADE-Arena 98.8% AUC。",
+          "claim_en": "The paper releases FIBS, inference code and probe weights and reports 98.8% AUC on SHADE-Arena.",
+          "source_ids": [
+            "src-b704126dc781ebe4",
+            "src-15f812a9c22ce03b"
+          ],
+          "event_ids": [
+            "ev-20261008-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261008-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-08T17:58:13Z",
+          "discovered_at": "2026-10-09T15:56:33Z",
+          "summary_zh": "激活探针提前识别 agent 隐性欺骗",
+          "summary_en": "Probes detect hidden agent deception before text monitors do",
+          "evidence_ids": [
+            "ev-20261008-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-09T15:56:33Z",
+      "last_updated_at": "2026-10-09T15:56:33Z",
+      "summary": "Caught in the Act scales white-box activation probes to agent-deception monitoring. The authors report 98.8% AUC on SHADE-Arena and detect hidden goals that cannot be inferred from text alone. The FIBS training data, inference code and probe weights are public.",
+      "why_it_matters": "For teams deploying privileged agents, internal model signals may cover blind spots in text monitors. This is still author-reported research; test cross-model transfer, false positives and activation-access cost before connecting it to a blocking path.",
+      "evidence_stage": "frontier"
+    },
+    {
+      "event_id": "ev-20261008-02",
+      "title": "OnTrack flags failing agent trajectories in about one millisecond per step",
+      "title_zh": "OnTrack 以毫秒级开销预警失败轨迹",
+      "category": "ai-agent",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-08T17:32:08Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.12375",
+      "secondary_sources": [],
+      "summary_zh": "OnTrack 持续比较 agent 当前步骤与成功轨迹的结构，在执行中预警或中止失败任务。作者在 SWE-bench 轨迹上报告约每步 1 毫秒；仅看前八步就比内容相似度方法多 0.057 AUROC，并减少约 18% 的失败计算。",
+      "summary_en": "OnTrack continuously compares an agent trajectory with the structure of successful runs to warn or stop failures during execution. On SWE-bench traces, the authors report about one millisecond per step, a 0.057 AUROC gain over content similarity after eight steps, and about 18% less compute spent on failed runs.",
+      "why_it_matters_zh": "对长时程 agent 平台来说，这提供了一条比逐步调用 LLM monitor 更便宜的在线护栏路径。论文没有公开实现，且中止实验只有六次触发；在代码或更大规模复现出现前，只适合跟踪。",
+      "why_it_matters_en": "For long-running agent platforms, this suggests a cheaper online guardrail than calling an LLM monitor at every step. No implementation is public and the abort experiment triggered only six times, so it is a watch item until code or larger replication appears.",
+      "technical_details": {
+        "latency": "about 1 ms per step",
+        "evaluation": "SWE-bench trajectories",
+        "reported_gain": "+0.057 AUROC after eight steps",
+        "reported_savings": "about 18% failed-run compute; 5 of 6 aborts were correct",
+        "availability": "paper only; no public code found"
+      },
+      "technical_details_zh": {
+        "延迟": "约每步 1 毫秒",
+        "评测": "SWE-bench 轨迹",
+        "报告的提升": "前八步 +0.057 AUROC",
+        "报告的节省": "约 18% 失败计算；6 次中止中 5 次正确",
+        "可用性": "仅论文；未发现公开代码"
+      },
+      "tags": [
+        "agent-monitoring",
+        "trajectory",
+        "swe-bench",
+        "runtime-guardrails",
+        "optimal-transport"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "ontrack-streaming-agent-trajectory-monitor",
+      "short_label_zh": "OnTrack",
+      "short_label_en": "OnTrack",
+      "next_action_zh": "等待公开代码或更大规模中止实验后，再比较误杀率、节省算力和每步延迟。",
+      "next_action_en": "Reassess after public code or a larger abort study, then compare false stops, compute saved and per-step latency.",
+      "source_ids": [
+        "src-058e8f755da48d74"
+      ],
+      "project_ids": [
+        "ontrack"
+      ],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261008-02-release-evidence",
+          "claim_zh": "论文报告 OnTrack 以约每步 1 毫秒监控 SWE-bench 轨迹，并减少约 18% 失败计算。",
+          "claim_en": "The paper reports that OnTrack monitors SWE-bench trajectories at about one millisecond per step and saves about 18% of failed-run compute.",
+          "source_ids": [
+            "src-058e8f755da48d74"
+          ],
+          "event_ids": [
+            "ev-20261008-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261008-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-08T17:32:08Z",
+          "discovered_at": "2026-10-09T15:56:33Z",
+          "summary_zh": "OnTrack 以毫秒级开销预警失败轨迹",
+          "summary_en": "OnTrack flags failing agent trajectories in about one millisecond per step",
+          "evidence_ids": [
+            "ev-20261008-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-09T15:56:33Z",
+      "last_updated_at": "2026-10-09T15:56:33Z",
+      "summary": "OnTrack continuously compares an agent trajectory with the structure of successful runs to warn or stop failures during execution. On SWE-bench traces, the authors report about one millisecond per step, a 0.057 AUROC gain over content similarity after eight steps, and about 18% less compute spent on failed runs.",
+      "why_it_matters": "For long-running agent platforms, this suggests a cheaper online guardrail than calling an LLM monitor at every step. No implementation is public and the abort experiment triggered only six times, so it is a watch item until code or larger replication appears.",
+      "evidence_stage": "frontier"
+    },
+    {
+      "event_id": "ev-20261008-03",
+      "title": "Study finds equal-looking AI time-horizon gains can hide unequal difficulty",
+      "title_zh": "研究发现相同倍数的 AI 时间跨度提升难度并不相等",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-08T17:59:50Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.12466",
+      "secondary_sources": [],
+      "summary_zh": "一项统计复核用 228 个任务和 26 个 AI 重算 METR 的 50% 时间跨度。非线性模型显示，模型从 3 分钟跨到 30 分钟，比从 30 分钟跨到 5 小时容易得多，尽管两者都是十倍增长。作者建议时间跨度必须与诊断图一起解释。",
+      "summary_en": "A statistical reanalysis recomputes METR 50% time horizons across 228 tasks and 26 AIs. Nonlinear models show that moving from three to 30 minutes is much easier than moving from 30 minutes to five hours, despite both being tenfold gains. The authors recommend interpreting horizons together with diagnostic plots.",
+      "why_it_matters_zh": "对用时间跨度规划 agent 路线图的人来说，单一倍增曲线可能夸大短任务区间的能力进步。结论来自预印本且没有公开复算包；在改变采购或自动化假设前，应等待数据与代码复现。",
+      "why_it_matters_en": "For teams using time horizons to plan agent roadmaps, a single exponential curve may overstate progress in the short-task region. This is a preprint without a public replication package; wait for data and code reproduction before changing procurement or automation assumptions.",
+      "technical_details": {
+        "sample": "228 tasks and 26 AI systems",
+        "methods": "splines and item-response theory",
+        "finding": "human-time-to-AI-difficulty curve is nearly flat from 2 to 30 minutes",
+        "availability": "paper only; no public code or data package found"
+      },
+      "technical_details_zh": {
+        "样本": "228 个任务、26 个 AI 系统",
+        "方法": "样条函数与项目反应理论",
+        "发现": "2 至 30 分钟区间的人类时间到 AI 难度曲线近乎平坦",
+        "可用性": "仅论文；未发现公开代码或数据包"
+      },
+      "tags": [
+        "agent-evaluation",
+        "metr",
+        "time-horizon",
+        "benchmark-validity",
+        "statistics"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "metr-time-horizon-statistical-validity-reanalysis",
+      "short_label_zh": "METR 时间跨度复核",
+      "short_label_en": "METR horizon review",
+      "next_action_zh": "等公开复算代码与 METR 回应后，再检查自有路线图是否错误外推短任务区间。",
+      "next_action_en": "Wait for public replication code and METR response, then check whether your roadmap extrapolates incorrectly from short tasks.",
+      "source_ids": [
+        "src-e72161b1710d329e"
+      ],
+      "project_ids": [
+        "metr-time-horizon-review"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261008-03-release-evidence",
+          "claim_zh": "论文用 228 个任务和 26 个 AI 重算时间跨度，并发现 2 至 30 分钟区间明显非线性。",
+          "claim_en": "The paper recomputes time horizons on 228 tasks and 26 AIs and finds marked nonlinearity in the two-to-30-minute region.",
+          "source_ids": [
+            "src-e72161b1710d329e"
+          ],
+          "event_ids": [
+            "ev-20261008-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261008-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-08T17:59:50Z",
+          "discovered_at": "2026-10-09T15:56:33Z",
+          "summary_zh": "研究发现相同倍数的 AI 时间跨度提升难度并不相等",
+          "summary_en": "Study finds equal-looking AI time-horizon gains can hide unequal difficulty",
+          "evidence_ids": [
+            "ev-20261008-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-09T15:56:33Z",
+      "last_updated_at": "2026-10-09T15:56:33Z",
+      "summary": "A statistical reanalysis recomputes METR 50% time horizons across 228 tasks and 26 AIs. Nonlinear models show that moving from three to 30 minutes is much easier than moving from 30 minutes to five hours, despite both being tenfold gains. The authors recommend interpreting horizons together with diagnostic plots.",
+      "why_it_matters": "For teams using time horizons to plan agent roadmaps, a single exponential curve may overstate progress in the short-task region. This is a preprint without a public replication package; wait for data and code reproduction before changing procurement or automation assumptions.",
+      "evidence_stage": "frontier"
+    }
+  ]
+}

@@ -40,7 +40,8 @@
         "src-bb63a15b856259f7",
         "src-0c734930a759f57a",
         "src-0ba886b07133e21d",
-        "src-0dfdf17053d5d17a"
+        "src-0dfdf17053d5d17a",
+        "src-92349bd4a8c11233"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -55,19 +56,20 @@
         "src-bb63a15b856259f7",
         "src-0c734930a759f57a",
         "src-0ba886b07133e21d",
-        "src-0dfdf17053d5d17a"
+        "src-0dfdf17053d5d17a",
+        "src-92349bd4a8c11233"
       ],
-      "last_reviewed_at": "2026-10-08T16:05:31Z",
+      "last_reviewed_at": "2026-10-09T15:56:33Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.294 修复自然语言 hook 可能错误放行命令，并减少 Stop hook 提前结束任务。",
-        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.294 fixes natural-language hooks that could allow blocked commands and reduces premature Stop-hook termination.",
-        "next_action_zh": "升级后回放 allow/block hook 用例，并验证长任务 subagent 的 Stop hook。",
-        "next_action_en": "After upgrading, replay allow/block hook cases and verify Stop hooks on long-running subagents.",
+        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.295 将更多 hook、gateway 与 MCP 故障转为默认拒绝。",
+        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.295 makes more hook, gateway and MCP failures fail closed.",
+        "next_action_zh": "升级后回放 hook 失败、模型拒绝、MCP 重连与沙箱用例。",
+        "next_action_en": "After upgrading, replay hook failures, model denials, MCP reconnects and sandbox cases.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-08T16:05:31Z"
+        "reviewed_at": "2026-10-09T15:56:33Z"
       }
     },
     {
@@ -198,7 +200,8 @@
         "src-9b9d615d7fb6df0b",
         "src-25183e2b01dde1f5",
         "src-e61beeca9f37dec1",
-        "src-b08e03422c923828"
+        "src-b08e03422c923828",
+        "src-6d91f7c55a55a1dc"
       ],
       "current_judgment_event_id": "ev-20260910-02",
       "official_source_ids": [
@@ -207,19 +210,21 @@
         "src-9b9d615d7fb6df0b",
         "src-25183e2b01dde1f5",
         "src-49e8d0577a5e1f9d",
-        "src-b08e03422c923828"
+        "src-b08e03422c923828",
+        "src-6d91f7c55a55a1dc"
       ],
-      "last_reviewed_at": "2026-10-07T22:04:40Z",
+      "last_reviewed_at": "2026-10-09T15:56:33Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Codex 0.161.0 扩展 Bedrock multi-agent 与 GovCloud 支持，并继续加固远程会话、历史恢复和沙箱。现有团队可升级试点，但多 agent 与跨平台边界仍需回归。",
-        "judgment_en": "Codex 0.161.0 expands Bedrock multi-agent and GovCloud support while hardening remote sessions, recovery and sandboxing. Existing teams can pilot the upgrade after boundary regression.",
-        "next_action_zh": "回归 Bedrock 多 agent、远程认证、resume 历史与跨平台沙箱。",
-        "next_action_en": "Regress Bedrock multi-agent, remote authentication, resume history and cross-platform sandboxes.",
+        "judgment_zh": "Codex CLI 0.162.0 将托管 worktree、任务置顶与排序式工具发现带入稳定版；Agents API 仍适合受控试点。",
+        "judgment_en": "Codex CLI 0.162.0 brings managed worktrees, task pinning and ranked tool discovery to stable; the Agents API remains suitable for controlled trials.",
+        "next_action_zh": "回归 worktree 所有权、工具排序、登录边界和跨平台沙箱。",
+        "next_action_en": "Regress worktree ownership, tool ranking, authentication boundaries and cross-platform sandboxes.",
         "basis_event_ids": [
-          "ev-20260910-02"
+          "ev-20260910-02",
+          "ev-20260818-02"
         ],
-        "reviewed_at": "2026-10-07T22:04:40Z"
+        "reviewed_at": "2026-10-09T15:56:33Z"
       }
     },
     {
@@ -495,7 +500,8 @@
         "ev-20260826-04",
         "ev-20260901-03",
         "ev-20260918-04",
-        "ev-20260920-01"
+        "ev-20260920-01",
+        "ev-20261009-01"
       ],
       "source_ids": [
         "src-ca26bca182f697df",
@@ -512,23 +518,27 @@
         "src-58292849ad5172bd",
         "src-2905592015494e06",
         "src-3cc50d0356230bcb",
-        "src-c8c4240a101ac60b"
+        "src-c8c4240a101ac60b",
+        "src-167c7efa09e6db36"
       ],
-      "current_judgment_event_id": "ev-20260920-01",
-      "official_source_ids": [],
-      "last_reviewed_at": null,
+      "current_judgment_event_id": "ev-20261009-01",
+      "official_source_ids": [
+        "src-167c7efa09e6db36"
+      ],
+      "last_reviewed_at": "2026-10-09T15:56:33Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Qwen 同时推进几条产品线：开放权重的 Qwen3.8-27B（262K 上下文）、实时同传 Qwen3.8-LiveTranslate，以及统一生成与编辑的 Qwen-Image-2.1。下一代 Qwen4 架构目前只通过 Flash-Next 预演。",
-        "judgment_en": "Qwen is advancing several lines at once: the open-weight Qwen3.8-27B with a 262K context, Qwen3.8-LiveTranslate for live interpretation, and Qwen-Image-2.1 for unified generation and editing. The next-generation Qwen4 architecture has only been previewed through Flash-Next.",
-        "next_action_zh": "按产品线分别评估：文本模型在自有任务上测；Qwen-Image-2.1 商业使用前先确认授权条款。",
-        "next_action_en": "Evaluate each line separately: test the text models on your own tasks, and confirm license terms before any commercial use of Qwen-Image-2.1.",
+        "judgment_zh": "Qwen-Image-2.1-Turbo 以八步采样压低图像生成延迟，但缺少与基础版的公开对比，且使用自定义许可证。",
+        "judgment_en": "Qwen-Image-2.1-Turbo targets lower image-generation latency with eight-step sampling, but lacks a public base-model comparison and uses a custom license.",
+        "next_action_zh": "一天内对比基础版的延迟、显存、文字渲染和编辑保真。",
+        "next_action_en": "Within one day, compare latency, memory, text rendering and edit fidelity with the base model.",
         "basis_event_ids": [
           "ev-20260814-01",
           "ev-20260918-04",
-          "ev-20260920-01"
+          "ev-20260920-01",
+          "ev-20261009-01"
         ],
-        "reviewed_at": "2026-10-01T07:57:01Z"
+        "reviewed_at": "2026-10-09T15:56:33Z"
       }
     },
     {
@@ -776,18 +786,18 @@
         "src-49e8d0577a5e1f9d",
         "src-a097ef0d441a7216"
       ],
-      "last_reviewed_at": "2026-10-07T22:04:40Z",
+      "last_reviewed_at": "2026-10-09T15:56:33Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "GPT-6 家族覆盖 API、Codex 与 ChatGPT；Chat 新增原生 Intelligent UI 和渐进式推理。适合试点，但 UI 生成需独立检查正确性、无障碍与降级路径。",
-        "judgment_en": "The GPT-6 family spans API, Codex and ChatGPT; Chat now adds native Intelligent UI and progressive reasoning. Pilot with independent checks for UI correctness, accessibility and fallback.",
-        "next_action_zh": "用真实解释、比较和计算任务验证 UI 正确性、无障碍和文本降级。",
-        "next_action_en": "Validate UI correctness, accessibility and text fallback on real explanation, comparison and calculator tasks.",
+        "judgment_zh": "GPT-6 家族覆盖 API、Codex 与 ChatGPT；GPT-6.1 Sol Ultrafast 已向所有 API 用户开放，适合做延迟敏感路由试点。",
+        "judgment_en": "The GPT-6 family spans API, Codex and ChatGPT; GPT-6.1 Sol Ultrafast is available to all API users for latency-sensitive routing trials.",
+        "next_action_zh": "比较 standard 与 ultrafast 的端到端延迟、成功率、限额和单任务成本。",
+        "next_action_en": "Compare standard and ultrafast on end-to-end latency, success, limits and cost per completed task.",
         "basis_event_ids": [
           "ev-20260922-02",
           "ev-20260929-02"
         ],
-        "reviewed_at": "2026-10-07T22:04:40Z"
+        "reviewed_at": "2026-10-09T15:56:33Z"
       }
     },
     {
@@ -2326,7 +2336,169 @@
         ],
         "reviewed_at": "2026-10-08T16:05:31Z"
       }
+    },
+    {
+      "id": "caught-in-the-act",
+      "name_zh": "Caught in the Act",
+      "name_en": "Caught in the Act",
+      "type": "research",
+      "aliases": [
+        "FIBS"
+      ],
+      "pattern": "Caught in the Act|FIBS",
+      "event_ids": [
+        "ev-20261008-01"
+      ],
+      "source_ids": [
+        "src-b704126dc781ebe4",
+        "src-15f812a9c22ce03b"
+      ],
+      "official_source_ids": [
+        "src-b704126dc781ebe4",
+        "src-15f812a9c22ce03b"
+      ],
+      "current_judgment_event_id": "ev-20261008-01",
+      "last_reviewed_at": "2026-10-09T15:56:33Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开数据、代码和探针权重足以做隔离复测，但跨模型迁移、误报与白盒访问成本仍未解决。",
+        "judgment_en": "Public data, code and probe weights support isolated replication, but cross-model transfer, false positives and white-box access cost remain unresolved.",
+        "next_action_zh": "一天内复跑正常与欺骗轨迹，记录误报、显存和跨模型失效。",
+        "next_action_en": "Within one day, replay benign and deceptive traces and record false positives, memory and cross-model failures.",
+        "basis_event_ids": [
+          "ev-20261008-01"
+        ],
+        "reviewed_at": "2026-10-09T15:56:33Z"
+      }
+    },
+    {
+      "id": "ontrack",
+      "name_zh": "OnTrack",
+      "name_en": "OnTrack",
+      "type": "research",
+      "aliases": [
+        "OnTrack agent monitoring"
+      ],
+      "pattern": "OnTrack",
+      "event_ids": [
+        "ev-20261008-02"
+      ],
+      "source_ids": [
+        "src-058e8f755da48d74"
+      ],
+      "official_source_ids": [
+        "src-058e8f755da48d74"
+      ],
+      "current_judgment_event_id": "ev-20261008-02",
+      "last_reviewed_at": "2026-10-09T15:56:33Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "毫秒级轨迹监控方向有工程价值，但没有公开实现，中止样本也太少。",
+        "judgment_en": "Millisecond-scale trajectory monitoring has engineering value, but no implementation is public and the abort sample is too small.",
+        "next_action_zh": "等待公开代码或更大规模中止实验。",
+        "next_action_en": "Wait for public code or a larger abort study.",
+        "basis_event_ids": [
+          "ev-20261008-02"
+        ],
+        "reviewed_at": "2026-10-09T15:56:33Z"
+      }
+    },
+    {
+      "id": "metr-time-horizon-review",
+      "name_zh": "METR 时间跨度统计复核",
+      "name_en": "METR time-horizon review",
+      "type": "research",
+      "aliases": [
+        "AI time horizon validity"
+      ],
+      "pattern": "time horizons|METR plot",
+      "event_ids": [
+        "ev-20261008-03"
+      ],
+      "source_ids": [
+        "src-e72161b1710d329e"
+      ],
+      "official_source_ids": [
+        "src-e72161b1710d329e"
+      ],
+      "current_judgment_event_id": "ev-20261008-03",
+      "last_reviewed_at": "2026-10-09T15:56:33Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "统计复核揭示短任务区间的非线性，但缺少公开复算包和独立响应。",
+        "judgment_en": "The reanalysis exposes nonlinearity in short tasks but lacks a public replication package and independent response.",
+        "next_action_zh": "等待复算代码与 METR 回应。",
+        "next_action_en": "Wait for replication code and a METR response.",
+        "basis_event_ids": [
+          "ev-20261008-03"
+        ],
+        "reviewed_at": "2026-10-09T15:56:33Z"
+      }
+    },
+    {
+      "id": "youtu-parsing-omni",
+      "name_zh": "Youtu-Parsing-Omni",
+      "name_en": "Youtu-Parsing-Omni",
+      "type": "model",
+      "aliases": [
+        "Youtu Parsing Omni"
+      ],
+      "pattern": "Youtu-Parsing-Omni",
+      "event_ids": [
+        "ev-20261009-02"
+      ],
+      "source_ids": [
+        "src-1cbfc46844b39240"
+      ],
+      "official_source_ids": [
+        "src-1cbfc46844b39240"
+      ],
+      "current_judgment_event_id": "ev-20261009-02",
+      "last_reviewed_at": "2026-10-09T15:56:33Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开 5B 权重覆盖多种输入，但评测代码尚未发布，benchmark 与自定义许可证需要复核。",
+        "judgment_en": "Public 5B weights cover many inputs, but evaluation code is not released and vendor benchmarks plus the custom license need review.",
+        "next_action_zh": "一天内用混合样本测 JSON 合法率、准确率、延迟和显存。",
+        "next_action_en": "Within one day, test mixed samples for JSON validity, accuracy, latency and memory.",
+        "basis_event_ids": [
+          "ev-20261009-02"
+        ],
+        "reviewed_at": "2026-10-09T15:56:33Z"
+      }
+    },
+    {
+      "id": "ai2-gpu-scheduling",
+      "name_zh": "Ai2 GPU 调度",
+      "name_en": "Ai2 GPU scheduling",
+      "type": "infrastructure",
+      "aliases": [
+        "Impactful scheduling"
+      ],
+      "pattern": "Impactful scheduling|budget-weighted fair share",
+      "event_ids": [
+        "ev-20261009-03"
+      ],
+      "source_ids": [
+        "src-e05551817b225bef"
+      ],
+      "official_source_ids": [
+        "src-e05551817b225bef"
+      ],
+      "current_judgment_event_id": "ev-20261009-03",
+      "last_reviewed_at": "2026-10-09T15:56:33Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "30 天生产数据证明指标有价值，但 scheduler 与 simulator 未公开，只适合借鉴契约。",
+        "judgment_en": "Thirty days of production data make the metrics useful, but the scheduler and simulator are not public, so only the contracts are reusable.",
+        "next_action_zh": "先用历史排队日志模拟公平率、debug P90 与占用率。",
+        "next_action_en": "First simulate fairness, debug P90 and occupancy on historical queues.",
+        "basis_event_ids": [
+          "ev-20261009-03"
+        ],
+        "reviewed_at": "2026-10-09T15:56:33Z"
+      }
     }
   ],
-  "last_updated": "2026-10-08T16:05:30Z"
+  "last_updated": "2026-10-09T15:56:33Z"
 }
