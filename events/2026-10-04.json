@@ -100,6 +100,104 @@
       "last_updated_at": "2026-10-04T16:02:19Z",
       "summary_en": "Google released DiarizationLM-Gemma-4-E4B-v1 under Apache-2.0. The 4B model post-processes ASR and diarization output, with BF16 and two 4-bit GGUF variants for local use. Author tests report lower word diarization error and cpWER on Fisher, Callhome, ICSI and AMI, although the meeting test sets are small.",
       "why_it_matters_en": "For speech teams, a local post-processor can improve speaker attribution without retraining the upstream ASR stack. Public GGUF files make latency, memory and identity-drift checks practical on representative calls and meetings."
+    },
+    {
+      "event_id": "ev-20261004-02",
+      "title": "A community Qwen derivative spikes without independent validation",
+      "title_zh": "社区 Qwen 衍生模型走红，但缺少独立验证",
+      "category": "open-source",
+      "organization": [
+        "community"
+      ],
+      "published_at": "2026-10-04T10:44:11Z",
+      "first_seen_at": "2026-10-10T15:56:58Z",
+      "last_updated_at": "2026-10-10T15:56:58Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2",
+      "secondary_sources": [],
+      "summary_zh": "一个基于 Qwen3.8-27B 的社区衍生模型进入 Hugging Face 热榜，公开 BF16、FP8、NVFP4、INT8、INT4 与 GGUF 多种权重。截至本次检查，它有约 4.2 万次下载和 169 个点赞。模型卡给出 GPQA、MMLU 与 LiveCodeBench 自测，但未提供可独立核验的训练数据清单或第三方复现。",
+      "summary_en": "A community Qwen3.8-27B derivative entered Hugging Face trending with BF16, FP8, NVFP4, INT8, INT4 and GGUF weights. At review time it had about 42,000 downloads and 169 likes. The model card includes self-reported GPQA, MMLU and LiveCodeBench evaluations but no independently verifiable training-data inventory or third-party reproduction.",
+      "why_it_matters_zh": "对寻找本地 coding 模型的团队来说，量化覆盖和下载量说明有人在试用，但长模型名里的闭源教师标识不是能力证明。训练数据来源、许可证链和评测污染风险不清楚，当前不值得投入生产验证。",
+      "why_it_matters_en": "For teams evaluating local coding models, broad quantization support and downloads show experimentation, but closed-model names in a repository title do not prove capability. Training provenance, license lineage and evaluation-contamination risk are unclear, so this is not worth production evaluation yet.",
+      "technical_details": {
+        "base_model": "community post-training of Qwen3.8-27B",
+        "artifacts": "BF16, FP8, NVFP4, INT8, INT4, GGUF and NInfer packages",
+        "community_signal": "42,336 downloads and 169 likes at review time",
+        "self_reported_eval": "GPQA, MMLU and LiveCodeBench files in the repository",
+        "training_disclosure": "high-level SFT, SimPO and RLOO lineage; no auditable dataset inventory",
+        "license": "repository declares Apache-2.0; upstream and generated-data lineage not independently checked"
+      },
+      "technical_details_zh": {
+        "基础模型": "基于 Qwen3.8-27B 的社区后训练版本",
+        "产物": "BF16、FP8、NVFP4、INT8、INT4、GGUF 与 NInfer 包",
+        "社区信号": "检查时 42,336 次下载、169 个点赞",
+        "自报评测": "仓库内提供 GPQA、MMLU 与 LiveCodeBench 文件",
+        "训练披露": "仅有 SFT、SimPO 与 RLOO 的高层链路，没有可审计数据清单",
+        "许可证": "仓库声明 Apache-2.0；上游与生成数据链未独立核查"
+      },
+      "tags": [
+        "qwen",
+        "coding-model",
+        "quantization",
+        "community-model",
+        "hugging-face-trending"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 2,
+      "adoption_signal": 4,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 5,
+      "recommendation": "IGNORE",
+      "event_fingerprint": "nerkyor-qwen38-coder390-community-derivative",
+      "short_label_zh": "Qwen Coder390 衍生版",
+      "short_label_en": "Qwen Coder390 derivative",
+      "next_action_zh": "暂不投入；等训练数据清单、许可证链和独立 benchmark 复现公开后再评估。",
+      "next_action_en": "Do not invest yet; reassess after a training-data inventory, license lineage and independent benchmark reproduction are public.",
+      "source_ids": [
+        "src-b933bb09c6391f13"
+      ],
+      "project_ids": [
+        "qwen-coder390-derivative"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261004-02-model-card-evidence",
+          "claim_zh": "Hugging Face 仓库公开多种量化权重和自报评测，但没有可审计的数据清单或独立复现。",
+          "claim_en": "The Hugging Face repository publishes multiple quantized weights and self-reported evaluations but no auditable data inventory or independent reproduction.",
+          "source_ids": [
+            "src-b933bb09c6391f13"
+          ],
+          "event_ids": [
+            "ev-20261004-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifact"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261004-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-04T10:44:11Z",
+          "discovered_at": "2026-10-10T15:56:58Z",
+          "summary_zh": "社区 Qwen 衍生模型走红，但缺少独立验证",
+          "summary_en": "A community Qwen derivative spikes without independent validation",
+          "evidence_ids": [
+            "ev-20261004-02-model-card-evidence"
+          ],
+          "historical": false,
+          "importance": "minor"
+        }
+      ],
+      "summary": "A community Qwen3.8-27B derivative entered Hugging Face trending with BF16, FP8, NVFP4, INT8, INT4 and GGUF weights. At review time it had about 42,000 downloads and 169 likes. The model card includes self-reported GPQA, MMLU and LiveCodeBench evaluations but no independently verifiable training-data inventory or third-party reproduction.",
+      "why_it_matters": "For teams evaluating local coding models, broad quantization support and downloads show experimentation, but closed-model names in a repository title do not prove capability. Training provenance, license lineage and evaluation-contamination risk are unclear, so this is not worth production evaluation yet."
     }
   ]
 }

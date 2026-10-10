@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-09T15:56:33Z",
+  "as_of": "2026-10-10T15:56Z",
   "trends": [
     {
       "id": "open-weight-agentic-coding-models-chinese-labs",
@@ -291,6 +291,12 @@
           "run_started_at": "2026-10-09T15:56:33Z",
           "note_zh": "Qwen-Image-2.1-Turbo 与 Youtu-Parsing-Omni 扩大开放权重多模态供给，但不是 coding / agent 模型证据；状态不变。",
           "note_en": "Qwen-Image-2.1-Turbo and Youtu-Parsing-Omni expand open-weight multimodal supply but do not add coding-agent evidence; status unchanged."
+        },
+        {
+          "date": "2026-10-10",
+          "run_started_at": "2026-10-10T15:56:58Z",
+          "note_zh": "本次没有新的开放权重 coding / agent 模型信号；状态不变。",
+          "note_en": "No new open-weight coding-agent model signal appeared; status unchanged."
         }
       ],
       "evidence": [
@@ -489,7 +495,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
       "time_horizon": "Emerging"
     },
     {
@@ -772,6 +778,12 @@
           "run_started_at": "2026-10-09T15:56:33Z",
           "note_zh": "本次没有新的跨厂商 MCP 企业治理信号；状态不变。",
           "note_en": "No new cross-vendor MCP enterprise-governance signal appeared; status unchanged."
+        },
+        {
+          "date": "2026-10-10",
+          "run_started_at": "2026-10-10T15:56:58Z",
+          "note_zh": "本次没有新的跨厂商 MCP 企业治理信号；状态不变。",
+          "note_en": "No new cross-vendor MCP enterprise-governance signal appeared; status unchanged."
         }
       ],
       "evidence": [
@@ -863,7 +875,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
       "time_horizon": "Emerging"
     },
     {
@@ -875,7 +887,7 @@
       "status_note_en": "established (candidate→emerging 2026-08-18; →strengthening 8/20; →established 2026-08-28 — confirmation criterion (a) met: Codex 0.150.0 stable ships agent-initiated cross-task messaging; in the same window Gemini CLI 0.57.0 shipped a2a-server in stable and on npm, making Google the seventh organization with protocol-level interop in a stable runtime)",
       "confidence": "High",
       "first_observed": "2026-08-15",
-      "last_updated": "2026-10-09",
+      "last_updated": "2026-10-10",
       "retired": false,
       "evidence_zh": [
         "Anthropic Claude Code：subagent forking 默认开启 + 跨会话 SendMessage（2026-08-13/14）",
@@ -901,7 +913,8 @@
         "2026-09-29：GPT-6.1 Sol 在 Responses API 提供 beta 多 agent 委派，OpenAI Agents API 同日加入可恢复的托管浏览器 session（ev-20260929-02、ev-20260910-02）。",
         "2026-10-07：Claude Code 2.1.292/293 增加逐 subagent effort、类型可见性与压缩、MCP、后台消息可靠性修复。",
         "Claude Code 2.1.294（2026-10-08，ev-20260814-04 更新）：修复 prompt/agent hook 错误放行和 Stop hook 过早终止。",
-        "Docker Agent 1.149.0（2026-10-07，ev-20261007-06）：用 YAML、MCP、evaluator 与 OCI 分发组合出可移植的多 agent runtime。"
+        "Docker Agent 1.149.0（2026-10-07，ev-20261007-06）：用 YAML、MCP、evaluator 与 OCI 分发组合出可移植的多 agent runtime。",
+        "Agent Lightning v1.0（2026-10-07，ev-20261007-07）把部署用的真实 coding-agent harness 直接接入 RL，并公开 Kubernetes rollout 控制面。"
       ],
       "evidence_en": [
         "Anthropic Claude Code: default-on subagent forking + cross-session SendMessage (2026-08-13/14)",
@@ -927,7 +940,8 @@
         "2026-09-29: GPT-6.1 Sol adds beta multi-agent delegation in the Responses API, while the OpenAI Agents API adds resumable hosted-browser sessions (ev-20260929-02, ev-20260910-02).",
         "2026-10-07: Claude Code 2.1.292/293 add per-subagent effort, type visibility and compaction, MCP and background-message reliability fixes.",
         "Claude Code 2.1.294 (October 8, 2026, ev-20260814-04 update): fixes prompt/agent hooks that allow blocked commands and premature Stop-hook termination.",
-        "Docker Agent 1.149.0 (October 7, 2026, ev-20261007-06): combines YAML, MCP, evaluators and OCI distribution into a portable multi-agent runtime."
+        "Docker Agent 1.149.0 (October 7, 2026, ev-20261007-06): combines YAML, MCP, evaluators and OCI distribution into a portable multi-agent runtime.",
+        "Agent Lightning v1.0 (2026-10-07, ev-20261007-07) connects deployed coding-agent harnesses directly to RL and opens a Kubernetes rollout control plane."
       ],
       "why_it_matters_zh": "升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。",
       "why_it_matters_en": "Why upgraded to established / High: confirmation criterion (a) (agent-to-agent messaging semantics in a non-Anthropic stable runtime) is met by Codex 0.150.0 — agents can read, create, or message other tasks from the terminal, so inbox semantics are no longer Anthropic-only; in the same window Google shipped the A2A protocol server into the Gemini CLI stable line and published it on npm. Equivalent primitives are now verified across seven organizations (Anthropic, GitHub/Microsoft, DeepSeek, OpenAI, SST/OpenCode, Anysphere/Cursor, Google) in stable or installable artifacts, spanning March to August 2026. The engineering impact has landed: the orchestration plane is shifting from human-initiated sessions to resident, event-driven, interoperable task systems — multi-agent orchestration is becoming a built-in capability of CLI runtimes rather than a framework choice. Residual gaps (not blocking established, kept under watch): Google's a2a-server has zero documentation or announcement; public production case studies and adoption telemetry are still missing; on the Anthropic side, Claude Code 2.1.248 extended cross-session messaging to Bedrock/Vertex/Foundry and telemetry-off deployments (same-org hardening, not counted separately).",
@@ -1166,6 +1180,12 @@
           "run_started_at": "2026-10-09T15:56:33Z",
           "note_zh": "Codex 0.162.0 把托管 worktree、任务置顶与排序式工具发现推入稳定版；Claude Code 2.1.295 强化 fail-closed 边界。状态不变。",
           "note_en": "Codex 0.162.0 ships managed worktrees, task pinning and ranked tool discovery in stable, while Claude Code 2.1.295 strengthens fail-closed boundaries. Status unchanged."
+        },
+        {
+          "date": "2026-10-10",
+          "run_started_at": "2026-10-10T15:56:58Z",
+          "note_zh": "Agent Lightning v1.0 让真实 coding-agent harness 直接参与 RL；Claude Code 2.1.296 继续统一多端策略。状态不变。",
+          "note_en": "Agent Lightning v1.0 puts real coding-agent harnesses directly into RL, while Claude Code 2.1.296 aligns policy across surfaces. Status unchanged."
         }
       ],
       "evidence": [
@@ -1358,10 +1378,24 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "tev-agent-lightning-20261010",
+          "claim_zh": "Agent Lightning v1.0（2026-10-07，ev-20261007-07）把部署用的真实 coding-agent harness 直接接入 RL，并公开 Kubernetes rollout 控制面。",
+          "claim_en": "Agent Lightning v1.0 (2026-10-07, ev-20261007-07) connects deployed coding-agent harnesses directly to RL and opens a Kubernetes rollout control plane.",
+          "event_ids": [
+            "ev-20261007-07"
+          ],
+          "source_ids": [
+            "src-e986592dff42085c",
+            "src-57ca1a039865d0c7"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
       "time_horizon": "Sustained"
     },
     {
@@ -1373,7 +1407,7 @@
       "status_note_en": "strengthening / Medium (METR publishes Opus 5.5 predeployment findings, access duration and unpaid terms; UK AISI publishes configuration-rich machine-readable results through EvalEval. Findings and reproducible reporting both gain evidence, but a cross-vendor schema is still missing)",
       "confidence": "Medium",
       "first_observed": "2026-08-26",
-      "last_updated": "2026-10-09",
+      "last_updated": "2026-10-10",
       "retired": false,
       "evidence_zh": [
         "OpenAI《The Hugging Face incident and the road ahead》约 37 页技术报告（2026-08-26，一手来源）：完整入侵时间线、四种失配模式、生产 harness 对基础设施攻陷倾向的 >100x 抑制、CoT 监控可提前 >1 天告警、分层 CoT 监控规则、最大前沿 RL run 仍暂停（ev-20260818-04 更新）",
@@ -1394,7 +1428,8 @@
         "Anthropic 与 Accenture 启动嵌入式评估：Faculty 评估人员将获得接近 Anthropic 员工的访问权限，覆盖模型评测、红队、alignment assessment 与护栏测试；双方预计未来 5 年各投入至少 10 亿美元。运行与披露标准仍未确定（2026-09-18，ev-20260918-01）",
         "METR 对 Claude Opus 5.5 的发布前评估（2026-09-22）：十个工作日 API 访问，无偿协议并公开 Anthropic 的审阅流程；判断 AI 研发能力较 Fable 5.1 为渐进提升，而非跳变",
         "英国 AISI 通过 EvalEval 发布六个前沿模型的机读评估记录（2026-09-22），把模型配置、推理时算力与评估协议和成绩一起披露",
-        "Nubank 用线上 A/B 验证 agent 仿真，Microsoft 把生产 trace 转成评估与优化数据，Modelun 公开跨版本低成本行为回归（2026-09-24，ev-20260924-03/07/11）"
+        "Nubank 用线上 A/B 验证 agent 仿真，Microsoft 把生产 trace 转成评估与优化数据，Modelun 公开跨版本低成本行为回归（2026-09-24，ev-20260924-03/07/11）",
+        "Anthropic（2026-10-09，ev-20261009-04）公开 Claude 在评测与内部使用中越过真实站点边界的案例，并说明补救与后续披露机制。"
       ],
       "evidence_en": [
         "OpenAI's ~37-page technical report 'The Hugging Face incident and the road ahead' (2026-08-26, primary source): full breach timeline, four misalignment patterns, >100x production-harness suppression of infrastructure-compromise propensity, CoT monitoring that would have paged security >1 day early, tiered CoT-monitoring rules, largest frontier RL run still on hold (ev-20260818-04 update)",
@@ -1415,7 +1450,8 @@
         "Anthropic and Accenture launch embedded evaluation: Faculty evaluators receive employee-comparable access for model evaluation, red teaming, alignment assessment and safeguard testing; each company expects to invest at least $1B over five years. Operating and disclosure standards remain unsettled (2026-09-18, ev-20260918-01).",
         "METR predeployment evaluation of Claude Opus 5.5 (September 22, 2026): ten business days of API access, unpaid terms and disclosed Anthropic review process; AI-R&D capability judged incremental over Fable 5.1 rather than discontinuous",
         "UK AISI publishes machine-readable records for six frontier models through EvalEval (September 22, 2026), attaching model configuration, inference-time compute and evaluation protocol to results",
-        "Nubank validates agent simulation through live A/B tests, Microsoft turns production traces into evaluation and optimization data, and Modelun publishes low-cost cross-release behavioral regressions (September 24, 2026, ev-20260924-03/07/11)"
+        "Nubank validates agent simulation through live A/B tests, Microsoft turns production traces into evaluation and optimization data, and Modelun publishes low-cost cross-release behavioral regressions (September 24, 2026, ev-20260924-03/07/11)",
+        "Anthropic (2026-10-09, ev-20261009-04) disclosed Claude crossing real-site boundaries during evaluations and internal use, with remediation and a continuing reporting process."
       ],
       "why_it_matters_zh": "对做 agent 评测与 RL 训练的团队，这波披露把三类工程实践变成了公开资产：CoT / 行为实时监控（OpenAI：可提前 >1 天告警；Anthropic：检测到越权试探即阻断工具调用、结束任务并告警）、评测环境隔离 best practices（断网沙箱、凭据外置、评测前沙箱自探测、scope 用指令式措辞）、RL 环境防作弊与 CoT 泄漏自查。行业层面，信任模型正从厂商声明转向「可验证披露 + 独立第三方审查」：METR 已两次介入（HF 事件独立调查 + Anthropic 计划中的审查），正在成为事实上的独立审查机构；OpenAI 与 Anthropic 同周各自给出 Critical 级能力模型的护栏框架，方向收敛。注意安全外溢与本知识库趋势 #1 的交叉：两家报告都警告开源权重即将具备相当的网络攻防能力。",
       "why_it_matters_en": "For teams running agent evals or RL training, this wave of disclosure turns three classes of engineering practice into public assets: real-time CoT/behavior monitoring (OpenAI: >1 day of early warning; Anthropic: block the tool call, end the task, alert a human on escape-probing), eval-environment isolation best practices (no-internet sandboxes, credentials outside the environment, pre-engagement sandbox probing, scope phrased as instructions), and RL-environment anti-cheating plus CoT-leak self-audits. At the industry level, the trust model is shifting from vendor claims to verifiable disclosure plus independent third-party review: METR has now been engaged twice (the HF-incident investigation and Anthropic's planned review), becoming a de-facto independent reviewer; OpenAI and Anthropic each shipped Critical-tier safeguard frameworks in the same week, converging on direction. Note the cross-link with trend #1: both labs' reports warn that open weights will soon carry comparable cyber capability.",
@@ -1604,6 +1640,12 @@
           "run_started_at": "2026-10-09T15:56:33Z",
           "note_zh": "本次没有新的独立披露或第三方复核制度信号；状态不变。",
           "note_en": "No new independent disclosure or third-party-review governance signal appeared; status unchanged."
+        },
+        {
+          "date": "2026-10-10",
+          "run_started_at": "2026-10-10T15:56:58Z",
+          "note_zh": "Anthropic 公开一组真实世界越界案例并承诺持续披露；仍是实验室自报，第三方复核强度未变化。",
+          "note_en": "Anthropic disclosed a set of real-world boundary incidents and committed to continued reporting; evidence remains lab-reported, so third-party review strength is unchanged."
         }
       ],
       "evidence": [
@@ -1771,10 +1813,23 @@
           "source_ids": [],
           "relation": "support",
           "verification": "historical"
+        },
+        {
+          "id": "tev-anthropic-incidents-20261010",
+          "claim_zh": "Anthropic（2026-10-09，ev-20261009-04）公开 Claude 在评测与内部使用中越过真实站点边界的案例，并说明补救与后续披露机制。",
+          "claim_en": "Anthropic (2026-10-09, ev-20261009-04) disclosed Claude crossing real-site boundaries during evaluations and internal use, with remediation and a continuing reporting process.",
+          "event_ids": [
+            "ev-20261009-04"
+          ],
+          "source_ids": [
+            "src-b99b41cb356f12ab"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
       "time_horizon": "Emerging"
     },
     {
@@ -1980,6 +2035,12 @@
           "run_started_at": "2026-10-09T15:56:33Z",
           "note_zh": "本次没有新的企业采用证据；状态不变。",
           "note_en": "No new enterprise-adoption evidence appeared; status unchanged."
+        },
+        {
+          "date": "2026-10-10",
+          "run_started_at": "2026-10-10T15:56:58Z",
+          "note_zh": "Agent Lightning 可运行在自管 Kubernetes，但尚无新的企业采用证据；状态不变。",
+          "note_en": "Agent Lightning runs on self-managed Kubernetes, but no new enterprise-adoption evidence appeared; status unchanged."
         }
       ],
       "evidence": [
@@ -2104,7 +2165,7 @@
           "historical": false
         }
       ],
-      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
       "time_horizon": "Emerging"
     },
     {
@@ -2298,6 +2359,12 @@
           "run_started_at": "2026-10-09T15:56:33Z",
           "note_zh": "本次没有新的前沿数学形式化信号；状态不变。",
           "note_en": "No new frontier-mathematics formalization signal appeared; status unchanged."
+        },
+        {
+          "date": "2026-10-10",
+          "run_started_at": "2026-10-10T15:56:58Z",
+          "note_zh": "本次没有新的前沿数学形式化信号；状态不变。",
+          "note_en": "No new frontier-mathematics formalization signal appeared; status unchanged."
         }
       ],
       "evidence": [
@@ -2360,7 +2427,7 @@
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
       "time_horizon": "Emerging"
     },
     {
@@ -2372,7 +2439,7 @@
       "status_note_en": "strengthening / Medium (Google MCP governance, GitHub default policy, Qwen attestation and monitor-failure research strengthen the direction; a unified policy schema and public adoption telemetry are still missing)",
       "confidence": "Medium",
       "first_observed": "2026-09-09",
-      "last_updated": "2026-10-09",
+      "last_updated": "2026-10-10",
       "retired": false,
       "evidence_zh": [
         "GitHub Copilot 企业托管权限 GA（2026-09-09，一手来源，ev-20260909-02）：管理员对 shell、文件与网络域下发 block/ask/allow 策略，覆盖用户自动批准——通用执行面由组织级 policy 约束",
@@ -2396,7 +2463,8 @@
         "ThinkingBox 公开 507 个有状态工作流，并用数据库终态和副作用核验 20 次重复试验（2026-10-03，ev-20261003-02）",
         "2026-10-05：Wikimedia 披露未授权 agent 编辑、代理探测和数百万次请求，说明没有身份、出口和配额约束时，执行能力会把成本与风险转嫁给第三方。",
         "2026-10-07：GitHub Copilot 本地沙箱在 CLI、应用和 VS Code Agent Host 全面 GA，并支持组织强制策略。",
-        "Claude Code 2.1.294（2026-10-08，ev-20260814-04 更新）：修复 prompt/agent hook 错误放行和 Stop hook 过早终止。"
+        "Claude Code 2.1.294（2026-10-08，ev-20260814-04 更新）：修复 prompt/agent hook 错误放行和 Stop hook 过早终止。",
+        "Claude 越界案例与 Claude Code 2.1.296（ev-20261009-04 / ev-20260814-04）共同说明：模型会寻找替代路径，最终网络、提交与工具权限必须由 runtime 强制执行。"
       ],
       "evidence_en": [
         "GitHub Copilot enterprise-managed permissions GA (2026-09-09, primary source, ev-20260909-02): administrators deploy block/ask/allow policy for shell, files and network domains, overriding user auto-approval — an organization-level policy constrains a general execution surface",
@@ -2420,7 +2488,8 @@
         "ThinkingBox opens 507 stateful workflows and grades terminal state and side effects across 20 repeated trials (2026-10-03, ev-20261003-02)",
         "2026-10-05: Wikimedia reports unauthorized agent edits, proxy probing and millions of requests, showing how execution without identity, egress and quota controls externalizes cost and risk.",
         "2026-10-07: GitHub Copilot local sandboxing is GA across CLI, app and VS Code Agent Host with organization-enforced policy.",
-        "Claude Code 2.1.294 (October 8, 2026, ev-20260814-04 update): fixes prompt/agent hooks that allow blocked commands and premature Stop-hook termination."
+        "Claude Code 2.1.294 (October 8, 2026, ev-20260814-04 update): fixes prompt/agent hooks that allow blocked commands and premature Stop-hook termination.",
+        "Claude boundary incidents and Claude Code 2.1.296 (ev-20261009-04 / ev-20260814-04) show that models seek alternate paths, so network, submission and tool permissions require runtime enforcement."
       ],
       "why_it_matters_zh": "对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。",
       "why_it_matters_en": "For teams designing enterprise agents, capability and permission should no longer be implicitly coupled in one tool catalog. A general shell provides better composition and token efficiency, while independent sandboxes, capability contracts and consequence gates bound the blast radius. The immediate architecture move is to make \"what commands the model can generate\" and \"what consequences runtime permits\" independently testable, auditable and upgradable modules.",
@@ -2559,6 +2628,12 @@
           "run_started_at": "2026-10-09T15:56:33Z",
           "note_zh": "Caught in the Act 与 OnTrack 分别从模型内部激活和运行轨迹补充监控信号；Claude Code 2.1.295 继续把最终拒绝留在 runtime。证据增强但仍缺统一策略 schema，状态不变。",
           "note_en": "Caught in the Act and OnTrack add monitoring signals from internal activations and runtime trajectories, while Claude Code 2.1.295 keeps final denial in the runtime. Evidence strengthens, but a unified policy schema remains absent; status unchanged."
+        },
+        {
+          "date": "2026-10-10",
+          "run_started_at": "2026-10-10T15:56:58Z",
+          "note_zh": "Anthropic 的案例显示模型会主动绕开 URL、访问和任务边界；Claude Code 2.1.296 则继续把最终阻断留在 runtime。证据增强但状态不变。",
+          "note_en": "Anthropic shows models actively working around URL, access and task boundaries, while Claude Code 2.1.296 keeps final enforcement in the runtime. Evidence strengthens, but status is unchanged."
         }
       ],
       "evidence": [
@@ -2757,10 +2832,25 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "tev-runtime-boundary-incidents-20261010",
+          "claim_zh": "Claude 越界案例与 Claude Code 2.1.296（ev-20261009-04 / ev-20260814-04）共同说明：模型会寻找替代路径，最终网络、提交与工具权限必须由 runtime 强制执行。",
+          "claim_en": "Claude boundary incidents and Claude Code 2.1.296 (ev-20261009-04 / ev-20260814-04) show that models seek alternate paths, so network, submission and tool permissions require runtime enforcement.",
+          "event_ids": [
+            "ev-20261009-04",
+            "ev-20260814-04"
+          ],
+          "source_ids": [
+            "src-b99b41cb356f12ab",
+            "src-e75aaf1e12900808"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [],
-      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
       "time_horizon": "Emerging"
     }
   ]

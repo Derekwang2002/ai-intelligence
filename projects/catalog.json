@@ -41,7 +41,8 @@
         "src-0c734930a759f57a",
         "src-0ba886b07133e21d",
         "src-0dfdf17053d5d17a",
-        "src-92349bd4a8c11233"
+        "src-92349bd4a8c11233",
+        "src-e75aaf1e12900808"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -57,19 +58,20 @@
         "src-0c734930a759f57a",
         "src-0ba886b07133e21d",
         "src-0dfdf17053d5d17a",
-        "src-92349bd4a8c11233"
+        "src-92349bd4a8c11233",
+        "src-e75aaf1e12900808"
       ],
-      "last_reviewed_at": "2026-10-09T15:56:33Z",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.295 将更多 hook、gateway 与 MCP 故障转为默认拒绝。",
-        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.295 makes more hook, gateway and MCP failures fail closed.",
-        "next_action_zh": "升级后回放 hook 失败、模型拒绝、MCP 重连与沙箱用例。",
-        "next_action_en": "After upgrading, replay hook failures, model denials, MCP reconnects and sandbox cases.",
+        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.296 将 Claude Desktop Code tab 纳入托管策略，并修复 hook、MCP、密钥脱敏与审批边界。",
+        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.296 brings the Claude Desktop Code tab under managed policy and fixes hook, MCP, redaction and approval boundaries.",
+        "next_action_zh": "升级后回放 managed hook、已禁用 MCP、Bash 环境变量、密钥脱敏与 Windows 编码用例。",
+        "next_action_en": "After upgrading, replay managed hooks, disabled MCP servers, Bash environment variables, redaction and Windows encoding cases.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-09T15:56:33Z"
+        "reviewed_at": "2026-10-10T15:56:58Z"
       }
     },
     {
@@ -2498,7 +2500,103 @@
         ],
         "reviewed_at": "2026-10-09T15:56:33Z"
       }
+    },
+    {
+      "id": "agent-lightning",
+      "name_zh": "Agent Lightning",
+      "name_en": "Agent Lightning",
+      "type": "framework",
+      "aliases": [
+        "Microsoft Agent Lightning"
+      ],
+      "pattern": "Agent Lightning",
+      "event_ids": [
+        "ev-20261007-07"
+      ],
+      "source_ids": [
+        "src-e986592dff42085c",
+        "src-57ca1a039865d0c7"
+      ],
+      "official_source_ids": [
+        "src-e986592dff42085c",
+        "src-57ca1a039865d0c7"
+      ],
+      "current_judgment_event_id": "ev-20261007-07",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Agent Lightning v1.0 让真实 harness 直接参与 RL，并公开轻量控制面和 Kubernetes rollout。结果仍是作者报告，训练轨迹的数据治理需要先验证。",
+        "judgment_en": "Agent Lightning v1.0 puts real harnesses directly into RL and opens a lightweight control plane with Kubernetes rollouts. Results remain author-reported, and training-trajectory governance needs validation.",
+        "next_action_zh": "一天内接入公开 mini-SWE-agent 流程，测轨迹一致性、失败恢复、GPU 利用率与敏感数据落盘。",
+        "next_action_en": "Within one day, connect a public mini-SWE-agent flow and measure trajectory fidelity, recovery, GPU use and sensitive data at rest.",
+        "basis_event_ids": [
+          "ev-20261007-07"
+        ],
+        "reviewed_at": "2026-10-10T15:56:58Z"
+      }
+    },
+    {
+      "id": "microsoft-decision-1",
+      "name_zh": "Microsoft-Decision-1",
+      "name_en": "Microsoft-Decision-1",
+      "type": "model",
+      "aliases": [
+        "Decision-1"
+      ],
+      "pattern": "Microsoft-Decision-1|Decision-1",
+      "event_ids": [
+        "ev-20261009-05"
+      ],
+      "source_ids": [
+        "src-fb900a38eb855015"
+      ],
+      "official_source_ids": [
+        "src-fb900a38eb855015"
+      ],
+      "current_judgment_event_id": "ev-20261009-05",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开 API 和价格足以做低成本路由测试，但准确率、延迟和稳健性仍是厂商自报。",
+        "judgment_en": "Public endpoints and pricing support a low-cost routing trial, but accuracy, latency and robustness remain vendor-reported.",
+        "next_action_zh": "一天内用 200 条真实路由样本对比现有分类器，测准确率、ECE、P95 延迟、成本与误拒率。",
+        "next_action_en": "Within one day, compare it with the current classifier on 200 real routing cases and measure accuracy, ECE, P95 latency, cost and false refusals.",
+        "basis_event_ids": [
+          "ev-20261009-05"
+        ],
+        "reviewed_at": "2026-10-10T15:56:58Z"
+      }
+    },
+    {
+      "id": "qwen-coder390-derivative",
+      "name_zh": "Qwen Coder390 社区衍生版",
+      "name_en": "Qwen Coder390 community derivative",
+      "type": "model",
+      "aliases": [
+        "Qwen Coder390 derivative"
+      ],
+      "pattern": "Qwen3\\.8-27B-Coder390",
+      "event_ids": [
+        "ev-20261004-02"
+      ],
+      "source_ids": [
+        "src-b933bb09c6391f13"
+      ],
+      "official_source_ids": [],
+      "current_judgment_event_id": "ev-20261004-02",
+      "last_reviewed_at": "2026-10-10T15:56:58Z",
+      "judgment": {
+        "recommendation": "IGNORE",
+        "judgment_zh": "社区热度高，但训练数据、许可证链和独立复现不足。",
+        "judgment_en": "Community attention is high, but training provenance, license lineage and independent reproduction are insufficient.",
+        "next_action_zh": "暂不投入；等训练数据清单、许可证链和独立 benchmark 复现公开后再评估。",
+        "next_action_en": "Do not invest yet; reassess after a training-data inventory, license lineage and independent benchmark reproduction are public.",
+        "basis_event_ids": [
+          "ev-20261004-02"
+        ],
+        "reviewed_at": "2026-10-10T15:56:58Z"
+      }
     }
   ],
-  "last_updated": "2026-10-09T15:56:33Z"
+  "last_updated": "2026-10-10T15:56:58Z"
 }
