@@ -143,6 +143,7 @@ export function validateKnowledge({ events, projects, sources, trends, topics, b
   const evids = unique(evidence, 'id', 'evidence');
   const changes = materialChanges(events, trends, topics, projects);
   const cids = unique(changes, 'id', 'change');
+  const scenarioIds = new Set(SCENARIOS.map(s => s.id));
   const refs = (ids, known, label) => { for (const id of ids || []) if (!known.has(id)) errors.push(`${label}: unknown ${id}`); };
   const bilingual = (obj, keys, label) => { for (const key of keys) for (const lang of ['zh', 'en']) if (typeof obj[`${key}_${lang}`] !== 'string' || !obj[`${key}_${lang}`].trim()) errors.push(`${label}: missing ${key}_${lang}`); };
   const urls=new Set();
@@ -157,6 +158,8 @@ export function validateKnowledge({ events, projects, sources, trends, topics, b
     if (!e.title_zh || !e.title || !e.technical_details_zh) errors.push(`event ${e.event_id}: bilingual fields`);
     if (e.summary !== e.summary_en || e.why_it_matters !== e.why_it_matters_en) errors.push(`event ${e.event_id}: English aliases differ`);
     refs(e.project_ids, pids, e.event_id); refs(e.source_ids, sids, e.event_id);
+    if (!Array.isArray(e.scenario_ids)) errors.push(`event ${e.event_id}: scenario_ids must be an array`);
+    else refs(e.scenario_ids, scenarioIds, `event ${e.event_id}: scenario_ids`);
     if (!['verified', 'frontier', 'legacy'].includes(e.evidence_stage)) errors.push(`event ${e.event_id}: evidence_stage`);
     if (!RECOMMENDATIONS.includes(e.recommendation)) errors.push(`event ${e.event_id}: recommendation "${e.recommendation}"`);
     if (taxonomy && Date.parse(e.first_seen_at) >= Date.parse(taxonomy.rules_effective_at)) errors.push(...eventRuleErrors(e, taxonomy));

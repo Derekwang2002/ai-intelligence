@@ -10,6 +10,21 @@ test('canonical sources discard trackers but preserve meaningful query parameter
 test('date-only dates stay literal and timestamps normalize to report timezone',()=>{assert.equal(reportDate('2026-09-26'),'2026-09-26');assert.equal(reportDate('2026-09-26T16:01:00Z'),'2026-09-27');assert.equal(utcDate('2026-09-27T01:00:00+08:00'),'2026-09-26');assert.throws(()=>reportDate('bad'));assert.throws(()=>reportDate('2026-02-30'));});
 test('historical evidence only resolves existing explicit IDs',()=>assert.deepEqual(extractEventIds('ev-20260925-01 and ev-20260925-02',new Set(['ev-20260925-01'])),['ev-20260925-01']));
 test('migration references and bilingual content validate together',async()=>{const k=await loadKnowledge(root);assert.equal(validateKnowledge(k).length,0);const projected=projectKnowledge(k);assert.equal(projected.search.filter(r=>r.type==='event').length,k.events.length);assert(projected.topics.every(t=>t.evidence_ids.length));const corrupted=structuredClone(k);corrupted.events[0].source_ids.push('missing');assert(validateKnowledge(corrupted).some(e=>e.includes('unknown missing')));});
+test('event scenarios use the reader vocabulary, not event categories',async()=>{
+  const k=await loadKnowledge(root),event=k.events[0];
+  for(const id of ['open-source','developer-tools','infrastructure','security','enterprise','agent-security']){
+    event.scenario_ids=['models',id];
+    assert(validateKnowledge(k).includes(`event ${event.event_id}: scenario_ids: unknown ${id}`));
+  }
+  for(const value of [undefined,null,'models',{}]){
+    event.scenario_ids=value;
+    assert(validateKnowledge(k).includes(`event ${event.event_id}: scenario_ids must be an array`));
+  }
+  for(const value of [[],['agents','models','local','research']]){
+    event.scenario_ids=value;
+    assert.deepEqual(validateKnowledge(k),[]);
+  }
+});
 test('routine reviews cannot create a material change',async()=>{const k=await loadKnowledge(root);const c=structuredClone(k.events[0].changes[0]);c.id+='-bad';c.kind='review';k.events[0].changes.push(c);assert(validateKnowledge(k).some(e=>e.includes('non-material kind')));});
 test('migration changes are excluded from unread while late discoveries remain visible',()=>{const changes=[{id:'old',date:'2026-09-27',historical:true},{id:'late',date:'2026-09-26',historical:false},{id:'read',date:'2026-09-27',historical:false}];assert.deepEqual(selectChanges(changes,{range:'unread',today:'2026-09-27',read:['read']}).map(c=>c.id),['late']);assert.equal(selectChanges(changes,{range:'today',today:'2026-09-27'}).length,2);});
 test('following, saved, and read are independent and imports reject malformed data',()=>{const next=toggleValue(emptyState(),'follows','project:codex');assert.deepEqual(next.read,[]);assert.deepEqual(next.bookmarks,[]);assert.throws(()=>normalizeState({...next,read:[{}]}));assert.throws(()=>normalizeState({...next,version:8}));assert.deepEqual(normalizeState({...next,read:['a','a']}).read,['a']);});

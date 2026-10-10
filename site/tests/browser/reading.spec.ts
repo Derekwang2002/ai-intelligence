@@ -11,7 +11,51 @@ import AxeBuilder from '@axe-core/playwright';
 for(const theme of ['light','dark'])test(`accessible reading ${theme}`,async({page})=>{for(const route of ['/','/projects/claude-code/','/events/ev-20260818-05/','/sources/','/insights/','/insights/#radar','/trends/open-weight-agentic-coding-models-chinese-labs/','/following/','/topics/open-weight-coding/','/daily/','/daily/2026-09-27/','/trends/archive/2026-09-27/','/about/','/search/']){const url=new URL(route,'http://127.0.0.1:4321');url.searchParams.set('theme',theme);await page.goto(url.pathname+url.search+url.hash);const report=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();expect(report.violations,route).toEqual([]);}});
 test('invalid import preserves data and valid import merges collections',async({page})=>{await page.goto('/following/');await page.locator('[data-follow="scenario:agents"]').click();await page.getByText('阅读数据管理',{exact:true}).click();await page.locator('#import-reader').setInputFiles({name:'broken.json',mimeType:'application/json',buffer:Buffer.from('{bad')});await expect(page.locator('#reader-status')).toContainText('导入失败');await page.locator('#import-reader').setInputFiles({name:'reading.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({version:1,follows:['project:claude-code'],bookmarks:['event:ev-20260925-01'],read:[],completed_version:null}))});await expect(page.locator('#reader-status')).toContainText('已合并');const state=await page.evaluate(()=>JSON.parse(localStorage.getItem('matrix-reader-v1')!));expect(state.follows).toEqual(expect.arrayContaining(['scenario:agents','project:claude-code']));});
 
-test('following retains a distinct global section and explains scenario matches',async({page})=>{await page.goto('/following/');await expect(page.locator('.global-feed-items')).toBeVisible();await page.locator('[data-follow="scenario:models"]').click();await expect(page.locator('.feed-items .feed-reason').filter({hasText:'模型选型'}).first()).toBeVisible();});
+for (const {route, reason} of [
+  {route:'/following/', reason:'关注：模型选型'},
+  {route:'/en/following/', reason:'Following: Choosing models'},
+]) {
+  test(`following retains a distinct global section and explains scenario matches (${route})`,async({page})=>{
+    // This archived date contains a model update and an unrelated major correction.
+    // The latest briefing changes daily and may legitimately have no model stories.
+    await page.goto(`${route}?date=2026-09-27`);
+    const globalSection=page.locator('.global-feed-items');
+    const correction=globalSection.locator('[data-feed-item]',{has:page.locator('h2 a[href$="/events/ev-20260818-05/"]')});
+    const model=page.locator('.feed-items [data-feed-item]',{has:page.locator('h2 a[href$="/events/ev-20260922-02/"]')});
+    const follow=page.locator('[data-follow="scenario:models"]');
+    await expect(globalSection).toBeVisible();
+    await expect(correction).toBeVisible();
+    await expect(page.locator('.feed-items [data-feed-item]:visible')).toHaveCount(0);
+
+    await follow.click();
+    await expect(follow).toHaveAttribute('aria-pressed','true');
+    await expect(model).toBeVisible();
+    await expect(model.locator('.feed-reason')).toHaveText(reason);
+    await expect(model.locator('time')).toHaveText('2026-09-27');
+    await expect(correction).toBeVisible();
+    await expect(correction.locator('time')).toHaveText('2026-09-27');
+    await expect(page.locator('[data-range="today"]')).toHaveAttribute('aria-pressed','true');
+
+    await follow.click();
+    await expect(follow).toHaveAttribute('aria-pressed','false');
+    await expect(page.locator('.feed-items [data-feed-item]:visible')).toHaveCount(0);
+    await expect(correction).toBeVisible();
+  });
+
+  test(`following does not backfill matches outside an empty date range (${route})`,async({page})=>{
+    // Establish that this follow has matching history before selecting an empty date.
+    await page.goto(`${route}?date=2026-09-27`);
+    await page.locator('[data-follow="scenario:models"]').click();
+    await expect(page.locator('.feed-items .feed-reason').filter({hasText:reason}).first()).toBeVisible();
+    await page.goto(`${route}?date=2026-08-01`);
+    await expect(page.locator('[data-follow="scenario:models"]')).toHaveAttribute('aria-pressed','true');
+    await expect(page.locator('[data-range="today"]')).toHaveAttribute('aria-pressed','true');
+    await expect(page.locator('[data-feed-item]:visible')).toHaveCount(0);
+    await expect(page.locator('.feed-empty')).toBeVisible();
+    await expect(page.locator('.global-feed-items')).toBeHidden();
+    await expect(page.locator('.reading-end')).toBeHidden();
+  });
+}
 
 test('mobile navigation and theme controls remain visible in both languages',async({page})=>{await page.setViewportSize({width:360,height:900});for(const route of ['/','/en/','/events/','/en/events/']){await page.goto(route+'?theme=light');for(const link of await page.locator('.main-nav>a,.nav-utils>a,.theme-toggle').all()){const box=await link.boundingBox();expect(box).not.toBeNull();expect(box!.x).toBeGreaterThanOrEqual(0);expect(box!.x+box!.width).toBeLessThanOrEqual(360);}await page.locator('#theme-toggle').click();await expect(page.locator('html')).toHaveAttribute('data-theme','dark');}});
 
