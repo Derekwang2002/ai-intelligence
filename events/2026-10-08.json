@@ -285,6 +285,214 @@
       "summary": "A statistical reanalysis recomputes METR 50% time horizons across 228 tasks and 26 AIs. Nonlinear models show that moving from three to 30 minutes is much easier than moving from 30 minutes to five hours, despite both being tenfold gains. The authors recommend interpreting horizons together with diagnostic plots.",
       "why_it_matters": "For teams using time horizons to plan agent roadmaps, a single exponential curve may overstate progress in the short-task region. This is a preprint without a public replication package; wait for data and code reproduction before changing procurement or automation assumptions.",
       "evidence_stage": "frontier"
+    },
+    {
+      "event_id": "ev-20261008-04",
+      "title": "LightOn releases OCR models that extract layout, charts and images",
+      "title_zh": "LightOn 发布可提取版面与图表的 OCR 模型",
+      "category": "ai-engineering",
+      "organization": [
+        "LightOn"
+      ],
+      "published_at": "2026-10-08",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/blog/lightonai/lightonocr-3",
+      "secondary_sources": [
+        "https://huggingface.co/lightonai/LightOnOCR-3-4B"
+      ],
+      "summary_zh": "LightOn 公开 LightOnOCR-3 的 0.8B、1B 和 4B 权重。三款模型可把页面转成 Markdown；grounding 模式还会输出带标签的边界框、图片描述和图表数据。权重采用 Apache 2.0，可商用。发布方公开了 benchmark 复现脚本，但成绩仍是厂商自评。",
+      "summary_en": "LightOn released 0.8B, 1B and 4B LightOnOCR-3 weights. The models convert pages to Markdown; a grounding mode also emits labeled bounding boxes, image descriptions and chart data. The Apache 2.0 weights permit commercial use. Reproduction scripts are public, but the reported scores remain vendor-run.",
+      "why_it_matters_zh": "对做 RAG 和文档流水线的团队来说，一个模型同时完成转写、版面定位和图表提取，可能减少多段 OCR 与 layout 组件。厂商也说明 benchmark 会受后处理和分辨率明显影响，因此必须用自己的扫描件、表格和手写页复测。",
+      "why_it_matters_en": "For RAG and document-pipeline teams, one model handling transcription, layout grounding and chart extraction could replace several OCR and layout stages. The vendor also shows that post-processing and resolution materially affect benchmark scores, so teams must retest on their own scans, tables and handwriting.",
+      "technical_details": {
+        "models": "0.8B, 1B and 4B variants; 0.8B and 4B use Qwen3.5 vision-language backbones",
+        "outputs": "Markdown transcription; grounding mode adds labeled boxes, image descriptions and chart tables",
+        "vendor_benchmarks": "4B: olmOCR-Bench 86.3, ParseBench 75.1 and fr-bench-pdf2md 74.1",
+        "serving_test": "512 pages on one H100 with vLLM 0.30.0; resolution changes throughput materially",
+        "license": "Apache 2.0",
+        "artifacts": "weights, conversion and visualization code, benchmark reproduction scripts and demo are public",
+        "time_basis": "Hugging Face article provides date-only publication metadata: 2026-10-08; no time of day was published"
+      },
+      "technical_details_zh": {
+        "模型": "0.8B、1B 与 4B；0.8B 和 4B 使用 Qwen3.5 视觉语言底座",
+        "输出": "Markdown 转写；grounding 模式增加带标签边界框、图片描述和图表表格",
+        "厂商评测": "4B：olmOCR-Bench 86.3、ParseBench 75.1、fr-bench-pdf2md 74.1",
+        "Serving 测试": "使用单张 H100、vLLM 0.30.0 跑 512 页；分辨率会明显改变吞吐",
+        "许可证": "Apache 2.0",
+        "公开材料": "权重、格式转换与可视化代码、benchmark 复现脚本和 demo 均已公开",
+        "时间依据": "Hugging Face 文章只提供 2026-10-08 日期，没有公开时分"
+      },
+      "tags": [
+        "ocr",
+        "document-understanding",
+        "rag",
+        "layout-analysis",
+        "open-weight"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "lightonocr-3-layout-chart-open-weights",
+      "short_label_zh": "LightOnOCR-3",
+      "short_label_en": "LightOnOCR-3",
+      "next_action_zh": "一天内用自有扫描件、表格和手写页对比 0.8B 与 4B 的准确率、P95 延迟、显存和后处理依赖。",
+      "next_action_en": "Within one day, compare the 0.8B and 4B models on your scans, tables and handwriting for accuracy, P95 latency, memory and post-processing dependence.",
+      "source_ids": [
+        "src-06a05d11a4ee79b1",
+        "src-4ed71ef525a8f8e1"
+      ],
+      "project_ids": [
+        "lightonocr-3"
+      ],
+      "scenario_ids": [
+        "local",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261008-04-release-evidence",
+          "claim_zh": "LightOn 公开三种 LightOnOCR-3 权重、Apache 2.0 许可、grounding 输出和 benchmark 复现脚本。",
+          "claim_en": "LightOn released three LightOnOCR-3 weights under Apache 2.0 with grounding outputs and benchmark reproduction scripts.",
+          "source_ids": [
+            "src-06a05d11a4ee79b1",
+            "src-4ed71ef525a8f8e1"
+          ],
+          "event_ids": [
+            "ev-20261008-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; benchmark results are vendor-run"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261008-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-08",
+          "discovered_at": "2026-10-11T16:02:40Z",
+          "summary_zh": "LightOn 发布可提取版面与图表的 OCR 模型",
+          "summary_en": "LightOn releases OCR models that extract layout, charts and images",
+          "evidence_ids": [
+            "ev-20261008-04-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-11T16:02:40Z",
+      "last_updated_at": "2026-10-11T16:02:40Z",
+      "late_discovery": true,
+      "summary": "LightOn released 0.8B, 1B and 4B LightOnOCR-3 weights. The models convert pages to Markdown; a grounding mode also emits labeled bounding boxes, image descriptions and chart data. The Apache 2.0 weights permit commercial use. Reproduction scripts are public, but the reported scores remain vendor-run.",
+      "why_it_matters": "For RAG and document-pipeline teams, one model handling transcription, layout grounding and chart extraction could replace several OCR and layout stages. The vendor also shows that post-processing and resolution materially affect benchmark scores, so teams must retest on their own scans, tables and handwriting."
+    },
+    {
+      "event_id": "ev-20261008-05",
+      "title": "Hugging Face Bio releases Carbon-A for cross-species gene annotation",
+      "title_zh": "Hugging Face Bio 发布跨物种基因注释模型 Carbon-A",
+      "category": "research",
+      "organization": [
+        "Hugging Face Bio"
+      ],
+      "published_at": "2026-10-08",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/blog/HuggingFaceBio/carbon-annotator-genbank-genome-annotation",
+      "secondary_sources": [
+        "https://huggingface.co/HuggingFaceBio/Carbon-A-1.2B"
+      ],
+      "summary_zh": "Hugging Face Bio 发布 1.2B 参数的 Carbon-A，可直接从 DNA 预测蛋白质编码区。团队还公开模型、训练数据、技术报告和已覆盖 22,617 个物种的注释数据库。42 个基准基因组上的宏平均 nucleotide F1 为 0.944；部分新预测得到初步湿实验支持，但更广泛验证仍待发布。",
+      "summary_en": "Hugging Face Bio released Carbon-A, a 1.2B-parameter model that predicts protein-coding regions directly from DNA. The team also published the model, training data, technical report and an annotation database spanning 22,617 species. Vendor evaluation reports macro-average nucleotide F1 of 0.944 across 42 benchmark genomes; limited wet-lab checks support some new predictions, while broader validation remains pending.",
+      "why_it_matters_zh": "对生物信息团队来说，一个跨主要真核类群的开放模型可能降低物种专用基因预测软件的维护成本，并把大规模基因组注释变成可复查的候选生成流程。它不能替代实验确认；训练标签来自持续变化的 RefSeq，陌生物种上的误报和基因结构完整性仍是关键风险。",
+      "why_it_matters_en": "For bioinformatics teams, one open model spanning major eukaryotic groups could reduce maintenance of species-specific gene callers and turn large-scale annotation into a reviewable candidate-generation workflow. It does not replace experimental confirmation; evolving RefSeq training labels, false positives on unfamiliar species and complete gene structure remain key risks.",
+      "technical_details": {
+        "model": "Carbon-A-1.2B with a 98,304-base-pair context window",
+        "task": "nucleotide-resolution protein-coding-region prediction on both DNA strands",
+        "vendor_benchmark": "macro-average nucleotide F1 0.944 across 42 genomes against seven named baselines",
+        "database": "48,167 assemblies, 22,617 taxa, about 27 trillion base pairs and 566 million predicted loci",
+        "validation": "initial PacBio Iso-Seq checks in well-studied species; broader validation on previously unstudied genomes is pending",
+        "artifacts": "model, training data, technical report, database explorer and confidence scores are public",
+        "time_basis": "Hugging Face article provides date-only publication metadata: 2026-10-08; no time of day was published"
+      },
+      "technical_details_zh": {
+        "模型": "Carbon-A-1.2B；上下文窗口为 98,304 个碱基对",
+        "任务": "在 DNA 双链上按核苷酸粒度预测蛋白质编码区",
+        "厂商评测": "42 个基因组的宏平均 nucleotide F1 为 0.944，对比七个具名基线",
+        "数据库": "48,167 个 assembly、22,617 个物种、约 27 万亿碱基对和 5.66 亿个预测位点",
+        "验证": "在研究较充分的物种上做了初步 PacBio Iso-Seq 检查；陌生物种的更广泛验证尚待发布",
+        "公开材料": "模型、训练数据、技术报告、数据库浏览器和置信度分数均已公开",
+        "时间依据": "Hugging Face 文章只提供 2026-10-08 日期，没有公开时分"
+      },
+      "tags": [
+        "biology",
+        "genomics",
+        "gene-annotation",
+        "open-weight",
+        "scientific-ai"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 5,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "huggingface-bio-carbon-a-gene-annotation",
+      "short_label_zh": "Carbon-A",
+      "short_label_en": "Carbon-A",
+      "next_action_zh": "等陌生物种的湿实验结果或独立复现；生信团队可先在已知基因组上核对误报、漏报和外显子边界。",
+      "next_action_en": "Wait for wet-lab results on unfamiliar species or independent reproduction; bioinformatics teams can first check false positives, misses and exon boundaries on known genomes.",
+      "source_ids": [
+        "src-a808e320a08a611a",
+        "src-bebd9ec68b40111c"
+      ],
+      "project_ids": [
+        "carbon-a"
+      ],
+      "scenario_ids": [
+        "research",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261008-05-release-evidence",
+          "claim_zh": "Hugging Face Bio 公开 Carbon-A 模型、训练数据、技术报告和大规模注释数据库，并披露厂商 benchmark 与初步湿实验。",
+          "claim_en": "Hugging Face Bio released the Carbon-A model, training data, technical report and large annotation database, with vendor benchmarks and initial wet-lab checks.",
+          "source_ids": [
+            "src-a808e320a08a611a",
+            "src-bebd9ec68b40111c"
+          ],
+          "event_ids": [
+            "ev-20261008-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance and validation claims are publisher-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261008-05-published",
+          "kind": "new",
+          "occurred_at": "2026-10-08",
+          "discovered_at": "2026-10-11T16:02:40Z",
+          "summary_zh": "Hugging Face Bio 发布跨物种基因注释模型 Carbon-A",
+          "summary_en": "Hugging Face Bio releases Carbon-A for cross-species gene annotation",
+          "evidence_ids": [
+            "ev-20261008-05-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-11T16:02:40Z",
+      "last_updated_at": "2026-10-11T16:02:40Z",
+      "late_discovery": true,
+      "summary": "Hugging Face Bio released Carbon-A, a 1.2B-parameter model that predicts protein-coding regions directly from DNA. The team also published the model, training data, technical report and an annotation database spanning 22,617 species. Vendor evaluation reports macro-average nucleotide F1 of 0.944 across 42 benchmark genomes; limited wet-lab checks support some new predictions, while broader validation remains pending.",
+      "why_it_matters": "For bioinformatics teams, one open model spanning major eukaryotic groups could reduce maintenance of species-specific gene callers and turn large-scale annotation into a reviewable candidate-generation workflow. It does not replace experimental confirmation; evolving RefSeq training labels, false positives on unfamiliar species and complete gene structure remain key risks."
     }
   ]
 }

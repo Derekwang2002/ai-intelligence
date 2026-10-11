@@ -113,7 +113,7 @@
       ],
       "published_at": "2026-09-09T00:00:00Z",
       "first_seen_at": "2026-09-11T18:31:49Z",
-      "last_updated_at": "2026-10-07T22:04:39Z",
+      "last_updated_at": "2026-10-11T16:02:40Z",
       "source_type": "official_docs",
       "primary_source": "https://github.blog/changelog/2026-09-09-enterprise-managed-permissions-for-github-copilot-agent-operations/",
       "secondary_sources": [
@@ -127,7 +127,8 @@
         "https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/",
         "https://github.com/github/copilot-cli/releases/tag/v1.0.91",
         "https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available",
-        "https://github.blog/changelog/2026-10-07-discover-local-models-in-github-copilot-cli"
+        "https://github.blog/changelog/2026-10-07-discover-local-models-in-github-copilot-cli",
+        "https://github.blog/changelog/2026-10-10-new-controls-and-chat-improvements-in-copilot-for-jetbrains/"
       ],
       "summary": "GitHub Copilot now combines enterprise-managed block, ask and allow policies with local sandboxing, adoption telemetry and scheduled agent automation. October previews add approval-gated desktop computer use and code-defined dynamic workflows with parallel agents, structured results, verification and checkpoints. CLI 1.0.91 also tightens sandbox certificate handling and read-only pipeline classification.",
       "why_it_matters": "Agent governance has moved from vendor talk to org-policy surfaces: the same block/ask/allow model Claude Code ships as managed settings is now GA across Copilot's app/CLI/IDE fleet, and the JetBrains sandbox preview extends it to the IDE. Combined with scheduled automation, Copilot agents can now run unattended inside org-defined guardrails — the governance half of the always-on agent stack.",
@@ -145,7 +146,8 @@
         "update_2026_09_24": "Copilot app adds enterprise-managed OTel export for model/tool/session traces (prompt and response content excluded by default) and per-project local sandbox policies for filesystem, network and credentials; unsupported enforcement fails closed. JetBrains 1.18 adds preview assisted approvals, organization skills/instructions and persistent per-MCP-tool controls. Local sandboxing is off by default and public preview. Stays TRIAL.",
         "update_2026_09_26": "A new global default lets enterprises choose enabled, disabled or organization-controlled behavior for current and future eligible GA Copilot features, Code Review and MCP-server policy. It takes effect October 22, preserves explicit choices and keeps previews opt-in. Stays TRIAL; admins should set the default before enforcement begins.",
         "update_2026_10_02": "Public previews add approval-gated desktop computer use and code-defined dynamic workflows with parallel agents, structured results, verification and checkpoints; CLI 1.0.91 adds sandbox CA lifecycle commands and tighter read-only pipeline classification.",
-        "update_2026_10_07": "Local sandboxing is GA across Copilot CLI, app and VS Code Agent Host with organization-enforced MXC policies. CLI 1.0.94-0 discovers tool-calling Ollama models; local selection does not disable GitHub telemetry unless offline mode is explicitly enabled."
+        "update_2026_10_07": "Local sandboxing is GA across Copilot CLI, app and VS Code Agent Host with organization-enforced MXC policies. CLI 1.0.94-0 discovers tool-calling Ollama models; local selection does not disable GitHub telemetry unless offline mode is explicitly enabled.",
+        "update_2026_10_10_jetbrains": "Latest JetBrains plugin lets enterprises set the default model for new agent chats and disable automatic MCP startup for Copilot and Claude; JetBrains 2025.1 support ended."
       },
       "technical_details_zh": {
         "托管权限 GA": "2026-09-09，GA；Copilot Business + Enterprise；覆盖 Copilot 应用、CLI、Agent Host 上的 VS Code 会话；对 shell 命令、文件读写、网络域 block/ask/allow；覆盖用户/工作区设置、自动批准、已存批准；支持按团队",
@@ -157,7 +159,8 @@
         "2026-09-24 更新": "Copilot app 增加企业托管 OTel 导出，可记录模型、工具与会话 trace（默认不含 prompt 和 response 内容），并为本地项目增加文件系统、网络与凭据沙箱策略；系统无法执行策略时会直接失败。JetBrains 1.18 增加预览版 assisted approvals、组织技能/指令与持久化的逐 MCP 工具控制。本地沙箱默认关闭且仍为公开预览。维持 TRIAL。",
         "2026-09-26 更新": "新的全局默认策略允许企业对当前及未来符合条件的 GA Copilot 功能、Code Review 与 MCP server policy 统一选择 enabled、disabled 或交给组织决定。策略将于 10 月 22 日生效，保留已有显式选择，preview 仍需主动启用。维持 TRIAL；管理员应在执行前设定默认值。",
         "2026-10-02 更新": "公开预览新增需审批的桌面 computer use，以及支持并行 agent、结构化结果、验证与 checkpoint 的代码化动态工作流；CLI 1.0.91 增加沙箱 CA 生命周期命令并收紧只读流水线判定。",
-        "2026_10_07_更新": "本地沙箱在 Copilot CLI、应用与 VS Code Agent Host 全面 GA，可由组织通过 MXC 强制策略。CLI 1.0.94-0 可发现支持工具调用的 Ollama 模型；选择本地模型不会自动关闭 GitHub 遥测，仍需显式启用 offline mode。"
+        "2026_10_07_更新": "本地沙箱在 Copilot CLI、应用与 VS Code Agent Host 全面 GA，可由组织通过 MXC 强制策略。CLI 1.0.94-0 可发现支持工具调用的 Ollama 模型；选择本地模型不会自动关闭 GitHub 遥测，仍需显式启用 offline mode。",
+        "2026-10-10 JetBrains 更新": "最新版插件允许企业为新 agent 对话设置默认模型，并关闭 Copilot 与 Claude 的 MCP server 自动启动；JetBrains 2025.1 已停止支持。"
       },
       "tags": [
         "copilot",
@@ -188,7 +191,8 @@
         "src-aaf9c1204da16c29",
         "src-81cdc3555a833682",
         "src-1e174328109aea32",
-        "src-8241d56116d90ff3"
+        "src-8241d56116d90ff3",
+        "src-a91405951b83e939"
       ],
       "project_ids": [
         "github-copilot"
@@ -240,6 +244,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260909-02-jetbrains-controls-evidence",
+          "claim_zh": "GitHub Copilot 最新 JetBrains 插件已提供企业默认模型与 MCP 自动启动控制，并停止支持 JetBrains 2025.1。",
+          "claim_en": "The latest GitHub Copilot plugin for JetBrains adds enterprise default-model and MCP auto-start controls and ends support for JetBrains 2025.1.",
+          "source_ids": [
+            "src-a91405951b83e939"
+          ],
+          "event_ids": [
+            "ev-20260909-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; RSS timestamp supplies exact publication time"
         }
       ],
       "changes": [
@@ -280,12 +297,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260909-02-jetbrains-controls",
+          "kind": "update",
+          "occurred_at": "2026-10-10T18:53:39Z",
+          "discovered_at": "2026-10-11T16:02:40Z",
+          "summary_zh": "GitHub Copilot 为 JetBrains 增加默认模型与 MCP 启动控制",
+          "summary_en": "GitHub Copilot adds default-model and MCP startup controls for JetBrains",
+          "evidence_ids": [
+            "ev-20260909-02-jetbrains-controls-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "short_label_zh": "Copilot Agent 治理",
-      "short_label_en": "Copilot agent governance",
-      "next_action_zh": "先强制启用 MXC 沙箱，再用 Ollama 跑一组工具调用任务，核对文件、网络、凭据与遥测边界。",
-      "next_action_en": "Require MXC sandboxing, then run tool-use tasks with Ollama and verify filesystem, network, credential and telemetry boundaries.",
+      "short_label_zh": "GitHub Copilot",
+      "short_label_en": "GitHub Copilot",
+      "next_action_zh": "一天内在托管 JetBrains 环境验证默认模型、MCP 自动启动开关、重启和账号切换后的策略执行。",
+      "next_action_en": "Within one day, verify default-model and MCP auto-start policies across restart and account switching in managed JetBrains.",
       "last_reviewed_at": "2026-10-07T22:04:39Z"
     }
   ]

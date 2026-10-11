@@ -882,6 +882,109 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261005-10",
+      "title": "Iris-3B explores pixel-space diffusion as a general vision learner",
+      "title_zh": "Iris-3B 用像素空间扩散探索通用视觉学习",
+      "category": "research",
+      "organization": [
+        "Sperid Labs"
+      ],
+      "published_at": "2026-10-05T14:51:15Z",
+      "first_seen_at": "2026-10-11T16:02:40Z",
+      "last_updated_at": "2026-10-11T16:02:40Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/speridlabs/iris-3b",
+      "secondary_sources": [
+        "https://arxiv.org/abs/2610.09450",
+        "https://github.com/speridlabs/iris-3b"
+      ],
+      "summary": "Sperid Labs released Apache-2.0 weights and code for Iris-3B, a 3B pixel-space diffusion model that generates images without a VAE and is fine-tuned for monocular depth and restoration. The model card reports zero-shot depth and 4x restoration results, but evidence remains author-reported and inference requires an NVIDIA GPU plus a separate 4B text encoder for generation.",
+      "summary_en": "Sperid Labs released Apache-2.0 weights and code for Iris-3B, a 3B pixel-space diffusion model that generates images without a VAE and is fine-tuned for monocular depth and restoration. The model card reports zero-shot depth and 4x restoration results, but evidence remains author-reported and inference requires an NVIDIA GPU plus a separate 4B text encoder for generation.",
+      "summary_zh": "Sperid Labs 公开 Iris-3B 的 Apache-2.0 权重与代码。这个 3B 像素空间扩散模型不使用 VAE，并可微调用于单目深度和图像修复。模型卡给出零样本深度与 4 倍修复结果，但证据仍由作者自报；生成还需要 NVIDIA GPU 和独立的 4B 文本编码器。",
+      "why_it_matters": "For vision teams, one backbone spanning generation, depth and restoration is a testable alternative to latent-space pipelines where compression may discard texture. It is still an early research release and should be compared on local dense-vision tasks before architectural conclusions.",
+      "why_it_matters_en": "For vision teams, one backbone spanning generation, depth and restoration is a testable alternative to latent-space pipelines where compression may discard texture. It is still an early research release and should be compared on local dense-vision tasks before architectural conclusions.",
+      "why_it_matters_zh": "对视觉团队来说，同一 backbone 覆盖生成、深度与修复，为可能丢失纹理的 latent-space 流水线提供了可测试替代。它仍是早期研究版本，应先在自有稠密视觉任务上对照，再下架构结论。",
+      "technical_details": {
+        "model": "3B diffusion transformer plus frozen Qwen3-VL-4B-Instruct text encoder for generation",
+        "method": "direct pixel-space rectified-flow generation without a VAE; task-specific fine-tuning without backbone architecture changes",
+        "artifacts": "Apache-2.0 model weights, depth and upscaler checkpoints, code, paper and public demo",
+        "author_results": "depth AbsRel 0.071 and delta1 0.946 mean across five datasets; restoration LPIPS 0.292 and PSNR 20.68 on DIV2K validation",
+        "limits": "about 12 GB per checkpoint family, NVIDIA CUDA required, 100 default denoising steps, author-reported evaluation",
+        "time_basis": "Hugging Face repository created 2026-10-05T14:51:15Z and last modified 2026-10-08T16:51:50Z; recovered by recall audit"
+      },
+      "technical_details_zh": {
+        "模型": "3B diffusion transformer；生成任务另用冻结的 Qwen3-VL-4B-Instruct 文本编码器",
+        "方法": "不经 VAE 的直接像素空间 rectified-flow 生成；各任务微调不改变 backbone 架构",
+        "公开材料": "Apache-2.0 模型权重、depth/upscaler checkpoint、代码、论文和公开 demo",
+        "作者结果": "五个数据集平均 depth AbsRel 0.071、delta1 0.946；DIV2K validation 上修复 LPIPS 0.292、PSNR 20.68",
+        "限制": "每组 checkpoint 约 12 GB，需要 NVIDIA CUDA，默认 100 个去噪步骤，评测由作者自报",
+        "时间依据": "Hugging Face 仓库创建于 2026-10-05T14:51:15Z，最后更新于 2026-10-08T16:51:50Z；由召回审计补录"
+      },
+      "tags": [
+        "vision",
+        "diffusion",
+        "pixel-space",
+        "depth-estimation",
+        "image-restoration"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "sperid-iris-3b-pixel-space-general-vision",
+      "short_label_zh": "Iris-3B",
+      "short_label_en": "Iris-3B",
+      "next_action_zh": "一天内用公开权重在同一批深度与修复样本上对比现有 latent 模型，记录显存、延迟和误差。",
+      "next_action_en": "Within one day, compare the public weights with the current latent model on the same depth and restoration samples, recording memory, latency and error.",
+      "source_ids": [
+        "src-5208514d5198ab22",
+        "src-0c8772e79a52feac"
+      ],
+      "project_ids": [
+        "iris-3b"
+      ],
+      "scenario_ids": [
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261005-10-release-evidence",
+          "claim_zh": "Sperid Labs 公开 Iris-3B 的 Apache-2.0 权重、代码、论文和 depth/upscaler checkpoint。",
+          "claim_en": "Sperid Labs published Apache-2.0 Iris-3B weights, code, paper and depth/upscaler checkpoints.",
+          "source_ids": [
+            "src-5208514d5198ab22",
+            "src-0c8772e79a52feac"
+          ],
+          "event_ids": [
+            "ev-20261005-10"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifact; benchmark results are author-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261005-10-published",
+          "kind": "new",
+          "occurred_at": "2026-10-05T14:51:15Z",
+          "discovered_at": "2026-10-11T16:02:40Z",
+          "summary_zh": "Iris-3B 公开像素空间扩散权重与通用视觉微调",
+          "summary_en": "Iris-3B releases pixel-space diffusion weights and general-vision fine-tunes",
+          "evidence_ids": [
+            "ev-20261005-10-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "late_discovery": true
     }
   ]
 }

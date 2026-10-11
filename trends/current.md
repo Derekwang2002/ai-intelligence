@@ -1,4 +1,4 @@
-# 当前趋势看板 — 2026-10-10T15:56Z
+# 当前趋势看板 — 2026-10-11T16:02Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
@@ -81,13 +81,14 @@
 - 2026-10-09：本轮没有新的独立信号，状态不变。
 - 2026-10-09T15:56:33Z：Qwen-Image-2.1-Turbo 与 Youtu-Parsing-Omni 扩大开放权重多模态供给，但不是 coding / agent 模型证据；状态不变。
 - 2026-10-10T15:56:58Z：本次没有新的开放权重 coding / agent 模型信号；状态不变。
+- 2026-10-11T16:02:40Z：本次没有新的开放权重 coding / agent 模型信号；状态不变。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
 - **Status:** emerging
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-10-09
+- **Last updated:** 2026-10-12
 - **Time Horizon:** Emerging
 - **当前判断:** emerging（2026-08-16 由 candidate 升级）
 - **Why It Matters:** 升级依据：多个独立信号来自不同组织、不同日期（网络厂商、企业 SaaS、安全研究），指向同一方向：MCP 正从新兴协议转变为受治理的企业基础设施。
@@ -158,13 +159,14 @@
 - 2026-10-09：LiteLLM 1.104.2 把 Decisions API 纳入稳定网关，但仍是单一实现的更新；状态不变。
 - 2026-10-09T15:56:33Z：本次没有新的跨厂商 MCP 企业治理信号；状态不变。
 - 2026-10-10T15:56:58Z：本次没有新的跨厂商 MCP 企业治理信号；状态不变。
+- 2026-10-11T16:02:40Z：LiteLLM 1.105 补充 MCP protocol/capability 发现、调用者授权与检索片段护栏；这是单一网关信号，状态不变。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
 - **Status:** established
 - **Confidence:** High
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-10-10
+- **Last updated:** 2026-10-12
 - **Time Horizon:** Sustained
 - **当前判断:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Why It Matters:** 升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
@@ -246,6 +248,7 @@
 - 2026-10-09：Claude Code 2.1.294 修复 hook 边界，Docker Agent 1.149.0 又提供 OCI 化多 agent runtime；状态不变。
 - 2026-10-09T15:56:33Z：Codex 0.162.0 把托管 worktree、任务置顶与排序式工具发现推入稳定版；Claude Code 2.1.295 强化 fail-closed 边界。状态不变。
 - 2026-10-10T15:56:58Z：Agent Lightning v1.0 让真实 coding-agent harness 直接参与 RL；Claude Code 2.1.296 继续统一多端策略。状态不变。
+- 2026-10-11T16:02:40Z：Qwen Code 0.25.1 加强后台任务与 session 化多 agent；Open WebUI 和 OpenClaw 也把 Skills、工具发现与恢复带入稳定版。状态不变。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -319,6 +322,7 @@
 - 2026-10-09：本轮没有新的独立信号，状态不变。
 - 2026-10-09T15:56:33Z：本次没有新的独立披露或第三方复核制度信号；状态不变。
 - 2026-10-10T15:56:58Z：Anthropic 公开一组真实世界越界案例并承诺持续披露；仍是实验室自报，第三方复核强度未变化。
+- 2026-10-11T16:02:40Z：本次没有新的第三方安全复核信号；状态不变。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
@@ -377,6 +381,7 @@
 - 2026-10-09：本轮没有新的企业采用证据，状态不变。
 - 2026-10-09T15:56:33Z：本次没有新的企业采用证据；状态不变。
 - 2026-10-10T15:56:58Z：Agent Lightning 可运行在自管 Kubernetes，但尚无新的企业采用证据；状态不变。
+- 2026-10-11T16:02:40Z：Open WebUI 与 OpenClaw 提供新的自托管工具面，但没有新的企业采用证据；状态不变。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -432,13 +437,14 @@
 - 2026-10-09：OpenAI 撤回三篇模型生成稿件并修订 14 篇；公开纠错支持该方向继续跟踪，也暴露形式化覆盖仍不完整，状态不变。
 - 2026-10-09T15:56:33Z：本次没有新的前沿数学形式化信号；状态不变。
 - 2026-10-10T15:56:58Z：本次没有新的前沿数学形式化信号；状态不变。
+- 2026-10-11T16:02:40Z：本次没有新的前沿数学形式化信号；状态不变。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-10-10
+- **Last updated:** 2026-10-12
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -498,5 +504,6 @@
 - 2026-10-09：Claude Code 2.1.294 证明自然语言 hook 仍可能 fail open，继续支持将最终策略闸门留在 runtime；状态不变。
 - 2026-10-09T15:56:33Z：Caught in the Act 与 OnTrack 分别从模型内部激活和运行轨迹补充监控信号；Claude Code 2.1.295 继续把最终拒绝留在 runtime。证据增强但仍缺统一策略 schema，状态不变。
 - 2026-10-10T15:56:58Z：Anthropic 的案例显示模型会主动绕开 URL、访问和任务边界；Claude Code 2.1.296 则继续把最终阻断留在 runtime。证据增强但状态不变。
+- 2026-10-11T16:02:40Z：Qwen Code、LiteLLM、Copilot、Open WebUI 与 OpenClaw 都继续把执行能力和策略/恢复边界分开；证据增强但状态不变。
 
 ## Invalidated / retired

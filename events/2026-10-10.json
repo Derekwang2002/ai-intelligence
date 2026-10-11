@@ -1,0 +1,307 @@
+{
+  "date": "2026-10-10",
+  "provenance": "Incremental scan with primary-source verification.",
+  "events": [
+    {
+      "event_id": "ev-20261010-01",
+      "title": "Open WebUI 0.12 adds versioned Skills and long-running tool controls",
+      "title_zh": "Open WebUI 0.12 加入可版本化 Skills 与长任务控制",
+      "category": "developer-tools",
+      "organization": [
+        "Open WebUI"
+      ],
+      "published_at": "2026-10-10T21:13:24Z",
+      "first_seen_at": "2026-10-11T16:02:40Z",
+      "last_updated_at": "2026-10-11T16:02:40Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/open-webui/open-webui/releases/tag/v0.12.0",
+      "secondary_sources": [
+        "https://pypi.org/project/open-webui/0.12.0/"
+      ],
+      "summary": "Open WebUI 0.12.0 ships installable artifacts with multi-file, versioned Skills, mid-run compaction for long native tool chains and experimental Tool Search. It also adds Milvus hybrid retrieval, MFA and access-control repairs. Some security details remain temporarily withheld, and performance claims come from maintainer tests.",
+      "summary_en": "Open WebUI 0.12.0 ships installable artifacts with multi-file, versioned Skills, mid-run compaction for long native tool chains and experimental Tool Search. It also adds Milvus hybrid retrieval, MFA and access-control repairs. Some security details remain temporarily withheld, and performance claims come from maintainer tests.",
+      "summary_zh": "Open WebUI 0.12.0 已提供可安装产物，新增多文件、可版本化的 Skills，并能在长链原生工具调用中途压缩上下文。该版还加入实验性 Tool Search、Milvus 混合检索、MFA 与访问控制修复。部分安全细节暂未披露，性能数据也来自维护者测试。",
+      "why_it_matters": "For teams running self-hosted agent interfaces, the release connects reusable skills, long-running tools and retrieval in one control plane. The migration should be tested against permission revocation, compaction continuity and skill rollback before production use.",
+      "why_it_matters_en": "For teams running self-hosted agent interfaces, the release connects reusable skills, long-running tools and retrieval in one control plane. The migration should be tested against permission revocation, compaction continuity and skill rollback before production use.",
+      "why_it_matters_zh": "对自托管 agent 界面的团队来说，这次更新把可复用 Skills、长任务工具调用和检索放进同一控制面。生产升级前仍要验证权限撤销、压缩后的上下文连续性和 Skill 回滚。",
+      "technical_details": {
+        "availability": "stable GitHub release and public PyPI 0.12.0 artifacts; Tool Search remains experimental",
+        "skills": "multi-file Skills with import/export and version history",
+        "long_runs": "mid-run compaction for native tool-call chains and deferred tool loading",
+        "retrieval": "native Milvus hybrid BM25 and vector search",
+        "security": "MFA and access-control fixes; some security details are temporarily withheld",
+        "time_basis": "GitHub release 2026-10-10T21:13:24Z; PyPI artifacts begin 2026-10-10T21:08:24Z"
+      },
+      "technical_details_zh": {
+        "可用性": "GitHub stable release 与 PyPI 0.12.0 产物已公开；Tool Search 仍属实验性",
+        "Skills": "支持多文件、导入导出与版本历史",
+        "长任务": "原生工具调用链可在运行中压缩上下文，并按需加载工具",
+        "检索": "原生支持 Milvus 的 BM25 与向量混合检索",
+        "安全": "包含 MFA 与访问控制修复；部分安全细节暂未披露",
+        "时间依据": "GitHub release 为 2026-10-10T21:13:24Z；PyPI 产物始于 2026-10-10T21:08:24Z"
+      },
+      "tags": [
+        "open-webui",
+        "agent-skills",
+        "tool-use",
+        "rag",
+        "self-hosted"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "open-webui-0-12-versioned-skills-tool-search",
+      "short_label_zh": "Open WebUI 0.12",
+      "short_label_en": "Open WebUI 0.12",
+      "next_action_zh": "一天内用现有工作流回归 Skill 回滚、长工具链压缩、权限撤销与共享聊天访问，再决定升级。",
+      "next_action_en": "Within one day, regress skill rollback, long-tool-chain compaction, permission revocation and shared-chat access before upgrading.",
+      "source_ids": [
+        "src-24ff0fdb7aa9116b",
+        "src-64c702c5ba66e993"
+      ],
+      "project_ids": [
+        "open-webui"
+      ],
+      "scenario_ids": [
+        "agents",
+        "self-hosted",
+        "rag"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261010-01-release-evidence",
+          "claim_zh": "Open WebUI 0.12.0 的稳定版与 PyPI 产物已公开，发布说明列出版本化 Skills、长任务压缩、实验性 Tool Search、混合检索及访问控制修复。",
+          "claim_en": "Open WebUI 0.12.0 is available as a stable release and PyPI artifact; release notes list versioned Skills, long-run compaction, experimental Tool Search, hybrid retrieval and access-control fixes.",
+          "source_ids": [
+            "src-24ff0fdb7aa9116b",
+            "src-64c702c5ba66e993"
+          ],
+          "event_ids": [
+            "ev-20261010-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance and security claims remain maintainer-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261010-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-10T21:13:24Z",
+          "discovered_at": "2026-10-11T16:02:40Z",
+          "summary_zh": "Open WebUI 0.12 加入可版本化 Skills 与长任务控制",
+          "summary_en": "Open WebUI 0.12 adds versioned Skills and long-running tool controls",
+          "evidence_ids": [
+            "ev-20261010-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261010-02",
+      "title": "OpenClaw 2026.10.1 adds permission-aware Skill search and recoverable backups",
+      "title_zh": "OpenClaw 2026.10.1 加入权限感知 Skill 搜索与可恢复备份",
+      "category": "developer-tools",
+      "organization": [
+        "OpenClaw"
+      ],
+      "published_at": "2026-10-10T22:45:05Z",
+      "first_seen_at": "2026-10-11T16:02:40Z",
+      "last_updated_at": "2026-10-11T16:02:40Z",
+      "source_type": "package_registry",
+      "primary_source": "https://www.npmjs.com/package/openclaw/v/2026.10.1",
+      "secondary_sources": [
+        "https://github.com/openclaw/openclaw/releases/tag/v2026.10.1"
+      ],
+      "summary": "OpenClaw 2026.10.1 is available on npm and GitHub with permission-aware Skill search and reading, opt-in MCP Apps, encrypted external backups and persistent Code Mode values. Search may inspect only a prefix of long instructions, MCP file editors need their own stale-save checks, and some older Workboard data needs an intermediate migration.",
+      "summary_en": "OpenClaw 2026.10.1 is available on npm and GitHub with permission-aware Skill search and reading, opt-in MCP Apps, encrypted external backups and persistent Code Mode values. Search may inspect only a prefix of long instructions, MCP file editors need their own stale-save checks, and some older Workboard data needs an intermediate migration.",
+      "summary_zh": "OpenClaw 2026.10.1 已在 npm 与 GitHub 发布，新增权限感知的 Skill 搜索与读取、可选 MCP Apps、加密外部备份和可跨重启保留的 Code Mode 值。搜索可能只检查长指令的前缀，MCP 文件编辑器也要自行防止陈旧保存；较旧的 Workboard 数据还需中间版本迁移。",
+      "why_it_matters": "For teams operating local agent workspaces, discovery, permission boundaries and restoreability now share a release surface. The edge cases are operationally meaningful, so recovery and stale-write tests matter more than feature demos.",
+      "why_it_matters_en": "For teams operating local agent workspaces, discovery, permission boundaries and restoreability now share a release surface. The edge cases are operationally meaningful, so recovery and stale-write tests matter more than feature demos.",
+      "why_it_matters_zh": "对运行本地 agent 工作区的团队来说，发现能力、权限边界和恢复能力现在被放到同一发布面。已知边界直接影响运维，恢复演练和陈旧写入测试比功能演示更重要。",
+      "technical_details": {
+        "availability": "stable GitHub and npm release; public MIT package with provenance attestation",
+        "skills": "permission-aware installed-skill search/read; long instructions may be prefix-scanned",
+        "mcp_apps": "opt-in and requires compatible servers; file editors need stale-save checks",
+        "backup": "optional encrypted external or Cloudflare R2 backups restore into a fresh staging directory",
+        "migration": "older Workboard KV data may require 2026.9.7 doctor --fix first",
+        "time_basis": "npm latest 2026-10-10T22:45:05Z; GitHub release 2026-10-10T23:54:03Z"
+      },
+      "technical_details_zh": {
+        "可用性": "GitHub 与 npm 稳定版已公开；MIT package 带 provenance attestation",
+        "Skills": "按权限搜索和读取已安装 Skill；长指令可能只扫描前缀",
+        "MCP Apps": "需显式启用且依赖兼容 server；文件编辑器仍需做陈旧保存检查",
+        "备份": "可选加密外部存储或 Cloudflare R2，恢复到新的 staging 目录",
+        "迁移": "旧 Workboard KV 数据可能先要用 2026.9.7 执行 doctor --fix",
+        "时间依据": "npm latest 为 2026-10-10T22:45:05Z；GitHub release 为 2026-10-10T23:54:03Z"
+      },
+      "tags": [
+        "openclaw",
+        "agent-skills",
+        "mcp",
+        "backup",
+        "local-agent"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "openclaw-2026-10-1-skill-search-backup-mcp-apps",
+      "short_label_zh": "OpenClaw 2026.10.1",
+      "short_label_en": "OpenClaw 2026.10.1",
+      "next_action_zh": "一天内做一次加密备份恢复，并回归权限撤销、陈旧文件保存、Skill 搜索漏检与重启后状态。",
+      "next_action_en": "Within one day, run an encrypted restore drill and test permission revocation, stale-file saves, Skill-search misses and restart persistence.",
+      "source_ids": [
+        "src-c7310be12fdd387d",
+        "src-2a64f3e040139c41"
+      ],
+      "project_ids": [
+        "openclaw"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261010-02-release-evidence",
+          "claim_zh": "OpenClaw 2026.10.1 已以稳定 GitHub/npm 版本公开，加入权限感知 Skill 搜索、可选 MCP Apps、外部备份与 Code Mode 状态持久化。",
+          "claim_en": "OpenClaw 2026.10.1 is publicly available as a stable GitHub/npm release with permission-aware Skill search, opt-in MCP Apps, external backups and persistent Code Mode state.",
+          "source_ids": [
+            "src-c7310be12fdd387d",
+            "src-2a64f3e040139c41"
+          ],
+          "event_ids": [
+            "ev-20261010-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; operational behavior not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261010-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-10T22:45:05Z",
+          "discovered_at": "2026-10-11T16:02:40Z",
+          "summary_zh": "OpenClaw 2026.10.1 加入权限感知 Skill 搜索与可恢复备份",
+          "summary_en": "OpenClaw 2026.10.1 adds permission-aware Skill search and recoverable backups",
+          "evidence_ids": [
+            "ev-20261010-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261010-03",
+      "title": "Talorys packages a self-hosted personal agent for Cloudflare's free tier",
+      "title_zh": "Talorys 把自托管个人 agent 打包到 Cloudflare 免费层",
+      "category": "open-source",
+      "organization": [
+        "community"
+      ],
+      "published_at": "2026-10-10T10:52:09Z",
+      "first_seen_at": "2026-10-11T16:02:40Z",
+      "last_updated_at": "2026-10-11T16:02:40Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/rociiu/talorys",
+      "secondary_sources": [
+        "https://news.ycombinator.com/item?id=50031614"
+      ],
+      "summary": "Talorys packages a single-user personal agent for a user-owned Cloudflare account, combining chat, editable memory, tasks and scheduled routines on Durable Objects. A resumable installer, local mock mode, backup/import flow and automated tests are public. The HN submission drew strong attention, but there is no independent security review or production-adoption evidence.",
+      "summary_en": "Talorys packages a single-user personal agent for a user-owned Cloudflare account, combining chat, editable memory, tasks and scheduled routines on Durable Objects. A resumable installer, local mock mode, backup/import flow and automated tests are public. The HN submission drew strong attention, but there is no independent security review or production-adoption evidence.",
+      "summary_zh": "Talorys 把单用户个人 agent 部署到用户自己的 Cloudflare 账户，组合聊天、可编辑记忆、任务和基于 Durable Objects 的定时流程。项目公开了可续跑安装器、本地 mock、备份导入和自动测试。Hacker News 讨论热度较高，但尚无独立安全审计或生产采用证据。",
+      "why_it_matters": "For developers who want a small self-hosted assistant, the project is a concrete, reproducible Cloudflare architecture rather than a hosted demo. Its single-user threat model, quota dependence and lack of independent review make it a trial, not a production recommendation.",
+      "why_it_matters_en": "For developers who want a small self-hosted assistant, the project is a concrete, reproducible Cloudflare architecture rather than a hosted demo. Its single-user threat model, quota dependence and lack of independent review make it a trial, not a production recommendation.",
+      "why_it_matters_zh": "对想搭小型自托管助手的开发者来说，这是可复现的 Cloudflare 架构，不只是托管演示。但它采用单用户威胁模型，受免费额度约束，也没有独立审计，因此只适合试用。",
+      "technical_details": {
+        "architecture": "Cloudflare Pages, private Worker, Agents SDK Durable Object with SQLite, Workers AI and alarms",
+        "availability": "public source and npx create-talorys installer; single-user deployment into the user account",
+        "operations": "resumable install, append-only migrations, backup/import, status and doctor commands, local deterministic mock",
+        "limits": "Cloudflare quotas can change; free AI allocation is finite; no independent security review or production-adoption evidence",
+        "time_basis": "official repository was surfaced by an HN submission at 2026-10-10T10:52:09Z, before the overlap start; stored as recall-audit late discovery"
+      },
+      "technical_details_zh": {
+        "架构": "Cloudflare Pages、私有 Worker、带 SQLite 的 Agents SDK Durable Object、Workers AI 与 alarms",
+        "可用性": "源码和 npx create-talorys 安装器已公开；部署到用户自己的单用户账户",
+        "运维": "可续跑安装、只追加迁移、备份导入、status/doctor 命令和确定性本地 mock",
+        "限制": "Cloudflare 配额可变化，免费 AI 额度有限；没有独立安全审计或生产采用证据",
+        "时间依据": "官方仓库由 2026-10-10T10:52:09Z 的 Hacker News 提交带入召回审计，早于 overlap 起点，按 late discovery 补录"
+      },
+      "tags": [
+        "personal-agent",
+        "cloudflare",
+        "self-hosted",
+        "durable-objects",
+        "memory"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "talorys-cloudflare-self-hosted-personal-agent",
+      "short_label_zh": "Talorys",
+      "short_label_en": "Talorys",
+      "next_action_zh": "一天内用测试账户部署并回归权限、配额耗尽、备份恢复、重复导入和中断安装。",
+      "next_action_en": "Within one day, deploy to a test account and regress permissions, quota exhaustion, backup restore, duplicate import and interrupted installation.",
+      "source_ids": [
+        "src-5c1db9239c15fa63"
+      ],
+      "project_ids": [
+        "talorys"
+      ],
+      "scenario_ids": [
+        "agents",
+        "self-hosted"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261010-03-repository-evidence",
+          "claim_zh": "Talorys 公开 Cloudflare 自托管个人 agent 的源码、安装器、备份流程和自动测试。",
+          "claim_en": "Talorys publishes source, installer, backup workflow and automated tests for a Cloudflare-hosted personal agent.",
+          "source_ids": [
+            "src-5c1db9239c15fa63"
+          ],
+          "event_ids": [
+            "ev-20261010-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifact; community attention is discovery-only"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261010-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-10T10:52:09Z",
+          "discovered_at": "2026-10-11T16:02:40Z",
+          "summary_zh": "Talorys 公开 Cloudflare 免费层上的自托管个人 agent",
+          "summary_en": "Talorys publishes a self-hosted personal agent for Cloudflare's free tier",
+          "evidence_ids": [
+            "ev-20261010-03-repository-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "late_discovery": true
+    }
+  ]
+}
