@@ -55,6 +55,26 @@ for (const {route, reason} of [
     await expect(page.locator('.global-feed-items')).toBeHidden();
     await expect(page.locator('.reading-end')).toBeHidden();
   });
+
+  test(`following keeps global stories when a date has no scenario matches (${route})`,async({page})=>{
+    await page.goto(`${route}?date=2026-09-27`);
+    await page.locator('[data-follow="scenario:models"]').click();
+    await expect(page.locator('.feed-items .feed-reason').filter({hasText:reason}).first()).toBeVisible();
+
+    // This briefing has agent, local and research stories, but no model-selection matches.
+    await page.goto(`${route}?date=2026-10-12`);
+    await expect(page.locator('[data-follow="scenario:models"]')).toHaveAttribute('aria-pressed','true');
+    await expect(page.locator('[data-range="today"]')).toHaveAttribute('aria-pressed','true');
+    await expect(page.locator('.feed-items [data-feed-item]:visible')).toHaveCount(0);
+    const globalSection=page.locator('.global-feed-items');
+    const copilot=globalSection.locator('[data-feed-item]',{has:page.locator('h2 a[href$="/events/ev-20260909-02/"]')});
+    await expect(globalSection).toBeVisible();
+    await expect(copilot).toBeVisible();
+    await expect(copilot.locator('time')).toHaveText('2026-10-12');
+    await expect(copilot.locator('.feed-reason')).toHaveText(route==='/following/'?'全局重大变化':'Major development');
+    await expect(page.locator('.feed-empty')).toBeHidden();
+    await expect(page.locator('.reading-end')).toBeVisible();
+  });
 }
 
 test('mobile navigation and theme controls remain visible in both languages',async({page})=>{await page.setViewportSize({width:360,height:900});for(const route of ['/','/en/','/events/','/en/events/']){await page.goto(route+'?theme=light');for(const link of await page.locator('.main-nav>a,.nav-utils>a,.theme-toggle').all()){const box=await link.boundingBox();expect(box).not.toBeNull();expect(box!.x).toBeGreaterThanOrEqual(0);expect(box!.x+box!.width).toBeLessThanOrEqual(360);}await page.locator('#theme-toggle').click();await expect(page.locator('html')).toHaveAttribute('data-theme','dark');}});

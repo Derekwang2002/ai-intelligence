@@ -12,7 +12,7 @@ test('historical evidence only resolves existing explicit IDs',()=>assert.deepEq
 test('migration references and bilingual content validate together',async()=>{const k=await loadKnowledge(root);assert.equal(validateKnowledge(k).length,0);const projected=projectKnowledge(k);assert.equal(projected.search.filter(r=>r.type==='event').length,k.events.length);assert(projected.topics.every(t=>t.evidence_ids.length));const corrupted=structuredClone(k);corrupted.events[0].source_ids.push('missing');assert(validateKnowledge(corrupted).some(e=>e.includes('unknown missing')));});
 test('event scenarios use the reader vocabulary, not event categories',async()=>{
   const k=await loadKnowledge(root),event=k.events[0];
-  for(const id of ['open-source','developer-tools','infrastructure','security','enterprise','agent-security']){
+  for(const id of ['open-source','developer-tools','infrastructure','security','enterprise','agent-security','self-hosted','rag']){
     event.scenario_ids=['models',id];
     assert(validateKnowledge(k).includes(`event ${event.event_id}: scenario_ids: unknown ${id}`));
   }

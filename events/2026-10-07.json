@@ -584,6 +584,112 @@
       ],
       "summary_en": "Docker Agent is an Apache-2.0 CLI plugin and runtime for declarative YAML agents, multi-agent delegation, MCP tools, RAG and OCI distribution. Version 1.149.0 adds GitHub-hosted skill loading, a dedicated evaluator backend, OpenAI Decisions evaluation and complete debug-tool hook coverage. The repository had about 4,162 stars at review time.",
       "why_it_matters_en": "For platform teams already using Docker, this combines agent configuration, local or cloud models, evaluation and portable packaging in one inspectable runtime. Trial it against existing orchestration on isolation, reproducibility, secret handling and OCI promotion."
+    },
+    {
+      "event_id": "ev-20261007-07",
+      "title": "Microsoft rebuilds Agent Lightning around real agent harnesses",
+      "title_zh": "Microsoft 重构 Agent Lightning，让真实 harness 直接参与 RL",
+      "category": "ai-engineering",
+      "organization": [
+        "Microsoft Research"
+      ],
+      "published_at": "2026-10-07T16:00:00Z",
+      "first_seen_at": "2026-10-10T15:56:58Z",
+      "last_updated_at": "2026-10-10T15:56:58Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.microsoft.com/en-us/research/blog/agent-lightning-v1-0-a-3500-line-lightweight-agentic-rl-framework-for-training-agents-with-real-harnesses/",
+      "secondary_sources": [
+        "https://github.com/microsoft/agent-lightning"
+      ],
+      "summary_zh": "Microsoft Research 开源重构后的 Agent Lightning v1.0。它通过 OpenAI 兼容代理观察现有 agent harness 的模型调用，不要求把执行循环重写进训练框架。约 3,500 行控制面支持本地进程与 Kubernetes rollout；作者报告用约 6,000 个样本把 Qwen3.5-9B 在 SWE-bench Verified 的 Pass@1 从 41.8% 提升到 56.4%。",
+      "summary_en": "Microsoft Research open-sourced a rebuilt Agent Lightning v1.0. An OpenAI-compatible proxy observes model calls from an existing agent harness, avoiding a rewrite of its execution loop inside the training framework. The roughly 3,500-line control plane runs local or Kubernetes rollouts; the authors report that about 6,000 samples raised Qwen3.5-9B from 41.8% to 56.4% Pass@1 on SWE-bench Verified.",
+      "why_it_matters_zh": "对训练真实 coding agent 的团队来说，部署用的 harness 可直接进入 RL，减少训练与线上行为不一致。结果仍是作者报告，且训练会记录 prompt、response 与 log probability；试用前要验证隔离、脱敏、失败恢复和成本。",
+      "why_it_matters_en": "For teams training real coding agents, the deployed harness can participate directly in RL, reducing divergence between training and production behavior. Results remain author-reported, and the system records prompts, responses and log probabilities; validate isolation, redaction, recovery and cost before adoption.",
+      "technical_details": {
+        "codebase": "about 3,500 lines; open source",
+        "integration": "OpenAI-compatible LLM proxy observes an unchanged agent harness",
+        "control_plane": "API Gateway, Rollout Controller and customized verl trainer",
+        "execution": "local processes or native Kubernetes jobs; no paid sandbox dependency required",
+        "scheduling": "collocated asynchronous RL pauses new requests for model updates; author reports about 2x end-to-end speedup over synchronous RL",
+        "coding_result": "Qwen3.5-9B, about 6,000 SWE-smith samples, SWE-bench Verified Pass@1 41.8% to 56.4%",
+        "license": "MIT repository"
+      },
+      "technical_details_zh": {
+        "代码规模": "约 3,500 行；已开源",
+        "接入方式": "OpenAI 兼容 LLM 代理观察无需改写的真实 agent harness",
+        "控制面": "API Gateway、Rollout Controller 与基于 verl 的自定义 trainer",
+        "执行": "本地进程或原生 Kubernetes job；不依赖付费 sandbox",
+        "调度": "同机异步 RL 在模型更新时暂停新请求；作者报告端到端较同步 RL 约快 2 倍",
+        "coding 结果": "Qwen3.5-9B，约 6,000 个 SWE-smith 样本，SWE-bench Verified Pass@1 从 41.8% 升至 56.4%",
+        "许可证": "仓库为 MIT"
+      },
+      "tags": [
+        "agentic-rl",
+        "coding-agent",
+        "harness",
+        "kubernetes",
+        "open-source",
+        "swe-bench"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "microsoft-agent-lightning-v1-real-harness-rl",
+      "short_label_zh": "Agent Lightning v1.0",
+      "short_label_en": "Agent Lightning v1.0",
+      "next_action_zh": "一天内把一个公开 mini-SWE-agent 流程接到本地代理，测轨迹一致性、失败恢复、GPU 利用率和敏感数据落盘。",
+      "next_action_en": "Within one day, connect a public mini-SWE-agent flow to the local proxy and measure trajectory fidelity, recovery, GPU use and sensitive data at rest.",
+      "source_ids": [
+        "src-e986592dff42085c",
+        "src-57ca1a039865d0c7"
+      ],
+      "project_ids": [
+        "agent-lightning"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261007-07-release-evidence",
+          "claim_zh": "Microsoft 公开 Agent Lightning v1.0 代码、Kubernetes rollout 控制面与一套完整 coding-agent RL 配方。",
+          "claim_en": "Microsoft released Agent Lightning v1.0 code, a Kubernetes rollout control plane and a complete coding-agent RL recipe.",
+          "source_ids": [
+            "src-e986592dff42085c",
+            "src-57ca1a039865d0c7"
+          ],
+          "event_ids": [
+            "ev-20261007-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifact"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261007-07-published",
+          "kind": "new",
+          "occurred_at": "2026-10-07T16:00:00Z",
+          "discovered_at": "2026-10-10T15:56:58Z",
+          "summary_zh": "Microsoft 重构 Agent Lightning，让真实 harness 直接参与 RL",
+          "summary_en": "Microsoft rebuilds Agent Lightning around real agent harnesses",
+          "evidence_ids": [
+            "ev-20261007-07-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary": "Microsoft Research open-sourced a rebuilt Agent Lightning v1.0. An OpenAI-compatible proxy observes model calls from an existing agent harness, avoiding a rewrite of its execution loop inside the training framework. The roughly 3,500-line control plane runs local or Kubernetes rollouts; the authors report that about 6,000 samples raised Qwen3.5-9B from 41.8% to 56.4% Pass@1 on SWE-bench Verified.",
+      "why_it_matters": "For teams training real coding agents, the deployed harness can participate directly in RL, reducing divergence between training and production behavior. Results remain author-reported, and the system records prompts, responses and log probabilities; validate isolation, redaction, recovery and cost before adoption."
     }
   ]
 }

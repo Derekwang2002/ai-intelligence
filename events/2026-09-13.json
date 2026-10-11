@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-10-08T16:05:30Z",
+      "last_updated_at": "2026-10-11T16:02:40Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -23,7 +23,8 @@
         "https://pypi.org/project/litellm/1.103.0/",
         "https://github.com/BerriAI/litellm/releases/tag/v1.103.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.104.0",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.104.2"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.104.2",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.105.0"
       ],
       "summary": "LiteLLM 1.104.2 brings the OpenAI-compatible Decisions API and the OpenAI Decisions provider into the stable release line. The gateway can now expose `/v1/decisions` and `/v1/systemone`, extending its existing identity, MCP routing and spend controls to decision-model traffic.",
       "why_it_matters": "For teams centralizing model access, this avoids a separate gateway path for structured decisions. Trial it with schema validation, authentication, routing fallback and spend attribution before exposing the endpoints to production agents.",
@@ -42,7 +43,8 @@
         "availability": "stable 1.102.0 is installable from PyPI",
         "update_2026_09_28": "LiteLLM 1.103.0 stable (PyPI artifacts from 2026-09-27T17:47Z; GitHub release 2026-09-28T05:43Z): explicit Claude Code gateway endpoint, RFC 8693 IdP JWT token exchange, MCP client allowlists, live-session inspection and forced credential revocation, fail-closed upstream credentials, MCP-aware guardrails, Fuse v2 routing and budget/accounting fixes. The large RC aggregation requires production-shaped regression testing. Stays TRIAL.",
         "update_2026_10_05_litellm-1-104": "1.104.0 signs Docker images, rejects weak master keys, detects breached passwords, refreshes deactivated JWT user state, fixes MCP worker routing and stops unresendable spend-batch replay.",
-        "update_2026_10_08": "1.104.2 stable backports `/v1/systemone`, the OpenAI-compatible `/v1/decisions` endpoint and the OpenAI Decisions provider from the development line."
+        "update_2026_10_08": "1.104.2 stable backports `/v1/systemone`, the OpenAI-compatible `/v1/decisions` endpoint and the OpenAI Decisions provider from the development line.",
+        "update_2026_10_11": "1.105.0 stable adds litellm.agent(), MCP capability/version discovery, stricter caller authorization, retrieved-chunk guardrails, private-destination blocking and routing/spend fixes."
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -55,7 +57,8 @@
         "可用性": "稳定版 1.102.0 已可从 PyPI 安装",
         "2026-09-28 更新": "LiteLLM 1.103.0 stable（PyPI 产物始于 2026-09-27T17:47Z；GitHub release 为 2026-09-28T05:43Z）：新增 Claude Code gateway endpoint、RFC 8693 IdP JWT token exchange、MCP client allowlist、在线 session 查看与强制凭据撤销、上游凭据 fail-closed、MCP-aware 护栏、Fuse v2 路由及预算/计费修复。该版本汇总了很长的 RC 变更区间，仍需按生产形态做回归。维持 TRIAL。",
         "2026-10-05 更新 litellm-1-104": "1.104.0 为 Docker image 签名，拒绝弱 master key，检测泄露密码，刷新停用 JWT 用户状态，修复 MCP worker 路由，并停止无法重发的 spend batch 重放。",
-        "2026-10-08 更新": "1.104.2 稳定版从开发线回移 `/v1/systemone`、OpenAI 兼容的 `/v1/decisions` endpoint 与 OpenAI Decisions provider。"
+        "2026-10-08 更新": "1.104.2 稳定版从开发线回移 `/v1/systemone`、OpenAI 兼容的 `/v1/decisions` endpoint 与 OpenAI Decisions provider。",
+        "2026-10-11 更新": "1.105.0 稳定版加入 litellm.agent()、MCP capability/version 发现、更严格的调用者授权、检索片段护栏、私网目标阻断及路由/计费修复。"
       },
       "tags": [
         "litellm",
@@ -81,7 +84,8 @@
         "src-e97c05fc290cdfc6",
         "src-bab7a3f49d318472",
         "src-49b5951c067cceb3",
-        "src-5f6db8b0b36e1913"
+        "src-5f6db8b0b36e1913",
+        "src-afb4f1911ed6958a"
       ],
       "project_ids": [
         "mcp"
@@ -144,6 +148,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-105-evidence",
+          "claim_zh": "LiteLLM 1.105.0 稳定版扩展 agent gateway、MCP 发现与授权，并把护栏应用到检索片段。",
+          "claim_en": "LiteLLM 1.105.0 stable expands agent gateway support, MCP discovery and authorization, and guardrails over retrieved chunks.",
+          "source_ids": [
+            "src-afb4f1911ed6958a"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; production behavior not independently validated"
         }
       ],
       "changes": [
@@ -197,13 +214,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-105-stable",
+          "kind": "update",
+          "occurred_at": "2026-10-11T09:53:26Z",
+          "discovered_at": "2026-10-11T16:02:40Z",
+          "summary_zh": "LiteLLM 1.105 扩展 agent gateway 与 MCP 授权边界",
+          "summary_en": "LiteLLM 1.105 expands agent gateway and MCP authorization boundaries",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-105-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "一天内在预生产网关调用 `/v1/decisions`，检查 schema、认证、路由回退和成本归属后再开放给 agent。",
-      "next_action_en": "Within one day, call `/v1/decisions` through staging and verify schema, authentication, fallback routing and spend attribution before agent access.",
-      "short_label_zh": "LiteLLM",
-      "short_label_en": "LiteLLM"
+      "next_action_zh": "一天内在预生产回归 agent identity、MCP 发现与执行授权、检索片段护栏、成本归属和回滚。",
+      "next_action_en": "Within one day, regress agent identity, MCP discovery-versus-execution authorization, retrieved-chunk guardrails, spend attribution and rollback in staging.",
+      "short_label_zh": "LiteLLM 1.105",
+      "short_label_en": "LiteLLM 1.105"
     }
   ]
 }

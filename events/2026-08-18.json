@@ -137,7 +137,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-10-07T22:04:39Z",
+      "last_updated_at": "2026-10-09T15:56:33Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [
@@ -149,14 +149,15 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.158.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.159.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.160.0",
-        "https://github.com/openai/codex/releases/tag/rust-v0.161.0"
+        "https://github.com/openai/codex/releases/tag/rust-v0.161.0",
+        "https://github.com/openai/codex/releases/tag/rust-v0.162.0"
       ],
-      "summary": "Codex CLI has evolved into a resumable multi-agent runtime with session forking, cross-session messaging, programmable hooks, managed worktrees and a built-in Bedrock provider. Version 0.160.0 adds optional Guardian retrieval of prior user instructions and handoff context, projectless sessions under workspace policy, permission-preserving resume and stronger reconnect and SQLite recovery.",
-      "why_it_matters": "Three engineering-relevant moves land in one release. Session forking reaches the stable channel, extending Codex's multi-agent primitives from subagent spawning to exec-level branch-and-parallel workflows. Async hooks that can call MCP tools turn Codex into a programmable orchestration point. And a built-in Bedrock provider gives AWS shops a first-party path to Codex models, while `/status` cost visibility closes a long-standing budgeting gap.",
-      "summary_zh": "Codex CLI 已从单轮工具扩展为可恢复的多 agent 运行时，具备会话分叉、跨会话消息、可编程 hooks、托管 worktree 与内置 Bedrock provider。0.160.0 增加可选的 Guardian 历史指令与 handoff 上下文召回、受工作区策略约束的无项目会话、保留权限的恢复，以及更稳的重连和 SQLite 卡顿恢复。",
-      "summary_en": "Codex CLI has evolved into a resumable multi-agent runtime with session forking, cross-session messaging, programmable hooks, managed worktrees and a built-in Bedrock provider. Version 0.160.0 adds optional Guardian retrieval of prior user instructions and handoff context, projectless sessions under workspace policy, permission-preserving resume and stronger reconnect and SQLite recovery.",
-      "why_it_matters_zh": "对用 Codex 搭多 agent 工作流的人来说，这一个版本里有三件事值得注意。会话分叉进入稳定通道，Codex 的多 agent 原语从 subagent 派生扩展到了 exec 级别的分支与并行。能调用 MCP 工具的异步 hooks，让 Codex 变成一个可编程的编排点。内置 Bedrock provider 给 AWS 团队一条跑 Codex 模型的第一方路径，`/status` 的成本显示也补上了长期缺失的预算管理环节。",
-      "why_it_matters_en": "Three engineering-relevant moves land in one release. Session forking reaches the stable channel, extending Codex's multi-agent primitives from subagent spawning to exec-level branch-and-parallel workflows. Async hooks that can call MCP tools turn Codex into a programmable orchestration point. And a built-in Bedrock provider gives AWS shops a first-party path to Codex models, while `/status` cost visibility closes a long-standing budgeting gap.",
+      "summary": "Codex CLI is a mature multi-agent runtime with session forking, messaging, hooks, managed worktrees and sandbox controls. Version 0.162.0 enables managed worktree creation in trusted projects, adds pinned tasks and ranked tool discovery, and fixes Linux and Windows sandbox, line-ending and retry behavior.",
+      "why_it_matters": "For teams running parallel coding tasks, managed worktrees and pinned tasks reduce coordination overhead while sandbox fixes tighten cross-platform behavior. Adopt the stable update after testing worktree ownership, tool ranking and policy boundaries.",
+      "summary_zh": "Codex CLI 已形成成熟的多 agent 运行时，覆盖会话分叉、消息、hook、托管 worktree 与沙箱控制。0.162.0 在可信项目中启用托管 worktree 创建，加入任务置顶和排序式工具发现，并修复 Linux、Windows 沙箱、换行符与重试行为。",
+      "summary_en": "Codex CLI is a mature multi-agent runtime with session forking, messaging, hooks, managed worktrees and sandbox controls. Version 0.162.0 enables managed worktree creation in trusted projects, adds pinned tasks and ranked tool discovery, and fixes Linux and Windows sandbox, line-ending and retry behavior.",
+      "why_it_matters_zh": "对并行运行 coding 任务的团队来说，托管 worktree 与任务置顶减少协调成本，沙箱修复也收紧跨平台边界。升级前应验证 worktree 所有权、工具排序和策略限制。",
+      "why_it_matters_en": "For teams running parallel coding tasks, managed worktrees and pinned tasks reduce coordination overhead while sandbox fixes tighten cross-platform behavior. Adopt the stable update after testing worktree ownership, tool ranking and policy boundaries.",
       "technical_details": {
         "version": "0.148.0 (stable)",
         "session_forking": "codex exec fork; archive/restore from TUI resume picker",
@@ -181,7 +182,8 @@
         "update_2026_09_28": "0.158.0 stable (2026-09-28T05:07Z): pre-registered MCP OAuth clients can supply client secrets; direct exec-server WebSocket links support bearer tokens; terminal-input approval is enabled by default for elevated commands. Sandbox fixes cover ordinary Windows 10 paths, rejected stored credentials, large permission policies, nested Linux writable roots, Git metadata protections and macOS path aliases. Stays ADOPT.",
         "update_2026_09_29": "0.159.0 stable (2026-09-29T08:05Z) adds opt-in instant interruption for steering during responses and long code-mode calls, item-anchored app-server pagination, and improved Mermaid rendering. It preserves explicit filesystem denials on approved commands, protects .aws under writable roots, fixes macOS TLS/proxy behavior in networked sandboxes and suppresses stray Windows console windows for MCP/code-mode processes. Stays ADOPT.",
         "update_2026_10_02": "0.160.0 adds opt-in Guardian retrieval of prior user instructions and handoff context, projectless sessions under workspace policy, permission-preserving resume, and reconnect/SQLite recovery fixes.",
-        "update_2026_10_07": "0.161.0 makes GPT-6.1 Sol the default in bundled and Bedrock catalogs, adds Bedrock multi-agent V2/Ultra and GovCloud, improves remote-session authentication, preserves replay/world-state history and hardens approval/sandbox boundaries."
+        "update_2026_10_07": "0.161.0 makes GPT-6.1 Sol the default in bundled and Bedrock catalogs, adds Bedrock multi-agent V2/Ultra and GovCloud, improves remote-session authentication, preserves replay/world-state history and hardens approval/sandbox boundaries.",
+        "update_2026_10_09": "0.162.0 enables managed worktree create/list in trusted projects, task pinning, ranked tool search and provider capability flags; fixes Linux/Windows sandbox behavior, CRLF preservation and Retry-After handling."
       },
       "tags": [
         "codex",
@@ -227,7 +229,8 @@
         "2026-09-28 更新": "0.158.0 stable（2026-09-28T05:07Z）：预注册 MCP OAuth client 可配置 client secret，直连 exec-server 的 WebSocket 支持 bearer token；高权限命令默认启用终端输入审批。沙箱修复覆盖 Windows 10 常规路径、被拒绝的已存凭据、大型权限策略、Linux 嵌套可写目录、Git 元数据保护与 macOS 路径别名。维持 ADOPT。",
         "2026-09-29 更新": "0.159.0 stable（2026-09-29T08:05Z）加入可选的即时中断，可在模型回答或长时间 code-mode 调用中途转向；app-server 支持从指定 item 分页读取历史，Mermaid 渲染也更完整。获批命令会保留显式文件系统拒绝规则，可写根目录下的 `.aws` 默认受保护；网络沙箱修复 macOS TLS/proxy，Windows MCP/code-mode 子进程不再弹出多余控制台窗口。维持 ADOPT。",
         "2026-10-02 更新": "0.160.0 增加可选的 Guardian 历史指令与 handoff 上下文召回、受工作区策略约束的无项目会话、保留权限的恢复，以及重连和 SQLite 卡顿修复。",
-        "2026_10_07_更新": "0.161.0 将 GPT-6.1 Sol 设为内置与 Bedrock catalog 默认模型，加入 Bedrock multi-agent V2、Ultra 与 GovCloud，并强化远程会话认证、重放/world-state 历史及审批/沙箱边界。"
+        "2026_10_07_更新": "0.161.0 将 GPT-6.1 Sol 设为内置与 Bedrock catalog 默认模型，加入 Bedrock multi-agent V2、Ultra 与 GovCloud，并强化远程会话认证、重放/world-state 历史及审批/沙箱边界。",
+        "更新_2026_10_09": "0.162.0 在可信项目启用托管 worktree 创建/列举，加入任务置顶、排序式工具搜索和 provider 能力标记；修复 Linux/Windows 沙箱、CRLF 保留与 Retry-After 处理。"
       },
       "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
       "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
@@ -246,7 +249,8 @@
         "src-b6ce910accbcbcac",
         "src-9b9d615d7fb6df0b",
         "src-e61beeca9f37dec1",
-        "src-b08e03422c923828"
+        "src-b08e03422c923828",
+        "src-6d91f7c55a55a1dc"
       ],
       "project_ids": [
         "codex"
@@ -321,6 +325,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260818-02-codex-0162-evidence",
+          "claim_zh": "Codex 0.162.0 启用托管 worktree 创建、任务置顶与排序式工具发现，并修复跨平台沙箱。",
+          "claim_en": "Codex 0.162.0 enables managed-worktree creation, task pinning and ranked tool discovery while fixing cross-platform sandboxes.",
+          "source_ids": [
+            "src-6d91f7c55a55a1dc"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -387,11 +404,24 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260818-02-codex-0162",
+          "kind": "update",
+          "occurred_at": "2026-10-08T18:55:59Z",
+          "discovered_at": "2026-10-09T15:56:33Z",
+          "summary_zh": "Codex 0.162.0 启用托管 worktree 与任务置顶",
+          "summary_en": "Codex 0.162.0 enables managed worktrees and task pinning",
+          "evidence_ids": [
+            "ev-20260818-02-codex-0162-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "Codex 0.158.0: MCP OAuth client secrets, authenticated exec-server WebSockets, default terminal-input approval and cross-platform sandbox fixes; stays ADOPT",
-      "next_action_zh": "升级到 0.161.0 前回归 Bedrock 多 agent、远程认证、resume 历史、审批与跨平台沙箱。",
-      "next_action_en": "Before 0.161.0, regress Bedrock multi-agent, remote authentication, resume history, approvals and cross-platform sandboxes.",
+      "next_action_zh": "升级后回归托管 worktree 所有权、任务置顶、工具排序和 Linux/Windows 沙箱。",
+      "next_action_en": "After upgrading, regress managed-worktree ownership, task pinning, tool ranking and Linux/Windows sandboxes.",
       "short_label_zh": "Codex CLI 0.160",
       "short_label_en": "Codex CLI 0.160",
       "last_reviewed_at": "2026-10-07T22:04:39Z"
