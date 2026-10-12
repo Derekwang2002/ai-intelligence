@@ -690,6 +690,106 @@
       ],
       "summary": "Microsoft Research open-sourced a rebuilt Agent Lightning v1.0. An OpenAI-compatible proxy observes model calls from an existing agent harness, avoiding a rewrite of its execution loop inside the training framework. The roughly 3,500-line control plane runs local or Kubernetes rollouts; the authors report that about 6,000 samples raised Qwen3.5-9B from 41.8% to 56.4% Pass@1 on SWE-bench Verified.",
       "why_it_matters": "For teams training real coding agents, the deployed harness can participate directly in RL, reducing divergence between training and production behavior. Results remain author-reported, and the system records prompts, responses and log probabilities; validate isolation, redaction, recovery and cost before adoption."
+    },
+    {
+      "event_id": "ev-20261007-08",
+      "title": "QGIS bans AI-assisted code contributions to its main repository",
+      "title_zh": "QGIS 禁止向主仓库提交 AI 辅助代码",
+      "category": "business-policy",
+      "organization": [
+        "QGIS"
+      ],
+      "published_at": "2026-10-07T21:00:14Z",
+      "first_seen_at": "2026-10-12T15:59:38Z",
+      "last_updated_at": "2026-10-12T15:59:38Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/qgis/QGIS-Enhancement-Proposals/blob/master/qep-408-ai-tool-policy.md",
+      "secondary_sources": [
+        "https://github.com/qgis/QGIS-Enhancement-Proposals/pull/387"
+      ],
+      "summary_zh": "QGIS 合并并启用一项项目政策，禁止向 qgis/QGIS 主仓库提交由 LLM、生成式 AI 或 coding agent 辅助产生的代码。政策要求贡献者自行确认未使用这些工具；发现违规时，项目可回退相关代码并暂停或撤销贡献权限。",
+      "summary_en": "QGIS merged and enacted a project policy that prohibits code contributions to the qgis/QGIS main repository when they were assisted by LLMs, generative AI or coding agents. Contributors must attest that they did not use those tools; detected violations may lead to code reversion and suspended or revoked contribution rights.",
+      "why_it_matters_zh": "对向 QGIS 贡献代码的开发者来说，AI 辅助不再只是披露事项，而是明确禁区。该规则目前只适用于 QGIS 主仓库，尚不能外推为开源社区的普遍方向；执行方式和误判处理也缺少实践数据。",
+      "why_it_matters_en": "For developers contributing to QGIS, AI assistance is no longer merely a disclosure issue but an explicit prohibition. The rule applies to the QGIS main repository and does not establish a broad open-source trend; practical enforcement and false-positive handling remain untested.",
+      "technical_details": {
+        "policy_scope": "code contributions to the qgis/QGIS main repository",
+        "prohibited_assistance": "LLMs, generative AI tools and coding agents used to produce contributed code",
+        "effective_stage": "merged project policy",
+        "enforcement": "code may be reverted; contribution rights may be suspended or revoked",
+        "time_basis": "policy pull request merged at 2026-10-07T21:00:14Z; recovered by recall audit on 2026-10-12",
+        "limit": "no evidence yet that other major open-source projects will adopt the same rule"
+      },
+      "technical_details_zh": {
+        "适用范围": "提交到 qgis/QGIS 主仓库的代码",
+        "禁止的辅助": "使用 LLM、生成式 AI 工具或 coding agent 产出待提交代码",
+        "生效阶段": "已合并的项目政策",
+        "处理方式": "相关代码可能被回退，贡献权限可能被暂停或撤销",
+        "时间依据": "政策 PR 于 2026-10-07T21:00:14Z 合并；2026-10-12 由召回自检补录",
+        "限制": "尚无证据表明其他大型开源项目会采用同类规则"
+      },
+      "tags": [
+        "ai-assisted-code",
+        "contribution-policy",
+        "open-source-governance",
+        "qgis"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 4,
+      "verification_cost": 1,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "qgis-qep-408-ai-assisted-code-ban",
+      "short_label_zh": "QGIS AI 贡献政策",
+      "short_label_en": "QGIS AI Policy",
+      "next_action_zh": "向 QGIS 提交代码前确认流程未使用 AI 辅助；等实际执行案例或其他大型项目跟进后再评估行业影响。",
+      "next_action_en": "Before contributing to QGIS, verify that no AI assistance was used; reassess broader impact after enforcement cases or adoption by other major projects.",
+      "source_ids": [
+        "src-b0e0db7fa48e596f",
+        "src-b7a40a9ea7f0989b"
+      ],
+      "project_ids": [
+        "qgis-ai-contribution-policy"
+      ],
+      "scenario_ids": [
+        "governance"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261007-08-policy-evidence",
+          "claim_zh": "QGIS 已合并禁止 AI 辅助代码贡献的正式项目政策。",
+          "claim_en": "QGIS merged a formal project policy prohibiting AI-assisted code contributions.",
+          "source_ids": [
+            "src-b0e0db7fa48e596f",
+            "src-b7a40a9ea7f0989b"
+          ],
+          "event_ids": [
+            "ev-20261007-08"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifact"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261007-08-published",
+          "kind": "new",
+          "occurred_at": "2026-10-07T21:00:14Z",
+          "discovered_at": "2026-10-12T15:59:38Z",
+          "summary_zh": "QGIS 禁止向主仓库提交 AI 辅助代码",
+          "summary_en": "QGIS bans AI-assisted code contributions to its main repository",
+          "evidence_ids": [
+            "ev-20261007-08-policy-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary": "QGIS merged and enacted a project policy that prohibits code contributions to the qgis/QGIS main repository when they were assisted by LLMs, generative AI or coding agents. Contributors must attest that they did not use those tools; detected violations may lead to code reversion and suspended or revoked contribution rights.",
+      "why_it_matters": "For developers contributing to QGIS, AI assistance is no longer merely a disclosure issue but an explicit prohibition. The rule applies to the QGIS main repository and does not establish a broad open-source trend; practical enforcement and false-positive handling remain untested."
     }
   ]
 }

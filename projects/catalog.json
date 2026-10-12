@@ -2804,7 +2804,108 @@
         ],
         "reviewed_at": "2026-10-11T16:02:40Z"
       }
+    },
+    {
+      "id": "esp32-iphone-agent",
+      "name_zh": "ESP32 iPhone Agent",
+      "name_en": "ESP32 iPhone Agent",
+      "type": "developer-tool",
+      "aliases": ["ESP32 iPhone Agent"],
+      "pattern": "ESP32 iPhone Agent",
+      "event_ids": ["ev-20261011-01"],
+      "source_ids": ["src-46d4d209813615e2"],
+      "current_judgment_event_id": "ev-20261011-01",
+      "official_source_ids": ["src-46d4d209813615e2"],
+      "last_reviewed_at": "2026-10-12T15:59:38Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "ESP32 iPhone Agent 以低成本物理桥接降低 iPhone 真机 agent 实验门槛，但目前只有作者演示，跨应用可靠性与安全停止尚未独立复现。",
+        "judgment_en": "ESP32 iPhone Agent lowers the barrier to real-device iPhone-agent experiments with a low-cost physical bridge, but only author demos exist and cross-app reliability plus safe stopping remain unverified.",
+        "next_action_zh": "等独立用户复现跨应用校准、误触恢复和紧急停止后再评估。",
+        "next_action_en": "Reassess after independent reproduction of cross-app calibration, missed-action recovery and emergency stopping.",
+        "basis_event_ids": ["ev-20261011-01"],
+        "reviewed_at": "2026-10-12T15:59:38Z"
+      }
+    },
+    {
+      "id": "littleguys",
+      "name_zh": "Littleguys",
+      "name_en": "Littleguys",
+      "type": "developer-tool",
+      "aliases": ["Littleguys"],
+      "pattern": "Littleguys",
+      "event_ids": ["ev-20261011-02"],
+      "source_ids": ["src-30356307f997543c", "src-ee4b4edcd08ec6ef", "src-219d3a0a637e6e05"],
+      "current_judgment_event_id": "ev-20261011-02",
+      "official_source_ids": ["src-30356307f997543c", "src-ee4b4edcd08ec6ef", "src-219d3a0a637e6e05"],
+      "last_reviewed_at": "2026-10-12T15:59:38Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Littleguys 已提供可安装的多 agent 本地控制台，适合统一查看状态和审批。它不是统一沙箱，不同 adapter 的凭据、授权与调度持久性仍需分别验证。",
+        "judgment_en": "Littleguys now provides an installable local control surface for several agents and is useful for shared status and approvals. It is not a common sandbox, so credentials, authorization and scheduler durability still require per-adapter validation.",
+        "next_action_zh": "一天内在隔离 Mac 账号连接一个 ACP agent，检查审批、token 权限和退出后的调度状态。",
+        "next_action_en": "Within one day, connect one ACP agent in a disposable Mac profile and test approvals, token permissions and scheduler state after exit.",
+        "basis_event_ids": ["ev-20261011-02"],
+        "reviewed_at": "2026-10-12T15:59:38Z"
+      }
+    },
+    {
+      "id": "agent-standup",
+      "name_zh": "Agent Standup",
+      "name_en": "Agent Standup",
+      "type": "developer-tool",
+      "aliases": ["Agent Standup"],
+      "pattern": "Agent Standup",
+      "event_ids": ["ev-20261012-01"],
+      "source_ids": ["src-c8f2e2e38d21b758", "src-dbd1dfa7a53e80a5"],
+      "current_judgment_event_id": "ev-20261012-01",
+      "official_source_ids": ["src-c8f2e2e38d21b758", "src-dbd1dfa7a53e80a5"],
+      "last_reviewed_at": "2026-10-12T15:59:38Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Agent Standup 已能本地展示 Codex 与 Claude Code 会话，适合复核命令、工具调用和 token 记录。界面可能暴露敏感输出，导出遮挡也不完整。",
+        "judgment_en": "Agent Standup can locally render Codex and Claude Code sessions for reviewing commands, tool calls and token records. The viewer may expose sensitive output, and export redaction remains incomplete.",
+        "next_action_zh": "一天内用非敏感会话验证事件顺序、localhost 隔离和导出遮挡。",
+        "next_action_en": "Within one day, use a non-sensitive session to verify event order, localhost isolation and export redaction.",
+        "basis_event_ids": ["ev-20261012-01"],
+        "reviewed_at": "2026-10-12T15:59:38Z"
+      }
+    },
+    {
+      "id": "qgis-ai-contribution-policy",
+      "name_zh": "QGIS AI 贡献政策",
+      "name_en": "QGIS AI contribution policy",
+      "type": "developer-tool",
+      "aliases": [
+        "QEP 428",
+        "QGIS AI tool policy"
+      ],
+      "pattern": "QGIS AI contribution policy",
+      "event_ids": [
+        "ev-20261007-08"
+      ],
+      "source_ids": [
+        "src-b0e0db7fa48e596f",
+        "src-b7a40a9ea7f0989b"
+      ],
+      "current_judgment_event_id": "ev-20261007-08",
+      "official_source_ids": [
+        "src-b0e0db7fa48e596f",
+        "src-b7a40a9ea7f0989b"
+      ],
+      "last_reviewed_at": "2026-10-12T15:59:38Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "QGIS 已把 AI 辅助代码设为主仓库的明确禁区。政策已生效，但适用范围和执行数据不足以支持更广泛的开源治理结论。",
+        "judgment_en": "QGIS now explicitly prohibits AI-assisted code in its main repository. The policy is active, but its limited scope and lack of enforcement data do not support a broader open-source governance conclusion.",
+        "next_action_zh": "向 QGIS 提交代码前确认流程未使用 AI 辅助；等执行案例或其他大型项目跟进后再评估。",
+        "next_action_en": "Before contributing to QGIS, verify that no AI assistance was used; reassess after enforcement cases or adoption by other major projects.",
+        "basis_event_ids": [
+          "ev-20261007-08"
+        ],
+        "reviewed_at": "2026-10-12T15:59:38Z"
+      }
     }
   ],
-  "last_updated": "2026-10-11T16:02:40Z"
+  "last_updated": "2026-10-12T15:59:38Z"
 }

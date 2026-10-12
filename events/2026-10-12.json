@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-12",
+  "provenance": "Incremental primary-source scan ending 2026-10-12T15:59:38Z.",
+  "events": [
+    {
+      "event_id": "ev-20261012-01",
+      "title": "Agent Standup adds local inspection of Codex sessions",
+      "title_zh": "Agent Standup 增加 Codex 会话本地检查",
+      "category": "developer-tools",
+      "organization": ["Agent Standup"],
+      "published_at": "2026-10-12T00:14:54Z",
+      "first_seen_at": "2026-10-12T15:59:38Z",
+      "last_updated_at": "2026-10-12T00:14:54Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/Atoll92/agent-standup/releases/tag/v1.27.0",
+      "secondary_sources": ["https://github.com/Atoll92/agent-standup"],
+      "summary": "Agent Standup 1.27.0 adds read-only local inspection of Codex desktop and CLI session files alongside Claude Code sessions. Its VS Code, CLI and desktop views expose prompts, responses, commands, outputs, changed files, web and MCP calls, questions, reasoning summaries, token counts and turn endings. Codex subagents and images are not yet rendered.",
+      "summary_en": "Agent Standup 1.27.0 adds read-only local inspection of Codex desktop and CLI session files alongside Claude Code sessions. Its VS Code, CLI and desktop views expose prompts, responses, commands, outputs, changed files, web and MCP calls, questions, reasoning summaries, token counts and turn endings. Codex subagents and images are not yet rendered.",
+      "summary_zh": "Agent Standup 1.27.0 在 Claude Code 会话之外，增加对 Codex desktop 与 CLI 会话文件的只读本地检查。VS Code、CLI 和 desktop 界面可显示提示、回复、命令输出、改动文件、Web/MCP 调用、问题、推理摘要、token 计数与回合结束状态；暂不显示 Codex subagent 和图片。",
+      "why_it_matters": "For teams reviewing agent work, a local timeline can expose commands and tool calls without uploading the session by default. The viewer can surface sensitive output, and exported video redaction is incomplete, so validate localhost isolation and secret handling before regular use.",
+      "why_it_matters_en": "For teams reviewing agent work, a local timeline can expose commands and tool calls without uploading the session by default. The viewer can surface sensitive output, and exported video redaction is incomplete, so validate localhost isolation and secret handling before regular use.",
+      "why_it_matters_zh": "对需要复核 agent 工作的团队来说，本地时间线可以在默认不上传会话的前提下展示命令与工具调用。但界面会显示敏感输出，导出视频的遮挡也不完整，因此常规使用前要验证 localhost 隔离和密钥处理。",
+      "technical_details": {
+        "surfaces": "VS Code extension, npx launcher and standalone Node 18+ server",
+        "codex_input": "reads session files under ~/.codex/sessions without writing them",
+        "visible_data": "prompts, responses, commands, outputs, file changes, web/MCP calls, questions, reasoning summaries, token counts and turn endings",
+        "privacy": "default local English view binds to 127.0.0.1; optional translation, jokes, radio and usage counting may call external services",
+        "limits": "Codex subagents and images are not rendered; exported video redaction does not cover all spoken or quoted content; no independent accuracy or overhead benchmark",
+        "time_basis": "stable v1.27.0 published 2026-10-12T00:14:54Z"
+      },
+      "technical_details_zh": {
+        "使用入口": "VS Code extension、npx launcher 与独立 Node 18+ server",
+        "Codex 输入": "只读 ~/.codex/sessions 下的会话文件，不回写",
+        "可见数据": "提示、回复、命令输出、文件改动、Web/MCP 调用、问题、推理摘要、token 计数与回合结束状态",
+        "隐私": "默认英文/本地界面绑定 127.0.0.1；可选翻译、笑话、radio 与 usage counting 可能调用外部服务",
+        "限制": "暂不显示 Codex subagent 和图片；导出视频的遮挡不能覆盖所有口述或引用内容；没有独立准确率或开销 benchmark",
+        "时间依据": "稳定版 v1.27.0 发布于 2026-10-12T00:14:54Z"
+      },
+      "tags": ["codex", "claude-code", "observability", "session-viewer", "local-first"],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "agent-standup-1-27-codex-session-viewer",
+      "short_label_zh": "Agent Standup",
+      "short_label_en": "Agent Standup",
+      "next_action_zh": "一天内用非敏感 Codex 会话核对事件顺序、命令输出、token 计数、localhost 隔离与导出遮挡。",
+      "next_action_en": "Within one day, use a non-sensitive Codex session to verify event order, command output, token counts, localhost isolation and export redaction.",
+      "source_ids": ["src-c8f2e2e38d21b758", "src-dbd1dfa7a53e80a5"],
+      "project_ids": ["agent-standup"],
+      "scenario_ids": ["agents", "local"],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261012-01-release-evidence",
+          "claim_zh": "Agent Standup 1.27.0 稳定版增加对 Codex desktop 与 CLI session 的本地只读展示。",
+          "claim_en": "Agent Standup 1.27.0 stable adds local read-only rendering of Codex desktop and CLI sessions.",
+          "source_ids": ["src-c8f2e2e38d21b758", "src-dbd1dfa7a53e80a5"],
+          "event_ids": ["ev-20261012-01"],
+          "relation": "support",
+          "verification": "verified-primary-release; display accuracy and privacy behavior not independently tested"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261012-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-12T00:14:54Z",
+          "discovered_at": "2026-10-12T15:59:38Z",
+          "summary_zh": "Agent Standup 增加 Codex 会话本地检查",
+          "summary_en": "Agent Standup adds local inspection of Codex sessions",
+          "evidence_ids": ["ev-20261012-01-release-evidence"],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

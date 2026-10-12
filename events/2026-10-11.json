@@ -1,0 +1,173 @@
+{
+  "date": "2026-10-11",
+  "provenance": "Incremental primary-source scan ending 2026-10-12T15:59:38Z.",
+  "events": [
+    {
+      "event_id": "ev-20261011-01",
+      "title": "ESP32 iPhone Agent turns a low-cost HID board into a phone-control bridge",
+      "title_zh": "ESP32 iPhone Agent 用低成本 HID 板桥接真机操作",
+      "category": "ai-agent",
+      "organization": ["onehumanbeing"],
+      "published_at": "2026-10-11T19:10:25Z",
+      "first_seen_at": "2026-10-12T15:59:38Z",
+      "last_updated_at": "2026-10-12T15:59:38Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/onehumanbeing/esp32-iphone-agent",
+      "secondary_sources": [],
+      "summary": "ESP32 iPhone Agent publishes an MIT-licensed loop that streams an iPhone screen over AirPlay, asks an OpenAI-compatible vision model to choose actions, and sends taps, drags, typing and keys through an ESP32-S3 acting as USB HID. It avoids Xcode, a developer account, a signed phone app and jailbreak, but still requires a host, an ESP32-S3 and a cloud or local vision model.",
+      "summary_en": "ESP32 iPhone Agent publishes an MIT-licensed loop that streams an iPhone screen over AirPlay, asks an OpenAI-compatible vision model to choose actions, and sends taps, drags, typing and keys through an ESP32-S3 acting as USB HID. It avoids Xcode, a developer account, a signed phone app and jailbreak, but still requires a host, an ESP32-S3 and a cloud or local vision model.",
+      "summary_zh": "ESP32 iPhone Agent 公开一套 MIT 许可的真机操作闭环：通过 AirPlay 获取 iPhone 画面，让兼容 OpenAI API 的视觉模型决定动作，再由 ESP32-S3 以 USB HID 发送点击、拖动、输入和按键。它不需要 Xcode、开发者账号、签名应用或越狱，但仍要准备主机、ESP32-S3 和云端或本地视觉模型。",
+      "why_it_matters": "For mobile-agent teams, a roughly US$7 physical I/O bridge lowers the setup barrier for real-device computer-use experiments and avoids depending on a signed automation stack. The author demos do not establish reliability, so the project should remain on WATCH until independent users reproduce calibration, recovery and emergency-stop behavior across apps.",
+      "why_it_matters_en": "For mobile-agent teams, a roughly US$7 physical I/O bridge lowers the setup barrier for real-device computer-use experiments and avoids depending on a signed automation stack. The author demos do not establish reliability, so the project should remain on WATCH until independent users reproduce calibration, recovery and emergency-stop behavior across apps.",
+      "why_it_matters_zh": "对移动端 agent 团队来说，约 7 美元的物理 I/O 桥接降低了真机 computer-use 实验门槛，也避开了签名自动化栈。作者演示不能证明可靠性；在独立用户跨应用复现校准、恢复和紧急停止前，先保持 WATCH。",
+      "technical_details": {
+        "architecture": "AirPlay/UxPlay screen capture, vision-model planning through an OpenAI-compatible API, ESP32-S3 USB HID action execution",
+        "public_artifacts": "MIT source, firmware, setup instructions and author demos",
+        "requirements": "ESP32-S3, iPhone, macOS or Linux host, UxPlay/GStreamer and a cloud or local vision model",
+        "author_claims": "pointer correction, post-action screen-change checks, replanning, watchdog recovery and debug traces",
+        "limits": "no independent task suite; landscape orientation, non-ASCII typing, lock/passcode, Apple Pay and DRM screens are limited; recalibration may be required",
+        "time_basis": "GitHub repository created 2026-10-11T19:10:25Z; no tagged release was available"
+      },
+      "technical_details_zh": {
+        "架构": "AirPlay/UxPlay 获取画面，兼容 OpenAI API 的视觉模型规划动作，ESP32-S3 以 USB HID 执行动作",
+        "公开材料": "MIT 源码、固件、安装说明和作者演示",
+        "要求": "ESP32-S3、iPhone、macOS 或 Linux 主机、UxPlay/GStreamer，以及云端或本地视觉模型",
+        "作者主张": "指针校正、动作后画面变化检查、重新规划、watchdog 恢复和调试轨迹",
+        "限制": "没有独立任务集；横屏、非 ASCII 输入、锁屏/密码、Apple Pay 与 DRM 页面受限；可能需要重新校准",
+        "时间依据": "GitHub 仓库创建于 2026-10-11T19:10:25Z；当时没有 tagged release"
+      },
+      "tags": ["computer-use", "mobile-agent", "esp32", "usb-hid", "vision-agent"],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "esp32-iphone-agent-airplay-usb-hid-control",
+      "short_label_zh": "ESP32 iPhone Agent",
+      "short_label_en": "ESP32 iPhone Agent",
+      "next_action_zh": "等独立用户复现跨应用校准、误触恢复和紧急停止后，再投入真机 POC。",
+      "next_action_en": "Reassess after an independent user reproduces cross-app calibration, missed-action recovery and emergency-stop behavior.",
+      "source_ids": ["src-46d4d209813615e2"],
+      "project_ids": ["esp32-iphone-agent"],
+      "scenario_ids": ["agents", "local"],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261011-01-release-evidence",
+          "claim_zh": "项目公开通过 AirPlay、视觉模型与 ESP32-S3 USB HID 操作 iPhone 的源码和安装说明。",
+          "claim_en": "The project publishes source and setup instructions for controlling an iPhone through AirPlay, a vision model and ESP32-S3 USB HID.",
+          "source_ids": ["src-46d4d209813615e2"],
+          "event_ids": ["ev-20261011-01"],
+          "relation": "support",
+          "verification": "verified-primary-artifact; behavior not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261011-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-11T19:10:25Z",
+          "discovered_at": "2026-10-12T15:59:38Z",
+          "summary_zh": "ESP32 iPhone Agent 公开低成本真机 computer-use 桥接",
+          "summary_en": "ESP32 iPhone Agent publishes a low-cost physical computer-use bridge",
+          "evidence_ids": ["ev-20261011-01-release-evidence"],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261011-02",
+      "title": "Littleguys ships an installable control surface for local coding agents",
+      "title_zh": "Littleguys 发布可安装的本地 coding agent 控制台",
+      "category": "developer-tools",
+      "organization": ["Littleguys"],
+      "published_at": "2026-10-11T15:35:16Z",
+      "first_seen_at": "2026-10-12T15:59:38Z",
+      "last_updated_at": "2026-10-11T21:24:58Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/herval/littleguys/releases/tag/v0.1.1",
+      "secondary_sources": [
+        "https://github.com/herval/littleguys/releases/tag/v0.1.0",
+        "https://github.com/herval/littleguys"
+      ],
+      "summary": "Littleguys released an MIT-licensed macOS menu-bar control surface for chatting with agents, viewing status, approving tool calls and scheduling routines. It supports OpenClaw gateways plus local Claude Code, Codex, Gemini CLI, Goose, OpenCode and ACP agents. Version 0.1.1 adds Homebrew and DMG installation and self-update, turning the overlap-period source release into an installable package.",
+      "summary_en": "Littleguys released an MIT-licensed macOS menu-bar control surface for chatting with agents, viewing status, approving tool calls and scheduling routines. It supports OpenClaw gateways plus local Claude Code, Codex, Gemini CLI, Goose, OpenCode and ACP agents. Version 0.1.1 adds Homebrew and DMG installation and self-update, turning the overlap-period source release into an installable package.",
+      "summary_zh": "Littleguys 发布 MIT 许可的 macOS 菜单栏控制台，可与 agent 对话、查看状态、审批工具调用和安排例行任务。它支持 OpenClaw gateway，以及本地 Claude Code、Codex、Gemini CLI、Goose、OpenCode 和 ACP agent。0.1.1 增加 Homebrew、DMG 与自更新，把 overlap 区间内的源码发布变成可直接安装的包。",
+      "why_it_matters": "For developers juggling several local agents, one supervision surface can reduce context switching and make approvals visible. It is not a shared sandbox: credentials, command authorization and scheduler durability still depend on each adapter, so trial it only in a disposable profile first.",
+      "why_it_matters_en": "For developers juggling several local agents, one supervision surface can reduce context switching and make approvals visible. It is not a shared sandbox: credentials, command authorization and scheduler durability still depend on each adapter, so trial it only in a disposable profile first.",
+      "why_it_matters_zh": "对同时使用多个本地 agent 的开发者来说，统一监督界面可以减少来回切换，也让审批更可见。但它不是统一沙箱：凭据、命令授权与调度持久性仍取决于各 adapter，应先在隔离账号里试用。",
+      "technical_details": {
+        "platform": "macOS 13+ menu-bar application",
+        "adapters": "OpenClaw, Hermes, Claude Code, Codex, Gemini CLI, Goose, OpenCode and ACP registry agents",
+        "controls": "chat, agent status, tool approval or denial, routines and adapter launch/configuration",
+        "availability": "MIT source, Homebrew tap and signed/notarized DMG claimed for Apple silicon and Intel",
+        "limits": "ACP routines run only while the app is open; adapter credential and authorization boundaries differ; signing and notarization were not independently checked",
+        "time_basis": "v0.1.0 published 2026-10-11T15:35:16Z in overlap; v0.1.1 published 2026-10-11T21:24:58Z in the canonical window"
+      },
+      "technical_details_zh": {
+        "平台": "macOS 13+ 菜单栏应用",
+        "适配器": "OpenClaw、Hermes、Claude Code、Codex、Gemini CLI、Goose、OpenCode 与 ACP registry agent",
+        "控制项": "对话、agent 状态、工具批准或拒绝、例行任务，以及 adapter 启动和配置",
+        "可用性": "MIT 源码、Homebrew tap，以及发布方声称已签名并公证的 Apple silicon/Intel DMG",
+        "限制": "ACP 例行任务只在应用打开时运行；不同 adapter 的凭据和授权边界不同；本次未独立检查签名与公证",
+        "时间依据": "v0.1.0 于 2026-10-11T15:35:16Z 在 overlap 内发布；v0.1.1 于 2026-10-11T21:24:58Z 在正式窗口内发布"
+      },
+      "tags": ["coding-agent", "multi-agent", "human-in-the-loop", "local-first", "macos"],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "littleguys-0-1-local-agent-control-surface",
+      "short_label_zh": "Littleguys",
+      "short_label_en": "Littleguys",
+      "next_action_zh": "一天内在隔离 Mac 账号连接一个 ACP agent，检查审批、token 权限和退出后的调度状态。",
+      "next_action_en": "Within one day, connect one ACP agent in a disposable Mac profile and test approvals, token permissions and scheduler state after exit.",
+      "source_ids": ["src-30356307f997543c", "src-ee4b4edcd08ec6ef", "src-219d3a0a637e6e05"],
+      "project_ids": ["littleguys"],
+      "scenario_ids": ["agents", "local"],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261011-02-release-evidence",
+          "claim_zh": "Littleguys 0.1.0 公开多 agent 控制台，0.1.1 增加 Homebrew、DMG 和自更新。",
+          "claim_en": "Littleguys 0.1.0 publishes a multi-agent control surface, while 0.1.1 adds Homebrew, DMG and self-update distribution.",
+          "source_ids": ["src-30356307f997543c", "src-ee4b4edcd08ec6ef", "src-219d3a0a637e6e05"],
+          "event_ids": ["ev-20261011-02"],
+          "relation": "support",
+          "verification": "verified-primary-artifact; package signature and runtime behavior not independently tested"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261011-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-11T15:35:16Z",
+          "discovered_at": "2026-10-12T15:59:38Z",
+          "summary_zh": "Littleguys 公开多 agent 控制台",
+          "summary_en": "Littleguys publishes a multi-agent control surface",
+          "evidence_ids": ["ev-20261011-02-release-evidence"],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261011-02-installable-release",
+          "kind": "update",
+          "occurred_at": "2026-10-11T21:24:58Z",
+          "discovered_at": "2026-10-12T15:59:38Z",
+          "summary_zh": "Littleguys 增加 Homebrew、DMG 与自更新分发",
+          "summary_en": "Littleguys adds Homebrew, DMG and self-update distribution",
+          "evidence_ids": ["ev-20261011-02-release-evidence"],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "late_discovery": true
+    }
+  ]
+}
