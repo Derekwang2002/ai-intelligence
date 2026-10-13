@@ -498,6 +498,104 @@
       ],
       "summary": "Microsoft released Microsoft-Decision-1 for routing, classification, ranking, verification and workflow control over fixed choices with calibrated probabilities. The post-trained Qwen3.5-9B model is available through Microsoft Foundry and OpenRouter. Microsoft reports the highest accuracy across 36 blind benchmarks, roughly 35 times lower P50 latency than GPT-6 Sol and input pricing of $0.042 per million tokens.",
       "why_it_matters": "For agent systems that make many binary, routing or guardrail decisions, a specialized decision model could be cheaper and more stable than a general LLM. Core results remain vendor-reported, and closed-choice scoring cannot replace open-ended reasoning; validate accuracy, calibration, latency and false refusals on real routing data."
+    },
+    {
+      "event_id": "ev-20261009-06",
+      "title": "Study proves capability audits can miss encrypted model backdoors",
+      "title_zh": "研究证明能力审计可能漏掉加密模型后门",
+      "category": "agent-security",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-09T17:55:06Z",
+      "first_seen_at": "2026-10-13T16:05:06Z",
+      "last_updated_at": "2026-10-09T17:55:06Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.13928",
+      "secondary_sources": [],
+      "summary": "A NeurIPS 2026 paper constructs neural-network backdoors that encrypt an arbitrary hidden computation and execute it only after a secret trigger. The authors test fine-tuning, weight noise, gradient trigger search and latent adversarial training on a small chemical-reaction proxy. The work establishes a worst-case limit for elicitation-based capability audits, not evidence that deployed frontier models currently contain such backdoors.",
+      "summary_en": "A NeurIPS 2026 paper constructs neural-network backdoors that encrypt an arbitrary hidden computation and execute it only after a secret trigger. The authors test fine-tuning, weight noise, gradient trigger search and latent adversarial training on a small chemical-reaction proxy. The work establishes a worst-case limit for elicitation-based capability audits, not evidence that deployed frontier models currently contain such backdoors.",
+      "summary_zh": "一篇 NeurIPS 2026 论文构造了神经网络后门：把任意隐藏计算加密进权重，只在收到秘密触发器后执行。作者在小型化学反应代理任务上测试微调、权重噪声、梯度触发器搜索和 latent adversarial training。它证明的是能力引出式审计的最坏情况上限，并不说明现有前沿模型已经包含这类后门。",
+      "why_it_matters": "For teams accepting third-party weights, passing ordinary capability elicitation does not prove that a model lacks dormant behavior under adversarial construction. The proof of concept is deliberately small and synthetic, so it should motivate layered provenance and runtime monitoring rather than a claim that all open weights are unsafe.",
+      "why_it_matters_en": "For teams accepting third-party weights, passing ordinary capability elicitation does not prove that a model lacks dormant behavior under adversarial construction. The proof of concept is deliberately small and synthetic, so it should motivate layered provenance and runtime monitoring rather than a claim that all open weights are unsafe.",
+      "why_it_matters_zh": "对接收第三方权重的团队来说，通过常规能力引出测试，并不能在对抗性构造下证明模型没有休眠行为。这个概念验证规模小且人为设计，应推动来源审查与运行时监控分层，而不是被夸大成所有开放权重都不安全。",
+      "technical_details": {
+        "construction": "digital lockers compile encrypted arbitrary computations into model weights",
+        "evaluated_defenses": "fine-tuning, weight noising, gradient-based trigger search and latent adversarial training",
+        "experiment": "small chemical-reaction prediction proxy",
+        "scope": "worst-case adversarial construction, not an observed production incident",
+        "artifact": "paper says models are released for defense research",
+        "time_basis": "arXiv v1 published 2026-10-09T17:55:06Z"
+      },
+      "technical_details_zh": {
+        "构造": "用 digital locker 把加密的任意计算编译进模型权重",
+        "已测防御": "微调、权重噪声、基于梯度的触发器搜索与 latent adversarial training",
+        "实验": "小型化学反应预测代理任务",
+        "范围": "最坏情况对抗性构造，不是已观察到的生产事故",
+        "公开产物": "论文称已发布模型供防御研究",
+        "时间依据": "arXiv v1 发布于 2026-10-09T17:55:06Z"
+      },
+      "tags": [
+        "model-security",
+        "backdoor",
+        "capability-evaluation",
+        "cryptography",
+        "elicitation"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 5,
+      "risk": 5,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2610-13928-encrypted-capability-backdoors",
+      "short_label_zh": "加密能力后门",
+      "short_label_en": "Encrypted backdoors",
+      "next_action_zh": "等待第三方在更大模型上复现，并在接收外部权重时同时保留来源验证、静态异常检测和运行时监控。",
+      "next_action_en": "Wait for independent reproduction at larger scale, and retain provenance checks, static anomaly detection and runtime monitoring when accepting external weights.",
+      "source_ids": [
+        "src-b693a6e80e752f67"
+      ],
+      "project_ids": [
+        "encrypted-capability-backdoors"
+      ],
+      "scenario_ids": [
+        "security",
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261009-06-paper-evidence",
+          "claim_zh": "论文给出加密任意隐藏能力的构造与小型代理实验，并明确其最坏情况边界。",
+          "claim_en": "The paper provides constructions for encrypting arbitrary hidden capabilities, small proxy experiments and explicit worst-case scope.",
+          "source_ids": [
+            "src-b693a6e80e752f67"
+          ],
+          "event_ids": [
+            "ev-20261009-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-research; no independent large-model reproduction"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261009-06-published",
+          "kind": "new",
+          "occurred_at": "2026-10-09T17:55:06Z",
+          "discovered_at": "2026-10-13T16:05:06Z",
+          "summary_zh": "论文证明对抗性构造可把任意隐藏能力加密进模型权重。",
+          "summary_en": "A paper proves that adversarial constructions can encrypt arbitrary hidden capabilities in model weights.",
+          "evidence_ids": [
+            "ev-20261009-06-paper-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

@@ -106,6 +106,103 @@
           "historical": true
         }
       ]
+    },
+    {
+      "event_id": "ev-20260920-02",
+      "title": "Janas streams model experts from SSD on memory-limited computers",
+      "title_zh": "Janas 在内存受限电脑上从 SSD 流式加载模型专家",
+      "category": "open-source",
+      "organization": [
+        "Janas"
+      ],
+      "published_at": "2026-09-20T09:55:09Z",
+      "first_seen_at": "2026-10-13T16:05:06Z",
+      "last_updated_at": "2026-09-20T09:55:09Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/prabanta-dev/janas",
+      "secondary_sources": [],
+      "summary": "Janas is a GPL-3.0 runtime that streams mixture-of-experts weights from SSD so models larger than system memory can run locally. The repository claims large speedups over llama.cpp across 13 quantized models, but those comparisons are author-run and the project has no independent quality, stability or hardware-normalized evaluation.",
+      "summary_en": "Janas is a GPL-3.0 runtime that streams mixture-of-experts weights from SSD so models larger than system memory can run locally. The repository claims large speedups over llama.cpp across 13 quantized models, but those comparisons are author-run and the project has no independent quality, stability or hardware-normalized evaluation.",
+      "summary_zh": "Janas 是 GPL-3.0 本地推理 runtime，通过从 SSD 流式加载 MoE 专家，让超过系统内存的模型也能运行。仓库声称在 13 个量化模型上显著快于 llama.cpp，但对比均由作者执行，缺少独立质量、稳定性和同硬件评测。",
+      "why_it_matters": "SSD expert streaming is useful when memory is scarce, but author-only speed claims and a young runtime do not yet justify integration work. Treat community attention as a discovery signal and wait for reproducible, hardware-matched comparisons.",
+      "why_it_matters_en": "SSD expert streaming is useful when memory is scarce, but author-only speed claims and a young runtime do not yet justify integration work. Treat community attention as a discovery signal and wait for reproducible, hardware-matched comparisons.",
+      "why_it_matters_zh": "SSD 专家流式加载对内存受限设备有吸引力，但作者自测和年轻 runtime 尚不足以支持集成投入。社区热度只作为线索，先等同硬件可复现对比。",
+      "technical_details": {
+        "license": "GPL-3.0",
+        "approach": "stream MoE experts from SSD",
+        "author_claim": "faster than llama.cpp on 13 Q4_K_M models",
+        "adoption_snapshot": "286 GitHub stars and 18 forks at review time; variable community signal",
+        "limits": "no independent quality, stability or hardware-normalized evaluation",
+        "time_basis": "repository created 2026-09-20T09:55:09Z"
+      },
+      "technical_details_zh": {
+        "许可证": "GPL-3.0",
+        "方法": "从 SSD 流式加载 MoE 专家",
+        "作者声称": "在 13 个 Q4_K_M 模型上快于 llama.cpp",
+        "采用快照": "复核时 GitHub 286 stars、18 forks；这是会变化的社区信号",
+        "限制": "没有独立质量、稳定性或同硬件评测",
+        "时间依据": "仓库创建于 2026-09-20T09:55:09Z"
+      },
+      "tags": [
+        "janas",
+        "moe",
+        "ssd-streaming",
+        "local-inference"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 2,
+      "adoption_signal": 2,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "IGNORE",
+      "event_fingerprint": "janas-ssd-expert-streaming-runtime",
+      "short_label_zh": "Janas",
+      "short_label_en": "Janas",
+      "next_action_zh": "当前不投入；等独立同硬件质量与稳定性对比后再评估。",
+      "next_action_en": "Do not invest now; reassess after independent, hardware-matched quality and stability comparisons.",
+      "source_ids": [
+        "src-a6f0cc316480792c"
+      ],
+      "project_ids": [
+        "janas"
+      ],
+      "scenario_ids": [
+        "local",
+        "infrastructure"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20260920-02-repository-evidence",
+          "claim_zh": "Janas 仓库公开 GPL-3.0 代码、SSD 专家流式加载方案和作者自测。",
+          "claim_en": "The Janas repository publishes GPL-3.0 code, SSD expert streaming and author-run benchmarks.",
+          "source_ids": [
+            "src-a6f0cc316480792c"
+          ],
+          "event_ids": [
+            "ev-20260920-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifact; performance is author-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260920-02-published",
+          "kind": "new",
+          "occurred_at": "2026-09-20T09:55:09Z",
+          "discovered_at": "2026-10-13T16:05:06Z",
+          "summary_zh": "Janas 公开 SSD 专家流式加载 runtime。",
+          "summary_en": "Janas opens an SSD expert-streaming runtime.",
+          "evidence_ids": [
+            "ev-20260920-02-repository-evidence"
+          ],
+          "historical": true,
+          "importance": "minor"
+        }
+      ]
     }
   ]
 }

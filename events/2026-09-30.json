@@ -4,13 +4,13 @@
   "events": [
     {
       "first_seen_at": "2026-10-01T16:01:43Z",
-      "last_updated_at": "2026-10-01T16:01:43Z",
+      "last_updated_at": "2026-10-13T16:00:00Z",
       "secondary_sources": [],
       "technical_impact": 5,
       "engineering_value": 4,
-      "adoption_signal": 1,
-      "maturity": 2,
-      "verification_cost": 4,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 3,
       "risk": 5,
       "scenario_ids": [
         "models",
@@ -18,8 +18,8 @@
       ],
       "evidence_stage": "verified",
       "event_id": "ev-20260930-01",
-      "title": "Google previews Gemini 4 Argon for long-horizon professional work",
-      "title_zh": "Google 预览 Gemini 4 Argon 长时程工作能力",
+      "title": "Google opens Gemini 4 Argon to paid developers",
+      "title_zh": "Google 向付费开发者开放 Gemini 4 Argon",
       "category": "foundation-model",
       "organization": [
         "Google DeepMind",
@@ -28,39 +28,41 @@
       "published_at": "2026-09-30T20:00:00Z",
       "source_type": "official_blog",
       "primary_source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
-      "summary_zh": "Google 发布 Gemini 4 Argon 的受控预览，首批仅向 Fairwind 计划中的可信网络防御团队开放。它把单次输出上限从 64K 提到 1M token，介绍价为每百万输入 2 美元、输出 10 美元，后续计划翻倍。Google 报告其在 DeepSWE v1.1、AutomationBench、长视频与网络安全任务上领先，但开发者 API 尚未开放。",
-      "summary_en": "Google announced a controlled preview of Gemini 4 Argon, initially limited to trusted cyber defenders in the Fairwind Program. It raises the single-trajectory output limit from 64K to 1M tokens. Introductory pricing is $2 per million input tokens and $10 output, scheduled to double later. Google reports leading coding, workflow, long-video and cybersecurity results, but the developer API is not yet available.",
-      "why_it_matters_zh": "对规划长时程 agent 的团队来说，1M 输出 token 把“能否持续执行”推到新的规模，但也放大成本、失控和审计压力。当前没有公开 API，先记录价格与边界；等开放后再用固定预算和人工审查测长轨迹。",
-      "why_it_matters_en": "For teams planning long-horizon agents, a 1M-token output ceiling expands execution depth while also magnifying cost, drift and audit pressure. There is no public API yet, so record the pricing and boundaries now and wait for access before running budgeted, human-reviewed trials.",
+      "summary_zh": "Google 已向 AI Studio 和 Gemini API 付费层开发者开放 Gemini 4 Argon，并把它带入 Antigravity、Android Studio、Gemini 应用和 Search。模型支持统一的 1M token 输入输出预算。介绍价仍为每百万输入 2 美元、输出 10 美元，2026 年 11 月 30 日后翻倍。",
+      "summary_en": "Google has opened Gemini 4 Argon to paid-tier developers through AI Studio and the Gemini API, with access also reaching Antigravity, Android Studio, the Gemini app and Search. The model supports a unified one-million-token input-output budget. Introductory pricing remains $2 per million input tokens and $10 output, doubling after November 30, 2026.",
+      "why_it_matters_zh": "对长时程 agent 团队来说，Argon 已从受控预览变成可调用模型，终于可以核对真实任务成功率、漂移和成本。1M token 是输入与输出共用的预算，且价格将在明确日期翻倍，因此试验必须同时记录 token 分布、人工审查和失败恢复。",
+      "why_it_matters_en": "For long-horizon agent teams, Argon has moved from a controlled preview to a callable model, making real task success, drift and cost measurable. The one-million-token limit is a shared input-output budget and pricing doubles on a fixed date, so trials should track token mix, human review and failure recovery together.",
       "technical_details": {
-        "availability": "trusted cyber defenders via Fairwind; broader API, enterprise and consumer access promised later",
-        "output_limit": "1M tokens, up from 64K",
+        "availability": "paid-tier developers in AI Studio and the Gemini API; Ultra or Pro access also varies across Antigravity, Android Studio, Gemini app and Search",
+        "token_limit": "1M unified input-output tokens with a continuation protocol",
         "introductory_pricing_per_million": {
           "input": 2,
           "output": 10,
           "cached_input_discount": "95%"
         },
-        "later_pricing_per_million": {
+        "pricing_after_2026_11_30_per_million": {
           "input": 4,
           "output": 20
         },
         "vendor_benchmarks": "DeepSWE v1.1 77.9%; AutomationBench 51.3%; CWE-bench v1 68%",
-        "controls": "prompt-injection red teaming, chain-of-thought/action monitoring and hardened sandboxes"
+        "controls": "prompt-injection red teaming, chain-of-thought/action monitoring and hardened sandboxes",
+        "time_basis": "Google's official models feed published the availability update at 2026-10-13T16:00:00Z"
       },
       "technical_details_zh": {
-        "可用性": "先向 Fairwind 可信网络防御团队开放；API、企业与消费者访问稍后推出",
-        "输出上限": "1M token，此前为 64K",
+        "可用性": "AI Studio 与 Gemini API 付费层开发者可用；Antigravity、Android Studio、Gemini 应用和 Search 分别提供 Ultra 或 Pro 访问",
+        "token 上限": "输入与输出共用 1M token，并提供 continuation protocol",
         "介绍期每百万_token_价格": {
           "输入": 2,
           "输出": 10,
           "缓存输入折扣": "95%"
         },
-        "后续每百万_token_价格": {
+        "2026_年_11_月_30_日后每百万_token_价格": {
           "输入": 4,
           "输出": 20
         },
         "厂商_benchmark": "DeepSWE v1.1 77.9%；AutomationBench 51.3%；CWE-bench v1 68%",
-        "控制措施": "提示注入红队、思维链/动作监控与加固沙箱"
+        "控制措施": "提示注入红队、思维链/动作监控与加固沙箱",
+        "时间依据": "Google 官方 models feed 将可用性更新标为 2026-10-13T16:00:00Z"
       },
       "tags": [
         "gemini-4-argon",
@@ -69,20 +71,21 @@
         "computer-use",
         "cybersecurity"
       ],
-      "recommendation": "WATCH",
+      "recommendation": "TRIAL",
       "event_fingerprint": "google-gemini-4-argon-controlled-preview",
       "source_ids": [
-        "src-8a18dee8ca8f941c"
+        "src-8a18dee8ca8f941c",
+        "src-ed1be8ea5f53c737"
       ],
       "project_ids": [
         "gemini"
       ],
       "short_label_zh": "Gemini 4 Argon",
       "short_label_en": "Gemini 4 Argon",
-      "next_action_zh": "等待公开 API 与稳定计价，再用固定预算测试长轨迹成功率、漂移和人工审计成本。",
-      "next_action_en": "Wait for public API access and stable pricing, then test long-run success, drift and human-audit cost under a fixed budget.",
-      "summary": "Google announced a controlled preview of Gemini 4 Argon, initially limited to trusted cyber defenders in the Fairwind Program. It raises the single-trajectory output limit from 64K to 1M tokens. Introductory pricing is $2 per million input tokens and $10 output, scheduled to double later. Google reports leading coding, workflow, long-video and cybersecurity results, but the developer API is not yet available.",
-      "why_it_matters": "For teams planning long-horizon agents, a 1M-token output ceiling expands execution depth while also magnifying cost, drift and audit pressure. There is no public API yet, so record the pricing and boundaries now and wait for access before running budgeted, human-reviewed trials.",
+      "next_action_zh": "一天内用固定长时程任务测试成功率、漂移、人工审查、失败恢复和 11 月 30 日前后的总成本。",
+      "next_action_en": "Within one day, test fixed long-horizon tasks for success, drift, human review, failure recovery and total cost before and after November 30 pricing.",
+      "summary": "Google has opened Gemini 4 Argon to paid-tier developers through AI Studio and the Gemini API, with access also reaching Antigravity, Android Studio, the Gemini app and Search. The model supports a unified one-million-token input-output budget. Introductory pricing remains $2 per million input tokens and $10 output, doubling after November 30, 2026.",
+      "why_it_matters": "For long-horizon agent teams, Argon has moved from a controlled preview to a callable model, making real task success, drift and cost measurable. The one-million-token limit is a shared input-output budget and pricing doubles on a fixed date, so trials should track token mix, human review and failure recovery together.",
       "evidence": [
         {
           "id": "ev-20260930-01-release-evidence",
@@ -96,6 +99,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260930-01-ga-evidence",
+          "claim_zh": "Google 确认 Gemini 4 Argon 已向 Gemini API 付费层开发者开放，并公布统一 1M token 预算与 11 月 30 日后的价格。",
+          "claim_en": "Google confirms paid-tier Gemini API access for Gemini 4 Argon and specifies the unified one-million-token budget plus pricing after November 30.",
+          "source_ids": [
+            "src-ed1be8ea5f53c737"
+          ],
+          "event_ids": [
+            "ev-20260930-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance remains vendor-reported"
         }
       ],
       "changes": [
@@ -108,6 +124,19 @@
           "summary_en": "Google previews Gemini 4 Argon for long-horizon professional work",
           "evidence_ids": [
             "ev-20260930-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20260930-01-global-api-availability",
+          "kind": "update",
+          "occurred_at": "2026-10-13T16:00:00Z",
+          "discovered_at": "2026-10-13T16:05:06Z",
+          "summary_zh": "Gemini 4 Argon 从受控预览进入 Gemini API 付费层，并明确价格翻倍日期。",
+          "summary_en": "Gemini 4 Argon moves from controlled preview to the paid Gemini API tier and sets a date for its price increase.",
+          "evidence_ids": [
+            "ev-20260930-01-ga-evidence"
           ],
           "historical": false,
           "importance": "major"

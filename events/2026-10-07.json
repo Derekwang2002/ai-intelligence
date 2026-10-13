@@ -790,6 +790,113 @@
       ],
       "summary": "QGIS merged and enacted a project policy that prohibits code contributions to the qgis/QGIS main repository when they were assisted by LLMs, generative AI or coding agents. Contributors must attest that they did not use those tools; detected violations may lead to code reversion and suspended or revoked contribution rights.",
       "why_it_matters": "For developers contributing to QGIS, AI assistance is no longer merely a disclosure issue but an explicit prohibition. The rule applies to the QGIS main repository and does not establish a broad open-source trend; practical enforcement and false-positive handling remain untested."
+    },
+    {
+      "event_id": "ev-20261007-09",
+      "title": "OpenBMB releases MiniCPM-V 4.7 for on-device multimodal inference",
+      "title_zh": "OpenBMB 发布端侧多模态模型 MiniCPM-V 4.7",
+      "category": "foundation-model",
+      "organization": [
+        "OpenBMB"
+      ],
+      "published_at": "2026-10-07T07:07:30Z",
+      "first_seen_at": "2026-10-13T16:05:06Z",
+      "last_updated_at": "2026-10-13T12:47:10Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B",
+      "secondary_sources": [
+        "https://huggingface.co/openbmb/MiniCPM-V-4.7-1B",
+        "https://github.com/OpenBMB/MiniCPM-o"
+      ],
+      "summary": "OpenBMB released Apache-2.0 weights for MiniCPM-V 4.7 in 35B-A3B and 1B variants. The 35B mixture-of-experts model combines lookahead expert scheduling, quantization and speculative sampling for on-device multimodal inference. The model card reports more than 13 tokens per second on an iPhone 17 Pro Max with 3 GB of memory, but the performance and quality comparisons are author-reported.",
+      "summary_en": "OpenBMB released Apache-2.0 weights for MiniCPM-V 4.7 in 35B-A3B and 1B variants. The 35B mixture-of-experts model combines lookahead expert scheduling, quantization and speculative sampling for on-device multimodal inference. The model card reports more than 13 tokens per second on an iPhone 17 Pro Max with 3 GB of memory, but the performance and quality comparisons are author-reported.",
+      "summary_zh": "OpenBMB 发布 MiniCPM-V 4.7 的 35B-A3B 与 1B 版本，权重采用 Apache-2.0。35B MoE 结合专家预取调度、量化和推测采样，在端侧运行多模态推理。模型卡称其在 iPhone 17 Pro Max 上只用 3 GB 内存即可超过 13 token/s，但性能和质量对比仍由作者提供。",
+      "why_it_matters": "For mobile AI teams, public weights and deployment paths make a relatively large multimodal MoE directly testable on phones and local devices. Expert streaming can hide memory pressure without eliminating storage or bandwidth cost, so validate visual quality, sustained speed, thermals and battery use on target hardware.",
+      "why_it_matters_en": "For mobile AI teams, public weights and deployment paths make a relatively large multimodal MoE directly testable on phones and local devices. Expert streaming can hide memory pressure without eliminating storage or bandwidth cost, so validate visual quality, sustained speed, thermals and battery use on target hardware.",
+      "why_it_matters_zh": "对移动端 AI 团队来说，公开权重和部署路径让较大的多模态 MoE 可以直接在手机与本地设备上验证。专家流式加载能缓解内存压力，却不会消除存储和带宽成本，因此要在目标硬件上测试视觉质量、持续速度、温度和耗电。",
+      "technical_details": {
+        "variants": "35B total / 3B active MoE and 1B dense",
+        "license": "Apache-2.0",
+        "techniques": "lookahead expert scheduling, layer-wise quantization and DSpark speculative sampling",
+        "platforms": "iOS, Android, HarmonyOS, SGLang, vLLM, llama.cpp and Ollama paths",
+        "vendor_result": "over 13 tokens/s with 3 GB memory on iPhone 17 Pro Max",
+        "limits": "quality and device-performance comparisons are author-reported",
+        "time_basis": "35B repository created 2026-10-07T07:07:30Z and materially updated 2026-10-13T12:47:10Z"
+      },
+      "technical_details_zh": {
+        "版本": "35B 总参数 / 3B 激活 MoE 与 1B dense",
+        "许可证": "Apache-2.0",
+        "技术": "前瞻专家调度、逐层量化与 DSpark 推测采样",
+        "平台": "iOS、Android、HarmonyOS，以及 SGLang、vLLM、llama.cpp 和 Ollama 路径",
+        "厂商结果": "iPhone 17 Pro Max 使用 3 GB 内存时超过 13 token/s",
+        "限制": "质量与设备性能对比均由作者报告",
+        "时间依据": "35B 仓库创建于 2026-10-07T07:07:30Z，并于 2026-10-13T12:47:10Z 实质更新"
+      },
+      "tags": [
+        "minicpm-v-4.7",
+        "multimodal",
+        "on-device",
+        "moe",
+        "open-weight"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "openbmb-minicpm-v-4-7-on-device-multimodal",
+      "short_label_zh": "MiniCPM-V 4.7",
+      "short_label_en": "MiniCPM-V 4.7",
+      "next_action_zh": "一天内在目标手机上比较视觉任务质量、持续 token/s、峰值内存、温度和耗电。",
+      "next_action_en": "Within one day, compare visual-task quality, sustained tokens per second, peak memory, thermals and battery use on a target phone.",
+      "source_ids": [
+        "src-e7b2c4bb55dea757",
+        "src-30228237199aadc4",
+        "src-79bde01e72b89b22"
+      ],
+      "project_ids": [
+        "minicpm-v-4-7"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261007-09-release-evidence",
+          "claim_zh": "OpenBMB 公开 MiniCPM-V 4.7 权重、模型卡与部署代码。",
+          "claim_en": "OpenBMB published MiniCPM-V 4.7 weights, model cards and deployment code.",
+          "source_ids": [
+            "src-e7b2c4bb55dea757",
+            "src-30228237199aadc4",
+            "src-79bde01e72b89b22"
+          ],
+          "event_ids": [
+            "ev-20261007-09"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifacts; device and quality results are author-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261007-09-published",
+          "kind": "new",
+          "occurred_at": "2026-10-07T07:07:30Z",
+          "discovered_at": "2026-10-13T16:05:06Z",
+          "summary_zh": "OpenBMB 公开 MiniCPM-V 4.7 端侧多模态权重与部署路径。",
+          "summary_en": "OpenBMB releases MiniCPM-V 4.7 weights and on-device deployment paths.",
+          "evidence_ids": [
+            "ev-20261007-09-release-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

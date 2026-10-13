@@ -664,6 +664,128 @@
           "historical": true
         }
       ]
+    },
+    {
+      "event_id": "ev-20260921-08",
+      "title": "xAI releases Grok 4.7 through its public API",
+      "title_zh": "xAI 通过公开 API 发布 Grok 4.7",
+      "category": "foundation-model",
+      "organization": [
+        "xAI"
+      ],
+      "published_at": "2026-09-21",
+      "first_seen_at": "2026-10-13T16:05:06Z",
+      "last_updated_at": "2026-09-21",
+      "source_type": "official_announcement",
+      "primary_source": "https://x.ai/news/grok-4-7",
+      "secondary_sources": [
+        "https://docs.x.ai/developers/models/grok-4-7"
+      ],
+      "summary": "xAI released Grok 4.7 through its public API, Cursor, Grok Build and model routers. The model accepts text and images, exposes a 500K-token context window and supports tool use. Public API pricing starts at $2 per million input tokens and $6 output below 200K prompt tokens, while longer prompts double those rates.",
+      "summary_en": "xAI released Grok 4.7 through its public API, Cursor, Grok Build and model routers. The model accepts text and images, exposes a 500K-token context window and supports tool use. Public API pricing starts at $2 per million input tokens and $6 output below 200K prompt tokens, while longer prompts double those rates.",
+      "summary_zh": "xAI 通过公开 API、Cursor、Grok Build 和模型路由发布 Grok 4.7。模型支持文本与图片输入、500K token 上下文和工具调用。公开 API 在 prompt 少于 200K token 时，每百万输入 2 美元、输出 6 美元；更长 prompt 的价格翻倍。",
+      "why_it_matters": "For teams choosing a coding or agent model, Grok 4.7 is directly callable and its long-context price discontinuity can materially change workload cost. Vendor benchmarks and safety claims remain self-reported, so compare task success, tool reliability and total spend on a fixed workload before routing production traffic.",
+      "why_it_matters_en": "For teams choosing a coding or agent model, Grok 4.7 is directly callable and its long-context price discontinuity can materially change workload cost. Vendor benchmarks and safety claims remain self-reported, so compare task success, tool reliability and total spend on a fixed workload before routing production traffic.",
+      "why_it_matters_zh": "对选择 coding 或 agent 模型的团队来说，Grok 4.7 已可直接调用，而长上下文的阶梯价格会明显改变成本。benchmark 与安全结论仍由厂商自报，生产路由前应在固定任务上比较成功率、工具可靠性和总花费。",
+      "technical_details": {
+        "availability": "public xAI API, Cursor, Grok Build and model routers",
+        "modalities": "text and image input; text output",
+        "context_window": "500,000 tokens; documentation lists no separate text-output cap",
+        "pricing_under_200k_prompt_per_million": {
+          "input": 2,
+          "cached_input": 0.5,
+          "output": 6
+        },
+        "pricing_over_200k_prompt_per_million": {
+          "input": 4,
+          "cached_input": 1,
+          "output": 12
+        },
+        "api_notes": "US regional endpoint adds 10%; Responses API returns reasoning.encrypted_content",
+        "fast_variant": "same model at higher rate in Cursor and Grok Build; not offered through the public API",
+        "time_basis": "official announcement dated 2026-09-21; recovered as a late discovery from the fixed xAI monitor"
+      },
+      "technical_details_zh": {
+        "可用性": "公开 xAI API、Cursor、Grok Build 与模型路由",
+        "模态": "文本和图片输入；文本输出",
+        "上下文窗口": "500,000 token；文档未列出单独的文本输出上限",
+        "prompt_低于_200K_时每百万_token_价格": {
+          "输入": 2,
+          "缓存输入": 0.5,
+          "输出": 6
+        },
+        "prompt_高于_200K_时每百万_token_价格": {
+          "输入": 4,
+          "缓存输入": 1,
+          "输出": 12
+        },
+        "API 说明": "美国区域 endpoint 加价 10%；Responses API 返回 reasoning.encrypted_content",
+        "快速版本": "Cursor 与 Grok Build 提供同模型的更高速率版本；公开 API 不提供",
+        "时间依据": "官方公告日期为 2026-09-21；本轮从固定 xAI 入口按 late discovery 补录"
+      },
+      "tags": [
+        "grok-4-7",
+        "coding",
+        "tool-use",
+        "long-context",
+        "api"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "xai-grok-4-7-public-api-release",
+      "short_label_zh": "Grok 4.7",
+      "short_label_en": "Grok 4.7",
+      "next_action_zh": "一天内用固定 coding 与工具调用任务比较成功率、长上下文阶梯成本、延迟和失败恢复。",
+      "next_action_en": "Within one day, compare task success, long-context tier cost, latency and failure recovery on fixed coding and tool-use workloads.",
+      "source_ids": [
+        "src-39b901174b543376",
+        "src-3ef14b89abe85347"
+      ],
+      "project_ids": [
+        "grok-4-7"
+      ],
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20260921-08-release-evidence",
+          "claim_zh": "xAI 官方公告与文档确认 Grok 4.7 已通过公开 API 提供，并列出上下文、价格和接口行为。",
+          "claim_en": "xAI's announcement and documentation confirm public API availability for Grok 4.7 and specify context, pricing and API behavior.",
+          "source_ids": [
+            "src-39b901174b543376",
+            "src-3ef14b89abe85347"
+          ],
+          "event_ids": [
+            "ev-20260921-08"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; benchmark and safety claims not independently validated"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260921-08-published",
+          "kind": "new",
+          "occurred_at": "2026-09-21",
+          "discovered_at": "2026-10-13T16:05:06Z",
+          "summary_zh": "xAI 发布可公开调用的 Grok 4.7。",
+          "summary_en": "xAI releases Grok 4.7 through its public API.",
+          "evidence_ids": [
+            "ev-20260921-08-release-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }
