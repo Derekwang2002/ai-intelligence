@@ -42,7 +42,8 @@
         "src-0ba886b07133e21d",
         "src-0dfdf17053d5d17a",
         "src-92349bd4a8c11233",
-        "src-e75aaf1e12900808"
+        "src-e75aaf1e12900808",
+        "src-fd1cb9e783625459"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -59,19 +60,20 @@
         "src-0ba886b07133e21d",
         "src-0dfdf17053d5d17a",
         "src-92349bd4a8c11233",
-        "src-e75aaf1e12900808"
+        "src-e75aaf1e12900808",
+        "src-fd1cb9e783625459"
       ],
-      "last_reviewed_at": "2026-10-10T15:56:58Z",
+      "last_reviewed_at": "2026-10-14T15:57:53Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.296 将 Claude Desktop Code tab 纳入托管策略，并修复 hook、MCP、密钥脱敏与审批边界。",
-        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.296 brings the Claude Desktop Code tab under managed policy and fixes hook, MCP, redaction and approval boundaries.",
-        "next_action_zh": "升级后回放 managed hook、已禁用 MCP、Bash 环境变量、密钥脱敏与 Windows 编码用例。",
-        "next_action_en": "After upgrading, replay managed hooks, disabled MCP servers, Bash environment variables, redaction and Windows encoding cases.",
+        "judgment_zh": "Claude Code 是成熟的本地多 agent 运行时。2.1.299 增加闲置压缩与 runner drain，并修补沙箱、恢复执行、MCP 策略和 gateway 凭据边界。",
+        "judgment_en": "Claude Code is a mature local multi-agent runtime. Version 2.1.299 adds idle compaction and runner drain while closing sandbox, resume, MCP-policy and gateway-credential boundaries.",
+        "next_action_zh": "升级到 2.1.299，并回放插件目录写入、恢复审批、被阻断的 MCP 与自定义 gateway 凭据用例。",
+        "next_action_en": "Upgrade to 2.1.299 and replay plugin-directory writes, resumed approvals, blocked MCP startup and custom-gateway credential cases.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-10T15:56:58Z"
+        "reviewed_at": "2026-10-14T15:57:53Z"
       }
     },
     {
@@ -312,26 +314,28 @@
         "src-f4f49ba070cb61b6",
         "src-695ca5d6496fefc7",
         "src-09bc1aebce65c96b",
-        "src-04d61de5c9f9c672"
+        "src-04d61de5c9f9c672",
+        "src-dbb95ff3d456141d"
       ],
       "current_judgment_event_id": "ev-20260825-02",
       "official_source_ids": [
         "src-695ca5d6496fefc7",
         "src-09bc1aebce65c96b",
-        "src-04d61de5c9f9c672"
+        "src-04d61de5c9f9c672",
+        "src-dbb95ff3d456141d"
       ],
-      "last_reviewed_at": "2026-10-07T22:04:40Z",
+      "last_reviewed_at": "2026-10-14T15:57:53Z",
       "judgment": {
         "recommendation": "WATCH",
-        "judgment_zh": "Gemini CLI 0.63.0 已把长任务内存控制、认证恢复和非交互计划执行推入稳定版。A2A 仍缺兼容承诺，因此继续观察真实项目中的稳定性。",
-        "judgment_en": "Gemini CLI 0.63.0 brings long-run memory controls, auth recovery and non-interactive plan execution to stable. A2A still lacks compatibility commitments, so real-project stability remains the gating signal.",
-        "next_action_zh": "升级到 0.63.0 后回归大工具输出、认证锁竞争和 ACP 恢复；等 A2A 兼容承诺明确后再评估试点。",
-        "next_action_en": "After upgrading to 0.63.0, test large tool outputs, auth lock contention and ACP recovery; reconsider a trial when A2A compatibility is explicit.",
+        "judgment_zh": "Gemini CLI 0.64.0 已把原子写入、状态备份恢复、取消与 ACP 生命周期改进推入稳定版。A2A 仍缺兼容承诺，因此继续观察真实项目中的稳定性。",
+        "judgment_en": "Gemini CLI 0.64.0 brings atomic writes, state recovery, cancellation and ACP lifecycle improvements to stable. A2A still lacks compatibility commitments, so real-project stability remains the gating signal.",
+        "next_action_zh": "升级到 0.64.0 后回归中断写入、状态恢复、取消和 ACP usage；等 A2A 兼容承诺明确后再评估试点。",
+        "next_action_en": "After upgrading to 0.64.0, test interrupted writes, state recovery, cancellation and ACP usage; reconsider a trial when A2A compatibility is explicit.",
         "basis_event_ids": [
           "ev-20260825-02",
           "ev-20260912-01"
         ],
-        "reviewed_at": "2026-10-07T22:04:40Z"
+        "reviewed_at": "2026-10-14T15:57:53Z"
       }
     },
     {
@@ -3310,7 +3314,28 @@
         ],
         "reviewed_at": "2026-10-13T16:05:06Z"
       }
+    },
+    {
+      "id":"nvidia-runai","name_zh":"NVIDIA Run:ai","name_en":"NVIDIA Run:ai","type":"infrastructure","aliases":["Run:ai"],"pattern":"Run:ai","event_ids":["ev-20261013-02"],"source_ids":["src-b3dd2a0f914f65ea","src-ea221ee2acab6a14"],"current_judgment_event_id":"ev-20261013-02","official_source_ids":["src-b3dd2a0f914f65ea","src-ea221ee2acab6a14"],"last_reviewed_at":"2026-10-14T15:57:53Z","judgment":{"recommendation":"TRIAL","judgment_zh":"完整 GPU 编排栈已按 Apache 2.0 开源，具备工程验证价值，但社区版没有企业支持。","judgment_en":"The full GPU orchestration stack is now Apache-2.0 and testable, but the community build lacks enterprise support.","next_action_zh":"在隔离 Kubernetes 集群实测配额、GPU 切分隔离与滚动升级。","next_action_en":"Test quotas, fractional-GPU isolation and rolling upgrades in an isolated Kubernetes cluster.","basis_event_ids":["ev-20261013-02"],"reviewed_at":"2026-10-14T15:57:53Z"}
+    },
+    {
+      "id":"lfm2-5-24b-a2b","name_zh":"LFM2.5-24B-A2B","name_en":"LFM2.5-24B-A2B","type":"model","aliases":["LFM2.5 24B A2B"],"pattern":"LFM2\\.5-24B-A2B","event_ids":["ev-20261013-03"],"source_ids":["src-53911f98c21c784f","src-07a9efc843a0e363"],"current_judgment_event_id":"ev-20261013-03","official_source_ids":["src-53911f98c21c784f","src-07a9efc843a0e363"],"last_reviewed_at":"2026-10-14T15:57:53Z","judgment":{"recommendation":"TRIAL","judgment_zh":"公开权重与多运行时支持让本地工具调用可验证，但厂商 benchmark 和营收门槛许可限制生产采用。","judgment_en":"Public weights and broad runtime support make local tool use testable, but vendor benchmarks and the revenue-gated license constrain production adoption.","next_action_zh":"核对许可后，用真实工具 schema 比较吞吐、内存与任务成功率。","next_action_en":"After checking the license, compare throughput, memory and task success on real tool schemas.","basis_event_ids":["ev-20261013-03"],"reviewed_at":"2026-10-14T15:57:53Z"}
+    },
+    {
+      "id":"doubtless","name_zh":"DoubtLess","name_en":"DoubtLess","type":"research","aliases":["DoubtLess decoding"],"pattern":"DoubtLess","event_ids":["ev-20261013-04"],"source_ids":["src-50af46f92db7a1dd","src-6399e74aecd73a0c"],"current_judgment_event_id":"ev-20261013-04","official_source_ids":["src-50af46f92db7a1dd","src-6399e74aecd73a0c"],"last_reviewed_at":"2026-10-14T15:57:53Z","judgment":{"recommendation":"TRIAL","judgment_zh":"免训练的推理 token 节省方法有公开代码，但只有作者结果且参考配置需要 80 GB GPU。","judgment_en":"The training-free token-saving method has public code, but evidence is author-only and the reference setup needs an 80 GB GPU.","next_action_zh":"一天内复跑一项推理和一项 coding 任务，同时核对成功率、token 与显存。","next_action_en":"Within one day, rerun one reasoning and one coding task, checking success, tokens and memory.","basis_event_ids":["ev-20261013-04"],"reviewed_at":"2026-10-14T15:57:53Z"}
+    },
+    {
+      "id":"hybrid-agent","name_zh":"Hybrid Agent","name_en":"Hybrid Agent","type":"research","aliases":["Hybrid Reasoning Agents"],"pattern":"Hybrid Agent|HybridLink","event_ids":["ev-20261013-05"],"source_ids":["src-ae6e49210029e41a","src-ed6e7a26ab899344"],"current_judgment_event_id":"ev-20261013-05","official_source_ids":["src-ae6e49210029e41a","src-ed6e7a26ab899344"],"last_reviewed_at":"2026-10-14T15:57:53Z","judgment":{"recommendation":"TRIAL","judgment_zh":"权重和推理代码已公开，潜在推理与工具交互切换值得验证；作者结果尚无独立复现。","judgment_en":"Weights and inference code are public, making latent-to-tool switching testable; the author results lack independent reproduction.","next_action_zh":"一天内用 8B 权重跑工具调用题，比较成功率、token、延迟和失败可追踪性。","next_action_en":"Within one day, run the 8B weights on tool-use tasks and compare success, tokens, latency and failure traceability.","basis_event_ids":["ev-20261013-05"],"reviewed_at":"2026-10-14T15:57:53Z"}
+    },
+    {
+      "id":"github-secret-scanning","name_zh":"GitHub Secret Scanning","name_en":"GitHub Secret Scanning","type":"developer-tool","aliases":["GitHub push protection"],"pattern":"secret scanning|push protection","event_ids":["ev-20261013-06"],"source_ids":["src-3c0cc97aad582778"],"current_judgment_event_id":"ev-20261013-06","official_source_ids":["src-3c0cc97aad582778"],"last_reviewed_at":"2026-10-14T15:57:53Z","judgment":{"recommendation":"ADOPT","judgment_zh":"Anthropic key 检测与默认 push protection 已 GA，成本低且能直接减少凭据进入 Git 历史。","judgment_en":"Anthropic-key detection and default push protection are GA, low-cost controls that directly reduce credentials entering Git history.","next_action_zh":"保持 push protection 开启并检查组织策略覆盖。","next_action_en":"Keep push protection enabled and verify organization policy coverage.","basis_event_ids":["ev-20261013-06"],"reviewed_at":"2026-10-14T15:57:53Z"}
+    },
+    {
+      "id":"third-moment-agent-system","name_zh":"Third Moment Agent System","name_en":"Third Moment Agent System","type":"developer-tool","aliases":["Third Moment agents"],"pattern":"Third Moment","event_ids":["ev-20261014-01"],"source_ids":["src-ef460bb7405cc35f"],"current_judgment_event_id":"ev-20261014-01","official_source_ids":["src-ef460bb7405cc35f"],"last_reviewed_at":"2026-10-14T15:57:53Z","judgment":{"recommendation":"WATCH","judgment_zh":"万级长时 agent 与外层监督是强架构信号，但厂商客户案例没有原始遥测或独立验证。","judgment_en":"The 10,000-agent long-running system is a strong architecture signal, but the vendor customer story lacks raw telemetry and independent verification.","next_action_zh":"等任务级成功率、成本和恢复遥测后再用于容量规划。","next_action_en":"Wait for task-level success, cost and recovery telemetry before using it for capacity planning.","basis_event_ids":["ev-20261014-01"],"reviewed_at":"2026-10-14T15:57:53Z"}
+    },
+    {
+      "id":"openai-api-model-lifecycle","name_zh":"OpenAI API Model Lifecycle","name_en":"OpenAI API Model Lifecycle","type":"model","aliases":["OpenAI API deprecations"],"pattern":"OpenAI.*deprecat|GPT-4.*retire","event_ids":["ev-20261014-02"],"source_ids":["src-bab0e18b2802152d"],"current_judgment_event_id":"ev-20261014-02","official_source_ids":["src-bab0e18b2802152d"],"last_reviewed_at":"2026-10-14T15:57:53Z","judgment":{"recommendation":"ADOPT","judgment_zh":"受影响 snapshot 仍可用，但 2027-01-14 的停用期限已经确定，生产环境应立即安排迁移验证。","judgment_en":"Affected snapshots remain callable, but the 2027-01-14 shutdown is fixed, so production users should begin migration validation now.","next_action_zh":"盘点精确 model ID 与微调资产，验证 gpt-6-luna 并在停用日前迁移。","next_action_en":"Inventory exact model IDs and fine-tunes, validate gpt-6-luna and migrate before shutdown.","basis_event_ids":["ev-20261014-02"],"reviewed_at":"2026-10-14T15:57:53Z"}
     }
   ],
-  "last_updated": "2026-10-13T16:05:06Z"
+  "last_updated": "2026-10-14T15:57:53Z"
 }

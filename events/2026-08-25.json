@@ -135,7 +135,7 @@
       ],
       "published_at": "2026-08-25T18:37:14Z",
       "first_seen_at": "2026-08-28T00:31:03Z",
-      "last_updated_at": "2026-10-07T22:04:39Z",
+      "last_updated_at": "2026-10-14T15:57:53Z",
       "source_type": "github",
       "primary_source": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.57.0",
       "secondary_sources": [
@@ -143,14 +143,15 @@
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.61.0",
         "https://www.npmjs.com/package/@google/gemini-cli-a2a-server",
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.62.0",
-        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.63.0"
+        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.63.0",
+        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.64.0"
       ],
-      "summary": "Gemini CLI ships its A2A server in the stable line but still lacks formal usage documentation. Version 0.62.0 fixes OAuth refresh-token retention and PTY/ConPTY exit cleanup, and emits ACP tool-call updates before permission requests. The stable security fixes are usable; the A2A surface remains an unstable dependency.",
-      "why_it_matters": "Existing Gemini CLI users should take the OAuth, terminal-lifecycle and permission-event fixes. Teams depending on A2A should still wait for documentation and compatibility commitments.",
-      "summary_zh": "Gemini CLI 的 A2A server 已进入稳定发布线，但仍缺少正式使用文档。0.62.0 稳定版修复 OAuth refresh token 保留、PTY/ConPTY 退出清理，并确保 ACP 模式在请求权限前先发出 tool_call 更新。安全修复可采用，A2A 接口仍不应作为稳定依赖。",
-      "why_it_matters_zh": "对现有 Gemini CLI 用户来说，OAuth、终端生命周期和权限事件顺序修复值得升级；对依赖 A2A 的团队来说，没有文档和兼容承诺仍是阻塞项。",
-      "summary_en": "Gemini CLI ships its A2A server in the stable line but still lacks formal usage documentation. Version 0.62.0 fixes OAuth refresh-token retention and PTY/ConPTY exit cleanup, and emits ACP tool-call updates before permission requests. The stable security fixes are usable; the A2A surface remains an unstable dependency.",
-      "why_it_matters_en": "Existing Gemini CLI users should take the OAuth, terminal-lifecycle and permission-event fixes. Teams depending on A2A should still wait for documentation and compatibility commitments.",
+      "summary": "Gemini CLI ships its A2A server in the stable line but still lacks formal usage documentation. Version 0.64.0 adds atomic file operations, append-only chat deltas and recoverable persisted state while improving cancellation, ACP usage updates and A2A settings migration. The stable reliability fixes are usable; the A2A surface remains an unstable dependency.",
+      "why_it_matters": "Existing Gemini CLI users should take the state-integrity and cancellation fixes, especially for long or interrupted sessions. Teams depending on A2A should still wait for documentation and compatibility commitments.",
+      "summary_zh": "Gemini CLI 的 A2A server 已进入稳定发布线，但仍缺少正式使用文档。0.64.0 稳定版加入原子文件操作、append-only chat delta 与可恢复的持久化状态，并改进取消、ACP 用量更新和 A2A 设置迁移。稳定性修复可采用，A2A 接口仍不应作为稳定依赖。",
+      "why_it_matters_zh": "对现有 Gemini CLI 用户来说，长任务或中断会话更需要状态完整性和取消修复；对依赖 A2A 的团队来说，没有文档和兼容承诺仍是阻塞项。",
+      "summary_en": "Gemini CLI ships its A2A server in the stable line but still lacks formal usage documentation. Version 0.64.0 adds atomic file operations, append-only chat deltas and recoverable persisted state while improving cancellation, ACP usage updates and A2A settings migration. The stable reliability fixes are usable; the A2A surface remains an unstable dependency.",
+      "why_it_matters_en": "Existing Gemini CLI users should take the state-integrity and cancellation fixes, especially for long or interrupted sessions. Teams depending on A2A should still wait for documentation and compatibility commitments.",
       "technical_details": {
         "release": "v0.57.0 stable published 2026-08-25T18:37:14Z; packages/a2a-server present in the v0.57.0 tag tree (verified via git tree API)",
         "npm": "@google/gemini-cli-a2a-server@0.57.0 published; package scoped under @google",
@@ -163,7 +164,8 @@
         "update_2026_09_16": "Gemini CLI 0.60.0 reached stable at 2026-09-15T20:31:02Z. The preview security cluster is now supported in the stable line: MCP OAuth RFC 9207 issuer checks, WebFetch destination validation, extension and workspace path-boundary hardening, NTFS 8.3 mitigation, consent for runtime-altering environment changes, provenance metadata for untrusted tool outputs, and isolated sandbox settings directories. The a2a-server remains undocumented. Recommendation stays WATCH for the A2A surface; existing Gemini CLI users should upgrade for the security fixes.",
         "update_2026_09_24": "Gemini CLI 0.61.0 stable (2026-09-23T23:59Z) adds indirect-prompt-injection defenses for modified build files and untrusted flags, hardens filesystem boundaries and runtime-state isolation, and preserves explicit versioned Flash model IDs. The a2a-server remains undocumented. Existing users should upgrade for security; A2A remains WATCH.",
         "update_2026_10_02": "0.62.0 stable retains OAuth refresh tokens, makes credential deletion idempotent, hardens PTY/ConPTY cleanup, and emits ACP tool_call updates before permission requests. A2A remains undocumented.",
-        "update_2026_10_07": "0.63.0 adds bounded tool output for long-running loops, autonomous plan execution in non-interactive mode, auth-loop fixes, ACP session ordering and policy/path hardening."
+        "update_2026_10_07": "0.63.0 adds bounded tool output for long-running loops, autonomous plan execution in non-interactive mode, auth-loop fixes, ACP session ordering and policy/path hardening.",
+        "update_2026_10_14": "0.64.0 adds atomic file operations, append-only chat deltas, atomic persisted state with backup recovery, Ctrl+C cancellation, ACP usage updates and A2A settings migration."
       },
       "technical_details_zh": {
         "发布": "v0.57.0 stable 于 2026-08-25T18:37:14Z 发布；v0.57.0 tag 树中包含 packages/a2a-server（经 git tree API 核实）",
@@ -205,7 +207,8 @@
         "src-2865ccba82e97c06",
         "src-dd576e7859210e25",
         "src-09bc1aebce65c96b",
-        "src-04d61de5c9f9c672"
+        "src-04d61de5c9f9c672",
+        "src-dbb95ff3d456141d"
       ],
       "project_ids": [
         "gemini-cli"
@@ -254,6 +257,15 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260825-02-gemini-064-evidence",
+          "claim_zh": "Gemini CLI 0.64.0 把原子写入、状态备份恢复、取消和 ACP/A2A 生命周期改进推入稳定版。",
+          "claim_en": "Gemini CLI 0.64.0 brings atomic writes, state backup recovery, cancellation and ACP/A2A lifecycle improvements to stable.",
+          "source_ids": ["src-dbb95ff3d456141d"],
+          "event_ids": ["ev-20260825-02"],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -294,13 +306,24 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260825-02-gemini-064",
+          "kind": "update",
+          "occurred_at": "2026-10-13T20:44:46Z",
+          "discovered_at": "2026-10-14T15:57:53Z",
+          "summary_zh": "Gemini CLI 0.64.0 加固文件、会话状态与取消生命周期。",
+          "summary_en": "Gemini CLI 0.64.0 hardens file, session-state and cancellation lifecycles.",
+          "evidence_ids": ["ev-20260825-02-gemini-064-evidence"],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "short_label_zh": "Gemini CLI",
       "short_label_en": "Gemini CLI",
-      "next_action_zh": "升级到 0.63.0，回归长工具输出、认证锁竞争、ACP 恢复和非交互计划执行的副作用确认。",
-      "next_action_en": "Upgrade to 0.63.0 and test large tool outputs, auth lock contention, ACP recovery and side-effect confirmation in non-interactive plans.",
-      "last_reviewed_at": "2026-10-07T22:04:39Z"
+      "next_action_zh": "升级到 0.64.0，回归中断写入、状态备份恢复、Ctrl+C 取消和 ACP usage 更新。",
+      "next_action_en": "Upgrade to 0.64.0 and test interrupted writes, state-backup recovery, Ctrl+C cancellation and ACP usage updates.",
+      "last_reviewed_at": "2026-10-14T15:57:53Z"
     },
     {
       "event_id": "ev-20260825-03",

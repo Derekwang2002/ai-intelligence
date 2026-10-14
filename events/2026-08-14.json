@@ -373,7 +373,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-10-10T15:56:58Z",
+      "last_updated_at": "2026-10-14T15:57:53Z",
       "source_type": "primary",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -404,14 +404,15 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.293",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.294",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.295",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.296"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.296",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.299"
       ],
-      "summary": "Claude Code is a mature local multi-agent runtime with session recovery, sandboxing and gateway governance. Version 2.1.296 brings the Claude Desktop Code tab under managed policy, adds independent subagent compaction windows and fixes managed hooks, MCP lifecycle, secret redaction, Bash approvals and cross-platform execution gaps.",
-      "why_it_matters": "For teams using Claude Code as an enterprise execution plane, this release aligns desktop and CLI policy while closing boundary failures that could cause over-permission, missed redaction or repeated execution. Replay managed hooks, disabled MCP servers, Bash environment variables and Windows encodings after upgrading.",
-      "summary_zh": "Claude Code 已形成成熟的本地多 agent 运行时，覆盖会话恢复、沙箱与 gateway 治理。2.1.296 将 Claude Desktop Code tab 纳入托管策略，支持单独设置 subagent 压缩窗口，并修复 managed hook、MCP 启停、密钥脱敏、Bash 审批与跨平台执行缺口。",
-      "summary_en": "Claude Code is a mature local multi-agent runtime with session recovery, sandboxing and gateway governance. Version 2.1.296 brings the Claude Desktop Code tab under managed policy, adds independent subagent compaction windows and fixes managed hooks, MCP lifecycle, secret redaction, Bash approvals and cross-platform execution gaps.",
-      "why_it_matters_zh": "对把 Claude Code 当企业执行面的团队来说，这次更新统一桌面与 CLI 策略，并修补会导致越权、漏脱敏或重复执行的边界。升级后应回放 managed hook、MCP 禁用、Bash 环境变量和 Windows 编码用例。",
-      "why_it_matters_en": "For teams using Claude Code as an enterprise execution plane, this release aligns desktop and CLI policy while closing boundary failures that could cause over-permission, missed redaction or repeated execution. Replay managed hooks, disabled MCP servers, Bash environment variables and Windows encodings after upgrading.",
+      "summary": "Claude Code is a mature local multi-agent runtime with session recovery, sandboxing and gateway governance. Version 2.1.299 adds idle compaction and runner drain controls while fixing a sandbox-to-plugin write escape, resumed-tool double execution, pre-policy MCP startup and gateway credential leakage.",
+      "why_it_matters": "For teams using Claude Code as an enterprise execution plane, the release closes boundaries that could escape a sandbox, repeat an approved action or expose a third-party gateway key. Upgrade and replay plugin-directory writes, resumed approvals, blocked MCP startup and custom-base-URL requests.",
+      "summary_zh": "Claude Code 已形成成熟的本地多 agent 运行时，覆盖会话恢复、沙箱与 gateway 治理。2.1.299 新增闲置压缩与 runner 优雅退出，并修复沙箱写入插件目录、恢复后重复执行、策略检查前启动 MCP 及 gateway 凭据泄漏。",
+      "summary_en": "Claude Code is a mature local multi-agent runtime with session recovery, sandboxing and gateway governance. Version 2.1.299 adds idle compaction and runner drain controls while fixing a sandbox-to-plugin write escape, resumed-tool double execution, pre-policy MCP startup and gateway credential leakage.",
+      "why_it_matters_zh": "对把 Claude Code 当企业执行面的团队来说，这次更新堵住了可能逃出沙箱、重复执行已批准动作或泄露第三方 gateway key 的边界。升级后应回放插件目录写入、恢复审批、被阻断的 MCP 启动和自定义 base URL 请求。",
+      "why_it_matters_en": "For teams using Claude Code as an enterprise execution plane, the release closes boundaries that could escape a sandbox, repeat an approved action or expose a third-party gateway key. Upgrade and replay plugin-directory writes, resumed approvals, blocked MCP startup and custom-base-URL requests.",
       "technical_details": {
         "forking": "default on; inherits conversation + prompt cache",
         "messaging": "SendMessage via @-mentions across live sessions; no history/files/permissions exchange",
@@ -436,7 +437,8 @@
         "update_2026_10_07": "2.1.292 adds one-step policy-checked marketplace installs and per-subagent effort. 2.1.293 adds Haiku 5.5, subagent type visibility, eager mod tools, compaction-state fixes, HTTP MCP leak repair and queued-message protection.",
         "update_2026_10_08": "2.1.294 fixes prompt and agent hooks written as instructions that could allow commands they should block, and improves Stop/SubagentStop prompt-hook instructions to reduce premature termination.",
         "update_2026_10_09": "2.1.295 makes onFailure:block command/HTTP hooks fail closed, adds per-upstream model allowlists, TTFB limits and request IDs, and hardens MCP reconnect/backoff and sandbox behavior.",
-        "update_2026_10_10": "2.1.296 applies managed code policy to Claude Desktop, adds per-subagent autoCompactWindow and a workflow-agent model override, fixes managed hook blocking/output rewriting, disabled MCP startup, secret redaction, BASH_ARGV0 auto-approval, interrupted-turn replay and Windows encoding/permission gaps."
+        "update_2026_10_10": "2.1.296 applies managed code policy to Claude Desktop, adds per-subagent autoCompactWindow and a workflow-agent model override, fixes managed hook blocking/output rewriting, disabled MCP startup, secret redaction, BASH_ARGV0 auto-approval, interrupted-turn replay and Windows encoding/permission gaps.",
+        "update_2026_10_14": "2.1.299 adds idle compaction and self-hosted-runner drain controls. Security and reliability fixes cover sandbox writes through --plugin-dir, duplicate approved tool execution after resume, MCP startup before policy checks, dangerous-policy name normalization and third-party gateway API keys reaching Anthropic."
       },
       "update_2026_08_17": "2.1.234 (2026-08-17, in-window): rejects Windows NT-namespace (\\??\\) paths across remote file reads, session restore, CLAUDE.md includes, workflow scripts and uploads — hardens pre-approval file accesses against the NTLM credential-leak vector; GitLab MR footer badge (draft/pending/green states, glab repos); auto-continue sessions when usage limit resets (toggle in /config); claude-api skill context cost cut from ~200k+ to ~25k tokens; selection:clear keybinding; CLAUDE_CODE_PROJECT_DIR_NAME env var; many Remote Control / permission-preview / TUI fixes.",
       "update_2026_08_18": "2.1.235 (2026-08-18, in-window): security-relevant fix — Shift+Tab in the permission prompt's comment field no longer wrongly grants session-wide edit permission; new optional `spellcheck` setting (aspell/hunspell/ispell); fix for whole-prompt-cache invalidation when a language server disconnects mid-session; nested markdown list misalignment fix (depth 3+); lower memory/CPU usage for background cloud sessions (/ultrareview); permission dialogs now display exactly what a grant covers; VS Code focus fix after window restore. Recommendation stays ADOPT; upgrading also picks up the 2.1.234 NTLM hardening.",
@@ -525,7 +527,8 @@
         "src-0ba886b07133e21d",
         "src-0dfdf17053d5d17a",
         "src-92349bd4a8c11233",
-        "src-e75aaf1e12900808"
+        "src-e75aaf1e12900808",
+        "src-fd1cb9e783625459"
       ],
       "project_ids": [
         "claude-code"
@@ -694,6 +697,15 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-299-evidence",
+          "claim_zh": "Claude Code 2.1.299 增加闲置压缩与 runner drain，并修复沙箱、恢复执行、MCP 策略和 gateway 凭据边界。",
+          "claim_en": "Claude Code 2.1.299 adds idle compaction and runner drain while fixing sandbox, resume execution, MCP policy and gateway credential boundaries.",
+          "source_ids": ["src-fd1cb9e783625459"],
+          "event_ids": ["ev-20260814-04"],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -850,6 +862,17 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-299",
+          "kind": "update",
+          "occurred_at": "2026-10-14T02:49:42Z",
+          "discovered_at": "2026-10-14T15:57:53Z",
+          "summary_zh": "Claude Code 2.1.299 修补沙箱、恢复执行与 gateway 凭据边界。",
+          "summary_en": "Claude Code 2.1.299 closes sandbox, resumed-execution and gateway-credential boundaries.",
+          "evidence_ids": ["ev-20260814-04-claude-2-1-299-evidence"],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -859,11 +882,11 @@
           "src-3d68ad8e1324eb33"
         ]
       },
-      "next_action_zh": "升级后回放 managed hook、已禁用 MCP、Bash 环境变量、密钥脱敏和 Windows 编码用例。",
-      "next_action_en": "After upgrading, replay managed hooks, disabled MCP servers, Bash environment variables, secret redaction and Windows encoding cases.",
+      "next_action_zh": "升级到 2.1.299，并回放插件目录写入、恢复审批、被阻断的 MCP 与自定义 gateway 凭据用例。",
+      "next_action_en": "Upgrade to 2.1.299 and replay plugin-directory writes, resumed approvals, blocked MCP startup and custom-gateway credential cases.",
       "short_label_zh": "Claude Code",
       "short_label_en": "Claude Code",
-      "last_reviewed_at": "2026-10-10T15:56:58Z"
+      "last_reviewed_at": "2026-10-14T15:57:53Z"
     },
     {
       "event_id": "ev-20260814-05",
