@@ -100,8 +100,8 @@
     },
     {
       "event_id": "ev-20260925-02",
-      "title": "GitHub lets agentic autofix learn repository-specific fix patterns",
-      "title_zh": "GitHub 让 agentic autofix 复用仓库修复经验",
+      "title": "GitHub makes agentic autofix generally available for code scanning",
+      "title_zh": "GitHub 将 code scanning 的 agentic autofix 推向 GA",
       "category": "developer-tools",
       "organization": [
         "GitHub",
@@ -109,31 +109,42 @@
       ],
       "published_at": "2026-09-25",
       "first_seen_at": "2026-09-26T16:01:48Z",
-      "last_updated_at": "2026-09-26T16:01:48Z",
+      "last_updated_at": "2026-10-15T16:00:25Z",
       "source_type": "release_notes",
       "primary_source": "https://github.blog/changelog/2026-09-25-agentic-autofix-now-uses-copilot-memory/",
       "secondary_sources": [
-        "https://docs.github.com/en/copilot/concepts/agents/copilot-memory"
+        "https://docs.github.com/en/copilot/concepts/agents/copilot-memory",
+        "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability"
       ],
-      "summary": "GitHub agentic autofix now reads Copilot Memory before resolving a security alert and stores successful fix patterns for later work. The same repository memory can inform Copilot code review and the Copilot cloud agent. Both agentic autofix and Copilot Memory remain in public preview. GitHub does not publish outcome or false-positive data for the memory-assisted flow.",
-      "why_it_matters": "For application-security teams, repository-specific memory could stop the same unsafe pattern from being rediscovered in every alert. Trial it on a limited repository set, review what memories are retained, and compare fix acceptance and regressions against a no-memory baseline before treating learned patterns as policy.",
-      "summary_zh": "GitHub agentic autofix 现在会在处理安全告警前读取 Copilot Memory，并把成功修复方式保存下来，供后续任务复用。同一份仓库记忆还能提供给 Copilot code review 与 Copilot cloud agent。agentic autofix 和 Copilot Memory 都仍处于 public preview。GitHub 尚未公布引入记忆后的修复成功率或误报数据。",
-      "summary_en": "GitHub agentic autofix now reads Copilot Memory before resolving a security alert and stores successful fix patterns for later work. The same repository memory can inform Copilot code review and the Copilot cloud agent. Both agentic autofix and Copilot Memory remain in public preview. GitHub does not publish outcome or false-positive data for the memory-assisted flow.",
-      "why_it_matters_zh": "对应用安全团队来说，仓库级记忆有机会避免每个告警都重新发现同一种不安全模式。建议先在少量仓库试用，审查保存了哪些记忆，并与不使用记忆的基线比较修复接受率和回归，再决定是否把这些经验当成策略。",
-      "why_it_matters_en": "For application-security teams, repository-specific memory could stop the same unsafe pattern from being rediscovered in every alert. Trial it on a limited repository set, review what memories are retained, and compare fix acceptance and regressions against a no-memory baseline before treating learned patterns as policy.",
+      "summary": "GitHub made agentic autofix generally available for CodeQL alerts. Copilot explores the repository, proposes a fix, reruns CodeQL and iterates before opening a draft pull request. Teams can assign one default-branch alert, up to 25 alerts associated with one pull request, or use the REST API. It requires GitHub Code Security or Advanced Security, administrator enablement and a Copilot billing method; work consumes Code Security AI Credits and GitHub Actions minutes.",
+      "why_it_matters": "For security teams, the workflow now closes the loop from alert to validated draft patch instead of stopping at a suggestion. CodeQL reruns are useful evidence, not a guarantee of semantic correctness, so human review and representative tests remain mandatory.",
+      "summary_zh": "GitHub 将 CodeQL alert 的 agentic autofix 推向 GA。Copilot 会浏览仓库、提出修复、重新运行 CodeQL，再迭代到可打开 draft pull request。团队可以分配一个默认分支 alert、同一 pull request 关联的最多 25 个 alert，或通过 REST API 调用。它需要 GitHub Code Security 或 Advanced Security、管理员启用和 Copilot 计费方式，并消耗 Code Security AI Credits 与 GitHub Actions 分钟。",
+      "summary_en": "GitHub made agentic autofix generally available for CodeQL alerts. Copilot explores the repository, proposes a fix, reruns CodeQL and iterates before opening a draft pull request. Teams can assign one default-branch alert, up to 25 alerts associated with one pull request, or use the REST API. It requires GitHub Code Security or Advanced Security, administrator enablement and a Copilot billing method; work consumes Code Security AI Credits and GitHub Actions minutes.",
+      "why_it_matters_zh": "对安全团队来说，这把流程从“给建议”推进到“生成并用 CodeQL 复查 draft patch”。CodeQL 重跑是有价值的证据，不等于语义正确；人工审查和代表性测试仍不可省。",
+      "why_it_matters_en": "For security teams, the workflow now closes the loop from alert to validated draft patch instead of stopping at a suggestion. CodeQL reruns are useful evidence, not a guarantee of semantic correctness, so human review and representative tests remain mandatory.",
       "technical_details": {
         "availability": "Public Preview",
         "read_path": "agentic autofix consults existing repository memories before creating a fix",
         "write_path": "successful fix pattern is stored as a Copilot Memory",
         "consumers": "agentic autofix, Copilot code review and Copilot cloud agent",
-        "evidence_limit": "no published acceptance, regression or false-positive metrics"
+        "evidence_limit": "no published acceptance, regression or false-positive metrics",
+        "status": "generally available",
+        "workflow": "repository exploration, patch generation, CodeQL rerun, iteration and draft PR",
+        "scope": "one default-branch alert or up to 25 alerts associated with one PR; REST API supported",
+        "requirements": "GitHub Code Security or Advanced Security, admin enablement and Copilot billing method",
+        "billing": "Code Security AI Credits and GitHub Actions minutes"
       },
       "technical_details_zh": {
         "可用性": "Public Preview",
         "读取路径": "agentic autofix 生成修复前读取现有仓库记忆",
         "写入路径": "成功修复方式保存为 Copilot Memory",
         "使用方": "agentic autofix、Copilot code review 与 Copilot cloud agent",
-        "证据边界": "尚无公开的接受率、回归或误报指标"
+        "证据边界": "尚无公开的接受率、回归或误报指标",
+        "状态": "GA",
+        "流程": "浏览仓库、生成补丁、重跑 CodeQL、迭代并打开 draft PR",
+        "范围": "一个默认分支 alert，或一个 PR 关联的最多 25 个 alert；支持 REST API",
+        "条件": "GitHub Code Security 或 Advanced Security、管理员启用、Copilot 计费方式",
+        "计费": "Code Security AI Credits 与 GitHub Actions 分钟"
       },
       "tags": [
         "github-copilot",
@@ -152,7 +163,8 @@
       "event_fingerprint": "github-agentic-autofix-copilot-memory",
       "source_ids": [
         "src-2653f5794fb9985f",
-        "src-772a8c6a7cc04043"
+        "src-772a8c6a7cc04043",
+        "src-449b1014bc1499c1"
       ],
       "project_ids": [
         "github-copilot"
@@ -175,6 +187,19 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260925-02-agentic-autofix-ga-evidence",
+          "claim_zh": "GitHub 的 agentic autofix 已 GA，可探索仓库、生成修复、重跑 CodeQL 并迭代后打开 draft PR。",
+          "claim_en": "GitHub agentic autofix is GA and can explore a repository, generate a fix, rerun CodeQL, iterate and open a draft PR.",
+          "source_ids": [
+            "src-449b1014bc1499c1"
+          ],
+          "event_ids": [
+            "ev-20260925-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -189,8 +214,32 @@
             "ev-20260925-02-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260925-02-agentic-autofix-ga",
+          "kind": "update",
+          "occurred_at": "2026-10-15",
+          "discovered_at": "2026-10-15T16:00:25Z",
+          "summary_zh": "Agentic autofix 从 public preview 进入 GA",
+          "summary_en": "Agentic autofix moves from public preview to GA",
+          "evidence_ids": [
+            "ev-20260925-02-agentic-autofix-ga-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "next_action_zh": "一天内挑 5 个已修复的 CodeQL alert 回放，比较补丁正确性、测试结果、AI Credits 与人工审查时间。",
+      "next_action_en": "Within one day, replay five previously fixed CodeQL alerts and compare patch correctness, tests, AI Credits and human review time.",
+      "short_label_zh": "Agentic autofix",
+      "short_label_en": "Agentic autofix",
+      "editorial_pick": {
+        "reason_zh": "GitHub 的 agentic autofix 已 GA，可探索仓库、生成修复、重跑 CodeQL 并迭代后打开 draft PR。",
+        "reason_en": "GitHub agentic autofix is GA and can explore a repository, generate a fix, rerun CodeQL, iterate and open a draft PR.",
+        "source_ids": [
+          "src-449b1014bc1499c1"
+        ]
+      }
     }
   ]
 }

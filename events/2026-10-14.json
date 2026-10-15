@@ -7,7 +7,10 @@
       "title": "Third Moment reports running 10,000 agents for multi-day research",
       "title_zh": "Third Moment 披露万级 agent 连续运行多日",
       "category": "ai-agent",
-      "organization": ["Third Moment Research","OpenAI"],
+      "organization": [
+        "Third Moment Research",
+        "OpenAI"
+      ],
       "published_at": "2026-10-14T07:00:00Z",
       "first_seen_at": "2026-10-14T15:57:53Z",
       "last_updated_at": "2026-10-14T07:00:00Z",
@@ -20,9 +23,28 @@
       "why_it_matters": "This is a concrete account of long-running agent operations at unusually high scale, including supervision rather than only model quality. It is useful as an architecture signal, but teams should not generalize the reported throughput or optimization gains without workload-level evidence.",
       "why_it_matters_en": "This is a concrete account of long-running agent operations at unusually high scale, including supervision rather than only model quality. It is useful as an architecture signal, but teams should not generalize the reported throughput or optimization gains without workload-level evidence.",
       "why_it_matters_zh": "对设计长时 agent 系统的人来说，这个案例给出了异常大规模下的运行与监督方式，而不只是模型效果。但缺少 workload 级证据，不能把其吞吐和优化幅度直接外推到别的项目。",
-      "technical_details": {"reported_scale":"up to 10,000 concurrent agents, 36-48 hour sessions and about one trillion OpenAI tokens per day","worker":"Codex in Docker","supervisor":"outer GPT-6 Sol and GPT-6.1 Sol agents retry, terminate or escalate stalled work","reported_optimization":"customer says Codex identified cache and memory packing that reduced one backtest from about three hours to 3-5 minutes","evidence_limit":"vendor-hosted customer story; no raw telemetry, cost breakdown or independent verification","time_basis":"OpenAI RSS published timestamp 2026-10-14T07:00:00Z"},
-      "technical_details_zh": {"披露规模":"最多 1 万个并发 agent，单次 36 至 48 小时，每天约 1 万亿 OpenAI token","worker":"Docker 内的 Codex","监督层":"外层 GPT-6 Sol 与 GPT-6.1 Sol agent 负责重试、终止或升级卡住的工作","披露优化":"客户称 Codex 找到 cache 与 memory packing 优化，把一次 backtest 从约三小时缩短到 3 至 5 分钟","证据限制":"厂商托管的客户案例；没有原始遥测、成本拆分或独立验证","时间依据":"OpenAI RSS 发布时间戳 2026-10-14T07:00:00Z"},
-      "tags": ["long-running-agents","supervision","codex","quant-research"],
+      "technical_details": {
+        "reported_scale": "up to 10,000 concurrent agents, 36-48 hour sessions and about one trillion OpenAI tokens per day",
+        "worker": "Codex in Docker",
+        "supervisor": "outer GPT-6 Sol and GPT-6.1 Sol agents retry, terminate or escalate stalled work",
+        "reported_optimization": "customer says Codex identified cache and memory packing that reduced one backtest from about three hours to 3-5 minutes",
+        "evidence_limit": "vendor-hosted customer story; no raw telemetry, cost breakdown or independent verification",
+        "time_basis": "OpenAI RSS published timestamp 2026-10-14T07:00:00Z"
+      },
+      "technical_details_zh": {
+        "披露规模": "最多 1 万个并发 agent，单次 36 至 48 小时，每天约 1 万亿 OpenAI token",
+        "worker": "Docker 内的 Codex",
+        "监督层": "外层 GPT-6 Sol 与 GPT-6.1 Sol agent 负责重试、终止或升级卡住的工作",
+        "披露优化": "客户称 Codex 找到 cache 与 memory packing 优化，把一次 backtest 从约三小时缩短到 3 至 5 分钟",
+        "证据限制": "厂商托管的客户案例；没有原始遥测、成本拆分或独立验证",
+        "时间依据": "OpenAI RSS 发布时间戳 2026-10-14T07:00:00Z"
+      },
+      "tags": [
+        "long-running-agents",
+        "supervision",
+        "codex",
+        "quant-research"
+      ],
       "technical_impact": 3,
       "engineering_value": 4,
       "adoption_signal": 4,
@@ -35,19 +57,56 @@
       "short_label_en": "Third Moment Agents",
       "next_action_zh": "等公开任务级成功率、成本和故障恢复遥测后，再把这套监督架构用于容量规划。",
       "next_action_en": "Wait for task-level success, cost and recovery telemetry before using this supervision architecture for capacity planning.",
-      "source_ids": ["src-ef460bb7405cc35f"],
-      "project_ids": ["third-moment-agent-system"],
-      "scenario_ids": ["agents","research"],
+      "source_ids": [
+        "src-ef460bb7405cc35f"
+      ],
+      "project_ids": [
+        "third-moment-agent-system"
+      ],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
       "evidence_stage": "verified",
-      "evidence": [{"id":"ev-20261014-01-customer-evidence","claim_zh":"OpenAI 客户案例记录 Third Moment 披露的并发规模、运行时长、token 用量与监督架构；这些运行结果没有独立验证。","claim_en":"OpenAI's customer story records Third Moment's reported concurrency, duration, token use and supervision architecture; the operating results are not independently verified.","source_ids":["src-ef460bb7405cc35f"],"event_ids":["ev-20261014-01"],"relation":"support","verification":"verified-publication; operational claims are customer-reported"}],
-      "changes": [{"id":"ev-20261014-01-published","kind":"new","occurred_at":"2026-10-14T07:00:00Z","discovered_at":"2026-10-14T15:57:53Z","summary_zh":"Third Moment 披露万级长时 agent 系统与外层监督架构。","summary_en":"Third Moment reports a 10,000-agent long-running system with outer-loop supervision.","evidence_ids":["ev-20261014-01-customer-evidence"],"historical":false,"importance":"major"}]
+      "evidence": [
+        {
+          "id": "ev-20261014-01-customer-evidence",
+          "claim_zh": "OpenAI 客户案例记录 Third Moment 披露的并发规模、运行时长、token 用量与监督架构；这些运行结果没有独立验证。",
+          "claim_en": "OpenAI's customer story records Third Moment's reported concurrency, duration, token use and supervision architecture; the operating results are not independently verified.",
+          "source_ids": [
+            "src-ef460bb7405cc35f"
+          ],
+          "event_ids": [
+            "ev-20261014-01"
+          ],
+          "relation": "support",
+          "verification": "verified-publication; operational claims are customer-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261014-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-14T07:00:00Z",
+          "discovered_at": "2026-10-14T15:57:53Z",
+          "summary_zh": "Third Moment 披露万级长时 agent 系统与外层监督架构。",
+          "summary_en": "Third Moment reports a 10,000-agent long-running system with outer-loop supervision.",
+          "evidence_ids": [
+            "ev-20261014-01-customer-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "event_id": "ev-20261014-02",
       "title": "OpenAI schedules retirement for GPT-4o and GPT-4.1 API snapshots",
       "title_zh": "OpenAI 将停用一批 GPT-4o 与 GPT-4.1 API snapshot",
       "category": "foundation-model",
-      "organization": ["OpenAI"],
+      "organization": [
+        "OpenAI"
+      ],
       "published_at": "2026-10-14",
       "first_seen_at": "2026-10-14T15:57:53Z",
       "last_updated_at": "2026-10-14T15:57:53Z",
@@ -60,9 +119,28 @@
       "why_it_matters": "Production users have a fixed migration deadline that can affect behavior, latency, price and fine-tuned assets. Inventory exact model IDs now and validate the replacement on representative evaluations rather than relying on alias-level assumptions.",
       "why_it_matters_en": "Production users have a fixed migration deadline that can affect behavior, latency, price and fine-tuned assets. Inventory exact model IDs now and validate the replacement on representative evaluations rather than relying on alias-level assumptions.",
       "why_it_matters_zh": "对生产环境用户来说，固定迁移期限会影响行为、延迟、价格和微调资产。现在就应盘点精确 model ID，并在代表性评测上验证替代模型，不能只按 alias 猜测影响。",
-      "technical_details": {"stage":"scheduled deprecation; affected snapshots remain callable at review time","notification_date":"2026-10-14","shutdown_date":"2027-01-14","affected_families":"named GPT-4o, GPT-4o mini and GPT-4.1 snapshots plus fine-tuned variants listed on the deprecations page","recommended_replacement":"gpt-6-luna","time_basis":"official page gives the date only; observed Last-Modified was 2026-10-14T15:25:49Z, but that header does not prove the announcement hour"},
-      "technical_details_zh": {"阶段":"计划停用；核验时受影响 snapshot 仍可调用","通知日期":"2026-10-14","停用日期":"2027-01-14","影响范围":"deprecations 页面列出的 GPT-4o、GPT-4o mini 与 GPT-4.1 指定 snapshot 及其微调版本","建议替代":"gpt-6-luna","时间依据":"官方页面只给日期；观察到 Last-Modified 为 2026-10-14T15:25:49Z，但该 header 不能证明公告小时"},
-      "tags": ["api-deprecation","gpt-4o","gpt-4.1","migration"],
+      "technical_details": {
+        "stage": "scheduled deprecation; affected snapshots remain callable at review time",
+        "notification_date": "2026-10-14",
+        "shutdown_date": "2027-01-14",
+        "affected_families": "named GPT-4o, GPT-4o mini and GPT-4.1 snapshots plus fine-tuned variants listed on the deprecations page",
+        "recommended_replacement": "gpt-6-luna",
+        "time_basis": "official page gives the date only; observed Last-Modified was 2026-10-14T15:25:49Z, but that header does not prove the announcement hour"
+      },
+      "technical_details_zh": {
+        "阶段": "计划停用；核验时受影响 snapshot 仍可调用",
+        "通知日期": "2026-10-14",
+        "停用日期": "2027-01-14",
+        "影响范围": "deprecations 页面列出的 GPT-4o、GPT-4o mini 与 GPT-4.1 指定 snapshot 及其微调版本",
+        "建议替代": "gpt-6-luna",
+        "时间依据": "官方页面只给日期；观察到 Last-Modified 为 2026-10-14T15:25:49Z，但该 header 不能证明公告小时"
+      },
+      "tags": [
+        "api-deprecation",
+        "gpt-4o",
+        "gpt-4.1",
+        "migration"
+      ],
       "technical_impact": 2,
       "engineering_value": 5,
       "adoption_signal": 5,
@@ -75,12 +153,163 @@
       "short_label_en": "GPT-4 retirement",
       "next_action_zh": "盘点受影响的精确 model ID 与微调资产，用代表性评测验证 gpt-6-luna，并在 2027-01-14 前完成迁移。",
       "next_action_en": "Inventory affected model IDs and fine-tunes, evaluate gpt-6-luna on representative tests and complete migration before 2027-01-14.",
-      "source_ids": ["src-bab0e18b2802152d"],
-      "project_ids": ["openai-api-model-lifecycle"],
-      "scenario_ids": ["models"],
+      "source_ids": [
+        "src-bab0e18b2802152d"
+      ],
+      "project_ids": [
+        "openai-api-model-lifecycle"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
       "evidence_stage": "verified",
-      "evidence": [{"id":"ev-20261014-02-deprecation-evidence","claim_zh":"OpenAI 官方 deprecations 页面确认通知日期、受影响 snapshot、停用日期与建议替代模型；页面没有可靠的小时级公告时间。","claim_en":"OpenAI's official deprecations page confirms the notification date, affected snapshots, shutdown date and recommended replacement; it does not provide a reliable announcement hour.","source_ids":["src-bab0e18b2802152d"],"event_ids":["ev-20261014-02"],"relation":"support","verification":"verified-primary-source"}],
-      "changes": [{"id":"ev-20261014-02-announced","kind":"new","occurred_at":"2026-10-14","discovered_at":"2026-10-14T15:57:53Z","summary_zh":"OpenAI 为一批 GPT-4o 与 GPT-4.1 API snapshot 设定停用日期。","summary_en":"OpenAI sets a retirement date for named GPT-4o and GPT-4.1 API snapshots.","evidence_ids":["ev-20261014-02-deprecation-evidence"],"historical":false,"importance":"major"}]
+      "evidence": [
+        {
+          "id": "ev-20261014-02-deprecation-evidence",
+          "claim_zh": "OpenAI 官方 deprecations 页面确认通知日期、受影响 snapshot、停用日期与建议替代模型；页面没有可靠的小时级公告时间。",
+          "claim_en": "OpenAI's official deprecations page confirms the notification date, affected snapshots, shutdown date and recommended replacement; it does not provide a reliable announcement hour.",
+          "source_ids": [
+            "src-bab0e18b2802152d"
+          ],
+          "event_ids": [
+            "ev-20261014-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261014-02-announced",
+          "kind": "new",
+          "occurred_at": "2026-10-14",
+          "discovered_at": "2026-10-14T15:57:53Z",
+          "summary_zh": "OpenAI 为一批 GPT-4o 与 GPT-4.1 API snapshot 设定停用日期。",
+          "summary_en": "OpenAI sets a retirement date for named GPT-4o and GPT-4.1 API snapshots.",
+          "evidence_ids": [
+            "ev-20261014-02-deprecation-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261014-03",
+      "title": "Ai2 releases HiRO-ACEv2 for kilometer-scale climate emulation",
+      "title_zh": "Ai2 发布公里级气候模拟模型 HiRO-ACEv2",
+      "category": "research",
+      "organization": [
+        "Allen Institute for AI"
+      ],
+      "published_at": "2026-10-14T16:12:42Z",
+      "source_type": "research_blog",
+      "primary_source": "https://huggingface.co/blog/allenai/hiro-acev2",
+      "summary_zh": "Ai2 发布 HiRO-ACEv2 模型、教程和示例，用 100 公里分辨率的 ACE 全球模拟生成 3 公里天气场。作者称它能处理降水、风和气压，包括极端事件，并把一年全球模拟的成本降到高分辨率物理模型的大约三百分之一。模型只适用于按 X-SHiELD 调过的 ACE 输入，不能直接模拟更暖未来或 ERA5 历史气候。",
+      "summary_en": "Ai2 released the HiRO-ACEv2 model, tutorials and examples for turning 100-kilometer ACE global simulations into 3-kilometer weather fields. The authors say it handles precipitation, wind and pressure, including extremes, at roughly one-three-hundredth the cost of the high-resolution physical model. It only works with ACE tuned to X-SHiELD and cannot directly simulate warmer futures or ERA5 historical climate.",
+      "why_it_matters_zh": "对气候基础设施团队来说，这说明生成式降尺度开始覆盖多变量和极端事件，而不只是做一张更清晰的图。适用域很窄，作者结果也未独立复现，因此只能在相同 X-SHiELD 条件下试验。",
+      "why_it_matters_en": "For climate-infrastructure teams, generative downscaling is moving beyond sharper images toward multivariable and extreme-event behavior. The domain is narrow and results are not independently reproduced, so trials should stay within the same X-SHiELD conditions.",
+      "technical_details": {
+        "pipeline": "ACE at roughly 100 km to HiROv2 at 3 km",
+        "variables": "precipitation, wind and pressure",
+        "author_results": "statistics within 3% of X-SHiELD even near one-in-a-million points; roughly 1/300th cost",
+        "artifacts": "public model, tutorials and examples",
+        "limits": "requires ACE tuned to X-SHiELD; not suitable for warmer-future or ERA5 historical climate; hurricane-eye winds and pressure remain asymmetric",
+        "time_basis": "Hugging Face feed timestamp 2026-10-14T16:12:42Z"
+      },
+      "technical_details_zh": {
+        "流水线": "约 100 公里的 ACE 输入，生成 3 公里 HiROv2 输出",
+        "变量": "降水、风和气压",
+        "作者结果": "即使接近百万分之一极端点，统计量也在 X-SHiELD 的 3% 内；成本约为三百分之一",
+        "公开材料": "模型、教程与示例",
+        "限制": "要求针对 X-SHiELD 调整的 ACE；不能用于更暖未来或 ERA5 历史气候；飓风眼附近风和气压仍偏斜",
+        "时间依据": "Hugging Face feed 时间为 2026-10-14T16:12:42Z"
+      },
+      "tags": [
+        "hiro-acev2",
+        "climate",
+        "downscaling",
+        "extreme-events",
+        "open-model"
+      ],
+      "scores": [
+        3,
+        3,
+        1,
+        2,
+        3,
+        3
+      ],
+      "recommendation": "TRIAL",
+      "event_fingerprint": "ai2-hiro-acev2-climate-emulator",
+      "short_label_zh": "HiRO-ACEv2",
+      "short_label_en": "HiRO-ACEv2",
+      "next_action_zh": "一天内用公开教程跑一个 X-SHiELD 样本，对比极端分位数、空间结构、耗时与显存。",
+      "next_action_en": "Within one day, run one public X-SHiELD example and compare extreme quantiles, spatial structure, runtime and memory.",
+      "source_ids": [
+        "src-504a28fcb44d1a3d",
+        "src-f620cab28c6096e9"
+      ],
+      "project_ids": [
+        "hiro-acev2"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261014-03-evidence-release",
+          "claim_zh": "Ai2 公开 HiRO-ACEv2 模型和教程，并报告 X-SHiELD 条件下的成本与极端事件结果。",
+          "claim_en": "Ai2 published the HiRO-ACEv2 model and tutorials with X-SHiELD cost and extreme-event results.",
+          "source_ids": [
+            "src-504a28fcb44d1a3d",
+            "src-f620cab28c6096e9"
+          ],
+          "event_ids": [
+            "ev-20261014-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "change_id": "ev-20261014-03-published",
+      "first_seen_at": "2026-10-15T16:00:25Z",
+      "last_updated_at": "2026-10-15T16:00:25Z",
+      "secondary_sources": [],
+      "summary": "Ai2 released the HiRO-ACEv2 model, tutorials and examples for turning 100-kilometer ACE global simulations into 3-kilometer weather fields. The authors say it handles precipitation, wind and pressure, including extremes, at roughly one-three-hundredth the cost of the high-resolution physical model. It only works with ACE tuned to X-SHiELD and cannot directly simulate warmer futures or ERA5 historical climate.",
+      "why_it_matters": "For climate-infrastructure teams, generative downscaling is moving beyond sharper images toward multivariable and extreme-event behavior. The domain is narrow and results are not independently reproduced, so trials should stay within the same X-SHiELD conditions.",
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "record_origin": "incremental-scan",
+      "editorial_pick": {
+        "reason_zh": "对气候基础设施团队来说，这说明生成式降尺度开始覆盖多变量和极端事件，而不只是做一张更清晰的图。适用域很窄，作者结果也未独立复现，因此只能在相同 X-SHiELD 条件下试验。",
+        "reason_en": "For climate-infrastructure teams, generative downscaling is moving beyond sharper images toward multivariable and extreme-event behavior. The domain is narrow and results are not independently reproduced, so trials should stay within the same X-SHiELD conditions.",
+        "source_ids": [
+          "src-504a28fcb44d1a3d",
+          "src-f620cab28c6096e9"
+        ]
+      },
+      "changes": [
+        {
+          "id": "ev-20261014-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-14T16:12:42Z",
+          "discovered_at": "2026-10-15T16:00:25Z",
+          "summary_zh": "Ai2 发布公里级气候模拟模型 HiRO-ACEv2",
+          "summary_en": "Ai2 releases HiRO-ACEv2 for kilometer-scale climate emulation",
+          "evidence_ids": [
+            "ev-20261014-03-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

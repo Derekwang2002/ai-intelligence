@@ -1,0 +1,233 @@
+{
+  "date": "2026-10-15",
+  "provenance": "Incremental scan 2026-10-15T16:00:25Z",
+  "events": [
+    {
+      "event_id": "ev-20261015-01",
+      "title": "Mistral releases four open-weight Timestral forecasting models",
+      "title_zh": "Mistral 发布四款开放权重 Timestral 预测模型",
+      "category": "foundation-model",
+      "organization": [
+        "Mistral"
+      ],
+      "published_at": "2026-10-15",
+      "source_type": "official_blog",
+      "primary_source": "https://mistral.ai/news/timestral/",
+      "summary_zh": "Mistral 发布 5M、28M、123M 和 209M 四款 Timestral 时间序列模型，权重可下载。它们用一个 checkpoint 处理单变量和多变量概率预测，并支持历史协变量与已知未来协变量。209M 的公开卡片给出 32,768 步上下文、1,024 步预测跨度和 21 个分位数。GIFT-Eval、TIME 与 fev-bench 排名是厂商提交结果，尚无独立复测。",
+      "summary_en": "Mistral released four downloadable Timestral time-series models at 5M, 28M, 123M and 209M parameters. One checkpoint handles univariate and multivariate probabilistic forecasts with past and known-future covariates. The public 209M card lists 32,768 time steps of context, a 1,024-step forecast horizon and 21 quantiles. Its GIFT-Eval, TIME and fev-bench rankings are vendor-submitted and not independently reproduced.",
+      "why_it_matters_zh": "对做容量、需求或异常预测的工程团队来说，这提供了一个体量很小、能在 CPU 或 GPU 上运行的统一基线。公开权重降低了试验门槛，但榜单优势和修改版 MIT 条款都应在采用前核对。",
+      "why_it_matters_en": "For engineers building capacity, demand or anomaly forecasts, Timestral provides a small unified baseline that can run on CPU or GPU. Open weights lower the trial barrier, but leaderboard claims and the modified MIT terms still need local review.",
+      "technical_details": {
+        "models": "5M, 28M, 123M, 209M parameters",
+        "context": "32,768 time steps; 1,024-step forecast horizon on 209M",
+        "output": "21 quantiles for probabilistic forecasting",
+        "inputs": "univariate or multivariate series; past and known-future covariates",
+        "benchmarks": "Mistral reports first place for 209M on GIFT-Eval, TIME and fev-bench; no independent reproduction in this run",
+        "availability": "downloadable Hugging Face weights; CPU and GPU inference",
+        "license": "modified MIT with third-party-rights clause",
+        "time_basis": "official announcement provides date only; no hourly publication time"
+      },
+      "technical_details_zh": {
+        "模型": "5M、28M、123M、209M 参数",
+        "上下文": "209M 为 32,768 个时间步；预测跨度 1,024 步",
+        "输出": "21 个分位数，用于概率预测",
+        "输入": "单变量或多变量；历史协变量与已知未来协变量",
+        "评测": "Mistral 称 209M 在 GIFT-Eval、TIME、fev-bench 排名第一；本轮没有独立复测",
+        "可用性": "Hugging Face 权重可下载；支持 CPU 与 GPU",
+        "许可": "修改版 MIT，含第三方权利条款",
+        "时间依据": "官方公告只有日期，没有小时级发布时间"
+      },
+      "tags": [
+        "timestral",
+        "time-series",
+        "forecasting",
+        "open-weights",
+        "probabilistic-forecasting"
+      ],
+      "scores": [
+        3,
+        4,
+        2,
+        3,
+        2,
+        2
+      ],
+      "recommendation": "TRIAL",
+      "event_fingerprint": "mistral-timestral-open-weight-forecasting-models",
+      "short_label_zh": "Timestral",
+      "short_label_en": "Timestral",
+      "next_action_zh": "一天内用同一组留出时间序列，对比季节性基线的误差、校准、延迟与内存。",
+      "next_action_en": "Within one day, compare error, calibration, latency and memory against a seasonal baseline on the same held-out series.",
+      "source_ids": [
+        "src-51edf4c643816e6f",
+        "src-966584a0f435221c"
+      ],
+      "project_ids": [
+        "timestral"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261015-01-evidence-release",
+          "claim_zh": "Mistral 发布四款可下载 Timestral 权重，并给出模型规模、预测输入和公开 benchmark 结果。",
+          "claim_en": "Mistral released four downloadable Timestral weights with model sizes, forecasting inputs and public benchmark results.",
+          "source_ids": [
+            "src-51edf4c643816e6f",
+            "src-966584a0f435221c"
+          ],
+          "event_ids": [
+            "ev-20261015-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "change_id": "ev-20261015-01-published",
+      "first_seen_at": "2026-10-15T16:00:25Z",
+      "last_updated_at": "2026-10-15T16:00:25Z",
+      "secondary_sources": [],
+      "summary": "Mistral released four downloadable Timestral time-series models at 5M, 28M, 123M and 209M parameters. One checkpoint handles univariate and multivariate probabilistic forecasts with past and known-future covariates. The public 209M card lists 32,768 time steps of context, a 1,024-step forecast horizon and 21 quantiles. Its GIFT-Eval, TIME and fev-bench rankings are vendor-submitted and not independently reproduced.",
+      "why_it_matters": "For engineers building capacity, demand or anomaly forecasts, Timestral provides a small unified baseline that can run on CPU or GPU. Open weights lower the trial barrier, but leaderboard claims and the modified MIT terms still need local review.",
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "evidence_stage": "verified",
+      "record_origin": "incremental-scan",
+      "editorial_pick": {
+        "reason_zh": "对做容量、需求或异常预测的工程团队来说，这提供了一个体量很小、能在 CPU 或 GPU 上运行的统一基线。公开权重降低了试验门槛，但榜单优势和修改版 MIT 条款都应在采用前核对。",
+        "reason_en": "For engineers building capacity, demand or anomaly forecasts, Timestral provides a small unified baseline that can run on CPU or GPU. Open weights lower the trial barrier, but leaderboard claims and the modified MIT terms still need local review.",
+        "source_ids": [
+          "src-51edf4c643816e6f",
+          "src-966584a0f435221c"
+        ]
+      },
+      "changes": [
+        {
+          "id": "ev-20261015-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-15",
+          "discovered_at": "2026-10-15T16:00:25Z",
+          "summary_zh": "Mistral 发布四款开放权重 Timestral 预测模型",
+          "summary_en": "Mistral releases four open-weight Timestral forecasting models",
+          "evidence_ids": [
+            "ev-20261015-01-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261015-02",
+      "title": "Cloudflare and OpenAI report early results from a web-discovery pilot",
+      "title_zh": "Cloudflare 与 OpenAI 公布网页发现试点结果",
+      "category": "ai-engineering",
+      "organization": [
+        "Cloudflare",
+        "OpenAI"
+      ],
+      "published_at": "2026-10-15T13:00:00Z",
+      "first_seen_at": "2026-10-15T16:00:25Z",
+      "last_updated_at": "2026-10-15T16:00:25Z",
+      "source_type": "official_blog",
+      "primary_source": "https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/",
+      "secondary_sources": [],
+      "summary": "Cloudflare and OpenAI reported early results from a research pilot that uses freshness, change, redirect, duplicate and potentially harmful-page signals to improve web discovery. A cohort covering about 1% of Cloudflare’s network helped OpenAI identify hundreds of millions of previously unknown pages. OpenAI still decides relevance and ranking, and discovery does not grant crawl permission. There is no public API or generally available product.",
+      "why_it_matters": "For teams building web search, RAG or research agents, change signals could reduce repeated crawling and improve freshness. The scale figures are jointly self-reported, downstream quality is not yet measured, and the pilot cannot be adopted today, so the right action is to watch for a public interface and independent outcome data.",
+      "summary_zh": "Cloudflare 与 OpenAI 公布一项研究试点的早期结果：用新鲜度、内容变化、重定向、重复页面和潜在有害页面信号改善网页发现。覆盖约 1% Cloudflare 网络的样本帮助 OpenAI 找到数亿个此前未知页面。OpenAI 仍独立决定相关性与排序，发现信号也不等于获得抓取许可。目前没有公开 API 或 GA 产品。",
+      "summary_en": "Cloudflare and OpenAI reported early results from a research pilot that uses freshness, change, redirect, duplicate and potentially harmful-page signals to improve web discovery. A cohort covering about 1% of Cloudflare’s network helped OpenAI identify hundreds of millions of previously unknown pages. OpenAI still decides relevance and ranking, and discovery does not grant crawl permission. There is no public API or generally available product.",
+      "why_it_matters_zh": "对做网页搜索、RAG 或研究型 agent 的团队来说，变化信号可以减少重复抓取并改善新鲜度。规模数据由双方自报，下游质量尚未测量，当前也无法直接采用，因此应等待公开接口和独立结果。",
+      "why_it_matters_en": "For teams building web search, RAG or research agents, change signals could reduce repeated crawling and improve freshness. The scale figures are jointly self-reported, downstream quality is not yet measured, and the pilot cannot be adopted today, so the right action is to watch for a public interface and independent outcome data.",
+      "technical_details": {
+        "stage": "research pilot; not GA and no public API",
+        "cohort": "about 1% of Cloudflare network",
+        "signals": "freshness, content changes, bad URLs, redirects, duplicates and potentially harmful pages",
+        "reported_result": "jointly reported discovery of hundreds of millions of previously unknown pages",
+        "data_boundary": "web metadata for discovery; post says page content is not shared for model training and discovery does not grant crawl permission",
+        "time_basis": "official page metadata 2026-10-15T13:00:00Z"
+      },
+      "technical_details_zh": {
+        "阶段": "研究试点；不是 GA，也没有公开 API",
+        "样本": "约 1% 的 Cloudflare 网络",
+        "信号": "新鲜度、内容变化、坏链接、重定向、重复页面与潜在有害页面",
+        "报告结果": "双方称发现数亿个此前未知页面",
+        "数据边界": "使用网页元数据做发现；文章称不为模型训练共享页面内容，发现也不授予抓取许可",
+        "时间依据": "官方页面元数据为 2026-10-15T13:00:00Z"
+      },
+      "tags": [
+        "web-discovery",
+        "rag",
+        "crawling",
+        "freshness",
+        "search"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "cloudflare-openai-web-discovery-pilot-results",
+      "short_label_zh": "Web Discovery Pilot",
+      "short_label_en": "Web Discovery Pilot",
+      "next_action_zh": "等待公开 API、下游质量指标或独立发布者结果后再评估接入。",
+      "next_action_en": "Wait for a public API, downstream quality metrics or independent publisher outcomes before evaluating integration.",
+      "source_ids": [
+        "src-d05f789212e75b03"
+      ],
+      "project_ids": [
+        "cloudflare-openai-web-discovery"
+      ],
+      "scenario_ids": [
+        "search",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "incremental-scan",
+      "evidence": [
+        {
+          "id": "ev-20261015-02-evidence-pilot",
+          "claim_zh": "Cloudflare 与 OpenAI 公布研究试点，称变化信号帮助发现数亿个未知页面，但没有公开 API 或下游质量结果。",
+          "claim_en": "Cloudflare and OpenAI reported that change signals helped a research pilot discover hundreds of millions of unknown pages, without a public API or downstream quality results.",
+          "source_ids": [
+            "src-d05f789212e75b03"
+          ],
+          "event_ids": [
+            "ev-20261015-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261015-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-15T13:00:00Z",
+          "discovered_at": "2026-10-15T16:00:25Z",
+          "summary_zh": "Cloudflare 与 OpenAI 公布网页发现试点早期结果",
+          "summary_en": "Cloudflare and OpenAI publish early web-discovery pilot results",
+          "evidence_ids": [
+            "ev-20261015-02-evidence-pilot"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "editorial_pick": {
+        "reason_zh": "网页变化信号可能减少 RAG 和研究型 agent 的重复抓取，但当前只有双方自报的研究试点结果。",
+        "reason_en": "Web change signals could reduce repeated crawling for RAG and research agents, but evidence is limited to jointly reported pilot results.",
+        "source_ids": [
+          "src-d05f789212e75b03"
+        ]
+      }
+    }
+  ]
+}

@@ -646,8 +646,8 @@
     },
     {
       "event_id": "ev-20260902-08",
-      "title": "Meta iterates Muse Spark toward long-horizon agentic coding",
-      "title_zh": "Meta 迭代 Muse Spark：面向长时程 agentic coding",
+      "title": "Meta releases Muse Spark Open for local and hosted inference",
+      "title_zh": "Meta 开放 Muse Spark 权重与推理接入",
       "category": "foundation-model",
       "organization": [
         "Meta",
@@ -655,23 +655,30 @@
       ],
       "published_at": "2026-09-02T00:00:00Z",
       "first_seen_at": "2026-09-05T00:00:21Z",
-      "last_updated_at": "2026-09-05T00:00:21Z",
+      "last_updated_at": "2026-10-15T16:00:25Z",
       "source_type": "official_blog",
       "primary_source": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
-      "secondary_sources": [],
-      "summary": "Meta Superintelligence Labs shipped Muse Spark 1.3 (9/2), an agentic-coding iteration of the Muse Spark line: better long-horizon task sustainment, generating its own context from messy or conflicting sources, proactively correcting plan gaps, and self-tracking learnings; collaboration behaviors (clarifying questions on ambiguous prompts, asking for help when stuck, confirming before consequential actions); fewer dropped constraints on long-form instructions; better routing inside messy single-threaded contexts including interruptions; improved self-awareness of knowledge limits ('hitting hurdles rather than hallucinating outcomes'); and cleaner coding output with fewer unnecessary turns. Meta engineer comparisons vs 1.2: ~20% fewer tool calls and ~25% fewer tokens. Available in Muse Code and the Meta Model API (max-reasoning variant live on both); a Muse Spark open-weights release is teased but undated.",
-      "why_it_matters": "The US-lab frontier coding-agent line is iterating on agent-efficiency economics (~20% fewer tool calls, ~25% fewer tokens is a direct cost cut at fixed capability), and the open-weights tease matters for the open-weight competitive landscape (trend #1's US supply side). Beyond that, the collaboration behavior set — ask, confirm-before-consequence, admit limits — is becoming table stakes for deployed agents, and it is useful as a checklist when specifying your own agent behavior.",
-      "summary_zh": "Meta 超级智能实验室发布 Muse Spark 1.3（9/2），Muse Spark 线的 agentic coding 迭代：长时程任务续航更好、能从杂乱或冲突来源自行生成上下文、主动修补计划缺口、自记录学习；协作行为（对模糊提示追问、卡住时求助、后果性动作前确认）；长指令少丢约束；杂波单线程上下文（含打断）内路由更好；对自身知识边界更自省（「撞到墙而不是编造结果」）；编码输出更干净、少绕弯。Meta 工程师对比 1.2：工具调用少约 20%、token 少约 25%。已在 Muse Code 与 Meta Model API 可用（两平台均有 max reasoning 变体）；预告了 Muse Spark 开源权重发布但未给日期。",
-      "summary_en": "Meta Superintelligence Labs shipped Muse Spark 1.3 (9/2), an agentic-coding iteration of the Muse Spark line: better long-horizon task sustainment, generating its own context from messy or conflicting sources, proactively correcting plan gaps, and self-tracking learnings; collaboration behaviors (clarifying questions on ambiguous prompts, asking for help when stuck, confirming before consequential actions); fewer dropped constraints on long-form instructions; better routing inside messy single-threaded contexts including interruptions; improved self-awareness of knowledge limits ('hitting hurdles rather than hallucinating outcomes'); and cleaner coding output with fewer unnecessary turns. Meta engineer comparisons vs 1.2: ~20% fewer tool calls and ~25% fewer tokens. Available in Muse Code and the Meta Model API (max-reasoning variant live on both); a Muse Spark open-weights release is teased but undated.",
-      "why_it_matters_zh": "美国实验室的前沿 coding agent 线正在 agent 效率经济学上快速迭代（同等能力下工具调用少约 20%、token 少约 25% 就是直接降本），而开源权重预告对开源竞争格局（趋势 #1 的美国供给侧）有意义。此外这套协作行为集——追问、后果前确认、承认局限——正在成为已部署 agent 的标配，也可以当作给自己 agent 定行为规格时的清单。",
-      "why_it_matters_en": "The US-lab frontier coding-agent line is iterating on agent-efficiency economics (~20% fewer tool calls, ~25% fewer tokens is a direct cost cut at fixed capability), and the open-weights tease matters for the open-weight competitive landscape (trend #1's US supply side). Beyond that, the collaboration behavior set — ask, confirm-before-consequence, admit limits — is becoming table stakes for deployed agents, and it is useful as a checklist when specifying your own agent behavior.",
+      "secondary_sources": [
+        "https://huggingface.co/blog/meta-muse-spark-open"
+      ],
+      "summary": "Meta released the gated Muse Spark Open weights, fulfilling the earlier open-weight preview. The 816B-parameter mixture-of-experts model activates 42B parameters per token, accepts text, images, audio and video, and has a one-million-token context window. Reference paths include Hugging Face endpoints, SGLang, vLLM, llama.cpp and oMLX. The custom license requires attribution and a separate agreement for model-as-a-service businesses above $20 million in annual gross revenue.",
+      "why_it_matters": "For coding-agent teams, Muse now moves from a hosted-only option to inspectable weights and multiple deployment paths. The model is still exceptionally large, gated and license-constrained, so a focused endpoint or quantized trial is more realistic than immediate self-hosting.",
+      "summary_zh": "Meta 发布受门控的 Muse Spark Open 权重，兑现此前的开放权重预告。这个 816B 总参数、每 token 激活 42B 参数的 MoE 支持文本、图像、音频和视频输入，并提供 100 万 token 上下文。参考路径包括 Hugging Face endpoint、SGLang、vLLM、llama.cpp 与 oMLX。自定义许可要求署名，年总收入超过 2000 万美元的 MaaS 业务还需另行协议。",
+      "summary_en": "Meta released the gated Muse Spark Open weights, fulfilling the earlier open-weight preview. The 816B-parameter mixture-of-experts model activates 42B parameters per token, accepts text, images, audio and video, and has a one-million-token context window. Reference paths include Hugging Face endpoints, SGLang, vLLM, llama.cpp and oMLX. The custom license requires attribution and a separate agreement for model-as-a-service businesses above $20 million in annual gross revenue.",
+      "why_it_matters_zh": "对 coding agent 团队来说，Muse 从仅托管服务变成可检查权重和多种部署路径。模型仍然极大、需要门控申请且许可受限，先用 endpoint 或量化版本做定向试验，比直接自托管更现实。",
+      "why_it_matters_en": "For coding-agent teams, Muse now moves from a hosted-only option to inspectable weights and multiple deployment paths. The model is still exceptionally large, gated and license-constrained, so a focused endpoint or quantized trial is more realistic than immediate self-hosting.",
       "technical_details": {
         "agentic": "long-horizon sustainment; self-generated context from messy/conflicting sources; proactive plan-gap correction; self-tracked learnings",
         "collaboration": "clarifying questions on ambiguous prompts; requests for help when stuck; confirms before consequential actions",
         "other": "fewer dropped constraints on long-form instructions; multitasking in messy single-threaded contexts incl. interruptions; self-awareness of knowledge limits; cleaner coding, fewer turns",
         "efficiency": "Meta engineer comparisons vs 1.2: ~20% fewer tool calls, ~25% fewer tokens",
         "availability": "Muse Code + Meta Model API (max reasoning variant live); install via curl from dev.meta.ai; open weights teased, no date",
-        "openness": "API/tool access only at release; no weights yet"
+        "openness": "API/tool access only at release; no weights yet",
+        "open_release": "gated Muse-Spark-Open-816B-A42B weights",
+        "architecture": "816B total / 42B active MoE; 1M context",
+        "modalities": "text, image, audio and video input; text output",
+        "deployment": "Hugging Face endpoints, SGLang, vLLM, llama.cpp and oMLX; BF16 reference needs 4x8 H200, NVFP4 one B200 node",
+        "license": "custom Muse Model License; attribution; separate agreement for MaaS businesses above $20M annual gross revenue"
       },
       "technical_details_zh": {
         "agentic": "长时程续航；从杂乱 / 冲突来源自生成上下文；主动修补计划缺口；自记录学习",
@@ -679,7 +686,12 @@
         "其他": "长指令少丢约束；杂波单线程上下文（含打断）路由更好；对知识边界更自省；编码更干净、少绕弯",
         "效率": "Meta 工程师对比 1.2：工具调用少约 20%、token 少约 25%",
         "可用性": "Muse Code + Meta Model API（max reasoning 变体已上）；dev.meta.ai curl 安装；开源权重已预告、无日期",
-        "开放性": "发布时仅 API / 工具访问；尚无权重"
+        "开放性": "发布时仅 API / 工具访问；尚无权重",
+        "开放发布": "受门控的 Muse-Spark-Open-816B-A42B 权重",
+        "架构": "816B 总参数 / 每 token 激活 42B；100 万上下文",
+        "模态": "文本、图像、音频和视频输入；文本输出",
+        "部署": "Hugging Face endpoint、SGLang、vLLM、llama.cpp、oMLX；BF16 参考为 4×8 H200，NVFP4 为一台 B200 节点",
+        "许可": "自定义 Muse Model License；要求署名；年总收入超过 2000 万美元的 MaaS 业务需另行协议"
       },
       "tags": [
         "meta",
@@ -694,12 +706,15 @@
       "maturity": 4,
       "verification_cost": 1,
       "risk": 2,
-      "recommendation": "WATCH",
+      "recommendation": "TRIAL",
       "event_fingerprint": "meta-muse-spark-1-3",
       "source_ids": [
-        "src-0da9cac4e3887c0c"
+        "src-0da9cac4e3887c0c",
+        "src-ff0cf28c5d753057"
       ],
-      "project_ids": [],
+      "project_ids": [
+        "muse-spark"
+      ],
       "scenario_ids": [
         "agents",
         "models",
@@ -720,6 +735,19 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260902-08-muse-spark-open-evidence",
+          "claim_zh": "Meta 公开 816B-A42B 权重、100 万上下文、托管 endpoint 和多种本地运行路径；模型受门控并使用带 MaaS 条件的自定义许可。",
+          "claim_en": "Meta released gated 816B-A42B weights, one-million context, a hosted endpoint and multiple local runtimes under a custom license with MaaS conditions.",
+          "source_ids": [
+            "src-ff0cf28c5d753057"
+          ],
+          "event_ids": [
+            "ev-20260902-08"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -734,8 +762,32 @@
             "ev-20260902-08-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260902-08-muse-spark-open",
+          "kind": "update",
+          "occurred_at": "2026-10-15T00:00:00Z",
+          "discovered_at": "2026-10-15T16:00:25Z",
+          "summary_zh": "Muse Spark 从预告开放权重变为可下载与可调用",
+          "summary_en": "Muse Spark moves from an open-weight preview to downloadable and hosted access",
+          "evidence_ids": [
+            "ev-20260902-08-muse-spark-open-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "next_action_zh": "一天内用托管 endpoint 或量化版本跑一个真实仓库和多模态任务，记录成功率、延迟、成本与许可边界。",
+      "next_action_en": "Within one day, run one real repository and multimodal task through the hosted endpoint or a quantized build, recording success, latency, cost and license boundaries.",
+      "short_label_zh": "Muse Spark Open",
+      "short_label_en": "Muse Spark Open",
+      "editorial_pick": {
+        "reason_zh": "Meta 公开 816B-A42B 权重、100 万上下文、托管 endpoint 和多种本地运行路径；模型受门控并使用带 MaaS 条件的自定义许可。",
+        "reason_en": "Meta released gated 816B-A42B weights, one-million context, a hosted endpoint and multiple local runtimes under a custom license with MaaS conditions.",
+        "source_ids": [
+          "src-ff0cf28c5d753057"
+        ]
+      }
     }
   ]
 }

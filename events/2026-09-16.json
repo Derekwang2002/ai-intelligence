@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260916-01",
-      "title": "GitHub expands AI Scan beyond repositories with CodeQL default setup",
-      "title_zh": "GitHub 扩大 AI Scan 覆盖，取消 CodeQL 前置要求",
+      "title": "GitHub makes AI Scan for pull requests generally available",
+      "title_zh": "GitHub 将 pull request AI Scan 推向 GA",
       "category": "developer-tools",
       "organization": [
         "GitHub",
@@ -13,31 +13,40 @@
       ],
       "published_at": "2026-09-16T13:26:06Z",
       "first_seen_at": "2026-09-16T16:00:47Z",
-      "last_updated_at": "2026-09-16T16:00:47Z",
+      "last_updated_at": "2026-10-15T16:00:25Z",
       "source_type": "release_notes",
       "primary_source": "https://github.blog/changelog/2026-09-16-code-scanning-ai-scan-no-longer-requires-codeql-default-setup/",
       "secondary_sources": [
-        "https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-ai-powered-security-detections"
+        "https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-ai-powered-security-detections",
+        "https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available/"
       ],
-      "summary": "GitHub AI Scan for pull requests no longer requires CodeQL default setup on each repository. Existing organization or enterprise enablement now reaches all eligible repositories under the same permission hierarchy. The feature remains a public preview for organization-owned and personal repositories on github.com. It requires GitHub Advanced Security and does not support GitHub Enterprise Server.",
-      "why_it_matters": "For AppSec teams, this removes a repository-by-repository dependency that limited AI-assisted pull-request scanning coverage. Measure finding quality and review load before broad rollout because preview availability does not establish precision. Existing enterprise policy still controls where the scanner runs.",
-      "summary_zh": "GitHub 的 pull request AI Scan 不再要求每个仓库先启用 CodeQL 默认配置。组织或企业已开启该功能后，同一权限层级下的所有合格仓库都会获得覆盖。该功能仍是 github.com 上面向组织仓库与个人仓库的 public preview。它需要 GitHub Advanced Security，且不支持 GitHub Enterprise Server。",
-      "summary_en": "GitHub AI Scan for pull requests no longer requires CodeQL default setup on each repository. Existing organization or enterprise enablement now reaches all eligible repositories under the same permission hierarchy. The feature remains a public preview for organization-owned and personal repositories on github.com. It requires GitHub Advanced Security and does not support GitHub Enterprise Server.",
-      "why_it_matters_zh": "对 AppSec 团队来说，这移除了逐仓库配置依赖，AI 辅助 pull request 扫描可以更广覆盖。public preview 不代表检测精度已经成熟，全面开启前应量误报、漏报和审查负担。现有企业策略仍决定扫描器在哪些范围运行。",
-      "why_it_matters_en": "For AppSec teams, this removes a repository-by-repository dependency that limited AI-assisted pull-request scanning coverage. Measure finding quality and review load before broad rollout because preview availability does not establish precision. Existing enterprise policy still controls where the scanner runs.",
+      "summary": "GitHub made AI Scan for pull requests generally available. It scans changed code in languages and frameworks outside current CodeQL coverage, including PHP, Shell, Terraform HCL, Dockerfiles, JSP and Blazor. Findings are advisory: they cannot fail the code-scanning check or block a merge, and scans exclude forks and Dependabot pull requests. Public repositories can use it without a Copilot license; private and internal organization repositories require GitHub Code Security or Advanced Security and consume Code Security AI Credits.",
+      "why_it_matters": "For AppSec teams, the scanner is now a supported production option with explicit billing and policy limits. GA does not make the model deterministic or independently validated, so rollout should track false positives, missed findings, credit use and reviewer load.",
+      "summary_zh": "GitHub 将 pull request AI Scan 推向 GA。它检查 CodeQL 当前未覆盖的语言和框架改动，包括 PHP、Shell、Terraform HCL、Dockerfile、JSP 与 Blazor。结果只是建议，不能让 code scanning check 失败或阻止合并；fork 与 Dependabot 的 pull request 不会扫描。公开仓库无需 Copilot 许可，私有和内部组织仓库需要 GitHub Code Security 或 Advanced Security，并消耗 Code Security AI Credits。",
+      "summary_en": "GitHub made AI Scan for pull requests generally available. It scans changed code in languages and frameworks outside current CodeQL coverage, including PHP, Shell, Terraform HCL, Dockerfiles, JSP and Blazor. Findings are advisory: they cannot fail the code-scanning check or block a merge, and scans exclude forks and Dependabot pull requests. Public repositories can use it without a Copilot license; private and internal organization repositories require GitHub Code Security or Advanced Security and consume Code Security AI Credits.",
+      "why_it_matters_zh": "对 AppSec 团队来说，这项能力现在有正式可用范围、计费和策略边界。GA 不代表模型检测具有确定性或已经独立验证，推广时仍要量误报、漏报、AI Credits 和审查负担。",
+      "why_it_matters_en": "For AppSec teams, the scanner is now a supported production option with explicit billing and policy limits. GA does not make the model deterministic or independently validated, so rollout should track false positives, missed findings, credit use and reviewer load.",
       "technical_details": {
-        "status": "public preview",
+        "status": "generally available",
         "scope": "organization-owned and personal repositories on github.com",
         "requirement_removed": "CodeQL default setup per repository",
         "requirements": "GitHub Advanced Security plus code scanning and AI Scan enabled by repository, organization or enterprise policy",
-        "unsupported": "GitHub Enterprise Server"
+        "unsupported": "GitHub Enterprise Server",
+        "coverage": "pull-request changes beyond current CodeQL language and framework coverage",
+        "enforcement": "advisory only; cannot fail checks or block merges",
+        "exclusions": "fork and Dependabot pull requests",
+        "billing": "Code Security AI Credits; public repositories eligible; private/internal organization repositories require Code Security or Advanced Security"
       },
       "technical_details_zh": {
-        "状态": "public preview",
+        "状态": "GA",
         "范围": "github.com 上的组织仓库与个人仓库",
         "移除的要求": "每个仓库的 CodeQL 默认配置",
         "仍需条件": "GitHub Advanced Security，且仓库、组织或企业策略已启用 code scanning 与 AI Scan",
-        "不支持": "GitHub Enterprise Server"
+        "不支持": "GitHub Enterprise Server",
+        "覆盖": "当前 CodeQL 语言和框架覆盖之外的 pull request 变更",
+        "强制能力": "仅建议；不能让检查失败或阻止合并",
+        "排除项": "fork 与 Dependabot pull request",
+        "计费": "消耗 Code Security AI Credits；公开仓库可用；私有/内部组织仓库需 Code Security 或 Advanced Security"
       },
       "tags": [
         "GitHub",
@@ -56,9 +65,12 @@
       "event_fingerprint": "github-ai-scan-without-codeql-default-setup",
       "source_ids": [
         "src-9b9123b78b32ebe5",
-        "src-b018dd47c96507cb"
+        "src-b018dd47c96507cb",
+        "src-3a42b69a6860fcc9"
       ],
-      "project_ids": [],
+      "project_ids": [
+        "github-copilot"
+      ],
       "scenario_ids": [
         "agents"
       ],
@@ -77,6 +89,19 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260916-01-ai-scan-ga-evidence",
+          "claim_zh": "GitHub 将 AI Scan 推向 GA；结果不能阻断合并，公开仓库可用，私有仓库需 Code Security 并消耗 AI Credits。",
+          "claim_en": "GitHub made AI Scan GA; findings cannot block merges, public repositories are eligible, and private use requires Code Security plus AI Credits.",
+          "source_ids": [
+            "src-3a42b69a6860fcc9"
+          ],
+          "event_ids": [
+            "ev-20260916-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -91,8 +116,32 @@
             "ev-20260916-01-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260916-01-ai-scan-ga",
+          "kind": "update",
+          "occurred_at": "2026-10-15T15:04:51Z",
+          "discovered_at": "2026-10-15T16:00:25Z",
+          "summary_zh": "AI Scan 从 public preview 进入 GA，并明确计费与合并限制",
+          "summary_en": "AI Scan reaches GA with explicit billing and merge-control limits",
+          "evidence_ids": [
+            "ev-20260916-01-ai-scan-ga-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "next_action_zh": "一天内在一个仓库开启 AI Scan，对 20 个已知安全改动统计误报、漏报、AI Credits 与审查时间。",
+      "next_action_en": "Within one day, enable AI Scan on one repository and measure false positives, misses, AI Credits and review time across 20 known security changes.",
+      "short_label_zh": "GitHub AI Scan",
+      "short_label_en": "GitHub AI Scan",
+      "editorial_pick": {
+        "reason_zh": "GitHub 将 AI Scan 推向 GA；结果不能阻断合并，公开仓库可用，私有仓库需 Code Security 并消耗 AI Credits。",
+        "reason_en": "GitHub made AI Scan GA; findings cannot block merges, public repositories are eligible, and private use requires Code Security plus AI Credits.",
+        "source_ids": [
+          "src-3a42b69a6860fcc9"
+        ]
+      }
     },
     {
       "event_id": "ev-20260916-02",

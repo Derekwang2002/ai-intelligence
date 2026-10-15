@@ -419,7 +419,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-10-11T16:02:40Z",
+      "last_updated_at": "2026-10-15T16:00:25Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
       "secondary_sources": [
@@ -427,7 +427,8 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.6",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.7",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.0",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.1"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.1",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.2"
       ],
       "summary": "Qwen Code 0.24.4 adds a managed runtime attestation contract, persistent managed tool-execution records and plan-drift reporting. It moves bubblewrap sandboxing to individual tool execution, supports SSH workspaces without a remote daemon, and can cap ACP child heaps. The release also adds encrypted connection profiles and safer QR pairing for remote sessions. It was published inside the retrieval overlap and was absent from the previous index.",
       "why_it_matters": "For teams running coding agents across local, remote and managed workers, a sandbox is only one part of the trust story. Attestation, durable execution records and plan-drift checks make it easier to prove which runtime acted and whether the implementation still matches the approved plan. Trial the controls before relying on them for policy enforcement because the release notes do not yet provide independent security validation.",
@@ -446,7 +447,8 @@
         "update_2026_09_27": "0.24.6 stable declares a v2 execute/status/cancel runtime contract, adds guarded Hosted Runtime foundations, a durable managed-session journal with failover, and reconciliation of UNKNOWN executions from runtime evidence. Permission-hook aggregation now chooses the most restrictive decision. Fresh startup time to typeable is halved and RSS falls 60% in the project benchmark. Stays TRIAL.",
         "update_2026_09_29": "0.24.7 stable makes Managed Runtime sessions workspace-bound, persists local execution receipts, reconciles in-flight work after takeover/reboot, exposes public Session/Turn/task contracts, and adds optional worktree sessions. It also adds a remote desktop node_repl relay, structured memory recall, Landlock fallback, safe concurrent Code Mode calls, and fixes stale-worktree sweeps that could delete untracked or ignored files. Stays TRIAL.",
         "update_2026_10_05": "0.25.0 stable adds local workspace-agent collaboration and A2A sharing, a broker contract, private hosted MCP servers, durable shell results, cold-session restore, file history and undo, concurrent Bash, and Mem0. Recovery and approval fixes cover duplicate side effects, replay gaps and hosted-runtime boundaries. Stays TRIAL.",
-        "update_2026_10_11": "0.25.1 stable records managed-agent parameters, receipts and checkpoints before returning; adds durable background Shell/Monitor and session-based multi-agent work; fixes MCP permission collisions and replay/approval paths."
+        "update_2026_10_11": "0.25.1 stable records managed-agent parameters, receipts and checkpoints before returning; adds durable background Shell/Monitor and session-based multi-agent work; fixes MCP permission collisions and replay/approval paths.",
+        "update_2026_10_15": "0.25.2 stable adds managed-agent Session messaging, durable team-plan approval, Test Failure Explorer, TypeScript Mods and a default-off foreground Shell with mandatory approval. It fixes post-merge worktree settlement, startup false success, cancellation hangs, BOM parsing and recovery paths."
       },
       "technical_details_zh": {
         "版本": "0.24.4 stable",
@@ -459,7 +461,8 @@
         "2026-09-27 更新": "0.24.6 stable 定义 v2 execute/status/cancel 运行时协议，加入带防护的 Hosted Runtime 基础、可故障转移的托管会话持久日志，并根据运行时证据核对 UNKNOWN 执行。多个权限 hook 冲突时现在选择最严格结论。项目 benchmark 中首次启动到可输入时间减半，RSS 降低 60%。维持 TRIAL。",
         "2026-09-29 更新": "0.24.7 stable 将 Managed Runtime session 绑定到 workspace，持久化本地执行凭据，在接管或重启后核对进行中的工作，并公开 Session/Turn/task contract 与可选 worktree session。该版还加入远程桌面 node_repl relay、结构化记忆召回、Landlock fallback、Code Mode 安全调用并发，以及可能误删未跟踪或 ignored 文件的过期 worktree 清理修复。维持 TRIAL。",
         "2026-10-05 更新": "0.25.0 stable 增加本地 workspace-agent 协作与 A2A 分享、broker contract、私有 hosted MCP server、持久 shell 结果、冷会话恢复、文件历史与撤销、并发 Bash 和 Mem0。恢复与审批修复覆盖重复副作用、回放缺口和托管运行时边界。维持 TRIAL。",
-        "2026-10-11 更新": "0.25.1 稳定版在返回结果前记录托管 agent 的参数、receipt 与 checkpoint，加入持久后台 Shell/Monitor 和基于 session 的多 agent 协作，并修复 MCP 权限冲突、回放与审批路径。"
+        "2026-10-11 更新": "0.25.1 稳定版在返回结果前记录托管 agent 的参数、receipt 与 checkpoint，加入持久后台 Shell/Monitor 和基于 session 的多 agent 协作，并修复 MCP 权限冲突、回放与审批路径。",
+        "2026-10-15 更新": "0.25.2 稳定版加入 managed-agent Session 消息、持久团队计划审批、Test Failure Explorer、TypeScript Mods，以及默认关闭且必须审批的前台 Shell；并修复合并后 worktree 收尾、启动误报成功、取消卡住、BOM 解析和恢复路径。"
       },
       "tags": [
         "qwen-code",
@@ -483,7 +486,8 @@
         "src-35e812e2fe0e58e1",
         "src-50ecef795d7295a5",
         "src-b6a4eeb38db18715",
-        "src-dbd682b3d0c44281"
+        "src-dbd682b3d0c44281",
+        "src-62cbc2cf184b4f1b"
       ],
       "project_ids": [
         "qwen-code"
@@ -558,6 +562,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-25-2-stable-evidence",
+          "claim_zh": "0.25.2 稳定版加入 lead mailbox、团队计划审批、Test Failure Explorer 和默认关闭的前台 Shell，并修复 worktree 清理、托管取消与恢复边界。",
+          "claim_en": "Version 0.25.2 stable adds a lead mailbox, durable team-plan approval, Test Failure Explorer and default-off foreground Shell while fixing worktree cleanup, managed cancellation and recovery boundaries.",
+          "source_ids": [
+            "src-62cbc2cf184b4f1b"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -623,19 +640,32 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-25-2-stable",
+          "kind": "update",
+          "occurred_at": "2026-10-15T15:41:15Z",
+          "discovered_at": "2026-10-15T16:00:25Z",
+          "summary_zh": "Qwen Code 0.25.2 扩展团队消息、测试检查与托管恢复",
+          "summary_en": "Qwen Code 0.25.2 expands team messaging, test inspection and managed recovery",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-25-2-stable-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
-        "reason_zh": "对同时运行本地、远程和托管 coding agent 的团队来说，沙箱只是信任链的一部分。运行时证明、持久执行记录与计划漂移检查，让团队更容易确认究竟由哪个运行时执行，以及实现是否仍符合已批准计划。发布说明尚无独立安全验证，因此应先试用这些控制项，再决定是否把它们当成强制策略。",
-        "reason_en": "For teams running coding agents across local, remote and managed workers, a sandbox is only one part of the trust story. Attestation, durable execution records and plan-drift checks make it easier to prove which runtime acted and whether the implementation still matches the approved plan. Trial the controls before relying on them for policy enforcement because the release notes do not yet provide independent security validation.",
+        "reason_zh": "0.25.2 稳定版加入 lead mailbox、团队计划审批、Test Failure Explorer 和默认关闭的前台 Shell，并修复 worktree 清理、托管取消与恢复边界。",
+        "reason_en": "Version 0.25.2 stable adds a lead mailbox, durable team-plan approval, Test Failure Explorer and default-off foreground Shell while fixing worktree cleanup, managed cancellation and recovery boundaries.",
         "source_ids": [
-          "src-f5d5f5b22f45e8b3"
+          "src-62cbc2cf184b4f1b"
         ]
       },
-      "short_label_zh": "Qwen Code 0.25.1",
-      "short_label_en": "Qwen Code 0.25.1",
-      "next_action_zh": "一天内重启后台 Shell/Monitor 与子 agent，检查副作用是否重复、角色边界和审批预览是否完整。",
-      "next_action_en": "Within one day, restart background Shell/Monitor jobs and child agents, then check duplicate side effects, role boundaries and approval previews."
+      "short_label_zh": "Qwen Code 0.25.2",
+      "short_label_en": "Qwen Code 0.25.2",
+      "next_action_zh": "一天内重启一个团队任务，验证消息顺序、计划审批、测试失败检索、worktree 收尾和取消恢复。",
+      "next_action_en": "Within one day, restart one team task and verify message order, plan approval, test-failure search, worktree cleanup and cancellation recovery."
     },
     {
       "event_id": "ev-20260922-05",
