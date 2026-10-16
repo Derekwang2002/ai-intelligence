@@ -44,7 +44,8 @@
         "src-92349bd4a8c11233",
         "src-e75aaf1e12900808",
         "src-fd1cb9e783625459",
-        "src-5dc7e9d03eb17a01"
+        "src-5dc7e9d03eb17a01",
+        "src-dca7cce8dcd1782c"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -63,19 +64,20 @@
         "src-92349bd4a8c11233",
         "src-e75aaf1e12900808",
         "src-fd1cb9e783625459",
-        "src-5dc7e9d03eb17a01"
+        "src-5dc7e9d03eb17a01",
+        "src-dca7cce8dcd1782c"
       ],
-      "last_reviewed_at": "2026-10-15T16:00:25Z",
+      "last_reviewed_at": "2026-10-16T15:56:07Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "Claude Code 2.1.300 继续加固恢复、策略、worktree、后台服务与 hook 输入边界，成熟度支持升级采用。",
-        "judgment_en": "Claude Code 2.1.300 further hardens recovery, policy, worktree, background-service and hook-input boundaries, supporting an upgrade-oriented ADOPT judgment.",
-        "next_action_zh": "升级到 2.1.300，并回放中断恢复、策略失败、worktree 与后台命令退出。",
-        "next_action_en": "Upgrade to 2.1.300 and replay interrupted recovery, policy failure, worktree and background-command exit paths.",
+        "judgment_zh": "2.1.301 修复工作流误报成功、重试与 worktree 保留，成熟度支持升级。",
+        "judgment_en": "Version 2.1.301 fixes false workflow success, retries and worktree preservation, supporting upgrade adoption.",
+        "next_action_zh": "升级并回放失败与恢复路径。",
+        "next_action_en": "Upgrade and replay failure and recovery paths.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-15T16:00:25Z"
+        "reviewed_at": "2026-10-16T15:56:07Z"
       }
     },
     {
@@ -218,7 +220,8 @@
         "src-25183e2b01dde1f5",
         "src-e61beeca9f37dec1",
         "src-b08e03422c923828",
-        "src-6d91f7c55a55a1dc"
+        "src-6d91f7c55a55a1dc",
+        "src-255cde9f48a82982"
       ],
       "current_judgment_event_id": "ev-20260910-02",
       "official_source_ids": [
@@ -228,20 +231,22 @@
         "src-25183e2b01dde1f5",
         "src-49e8d0577a5e1f9d",
         "src-b08e03422c923828",
-        "src-6d91f7c55a55a1dc"
+        "src-6d91f7c55a55a1dc",
+        "src-255cde9f48a82982"
       ],
-      "last_reviewed_at": "2026-10-09T15:56:33Z",
+      "last_reviewed_at": "2026-10-16T15:56:07Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Codex CLI 0.162.0 将托管 worktree、任务置顶与排序式工具发现带入稳定版；Agents API 仍适合受控试点。",
-        "judgment_en": "Codex CLI 0.162.0 brings managed worktrees, task pinning and ranked tool discovery to stable; the Agents API remains suitable for controlled trials.",
-        "next_action_zh": "回归 worktree 所有权、工具排序、登录边界和跨平台沙箱。",
-        "next_action_en": "Regress worktree ownership, tool ranking, authentication boundaries and cross-platform sandboxes.",
+        "judgment_zh": "Codex CLI 0.163.0 改善并行读取、转向与恢复；Agents API 仍适合受控试点。",
+        "judgment_en": "Codex CLI 0.163.0 improves parallel reads, steering and recovery; the Agents API remains a controlled trial.",
+        "next_action_zh": "回归并行读取、转向、恢复与沙箱。",
+        "next_action_en": "Regress parallel reads, steering, resume and sandboxes.",
         "basis_event_ids": [
-          "ev-20260910-02",
-          "ev-20260818-02"
+          "ev-20260814-08",
+          "ev-20260818-02",
+          "ev-20260910-02"
         ],
-        "reviewed_at": "2026-10-09T15:56:33Z"
+        "reviewed_at": "2026-10-16T15:56:07Z"
       }
     },
     {
@@ -1904,23 +1909,27 @@
         "ev-20261005-06"
       ],
       "source_ids": [
-        "src-917ba46d3f15f0c5"
+        "src-917ba46d3f15f0c5",
+        "src-911c704ac0e569cc",
+        "src-80c1f7bd20938e55"
       ],
       "current_judgment_event_id": "ev-20261005-06",
       "official_source_ids": [
-        "src-917ba46d3f15f0c5"
+        "src-917ba46d3f15f0c5",
+        "src-911c704ac0e569cc",
+        "src-80c1f7bd20938e55"
       ],
-      "last_reviewed_at": "2026-10-06T16:01:25Z",
+      "last_reviewed_at": "2026-10-16T15:56:07Z",
       "judgment": {
-        "recommendation": "WATCH",
-        "judgment_zh": "Beam 仍是限量预览，权重和评测材料尚未发布。",
-        "judgment_en": "Beam remains a limited preview; weights and evaluation artifacts are not yet released.",
-        "next_action_zh": "等 Apache 2.0 权重、model card 和复现脚本真正发布后，再测显存需求、吞吐和 coding benchmark。",
-        "next_action_en": "Wait for the Apache 2.0 weights, model card and reproduction scripts, then measure memory, throughput and coding benchmarks.",
+        "recommendation": "TRIAL",
+        "judgment_zh": "开放权重和托管端点已可实测，但硬件成本与厂商 benchmark 仍是限制。",
+        "judgment_en": "Open weights and a hosted endpoint are testable, while hardware cost and vendor benchmarks remain constraints.",
+        "next_action_zh": "一天内用端点跑真实仓库任务。",
+        "next_action_en": "Within one day, run a real repository task on the endpoint.",
         "basis_event_ids": [
           "ev-20261005-06"
         ],
-        "reviewed_at": "2026-10-06T16:01:25Z"
+        "reviewed_at": "2026-10-16T15:56:07Z"
       }
     },
     {
@@ -2205,24 +2214,26 @@
       ],
       "source_ids": [
         "src-88e871d5a8d26738",
-        "src-5aa0a3190245153d"
+        "src-5aa0a3190245153d",
+        "src-3719b30a627a62b1"
       ],
       "current_judgment_event_id": "ev-20261007-02",
       "official_source_ids": [
         "src-88e871d5a8d26738",
-        "src-5aa0a3190245153d"
+        "src-5aa0a3190245153d",
+        "src-3719b30a627a62b1"
       ],
-      "last_reviewed_at": "2026-10-07T22:04:40Z",
+      "last_reviewed_at": "2026-10-16T15:56:07Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Liquid d1 公开了适合边缘路由与审核的多模态决策权重。厂商 benchmark、自定义许可和 trust_remote_code 边界需要独立核查。",
-        "judgment_en": "Liquid d1 publishes multimodal decision weights for edge routing and review. Independently check vendor benchmarks, the custom license and trust_remote_code boundary.",
-        "next_action_zh": "一天内在隔离环境比较 d1 与生成模型的延迟和校准。",
-        "next_action_en": "Within one day, compare d1 and generative models on latency and calibration in isolation.",
+        "judgment_zh": "本地权重与低价托管 API 都可测试，但结果仍主要来自厂商。",
+        "judgment_en": "Local weights and a low-cost hosted API are testable, but evidence remains mostly vendor-reported.",
+        "next_action_zh": "同一标注集比较本地与托管 d1。",
+        "next_action_en": "Compare local and hosted d1 on one labeled set.",
         "basis_event_ids": [
           "ev-20261007-02"
         ],
-        "reviewed_at": "2026-10-07T22:04:40Z"
+        "reviewed_at": "2026-10-16T15:56:07Z"
       }
     },
     {
@@ -3689,7 +3700,143 @@
         ],
         "reviewed_at": "2026-10-15T16:00:25Z"
       }
+    },
+    {
+      "id": "nemotron-3-5",
+      "name_zh": "Nemotron 3.5",
+      "name_en": "Nemotron 3.5",
+      "type": "model",
+      "aliases": [
+        "Nemotron 3.5"
+      ],
+      "pattern": "Nemotron 3\\.5",
+      "event_ids": [
+        "ev-20261015-03"
+      ],
+      "source_ids": [
+        "src-c04bb70f1b05d38a",
+        "src-0843c1ab58bb9212",
+        "src-e8ca48065500447a"
+      ],
+      "current_judgment_event_id": "ev-20261015-03",
+      "official_source_ids": [
+        "src-c04bb70f1b05d38a",
+        "src-0843c1ab58bb9212",
+        "src-e8ca48065500447a"
+      ],
+      "last_reviewed_at": "2026-10-16T15:56:07Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "权重已开放，但许可、硬件兼容与厂商 benchmark 需要实测。",
+        "judgment_en": "Weights are open, but license, hardware compatibility and vendor benchmarks need validation.",
+        "next_action_zh": "一天内用托管端点跑多模态工具任务。",
+        "next_action_en": "Within one day, run a multimodal tool task on a hosted endpoint.",
+        "basis_event_ids": [
+          "ev-20261015-03"
+        ],
+        "reviewed_at": "2026-10-16T15:56:07Z"
+      }
+    },
+    {
+      "id": "llama-cpp",
+      "name_zh": "llama.cpp",
+      "name_en": "llama.cpp",
+      "type": "inference-runtime",
+      "aliases": [
+        "llama.cpp"
+      ],
+      "pattern": "llama\\.cpp",
+      "event_ids": [
+        "ev-20261015-04"
+      ],
+      "source_ids": [
+        "src-f727b4e1831e7a08"
+      ],
+      "current_judgment_event_id": "ev-20261015-04",
+      "official_source_ids": [
+        "src-f727b4e1831e7a08"
+      ],
+      "last_reviewed_at": "2026-10-16T15:56:07Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "0.7.0 改善 MoE 推理，也带来服务端兼容变化。",
+        "judgment_en": "Version 0.7.0 improves MoE inference and introduces server compatibility changes.",
+        "next_action_zh": "回放 MoE 负载并回归 API/RPC。",
+        "next_action_en": "Replay an MoE workload and regress API/RPC compatibility.",
+        "basis_event_ids": [
+          "ev-20261015-04"
+        ],
+        "reviewed_at": "2026-10-16T15:56:07Z"
+      }
+    },
+    {
+      "id": "granite-switch-4-1",
+      "name_zh": "Granite Switch 4.1",
+      "name_en": "Granite Switch 4.1",
+      "type": "model-family",
+      "aliases": [
+        "Granite Switch 4.1"
+      ],
+      "pattern": "Granite Switch 4\\.1",
+      "event_ids": [
+        "ev-20261015-05"
+      ],
+      "source_ids": [
+        "src-d330643595776f9f",
+        "src-5088e3b97d6638c9"
+      ],
+      "current_judgment_event_id": "ev-20261015-05",
+      "official_source_ids": [
+        "src-d330643595776f9f",
+        "src-5088e3b97d6638c9"
+      ],
+      "last_reviewed_at": "2026-10-16T15:56:07Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Apache-2.0 适配器可减少多服务重复部署，质量与资源收益待实测。",
+        "judgment_en": "Apache-2.0 adapters may reduce duplicated services; quality and resource gains need measurement.",
+        "next_action_zh": "跑一组混合适配器负载。",
+        "next_action_en": "Run one mixed-adapter workload.",
+        "basis_event_ids": [
+          "ev-20261015-05"
+        ],
+        "reviewed_at": "2026-10-16T15:56:07Z"
+      }
+    },
+    {
+      "id": "china-ai-export-controls",
+      "name_zh": "中国 AI 技术出口规则",
+      "name_en": "中国 AI 技术出口规则",
+      "type": "policy",
+      "aliases": [
+        "中国 AI 技术出口规则"
+      ],
+      "pattern": "中国 AI 技术出口规则",
+      "event_ids": [
+        "ev-20261016-01"
+      ],
+      "source_ids": [
+        "src-9abbb0d4521712cb",
+        "src-17337ecdc42af858"
+      ],
+      "current_judgment_event_id": "ev-20261016-01",
+      "official_source_ids": [
+        "src-9abbb0d4521712cb",
+        "src-17337ecdc42af858"
+      ],
+      "last_reviewed_at": "2026-10-16T15:56:07Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "临时登记已生效，目录限制仍是征求意见稿。",
+        "judgment_en": "Temporary registration is effective; catalogue restrictions remain a draft.",
+        "next_action_zh": "盘点跨境技术转让并等待最终阈值。",
+        "next_action_en": "Inventory cross-border technology transfers and await final thresholds.",
+        "basis_event_ids": [
+          "ev-20261016-01"
+        ],
+        "reviewed_at": "2026-10-16T15:56:07Z"
+      }
     }
   ],
-  "last_updated": "2026-10-15T16:00:25Z"
+  "last_updated": "2026-10-16T15:56:07Z"
 }

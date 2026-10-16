@@ -505,26 +505,28 @@
       "published_at": "2026-10-05",
       "published_at_note": "Official post provides a date but no timestamp; first verified during recall audit.",
       "first_seen_at": "2026-10-06T16:01:24Z",
-      "last_updated_at": "2026-10-06T16:01:24Z",
+      "last_updated_at": "2026-10-16T15:56:07Z",
       "source_type": "official_blog",
       "primary_source": "https://reflection.ai/blog/introducing-beam",
-      "secondary_sources": [],
-      "summary": "Reflection previewed Beam, a sparse 501B-parameter Mixture-of-Experts model with 23B active parameters and a 1M-token effective context. The company reports training on 23.8T tokens and more than 100M reinforcement-learning rollouts. Access is limited to selected users; Apache 2.0 weights, a technical report, model card and developer artifacts are promised later in October.",
-      "summary_zh": "Reflection 预览 Beam：一个稀疏 MoE 模型，总参数 501B、激活参数 23B，有效上下文 1M token。公司称预训练使用 23.8T token，强化学习阶段产生超过 1 亿次 rollout。目前只有少量用户可提前使用；Apache 2.0 权重、技术报告、model card 和开发材料计划在 10 月晚些时候发布。",
-      "why_it_matters": "For open-model teams, Beam could add an inference-efficient Western coding and agent model, but the preview cannot yet be independently deployed or benchmarked. Wait for actual weights and reproducible evaluation artifacts.",
-      "why_it_matters_zh": "对开源模型团队来说，Beam 可能补上一款强调推理效率的西方 coding 与 agent 模型，但当前预览还不能独立部署或复测。应等权重和可复现评测真正发布。",
+      "secondary_sources": [
+        "https://huggingface.co/blog/reflectionai/beam"
+      ],
+      "summary": "Beam is now available as Apache-2.0 BF16, FP8 and NVFP4 weights, with Transformers, vLLM and SGLang paths plus a hosted Hugging Face endpoint recipe. The sparse model has 501B total and 23B active parameters with 1M context. Reference hosted deployment uses eight H200 GPUs at about $40 per hour; benchmark claims remain vendor-run.",
+      "summary_zh": "Beam 现已提供 Apache-2.0 的 BF16、FP8 与 NVFP4 权重，并支持 Transformers、vLLM、SGLang 及 Hugging Face 托管端点。模型总参数 501B、激活 23B，上下文 1M。参考托管配置使用 8 张 H200，约每小时 40 美元；benchmark 仍由厂商运行。",
+      "why_it_matters": "Open weights make Beam independently testable, but its hardware cost is material and vendor benchmarks still need reproduction.",
+      "why_it_matters_zh": "开放权重让 Beam 终于可以独立测试，但硬件成本很高，厂商 benchmark 仍需复现。",
       "technical_details": {
         "architecture": "sparse MoE; 501B total and 23B active parameters",
         "context": "1M effective tokens",
         "training": "23.8T pretraining tokens; over 100M RL rollouts on 10.5K NVIDIA GB300 GPUs over four weeks",
-        "availability": "selected early access only; weights and developer artifacts promised later in October",
+        "availability": "Apache-2.0 BF16, FP8 and NVFP4 weights; Transformers, vLLM, SGLang and hosted endpoint",
         "license_plan": "Apache 2.0"
       },
       "technical_details_zh": {
         "架构": "稀疏 MoE；总参数 501B，激活参数 23B",
         "上下文": "有效 1M token",
         "训练": "23.8T 预训练 token；在 10.5K 张 NVIDIA GB300 上训练四周，超过 1 亿次 RL rollout",
-        "可用性": "仅限少量提前使用；权重和开发材料承诺 10 月稍后发布",
+        "可用性": "Apache-2.0 BF16、FP8、NVFP4 权重；支持 Transformers、vLLM、SGLang 与托管端点",
         "许可计划": "Apache 2.0"
       },
       "tags": [
@@ -537,17 +539,18 @@
       "technical_impact": 4,
       "engineering_value": 3,
       "adoption_signal": 2,
-      "maturity": 2,
+      "maturity": 3,
       "verification_cost": 4,
       "risk": 3,
-      "recommendation": "WATCH",
+      "recommendation": "TRIAL",
       "event_fingerprint": "reflection-beam-501b-open-weight-preview",
       "short_label_zh": "Beam",
       "short_label_en": "Beam",
-      "next_action_zh": "等 Apache 2.0 权重、model card 和复现脚本真正发布后，再测显存需求、吞吐和 coding benchmark。",
-      "next_action_en": "Wait for the Apache 2.0 weights, model card and reproduction scripts, then measure memory, throughput and coding benchmarks.",
+      "next_action_zh": "一天内用托管端点跑一个真实仓库任务，比较成功率、延迟、成本和长上下文保持。",
+      "next_action_en": "Within one day, run one real repository task on the hosted endpoint and compare success, latency, cost and long-context retention.",
       "source_ids": [
-        "src-917ba46d3f15f0c5"
+        "src-917ba46d3f15f0c5",
+        "src-911c704ac0e569cc"
       ],
       "project_ids": [
         "beam"
@@ -557,8 +560,8 @@
       ],
       "evidence_stage": "verified",
       "late_discovery": true,
-      "summary_en": "Reflection previewed Beam, a sparse 501B-parameter Mixture-of-Experts model with 23B active parameters and a 1M-token effective context. The company reports training on 23.8T tokens and more than 100M reinforcement-learning rollouts. Access is limited to selected users; Apache 2.0 weights, a technical report, model card and developer artifacts are promised later in October.",
-      "why_it_matters_en": "For open-model teams, Beam could add an inference-efficient Western coding and agent model, but the preview cannot yet be independently deployed or benchmarked. Wait for actual weights and reproducible evaluation artifacts.",
+      "summary_en": "Beam is now available as Apache-2.0 BF16, FP8 and NVFP4 weights, with Transformers, vLLM and SGLang paths plus a hosted Hugging Face endpoint recipe. The sparse model has 501B total and 23B active parameters with 1M context. Reference hosted deployment uses eight H200 GPUs at about $40 per hour; benchmark claims remain vendor-run.",
+      "why_it_matters_en": "Open weights make Beam independently testable, but its hardware cost is material and vendor benchmarks still need reproduction.",
       "evidence": [
         {
           "id": "ev-20261005-06-release-evidence",
@@ -566,6 +569,19 @@
           "claim_en": "Reflection previews Beam, a 501B-parameter open-weight coding model",
           "source_ids": [
             "src-917ba46d3f15f0c5"
+          ],
+          "event_ids": [
+            "ev-20261005-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261005-06-open-weights-evidence",
+          "claim_zh": "Beam 从限量预览变为 Apache-2.0 开放权重",
+          "claim_en": "Beam moves from limited preview to Apache-2.0 open weights",
+          "source_ids": [
+            "src-911c704ac0e569cc"
           ],
           "event_ids": [
             "ev-20261005-06"
@@ -587,8 +603,22 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20261005-06-open-weights",
+          "kind": "update",
+          "occurred_at": "2026-10-16T00:00:00.754Z",
+          "discovered_at": "2026-10-16T15:56:07Z",
+          "summary_zh": "Beam 从限量预览变为 Apache-2.0 开放权重",
+          "summary_en": "Beam moves from limited preview to Apache-2.0 open weights",
+          "evidence_ids": [
+            "ev-20261005-06-open-weights-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "last_reviewed_at": "2026-10-16T15:56:07Z"
     },
     {
       "event_id": "ev-20261005-07",

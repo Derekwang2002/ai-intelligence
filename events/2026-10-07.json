@@ -112,10 +112,11 @@
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/blog/LiquidAI/open-d1",
       "secondary_sources": [
-        "https://huggingface.co/LiquidAI/d1-3B"
+        "https://huggingface.co/LiquidAI/d1-3B",
+        "https://www.liquid.ai/blog/d1-ultra"
       ],
-      "summary_en": "Liquid AI released d1-3B and experimental d1-omni-600M weights for single-pass typed decisions instead of token generation. d1-3B accepts text and images; d1-omni adds text-image or text-audio inputs. Liquid reports 8 ms per decision on an RTX 4090 and 50 ms on Jetson Orin Nano for d1-3B, with public demos and code loaded through trust_remote_code.",
-      "summary_zh": "Liquid AI 发布 d1-3B 与实验性的 d1-omni-600M 权重。它们不生成文本，而是一次前向计算返回带类型的决策。d1-3B 支持文本与图像；d1-omni 支持文本加图像或文本加音频。Liquid 报告 d1-3B 在 RTX 4090 上单次决策为 8 毫秒，在 Jetson Orin Nano 上为 50 毫秒，并开放 demo 与代码。",
+      "summary_en": "Liquid AI now offers both downloadable d1 decision weights and the hosted multimodal d1-ultra API. d1-ultra returns fixed-choice probabilities for text and image decisions at $0.042 per million input tokens with no output-token charge. Vendor evaluations across 112 tasks report gains over Jev 1.14; independent results are not yet available.",
+      "summary_zh": "Liquid AI 现在同时提供可下载的 d1 决策权重与托管多模态 d1-ultra API。d1-ultra 为文本和图像的固定选项返回概率，输入每百万 token 0.042 美元，不收输出 token 费用。厂商在 112 项任务上报告优于 Jev 1.14，尚无独立结果。",
       "why_it_matters_en": "For routing, moderation and edge inspection, a compact model can move structured decisions off the generative path and reduce latency. The benchmarks are vendor-run, the custom LFM license needs review and trust_remote_code expands the execution boundary.",
       "why_it_matters_zh": "对路由、审核与边缘检测来说，小模型可以把结构化决策移出生成链路并降低延迟。benchmark 由厂商运行，自定义 LFM 许可需要审查，trust_remote_code 也扩大了执行边界。",
       "technical_details": {
@@ -124,7 +125,9 @@
         "reported_latency": "d1-3B: 8 ms RTX 4090, 9 ms AMD MI325X, 30 ms Apple M5 Pro, 50 ms Jetson Orin Nano",
         "reported_scores": "Decision Index 0.2.1 48.57 for d1-3B; seven-dataset mean 82.9",
         "license": "LFM 1.0 custom model license",
-        "execution_note": "requires transformers>=5.14 and trust_remote_code=True"
+        "execution_note": "requires transformers>=5.14 and trust_remote_code=True",
+        "hosted_api": "d1-ultra fixed-choice probabilities for text and images",
+        "pricing": "$0.042 per million input tokens; no output-token charge"
       },
       "technical_details_zh": {
         "模型": "d1-3B 与实验性的 d1-omni-600M",
@@ -132,7 +135,9 @@
         "厂商报告延迟": "d1-3B：RTX 4090 8 ms、AMD MI325X 9 ms、Apple M5 Pro 30 ms、Jetson Orin Nano 50 ms",
         "厂商报告成绩": "d1-3B 的 Decision Index 0.2.1 为 48.57；七数据集均值 82.9",
         "许可": "LFM 1.0 自定义模型许可",
-        "执行说明": "需要 transformers>=5.14 和 trust_remote_code=True"
+        "执行说明": "需要 transformers>=5.14 和 trust_remote_code=True",
+        "托管 API": "d1-ultra 为文本与图像返回固定选项概率",
+        "定价": "输入每百万 token 0.042 美元；不收输出 token 费用"
       },
       "tags": [
         "decision-model",
@@ -151,11 +156,12 @@
       "event_fingerprint": "liquid-ai-open-d1-multimodal-edge-decision-models",
       "short_label_zh": "Liquid d1",
       "short_label_en": "Liquid d1",
-      "next_action_zh": "一天内在隔离环境用公开权重跑一组路由与图像审核任务，对比延迟、校准和生成模型成本。",
-      "next_action_en": "Within one day, run the public weights in isolation on routing and image-review tasks, comparing latency, calibration and generative-model cost.",
+      "next_action_zh": "一天内用同一标注集比较本地 d1、d1-ultra 与现有生成模型的校准、延迟和成本。",
+      "next_action_en": "Within one day, compare local d1, d1-ultra and the current generative model on calibration, latency and cost using one labeled set.",
       "source_ids": [
         "src-88e871d5a8d26738",
-        "src-5aa0a3190245153d"
+        "src-5aa0a3190245153d",
+        "src-3719b30a627a62b1"
       ],
       "project_ids": [
         "liquid-d1"
@@ -178,6 +184,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261007-02-d1-ultra-evidence",
+          "claim_zh": "Liquid AI 推出托管 d1-ultra 决策 API",
+          "claim_en": "Liquid AI launches the hosted d1-ultra decision API",
+          "source_ids": [
+            "src-3719b30a627a62b1"
+          ],
+          "event_ids": [
+            "ev-20261007-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -193,13 +212,27 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20261007-02-d1-ultra",
+          "kind": "update",
+          "occurred_at": "2026-10-15",
+          "discovered_at": "2026-10-16T15:56:07Z",
+          "summary_zh": "Liquid AI 推出托管 d1-ultra 决策 API",
+          "summary_en": "Liquid AI launches the hosted d1-ultra decision API",
+          "evidence_ids": [
+            "ev-20261007-02-d1-ultra-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "first_seen_at": "2026-10-07T22:04:39Z",
-      "last_updated_at": "2026-10-07T22:04:39Z",
-      "summary": "Liquid AI released d1-3B and experimental d1-omni-600M weights for single-pass typed decisions instead of token generation. d1-3B accepts text and images; d1-omni adds text-image or text-audio inputs. Liquid reports 8 ms per decision on an RTX 4090 and 50 ms on Jetson Orin Nano for d1-3B, with public demos and code loaded through trust_remote_code.",
+      "last_updated_at": "2026-10-16T15:56:07Z",
+      "summary": "Liquid AI now offers both downloadable d1 decision weights and the hosted multimodal d1-ultra API. d1-ultra returns fixed-choice probabilities for text and image decisions at $0.042 per million input tokens with no output-token charge. Vendor evaluations across 112 tasks report gains over Jev 1.14; independent results are not yet available.",
       "why_it_matters": "For routing, moderation and edge inspection, a compact model can move structured decisions off the generative path and reduce latency. The benchmarks are vendor-run, the custom LFM license needs review and trust_remote_code expands the execution boundary.",
-      "evidence_stage": "verified"
+      "evidence_stage": "verified",
+      "last_reviewed_at": "2026-10-16T15:56:07Z"
     },
     {
       "event_id": "ev-20261007-03",
