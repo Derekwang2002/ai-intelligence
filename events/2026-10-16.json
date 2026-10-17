@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "provenance": "Updated by incremental run 2026-10-16T15:56:07Z; verified primary-source releases and timing.",
+  "provenance": "Updated by incremental run 2026-10-17T15:59:50Z; verified primary-source releases and timing.",
   "events": [
     {
       "event_id": "ev-20261016-01",
@@ -99,6 +99,305 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261016-02",
+      "title": "NVIDIA releases Dory1.0-4B with selectable recurrent depth",
+      "title_zh": "NVIDIA 发布可调循环深度的 Dory1.0-4B",
+      "category": "foundation-model",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-10-16T16:25:01Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+      "secondary_sources": [
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-GGUF"
+      ],
+      "summary_zh": "NVIDIA 发布 4B 参数的 Dory1.0-4B 开放权重，同一 checkpoint 可运行一、二或四次共享循环层，以额外计算换取任务准确率。BF16、MXFP8、NVFP4 与 Q5_K_M GGUF 已可下载，支持 256K 上下文。上游 vLLM 支持仍在 PR 中，llama.cpp 需要固定的 NVIDIA fork。",
+      "summary_en": "NVIDIA released open weights for the 4B-parameter Dory1.0-4B. One checkpoint can run its shared recurrent block one, two or four times, trading more compute for task accuracy. BF16, MXFP8, NVFP4 and Q5_K_M GGUF variants are downloadable with 256K context. Upstream vLLM support remains a pull request, and llama.cpp requires a pinned NVIDIA fork.",
+      "why_it_matters_zh": "对本地模型团队来说，可调循环深度允许同一权重覆盖延迟与准确率档位，可能减少模型切换；但运行时未进入稳定上游，厂商 benchmark 不能替代端到端复测。",
+      "why_it_matters_en": "For local-model teams, selectable recurrent depth lets one checkpoint cover latency and accuracy tiers, potentially reducing model swaps. Runtime support is not yet in stable upstream releases, and vendor benchmarks do not replace end-to-end tests.",
+      "technical_details": {
+        "architecture": "8 input layers + shared 20-layer recurrent block + 8 output layers",
+        "loops": "1, 2 or 4 from one checkpoint",
+        "context": "256K",
+        "formats": "BF16, MXFP8, NVFP4, Q5_K_M GGUF",
+        "license": "OpenMDW 1.1",
+        "vendor_swe_bench_verified": "50.3 / 59.5 / 61.8 at 1 / 2 / 4 loops",
+        "runtime_boundary": "vLLM support under review; llama.cpp uses pinned NVIDIA fork"
+      },
+      "technical_details_zh": {
+        "架构": "8 层输入 + 共享 20 层循环块 + 8 层输出",
+        "循环次数": "同一 checkpoint 可选 1、2 或 4 次",
+        "上下文": "256K",
+        "格式": "BF16、MXFP8、NVFP4、Q5_K_M GGUF",
+        "许可": "OpenMDW 1.1",
+        "厂商_SWE_bench_Verified": "1/2/4 次循环分别为 50.3 / 59.5 / 61.8",
+        "运行时边界": "vLLM 支持仍在评审；llama.cpp 需固定 NVIDIA fork"
+      },
+      "tags": [
+        "open-weight",
+        "recurrent-model",
+        "coding",
+        "local",
+        "quantization"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-dory1-4b-selectable-recurrent-depth",
+      "short_label_zh": "Dory1.0-4B",
+      "short_label_en": "Dory1.0-4B",
+      "next_action_zh": "一天内用公开 GGUF 或参考路径跑同一组任务，比较 1/2/4 次循环的成功率、延迟、输出 token 与峰值内存。",
+      "next_action_en": "In one day, use the public GGUF or reference path on one task set and compare 1/2/4 loops for success, latency, output tokens and peak memory.",
+      "source_ids": [
+        "src-c2ebaa4b0594d020",
+        "src-3dc3f5ba81de75d4"
+      ],
+      "project_ids": [
+        "dory"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261016-02-release-evidence",
+          "claim_zh": "Dory1.0-4B 多种权重已公开，可从同一 checkpoint 选择循环深度。",
+          "claim_en": "Dory1.0-4B weights are public and expose selectable recurrent depth from one checkpoint.",
+          "source_ids": [
+            "src-c2ebaa4b0594d020",
+            "src-3dc3f5ba81de75d4"
+          ],
+          "event_ids": [
+            "ev-20261016-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261016-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-16T16:25:01Z",
+          "discovered_at": "2026-10-17T15:59:50Z",
+          "summary_zh": "NVIDIA 发布 Dory1.0-4B 开放权重",
+          "summary_en": "NVIDIA releases Dory1.0-4B open weights",
+          "evidence_ids": [
+            "ev-20261016-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-17T15:59:50Z",
+      "last_updated_at": "2026-10-17T15:59:50Z",
+      "summary": "NVIDIA released open weights for the 4B-parameter Dory1.0-4B. One checkpoint can run its shared recurrent block one, two or four times, trading more compute for task accuracy. BF16, MXFP8, NVFP4 and Q5_K_M GGUF variants are downloadable with 256K context. Upstream vLLM support remains a pull request, and llama.cpp requires a pinned NVIDIA fork.",
+      "why_it_matters": "For local-model teams, selectable recurrent depth lets one checkpoint cover latency and accuracy tiers, potentially reducing model swaps. Runtime support is not yet in stable upstream releases, and vendor benchmarks do not replace end-to-end tests.",
+      "evidence_stage": "verified"
+    },
+    {
+      "event_id": "ev-20261016-03",
+      "title": "NVIDIA launches RTX Spark PCs for local AI development",
+      "title_zh": "NVIDIA 推出面向本地 AI 开发的 RTX Spark PC",
+      "category": "infrastructure",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-10-16T17:00:00Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/code-test-and-deploy-on-one-machine-with-nvidia-rtx-spark/",
+      "secondary_sources": [
+        "https://www.nvidia.com/en-us/products/rtx-spark/",
+        "https://junie.jetbrains.com/blog/junie-local-rtx-spark/"
+      ],
+      "summary_zh": "NVIDIA 推出基于 Arm Grace CPU 与 Blackwell RTX GPU 的 RTX Spark 笔记本和小型桌面机。高配型号宣称提供 128GB 统一内存，可在 Windows 11/WSL 上运行本地模型、CUDA 与 agent 工具。官方页面已链接多家 OEM 商店，但库存、地区和价格并不统一。",
+      "summary_en": "NVIDIA launched RTX Spark laptops and compact desktops built around an Arm Grace CPU and Blackwell RTX GPU. Top configurations advertise 128 GB of unified memory for local models, CUDA and agent tools on Windows 11/WSL. Official pages link several OEM stores, but stock, region and pricing are not uniform.",
+      "why_it_matters_zh": "对做本地 AI 与 coding agent 的团队来说，这把大内存 CUDA 开发机带入 Windows PC 形态；采购判断应看具体 SKU、真实库存、软件兼容和端到端吞吐，而不是平台级峰值。",
+      "why_it_matters_en": "For local AI and coding-agent teams, this brings large-memory CUDA development into a Windows PC form factor. Buying decisions should use exact SKU, live stock, software compatibility and end-to-end throughput rather than platform peak claims.",
+      "technical_details": {
+        "platform": "Arm Grace CPU + Blackwell RTX GPU",
+        "top_configuration": "up to 128 GB unified memory and vendor-claimed 1 PFLOP FP4",
+        "software": "Windows 11, WSL, CUDA and partner local-agent integrations",
+        "availability": "live OEM shop links coexist with availability alerts; varies by SKU and region",
+        "evidence_limit": "performance comparisons are NVIDIA and partner measurements"
+      },
+      "technical_details_zh": {
+        "平台": "Arm Grace CPU + Blackwell RTX GPU",
+        "高配规格": "最高 128GB 统一内存；厂商宣称 1 PFLOP FP4",
+        "软件": "Windows 11、WSL、CUDA 与合作方本地 agent 集成",
+        "可用性": "OEM 商店链接与到货提醒同时存在；随 SKU 和地区变化",
+        "证据限制": "性能对比来自 NVIDIA 与合作方"
+      },
+      "tags": [
+        "local-ai",
+        "hardware",
+        "windows",
+        "cuda",
+        "coding-agent"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "nvidia-rtx-spark-local-ai-pc-launch",
+      "short_label_zh": "RTX Spark",
+      "short_label_en": "RTX Spark",
+      "next_action_zh": "等具体 SKU 的地区库存、实测兼容与独立吞吐出现后，再与工作站和云 GPU 做总成本比较。",
+      "next_action_en": "Wait for SKU-level regional stock, compatibility tests and independent throughput, then compare total cost with workstations and cloud GPUs.",
+      "source_ids": [
+        "src-6bee349d6c55071f",
+        "src-06929d5fc4ca67b1",
+        "src-98b2eb8f97736c1d"
+      ],
+      "project_ids": [
+        "rtx-spark"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261016-03-release-evidence",
+          "claim_zh": "NVIDIA 已发布 RTX Spark 平台并提供多家 OEM 购买入口，但可用性因地区和 SKU 而异。",
+          "claim_en": "NVIDIA launched RTX Spark with several OEM purchase paths, while availability varies by region and SKU.",
+          "source_ids": [
+            "src-6bee349d6c55071f",
+            "src-06929d5fc4ca67b1",
+            "src-98b2eb8f97736c1d"
+          ],
+          "event_ids": [
+            "ev-20261016-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261016-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-16T17:00:00Z",
+          "discovered_at": "2026-10-17T15:59:50Z",
+          "summary_zh": "NVIDIA 推出 RTX Spark 本地 AI PC",
+          "summary_en": "NVIDIA launches RTX Spark local-AI PCs",
+          "evidence_ids": [
+            "ev-20261016-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-17T15:59:50Z",
+      "last_updated_at": "2026-10-17T15:59:50Z",
+      "summary": "NVIDIA launched RTX Spark laptops and compact desktops built around an Arm Grace CPU and Blackwell RTX GPU. Top configurations advertise 128 GB of unified memory for local models, CUDA and agent tools on Windows 11/WSL. Official pages link several OEM stores, but stock, region and pricing are not uniform.",
+      "why_it_matters": "For local AI and coding-agent teams, this brings large-memory CUDA development into a Windows PC form factor. Buying decisions should use exact SKU, live stock, software compatibility and end-to-end throughput rather than platform peak claims.",
+      "evidence_stage": "verified"
+    },
+    {
+      "event_id": "ev-20261016-04",
+      "title": "GitHub makes license compliance merge controls generally available",
+      "title_zh": "GitHub 的许可证合并管控正式 GA",
+      "category": "developer-tools",
+      "organization": [
+        "GitHub"
+      ],
+      "published_at": "2026-10-16",
+      "source_type": "official_announcement",
+      "primary_source": "https://github.blog/changelog/2026-10-16-license-compliance-is-generally-available/",
+      "secondary_sources": [],
+      "summary_zh": "GitHub 面向已启用 GitHub Code Security 的 Enterprise Cloud 客户开放许可证合规 GA。团队可在 ruleset 中按允许或禁止的许可证阻止合并，并通过企业级 License Manager 角色、审计日志与 API 管理策略。官方页面只有日期，没有可核验的发布时间。",
+      "summary_en": "GitHub made license compliance generally available to Enterprise Cloud customers with GitHub Code Security. Teams can block merges through rulesets based on allowed or denied licenses and manage policy through an enterprise License Manager role, audit logs and APIs. The official page exposes a date but no verifiable publication time.",
+      "why_it_matters_zh": "对维护依赖和 AI 生成代码的企业团队来说，许可证检查从报告变成了可阻断合并的策略；但它受套餐限制，误判与例外流程仍需在真实仓库验证。",
+      "why_it_matters_en": "For enterprise teams managing dependencies and AI-generated code, license checking becomes an enforceable merge policy rather than a report. It is plan-gated, and false positives and exception workflows still need repository-level testing.",
+      "technical_details": {
+        "stage": "GA",
+        "eligibility": "GitHub Enterprise Cloud with GitHub Code Security",
+        "controls": "ruleset condition can block merges by license policy",
+        "administration": "Enterprise OS License Manager role, audit events and APIs",
+        "time_basis": "official page has date only; first observed just after the previous run start, so strict hour placement is unavailable"
+      },
+      "technical_details_zh": {
+        "阶段": "GA",
+        "适用范围": "启用 GitHub Code Security 的 GitHub Enterprise Cloud",
+        "控制": "ruleset 可按许可证策略阻止合并",
+        "管理": "Enterprise OS License Manager 角色、审计事件与 API",
+        "时间依据": "官方页面仅有日期；上轮开始后首次抓到，无法严格定位小时边界"
+      },
+      "tags": [
+        "license",
+        "supply-chain",
+        "policy",
+        "github",
+        "merge-gate"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "github-license-compliance-ga-merge-rulesets",
+      "short_label_zh": "License Compliance",
+      "short_label_en": "License Compliance",
+      "next_action_zh": "一天内在测试仓库配置允许/禁止许可证与例外流程，核对误报、审计日志和 API 行为。",
+      "next_action_en": "In one day, configure allowed and denied licenses plus exceptions in a test repository and verify false positives, audit logs and APIs.",
+      "source_ids": [
+        "src-f19b004662d9a035"
+      ],
+      "project_ids": [
+        "github-license-compliance"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261016-04-release-evidence",
+          "claim_zh": "GitHub 已把许可证策略接入合并规则、角色、审计与 API。",
+          "claim_en": "GitHub connected license policy to merge rules, roles, audit logs and APIs.",
+          "source_ids": [
+            "src-f19b004662d9a035"
+          ],
+          "event_ids": [
+            "ev-20261016-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261016-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-16",
+          "discovered_at": "2026-10-17T15:59:50Z",
+          "summary_zh": "GitHub 许可证合规功能正式 GA",
+          "summary_en": "GitHub license compliance becomes generally available",
+          "evidence_ids": [
+            "ev-20261016-04-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-17T15:59:50Z",
+      "last_updated_at": "2026-10-17T15:59:50Z",
+      "summary": "GitHub made license compliance generally available to Enterprise Cloud customers with GitHub Code Security. Teams can block merges through rulesets based on allowed or denied licenses and manage policy through an enterprise License Manager role, audit logs and APIs. The official page exposes a date but no verifiable publication time.",
+      "why_it_matters": "For enterprise teams managing dependencies and AI-generated code, license checking becomes an enforceable merge policy rather than a report. It is plan-gated, and false positives and exception workflows still need repository-level testing.",
+      "evidence_stage": "verified"
     }
   ]
 }

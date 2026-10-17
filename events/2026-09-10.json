@@ -12,21 +12,23 @@
       ],
       "published_at": "2026-09-10T02:17:58Z",
       "first_seen_at": "2026-09-11T18:31:49Z",
-      "last_updated_at": "2026-09-13T16:00:31Z",
+      "last_updated_at": "2026-10-17T15:59:50Z",
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
       "secondary_sources": [
         "https://api-docs.deepseek.com/updates/",
         "https://www.reuters.com/world/asia-pacific/chinas-deepseek-launches-v41-flash-model-2026-09-10/",
         "https://github.com/vllm-project/vllm/pull/56464",
-        "https://github.com/vllm-project/vllm/pull/56512"
+        "https://github.com/vllm-project/vllm/pull/56512",
+        "https://api-docs.deepseek.com/news/news261017/",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
       ],
-      "summary": "DeepSeek released V4.1-Flash, the smallest model of a new architecture family with native multimodal vision: a 552B backbone (763B total safetensors params including a 196B Engram conditional-memory module), 8B activated per token during prefill and 16B during decode, 1 shared + 384 routed experts with 6 active. The CED design organizes 40 layers as a 20-layer causal encoder followed by a 20-layer decoder whose KV cache is projected from final encoder hidden states; CSA2 provides three static attention modes (Full/Reindex/Reuse) with a hierarchical sparse indexer, FP4 (E2M1) main KV caching at 890 bytes/token (~1/4 of V4-Flash; SWA bounded replay cuts persistent KV to ~1/8), plus Single-Pass mHC kernels and DSpark speculative decoding. Pre-trained on 45T multimodal tokens; context extended to 1M. Benchmarks (reasoning_effort=100): Terminal-Bench 2.1 90.6, TB 3.0 30.0, TB 4.0 31.2, DeepSWE v1.1 74.2 (vs V4-Flash 54.4), GPQA Diamond 90.9, Codeforces 3471, HLE-with-tools 63.9, CyberGym 88.1, ExploitGym 15.3. MIT license, ungated, day-0 vLLM/SGLang/Docker Model Runner/Transformers support (deepseek-recipe libraries; no Jinja chat template). API: the model name is now deepseek-flash ($0.30 peak / $0.15 off-peak input, $1.20 / $0.60 output per 1M tokens; cache-hit $0.006 peak); V4-Flash and V4-Flash-Vision-Exp are retired from the API with legacy names temporarily routed to V4.1-Flash; V4 Pro API service continues after 2026-09-14 with unchanged billing; reasoning effort is a controllable integer 1-100. 75,774 downloads + 1,741 likes within ~1 day; #1 on HF trending at capture.",
-      "why_it_matters": "This is the first same-tier answer to the GLM-5.3-Flash cohort from DeepSeek, and by Terminal-Bench 2.1 (90.6 vs GLM-5.3's 88.2) it claims the top open-weight agentic-coding spot. The architecture matters as much as the scores: encoder-decoder KV projection + FP4 KV + conditional memory attacks the serving-cost side that hybrid linear attention attacks elsewhere — and the aggressive API price ($0.30/$1.20 peak) resets the cheap tier. Watch for serving friction: the deepseek-recipe runtime requirement is a new integration cost for existing stacks.",
-      "summary_zh": "DeepSeek 发布 V4.1-Flash——新架构家族中最小的模型，原生多模态视觉：552B backbone（safetensors 总参数 763B，含 196B 的 Engram 条件记忆模块），每 token 激活 prefill 8B、decode 16B，1 共享 + 384 路由专家、激活 6 个。CED 设计把 40 层组织为 20 层因果 encoder + 20 层 decoder，decoder 的 KV cache 由 encoder 最终隐状态投影而来；CSA2 提供三种静态注意力模式（Full/Reindex/Reuse）与层级稀疏索引器，主 KV 采用 FP4（E2M1）缓存、每 token 890 字节（约为 V4-Flash 的 1/4；SWA bounded replay 把常驻 KV 再压到约 1/8），另有 Single-Pass mHC kernel 与 DSpark 推测解码。预训练 45T 多模态 token；上下文扩展至 1M。基准（reasoning_effort=100）：Terminal-Bench 2.1 90.6、TB 3.0 30.0、TB 4.0 31.2、DeepSWE v1.1 74.2（V4-Flash 为 54.4）、GPQA Diamond 90.9、Codeforces 3471、HLE-with-tools 63.9、CyberGym 88.1、ExploitGym 15.3。MIT 许可、无门禁，day-0 支持 vLLM/SGLang/Docker Model Runner/Transformers（deepseek-recipe 库；无 Jinja chat template）。API：模型名改为 deepseek-flash（输入 $0.30 高峰 / $0.15 非高峰、输出 $1.20/$0.60 每百万 token；缓存命中 $0.006 高峰）；V4-Flash 与 V4-Flash-Vision-Exp 从 API 退役，旧名暂路由至 V4.1-Flash；V4 Pro 在 2026-09-14 之后继续服务、计费不变；reasoning effort 为 1-100 的整数可控。约 1 天 75,774 下载 + 1,741 likes；采样时居 HF trending 第 1。",
-      "summary_en": "DeepSeek released V4.1-Flash, the smallest model of a new architecture family with native multimodal vision: a 552B backbone (763B total safetensors params including a 196B Engram conditional-memory module), 8B activated per token during prefill and 16B during decode, 1 shared + 384 routed experts with 6 active. The CED design organizes 40 layers as a 20-layer causal encoder followed by a 20-layer decoder whose KV cache is projected from final encoder hidden states; CSA2 provides three static attention modes (Full/Reindex/Reuse) with a hierarchical sparse indexer, FP4 (E2M1) main KV caching at 890 bytes/token (~1/4 of V4-Flash; SWA bounded replay cuts persistent KV to ~1/8), plus Single-Pass mHC kernels and DSpark speculative decoding. Pre-trained on 45T multimodal tokens; context extended to 1M. Benchmarks (reasoning_effort=100): Terminal-Bench 2.1 90.6, TB 3.0 30.0, TB 4.0 31.2, DeepSWE v1.1 74.2 (vs V4-Flash 54.4), GPQA Diamond 90.9, Codeforces 3471, HLE-with-tools 63.9, CyberGym 88.1, ExploitGym 15.3. MIT license, ungated, day-0 vLLM/SGLang/Docker Model Runner/Transformers support (deepseek-recipe libraries; no Jinja chat template). API: the model name is now deepseek-flash ($0.30 peak / $0.15 off-peak input, $1.20 / $0.60 output per 1M tokens; cache-hit $0.006 peak); V4-Flash and V4-Flash-Vision-Exp are retired from the API with legacy names temporarily routed to V4.1-Flash; V4 Pro API service continues after 2026-09-14 with unchanged billing; reasoning effort is a controllable integer 1-100. 75,774 downloads + 1,741 likes within ~1 day; #1 on HF trending at capture.",
-      "why_it_matters_zh": "这是 DeepSeek 对 GLM-5.3-Flash 一代的同档回应，且以 Terminal-Bench 2.1（90.6 vs GLM-5.3 的 88.2）拿下开源权重 agentic coding 的最高分。架构与分数同样重要：encoder-decoder KV 投影 + FP4 KV + 条件记忆，从 serving 成本侧切入（混合线性注意力从另一侧切入），$0.30/$1.20 的 API 价格重画了廉价档。要盯 serving 摩擦：deepseek-recipe 运行时依赖对现有技术栈是新增的集成成本。",
-      "why_it_matters_en": "This is the first same-tier answer to the GLM-5.3-Flash cohort from DeepSeek, and by Terminal-Bench 2.1 (90.6 vs GLM-5.3's 88.2) it claims the top open-weight agentic-coding spot. The architecture matters as much as the scores: encoder-decoder KV projection + FP4 KV + conditional memory attacks the serving-cost side that hybrid linear attention attacks elsewhere — and the aggressive API price ($0.30/$1.20 peak) resets the cheap tier. Watch for serving friction: the deepseek-recipe runtime requirement is a new integration cost for existing stacks.",
+      "summary": "DeepSeek V4.1-Flash is an open-weight multimodal model with 1M context, CED/CSA2 architecture and sparse MoE. The October 17 minor update, 1017, now serves the website, app and deepseek-flash API alias with unchanged pricing and interface, alongside a new MIT checkpoint. DeepSeek reports coding and automation benchmark gains; independent reproduction is not yet available.",
+      "why_it_matters": "For teams comparing hosted and self-hosted coding models, 1017 is directly testable without an API migration. Vendor results use different harnesses, so compare task success, wall time, output tokens and total cost on the same repository tasks.",
+      "summary_zh": "DeepSeek V4.1-Flash 是 1M 上下文的开放权重多模态模型，采用 CED/CSA2 架构与稀疏 MoE。10 月 17 日的 1017 小更新已替换网站、App 与 deepseek-flash API 别名，价格和接口不变，同时发布新的 MIT checkpoint。厂商报告 coding 与自动化 benchmark 改善，尚无独立复测。",
+      "summary_en": "DeepSeek V4.1-Flash is an open-weight multimodal model with 1M context, CED/CSA2 architecture and sparse MoE. The October 17 minor update, 1017, now serves the website, app and deepseek-flash API alias with unchanged pricing and interface, alongside a new MIT checkpoint. DeepSeek reports coding and automation benchmark gains; independent reproduction is not yet available.",
+      "why_it_matters_zh": "对比较托管与自托管 coding 模型的团队来说，1017 可以直接复测而无需迁移 API；但厂商结果使用不同 harness，必须用同一仓库任务比较成功率、墙钟时间、输出 token 与总成本。",
+      "why_it_matters_en": "For teams comparing hosted and self-hosted coding models, 1017 is directly testable without an API migration. Vendor results use different harnesses, so compare task success, wall time, output tokens and total cost on the same repository tasks.",
       "technical_details": {
         "release": "HF repo created 2026-09-10T02:17:58Z; MIT; image-text-to-text; 75,774 dl + 1,741 likes in ~1 day (captured 2026-09-11T18:34Z)",
         "architecture": "552B backbone / 763B total safetensors (incl. 196B Engram conditional memory); 8B prefill / 16B decode activated; MoE 1 shared + 384 routed, 6 active; CED = 20-layer causal encoder + 20-layer decoder (KV projected from encoder final hidden states); CSA2 static attention modes Full/Reindex/Reuse + hierarchical sparse indexer; FP4 E2M1 main KV, 890 B/token (~1/4 V4-Flash; ~1/8 with SWA bounded replay); Single-Pass mHC; DSpark speculative decoding; DeepSeek-ViT vision (2D-RoPE, 3x3 pixel-unshuffle)",
@@ -35,7 +37,8 @@
         "api": "model name deepseek-flash; input $0.30 peak / $0.15 off-peak, output $1.20 / $0.60 per 1M; cache-hit $0.006 peak; concurrency 2500; max output 384K; V4-Flash + V4-Flash-Vision-Exp retired (legacy names temporarily routed); V4 Pro continues past 2026-09-14 unchanged billing",
         "serving": "day-0 vLLM / SGLang / Docker Model Runner / Transformers; deepseek-recipe Rust libs + Python reference; no Jinja chat template",
         "update_2026_09_13": "Serving ecosystem @2026-09-12/13: vLLM 63 V4.1-Flash issues/PRs (13 on 9/12: encoder CUDA graph #56625, mHC fold #56633, ROCm gfx950 #56638; ROCm perf RFC #56506); SGLang 32 matches (MI350X #39186, Mooncake Engram KV backend #39205, prefill CP #39179; correctness bug: fp8 wo_a absorb GEMM ~25% wrong when DEEPGEMM_SCALE_UE8M0=false, SM121, #39193). Model card still has no serving recipe (#13 asks); deepseek-recipe = prompt-format lib. 15+ third-party deploy repos on 9/12 (DGX Spark/GB10, Mac Studio 512GB, EXL3); LiteLLM pricing PRs #40919/40920. Downloads 140,636 (+85.6% vs 9/11) + 2,005 likes @2026-09-13T00:03Z.",
-        "update_2026_09_14": "vLLM main merged DeepSelect as a sparse-indexer TopK backend (#56464): on GB200 at batch 256 / 1M KV the PR reports 191 us versus 616 us for the prior path; this is a kernel result, not end-to-end serving. Engram tables gained node-local DP sharding, asynchronous CPU-offload prefetch and shared-memory tables (#56512), validated on two nodes TP1xDP8; shared tables remove per-step Engram DP communication, while reported TTFT improvement is at most 0.9%. Not yet in a tagged vLLM release."
+        "update_2026_09_14": "vLLM main merged DeepSelect as a sparse-indexer TopK backend (#56464): on GB200 at batch 256 / 1M KV the PR reports 191 us versus 616 us for the prior path; this is a kernel result, not end-to-end serving. Engram tables gained node-local DP sharding, asynchronous CPU-offload prefetch and shared-memory tables (#56512), validated on two nodes TP1xDP8; shared tables remove per-step Engram DP communication, while reported TTFT improvement is at most 0.9%. Not yet in a tagged vLLM release.",
+        "update_2026_10_17": "V4.1-Flash-1017 minor update; website/app/API alias updated; price and API unchanged; MIT weights public; vendor reports Terminal-Bench 4.0 42.3 vs 31.2, DeepSWE 77.0 vs 74.2, Automation-Bench 60.5 vs 54.8"
       },
       "technical_details_zh": {
         "发布": "HF 仓库 2026-09-10T02:17:58Z 创建；MIT；image-text-to-text；约 1 天 75,774 下载 + 1,741 likes（2026-09-11T18:34Z 采样）",
@@ -45,7 +48,8 @@
         "API": "模型名 deepseek-flash；输入 $0.30 高峰 / $0.15 非高峰、输出 $1.20/$0.60 每百万；缓存命中 $0.006 高峰；并发 2500；最大输出 384K；V4-Flash 与 V4-Flash-Vision-Exp 退役（旧名暂路由）；V4 Pro 2026-09-14 后继续、计费不变",
         "serving": "day-0 vLLM / SGLang / Docker Model Runner / Transformers；deepseek-recipe Rust 库 + Python 参考实现；无 Jinja chat template",
         "update_2026_09_13": "serving 生态 @2026-09-12/13：vLLM 63 个 V4.1-Flash issue/PR（9/12 单日 13 个：encoder CUDA graph #56625、mHC fold #56633、ROCm gfx950 #56638；ROCm 性能 RFC #56506）；SGLang 32 个匹配（MI350X #39186、Mooncake Engram KV backend #39205、prefill CP #39179；正确性 bug：DEEPGEMM_SCALE_UE8M0=false 时 fp8 wo_a absorb GEMM 静默错约 25%，SM121，#39193）。模型卡仍无 serving 指引（#13 在求）；deepseek-recipe 为 prompt 格式转换库。9/12 新增 15+ 第三方部署仓（DGX Spark/GB10、Mac Studio 512GB、EXL3）；LiteLLM 定价 PR #40919/40920。下载 140,636（较 9/11 +85.6%）+ 2,005 likes @2026-09-13T00:03Z。",
-        "update_2026_09_14": "vLLM main 合并 DeepSelect 稀疏索引 TopK backend（#56464）：GB200、batch 256 / 1M KV 下，PR 报告 191 微秒，原路径为 616 微秒；这是 kernel 结果，不是端到端 serving。Engram 表加入 node-local DP 分片、异步 CPU offload 预取与共享内存表（#56512），在两节点 TP1xDP8 上验证；共享表消除逐步 Engram DP 通信，TTFT 改善最高仅 0.9%。尚未进入 vLLM 正式版本。"
+        "update_2026_09_14": "vLLM main 合并 DeepSelect 稀疏索引 TopK backend（#56464）：GB200、batch 256 / 1M KV 下，PR 报告 191 微秒，原路径为 616 微秒；这是 kernel 结果，不是端到端 serving。Engram 表加入 node-local DP 分片、异步 CPU offload 预取与共享内存表（#56512），在两节点 TP1xDP8 上验证；共享表消除逐步 Engram DP 通信，TTFT 改善最高仅 0.9%。尚未进入 vLLM 正式版本。",
+        "update_2026_10_17": "V4.1-Flash-1017 小更新；网站/App/API 别名已更新；价格与接口不变；MIT 权重公开；厂商报告 Terminal-Bench 4.0 42.3 对 31.2、DeepSWE 77.0 对 74.2、Automation-Bench 60.5 对 54.8"
       },
       "tags": [
         "foundation-model",
@@ -72,7 +76,9 @@
         "src-8f8555b73e1b4292",
         "src-f107abaf9bae96c3",
         "src-e10f80c36670f3cd",
-        "src-1ace2a374dfca1c4"
+        "src-1ace2a374dfca1c4",
+        "src-8d6665ab69ee0937",
+        "src-cac24968e5aa0d5b"
       ],
       "project_ids": [
         "deepseek"
@@ -96,6 +102,20 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260910-01-1017-evidence",
+          "claim_zh": "DeepSeek 已发布 1017 权重，并把托管别名更新到新 checkpoint。",
+          "claim_en": "DeepSeek released the 1017 weights and updated its hosted alias to the new checkpoint.",
+          "source_ids": [
+            "src-8d6665ab69ee0937",
+            "src-cac24968e5aa0d5b"
+          ],
+          "event_ids": [
+            "ev-20260910-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -110,8 +130,25 @@
             "ev-20260910-01-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260910-01-1017",
+          "kind": "update",
+          "occurred_at": "2026-10-17T02:40:38Z",
+          "discovered_at": "2026-10-17T15:59:50Z",
+          "summary_zh": "V4.1-Flash-1017 权重和托管更新上线",
+          "summary_en": "V4.1-Flash-1017 weights and hosted update go live",
+          "evidence_ids": [
+            "ev-20260910-01-1017-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "next_action_zh": "用同一组仓库任务 A/B 测试旧版与 1017，比较成功率、墙钟时间、输出 token 和总成本。",
+      "next_action_en": "A/B test the prior model and 1017 on the same repository tasks, comparing success, wall time, output tokens and total cost.",
+      "short_label_zh": "DeepSeek V4.1 Flash",
+      "short_label_en": "DeepSeek V4.1 Flash"
     },
     {
       "event_id": "ev-20260910-02",
@@ -442,27 +479,32 @@
       ],
       "published_at": "2026-09-10T00:00:00Z",
       "first_seen_at": "2026-09-11T18:31:49Z",
-      "last_updated_at": "2026-09-11T18:31:49Z",
+      "last_updated_at": "2026-10-17T15:59:50Z",
       "source_type": "api_documentation",
       "primary_source": "https://developers.openai.com/api/docs/changelog",
-      "secondary_sources": [],
-      "summary": "A cluster of OpenAI API changes landed 9/8-9/10: GPT-Live 1 voice sessions (v1/live/sessions) went GA — full-duplex conversation that continues while a background model or agent reasons and calls tools, with Responses delegation or delegation to your own backend, priced at $0.05/minute billed by the second (backend model/tool usage billed separately). Prompt Cache Diagnostics went GA on Responses (GPT-5.6+): compares cache reuse between responses, identifies why misses happen, and produces troubleshooting guidance. Project API keys gained expiry dates with org- or project-level maximum-lifetime enforcement for admins. Two image models shipped (9/8): GPT Image 2.5 Sunburst for editing precision and Flare for fast everyday generation, both with xhigh/max quality settings on GPT Image 2 token rates.",
-      "why_it_matters": "GPT-Live 1's speak-while-thinking primitive is the threshold capability for real-time voice agents — the conversation doesn't pause for tool calls, and backend delegation means the voice loop can wrap your existing agent. Prompt-cache diagnostics addresses the single most common cost/debugging pain in long agent loops.",
-      "summary_zh": "9/8-9/10 OpenAI API 密集更新：GPT-Live 1 语音会话（v1/live/sessions）正式 GA——全双工对话在后台模型或 agent 推理、调用工具时持续进行，支持 Responses 委托或委托到自己的后端，按 $0.05/分钟、按秒计费（后端模型/工具用量单独计费）。Prompt Cache Diagnostics 在 Responses（GPT-5.6+）上 GA：对比两次响应间的缓存复用、定位未命中原因并给出排障指引。项目 API key 支持设置过期时间，管理员可在组织或项目级强制最长生命周期。两个图像模型（9/8）：GPT Image 2.5 Sunburst 主打编辑精度、Flare 主打快速日常生成，均新增 xhigh/max 质量档、按 GPT Image 2 token 费率计费。",
-      "summary_en": "A cluster of OpenAI API changes landed 9/8-9/10: GPT-Live 1 voice sessions (v1/live/sessions) went GA — full-duplex conversation that continues while a background model or agent reasons and calls tools, with Responses delegation or delegation to your own backend, priced at $0.05/minute billed by the second (backend model/tool usage billed separately). Prompt Cache Diagnostics went GA on Responses (GPT-5.6+): compares cache reuse between responses, identifies why misses happen, and produces troubleshooting guidance. Project API keys gained expiry dates with org- or project-level maximum-lifetime enforcement for admins. Two image models shipped (9/8): GPT Image 2.5 Sunburst for editing precision and Flare for fast everyday generation, both with xhigh/max quality settings on GPT Image 2 token rates.",
-      "why_it_matters_zh": "GPT-Live 1 的「边说边想」原语是实时语音 agent 的门槛能力——对话不再为工具调用停顿，后端委托意味着语音循环可以直接包住你已有的 agent。缓存诊断则针对长 agent 循环里最常见的成本与调试痛点。",
-      "why_it_matters_en": "GPT-Live 1's speak-while-thinking primitive is the threshold capability for real-time voice agents — the conversation doesn't pause for tool calls, and backend delegation means the voice loop can wrap your existing agent. Prompt-cache diagnostics addresses the single most common cost/debugging pain in long agent loops.",
+      "secondary_sources": [
+        "https://developers.openai.com/api/docs/changelog",
+        "https://developers.openai.com/api/docs/guides/custom-voices"
+      ],
+      "summary": "OpenAI GPT-Live 1 provides full-duplex voice sessions that can delegate to a backend agent. On October 16, OpenAI opened text-described GPT-Live voice creation to all API customers and added nine German, French, Hindi, Japanese and Korean voices. Creation is free and speech uses GPT-Live billing; these voices do not work with TTS, Realtime or Chat Completions audio.",
+      "why_it_matters": "For voice-agent teams, branded voices can now be tested without reference recordings. Organizations can save at most 100, voices are not guaranteed unique, and creation is incompatible with Zero Data Retention, so disclosure and retention requirements need review.",
+      "summary_zh": "OpenAI 的 GPT-Live 1 提供可委托后端 agent 的全双工语音会话。10 月 16 日，OpenAI 向全部 API 客户开放用文字描述创建 GPT-Live 声音，并新增九种德语、法语、印地语、日语和韩语声音。创建免费，实际语音按 GPT-Live 计费；该声音不适用于 TTS、Realtime 或 Chat Completions audio。",
+      "summary_en": "OpenAI GPT-Live 1 provides full-duplex voice sessions that can delegate to a backend agent. On October 16, OpenAI opened text-described GPT-Live voice creation to all API customers and added nine German, French, Hindi, Japanese and Korean voices. Creation is free and speech uses GPT-Live billing; these voices do not work with TTS, Realtime or Chat Completions audio.",
+      "why_it_matters_zh": "对语音 agent 团队来说，品牌化声音现在无需录音样本即可试验；但每个组织最多保存 100 个，声音不能保证唯一，创建不兼容 Zero Data Retention，必须先核对披露与数据保留要求。",
+      "why_it_matters_en": "For voice-agent teams, branded voices can now be tested without reference recordings. Organizations can save at most 100, voices are not guaranteed unique, and creation is incompatible with Zero Data Retention, so disclosure and retention requirements need review.",
       "technical_details": {
         "gpt_live_1": "GA 2026-09-10; v1/live/sessions; full-duplex; continues while backend model/agent reasons and calls tools; Responses delegation or own backend; $0.05/min billed per second; backend usage billed separately",
         "prompt_cache_diagnostics": "GA 2026-09-08; Responses API, GPT-5.6+; compares current vs previous response cache reuse, identifies miss causes, troubleshooting guidance",
         "api_keys": "2026-09-10: project API key expiry dates; admin-enforced maximum key lifetime at org or project level",
-        "gpt_image_2_5": "2026-09-08: Sunburst (editing precision) + Flare (fast everyday); xhigh/max quality settings; GPT Image 2 token rates"
+        "gpt_image_2_5": "2026-09-08: Sunburst (editing precision) + Flare (fast everyday); xhigh/max quality settings; GPT Image 2 token rates",
+        "prompt_to_voice": "GA to all API customers; POST /v1/audio/voices; creation free; speech at GPT-Live rates; 100 saved voices per organization; GPT-Live only; creation incompatible with ZDR"
       },
       "technical_details_zh": {
         "GPT-Live 1": "2026-09-10 GA；v1/live/sessions；全双工；后台模型/agent 推理与工具调用期间对话不中断；Responses 委托或自有后端；$0.05/分钟按秒计费；后端用量单独计费",
         "Prompt Cache 诊断": "2026-09-08 GA；Responses API，GPT-5.6+；对比当前与上一次响应的缓存复用、定位未命中原因、给排障指引",
         "API key": "2026-09-10：项目 key 可设过期时间；管理员可按组织或项目强制最长生命周期",
-        "GPT Image 2.5": "2026-09-08：Sunburst（编辑精度）+ Flare（快速日常生成）；xhigh/max 质量档；按 GPT Image 2 token 费率"
+        "GPT Image 2.5": "2026-09-08：Sunburst（编辑精度）+ Flare（快速日常生成）；xhigh/max 质量档；按 GPT Image 2 token 费率",
+        "文字生成声音": "向全部 API 客户 GA；POST /v1/audio/voices；创建免费；语音按 GPT-Live 费率；每组织最多 100 个；仅限 GPT-Live；创建不兼容 ZDR"
       },
       "tags": [
         "api",
@@ -480,7 +522,8 @@
       "recommendation": "TRIAL",
       "event_fingerprint": "openai-api-gpt-live-cache-diagnostics-keys",
       "source_ids": [
-        "src-49e8d0577a5e1f9d"
+        "src-49e8d0577a5e1f9d",
+        "src-13418df8cd6440ba"
       ],
       "project_ids": [],
       "scenario_ids": [
@@ -501,6 +544,20 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260910-05-prompt-voice-evidence",
+          "claim_zh": "OpenAI 已向全部 API 客户开放 GPT-Live 文字生成声音。",
+          "claim_en": "OpenAI made text-described GPT-Live voices available to all API customers.",
+          "source_ids": [
+            "src-49e8d0577a5e1f9d",
+            "src-13418df8cd6440ba"
+          ],
+          "event_ids": [
+            "ev-20260910-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -515,8 +572,25 @@
             "ev-20260910-05-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260910-05-prompt-voice",
+          "kind": "update",
+          "occurred_at": "2026-10-16",
+          "discovered_at": "2026-10-17T15:59:50Z",
+          "summary_zh": "GPT-Live 文字生成声音向全部 API 客户 GA",
+          "summary_en": "Text-described GPT-Live voices reach GA for all API customers",
+          "evidence_ids": [
+            "ev-20260910-05-prompt-voice-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "short_label_zh": "GPT-Live",
+      "short_label_en": "GPT-Live",
+      "next_action_zh": "生成两种受限声音，测试口音漂移、中断、披露与单次会话成本，并先核对数据保留要求。",
+      "next_action_en": "Generate two constrained voices and test accent drift, interruptions, disclosure and session cost after checking data-retention requirements."
     },
     {
       "event_id": "ev-20260910-06",

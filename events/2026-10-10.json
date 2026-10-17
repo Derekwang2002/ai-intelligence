@@ -4,33 +4,35 @@
   "events": [
     {
       "event_id": "ev-20261010-01",
-      "title": "Open WebUI 0.12 adds versioned Skills and long-running tool controls",
-      "title_zh": "Open WebUI 0.12 加入可版本化 Skills 与长任务控制",
+      "title": "Open WebUI 0.12 adds versioned Skills and encrypted collaboration",
+      "title_zh": "Open WebUI 0.12 增加版本化 Skills 与加密协作",
       "category": "developer-tools",
       "organization": [
         "Open WebUI"
       ],
       "published_at": "2026-10-10T21:13:24Z",
       "first_seen_at": "2026-10-11T16:02:40Z",
-      "last_updated_at": "2026-10-11T16:02:40Z",
+      "last_updated_at": "2026-10-17T15:59:50Z",
       "source_type": "github_release",
       "primary_source": "https://github.com/open-webui/open-webui/releases/tag/v0.12.0",
       "secondary_sources": [
-        "https://pypi.org/project/open-webui/0.12.0/"
+        "https://pypi.org/project/open-webui/0.12.0/",
+        "https://github.com/open-webui/open-webui/releases/tag/v0.12.3"
       ],
-      "summary": "Open WebUI 0.12.0 ships installable artifacts with multi-file, versioned Skills, mid-run compaction for long native tool chains and experimental Tool Search. It also adds Milvus hybrid retrieval, MFA and access-control repairs. Some security details remain temporarily withheld, and performance claims come from maintainer tests.",
-      "summary_en": "Open WebUI 0.12.0 ships installable artifacts with multi-file, versioned Skills, mid-run compaction for long native tool chains and experimental Tool Search. It also adds Milvus hybrid retrieval, MFA and access-control repairs. Some security details remain temporarily withheld, and performance claims come from maintainer tests.",
-      "summary_zh": "Open WebUI 0.12.0 已提供可安装产物，新增多文件、可版本化的 Skills，并能在长链原生工具调用中途压缩上下文。该版还加入实验性 Tool Search、Milvus 混合检索、MFA 与访问控制修复。部分安全细节暂未披露，性能数据也来自维护者测试。",
-      "why_it_matters": "For teams running self-hosted agent interfaces, the release connects reusable skills, long-running tools and retrieval in one control plane. The migration should be tested against permission revocation, compaction continuity and skill rollback before production use.",
-      "why_it_matters_en": "For teams running self-hosted agent interfaces, the release connects reusable skills, long-running tools and retrieval in one control plane. The migration should be tested against permission revocation, compaction continuity and skill rollback before production use.",
-      "why_it_matters_zh": "对自托管 agent 界面的团队来说，这次更新把可复用 Skills、长任务工具调用和检索放进同一控制面。生产升级前仍要验证权限撤销、压缩后的上下文连续性和 Skill 回滚。",
+      "summary": "Open WebUI 0.12 brought versioned Skills, long-tool-chain compaction and hybrid retrieval into stable. Version 0.12.3 adds temporary end-to-end encrypted chat, lighter Redis streaming, workspace search and narrower Google Drive authorization, while fixing OAuth MCP and tool-server recovery. Preselected Skills now inject full instructions on every turn, which can materially increase prompt size.",
+      "summary_en": "Open WebUI 0.12 brought versioned Skills, long-tool-chain compaction and hybrid retrieval into stable. Version 0.12.3 adds temporary end-to-end encrypted chat, lighter Redis streaming, workspace search and narrower Google Drive authorization, while fixing OAuth MCP and tool-server recovery. Preselected Skills now inject full instructions on every turn, which can materially increase prompt size.",
+      "summary_zh": "Open WebUI 0.12 把版本化 Skills、长工具链压缩与混合检索带入稳定版。0.12.3 又增加临时端到端加密聊天、Redis 流式存储优化、工作区搜索和更小范围的 Google Drive 授权，并修复 OAuth MCP 恢复与工具服务故障恢复。预选 Skill 现在每轮都会注入完整指令，可能显著增加 prompt。",
+      "why_it_matters": "For self-hosted teams, 0.12.3 changes collaboration privacy, Redis load and Skill token cost at once. Encrypted chat still requires HTTPS, WebSockets and disabled server-side WebSocket logging, so validate it in staging first.",
+      "why_it_matters_en": "For self-hosted teams, 0.12.3 changes collaboration privacy, Redis load and Skill token cost at once. Encrypted chat still requires HTTPS, WebSockets and disabled server-side WebSocket logging, so validate it in staging first.",
+      "why_it_matters_zh": "对自托管团队来说，0.12.3 同时改变协作隐私、Redis 负载和 Skill token 成本；加密聊天仍要求 HTTPS、WebSocket 且关闭服务端 WebSocket 日志，应先在测试环境验证。",
       "technical_details": {
         "availability": "stable GitHub release and public PyPI 0.12.0 artifacts; Tool Search remains experimental",
         "skills": "multi-file Skills with import/export and version history",
         "long_runs": "mid-run compaction for native tool-call chains and deferred tool loading",
         "retrieval": "native Milvus hybrid BM25 and vector search",
         "security": "MFA and access-control fixes; some security details are temporarily withheld",
-        "time_basis": "GitHub release 2026-10-10T21:13:24Z; PyPI artifacts begin 2026-10-10T21:08:24Z"
+        "time_basis": "GitHub release 2026-10-10T21:13:24Z; PyPI artifacts begin 2026-10-10T21:08:24Z",
+        "update_0_12_3": "temporary browser-side MLS encrypted chat (off by default), append-only Redis streaming keys, workspace search, Google Drive file-picker scope, OAuth MCP recovery, full selected-skill instructions each turn"
       },
       "technical_details_zh": {
         "可用性": "GitHub stable release 与 PyPI 0.12.0 产物已公开；Tool Search 仍属实验性",
@@ -38,7 +40,8 @@
         "长任务": "原生工具调用链可在运行中压缩上下文，并按需加载工具",
         "检索": "原生支持 Milvus 的 BM25 与向量混合检索",
         "安全": "包含 MFA 与访问控制修复；部分安全细节暂未披露",
-        "时间依据": "GitHub release 为 2026-10-10T21:13:24Z；PyPI 产物始于 2026-10-10T21:08:24Z"
+        "时间依据": "GitHub release 为 2026-10-10T21:13:24Z；PyPI 产物始于 2026-10-10T21:08:24Z",
+        "0.12.3 更新": "临时浏览器端 MLS 加密聊天（默认关闭）、Redis 追加式流存储、工作区搜索、Google Drive 文件选择权限、OAuth MCP 恢复、每轮注入所选 Skill 的完整指令"
       },
       "tags": [
         "open-webui",
@@ -57,11 +60,12 @@
       "event_fingerprint": "open-webui-0-12-versioned-skills-tool-search",
       "short_label_zh": "Open WebUI 0.12",
       "short_label_en": "Open WebUI 0.12",
-      "next_action_zh": "一天内用现有工作流回归 Skill 回滚、长工具链压缩、权限撤销与共享聊天访问，再决定升级。",
-      "next_action_en": "Within one day, regress skill rollback, long-tool-chain compaction, permission revocation and shared-chat access before upgrading.",
+      "next_action_zh": "一天内在测试环境回归加密聊天、Redis 流、OAuth MCP 恢复，并测量附加 Skills 后的 prompt token。",
+      "next_action_en": "In one day, regress encrypted chat, Redis streaming and OAuth MCP recovery in staging, then measure prompt tokens with attached Skills.",
       "source_ids": [
         "src-24ff0fdb7aa9116b",
-        "src-64c702c5ba66e993"
+        "src-64c702c5ba66e993",
+        "src-25b0ab25e0a380fb"
       ],
       "project_ids": [
         "open-webui"
@@ -86,6 +90,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; performance and security claims remain maintainer-reported"
+        },
+        {
+          "id": "ev-20261010-01-open-webui-0-12-3-evidence",
+          "claim_zh": "Open WebUI 0.12.3 已发布加密协作、Redis 流优化与权限修复。",
+          "claim_en": "Open WebUI 0.12.3 shipped encrypted collaboration, Redis streaming improvements and permission fixes.",
+          "source_ids": [
+            "src-25b0ab25e0a380fb"
+          ],
+          "event_ids": [
+            "ev-20261010-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -98,6 +115,19 @@
           "summary_en": "Open WebUI 0.12 adds versioned Skills and long-running tool controls",
           "evidence_ids": [
             "ev-20261010-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261010-01-open-webui-0-12-3",
+          "kind": "update",
+          "occurred_at": "2026-10-16T11:46:21Z",
+          "discovered_at": "2026-10-17T15:59:50Z",
+          "summary_zh": "Open WebUI 0.12.3 增加加密协作与 Redis 优化",
+          "summary_en": "Open WebUI 0.12.3 adds encrypted collaboration and Redis improvements",
+          "evidence_ids": [
+            "ev-20261010-01-open-webui-0-12-3-evidence"
           ],
           "historical": false,
           "importance": "major"

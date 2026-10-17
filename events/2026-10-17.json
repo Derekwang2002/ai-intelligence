@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-17",
+  "provenance": "Updated by incremental run 2026-10-17T15:59:50Z; verified primary-source releases and timing.",
+  "events": [
+    {
+      "event_id": "ev-20261017-01",
+      "title": "DeepSeek opens Search and Fetch APIs for agent retrieval",
+      "title_zh": "DeepSeek 开放面向 agent 检索的 Search 与 Fetch API",
+      "category": "ai-engineering",
+      "organization": [
+        "DeepSeek"
+      ],
+      "published_at": "2026-10-17",
+      "source_type": "api_documentation",
+      "primary_source": "https://api-docs.deepseek.com/guides/search/",
+      "secondary_sources": [
+        "https://api-docs.deepseek.com/news/news261017/"
+      ],
+      "summary_zh": "DeepSeek 开放 Search 与 Fetch 两个原始 API，分别返回结构化搜索结果与网页 Markdown。两者按成功且非空的请求计费，均为每千次 0.75 美元，并各有账户级 5 QPS 限制。通过 DeepSeek Harness、Claude Code 与 Codex 调用的服务端工具暂时免费到北京时间 11 月 1 日。",
+      "summary_en": "DeepSeek opened raw Search and Fetch APIs that return structured search results and webpage Markdown. Each costs $0.75 per 1,000 successful non-empty requests and has a separate account-level 5 QPS limit. Server-side tool calls through DeepSeek Harness, Claude Code and Codex are temporarily free until November 1 Beijing time.",
+      "why_it_matters_zh": "对构建 RAG 或 agent 的团队来说，这把检索成本从模型 token 中拆开，并提供低价可测的抓取路径；但权威度字段只是供应商元数据，相关性、归因与提示注入防护仍需自己验证。",
+      "why_it_matters_en": "For RAG and agent teams, this separates retrieval cost from model tokens and offers a low-cost fetch path. The authority field is vendor metadata, so relevance, attribution and prompt-injection defenses still need local validation.",
+      "technical_details": {
+        "endpoints": "POST /v1/tools/search and POST /v1/tools/fetch",
+        "price": "$0.75 per 1,000 successful non-empty calls for each API",
+        "limits": "separate 5 QPS account limits; Fetch also has per-domain limits",
+        "free_window": "server-side tools through DeepSeek Harness, Claude Code and Codex free until 2026-10-31T16:00:00Z",
+        "time_basis": "official pages are date-only; absent from prior capture and present in current capture"
+      },
+      "technical_details_zh": {
+        "接口": "POST /v1/tools/search 与 POST /v1/tools/fetch",
+        "价格": "两个 API 均为每千次成功且非空调用 0.75 美元",
+        "限制": "各自账户级 5 QPS；Fetch 另有域名级限制",
+        "免费期": "经 DeepSeek Harness、Claude Code 与 Codex 的服务端工具免费至 2026-10-31T16:00:00Z",
+        "时间依据": "官方页面只有日期；上轮抓取不存在，本轮抓取出现"
+      },
+      "tags": [
+        "search",
+        "fetch",
+        "rag",
+        "agent-tools",
+        "api"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "deepseek-search-fetch-api-2026",
+      "short_label_zh": "DeepSeek Search",
+      "short_label_en": "DeepSeek Search",
+      "next_action_zh": "一天内回放一组真实检索任务，测可用结果率、抓取成功率、归因、提示注入与总成本。",
+      "next_action_en": "In one day, replay a real retrieval set and measure usable-result rate, fetch success, attribution, prompt injection and total cost.",
+      "source_ids": [
+        "src-56ddeb4dc142762f",
+        "src-8d6665ab69ee0937",
+        "src-1890f0246451fc25"
+      ],
+      "project_ids": [
+        "deepseek-search"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261017-01-release-evidence",
+          "claim_zh": "DeepSeek 已开放按成功请求计费的 Search 与 Fetch API。",
+          "claim_en": "DeepSeek opened Search and Fetch APIs billed per successful request.",
+          "source_ids": [
+            "src-56ddeb4dc142762f",
+            "src-8d6665ab69ee0937",
+            "src-1890f0246451fc25"
+          ],
+          "event_ids": [
+            "ev-20261017-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261017-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-17",
+          "discovered_at": "2026-10-17T15:59:50Z",
+          "summary_zh": "DeepSeek 开放 Search 与 Fetch API",
+          "summary_en": "DeepSeek opens Search and Fetch APIs",
+          "evidence_ids": [
+            "ev-20261017-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-17T15:59:50Z",
+      "last_updated_at": "2026-10-17T15:59:50Z",
+      "summary": "DeepSeek opened raw Search and Fetch APIs that return structured search results and webpage Markdown. Each costs $0.75 per 1,000 successful non-empty requests and has a separate account-level 5 QPS limit. Server-side tool calls through DeepSeek Harness, Claude Code and Codex are temporarily free until November 1 Beijing time.",
+      "why_it_matters": "For RAG and agent teams, this separates retrieval cost from model tokens and offers a low-cost fetch path. The authority field is vendor metadata, so relevance, attribution and prompt-injection defenses still need local validation.",
+      "evidence_stage": "verified"
+    }
+  ]
+}
