@@ -409,24 +409,26 @@
         "src-781fde0ef0fa2dd3",
         "src-3762ff1d2e307774",
         "src-c0d419c5c752474a",
-        "src-9668af85ed2e1acf"
+        "src-9668af85ed2e1acf",
+        "src-83a753b4160cba93"
       ],
       "current_judgment_event_id": "ev-20260922-01",
       "official_source_ids": [
         "src-c0d419c5c752474a",
-        "src-9668af85ed2e1acf"
+        "src-9668af85ed2e1acf",
+        "src-83a753b4160cba93"
       ],
-      "last_reviewed_at": "2026-10-05T16:36:00Z",
+      "last_reviewed_at": "2026-10-18T15:58:14Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "vLLM 0.31 继续把快速启动和服务安全做进主线：preload 覆盖 DP/MTP，加入实验性 CRIU 快照，并默认拒绝每请求多模态参数。版本仍含多项不兼容变更。",
-        "judgment_en": "vLLM 0.31 keeps moving fast startup and safer serving into the mainline: preload covers DP/MTP, experimental CRIU snapshots arrive, and per-request multimodal parameters are rejected by default. The release still carries breaking changes.",
-        "next_action_zh": "分阶段升级 0.31，回归 preload、快照恢复、多模态参数拒绝、LoRA 缓存隔离和已变更的 flag。",
-        "next_action_en": "Stage the 0.31 upgrade and regress preload, snapshot recovery, multimodal argument rejection, LoRA cache isolation and changed flags.",
+        "judgment_zh": "0.32 把安全默认值与低精度推理继续带入稳定版，但有 Python、CORS 与 streaming 不兼容变化。",
+        "judgment_en": "0.32 brings safer defaults and low-precision inference into stable, with Python, CORS and streaming incompatibilities.",
+        "next_action_zh": "分阶段升级并回归入口、安全与真实负载。",
+        "next_action_en": "Stage the upgrade and regress inputs, security and real workloads.",
         "basis_event_ids": [
           "ev-20260922-01"
         ],
-        "reviewed_at": "2026-10-05T16:36:00Z"
+        "reviewed_at": "2026-10-18T15:58:14Z"
       }
     },
     {
@@ -653,29 +655,31 @@
         "src-75ffc0e085a2eee1",
         "src-d9a9c33752a345db",
         "src-5f6db8b0b36e1913",
-        "src-afb4f1911ed6958a"
+        "src-afb4f1911ed6958a",
+        "src-fe3326f4dbcaa51b"
       ],
       "current_judgment_event_id": "ev-20260928-07",
       "official_source_ids": [
         "src-320437c34242ba62",
         "src-781657bf5c42e86e",
         "src-987dd82c392616be",
-        "src-afb4f1911ed6958a"
+        "src-afb4f1911ed6958a",
+        "src-fe3326f4dbcaa51b"
       ],
-      "last_reviewed_at": "2026-10-11T16:02:40Z",
+      "last_reviewed_at": "2026-10-18T15:58:14Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "MCP 已进入企业治理阶段。LiteLLM 1.105 又补上 protocol/capability 发现、调用者授权与检索片段护栏，但生产行为仍需回归。",
-        "judgment_en": "MCP has entered its enterprise-governance phase. LiteLLM 1.105 adds protocol/capability discovery, caller authorization and retrieved-chunk guardrails, but production behavior still needs regression testing.",
-        "next_action_zh": "在预生产回归 MCP 发现与执行授权、检索片段护栏、成本归属和回滚。",
-        "next_action_en": "In staging, regress MCP discovery-versus-execution authorization, retrieved-chunk guardrails, spend attribution and rollback.",
+        "judgment_zh": "LiteLLM 1.106 默认关闭 stdio MCP，并继续把身份和凭据控制留在 gateway。",
+        "judgment_en": "LiteLLM 1.106 disables stdio MCP by default and keeps identity and credential controls in the gateway.",
+        "next_action_zh": "在 canary 回归 MCP opt-in、凭据隔离和回滚。",
+        "next_action_en": "Canary MCP opt-in, credential isolation and rollback.",
         "basis_event_ids": [
           "ev-20260913-01",
           "ev-20260928-07",
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-10-11T16:02:40Z"
+        "reviewed_at": "2026-10-18T15:58:14Z"
       }
     },
     {
@@ -2885,25 +2889,27 @@
       "source_ids": [
         "src-30356307f997543c",
         "src-ee4b4edcd08ec6ef",
-        "src-219d3a0a637e6e05"
+        "src-219d3a0a637e6e05",
+        "src-f34afb91ca82acbf"
       ],
       "current_judgment_event_id": "ev-20261011-02",
       "official_source_ids": [
         "src-30356307f997543c",
         "src-ee4b4edcd08ec6ef",
-        "src-219d3a0a637e6e05"
+        "src-219d3a0a637e6e05",
+        "src-f34afb91ca82acbf"
       ],
-      "last_reviewed_at": "2026-10-12T15:59:38Z",
+      "last_reviewed_at": "2026-10-18T15:58:14Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Littleguys 已提供可安装的多 agent 本地控制台，适合统一查看状态和审批。它不是统一沙箱，不同 adapter 的凭据、授权与调度持久性仍需分别验证。",
-        "judgment_en": "Littleguys now provides an installable local control surface for several agents and is useful for shared status and approvals. It is not a common sandbox, so credentials, authorization and scheduler durability still require per-adapter validation.",
-        "next_action_zh": "一天内在隔离 Mac 账号连接一个 ACP agent，检查审批、token 权限和退出后的调度状态。",
-        "next_action_en": "Within one day, connect one ACP agent in a disposable Mac profile and test approvals, token permissions and scheduler state after exit.",
+        "judgment_zh": "0.2 加入实时 Claude Code 会话与加密手机桥接，同时扩大审批与远程控制边界。",
+        "judgment_en": "0.2 adds live Claude Code sessions and an encrypted phone bridge while widening approval and remote-control boundaries.",
+        "next_action_zh": "隔离试跑会话、断连恢复与密钥撤销。",
+        "next_action_en": "Test sessions, reconnects and key revocation in isolation.",
         "basis_event_ids": [
           "ev-20261011-02"
         ],
-        "reviewed_at": "2026-10-12T15:59:38Z"
+        "reviewed_at": "2026-10-18T15:58:14Z"
       }
     },
     {
@@ -4019,7 +4025,211 @@
         ],
         "reviewed_at": "2026-10-17T15:59:50Z"
       }
+    },
+    {
+      "id": "ling-3-1-flash",
+      "name_zh": "Ling-3.1-flash",
+      "name_en": "Ling-3.1-flash",
+      "type": "model",
+      "aliases": [
+        "Ling-3.1-flash"
+      ],
+      "pattern": "Ling-3\\.1-flash",
+      "event_ids": [
+        "ev-20261013-07"
+      ],
+      "source_ids": [
+        "src-c021e87c1393168f",
+        "src-c930e2fd0561c0a1"
+      ],
+      "current_judgment_event_id": "ev-20261013-07",
+      "official_source_ids": [
+        "src-c021e87c1393168f",
+        "src-c930e2fd0561c0a1"
+      ],
+      "last_reviewed_at": "2026-10-18T15:58:14Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "权重和部署配方已公开，但 1M 上下文与 coding 成绩仍缺可复现证据。",
+        "judgment_en": "Weights and serving recipes are public, but 1M context and coding results still lack reproducible evidence.",
+        "next_action_zh": "等 harness 与 1M serving 配方公开后复测。",
+        "next_action_en": "Wait for the harness and a reproducible 1M serving recipe.",
+        "basis_event_ids": [
+          "ev-20261013-07"
+        ],
+        "reviewed_at": "2026-10-18T15:58:14Z"
+      }
+    },
+    {
+      "id": "grok-voice",
+      "name_zh": "Grok Voice",
+      "name_en": "Grok Voice",
+      "type": "model",
+      "aliases": [
+        "Grok Voice"
+      ],
+      "pattern": "Grok Voice",
+      "event_ids": [
+        "ev-20261014-04"
+      ],
+      "source_ids": [
+        "src-12251940b3b4d223",
+        "src-dc4589c4c222662d"
+      ],
+      "current_judgment_event_id": "ev-20261014-04",
+      "official_source_ids": [
+        "src-12251940b3b4d223",
+        "src-dc4589c4c222662d"
+      ],
+      "last_reviewed_at": "2026-10-18T15:58:14Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "3.0 已 GA 且价格不变；未锁定 alias 的生产会话有行为漂移风险。",
+        "judgment_en": "3.0 is GA at the existing price; production sessions on an unpinned alias risk behavioral drift.",
+        "next_action_zh": "锁定 3.0 并回放真实语音集。",
+        "next_action_en": "Pin 3.0 and replay a real voice set.",
+        "basis_event_ids": [
+          "ev-20261014-04"
+        ],
+        "reviewed_at": "2026-10-18T15:58:14Z"
+      }
+    },
+    {
+      "id": "hy-memory",
+      "name_zh": "Hy-Memory",
+      "name_en": "Hy-Memory",
+      "type": "framework",
+      "aliases": [
+        "Hy-Memory"
+      ],
+      "pattern": "Hy-Memory",
+      "event_ids": [
+        "ev-20261015-07"
+      ],
+      "source_ids": [
+        "src-12b3f8153ee100f8",
+        "src-da440d997c86a843",
+        "src-b11b2f5ebb71094b"
+      ],
+      "current_judgment_event_id": "ev-20261015-07",
+      "official_source_ids": [
+        "src-12b3f8153ee100f8",
+        "src-da440d997c86a843",
+        "src-b11b2f5ebb71094b"
+      ],
+      "last_reviewed_at": "2026-10-18T15:58:14Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "专用 memory writer 有明确工程价值，但结论仍来自作者的固定子样本。",
+        "judgment_en": "A specialist memory writer has clear engineering value, but evidence still comes from the author-run fixed subsample.",
+        "next_action_zh": "用自己的 held-out 记忆日志做一天对照试验。",
+        "next_action_en": "Run a one-day comparison on held-out memory logs.",
+        "basis_event_ids": [
+          "ev-20261015-07"
+        ],
+        "reviewed_at": "2026-10-18T15:58:14Z"
+      }
+    },
+    {
+      "id": "h2o-lightning-4b",
+      "name_zh": "H2O-Lightning-4B",
+      "name_en": "H2O-Lightning-4B",
+      "type": "model",
+      "aliases": [
+        "H2O-Lightning-4B"
+      ],
+      "pattern": "H2O-Lightning-4B",
+      "event_ids": [
+        "ev-20261017-02"
+      ],
+      "source_ids": [
+        "src-ea174ee3929bdc81",
+        "src-56ae275205ad1948"
+      ],
+      "current_judgment_event_id": "ev-20261017-02",
+      "official_source_ids": [
+        "src-ea174ee3929bdc81",
+        "src-56ae275205ad1948"
+      ],
+      "last_reviewed_at": "2026-10-18T15:58:14Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "一次前向计算的结构化决策值得试验，但新版未重跑私有榜，不能沿用旧版权威排名。",
+        "judgment_en": "One-pass structured decisions are worth a trial, but the new checkpoint did not rerun the private board and cannot inherit the older rank.",
+        "next_action_zh": "用真实路由集对比校准、延迟与成本。",
+        "next_action_en": "Compare calibration, latency and cost on a real routing set.",
+        "basis_event_ids": [
+          "ev-20261017-02"
+        ],
+        "reviewed_at": "2026-10-18T15:58:14Z"
+      }
+    },
+    {
+      "id": "indra-ocr",
+      "name_zh": "Indra OCR",
+      "name_en": "Indra OCR",
+      "type": "developer-tool",
+      "aliases": [
+        "Indra OCR"
+      ],
+      "pattern": "Indra OCR",
+      "event_ids": [
+        "ev-20261015-08"
+      ],
+      "source_ids": [
+        "src-110896d94e289814",
+        "src-bb4e2f62a7c34e5b"
+      ],
+      "current_judgment_event_id": "ev-20261015-08",
+      "official_source_ids": [
+        "src-110896d94e289814",
+        "src-bb4e2f62a7c34e5b"
+      ],
+      "last_reviewed_at": "2026-10-18T15:58:14Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "CPU-only 文档解析值得在本地 RAG 流水线试验，但性能与许可要按真实文档核对。",
+        "judgment_en": "CPU-only document parsing is worth a local RAG trial, with performance and license checked on real documents.",
+        "next_action_zh": "用 50 页真实 PDF 对比准确率、版面和延迟。",
+        "next_action_en": "Compare accuracy, layout and latency on 50 real PDF pages.",
+        "basis_event_ids": [
+          "ev-20261015-08"
+        ],
+        "reviewed_at": "2026-10-18T15:58:14Z"
+      }
+    },
+    {
+      "id": "sphinx-understand",
+      "name_zh": "Sphinx",
+      "name_en": "Sphinx",
+      "type": "developer-tool",
+      "aliases": [
+        "Sphinx"
+      ],
+      "pattern": "Sphinx",
+      "event_ids": [
+        "ev-20261018-01"
+      ],
+      "source_ids": [
+        "src-fdca86e8b5253e57"
+      ],
+      "current_judgment_event_id": "ev-20261018-01",
+      "official_source_ids": [
+        "src-fdca86e8b5253e57"
+      ],
+      "last_reviewed_at": "2026-10-18T15:58:14Z",
+      "judgment": {
+        "recommendation": "IGNORE",
+        "judgment_zh": "0.1 可绕过且明确不是安全闸门，暂不加入强制流程。",
+        "judgment_en": "0.1 is bypassable and explicitly not a security gate, so it should not enter mandatory workflows.",
+        "next_action_zh": "等独立评测和可强制 CI 边界后再看。",
+        "next_action_en": "Wait for independent evaluation and enforceable CI boundaries.",
+        "basis_event_ids": [
+          "ev-20261018-01"
+        ],
+        "reviewed_at": "2026-10-18T15:58:14Z"
+      }
     }
   ],
-  "last_updated": "2026-10-17T15:59:50Z"
+  "last_updated": "2026-10-18T15:58:14Z"
 }

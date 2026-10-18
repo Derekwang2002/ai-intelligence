@@ -101,6 +101,106 @@
       "summary": "DeepSeek opened raw Search and Fetch APIs that return structured search results and webpage Markdown. Each costs $0.75 per 1,000 successful non-empty requests and has a separate account-level 5 QPS limit. Server-side tool calls through DeepSeek Harness, Claude Code and Codex are temporarily free until November 1 Beijing time.",
       "why_it_matters": "For RAG and agent teams, this separates retrieval cost from model tokens and offers a low-cost fetch path. The authority field is vendor metadata, so relevance, attribution and prompt-injection defenses still need local validation.",
       "evidence_stage": "verified"
+    },
+    {
+      "event_id": "ev-20261017-02",
+      "title": "H2O.ai updates its 4B decision model with two-way reading",
+      "title_zh": "H2O.ai 为 4B 决策模型加入双向读取",
+      "category": "foundation-model",
+      "organization": [
+        "H2O.ai"
+      ],
+      "published_at": "2026-10-17T04:41:17Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/h2oai/h2o-lightning-4b",
+      "secondary_sources": [
+        "https://benchmarkheaven.com/api/jevbench/latest"
+      ],
+      "summary_zh": "H2O.ai 发布 H2O-Lightning-4B v1.3.1。这个 4B 模型用一次前向计算和一个输出 token 返回 choice、yes/no 或 score 的概率；新版本默认加入双向读取，可处理文本与图片，并在未修改的 vLLM 前加轻量 shim。权重与在线 demo 已公开。",
+      "summary_en": "H2O.ai released H2O-Lightning-4B v1.3.1. The 4B model returns choice, yes/no or score probabilities in one forward pass and one output token. The update defaults to two-way reading, handles text and images, and uses a small shim in front of unmodified vLLM. Weights and a live demo are public.",
+      "why_it_matters_zh": "对需要路由、审核或策略判定的团队来说，一次前向计算能把延迟与成本从生成式模型中拆出来。榜单第一对应旧版 v1.1，v1.3.1 的公开集改进不显著且视觉分数略有回退，不能把榜单名次直接套到新权重。",
+      "why_it_matters_en": "For routing, review and policy decisions, one forward pass can separate latency and cost from generative models. The top leaderboard entry uses older v1.1 weights; v1.3.1 shows no significant public-set gain and a small vision regression, so the rank does not transfer directly to the new checkpoint.",
+      "technical_details": {
+        "model": "4B model based on Qwen3.5-4B; text and image decisions",
+        "interface": "choice, yes/no and score probability outputs; one forward pass and one output token",
+        "availability": "Apache-2.0 weights, shim and Hugging Face demo",
+        "evidence": "v1.1 ranks first on the external JevBench open board; v1.3.1 public-set differences are not statistically significant and private board was not rerun",
+        "time_basis": "v1.3.1 weights committed 2026-10-17T04:41:17Z, inside the previous window but missed"
+      },
+      "technical_details_zh": {
+        "模型": "基于 Qwen3.5-4B 的 4B 模型；支持文本与图片决策",
+        "接口": "返回 choice、yes/no 与 score 概率；一次前向计算、一个输出 token",
+        "可用性": "Apache-2.0 权重、shim 与 Hugging Face demo",
+        "证据": "v1.1 在外部 JevBench 开放榜第一；v1.3.1 公开集差异不显著，且未重跑私有榜",
+        "时间依据": "v1.3.1 权重提交于 2026-10-17T04:41:17Z，位于上一轮窗口但漏检"
+      },
+      "tags": [
+        "decision-model",
+        "calibration",
+        "routing",
+        "multimodal",
+        "open-weights"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "h2o-lightning-4b-v1-3-1",
+      "short_label_zh": "H2O-Lightning-4B",
+      "short_label_en": "H2O-Lightning-4B",
+      "next_action_zh": "一天内用公开权重回放一个真实路由集，测校准误差、延迟、成本，并与当前规则和生成模型比较。",
+      "next_action_en": "Within one day, replay a real routing set on the public weights and compare calibration error, latency and cost with current rules and a generative model.",
+      "source_ids": [
+        "src-ea174ee3929bdc81",
+        "src-56ae275205ad1948"
+      ],
+      "project_ids": [
+        "h2o-lightning-4b"
+      ],
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261017-02-release-evidence",
+          "claim_zh": "H2O-Lightning-4B v1.3.1 已公开权重、双向读取 serving shim 与可运行 demo。",
+          "claim_en": "H2O-Lightning-4B v1.3.1 has public weights, a two-way-reading serving shim and a runnable demo.",
+          "source_ids": [
+            "src-ea174ee3929bdc81",
+            "src-56ae275205ad1948"
+          ],
+          "event_ids": [
+            "ev-20261017-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifact plus external leaderboard; new checkpoint not privately rerun"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261017-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-17T04:41:17Z",
+          "discovered_at": "2026-10-18T15:58:14Z",
+          "summary_zh": "H2O-Lightning-4B v1.3.1 公开双向读取权重",
+          "summary_en": "H2O-Lightning-4B v1.3.1 publishes two-way-reading weights",
+          "evidence_ids": [
+            "ev-20261017-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-18T15:58:14Z",
+      "last_updated_at": "2026-10-18T15:58:14Z",
+      "summary": "H2O.ai released H2O-Lightning-4B v1.3.1. The 4B model returns choice, yes/no or score probabilities in one forward pass and one output token. The update defaults to two-way reading, handles text and images, and uses a small shim in front of unmodified vLLM. Weights and a live demo are public.",
+      "why_it_matters": "For routing, review and policy decisions, one forward pass can separate latency and cost from generative models. The top leaderboard entry uses older v1.1 weights; v1.3.1 shows no significant public-set gain and a small vision regression, so the rank does not transfer directly to the new checkpoint."
     }
   ]
 }

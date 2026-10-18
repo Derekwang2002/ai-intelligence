@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.102 reaches stable with Agent Skills and MCP controls",
-      "title_zh": "LiteLLM 1.102 稳定版带来 Skills 与 MCP 管控",
+      "title": "LiteLLM 1.106 makes remote MCP identity safer and disables stdio by default",
+      "title_zh": "LiteLLM 1.106 加固远程 MCP 身份并默认关闭 stdio",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-10-11T16:02:40Z",
+      "last_updated_at": "2026-10-18T15:58:14Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -24,14 +24,15 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.103.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.104.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.104.2",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.105.0"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.105.0",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.106.0"
       ],
-      "summary": "LiteLLM 1.104.2 brings the OpenAI-compatible Decisions API and the OpenAI Decisions provider into the stable release line. The gateway can now expose `/v1/decisions` and `/v1/systemone`, extending its existing identity, MCP routing and spend controls to decision-model traffic.",
-      "why_it_matters": "For teams centralizing model access, this avoids a separate gateway path for structured decisions. Trial it with schema validation, authentication, routing fallback and spend attribution before exposing the endpoints to production agents.",
-      "summary_zh": "LiteLLM 1.104.2 把 OpenAI 兼容的 Decisions API 与 OpenAI Decisions provider 带入稳定版。网关现可暴露 `/v1/decisions` 和 `/v1/systemone`，让既有身份、MCP 路由与成本控制覆盖决策模型流量。",
-      "summary_en": "LiteLLM 1.104.2 brings the OpenAI-compatible Decisions API and the OpenAI Decisions provider into the stable release line. The gateway can now expose `/v1/decisions` and `/v1/systemone`, extending its existing identity, MCP routing and spend controls to decision-model traffic.",
-      "why_it_matters_zh": "对集中管理模型访问的团队来说，这能避免为结构化决策另建网关通道。面向生产 agent 开放前，应验证 schema、身份认证、路由回退和成本归属。",
-      "why_it_matters_en": "For teams centralizing model access, this avoids a separate gateway path for structured decisions. Trial it with schema validation, authentication, routing fallback and spend attribution before exposing the endpoints to production agents.",
+      "summary": "LiteLLM 1.106.0 is a stable gateway release that disables stdio MCP servers by default and tightens remote MCP identity. It binds OAuth clients to upstream issuers, avoids forwarding caller gateway keys to MCP servers, encrypts guardrail and search parameters at rest, and adds workload-identity and FIPS startup controls. Signed container verification and spend-flush reliability improvements are also documented.",
+      "why_it_matters": "For teams using LiteLLM as an agent gateway, the safer defaults reduce credential spillover but can break local MCP setups. Enterprise-only items and release-note aggregation mean the final entitlement and behavior must be checked in a production-shaped canary.",
+      "summary_zh": "LiteLLM 1.106.0 是一次稳定版网关更新，默认关闭 stdio MCP server，并收紧远程 MCP 身份边界。它把 OAuth client 绑定到上游 issuer，避免把调用者的 gateway key 转发给 MCP server，加密存储护栏与搜索参数，并加入 workload identity 和 FIPS 启动控制。官方还给出容器签名验证与费用落盘可靠性改进。",
+      "summary_en": "LiteLLM 1.106.0 is a stable gateway release that disables stdio MCP servers by default and tightens remote MCP identity. It binds OAuth clients to upstream issuers, avoids forwarding caller gateway keys to MCP servers, encrypts guardrail and search parameters at rest, and adds workload-identity and FIPS startup controls. Signed container verification and spend-flush reliability improvements are also documented.",
+      "why_it_matters_zh": "对把 LiteLLM 当作 agent gateway 的团队来说，更安全的默认值能减少凭据外溢，但可能直接打断本地 MCP。部分能力仅限企业版，release note 又汇总了较长变更区间，因此必须在类生产 canary 中核对实际权限与行为。",
+      "why_it_matters_en": "For teams using LiteLLM as an agent gateway, the safer defaults reduce credential spillover but can break local MCP setups. Enterprise-only items and release-note aggregation mean the final entitlement and behavior must be checked in a production-shaped canary.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -44,7 +45,8 @@
         "update_2026_09_28": "LiteLLM 1.103.0 stable (PyPI artifacts from 2026-09-27T17:47Z; GitHub release 2026-09-28T05:43Z): explicit Claude Code gateway endpoint, RFC 8693 IdP JWT token exchange, MCP client allowlists, live-session inspection and forced credential revocation, fail-closed upstream credentials, MCP-aware guardrails, Fuse v2 routing and budget/accounting fixes. The large RC aggregation requires production-shaped regression testing. Stays TRIAL.",
         "update_2026_10_05_litellm-1-104": "1.104.0 signs Docker images, rejects weak master keys, detects breached passwords, refreshes deactivated JWT user state, fixes MCP worker routing and stops unresendable spend-batch replay.",
         "update_2026_10_08": "1.104.2 stable backports `/v1/systemone`, the OpenAI-compatible `/v1/decisions` endpoint and the OpenAI Decisions provider from the development line.",
-        "update_2026_10_11": "1.105.0 stable adds litellm.agent(), MCP capability/version discovery, stricter caller authorization, retrieved-chunk guardrails, private-destination blocking and routing/spend fixes."
+        "update_2026_10_11": "1.105.0 stable adds litellm.agent(), MCP capability/version discovery, stricter caller authorization, retrieved-chunk guardrails, private-destination blocking and routing/spend fixes.",
+        "update_2026_10_18": "1.106.0 stable: stdio MCP disabled by default; MCP OAuth issuer binding and credential isolation; encrypted guardrail/search configuration; Anthropic and OpenAI workload identity; optional FIPS startup gate; signed containers; stronger spend backpressure and shutdown flush."
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -58,7 +60,8 @@
         "2026-09-28 更新": "LiteLLM 1.103.0 stable（PyPI 产物始于 2026-09-27T17:47Z；GitHub release 为 2026-09-28T05:43Z）：新增 Claude Code gateway endpoint、RFC 8693 IdP JWT token exchange、MCP client allowlist、在线 session 查看与强制凭据撤销、上游凭据 fail-closed、MCP-aware 护栏、Fuse v2 路由及预算/计费修复。该版本汇总了很长的 RC 变更区间，仍需按生产形态做回归。维持 TRIAL。",
         "2026-10-05 更新 litellm-1-104": "1.104.0 为 Docker image 签名，拒绝弱 master key，检测泄露密码，刷新停用 JWT 用户状态，修复 MCP worker 路由，并停止无法重发的 spend batch 重放。",
         "2026-10-08 更新": "1.104.2 稳定版从开发线回移 `/v1/systemone`、OpenAI 兼容的 `/v1/decisions` endpoint 与 OpenAI Decisions provider。",
-        "2026-10-11 更新": "1.105.0 稳定版加入 litellm.agent()、MCP capability/version 发现、更严格的调用者授权、检索片段护栏、私网目标阻断及路由/计费修复。"
+        "2026-10-11 更新": "1.105.0 稳定版加入 litellm.agent()、MCP capability/version 发现、更严格的调用者授权、检索片段护栏、私网目标阻断及路由/计费修复。",
+        "2026-10-18 更新": "1.106.0 稳定版：默认关闭 stdio MCP；绑定 MCP OAuth issuer 并隔离凭据；加密护栏与搜索配置；支持 Anthropic 与 OpenAI workload identity；可启用 FIPS 启动闸门；容器签名；加强费用 backpressure 与退出落盘。"
       },
       "tags": [
         "litellm",
@@ -85,7 +88,8 @@
         "src-bab7a3f49d318472",
         "src-49b5951c067cceb3",
         "src-5f6db8b0b36e1913",
-        "src-afb4f1911ed6958a"
+        "src-afb4f1911ed6958a",
+        "src-fe3326f4dbcaa51b"
       ],
       "project_ids": [
         "mcp"
@@ -161,6 +165,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; production behavior not independently validated"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-106-evidence",
+          "claim_zh": "LiteLLM 1.106.0 默认关闭 stdio MCP，并加强 OAuth issuer、凭据、配置加密与 workload identity 边界。",
+          "claim_en": "LiteLLM 1.106.0 disables stdio MCP by default and strengthens OAuth issuer, credential, encrypted-configuration and workload-identity boundaries.",
+          "source_ids": [
+            "src-fe3326f4dbcaa51b"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; enterprise entitlements not independently checked"
         }
       ],
       "changes": [
@@ -227,13 +244,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-106-stable",
+          "kind": "update",
+          "occurred_at": "2026-10-18T05:53:32Z",
+          "discovered_at": "2026-10-18T15:58:14Z",
+          "summary_zh": "LiteLLM 1.106 收紧 MCP 与网关身份边界",
+          "summary_en": "LiteLLM 1.106 tightens MCP and gateway identity boundaries",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-106-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "一天内在预生产回归 agent identity、MCP 发现与执行授权、检索片段护栏、成本归属和回滚。",
-      "next_action_en": "Within one day, regress agent identity, MCP discovery-versus-execution authorization, retrieved-chunk guardrails, spend attribution and rollback in staging.",
-      "short_label_zh": "LiteLLM 1.105",
-      "short_label_en": "LiteLLM 1.105"
+      "next_action_zh": "一天内在 canary 回归 stdio opt-in、远程 MCP 凭据隔离、workload identity、费用落盘和回滚。",
+      "next_action_en": "Within one day, canary stdio opt-in, remote-MCP credential isolation, workload identity, spend flushing and rollback.",
+      "short_label_zh": "LiteLLM 1.106",
+      "short_label_en": "LiteLLM 1.106"
     }
   ]
 }

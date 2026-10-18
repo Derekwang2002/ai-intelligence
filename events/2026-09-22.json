@@ -4,26 +4,27 @@
   "events": [
     {
       "event_id": "ev-20260922-01",
-      "title": "vLLM 0.30 speeds restarts and adds a host tier for sparse KV",
-      "title_zh": "vLLM 0.30 加速重启并为稀疏 KV 增加主机层",
+      "title": "vLLM 0.32 tightens serving defaults and expands low-precision inference",
+      "title_zh": "vLLM 0.32 收紧服务默认值并扩展低精度推理",
       "category": "open-source",
       "organization": [
         "vLLM Project"
       ],
       "published_at": "2026-09-22T05:20:54Z",
       "first_seen_at": "2026-09-22T16:02:37Z",
-      "last_updated_at": "2026-10-05T16:01:12Z",
+      "last_updated_at": "2026-10-18T15:58:14Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/vllm-project/vllm/releases/tag/v0.30.0",
       "secondary_sources": [
-        "https://github.com/vllm-project/vllm/releases/tag/v0.31.0"
+        "https://github.com/vllm-project/vllm/releases/tag/v0.31.0",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0"
       ],
-      "summary": "vLLM 0.30.0 ships 762 commits from 315 contributors. A persistent per-GPU weight cache lets restarted engines map already sharded and quantized weights over CUDA IPC instead of loading them from disk. HiSparse adds a pinned-host-memory tier for sparse-MLA KV pages, while Model Runner V2 expands pipeline-parallel speculative decoding and cuts one H200 startup path from 28.9 seconds to 8.2 seconds. The release also closes response-amplification, sparse-embedding and media-input denial-of-service paths.",
-      "why_it_matters": "For teams serving large sparse or hybrid models, restart time and GPU KV pressure are now first-class vLLM controls rather than external workarounds. Adopt the security fixes, but stage the upgrade: scale-out endpoints now require an explicit flag, several deprecated variables are gone, YaRN length calculation changed, and some backends now fail fast when they cannot support decode-context parallelism.",
-      "summary_zh": "vLLM 0.30.0 包含 762 个提交，来自 315 位贡献者。常驻的每 GPU 权重缓存让重启后的引擎通过 CUDA IPC 映射已经分片和量化的权重，不必再从磁盘加载。HiSparse 为稀疏 MLA 的 KV 页增加锁页主机内存层；Model Runner V2 扩展了流水线并行下的投机解码，并把一条 H200 启动路径从 28.9 秒压到 8.2 秒。该版本还修复响应放大、稀疏嵌入和媒体输入导致的拒绝服务风险。",
-      "summary_en": "vLLM 0.30.0 ships 762 commits from 315 contributors. A persistent per-GPU weight cache lets restarted engines map already sharded and quantized weights over CUDA IPC instead of loading them from disk. HiSparse adds a pinned-host-memory tier for sparse-MLA KV pages, while Model Runner V2 expands pipeline-parallel speculative decoding and cuts one H200 startup path from 28.9 seconds to 8.2 seconds. The release also closes response-amplification, sparse-embedding and media-input denial-of-service paths.",
-      "why_it_matters_zh": "对服务大型稀疏或混合模型的团队来说，重启时间和 GPU KV 压力已经成为 vLLM 的一等控制项，不再需要额外拼装方案。安全修复值得采用，但升级必须分阶段：scale-out endpoint 现在要显式打开，多项废弃环境变量已移除，YaRN 长度计算发生变化，部分不支持 decode-context parallelism 的后端会直接报错。",
-      "why_it_matters_en": "For teams serving large sparse or hybrid models, restart time and GPU KV pressure are now first-class vLLM controls rather than external workarounds. Adopt the security fixes, but stage the upgrade: scale-out endpoints now require an explicit flag, several deprecated variables are gone, YaRN length calculation changed, and some backends now fail fast when they cannot support decode-context parallelism.",
+      "summary": "vLLM 0.32.0 moves safer serving defaults and broader low-precision inference into a stable release. CORS is no longer open to every origin by default, shared multimodal cache handles are signed, image and JSON-schema inputs are bounded, and three denial-of-service advisories are fixed. Model Runner V2 becomes the ROCm default, while low-precision KV cache, least-loaded API workers and broader accelerator artifacts expand the serving path.",
+      "why_it_matters": "For production inference teams, this is a security and compatibility upgrade, not a drop-in speed patch. Python 3.10 is removed, CORS and Responses streaming behavior change, and project benchmarks on short requests do not predict a real workload.",
+      "summary_zh": "vLLM 0.32.0 把更安全的服务默认值和更广的低精度推理带入稳定版。CORS 不再默认允许所有来源，多模态共享缓存句柄加入签名，图片与 JSON Schema 输入受到限制，并修复三项拒绝服务问题。Model Runner V2 成为 ROCm 默认路径，低精度 KV 缓存、最小负载 API worker 与更多加速器产物也进入主线。",
+      "summary_en": "vLLM 0.32.0 moves safer serving defaults and broader low-precision inference into a stable release. CORS is no longer open to every origin by default, shared multimodal cache handles are signed, image and JSON-schema inputs are bounded, and three denial-of-service advisories are fixed. Model Runner V2 becomes the ROCm default, while low-precision KV cache, least-loaded API workers and broader accelerator artifacts expand the serving path.",
+      "why_it_matters_zh": "对生产推理团队来说，这既是安全升级也是兼容性升级，不是可以直接套用的加速补丁。Python 3.10 已移除，CORS 与 Responses 流式事件会变化，短请求上的项目 benchmark 也不能代表真实负载。",
+      "why_it_matters_en": "For production inference teams, this is a security and compatibility upgrade, not a drop-in speed patch. Python 3.10 is removed, CORS and Responses streaming behavior change, and project benchmarks on short requests do not predict a real workload.",
       "technical_details": {
         "release_scale": "762 commits, 315 contributors, 104 new contributors",
         "fast_start": "persistent per-GPU post-quantization and TP-sharded weight cache; CUDA IPC; FP4 and multi-node TP support",
@@ -32,7 +33,8 @@
         "security": "bounded validation-error bodies and sparse embeddings; capped request-controlled video sampling; validated cache_salt; credential redaction",
         "breaking_changes": "scale-out endpoints require --enable-scale-out; GPTQ g_idx removed; 0.29 deprecations removed; YaRN aligned with Transformers",
         "artifacts": "CUDA 13.0/12.9, ROCm, CPU and XPU wheels and images",
-        "update_2026_10_05": "v0.31 adds vllm preload with DP and MTP support, experimental CRIU initialized-engine snapshots, more Model Runner V2 speculative decoding, large-scale scheduling controls and HiSparse fixes. It rejects request-level multimodal processor and media I/O kwargs unless explicitly trusted, separates cache-hash key sources and hashes the LoRA path. Several flags and defaults changed."
+        "update_2026_10_05": "v0.31 adds vllm preload with DP and MTP support, experimental CRIU initialized-engine snapshots, more Model Runner V2 speculative decoding, large-scale scheduling controls and HiSparse fixes. It rejects request-level multimodal processor and media I/O kwargs unless explicitly trusted, separates cache-hash key sources and hashes the LoRA path. Several flags and defaults changed.",
+        "update_2026_10_18": "v0.32.0: 814 commits, 363 contributors; CORS restricted by default; signed multimodal cache handles; raster-only untrusted images; JSON Schema depth cap; three GHSA fixes; Python 3.10 removed; Model Runner V2 default on ROCm; expanded low-precision KV cache and least-loaded API workers. The 43–85% short-request throughput claim is project-reported."
       },
       "technical_details_zh": {
         "发布规模": "762 个提交、315 位贡献者，其中 104 位首次贡献",
@@ -42,7 +44,8 @@
         "安全": "限制校验错误响应与稀疏嵌入大小；限制请求控制的视频采样；校验 cache_salt；日志隐藏凭据",
         "破坏性变更": "scale-out endpoint 需 --enable-scale-out；移除 GPTQ g_idx；移除 0.29 废弃项；YaRN 与 Transformers 对齐",
         "发布产物": "提供 CUDA 13.0/12.9、ROCm、CPU 与 XPU wheel 和镜像",
-        "2026-10-05 更新": "v0.31 为 vllm preload 增加 DP 与 MTP 支持，并提供实验性的 CRIU 初始化引擎快照；Model Runner V2、投机解码、大规模调度和 HiSparse 也继续补齐。请求级多模态处理与媒体 I/O 参数现在默认拒绝，除非显式信任；缓存哈希会区分额外 key 的来源并纳入 LoRA 路径。多项 flag 与默认值发生变化。"
+        "2026-10-05 更新": "v0.31 为 vllm preload 增加 DP 与 MTP 支持，并提供实验性的 CRIU 初始化引擎快照；Model Runner V2、投机解码、大规模调度和 HiSparse 也继续补齐。请求级多模态处理与媒体 I/O 参数现在默认拒绝，除非显式信任；缓存哈希会区分额外 key 的来源并纳入 LoRA 路径。多项 flag 与默认值发生变化。",
+        "2026-10-18 更新": "v0.32.0：814 个提交、363 位贡献者；默认收紧 CORS；多模态缓存句柄签名；不可信图片只收 raster 格式；限制 JSON Schema 深度；修复三项 GHSA；移除 Python 3.10；Model Runner V2 成为 ROCm 默认；扩展低精度 KV 缓存与最小负载 API worker。短请求吞吐提升 43–85% 为项目自报。"
       },
       "tags": [
         "vllm",
@@ -63,7 +66,8 @@
       "event_fingerprint": "vllm-v0-30-0-fast-start-hisparse-security",
       "source_ids": [
         "src-3762ff1d2e307774",
-        "src-9668af85ed2e1acf"
+        "src-9668af85ed2e1acf",
+        "src-83a753b4160cba93"
       ],
       "project_ids": [
         "vllm"
@@ -100,6 +104,19 @@
           ],
           "verification": "verified-primary-source",
           "relation": "support"
+        },
+        {
+          "id": "ev-20260922-01-vllm-0-32-evidence",
+          "claim_zh": "vLLM 0.32.0 稳定版收紧服务安全默认值，扩展低精度推理路径，并移除 Python 3.10。",
+          "claim_en": "vLLM 0.32.0 stable tightens serving-security defaults, expands low-precision inference paths and removes Python 3.10.",
+          "source_ids": [
+            "src-83a753b4160cba93"
+          ],
+          "event_ids": [
+            "ev-20260922-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims not independently reproduced"
         }
       ],
       "changes": [
@@ -127,12 +144,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-01-vllm-0-32",
+          "kind": "update",
+          "occurred_at": "2026-10-18T06:50:48Z",
+          "discovered_at": "2026-10-18T15:58:14Z",
+          "summary_zh": "vLLM 0.32 收紧安全默认值并扩展低精度推理",
+          "summary_en": "vLLM 0.32 tightens security defaults and expands low-precision inference",
+          "evidence_ids": [
+            "ev-20260922-01-vllm-0-32-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "short_label_zh": "vLLM 0.31",
-      "short_label_en": "vLLM 0.31",
-      "next_action_zh": "分阶段升级 0.31，回归 preload、快照恢复、多模态参数拒绝、LoRA 缓存隔离和已变更的 flag。",
-      "next_action_en": "Stage the 0.31 upgrade and regress preload, snapshot restore, multimodal-option rejection, LoRA cache isolation and changed flags.",
+      "short_label_zh": "vLLM 0.32",
+      "short_label_en": "vLLM 0.32",
+      "next_action_zh": "分阶段升级 0.32，回归 CORS、图片输入、Responses 流式事件、Python 版本和真实负载吞吐。",
+      "next_action_en": "Stage 0.32 and regress CORS, image inputs, Responses stream events, Python versions and workload-shaped throughput.",
       "editorial_pick": {
         "reason_zh": "对服务大型稀疏或混合模型的团队来说，重启时间和 GPU KV 压力已经成为 vLLM 的一等控制项，不再需要额外拼装方案。安全修复值得采用，但升级必须分阶段：scale-out endpoint 现在要显式打开，多项废弃环境变量已移除，YaRN 长度计算发生变化，部分不支持 decode-context parallelism 的后端会直接报错。",
         "reason_en": "For teams serving large sparse or hybrid models, restart time and GPU KV pressure are now first-class vLLM controls rather than external workarounds. Adopt the security fixes, but stage the upgrade: scale-out endpoints now require an explicit flag, several deprecated variables are gone, YaRN length calculation changed, and some backends now fail fast when they cannot support decode-context parallelism.",

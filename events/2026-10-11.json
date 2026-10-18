@@ -101,34 +101,36 @@
     },
     {
       "event_id": "ev-20261011-02",
-      "title": "Littleguys ships an installable control surface for local coding agents",
-      "title_zh": "Littleguys 发布可安装的本地 coding agent 控制台",
+      "title": "Littleguys 0.2 adds live Claude Code sessions and an encrypted phone bridge",
+      "title_zh": "Littleguys 0.2 接入 Claude Code 实时会话与加密手机桥接",
       "category": "developer-tools",
       "organization": [
         "Littleguys"
       ],
       "published_at": "2026-10-11T15:35:16Z",
       "first_seen_at": "2026-10-12T15:59:38Z",
-      "last_updated_at": "2026-10-11T21:24:58Z",
+      "last_updated_at": "2026-10-18T15:58:14Z",
       "source_type": "github_release",
       "primary_source": "https://github.com/herval/littleguys/releases/tag/v0.1.1",
       "secondary_sources": [
         "https://github.com/herval/littleguys/releases/tag/v0.1.0",
-        "https://github.com/herval/littleguys"
+        "https://github.com/herval/littleguys",
+        "https://github.com/herval/littleguys/releases/tag/v0.2.0"
       ],
-      "summary": "Littleguys released an MIT-licensed macOS menu-bar control surface for chatting with agents, viewing status, approving tool calls and scheduling routines. It supports OpenClaw gateways plus local Claude Code, Codex, Gemini CLI, Goose, OpenCode and ACP agents. Version 0.1.1 adds Homebrew and DMG installation and self-update, turning the overlap-period source release into an installable package.",
-      "summary_en": "Littleguys released an MIT-licensed macOS menu-bar control surface for chatting with agents, viewing status, approving tool calls and scheduling routines. It supports OpenClaw gateways plus local Claude Code, Codex, Gemini CLI, Goose, OpenCode and ACP agents. Version 0.1.1 adds Homebrew and DMG installation and self-update, turning the overlap-period source release into an installable package.",
-      "summary_zh": "Littleguys 发布 MIT 许可的 macOS 菜单栏控制台，可与 agent 对话、查看状态、审批工具调用和安排例行任务。它支持 OpenClaw gateway，以及本地 Claude Code、Codex、Gemini CLI、Goose、OpenCode 和 ACP agent。0.1.1 增加 Homebrew、DMG 与自更新，把 overlap 区间内的源码发布变成可直接安装的包。",
-      "why_it_matters": "For developers juggling several local agents, one supervision surface can reduce context switching and make approvals visible. It is not a shared sandbox: credentials, command authorization and scheduler durability still depend on each adapter, so trial it only in a disposable profile first.",
-      "why_it_matters_en": "For developers juggling several local agents, one supervision surface can reduce context switching and make approvals visible. It is not a shared sandbox: credentials, command authorization and scheduler durability still depend on each adapter, so trial it only in a disposable profile first.",
-      "why_it_matters_zh": "对同时使用多个本地 agent 的开发者来说，统一监督界面可以减少来回切换，也让审批更可见。但它不是统一沙箱：凭据、命令授权与调度持久性仍取决于各 adapter，应先在隔离账号里试用。",
+      "summary": "Littleguys 0.2 turns the local control surface into a live Claude Code supervisor. It can start, resume and stop sessions, relay approvals and render commands, files and diffs. A phone bridge uses Noise IK pairing and encrypted local or Tailscale transport for remote control.",
+      "summary_en": "Littleguys 0.2 turns the local control surface into a live Claude Code supervisor. It can start, resume and stop sessions, relay approvals and render commands, files and diffs. A phone bridge uses Noise IK pairing and encrypted local or Tailscale transport for remote control.",
+      "summary_zh": "Littleguys 0.2 把本地控制台扩展成 Claude Code 实时监督界面。它可以启动、恢复和停止会话，转发审批，并展示命令、文件与 diff。新增的手机桥接用 Noise IK 配对，通过局域网或 Tailscale 加密传输进行远程控制。",
+      "why_it_matters": "For developers supervising long-running local agents, this is a material step beyond a status menu. The phone bridge and approval relay also widen the trust boundary, and no independent security or scheduler-durability review was found.",
+      "why_it_matters_en": "For developers supervising long-running local agents, this is a material step beyond a status menu. The phone bridge and approval relay also widen the trust boundary, and no independent security or scheduler-durability review was found.",
+      "why_it_matters_zh": "对监督长时运行本地 agent 的开发者来说，这已经不只是状态菜单。手机桥接和审批转发也扩大了信任边界，本轮仍未找到独立安全审计或调度持久性验证。",
       "technical_details": {
         "platform": "macOS 13+ menu-bar application",
         "adapters": "OpenClaw, Hermes, Claude Code, Codex, Gemini CLI, Goose, OpenCode and ACP registry agents",
         "controls": "chat, agent status, tool approval or denial, routines and adapter launch/configuration",
         "availability": "MIT source, Homebrew tap and signed/notarized DMG claimed for Apple silicon and Intel",
         "limits": "ACP routines run only while the app is open; adapter credential and authorization boundaries differ; signing and notarization were not independently checked",
-        "time_basis": "v0.1.0 published 2026-10-11T15:35:16Z in overlap; v0.1.1 published 2026-10-11T21:24:58Z in the canonical window"
+        "time_basis": "v0.1.0 published 2026-10-11T15:35:16Z in overlap; v0.1.1 published 2026-10-11T21:24:58Z in the canonical window",
+        "update_2026_10_18": "v0.2.0 adds direct Claude Code sessions, replies, approvals, routines, files, skills and MCP integration; thread actions; tool-call renderers; and a Noise IK phone bridge over LAN or Tailscale with QR pairing and HPKE notifications."
       },
       "technical_details_zh": {
         "平台": "macOS 13+ 菜单栏应用",
@@ -136,7 +138,8 @@
         "控制项": "对话、agent 状态、工具批准或拒绝、例行任务，以及 adapter 启动和配置",
         "可用性": "MIT 源码、Homebrew tap，以及发布方声称已签名并公证的 Apple silicon/Intel DMG",
         "限制": "ACP 例行任务只在应用打开时运行；不同 adapter 的凭据和授权边界不同；本次未独立检查签名与公证",
-        "时间依据": "v0.1.0 于 2026-10-11T15:35:16Z 在 overlap 内发布；v0.1.1 于 2026-10-11T21:24:58Z 在正式窗口内发布"
+        "时间依据": "v0.1.0 于 2026-10-11T15:35:16Z 在 overlap 内发布；v0.1.1 于 2026-10-11T21:24:58Z 在正式窗口内发布",
+        "2026-10-18 更新": "v0.2.0 加入 Claude Code 会话、回复、审批、例行任务、文件、Skills 与 MCP 集成；thread actions；工具调用展示；以及通过 QR 配对、局域网或 Tailscale 传输并使用 HPKE 通知的 Noise IK 手机桥接。"
       },
       "tags": [
         "coding-agent",
@@ -155,12 +158,13 @@
       "event_fingerprint": "littleguys-0-1-local-agent-control-surface",
       "short_label_zh": "Littleguys",
       "short_label_en": "Littleguys",
-      "next_action_zh": "一天内在隔离 Mac 账号连接一个 ACP agent，检查审批、token 权限和退出后的调度状态。",
-      "next_action_en": "Within one day, connect one ACP agent in a disposable Mac profile and test approvals, token permissions and scheduler state after exit.",
+      "next_action_zh": "一天内在隔离账号试跑 Claude Code 会话与手机桥接，检查审批归属、断连恢复、密钥撤销和退出后的调度状态。",
+      "next_action_en": "Within one day, test Claude Code sessions and the phone bridge in a disposable profile, checking approval identity, reconnects, key revocation and scheduler state after exit.",
       "source_ids": [
         "src-30356307f997543c",
         "src-ee4b4edcd08ec6ef",
-        "src-219d3a0a637e6e05"
+        "src-219d3a0a637e6e05",
+        "src-f34afb91ca82acbf"
       ],
       "project_ids": [
         "littleguys"
@@ -185,6 +189,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-artifact; package signature and runtime behavior not independently tested"
+        },
+        {
+          "id": "ev-20261011-02-v0-2-evidence",
+          "claim_zh": "Littleguys 0.2 增加 Claude Code 实时会话与 Noise IK 加密手机桥接。",
+          "claim_en": "Littleguys 0.2 adds live Claude Code sessions and a Noise IK encrypted phone bridge.",
+          "source_ids": [
+            "src-f34afb91ca82acbf"
+          ],
+          "event_ids": [
+            "ev-20261011-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; runtime security not independently tested"
         }
       ],
       "changes": [
@@ -210,6 +227,19 @@
           "summary_en": "Littleguys adds Homebrew, DMG and self-update distribution",
           "evidence_ids": [
             "ev-20261011-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261011-02-v0-2",
+          "kind": "update",
+          "occurred_at": "2026-10-12T19:25:25Z",
+          "discovered_at": "2026-10-18T15:58:14Z",
+          "summary_zh": "Littleguys 0.2 增加 Claude Code 会话与加密手机桥接",
+          "summary_en": "Littleguys 0.2 adds Claude Code sessions and an encrypted phone bridge",
+          "evidence_ids": [
+            "ev-20261011-02-v0-2-evidence"
           ],
           "historical": false,
           "importance": "major"

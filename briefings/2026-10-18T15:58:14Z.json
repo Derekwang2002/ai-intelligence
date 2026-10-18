@@ -1,0 +1,46 @@
+{
+  "id": "2026-10-18T15:58:14Z",
+  "as_of": "2026-10-18T15:58:14Z",
+  "date": "2026-10-18",
+  "baseline": false,
+  "change_ids": [
+    "ev-20260922-01-vllm-0-32",
+    "ev-20260913-01-litellm-1-106-stable",
+    "ev-20261011-02-v0-2",
+    "ev-20261013-07-published",
+    "ev-20261014-04-published",
+    "ev-20261015-07-published",
+    "ev-20261017-02-published",
+    "ev-20261015-08-published",
+    "ev-20261018-01-published"
+  ],
+  "highlights": [
+    {
+      "change_id": "ev-20260922-01-vllm-0-32",
+      "reason_zh": "安全默认值、Python 版本与 streaming contract 同时变化，生产 serving 需要有计划地升级。",
+      "reason_en": "Security defaults, Python support and streaming contracts change together, requiring a planned production upgrade."
+    },
+    {
+      "change_id": "ev-20260913-01-litellm-1-106-stable",
+      "reason_zh": "MCP 的默认和凭据边界更安全，但会打断依赖 stdio 的现有部署。",
+      "reason_en": "Safer MCP defaults and credential boundaries can break deployments that rely on stdio."
+    },
+    {
+      "change_id": "ev-20261015-07-published",
+      "reason_zh": "专用 memory writer 可能降低长时 agent 的成本，但作者子样本需要用真实日志复测。",
+      "reason_en": "A specialist memory writer may cut long-running agent cost, but the author-run subsample needs real-log reproduction."
+    },
+    {
+      "change_id": "ev-20261013-07-published",
+      "reason_zh": "MIT 权重和部署配方已公开；1M 上下文与 coding 成绩仍缺可复现证据。",
+      "reason_en": "MIT weights and deployment recipes are public; 1M context and coding results remain unverified."
+    },
+    {
+      "change_id": "ev-20261017-02-published",
+      "reason_zh": "一次前向计算的决策模型适合实测路由成本；新版不能直接继承旧版权威排名。",
+      "reason_en": "A one-pass decision model is practical for routing-cost tests, but the new checkpoint cannot inherit the older rank."
+    }
+  ],
+  "coverage_zh": "36/36 个固定入口抓取并读完；主动检索覆盖中文一手材料、小团队、开放权重、研究、基础设施与政策，并完成 7 日到期补漏。Grok Voice 只有日期精度；模型 benchmark 多为作者自报，Step 5 Preview 与 FLUX 3 Klein 因发布时间或许可边界未定而暂缓；召回自检另补录 Indra OCR，并把 Sphinx 0.1 明确标为 IGNORE。",
+  "coverage_en": "All 36 fixed monitors were fetched and reviewed; active discovery covered Chinese primary material, small teams, open weights, research, infrastructure and policy, and the seven-day gap review was completed. Grok Voice has date-only timing; most model benchmarks are author-reported, while Step 5 Preview and FLUX 3 Klein were deferred over publication-time or license boundaries; recall audit also recovered Indra OCR and explicitly marked Sphinx 0.1 IGNORE."
+}

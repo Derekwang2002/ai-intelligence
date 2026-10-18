@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-18",
+  "provenance": "Incremental intelligence run 2026-10-18T15:58:14Z",
+  "events": [
+    {
+      "event_id": "ev-20261018-01",
+      "title": "Sphinx adds an optional comprehension quiz before Git pushes",
+      "title_zh": "Sphinx 在 Git push 前加入可跳过的理解测验",
+      "category": "developer-tools",
+      "organization": [
+        "Sphinx"
+      ],
+      "published_at": "2026-10-18T04:33:49Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/parthh01/sphinx",
+      "secondary_sources": [],
+      "summary_zh": "Sphinx 0.1 用全局 Git hook 在 push 前调用另一个模型，根据已提交的 diff 提问。用户答对后 push 继续，也可以 pause、skip 或关闭检查。项目支持 Codex、Claude Code 等 provider，并明确说明这只是练习，不是安全闸门。",
+      "summary_en": "Sphinx 0.1 installs a global Git hook that calls a separate model to quiz the user about committed diffs before a push. A correct answer resumes the push, while pause, skip and disable paths remain available. It supports Codex, Claude Code and other providers and explicitly says it is practice, not a security gate.",
+      "why_it_matters_zh": "对 coding agent 团队来说，检查人是否理解变更是合理目标，但这个实现可绕过、会把代码发送给 reviewer provider，并缺少真实项目上的独立证据。当前不值得把它加入强制开发流程。",
+      "why_it_matters_en": "Checking whether a human understands agent-written changes is a useful goal, but this implementation is bypassable, sends code to a reviewer provider and lacks independent evidence on real projects. It is not worth adding to a mandatory workflow yet.",
+      "technical_details": {
+        "mechanism": "global Git hook plus a separate read-only reviewer model",
+        "scope": "local commits and pushes; no web merges, CI required checks or deployments",
+        "limits": "skip and disable paths; model grader can be wrong; code is sent to the selected provider",
+        "time_basis": "Show HN published 2026-10-18T04:33:49Z; repository documentation verified during recall audit"
+      },
+      "technical_details_zh": {
+        "机制": "全局 Git hook 加独立的只读 reviewer model",
+        "范围": "只覆盖本地 commit 与 push；不覆盖网页合并、CI required check 或部署",
+        "限制": "可以 skip 或关闭；模型判卷可能出错；代码会发给所选 provider",
+        "时间依据": "Show HN 发布于 2026-10-18T04:33:49Z；召回自检期间核对仓库文档"
+      },
+      "tags": [
+        "coding-agent",
+        "git-hook",
+        "human-in-the-loop"
+      ],
+      "technical_impact": 1,
+      "engineering_value": 2,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "IGNORE",
+      "event_fingerprint": "sphinx-understanding-git-hook-0-1",
+      "short_label_zh": "Sphinx",
+      "short_label_en": "Sphinx",
+      "next_action_zh": "不要把 0.1 当作安全闸门；等独立真实项目评测、CI 集成和不可绕过的策略边界后再评估。",
+      "next_action_en": "Do not treat 0.1 as a security gate; revisit after independent real-project evaluation, CI integration and enforceable policy boundaries.",
+      "source_ids": [
+        "src-fdca86e8b5253e57"
+      ],
+      "project_ids": [
+        "sphinx-understand"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261018-01-release-evidence",
+          "claim_zh": "Sphinx 0.1 提供 push 前理解测验，并明确可跳过且不构成安全闸门。",
+          "claim_en": "Sphinx 0.1 provides a pre-push comprehension quiz and explicitly remains bypassable and not a security gate.",
+          "source_ids": [
+            "src-fdca86e8b5253e57"
+          ],
+          "event_ids": [
+            "ev-20261018-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; no independent evaluation"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261018-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-18T04:33:49Z",
+          "discovered_at": "2026-10-18T15:58:14Z",
+          "summary_zh": "Sphinx 公开 push 前理解测验",
+          "summary_en": "Sphinx publishes a pre-push comprehension quiz",
+          "evidence_ids": [
+            "ev-20261018-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "minor"
+        }
+      ],
+      "first_seen_at": "2026-10-18T15:58:14Z",
+      "last_updated_at": "2026-10-18T15:58:14Z",
+      "summary": "Sphinx 0.1 installs a global Git hook that calls a separate model to quiz the user about committed diffs before a push. A correct answer resumes the push, while pause, skip and disable paths remain available. It supports Codex, Claude Code and other providers and explicitly says it is practice, not a security gate.",
+      "why_it_matters": "Checking whether a human understands agent-written changes is a useful goal, but this implementation is bypassable, sends code to a reviewer provider and lacks independent evidence on real projects. It is not worth adding to a mandatory workflow yet."
+    }
+  ]
+}

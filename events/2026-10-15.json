@@ -620,6 +620,209 @@
       "last_updated_at": "2026-10-17T15:59:50Z",
       "summary": "FDE-Gym contains 95 end-to-end delivery tasks across 20 customer scenarios and 18 sectors. Agents must uncover unstated constraints, modify running systems and are scored by improvement in the customer business metric. The authors evaluated 13 model configurations from seven providers; the best resolved only 14 tasks. The harness and three example tasks are public, while the full task set requires access approval.",
       "why_it_matters": "For teams evaluating coding agents, this exposes the gap between passing code tests and improving customer outcomes. The full data is controlled and scores come from author-run experiments, so transfer to a local delivery process still needs validation."
+    },
+    {
+      "event_id": "ev-20261015-07",
+      "title": "Tencent releases a specialist writer model for long-term agent memory",
+      "title_zh": "腾讯发布面向 agent 长期记忆的专用写入模型",
+      "category": "ai-agent",
+      "organization": [
+        "Tencent"
+      ],
+      "published_at": "2026-10-15T09:52:00Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/tencent/Hy-Memory-30B-A3B",
+      "secondary_sources": [
+        "https://github.com/Tencent-Hunyuan/Hy-Memory",
+        "https://arxiv.org/abs/2610.22196"
+      ],
+      "summary_zh": "腾讯公开 Hy-Memory-30B-A3B 的 Apache-2.0 权重、框架代码与评测工具。该模型总参数 30B、激活参数约 3B，只负责长期记忆的写入路径，可替换 Mem0、MemOS 和 Hy-Memory 中的通用模型。作者在固定 20% 样本上报告，它在四套 memory harness 的平均分略高于 Claude Opus 5。",
+      "summary_en": "Tencent released Apache-2.0 weights, framework code and evaluation utilities for Hy-Memory-30B-A3B. The 30B-total, roughly 3B-active model specializes in the write path for long-term memory and can replace general models inside Mem0, MemOS and Hy-Memory. On a fixed 20% sample, the authors report a small average lead over Claude Opus 5 across four memory harnesses.",
+      "why_it_matters_zh": "对构建长时 agent 的团队来说，把“该记住什么”交给小型专用模型，可能比每次调用通用前沿模型更便宜也更稳定。当前证据由作者生成，样本和六项指标都做了等权平均，自己的记忆增长、冲突与检索效果仍要单独测。",
+      "why_it_matters_en": "For long-running agent teams, assigning “what to remember” to a smaller specialist could be cheaper and more stable than calling a frontier general model. The evidence is author-run on a subsample with equal-weight aggregation, so memory growth, contradictions and retrieval outcomes still need local testing.",
+      "technical_details": {
+        "model": "30B total, about 3B active; dedicated memory writer",
+        "availability": "Apache-2.0 weights, framework code and evaluation utilities",
+        "evaluation": "fixed 20% benchmark subsample; six equally weighted metrics across four harnesses; EverMemOS held out",
+        "vendor_result": "55.49 average vs Claude Opus 5 at 54.62 and DeepSeek V4.1 Flash at 53.64",
+        "time_basis": "HF repository created 2026-10-15T09:52:00Z; found in the scheduled gap review"
+      },
+      "technical_details_zh": {
+        "模型": "总参数 30B、激活参数约 3B；专用 memory writer",
+        "可用性": "Apache-2.0 权重、框架代码与评测工具",
+        "评测": "固定 20% benchmark 子集；四套 harness 各自等权汇总六项指标；EverMemOS 未参与训练",
+        "作者结果": "平均 55.49；Claude Opus 5 为 54.62，DeepSeek V4.1 Flash 为 53.64",
+        "时间依据": "HF 仓库创建于 2026-10-15T09:52:00Z；由本轮定期补漏发现"
+      },
+      "tags": [
+        "agent-memory",
+        "memory-writer",
+        "open-weights",
+        "evaluation"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "tencent-hy-memory-30b-a3b",
+      "short_label_zh": "Hy-Memory-30B-A3B",
+      "short_label_en": "Hy-Memory-30B-A3B",
+      "next_action_zh": "一天内用公开工具在自己的 held-out 对话切片对比现有 writer，测回答正确率、记忆增长和冲突率。",
+      "next_action_en": "Within one day, use the public tools on a held-out conversation slice to compare the current writer on answer accuracy, memory growth and contradiction rate.",
+      "source_ids": [
+        "src-12b3f8153ee100f8",
+        "src-da440d997c86a843",
+        "src-b11b2f5ebb71094b"
+      ],
+      "project_ids": [
+        "hy-memory"
+      ],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261015-07-release-evidence",
+          "claim_zh": "Hy-Memory-30B-A3B 已公开 Apache-2.0 权重、框架代码与评测工具。",
+          "claim_en": "Hy-Memory-30B-A3B has public Apache-2.0 weights, framework code and evaluation utilities.",
+          "source_ids": [
+            "src-12b3f8153ee100f8",
+            "src-da440d997c86a843",
+            "src-b11b2f5ebb71094b"
+          ],
+          "event_ids": [
+            "ev-20261015-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifacts; author-run evaluation"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261015-07-published",
+          "kind": "new",
+          "occurred_at": "2026-10-15T09:52:00Z",
+          "discovered_at": "2026-10-18T15:58:14Z",
+          "summary_zh": "Hy-Memory 公开专用记忆写入模型",
+          "summary_en": "Hy-Memory publishes a specialist memory-writer model",
+          "evidence_ids": [
+            "ev-20261015-07-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-18T15:58:14Z",
+      "last_updated_at": "2026-10-18T15:58:14Z",
+      "summary": "Tencent released Apache-2.0 weights, framework code and evaluation utilities for Hy-Memory-30B-A3B. The 30B-total, roughly 3B-active model specializes in the write path for long-term memory and can replace general models inside Mem0, MemOS and Hy-Memory. On a fixed 20% sample, the authors report a small average lead over Claude Opus 5 across four memory harnesses.",
+      "why_it_matters": "For long-running agent teams, assigning “what to remember” to a smaller specialist could be cheaper and more stable than calling a frontier general model. The evidence is author-run on a subsample with equal-weight aggregation, so memory growth, contradictions and retrieval outcomes still need local testing."
+    },
+    {
+      "event_id": "ev-20261015-08",
+      "title": "Datalab releases a 1M-parameter CPU OCR pipeline",
+      "title_zh": "Datalab 发布 1M 参数的 CPU OCR 流水线",
+      "category": "open-source",
+      "organization": [
+        "Datalab"
+      ],
+      "published_at": "2026-10-15T06:40:56Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/datalab-to/indra-ocr",
+      "secondary_sources": [
+        "https://github.com/datalab-to/indra"
+      ],
+      "summary_zh": "Datalab 公开 Indra OCR 的模型、CLI 与 Python 包。主识别器约 1M 参数，整个 ONNX 模型包约 18 MB，可在 CPU 上把 PDF 和图片转为 Markdown、文本或带坐标的 JSON。作者报告在 4 个 x86 vCPU 上每页约 230 毫秒，并提供版面、阅读顺序和混合 PDF text-layer 处理。",
+      "summary_en": "Datalab released the Indra OCR models, CLI and Python package. Its main recognizer has about 1M parameters and the complete ONNX model bundle is about 18 MB. It converts PDFs and images on CPU into Markdown, text or boxed JSON, with layout, reading order and hybrid PDF text-layer handling. The authors report about 230 ms per page on four x86 vCPUs.",
+      "why_it_matters_zh": "对本地 RAG 和文档 ingestion 团队来说，CPU-only、体积小且直接输出结构化版面，可能降低预处理成本。吞吐与准确率均由作者在指定数据和机器上测得，复杂表格、手写、低质扫描和商业许可边界仍是限制。",
+      "why_it_matters_en": "For local RAG and document-ingestion teams, a small CPU-only pipeline with structured layout output could reduce preprocessing cost. Throughput and accuracy are author-measured on specified data and hardware, while complex tables, handwriting, degraded scans and commercial license terms remain constraints.",
+      "technical_details": {
+        "model": "about 1M recognizer parameters; about 18 MB ONNX bundle",
+        "outputs": "Markdown, text or JSON with line and layout boxes",
+        "author_performance": "about 230 ms/page on four x86 vCPUs; up to 49 pages/s in the stated throughput setup",
+        "limits": "weak on complex tables, handwriting and degraded scans",
+        "license": "Apache-2.0 code; modified OpenRAIL-M weights with commercial restrictions",
+        "time_basis": "HF weights committed 2026-10-15T06:40:56Z; found by recall audit"
+      },
+      "technical_details_zh": {
+        "模型": "主识别器约 1M 参数；ONNX 模型包约 18 MB",
+        "输出": "Markdown、文本，或含行与版面坐标的 JSON",
+        "作者性能": "4 个 x86 vCPU 上约 230 毫秒/页；指定吞吐设置最高 49 页/秒",
+        "限制": "复杂表格、手写与低质扫描表现较弱",
+        "许可": "代码 Apache-2.0；权重为带商业限制的 modified OpenRAIL-M",
+        "时间依据": "HF 权重提交于 2026-10-15T06:40:56Z；由召回自检发现"
+      },
+      "tags": [
+        "ocr",
+        "document-parsing",
+        "onnx",
+        "cpu",
+        "rag"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "datalab-indra-ocr-cpu-onnx",
+      "short_label_zh": "Indra OCR",
+      "short_label_en": "Indra OCR",
+      "next_action_zh": "一天内用 50 页真实 PDF 对比现有 OCR，记录字符错误、版面恢复、每页延迟与商业许可适用性。",
+      "next_action_en": "Within one day, compare it with the current OCR on 50 real PDF pages, recording character error, layout recovery, per-page latency and license fit.",
+      "source_ids": [
+        "src-110896d94e289814",
+        "src-bb4e2f62a7c34e5b"
+      ],
+      "project_ids": [
+        "indra-ocr"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261015-08-release-evidence",
+          "claim_zh": "Indra OCR 已公开 ONNX 权重、CLI 与 Python 包。",
+          "claim_en": "Indra OCR has public ONNX weights, a CLI and a Python package.",
+          "source_ids": [
+            "src-110896d94e289814",
+            "src-bb4e2f62a7c34e5b"
+          ],
+          "event_ids": [
+            "ev-20261015-08"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifacts; performance claims are author-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261015-08-published",
+          "kind": "new",
+          "occurred_at": "2026-10-15T06:40:56Z",
+          "discovered_at": "2026-10-18T15:58:14Z",
+          "summary_zh": "Indra OCR 公开 CPU 文档解析流水线",
+          "summary_en": "Indra OCR publishes a CPU document-parsing pipeline",
+          "evidence_ids": [
+            "ev-20261015-08-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-18T15:58:14Z",
+      "last_updated_at": "2026-10-18T15:58:14Z",
+      "summary": "Datalab released the Indra OCR models, CLI and Python package. Its main recognizer has about 1M parameters and the complete ONNX model bundle is about 18 MB. It converts PDFs and images on CPU into Markdown, text or boxed JSON, with layout, reading order and hybrid PDF text-layer handling. The authors report about 230 ms per page on four x86 vCPUs.",
+      "why_it_matters": "For local RAG and document-ingestion teams, a small CPU-only pipeline with structured layout output could reduce preprocessing cost. Throughput and accuracy are author-measured on specified data and hardware, while complex tables, handwriting, degraded scans and commercial license terms remain constraints."
     }
   ]
 }
