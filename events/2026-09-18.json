@@ -95,47 +95,52 @@
     },
     {
       "event_id": "ev-20260918-02",
-      "title": "SGLang 0.5.21 makes serving roles switchable at runtime",
-      "title_zh": "SGLang 0.5.21 支持运行时切换推理角色",
+      "title": "SGLang 0.5.22 speeds model loading and fixes recurrent state corruption",
+      "title_zh": "SGLang 0.5.22 加速模型加载并修复循环状态错误",
       "category": "infrastructure",
       "organization": [
         "SGLang"
       ],
       "published_at": "2026-09-18T22:41:33Z",
       "first_seen_at": "2026-09-18T23:21:35Z",
-      "last_updated_at": "2026-10-02T16:00:56Z",
+      "last_updated_at": "2026-10-19T16:04:44Z",
       "source_type": "github_release",
       "primary_source": "https://github.com/sgl-project/sglang/releases/tag/v0.5.20",
-      "secondary_sources": ["https://github.com/sgl-project/sglang/releases/tag/v0.5.21"],
-      "summary": "SGLang 0.5.21 lets workers switch between prefill and decode roles at runtime without a restart and makes its Rust unified radix-tree cache the default. It adds decision and score API endpoints, rejects request-supplied chat templates by default and tightens unpickling. Vendor tests report lower TTFT and higher prefill throughput on two new model families, but the gains still need workload-specific reproduction.",
-      "why_it_matters": "For inference and post-training teams, one release improves three hard operational surfaces: replayable sampling, branch-heavy prefix reuse and capacity planning without GPUs. Upgrade tests should cover the breaking Responses storage default and removed legacy prefill context-parallel path before production rollout.",
-      "summary_zh": "SGLang 0.5.21 允许 worker 无需重启就在 prefill 与 decode 角色间切换，并把 Rust 版统一 radix-tree 缓存设为默认。它新增 decision 与 score API，默认拒绝请求自带的 chat template，并收紧反序列化限制。厂商测试显示两类新模型的首 token 延迟或 prefill 吞吐有所改善，但仍需按实际负载复现。",
-      "summary_en": "SGLang 0.5.21 lets workers switch between prefill and decode roles at runtime without a restart and makes its Rust unified radix-tree cache the default. It adds decision and score API endpoints, rejects request-supplied chat templates by default and tightens unpickling. Vendor tests report lower TTFT and higher prefill throughput on two new model families, but the gains still need workload-specific reproduction.",
-      "why_it_matters_zh": "对推理与 post-training 团队来说，这一个版本同时改善三类难题：可回放采样、分支密集型前缀复用，以及不占 GPU 的容量规划。上线前要重点测试 Responses 存储默认值变化，以及旧 prefill context parallel 路径被移除带来的兼容性。",
-      "why_it_matters_en": "For inference and post-training teams, one release improves three hard operational surfaces: replayable sampling, branch-heavy prefix reuse and capacity planning without GPUs. Upgrade tests should cover the breaking Responses storage default and removed legacy prefill context-parallel path before production rollout.",
+      "secondary_sources": [
+        "https://github.com/sgl-project/sglang/releases/tag/v0.5.21",
+        "https://github.com/sgl-project/sglang/releases/tag/v0.5.22"
+      ],
+      "summary": "SGLang 0.5.22 adds an InstantTensor loader that the project reports as 10× faster, broader model and hardware support, and new paths for speculative decoding and prefill/decode disaggregation. It also fixes a correctness bug where hybrid linear models could resume from the wrong Mamba state when speculative decoding and structured output were combined. Python 3.11 is now required, and all performance gains remain project-reported.",
+      "why_it_matters": "For inference teams, the state-corruption fix matters more than the headline throughput numbers because it can silently produce wrong output under a specific feature combination. Test that path first, then reproduce loading, TTFT and throughput gains on your own model mix before upgrading production.",
+      "summary_zh": "SGLang 0.5.22 加入项目自报快 10 倍的 InstantTensor loader，扩展模型与硬件支持，并补充推测解码和 prefill/decode 分离路径。它还修复一项正确性问题：混合线性模型同时使用推测解码与结构化输出时，可能从错误的 Mamba 状态继续生成。新版要求 Python 3.11；性能提升均为项目自报。",
+      "summary_en": "SGLang 0.5.22 adds an InstantTensor loader that the project reports as 10× faster, broader model and hardware support, and new paths for speculative decoding and prefill/decode disaggregation. It also fixes a correctness bug where hybrid linear models could resume from the wrong Mamba state when speculative decoding and structured output were combined. Python 3.11 is now required, and all performance gains remain project-reported.",
+      "why_it_matters_zh": "对推理团队来说，状态错误修复比醒目的吞吐数字更重要，因为特定功能组合可能在不报错的情况下生成错误结果。应先回归这条路径，再用自己的模型组合复现加载、首 token 延迟与吞吐，之后才升级生产环境。",
+      "why_it_matters_en": "For inference teams, the state-corruption fix matters more than the headline throughput numbers because it can silently produce wrong output under a specific feature combination. Test that path first, then reproduce loading, TTFT and throughput gains on your own model mix before upgrading production.",
       "technical_details": {
-        "release": "0.5.20; 713 PRs from 237 contributors",
-        "rl_sampling": "exact token-support masks and sampled-token log probabilities; overlap-scheduled",
-        "branch_cache": "DeepSeek-V4-Flash token-hit rate 43.8% to 60.8%; mean TTFT 1.57s to 1.07s",
-        "simulator": "CPU-only real scheduler/radix/hierarchical cache; TTFT within about 6% on most traces",
-        "responses_api": "result storage is opt-in with --enable-response-store",
-        "other": "GLM-5.3-Flash, Hy4-Preview and Qwen3.8-Flash-Next support; faster ROCm model loading; Intel XPU release images"
+        "version": "0.5.22 stable; 950 PRs from 245 contributors",
+        "requirements": "Python 3.11 or newer",
+        "loading": "InstantTensor claimed 10x faster by the project",
+        "serving": "prefill/decode disaggregation up to 27% more throughput and 48.9% lower p95 TTFT in a project test",
+        "model_paths": "DeepSeek-V4.1 up to 2.3x H200 throughput; Apple Silicon standard PyTorch backend; additional diffusion and multimodal models",
+        "correctness_fix": "wrong Mamba state could resume when speculative decoding and structured output were combined",
+        "evidence_limit": "performance figures are project benchmarks and need workload-specific reproduction"
       },
       "technical_details_zh": {
-        "版本": "0.5.20；713 个 PR、237 位贡献者",
-        "RL 采样": "返回精确 token 支持集与采样 token log probability；支持 overlap scheduling",
-        "分支缓存": "DeepSeek-V4-Flash 命中率 43.8%→60.8%；平均 TTFT 1.57s→1.07s",
-        "模拟器": "CPU-only 运行真实 scheduler/radix/分层缓存；多数 trace 的 TTFT 误差约 6%",
-        "Responses API": "结果存储需用 --enable-response-store 显式开启",
-        "其他": "支持 GLM-5.3-Flash、Hy4-Preview、Qwen3.8-Flash-Next；ROCm 加速加载；Intel XPU release image"
+        "版本": "0.5.22 stable；950 个 PR、245 位贡献者",
+        "要求": "Python 3.11 或更高",
+        "加载": "项目称 InstantTensor 快 10 倍",
+        "推理服务": "项目测试中 prefill/decode 分离吞吐最高增加 27%，p95 TTFT 降低 48.9%",
+        "模型路径": "DeepSeek-V4.1 在 H200 上吞吐最高 2.3 倍；Apple Silicon 标准 PyTorch backend；扩展 diffusion 与多模态模型",
+        "正确性修复": "推测解码与结构化输出同时使用时，可能从错误 Mamba 状态继续生成",
+        "证据限制": "性能数字来自项目 benchmark，需要按实际负载复现"
       },
       "tags": [
         "SGLang",
         "model-serving",
-        "prefix-caching",
-        "RL",
-        "simulation",
-        "Responses-API"
+        "model-loading",
+        "speculative-decoding",
+        "PD-disaggregation",
+        "Mamba"
       ],
       "technical_impact": 4,
       "engineering_value": 5,
@@ -147,7 +152,8 @@
       "event_fingerprint": "sglang-0-5-20-branch-cache-rl-sampling-simulator",
       "source_ids": [
         "src-0f607943d6da27d6",
-        "src-9b2f8ba750283adb"
+        "src-9b2f8ba750283adb",
+        "src-6d0f4e95afe7efb2"
       ],
       "project_ids": [
         "sglang"
@@ -176,10 +182,27 @@
           "id": "ev-20260918-02-sglang-0-5-21-evidence",
           "claim_zh": "SGLang 0.5.21 支持运行时切换 prefill/decode 角色，并默认启用 Rust 版统一缓存核心。",
           "claim_en": "SGLang 0.5.21 supports runtime prefill/decode role switching and enables the Rust unified cache core by default.",
-          "source_ids": ["src-9b2f8ba750283adb"],
-          "event_ids": ["ev-20260918-02"],
+          "source_ids": [
+            "src-9b2f8ba750283adb"
+          ],
+          "event_ids": [
+            "ev-20260918-02"
+          ],
           "verification": "verified-primary-source",
           "relation": "support"
+        },
+        {
+          "id": "ev-20260918-02-sglang-0-5-22-evidence",
+          "claim_zh": "SGLang 0.5.22 扩展加载与分离式 serving，并修复推测解码加结构化输出时可能恢复错误 Mamba 状态的问题。",
+          "claim_en": "SGLang 0.5.22 expands loading and disaggregated serving and fixes a wrong-Mamba-state resume path under speculative decoding plus structured output.",
+          "source_ids": [
+            "src-6d0f4e95afe7efb2"
+          ],
+          "event_ids": [
+            "ev-20260918-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims are project-reported"
         }
       ],
       "changes": [
@@ -202,15 +225,37 @@
           "discovered_at": "2026-10-02T16:00:56Z",
           "summary_zh": "0.5.21 增加运行时角色切换、默认 Rust 缓存核心与新的决策 API。",
           "summary_en": "Version 0.5.21 adds runtime role switching, the default Rust cache core and new decision APIs.",
-          "evidence_ids": ["ev-20260918-02-sglang-0-5-21-evidence"],
+          "evidence_ids": [
+            "ev-20260918-02-sglang-0-5-21-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20260918-02-sglang-0-5-22",
+          "kind": "update",
+          "occurred_at": "2026-10-19T02:55:19Z",
+          "discovered_at": "2026-10-19T16:04:44Z",
+          "summary_zh": "0.5.22 扩展 serving 性能路径并修复循环状态正确性问题",
+          "summary_en": "Version 0.5.22 expands serving paths and fixes recurrent-state correctness",
+          "evidence_ids": [
+            "ev-20260918-02-sglang-0-5-22-evidence"
+          ],
           "historical": false,
           "importance": "major"
         }
       ],
-      "short_label_zh": "SGLang 0.5.21",
-      "short_label_en": "SGLang 0.5.21",
-      "next_action_zh": "用一个代表负载复现 TTFT 与 prefill 吞吐，并完成 breaking changes 清单后再上线。",
-      "next_action_en": "Reproduce TTFT and prefill throughput on one representative workload and complete the breaking-change checklist before rollout."
+      "short_label_zh": "SGLang 0.5.22",
+      "short_label_en": "SGLang 0.5.22",
+      "next_action_zh": "先回归推测解码加结构化输出的 Mamba 路径，再在 canary 复现加载、TTFT 与吞吐。",
+      "next_action_en": "First regress the Mamba path with speculative decoding plus structured output, then reproduce loading, TTFT and throughput on a canary.",
+      "editorial_pick": {
+        "reason_zh": "推测解码与结构化输出组合可能静默恢复错误状态；这是生产升级前必须回归的正确性问题。",
+        "reason_en": "Speculative decoding plus structured output could silently resume the wrong state, making this a correctness regression test before production upgrade.",
+        "source_ids": [
+          "src-6d0f4e95afe7efb2"
+        ]
+      }
     },
     {
       "event_id": "ev-20260918-03",

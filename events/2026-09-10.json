@@ -12,7 +12,7 @@
       ],
       "published_at": "2026-09-10T02:17:58Z",
       "first_seen_at": "2026-09-11T18:31:49Z",
-      "last_updated_at": "2026-10-17T15:59:50Z",
+      "last_updated_at": "2026-10-19T16:04:44Z",
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
       "secondary_sources": [
@@ -21,14 +21,15 @@
         "https://github.com/vllm-project/vllm/pull/56464",
         "https://github.com/vllm-project/vllm/pull/56512",
         "https://api-docs.deepseek.com/news/news261017/",
-        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+        "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017"
       ],
-      "summary": "DeepSeek V4.1-Flash is an open-weight multimodal model with 1M context, CED/CSA2 architecture and sparse MoE. The October 17 minor update, 1017, now serves the website, app and deepseek-flash API alias with unchanged pricing and interface, alongside a new MIT checkpoint. DeepSeek reports coding and automation benchmark gains; independent reproduction is not yet available.",
-      "why_it_matters": "For teams comparing hosted and self-hosted coding models, 1017 is directly testable without an API migration. Vendor results use different harnesses, so compare task success, wall time, output tokens and total cost on the same repository tasks.",
-      "summary_zh": "DeepSeek V4.1-Flash 是 1M 上下文的开放权重多模态模型，采用 CED/CSA2 架构与稀疏 MoE。10 月 17 日的 1017 小更新已替换网站、App 与 deepseek-flash API 别名，价格和接口不变，同时发布新的 MIT checkpoint。厂商报告 coding 与自动化 benchmark 改善，尚无独立复测。",
-      "summary_en": "DeepSeek V4.1-Flash is an open-weight multimodal model with 1M context, CED/CSA2 architecture and sparse MoE. The October 17 minor update, 1017, now serves the website, app and deepseek-flash API alias with unchanged pricing and interface, alongside a new MIT checkpoint. DeepSeek reports coding and automation benchmark gains; independent reproduction is not yet available.",
-      "why_it_matters_zh": "对比较托管与自托管 coding 模型的团队来说，1017 可以直接复测而无需迁移 API；但厂商结果使用不同 harness，必须用同一仓库任务比较成功率、墙钟时间、输出 token 与总成本。",
-      "why_it_matters_en": "For teams comparing hosted and self-hosted coding models, 1017 is directly testable without an API migration. Vendor results use different harnesses, so compare task success, wall time, output tokens and total cost on the same repository tasks.",
+      "summary": "DeepSeek V4.1-Flash is an open-weight multimodal model with 1M context and a sparse CED/CSA2 architecture. The October 17 1017 update replaced the website, app and deepseek-flash API alias without changing price or interface and shipped a new MIT checkpoint. Artificial Analysis now independently scores the hosted Max configuration at 45 on its Intelligence Index, $0.26 per task, 224.7 output tokens per second and 1.12-second TTFT; the run used 210M output tokens, so high verbosity remains a cost caveat.",
+      "why_it_matters": "For teams choosing an open-weight coding and agent model, independent API results now support the claim that 1017 is fast and competitively priced, while also exposing its unusually high token use. Trial decisions should measure total task cost and success on your own workload; the independent run does not reproduce the downloadable weights.",
+      "summary_zh": "DeepSeek V4.1-Flash 是 1M 上下文的开放权重多模态模型，采用稀疏 CED/CSA2 架构。10 月 17 日的 1017 更新替换了网站、App 与 deepseek-flash API 别名，价格和接口不变，并发布新 MIT checkpoint。Artificial Analysis 现已独立测得 hosted Max 配置 Intelligence Index 45、每项任务 0.26 美元、输出 224.7 token/s、TTFT 1.12 秒；整套评测生成 2.1 亿输出 token，高冗长度仍是成本限制。",
+      "summary_en": "DeepSeek V4.1-Flash is an open-weight multimodal model with 1M context and a sparse CED/CSA2 architecture. The October 17 1017 update replaced the website, app and deepseek-flash API alias without changing price or interface and shipped a new MIT checkpoint. Artificial Analysis now independently scores the hosted Max configuration at 45 on its Intelligence Index, $0.26 per task, 224.7 output tokens per second and 1.12-second TTFT; the run used 210M output tokens, so high verbosity remains a cost caveat.",
+      "why_it_matters_zh": "对选择开放权重 coding 与 agent 模型的团队来说，独立 API 结果开始支持 1017 速度快、价格有竞争力的判断，也暴露了它输出 token 偏多的问题。试用时应测自己的整项任务成本与成功率；这次独立测试并不是对可下载权重的复现。",
+      "why_it_matters_en": "For teams choosing an open-weight coding and agent model, independent API results now support the claim that 1017 is fast and competitively priced, while also exposing its unusually high token use. Trial decisions should measure total task cost and success on your own workload; the independent run does not reproduce the downloadable weights.",
       "technical_details": {
         "release": "HF repo created 2026-09-10T02:17:58Z; MIT; image-text-to-text; 75,774 dl + 1,741 likes in ~1 day (captured 2026-09-11T18:34Z)",
         "architecture": "552B backbone / 763B total safetensors (incl. 196B Engram conditional memory); 8B prefill / 16B decode activated; MoE 1 shared + 384 routed, 6 active; CED = 20-layer causal encoder + 20-layer decoder (KV projected from encoder final hidden states); CSA2 static attention modes Full/Reindex/Reuse + hierarchical sparse indexer; FP4 E2M1 main KV, 890 B/token (~1/4 V4-Flash; ~1/8 with SWA bounded replay); Single-Pass mHC; DSpark speculative decoding; DeepSeek-ViT vision (2D-RoPE, 3x3 pixel-unshuffle)",
@@ -38,7 +39,8 @@
         "serving": "day-0 vLLM / SGLang / Docker Model Runner / Transformers; deepseek-recipe Rust libs + Python reference; no Jinja chat template",
         "update_2026_09_13": "Serving ecosystem @2026-09-12/13: vLLM 63 V4.1-Flash issues/PRs (13 on 9/12: encoder CUDA graph #56625, mHC fold #56633, ROCm gfx950 #56638; ROCm perf RFC #56506); SGLang 32 matches (MI350X #39186, Mooncake Engram KV backend #39205, prefill CP #39179; correctness bug: fp8 wo_a absorb GEMM ~25% wrong when DEEPGEMM_SCALE_UE8M0=false, SM121, #39193). Model card still has no serving recipe (#13 asks); deepseek-recipe = prompt-format lib. 15+ third-party deploy repos on 9/12 (DGX Spark/GB10, Mac Studio 512GB, EXL3); LiteLLM pricing PRs #40919/40920. Downloads 140,636 (+85.6% vs 9/11) + 2,005 likes @2026-09-13T00:03Z.",
         "update_2026_09_14": "vLLM main merged DeepSelect as a sparse-indexer TopK backend (#56464): on GB200 at batch 256 / 1M KV the PR reports 191 us versus 616 us for the prior path; this is a kernel result, not end-to-end serving. Engram tables gained node-local DP sharding, asynchronous CPU-offload prefetch and shared-memory tables (#56512), validated on two nodes TP1xDP8; shared tables remove per-step Engram DP communication, while reported TTFT improvement is at most 0.9%. Not yet in a tagged vLLM release.",
-        "update_2026_10_17": "V4.1-Flash-1017 minor update; website/app/API alias updated; price and API unchanged; MIT weights public; vendor reports Terminal-Bench 4.0 42.3 vs 31.2, DeepSWE 77.0 vs 74.2, Automation-Bench 60.5 vs 54.8"
+        "update_2026_10_17": "V4.1-Flash-1017 minor update; website/app/API alias updated; price and API unchanged; MIT weights public; vendor reports Terminal-Bench 4.0 42.3 vs 31.2, DeepSWE 77.0 vs 74.2, Automation-Bench 60.5 vs 54.8",
+        "update_2026_10_19": "Artificial Analysis independently tested the hosted Max configuration: Intelligence Index 45, $0.26 per Index task, 224.7 output tok/s, 1.12s TTFT and 210M output tokens across the index. This is an API evaluation, not a reproduction of self-hosted weights."
       },
       "technical_details_zh": {
         "发布": "HF 仓库 2026-09-10T02:17:58Z 创建；MIT；image-text-to-text；约 1 天 75,774 下载 + 1,741 likes（2026-09-11T18:34Z 采样）",
@@ -49,7 +51,8 @@
         "serving": "day-0 vLLM / SGLang / Docker Model Runner / Transformers；deepseek-recipe Rust 库 + Python 参考实现；无 Jinja chat template",
         "update_2026_09_13": "serving 生态 @2026-09-12/13：vLLM 63 个 V4.1-Flash issue/PR（9/12 单日 13 个：encoder CUDA graph #56625、mHC fold #56633、ROCm gfx950 #56638；ROCm 性能 RFC #56506）；SGLang 32 个匹配（MI350X #39186、Mooncake Engram KV backend #39205、prefill CP #39179；正确性 bug：DEEPGEMM_SCALE_UE8M0=false 时 fp8 wo_a absorb GEMM 静默错约 25%，SM121，#39193）。模型卡仍无 serving 指引（#13 在求）；deepseek-recipe 为 prompt 格式转换库。9/12 新增 15+ 第三方部署仓（DGX Spark/GB10、Mac Studio 512GB、EXL3）；LiteLLM 定价 PR #40919/40920。下载 140,636（较 9/11 +85.6%）+ 2,005 likes @2026-09-13T00:03Z。",
         "update_2026_09_14": "vLLM main 合并 DeepSelect 稀疏索引 TopK backend（#56464）：GB200、batch 256 / 1M KV 下，PR 报告 191 微秒，原路径为 616 微秒；这是 kernel 结果，不是端到端 serving。Engram 表加入 node-local DP 分片、异步 CPU offload 预取与共享内存表（#56512），在两节点 TP1xDP8 上验证；共享表消除逐步 Engram DP 通信，TTFT 改善最高仅 0.9%。尚未进入 vLLM 正式版本。",
-        "update_2026_10_17": "V4.1-Flash-1017 小更新；网站/App/API 别名已更新；价格与接口不变；MIT 权重公开；厂商报告 Terminal-Bench 4.0 42.3 对 31.2、DeepSWE 77.0 对 74.2、Automation-Bench 60.5 对 54.8"
+        "update_2026_10_17": "V4.1-Flash-1017 小更新；网站/App/API 别名已更新；价格与接口不变；MIT 权重公开；厂商报告 Terminal-Bench 4.0 42.3 对 31.2、DeepSWE 77.0 对 74.2、Automation-Bench 60.5 对 54.8",
+        "2026-10-19 更新": "Artificial Analysis 独立测试 hosted Max 配置：Intelligence Index 45、每项 Index 任务 0.26 美元、输出 224.7 token/s、TTFT 1.12 秒，整套 Index 生成 2.1 亿输出 token。这是 API 评测，不是自托管权重复现。"
       },
       "tags": [
         "foundation-model",
@@ -78,7 +81,8 @@
         "src-e10f80c36670f3cd",
         "src-1ace2a374dfca1c4",
         "src-8d6665ab69ee0937",
-        "src-cac24968e5aa0d5b"
+        "src-cac24968e5aa0d5b",
+        "src-f1cb07a73c67cf63"
       ],
       "project_ids": [
         "deepseek"
@@ -116,6 +120,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260910-01-aa-1017-evidence",
+          "claim_zh": "Artificial Analysis 独立测得 DeepSeek V4.1 Flash 1017 hosted Max 的综合指数、速度、延迟和任务成本，同时显示输出 token 偏多。",
+          "claim_en": "Artificial Analysis independently measured the hosted DeepSeek V4.1 Flash 1017 Max configuration for index score, speed, latency and task cost, while showing high output-token use.",
+          "source_ids": [
+            "src-f1cb07a73c67cf63"
+          ],
+          "event_ids": [
+            "ev-20260910-01"
+          ],
+          "relation": "support",
+          "verification": "independent hosted-API evaluation; not a weight reproduction"
         }
       ],
       "changes": [
@@ -143,12 +160,32 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260910-01-aa-1017",
+          "kind": "update",
+          "occurred_at": "2026-10-19",
+          "discovered_at": "2026-10-19T16:04:44Z",
+          "summary_zh": "Artificial Analysis 独立评测 1017 的速度、任务成本与冗长度",
+          "summary_en": "Artificial Analysis independently measures 1017 speed, task cost and verbosity",
+          "evidence_ids": [
+            "ev-20260910-01-aa-1017-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "next_action_zh": "用同一组仓库任务 A/B 测试旧版与 1017，比较成功率、墙钟时间、输出 token 和总成本。",
-      "next_action_en": "A/B test the prior model and 1017 on the same repository tasks, comparing success, wall time, output tokens and total cost.",
+      "next_action_zh": "一天内用相同任务比较 1017 与当前模型的成功率、总输出 token、整项成本和 TTFT。",
+      "next_action_en": "Within one day, compare 1017 with the current model on the same tasks for success rate, total output tokens, task cost and TTFT.",
       "short_label_zh": "DeepSeek V4.1 Flash",
-      "short_label_en": "DeepSeek V4.1 Flash"
+      "short_label_en": "DeepSeek V4.1 Flash",
+      "editorial_pick": {
+        "reason_zh": "独立 API 结果确认速度和价格竞争力，也揭示高冗长度可能吞掉单价优势。",
+        "reason_en": "Independent API results confirm competitive speed and price while showing that high verbosity can erode the unit-price advantage.",
+        "source_ids": [
+          "src-f1cb07a73c67cf63"
+        ]
+      }
     },
     {
       "event_id": "ev-20260910-02",

@@ -1,11 +1,11 @@
-# 当前趋势看板 — 2026-10-18T15:58:14Z
+# 当前趋势看板 — 2026-10-19T16:04:44Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-10-18
+- **Last updated:** 2026-10-20
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（维持；判据复核 @2026-09-14：(a) 仍未达成，没有新的第三方 Terminal-Bench / SWE 权重复现；(b) 已由 DeepSeek V4.1 Flash 达成；(c) serving 生态新增跨模型、跨框架的合并代码——vLLM 为 DeepSeek 合并 DeepSelect 与 Engram 路径，SGLang 为 Qwen NVFP4 合并单 DGX Spark 路径；升 High 仍仅剩 (a)）
 - **Why It Matters:** 升级为 strengthening 的依据：确认判据「GLM-5.3 权重落地 + 独立 benchmark 复现」实质达成——权重 8/25 落地且许可证宽松可用，Artificial Analysis 独立评测把 GLM-5.3 放到与 Kimi K3 同档。GLM-5.3-Flash（纯 MIT、全新底座、线性注意力降本）是同组织的加强信号。仍未到 High，只因为 Artificial Analysis 的独立评测针对 API，尚无社区对公开权重的 Terminal-Bench 或 SWE 复现；跨组织同级别发布与持续下载增速判据均已达成。
@@ -89,6 +89,7 @@
 - 2026-10-16T15:56:07Z：本轮没有足以改变状态的新证据。
 - 2026-10-17：DeepSeek V4.1-Flash-1017 新增公开 checkpoint 与厂商 coding 成绩，但仍无独立复现；维持 strengthening / Medium。
 - 2026-10-18T15:58:14Z：Ling-3.1-flash 新增 MIT 权重与 serving 配方，但 coding harness 和 1M 上下文复现仍缺；strengthening / Medium 不变。
+- 2026-10-20：Artificial Analysis 已独立评测 DeepSeek V4.1 Flash 1017 的 hosted API，但仍不是公开权重上的 Terminal-Bench / SWE 复现；M3.1 Flash 权重也仍是预告，strengthening / Medium 不变。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
@@ -174,13 +175,14 @@
 - 2026-10-16T15:56:07Z：本轮没有足以改变状态的新证据。
 - 2026-10-17：本轮没有足以改变状态的新信号。
 - 2026-10-18T15:58:14Z：LiteLLM 1.106 默认关闭 stdio MCP，并加强 issuer 与凭据隔离；emerging / Medium 不变。
+- 2026-10-20：本轮没有足以改变状态的新 MCP 安全信号。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
 - **Status:** established
 - **Confidence:** High
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-10-18
+- **Last updated:** 2026-10-20
 - **Time Horizon:** Sustained
 - **当前判断:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Why It Matters:** 升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
@@ -270,6 +272,7 @@
 - 2026-10-16T15:56:07Z：Codex 0.163.0 与 Claude Code 2.1.301 继续改善并行执行、转向与失败恢复，established 不变。
 - 2026-10-17：本轮没有足以改变状态的新信号。
 - 2026-10-18T15:58:14Z：Littleguys 0.2 把 Claude Code 会话、审批与远程控制汇入统一控制面；established / High 不变。
+- 2026-10-20：Qwen Code 0.25.3 把只读快照子 agent、持久 workspace 与托管恢复推进稳定版；established / High 不变。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -351,13 +354,14 @@
 - 2026-10-16T15:56:07Z：本轮没有足以改变状态的新证据。
 - 2026-10-17：本轮没有足以改变状态的新信号。
 - 2026-10-18T15:58:14Z：本轮没有足以改变状态的新信号。
+- 2026-10-20：本轮没有足以改变状态的新信号。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
 - **Status:** candidate
 - **Confidence:** Low
 - **First observed:** 2026-08-18
-- **Last updated:** 2026-10-16
+- **Last updated:** 2026-10-20
 - **Time Horizon:** Emerging
 - **当前判断:** 维持候选方向、低置信度。PSP 已有具体配置指南，旧记录中“尚未兑现”的概括需要修正。现有材料仍不足以证明多家独立组织已经在生产中采用。
 - **Why It Matters:** 对需要控制数据和执行边界的团队，选型应同时检查模型能力与部署条件。厂商提供配置指南可以支持试点，但不能替代自身的部署验收与独立采用证据。
@@ -417,6 +421,7 @@
 - 2026-10-16T15:56:07Z：Beam、Nemotron 3.5 与 Granite Switch 4.1 新增可下载权重和本地运行路径，继续支持 candidate。
 - 2026-10-17：本轮没有足以改变状态的新信号。
 - 2026-10-18T15:58:14Z：本轮没有足以改变状态的新信号。
+- 2026-10-20：TorchNeuron 预告原生 PyTorch/Trainium 路径，但代码在截止时间尚未开放，只算候选信号；candidate / Low 不变。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -480,13 +485,14 @@
 - 2026-10-16T15:56:07Z：本轮没有足以改变状态的新证据。
 - 2026-10-17：本轮没有足以改变状态的新信号。
 - 2026-10-18T15:58:14Z：本轮没有足以改变状态的新信号。
+- 2026-10-20：本轮没有足以改变状态的新信号。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-10-18
+- **Last updated:** 2026-10-20
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -554,5 +560,6 @@
 - 2026-10-16T15:56:07Z：Claude Code 修复跳步却报告成功，Codex 改善沙箱与转向，继续支持执行与控制分层。
 - 2026-10-17：本轮没有足以改变状态的新信号。
 - 2026-10-18T15:58:14Z：vLLM 与 LiteLLM 同日收紧服务和 MCP 默认边界，继续强化 runtime 控制；strengthening / Medium 不变。
+- 2026-10-20：Qwen Code 用冻结 workspace 限制只读子 agent，SGLang 修复组合功能下的状态错误，继续支持能力与后果控制分层；strengthening / Medium 不变。
 
 ## Invalidated / retired

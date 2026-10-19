@@ -102,7 +102,8 @@
         "src-50ecef795d7295a5",
         "src-b6a4eeb38db18715",
         "src-dbd682b3d0c44281",
-        "src-62cbc2cf184b4f1b"
+        "src-62cbc2cf184b4f1b",
+        "src-2da06eac2ec92ad6"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -110,19 +111,20 @@
         "src-50ecef795d7295a5",
         "src-b6a4eeb38db18715",
         "src-dbd682b3d0c44281",
-        "src-62cbc2cf184b4f1b"
+        "src-62cbc2cf184b4f1b",
+        "src-2da06eac2ec92ad6"
       ],
-      "last_reviewed_at": "2026-10-15T16:00:25Z",
+      "last_reviewed_at": "2026-10-19T16:04:44Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Qwen Code 0.25.2 把团队消息、计划审批、测试检查和更多托管恢复路径推入稳定版；复杂故障恢复仍需独立验证。",
-        "judgment_en": "Qwen Code 0.25.2 moves team messaging, plan approval, test inspection and more managed recovery paths into stable; complex recovery still needs independent validation.",
-        "next_action_zh": "一天内重启团队任务，检查消息顺序、审批、worktree 收尾与取消恢复。",
-        "next_action_en": "Within one day, restart a team task and check message order, approvals, worktree cleanup and cancellation recovery.",
+        "judgment_zh": "0.25.3 用冻结 workspace 隔离只读子 agent，并扩展持久 workspace 与恢复控制；复杂故障仍需独立验证。",
+        "judgment_en": "Version 0.25.3 isolates read-only child agents over frozen workspaces and expands persistent workspace and recovery controls; complex failures still need independent validation.",
+        "next_action_zh": "重启一个只读子 agent 任务，检查隔离、取消、审批和恢复。",
+        "next_action_en": "Restart one read-only child-agent task and check isolation, cancellation, approvals and recovery.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-10-15T16:00:25Z"
+        "reviewed_at": "2026-10-19T16:04:44Z"
       }
     },
     {
@@ -446,23 +448,25 @@
       ],
       "source_ids": [
         "src-d4358f595d3dd974",
-        "src-0f607943d6da27d6"
+        "src-0f607943d6da27d6",
+        "src-6d0f4e95afe7efb2"
       ],
       "current_judgment_event_id": "ev-20260918-02",
       "official_source_ids": [
-        "src-9b2f8ba750283adb"
+        "src-9b2f8ba750283adb",
+        "src-6d0f4e95afe7efb2"
       ],
-      "last_reviewed_at": "2026-10-02T16:00:56Z",
+      "last_reviewed_at": "2026-10-19T16:04:44Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "SGLang 0.5.21 增加运行时 prefill/decode 角色切换并默认启用 Rust 缓存核心，但新性能数字仍需按实际负载复现。",
-        "judgment_en": "SGLang 0.5.21 adds runtime prefill/decode role switching and enables the Rust cache core by default, but its new performance claims still need workload-specific reproduction.",
-        "next_action_zh": "复现 TTFT 与 prefill 吞吐，并完成 breaking changes 清单后再上线。",
-        "next_action_en": "Reproduce TTFT and prefill throughput and complete the breaking-change checklist before rollout.",
+        "judgment_zh": "0.5.22 修复一项可能静默生成错误结果的 Mamba 状态问题，并扩展加载与分离式 serving；性能仍需复现。",
+        "judgment_en": "Version 0.5.22 fixes a Mamba-state bug that could silently produce wrong output and expands loading and disaggregated serving; performance still needs reproduction.",
+        "next_action_zh": "先回归状态错误路径，再在 canary 复现加载、TTFT 与吞吐。",
+        "next_action_en": "Regress the state-corruption path first, then reproduce loading, TTFT and throughput on a canary.",
         "basis_event_ids": [
           "ev-20260918-02"
         ],
-        "reviewed_at": "2026-10-02T16:00:56Z"
+        "reviewed_at": "2026-10-19T16:04:44Z"
       }
     },
     {
@@ -478,7 +482,8 @@
         "ev-20260813-02",
         "ev-20260814-05",
         "ev-20260831-02",
-        "ev-20260910-01"
+        "ev-20260910-01",
+        "ev-20261019-03"
       ],
       "source_ids": [
         "src-8f8555b73e1b4292",
@@ -497,24 +502,26 @@
         "src-e10f80c36670f3cd",
         "src-1ace2a374dfca1c4",
         "src-8d6665ab69ee0937",
-        "src-cac24968e5aa0d5b"
+        "src-cac24968e5aa0d5b",
+        "src-acbdab11720e06e1",
+        "src-f1cb07a73c67cf63"
       ],
       "current_judgment_event_id": "ev-20260910-01",
       "official_source_ids": [
         "src-8d6665ab69ee0937",
         "src-cac24968e5aa0d5b"
       ],
-      "last_reviewed_at": "2026-10-17T15:59:50Z",
+      "last_reviewed_at": "2026-10-19T16:04:44Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "V4.1-Flash-1017 已同时更新托管别名与 MIT 权重，迁移门槛低；性能提升仍是厂商结果。",
-        "judgment_en": "V4.1-Flash-1017 updates both the hosted alias and MIT weights with low migration cost; performance gains remain vendor-reported.",
-        "next_action_zh": "在相同仓库任务上比较旧版与 1017。",
-        "next_action_en": "Compare the prior model and 1017 on the same repository tasks.",
+        "judgment_zh": "1017 的 MIT 权重与托管别名已上线；独立 API 评测确认速度和价格竞争力，但高输出 token 会抬高整项成本。",
+        "judgment_en": "The 1017 MIT weights and hosted alias are live; independent API testing confirms competitive speed and pricing, but high output-token use can raise total task cost.",
+        "next_action_zh": "用相同任务比较成功率、输出 token、整项成本和 TTFT。",
+        "next_action_en": "Compare success rate, output tokens, total task cost and TTFT on the same tasks.",
         "basis_event_ids": [
           "ev-20260910-01"
         ],
-        "reviewed_at": "2026-10-17T15:59:50Z"
+        "reviewed_at": "2026-10-19T16:04:44Z"
       }
     },
     {
@@ -4229,7 +4236,72 @@
         ],
         "reviewed_at": "2026-10-18T15:58:14Z"
       }
+    },
+    {
+      "id": "minimax-m3-1-flash",
+      "name_zh": "MiniMax M3.1 Flash",
+      "name_en": "MiniMax M3.1 Flash",
+      "type": "model",
+      "aliases": [
+        "M3.1 Flash",
+        "MiniMax-M3.1-Flash"
+      ],
+      "pattern": "MiniMax M3.1 Flash",
+      "event_ids": [
+        "ev-20261019-01"
+      ],
+      "source_ids": [
+        "src-b984a5c544e63137"
+      ],
+      "current_judgment_event_id": "ev-20261019-01",
+      "official_source_ids": [
+        "src-b984a5c544e63137"
+      ],
+      "last_reviewed_at": "2026-10-19T16:04:44Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "API 已开放且价格低，适合实测；性能仍是厂商数据，权重尚未发布。",
+        "judgment_en": "The API is live and cheap enough to test; performance remains vendor-reported and weights are not yet released.",
+        "next_action_zh": "用同一组仓库任务测成功率、总成本和 P50 延迟。",
+        "next_action_en": "Test success rate, total cost and P50 latency on the same repository tasks.",
+        "basis_event_ids": [
+          "ev-20261019-01"
+        ],
+        "reviewed_at": "2026-10-19T16:04:44Z"
+      }
+    },
+    {
+      "id": "aws-torchneuron",
+      "name_zh": "TorchNeuron",
+      "name_en": "TorchNeuron",
+      "type": "infrastructure",
+      "aliases": [
+        "AWS TorchNeuron"
+      ],
+      "pattern": "TorchNeuron",
+      "event_ids": [
+        "ev-20261019-02"
+      ],
+      "source_ids": [
+        "src-63cbe58e85a688d8"
+      ],
+      "current_judgment_event_id": "ev-20261019-02",
+      "official_source_ids": [
+        "src-63cbe58e85a688d8"
+      ],
+      "last_reviewed_at": "2026-10-19T16:04:44Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "原生 PyTorch backend 可能降低 Trainium 迁移成本，但 Apache-2.0 源码尚未开放。",
+        "judgment_en": "A native PyTorch backend could lower Trainium migration cost, but the promised Apache-2.0 source is not yet public.",
+        "next_action_zh": "等仓库开放后检查算子覆盖、数值一致性与多机扩展。",
+        "next_action_en": "Wait for the repository, then check operator coverage, numerical parity and multi-node scaling.",
+        "basis_event_ids": [
+          "ev-20261019-02"
+        ],
+        "reviewed_at": "2026-10-19T16:04:44Z"
+      }
     }
   ],
-  "last_updated": "2026-10-18T15:58:14Z"
+  "last_updated": "2026-10-19T16:04:44Z"
 }

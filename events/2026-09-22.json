@@ -440,8 +440,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.24.4 adds runtime attestation and plan-drift checks",
-      "title_zh": "Qwen Code 0.24.4 增加运行时证明与计划漂移检查",
+      "title": "Qwen Code 0.25.3 isolates read-only child agents and durable workspaces",
+      "title_zh": "Qwen Code 0.25.3 隔离只读子 agent 并持久化 workspace",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -449,7 +449,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-10-15T16:00:25Z",
+      "last_updated_at": "2026-10-19T16:04:44Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
       "secondary_sources": [
@@ -458,14 +458,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.7",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.0",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.1",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.2"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.2",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.3"
       ],
-      "summary": "Qwen Code 0.24.4 adds a managed runtime attestation contract, persistent managed tool-execution records and plan-drift reporting. It moves bubblewrap sandboxing to individual tool execution, supports SSH workspaces without a remote daemon, and can cap ACP child heaps. The release also adds encrypted connection profiles and safer QR pairing for remote sessions. It was published inside the retrieval overlap and was absent from the previous index.",
-      "why_it_matters": "For teams running coding agents across local, remote and managed workers, a sandbox is only one part of the trust story. Attestation, durable execution records and plan-drift checks make it easier to prove which runtime acted and whether the implementation still matches the approved plan. Trial the controls before relying on them for policy enforcement because the release notes do not yet provide independent security validation.",
-      "summary_zh": "Qwen Code 0.24.4 增加托管运行时证明协议、持久化的托管工具执行记录，以及计划漂移报告。bubblewrap 沙箱被下沉到单个工具执行层；SSH workspace 不再强制依赖远程 daemon，并可限制 ACP 子进程堆内存。远程会话还增加加密连接配置与更安全的二维码配对。该版本位于检索 overlap 区间，上一轮索引中没有记录。",
-      "summary_en": "Qwen Code 0.24.4 adds a managed runtime attestation contract, persistent managed tool-execution records and plan-drift reporting. It moves bubblewrap sandboxing to individual tool execution, supports SSH workspaces without a remote daemon, and can cap ACP child heaps. The release also adds encrypted connection profiles and safer QR pairing for remote sessions. It was published inside the retrieval overlap and was absent from the previous index.",
-      "why_it_matters_zh": "对同时运行本地、远程和托管 coding agent 的团队来说，沙箱只是信任链的一部分。运行时证明、持久执行记录与计划漂移检查，让团队更容易确认究竟由哪个运行时执行，以及实现是否仍符合已批准计划。发布说明尚无独立安全验证，因此应先试用这些控制项，再决定是否把它们当成强制策略。",
-      "why_it_matters_en": "For teams running coding agents across local, remote and managed workers, a sandbox is only one part of the trust story. Attestation, durable execution records and plan-drift checks make it easier to prove which runtime acted and whether the implementation still matches the approved plan. Trial the controls before relying on them for policy enforcement because the release notes do not yet provide independent security validation.",
+      "summary": "Qwen Code 0.25.3 lets hosted parent agents launch snapshot-isolated child agents that can read a frozen workspace but cannot change files or run commands. Managed sessions now support pinned Skills, MCP and Hook catalogs, SSH and native macOS runtimes, plus Kubernetes workspaces that preserve files across sessions. The release also adds bounded retry states, cancellation recovery and more durable commands; these controls are documented by the project but lack independent reliability or security evaluation.",
+      "why_it_matters": "For teams using multi-agent coding workflows, a frozen read-only child is a practical way to delegate inspection without sharing write authority. The same release expands the managed control plane substantially, so a trial should verify that snapshot freshness, cancellation, approvals and persistent storage fail closed under restarts.",
+      "summary_zh": "Qwen Code 0.25.3 允许托管父 agent 启动快照隔离的子 agent：它只能读取冻结 workspace，不能改文件或运行命令。Managed session 还支持固定 Skills、MCP 与 Hook catalog、SSH 和原生 macOS runtime，以及跨 session 保留文件的 Kubernetes workspace。新版也加入有上限的重试状态、取消恢复与更多持久命令；这些控制由项目文档说明，尚无独立可靠性或安全评测。",
+      "summary_en": "Qwen Code 0.25.3 lets hosted parent agents launch snapshot-isolated child agents that can read a frozen workspace but cannot change files or run commands. Managed sessions now support pinned Skills, MCP and Hook catalogs, SSH and native macOS runtimes, plus Kubernetes workspaces that preserve files across sessions. The release also adds bounded retry states, cancellation recovery and more durable commands; these controls are documented by the project but lack independent reliability or security evaluation.",
+      "why_it_matters_zh": "对多 agent coding 团队来说，冻结的只读子 agent 能把检查任务委派出去，同时不共享写权限。这个版本也大幅扩展托管控制面，因此试用时要验证快照新鲜度、取消、审批和持久存储在重启故障下是否安全收敛。",
+      "why_it_matters_en": "For teams using multi-agent coding workflows, a frozen read-only child is a practical way to delegate inspection without sharing write authority. The same release expands the managed control plane substantially, so a trial should verify that snapshot freshness, cancellation, approvals and persistent storage fail closed under restarts.",
       "technical_details": {
         "version": "0.24.4 stable",
         "attestation": "managed runtime attestation contract",
@@ -478,7 +479,8 @@
         "update_2026_09_29": "0.24.7 stable makes Managed Runtime sessions workspace-bound, persists local execution receipts, reconciles in-flight work after takeover/reboot, exposes public Session/Turn/task contracts, and adds optional worktree sessions. It also adds a remote desktop node_repl relay, structured memory recall, Landlock fallback, safe concurrent Code Mode calls, and fixes stale-worktree sweeps that could delete untracked or ignored files. Stays TRIAL.",
         "update_2026_10_05": "0.25.0 stable adds local workspace-agent collaboration and A2A sharing, a broker contract, private hosted MCP servers, durable shell results, cold-session restore, file history and undo, concurrent Bash, and Mem0. Recovery and approval fixes cover duplicate side effects, replay gaps and hosted-runtime boundaries. Stays TRIAL.",
         "update_2026_10_11": "0.25.1 stable records managed-agent parameters, receipts and checkpoints before returning; adds durable background Shell/Monitor and session-based multi-agent work; fixes MCP permission collisions and replay/approval paths.",
-        "update_2026_10_15": "0.25.2 stable adds managed-agent Session messaging, durable team-plan approval, Test Failure Explorer, TypeScript Mods and a default-off foreground Shell with mandatory approval. It fixes post-merge worktree settlement, startup false success, cancellation hangs, BOM parsing and recovery paths."
+        "update_2026_10_15": "0.25.2 stable adds managed-agent Session messaging, durable team-plan approval, Test Failure Explorer, TypeScript Mods and a default-off foreground Shell with mandatory approval. It fixes post-merge worktree settlement, startup false success, cancellation hangs, BOM parsing and recovery paths.",
+        "update_2026_10_19": "0.25.3 stable adds snapshot-isolated read-only child agents; managed sessions with pinned Skills/MCP/Hooks; SSH, macOS and workspace-resident runtimes; persistent Kubernetes workspaces; bounded retries, durable cancellation and recovery."
       },
       "technical_details_zh": {
         "版本": "0.24.4 stable",
@@ -492,7 +494,8 @@
         "2026-09-29 更新": "0.24.7 stable 将 Managed Runtime session 绑定到 workspace，持久化本地执行凭据，在接管或重启后核对进行中的工作，并公开 Session/Turn/task contract 与可选 worktree session。该版还加入远程桌面 node_repl relay、结构化记忆召回、Landlock fallback、Code Mode 安全调用并发，以及可能误删未跟踪或 ignored 文件的过期 worktree 清理修复。维持 TRIAL。",
         "2026-10-05 更新": "0.25.0 stable 增加本地 workspace-agent 协作与 A2A 分享、broker contract、私有 hosted MCP server、持久 shell 结果、冷会话恢复、文件历史与撤销、并发 Bash 和 Mem0。恢复与审批修复覆盖重复副作用、回放缺口和托管运行时边界。维持 TRIAL。",
         "2026-10-11 更新": "0.25.1 稳定版在返回结果前记录托管 agent 的参数、receipt 与 checkpoint，加入持久后台 Shell/Monitor 和基于 session 的多 agent 协作，并修复 MCP 权限冲突、回放与审批路径。",
-        "2026-10-15 更新": "0.25.2 稳定版加入 managed-agent Session 消息、持久团队计划审批、Test Failure Explorer、TypeScript Mods，以及默认关闭且必须审批的前台 Shell；并修复合并后 worktree 收尾、启动误报成功、取消卡住、BOM 解析和恢复路径。"
+        "2026-10-15 更新": "0.25.2 稳定版加入 managed-agent Session 消息、持久团队计划审批、Test Failure Explorer、TypeScript Mods，以及默认关闭且必须审批的前台 Shell；并修复合并后 worktree 收尾、启动误报成功、取消卡住、BOM 解析和恢复路径。",
+        "2026-10-19 更新": "0.25.3 稳定版加入快照隔离的只读子 agent；固定 Skills/MCP/Hooks 的 managed session；SSH、macOS 与 workspace-resident runtime；持久 Kubernetes workspace；有上限的重试、持久取消和恢复。"
       },
       "tags": [
         "qwen-code",
@@ -517,7 +520,8 @@
         "src-50ecef795d7295a5",
         "src-b6a4eeb38db18715",
         "src-dbd682b3d0c44281",
-        "src-62cbc2cf184b4f1b"
+        "src-62cbc2cf184b4f1b",
+        "src-2da06eac2ec92ad6"
       ],
       "project_ids": [
         "qwen-code"
@@ -605,6 +609,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-25-3-evidence",
+          "claim_zh": "Qwen Code 0.25.3 加入冻结 workspace 的只读子 agent，并扩展持久 workspace、托管 runtime 与故障恢复。",
+          "claim_en": "Qwen Code 0.25.3 adds read-only child agents over frozen workspaces and expands persistent workspaces, managed runtimes and failure recovery.",
+          "source_ids": [
+            "src-2da06eac2ec92ad6"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; controls not independently evaluated"
         }
       ],
       "changes": [
@@ -683,19 +700,32 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-25-3",
+          "kind": "update",
+          "occurred_at": "2026-10-19T06:06:37Z",
+          "discovered_at": "2026-10-19T16:04:44Z",
+          "summary_zh": "0.25.3 加入只读子 agent、持久 workspace 与更完整的故障恢复",
+          "summary_en": "Version 0.25.3 adds read-only child agents, persistent workspaces and broader failure recovery",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-25-3-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
-        "reason_zh": "0.25.2 稳定版加入 lead mailbox、团队计划审批、Test Failure Explorer 和默认关闭的前台 Shell，并修复 worktree 清理、托管取消与恢复边界。",
-        "reason_en": "Version 0.25.2 stable adds a lead mailbox, durable team-plan approval, Test Failure Explorer and default-off foreground Shell while fixing worktree cleanup, managed cancellation and recovery boundaries.",
+        "reason_zh": "只读快照子 agent 缩小多 agent 写权限，但托管控制面和恢复路径同步变复杂，需要故障注入。",
+        "reason_en": "Read-only snapshot children reduce multi-agent write authority, while the expanded managed control plane and recovery paths need fault injection.",
         "source_ids": [
-          "src-62cbc2cf184b4f1b"
+          "src-2da06eac2ec92ad6"
         ]
       },
-      "short_label_zh": "Qwen Code 0.25.2",
-      "short_label_en": "Qwen Code 0.25.2",
-      "next_action_zh": "一天内重启一个团队任务，验证消息顺序、计划审批、测试失败检索、worktree 收尾和取消恢复。",
-      "next_action_en": "Within one day, restart one team task and verify message order, plan approval, test-failure search, worktree cleanup and cancellation recovery."
+      "short_label_zh": "Qwen Code 0.25.3",
+      "short_label_en": "Qwen Code 0.25.3",
+      "next_action_zh": "一天内重启一个只读子 agent 任务，检查快照隔离、取消、审批和持久 workspace 恢复。",
+      "next_action_en": "Within one day, restart one read-only child-agent task and verify snapshot isolation, cancellation, approvals and persistent-workspace recovery."
     },
     {
       "event_id": "ev-20260922-05",
