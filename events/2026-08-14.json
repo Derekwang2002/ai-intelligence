@@ -373,7 +373,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-10-17T15:59:50Z",
+      "last_updated_at": "2026-10-20T16:04:41Z",
       "source_type": "primary",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -408,14 +408,15 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.299",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.300",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.301",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.302"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.302",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.304"
       ],
-      "summary": "Claude Code is a mature coding-agent runtime with multi-agent, managed-policy and worktree support. Version 2.1.302 fixes scheduled routines restarting from the beginning after partial failure, lost configuration writes, MCP compatibility and worktree recovery, and improves cloud-session status. It also enables fork subagents by default in more clients.",
-      "why_it_matters": "For automation with external side effects, preventing full replay after partial failure reduces duplicate messages, issues or reports. Teams should still inject failures after upgrading to verify idempotency and recovery.",
-      "summary_zh": "Claude Code 是成熟的 coding agent 运行时，支持多 agent、托管策略和 worktree。2.1.302 修复定时任务在部分失败后整轮重跑、配置写入丢失、MCP 兼容与 worktree 恢复问题，并改善云会话状态。该版本也让 fork subagent 在更多客户端默认开启。",
-      "summary_en": "Claude Code is a mature coding-agent runtime with multi-agent, managed-policy and worktree support. Version 2.1.302 fixes scheduled routines restarting from the beginning after partial failure, lost configuration writes, MCP compatibility and worktree recovery, and improves cloud-session status. It also enables fork subagents by default in more clients.",
-      "why_it_matters_zh": "对运行会产生外部副作用的自动化团队来说，避免失败后整轮重跑可降低重复发消息、提 issue 或写报告的风险；升级后仍应故意制造中断，验证幂等与恢复。",
-      "why_it_matters_en": "For automation with external side effects, preventing full replay after partial failure reduces duplicate messages, issues or reports. Teams should still inject failures after upgrading to verify idempotency and recovery.",
+      "summary": "Claude Code is a mature coding-agent runtime with multi-agent, managed-policy and worktree support. Version 2.1.304 makes some approvals person-only, marks read-only tools explicitly and fixes policy refresh, destructive rm prompting, disk-full transcript loss and headless subagent overruns. It also prevents worktree branch deletion without confirmation.",
+      "why_it_matters": "For teams running unattended coding agents, person-only approval and safer destructive-command handling reduce the chance that an agent or stale policy grants itself a consequential action. Upgrade, then regress organization-policy refresh, deletion prompts and headless limits.",
+      "summary_zh": "Claude Code 是成熟的 coding agent 运行时，支持多 agent、托管策略和 worktree。2.1.304 将部分审批限制为只能由人决定，显式标记只读工具，并修复组织策略刷新、危险 rm 询问、磁盘写满时 transcript 丢失和无头子 agent 超限。删除 worktree 分支也必须先确认。",
+      "summary_en": "Claude Code is a mature coding-agent runtime with multi-agent, managed-policy and worktree support. Version 2.1.304 makes some approvals person-only, marks read-only tools explicitly and fixes policy refresh, destructive rm prompting, disk-full transcript loss and headless subagent overruns. It also prevents worktree branch deletion without confirmation.",
+      "why_it_matters_zh": "对运行无人值守 coding agent 的团队来说，人工专属审批和更严格的危险命令处理能降低 agent 或过期策略自行放行高后果操作的风险。升级后应回归组织策略刷新、删除询问和无头执行限额。",
+      "why_it_matters_en": "For teams running unattended coding agents, person-only approval and safer destructive-command handling reduce the chance that an agent or stale policy grants itself a consequential action. Upgrade, then regress organization-policy refresh, deletion prompts and headless limits.",
       "technical_details": {
         "forking": "default on; inherits conversation + prompt cache",
         "messaging": "SendMessage via @-mentions across live sessions; no history/files/permissions exchange",
@@ -444,7 +445,8 @@
         "update_2026_10_14": "2.1.299 adds idle compaction and self-hosted-runner drain controls. Security and reliability fixes cover sandbox writes through --plugin-dir, duplicate approved tool execution after resume, MCP startup before policy checks, dangerous-policy name normalization and third-party gateway API keys reaching Anthropic.",
         "update_2026_10_15": "2.1.300 adds advisor and observability hooks while fixing resumed-session loss or duplication, policy timeout behavior, worktree base selection, daemon shutdown, cloud file-write reporting and hook input validation.",
         "update_2026_10_16": "2.1.301: retry cap, tool-decision OTel, workflow success fix, worktree preservation and auth/permission recovery",
-        "update_2026_10_17": "2.1.302: prevents scheduled routines replaying from the start after partial failure; fixes config-write loss, MCP 2026-07-28 compatibility, worktree/reftable recovery and cloud-session status"
+        "update_2026_10_17": "2.1.302: prevents scheduled routines replaying from the start after partial failure; fixes config-write loss, MCP 2026-07-28 compatibility, worktree/reftable recovery and cloud-session status",
+        "update_2026_10_20": "2.1.304: person-only approval deciders, explicit read-only tool markers and fixes for organization-policy refresh, destructive rm prompts, disk-full transcript loss, headless subagent overruns and worktree branch deletion confirmation"
       },
       "update_2026_08_17": "2.1.234 (2026-08-17, in-window): rejects Windows NT-namespace (\\??\\) paths across remote file reads, session restore, CLAUDE.md includes, workflow scripts and uploads — hardens pre-approval file accesses against the NTLM credential-leak vector; GitLab MR footer badge (draft/pending/green states, glab repos); auto-continue sessions when usage limit resets (toggle in /config); claude-api skill context cost cut from ~200k+ to ~25k tokens; selection:clear keybinding; CLAUDE_CODE_PROJECT_DIR_NAME env var; many Remote Control / permission-preview / TUI fixes.",
       "update_2026_08_18": "2.1.235 (2026-08-18, in-window): security-relevant fix — Shift+Tab in the permission prompt's comment field no longer wrongly grants session-wide edit permission; new optional `spellcheck` setting (aspell/hunspell/ispell); fix for whole-prompt-cache invalidation when a language server disconnects mid-session; nested markdown list misalignment fix (depth 3+); lower memory/CPU usage for background cloud sessions (/ultrareview); permission dialogs now display exactly what a grant covers; VS Code focus fix after window restore. Recommendation stays ADOPT; upgrading also picks up the 2.1.234 NTLM hardening.",
@@ -491,7 +493,8 @@
         "2026-10-10 更新": "2.1.296 将托管 code 策略扩展到 Claude Desktop，新增逐 subagent autoCompactWindow 与 workflow agent 模型覆盖，并修复 managed hook 阻断/输出改写、已禁用 MCP 启动、密钥脱敏、BASH_ARGV0 自动放行、中断 turn 重放和 Windows 编码/权限缺口。",
         "2026-10-15 更新": "2.1.300 增加 advisor 与可观测性接口，并修复会话恢复丢失或重复、策略超时、worktree 起点、daemon 停止、云端文件写入误报与 hook 输入校验。",
         "2026_10_16_更新": "2.1.301：重试上限、工具决策 OTel、工作流成功状态修复、worktree 保留与认证/权限恢复",
-        "update_2026_10_17": "2.1.302：阻止定时任务在部分失败后从头重跑；修复配置写入丢失、MCP 2026-07-28 兼容、worktree/reftable 恢复与云会话状态"
+        "update_2026_10_17": "2.1.302：阻止定时任务在部分失败后从头重跑；修复配置写入丢失、MCP 2026-07-28 兼容、worktree/reftable 恢复与云会话状态",
+        "update_2026_10_20": "2.1.304：增加人工专属审批判定与只读工具标记；修复组织策略刷新、危险 rm 询问、磁盘写满时 transcript 丢失、无头子 agent 超限和 worktree 分支删除确认"
       },
       "update_2026_08_20": "2.1.237 + 2.1.238 (both 2026-08-20, in-window). 2.1.237: fixed prompt caching for sessions using an LLM gateway or custom base URL (directly relevant to gateway deployments); added a built-in 'Concise' output style ('Claude leads with results and skips preamble and narration') selectable via /config. 2.1.238: fixed unbounded memory growth in long interactive sessions — subagent tool results are now freed after leaving the recent display window, directly relevant to long-running multi-agent sessions; plugin marketplaces gained `headersHelper` for URL marketplaces/catalog entries (mints short-lived HTTP headers such as tokens for catalog and same-origin archive fetches, shown to the user first with [y/N] confirmation, no inherited credential env vars) — private/enterprise plugin distribution; self-hosted runner `--defer-shutdown-max-min` (keep serving attached sessions on SIGTERM, then park and exit) and `--proxy-authorization-command`/`--proxy-authorization-file` for proxies needing a fresh Proxy-Authorization header per connection; numerous Remote Control fixes (mid-turn messages vanishing from transcripts, model picks on phone/web not updating the terminal, 'login expired' on brief network hiccups now retries, crashed-session reuse, env-var leaks, per-task Stop, ListAgents/SendMessage wrongly reporting 'not connected' in server mode); cross-session messaging hardening (refused inboxes now report 'refused'; rate-limited/dropped messages notify the sender instead of vanishing); MCP fixes (stdio servers no longer receive server/discover before initialize — lazy servers no longer start on every open; elicitation dialogs fixed for URLs over 4,096 chars; disabled servers listed without health-checking). Recommendation stays ADOPT.",
       "update_2026_08_21": "2.1.239 (2026-08-21T17:18Z, in-window). Cost/estimation: /cost, the status line and --max-budget-usd now include the 1.1x US-only-inference premium for data-residency workspaces; the usage-limit message now states when the session or weekly limit resets. Bedrock: fixed streaming behind proxies that strip the response Content-Type header (which silently doubled billed API calls by re-running every turn non-streaming) and fixed startup hangs behind an HTTPS proxy with SSO profiles + awsAuthRefresh. Cloud sessions: plugins synced from claude.ai now show as name@synced and work with `claude plugin enable/disable <name>@synced` (never overriding a same-named locally installed plugin); fixed remote MCP servers staying failed after a transient 5xx on mid-session reconnect; fixed resuming out of plan mode after an idle worker restart. Multi-agent/messaging refinements (same primitive family, not new primitives): ListAgents now lists live teammates and tells a session its own peer name; SendMessage to your own name now says so; fixed sessions titled with a leading / being unaddressable; fixed runaway Remote Control session-title syncing (2.1.232 regression). /goal: repeat check-ins on long-running background work now back off (30 min -> 1 h -> 2 h); `claude --resume` restores the active goal. Also: Alpine/musl native add-ons (paste/clipboard/audio), `/claude-api upgrade` for anthropic 0.x -> 1.x Python migration, MCP elicitation form scroll fix in fullscreen, OpenTelemetry trace-fragmentation fix for hook-deferred tool calls, vim-mode agent-view Escape fix. Recommendation stays ADOPT.",
@@ -540,7 +543,8 @@
         "src-fd1cb9e783625459",
         "src-5dc7e9d03eb17a01",
         "src-dca7cce8dcd1782c",
-        "src-9951decf1ff354d0"
+        "src-9951decf1ff354d0",
+        "src-637ddeb38167e8ce"
       ],
       "project_ids": [
         "claude-code"
@@ -761,6 +765,15 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-304-evidence",
+          "claim_zh": "Claude Code 2.1.304 收紧人工审批、危险删除和托管策略边界，并修复无头任务超限与 transcript 丢失。",
+          "claim_en": "Claude Code 2.1.304 tightens human approval, destructive deletion and managed-policy boundaries while fixing headless overruns and transcript loss.",
+          "source_ids": ["src-637ddeb38167e8ce"],
+          "event_ids": ["ev-20260814-04"],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -969,20 +982,29 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-304",
+          "kind": "update",
+          "occurred_at": "2026-10-19T21:34:39Z",
+          "discovered_at": "2026-10-20T16:04:41Z",
+          "summary_zh": "Claude Code 2.1.304 收紧人工审批与危险删除边界",
+          "summary_en": "Claude Code 2.1.304 tightens human approval and destructive-deletion boundaries",
+          "evidence_ids": ["ev-20260814-04-claude-2-1-304-evidence"],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
-        "reason_zh": "修复工作流跳步却成功的风险，直接影响自动化可信度。",
-        "reason_en": "The false-success workflow fix directly affects automation trustworthiness.",
-        "source_ids": [
-          "src-dca7cce8dcd1782c"
-        ]
+        "reason_zh": "人工专属审批与危险删除修复直接收紧无人值守 agent 的后果边界。",
+        "reason_en": "Person-only approval and destructive-deletion fixes directly tighten consequence boundaries for unattended agents.",
+        "source_ids": ["src-637ddeb38167e8ce"]
       },
-      "next_action_zh": "升级后对一个有副作用的定时任务注入崩溃，确认恢复不会重复发消息、建 issue 或生成报告。",
-      "next_action_en": "After upgrading, inject a crash into one side-effecting routine and confirm recovery does not duplicate messages, issues or reports.",
-      "short_label_zh": "Claude Code 2.1.301",
-      "short_label_en": "Claude Code 2.1.301",
-      "last_reviewed_at": "2026-10-16T15:56:07Z"
+      "next_action_zh": "升级后回归危险 rm、组织策略热刷新和无头子 agent 超限，确认都能阻断或正确失败。",
+      "next_action_en": "After upgrading, regress destructive rm, organization-policy refresh and headless subagent overruns, confirming each blocks or fails correctly.",
+      "short_label_zh": "Claude Code 2.1.304",
+      "short_label_en": "Claude Code 2.1.304",
+      "last_reviewed_at": "2026-10-20T16:04:41Z"
     },
     {
       "event_id": "ev-20260814-05",

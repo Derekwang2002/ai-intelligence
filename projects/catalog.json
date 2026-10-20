@@ -46,7 +46,8 @@
         "src-fd1cb9e783625459",
         "src-5dc7e9d03eb17a01",
         "src-dca7cce8dcd1782c",
-        "src-9951decf1ff354d0"
+        "src-9951decf1ff354d0",
+        "src-637ddeb38167e8ce"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -67,19 +68,20 @@
         "src-fd1cb9e783625459",
         "src-5dc7e9d03eb17a01",
         "src-dca7cce8dcd1782c",
-        "src-9951decf1ff354d0"
+        "src-9951decf1ff354d0",
+        "src-637ddeb38167e8ce"
       ],
-      "last_reviewed_at": "2026-10-17T15:59:50Z",
+      "last_reviewed_at": "2026-10-20T16:04:41Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.302 修复定时任务重复重放和多项恢复边界，成熟度支持升级。",
-        "judgment_en": "Version 2.1.302 fixes scheduled-routine replay and several recovery boundaries, supporting an upgrade.",
-        "next_action_zh": "升级并注入失败，确认副作用不重复。",
-        "next_action_en": "Upgrade and inject failures to confirm side effects are not duplicated.",
+        "judgment_zh": "2.1.304 收紧人工审批、危险删除与托管策略边界，成熟度支持升级。",
+        "judgment_en": "Version 2.1.304 tightens human approval, destructive deletion and managed-policy boundaries, supporting an upgrade.",
+        "next_action_zh": "升级后回归危险删除、组织策略刷新和无头子 agent 限额。",
+        "next_action_en": "After upgrading, regress destructive deletion, organization-policy refresh and headless subagent limits.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-17T15:59:50Z"
+        "reviewed_at": "2026-10-20T16:04:41Z"
       }
     },
     {
@@ -4054,7 +4056,7 @@
         "src-c021e87c1393168f",
         "src-c930e2fd0561c0a1"
       ],
-      "last_reviewed_at": "2026-10-18T15:58:14Z",
+      "last_reviewed_at": "2026-10-20T16:04:41Z",
       "judgment": {
         "recommendation": "WATCH",
         "judgment_zh": "权重和部署配方已公开，但 1M 上下文与 coding 成绩仍缺可复现证据。",
@@ -4064,7 +4066,7 @@
         "basis_event_ids": [
           "ev-20261013-07"
         ],
-        "reviewed_at": "2026-10-18T15:58:14Z"
+        "reviewed_at": "2026-10-20T16:04:41Z"
       }
     },
     {
@@ -4301,7 +4303,117 @@
         ],
         "reviewed_at": "2026-10-19T16:04:44Z"
       }
+    },
+    {
+      "id": "mistral-voxtral-3",
+      "name_zh": "Voxtral 3",
+      "name_en": "Voxtral 3",
+      "type": "model",
+      "aliases": ["Voxtral 3", "Voxtral Transcribe 3", "Voxtral TTS 3"],
+      "pattern": "Voxtral 3",
+      "event_ids": ["ev-20261020-01"],
+      "source_ids": ["src-cb0bf0e1617ea810"],
+      "current_judgment_event_id": "ev-20261020-01",
+      "official_source_ids": ["src-cb0bf0e1617ea810"],
+      "last_reviewed_at": "2026-10-20T16:04:41Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "API、区域和价格已明确，适合真实语音样本试验；性能仍是厂商结果。",
+        "judgment_en": "The API, regions and prices are explicit enough for a real-audio trial; performance remains vendor-reported.",
+        "next_action_zh": "用真实噪声、口音与行业词汇测 WER、延迟和成本。",
+        "next_action_en": "Test WER, latency and cost on real noise, accents and domain terms.",
+        "basis_event_ids": ["ev-20261020-01"],
+        "reviewed_at": "2026-10-20T16:04:41Z"
+      }
+    },
+    {
+      "id": "altk-evolve",
+      "name_zh": "ALTK-Evolve",
+      "name_en": "ALTK-Evolve",
+      "type": "agent-framework",
+      "aliases": ["ALTK-Evolve"],
+      "pattern": "ALTK-Evolve",
+      "event_ids": ["ev-20261020-02"],
+      "source_ids": ["src-536f23cd94f13984"],
+      "current_judgment_event_id": "ev-20261020-02",
+      "official_source_ids": ["src-536f23cd94f13984"],
+      "last_reviewed_at": "2026-10-20T16:04:41Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开代码支持一天复现，但小样本作者评测不足以证明真实客服收益。",
+        "judgment_en": "Public code supports a one-day reproduction, but the small author-run evaluation does not establish live customer-service gains.",
+        "next_action_zh": "重跑 held-out 子集并注入错误轨迹，测记忆污染。",
+        "next_action_en": "Rerun the held-out subset and inject bad trajectories to measure memory poisoning.",
+        "basis_event_ids": ["ev-20261020-02"],
+        "reviewed_at": "2026-10-20T16:04:41Z"
+      }
+    },
+    {
+      "id": "openai-multilangbench",
+      "name_zh": "MultiLangBench",
+      "name_en": "MultiLangBench",
+      "type": "benchmark",
+      "aliases": ["MultiLangBench"],
+      "pattern": "MultiLangBench",
+      "event_ids": ["ev-20261020-03"],
+      "source_ids": ["src-9f6c1d6cd55f3820", "src-a420806995115af4"],
+      "current_judgment_event_id": "ev-20261020-03",
+      "official_source_ids": ["src-9f6c1d6cd55f3820", "src-a420806995115af4"],
+      "last_reviewed_at": "2026-10-20T16:04:41Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开测试补足低资源编程语言基线，但厂商结果不能替代仓库级迁移验证。",
+        "judgment_en": "Public tests add a baseline for lower-resource programming languages, but vendor results do not replace repository-level migration validation.",
+        "next_action_zh": "选一种遗留语言，补仓库级集成用例后比较候选模型。",
+        "next_action_en": "Choose one legacy language, add repository-level integration cases and compare candidate models.",
+        "basis_event_ids": ["ev-20261020-03"],
+        "reviewed_at": "2026-10-20T16:04:41Z"
+      }
+    },
+    {
+      "id": "deepseek-deepinfer",
+      "name_zh": "DeepInfer",
+      "name_en": "DeepInfer",
+      "type": "infrastructure",
+      "aliases": ["DeepInfer"],
+      "pattern": "DeepInfer",
+      "event_ids": ["ev-20261020-04"],
+      "source_ids": ["src-be38b11f937cd76c"],
+      "current_judgment_event_id": "ev-20261020-04",
+      "official_source_ids": ["src-be38b11f937cd76c"],
+      "last_reviewed_at": "2026-10-20T16:04:41Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "生产机制和脚本已公开，但当前只支持窄硬件上的离线推理，完整服务组件仍缺。",
+        "judgment_en": "Production mechanisms and scripts are public, but the first release only supports offline inference on narrow hardware and omits complete-serving components.",
+        "next_action_zh": "先审查配置与脚本，再排期复现离线吞吐和确定性。",
+        "next_action_en": "Inspect configs and scripts, then schedule offline throughput and determinism reproduction.",
+        "basis_event_ids": ["ev-20261020-04"],
+        "reviewed_at": "2026-10-20T16:04:41Z"
+      }
+    },
+    {
+      "id": "inception-mercury-3",
+      "name_zh": "Mercury 3",
+      "name_en": "Mercury 3",
+      "type": "model",
+      "aliases": ["Mercury 3"],
+      "pattern": "Mercury 3",
+      "event_ids": ["ev-20261019-04"],
+      "source_ids": ["src-614a0336a7737e51"],
+      "current_judgment_event_id": "ev-20261019-04",
+      "official_source_ids": ["src-614a0336a7737e51"],
+      "last_reviewed_at": "2026-10-20T16:04:41Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "API 已开放且免费额度足以试验，性能与延迟仍需同条件复现。",
+        "judgment_en": "The API is live with enough free allowance for a trial, while performance and latency still need same-condition reproduction.",
+        "next_action_zh": "用同一组 agent prompt 比较成功率、输出长度、P95 延迟和总成本。",
+        "next_action_en": "Compare success rate, output length, P95 latency and total cost on the same agent prompts.",
+        "basis_event_ids": ["ev-20261019-04"],
+        "reviewed_at": "2026-10-20T16:04:41Z"
+      }
     }
   ],
-  "last_updated": "2026-10-19T16:04:44Z"
+  "last_updated": "2026-10-20T16:04:41Z"
 }
