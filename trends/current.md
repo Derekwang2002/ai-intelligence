@@ -1,4 +1,4 @@
-# 当前趋势看板 — 2026-10-20T16:04:41Z
+# 当前趋势看板 — 2026-10-21T15:58:23Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
@@ -91,6 +91,7 @@
 - 2026-10-18T15:58:14Z：Ling-3.1-flash 新增 MIT 权重与 serving 配方，但 coding harness 和 1M 上下文复现仍缺；strengthening / Medium 不变。
 - 2026-10-20：Artificial Analysis 已独立评测 DeepSeek V4.1 Flash 1017 的 hosted API，但仍不是公开权重上的 Terminal-Bench / SWE 复现；M3.1 Flash 权重也仍是预告，strengthening / Medium 不变。
 - 2026-10-20T16:04:41Z：本轮没有新的公开权重 coding 模型证据，strengthening / Medium 不变。
+- 2026-10-21T15:58:23Z：本轮没有新的开放权重 coding 模型证据，strengthening / Medium 不变。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
@@ -178,6 +179,7 @@
 - 2026-10-18T15:58:14Z：LiteLLM 1.106 默认关闭 stdio MCP，并加强 issuer 与凭据隔离；emerging / Medium 不变。
 - 2026-10-20：本轮没有足以改变状态的新 MCP 安全信号。
 - 2026-10-20T16:04:41Z：本轮没有足以改变状态的新 MCP 安全信号。
+- 2026-10-21T15:58:23Z：LiteLLM 1.107 加强 MCP bearer 与 OAuth 路径，但没有改变企业 MCP 趋势状态。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
@@ -276,6 +278,7 @@
 - 2026-10-18T15:58:14Z：Littleguys 0.2 把 Claude Code 会话、审批与远程控制汇入统一控制面；established / High 不变。
 - 2026-10-20：Qwen Code 0.25.3 把只读快照子 agent、持久 workspace 与托管恢复推进稳定版；established / High 不变。
 - 2026-10-20T16:04:41Z：Claude Code 2.1.304 增加人工专属审批并修复无头子 agent 边界；established / High 不变。
+- 2026-10-21T15:58:23Z：Claude Code 与 Gemini CLI 继续修复恢复和隔离边界；established / High 不变。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -359,6 +362,7 @@
 - 2026-10-18T15:58:14Z：本轮没有足以改变状态的新信号。
 - 2026-10-20：本轮没有足以改变状态的新信号。
 - 2026-10-20T16:04:41Z：本轮没有足以改变状态的新信号。
+- 2026-10-21T15:58:23Z：PHP 漏洞披露因缺少维护者公告或 CVE 暂缓，不计作新的独立审查证据；状态不变。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
@@ -381,6 +385,7 @@
 6. 当前官方指南已给出客户侧存储、受保护自动审核和配置入口。它补足了产品文档证据，但不等于独立生产采用。（ev-20260818-05）
 7. 2026-10-06：EmbeddingGemma 2 以 Apache 2.0 权重把文本、图像、视频、音频嵌入压到端侧。
 8. 2026-10-07：Liquid d1 公开边缘设备上的多模态单次决策模型；openTPU 公开可审计 FPGA 加速器栈和 golden model 校验路径。
+9. 2026-10-21：OpenAI 宣布模型与 Codex 将进入 Google Cloud；Granite Speech 5 与 RFD4-Proteina 公开权重和代码。
 
 ### 逐次复核
 
@@ -427,6 +432,7 @@
 - 2026-10-18T15:58:14Z：本轮没有足以改变状态的新信号。
 - 2026-10-20：TorchNeuron 预告原生 PyTorch/Trainium 路径，但代码在截止时间尚未开放，只算候选信号；candidate / Low 不变。
 - 2026-10-20T16:04:41Z：Voxtral 3 增加区域化 API 与自部署选项，DeepInfer 公开生产推理内核但仍缺完整 serving 层；candidate / Low 不变。
+- 2026-10-21T15:58:23Z：OpenAI 计划进入 Google Cloud，Granite Speech 5 与 RFD4-Proteina 提供公开产物；candidate / Low 不变。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -492,6 +498,7 @@
 - 2026-10-18T15:58:14Z：本轮没有足以改变状态的新信号。
 - 2026-10-20：本轮没有足以改变状态的新信号。
 - 2026-10-20T16:04:41Z：本轮没有足以改变状态的新信号。
+- 2026-10-21T15:58:23Z：本轮没有新的形式化数学信号。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
@@ -529,6 +536,7 @@
 21. 2026-10-07：GitHub Copilot 本地沙箱在 CLI、应用和 VS Code Agent Host 全面 GA，并支持组织强制策略。
 22. Claude Code 2.1.294（2026-10-08，ev-20260814-04 更新）：修复 prompt/agent hook 错误放行和 Stop hook 过早终止。
 23. Claude 越界案例与 Claude Code 2.1.296（ev-20261009-04 / ev-20260814-04）共同说明：模型会寻找替代路径，最终网络、提交与工具权限必须由 runtime 强制执行。
+24. 2026-10-21：NVIDIA 发布 OpenShell 参考架构并预告硬件隔离的 Sentry；GitHub Package Firewall 以组织级 npm 代理执行供应链策略。
 
 ### 逐次复核
 
@@ -568,5 +576,6 @@
 - 2026-10-18T15:58:14Z：vLLM 与 LiteLLM 同日收紧服务和 MCP 默认边界，继续强化 runtime 控制；strengthening / Medium 不变。
 - 2026-10-20：Qwen Code 用冻结 workspace 限制只读子 agent，SGLang 修复组合功能下的状态错误，继续支持能力与后果控制分层；strengthening / Medium 不变。
 - 2026-10-20T16:04:41Z：Claude Code 的人工专属审批、只读标记与危险删除修复继续强化能力和后果控制分层；strengthening / Medium 不变。
+- 2026-10-21T15:58:23Z：OpenShell、Sentry 与 GitHub Package Firewall 增强外置策略、隔离和供应链控制证据；strengthening / Medium 不变。
 
 ## Invalidated / retired

@@ -135,7 +135,7 @@
       ],
       "published_at": "2026-08-25T18:37:14Z",
       "first_seen_at": "2026-08-28T00:31:03Z",
-      "last_updated_at": "2026-10-14T15:57:53Z",
+      "last_updated_at": "2026-10-21T15:58:23Z",
       "source_type": "github",
       "primary_source": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.57.0",
       "secondary_sources": [
@@ -144,7 +144,8 @@
         "https://www.npmjs.com/package/@google/gemini-cli-a2a-server",
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.62.0",
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.63.0",
-        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.64.0"
+        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.64.0",
+        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.65.0"
       ],
       "summary": "Gemini CLI ships its A2A server in the stable line but still lacks formal usage documentation. Version 0.64.0 adds atomic file operations, append-only chat deltas and recoverable persisted state while improving cancellation, ACP usage updates and A2A settings migration. The stable reliability fixes are usable; the A2A surface remains an unstable dependency.",
       "why_it_matters": "Existing Gemini CLI users should take the state-integrity and cancellation fixes, especially for long or interrupted sessions. Teams depending on A2A should still wait for documentation and compatibility commitments.",
@@ -165,7 +166,8 @@
         "update_2026_09_24": "Gemini CLI 0.61.0 stable (2026-09-23T23:59Z) adds indirect-prompt-injection defenses for modified build files and untrusted flags, hardens filesystem boundaries and runtime-state isolation, and preserves explicit versioned Flash model IDs. The a2a-server remains undocumented. Existing users should upgrade for security; A2A remains WATCH.",
         "update_2026_10_02": "0.62.0 stable retains OAuth refresh tokens, makes credential deletion idempotent, hardens PTY/ConPTY cleanup, and emits ACP tool_call updates before permission requests. A2A remains undocumented.",
         "update_2026_10_07": "0.63.0 adds bounded tool output for long-running loops, autonomous plan execution in non-interactive mode, auth-loop fixes, ACP session ordering and policy/path hardening.",
-        "update_2026_10_14": "0.64.0 adds atomic file operations, append-only chat deltas, atomic persisted state with backup recovery, Ctrl+C cancellation, ACP usage updates and A2A settings migration."
+        "update_2026_10_14": "0.64.0 adds atomic file operations, append-only chat deltas, atomic persisted state with backup recovery, Ctrl+C cancellation, ACP usage updates and A2A settings migration.",
+        "update_2026_10_21": "0.65.0 stable enforces read-only workspace settings in untrusted folders, prevents duplicate tool-response turns on resume and preserves resumed-session history on quick exit."
       },
       "technical_details_zh": {
         "发布": "v0.57.0 stable 于 2026-08-25T18:37:14Z 发布；v0.57.0 tag 树中包含 packages/a2a-server（经 git tree API 核实）",
@@ -179,7 +181,8 @@
         "update_2026_09_16": "Gemini CLI 0.60.0 于 2026-09-15T20:31:02Z 进入 stable。preview 中的安全簇正式进入稳定线：MCP OAuth RFC 9207 issuer 校验、WebFetch 目标校验、扩展与工作区路径边界加固、NTFS 8.3 缓解、修改运行时环境变量需确认、不可信工具输出来源元数据，以及隔离沙箱设置目录。a2a-server 仍无文档。A2A 处置仍为 WATCH；现有 Gemini CLI 用户应为安全修复升级。",
         "2026-09-24 更新": "Gemini CLI 0.61.0 stable（2026-09-23T23:59Z）增加针对构建文件修改与不可信参数的间接 prompt injection 防护，加固文件系统边界与运行时状态隔离，并保留显式版本化的 Flash 模型 ID。a2a-server 仍无文档。现有用户应为安全修复升级；A2A 仍为 WATCH。",
         "2026-10-02 更新": "0.62.0 stable 保留 OAuth refresh token，使凭据删除幂等，加固 PTY/ConPTY 清理，并在权限请求前发出 ACP tool_call 更新。A2A 仍无使用文档。",
-        "2026_10_07_更新": "0.63.0 为长任务限制工具输出，支持非交互模式自动执行计划，并修复认证死循环、ACP session 顺序及策略/路径校验。"
+        "2026_10_07_更新": "0.63.0 为长任务限制工具输出，支持非交互模式自动执行计划，并修复认证死循环、ACP session 顺序及策略/路径校验。",
+        "2026-10-21 更新": "0.65.0 稳定版在不受信任目录强制 workspace 设置只读，避免恢复会话时重复写入工具响应，并防止快速退出删除恢复后的历史。"
       },
       "tags": [
         "gemini-cli",
@@ -208,7 +211,8 @@
         "src-dd576e7859210e25",
         "src-09bc1aebce65c96b",
         "src-04d61de5c9f9c672",
-        "src-dbb95ff3d456141d"
+        "src-dbb95ff3d456141d",
+        "src-e9d62472858a055c"
       ],
       "project_ids": [
         "gemini-cli"
@@ -262,8 +266,25 @@
           "id": "ev-20260825-02-gemini-064-evidence",
           "claim_zh": "Gemini CLI 0.64.0 把原子写入、状态备份恢复、取消和 ACP/A2A 生命周期改进推入稳定版。",
           "claim_en": "Gemini CLI 0.64.0 brings atomic writes, state backup recovery, cancellation and ACP/A2A lifecycle improvements to stable.",
-          "source_ids": ["src-dbb95ff3d456141d"],
-          "event_ids": ["ev-20260825-02"],
+          "source_ids": [
+            "src-dbb95ff3d456141d"
+          ],
+          "event_ids": [
+            "ev-20260825-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260825-02-gemini-065-evidence",
+          "claim_zh": "0.65.0 稳定版在不受信任目录强制 workspace 设置只读，避免恢复会话时重复写入工具响应，并防止快速退出删除恢复后的历史。",
+          "claim_en": "0.65.0 stable enforces read-only workspace settings in untrusted folders, prevents duplicate tool-response turns on resume and preserves resumed-session history on quick exit.",
+          "source_ids": [
+            "src-e9d62472858a055c"
+          ],
+          "event_ids": [
+            "ev-20260825-02"
+          ],
           "relation": "support",
           "verification": "verified-primary-source"
         }
@@ -314,16 +335,31 @@
           "discovered_at": "2026-10-14T15:57:53Z",
           "summary_zh": "Gemini CLI 0.64.0 加固文件、会话状态与取消生命周期。",
           "summary_en": "Gemini CLI 0.64.0 hardens file, session-state and cancellation lifecycles.",
-          "evidence_ids": ["ev-20260825-02-gemini-064-evidence"],
+          "evidence_ids": [
+            "ev-20260825-02-gemini-064-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20260825-02-gemini-065",
+          "kind": "update",
+          "occurred_at": "2026-10-20T21:17:57Z",
+          "discovered_at": "2026-10-21T15:58:23Z",
+          "summary_zh": "Gemini CLI 0.65.0 加固不受信任目录与会话恢复",
+          "summary_en": "Gemini CLI 0.65.0 hardens untrusted folders and session recovery",
+          "evidence_ids": [
+            "ev-20260825-02-gemini-065-evidence"
+          ],
           "historical": false,
           "importance": "major"
         }
       ],
       "short_label_zh": "Gemini CLI",
       "short_label_en": "Gemini CLI",
-      "next_action_zh": "升级到 0.64.0，回归中断写入、状态备份恢复、Ctrl+C 取消和 ACP usage 更新。",
-      "next_action_en": "Upgrade to 0.64.0 and test interrupted writes, state-backup recovery, Ctrl+C cancellation and ACP usage updates.",
-      "last_reviewed_at": "2026-10-14T15:57:53Z"
+      "next_action_zh": "升级到 0.65.0，回归不受信任目录设置、恢复后工具响应去重和快速退出。",
+      "next_action_en": "Upgrade to 0.65.0 and test untrusted-folder settings, resumed tool-response deduplication and quick exit.",
+      "last_reviewed_at": "2026-10-21T15:58:23Z"
     },
     {
       "event_id": "ev-20260825-03",

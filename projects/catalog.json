@@ -71,17 +71,17 @@
         "src-9951decf1ff354d0",
         "src-637ddeb38167e8ce"
       ],
-      "last_reviewed_at": "2026-10-20T16:04:41Z",
+      "last_reviewed_at": "2026-10-21T15:58:23Z",
       "judgment": {
         "recommendation": "ADOPT",
         "judgment_zh": "2.1.304 收紧人工审批、危险删除与托管策略边界，成熟度支持升级。",
         "judgment_en": "Version 2.1.304 tightens human approval, destructive deletion and managed-policy boundaries, supporting an upgrade.",
-        "next_action_zh": "升级后回归危险删除、组织策略刷新和无头子 agent 限额。",
-        "next_action_en": "After upgrading, regress destructive deletion, organization-policy refresh and headless subagent limits.",
+        "next_action_zh": "升级后回归 cloud session、tool search 与 MCP 长会话，并保持 namespace 例外默认关闭。",
+        "next_action_en": "After upgrading, test cloud sessions, tool search and long MCP sessions, keeping the namespace exception off by default.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-20T16:04:41Z"
+        "reviewed_at": "2026-10-21T15:58:23Z"
       }
     },
     {
@@ -344,18 +344,18 @@
         "src-04d61de5c9f9c672",
         "src-dbb95ff3d456141d"
       ],
-      "last_reviewed_at": "2026-10-14T15:57:53Z",
+      "last_reviewed_at": "2026-10-21T15:58:23Z",
       "judgment": {
         "recommendation": "WATCH",
         "judgment_zh": "Gemini CLI 0.64.0 已把原子写入、状态备份恢复、取消与 ACP 生命周期改进推入稳定版。A2A 仍缺兼容承诺，因此继续观察真实项目中的稳定性。",
         "judgment_en": "Gemini CLI 0.64.0 brings atomic writes, state recovery, cancellation and ACP lifecycle improvements to stable. A2A still lacks compatibility commitments, so real-project stability remains the gating signal.",
-        "next_action_zh": "升级到 0.64.0 后回归中断写入、状态恢复、取消和 ACP usage；等 A2A 兼容承诺明确后再评估试点。",
-        "next_action_en": "After upgrading to 0.64.0, test interrupted writes, state recovery, cancellation and ACP usage; reconsider a trial when A2A compatibility is explicit.",
+        "next_action_zh": "升级到 0.65.0 并回归不受信任目录与恢复会话。",
+        "next_action_en": "Upgrade to 0.65.0 and regress untrusted folders and resumed sessions.",
         "basis_event_ids": [
           "ev-20260825-02",
           "ev-20260912-01"
         ],
-        "reviewed_at": "2026-10-14T15:57:53Z"
+        "reviewed_at": "2026-10-21T15:58:23Z"
       }
     },
     {
@@ -675,20 +675,20 @@
         "src-afb4f1911ed6958a",
         "src-fe3326f4dbcaa51b"
       ],
-      "last_reviewed_at": "2026-10-18T15:58:14Z",
+      "last_reviewed_at": "2026-10-21T15:58:23Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "LiteLLM 1.106 默认关闭 stdio MCP，并继续把身份和凭据控制留在 gateway。",
         "judgment_en": "LiteLLM 1.106 disables stdio MCP by default and keeps identity and credential controls in the gateway.",
-        "next_action_zh": "在 canary 回归 MCP opt-in、凭据隔离和回滚。",
-        "next_action_en": "Canary MCP opt-in, credential isolation and rollback.",
+        "next_action_zh": "在类生产 canary 回归 OAuth、MCP bearer、Decisions、计费与回滚。",
+        "next_action_en": "Canary OAuth, MCP bearer handling, Decisions, spend accounting and rollback.",
         "basis_event_ids": [
           "ev-20260913-01",
           "ev-20260928-07",
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-10-18T15:58:14Z"
+        "reviewed_at": "2026-10-21T15:58:23Z"
       }
     },
     {
@@ -4309,12 +4309,22 @@
       "name_zh": "Voxtral 3",
       "name_en": "Voxtral 3",
       "type": "model",
-      "aliases": ["Voxtral 3", "Voxtral Transcribe 3", "Voxtral TTS 3"],
+      "aliases": [
+        "Voxtral 3",
+        "Voxtral Transcribe 3",
+        "Voxtral TTS 3"
+      ],
       "pattern": "Voxtral 3",
-      "event_ids": ["ev-20261020-01"],
-      "source_ids": ["src-cb0bf0e1617ea810"],
+      "event_ids": [
+        "ev-20261020-01"
+      ],
+      "source_ids": [
+        "src-cb0bf0e1617ea810"
+      ],
       "current_judgment_event_id": "ev-20261020-01",
-      "official_source_ids": ["src-cb0bf0e1617ea810"],
+      "official_source_ids": [
+        "src-cb0bf0e1617ea810"
+      ],
       "last_reviewed_at": "2026-10-20T16:04:41Z",
       "judgment": {
         "recommendation": "TRIAL",
@@ -4322,7 +4332,9 @@
         "judgment_en": "The API, regions and prices are explicit enough for a real-audio trial; performance remains vendor-reported.",
         "next_action_zh": "用真实噪声、口音与行业词汇测 WER、延迟和成本。",
         "next_action_en": "Test WER, latency and cost on real noise, accents and domain terms.",
-        "basis_event_ids": ["ev-20261020-01"],
+        "basis_event_ids": [
+          "ev-20261020-01"
+        ],
         "reviewed_at": "2026-10-20T16:04:41Z"
       }
     },
@@ -4331,12 +4343,20 @@
       "name_zh": "ALTK-Evolve",
       "name_en": "ALTK-Evolve",
       "type": "agent-framework",
-      "aliases": ["ALTK-Evolve"],
+      "aliases": [
+        "ALTK-Evolve"
+      ],
       "pattern": "ALTK-Evolve",
-      "event_ids": ["ev-20261020-02"],
-      "source_ids": ["src-536f23cd94f13984"],
+      "event_ids": [
+        "ev-20261020-02"
+      ],
+      "source_ids": [
+        "src-536f23cd94f13984"
+      ],
       "current_judgment_event_id": "ev-20261020-02",
-      "official_source_ids": ["src-536f23cd94f13984"],
+      "official_source_ids": [
+        "src-536f23cd94f13984"
+      ],
       "last_reviewed_at": "2026-10-20T16:04:41Z",
       "judgment": {
         "recommendation": "TRIAL",
@@ -4344,7 +4364,9 @@
         "judgment_en": "Public code supports a one-day reproduction, but the small author-run evaluation does not establish live customer-service gains.",
         "next_action_zh": "重跑 held-out 子集并注入错误轨迹，测记忆污染。",
         "next_action_en": "Rerun the held-out subset and inject bad trajectories to measure memory poisoning.",
-        "basis_event_ids": ["ev-20261020-02"],
+        "basis_event_ids": [
+          "ev-20261020-02"
+        ],
         "reviewed_at": "2026-10-20T16:04:41Z"
       }
     },
@@ -4353,12 +4375,22 @@
       "name_zh": "MultiLangBench",
       "name_en": "MultiLangBench",
       "type": "benchmark",
-      "aliases": ["MultiLangBench"],
+      "aliases": [
+        "MultiLangBench"
+      ],
       "pattern": "MultiLangBench",
-      "event_ids": ["ev-20261020-03"],
-      "source_ids": ["src-9f6c1d6cd55f3820", "src-a420806995115af4"],
+      "event_ids": [
+        "ev-20261020-03"
+      ],
+      "source_ids": [
+        "src-9f6c1d6cd55f3820",
+        "src-a420806995115af4"
+      ],
       "current_judgment_event_id": "ev-20261020-03",
-      "official_source_ids": ["src-9f6c1d6cd55f3820", "src-a420806995115af4"],
+      "official_source_ids": [
+        "src-9f6c1d6cd55f3820",
+        "src-a420806995115af4"
+      ],
       "last_reviewed_at": "2026-10-20T16:04:41Z",
       "judgment": {
         "recommendation": "TRIAL",
@@ -4366,7 +4398,9 @@
         "judgment_en": "Public tests add a baseline for lower-resource programming languages, but vendor results do not replace repository-level migration validation.",
         "next_action_zh": "选一种遗留语言，补仓库级集成用例后比较候选模型。",
         "next_action_en": "Choose one legacy language, add repository-level integration cases and compare candidate models.",
-        "basis_event_ids": ["ev-20261020-03"],
+        "basis_event_ids": [
+          "ev-20261020-03"
+        ],
         "reviewed_at": "2026-10-20T16:04:41Z"
       }
     },
@@ -4375,12 +4409,20 @@
       "name_zh": "DeepInfer",
       "name_en": "DeepInfer",
       "type": "infrastructure",
-      "aliases": ["DeepInfer"],
+      "aliases": [
+        "DeepInfer"
+      ],
       "pattern": "DeepInfer",
-      "event_ids": ["ev-20261020-04"],
-      "source_ids": ["src-be38b11f937cd76c"],
+      "event_ids": [
+        "ev-20261020-04"
+      ],
+      "source_ids": [
+        "src-be38b11f937cd76c"
+      ],
       "current_judgment_event_id": "ev-20261020-04",
-      "official_source_ids": ["src-be38b11f937cd76c"],
+      "official_source_ids": [
+        "src-be38b11f937cd76c"
+      ],
       "last_reviewed_at": "2026-10-20T16:04:41Z",
       "judgment": {
         "recommendation": "TRIAL",
@@ -4388,7 +4430,9 @@
         "judgment_en": "Production mechanisms and scripts are public, but the first release only supports offline inference on narrow hardware and omits complete-serving components.",
         "next_action_zh": "先审查配置与脚本，再排期复现离线吞吐和确定性。",
         "next_action_en": "Inspect configs and scripts, then schedule offline throughput and determinism reproduction.",
-        "basis_event_ids": ["ev-20261020-04"],
+        "basis_event_ids": [
+          "ev-20261020-04"
+        ],
         "reviewed_at": "2026-10-20T16:04:41Z"
       }
     },
@@ -4397,12 +4441,20 @@
       "name_zh": "Mercury 3",
       "name_en": "Mercury 3",
       "type": "model",
-      "aliases": ["Mercury 3"],
+      "aliases": [
+        "Mercury 3"
+      ],
       "pattern": "Mercury 3",
-      "event_ids": ["ev-20261019-04"],
-      "source_ids": ["src-614a0336a7737e51"],
+      "event_ids": [
+        "ev-20261019-04"
+      ],
+      "source_ids": [
+        "src-614a0336a7737e51"
+      ],
       "current_judgment_event_id": "ev-20261019-04",
-      "official_source_ids": ["src-614a0336a7737e51"],
+      "official_source_ids": [
+        "src-614a0336a7737e51"
+      ],
       "last_reviewed_at": "2026-10-20T16:04:41Z",
       "judgment": {
         "recommendation": "TRIAL",
@@ -4410,10 +4462,252 @@
         "judgment_en": "The API is live with enough free allowance for a trial, while performance and latency still need same-condition reproduction.",
         "next_action_zh": "用同一组 agent prompt 比较成功率、输出长度、P95 延迟和总成本。",
         "next_action_en": "Compare success rate, output length, P95 latency and total cost on the same agent prompts.",
-        "basis_event_ids": ["ev-20261019-04"],
+        "basis_event_ids": [
+          "ev-20261019-04"
+        ],
         "reviewed_at": "2026-10-20T16:04:41Z"
+      }
+    },
+    {
+      "id": "openai-google-cloud",
+      "name_zh": "OpenAI on Google Cloud",
+      "name_en": "OpenAI on Google Cloud",
+      "type": "infrastructure",
+      "aliases": [
+        "OpenAI on Google Cloud"
+      ],
+      "pattern": "OpenAI on Google Cloud",
+      "event_ids": [
+        "ev-20261021-01"
+      ],
+      "source_ids": [
+        "src-5c777dc5eda38b6a"
+      ],
+      "current_judgment_event_id": "ev-20261021-01",
+      "official_source_ids": [
+        "src-5c777dc5eda38b6a"
+      ],
+      "last_reviewed_at": "2026-10-21T15:58:23Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "集成仍在申请访问阶段，需等 GA 后核对地区、价格和数据边界。",
+        "judgment_en": "The integration remains request-access only; wait for GA details on regions, pricing and data boundaries.",
+        "next_action_zh": "等 GA 后再核对地区、价格、数据保留和 Codex 权限边界。",
+        "next_action_en": "Wait for GA, then verify regions, pricing, data retention and Codex permission boundaries.",
+        "basis_event_ids": [
+          "ev-20261021-01"
+        ],
+        "reviewed_at": "2026-10-21T15:58:23Z"
+      }
+    },
+    {
+      "id": "distributed-agents-biology",
+      "name_zh": "Distributed Agents",
+      "name_en": "Distributed Agents",
+      "type": "research",
+      "aliases": [
+        "Distributed Agents"
+      ],
+      "pattern": "Distributed Agents",
+      "event_ids": [
+        "ev-20261021-03"
+      ],
+      "source_ids": [
+        "src-75125cf5ab0826b2",
+        "src-9a20d0d038a11674"
+      ],
+      "current_judgment_event_id": "ev-20261021-03",
+      "official_source_ids": [
+        "src-75125cf5ab0826b2",
+        "src-9a20d0d038a11674"
+      ],
+      "last_reviewed_at": "2026-10-21T15:58:23Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "代码与语料可复核并行研究流程，但生物线索仍需实验确认。",
+        "judgment_en": "Code and corpus enable workflow review, while biological leads still require experiments.",
+        "next_action_zh": "一天内抽查 20 条 held-out 线索的来源、引用与专家标签一致性。",
+        "next_action_en": "Within one day, audit sources, citations and expert-label agreement for 20 held-out leads.",
+        "basis_event_ids": [
+          "ev-20261021-03"
+        ],
+        "reviewed_at": "2026-10-21T15:58:23Z"
+      }
+    },
+    {
+      "id": "nvidia-openshell-sentry",
+      "name_zh": "OpenShell + Sentry",
+      "name_en": "OpenShell + Sentry",
+      "type": "infrastructure",
+      "aliases": [
+        "OpenShell + Sentry"
+      ],
+      "pattern": "OpenShell + Sentry",
+      "event_ids": [
+        "ev-20261021-04"
+      ],
+      "source_ids": [
+        "src-88a80623a9615ed2",
+        "src-b2842111c9af260e",
+        "src-6eb73169f84ce43f"
+      ],
+      "current_judgment_event_id": "ev-20261021-04",
+      "official_source_ids": [
+        "src-88a80623a9615ed2",
+        "src-b2842111c9af260e",
+        "src-6eb73169f84ce43f"
+      ],
+      "last_reviewed_at": "2026-10-21T15:58:23Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "OpenShell 已可试，Sentry 仍是计划于明年开放的硬件层。",
+        "judgment_en": "OpenShell is testable now, while Sentry remains a hardware layer planned for next year.",
+        "next_action_zh": "一天内用 OpenShell 阻断文件、网络和凭据越权，并保存可审计证据。",
+        "next_action_en": "Within one day, use OpenShell to block file, network and credential violations and preserve auditable evidence.",
+        "basis_event_ids": [
+          "ev-20261021-04"
+        ],
+        "reviewed_at": "2026-10-21T15:58:23Z"
+      }
+    },
+    {
+      "id": "granite-speech-5",
+      "name_zh": "Granite Speech 5",
+      "name_en": "Granite Speech 5",
+      "type": "model",
+      "aliases": [
+        "Granite Speech 5"
+      ],
+      "pattern": "Granite Speech 5",
+      "event_ids": [
+        "ev-20261021-05"
+      ],
+      "source_ids": [
+        "src-c2ed162a157709f5",
+        "src-ede2abcb80a97402"
+      ],
+      "current_judgment_event_id": "ev-20261021-05",
+      "official_source_ids": [
+        "src-c2ed162a157709f5",
+        "src-ede2abcb80a97402"
+      ],
+      "last_reviewed_at": "2026-10-21T15:58:23Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "开放权重与宽松许可适合本地语音试验，厂商 WER 与速度需真实录音复核。",
+        "judgment_en": "Open weights and permissive licensing support a local speech trial; vendor WER and speed need real-recording checks.",
+        "next_action_zh": "一天内用 30 段会议与噪声音频比较 WER、cpWER、RTFx 和显存。",
+        "next_action_en": "Within one day, compare WER, cpWER, RTFx and memory on 30 meeting and noisy-audio samples.",
+        "basis_event_ids": [
+          "ev-20261021-05"
+        ],
+        "reviewed_at": "2026-10-21T15:58:23Z"
+      }
+    },
+    {
+      "id": "fairstress",
+      "name_zh": "FairStress",
+      "name_en": "FairStress",
+      "type": "benchmark",
+      "aliases": [
+        "FairStress"
+      ],
+      "pattern": "FairStress",
+      "event_ids": [
+        "ev-20261021-07"
+      ],
+      "source_ids": [
+        "src-ef73bf2ace8ac671",
+        "src-097f12c7e455c6ca",
+        "src-11f3eda9b6719299"
+      ],
+      "current_judgment_event_id": "ev-20261021-07",
+      "official_source_ids": [
+        "src-ef73bf2ace8ac671",
+        "src-097f12c7e455c6ca",
+        "src-11f3eda9b6719299"
+      ],
+      "last_reviewed_at": "2026-10-21T15:58:23Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开核心集能揭示最终答案背后的不稳定标准，但只覆盖一种公平定义。",
+        "judgment_en": "The public core split can expose unstable criteria behind final answers, within one fairness definition.",
+        "next_action_zh": "一天内用 50K 核心集比较两个候选模型的正确率与成对切换差异。",
+        "next_action_en": "Within one day, use the 50K core split to compare accuracy and paired switching gaps for two candidate models.",
+        "basis_event_ids": [
+          "ev-20261021-07"
+        ],
+        "reviewed_at": "2026-10-21T15:58:23Z"
+      }
+    },
+    {
+      "id": "github-package-firewall",
+      "name_zh": "Package Firewall",
+      "name_en": "Package Firewall",
+      "type": "product",
+      "aliases": [
+        "GitHub Package Firewall"
+      ],
+      "pattern": "Package Firewall",
+      "event_ids": [
+        "ev-20261021-02"
+      ],
+      "source_ids": [
+        "src-fe958a1b9de1ebac"
+      ],
+      "current_judgment_event_id": "ev-20261021-02",
+      "official_source_ids": [
+        "src-fe958a1b9de1ebac"
+      ],
+      "last_reviewed_at": "2026-10-21T15:58:23Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "组织级 npm 代理值得在真实 agent/CI 流量中验证，但仍是 public preview 且未来计费。",
+        "judgment_en": "The organization-level npm proxy merits real agent/CI testing, but it remains a public preview with future metering.",
+        "next_action_zh": "一天内让一个 npm CI 和 coding agent 流量经过预览代理，验证策略、失败模式与日志。",
+        "next_action_en": "Within one day, route one npm CI and coding-agent workflow through the preview and verify policy, failure modes and logs.",
+        "basis_event_ids": [
+          "ev-20261021-02"
+        ],
+        "reviewed_at": "2026-10-21T15:58:23Z"
+      }
+    },
+    {
+      "id": "rfd4-proteina",
+      "name_zh": "RFD4-Proteina",
+      "name_en": "RFD4-Proteina",
+      "type": "model",
+      "aliases": [
+        "RFD4 Proteina"
+      ],
+      "pattern": "RFD4-Proteina",
+      "event_ids": [
+        "ev-20261021-06"
+      ],
+      "source_ids": [
+        "src-280febea489348bb",
+        "src-289d344183adfd83",
+        "src-0d2723da796bacc9"
+      ],
+      "current_judgment_event_id": "ev-20261021-06",
+      "official_source_ids": [
+        "src-280febea489348bb",
+        "src-289d344183adfd83",
+        "src-0d2723da796bacc9"
+      ],
+      "last_reviewed_at": "2026-10-21T15:58:23Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开产物足以复现方法，但生物学有效性和发布方性能数字仍需独立验证。",
+        "judgment_en": "The public artifacts support reproduction, while biological validity and publisher performance claims still need independent checks.",
+        "next_action_zh": "一天内用公开测试数据复现一个设计任务，对比采样时间、结构指标和失败样本。",
+        "next_action_en": "Within one day, reproduce one public test task and compare sampling time, structure metrics and failure cases.",
+        "basis_event_ids": [
+          "ev-20261021-06"
+        ],
+        "reviewed_at": "2026-10-21T15:58:23Z"
       }
     }
   ],
-  "last_updated": "2026-10-20T16:04:41Z"
+  "last_updated": "2026-10-21T15:58:23Z"
 }
