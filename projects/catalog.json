@@ -47,7 +47,8 @@
         "src-5dc7e9d03eb17a01",
         "src-dca7cce8dcd1782c",
         "src-9951decf1ff354d0",
-        "src-637ddeb38167e8ce"
+        "src-637ddeb38167e8ce",
+        "src-1f4559e41bf13b35"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -69,19 +70,20 @@
         "src-5dc7e9d03eb17a01",
         "src-dca7cce8dcd1782c",
         "src-9951decf1ff354d0",
-        "src-637ddeb38167e8ce"
+        "src-637ddeb38167e8ce",
+        "src-1f4559e41bf13b35"
       ],
-      "last_reviewed_at": "2026-10-21T15:58:23Z",
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.304 收紧人工审批、危险删除与托管策略边界，成熟度支持升级。",
-        "judgment_en": "Version 2.1.304 tightens human approval, destructive deletion and managed-policy boundaries, supporting an upgrade.",
-        "next_action_zh": "升级后回归 cloud session、tool search 与 MCP 长会话，并保持 namespace 例外默认关闭。",
-        "next_action_en": "After upgrading, test cloud sessions, tool search and long MCP sessions, keeping the namespace exception off by default.",
+        "judgment_zh": "2.1.307 增加逐工具安全遥测与幂等 MCP 重试，成熟度支持升级。",
+        "judgment_en": "Version 2.1.307 adds per-tool safety telemetry and idempotent MCP retry, supporting an upgrade.",
+        "next_action_zh": "升级后故障注入 MCP 断线并核对 safety_event。",
+        "next_action_en": "After upgrading, inject an MCP disconnect and audit safety_event.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-21T15:58:23Z"
+        "reviewed_at": "2026-10-22T16:37:30Z"
       }
     },
     {
@@ -105,7 +107,8 @@
         "src-b6a4eeb38db18715",
         "src-dbd682b3d0c44281",
         "src-62cbc2cf184b4f1b",
-        "src-2da06eac2ec92ad6"
+        "src-2da06eac2ec92ad6",
+        "src-5c24af93d6fa5960"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -114,19 +117,20 @@
         "src-b6a4eeb38db18715",
         "src-dbd682b3d0c44281",
         "src-62cbc2cf184b4f1b",
-        "src-2da06eac2ec92ad6"
+        "src-2da06eac2ec92ad6",
+        "src-5c24af93d6fa5960"
       ],
-      "last_reviewed_at": "2026-10-19T16:04:44Z",
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.25.3 用冻结 workspace 隔离只读子 agent，并扩展持久 workspace 与恢复控制；复杂故障仍需独立验证。",
-        "judgment_en": "Version 0.25.3 isolates read-only child agents over frozen workspaces and expands persistent workspace and recovery controls; complex failures still need independent validation.",
-        "next_action_zh": "重启一个只读子 agent 任务，检查隔离、取消、审批和恢复。",
-        "next_action_en": "Restart one read-only child-agent task and check isolation, cancellation, approvals and recovery.",
+        "judgment_zh": "0.26.0 用持久证据恢复执行并保留 UNKNOWN 状态，仍需独立故障注入。",
+        "judgment_en": "Version 0.26.0 recovers from durable evidence and preserves UNKNOWN outcomes; independent fault injection is still needed.",
+        "next_action_zh": "测试断线与 owner 切换，确认 UNKNOWN 不重放。",
+        "next_action_en": "Test disconnect and owner transfer; verify UNKNOWN outcomes are not replayed.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-10-19T16:04:44Z"
+        "reviewed_at": "2026-10-22T16:37:30Z"
       }
     },
     {
@@ -4285,23 +4289,25 @@
         "ev-20261019-02"
       ],
       "source_ids": [
-        "src-63cbe58e85a688d8"
+        "src-63cbe58e85a688d8",
+        "src-e8a84d02c750a305"
       ],
       "current_judgment_event_id": "ev-20261019-02",
       "official_source_ids": [
-        "src-63cbe58e85a688d8"
+        "src-63cbe58e85a688d8",
+        "src-e8a84d02c750a305"
       ],
-      "last_reviewed_at": "2026-10-19T16:04:44Z",
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
       "judgment": {
         "recommendation": "WATCH",
-        "judgment_zh": "原生 PyTorch backend 可能降低 Trainium 迁移成本，但 Apache-2.0 源码尚未开放。",
-        "judgment_en": "A native PyTorch backend could lower Trainium migration cost, but the promised Apache-2.0 source is not yet public.",
-        "next_action_zh": "等仓库开放后检查算子覆盖、数值一致性与多机扩展。",
-        "next_action_en": "Wait for the repository, then check operator coverage, numerical parity and multi-node scaling.",
+        "judgment_zh": "源码已公开，但官方材料对完整运行时是 public beta 还是 closed beta 仍有冲突。",
+        "judgment_en": "Source is public, while official materials still conflict on whether full runtime access is public or closed beta.",
+        "next_action_zh": "等待 AWS 统一访问说明或出现未入组账户的成功部署。",
+        "next_action_en": "Wait for AWS to reconcile access language or for a successful setup from an unenrolled account.",
         "basis_event_ids": [
           "ev-20261019-02"
         ],
-        "reviewed_at": "2026-10-19T16:04:44Z"
+        "reviewed_at": "2026-10-22T16:37:30Z"
       }
     },
     {
@@ -4707,7 +4713,287 @@
         ],
         "reviewed_at": "2026-10-21T15:58:23Z"
       }
+    },
+    {
+      "id": "kls-ai-proof",
+      "name_zh": "KLS AI 协作证明",
+      "name_en": "KLS AI-assisted proof",
+      "type": "research-project",
+      "aliases": [
+        "KLS conjecture"
+      ],
+      "pattern": "KLS AI-assisted proof",
+      "event_ids": [
+        "ev-20261004-03"
+      ],
+      "source_ids": [
+        "src-f5a67a23b0dd5c70",
+        "src-04193c928313b674",
+        "src-0bbee545169e24a4",
+        "src-404b1b8d330bacbc"
+      ],
+      "current_judgment_event_id": "ev-20261004-03",
+      "official_source_ids": [
+        "src-f5a67a23b0dd5c70",
+        "src-04193c928313b674",
+        "src-0bbee545169e24a4",
+        "src-404b1b8d330bacbc"
+      ],
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "人机协作搜索与形式化核验已有强结果，但通用工具和正式验收仍不足。",
+        "judgment_en": "Human-directed search and formal verification produced a strong result, but reusable tooling and formal acceptance remain incomplete.",
+        "next_action_zh": "等待数学界正式验收与可复用搜索工具。",
+        "next_action_en": "Wait for formal acceptance and reusable search tooling.",
+        "basis_event_ids": [
+          "ev-20261004-03"
+        ],
+        "reviewed_at": "2026-10-22T16:37:30Z"
+      }
+    },
+    {
+      "id": "flint-chart",
+      "name_zh": "Flint",
+      "name_en": "Flint",
+      "type": "developer-tool",
+      "aliases": [
+        "Flint chart"
+      ],
+      "pattern": "Flint",
+      "event_ids": [
+        "ev-20261019-05"
+      ],
+      "source_ids": [
+        "src-db007afeffa315be",
+        "src-791e496dd2ba62d2"
+      ],
+      "current_judgment_event_id": "ev-20261019-05",
+      "official_source_ids": [
+        "src-db007afeffa315be",
+        "src-791e496dd2ba62d2"
+      ],
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开代码与 MCP 入口可直接验证 agent 生成交互图表的可靠性。",
+        "judgment_en": "Public code and MCP access make agent-authored interactive charts directly testable.",
+        "next_action_zh": "一天内与现有图表栈做联动筛选对比。",
+        "next_action_en": "Compare linked filtering with the current chart stack within one day.",
+        "basis_event_ids": [
+          "ev-20261019-05"
+        ],
+        "reviewed_at": "2026-10-22T16:37:30Z"
+      }
+    },
+    {
+      "id": "kumo-relational",
+      "name_zh": "Kumo Relational",
+      "name_en": "Kumo Relational",
+      "type": "model",
+      "aliases": [
+        "KumoRFM"
+      ],
+      "pattern": "Kumo Relational",
+      "event_ids": [
+        "ev-20261021-08"
+      ],
+      "source_ids": [
+        "src-94a5f6526eada9bc",
+        "src-c9c1158f953b888b",
+        "src-838b849529054edd"
+      ],
+      "current_judgment_event_id": "ev-20261021-08",
+      "official_source_ids": [
+        "src-94a5f6526eada9bc",
+        "src-c9c1158f953b888b",
+        "src-838b849529054edd"
+      ],
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "开放权重与代码可测，但厂商 benchmark 和自定义许可仍需核对。",
+        "judgment_en": "Open weights and code are testable, while vendor benchmarks and the custom license need review.",
+        "next_action_zh": "在一张脱敏关系表上对比现有基线。",
+        "next_action_en": "Compare against the current baseline on one sanitized relational dataset.",
+        "basis_event_ids": [
+          "ev-20261021-08"
+        ],
+        "reviewed_at": "2026-10-22T16:37:30Z"
+      }
+    },
+    {
+      "id": "silent-cue-loss",
+      "name_zh": "Silent Cue Loss",
+      "name_en": "Silent Cue Loss",
+      "type": "research",
+      "aliases": [
+        "document cue loss"
+      ],
+      "pattern": "Silent Cue Loss",
+      "event_ids": [
+        "ev-20261021-09"
+      ],
+      "source_ids": [
+        "src-0c5f8ef476a97532"
+      ],
+      "current_judgment_event_id": "ev-20261021-09",
+      "official_source_ids": [
+        "src-0c5f8ef476a97532"
+      ],
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "故障模式与 RAG 直接相关，但没有公开代码或独立复现。",
+        "judgment_en": "The failure mode is directly relevant to RAG, but code and independent reproduction are absent.",
+        "next_action_zh": "等待公开测试集，同时补充格式丢失回归。",
+        "next_action_en": "Wait for a public test set while adding formatting-loss regressions.",
+        "basis_event_ids": [
+          "ev-20261021-09"
+        ],
+        "reviewed_at": "2026-10-22T16:37:30Z"
+      }
+    },
+    {
+      "id": "olmoearth",
+      "name_zh": "OlmoEarth",
+      "name_en": "OlmoEarth",
+      "type": "model-family",
+      "aliases": [
+        "OlmoEarth v1.3"
+      ],
+      "pattern": "OlmoEarth",
+      "event_ids": [
+        "ev-20261022-01"
+      ],
+      "source_ids": [
+        "src-67297d2df9a3d7f1",
+        "src-1162f14e69154cda",
+        "src-c22e59f7232f89dc"
+      ],
+      "current_judgment_event_id": "ev-20261022-01",
+      "official_source_ids": [
+        "src-67297d2df9a3d7f1",
+        "src-1162f14e69154cda",
+        "src-c22e59f7232f89dc"
+      ],
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "全球嵌入和公开训练产物可直接试用，但许可与独立精度验证仍是门槛。",
+        "judgment_en": "Global embeddings and training artifacts are testable, while licensing and independent accuracy checks remain gates.",
+        "next_action_zh": "在一个已标注区域比较 64D、128D 与现有特征。",
+        "next_action_en": "Compare 64D, 128D and current features on one labeled area.",
+        "basis_event_ids": [
+          "ev-20261022-01"
+        ],
+        "reviewed_at": "2026-10-22T16:37:30Z"
+      }
+    },
+    {
+      "id": "openai-usage-policies",
+      "name_zh": "OpenAI Usage Policies",
+      "name_en": "OpenAI Usage Policies",
+      "type": "policy",
+      "aliases": [
+        "OpenAI policy"
+      ],
+      "pattern": "OpenAI Usage Policies",
+      "event_ids": [
+        "ev-20261021-11"
+      ],
+      "source_ids": [
+        "src-6a4c658892d6d3a5",
+        "src-b8c6d5709eeaa925"
+      ],
+      "current_judgment_event_id": "ev-20261021-11",
+      "official_source_ids": [
+        "src-6a4c658892d6d3a5",
+        "src-b8c6d5709eeaa925"
+      ],
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "新规尚未生效，但会影响直接模型访问中介的架构和合同边界。",
+        "judgment_en": "The policy is not yet effective, but it changes architecture and contract boundaries for direct model-access intermediaries.",
+        "next_action_zh": "在生效前分类接入方式并书面确认边界。",
+        "next_action_en": "Classify access patterns and confirm boundaries in writing before the effective date.",
+        "basis_event_ids": [
+          "ev-20261021-11"
+        ],
+        "reviewed_at": "2026-10-22T16:37:30Z"
+      }
+    },
+    {
+      "id": "recursive-flint",
+      "name_zh": "Recursive Flint",
+      "name_en": "Recursive Flint",
+      "type": "model",
+      "aliases": [
+        "Flint coding model"
+      ],
+      "pattern": "Recursive Flint",
+      "event_ids": [
+        "ev-20261021-12"
+      ],
+      "source_ids": [
+        "src-bb132bf741e1159b",
+        "src-6c5b89fb0ac8882a",
+        "src-1cffd9fcb4cd6b21"
+      ],
+      "current_judgment_event_id": "ev-20261021-12",
+      "official_source_ids": [
+        "src-bb132bf741e1159b",
+        "src-6c5b89fb0ac8882a",
+        "src-1cffd9fcb4cd6b21"
+      ],
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Apache-2.0 权重与现成部署路径可测试，但 benchmark 仍由发布方运行。",
+        "judgment_en": "Apache-2.0 weights and serving paths are testable, but benchmarks remain publisher-run.",
+        "next_action_zh": "用固定 coding task 比较质量、延迟、显存和方差。",
+        "next_action_en": "Compare quality, latency, memory and variance on a fixed coding-task set.",
+        "basis_event_ids": [
+          "ev-20261021-12"
+        ],
+        "reviewed_at": "2026-10-22T16:37:30Z"
+      }
+    },
+    {
+      "id": "claude-duet",
+      "name_zh": "Claude Duet",
+      "name_en": "Claude Duet",
+      "type": "product",
+      "aliases": [
+        "Duet"
+      ],
+      "pattern": "Claude Duet",
+      "event_ids": [
+        "ev-20261021-13"
+      ],
+      "source_ids": [
+        "src-f5220dab8f55b741",
+        "src-0336c2290ec14333"
+      ],
+      "current_judgment_event_id": "ev-20261021-13",
+      "official_source_ids": [
+        "src-f5220dab8f55b741",
+        "src-0336c2290ec14333"
+      ],
+      "last_reviewed_at": "2026-10-22T16:37:30Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "主动工作流值得观察，但目前仅是美国 Pro/Max 候补名单预览，可靠性与权限边界未验证。",
+        "judgment_en": "The proactive workflow merits watching, but access is a US Pro/Max waitlist preview and reliability and permission boundaries are unverified.",
+        "next_action_zh": "等待预览扩展到可测试账户，并核对审批日志、后台额度、漏检率和连接器权限后再评估。",
+        "next_action_en": "Reassess when test access is available, checking approval logs, background usage, miss rate and connector permissions.",
+        "basis_event_ids": [
+          "ev-20261021-13"
+        ],
+        "reviewed_at": "2026-10-22T16:37:30Z"
+      }
     }
   ],
-  "last_updated": "2026-10-21T15:58:23Z"
+  "last_updated": "2026-10-22T16:37:30Z"
 }

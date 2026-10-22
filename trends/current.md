@@ -1,4 +1,4 @@
-# 当前趋势看板 — 2026-10-21T15:58:23Z
+# 当前趋势看板 — 2026-10-22T16:37:30Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
@@ -92,6 +92,7 @@
 - 2026-10-20：Artificial Analysis 已独立评测 DeepSeek V4.1 Flash 1017 的 hosted API，但仍不是公开权重上的 Terminal-Bench / SWE 复现；M3.1 Flash 权重也仍是预告，strengthening / Medium 不变。
 - 2026-10-20T16:04:41Z：本轮没有新的公开权重 coding 模型证据，strengthening / Medium 不变。
 - 2026-10-21T15:58:23Z：本轮没有新的开放权重 coding 模型证据，strengthening / Medium 不变。
+- 2026-10-22T16:37:30Z：本轮没有足以改变状态或置信度的新信号。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
@@ -180,13 +181,14 @@
 - 2026-10-20：本轮没有足以改变状态的新 MCP 安全信号。
 - 2026-10-20T16:04:41Z：本轮没有足以改变状态的新 MCP 安全信号。
 - 2026-10-21T15:58:23Z：LiteLLM 1.107 加强 MCP bearer 与 OAuth 路径，但没有改变企业 MCP 趋势状态。
+- 2026-10-22T16:37:30Z：本轮没有足以改变状态或置信度的新信号。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
 - **Status:** established
 - **Confidence:** High
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-10-21
+- **Last updated:** 2026-10-23
 - **Time Horizon:** Sustained
 - **当前判断:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Why It Matters:** 升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
@@ -279,6 +281,7 @@
 - 2026-10-20：Qwen Code 0.25.3 把只读快照子 agent、持久 workspace 与托管恢复推进稳定版；established / High 不变。
 - 2026-10-20T16:04:41Z：Claude Code 2.1.304 增加人工专属审批并修复无头子 agent 边界；established / High 不变。
 - 2026-10-21T15:58:23Z：Claude Code 与 Gemini CLI 继续修复恢复和隔离边界；established / High 不变。
+- 2026-10-22T16:37:30Z：Qwen Code 0.26.0 增加持久 receipt 恢复与 UNKNOWN 状态，强化长时程 agent 的故障恢复证据；状态不变。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -363,6 +366,7 @@
 - 2026-10-20：本轮没有足以改变状态的新信号。
 - 2026-10-20T16:04:41Z：本轮没有足以改变状态的新信号。
 - 2026-10-21T15:58:23Z：PHP 漏洞披露因缺少维护者公告或 CVE 暂缓，不计作新的独立审查证据；状态不变。
+- 2026-10-22T16:37:30Z：本轮没有足以改变状态或置信度的新信号。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
@@ -433,13 +437,14 @@
 - 2026-10-20：TorchNeuron 预告原生 PyTorch/Trainium 路径，但代码在截止时间尚未开放，只算候选信号；candidate / Low 不变。
 - 2026-10-20T16:04:41Z：Voxtral 3 增加区域化 API 与自部署选项，DeepInfer 公开生产推理内核但仍缺完整 serving 层；candidate / Low 不变。
 - 2026-10-21T15:58:23Z：OpenAI 计划进入 Google Cloud，Granite Speech 5 与 RFD4-Proteina 提供公开产物；candidate / Low 不变。
+- 2026-10-22T16:37:30Z：本轮没有足以改变状态或置信度的新信号。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
 - **Status:** emerging
 - **Confidence:** Medium
 - **First observed:** 2026-09-04
-- **Last updated:** 2026-10-09
+- **Last updated:** 2026-10-23
 - **Time Horizon:** Emerging
 - **当前判断:** emerging（2026-09-12 立项：8 天内三家主体产出三个千禧年级结果——FLT、Navier–Stokes、forced Euler——全部以 Lean/形式化验证作信任层，并有数学界的公开回应；争议与验证状态如实记录）
 - **Why It Matters:** 对做 agent 平台与评测的团队：长时程多 agent + 形式化验证的组合正在变成「前沿能力」的可信度量衡——benchmark 分数可被污染，Lean 证明不可；这也是继 coding 之后第二个被 AI 实质推进的「可验证领域」。同时该工作负载把两个治理问题摆上台面：内部模型能力披露（NS 帖披露强于 Astra 的未发布模型）与 harness 介质的数据治理（Buckmaster 争议：用户会话是否会帮助竞争方向的内部工作）。工程侧的迁移面：形式化验证工具链（Lean/Prove2Me 类）值得纳入 agent 平台的「可验证输出」选项。
@@ -454,6 +459,7 @@
 5. 社区验证活动成型：Buckmaster 声明 HN 2,035 分（超过官宣帖）；John D. Cook《formal-method revolution》专文（9/10，HN 174 分）把 Lean 4 证明视为「免信任验证层」的标志；Reddit r/mathematics 出现初步验证报告
 6. 2026-10-06：OpenAI 公开模型生成数学成果，并附 Lean 形式化、修订规范与过程统计。
 7. OpenAI 数学项目（2026-10-07，ev-20261006-06 更新）：符号错误导致三篇稿件撤回，14 篇修订；Lean 覆盖升至 300/719，说明形式化验证与依赖复核仍是关键瓶颈。
+8. KLS 猜想证明（2026-10-04，ev-20261004-03）：人类引导约 100 条 AI 搜索路径，同日有平行证明，之后公开 Lean 4 形式化。
 
 ### 逐次复核
 
@@ -499,13 +505,14 @@
 - 2026-10-20：本轮没有足以改变状态的新信号。
 - 2026-10-20T16:04:41Z：本轮没有足以改变状态的新信号。
 - 2026-10-21T15:58:23Z：本轮没有新的形式化数学信号。
+- 2026-10-22T16:37:30Z：KLS 猜想证明把人类引导的多路径 AI 搜索、平行证明与 Lean 4 形式化连在一起，强化可核验科研工作流证据；维持 emerging / Medium。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-10-21
+- **Last updated:** 2026-10-23
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -577,5 +584,6 @@
 - 2026-10-20：Qwen Code 用冻结 workspace 限制只读子 agent，SGLang 修复组合功能下的状态错误，继续支持能力与后果控制分层；strengthening / Medium 不变。
 - 2026-10-20T16:04:41Z：Claude Code 的人工专属审批、只读标记与危险删除修复继续强化能力和后果控制分层；strengthening / Medium 不变。
 - 2026-10-21T15:58:23Z：OpenShell、Sentry 与 GitHub Package Firewall 增强外置策略、隔离和供应链控制证据；strengthening / Medium 不变。
+- 2026-10-22T16:37:30Z：Claude Code 的逐工具 safety_event 与按幂等性限制的 MCP 重试，让策略结果和副作用边界更可审计；状态不变。
 
 ## Invalidated / retired

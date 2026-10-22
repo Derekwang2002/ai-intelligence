@@ -685,6 +685,505 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261021-08",
+      "title": "NVIDIA releases Kumo Relational for zero-training database prediction",
+      "title_zh": "NVIDIA 发布 Kumo Relational，直接在关系数据库上预测",
+      "category": "foundation-model",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-10-21T18:26:30Z",
+      "source_type": "official_blog",
+      "primary_source": "https://huggingface.co/blog/nvidia/kumo-relational",
+      "secondary_sources": [
+        "https://huggingface.co/nvidia/Kumo-Relational",
+        "https://github.com/NVIDIA/structured-data-models"
+      ],
+      "summary_en": "NVIDIA released Kumo Relational, an open-weight model that predicts rows in relational databases from a task prompt and up to 10,000 historical examples in context. It combines row embeddings with relational message passing and supports classification and regression without task-specific training. The model uses the OpenMDW 1.1 license, while the supporting library is Apache-2.0.",
+      "summary_zh": "NVIDIA 发布开放权重模型 Kumo Relational。它根据任务描述和最多 1 万条历史样例，直接对关系数据库中的行做预测。模型把行嵌入与关系消息传递结合起来，可在不做任务专属训练的情况下完成分类和回归。模型采用 OpenMDW 1.1 许可，配套库为 Apache-2.0。",
+      "why_it_matters_en": "For teams maintaining tabular ML pipelines, this could replace feature engineering and per-task retraining for some database prediction jobs. The vendor benchmark and custom model license require a controlled trial before architectural commitment.",
+      "why_it_matters_zh": "对维护表格机器学习流水线的团队来说，它可能在部分数据库预测任务中减少特征工程和逐任务训练。厂商 benchmark 与自定义模型许可都要求先做受控试验，再决定架构投入。",
+      "technical_details": {
+        "architecture": "row embeddings plus relational message passing",
+        "context": "up to 10,000 historical examples per prediction task",
+        "tasks": "classification and regression without task-specific training",
+        "licenses": "OpenMDW 1.1 model; Apache-2.0 structured-data-models library",
+        "evaluation": "publisher comparison against supervised baselines; no independent reproduction found",
+        "time_basis": "official Hugging Face article published 2026-10-21T18:26:30Z"
+      },
+      "technical_details_zh": {
+        "架构": "行嵌入加关系消息传递",
+        "上下文": "每个预测任务最多使用 1 万条历史样例",
+        "任务": "无需任务专属训练的分类和回归",
+        "许可": "模型为 OpenMDW 1.1；structured-data-models 库为 Apache-2.0",
+        "评测": "由发布方与监督学习基线比较；未找到独立复现",
+        "时间依据": "Hugging Face 官方文章发表于 2026-10-21T18:26:30Z"
+      },
+      "tags": [
+        "relational-data",
+        "tabular-ml",
+        "in-context-learning"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-kumo-relational-open-weight",
+      "short_label_zh": "Kumo Relational",
+      "short_label_en": "Kumo Relational",
+      "next_action_zh": "一天内用一张脱敏关系表与现有梯度提升基线比较准确率、准备时间、显存和许可约束。",
+      "next_action_en": "Within one day, compare one sanitized relational task with a gradient-boosting baseline on quality, setup time, memory and licensing.",
+      "source_ids": [
+        "src-94a5f6526eada9bc",
+        "src-c9c1158f953b888b",
+        "src-838b849529054edd"
+      ],
+      "project_ids": [
+        "kumo-relational"
+      ],
+      "scenario_ids": [
+        "models",
+        "ai-engineering"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261021-08-evidence-kumo",
+          "claim_zh": "NVIDIA 已公开 Kumo Relational 权重与 Apache-2.0 配套库；性能结论仍来自发布方。",
+          "claim_en": "NVIDIA has published Kumo Relational weights and an Apache-2.0 supporting library; performance remains publisher-reported.",
+          "source_ids": [
+            "src-94a5f6526eada9bc",
+            "src-c9c1158f953b888b",
+            "src-838b849529054edd"
+          ],
+          "event_ids": [
+            "ev-20261021-08"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims remain publisher-reported where noted"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261021-08-published",
+          "kind": "new",
+          "occurred_at": "2026-10-21T18:26:30Z",
+          "discovered_at": "2026-10-22T16:37:30Z",
+          "summary_zh": "NVIDIA 发布 Kumo Relational，直接在关系数据库上预测",
+          "summary_en": "NVIDIA releases Kumo Relational for zero-training database prediction",
+          "evidence_ids": [
+            "ev-20261021-08-evidence-kumo"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-22T16:37:30Z",
+      "last_updated_at": "2026-10-22T16:37:30Z",
+      "summary": "NVIDIA released Kumo Relational, an open-weight model that predicts rows in relational databases from a task prompt and up to 10,000 historical examples in context. It combines row embeddings with relational message passing and supports classification and regression without task-specific training. The model uses the OpenMDW 1.1 license, while the supporting library is Apache-2.0.",
+      "why_it_matters": "For teams maintaining tabular ML pipelines, this could replace feature engineering and per-task retraining for some database prediction jobs. The vendor benchmark and custom model license require a controlled trial before architectural commitment."
+    },
+    {
+      "event_id": "ev-20261021-09",
+      "title": "Study finds document converters erase cues that policy agents need",
+      "title_zh": "研究发现文档转换会抹掉 policy agent 需要的视觉提示",
+      "category": "research",
+      "organization": [
+        "Independent researchers"
+      ],
+      "published_at": "2026-10-21T16:51:25Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.30026",
+      "secondary_sources": [],
+      "summary_en": "A study of 76 real policy documents finds that common ingestion pipelines drop meaning encoded in highlights, colour and other formatting. A deterministic OOXML scorer reports micro-F1 falling from 0.690 with preserved cues to 0.150 with Docling and 0.075 with plain text across six answering models. The paper provides a concrete failure mode but no public code or independent reproduction.",
+      "summary_zh": "一项覆盖 76 份真实政策文档的研究发现，常见文档摄取流程会丢掉高亮、颜色等格式中承载的含义。研究用确定性的 OOXML 规则评分：保留提示时 micro-F1 为 0.690，经 Docling 后降到 0.150，纯文本则为 0.075；这个结果在六个回答模型上重复出现。论文给出了明确故障模式，但没有公开代码或独立复现。",
+      "why_it_matters_en": "For RAG and document-agent teams, text extraction can silently change policy meaning before retrieval or reasoning begins. Validation needs layout-aware test cases and provenance for author emphasis, not just OCR accuracy.",
+      "why_it_matters_zh": "对 RAG 和文档 agent 团队来说，文本抽取可能在检索和推理开始前就悄悄改变政策含义。验收不能只看 OCR 准确率，还要加入版式提示测试和作者强调信息的来源追踪。",
+      "technical_details": {
+        "sample": "76 real policy documents; 6,460-document prevalence analysis",
+        "metric": "micro-F1 0.690 with cues, 0.150 with Docling, 0.075 with plain text",
+        "models": "six answering models from Anthropic and OpenAI",
+        "method": "deterministic OOXML property scorer; no LLM judge",
+        "limit": "single paper, no public code and no independent reproduction",
+        "time_basis": "arXiv v1 published 2026-10-21T16:51:25Z"
+      },
+      "technical_details_zh": {
+        "样本": "76 份真实政策文档；另对 6,460 份文档统计提示使用率",
+        "指标": "保留提示 0.690，Docling 0.150，纯文本 0.075 micro-F1",
+        "模型": "Anthropic 与 OpenAI 的六个回答模型",
+        "方法": "确定性的 OOXML 属性评分，不使用 LLM judge",
+        "限制": "单篇论文，没有公开代码或独立复现",
+        "时间依据": "arXiv v1 发表于 2026-10-21T16:51:25Z"
+      },
+      "tags": [
+        "RAG",
+        "document-ingestion",
+        "OOXML",
+        "evaluation"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "silent-cue-loss-enterprise-document-ingestion",
+      "short_label_zh": "Silent Cue Loss",
+      "short_label_en": "Silent Cue Loss",
+      "next_action_zh": "等待公开测试集或独立复现；现阶段先在自有政策文档中加入高亮与颜色丢失回归测试。",
+      "next_action_en": "Wait for a public test set or independent reproduction; meanwhile add highlight and colour-loss regressions to internal policy documents.",
+      "source_ids": [
+        "src-0c5f8ef476a97532"
+      ],
+      "project_ids": [
+        "silent-cue-loss"
+      ],
+      "scenario_ids": [
+        "retrieval",
+        "evaluation"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261021-09-evidence-study",
+          "claim_zh": "论文在 76 份政策文档上量化了格式提示丢失，但尚无公开代码或独立复现。",
+          "claim_en": "The paper quantifies formatting-cue loss on 76 policy documents, but lacks public code and independent reproduction.",
+          "source_ids": [
+            "src-0c5f8ef476a97532"
+          ],
+          "event_ids": [
+            "ev-20261021-09"
+          ],
+          "relation": "support",
+          "verification": "verified-paper-metadata; results are author-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261021-09-published",
+          "kind": "new",
+          "occurred_at": "2026-10-21T16:51:25Z",
+          "discovered_at": "2026-10-22T16:37:30Z",
+          "summary_zh": "研究发现文档转换会抹掉 policy agent 需要的视觉提示",
+          "summary_en": "Study finds document converters erase cues that policy agents need",
+          "evidence_ids": [
+            "ev-20261021-09-evidence-study"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-22T16:37:30Z",
+      "last_updated_at": "2026-10-22T16:37:30Z",
+      "summary": "A study of 76 real policy documents finds that common ingestion pipelines drop meaning encoded in highlights, colour and other formatting. A deterministic OOXML scorer reports micro-F1 falling from 0.690 with preserved cues to 0.150 with Docling and 0.075 with plain text across six answering models. The paper provides a concrete failure mode but no public code or independent reproduction.",
+      "why_it_matters": "For RAG and document-agent teams, text extraction can silently change policy meaning before retrieval or reasoning begins. Validation needs layout-aware test cases and provenance for author emphasis, not just OCR accuracy."
+    },
+    {
+      "event_id": "ev-20261021-11",
+      "title": "OpenAI announces prior review for services that resell direct model access",
+      "title_zh": "OpenAI 宣布直接转售模型访问需事先审核",
+      "category": "business-policy",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-10-21T21:00:00Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://openai.com/index/broad-access-through-consistent-standards/",
+      "secondary_sources": [
+        "https://openai.com/policies/usage-policies/"
+      ],
+      "summary_en": "OpenAI announced revised Usage Policies that require prior review and approval for services giving third parties direct access to OpenAI models. Applications that merely integrate a model into their own features are treated differently. The terms take effect on November 20, 2026; enforcement practice has not yet been demonstrated.",
+      "summary_zh": "OpenAI 宣布新版 Usage Policies：让第三方直接访问 OpenAI 模型的服务需要事先审核并获批；只把模型集成进自身功能的应用则另行处理。新规要到 2026 年 11 月 20 日才生效，实际执法方式尚未出现。",
+      "why_it_matters_en": "For teams building gateways, routers or model marketplaces, this can change vendor-access architecture and contract risk. Classify whether the product exposes direct model access before the effective date.",
+      "why_it_matters_zh": "对构建 gateway、router 或模型市场的团队来说，这会改变供应商接入架构与合同风险。生效前应先判断产品是否向第三方提供直接模型访问。",
+      "technical_details": {
+        "stage": "announced; effective 2026-11-20",
+        "scope": "direct model-access intermediaries require prior review and approval",
+        "distinction": "applications integrating models into their own features are treated separately",
+        "limit": "operational interpretation and enforcement have not yet been demonstrated",
+        "time_basis": "official announcement feed published 2026-10-21T21:00:00Z"
+      },
+      "technical_details_zh": {
+        "阶段": "已公布；2026-11-20 生效",
+        "范围": "直接模型访问中介需要事先审核和批准",
+        "区别": "把模型集成进自身功能的应用另行处理",
+        "限制": "实际解释与执行尚未出现",
+        "时间依据": "官方公告 feed 发表于 2026-10-21T21:00:00Z"
+      },
+      "tags": [
+        "usage-policy",
+        "model-gateway",
+        "vendor-risk"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "openai-usage-policy-model-access-intermediaries",
+      "short_label_zh": "OpenAI Usage Policies",
+      "short_label_en": "OpenAI Usage Policies",
+      "next_action_zh": "在 11 月 20 日前区分“直接模型访问”与“功能集成”，并向 OpenAI 书面确认边界。",
+      "next_action_en": "Before November 20, classify direct model access versus embedded features and obtain written boundary confirmation.",
+      "source_ids": [
+        "src-6a4c658892d6d3a5",
+        "src-b8c6d5709eeaa925"
+      ],
+      "project_ids": [
+        "openai-usage-policies"
+      ],
+      "scenario_ids": [
+        "governance",
+        "ai-engineering"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261021-11-evidence-policy",
+          "claim_zh": "OpenAI 已公布直接模型访问中介需事先审核的新政策，生效日为 2026-11-20。",
+          "claim_en": "OpenAI announced prior review for direct model-access intermediaries, effective November 20, 2026.",
+          "source_ids": [
+            "src-6a4c658892d6d3a5",
+            "src-b8c6d5709eeaa925"
+          ],
+          "event_ids": [
+            "ev-20261021-11"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims remain publisher-reported where noted"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261021-11-published",
+          "kind": "new",
+          "occurred_at": "2026-10-21T21:00:00Z",
+          "discovered_at": "2026-10-22T16:37:30Z",
+          "summary_zh": "OpenAI 宣布直接转售模型访问需事先审核",
+          "summary_en": "OpenAI announces prior review for services that resell direct model access",
+          "evidence_ids": [
+            "ev-20261021-11-evidence-policy"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-22T16:37:30Z",
+      "last_updated_at": "2026-10-22T16:37:30Z",
+      "summary": "OpenAI announced revised Usage Policies that require prior review and approval for services giving third parties direct access to OpenAI models. Applications that merely integrate a model into their own features are treated differently. The terms take effect on November 20, 2026; enforcement practice has not yet been demonstrated.",
+      "why_it_matters": "For teams building gateways, routers or model marketplaces, this can change vendor-access architecture and contract risk. Classify whether the product exposes direct model access before the effective date."
+    },
+    {
+      "event_id": "ev-20261021-12",
+      "title": "Recursive releases Flint as an open-weight sparse coding model",
+      "title_zh": "Recursive 发布开放权重稀疏 coding model Flint",
+      "category": "foundation-model",
+      "organization": [
+        "Recursive"
+      ],
+      "published_at": "2026-10-21T16:20:30Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/ollama/ollama/releases/tag/v0.40.8",
+      "secondary_sources": [
+        "https://huggingface.co/RecursiveSI/flint",
+        "https://ollama.com/library/flint"
+      ],
+      "summary_en": "Recursive released Flint, a 39.8B-parameter mixture-of-experts coding model with about 2.5B active parameters per token and a 262K context window. BF16 weights are Apache-2.0, with SGLang and vLLM instructions; Ollama 0.40.8 adds a roughly 23 GB package for macOS. Other Ollama GPU support is promised later, and benchmarks remain publisher-run.",
+      "summary_zh": "Recursive 发布 Flint：一个 398 亿参数的 MoE coding model，每个 token 约激活 25 亿参数，上下文窗口为 262K。BF16 权重采用 Apache-2.0，model card 提供 SGLang 和 vLLM 用法；Ollama 0.40.8 为 macOS 增加约 23 GB 的本地包。其他 GPU 的 Ollama 支持仍待后续，benchmark 也只有发布方结果。",
+      "why_it_matters_en": "For teams running coding models locally, Flint offers a small active footprint with a long context and permissive weights. A bounded trial should measure patch validity, latency, memory and repeated-run variance.",
+      "why_it_matters_zh": "对本地运行 coding model 的团队来说，Flint 用较小激活参数量提供长上下文和宽松许可权重。试验应测补丁有效性、延迟、显存和重复运行波动。",
+      "technical_details": {
+        "parameters": "39.8B total, about 2.5B active per token",
+        "context": "262K tokens",
+        "license": "Apache-2.0 weights",
+        "serving": "SGLang and vLLM instructions; about 23 GB Ollama package on macOS",
+        "hardware": "publisher says one H200 or B300 for BF16; other Ollama GPU support follows later",
+        "reported_benchmarks": "54.9 Terminal-Bench 2.1, 89.7 SWE-bench Pro v2, 74.2 SWE-bench Verified; publisher-run and harness-dependent",
+        "time_basis": "Ollama v0.40.8 stable published 2026-10-21T16:20:30Z"
+      },
+      "technical_details_zh": {
+        "参数": "总计 398 亿，每 token 约激活 25 亿",
+        "上下文": "262K tokens",
+        "许可": "Apache-2.0 权重",
+        "部署": "SGLang 与 vLLM 指南；macOS 上约 23 GB 的 Ollama 包",
+        "硬件": "发布方称 BF16 可在单张 H200 或 B300 运行；其他 Ollama GPU 支持稍后提供",
+        "发布方benchmark": "Terminal-Bench 2.1 为 54.9，SWE-bench Pro v2 为 89.7，SWE-bench Verified 为 74.2",
+        "时间依据": "Ollama v0.40.8 稳定版发表于 2026-10-21T16:20:30Z"
+      },
+      "tags": [
+        "coding-model",
+        "MoE",
+        "open-weight",
+        "Ollama"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "recursive-flint-open-weight-coding-model",
+      "short_label_zh": "Recursive Flint",
+      "short_label_en": "Recursive Flint",
+      "next_action_zh": "一天内用固定 coding task 对比当前模型的补丁通过率、延迟、显存和多次运行方差。",
+      "next_action_en": "Within one day, compare a fixed coding-task set on patch validity, latency, memory and repeated-run variance.",
+      "source_ids": [
+        "src-bb132bf741e1159b",
+        "src-6c5b89fb0ac8882a",
+        "src-1cffd9fcb4cd6b21"
+      ],
+      "project_ids": [
+        "recursive-flint"
+      ],
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261021-12-evidence-flint",
+          "claim_zh": "Recursive 已公开 Apache-2.0 Flint 权重，Ollama 0.40.8 提供 macOS 本地包；性能仍为发布方结果。",
+          "claim_en": "Recursive published Apache-2.0 Flint weights and Ollama 0.40.8 provides a macOS package; performance remains publisher-reported.",
+          "source_ids": [
+            "src-bb132bf741e1159b",
+            "src-6c5b89fb0ac8882a",
+            "src-1cffd9fcb4cd6b21"
+          ],
+          "event_ids": [
+            "ev-20261021-12"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims remain publisher-reported where noted"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261021-12-published",
+          "kind": "new",
+          "occurred_at": "2026-10-21T16:20:30Z",
+          "discovered_at": "2026-10-22T16:37:30Z",
+          "summary_zh": "Recursive 发布开放权重稀疏 coding model Flint",
+          "summary_en": "Recursive releases Flint as an open-weight sparse coding model",
+          "evidence_ids": [
+            "ev-20261021-12-evidence-flint"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-22T16:37:30Z",
+      "last_updated_at": "2026-10-22T16:37:30Z",
+      "summary": "Recursive released Flint, a 39.8B-parameter mixture-of-experts coding model with about 2.5B active parameters per token and a 262K context window. BF16 weights are Apache-2.0, with SGLang and vLLM instructions; Ollama 0.40.8 adds a roughly 23 GB package for macOS. Other Ollama GPU support is promised later, and benchmarks remain publisher-run.",
+      "why_it_matters": "For teams running coding models locally, Flint offers a small active footprint with a long context and permissive weights. A bounded trial should measure patch validity, latency, memory and repeated-run variance."
+    },
+    {
+      "event_id": "ev-20261021-13",
+      "title": "Anthropic opens the Claude Duet proactive agent as a US waitlist preview",
+      "title_zh": "Anthropic 以美国候补名单形式开放主动 agent Claude Duet",
+      "category": "ai-agent",
+      "organization": [
+        "Anthropic"
+      ],
+      "published_at": "2026-10-21",
+      "first_seen_at": "2026-10-22T16:37:30Z",
+      "last_updated_at": "2026-10-22T16:37:30Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://claude.com/resources/articles/claude-duet",
+      "secondary_sources": [
+        "https://claude.com/product/claude-duet"
+      ],
+      "summary": "Anthropic opened a research preview waitlist for Claude Duet, a proactive agent that runs on its own cloud computer, uses connected apps and messages the user when work finishes or needs approval. The preview starts with Claude Pro and Max subscribers in the US, shares plan usage limits with regular Claude, and is not available to Team or Enterprise plans.",
+      "summary_en": "Anthropic opened a research preview waitlist for Claude Duet, a proactive agent that runs on its own cloud computer, uses connected apps and messages the user when work finishes or needs approval. The preview starts with Claude Pro and Max subscribers in the US, shares plan usage limits with regular Claude, and is not available to Team or Enterprise plans.",
+      "summary_zh": "Anthropic 开放 Claude Duet 研究预览候补名单。这个主动 agent 在自己的云端电脑上运行，可使用用户连接的应用，并在任务完成或需要审批时主动发消息。预览首批面向美国 Claude Pro 和 Max 用户，与普通 Claude 共用额度，Team 和 Enterprise 尚不可用。",
+      "why_it_matters": "For teams evaluating proactive agents, Duet combines background checks, messaging, connected apps and explicit approval handoffs in a consumer product. The waitlist and acknowledged risks around missed or misread work make it a WATCH item, not a deployable platform.",
+      "why_it_matters_en": "For teams evaluating proactive agents, Duet combines background checks, messaging, connected apps and explicit approval handoffs in a consumer product. The waitlist and acknowledged risks around missed or misread work make it a WATCH item, not a deployable platform.",
+      "why_it_matters_zh": "对评估主动 agent 的团队来说，Duet 把后台检查、消息触达、连接应用和显式审批交接放进消费级产品。候补名单与官方承认的漏看、误判风险说明它目前只能 WATCH，不是可部署平台。",
+      "technical_details": {
+        "stage": "research preview waitlist",
+        "eligibility": "Claude Pro and Max subscribers in the US; Team and Enterprise excluded",
+        "surfaces": "standalone iOS and Android apps plus web access",
+        "usage": "shares plan limits with regular Claude; background checks consume usage",
+        "known_limits": "may misread threads, miscalibrate urgency or miss items between checks",
+        "time_basis": "official article gives 2026-10-21 date only; no hour was published"
+      },
+      "technical_details_zh": {
+        "阶段": "research preview 候补名单",
+        "资格": "美国 Claude Pro 与 Max 用户；Team 和 Enterprise 暂不包含",
+        "入口": "独立 iOS、Android 应用与网页",
+        "额度": "与普通 Claude 共用计划额度；后台检查也会消耗额度",
+        "已知限制": "可能误读 thread、误判紧急程度，或漏掉两次检查之间的新内容",
+        "时间依据": "官方文章只给出 2026-10-21 日期，没有发布小时"
+      },
+      "tags": [
+        "proactive-agent",
+        "human-in-the-loop",
+        "connectors",
+        "research-preview"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "anthropic-claude-duet-research-preview",
+      "short_label_zh": "Claude Duet",
+      "short_label_en": "Claude Duet",
+      "next_action_zh": "等待预览扩展到可测试账户，并核对审批日志、后台额度、漏检率和连接器权限后再评估。",
+      "next_action_en": "Reassess when test access is available, checking approval logs, background usage, miss rate and connector permissions.",
+      "source_ids": [
+        "src-f5220dab8f55b741",
+        "src-0336c2290ec14333"
+      ],
+      "project_ids": [
+        "claude-duet"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261021-13-evidence-preview",
+          "claim_zh": "Claude Duet 已开放美国 Pro/Max 用户候补名单，仍是 research preview。",
+          "claim_en": "Claude Duet has opened a US Pro/Max waitlist and remains a research preview.",
+          "source_ids": [
+            "src-f5220dab8f55b741",
+            "src-0336c2290ec14333"
+          ],
+          "event_ids": [
+            "ev-20261021-13"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261021-13-published",
+          "kind": "new",
+          "occurred_at": "2026-10-21",
+          "discovered_at": "2026-10-22T16:37:30Z",
+          "summary_zh": "Anthropic 以美国候补名单形式开放主动 agent Claude Duet",
+          "summary_en": "Anthropic opens the Claude Duet proactive agent as a US waitlist preview",
+          "evidence_ids": [
+            "ev-20261021-13-evidence-preview"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

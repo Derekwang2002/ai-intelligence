@@ -115,7 +115,7 @@
       ],
       "published_at": "2026-10-19T13:00:10.129Z",
       "first_seen_at": "2026-10-19T16:04:44Z",
-      "last_updated_at": "2026-10-19T16:04:44Z",
+      "last_updated_at": "2026-10-22T16:37:30Z",
       "source_type": "official_announcement",
       "primary_source": "https://www.aboutamazon.com/news/innovation-at-amazon/torchneuron-pytorch-aws-trainium-chips-ai",
       "secondary_sources": [
@@ -140,7 +140,8 @@
           "TorchTitan FSDP"
         ],
         "vendor_validation": "Amazon says every build is tested against hundreds of thousands of AI models; no independent result published",
-        "time_basis": "Official article datePublished 2026-10-19T13:00:10.129Z"
+        "time_basis": "Official article datePublished 2026-10-19T13:00:10.129Z",
+        "update_2026_10_22": "TorchNeuron source is now public under Apache-2.0 and labels itself Beta, while AWS documentation still conflicts on public versus closed beta access."
       },
       "technical_details_zh": {
         "阶段": "已宣布；源码计划于 2026-10-20 开放",
@@ -155,7 +156,8 @@
           "TorchTitan FSDP"
         ],
         "厂商验证": "Amazon 称每个 build 都测试数十万个 AI 模型；未给出独立结果",
-        "时间依据": "官方文章 datePublished 为 2026-10-19T13:00:10.129Z"
+        "时间依据": "官方文章 datePublished 为 2026-10-19T13:00:10.129Z",
+        "2026-10-22 更新": "TorchNeuron 源码已按 Apache-2.0 公开并自称 Beta，但 AWS 官方文档仍对 public beta 与 closed beta 的访问阶段表述冲突。"
       },
       "tags": [
         "TorchNeuron",
@@ -174,10 +176,11 @@
       "event_fingerprint": "aws-torchneuron-native-pytorch-backend-preview",
       "short_label_zh": "TorchNeuron",
       "short_label_en": "TorchNeuron",
-      "next_action_zh": "等 Apache-2.0 仓库开放后，再用一个现有训练脚本检查算子覆盖、数值一致性和多机扩展。",
-      "next_action_en": "Re-evaluate after the Apache-2.0 repository opens, then test operator coverage, numerical parity and multi-node scaling with one existing training script.",
+      "next_action_zh": "等待 AWS 统一 public beta 与 closed beta 文档，或出现未入组账户的成功部署记录。",
+      "next_action_en": "Wait for AWS to reconcile public- and closed-beta documentation or for a successful setup from an unenrolled account.",
       "source_ids": [
-        "src-63cbe58e85a688d8"
+        "src-63cbe58e85a688d8",
+        "src-e8a84d02c750a305"
       ],
       "project_ids": [
         "aws-torchneuron"
@@ -200,6 +203,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; artifact not yet public"
+        },
+        {
+          "id": "ev-20261019-02-evidence-public-source",
+          "claim_zh": "TorchNeuron 源码已公开，但官方材料对完整运行时访问阶段仍有冲突。",
+          "claim_en": "TorchNeuron source is public, while official materials still conflict on full runtime access.",
+          "source_ids": [
+            "src-e8a84d02c750a305"
+          ],
+          "event_ids": [
+            "ev-20261019-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims remain publisher-reported where noted"
         }
       ],
       "changes": [
@@ -212,6 +228,19 @@
           "summary_en": "AWS previews TorchNeuron with source scheduled after the cutoff",
           "evidence_ids": [
             "ev-20261019-02-announcement-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261019-02-public-source",
+          "kind": "update",
+          "occurred_at": "2026-10-20",
+          "discovered_at": "2026-10-22T16:37:30Z",
+          "summary_zh": "TorchNeuron 源码公开，但服务访问阶段仍不明确",
+          "summary_en": "TorchNeuron source is public while service access remains unclear",
+          "evidence_ids": [
+            "ev-20261019-02-evidence-public-source"
           ],
           "historical": false,
           "importance": "major"
@@ -325,7 +354,9 @@
       "title": "Inception launches Mercury 3 as a diffusion language model",
       "title_zh": "Inception 推出扩散语言模型 Mercury 3",
       "category": "foundation-model",
-      "organization": ["Inception"],
+      "organization": [
+        "Inception"
+      ],
       "published_at": "2026-10-19",
       "first_seen_at": "2026-10-20T16:04:41Z",
       "last_updated_at": "2026-10-20T16:04:41Z",
@@ -350,7 +381,12 @@
         "证据限制": "延迟、评测与生产比较均由厂商报告",
         "时间依据": "官方页只给出 2026-10-19 日期；最迟在 2026-10-19T17:27:11Z 已被公开链接，落在本轮窗口内"
       },
-      "tags": ["Mercury-3", "diffusion-language-model", "low-latency", "API"],
+      "tags": [
+        "Mercury-3",
+        "diffusion-language-model",
+        "low-latency",
+        "API"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 2,
@@ -363,30 +399,148 @@
       "short_label_en": "Mercury 3",
       "next_action_zh": "一天内用同一组 agent prompt 比较 Mercury 3 与当前模型的成功率、输出长度、P95 延迟和总成本。",
       "next_action_en": "Within one day, compare Mercury 3 with the current model on the same agent prompts for success rate, output length, P95 latency and total cost.",
-      "source_ids": ["src-614a0336a7737e51"],
-      "project_ids": ["inception-mercury-3"],
-      "scenario_ids": ["models", "agents"],
+      "source_ids": [
+        "src-614a0336a7737e51"
+      ],
+      "project_ids": [
+        "inception-mercury-3"
+      ],
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
       "evidence_stage": "verified",
-      "evidence": [{
-        "id": "ev-20261019-04-launch-evidence",
-        "claim_zh": "Mercury 3 已通过多个 API 入口开放；低延迟与效果比较仍为厂商结论。",
-        "claim_en": "Mercury 3 is live through several API surfaces; latency and quality comparisons remain vendor-reported.",
-        "source_ids": ["src-614a0336a7737e51"],
-        "event_ids": ["ev-20261019-04"],
-        "relation": "support",
-        "verification": "verified-primary-source; performance claims are vendor-reported"
-      }],
-      "changes": [{
-        "id": "ev-20261019-04-published",
-        "kind": "new",
-        "occurred_at": "2026-10-19",
-        "discovered_at": "2026-10-20T16:04:41Z",
-        "summary_zh": "Inception 开放 Mercury 3 扩散语言模型 API",
-        "summary_en": "Inception opens the Mercury 3 diffusion-language-model API",
-        "evidence_ids": ["ev-20261019-04-launch-evidence"],
-        "historical": false,
-        "importance": "major"
-      }]
+      "evidence": [
+        {
+          "id": "ev-20261019-04-launch-evidence",
+          "claim_zh": "Mercury 3 已通过多个 API 入口开放；低延迟与效果比较仍为厂商结论。",
+          "claim_en": "Mercury 3 is live through several API surfaces; latency and quality comparisons remain vendor-reported.",
+          "source_ids": [
+            "src-614a0336a7737e51"
+          ],
+          "event_ids": [
+            "ev-20261019-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims are vendor-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261019-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-19",
+          "discovered_at": "2026-10-20T16:04:41Z",
+          "summary_zh": "Inception 开放 Mercury 3 扩散语言模型 API",
+          "summary_en": "Inception opens the Mercury 3 diffusion-language-model API",
+          "evidence_ids": [
+            "ev-20261019-04-launch-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261019-05",
+      "title": "Microsoft open-sources Flint for agent-authored interactive charts",
+      "title_zh": "Microsoft 开源 Flint，让 agent 编写交互式图表",
+      "category": "developer-tools",
+      "organization": [
+        "Microsoft Research"
+      ],
+      "published_at": "2026-10-19",
+      "source_type": "research_blog",
+      "primary_source": "https://www.microsoft.com/en-us/research/blog/flint-interactive-a-language-for-creating-interactive-data-visualizations/",
+      "secondary_sources": [
+        "https://github.com/microsoft/flint-chart"
+      ],
+      "summary_en": "Microsoft Research released Flint 1.0 with an interactive layer for charts, dashboards and data stories authored by agents. The MIT-licensed project exposes semantic events and update operators while its compiler manages renderer-specific dependencies. It ships 52 chart types, 14 themes, 23 interaction presets, a JavaScript library and an MCP server.",
+      "summary_zh": "Microsoft Research 发布 Flint 1.0，为 agent 生成的图表、仪表盘和数据故事加入交互层。这个 MIT 项目让作者描述语义事件和更新动作，再由编译器处理不同渲染器的依赖关系。它提供 52 种图表、14 套主题、23 个交互预设、JavaScript 库和 MCP server。",
+      "why_it_matters_en": "For teams generating data products with agents, Flint moves interaction from fragile renderer code to a smaller semantic contract. The public code makes a same-day comparison against hand-written Vega-Lite or Plotly feasible.",
+      "why_it_matters_zh": "对用 agent 生成数据产品的团队来说，Flint 把脆弱的渲染器代码压缩成更小的语义契约。公开代码足以在一天内与手写 Vega-Lite 或 Plotly 做对比。",
+      "technical_details": {
+        "license": "MIT",
+        "surface": "JavaScript library and MCP server",
+        "catalog": "52 chart types, 14 themes and 23 interaction presets across five backends",
+        "architecture": "semantic events and update operators; compiler resolves visual dependencies",
+        "adoption_signal": "GitHub repository showed 4,404 stars when checked",
+        "time_basis": "repository README dates Flint 1.0 to 2026-10-19; Microsoft article published 2026-10-22T16:00:00Z"
+      },
+      "technical_details_zh": {
+        "许可": "MIT",
+        "入口": "JavaScript 库与 MCP server",
+        "目录": "五个 backend 上的 52 种图表、14 套主题和 23 个交互预设",
+        "架构": "用语义事件和更新操作描述交互，由编译器解析视觉依赖",
+        "采用信号": "核验时 GitHub 仓库显示 4,404 stars",
+        "时间依据": "仓库 README 将 Flint 1.0 标为 2026-10-19；Microsoft 文章发表于 2026-10-22T16:00:00Z"
+      },
+      "tags": [
+        "Flint",
+        "visualization",
+        "MCP",
+        "interaction"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "microsoft-flint-1-interactive-agent-charts",
+      "short_label_zh": "Flint 1.0",
+      "short_label_en": "Flint 1.0",
+      "next_action_zh": "一天内让同一 agent 分别用 Flint 与现有图表栈实现联动筛选，比较代码量、错误率和可维护性。",
+      "next_action_en": "Within one day, have one agent build the same linked-filter chart with Flint and the current stack; compare code, errors and maintainability.",
+      "source_ids": [
+        "src-db007afeffa315be",
+        "src-791e496dd2ba62d2"
+      ],
+      "project_ids": [
+        "flint-chart"
+      ],
+      "scenario_ids": [
+        "agents",
+        "developer-tools"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261019-05-evidence-flint",
+          "claim_zh": "Flint 1.0 提供 MIT 代码、MCP server、交互预设与公开示例。",
+          "claim_en": "Flint 1.0 provides MIT code, an MCP server, interaction presets and public examples.",
+          "source_ids": [
+            "src-db007afeffa315be",
+            "src-791e496dd2ba62d2"
+          ],
+          "event_ids": [
+            "ev-20261019-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims remain publisher-reported where noted"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261019-05-published",
+          "kind": "new",
+          "occurred_at": "2026-10-19",
+          "discovered_at": "2026-10-22T16:37:30Z",
+          "summary_zh": "Microsoft 开源 Flint，让 agent 编写交互式图表",
+          "summary_en": "Microsoft open-sources Flint for agent-authored interactive charts",
+          "evidence_ids": [
+            "ev-20261019-05-evidence-flint"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-22T16:37:30Z",
+      "last_updated_at": "2026-10-22T16:37:30Z",
+      "summary": "Microsoft Research released Flint 1.0 with an interactive layer for charts, dashboards and data stories authored by agents. The MIT-licensed project exposes semantic events and update operators while its compiler manages renderer-specific dependencies. It ships 52 chart types, 14 themes, 23 interaction presets, a JavaScript library and an MCP server.",
+      "why_it_matters": "For teams generating data products with agents, Flint moves interaction from fragile renderer code to a smaller semantic contract. The public code makes a same-day comparison against hand-written Vega-Lite or Plotly feasible."
     }
   ]
 }

@@ -198,6 +198,111 @@
       ],
       "summary": "A community Qwen3.8-27B derivative entered Hugging Face trending with BF16, FP8, NVFP4, INT8, INT4 and GGUF weights. At review time it had about 42,000 downloads and 169 likes. The model card includes self-reported GPQA, MMLU and LiveCodeBench evaluations but no independently verifiable training-data inventory or third-party reproduction.",
       "why_it_matters": "For teams evaluating local coding models, broad quantization support and downloads show experimentation, but closed-model names in a repository title do not prove capability. Training provenance, license lineage and evaluation-contamination risk are unclear, so this is not worth production evaluation yet."
+    },
+    {
+      "event_id": "ev-20261004-03",
+      "title": "Researchers prove the KLS conjecture with human-directed AI search",
+      "title_zh": "研究者借助人类引导的 AI 搜索证明 KLS 猜想",
+      "category": "research",
+      "organization": [
+        "Microsoft Research",
+        "academic"
+      ],
+      "published_at": "2026-10-04",
+      "source_type": "research_blog",
+      "primary_source": "https://www.microsoft.com/en-us/research/blog/solving-a-31-year-old-grand-challenge-in-mathematics-the-kls-conjecture/",
+      "secondary_sources": [
+        "https://arxiv.org/abs/2610.01447",
+        "https://arxiv.org/abs/2610.05474",
+        "https://github.com/HongruZhao/KLS500"
+      ],
+      "summary_en": "Researchers proved the 31-year-old Kannan–Lovász–Simonovits conjecture, removing a dimension-dependent bound in high-dimensional sampling theory. The Microsoft-affiliated proof used a human-directed search across roughly 100 agent trajectories; two parallel proofs and a later Lean 4 formalization provide separate checks on the mathematics. The workflow result is retrospective evidence, not proof that an unguided model can solve comparable problems.",
+      "summary_zh": "研究者证明了提出 31 年的 Kannan–Lovász–Simonovits 猜想，消除了高维采样理论中的维度依赖上界。微软参与的证明由研究者引导约 100 条 agent 搜索路径；同日还有两份平行证明，之后又出现 Lean 4 形式化，构成相互独立的数学核验。这个结果证明了人机协作流程有效，不等于无人引导的模型能独立解决同类问题。",
+      "why_it_matters_en": "For teams building research agents, the result is unusually strong evidence for a workflow that combines broad machine search, human pruning and formal verification. It argues for exposing intermediate trajectories and proof obligations instead of measuring only final answers.",
+      "why_it_matters_zh": "对科研 agent 团队来说，这是“机器广搜、人类剪枝、形式化核验”流程的一条强证据。系统设计应暴露中间路径和待证明条件，而不只统计最终答案。",
+      "technical_details": {
+        "result": "complete proof of the KLS conjecture with a dimension-free bound",
+        "workflow": "roughly 100 AI research trajectories with iterative human pruning",
+        "independent_checks": "two parallel proofs posted the same day; later Lean 4 formalization",
+        "limit": "unguided runs at the same token budget did not find the proof, according to Microsoft",
+        "time_basis": "proof paper first posted 2026-10-04; official retrospective published 2026-10-21T16:00:00Z"
+      },
+      "technical_details_zh": {
+        "结果": "完整证明 KLS 猜想并得到与维度无关的上界",
+        "工作流": "约 100 条 AI 研究路径，由人类反复剪枝",
+        "独立核验": "同日出现两份平行证明；之后发布 Lean 4 形式化",
+        "限制": "据 Microsoft 披露，相同 token 预算下的无人引导运行没有找到证明",
+        "时间依据": "证明论文于 2026-10-04 首次公开；官方回顾于 2026-10-21T16:00:00Z 发布"
+      },
+      "tags": [
+        "KLS",
+        "mathematics",
+        "research-agent",
+        "Lean-4"
+      ],
+      "technical_impact": 5,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "kls-conjecture-human-directed-ai-proof",
+      "short_label_zh": "KLS 猜想证明",
+      "short_label_en": "KLS proof",
+      "next_action_zh": "等待数学界正式验收和可复用的搜索工具公开后，再评估迁移到其他研究任务。",
+      "next_action_en": "Reassess after formal mathematical acceptance and reusable search tooling are public.",
+      "source_ids": [
+        "src-f5a67a23b0dd5c70",
+        "src-04193c928313b674",
+        "src-0bbee545169e24a4",
+        "src-404b1b8d330bacbc"
+      ],
+      "project_ids": [
+        "kls-ai-proof"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261004-03-evidence-kls",
+          "claim_zh": "KLS 完整证明已有论文、平行证明和 Lean 4 形式化；AI 参与部分是人类引导的多路径搜索。",
+          "claim_en": "The KLS proof is supported by a paper, parallel proofs and a Lean 4 formalization; the AI contribution was a human-directed multi-trajectory search.",
+          "source_ids": [
+            "src-f5a67a23b0dd5c70",
+            "src-04193c928313b674",
+            "src-0bbee545169e24a4",
+            "src-404b1b8d330bacbc"
+          ],
+          "event_ids": [
+            "ev-20261004-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims remain publisher-reported where noted"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261004-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-04",
+          "discovered_at": "2026-10-22T16:37:30Z",
+          "summary_zh": "研究者借助人类引导的 AI 搜索证明 KLS 猜想",
+          "summary_en": "Researchers prove the KLS conjecture with human-directed AI search",
+          "evidence_ids": [
+            "ev-20261004-03-evidence-kls"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "first_seen_at": "2026-10-22T16:37:30Z",
+      "last_updated_at": "2026-10-22T16:37:30Z",
+      "summary": "Researchers proved the 31-year-old Kannan–Lovász–Simonovits conjecture, removing a dimension-dependent bound in high-dimensional sampling theory. The Microsoft-affiliated proof used a human-directed search across roughly 100 agent trajectories; two parallel proofs and a later Lean 4 formalization provide separate checks on the mathematics. The workflow result is retrospective evidence, not proof that an unguided model can solve comparable problems.",
+      "why_it_matters": "For teams building research agents, the result is unusually strong evidence for a workflow that combines broad machine search, human pruning and formal verification. It argues for exposing intermediate trajectories and proof obligations instead of measuring only final answers."
     }
   ]
 }
