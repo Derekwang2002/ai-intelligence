@@ -48,7 +48,8 @@
         "src-dca7cce8dcd1782c",
         "src-9951decf1ff354d0",
         "src-637ddeb38167e8ce",
-        "src-1f4559e41bf13b35"
+        "src-1f4559e41bf13b35",
+        "src-0307ec1244417a61"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -71,19 +72,20 @@
         "src-dca7cce8dcd1782c",
         "src-9951decf1ff354d0",
         "src-637ddeb38167e8ce",
-        "src-1f4559e41bf13b35"
+        "src-1f4559e41bf13b35",
+        "src-0307ec1244417a61"
       ],
-      "last_reviewed_at": "2026-10-22T16:37:30Z",
+      "last_reviewed_at": "2026-10-23T16:04:55Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.307 增加逐工具安全遥测与幂等 MCP 重试，成熟度支持升级。",
-        "judgment_en": "Version 2.1.307 adds per-tool safety telemetry and idempotent MCP retry, supporting an upgrade.",
-        "next_action_zh": "升级后故障注入 MCP 断线并核对 safety_event。",
-        "next_action_en": "After upgrading, inject an MCP disconnect and audit safety_event.",
+        "judgment_zh": "2.1.309 集中修补沙箱、symlink、MCP 配置和 Bash deny 绕过，成熟度支持优先升级。",
+        "judgment_en": "Version 2.1.309 closes sandbox, symlink, MCP-config and Bash-deny bypasses, supporting a priority upgrade.",
+        "next_action_zh": "升级后回归 symlink、MCP 配置和复合 Bash deny 场景。",
+        "next_action_en": "After upgrading, regress symlink, MCP-config and compound Bash-deny scenarios.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-22T16:37:30Z"
+        "reviewed_at": "2026-10-23T16:04:55Z"
       }
     },
     {
@@ -231,7 +233,8 @@
         "src-e61beeca9f37dec1",
         "src-b08e03422c923828",
         "src-6d91f7c55a55a1dc",
-        "src-255cde9f48a82982"
+        "src-255cde9f48a82982",
+        "src-b28a06ef950a1f61"
       ],
       "current_judgment_event_id": "ev-20260910-02",
       "official_source_ids": [
@@ -242,21 +245,22 @@
         "src-49e8d0577a5e1f9d",
         "src-b08e03422c923828",
         "src-6d91f7c55a55a1dc",
-        "src-255cde9f48a82982"
+        "src-255cde9f48a82982",
+        "src-b28a06ef950a1f61"
       ],
-      "last_reviewed_at": "2026-10-16T15:56:07Z",
+      "last_reviewed_at": "2026-10-23T16:04:55Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Codex CLI 0.163.0 改善并行读取、转向与恢复；Agents API 仍适合受控试点。",
-        "judgment_en": "Codex CLI 0.163.0 improves parallel reads, steering and recovery; the Agents API remains a controlled trial.",
-        "next_action_zh": "回归并行读取、转向、恢复与沙箱。",
-        "next_action_en": "Regress parallel reads, steering, resume and sandboxes.",
+        "judgment_zh": "0.164.0 加固企业 MCP 认证与远程 shell 边界；Agents API 仍适合受控试点。",
+        "judgment_en": "Version 0.164.0 hardens enterprise MCP authentication and remote-shell boundaries; the Agents API remains a controlled trial.",
+        "next_action_zh": "升级后回归 MCP OAuth、凭据遮蔽与 symlink。",
+        "next_action_en": "After upgrading, regress MCP OAuth, credential masking and symlinks.",
         "basis_event_ids": [
           "ev-20260814-08",
           "ev-20260818-02",
           "ev-20260910-02"
         ],
-        "reviewed_at": "2026-10-16T15:56:07Z"
+        "reviewed_at": "2026-10-23T16:04:55Z"
       }
     },
     {
@@ -1058,24 +1062,28 @@
       ],
       "source_ids": [
         "src-872457bb1f6a4e1a",
-        "src-86745252420db893"
+        "src-86745252420db893",
+        "src-39a2c26df5548ff5",
+        "src-60b7805de2ebc483"
       ],
       "official_source_ids": [
         "src-872457bb1f6a4e1a",
-        "src-86745252420db893"
+        "src-86745252420db893",
+        "src-39a2c26df5548ff5",
+        "src-60b7805de2ebc483"
       ],
-      "last_reviewed_at": "2026-10-04T16:02:19Z",
+      "last_reviewed_at": "2026-10-23T16:04:55Z",
       "current_judgment_event_id": "ev-20260928-09",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Ollama 0.35.0 把概率优先的 decision model 带到本地运行时，适合路由与分类试验。现阶段只支持少量模型，概率仍需用自有标签做校准。",
-        "judgment_en": "Ollama 0.35.0 brings probability-first decision models to the local runtime for routing and classification trials. Model choice is limited and probabilities still require calibration on local labels.",
-        "next_action_zh": "验证概率校准，并确认客户端不会给 decision-only 模型展示 chat、tools 或 thinking。",
-        "next_action_en": "Validate calibration and confirm clients do not offer chat, tools or thinking to decision-only models.",
+        "judgment_zh": "Ollama 现同时覆盖本地 decision model 与 Apple Silicon 流式语音，适合受控试验。Phonon 的多语言权重是非商用许可，且质量未独立验证。",
+        "judgment_en": "Ollama now covers local decision models and streaming speech on Apple Silicon, suitable for controlled trials. Multilingual Phonon weights are noncommercial and quality is not independently validated.",
+        "next_action_zh": "先核对 Phonon 许可，再测语音延迟、可懂度和客户端兼容。",
+        "next_action_en": "Check Phonon licensing, then test speech latency, intelligibility and client compatibility.",
         "basis_event_ids": [
           "ev-20260928-09"
         ],
-        "reviewed_at": "2026-10-04T16:02:19Z"
+        "reviewed_at": "2026-10-23T16:04:55Z"
       }
     },
     {
@@ -4993,7 +5001,248 @@
         ],
         "reviewed_at": "2026-10-22T16:37:30Z"
       }
+    },
+    {
+      "id": "agent-skills",
+      "name_zh": "Agent Skills",
+      "name_en": "Agent Skills",
+      "type": "standard",
+      "aliases": [
+        "Agent Skills"
+      ],
+      "pattern": "Agent Skills",
+      "event_ids": [
+        "ev-20261022-02"
+      ],
+      "source_ids": [
+        "src-bdc7b775ab8d2106"
+      ],
+      "current_judgment_event_id": "ev-20261022-02",
+      "official_source_ids": [
+        "src-bdc7b775ab8d2106"
+      ],
+      "last_reviewed_at": "2026-10-23T16:04:55Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "标准已转入 AAIF 中立治理，跨平台采用信号强；版本化和安全流程尚待落地。",
+        "judgment_en": "The standard has moved to neutral AAIF governance with strong cross-platform adoption signals; versioning and security processes still need implementation.",
+        "next_action_zh": "等待 AAIF 首版和安全指南，再做跨运行时兼容测试。",
+        "next_action_en": "Wait for the first AAIF release and security guide, then test cross-runtime compatibility.",
+        "basis_event_ids": [
+          "ev-20261022-02"
+        ],
+        "reviewed_at": "2026-10-23T16:04:55Z"
+      }
+    },
+    {
+      "id": "openai-decisions",
+      "name_zh": "OpenAI Decisions API",
+      "name_en": "OpenAI Decisions API",
+      "type": "api",
+      "aliases": [
+        "OpenAI Decisions API"
+      ],
+      "pattern": "OpenAI Decisions API",
+      "event_ids": [
+        "ev-20261022-03"
+      ],
+      "source_ids": [
+        "src-49e8d0577a5e1f9d",
+        "src-f6e419d4eb703602"
+      ],
+      "current_judgment_event_id": "ev-20261022-03",
+      "official_source_ids": [
+        "src-49e8d0577a5e1f9d",
+        "src-f6e419d4eb703602"
+      ],
+      "last_reviewed_at": "2026-10-23T16:04:55Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "API 已 GA，批量、缓存、价格与数据控制清晰，适合路由和分类 POC。速度是厂商宣称，校准与错判成本仍需自测。",
+        "judgment_en": "The API is GA with clear batching, caching, pricing and data controls, making it suitable for routing and classification pilots. Speed is vendor-reported; calibration and mistake cost still need local tests.",
+        "next_action_zh": "用有标签任务对比现有规则和 Responses API。",
+        "next_action_en": "Compare it with current rules and the Responses API on labeled tasks.",
+        "basis_event_ids": [
+          "ev-20261022-03"
+        ],
+        "reviewed_at": "2026-10-23T16:04:55Z"
+      }
+    },
+    {
+      "id": "episem-bench",
+      "name_zh": "EpiSEM-Bench",
+      "name_en": "EpiSEM-Bench",
+      "type": "benchmark",
+      "aliases": [
+        "EpiSEM-Bench"
+      ],
+      "pattern": "EpiSEM-Bench",
+      "event_ids": [
+        "ev-20261022-04"
+      ],
+      "source_ids": [
+        "src-0fd71f25376106a6"
+      ],
+      "current_judgment_event_id": "ev-20261022-04",
+      "official_source_ids": [
+        "src-0fd71f25376106a6"
+      ],
+      "last_reviewed_at": "2026-10-23T16:04:55Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "论文揭示真实但不完整的工具结果也会诱发越权。没有公开代码或独立复现，暂不投入完整 POC。",
+        "judgment_en": "The paper shows that truthful but incomplete tool output can induce unauthorized action. With no public code or independent reproduction, a full pilot is premature.",
+        "next_action_zh": "等待公开 benchmark；先把授权事实做成确定性 gate。",
+        "next_action_en": "Wait for the public benchmark; first make authorization facts a deterministic gate.",
+        "basis_event_ids": [
+          "ev-20261022-04"
+        ],
+        "reviewed_at": "2026-10-23T16:04:55Z"
+      }
+    },
+    {
+      "id": "simulated-control-evals",
+      "name_zh": "Simulated Control Evals",
+      "name_en": "Simulated Control Evals",
+      "type": "benchmark",
+      "aliases": [
+        "Simulated Control Evals"
+      ],
+      "pattern": "Simulated Control Evals",
+      "event_ids": [
+        "ev-20261022-05"
+      ],
+      "source_ids": [
+        "src-9379611d7f78e9ba"
+      ],
+      "current_judgment_event_id": "ev-20261022-05",
+      "official_source_ids": [
+        "src-9379611d7f78e9ba"
+      ],
+      "last_reviewed_at": "2026-10-23T16:04:55Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "部署特定仿真在单一环境中优于跨环境对照，但没有公开代码或独立复现。",
+        "judgment_en": "Deployment-specific simulation beats a cross-environment baseline in one environment, but public code and independent reproduction are absent.",
+        "next_action_zh": "等待公开代码与跨环境复现。",
+        "next_action_en": "Wait for public code and cross-environment reproduction.",
+        "basis_event_ids": [
+          "ev-20261022-05"
+        ],
+        "reviewed_at": "2026-10-23T16:04:55Z"
+      }
+    },
+    {
+      "id": "oss-verify",
+      "name_zh": "OSS Verify",
+      "name_en": "OSS Verify",
+      "type": "research-project",
+      "aliases": [
+        "oss-verify"
+      ],
+      "pattern": "OSS Verify|oss-verify",
+      "event_ids": [
+        "ev-20261022-06"
+      ],
+      "source_ids": [
+        "src-f6a301346a05e615",
+        "src-d18ad075d81cc276",
+        "src-562c8da91a2cc7fa",
+        "src-3831dd3a56c8c483"
+      ],
+      "current_judgment_event_id": "ev-20261022-06",
+      "official_source_ids": [
+        "src-f6a301346a05e615",
+        "src-d18ad075d81cc276",
+        "src-562c8da91a2cc7fa",
+        "src-3831dd3a56c8c483"
+      ],
+      "last_reviewed_at": "2026-10-23T16:04:55Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开 proof 可复查，但保证范围窄于完整软件栈。",
+        "judgment_en": "Public proofs are checkable, but the guarantee is narrower than a full software stack.",
+        "next_action_zh": "一天内用公开 Rocq 环境重放一个已发布证明，记录检查时间、失败依赖，并核对目标性质是否覆盖你的威胁模型。",
+        "next_action_en": "In one day, replay one published proof in the public Rocq environment, record check time and missing dependencies, and compare its stated property with your threat model.",
+        "basis_event_ids": [
+          "ev-20261022-06"
+        ],
+        "reviewed_at": "2026-10-23T16:04:55Z"
+      }
+    },
+    {
+      "id": "wevisone-vl",
+      "name_zh": "WeVisOne-VL",
+      "name_en": "WeVisOne-VL",
+      "type": "open-weight-model",
+      "aliases": [
+        "WeVisOne"
+      ],
+      "pattern": "WeVisOne-VL",
+      "event_ids": [
+        "ev-20261023-01"
+      ],
+      "source_ids": [
+        "src-68120b9dfc14348d",
+        "src-55876e608f690109",
+        "src-e0f912e29433ade3"
+      ],
+      "current_judgment_event_id": "ev-20261023-01",
+      "official_source_ids": [
+        "src-68120b9dfc14348d",
+        "src-55876e608f690109",
+        "src-e0f912e29433ade3"
+      ],
+      "last_reviewed_at": "2026-10-23T16:04:55Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "权重与代码已公开，适合在真实图片上验证统一视觉链路。",
+        "judgment_en": "Weights and code are public, supporting a trial on real images.",
+        "next_action_zh": "一天内用 30 张自有图片对比现有检测与分割链路，记录召回率、延迟、显存和第三方许可清单。",
+        "next_action_en": "In one day, compare it with the current detection and segmentation pipeline on 30 local images, recording recall, latency, memory and third-party licenses.",
+        "basis_event_ids": [
+          "ev-20261023-01"
+        ],
+        "reviewed_at": "2026-10-23T16:04:55Z"
+      }
+    },
+    {
+      "id": "php2shell",
+      "name_zh": "PHP2Shell",
+      "name_en": "PHP2Shell",
+      "type": "security-vulnerability",
+      "aliases": [
+        "CVE-2026-109618",
+        "CVE-2026-109619"
+      ],
+      "pattern": "PHP2Shell|CVE-2026-109618|CVE-2026-109619",
+      "event_ids": [
+        "ev-20261021-14"
+      ],
+      "source_ids": [
+        "src-7067eadac3a0d563",
+        "src-c8c26da0c20664a3",
+        "src-203093066e1251d7"
+      ],
+      "current_judgment_event_id": "ev-20261021-14",
+      "official_source_ids": [
+        "src-7067eadac3a0d563",
+        "src-c8c26da0c20664a3",
+        "src-203093066e1251d7"
+      ],
+      "last_reviewed_at": "2026-10-23T16:04:55Z",
+      "judgment": {
+        "recommendation": "ADOPT",
+        "judgment_zh": "PHP 已发布关键安全更新，受影响运行时应立即升级。",
+        "judgment_en": "PHP has published critical security updates; affected runtimes should upgrade immediately.",
+        "next_action_zh": "立即盘点 PHP 运行时并升级到修复版，同时排查异常 multipart 请求、500 响应和 worker 重启。",
+        "next_action_en": "Inventory PHP runtimes now and upgrade to 8.5.12, 8.4.27, 8.3.36 or 8.2.35, while hunting unusual multipart requests, 500 responses and worker churn.",
+        "basis_event_ids": [
+          "ev-20261021-14"
+        ],
+        "reviewed_at": "2026-10-23T16:04:55Z"
+      }
     }
   ],
-  "last_updated": "2026-10-22T16:37:30Z"
+  "last_updated": "2026-10-23T16:04:55Z"
 }

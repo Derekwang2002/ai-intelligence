@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-23",
+  "provenance": "Primary-source incremental scan.",
+  "events": [
+    {
+      "event_id": "ev-20261023-01",
+      "title": "Tencent releases WeVisOne-VL weights for unified visual perception",
+      "title_zh": "Tencent 发布 WeVisOne-VL 统一视觉感知权重",
+      "category": "open-source",
+      "organization": [
+        "Tencent"
+      ],
+      "published_at": "2026-10-23T08:14:47Z",
+      "first_seen_at": "2026-10-23T16:04:55Z",
+      "last_updated_at": "2026-10-23T16:04:55Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/Tencent/WeVisOne-VL",
+      "secondary_sources": [
+        "https://huggingface.co/tencent/WeVisOne-VL-4B",
+        "https://huggingface.co/tencent/WeVisOne-VL-2B"
+      ],
+      "summary": "Tencent released WeVisOne-VL 2B and 4B model weights plus a required 9.6M-parameter pixel decoder for detection, referring localization, counting, point grounding, OCR, segmentation and alpha matting. The Hugging Face repositories are ungated and list Apache-2.0, while the GitHub detector does not expose a detected license. Published benchmarks are vendor-reported.",
+      "summary_en": "Tencent released WeVisOne-VL 2B and 4B model weights plus a required 9.6M-parameter pixel decoder for detection, referring localization, counting, point grounding, OCR, segmentation and alpha matting. The Hugging Face repositories are ungated and list Apache-2.0, while the GitHub detector does not expose a detected license. Published benchmarks are vendor-reported.",
+      "summary_zh": "Tencent 公开 WeVisOne-VL 2B、4B 权重和必需的 960 万参数 pixel decoder，统一支持检测、指代表达定位、计数、point grounding、OCR、分割与 alpha matting。Hugging Face 仓库无需申请并标为 Apache-2.0，但 GitHub 尚未识别出许可证。公开 benchmark 均来自发布方。",
+      "why_it_matters": "For teams that currently chain separate vision models, one open-weight interface may simplify experimentation and deployment. The broad task surface also raises evaluation risk: license notices, pixel-decoder packaging and accuracy on local images require independent checks.",
+      "why_it_matters_en": "For teams that currently chain separate vision models, one open-weight interface may simplify experimentation and deployment. The broad task surface also raises evaluation risk: license notices, pixel-decoder packaging and accuracy on local images require independent checks.",
+      "why_it_matters_zh": "对目前串联多个视觉模型的团队来说，统一的开放权重接口可能减少实验和部署复杂度。任务跨度很大也增加了评测风险：第三方许可、pixel decoder 打包和真实图片准确率都需要独立核对。",
+      "technical_details": {
+        "base": "Qwen3-VL",
+        "sizes": "2B and 4B plus required 9.6M pixel decoder",
+        "tasks": "open-vocabulary detection, referring localization, counting, point grounding, OCR, referring segmentation and alpha matting",
+        "availability": "ungated Hugging Face weights and public inference code",
+        "license_boundary": "model cards list Apache-2.0; GitHub license detector reports NOASSERTION, so inspect included third-party notices",
+        "benchmark_boundary": "publisher-reported only",
+        "time_basis": "public GitHub release commit at 2026-10-23T08:14:47Z; Hugging Face repositories expose date-only creation evidence"
+      },
+      "technical_details_zh": {
+        "基础模型": "Qwen3-VL",
+        "规模": "2B、4B，另需 960 万参数 pixel decoder",
+        "任务": "开放词汇检测、指代表达定位、计数、point grounding、OCR、指代分割、alpha matting",
+        "可用性": "无需申请的 Hugging Face 权重与公开推理代码",
+        "许可边界": "model card 标为 Apache-2.0；GitHub 未识别出许可证，需核对第三方 notices",
+        "评测边界": "只有发布方 benchmark",
+        "时间依据": "GitHub 公开提交为 2026-10-23T08:14:47Z；Hugging Face 仓库只有日期精度"
+      },
+      "tags": [
+        "vision-language-model",
+        "open-weights",
+        "object-detection",
+        "segmentation"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "tencent-wevisone-vl-open-weights",
+      "short_label_zh": "WeVisOne-VL",
+      "short_label_en": "WeVisOne-VL",
+      "next_action_zh": "一天内用 30 张自有图片对比现有检测与分割链路，记录召回率、延迟、显存和第三方许可清单。",
+      "next_action_en": "In one day, compare it with the current detection and segmentation pipeline on 30 local images, recording recall, latency, memory and third-party licenses.",
+      "source_ids": [
+        "src-68120b9dfc14348d",
+        "src-55876e608f690109",
+        "src-e0f912e29433ade3"
+      ],
+      "project_ids": [
+        "wevisone-vl"
+      ],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261023-01-release-evidence",
+          "claim_zh": "Tencent 已公开 WeVisOne-VL 2B/4B 权重、pixel decoder 与推理代码。",
+          "claim_en": "Tencent released WeVisOne-VL 2B/4B weights, the pixel decoder and inference code.",
+          "source_ids": [
+            "src-68120b9dfc14348d",
+            "src-55876e608f690109",
+            "src-e0f912e29433ade3"
+          ],
+          "event_ids": [
+            "ev-20261023-01"
+          ],
+          "relation": "support",
+          "verification": "public artifacts verified; benchmarks remain publisher-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261023-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-23T08:14:47Z",
+          "discovered_at": "2026-10-23T16:04:55Z",
+          "summary_zh": "Tencent 公开 WeVisOne-VL 权重与推理代码",
+          "summary_en": "Tencent releases WeVisOne-VL weights and inference code",
+          "evidence_ids": [
+            "ev-20261023-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

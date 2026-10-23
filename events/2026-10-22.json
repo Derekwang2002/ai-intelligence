@@ -1,6 +1,6 @@
 {
   "date": "2026-10-22",
-  "provenance": "Incremental intelligence events for 2026-10-22.",
+  "provenance": "Incremental intelligence events for 2026-10-22. Appended by 2026-10-23T16:04:55Z: Agent Skills governance, OpenAI Decisions GA, EpiSEM-Bench and Simulated Control Evals; date-only sources preserve date precision.",
   "events": [
     {
       "event_id": "ev-20261022-01",
@@ -106,6 +106,515 @@
       "last_updated_at": "2026-10-22T16:37:30Z",
       "summary": "Ai2 released OlmoEarth v1.3 plus annual global embeddings at 10-meter resolution in 64- and 128-dimensional forms. The model consumes one year of Sentinel-1, Sentinel-2 and Landsat observations, and the release includes weights, pretraining code, data and a browser explorer. Ai2 reports leading results on most of 27 evaluations; those comparisons are publisher-run.",
       "why_it_matters": "For geospatial teams, downloadable global embeddings can remove a costly remote-sensing pretraining step and make land-use prototypes much faster. The custom artifact license and domain-specific independent validation remain gating items."
+    },
+    {
+      "first_seen_at": "2026-10-23T16:04:55Z",
+      "last_updated_at": "2026-10-23T16:04:55Z",
+      "evidence_stage": "verified",
+      "event_id": "ev-20261022-02",
+      "title": "Anthropic donates Agent Skills to the Agentic AI Foundation",
+      "title_zh": "Anthropic 将 Agent Skills 捐给 Agentic AI Foundation",
+      "category": "ai-agent",
+      "organization": [
+        "Anthropic",
+        "Linux Foundation"
+      ],
+      "published_at": "2026-10-22",
+      "source_type": "official_announcement",
+      "primary_source": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+      "secondary_sources": [],
+      "summary_zh": "Anthropic 把 Agent Skills 名称、标识、GitHub 组织与 agentskills.io 域名捐给 Linux Foundation 旗下 Agentic AI Foundation。规范将由 Anthropic、Google、OpenAI 等公司的工程师以个人身份共同维护。Anthropic 称已有 70 多个平台集成该标准；这些采用数字来自发布方。",
+      "summary_en": "Anthropic donated the Agent Skills name, marks, GitHub organization and agentskills.io domain to the Linux Foundation's Agentic AI Foundation. Engineers from Anthropic, Google, OpenAI and other companies will maintain the specification as individuals. Anthropic says more than 70 platforms have integrated the standard; these adoption figures are publisher-reported.",
+      "why_it_matters_zh": "对维护跨 agent 工作流的团队来说，Skills 的治理从单一厂商转向中立基金会，降低了格式被一家产品独占的风险。真正的互操作性仍要看版本化、提案流程、安全指南和跨运行时一致行为。",
+      "why_it_matters_en": "For teams maintaining workflows across agents, moving Skills governance to a neutral foundation reduces the risk of one vendor owning the format. Real interoperability still depends on versioned releases, a proposal process, security guidance and consistent runtime behavior.",
+      "technical_details": {
+        "stage": "standard donated to AAIF",
+        "governance": "Linux Foundation Agentic AI Foundation",
+        "assets": "name, logo, GitHub organization and agentskills.io domain",
+        "maintainers": "individual engineers from Anthropic, Google, OpenAI and others",
+        "adoption_claim": "70+ platforms, 1M published skills and nearly 280M installs, publisher-reported",
+        "time_basis": "official page gives date only; absent from the prior monitor capture and present in this run"
+      },
+      "technical_details_zh": {
+        "阶段": "标准已捐给 AAIF",
+        "治理": "Linux Foundation 旗下 Agentic AI Foundation",
+        "移交资产": "名称、标识、GitHub 组织与 agentskills.io 域名",
+        "维护者": "来自 Anthropic、Google、OpenAI 等公司的个人工程师",
+        "采用数据": "70+ 平台、100 万已发布 skills、近 2.8 亿次安装；均为发布方数据",
+        "时间依据": "官方页面只有日期；上轮固定入口未出现，本轮出现"
+      },
+      "tags": [
+        "Agent Skills",
+        "interoperability",
+        "standard",
+        "governance"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "anthropic-agent-skills-aaif-donation",
+      "short_label_zh": "Agent Skills",
+      "short_label_en": "Agent Skills",
+      "next_action_zh": "等待首个 AAIF 版本与安全指南，再用同一 skill 在两个运行时核对加载、依赖和权限行为。",
+      "next_action_en": "Wait for the first AAIF release and security guidance, then run one skill in two runtimes and compare loading, dependencies and permissions.",
+      "source_ids": [
+        "src-bdc7b775ab8d2106"
+      ],
+      "project_ids": [
+        "agent-skills"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261022-02-release-evidence",
+          "claim_zh": "Anthropic 已把 Agent Skills 的核心治理资产捐给 AAIF。",
+          "claim_en": "Anthropic donated the core Agent Skills governance assets to AAIF.",
+          "source_ids": [
+            "src-bdc7b775ab8d2106"
+          ],
+          "event_ids": [
+            "ev-20261022-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; adoption counts are publisher-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261022-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-22",
+          "discovered_at": "2026-10-23T16:04:55Z",
+          "summary_zh": "Agent Skills 转入 AAIF 治理",
+          "summary_en": "Agent Skills moves to AAIF governance",
+          "evidence_ids": [
+            "ev-20261022-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary": "Anthropic donated the Agent Skills name, marks, GitHub organization and agentskills.io domain to the Linux Foundation's Agentic AI Foundation. Engineers from Anthropic, Google, OpenAI and other companies will maintain the specification as individuals. Anthropic says more than 70 platforms have integrated the standard; these adoption figures are publisher-reported.",
+      "why_it_matters": "For teams maintaining workflows across agents, moving Skills governance to a neutral foundation reduces the risk of one vendor owning the format. Real interoperability still depends on versioned releases, a proposal process, security guidance and consistent runtime behavior."
+    },
+    {
+      "first_seen_at": "2026-10-23T16:04:55Z",
+      "last_updated_at": "2026-10-23T16:04:55Z",
+      "evidence_stage": "verified",
+      "event_id": "ev-20261022-03",
+      "title": "OpenAI makes the Decisions API generally available",
+      "title_zh": "OpenAI 将 Decisions API 正式 GA",
+      "category": "ai-engineering",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-10-22",
+      "source_type": "api_documentation",
+      "primary_source": "https://developers.openai.com/api/docs/changelog",
+      "secondary_sources": [
+        "https://developers.openai.com/api/docs/guides/decisions"
+      ],
+      "summary_zh": "OpenAI 将 `/v1/decisions` 从 public beta 推进到 GA。接口用 GPT-6 Luna 对文本、图片或 JSON 返回 predicate、choice 或 score 的概率结果；单次请求上限从 200 个问题增至 400 个，并加入前缀缓存、用量统计、Private Link 与区域处理。未缓存输入为每百万 token 0.10 美元，输出 token 不收费。",
+      "summary_en": "OpenAI moved `/v1/decisions` from public beta to GA. Using GPT-6 Luna, the API returns probabilistic predicate, choice or score answers over text, images or JSON. The per-request limit rises from 200 to 400 questions, with prompt caching, usage reporting, Private Link and regional processing. Uncached input costs $0.10 per million tokens and output tokens are free.",
+      "why_it_matters_zh": "对做路由、审核和分类的团队来说，GA、批量问题和缓存把专用 decision endpoint 变成可进入生产对比的低成本选项。OpenAI 宣称约比 Responses API 快 10 倍，但阈值、校准误差和错判成本必须用自有标签集验证。",
+      "why_it_matters_en": "For routing, review and classification teams, GA status, batched questions and caching make the specialized endpoint a production-comparison candidate. OpenAI claims roughly 10x the speed of the Responses API, but thresholds, calibration error and mistake cost require validation on local labels.",
+      "technical_details": {
+        "stage": "GA",
+        "endpoint": "POST /v1/decisions",
+        "model": "gpt-6-luna only",
+        "inputs": "text, images, JSON, conversation and tool history",
+        "outputs": "predicate probability, discrete choice distribution or ordered score",
+        "request_limit": "1–400 questions",
+        "price": "$0.10 per 1M uncached input tokens; output tokens free; cache, region and long-context rates apply",
+        "data_controls": "ZDR and HIPAA for eligible customers; residency in supported regions; US/EU regional processing",
+        "vendor_claim": "about 10x faster than Responses API; not independently verified",
+        "time_basis": "official changelog gives date only; strict hourly placement is unavailable"
+      },
+      "technical_details_zh": {
+        "阶段": "GA",
+        "接口": "POST /v1/decisions",
+        "模型": "仅 gpt-6-luna",
+        "输入": "文本、图片、JSON、对话与工具历史",
+        "输出": "predicate 概率、离散 choice 分布或有序 score",
+        "单次上限": "1–400 个问题",
+        "价格": "未缓存输入每百万 token 0.10 美元；输出 token 免费；缓存、地区与长上下文另计",
+        "数据控制": "符合条件客户可用 ZDR 与 HIPAA；支持地区驻留及美国/欧洲区域处理",
+        "厂商宣称": "约比 Responses API 快 10 倍；未独立验证",
+        "时间依据": "官方 changelog 只有日期，无法严格定位小时边界"
+      },
+      "tags": [
+        "decision-model",
+        "classification",
+        "routing",
+        "API",
+        "prompt-caching"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "openai-decisions-api-ga-2026",
+      "short_label_zh": "OpenAI Decisions",
+      "short_label_en": "OpenAI Decisions",
+      "next_action_zh": "一天内用一组有标签的真实路由任务，对比现有规则与 Responses API 的校准误差、延迟、错判成本和缓存命中率。",
+      "next_action_en": "In one day, replay labeled routing tasks and compare calibration error, latency, mistake cost and cache-hit rate with current rules and the Responses API.",
+      "source_ids": [
+        "src-49e8d0577a5e1f9d",
+        "src-f6e419d4eb703602"
+      ],
+      "project_ids": [
+        "openai-decisions"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261022-03-ga-evidence",
+          "claim_zh": "OpenAI Decisions API 已 GA，并公开批量上限、价格与数据控制。",
+          "claim_en": "The OpenAI Decisions API is GA with documented batching, pricing and data controls.",
+          "source_ids": [
+            "src-49e8d0577a5e1f9d",
+            "src-f6e419d4eb703602"
+          ],
+          "event_ids": [
+            "ev-20261022-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; speed claim remains vendor-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261022-03-ga",
+          "kind": "new",
+          "occurred_at": "2026-10-22",
+          "discovered_at": "2026-10-23T16:04:55Z",
+          "summary_zh": "OpenAI Decisions API 从 beta 进入 GA",
+          "summary_en": "OpenAI Decisions API moves from beta to GA",
+          "evidence_ids": [
+            "ev-20261022-03-ga-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary": "OpenAI moved `/v1/decisions` from public beta to GA. Using GPT-6 Luna, the API returns probabilistic predicate, choice or score answers over text, images or JSON. The per-request limit rises from 200 to 400 questions, with prompt caching, usage reporting, Private Link and regional processing. Uncached input costs $0.10 per million tokens and output tokens are free.",
+      "why_it_matters": "For routing, review and classification teams, GA status, batched questions and caching make the specialized endpoint a production-comparison candidate. OpenAI claims roughly 10x the speed of the Responses API, but thresholds, calibration error and mistake cost require validation on local labels."
+    },
+    {
+      "first_seen_at": "2026-10-23T16:04:55Z",
+      "last_updated_at": "2026-10-23T16:04:55Z",
+      "evidence_stage": "frontier",
+      "event_id": "ev-20261022-04",
+      "title": "EpiSEM-Bench exposes unsafe agent actions when tools omit critical evidence",
+      "title_zh": "EpiSEM-Bench 揭示工具漏掉关键事实时的 agent 越界",
+      "category": "agent-security",
+      "organization": [
+        "Independent researchers"
+      ],
+      "published_at": "2026-10-22T17:57:04Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.31650",
+      "secondary_sources": [],
+      "summary_zh": "EpiSEM-Bench 用 300 组安全／不安全配对任务测试：工具返回的每句话都是真的，但刻意缺少一个决定动作是否合法的关键事实。10 个模型在越界执行、主动补证和补证后正确行动上差异很大；提供恢复入口能降低所有模型的越界率，却不能保证 agent 会主动使用它。论文未找到公开实现。",
+      "summary_en": "EpiSEM-Bench uses 300 matched safe and unsafe task pairs where every tool statement is true but one fact needed to judge permission is omitted. Across ten models, unsafe execution, active evidence recovery and correct post-recovery action vary substantially. Providing a recovery path reduces unsafe action for every model but does not ensure agents use it. No public implementation was found.",
+      "why_it_matters_zh": "对构建工具型 agent 的团队来说，安全问题不只来自假数据或恶意 prompt；“真实但不完整”的工具结果也会让模型越权。权限相关事实应由 runtime 强制读取并做确定性 gate，不能只期待模型追问。",
+      "why_it_matters_en": "For tool-using agent teams, risk comes not only from false data or malicious prompts: truthful but incomplete tool output can still cause unauthorized action. Permission facts should be mandatory runtime inputs with deterministic gates, not optional follow-up questions.",
+      "technical_details": {
+        "benchmark": "300 matched unsafe/safe task pairs across six domains",
+        "models": "10",
+        "failure_mode": "critical safety fact omitted while returned statements remain true",
+        "audit": "independent tool checks evidence seeking and appropriate action",
+        "result_boundary": "recovery access reduced unsafe execution for all tested models, but active recovery varied",
+        "artifact": "paper only during this run; no public code found",
+        "time_basis": "arXiv v1 submitted 2026-10-22T17:57:04Z"
+      },
+      "technical_details_zh": {
+        "评测集": "6 个领域、300 组安全／不安全配对任务",
+        "模型数": "10",
+        "失效方式": "工具省略关键安全事实，但返回陈述仍为真",
+        "审计": "独立工具检查补证与正确行动",
+        "结果边界": "恢复入口降低全部模型的越界执行，但主动补证能力差异明显",
+        "公开产物": "本轮只找到论文，未找到公开代码",
+        "时间依据": "arXiv v1 提交于 2026-10-22T17:57:04Z"
+      },
+      "tags": [
+        "agent-security",
+        "missing-evidence",
+        "tool-use",
+        "benchmark"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "episem-bench-missing-evidence-agent-safety",
+      "short_label_zh": "EpiSEM-Bench",
+      "short_label_en": "EpiSEM-Bench",
+      "next_action_zh": "等待公开 benchmark；当前先把授权事实做成工具执行前的必填字段与确定性 gate。",
+      "next_action_en": "Wait for the benchmark artifact; meanwhile make authorization facts mandatory inputs to a deterministic pre-execution gate.",
+      "source_ids": [
+        "src-0fd71f25376106a6"
+      ],
+      "project_ids": [
+        "episem-bench"
+      ],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261022-04-paper-evidence",
+          "claim_zh": "论文报告真实但缺关键事实的工具输出可诱发 agent 越界。",
+          "claim_en": "The paper reports that truthful tool output missing a critical fact can induce unauthorized agent action.",
+          "source_ids": [
+            "src-0fd71f25376106a6"
+          ],
+          "event_ids": [
+            "ev-20261022-04"
+          ],
+          "relation": "support",
+          "verification": "paper metadata and claims verified; no independent reproduction or public code"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261022-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-22T17:57:04Z",
+          "discovered_at": "2026-10-23T16:04:55Z",
+          "summary_zh": "EpiSEM-Bench 测量缺失证据下的 agent 越界与补证",
+          "summary_en": "EpiSEM-Bench measures agent violations and recovery under missing evidence",
+          "evidence_ids": [
+            "ev-20261022-04-paper-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary": "EpiSEM-Bench uses 300 matched safe and unsafe task pairs where every tool statement is true but one fact needed to judge permission is omitted. Across ten models, unsafe execution, active evidence recovery and correct post-recovery action vary substantially. Providing a recovery path reduces unsafe action for every model but does not ensure agents use it. No public implementation was found.",
+      "why_it_matters": "For tool-using agent teams, risk comes not only from false data or malicious prompts: truthful but incomplete tool output can still cause unauthorized action. Permission facts should be mandatory runtime inputs with deterministic gates, not optional follow-up questions."
+    },
+    {
+      "first_seen_at": "2026-10-23T16:04:55Z",
+      "last_updated_at": "2026-10-23T16:04:55Z",
+      "evidence_stage": "frontier",
+      "event_id": "ev-20261022-05",
+      "title": "Simulated Control Evals predicts deployment-specific safeguard failures",
+      "title_zh": "Simulated Control Evals 用仿真预测部署环境中的护栏失效",
+      "category": "agent-security",
+      "organization": [
+        "Independent researchers"
+      ],
+      "published_at": "2026-10-22T17:26:42Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.31593",
+      "secondary_sources": [],
+      "summary_zh": "Simulated Control Evals 用语言模型模拟工具环境，尝试在不执行完整部署任务的情况下预测护栏效果。作者在 LinuxArena 上用真实执行结果校验，报告五个 monitor、5% 审计预算下的安全预测 RMSE 为 3.6 个百分点，低于跨环境 BashArena 对照的 10.1。论文未找到公开实现，且结果仍局限于一个执行环境。",
+      "summary_en": "Simulated Control Evals uses a language model to emulate tool environments and predict safeguards without running the full deployment task set. Against executed LinuxArena outcomes, the authors report 3.6 percentage-point safety RMSE across five monitors at a 5% audit budget, versus 10.1 for the cross-environment BashArena baseline. No public implementation was found, and results remain bounded to one execution environment.",
+      "why_it_matters_zh": "对做高成本 agent 安全评测的团队来说，部署特定仿真可能比拿另一套执行环境外推更省样本，也更贴近真实攻击策略。仿真本身仍可能漏掉物理状态、副作用和工具错误，不能替代最终执行测试。",
+      "why_it_matters_en": "For teams running expensive agent-safety evaluations, deployment-specific simulation may require fewer samples and fit real attack behavior better than extrapolating from another executed setting. Simulation can still miss physical state, side effects and tool errors, so it cannot replace final execution tests.",
+      "technical_details": {
+        "method": "language model simulates tool responses for deployment-specific control evaluation",
+        "ground_truth": "LinuxArena execution",
+        "comparison": "BashArena cross-environment control setting",
+        "reported_result": "3.6 percentage-point RMSE vs 10.1 at 5% audit budget across five monitors",
+        "reported_variance": "78–85% of between-environment variance explained",
+        "artifact": "paper only during this run; no public code found",
+        "time_basis": "arXiv v1 submitted 2026-10-22T17:26:42Z"
+      },
+      "technical_details_zh": {
+        "方法": "语言模型模拟工具响应，构造部署特定 control eval",
+        "真实对照": "LinuxArena 执行结果",
+        "比较对象": "跨环境 BashArena control setting",
+        "报告结果": "5 个 monitor、5% 审计预算下 RMSE 3.6 个百分点，对照为 10.1",
+        "报告方差": "解释 78–85% 的跨环境方差",
+        "公开产物": "本轮只找到论文，未找到公开代码",
+        "时间依据": "arXiv v1 提交于 2026-10-22T17:26:42Z"
+      },
+      "tags": [
+        "control-evaluation",
+        "simulation",
+        "agent-security",
+        "benchmark"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "simulated-control-evals-linuxarena",
+      "short_label_zh": "Simulated Control Evals",
+      "short_label_en": "Simulated Control Evals",
+      "next_action_zh": "等待公开代码与跨环境复现；现阶段只把仿真用于筛选测试，不替代带副作用的执行评测。",
+      "next_action_en": "Wait for public code and cross-environment reproduction; use simulation only to prioritize tests, not replace side-effecting execution evaluation.",
+      "source_ids": [
+        "src-9379611d7f78e9ba"
+      ],
+      "project_ids": [
+        "simulated-control-evals"
+      ],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261022-05-paper-evidence",
+          "claim_zh": "作者报告部署特定仿真比跨环境执行对照更准确地预测 LinuxArena 护栏效果。",
+          "claim_en": "The authors report that deployment-specific simulation predicts LinuxArena safeguard outcomes more accurately than a cross-environment executed baseline.",
+          "source_ids": [
+            "src-9379611d7f78e9ba"
+          ],
+          "event_ids": [
+            "ev-20261022-05"
+          ],
+          "relation": "support",
+          "verification": "paper claims verified; no independent reproduction or public code"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261022-05-published",
+          "kind": "new",
+          "occurred_at": "2026-10-22T17:26:42Z",
+          "discovered_at": "2026-10-23T16:04:55Z",
+          "summary_zh": "Simulated Control Evals 提出部署特定的护栏仿真评测",
+          "summary_en": "Simulated Control Evals proposes deployment-specific safeguard simulation",
+          "evidence_ids": [
+            "ev-20261022-05-paper-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary": "Simulated Control Evals uses a language model to emulate tool environments and predict safeguards without running the full deployment task set. Against executed LinuxArena outcomes, the authors report 3.6 percentage-point safety RMSE across five monitors at a 5% audit budget, versus 10.1 for the cross-environment BashArena baseline. No public implementation was found, and results remain bounded to one execution environment.",
+      "why_it_matters": "For teams running expensive agent-safety evaluations, deployment-specific simulation may require fewer samples and fit real attack behavior better than extrapolating from another executed setting. Simulation can still miss physical state, side effects and tool errors, so it cannot replace final execution tests."
+    },
+    {
+      "event_id": "ev-20261022-06",
+      "title": "Anthropic and Theorem publish machine-checked proofs for C libraries",
+      "title_zh": "Anthropic 与 Theorem 发布 C 库机器校验证明",
+      "category": "ai-engineering",
+      "organization": [
+        "Anthropic",
+        "Theorem"
+      ],
+      "published_at": "2026-10-22",
+      "first_seen_at": "2026-10-23T16:04:55Z",
+      "last_updated_at": "2026-10-23T16:04:55Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.anthropic.com/research/formal-verification",
+      "secondary_sources": [
+        "https://github.com/theorem-labs/oss-verify-proofs",
+        "https://github.com/theorem-labs/rocq-linux-process-semantics",
+        "https://github.com/theorem-labs/oss-verify"
+      ],
+      "summary": "Anthropic and Theorem released MIT-licensed Rocq proofs and verifier components for selected C library fuzz entry points. Anthropic reports a larger internal run, while the public proof repository currently covers 60 entry points across 25 libraries. The guarantee is bounded to modeled static, single-threaded RISC-V Linux processes and each fuzz target's stated properties.",
+      "summary_en": "Anthropic and Theorem released MIT-licensed Rocq proofs and verifier components for selected C library fuzz entry points. Anthropic reports a larger internal run, while the public proof repository currently covers 60 entry points across 25 libraries. The guarantee is bounded to modeled static, single-threaded RISC-V Linux processes and each fuzz target's stated properties.",
+      "summary_zh": "Anthropic 与 Theorem 公开了 MIT 许可的 Rocq 证明和验证工具，覆盖部分 C 库 fuzz 入口。Anthropic 报告内部运行规模更大；当前公开证明仓库覆盖 25 个库的 60 个入口。保证范围只涵盖建模后的静态、单线程 RISC-V Linux 进程，以及每个 fuzz target 明确写出的性质。",
+      "why_it_matters": "For teams evaluating AI-generated verification, the public artifacts allow proof checking rather than trusting a benchmark score. The gap between the reported internal scale and public subset, plus the narrow execution model, means this is a reproducible pilot rather than a blanket security guarantee.",
+      "why_it_matters_en": "For teams evaluating AI-generated verification, the public artifacts allow proof checking rather than trusting a benchmark score. The gap between the reported internal scale and public subset, plus the narrow execution model, means this is a reproducible pilot rather than a blanket security guarantee.",
+      "why_it_matters_zh": "对评估 AI 生成验证的团队来说，公开产物可以直接检查 proof，而不必只信 benchmark 分数。内部规模与公开子集有差距，执行模型也很窄，因此它适合可复现试点，不等于对整个软件栈给出安全保证。",
+      "technical_details": {
+        "public_artifacts": "60 fuzz entry points across 25 libraries",
+        "publisher_reported_internal_run": "239 entry points across 123 libraries; about 180M lines of Rocq",
+        "proof_system": "Rocq with modeled Linux process semantics",
+        "scope": "static single-thread RISC-V processes, musl and modeled Linux behavior",
+        "license": "MIT for the cited public repositories",
+        "time_basis": "official article and repositories give 2026-10-22 date precision; strict hourly placement is unavailable"
+      },
+      "technical_details_zh": {
+        "公开产物": "25 个库的 60 个 fuzz 入口",
+        "发布方报告的内部规模": "123 个库、239 个入口，约 1.8 亿行 Rocq",
+        "证明系统": "Rocq 与建模后的 Linux 进程语义",
+        "保证边界": "静态、单线程 RISC-V 进程，musl 与建模后的 Linux 行为",
+        "许可": "所引公开仓库为 MIT",
+        "时间依据": "官方文章和仓库只提供 2026-10-22 日期精度，无法严格定位小时边界"
+      },
+      "tags": [
+        "formal-verification",
+        "Rocq",
+        "software-security",
+        "C"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "anthropic-theorem-oss-verify-proofs",
+      "short_label_zh": "OSS Verify",
+      "short_label_en": "OSS Verify",
+      "next_action_zh": "一天内用公开 Rocq 环境重放一个已发布证明，记录检查时间、失败依赖，并核对目标性质是否覆盖你的威胁模型。",
+      "next_action_en": "In one day, replay one published proof in the public Rocq environment, record check time and missing dependencies, and compare its stated property with your threat model.",
+      "source_ids": [
+        "src-f6a301346a05e615",
+        "src-d18ad075d81cc276",
+        "src-562c8da91a2cc7fa",
+        "src-3831dd3a56c8c483"
+      ],
+      "project_ids": [
+        "oss-verify"
+      ],
+      "scenario_ids": [
+        "research",
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261022-06-public-proofs",
+          "claim_zh": "公开仓库提供可机器检查的 Rocq 证明与验证工具，但范围小于发布方报告的内部运行。",
+          "claim_en": "Public repositories provide machine-checkable Rocq proofs and verifier tooling, but cover less than the publisher-reported internal run.",
+          "source_ids": [
+            "src-f6a301346a05e615",
+            "src-d18ad075d81cc276",
+            "src-562c8da91a2cc7fa",
+            "src-3831dd3a56c8c483"
+          ],
+          "event_ids": [
+            "ev-20261022-06"
+          ],
+          "relation": "support",
+          "verification": "primary sources and public artifacts verified; scale beyond public subset remains publisher-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261022-06-published",
+          "kind": "new",
+          "occurred_at": "2026-10-22",
+          "discovered_at": "2026-10-23T16:04:55Z",
+          "summary_zh": "Anthropic 与 Theorem 公开 C 库机器校验证明",
+          "summary_en": "Anthropic and Theorem publish machine-checkable proofs for C libraries",
+          "evidence_ids": [
+            "ev-20261022-06-public-proofs"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

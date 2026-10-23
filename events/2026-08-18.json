@@ -127,8 +127,8 @@
     },
     {
       "event_id": "ev-20260818-02",
-      "title": "Codex CLI adds session forking, agents dashboard, cross-session messaging",
-      "title_zh": "Codex CLI 稳定版新增会话 fork 和 agent 任务面板",
+      "title": "Codex CLI 0.164 adds enterprise MCP auth and hardens remote shells",
+      "title_zh": "Codex CLI 0.164 加入企业 MCP 认证并加固远程 shell",
       "category": "developer-tools",
       "organization": [
         "OpenAI",
@@ -137,7 +137,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-10-16T15:56:07Z",
+      "last_updated_at": "2026-10-23T16:04:55Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [
@@ -151,14 +151,15 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.160.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.161.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.162.0",
-        "https://github.com/openai/codex/releases/tag/rust-v0.163.0"
+        "https://github.com/openai/codex/releases/tag/rust-v0.163.0",
+        "https://github.com/openai/codex/releases/tag/rust-v0.164.0"
       ],
-      "summary": "Codex CLI is a mature multi-agent runtime with managed worktrees, task coordination and sandbox controls. Version 0.163.0 adds parallel read-only tool execution, lets steering messages interrupt long tool calls, improves task summaries and fixes sandbox, terminal and resume boundaries.",
-      "why_it_matters": "For teams running parallel coding tasks, managed worktrees and pinned tasks reduce coordination overhead while sandbox fixes tighten cross-platform behavior. Adopt the stable update after testing worktree ownership, tool ranking and policy boundaries.",
-      "summary_zh": "Codex CLI 已形成成熟的多 agent 运行时，覆盖托管 worktree、任务协作与沙箱控制。0.163.0 加入只读工具并行执行，允许转向消息中断长工具调用，改善任务摘要，并修复沙箱、终端与恢复边界。",
-      "summary_en": "Codex CLI is a mature multi-agent runtime with managed worktrees, task coordination and sandbox controls. Version 0.163.0 adds parallel read-only tool execution, lets steering messages interrupt long tool calls, improves task summaries and fixes sandbox, terminal and resume boundaries.",
-      "why_it_matters_zh": "对并行运行 coding 任务的团队来说，托管 worktree 与任务置顶减少协调成本，沙箱修复也收紧跨平台边界。升级前应验证 worktree 所有权、工具排序和策略限制。",
-      "why_it_matters_en": "For teams running parallel coding tasks, managed worktrees and pinned tasks reduce coordination overhead while sandbox fixes tighten cross-platform behavior. Adopt the stable update after testing worktree ownership, tool ranking and policy boundaries.",
+      "summary": "Codex CLI 0.164 adds enterprise MCP authentication paths, inline model/reasoning/speed/permission arguments and prompt presets. It masks credentials in remote Bash and Zsh snapshots and fixes macOS path-case, executable-symlink, permission-ordering, compaction-recovery and thread-settings failures.",
+      "why_it_matters": "For teams running Codex with enterprise MCP servers or remote shells, the release reduces credential exposure and approval-boundary risk while making launch configuration more explicit. Existing policies still need regression tests because the fixes cover several OS- and shell-specific paths.",
+      "summary_zh": "Codex CLI 0.164 加入企业 MCP 认证路径、内联 model/reasoning/speed/permission 参数和 prompt presets。它会遮蔽远程 Bash/Zsh 快照中的凭据，并修复 macOS 路径大小写、可替换 executable symlink、权限顺序、压缩恢复和线程设置问题。",
+      "summary_en": "Codex CLI 0.164 adds enterprise MCP authentication paths, inline model/reasoning/speed/permission arguments and prompt presets. It masks credentials in remote Bash and Zsh snapshots and fixes macOS path-case, executable-symlink, permission-ordering, compaction-recovery and thread-settings failures.",
+      "why_it_matters_zh": "对在企业 MCP 或远程 shell 中运行 Codex 的团队来说，这一版降低凭据暴露与审批边界风险，也让启动配置更明确。修复涉及多条 OS 与 shell 特定路径，现有策略仍要做回归。",
+      "why_it_matters_en": "For teams running Codex with enterprise MCP servers or remote shells, the release reduces credential exposure and approval-boundary risk while making launch configuration more explicit. Existing policies still need regression tests because the fixes cover several OS- and shell-specific paths.",
       "technical_details": {
         "version": "0.148.0 (stable)",
         "session_forking": "codex exec fork; archive/restore from TUI resume picker",
@@ -166,12 +167,7 @@
         "bedrock": "built-in Amazon Bedrock Runtime provider; AWS profile + region; GPT-5.6 routing",
         "cost_visibility": "estimated thread credits/cost in /status, status lines, terminal titles",
         "export": "/export markdown to clipboard or file",
-        "hardening": [
-          "sandbox fail-closed for denied/unreadable paths (Linux/Windows)",
-          "MCP recovery after OAuth re-auth",
-          "reconnect through provider outages",
-          "resumed sessions restore cwd + approval policy"
-        ],
+        "hardening": "macOS case-variant paths, replaceable executable symlinks and permission ordering",
         "v0_150_0": "0.150.0 stable (2026-08-26T19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal — agent-initiated cross-task messaging in stable; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
         "v0_150_1": "0.150.1 (2026-08-27T01:56Z): remote compaction counts retained images toward token budget (backport)",
         "update_2026_09_08": "Weekend check: no new stable since 0.153.4 (9/4); the 0.154.0 alpha line continued (alpha.3 9/4 -> alpha.6 9/7) with no documented changes. No update-worthy release. Stays ADOPT.",
@@ -185,7 +181,12 @@
         "update_2026_10_02": "0.160.0 adds opt-in Guardian retrieval of prior user instructions and handoff context, projectless sessions under workspace policy, permission-preserving resume, and reconnect/SQLite recovery fixes.",
         "update_2026_10_07": "0.161.0 makes GPT-6.1 Sol the default in bundled and Bedrock catalogs, adds Bedrock multi-agent V2/Ultra and GovCloud, improves remote-session authentication, preserves replay/world-state history and hardens approval/sandbox boundaries.",
         "update_2026_10_09": "0.162.0 enables managed worktree create/list in trusted projects, task pinning, ranked tool search and provider capability flags; fixes Linux/Windows sandbox behavior, CRLF preservation and Retry-After handling.",
-        "update_2026_10_16": "0.163.0: parallel read-only tools, steering interrupts long tool calls, improved summaries and sandbox/resume fixes"
+        "update_2026_10_16": "0.163.0: parallel read-only tools, steering interrupts long tool calls, improved summaries and sandbox/resume fixes",
+        "latest_stable": "0.164.0",
+        "enterprise_mcp_auth": "eligible Codex grants, dedicated OAuth and confidential clients",
+        "remote_shell": "masks credentials in Bash/Zsh snapshots",
+        "reliability": "compaction recovery and thread settings",
+        "published_at": "2026-10-23T04:48:10Z"
       },
       "tags": [
         "codex",
@@ -233,7 +234,13 @@
         "2026-10-02 更新": "0.160.0 增加可选的 Guardian 历史指令与 handoff 上下文召回、受工作区策略约束的无项目会话、保留权限的恢复，以及重连和 SQLite 卡顿修复。",
         "2026_10_07_更新": "0.161.0 将 GPT-6.1 Sol 设为内置与 Bedrock catalog 默认模型，加入 Bedrock multi-agent V2、Ultra 与 GovCloud，并强化远程会话认证、重放/world-state 历史及审批/沙箱边界。",
         "更新_2026_10_09": "0.162.0 在可信项目启用托管 worktree 创建/列举，加入任务置顶、排序式工具搜索和 provider 能力标记；修复 Linux/Windows 沙箱、CRLF 保留与 Retry-After 处理。",
-        "2026_10_16_更新": "0.163.0：并行只读工具、长工具调用转向、摘要与沙箱/恢复修复"
+        "2026_10_16_更新": "0.163.0：并行只读工具、长工具调用转向、摘要与沙箱/恢复修复",
+        "最新稳定版": "0.164.0",
+        "企业 MCP 认证": "符合条件的 Codex grants、独立 OAuth 与 confidential clients",
+        "远程 shell": "遮蔽 Bash/Zsh 快照中的凭据",
+        "安全加固": "macOS 大小写路径、可替换 executable symlink 与权限顺序",
+        "可靠性": "压缩恢复与线程设置",
+        "发布时间": "2026-10-23T04:48:10Z"
       },
       "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
       "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
@@ -254,7 +261,8 @@
         "src-e61beeca9f37dec1",
         "src-b08e03422c923828",
         "src-6d91f7c55a55a1dc",
-        "src-255cde9f48a82982"
+        "src-255cde9f48a82982",
+        "src-b28a06ef950a1f61"
       ],
       "project_ids": [
         "codex"
@@ -355,6 +363,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260818-02-codex-0164-evidence",
+          "claim_zh": "Codex CLI 0.164.0 加入企业 MCP 认证并修复远程 shell 与本地执行边界问题。",
+          "claim_en": "Codex CLI 0.164.0 adds enterprise MCP authentication and fixes remote-shell and local-execution boundary issues.",
+          "source_ids": [
+            "src-b28a06ef950a1f61"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified official stable release"
         }
       ],
       "changes": [
@@ -447,13 +468,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260818-02-codex-0164",
+          "kind": "update",
+          "occurred_at": "2026-10-23T04:48:10Z",
+          "discovered_at": "2026-10-23T16:04:55Z",
+          "summary_zh": "Codex 0.164.0 加入企业 MCP 认证并加固远程 shell",
+          "summary_en": "Codex 0.164.0 adds enterprise MCP authentication and hardens remote shells",
+          "evidence_ids": [
+            "ev-20260818-02-codex-0164-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "Codex 0.158.0: MCP OAuth client secrets, authenticated exec-server WebSockets, default terminal-input approval and cross-platform sandbox fixes; stays ADOPT",
-      "next_action_zh": "升级后回归并行读取、长工具调用转向、任务恢复与跨平台沙箱。",
-      "next_action_en": "After upgrading, regress parallel reads, long-tool steering, task resume and cross-platform sandboxes.",
-      "short_label_zh": "Codex CLI 0.163",
-      "short_label_en": "Codex CLI 0.163",
+      "next_action_zh": "升级后回归企业 MCP OAuth、远程 shell 凭据遮蔽、macOS 大小写路径和 executable symlink。",
+      "next_action_en": "After upgrading, regress enterprise MCP OAuth, remote-shell credential masking, macOS path casing and executable symlinks.",
+      "short_label_zh": "Codex CLI 0.164",
+      "short_label_en": "Codex CLI 0.164",
       "last_reviewed_at": "2026-10-16T15:56:07Z",
       "editorial_pick": {
         "reason_zh": "并行读取与可中断长工具调用直接改善日常 agent 工作流。",

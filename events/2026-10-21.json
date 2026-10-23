@@ -1184,6 +1184,112 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261021-14",
+      "title": "PHP patches two critical core-engine flaws found with frontier models",
+      "title_zh": "PHP 修复由 frontier models 协助发现的两项核心高危漏洞",
+      "category": "agent-security",
+      "organization": [
+        "PHP",
+        "Wiz",
+        "OpenAI",
+        "Google DeepMind"
+      ],
+      "published_at": "2026-10-21T13:59:59Z",
+      "first_seen_at": "2026-10-23T16:04:55Z",
+      "last_updated_at": "2026-10-23T16:04:55Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.wiz.io/blog/php2shell-php-rce",
+      "secondary_sources": [
+        "https://www.php.net/archive/2026.php",
+        "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/"
+      ],
+      "summary": "PHP released security updates for two critical core-engine vulnerability groups that can enable unauthenticated remote code execution or process-memory disclosure. Wiz reports that frontier models helped researchers turn long-standing memory-safety flaws into working exploits across representative WordPress, Drupal and Joomla deployments. The flaws are in PHP itself; affected servers need patched PHP releases.",
+      "summary_en": "PHP released security updates for two critical core-engine vulnerability groups that can enable unauthenticated remote code execution or process-memory disclosure. Wiz reports that frontier models helped researchers turn long-standing memory-safety flaws into working exploits across representative WordPress, Drupal and Joomla deployments. The flaws are in PHP itself; affected servers need patched PHP releases.",
+      "summary_zh": "PHP 发布安全更新，修复两组可导致未授权远程代码执行或进程内存泄露的核心引擎漏洞。Wiz 报告称，frontier models 协助研究人员把存在多年的 memory-safety 缺陷推进为可在代表性 WordPress、Drupal 和 Joomla 环境运行的 exploit。漏洞位于 PHP 本身，受影响服务器需要升级 PHP。",
+      "why_it_matters": "For teams operating PHP or using AI for vulnerability research, this changes both immediate patch priority and the cost model of exploit development. The researcher headline that PHP powers 70% of websites is not the same as 70% of internet systems being exploitable; exposure depends on PHP version, configuration and deployment.",
+      "why_it_matters_en": "For teams operating PHP or using AI for vulnerability research, this changes both immediate patch priority and the cost model of exploit development. The researcher headline that PHP powers 70% of websites is not the same as 70% of internet systems being exploitable; exposure depends on PHP version, configuration and deployment.",
+      "why_it_matters_zh": "对运行 PHP 或用 AI 做漏洞研究的团队来说，这既提高了立即打补丁的优先级，也改变了复杂 exploit 的开发成本。研究方标题中的“PHP 支撑 70% 网站”不等于“70% 互联网系统都可利用”；实际暴露取决于 PHP 版本、配置和部署方式。",
+      "technical_details": {
+        "vulnerabilities": "CVE-2026-109618 and CVE-2026-109619; memory disclosure and unauthenticated RCE paths",
+        "patched_versions": "PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35",
+        "demonstrated_targets": "representative WordPress, Drupal and Joomla deployments; flaws are in PHP core",
+        "ai_role": "Wiz reports using Wiz Atlas, Gemini 4 Argon and GPT-5.6 Sol for discovery, exploit development, detection and patch validation",
+        "evidence_boundary": "AI contribution and exploitability details are researcher-reported; PHP independently confirms critical security releases",
+        "time_basis": "Wiz published 2026-10-21T13:59:59Z, inside the configured overlap but before the prior checkpoint; late discovery"
+      },
+      "technical_details_zh": {
+        "漏洞": "CVE-2026-109618 与 CVE-2026-109619；包含内存泄露与未授权 RCE 路径",
+        "修复版本": "PHP 8.5.12、8.4.27、8.3.36、8.2.35",
+        "演示目标": "代表性 WordPress、Drupal、Joomla 部署；缺陷位于 PHP core",
+        "AI 作用": "Wiz 报告使用 Wiz Atlas、Gemini 4 Argon 与 GPT-5.6 Sol 协助发现、exploit 开发、检测和补丁验证",
+        "证据边界": "AI 贡献与 exploitability 细节来自研究方；PHP 独立确认关键安全更新",
+        "时间依据": "Wiz 于 2026-10-21T13:59:59Z 发布，位于 overlap 内但早于上次 checkpoint，属 late discovery"
+      },
+      "tags": [
+        "cybersecurity",
+        "vulnerability-research",
+        "PHP",
+        "remote-code-execution"
+      ],
+      "technical_impact": 5,
+      "engineering_value": 5,
+      "adoption_signal": 5,
+      "maturity": 5,
+      "verification_cost": 1,
+      "risk": 5,
+      "recommendation": "ADOPT",
+      "event_fingerprint": "php2shell-critical-php-core-vulnerabilities",
+      "short_label_zh": "PHP2Shell",
+      "short_label_en": "PHP2Shell",
+      "next_action_zh": "立即盘点 PHP 运行时并升级到修复版，同时排查异常 multipart 请求、500 响应和 worker 重启。",
+      "next_action_en": "Inventory PHP runtimes now and upgrade to 8.5.12, 8.4.27, 8.3.36 or 8.2.35, while hunting unusual multipart requests, 500 responses and worker churn.",
+      "source_ids": [
+        "src-7067eadac3a0d563",
+        "src-c8c26da0c20664a3",
+        "src-203093066e1251d7"
+      ],
+      "project_ids": [
+        "php2shell"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261021-14-disclosure-evidence",
+          "claim_zh": "PHP 已发布关键安全更新；Wiz 报告 frontier models 协助把核心 memory-safety 缺陷推进为可工作的 exploit。",
+          "claim_en": "PHP published critical security updates; Wiz reports frontier models helped turn core memory-safety flaws into working exploits.",
+          "source_ids": [
+            "src-7067eadac3a0d563",
+            "src-c8c26da0c20664a3",
+            "src-203093066e1251d7"
+          ],
+          "event_ids": [
+            "ev-20261021-14"
+          ],
+          "relation": "support",
+          "verification": "PHP patch notice and researcher disclosure cross-checked; OpenAI page access was limited"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261021-14-published",
+          "kind": "new",
+          "occurred_at": "2026-10-21T13:59:59Z",
+          "discovered_at": "2026-10-23T16:04:55Z",
+          "summary_zh": "PHP 修复两项由 frontier models 协助发现的核心高危漏洞",
+          "summary_en": "PHP patches two critical core-engine flaws found with frontier models",
+          "evidence_ids": [
+            "ev-20261021-14-disclosure-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

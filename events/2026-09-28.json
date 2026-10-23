@@ -968,9 +968,11 @@
     },
     {
       "first_seen_at": "2026-10-01T16:01:43Z",
-      "last_updated_at": "2026-10-04T16:02:19Z",
+      "last_updated_at": "2026-10-23T16:04:55Z",
       "secondary_sources": [
-        "https://github.com/ollama/ollama/releases/tag/v0.35.1"
+        "https://github.com/ollama/ollama/releases/tag/v0.35.1",
+        "https://github.com/ollama/ollama/releases/tag/v0.40.9",
+        "https://ollama.com/library/phonon"
       ],
       "technical_impact": 3,
       "engineering_value": 4,
@@ -1004,7 +1006,8 @@
         "models": "Nimble and Tev1",
         "question_types": "choice, noul and score",
         "availability": "local Ollama runtime",
-        "update_2026_10_05_ollama-0-35-1": "0.35.1 preserves Modelfile CAPABILITY declarations through import, inheritance and export; show/list advertise decision-only models so clients avoid offering chat, tools or thinking; web-search cap rises from 3 to 10."
+        "update_2026_10_05_ollama-0-35-1": "0.35.1 preserves Modelfile CAPABILITY declarations through import, inheritance and export; show/list advertise decision-only models so clients avoid offering chat, tools or thinking; web-search cap rises from 3 to 10.",
+        "update_2026_10_23_ollama_0_40_9": "0.40.9 adds streaming speech on Apple Silicon through Phonon and an OpenAI-compatible /v1/audio/speech endpoint; 31M English is Apache-2.0, while 40M English and multilingual checkpoints are CC BY-NC 4.0."
       },
       "technical_details_zh": {
         "版本": "0.35.0 stable",
@@ -1013,7 +1016,8 @@
         "模型": "Nimble、Tev1",
         "问题类型": "choice、noul、score",
         "可用性": "本地 Ollama runtime",
-        "2026-10-05 更新 ollama-0-35-1": "0.35.1 让 Modelfile CAPABILITY 在导入、继承与导出时保留；show/list 会标明仅支持 decision 的模型，避免客户端误提供 chat、tools 或 thinking；web search 上限从 3 提到 10。"
+        "2026-10-05 更新 ollama-0-35-1": "0.35.1 让 Modelfile CAPABILITY 在导入、继承与导出时保留；show/list 会标明仅支持 decision 的模型，避免客户端误提供 chat、tools 或 thinking；web search 上限从 3 提到 10。",
+        "2026-10-23 更新 Ollama 0.40.9": "0.40.9 在 Apple Silicon 上通过 Phonon 加入流式语音与 OpenAI 兼容的 /v1/audio/speech；31M 英文权重为 Apache-2.0，40M 英文及多语言权重为 CC BY-NC 4.0。"
       },
       "tags": [
         "ollama",
@@ -1026,16 +1030,18 @@
       "event_fingerprint": "ollama-0-35-systemone-decision-models",
       "source_ids": [
         "src-872457bb1f6a4e1a",
-        "src-86745252420db893"
+        "src-86745252420db893",
+        "src-39a2c26df5548ff5",
+        "src-60b7805de2ebc483"
       ],
       "project_ids": [
         "ollama"
       ],
       "late_discovery": true,
-      "short_label_zh": "Ollama Decision Models",
-      "short_label_en": "Ollama Decision Models",
-      "next_action_zh": "用自有标签集验证概率校准，并确认客户端不会给 decision-only 模型展示 chat、tools 或 thinking。",
-      "next_action_en": "Validate probability calibration on local labels and confirm clients do not offer chat, tools or thinking to decision-only models.",
+      "short_label_zh": "Ollama 0.40.9",
+      "short_label_en": "Ollama 0.40.9",
+      "next_action_zh": "一天内在 Apple Silicon 上对同一脚本测首音频延迟、实时系数和可懂度，并核对权重许可。",
+      "next_action_en": "On Apple Silicon, test public Phonon weights for first-audio latency, real-time factor, intelligibility and `/v1/audio/speech` compatibility; use only the Apache-2.0 English weights commercially.",
       "summary": "Ollama 0.35.0 stable adds `/v1/systemone`, letting decision models return choices, probabilities and scores instead of generated text. Nimble and Tev1 are the first supported models for ticket triage, model routing and classification. The API exposes choice, noul and score questions. The prior run mistakenly treated this stable release as prerelease, so this run records it as a late discovery.",
       "why_it_matters": "For teams doing local classification or routing, structured probabilities are easier to calibrate, threshold and fall back than labels parsed from generated text. Test calibration error, abstention thresholds and latency on labeled data before relying on confidence values.",
       "evidence": [
@@ -1064,6 +1070,20 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260928-09-ollama-0-40-9-evidence",
+          "claim_zh": "Ollama 0.40.9 在 Apple Silicon 上加入可流式输出的本地 Phonon 语音与兼容接口。",
+          "claim_en": "Ollama 0.40.9 adds streaming local Phonon speech and a compatible endpoint on Apple Silicon.",
+          "source_ids": [
+            "src-39a2c26df5548ff5",
+            "src-60b7805de2ebc483"
+          ],
+          "event_ids": [
+            "ev-20260928-09"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; model quality not independently tested"
         }
       ],
       "changes": [
@@ -1092,8 +1112,22 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260928-09-ollama-0-40-9-speech",
+          "kind": "update",
+          "occurred_at": "2026-10-22T01:33:10Z",
+          "discovered_at": "2026-10-23T16:04:55Z",
+          "summary_zh": "Ollama 0.40.9 加入 Apple Silicon 本地流式语音",
+          "summary_en": "Ollama 0.40.9 adds local streaming speech on Apple Silicon",
+          "evidence_ids": [
+            "ev-20260928-09-ollama-0-40-9-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "last_reviewed_at": "2026-10-23T16:04:55Z"
     }
   ]
 }
