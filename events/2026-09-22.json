@@ -449,7 +449,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-10-22T16:37:30Z",
+      "last_updated_at": "2026-10-24T15:59:49Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
       "secondary_sources": [
@@ -460,7 +460,8 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.1",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.2",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.3",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.0"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.0",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.1"
       ],
       "summary": "Qwen Code 0.26.0 asks the hosted execution broker for durable evidence after takeover or restart and leaves unprovable outcomes UNKNOWN instead of retrying or inventing failure. A successor owner can finish file turns from stored receipts without repeating tool effects. The release also adds a preflight check command and broader managed-agent controls; these guarantees remain project-documented rather than independently tested.",
       "why_it_matters": "For long-running agent systems, preserving uncertainty is safer than replaying a potentially completed action. The release turns recovery semantics into a testable contract, but teams still need fault injection around receipts, ownership transfer and side effects.",
@@ -482,7 +483,10 @@
         "update_2026_10_11": "0.25.1 stable records managed-agent parameters, receipts and checkpoints before returning; adds durable background Shell/Monitor and session-based multi-agent work; fixes MCP permission collisions and replay/approval paths.",
         "update_2026_10_15": "0.25.2 stable adds managed-agent Session messaging, durable team-plan approval, Test Failure Explorer, TypeScript Mods and a default-off foreground Shell with mandatory approval. It fixes post-merge worktree settlement, startup false success, cancellation hangs, BOM parsing and recovery paths.",
         "update_2026_10_19": "0.25.3 stable adds snapshot-isolated read-only child agents; managed sessions with pinned Skills/MCP/Hooks; SSH, macOS and workspace-resident runtimes; persistent Kubernetes workspaces; bounded retries, durable cancellation and recovery.",
-        "update_2026_10_22": "0.26.0 preserves unprovable hosted tool outcomes as UNKNOWN, reconstructs file turns from durable receipts, and adds PASS/WARN/FAIL/SKIP preflight checks."
+        "update_2026_10_22": "0.26.0 preserves unprovable hosted tool outcomes as UNKNOWN, reconstructs file turns from durable receipts, and adds PASS/WARN/FAIL/SKIP preflight checks.",
+        "latest_version": "0.26.1",
+        "runtime_update": "Adds durable manual compression, safer recovery, public subagent delegation defaults, mid-stream MCP replacement and replacement of synthesized placeholders with late real tool results.",
+        "time_basis": "GitHub release published 2026-10-24T15:47:58Z, twelve minutes before this run cutoff."
       },
       "technical_details_zh": {
         "版本": "0.24.4 stable",
@@ -498,7 +502,10 @@
         "2026-10-11 更新": "0.25.1 稳定版在返回结果前记录托管 agent 的参数、receipt 与 checkpoint，加入持久后台 Shell/Monitor 和基于 session 的多 agent 协作，并修复 MCP 权限冲突、回放与审批路径。",
         "2026-10-15 更新": "0.25.2 稳定版加入 managed-agent Session 消息、持久团队计划审批、Test Failure Explorer、TypeScript Mods，以及默认关闭且必须审批的前台 Shell；并修复合并后 worktree 收尾、启动误报成功、取消卡住、BOM 解析和恢复路径。",
         "2026-10-19 更新": "0.25.3 稳定版加入快照隔离的只读子 agent；固定 Skills/MCP/Hooks 的 managed session；SSH、macOS 与 workspace-resident runtime；持久 Kubernetes workspace；有上限的重试、持久取消和恢复。",
-        "2026-10-22 更新": "0.26.0 把无法证明的托管工具结果保持为 UNKNOWN，按持久 receipt 重建文件操作，并加入 PASS/WARN/FAIL/SKIP preflight 检查。"
+        "2026-10-22 更新": "0.26.0 把无法证明的托管工具结果保持为 UNKNOWN，按持久 receipt 重建文件操作，并加入 PASS/WARN/FAIL/SKIP preflight 检查。",
+        "最新版本": "0.26.1",
+        "运行时更新": "加入持久化手动压缩、安全恢复、默认公开子 agent 委派、流中 MCP 替换，并用迟到的真实工具结果替换合成占位。",
+        "时间依据": "GitHub release 发布时间为 2026-10-24T15:47:58Z，距本轮截止约 12 分钟。"
       },
       "tags": [
         "qwen-code",
@@ -525,7 +532,8 @@
         "src-dbd682b3d0c44281",
         "src-62cbc2cf184b4f1b",
         "src-2da06eac2ec92ad6",
-        "src-5c24af93d6fa5960"
+        "src-5c24af93d6fa5960",
+        "src-2df989db5683bb98"
       ],
       "project_ids": [
         "qwen-code"
@@ -639,6 +647,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; performance claims remain publisher-reported where noted"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-26-1-evidence",
+          "claim_zh": "Qwen Code 0.26.1 强化上下文恢复、子 agent 委派和迟到工具结果处理",
+          "claim_en": "Qwen Code 0.26.1 strengthens context recovery, subagent delegation and late tool-result handling",
+          "source_ids": [
+            "src-2df989db5683bb98"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "first-party artifact verified"
         }
       ],
       "changes": [
@@ -743,6 +764,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-26-1",
+          "kind": "update",
+          "occurred_at": "2026-10-24T15:47:58Z",
+          "discovered_at": "2026-10-24T15:59:49Z",
+          "summary_zh": "Qwen Code 0.26.1 强化上下文恢复、子 agent 委派和迟到工具结果处理",
+          "summary_en": "Qwen Code 0.26.1 strengthens context recovery, subagent delegation and late tool-result handling",
+          "historical": false,
+          "importance": "major",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-26-1-evidence"
+          ]
         }
       ],
       "editorial_pick": {

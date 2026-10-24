@@ -106,6 +106,497 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261023-02",
+      "title": "Tencent releases Hy-Nomas for interactive world generation",
+      "title_zh": "Tencent 发布交互式世界模型 Hy-Nomas",
+      "category": "open-source",
+      "organization": [
+        "Tencent"
+      ],
+      "published_at": "2026-10-23T17:00:00Z",
+      "first_seen_at": "2026-10-24T15:59:49Z",
+      "last_updated_at": "2026-10-24T15:59:49Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/Tencent-Hunyuan/Hy-Nomas",
+      "secondary_sources": [
+        "https://huggingface.co/tencent/Hy-Nomas",
+        "https://huggingface.co/tencent/Hy-Nomas-Diffusers"
+      ],
+      "summary": "Tencent released Hy-Nomas code, training recipes and open weights for multi-turn world generation controlled by text and camera movement. The project includes distilled 4-, 6- and 8-step variants and low-memory paths for a single RTX 4090. Its four-benchmark evaluation is publisher-reported, and no technical report is public.",
+      "summary_en": "Tencent released Hy-Nomas code, training recipes and open weights for multi-turn world generation controlled by text and camera movement. The project includes distilled 4-, 6- and 8-step variants and low-memory paths for a single RTX 4090. Its four-benchmark evaluation is publisher-reported, and no technical report is public.",
+      "summary_zh": "Tencent 公开 Hy-Nomas 代码、训练方案和权重，可用文本与镜头运动进行多轮世界生成。项目提供 4、6、8 步蒸馏版本，并给出单张 RTX 4090 的低显存路径。四项 benchmark 均由发布方评测，技术报告尚未公开。",
+      "why_it_matters": "For teams prototyping interactive simulation or video agents, Hy-Nomas lowers the artifact barrier from a demo to runnable weights and code. The lack of an independent evaluation and technical report makes local temporal-consistency and control tests essential.",
+      "why_it_matters_en": "For teams prototyping interactive simulation or video agents, Hy-Nomas lowers the artifact barrier from a demo to runnable weights and code. The lack of an independent evaluation and technical report makes local temporal-consistency and control tests essential.",
+      "why_it_matters_zh": "对交互仿真或视频 agent 团队来说，Hy-Nomas 把门槛从演示降到可运行权重和代码。由于缺少独立评测与技术报告，仍需自行验证时序一致性和控制稳定性。",
+      "technical_details": {
+        "architecture": "segment-autoregressive diffusion transformer with persistent KV cache",
+        "availability": "public code, training and inference recipes, model weights and Diffusers conversion",
+        "license": "Apache-2.0 stated by the repositories",
+        "runtime": "publisher provides INT8/FP8 low-memory settings for a single RTX 4090",
+        "evaluation": "four publisher-run benchmarks covering 280 cases; no independent evaluation",
+        "time_basis": "official Tencent post timestamp decoded to 2026-10-23T17:00:00Z; repositories were created earlier and do not alone establish release time"
+      },
+      "technical_details_zh": {
+        "架构": "分段自回归 diffusion transformer，带持久 KV cache",
+        "可用性": "公开代码、训练与推理方案、模型权重和 Diffusers 转换",
+        "许可": "仓库标为 Apache-2.0",
+        "运行环境": "发布方提供单张 RTX 4090 的 INT8/FP8 低显存配置",
+        "评测边界": "四项发布方 benchmark，共 280 个测试样例；没有独立评测",
+        "时间依据": "Tencent 官方帖时间解码为 2026-10-23T17:00:00Z；仓库创建更早，不能单独代表正式发布时间"
+      },
+      "tags": [
+        "world-model",
+        "video-generation",
+        "open-weights",
+        "interactive-simulation"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "tencent-hy-nomas-open-world-model",
+      "short_label_zh": "Hy-Nomas",
+      "short_label_en": "Hy-Nomas",
+      "next_action_zh": "一天内用公开权重复现一个 10 秒多轮镜头控制样例，记录显存、延迟、漂移和许可依赖。",
+      "next_action_en": "In one day, reproduce a 10-second multi-turn camera-control sample, recording memory, latency, drift and license dependencies.",
+      "source_ids": [
+        "src-7b7d6db0df86b848",
+        "src-9521b60b04aa1cbb",
+        "src-5c74d58a4b897136"
+      ],
+      "project_ids": [
+        "hy-nomas"
+      ],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261023-02-release-evidence",
+          "claim_zh": "Tencent 已公开 Hy-Nomas 权重、代码与训练推理方案。",
+          "claim_en": "Tencent released Hy-Nomas weights, code and training and inference recipes.",
+          "source_ids": [
+            "src-7b7d6db0df86b848",
+            "src-9521b60b04aa1cbb",
+            "src-5c74d58a4b897136"
+          ],
+          "event_ids": [
+            "ev-20261023-02"
+          ],
+          "relation": "support",
+          "verification": "public artifacts verified; benchmarks remain publisher-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261023-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-23T17:00:00Z",
+          "discovered_at": "2026-10-24T15:59:49Z",
+          "summary_zh": "Tencent 公开 Hy-Nomas 权重、代码与训练方案",
+          "summary_en": "Tencent releases Hy-Nomas weights, code and training recipes",
+          "evidence_ids": [
+            "ev-20261023-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261023-03",
+      "title": "NVIDIA opens accuracy-aware tuning for TensorRT build routes",
+      "title_zh": "NVIDIA 开放 TensorRT 精度约束调优",
+      "category": "infrastructure",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-10-23T17:27:35Z",
+      "first_seen_at": "2026-10-24T15:59:49Z",
+      "last_updated_at": "2026-10-24T15:59:49Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/scaling-nvidia-tensorrt-performance-optimization-beyond-a-single-build-route-with-the-global-performance-tuner-part-1/",
+      "secondary_sources": [
+        "https://developer.nvidia.com/blog/scaling-nvidia-tensorrt-performance-optimization-beyond-a-single-build-route-with-the-global-performance-tuner-part-2/"
+      ],
+      "summary": "NVIDIA released the TensorRT 11.1 Global Performance Tuner and an open-source trtexec implementation. It searches more than 200 compiler choices across build routes while treating accuracy as a constraint. NVIDIA reports 1.14x to 1.63x gains across ten workloads; independent reproduction is not yet available.",
+      "summary_en": "NVIDIA released the TensorRT 11.1 Global Performance Tuner and an open-source trtexec implementation. It searches more than 200 compiler choices across build routes while treating accuracy as a constraint. NVIDIA reports 1.14x to 1.63x gains across ten workloads; independent reproduction is not yet available.",
+      "summary_zh": "NVIDIA 在 TensorRT 11.1 发布 Global Performance Tuner，并开放 trtexec 实现。它把精度设为约束，在不同 build route 中搜索 200 多项编译选项。NVIDIA 报告十个工作负载获得 1.14 至 1.63 倍提升，尚无独立复现。",
+      "why_it_matters": "For inference teams, this turns manual builder-route tuning into a repeatable search problem with an accuracy guard. Vendor-only performance numbers and search cost still require workload-specific validation.",
+      "why_it_matters_en": "For inference teams, this turns manual builder-route tuning into a repeatable search problem with an accuracy guard. Vendor-only performance numbers and search cost still require workload-specific validation.",
+      "why_it_matters_zh": "对推理团队来说，这把手工 build route 调优变成带精度护栏的可重复搜索。性能数字仍是厂商自报，搜索成本也需要用自有工作负载核算。",
+      "technical_details": {
+        "version": "TensorRT 11.1",
+        "search_space": "more than 200 compiler knobs and multiple build routes",
+        "metric_boundary": "accuracy is a constraint; performance ranks valid configurations",
+        "reported_gain": "1.14x to 1.63x across ten publisher-selected workloads",
+        "availability": "open-source trtexec implementation; Python support planned for Torch-TensorRT 2.15",
+        "time_basis": "NVIDIA feed published Part 1 at 2026-10-23T17:27:35Z and Part 2 at 17:27:52Z"
+      },
+      "technical_details_zh": {
+        "版本": "TensorRT 11.1",
+        "搜索空间": "200 多项编译选项与多条 build route",
+        "指标边界": "先用精度作约束，再按性能排序合格配置",
+        "发布方结果": "十个工作负载提升 1.14 至 1.63 倍",
+        "可用性": "trtexec 开源实现已发布；Python 支持计划进入 Torch-TensorRT 2.15",
+        "时间依据": "NVIDIA feed 中 Part 1 发布于 2026-10-23T17:27:35Z，Part 2 发布于 17:27:52Z"
+      },
+      "tags": [
+        "tensorrt",
+        "inference",
+        "compiler",
+        "performance-tuning"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 4,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-tensorrt-global-performance-tuner",
+      "short_label_zh": "TensorRT GPTuner",
+      "short_label_en": "TensorRT GPTuner",
+      "next_action_zh": "用一个生产 ONNX 模型跑现有配置与 tuner，对比精度、吞吐、构建时间和搜索成本。",
+      "next_action_en": "Run one production ONNX model through the current build and the tuner, comparing accuracy, throughput, build time and search cost.",
+      "source_ids": [
+        "src-7e6eaaa1dc0a2da9",
+        "src-7383f2fa84171fd1"
+      ],
+      "project_ids": [
+        "tensorrt-global-performance-tuner"
+      ],
+      "scenario_ids": [
+        "infrastructure"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261023-03-release-evidence",
+          "claim_zh": "NVIDIA 已在 TensorRT 11.1 发布 Global Performance Tuner 和公开实现。",
+          "claim_en": "NVIDIA released the Global Performance Tuner and public implementation in TensorRT 11.1.",
+          "source_ids": [
+            "src-7e6eaaa1dc0a2da9",
+            "src-7383f2fa84171fd1"
+          ],
+          "event_ids": [
+            "ev-20261023-03"
+          ],
+          "relation": "support",
+          "verification": "first-party release verified; performance gains are publisher-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261023-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-23T17:27:35Z",
+          "discovered_at": "2026-10-24T15:59:49Z",
+          "summary_zh": "NVIDIA 发布 TensorRT Global Performance Tuner",
+          "summary_en": "NVIDIA releases the TensorRT Global Performance Tuner",
+          "evidence_ids": [
+            "ev-20261023-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261023-04",
+      "title": "Ai2 tests LitPivot for literature-grounded research pivots",
+      "title_zh": "Ai2 测试用 LitPivot 改进文献驱动的研究转向",
+      "category": "research",
+      "organization": [
+        "Ai2"
+      ],
+      "published_at": "2026-10-23T16:15:50Z",
+      "first_seen_at": "2026-10-24T15:59:49Z",
+      "last_updated_at": "2026-10-24T15:59:49Z",
+      "source_type": "research_blog",
+      "primary_source": "https://huggingface.co/blog/allenai/litpivot",
+      "secondary_sources": [
+        "https://arxiv.org/abs/2610.19081"
+      ],
+      "summary": "Ai2 introduced LitPivot, a research prototype that organizes literature by facets and critiques developing ideas against nearby work. A within-subject study with 17 researchers found higher grounding ratings from two blinded domain experts than a text editor with AI assistance. A five-person follow-up explored longer-term use; no public code or service is available.",
+      "summary_en": "Ai2 introduced LitPivot, a research prototype that organizes literature by facets and critiques developing ideas against nearby work. A within-subject study with 17 researchers found higher grounding ratings from two blinded domain experts than a text editor with AI assistance. A five-person follow-up explored longer-term use; no public code or service is available.",
+      "summary_zh": "Ai2 介绍 LitPivot：它按研究切面整理文献，并用相邻工作批评正在形成的想法。17 名研究者参加了组内对照实验，两名盲评领域专家给出的文献扎根评分更高；另有 5 人参加长期跟踪。当前没有公开代码或可用服务。",
+      "why_it_matters": "For research-tool builders, the study suggests that grounding support should be organized around claims and facets rather than generic chat. The small sample and unavailable artifact keep this at WATCH rather than a deployable recommendation.",
+      "why_it_matters_en": "For research-tool builders, the study suggests that grounding support should be organized around claims and facets rather than generic chat. The small sample and unavailable artifact keep this at WATCH rather than a deployable recommendation.",
+      "why_it_matters_zh": "对研究工具开发者来说，这项工作提示：文献支撑应围绕论点和研究切面组织，而不是只提供通用聊天。样本很小，且没有公开工具，因此只能继续观察。",
+      "technical_details": {
+        "study": "within-subject comparison with 17 researchers; two blinded domain experts rated grounding",
+        "follow_up": "five-researcher longitudinal follow-up",
+        "baseline": "text editor with AI assistance",
+        "availability": "paper and first-party article only; no public code or callable service",
+        "time_basis": "Hugging Face official feed published 2026-10-23T16:15:50Z"
+      },
+      "technical_details_zh": {
+        "研究设计": "17 名研究者参加组内对照；两名盲评领域专家评价文献扎根程度",
+        "长期跟踪": "5 名研究者",
+        "基线": "带 AI 辅助的文本编辑器",
+        "可用性": "只有论文和第一方文章，没有公开代码或可调用服务",
+        "时间依据": "Hugging Face 官方 feed 发布时间为 2026-10-23T16:15:50Z"
+      },
+      "tags": [
+        "research-workflow",
+        "literature-review",
+        "human-computer-interaction"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "ai2-litpivot-literature-grounded-research",
+      "short_label_zh": "LitPivot",
+      "short_label_en": "LitPivot",
+      "next_action_zh": "等公开代码、可试用系统或更大样本复现出现后，再评估是否进入研究工作流。",
+      "next_action_en": "Reassess when public code, a usable system or a larger independent replication becomes available.",
+      "source_ids": [
+        "src-5d794c3788a3a4be",
+        "src-bc75b6469b6ca9ed"
+      ],
+      "project_ids": [
+        "litpivot"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261023-04-study-evidence",
+          "claim_zh": "Ai2 报告 LitPivot 的小样本组内实验获得更高文献扎根评分。",
+          "claim_en": "Ai2 reports higher literature-grounding ratings in a small within-subject LitPivot study.",
+          "source_ids": [
+            "src-5d794c3788a3a4be",
+            "src-bc75b6469b6ca9ed"
+          ],
+          "event_ids": [
+            "ev-20261023-04"
+          ],
+          "relation": "support",
+          "verification": "paper and first-party article verified; no public artifact or independent replication"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261023-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-23T16:15:50Z",
+          "discovered_at": "2026-10-24T15:59:49Z",
+          "summary_zh": "Ai2 发布 LitPivot 小样本研究结果",
+          "summary_en": "Ai2 publishes a small-sample LitPivot study",
+          "evidence_ids": [
+            "ev-20261023-04-study-evidence"
+          ],
+          "historical": false,
+          "importance": "minor"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261023-05",
+      "title": "Moonshot launches Kimi K3.1 Pro before releasing its weights",
+      "title_zh": "Moonshot 上线 Kimi K3.1 Pro，权重仍待发布",
+      "category": "foundation-model",
+      "organization": [
+        "Moonshot AI"
+      ],
+      "published_at": "2026-10-23",
+      "first_seen_at": "2026-10-24T15:59:49Z",
+      "last_updated_at": "2026-10-24T15:59:49Z",
+      "source_type": "official_blog",
+      "primary_source": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+      "secondary_sources": [],
+      "summary": "Moonshot launched Kimi K3.1 Pro and a Highspeed tier across Kimi, Kimi Work, Kimi Code and its API. The model has a one-million-token context window, while Highspeed is advertised at two to three times the serving speed. Full weights are promised by November 4 but are not yet available; benchmark claims are publisher-reported.",
+      "summary_en": "Moonshot launched Kimi K3.1 Pro and a Highspeed tier across Kimi, Kimi Work, Kimi Code and its API. The model has a one-million-token context window, while Highspeed is advertised at two to three times the serving speed. Full weights are promised by November 4 but are not yet available; benchmark claims are publisher-reported.",
+      "summary_zh": "Moonshot 已在 Kimi、Kimi Work、Kimi Code 和 API 上线 Kimi K3.1 Pro 与 Highspeed 版本。模型上下文窗口为 100 万 token，Highspeed 宣称推理速度快 2 至 3 倍。完整权重承诺在 11 月 4 日前发布，但当前尚不可下载；benchmark 均由发布方报告。",
+      "why_it_matters": "For coding and long-context teams, the callable API enables immediate evaluation and the promised weights could materially widen deployment options. Availability and performance must be kept separate: the API is live, but the open weights and independent benchmark runs are not.",
+      "why_it_matters_en": "For coding and long-context teams, the callable API enables immediate evaluation and the promised weights could materially widen deployment options. Availability and performance must be kept separate: the API is live, but the open weights and independent benchmark runs are not.",
+      "why_it_matters_zh": "对 coding 和长上下文团队来说，可调用 API 已经能做对照测试，后续权重可能进一步扩大部署选择。必须区分可用性和性能：API 已上线，开放权重与独立 benchmark 复现尚未出现。",
+      "technical_details": {
+        "model_class": "3T-class model; exact architecture and active-parameter count not stated on the release page",
+        "context_window": "1 million tokens",
+        "availability": "Kimi, Kimi Work, Kimi Code and Kimi API available now; full weights promised by November 4",
+        "speed_claim": "Highspeed advertised at 2-3x K3.1 Pro speed",
+        "evaluation_boundary": "benchmark results are publisher-reported; Kimi Code Bench 3.0 is internal",
+        "pricing_boundary": "no API price was verified from the release page",
+        "time_basis": "the official page establishes October 23 at date precision; Hacker News submission at 2026-10-23T16:59:08Z is only an external upper bound, not the official publication time"
+      },
+      "technical_details_zh": {
+        "模型规模": "3T 级；发布页未说明确切架构和激活参数量",
+        "上下文窗口": "100 万 token",
+        "可用性": "Kimi、Kimi Work、Kimi Code 和 Kimi API 已可用；完整权重承诺 11 月 4 日前发布",
+        "速度声明": "Highspeed 宣称比 K3.1 Pro 快 2 至 3 倍",
+        "评测边界": "benchmark 均为发布方结果；Kimi Code Bench 3.0 是内部评测",
+        "价格边界": "发布页未核实 API 价格",
+        "时间依据": "官方页面只能确认 10 月 23 日；Hacker News 在 2026-10-23T16:59:08Z 的提交只能作为外部上界，不能当作官方发布时间"
+      },
+      "tags": [
+        "kimi",
+        "coding",
+        "long-context",
+        "api",
+        "open-weights"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "moonshot-kimi-k3-1-pro-api-launch",
+      "short_label_zh": "Kimi K3.1 Pro",
+      "short_label_en": "Kimi K3.1 Pro",
+      "next_action_zh": "一天内用 20 个真实仓库任务对比现用模型，记录成功率、总成本、首 token 延迟和长上下文退化。",
+      "next_action_en": "In one day, compare 20 real repository tasks with the current model, recording success, total cost, time to first token and long-context degradation.",
+      "source_ids": [
+        "src-bf44de9e544de4cb"
+      ],
+      "project_ids": [
+        "kimi-k3-1-pro"
+      ],
+      "scenario_ids": [
+        "models",
+        "developer-tools"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261023-05-release-evidence",
+          "claim_zh": "Kimi K3.1 Pro 已在产品和 API 上线，权重承诺 11 月 4 日前发布。",
+          "claim_en": "Kimi K3.1 Pro is live in products and the API, with weights promised by November 4.",
+          "source_ids": [
+            "src-bf44de9e544de4cb"
+          ],
+          "event_ids": [
+            "ev-20261023-05"
+          ],
+          "relation": "support",
+          "verification": "first-party availability verified; weights are not yet public and benchmarks are publisher-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261023-05-published",
+          "kind": "new",
+          "occurred_at": "2026-10-23",
+          "discovered_at": "2026-10-24T15:59:49Z",
+          "summary_zh": "Moonshot 上线 Kimi K3.1 Pro 与 Highspeed API",
+          "summary_en": "Moonshot launches Kimi K3.1 Pro and Highspeed API",
+          "evidence_ids": [
+            "ev-20261023-05-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261023-06",
+      "title": "Block previews Dessa, a speech-only full-duplex conversation model",
+      "title_zh": "Block 预览纯语音训练的全双工模型 Dessa",
+      "category": "research",
+      "organization": [
+        "Block"
+      ],
+      "published_at": "2026-10-23",
+      "first_seen_at": "2026-10-24T15:59:49Z",
+      "last_updated_at": "2026-10-24T15:59:49Z",
+      "source_type": "official_blog",
+      "primary_source": "https://block.xyz/dessa",
+      "secondary_sources": [],
+      "summary": "Block previewed Dessa, a speech-to-speech model trained from scratch on human conversation without text or a pretrained model. It listens and speaks simultaneously and runs faster than real time, according to the team. The page provides selected audio demonstrations but no weights, code, API, benchmark protocol or independent evaluation.",
+      "summary_en": "Block previewed Dessa, a speech-to-speech model trained from scratch on human conversation without text or a pretrained model. It listens and speaks simultaneously and runs faster than real time, according to the team. The page provides selected audio demonstrations but no weights, code, API, benchmark protocol or independent evaluation.",
+      "summary_zh": "Block 预览 Dessa：一个从人类对话语音开始训练、未使用文本或预训练模型的 speech-to-speech 模型。团队称它能同时听和说，推理快于实时。页面只提供精选音频演示，没有权重、代码、API、benchmark 协议或独立评测。",
+      "why_it_matters": "For voice-agent builders, speech-only training could preserve timing, overlap and emotion that text intermediates discard. Without a testable artifact or systematic evaluation, the demo cannot yet support an architecture decision.",
+      "why_it_matters_en": "For voice-agent builders, speech-only training could preserve timing, overlap and emotion that text intermediates discard. Without a testable artifact or systematic evaluation, the demo cannot yet support an architecture decision.",
+      "why_it_matters_zh": "对语音 agent 开发者来说，纯语音训练可能保留文本中间层丢失的节奏、重叠发言和情绪。没有可测试产物或系统评测，当前演示还不足以支撑架构决策。",
+      "technical_details": {
+        "training": "trained from scratch on human conversation audio; publisher says no text or pretrained model",
+        "interaction": "full-duplex speech-to-speech with simultaneous listening and speaking",
+        "infrastructure": "publisher says training used one NVIDIA GB200 NVL72",
+        "availability": "selected audio demos only; no weights, code, API or benchmark protocol",
+        "time_basis": "the official page establishes October 23 at date precision; Hacker News submission at 2026-10-23T19:09:54Z is an external upper bound only"
+      },
+      "technical_details_zh": {
+        "训练方式": "从人类对话语音开始训练；发布方称未用文本或预训练模型",
+        "交互方式": "全双工 speech-to-speech，可同时听和说",
+        "训练基础设施": "发布方称使用一台 NVIDIA GB200 NVL72",
+        "可用性": "只有精选音频演示；没有权重、代码、API 或 benchmark 协议",
+        "时间依据": "官方页面只能确认 10 月 23 日；Hacker News 在 2026-10-23T19:09:54Z 的提交仅为外部上界"
+      },
+      "tags": [
+        "speech",
+        "voice-agent",
+        "full-duplex",
+        "research-preview"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 5,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "block-dessa-speech-only-full-duplex-preview",
+      "short_label_zh": "Dessa",
+      "short_label_en": "Dessa",
+      "next_action_zh": "等待公开 API、权重或含基线与延迟指标的评测后，再与现有 ASR-LLM-TTS 链路比较。",
+      "next_action_en": "Wait for an API, weights or an evaluation with baselines and latency metrics before comparing it with an ASR-LLM-TTS pipeline.",
+      "source_ids": [
+        "src-b5cb20bfbe29ca46"
+      ],
+      "project_ids": [
+        "dessa"
+      ],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261023-06-preview-evidence",
+          "claim_zh": "Block 发布 Dessa 纯语音全双工研究预览与音频演示。",
+          "claim_en": "Block published a Dessa speech-only full-duplex research preview with audio demonstrations.",
+          "source_ids": [
+            "src-b5cb20bfbe29ca46"
+          ],
+          "event_ids": [
+            "ev-20261023-06"
+          ],
+          "relation": "support",
+          "verification": "first-party preview verified; no testable artifact or independent evaluation"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261023-06-published",
+          "kind": "new",
+          "occurred_at": "2026-10-23",
+          "discovered_at": "2026-10-24T15:59:49Z",
+          "summary_zh": "Block 发布 Dessa 纯语音全双工研究预览",
+          "summary_en": "Block previews the Dessa speech-only full-duplex model",
+          "evidence_ids": [
+            "ev-20261023-06-preview-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

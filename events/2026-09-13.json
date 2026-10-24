@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-10-21T15:58:23Z",
+      "last_updated_at": "2026-10-24T15:59:49Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -26,7 +26,8 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.104.2",
         "https://github.com/BerriAI/litellm/releases/tag/v1.105.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.106.0",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.107.0"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.107.0",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.106.3"
       ],
       "summary": "LiteLLM 1.107.0 expands the stable gateway with Microsoft 365 Copilot and per-user GitHub Copilot OAuth, additional Decisions providers, signed-container verification and request-failure analytics. It also hardens MCP bearer propagation, Bedrock tool calls, spend accounting and OpenAI SDK 3 compatibility. The large aggregated release still requires a production-shaped canary.",
       "why_it_matters": "For teams using LiteLLM as an agent gateway, the safer defaults reduce credential spillover but can break local MCP setups. Enterprise-only items and release-note aggregation mean the final entitlement and behavior must be checked in a production-shaped canary.",
@@ -48,7 +49,11 @@
         "update_2026_10_08": "1.104.2 stable backports `/v1/systemone`, the OpenAI-compatible `/v1/decisions` endpoint and the OpenAI Decisions provider from the development line.",
         "update_2026_10_11": "1.105.0 stable adds litellm.agent(), MCP capability/version discovery, stricter caller authorization, retrieved-chunk guardrails, private-destination blocking and routing/spend fixes.",
         "update_2026_10_18": "1.106.0 stable: stdio MCP disabled by default; MCP OAuth issuer binding and credential isolation; encrypted guardrail/search configuration; Anthropic and OpenAI workload identity; optional FIPS startup gate; signed containers; stronger spend backpressure and shutdown flush.",
-        "update_2026_10_21": "1.107.0 stable: Microsoft 365 Copilot and per-user GitHub Copilot OAuth providers; hosted vLLM, Databricks and Azure Decisions routes; signed containers; failure-rate analytics; MCP bearer, Bedrock tool-call, spend and SDK 3 fixes."
+        "update_2026_10_21": "1.107.0 stable: Microsoft 365 Copilot and per-user GitHub Copilot OAuth providers; hosted vLLM, Databricks and Azure Decisions routes; signed containers; failure-rate analytics; MCP bearer, Bedrock tool-call, spend and SDK 3 fixes.",
+        "latest_version": "1.106.3",
+        "supply_chain_change": "Container image signing key changed; old cosign verification policies will fail until updated. The eMudhra root CA was removed.",
+        "image_digest": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
+        "time_basis": "GitHub release published 2026-10-24T09:34:13Z."
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -64,7 +69,11 @@
         "2026-10-08 更新": "1.104.2 稳定版从开发线回移 `/v1/systemone`、OpenAI 兼容的 `/v1/decisions` endpoint 与 OpenAI Decisions provider。",
         "2026-10-11 更新": "1.105.0 稳定版加入 litellm.agent()、MCP capability/version 发现、更严格的调用者授权、检索片段护栏、私网目标阻断及路由/计费修复。",
         "2026-10-18 更新": "1.106.0 稳定版：默认关闭 stdio MCP；绑定 MCP OAuth issuer 并隔离凭据；加密护栏与搜索配置；支持 Anthropic 与 OpenAI workload identity；可启用 FIPS 启动闸门；容器签名；加强费用 backpressure 与退出落盘。",
-        "2026-10-21 更新": "1.107.0 稳定版：Microsoft 365 Copilot 与按用户 GitHub Copilot OAuth provider；hosted vLLM、Databricks 与 Azure Decisions 路由；容器签名；失败率分析；MCP bearer、Bedrock 工具调用、费用与 SDK 3 修复。"
+        "2026-10-21 更新": "1.107.0 稳定版：Microsoft 365 Copilot 与按用户 GitHub Copilot OAuth provider；hosted vLLM、Databricks 与 Azure Decisions 路由；容器签名；失败率分析；MCP bearer、Bedrock 工具调用、费用与 SDK 3 修复。",
+        "最新版本": "1.106.3",
+        "供应链变化": "容器镜像签名密钥已更换；旧 cosign 校验策略会失败，eMudhra root CA 也已移除。",
+        "镜像摘要": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
+        "时间依据": "GitHub release 发布时间为 2026-10-24T09:34:13Z。"
       },
       "tags": [
         "litellm",
@@ -93,7 +102,8 @@
         "src-5f6db8b0b36e1913",
         "src-afb4f1911ed6958a",
         "src-fe3326f4dbcaa51b",
-        "src-1e8b991416e8869f"
+        "src-1e8b991416e8869f",
+        "src-26c451a3ba9575d2"
       ],
       "project_ids": [
         "mcp"
@@ -195,6 +205,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; production behavior not independently validated"
+        },
+        {
+          "id": "ev-20260913-01-litellm-signing-key-evidence",
+          "claim_zh": "LiteLLM 1.106.3 更换镜像签名密钥并移除旧根证书",
+          "claim_en": "LiteLLM 1.106.3 rotates its image-signing key and removes an old root CA",
+          "source_ids": [
+            "src-26c451a3ba9575d2"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "first-party artifact verified"
         }
       ],
       "changes": [
@@ -287,6 +310,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-signing-key",
+          "kind": "update",
+          "occurred_at": "2026-10-24T09:34:13Z",
+          "discovered_at": "2026-10-24T15:59:49Z",
+          "summary_zh": "LiteLLM 1.106.3 更换镜像签名密钥并移除旧根证书",
+          "summary_en": "LiteLLM 1.106.3 rotates its image-signing key and removes an old root CA",
+          "historical": false,
+          "importance": "major",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-signing-key-evidence"
+          ]
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",

@@ -75,17 +75,17 @@
         "src-1f4559e41bf13b35",
         "src-0307ec1244417a61"
       ],
-      "last_reviewed_at": "2026-10-23T16:04:55Z",
+      "last_reviewed_at": "2026-10-24T15:59:49Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.309 集中修补沙箱、symlink、MCP 配置和 Bash deny 绕过，成熟度支持优先升级。",
-        "judgment_en": "Version 2.1.309 closes sandbox, symlink, MCP-config and Bash-deny bypasses, supporting a priority upgrade.",
-        "next_action_zh": "升级后回归 symlink、MCP 配置和复合 Bash deny 场景。",
-        "next_action_en": "After upgrading, regress symlink, MCP-config and compound Bash-deny scenarios.",
+        "judgment_zh": "2.1.310 增加云端 monitor、网关容错和权限可见性，仍适合升级后回归。",
+        "judgment_en": "Version 2.1.310 adds cloud monitors, gateway fallback and permission visibility; upgrade with regression tests.",
+        "next_action_zh": "升级后回归 monitor、网关和 symlink 权限场景。",
+        "next_action_en": "After upgrading, regress monitor, gateway and symlink-permission paths.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-23T16:04:55Z"
+        "reviewed_at": "2026-10-24T15:59:49Z"
       }
     },
     {
@@ -122,17 +122,17 @@
         "src-2da06eac2ec92ad6",
         "src-5c24af93d6fa5960"
       ],
-      "last_reviewed_at": "2026-10-22T16:37:30Z",
+      "last_reviewed_at": "2026-10-24T15:59:49Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.26.0 用持久证据恢复执行并保留 UNKNOWN 状态，仍需独立故障注入。",
-        "judgment_en": "Version 0.26.0 recovers from durable evidence and preserves UNKNOWN outcomes; independent fault injection is still needed.",
-        "next_action_zh": "测试断线与 owner 切换，确认 UNKNOWN 不重放。",
-        "next_action_en": "Test disconnect and owner transfer; verify UNKNOWN outcomes are not replayed.",
+        "judgment_zh": "0.26.1 继续加强恢复、子 agent 委派与迟到结果处理，建议在受控仓库试用。",
+        "judgment_en": "Version 0.26.1 strengthens recovery, subagent delegation and late-result handling; trial it on a controlled repository.",
+        "next_action_zh": "用故障注入回归恢复、MCP 替换和迟到工具结果。",
+        "next_action_en": "Fault-inject recovery, MCP replacement and late tool results.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-10-22T16:37:30Z"
+        "reviewed_at": "2026-10-24T15:59:49Z"
       }
     },
     {
@@ -683,20 +683,20 @@
         "src-afb4f1911ed6958a",
         "src-fe3326f4dbcaa51b"
       ],
-      "last_reviewed_at": "2026-10-21T15:58:23Z",
+      "last_reviewed_at": "2026-10-24T15:59:49Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "LiteLLM 1.106 默认关闭 stdio MCP，并继续把身份和凭据控制留在 gateway。",
-        "judgment_en": "LiteLLM 1.106 disables stdio MCP by default and keeps identity and credential controls in the gateway.",
-        "next_action_zh": "在类生产 canary 回归 OAuth、MCP bearer、Decisions、计费与回滚。",
-        "next_action_en": "Canary OAuth, MCP bearer handling, Decisions, spend accounting and rollback.",
+        "judgment_zh": "TypeScript SDK 2.4 提供实验性 Skills 扩展并收紧校验，适合隔离试验而非直接全量升级。",
+        "judgment_en": "TypeScript SDK 2.4 adds experimental Skills and tighter validation; trial it in isolation before broad rollout.",
+        "next_action_zh": "在测试服务验证 Skills digest、旧 structuredContent 和 schema 兼容性。",
+        "next_action_en": "Validate Skills digests, legacy structuredContent and schema compatibility in a test server.",
         "basis_event_ids": [
           "ev-20260913-01",
           "ev-20260928-07",
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-10-21T15:58:23Z"
+        "reviewed_at": "2026-10-24T15:59:49Z"
       }
     },
     {
@@ -5242,7 +5242,175 @@
         ],
         "reviewed_at": "2026-10-23T16:04:55Z"
       }
+    },
+    {
+      "id": "hy-nomas",
+      "name_zh": "Hy-Nomas",
+      "name_en": "Hy-Nomas",
+      "type": "open-weight-model",
+      "aliases": [
+        "Hy-Nomas"
+      ],
+      "pattern": "Hy-Nomas",
+      "event_ids": [
+        "ev-20261023-02"
+      ],
+      "source_ids": [
+        "src-7b7d6db0df86b848",
+        "src-9521b60b04aa1cbb",
+        "src-5c74d58a4b897136"
+      ],
+      "current_judgment_event_id": "ev-20261023-02",
+      "official_source_ids": [
+        "src-7b7d6db0df86b848",
+        "src-9521b60b04aa1cbb",
+        "src-5c74d58a4b897136"
+      ],
+      "last_reviewed_at": "2026-10-24T15:59:49Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "权重、代码和训练方案已公开，但评测仍由发布方完成。",
+        "judgment_en": "Weights, code and training recipes are public, but evaluation remains publisher-run.",
+        "next_action_zh": "先做短片段控制稳定性与显存验证。",
+        "next_action_en": "First validate short-sequence control stability and memory use.",
+        "basis_event_ids": [
+          "ev-20261023-02"
+        ],
+        "reviewed_at": "2026-10-24T15:59:49Z"
+      }
+    },
+    {
+      "id": "tensorrt-global-performance-tuner",
+      "name_zh": "TensorRT Global Performance Tuner",
+      "name_en": "TensorRT Global Performance Tuner",
+      "type": "infrastructure-tool",
+      "aliases": [
+        "Global Performance Tuner"
+      ],
+      "pattern": "TensorRT Global Performance Tuner",
+      "event_ids": [
+        "ev-20261023-03"
+      ],
+      "source_ids": [
+        "src-7e6eaaa1dc0a2da9",
+        "src-7383f2fa84171fd1"
+      ],
+      "current_judgment_event_id": "ev-20261023-03",
+      "official_source_ids": [
+        "src-7e6eaaa1dc0a2da9",
+        "src-7383f2fa84171fd1"
+      ],
+      "last_reviewed_at": "2026-10-24T15:59:49Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开实现可验证，但性能增益需用自有模型复现。",
+        "judgment_en": "The public implementation is testable, but gains need reproduction on local models.",
+        "next_action_zh": "用一个生产 ONNX 模型做精度与吞吐对照。",
+        "next_action_en": "Compare accuracy and throughput on one production ONNX model.",
+        "basis_event_ids": [
+          "ev-20261023-03"
+        ],
+        "reviewed_at": "2026-10-24T15:59:49Z"
+      }
+    },
+    {
+      "id": "litpivot",
+      "name_zh": "LitPivot",
+      "name_en": "LitPivot",
+      "type": "research-project",
+      "aliases": [
+        "LitPivot"
+      ],
+      "pattern": "LitPivot",
+      "event_ids": [
+        "ev-20261023-04"
+      ],
+      "source_ids": [
+        "src-5d794c3788a3a4be",
+        "src-bc75b6469b6ca9ed"
+      ],
+      "current_judgment_event_id": "ev-20261023-04",
+      "official_source_ids": [
+        "src-5d794c3788a3a4be",
+        "src-bc75b6469b6ca9ed"
+      ],
+      "last_reviewed_at": "2026-10-24T15:59:49Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "小样本研究有启发，但没有公开系统，无法做工程验证。",
+        "judgment_en": "The small study is suggestive, but no public system is available for engineering validation.",
+        "next_action_zh": "等待代码、服务或独立复现。",
+        "next_action_en": "Wait for code, a service or independent replication.",
+        "basis_event_ids": [
+          "ev-20261023-04"
+        ],
+        "reviewed_at": "2026-10-24T15:59:49Z"
+      }
+    },
+    {
+      "id": "kimi-k3-1-pro",
+      "name_zh": "Kimi K3.1 Pro",
+      "name_en": "Kimi K3.1 Pro",
+      "type": "foundation-model",
+      "aliases": [
+        "Kimi K3.1 Pro"
+      ],
+      "pattern": "Kimi K3.1 Pro",
+      "event_ids": [
+        "ev-20261023-05"
+      ],
+      "source_ids": [
+        "src-bf44de9e544de4cb"
+      ],
+      "current_judgment_event_id": "ev-20261023-05",
+      "official_source_ids": [
+        "src-bf44de9e544de4cb"
+      ],
+      "last_reviewed_at": "2026-10-24T15:59:49Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "API 已可调用，但权重未发布且性能只有厂商结果。",
+        "judgment_en": "The API is callable, but weights are pending and performance is publisher-reported.",
+        "next_action_zh": "一天内用 20 个真实仓库任务对比现用模型，记录成功率、总成本、首 token 延迟和长上下文退化。",
+        "next_action_en": "In one day, compare 20 real repository tasks with the current model, recording success, total cost, time to first token and long-context degradation.",
+        "basis_event_ids": [
+          "ev-20261023-05"
+        ],
+        "reviewed_at": "2026-10-24T15:59:49Z"
+      }
+    },
+    {
+      "id": "dessa",
+      "name_zh": "Dessa",
+      "name_en": "Dessa",
+      "type": "research-project",
+      "aliases": [
+        "Dessa"
+      ],
+      "pattern": "Dessa",
+      "event_ids": [
+        "ev-20261023-06"
+      ],
+      "source_ids": [
+        "src-b5cb20bfbe29ca46"
+      ],
+      "current_judgment_event_id": "ev-20261023-06",
+      "official_source_ids": [
+        "src-b5cb20bfbe29ca46"
+      ],
+      "last_reviewed_at": "2026-10-24T15:59:49Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "只有研究预览和精选演示，没有可测试产物。",
+        "judgment_en": "Only a research preview and selected demos are available; no testable artifact exists.",
+        "next_action_zh": "等待公开 API、权重或含基线与延迟指标的评测后，再与现有 ASR-LLM-TTS 链路比较。",
+        "next_action_en": "Wait for an API, weights or an evaluation with baselines and latency metrics before comparing it with an ASR-LLM-TTS pipeline.",
+        "basis_event_ids": [
+          "ev-20261023-06"
+        ],
+        "reviewed_at": "2026-10-24T15:59:49Z"
+      }
     }
   ],
-  "last_updated": "2026-10-23T16:04:55Z"
+  "last_updated": "2026-10-24T15:59:49Z"
 }

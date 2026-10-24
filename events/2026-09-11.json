@@ -801,27 +801,35 @@
       ],
       "published_at": "2026-09-11T10:00:00Z",
       "first_seen_at": "2026-09-11T18:31:48Z",
-      "last_updated_at": "2026-09-11T18:31:48Z",
+      "last_updated_at": "2026-10-24T15:59:49Z",
       "source_type": "official_blog",
       "primary_source": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
-      "secondary_sources": [],
-      "summary": "Part one of OpenAI's engineering series on Habitat, the storage platform behind ChatGPT (1B+ weekly users, 500+ PB stored, 22M requests per second at the edge, 70M+ per second across all services, 100k+ requests per second during storage failure recovery). The writeup covers the migration from a shared Python library into a globally distributed service: asyncio tuning to bound scheduling delay under load; fixing an aiohttp LIFO-connection-pool metastable failure by moving to FIFO; a custom HTTP/2 fan-in front end on Envoy; an internal NoSQL layer with a TAO-style graph API; and Rockset-based CDC for online/offline migrations with a disaster-recovery escape hatch. The kicker: in Q2 2026, Habitat v3 — a complete rewrite in Rust — was built by 2 engineers in months using Codex and GPT-5.5, replacing a Python service second only to Kubernetes in core share, at ~6x CPU and ~15x memory efficiency, now serving ~95% of production traffic.",
+      "secondary_sources": [
+        "https://openai.com/index/scaling-storage-one-billion-users-part-two"
+      ],
+      "summary": "OpenAI described Habitat, the storage platform behind ChatGPT, as a 500 PB service spanning 40 regions. Part I covers its Python-to-Rust rewrite, HTTP/2 fan-in, connection-pool failures and change-data-capture migrations. Part II adds Cosmos DB co-managed multi-tenancy, hot-key throttling, placement and residency controls, selective replication and integrated caching. Scale and efficiency figures are vendor-reported.",
       "why_it_matters": "The architecture lessons (metastable failures in connection pools, asyncio tail latency, HTTP/2 fan-in economics) apply to any high-scale Python-to-Rust migration. But the headline data point is organizational: a 2-engineer, agent-assisted full rewrite of a top-2-by-cores OpenAI service at 6x/15x efficiency — currently the strongest public evidence for AI-assisted rewrites of business-critical infrastructure, and a benchmark for what 'AI-native engineering team' now means in practice.",
-      "summary_zh": "OpenAI 工程系列第一篇：ChatGPT 背后的存储平台 Habitat（10 亿+ 周活用户、500+ PB 存储、边缘 22M req/s、全服务 70M+ req/s、存储故障恢复期 10 万+ req/s）。文章讲从共享 Python 库迁移到全球分布式服务的历程：asyncio 调度延迟调优；把 aiohttp LIFO 连接池的亚稳态失效改为 FIFO 修复；基于 Envoy 的自研 HTTP/2 fan-in 前端；TAO 式图 API 的内部 NoSQL 层；基于 Rockset 的 CDC 支持在线/离线迁移与灾备逃生门。最重的一点：2026 年 Q2，Habitat v3 完全用 Rust 重写——2 名工程师借助 Codex 与 GPT-5.5 数月完成，替换了核心占比仅次于 Kubernetes 的 Python 服务，CPU 效率约 6 倍、内存效率约 15 倍，现承载约 95% 生产流量。",
-      "summary_en": "Part one of OpenAI's engineering series on Habitat, the storage platform behind ChatGPT (1B+ weekly users, 500+ PB stored, 22M requests per second at the edge, 70M+ per second across all services, 100k+ requests per second during storage failure recovery). The writeup covers the migration from a shared Python library into a globally distributed service: asyncio tuning to bound scheduling delay under load; fixing an aiohttp LIFO-connection-pool metastable failure by moving to FIFO; a custom HTTP/2 fan-in front end on Envoy; an internal NoSQL layer with a TAO-style graph API; and Rockset-based CDC for online/offline migrations with a disaster-recovery escape hatch. The kicker: in Q2 2026, Habitat v3 — a complete rewrite in Rust — was built by 2 engineers in months using Codex and GPT-5.5, replacing a Python service second only to Kubernetes in core share, at ~6x CPU and ~15x memory efficiency, now serving ~95% of production traffic.",
+      "summary_zh": "OpenAI 介绍 ChatGPT 背后的存储平台 Habitat：500 PB 数据分布在 40 个区域。第一部分讲 Python 到 Rust 重写、HTTP/2 fan-in、连接池失效和变更数据捕获迁移；第二部分补充 Cosmos DB 协同多租户、热点键限流、放置与驻留控制、选择性复制和集成缓存。规模与效率数字均由厂商自报。",
+      "summary_en": "OpenAI described Habitat, the storage platform behind ChatGPT, as a 500 PB service spanning 40 regions. Part I covers its Python-to-Rust rewrite, HTTP/2 fan-in, connection-pool failures and change-data-capture migrations. Part II adds Cosmos DB co-managed multi-tenancy, hot-key throttling, placement and residency controls, selective replication and integrated caching. Scale and efficiency figures are vendor-reported.",
       "why_it_matters_zh": "架构教训（连接池亚稳态失效、asyncio 尾延迟、HTTP/2 fan-in 的成本账）适用于任何大规模 Python→Rust 迁移。但最重的数据点是组织层面的：2 名工程师 + agent 辅助，把 OpenAI 核心占比前二的服务完全重写，效率 6 倍/15 倍——这是迄今「AI 辅助重写业务关键基础设施」最强的公开证据，也为「AI 原生工程团队」的实践含义给出了标尺。",
       "why_it_matters_en": "The architecture lessons (metastable failures in connection pools, asyncio tail latency, HTTP/2 fan-in economics) apply to any high-scale Python-to-Rust migration. But the headline data point is organizational: a 2-engineer, agent-assisted full rewrite of a top-2-by-cores OpenAI service at 6x/15x efficiency — currently the strongest public evidence for AI-assisted rewrites of business-critical infrastructure, and a benchmark for what 'AI-native engineering team' now means in practice.",
       "technical_details": {
         "scale": "1B+ weekly users; 500+ PB stored; 22M req/s at the edge; 70M+ req/s across services; 100k+ req/s during failure recovery; regional failover in minutes with multi-region replicas; recovery within seconds at the storage layer",
         "architecture": "asyncio scheduling-delay tuning; aiohttp LIFO->FIFO connection pool (metastable failure fix); Envoy-based HTTP/2 fan-in front end; TAO-style graph API NoSQL layer; Rockset-based CDC; S3-less design with regional replicas",
         "habitat_v3": "Q2 2026 full Rust rewrite by 2 engineers with Codex + GPT-5.5 in months; replaced the Python service second only to Kubernetes in core share; ~6x CPU and ~15x memory efficiency; ~95% of production traffic",
-        "note": "page og metadata shows an earlier publishedTime; dated here by the official RSS item (Fri, 11 Sep 2026 10:00 GMT)"
+        "note": "page og metadata shows an earlier publishedTime; dated here by the official RSS item (Fri, 11 Sep 2026 10:00 GMT)",
+        "part_two": "OpenAI says Habitat stores 500 PB across 40 regions and uses Cosmos DB co-managed multi-tenancy, hot-key throttling, selective replication and integrated caching.",
+        "evidence_boundary": "Architecture and performance figures are vendor-reported.",
+        "time_basis": "OpenAI RSS published 2026-10-23T17:00:00Z."
       },
       "technical_details_zh": {
         "规模": "10 亿+ 周活；500+ PB 存储；边缘 22M req/s；全服务 70M+ req/s；故障恢复期 10 万+ req/s；区域故障分钟级切换、存储层秒级恢复",
         "架构": "asyncio 调度延迟调优；aiohttp 连接池 LIFO→FIFO（修亚稳态失效）；Envoy 上的 HTTP/2 fan-in 前端；TAO 式图 API NoSQL 层；Rockset CDC；无 S3、多区域副本设计",
         "Habitat v3": "2026 Q2 由 2 名工程师用 Codex + GPT-5.5 数月完成 Rust 全量重写；替换核心占比仅次于 Kubernetes 的 Python 服务；CPU 约 6 倍 / 内存约 15 倍效率；承载约 95% 生产流量",
-        "注": "页面 og 元数据显示更早的 publishedTime；此处按官方 RSS 条目定日期（周五 9/11 10:00 GMT）"
+        "注": "页面 og 元数据显示更早的 publishedTime；此处按官方 RSS 条目定日期（周五 9/11 10:00 GMT）",
+        "第二部分": "OpenAI 称 Habitat 在 40 个区域保存 500 PB 数据，并采用 Cosmos DB 协同多租户、热点键限流、选择性复制和集成缓存。",
+        "证据边界": "架构与性能数字均来自厂商自述。",
+        "时间依据": "OpenAI RSS 发布时间为 2026-10-23T17:00:00Z。"
       },
       "tags": [
         "infrastructure",
@@ -840,7 +848,8 @@
       "recommendation": "WATCH",
       "event_fingerprint": "openai-habitat-storage-scaling-rust-rewrite",
       "source_ids": [
-        "src-46fcf5bb7b99520f"
+        "src-46fcf5bb7b99520f",
+        "src-ee4c22366ef7e7ab"
       ],
       "project_ids": [],
       "scenario_ids": [
@@ -861,6 +870,19 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260911-10-habitat-part-two-evidence",
+          "claim_zh": "OpenAI 公开 Habitat 的多租户、缓存和全球放置设计",
+          "claim_en": "OpenAI publishes Habitat multi-tenancy, caching and global placement details",
+          "source_ids": [
+            "src-ee4c22366ef7e7ab"
+          ],
+          "event_ids": [
+            "ev-20260911-10"
+          ],
+          "relation": "support",
+          "verification": "first-party artifact verified"
         }
       ],
       "changes": [
@@ -875,8 +897,25 @@
             "ev-20260911-10-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260911-10-habitat-part-two",
+          "kind": "update",
+          "occurred_at": "2026-10-23T17:00:00Z",
+          "discovered_at": "2026-10-24T15:59:49Z",
+          "summary_zh": "OpenAI 公开 Habitat 的多租户、缓存和全球放置设计",
+          "summary_en": "OpenAI publishes Habitat multi-tenancy, caching and global placement details",
+          "historical": false,
+          "importance": "major",
+          "evidence_ids": [
+            "ev-20260911-10-habitat-part-two-evidence"
+          ]
         }
-      ]
+      ],
+      "short_label_zh": "Habitat",
+      "short_label_en": "Habitat",
+      "next_action_en": "Reproduce the hot-key throttling and cache-invalidation patterns in a load test before borrowing Habitat design choices.",
+      "next_action_zh": "借鉴 Habitat 设计前，先用负载测试复现热点键限流和缓存失效场景。"
     },
     {
       "event_id": "ev-20260911-11",
@@ -966,8 +1005,12 @@
           "id": "ev-20260911-11-api-evidence",
           "claim_zh": "GitHub 已开放通过 REST 与 GraphQL API 触发 Copilot code review，并允许逐请求设置 effort。",
           "claim_en": "GitHub now lets REST and GraphQL clients request Copilot code review and set effort per request.",
-          "source_ids": ["src-70fa5b461d34e63d"],
-          "event_ids": ["ev-20260911-11"],
+          "source_ids": [
+            "src-70fa5b461d34e63d"
+          ],
+          "event_ids": [
+            "ev-20260911-11"
+          ],
           "relation": "support",
           "verification": "verified-primary-source"
         }
@@ -992,7 +1035,9 @@
           "discovered_at": "2026-10-03T16:01:57Z",
           "summary_zh": "Copilot code review 开放 REST 与 GraphQL 调用，并支持逐请求 effort。",
           "summary_en": "Copilot code review adds REST and GraphQL access with per-request effort.",
-          "evidence_ids": ["ev-20260911-11-api-evidence"],
+          "evidence_ids": [
+            "ev-20260911-11-api-evidence"
+          ],
           "historical": false,
           "importance": "major"
         }

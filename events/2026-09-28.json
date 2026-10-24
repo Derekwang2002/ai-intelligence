@@ -722,12 +722,13 @@
       ],
       "published_at": "2026-09-28T19:24:07Z",
       "first_seen_at": "2026-09-29T16:01:24Z",
-      "last_updated_at": "2026-10-03T16:01:57Z",
+      "last_updated_at": "2026-10-24T15:59:49Z",
       "source_type": "primary",
       "primary_source": "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/2.3.0",
       "secondary_sources": [
         "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.3.0",
-        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.2.0"
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.2.0",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.4.0"
       ],
       "summary": "MCP TypeScript and Python SDK 2.3 releases tighten connection, OAuth and payload boundaries. TypeScript redirects stay same-origin by default, can validate token audiences and enforce tool-input element limits; server and transport objects now have a one-request lifecycle. Python rejects invalid MCP headers during registration and caps SSE events at 1 MiB by default.",
       "why_it_matters": "For MCP client and gateway teams, the security defaults are useful but the transport lifecycle can break shared server instances. Test redirects, audiences, oversized payloads and reconnection before rollout.",
@@ -741,7 +742,11 @@
         "typescript_lifecycle": "server and transport are single-connection/single-request objects",
         "python_security": "invalid x-mcp-header rejected during registration",
         "python_limits": "SSE event default maximum 1 MiB, configurable",
-        "compatibility_risk": "shared server/transport reuse and oversized SSE payloads can break"
+        "compatibility_risk": "shared server/transport reuse and oversized SSE payloads can break",
+        "latest_version": "2.4.0",
+        "skills_extension": "Servers can publish skill folders and clients can list, read and verify them; attach wiring remains experimental.",
+        "upgrade_boundary": "Invalid x-mcp-header numeric parameters and URI schemes are rejected; older structuredContent wrappers change.",
+        "time_basis": "GitHub release published 2026-10-23T18:32:25Z."
       },
       "technical_details_zh": {
         "版本": "TypeScript 2.3.0 / package line 1.32.0；Python 2.3.0",
@@ -749,7 +754,11 @@
         "TypeScript 生命周期": "server 与 transport 只能服务一个连接或请求",
         "Python 安全": "注册时拒绝无效 x-mcp-header",
         "Python 限制": "SSE event 默认上限 1 MiB，可配置",
-        "兼容风险": "复用 server/transport 或发送超大 SSE 负载可能失效"
+        "兼容风险": "复用 server/transport 或发送超大 SSE 负载可能失效",
+        "最新版本": "2.4.0",
+        "Skills 扩展": "服务端可发布 skill 文件夹，客户端可列出、读取并校验；attach 接线仍属实验性。",
+        "升级边界": "非法 x-mcp-header 数字参数和 URI scheme 会被拒绝，旧连接的 structuredContent 包装方式也有变化。",
+        "时间依据": "GitHub release 发布时间为 2026-10-23T18:32:25Z。"
       },
       "tags": [
         "mcp",
@@ -769,7 +778,8 @@
       "source_ids": [
         "src-320437c34242ba62",
         "src-781657bf5c42e86e",
-        "src-987dd82c392616be"
+        "src-987dd82c392616be",
+        "src-3bb16877d8a781bb"
       ],
       "project_ids": [
         "mcp"
@@ -805,6 +815,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260928-07-sdk-2-4-evidence",
+          "claim_zh": "MCP TypeScript SDK 2.4 增加实验性 Skills 扩展并收紧协议校验",
+          "claim_en": "MCP TypeScript SDK 2.4 adds experimental Skills and tighter protocol validation",
+          "source_ids": [
+            "src-3bb16877d8a781bb"
+          ],
+          "event_ids": [
+            "ev-20260928-07"
+          ],
+          "relation": "support",
+          "verification": "first-party artifact verified"
         }
       ],
       "changes": [
@@ -833,6 +856,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260928-07-sdk-2-4",
+          "kind": "update",
+          "occurred_at": "2026-10-23T18:32:25Z",
+          "discovered_at": "2026-10-24T15:59:49Z",
+          "summary_zh": "MCP TypeScript SDK 2.4 增加实验性 Skills 扩展并收紧协议校验",
+          "summary_en": "MCP TypeScript SDK 2.4 adds experimental Skills and tighter protocol validation",
+          "historical": false,
+          "importance": "major",
+          "evidence_ids": [
+            "ev-20260928-07-sdk-2-4-evidence"
+          ]
         }
       ],
       "next_action_zh": "一天内回归跨域重定向、token audience、超大 SSE 负载、transport 复用和断线重连。",
