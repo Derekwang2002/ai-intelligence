@@ -1290,6 +1290,111 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261021-15",
+      "title": "Carbon-X opens a DNA-and-language model for local research",
+      "title_zh": "Carbon-X 开放可本地运行的 DNA 语言模型",
+      "category": "research",
+      "organization": [
+        "Hugging Face"
+      ],
+      "published_at": "2026-10-21T10:21:04Z",
+      "first_seen_at": "2026-10-25T15:57:07Z",
+      "last_updated_at": "2026-10-25T15:57:07Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/HuggingFaceBio/Carbon-X",
+      "secondary_sources": [],
+      "summary": "Carbon-X is an open 14.8B single-decoder model that places DNA sequences and natural language in one token stream. Apache-2.0 weights, code and five benchmarks are public; the publisher reports a 66.7 average and single-80GB-GPU serving. It is not clinically validated and should not perform exact coordinate operations.",
+      "why_it_matters": "For bioinformatics researchers, local weights can keep sensitive sequences off third-party services and lower experimentation cost. Publisher comparisons against frontier models are not independently reproduced and do not support clinical use.",
+      "summary_zh": "Carbon-X 是一个开放的 14.8B 单解码器模型，把 DNA 序列和自然语言放进同一 token 流。官方提供 Apache-2.0 权重、代码与 5 项 benchmark，声称平均分 66.7，单张 80GB GPU 可运行。它未经临床验证，也不应承担精确坐标操作。",
+      "summary_en": "Carbon-X is an open 14.8B single-decoder model that places DNA sequences and natural language in one token stream. Apache-2.0 weights, code and five benchmarks are public; the publisher reports a 66.7 average and single-80GB-GPU serving. It is not clinically validated and should not perform exact coordinate operations.",
+      "why_it_matters_zh": "对生物信息研究者来说，本地权重能避免把敏感序列发给第三方，并降低实验成本。厂商对前沿模型的成本与准确率比较尚无独立复现，不能转成医疗结论。",
+      "why_it_matters_en": "For bioinformatics researchers, local weights can keep sensitive sequences off third-party services and lower experimentation cost. Publisher comparisons against frontier models are not independently reproduced and do not support clinical use.",
+      "technical_details": {
+        "parameters": "14.8B",
+        "architecture": "Single decoder with a hybrid text and DNA tokenizer",
+        "license": "Apache-2.0",
+        "training": "302B mid-training tokens",
+        "context_window": "40,960 tokens",
+        "availability": "Public weights; vLLM or Transformers; one 80GB GPU in bfloat16",
+        "publisher_evaluation": "66.7 average across five DNA benchmarks; one sample per problem; comparison reasoning levels vary",
+        "limitation": "Not clinically validated; exact base counting and coordinates require deterministic tools",
+        "time_basis": "Hugging Face repository created 2026-10-21T10:21:04Z; recovered by recall outside the overlap."
+      },
+      "technical_details_zh": {
+        "参数": "14.8B",
+        "架构": "单解码器；文本与 DNA 共用混合 tokenizer",
+        "许可证": "Apache-2.0",
+        "训练": "302B mid-training tokens",
+        "上下文窗口": "40,960 tokens",
+        "可用性": "公开权重；支持 vLLM 或 Transformers；bfloat16 需单张 80GB GPU",
+        "发布方评测": "5 项 DNA benchmark 平均 66.7；每题一次采样；对比模型 reasoning 档位不一致",
+        "限制": "未经临床验证；碱基计数与坐标必须交给确定性工具",
+        "时间依据": "Hugging Face 仓库创建于 2026-10-21T10:21:04Z；本轮在 overlap 之前由召回补录。"
+      },
+      "tags": [
+        "carbon-x",
+        "dna",
+        "biology",
+        "open-weight",
+        "vllm"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "carbon-x-14b-dna-language-open-weights",
+      "source_ids": [
+        "src-a4354fc53bb8471f"
+      ],
+      "project_ids": [
+        "carbon-x"
+      ],
+      "scenario_ids": [
+        "research",
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261021-15-evidence-release",
+          "claim_zh": "Carbon-X 是一个开放的 14.8B 单解码器模型，把 DNA 序列和自然语言放进同一 token 流。官方提供 Apache-2.0 权重、代码与 5 项 benchmark，声称平均分 66.7，单张 80GB GPU 可运行。它未经临床验证，也不应承担精确坐标操作。",
+          "claim_en": "Carbon-X is an open 14.8B single-decoder model that places DNA sequences and natural language in one token stream. Apache-2.0 weights, code and five benchmarks are public; the publisher reports a 66.7 average and single-80GB-GPU serving. It is not clinically validated and should not perform exact coordinate operations.",
+          "source_ids": [
+            "src-a4354fc53bb8471f"
+          ],
+          "event_ids": [
+            "ev-20261021-15"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261021-15-published",
+          "kind": "new",
+          "occurred_at": "2026-10-21T10:21:04Z",
+          "discovered_at": "2026-10-25T15:57:07Z",
+          "summary_zh": "Carbon-X 开放可本地运行的 DNA 语言模型",
+          "summary_en": "Carbon-X opens a DNA-and-language model for local research",
+          "evidence_ids": [
+            "ev-20261021-15-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "short_label_zh": "Carbon-X",
+      "short_label_en": "Carbon-X",
+      "next_action_zh": "一天内用公开 benchmark 子集在隔离环境复测准确率、吞吐和显存；禁止用于临床决策。",
+      "next_action_en": "Within one day, reproduce a public benchmark slice in an isolated environment for accuracy, throughput and memory; do not use it for clinical decisions."
     }
   ]
 }

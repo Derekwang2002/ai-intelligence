@@ -506,6 +506,104 @@
           "historical": true
         }
       ]
+    },
+    {
+      "event_id": "ev-20260826-06",
+      "title": "GVS5H opens a ledger-based harness for repeated coding-agent passes",
+      "title_zh": "GVS5H 开放基于账本的多轮 coding agent 框架",
+      "category": "ai-agent",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-08-26T20:56:52Z",
+      "first_seen_at": "2026-10-25T15:57:07Z",
+      "last_updated_at": "2026-10-25T15:57:07Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/slee-persis/GVS5H",
+      "secondary_sources": [],
+      "summary": "GVS5H runs a coding agent for five passes and uses a shared ledger for hypotheses, failures and next steps instead of adding a coordinator model. Code and run data are public. On 100 hard LiveCodeBench tasks, the authors report Qwen3.8-27B improving from 66.8 to 92.4.",
+      "why_it_matters": "This makes failure-ledger retries reproducible and useful for testing agent state design. Cross-model comparisons use different scaffolds, pass counts and providers, so they do not establish a model ranking.",
+      "summary_zh": "GVS5H 让 coding agent 连续运行 5 轮，并用共享账本记录假设、失败和下一步，而不是增加新的协调模型。仓库公开代码与运行数据；作者在 100 道 LiveCodeBench 难题上报告 Qwen3.8-27B 从 66.8 提升到 92.4。",
+      "summary_en": "GVS5H runs a coding agent for five passes and uses a shared ledger for hypotheses, failures and next steps instead of adding a coordinator model. Code and run data are public. On 100 hard LiveCodeBench tasks, the authors report Qwen3.8-27B improving from 66.8 to 92.4.",
+      "why_it_matters_zh": "这给“先记录失败再重试”提供了可复现实验框架，适合测试 agent 的状态设计。跨模型比较的 scaffold、pass 数和供应商并不完全一致，不能据此宣称模型排名。",
+      "why_it_matters_en": "This makes failure-ledger retries reproducible and useful for testing agent state design. Cross-model comparisons use different scaffolds, pass counts and providers, so they do not establish a model ranking.",
+      "technical_details": {
+        "method": "Five zero-shot passes share a ledger of hypotheses, failures and next actions",
+        "evaluation": "100 latest hard LiveCodeBench tasks",
+        "publisher_results": "Qwen3.8-27B 66.8 to 92.4; Qwen3.8 Flash Next 93.0",
+        "artifacts": "MIT-licensed code and run data",
+        "limitation": "Claude comparison uses a different earlier scaffold and provider conditions",
+        "time_basis": "GitHub repository created 2026-08-26T20:56:52Z; old omission recovered by recall because it remained highly visible and testable."
+      },
+      "technical_details_zh": {
+        "方法": "5 轮 zero-shot 执行共享假设、失败与下一步账本",
+        "评测": "LiveCodeBench 最新 100 道难题",
+        "发布方结果": "Qwen3.8-27B 从 66.8 提升到 92.4；Qwen3.8 Flash Next 为 93.0",
+        "公开产物": "MIT 代码与运行数据",
+        "限制": "Claude 对比使用更早的不同 scaffold 与 provider 条件",
+        "时间依据": "GitHub 仓库创建于 2026-08-26T20:56:52Z；因持续高可见度且可验证，本轮召回补录旧遗漏。"
+      },
+      "tags": [
+        "gvs5h",
+        "coding-agent",
+        "multi-pass",
+        "agent-memory",
+        "evaluation"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "gvs5h-ledger-five-pass-coding-agent",
+      "source_ids": [
+        "src-2b2e6bd3436f4031"
+      ],
+      "project_ids": [
+        "gvs5h"
+      ],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20260826-06-evidence-release",
+          "claim_zh": "GVS5H 让 coding agent 连续运行 5 轮，并用共享账本记录假设、失败和下一步，而不是增加新的协调模型。仓库公开代码与运行数据；作者在 100 道 LiveCodeBench 难题上报告 Qwen3.8-27B 从 66.8 提升到 92.4。",
+          "claim_en": "GVS5H runs a coding agent for five passes and uses a shared ledger for hypotheses, failures and next steps instead of adding a coordinator model. Code and run data are public. On 100 hard LiveCodeBench tasks, the authors report Qwen3.8-27B improving from 66.8 to 92.4.",
+          "source_ids": [
+            "src-2b2e6bd3436f4031"
+          ],
+          "event_ids": [
+            "ev-20260826-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20260826-06-published",
+          "kind": "new",
+          "occurred_at": "2026-08-26T20:56:52Z",
+          "discovered_at": "2026-10-25T15:57:07Z",
+          "summary_zh": "GVS5H 开放基于账本的多轮 coding agent 框架",
+          "summary_en": "GVS5H opens a ledger-based harness for repeated coding-agent passes",
+          "evidence_ids": [
+            "ev-20260826-06-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "short_label_zh": "GVS5H",
+      "short_label_en": "GVS5H",
+      "next_action_zh": "一天内用仓库 harness 在 20 个自有修复任务上比较单轮与五轮的通过率、token 成本和失败重复率。",
+      "next_action_en": "Within one day, use the public harness on 20 internal repair tasks to compare one versus five passes for pass rate, token cost and repeated failures."
     }
   ]
 }

@@ -91,6 +91,105 @@
       "last_updated_at": "2026-10-18T15:58:14Z",
       "summary": "Sphinx 0.1 installs a global Git hook that calls a separate model to quiz the user about committed diffs before a push. A correct answer resumes the push, while pause, skip and disable paths remain available. It supports Codex, Claude Code and other providers and explicitly says it is practice, not a security gate.",
       "why_it_matters": "Checking whether a human understands agent-written changes is a useful goal, but this implementation is bypassable, sends code to a reviewer provider and lacks independent evidence on real projects. It is not worth adding to a mandatory workflow yet."
+    },
+    {
+      "event_id": "ev-20261018-02",
+      "title": "GPU-Unlock exposes faster tensor paths on Ampere GeForce cards",
+      "title_zh": "GPU-Unlock 解锁 Ampere GeForce 的更快张量路径",
+      "category": "infrastructure",
+      "organization": [
+        "Zagitta"
+      ],
+      "published_at": "2026-10-18T12:44:30Z",
+      "first_seen_at": "2026-10-25T15:57:07Z",
+      "last_updated_at": "2026-10-25T15:57:07Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/Zagitta/gpu-unlock",
+      "secondary_sources": [],
+      "summary": "GPU-Unlock provides a Linux kernel module that changes Ampere GeForce firmware state before the driver loads, enabling a higher FP16/BF16 tensor-core issue rate. The author reports 14%–36% faster LLM prefill with little decode change. It requires rebooting and modifies an unsupported low-level path.",
+      "why_it_matters": "This may improve batching and prefill economics on older consumer GPUs, but evidence is author-reported. Kernel- and firmware-level changes carry higher stability, warranty and rollback risk than ordinary inference tuning.",
+      "summary_zh": "GPU-Unlock 提供 Linux 内核模块，在驱动加载前修改 Ampere GeForce 固件路径，使 FP16/BF16 tensor core 使用更高 issue rate。项目作者报告 LLM prefill 提升 14%–36%，decode 基本不变；改动需要重启并触及未受支持的底层路径。",
+      "summary_en": "GPU-Unlock provides a Linux kernel module that changes Ampere GeForce firmware state before the driver loads, enabling a higher FP16/BF16 tensor-core issue rate. The author reports 14%–36% faster LLM prefill with little decode change. It requires rebooting and modifies an unsupported low-level path.",
+      "why_it_matters_zh": "这可能提高旧款消费级 GPU 的批处理和 prefill 性价比，但证据仍是作者自测。内核与固件级改动的稳定性、保修和回滚风险高于普通推理优化。",
+      "why_it_matters_en": "This may improve batching and prefill economics on older consumer GPUs, but evidence is author-reported. Kernel- and firmware-level changes carry higher stability, warranty and rollback risk than ordinary inference tuning.",
+      "technical_details": {
+        "hardware": "NVIDIA Ampere GeForce GPUs",
+        "mechanism": "Kernel module loaded before the NVIDIA driver changes tensor issue-rate state",
+        "publisher_results": "14%–36% faster LLM prefill; decode largely unchanged",
+        "availability": "GPL-licensed source repository; manual kernel integration and reboot required",
+        "adoption_snapshot": "5,579 stars and 597 forks when checked",
+        "limitation": "No independent audit or broad hardware validation found",
+        "time_basis": "Repository created 2026-10-18T12:44:30Z and pushed 2026-10-24T15:47:28Z; recovered by recall."
+      },
+      "technical_details_zh": {
+        "硬件": "NVIDIA Ampere GeForce GPU",
+        "机制": "在 NVIDIA 驱动前加载内核模块，修改 tensor issue-rate 状态",
+        "发布方结果": "LLM prefill 提升 14%–36%；decode 基本不变",
+        "可用性": "GPL 源码公开；需手工接入内核并重启",
+        "采用快照": "检查时 5,579 stars、597 forks",
+        "限制": "未找到独立审计或广泛硬件验证",
+        "时间依据": "仓库创建于 2026-10-18T12:44:30Z，2026-10-24T15:47:28Z 有更新；由召回补录。"
+      },
+      "tags": [
+        "gpu-unlock",
+        "nvidia",
+        "ampere",
+        "inference",
+        "kernel"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 4,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 5,
+      "recommendation": "WATCH",
+      "event_fingerprint": "gpu-unlock-ampere-geforce-tensor-issue-rate",
+      "source_ids": [
+        "src-b6ee2b32304d0c0d"
+      ],
+      "project_ids": [
+        "gpu-unlock"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261018-02-evidence-release",
+          "claim_zh": "GPU-Unlock 提供 Linux 内核模块，在驱动加载前修改 Ampere GeForce 固件路径，使 FP16/BF16 tensor core 使用更高 issue rate。项目作者报告 LLM prefill 提升 14%–36%，decode 基本不变；改动需要重启并触及未受支持的底层路径。",
+          "claim_en": "GPU-Unlock provides a Linux kernel module that changes Ampere GeForce firmware state before the driver loads, enabling a higher FP16/BF16 tensor-core issue rate. The author reports 14%–36% faster LLM prefill with little decode change. It requires rebooting and modifies an unsupported low-level path.",
+          "source_ids": [
+            "src-b6ee2b32304d0c0d"
+          ],
+          "event_ids": [
+            "ev-20261018-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261018-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-18T12:44:30Z",
+          "discovered_at": "2026-10-25T15:57:07Z",
+          "summary_zh": "GPU-Unlock 解锁 Ampere GeForce 的更快张量路径",
+          "summary_en": "GPU-Unlock exposes faster tensor paths on Ampere GeForce cards",
+          "evidence_ids": [
+            "ev-20261018-02-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "short_label_zh": "GPU-Unlock",
+      "short_label_en": "GPU-Unlock",
+      "next_action_zh": "等待独立审计、更多显卡复测和可靠回滚方案后，只在可牺牲的非生产机器评估。",
+      "next_action_en": "Wait for an independent audit, broader GPU replication and a reliable rollback path before evaluating only on disposable non-production hardware."
     }
   ]
 }

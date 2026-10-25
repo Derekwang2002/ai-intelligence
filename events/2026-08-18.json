@@ -13,7 +13,7 @@
       "published_at": "2026-08-18",
       "published_at_note": "Announced during the SUPERNOVA 2026 keynote (livestream from ~22:30Z, Aug 18); press release syndicated 2026-08-18. In-window. Independent coverage: StockTitan (2026-08-18) and live cerebras.ai homepage; search indexes had not caught up at scan time.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-08-30T00:00:20Z",
+      "last_updated_at": "2026-10-25T15:57:07Z",
       "source_type": "primary+media",
       "primary_source": "https://www.cerebras.ai/",
       "secondary_sources": [
@@ -22,7 +22,8 @@
         "https://investors.cerebras.ai/news-releases/news-release-details/cerebras-host-livestream-2026-supernova-event/",
         "https://www.cerebras.ai/blog/introducing-cerebras-cs-4",
         "https://newsletter.semianalysis.com/p/cerebrass-next-generation-cs-4-fast",
-        "https://www.quiverquant.com/news/Cerebras+Systems+Unveils+CS-4+AI+Accelerator%252C+Claiming+Up+to+30x+Faster+Inference+Than+GPUs"
+        "https://www.quiverquant.com/news/Cerebras+Systems+Unveils+CS-4+AI+Accelerator%252C+Claiming+Up+to+30x+Faster+Inference+Than+GPUs",
+        "https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras"
       ],
       "summary": "At its SUPERNOVA 2026 event Cerebras unveiled CS-4, a rack-scale AI system built from three new WSE-3 Turbo wafers that delivers 750 PFLOPS of AI compute. Cerebras claims up to 2x the speed of CS-3, up to 30x more tokens per second per user than leading GPU-based solutions, and up to 10x better throughput per watt. Memory bandwidth is 129.6 PB/s, I/O is 7.2 Tb/s, and wafer-to-wafer latency can be as low as two microseconds. The new modular Nexus Platform Architecture adds a pluggable Wafer-Scale Backpack and Direct Wafer Links, supporting models beyond 50 trillion parameters. First shipments are expected this quarter.",
       "why_it_matters": "This is the first mainstream rack-scale product built by stacking wafers. If the per-user latency and throughput-per-watt claims hold up in independent benchmarks, the economics of latency-sensitive inference (agents, interactive coding, voice) have to be recalculated, and serving dense models beyond 50T parameters becomes easier. All figures are vendor 'up to' claims at announcement — verify independently before planning capacity.",
@@ -43,7 +44,8 @@
         "wafer_latency": "as low as 2 microseconds",
         "architecture": "modular Nexus Platform Architecture; pluggable Wafer-Scale Backpack; Direct Wafer Links; supports >50T-parameter models",
         "availability": "first shipments expected this quarter (Q3 2026)",
-        "benchmark_caveat": "all figures vendor-claimed at announcement; no independent benchmarks yet"
+        "benchmark_caveat": "all figures vendor-claimed at announcement; no independent benchmarks yet",
+        "trillion_model_mapping": "Cerebras illustrates a 3T-parameter model mapped across 59 WSE-3T wafers and claims 1,000–2,000+ tokens/s; this is a vendor architecture walkthrough, not an independent benchmark or availability statement."
       },
       "update_2026_08_19": "Independent analysis wave post-announcement: SemiAnalysis 'Cerebras's Next Generation CS-4: Fast Just Got Faster' (2026-08-18, coverage-gap recovery — published in the previous window but index-lag prevented capture) concludes CS-4 roughly doubles CS-3 performance mainly via increased power consumption, higher per-wafer clock frequency and rack-scale density rather than a new chip generation ('Double the Performance with Double the Power'); TNW frames it as Cerebras' first multi-wafer system with essentially faster-clocked WSE-3 silicon; TechTimes cites ~4,400 tokens/sec decode (~2x CS-3 token speed, ~6x system-level throughput) with no new silicon (same 5nm wafer, higher clocks); per-wafer figures cited: 44GB on-wafer SRAM, 250 PFLOPS, 43.2 PB/s memory bandwidth. Nexus Platform Architecture details: pluggable Wafer-Scale Backpack, RoCE v2, Direct Wafer Links. Hardware pricing still undisclosed; first-shipments-this-quarter reiterated by HPCwire/IBD/DataCenterDynamics. Also verified: SUPERNOVA 2026 produced no additional product/model announcements beyond CS-4 (investors newsroom + StockTitan CBRS feed checked 2026-08-20). Recommendation stays WATCH pending independent benchmarks and shipment evidence.",
       "tags": [
@@ -76,7 +78,8 @@
         "晶圆间延迟": "最低 2 微秒",
         "架构": "模块化 Nexus Platform Architecture；可插拔 Wafer-Scale Backpack；Direct Wafer Links；支持 >50T 参数模型",
         "供货": "预计本季度（Q3 2026）首批出货",
-        "Benchmark 口径": "所有数字均为发布时厂商宣称；尚无独立 benchmark"
+        "Benchmark 口径": "所有数字均为发布时厂商宣称；尚无独立 benchmark",
+        "万亿参数映射": "Cerebras 用示意方案把 3T 参数模型映射到 59 片 WSE-3T，并宣称 1,000–2,000+ tokens/s；这是厂商架构说明，不是独立 benchmark 或可用性公告。"
       },
       "update_2026_08_20": "Watch-item re-check (2026-08-20): hardware pricing, independent benchmarks and shipment confirmations remain unavailable (third-party coverage consistently notes all three pending; no MLPerf submissions found). New technical specificity from The Next Platform's analysis: CS-4 machines use an overclocked WSE-3 with the same 900,000 cores, clock speed doubled from 1.4 GHz to 2.8 GHz — mechanically consistent with SemiAnalysis's 'double the performance with double the power' reading (ev-20260818-01 update_2026_08_19). Recommendation stays WATCH pending third-party benchmarks, pricing and first-shipment evidence.",
       "update_2026_08_30": "Hot Chips 2026 deep dive (Cerebras blog, published 2026-08-25; coverage-gap recovery — inside the previous window, first seen 2026-08-30 run): CS-4 power-delivery detail (AC/DC converters ~0.5mm from the wafer, ~100x closer than typical GPU designs, nearly double the power delivery; per-backpack water conditioning with dry quick-disconnects and leak sensors; 277V AC -> 54.5V DC, 5+1/4+1/3+1/4+2 redundancy). Roadmap made public: CS-5 (2027, next-gen WSE) targets up to 10,000 output tok/s/user on open-source models (Gemma 4 31B, gpt-oss-120b) and up to 5,000 tok/s/user on multi-trillion-parameter models (Kimi, GPT-5.6 Sol), 3M tok/s per MW, designed for >50T-param models at interactive speeds; CS-6 combines wafer-scale SRAM/compute with 3D-stacked DRAM for an order-of-magnitude smaller footprint (development began 2024). Also cited: single WSE-3T on-wafer fabric bandwidth 53.5 PB/s vs ~260 TB/s NVLink scale-up for an NVIDIA Rubin NVL72 rack. Watch items unchanged: hardware pricing still undisclosed, no independent benchmarks, no confirmed first shipments (early-access program running); recommendation stays WATCH.",
@@ -87,7 +90,8 @@
         "src-9cae9e1e17057036",
         "src-fbf833868be83dea",
         "src-f189311ea2754e83",
-        "src-4daef9a3dbe3edfb"
+        "src-4daef9a3dbe3edfb",
+        "src-e1545bcc45f4c70b"
       ],
       "project_ids": [],
       "scenario_ids": [
@@ -108,6 +112,19 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260818-01-trillion-model-mapping-evidence",
+          "claim_zh": "Cerebras 公开 3T 参数模型跨 59 片 WSE-3T 的映射方法，但速度数字仍是厂商宣称。",
+          "claim_en": "Cerebras disclosed how it maps a 3T-parameter model across 59 WSE-3T wafers, while throughput remains a vendor claim.",
+          "source_ids": [
+            "src-e1545bcc45f4c70b"
+          ],
+          "event_ids": [
+            "ev-20260818-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; no independent benchmark"
         }
       ],
       "changes": [
@@ -122,8 +139,25 @@
             "ev-20260818-01-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260818-01-trillion-model-mapping",
+          "kind": "update",
+          "occurred_at": "2026-10-22",
+          "discovered_at": "2026-10-25T15:57:07Z",
+          "summary_zh": "Cerebras 公开 3T 参数模型的跨晶圆部署方法",
+          "summary_en": "Cerebras details a cross-wafer deployment for a 3T-parameter model",
+          "evidence_ids": [
+            "ev-20260818-01-trillion-model-mapping-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "short_label_en": "Cerebras CS-4",
+      "short_label_zh": "Cerebras CS-4",
+      "next_action_zh": "等待可复现的端到端 benchmark、实际客户部署与价格后再做容量规划。",
+      "next_action_en": "Wait for reproducible end-to-end benchmarks, customer deployments and pricing before capacity planning."
     },
     {
       "event_id": "ev-20260818-02",
