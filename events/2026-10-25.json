@@ -1,0 +1,208 @@
+{
+  "date": "2026-10-25",
+  "provenance": "Incremental intelligence persisted by the 2026-10-26T16:03:24Z run.",
+  "events": [
+    {
+      "event_id": "ev-20261025-02",
+      "title": "GitHub Agentic Workflows traces secret leaks through step outputs",
+      "title_zh": "GitHub Agentic Workflows 追踪跨步骤 secret 泄漏",
+      "category": "agent-security",
+      "organization": [
+        "GitHub"
+      ],
+      "published_at": "2026-10-25T17:17:17Z",
+      "first_seen_at": "2026-10-26T16:03:24Z",
+      "last_updated_at": "2026-10-26T16:03:24Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/github/gh-aw/releases/tag/v0.93.5",
+      "secondary_sources": [
+        "https://github.github.com/gh-aw/blog/2026-10-26-weekly-update/"
+      ],
+      "summary": "GitHub Agentic Workflows 0.93.5 adds static analysis that follows credential handoffs through step outputs, permits network credentials only in bounded safe-output jobs, returns secret-safe crash diagnostics and pins patched runtime dependencies. Version 1.0.0 from the same day is explicitly prerelease and is not treated as GA.",
+      "why_it_matters": "For teams expressing agent behavior as GitHub Actions, secret flow across steps is a concrete safety boundary rather than a generic scanner rule. The project remains pre-1.0 and lacks independent production evidence.",
+      "summary_zh": "GitHub Agentic Workflows 0.93.5 增加跨 step output 跟踪凭据传递的静态分析，只在受限的 safe-output job 中允许网络凭据，返回不含 secret 的崩溃诊断，并固定已修补的 runtime 依赖。同日的 1.0.0 明确标为 prerelease，不按 GA 处理。",
+      "summary_en": "GitHub Agentic Workflows 0.93.5 adds static analysis that follows credential handoffs through step outputs, permits network credentials only in bounded safe-output jobs, returns secret-safe crash diagnostics and pins patched runtime dependencies. Version 1.0.0 from the same day is explicitly prerelease and is not treated as GA.",
+      "why_it_matters_zh": "对用 GitHub Actions 表达 agent 工作流的团队来说，secret 跨步骤流动是具体的安全边界，不只是通用扫描规则。项目仍未到 1.0 稳定版，也缺少独立生产证据。",
+      "why_it_matters_en": "For teams expressing agent behavior as GitHub Actions, secret flow across steps is a concrete safety boundary rather than a generic scanner rule. The project remains pre-1.0 and lacks independent production evidence.",
+      "technical_details": {
+        "release": "0.93.5 stable; 1.0.0 prerelease excluded",
+        "availability": "Public open-source GitHub release",
+        "security": "Cross-step secret-flow analysis and secret-safe crash diagnostics",
+        "time_basis": "Stable GitHub release published at 2026-10-25T17:17:17Z"
+      },
+      "technical_details_zh": {
+        "版本": "0.93.5 stable；排除 1.0.0 prerelease",
+        "可用性": "GitHub 公开开源 release",
+        "安全能力": "跨步骤 secret 流分析与不泄漏 secret 的崩溃诊断",
+        "时间依据": "稳定版 GitHub release 发布于 2026-10-25T17:17:17Z"
+      },
+      "tags": [
+        "github",
+        "agentic-workflows",
+        "secrets",
+        "static-analysis",
+        "github-actions"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "github-agentic-workflows-0-93-5-secret-flow-analysis",
+      "source_ids": [
+        "src-55979a8322e79fde",
+        "src-f9906cde2d02369f"
+      ],
+      "project_ids": [
+        "github-agentic-workflows"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261025-02-release-evidence",
+          "claim_zh": "GitHub Agentic Workflows 0.93.5 增加跨 step output 跟踪凭据传递的静态分析，只在受限的 safe-output job 中允许网络凭据，返回不含 secret 的崩溃诊断，并固定已修补的 runtime 依赖。同日的 1.0.0 明确标为 prerelease，不按 GA 处理。",
+          "claim_en": "GitHub Agentic Workflows 0.93.5 adds static analysis that follows credential handoffs through step outputs, permits network credentials only in bounded safe-output jobs, returns secret-safe crash diagnostics and pins patched runtime dependencies. Version 1.0.0 from the same day is explicitly prerelease and is not treated as GA.",
+          "source_ids": [
+            "src-55979a8322e79fde",
+            "src-f9906cde2d02369f"
+          ],
+          "event_ids": [
+            "ev-20261025-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance and reliability claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261025-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-25T17:17:17Z",
+          "discovered_at": "2026-10-26T16:03:24Z",
+          "summary_zh": "GitHub Agentic Workflows 追踪跨步骤 secret 泄漏",
+          "summary_en": "GitHub Agentic Workflows traces secret leaks through step outputs",
+          "evidence_ids": [
+            "ev-20261025-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "short_label_zh": "Agentic Workflows",
+      "short_label_en": "Agentic Workflows",
+      "next_action_zh": "一天内用测试 workflow 让凭据经两个 step output 传递，确认编译期阻断、运行日志脱敏与安全输出例外都符合策略。",
+      "next_action_en": "Within one day, pass a test credential through two step outputs and verify compile-time blocking, runtime redaction and safe-output exceptions against policy."
+    },
+    {
+      "event_id": "ev-20261025-01",
+      "title": "AI21 opens LIFT-Bench for scoped long-form instruction following",
+      "title_zh": "AI21 开放 LIFT-Bench 测量长文局部指令遵循",
+      "category": "research",
+      "organization": [
+        "AI21 Labs"
+      ],
+      "published_at": "2026-10-25T08:52:27Z",
+      "first_seen_at": "2026-10-26T16:03:24Z",
+      "last_updated_at": "2026-10-26T16:03:24Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.ai21.com/blog/lift-bench-blog/",
+      "secondary_sources": [
+        "https://github.com/AI21Labs/lift-bench",
+        "https://arxiv.org/abs/2610.28819",
+        "https://huggingface.co/datasets/ai21labs/LIFTBench"
+      ],
+      "summary": "LIFT-Bench publishes 784 test tasks and LIFT-Train publishes 34,258 training tasks for constraints that apply only to selected sections of long structured outputs. Apache-2.0 code includes synthesis and evaluation pipelines. Scores depend on a pinned Gemma judge, and AI21 reports only small out-of-benchmark gains.",
+      "why_it_matters": "For teams training models to write reports, plans or documents, section-scoped constraints are closer to production than whole-answer style checks. Judge dependence and first-party results make this a reproducible trial, not a general capability claim.",
+      "summary_zh": "LIFT-Bench 公开 784 个测试任务，LIFT-Train 公开 34,258 个训练任务，用来评估只作用于长篇结构化输出某些段落的局部约束。Apache-2.0 代码包含合成与评测流水线。分数依赖固定的 Gemma judge，AI21 报告的 benchmark 外收益也很小。",
+      "summary_en": "LIFT-Bench publishes 784 test tasks and LIFT-Train publishes 34,258 training tasks for constraints that apply only to selected sections of long structured outputs. Apache-2.0 code includes synthesis and evaluation pipelines. Scores depend on a pinned Gemma judge, and AI21 reports only small out-of-benchmark gains.",
+      "why_it_matters_zh": "对训练模型写报告、计划或文档的团队来说，段落级约束比“整篇都遵循一种格式”更接近生产。judge 依赖与第一方结果意味着它适合复跑验证，不能外推成通用能力提升。",
+      "why_it_matters_en": "For teams training models to write reports, plans or documents, section-scoped constraints are closer to production than whole-answer style checks. Judge dependence and first-party results make this a reproducible trial, not a general capability claim.",
+      "technical_details": {
+        "tasks": "784 test tasks across 10 splits; 34,258 training tasks",
+        "license": "Apache-2.0 code and pipeline",
+        "judge": "google/gemma-4-31B-it; comparison requires the same endpoint",
+        "human_check": "Scoped judging improved macro-F1 by 11-19 points on 305 human-labelled examples, reported by AI21",
+        "time_basis": "AI21 page datePublished 2026-10-25T08:52:27Z; before overlap and recovered as late discovery"
+      },
+      "technical_details_zh": {
+        "任务": "10 个 split、784 个测试任务；34,258 个训练任务",
+        "许可证": "Apache-2.0 代码与流水线",
+        "Judge": "google/gemma-4-31B-it；比较必须固定同一 endpoint",
+        "人工核对": "AI21 报告在 305 个人工标注样本上 macro-F1 提高 11–19 点",
+        "时间依据": "AI21 页面 datePublished 为 2026-10-25T08:52:27Z；早于 overlap，按 late discovery 补录"
+      },
+      "tags": [
+        "lift-bench",
+        "instruction-following",
+        "long-form",
+        "evaluation",
+        "training-data"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "ai21-lift-bench-scoped-instruction-following",
+      "source_ids": [
+        "src-b8387c4aab559e25",
+        "src-f61d69558ac43d5b",
+        "src-1597d96613c49911",
+        "src-ace71699001d0211"
+      ],
+      "project_ids": [
+        "lift-bench"
+      ],
+      "scenario_ids": [
+        "research",
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261025-01-release-evidence",
+          "claim_zh": "LIFT-Bench 公开 784 个测试任务，LIFT-Train 公开 34,258 个训练任务，用来评估只作用于长篇结构化输出某些段落的局部约束。Apache-2.0 代码包含合成与评测流水线。分数依赖固定的 Gemma judge，AI21 报告的 benchmark 外收益也很小。",
+          "claim_en": "LIFT-Bench publishes 784 test tasks and LIFT-Train publishes 34,258 training tasks for constraints that apply only to selected sections of long structured outputs. Apache-2.0 code includes synthesis and evaluation pipelines. Scores depend on a pinned Gemma judge, and AI21 reports only small out-of-benchmark gains.",
+          "source_ids": [
+            "src-b8387c4aab559e25",
+            "src-f61d69558ac43d5b",
+            "src-1597d96613c49911",
+            "src-ace71699001d0211"
+          ],
+          "event_ids": [
+            "ev-20261025-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance and reliability claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261025-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-25T08:52:27Z",
+          "discovered_at": "2026-10-26T16:03:24Z",
+          "summary_zh": "AI21 开放 LIFT-Bench 测量长文局部指令遵循",
+          "summary_en": "AI21 opens LIFT-Bench for scoped long-form instruction following",
+          "evidence_ids": [
+            "ev-20261025-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "short_label_zh": "LIFT-Bench",
+      "short_label_en": "LIFT-Bench",
+      "next_action_zh": "一天内固定公开 split 与 Gemma judge，对一个自有长文模板复跑局部约束通过率、输出长度和 judge 一致性。",
+      "next_action_en": "Within one day, pin a public split and the Gemma judge, then measure scoped-constraint pass rate, output length and judge consistency on one internal long-form template."
+    }
+  ]
+}

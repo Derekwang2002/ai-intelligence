@@ -303,6 +303,205 @@
       "short_label_en": "Beetle",
       "next_action_zh": "一天内复跑一种语言的一档公开训练预算，核对课程差异与阅读时间指标是否可复现。",
       "next_action_en": "Within one day, rerun one public budget for one language and check whether curriculum and reading-time differences reproduce."
+    },
+    {
+      "event_id": "ev-20261024-04",
+      "title": "Meta opens InteractiveWorld and a state-verifiable multimodal benchmark",
+      "title_zh": "Meta 开放 InteractiveWorld 与状态可验证多模态评测",
+      "category": "research",
+      "organization": [
+        "Meta"
+      ],
+      "published_at": "2026-10-24T02:51:09Z",
+      "first_seen_at": "2026-10-26T16:03:24Z",
+      "last_updated_at": "2026-10-26T16:03:24Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/facebookresearch/InteractiveWorld",
+      "secondary_sources": [],
+      "summary": "Meta released a stateful first-person 3D simulator and InteractiveBench with 120 frozen multi-turn tasks across six categories. Success is checked against world state, but the rubric still requires human adjudication. Reproduction needs Linux, an NVIDIA GPU, about 100 GB of assets and separately licensed Isaac Sim, BEHAVIOR, MANO and AMASS components.",
+      "why_it_matters": "State-based checks can expose whether a multimodal agent actually changed the environment rather than narrated success. The non-commercial license, gated assets and high setup cost make it a watch item until cheaper reproduction or transfer evidence appears.",
+      "summary_zh": "Meta 公开有状态的第一人称 3D 模拟器和 InteractiveBench，包含六类、120 个冻结的多轮任务。成功条件会对照世界状态，但评分规则仍需要人工裁定。复现要求 Linux、NVIDIA GPU、约 100 GB 资产，以及另行授权的 Isaac Sim、BEHAVIOR、MANO 和 AMASS 组件。",
+      "summary_en": "Meta released a stateful first-person 3D simulator and InteractiveBench with 120 frozen multi-turn tasks across six categories. Success is checked against world state, but the rubric still requires human adjudication. Reproduction needs Linux, an NVIDIA GPU, about 100 GB of assets and separately licensed Isaac Sim, BEHAVIOR, MANO and AMASS components.",
+      "why_it_matters_zh": "基于世界状态的检查可以区分 agent 是否真的改变了环境，而不是只用文字声称成功。非商业许可证、受限资产与高搭建成本使它目前更适合 WATCH，等待更便宜的复现或真实设备迁移证据。",
+      "why_it_matters_en": "State-based checks can expose whether a multimodal agent actually changed the environment rather than narrated success. The non-commercial license, gated assets and high setup cost make it a watch item until cheaper reproduction or transfer evidence appears.",
+      "technical_details": {
+        "benchmark": "InteractiveBench, 120 frozen multi-turn tasks in six categories",
+        "verification": "World-state checks plus required human adjudication",
+        "license": "Repository CC BY-NC 4.0; dependencies and gated assets have separate terms",
+        "requirements": "Linux, NVIDIA GPU, about 100 GB assets; tested on A100 80 GB",
+        "time_basis": "Official GitHub repository created at 2026-10-24T02:51:09Z; recovered outside overlap as late discovery"
+      },
+      "technical_details_zh": {
+        "评测": "InteractiveBench，六类 120 个冻结多轮任务",
+        "验证方式": "世界状态检查，并仍需人工裁定",
+        "许可证": "仓库 CC BY-NC 4.0；依赖与 gated assets 另有条款",
+        "要求": "Linux、NVIDIA GPU、约 100 GB 资产；在 A100 80 GB 测试",
+        "时间依据": "官方 GitHub 仓库创建于 2026-10-24T02:51:09Z；早于 overlap，按 late discovery 补录"
+      },
+      "tags": [
+        "interactiveworld",
+        "interactivebench",
+        "multimodal-agent",
+        "simulation",
+        "embodied-ai"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 5,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "meta-interactiveworld-interactivebench-state-verifiable",
+      "source_ids": [
+        "src-b8249cefd0338aa0"
+      ],
+      "project_ids": [
+        "interactiveworld"
+      ],
+      "scenario_ids": [
+        "research",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261024-04-release-evidence",
+          "claim_zh": "Meta 公开有状态的第一人称 3D 模拟器和 InteractiveBench，包含六类、120 个冻结的多轮任务。成功条件会对照世界状态，但评分规则仍需要人工裁定。复现要求 Linux、NVIDIA GPU、约 100 GB 资产，以及另行授权的 Isaac Sim、BEHAVIOR、MANO 和 AMASS 组件。",
+          "claim_en": "Meta released a stateful first-person 3D simulator and InteractiveBench with 120 frozen multi-turn tasks across six categories. Success is checked against world state, but the rubric still requires human adjudication. Reproduction needs Linux, an NVIDIA GPU, about 100 GB of assets and separately licensed Isaac Sim, BEHAVIOR, MANO and AMASS components.",
+          "source_ids": [
+            "src-b8249cefd0338aa0"
+          ],
+          "event_ids": [
+            "ev-20261024-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance and reliability claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261024-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-24T02:51:09Z",
+          "discovered_at": "2026-10-26T16:03:24Z",
+          "summary_zh": "Meta 开放 InteractiveWorld 与状态可验证多模态评测",
+          "summary_en": "Meta opens InteractiveWorld and a state-verifiable multimodal benchmark",
+          "evidence_ids": [
+            "ev-20261024-04-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "short_label_zh": "InteractiveWorld",
+      "short_label_en": "InteractiveWorld",
+      "next_action_zh": "等待更轻量的资产包、可自动评分协议或真实设备迁移结果后，再评估团队是否值得承担复现成本。",
+      "next_action_en": "Wait for lighter assets, an automated scoring protocol or real-device transfer results before deciding whether the reproduction cost is justified."
+    },
+    {
+      "event_id": "ev-20261024-05",
+      "title": "PaperPilot draws attention before publishing a stable release or benchmarks",
+      "title_zh": "PaperPilot 在稳定版与实测数据缺席时快速升温",
+      "category": "developer-tools",
+      "organization": [
+        "community"
+      ],
+      "published_at": "2026-10-24T08:36:59Z",
+      "first_seen_at": "2026-10-26T16:03:24Z",
+      "last_updated_at": "2026-10-26T16:03:24Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/KrushnaVardhanReddy/PaperPilot/releases/tag/v0.6.0",
+      "secondary_sources": [
+        "https://github.com/KrushnaVardhanReddy/PaperPilot"
+      ],
+      "summary": "PaperPilot packages local PDF operations behind CLI, MCP, REST, WASM and desktop surfaces. Its v0.6.0 release is explicitly prerelease, and the repository benchmark section still contains a placeholder instead of measured results. The repository reached roughly 500 stars during recall review.",
+      "why_it_matters": "For teams evaluating local document tooling, the multi-surface architecture is interesting but current community attention is ahead of release maturity and evidence. The project should not receive engineering time until it ships a stable release, reproducible benchmarks and tests for claimed privacy and sanitization boundaries.",
+      "summary_zh": "PaperPilot 把本地 PDF 操作封装成 CLI、MCP、REST、WASM 与桌面端。v0.6.0 明确标为 prerelease，仓库 benchmark 章节仍是占位内容，没有实测结果。召回复核时仓库约有 500 stars。",
+      "summary_en": "PaperPilot packages local PDF operations behind CLI, MCP, REST, WASM and desktop surfaces. Its v0.6.0 release is explicitly prerelease, and the repository benchmark section still contains a placeholder instead of measured results. The repository reached roughly 500 stars during recall review.",
+      "why_it_matters_zh": "对评估本地文档工具的团队来说，多入口架构有意思，但社区热度已经跑在版本成熟度与证据前面。等到稳定版、可复现 benchmark，以及对隐私和净化边界的测试出现后再投入。",
+      "why_it_matters_en": "For teams evaluating local document tooling, the multi-surface architecture is interesting but current community attention is ahead of release maturity and evidence. The project should not receive engineering time until it ships a stable release, reproducible benchmarks and tests for claimed privacy and sanitization boundaries.",
+      "technical_details": {
+        "release": "v0.6.0 prerelease",
+        "surfaces": "CLI, MCP, REST, WASM and Tauri desktop",
+        "license": "README links Apache-2.0 LICENSE; GitHub API did not detect an SPDX license during review",
+        "evidence_limit": "README benchmark table is still a placeholder; no independent validation identified",
+        "community_signal": "About 498 GitHub stars and 206 Hacker News points at review time",
+        "time_basis": "GitHub prerelease published at 2026-10-24T08:36:59Z; recovered by recall audit outside overlap"
+      },
+      "technical_details_zh": {
+        "版本": "v0.6.0 prerelease",
+        "入口": "CLI、MCP、REST、WASM 与 Tauri desktop",
+        "许可证": "README 链接 Apache-2.0 LICENSE；复核时 GitHub API 未识别 SPDX license",
+        "证据限制": "README benchmark 表仍是占位内容；未发现独立验证",
+        "社区信号": "复核时约 498 GitHub stars、206 Hacker News points",
+        "时间依据": "GitHub prerelease 发布于 2026-10-24T08:36:59Z；由召回自检在 overlap 外补获"
+      },
+      "tags": [
+        "paperpilot",
+        "pdf",
+        "mcp",
+        "wasm",
+        "rust",
+        "community-signal"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 2,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "IGNORE",
+      "event_fingerprint": "paperpilot-v0-6-prerelease-no-benchmarks",
+      "source_ids": [
+        "src-605d63a244654996",
+        "src-ed18f8ab0f26929a"
+      ],
+      "project_ids": [
+        "paperpilot"
+      ],
+      "scenario_ids": [
+        "local",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261024-05-release-evidence",
+          "claim_zh": "v0.6.0 是 prerelease，benchmark 表仍为空；社区热度尚未转化为稳定性和性能证据。",
+          "claim_en": "v0.6.0 is a prerelease and the benchmark table is still empty; community attention has not yet become stability or performance evidence.",
+          "source_ids": [
+            "src-605d63a244654996",
+            "src-ed18f8ab0f26929a"
+          ],
+          "event_ids": [
+            "ev-20261024-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source plus community recall signal; no independent validation"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261024-05-published",
+          "kind": "new",
+          "occurred_at": "2026-10-24T08:36:59Z",
+          "discovered_at": "2026-10-26T16:03:24Z",
+          "summary_zh": "PaperPilot v0.6.0 prerelease 在证据不足时获得社区热度",
+          "summary_en": "PaperPilot v0.6.0 prerelease draws community attention before evidence matures",
+          "evidence_ids": [
+            "ev-20261024-05-release-evidence"
+          ],
+          "historical": false,
+          "importance": "minor"
+        }
+      ],
+      "short_label_zh": "PaperPilot",
+      "short_label_en": "PaperPilot",
+      "next_action_zh": "暂不投入；等稳定版、可复现 benchmark 和隐私边界测试齐备后再评估。",
+      "next_action_en": "Do not invest yet; reassess after a stable release, reproducible benchmarks and privacy-boundary tests are available."
     }
   ]
 }

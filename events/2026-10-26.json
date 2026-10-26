@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-26",
+  "provenance": "Incremental intelligence persisted by the 2026-10-26T16:03:24Z run.",
+  "events": [
+    {
+      "event_id": "ev-20261026-01",
+      "title": "Cline makes changed files and failure recovery visible across desktop and extension",
+      "title_zh": "Cline 同步增强改动可见性与失败恢复",
+      "category": "developer-tools",
+      "organization": [
+        "Cline"
+      ],
+      "published_at": "2026-10-26T04:49:34Z",
+      "first_seen_at": "2026-10-26T16:03:24Z",
+      "last_updated_at": "2026-10-26T16:03:24Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/cline/cline/releases/tag/desktop-v0.0.49",
+      "secondary_sources": [
+        "https://github.com/cline/cline/releases/tag/v4.1.26"
+      ],
+      "summary": "Cline Desktop 0.0.49 adds changed-file views, a project tree, read-only viewer, terminal and local-model management. Desktop and extension 4.1.26 both cap model retries, recover turns that disconnect after reasoning, prevent repeated compaction with unknown context size and fix Gemini API-key failures that could drop tools.",
+      "why_it_matters": "For coding-agent users, the release exposes what changed and hardens several failure paths that can otherwise duplicate work or strand a turn. Reliability improvements are release-note claims and still need regression tests against real repositories.",
+      "summary_zh": "Cline Desktop 0.0.49 加入改动文件视图、项目树、只读查看器、终端和本地模型管理。Desktop 与 extension 4.1.26 同时限制模型重试次数，恢复只输出 reasoning 后断线的回合，避免未知上下文大小触发反复压缩，并修复可能丢失全部工具的 Gemini API key 故障。",
+      "summary_en": "Cline Desktop 0.0.49 adds changed-file views, a project tree, read-only viewer, terminal and local-model management. Desktop and extension 4.1.26 both cap model retries, recover turns that disconnect after reasoning, prevent repeated compaction with unknown context size and fix Gemini API-key failures that could drop tools.",
+      "why_it_matters_zh": "对 coding agent 用户来说，新版既让“改了哪些文件”更可见，也修补了可能重复执行或卡住回合的故障路径。这些可靠性改进仍来自发布说明，需要在真实仓库做回归。",
+      "why_it_matters_en": "For coding-agent users, the release exposes what changed and hardens several failure paths that can otherwise duplicate work or strand a turn. Reliability improvements are release-note claims and still need regression tests against real repositories.",
+      "technical_details": {
+        "releases": "Desktop 0.0.49 and extension 4.1.26",
+        "availability": "Stable GitHub releases",
+        "failure_controls": "Maximum three model retries; reasoning-only disconnect recovery; bounded compaction",
+        "workflow": "Changed-files pane, project tree, viewer and terminal",
+        "time_basis": "GitHub releases published at 2026-10-26T04:49:34Z and 2026-10-26T09:06:50Z"
+      },
+      "technical_details_zh": {
+        "版本": "Desktop 0.0.49 与 extension 4.1.26",
+        "可用性": "GitHub 稳定版本",
+        "故障控制": "模型最多重试三次；恢复只输出 reasoning 后断线的回合；限制反复压缩",
+        "工作流": "改动文件面板、项目树、查看器与终端",
+        "时间依据": "GitHub releases 分别发布于 2026-10-26T04:49:34Z 与 2026-10-26T09:06:50Z"
+      },
+      "tags": [
+        "cline",
+        "coding-agent",
+        "desktop",
+        "failure-recovery",
+        "local-models"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "cline-desktop-0-0-49-extension-4-1-26-recovery",
+      "source_ids": [
+        "src-bf7e73b9759b6b6e",
+        "src-c5b8989e40faf498"
+      ],
+      "project_ids": [
+        "cline"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261026-01-release-evidence",
+          "claim_zh": "Cline Desktop 0.0.49 加入改动文件视图、项目树、只读查看器、终端和本地模型管理。Desktop 与 extension 4.1.26 同时限制模型重试次数，恢复只输出 reasoning 后断线的回合，避免未知上下文大小触发反复压缩，并修复可能丢失全部工具的 Gemini API key 故障。",
+          "claim_en": "Cline Desktop 0.0.49 adds changed-file views, a project tree, read-only viewer, terminal and local-model management. Desktop and extension 4.1.26 both cap model retries, recover turns that disconnect after reasoning, prevent repeated compaction with unknown context size and fix Gemini API-key failures that could drop tools.",
+          "source_ids": [
+            "src-bf7e73b9759b6b6e",
+            "src-c5b8989e40faf498"
+          ],
+          "event_ids": [
+            "ev-20261026-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance and reliability claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261026-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-26T04:49:34Z",
+          "discovered_at": "2026-10-26T16:03:24Z",
+          "summary_zh": "Cline 同步增强改动可见性与失败恢复",
+          "summary_en": "Cline makes changed files and failure recovery visible across desktop and extension",
+          "evidence_ids": [
+            "ev-20261026-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "short_label_zh": "Cline 4.1.26",
+      "short_label_en": "Cline 4.1.26",
+      "next_action_zh": "一天内在测试仓库模拟 reasoning 后断线、Gemini 429 与未知上下文压缩，核对无重复改动且工具列表完整。",
+      "next_action_en": "Within one day, simulate a post-reasoning disconnect, Gemini 429 and unknown-context compaction in a test repository; verify no duplicate edits and a complete tool list."
+    }
+  ]
+}

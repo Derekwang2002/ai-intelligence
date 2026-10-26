@@ -1,6 +1,6 @@
 {
   "date": "2026-10-22",
-  "provenance": "Incremental intelligence events for 2026-10-22. Appended by 2026-10-23T16:04:55Z: Agent Skills governance, OpenAI Decisions GA, EpiSEM-Bench and Simulated Control Evals; date-only sources preserve date precision.",
+  "provenance": "Incremental intelligence events for 2026-10-22. Appended by 2026-10-23T16:04:55Z: Agent Skills governance, OpenAI Decisions GA, EpiSEM-Bench and Simulated Control Evals; date-only sources preserve date precision. Appended by the 2026-10-26T16:03:24Z run: NVIDIA Minerva was recovered as a late discovery from October 22, and Mission Control 2.5 availability plus Kubernetes recovery was verified on October 26.",
   "events": [
     {
       "event_id": "ev-20261022-01",
@@ -615,6 +615,144 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261022-07",
+      "title": "NVIDIA Mission Control 2.5 brings automated recovery to Kubernetes",
+      "title_zh": "NVIDIA Mission Control 2.5 把自动恢复扩展到 Kubernetes",
+      "category": "infrastructure",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-10-22T15:00:00Z",
+      "first_seen_at": "2026-10-26T16:03:24Z",
+      "last_updated_at": "2026-10-26T16:03:24Z",
+      "source_type": "official_blog",
+      "primary_source": "https://blogs.nvidia.com/blog/minerva-platform-infrastructure/",
+      "secondary_sources": [
+        "https://developer.nvidia.com/blog/how-nvidia-mission-control-2-5-brings-autonomous-recovery-to-kubernetes/",
+        "https://docs.nvidia.com/mission-control/docs/systems-quick-start-guide/latest/nmc-release-notes.html"
+      ],
+      "summary": "NVIDIA launched Minerva as a limited-beta AIOps layer that correlates GPU, network, scheduler and workload telemetry. Mission Control 2.5, available to existing customers, extends automated job and hardware recovery from Slurm to Kubernetes workloads managed by Run:ai. Minerva is not included in the standard release and requires a scoped early-access engagement.",
+      "why_it_matters": "For teams operating large GPU clusters, scheduler-aware recovery can reduce the time a failed node keeps wasting expensive capacity. The practical boundary is access: Mission Control 2.5 is a commercial platform, while Minerva remains a changeable limited beta whose vendor-reported gains lack independent validation.",
+      "summary_zh": "NVIDIA 推出限量 beta 的 Minerva AIOps 层，把 GPU、网络、调度器与工作负载遥测关联起来。已向现有客户开放的 Mission Control 2.5，则把自动作业与硬件恢复从 Slurm 扩展到 Run:ai 管理的 Kubernetes。Minerva 不包含在标准版本中，必须通过定向早期访问参与。",
+      "summary_en": "NVIDIA launched Minerva as a limited-beta AIOps layer that correlates GPU, network, scheduler and workload telemetry. Mission Control 2.5, available to existing customers, extends automated job and hardware recovery from Slurm to Kubernetes workloads managed by Run:ai. Minerva is not included in the standard release and requires a scoped early-access engagement.",
+      "why_it_matters_zh": "对运营大规模 GPU 集群的团队来说，理解调度上下文的自动恢复可以缩短故障节点持续浪费昂贵算力的时间。现实边界是可用性：Mission Control 2.5 是商业平台，Minerva 仍是可能变更的限量 beta，厂商效果数据也没有独立验证。",
+      "why_it_matters_en": "For teams operating large GPU clusters, scheduler-aware recovery can reduce the time a failed node keeps wasting expensive capacity. The practical boundary is access: Mission Control 2.5 is a commercial platform, while Minerva remains a changeable limited beta whose vendor-reported gains lack independent validation.",
+      "technical_details": {
+        "release": "NVIDIA Mission Control 2.5.0; Minerva 1.0.0 Beta",
+        "mission_control_availability": "Available to existing NVIDIA Mission Control customers on 2026-10-26",
+        "minerva_availability": "Limited beta through a scoped Lighthouse Agreement; not included in the standard release; no GA date committed",
+        "kubernetes_scope": "Autonomous recovery for Kubernetes workloads managed by NVIDIA Run:ai 2.26",
+        "recovery_loop": "Scheduler placement plus autonomous job recovery plus autonomous hardware recovery",
+        "minerva_scope": "Correlates GPU, NVLink, Spectrum-X, scheduler and workload telemetry; adds a native assistant and MCP integration",
+        "performance_evidence": "NVIDIA reports early-deployment MTBI, MTTR, alert-noise and effective-GPU-hour gains; no independent validation identified",
+        "platform_limit": "Run:ai and Autonomous Resiliency Engine are not supported on Vera Rubin NVL72 in this release",
+        "time_basis": "Minerva launch recorded at 2026-10-22T15:00:00Z in NVIDIA live coverage; Mission Control article feed published at 2026-10-26T15:00:00Z"
+      },
+      "technical_details_zh": {
+        "版本": "NVIDIA Mission Control 2.5.0；Minerva 1.0.0 Beta",
+        "Mission Control 可用性": "2026-10-26 起向现有 NVIDIA Mission Control 客户开放",
+        "Minerva 可用性": "仅通过定向 Lighthouse Agreement 提供限量 beta；不包含在标准版本中；没有承诺 GA 日期",
+        "Kubernetes 范围": "面向 NVIDIA Run:ai 2.26 管理的 Kubernetes 工作负载提供自动恢复",
+        "恢复闭环": "调度器放置 + 自动作业恢复 + 自动硬件恢复",
+        "Minerva 范围": "关联 GPU、NVLink、Spectrum-X、调度器与工作负载遥测；提供原生助手和 MCP 集成",
+        "效果证据": "NVIDIA 报告早期部署的 MTBI、MTTR、告警噪声与有效 GPU 小时改善；未发现独立验证",
+        "平台限制": "本版本的 Run:ai 与 Autonomous Resiliency Engine 不支持 Vera Rubin NVL72",
+        "时间依据": "NVIDIA 直播页记录 Minerva 于 2026-10-22T15:00:00Z 发布；Mission Control 文章 feed 发布于 2026-10-26T15:00:00Z"
+      },
+      "tags": [
+        "mission-control",
+        "minerva",
+        "kubernetes",
+        "run-ai",
+        "ai-factory",
+        "observability",
+        "automated-recovery"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-mission-control-2-5-minerva-kubernetes-recovery",
+      "source_ids": [
+        "src-af6b159eb6ea2f66",
+        "src-ec17f0212ac94073",
+        "src-ef0f1b5140a94996"
+      ],
+      "project_ids": [
+        "nvidia-mission-control-minerva"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261022-07-minerva-launch-evidence",
+          "claim_zh": "NVIDIA 于 10 月 22 日推出 Minerva，把基础设施与工作负载遥测关联起来；正式文档明确它只通过定向合作提供限量 beta，不包含在标准版本中，也没有承诺 GA 日期。",
+          "claim_en": "NVIDIA launched Minerva on October 22 to correlate infrastructure and workload telemetry; release documentation says it is a scoped limited beta, not included in the standard release, with no committed GA date.",
+          "source_ids": [
+            "src-af6b159eb6ea2f66",
+            "src-ef0f1b5140a94996"
+          ],
+          "event_ids": [
+            "ev-20261022-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; availability boundary confirmed in product release notes; performance claims not independently validated"
+        },
+        {
+          "id": "ev-20261022-07-mission-control-2-5-evidence",
+          "claim_zh": "Mission Control 2.5 于 10 月 26 日向现有客户开放，把自动作业与硬件恢复扩展到 Run:ai 管理的 Kubernetes 工作负载。",
+          "claim_en": "Mission Control 2.5 became available to existing customers on October 26 and extends automated job and hardware recovery to Kubernetes workloads managed by Run:ai.",
+          "source_ids": [
+            "src-ec17f0212ac94073",
+            "src-ef0f1b5140a94996"
+          ],
+          "event_ids": [
+            "ev-20261022-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; product availability and platform limits checked against release notes"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261022-07-minerva-launch",
+          "kind": "new",
+          "occurred_at": "2026-10-22T15:00:00Z",
+          "discovered_at": "2026-10-26T16:03:24Z",
+          "summary_zh": "NVIDIA 推出限量 beta 的 Minerva AI factory AIOps 层",
+          "summary_en": "NVIDIA launches Minerva as a limited-beta AI-factory AIOps layer",
+          "evidence_ids": [
+            "ev-20261022-07-minerva-launch-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261022-07-mission-control-2-5",
+          "kind": "update",
+          "occurred_at": "2026-10-26T15:00:00Z",
+          "discovered_at": "2026-10-26T16:03:24Z",
+          "summary_zh": "Mission Control 2.5 把自动恢复扩展到 Run:ai 管理的 Kubernetes",
+          "summary_en": "Mission Control 2.5 extends automated recovery to Run:ai-managed Kubernetes",
+          "evidence_ids": [
+            "ev-20261022-07-mission-control-2-5-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "short_label_zh": "Mission Control 2.5",
+      "short_label_en": "Mission Control 2.5",
+      "next_action_zh": "现有客户一天内在非生产 Kubernetes 集群注入一次节点故障，核对隔离、重调度、checkpoint 恢复与审计记录。",
+      "next_action_en": "Within one day, existing customers should inject one node failure in a non-production Kubernetes cluster and verify isolation, rescheduling, checkpoint recovery and audit records."
     }
   ]
 }
