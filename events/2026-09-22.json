@@ -449,7 +449,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-10-24T15:59:49Z",
+      "last_updated_at": "2026-10-27T15:59:15Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
       "secondary_sources": [
@@ -461,14 +461,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.2",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.3",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.0",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.1"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.1",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.2"
       ],
-      "summary": "Qwen Code 0.26.0 asks the hosted execution broker for durable evidence after takeover or restart and leaves unprovable outcomes UNKNOWN instead of retrying or inventing failure. A successor owner can finish file turns from stored receipts without repeating tool effects. The release also adds a preflight check command and broader managed-agent controls; these guarantees remain project-documented rather than independently tested.",
-      "why_it_matters": "For long-running agent systems, preserving uncertainty is safer than replaying a potentially completed action. The release turns recovery semantics into a testable contract, but teams still need fault injection around receipts, ownership transfer and side effects.",
-      "summary_zh": "Qwen Code 0.26.0 在接管或重启后向托管执行 broker 查询持久证据；无法证明的结果保持 UNKNOWN，不盲目重试，也不伪造成失败。新的 owner 可依据已保存的 receipt 完成文件操作，避免重复产生工具副作用。该版还加入 preflight 检查与更多 managed-agent 控制；这些保证仍来自项目文档，尚无独立测试。",
-      "summary_en": "Qwen Code 0.26.0 asks the hosted execution broker for durable evidence after takeover or restart and leaves unprovable outcomes UNKNOWN instead of retrying or inventing failure. A successor owner can finish file turns from stored receipts without repeating tool effects. The release also adds a preflight check command and broader managed-agent controls; these guarantees remain project-documented rather than independently tested.",
-      "why_it_matters_zh": "对长时程 agent 系统来说，保留不确定性比重放一项可能已完成的操作更安全。这个版本把恢复语义变成可测试契约，但团队仍需围绕 receipt、owner 转移和外部副作用做故障注入。",
-      "why_it_matters_en": "For long-running agent systems, preserving uncertainty is safer than replaying a potentially completed action. The release turns recovery semantics into a testable contract, but teams still need fault injection around receipts, ownership transfer and side effects.",
+      "summary": "Qwen Code 0.26.2 adds managed session permission rules and auto approval, hardens serve-token resolution against project environment injection, introduces native snapshots plus HTTP recovery, and expands the shared agent loop across headless and ACP paths. The release also adds local managed-journal recovery and tighter Hosted workspace admission checks; guarantees remain project-documented rather than independently tested.",
+      "why_it_matters": "For teams trialing managed coding agents, version 0.26.2 tightens both permission admission and crash recovery. The breadth of the release increases integration risk, so it remains TRIAL until fault injection confirms authorization and recovery behavior.",
+      "summary_zh": "Qwen Code 0.26.2 加入 managed session 权限规则与自动审批，防止项目环境变量注入 serve token 解析，并增加原生 snapshot、HTTP 恢复和覆盖 headless / ACP 路径的共享 agent loop。新版还补充本地 managed journal 恢复与更严格的 Hosted workspace 准入检查；这些保证仍来自项目发布说明，尚未独立测试。",
+      "summary_en": "Qwen Code 0.26.2 adds managed session permission rules and auto approval, hardens serve-token resolution against project environment injection, introduces native snapshots plus HTTP recovery, and expands the shared agent loop across headless and ACP paths. The release also adds local managed-journal recovery and tighter Hosted workspace admission checks; guarantees remain project-documented rather than independently tested.",
+      "why_it_matters_zh": "对试用 managed coding agent 的团队来说，0.26.2 同时收紧权限准入和崩溃恢复。改动面较广，只有故障注入确认授权与恢复行为后，才适合扩大使用；评级维持 TRIAL。",
+      "why_it_matters_en": "For teams trialing managed coding agents, version 0.26.2 tightens both permission admission and crash recovery. The breadth of the release increases integration risk, so it remains TRIAL until fault injection confirms authorization and recovery behavior.",
       "technical_details": {
         "version": "0.24.4 stable",
         "attestation": "managed runtime attestation contract",
@@ -486,7 +487,11 @@
         "update_2026_10_22": "0.26.0 preserves unprovable hosted tool outcomes as UNKNOWN, reconstructs file turns from durable receipts, and adds PASS/WARN/FAIL/SKIP preflight checks.",
         "latest_version": "0.26.1",
         "runtime_update": "Adds durable manual compression, safer recovery, public subagent delegation defaults, mid-stream MCP replacement and replacement of synthesized placeholders with late real tool results.",
-        "time_basis": "GitHub release published 2026-10-24T15:47:58Z, twelve minutes before this run cutoff."
+        "time_basis": "GitHub release published 2026-10-24T15:47:58Z, twelve minutes before this run cutoff.",
+        "release_2026_10_27": "Qwen Code 0.26.2 stable",
+        "security_2026_10_27": "Session permission rules, auto approval and serve-token resolution hardened against project env injection",
+        "recovery_2026_10_27": "Native snapshots, HTTP recovery, local managed-journal recovery and Hosted workspace preflight",
+        "time_basis_2026_10_27": "GitHub stable release published 2026-10-27T15:32:11Z"
       },
       "technical_details_zh": {
         "版本": "0.24.4 stable",
@@ -505,7 +510,11 @@
         "2026-10-22 更新": "0.26.0 把无法证明的托管工具结果保持为 UNKNOWN，按持久 receipt 重建文件操作，并加入 PASS/WARN/FAIL/SKIP preflight 检查。",
         "最新版本": "0.26.1",
         "运行时更新": "加入持久化手动压缩、安全恢复、默认公开子 agent 委派、流中 MCP 替换，并用迟到的真实工具结果替换合成占位。",
-        "时间依据": "GitHub release 发布时间为 2026-10-24T15:47:58Z，距本轮截止约 12 分钟。"
+        "时间依据": "GitHub release 发布时间为 2026-10-24T15:47:58Z，距本轮截止约 12 分钟。",
+        "2026-10-27 版本": "Qwen Code 0.26.2 稳定版",
+        "2026-10-27 安全": "session 权限规则、自动审批，以及防项目环境变量注入的 serve token 解析",
+        "2026-10-27 恢复": "原生 snapshot、HTTP 恢复、本地 managed journal 恢复与 Hosted workspace preflight",
+        "2026-10-27 时间依据": "GitHub 稳定版发布于 2026-10-27T15:32:11Z"
       },
       "tags": [
         "qwen-code",
@@ -533,7 +542,8 @@
         "src-62cbc2cf184b4f1b",
         "src-2da06eac2ec92ad6",
         "src-5c24af93d6fa5960",
-        "src-2df989db5683bb98"
+        "src-2df989db5683bb98",
+        "src-69d1de2cb4ffaa52"
       ],
       "project_ids": [
         "qwen-code"
@@ -660,6 +670,19 @@
           ],
           "relation": "support",
           "verification": "first-party artifact verified"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-26-2-evidence",
+          "claim_zh": "Qwen Code 0.26.2 增加 managed 权限规则、token 注入防护、snapshot 与多条恢复路径。",
+          "claim_en": "Qwen Code 0.26.2 adds managed permission rules, token-injection hardening, snapshots and multiple recovery paths.",
+          "source_ids": [
+            "src-69d1de2cb4ffaa52"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; runtime guarantees not independently reproduced"
         }
       ],
       "changes": [
@@ -777,6 +800,19 @@
           "evidence_ids": [
             "ev-20260922-04-qwen-0-26-1-evidence"
           ]
+        },
+        {
+          "id": "ev-20260922-04-qwen-code-0-26-2",
+          "kind": "update",
+          "occurred_at": "2026-10-27T15:32:11Z",
+          "discovered_at": "2026-10-27T15:59:15Z",
+          "summary_zh": "Qwen Code 0.26.2 收紧 managed 权限并扩展恢复路径",
+          "summary_en": "Qwen Code 0.26.2 tightens managed permissions and recovery",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-26-2-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -786,10 +822,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.26.0",
-      "short_label_en": "Qwen Code 0.26.0",
-      "next_action_zh": "一天内在一个有副作用的测试工具上模拟断线与 owner 切换，确认 receipt 可恢复且 UNKNOWN 不被自动重放。",
-      "next_action_en": "Within one day, simulate disconnect and owner transfer around one side-effecting test tool; verify receipt recovery and no automatic replay of UNKNOWN outcomes."
+      "short_label_zh": "Qwen Code 0.26.2",
+      "short_label_en": "Qwen Code 0.26.2",
+      "next_action_zh": "一天内注入 worker 崩溃、snapshot 中断和项目环境变量污染，确认权限不越权且恢复不重复执行工具。",
+      "next_action_en": "Within one day, inject worker crashes, interrupted snapshots and poisoned project environment variables; verify permissions stay bounded and recovery does not repeat tools."
     },
     {
       "event_id": "ev-20260922-05",

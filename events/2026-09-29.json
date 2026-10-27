@@ -126,10 +126,11 @@
     },
     {
       "first_seen_at": "2026-10-01T16:01:43Z",
-      "last_updated_at": "2026-10-09T15:56:33Z",
+      "last_updated_at": "2026-10-27T15:59:15Z",
       "secondary_sources": [
         "https://deploymentsafety.openai.com/gpt-6-1-sol/awareness-of-cot-monitoring-reduces-monitorability",
-        "https://developers.openai.com/api/docs/changelog"
+        "https://developers.openai.com/api/docs/changelog",
+        "https://openai.com/index/openai-cut-incident-investigation"
       ],
       "technical_impact": 5,
       "engineering_value": 5,
@@ -169,7 +170,8 @@
         "vendor_results": "matches Astra on DeepSWE v1.1 at about one-fifth cost; within 2.1 points on OSWorld 2.0 at about one-seventh task cost",
         "multi_agent": "beta delegation in Responses API",
         "safety": "Critical cybersecurity and High biological/chemical capability under OpenAI Preparedness Framework",
-        "ultrafast_2026_10_08": "Generally available to all API users with service_tier: ultrafast; separate rate limits; global processing and US/EU data residency options."
+        "ultrafast_2026_10_08": "Generally available to all API users with service_tier: ultrafast; separate rate limits; global processing and US/EU data residency options.",
+        "internal_incident_response_2026_10_26": "OpenAI staff report investigations falling from 1–2 hours to 10–15 minutes; vendor internal case study without controlled comparison"
       },
       "technical_details_zh": {
         "模型": "gpt-6.1-sol",
@@ -184,7 +186,8 @@
         "厂商结果": "DeepSWE v1.1 以约五分之一成本接近 Astra；OSWorld 2.0 相差 2.1 点，单任务成本约七分之一",
         "多_agent": "Responses API beta 委派",
         "安全分级": "OpenAI Preparedness Framework 下网络安全为 Critical、生物化学为 High",
-        "Ultrafast_2026_10_08": "所有 API 用户可通过 service_tier: ultrafast 使用；独立限额；支持全球处理和美国/欧盟数据驻留。"
+        "Ultrafast_2026_10_08": "所有 API 用户可通过 service_tier: ultrafast 使用；独立限额；支持全球处理和美国/欧盟数据驻留。",
+        "2026-10-26 内部事故响应": "OpenAI 员工报告调查时间从 1–2 小时缩短到 10–15 分钟；属于厂商内部案例，没有受控对照"
       },
       "tags": [
         "gpt-6.1-sol",
@@ -199,15 +202,16 @@
       "source_ids": [
         "src-d6b9f5e651b1891e",
         "src-dc29f748affb82a8",
-        "src-49e8d0577a5e1f9d"
+        "src-49e8d0577a5e1f9d",
+        "src-742d30efdc4090c1"
       ],
       "project_ids": [
         "gpt-6"
       ],
       "short_label_zh": "GPT-6.1 Sol",
       "short_label_en": "GPT-6.1 Sol",
-      "next_action_zh": "用真实 agent 轨迹比较 standard 与 ultrafast 的端到端延迟、成功率、限额和单任务成本。",
-      "next_action_en": "Compare standard and ultrafast on real agent traces for end-to-end latency, success, limits and cost per completed task.",
+      "next_action_zh": "用真实事故演练比较 standard 与 ultrafast 的调查时长、误判率、限额和单次完成成本。",
+      "next_action_en": "Compare standard and ultrafast on real incident drills for investigation time, error rate, limits and cost per completed investigation.",
       "summary": "OpenAI offers GPT-6.1 Sol in the API, ChatGPT Work and Codex at a lower standard token price than Astra. The API now makes Ultrafast processing generally available through service_tier: ultrafast, with separate limits, global processing and US or EU data residency.",
       "why_it_matters": "For latency-sensitive agents, Ultrafast is now a production-available routing choice rather than a limited preview. Measure end-to-end task latency and completed-task cost under your residency constraints before changing the default tier.",
       "evidence": [
@@ -238,6 +242,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260929-02-ultrafast-internal-evidence",
+          "claim_zh": "OpenAI 内部员工报告 Ultrafast 将部分安全事故调查从 1–2 小时缩短到 10–15 分钟。",
+          "claim_en": "OpenAI staff report Ultrafast reducing some security-incident investigations from one or two hours to 10–15 minutes.",
+          "source_ids": [
+            "src-742d30efdc4090c1"
+          ],
+          "event_ids": [
+            "ev-20260929-02"
+          ],
+          "relation": "support",
+          "verification": "vendor internal case study; no controlled or independent validation"
         }
       ],
       "changes": [
@@ -266,6 +283,18 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260929-02-ultrafast-internal-adoption",
+          "kind": "update",
+          "occurred_at": "2026-10-26T07:00:00Z",
+          "discovered_at": "2026-10-27T15:59:15Z",
+          "summary_zh": "OpenAI 披露 Ultrafast 的内部事故响应用例",
+          "summary_en": "OpenAI reports an internal incident-response use case for Ultrafast",
+          "evidence_ids": [
+            "ev-20260929-02-ultrafast-internal-evidence"
+          ],
+          "historical": false
         }
       ]
     },

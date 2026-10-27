@@ -1,6 +1,6 @@
 {
   "date": "2026-10-26",
-  "provenance": "Incremental intelligence persisted by the 2026-10-26T16:03:24Z run.",
+  "provenance": "Incremental intelligence persisted by the 2026-10-26T16:03:24Z run. Appended by the 2026-10-27T15:59:15Z run: five verified events from the incremental window and one documented late discovery; research performance remains author-reported. Mandatory recall audit added Cloudflare's coordinated incident disclosure.",
   "events": [
     {
       "event_id": "ev-20261026-01",
@@ -100,6 +100,687 @@
       "short_label_en": "Cline 4.1.26",
       "next_action_zh": "一天内在测试仓库模拟 reasoning 后断线、Gemini 429 与未知上下文压缩，核对无重复改动且工具列表完整。",
       "next_action_en": "Within one day, simulate a post-reasoning disconnect, Gemini 429 and unknown-context compaction in a test repository; verify no duplicate edits and a complete tool list."
+    },
+    {
+      "event_id": "ev-20261026-02",
+      "title": "OpenAI releases GPT-6.1 Terra for lower-cost computer use",
+      "title_zh": "OpenAI 发布低成本 computer use 模型 GPT-6.1 Terra",
+      "category": "foundation-model",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-10-26T00:00:00Z",
+      "first_seen_at": "2026-10-27T15:59:15Z",
+      "last_updated_at": "2026-10-27T15:59:15Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://openai.com/index/introducing-gpt-6-1-terra",
+      "secondary_sources": [
+        "https://developers.openai.com/api/docs/changelog"
+      ],
+      "late_discovery": true,
+      "summary": "OpenAI released GPT-6.1 Terra to all Plus, Pro, Enterprise and Edu users in ChatGPT Work and Codex, and through the API as gpt-6.1-terra. Standard API pricing is $1 per million input tokens, $0.05 per million cached input tokens and $5 per million output tokens. OpenAI positions it for visual reasoning and computer use at half the standard token price of GPT-5.6 Terra and GPT-6.1 Sol.",
+      "summary_en": "OpenAI released GPT-6.1 Terra to all Plus, Pro, Enterprise and Edu users in ChatGPT Work and Codex, and through the API as gpt-6.1-terra. Standard API pricing is $1 per million input tokens, $0.05 per million cached input tokens and $5 per million output tokens. OpenAI positions it for visual reasoning and computer use at half the standard token price of GPT-5.6 Terra and GPT-6.1 Sol.",
+      "summary_zh": "OpenAI 已向 ChatGPT Work 与 Codex 的 Plus、Pro、Enterprise 和 Edu 用户开放 GPT-6.1 Terra，开发者也可通过 API 调用 gpt-6.1-terra。标准 API 价格为每百万 input token 1 美元、cached input 0.05 美元、output 5 美元。OpenAI 将它定位为视觉推理与 computer use 模型，标准 token 价格是 GPT-5.6 Terra 和 GPT-6.1 Sol 的一半。",
+      "why_it_matters": "For teams automating browser and desktop work, Terra materially lowers the price floor for computer-use tasks. Its benchmark and safety claims are vendor-reported, so routing decisions should use real task completion cost and failure rates rather than headline scores.",
+      "why_it_matters_en": "For teams automating browser and desktop work, Terra materially lowers the price floor for computer-use tasks. Its benchmark and safety claims are vendor-reported, so routing decisions should use real task completion cost and failure rates rather than headline scores.",
+      "why_it_matters_zh": "对自动化浏览器和桌面任务的团队来说，Terra 明显降低了 computer use 的价格门槛。基准与安全结论均来自厂商，应以真实任务的完成成本和失败率做路由判断，而不是直接采用宣传分数。",
+      "technical_details": {
+        "model": "gpt-6.1-terra",
+        "availability": "GA in API, ChatGPT Work and Codex for listed paid and education plans",
+        "pricing_per_million_tokens": "$1 input / $0.05 cached input / $5 output",
+        "vendor_benchmarks": "Terminal-Bench 4.0: 50.3% at max effort; internal factual-error benchmark: 16.7% at low effort and 4.3% at max effort",
+        "evidence_limit": "Benchmark and safety results are OpenAI-reported; no independent reproduction was found",
+        "time_basis": "OpenAI RSS published 2026-10-26T00:00:00Z; absent from the prior fixed-source capture, so recorded as late discovery"
+      },
+      "technical_details_zh": {
+        "模型": "gpt-6.1-terra",
+        "可用性": "API、ChatGPT Work 与 Codex 已 GA；适用于所列付费及教育套餐",
+        "每百万_token_价格": "input 1 美元 / cached input 0.05 美元 / output 5 美元",
+        "厂商评测": "Terminal-Bench 4.0：max effort 50.3%；内部事实错误测试：low effort 16.7%，max effort 4.3%",
+        "证据边界": "基准与安全结果均由 OpenAI 报告；未找到独立复现",
+        "时间依据": "OpenAI RSS 标注 2026-10-26T00:00:00Z；上一轮固定入口快照中尚无该条，按 late discovery 补录"
+      },
+      "tags": [
+        "openai",
+        "gpt-6.1-terra",
+        "computer-use",
+        "vision",
+        "api-pricing"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "openai-gpt-6-1-terra-ga-computer-use-pricing",
+      "short_label_zh": "GPT-6.1 Terra",
+      "short_label_en": "GPT-6.1 Terra",
+      "next_action_zh": "一天内用 20 条真实 computer use 轨迹对比 Terra 与当前路由，记录成功率、端到端延迟和单次完成成本。",
+      "next_action_en": "Within one day, compare Terra with the current route on 20 real computer-use traces and record success, end-to-end latency and cost per completed task.",
+      "source_ids": [
+        "src-35e334c198740f74",
+        "src-49e8d0577a5e1f9d"
+      ],
+      "project_ids": [
+        "gpt-6"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261026-02-release-evidence",
+          "claim_zh": "OpenAI 已在 API、ChatGPT Work 与 Codex 提供 GPT-6.1 Terra，并公布标准 token 价格。",
+          "claim_en": "OpenAI makes GPT-6.1 Terra available in the API, ChatGPT Work and Codex and publishes standard token pricing.",
+          "source_ids": [
+            "src-35e334c198740f74",
+            "src-49e8d0577a5e1f9d"
+          ],
+          "event_ids": [
+            "ev-20261026-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; benchmark and safety claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261026-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-26T00:00:00Z",
+          "discovered_at": "2026-10-27T15:59:15Z",
+          "summary_zh": "GPT-6.1 Terra 以更低价格开放 computer use",
+          "summary_en": "GPT-6.1 Terra opens lower-cost computer use",
+          "evidence_ids": [
+            "ev-20261026-02-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261026-03",
+      "title": "DecisionRAG lets language models navigate document hierarchies without a first-stage retriever",
+      "title_zh": "DecisionRAG 让模型直接导航文档层级",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-26T17:59:44Z",
+      "first_seen_at": "2026-10-27T15:59:15Z",
+      "last_updated_at": "2026-10-27T15:59:15Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.35868",
+      "secondary_sources": [],
+      "summary": "DecisionRAG uses a language model as a decision model that jointly scores branches of a document hierarchy without generating tokens or relying on a first-stage retriever. The authors report gains over dense retrieval plus an 8B reranker on MultiDoc2Dial and Natural Questions, with 0.7–1.8 second retrieval across four benchmarks. No public implementation or independent reproduction was identified.",
+      "summary_en": "DecisionRAG uses a language model as a decision model that jointly scores branches of a document hierarchy without generating tokens or relying on a first-stage retriever. The authors report gains over dense retrieval plus an 8B reranker on MultiDoc2Dial and Natural Questions, with 0.7–1.8 second retrieval across four benchmarks. No public implementation or independent reproduction was identified.",
+      "summary_zh": "DecisionRAG 把语言模型当作 decision model，在不生成 token、也不依赖第一阶段检索器的情况下，共同判断文档层级中的候选分支。作者报告它在 MultiDoc2Dial 与 Natural Questions 上超过 dense retrieval 加 8B reranker，并在四个 benchmark 上把单次检索控制在 0.7–1.8 秒。当前未发现公开实现或独立复现。",
+      "why_it_matters": "For RAG teams, the work challenges the standard retrieve-then-rerank pipeline by moving model judgment into hierarchical navigation. Without code, cost breakdowns or independent tests, it is a design signal rather than a production choice.",
+      "why_it_matters_en": "For RAG teams, the work challenges the standard retrieve-then-rerank pipeline by moving model judgment into hierarchical navigation. Without code, cost breakdowns or independent tests, it is a design signal rather than a production choice.",
+      "why_it_matters_zh": "对 RAG 团队来说，这项工作把模型判断前移到层级导航，挑战了常见的“先检索、再重排”流水线。缺少代码、成本拆解和独立测试，目前更适合作为架构信号，而不是生产选型。",
+      "technical_details": {
+        "method": "Hierarchical branch navigation with joint candidate scoring in one forward pass",
+        "benchmarks": "MultiDoc2Dial, Natural Questions and two additional benchmarks",
+        "reported_results": "+13.8 R@1 on MultiDoc2Dial; +17.4 Hit@1 on Natural Questions versus dense retrieval with an 8B reranker",
+        "latency": "0.7–1.8 seconds per query, author-reported",
+        "artifacts": "Paper and TeX source; no official code link on the arXiv record",
+        "time_basis": "arXiv v1 submitted 2026-10-26T17:59:44Z"
+      },
+      "technical_details_zh": {
+        "方法": "用一次前向计算共同评分候选分支，并沿文档层级导航",
+        "评测": "MultiDoc2Dial、Natural Questions 与另外两个 benchmark",
+        "报告结果": "相对 dense retrieval 加 8B reranker，MultiDoc2Dial 的 R@1 +13.8，Natural Questions 的 Hit@1 +17.4",
+        "延迟": "每次查询 0.7–1.8 秒，作者自报",
+        "公开材料": "论文与 TeX source；arXiv 页面没有官方代码链接",
+        "时间依据": "arXiv v1 提交于 2026-10-26T17:59:44Z"
+      },
+      "tags": [
+        "rag",
+        "retrieval",
+        "decision-model",
+        "reranking"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2610-35868-decisionrag-hierarchical-retrieval",
+      "short_label_zh": "DecisionRAG",
+      "short_label_en": "DecisionRAG",
+      "next_action_zh": "等官方代码与独立复现公开后，再用自有语料对比召回率、延迟和每次查询成本。",
+      "next_action_en": "Reassess after official code and independent reproductions appear, then compare recall, latency and per-query cost on your own corpus.",
+      "source_ids": [
+        "src-9e5fee1e3c60c9de"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research",
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261026-03-paper-evidence",
+          "claim_zh": "论文报告 DecisionRAG 在四个 benchmark 上以层级 decision model 替代第一阶段检索器。",
+          "claim_en": "The paper reports that DecisionRAG replaces a first-stage retriever with hierarchical decision-model navigation across four benchmarks.",
+          "source_ids": [
+            "src-9e5fee1e3c60c9de"
+          ],
+          "event_ids": [
+            "ev-20261026-03"
+          ],
+          "relation": "support",
+          "verification": "author-reported; no independent reproduction or public implementation found"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261026-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-26T17:59:44Z",
+          "discovered_at": "2026-10-27T15:59:15Z",
+          "summary_zh": "DecisionRAG 用层级导航替代第一阶段检索",
+          "summary_en": "DecisionRAG replaces first-stage retrieval with hierarchical navigation",
+          "evidence_ids": [
+            "ev-20261026-03-paper-evidence"
+          ],
+          "historical": false
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261026-04",
+      "title": "REVA screens functions for vulnerabilities in one model pass",
+      "title_zh": "REVA 用一次模型前向计算筛查函数漏洞",
+      "category": "agent-security",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-26T17:50:09Z",
+      "first_seen_at": "2026-10-27T15:59:15Z",
+      "last_updated_at": "2026-10-27T15:59:15Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.35829",
+      "secondary_sources": [],
+      "summary": "REVA combines a module threat model, static-analysis findings and call-graph context, then reads an LLM’s internal representation with a trained probe. On PrimeVul’s held-out test set, the authors report 60.0% accuracy in about one second per function on GLM-5.3-Flash, similar to their VulTriage comparison while over 250 times faster. No public code or independent validation was identified.",
+      "summary_en": "REVA combines a module threat model, static-analysis findings and call-graph context, then reads an LLM’s internal representation with a trained probe. On PrimeVul’s held-out test set, the authors report 60.0% accuracy in about one second per function on GLM-5.3-Flash, similar to their VulTriage comparison while over 250 times faster. No public code or independent validation was identified.",
+      "summary_zh": "REVA 把模块威胁模型、静态分析结果和调用图上下文一起交给 LLM，再用训练过的 probe 读取模型内部表示。作者在 PrimeVul held-out 测试集上报告：GLM-5.3-Flash 约一秒筛查一个函数，准确率 60.0%，与其复跑的 VulTriage 接近，但速度快 250 倍以上。当前未发现公开代码或独立验证。",
+      "why_it_matters": "For teams reviewing agent-generated code, REVA suggests a cheap screening layer before slower agentic investigation. The absolute accuracy remains too low for autonomous blocking, and the unpublished implementation prevents operational validation.",
+      "why_it_matters_en": "For teams reviewing agent-generated code, REVA suggests a cheap screening layer before slower agentic investigation. The absolute accuracy remains too low for autonomous blocking, and the unpublished implementation prevents operational validation.",
+      "why_it_matters_zh": "对审查 agent 生成代码的团队来说，REVA 提供了一条先低成本筛查、再交给慢速 agent 深挖的思路。但绝对准确率仍不足以自动阻断，未公开实现也无法做工程验收。",
+      "technical_details": {
+        "method": "Threat model + static analysis + call graph as context; trained probe reads LLM hidden representations",
+        "evaluation": "PrimeVul held-out test set across three open LLMs",
+        "reported_result": "60.0% accuracy on GLM-5.3-Flash; about one second per function; >250x faster than the compared agentic detector",
+        "evidence_limit": "Author-reported preprint; no code or independent validation found",
+        "time_basis": "arXiv v1 submitted 2026-10-26T17:50:09Z"
+      },
+      "technical_details_zh": {
+        "方法": "威胁模型 + 静态分析 + 调用图作为上下文；训练 probe 读取 LLM 隐藏表示",
+        "评测": "PrimeVul held-out 测试集，覆盖三个开放模型",
+        "报告结果": "GLM-5.3-Flash 准确率 60.0%；约一秒一个函数；比对照 agent 检测器快 250 倍以上",
+        "证据边界": "作者自报预印本；未发现代码或独立验证",
+        "时间依据": "arXiv v1 提交于 2026-10-26T17:50:09Z"
+      },
+      "tags": [
+        "vulnerability-detection",
+        "static-analysis",
+        "coding-agent",
+        "probe"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2610-35829-reva-contextual-vulnerability-probe",
+      "short_label_zh": "REVA",
+      "short_label_en": "REVA",
+      "next_action_zh": "等待代码与可复现实验公开，并确认误报、漏报及跨仓库泛化后再评估接入。",
+      "next_action_en": "Wait for code and reproducible experiments, then assess false positives, false negatives and cross-repository transfer before integration.",
+      "source_ids": [
+        "src-898af1996a4ff97b"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261026-04-paper-evidence",
+          "claim_zh": "论文报告 REVA 用上下文 probe 在约一秒内完成函数级漏洞筛查。",
+          "claim_en": "The paper reports that REVA uses a contextual probe for function-level vulnerability screening in about one second.",
+          "source_ids": [
+            "src-898af1996a4ff97b"
+          ],
+          "event_ids": [
+            "ev-20261026-04"
+          ],
+          "relation": "support",
+          "verification": "author-reported; no code or independent validation found"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261026-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-26T17:50:09Z",
+          "discovered_at": "2026-10-27T15:59:15Z",
+          "summary_zh": "REVA 用单次前向计算筛查函数漏洞",
+          "summary_en": "REVA screens functions for vulnerabilities in one forward pass",
+          "evidence_ids": [
+            "ev-20261026-04-paper-evidence"
+          ],
+          "historical": false
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261026-05",
+      "title": "dSpark learns token reveal schedules for faster diffusion language models",
+      "title_zh": "dSpark 学习 token 揭示顺序来加速扩散语言模型",
+      "category": "research",
+      "organization": [
+        "VILA Lab",
+        "MBZUAI"
+      ],
+      "published_at": "2026-10-26T17:35:58Z",
+      "first_seen_at": "2026-10-27T15:59:15Z",
+      "last_updated_at": "2026-10-27T15:59:15Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.35804",
+      "secondary_sources": [
+        "https://github.com/VILA-Lab/dSpark"
+      ],
+      "summary": "dSpark distills token-unmasking schedules that reveal positions which reduce uncertainty elsewhere, rather than simply revealing the most confident token first. The authors report 10.12 tokens per forward pass on LLaDA-8B-Instruct and 5.12 on Dream-7B-Instruct while preserving benchmark accuracy. Training and evaluation code is public, but model checkpoints and training data are still promised for a later release and the repository has no declared license.",
+      "summary_en": "dSpark distills token-unmasking schedules that reveal positions which reduce uncertainty elsewhere, rather than simply revealing the most confident token first. The authors report 10.12 tokens per forward pass on LLaDA-8B-Instruct and 5.12 on Dream-7B-Instruct while preserving benchmark accuracy. Training and evaluation code is public, but model checkpoints and training data are still promised for a later release and the repository has no declared license.",
+      "summary_zh": "dSpark 蒸馏 token 解掩码顺序，优先揭示能降低其他位置不确定性的 token，而不是只选当前最有把握的 token。作者报告 LLaDA-8B-Instruct 每次前向计算可确定 10.12 个 token，Dream-7B-Instruct 为 5.12 个，同时保持 benchmark 准确率。训练与评测代码已公开，但模型 checkpoint 和训练数据仍承诺稍后发布，仓库也没有声明许可证。",
+      "why_it_matters": "For diffusion-language-model serving, scheduling can change wall-clock cost without changing the base architecture. Missing checkpoints, data and license metadata make the current release unsuitable for a bounded production trial.",
+      "why_it_matters_en": "For diffusion-language-model serving, scheduling can change wall-clock cost without changing the base architecture. Missing checkpoints, data and license metadata make the current release unsuitable for a bounded production trial.",
+      "why_it_matters_zh": "对扩散语言模型 serving 团队来说，只改生成顺序就可能显著改变实际延迟，不必更换底座架构。但 checkpoint、训练数据和许可证信息尚不完整，当前还不适合做受控生产试点。",
+      "technical_details": {
+        "method": "Schedule distillation with a KL anchor on failed trajectories",
+        "reported_parallelism": "10.12 tokens/forward on LLaDA-8B-Instruct; 5.12 on Dream-7B-Instruct",
+        "reported_wall_clock": "249 TPS versus 15 TPS for base LLaDA on GSM8K, A100 batch size 1",
+        "compute": "Training scripts specify four A100 GPUs",
+        "availability": "Training/evaluation code public; checkpoints and training data promised later",
+        "license": "No repository license declared at check time",
+        "time_basis": "arXiv v1 submitted 2026-10-26T17:35:58Z; repository pushed 2026-10-26T17:40:30Z"
+      },
+      "technical_details_zh": {
+        "方法": "schedule distillation；对失败轨迹加入 KL 约束",
+        "报告并行度": "LLaDA-8B-Instruct 每次前向 10.12 token；Dream-7B-Instruct 为 5.12",
+        "报告实际速度": "A100、batch size 1、GSM8K 上 249 TPS；基础 LLaDA 为 15 TPS",
+        "算力": "训练脚本指定 4 张 A100",
+        "可用性": "训练与评测代码公开；checkpoint 与训练数据承诺稍后发布",
+        "许可证": "检查时仓库未声明许可证",
+        "时间依据": "arXiv v1 提交于 2026-10-26T17:35:58Z；仓库 push 于 2026-10-26T17:40:30Z"
+      },
+      "tags": [
+        "diffusion-language-model",
+        "decoding",
+        "distillation",
+        "inference"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2610-35804-dspark-schedule-distillation",
+      "short_label_zh": "dSpark",
+      "short_label_en": "dSpark",
+      "next_action_zh": "等待 checkpoint、训练数据和许可证补齐后，用公开 eval 脚本复测准确率、TPS 与显存占用。",
+      "next_action_en": "Wait for checkpoints, training data and license metadata, then rerun the public evaluation for accuracy, TPS and memory use.",
+      "source_ids": [
+        "src-d665446679c0f1a0",
+        "src-0420f596d3a34b3a"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "research",
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261026-05-paper-evidence",
+          "claim_zh": "论文与仓库公开 dSpark 的训练和评测方法，但 checkpoint 与训练数据尚未发布。",
+          "claim_en": "The paper and repository publish dSpark training and evaluation methods, while checkpoints and training data remain unreleased.",
+          "source_ids": [
+            "src-d665446679c0f1a0",
+            "src-0420f596d3a34b3a"
+          ],
+          "event_ids": [
+            "ev-20261026-05"
+          ],
+          "relation": "support",
+          "verification": "verified public artifacts; performance remains author-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261026-05-published",
+          "kind": "new",
+          "occurred_at": "2026-10-26T17:35:58Z",
+          "discovered_at": "2026-10-27T15:59:15Z",
+          "summary_zh": "dSpark 用 schedule distillation 加速扩散语言模型",
+          "summary_en": "dSpark uses schedule distillation to accelerate diffusion language models",
+          "evidence_ids": [
+            "ev-20261026-05-paper-evidence"
+          ],
+          "historical": false
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261026-06",
+      "title": "Study finds simple LLM harnesses beat hand-crafted root-cause agents",
+      "title_zh": "研究发现简单 LLM harness 胜过手工编排的根因分析 agent",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-26T17:12:02Z",
+      "first_seen_at": "2026-10-27T15:59:15Z",
+      "last_updated_at": "2026-10-27T15:59:15Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.35767",
+      "secondary_sources": [],
+      "summary": "A study compares three simple LLM harnesses with five published root-cause-analysis agents plus statistical and causal baselines on RCAtlas. Across 90 validated incidents from eight public datasets, six models and three reasoning efforts, the authors report that simple harnesses reach 65–77% PR@1 on three mid-tier models versus 16–53% for the hand-crafted agents. The paper does not link a public implementation or independent reproduction.",
+      "summary_en": "A study compares three simple LLM harnesses with five published root-cause-analysis agents plus statistical and causal baselines on RCAtlas. Across 90 validated incidents from eight public datasets, six models and three reasoning efforts, the authors report that simple harnesses reach 65–77% PR@1 on three mid-tier models versus 16–53% for the hand-crafted agents. The paper does not link a public implementation or independent reproduction.",
+      "summary_zh": "一项研究在 RCAtlas 上比较三种简单 LLM harness、五个已发表的根因分析 agent，以及统计和因果基线。实验覆盖八个公开数据集中的 90 个已验证故障、六个模型和三档 reasoning effort。作者报告：三种中档模型上的简单 harness 达到 65–77% PR@1，手工编排 agent 为 16–53%。论文没有链接公开实现或独立复现。",
+      "why_it_matters": "For observability and incident-response teams, the result warns that fixed stages and role agents can hide decisive evidence and add cost. The comparison is broad enough to influence prototype design, but not yet strong enough to replace production evaluation.",
+      "why_it_matters_en": "For observability and incident-response teams, the result warns that fixed stages and role agents can hide decisive evidence and add cost. The comparison is broad enough to influence prototype design, but not yet strong enough to replace production evaluation.",
+      "why_it_matters_zh": "对可观测性和事故响应团队来说，这项结果提醒：固定阶段和角色 agent 可能跳过关键证据，还会增加成本。比较范围足以影响原型设计，但还不能替代生产环境里的自有评测。",
+      "technical_details": {
+        "evaluation": "RCAtlas: 90 validated cases from eight public datasets",
+        "comparators": "Three simple harnesses, five published LLM RCA agents, statistical and causal methods",
+        "models": "Six models and three reasoning-effort levels",
+        "reported_results": "Simple harnesses 65–77% PR@1 on three mid-tier models; published agents 16–53%",
+        "cost_limit": "Higher reasoning effort changed accuracy by only a few points while increasing time by up to 7x",
+        "artifacts": "Paper and TeX source; no implementation linked",
+        "time_basis": "arXiv v1 submitted 2026-10-26T17:12:02Z"
+      },
+      "technical_details_zh": {
+        "评测": "RCAtlas：来自八个公开数据集的 90 个已验证故障",
+        "对照": "三种简单 harness、五个已发表 LLM RCA agent、统计与因果方法",
+        "模型": "六个模型、三档 reasoning effort",
+        "报告结果": "三种中档模型上的简单 harness 为 65–77% PR@1；已发表 agent 为 16–53%",
+        "成本边界": "增加 reasoning effort 只改变几个百分点，却让耗时最多增加 7 倍",
+        "公开材料": "论文与 TeX source；未链接实现",
+        "时间依据": "arXiv v1 提交于 2026-10-26T17:12:02Z"
+      },
+      "tags": [
+        "root-cause-analysis",
+        "agent-harness",
+        "observability",
+        "incident-response"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "arxiv-2610-35767-simple-harness-rca",
+      "short_label_zh": "RCAtlas Harness",
+      "short_label_en": "RCAtlas Harness",
+      "next_action_zh": "等实现公开后，在自有事故集上把单次证据包、SQL agent 与现有多阶段流程做同口径对比。",
+      "next_action_en": "After an implementation is public, compare one-shot evidence, a SQL agent and the current staged workflow on your own incident set.",
+      "source_ids": [
+        "src-3101a3d25d2a167c"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261026-06-paper-evidence",
+          "claim_zh": "论文在统一 RCAtlas 设置下报告简单 harness 优于五种手工编排 RCA agent。",
+          "claim_en": "The paper reports simple harnesses outperforming five hand-crafted RCA agents under a shared RCAtlas setup.",
+          "source_ids": [
+            "src-3101a3d25d2a167c"
+          ],
+          "event_ids": [
+            "ev-20261026-06"
+          ],
+          "relation": "support",
+          "verification": "author-reported; no public implementation or independent reproduction found"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261026-06-published",
+          "kind": "new",
+          "occurred_at": "2026-10-26T17:12:02Z",
+          "discovered_at": "2026-10-27T15:59:15Z",
+          "summary_zh": "简单 harness 在统一评测中胜过手工编排 RCA agent",
+          "summary_en": "Simple harnesses beat hand-crafted RCA agents in a shared evaluation",
+          "evidence_ids": [
+            "ev-20261026-06-paper-evidence"
+          ],
+          "historical": false
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261026-07",
+      "title": "Cloudflare discloses cross-request KV cache exposure in Workers AI",
+      "title_zh": "Cloudflare 披露 Workers AI 跨请求 KV cache 泄露",
+      "category": "agent-security",
+      "organization": [
+        "Cloudflare",
+        "SGLang"
+      ],
+      "published_at": "2026-10-26T22:01:23.889Z",
+      "first_seen_at": "2026-10-27T15:59:15Z",
+      "last_updated_at": "2026-10-27T15:59:15Z",
+      "source_type": "official_blog",
+      "primary_source": "https://blog.cloudflare.com/kv-cache-exposure-remediation/",
+      "secondary_sources": [],
+      "summary": "Cloudflare disclosed that 155 GLM-5.3 Workers AI responses exposed data from other customers between August 27 and September 9. A KV pool smaller than the advertised context window combined with an SGLang disaggregated-inference bug, causing over-length requests to attend to stale cache pages. Cloudflare restored the model after correcting the configuration and patching the engine, and reports no evidence of deliberate exploitation or impact to other models.",
+      "summary_en": "Cloudflare disclosed that 155 GLM-5.3 Workers AI responses exposed data from other customers between August 27 and September 9. A KV pool smaller than the advertised context window combined with an SGLang disaggregated-inference bug, causing over-length requests to attend to stale cache pages. Cloudflare restored the model after correcting the configuration and patching the engine, and reports no evidence of deliberate exploitation or impact to other models.",
+      "summary_zh": "Cloudflare 披露，8 月 27 日至 9 月 9 日间，Workers AI 的 GLM-5.3 有 155 条响应混入其他客户的数据。根因是 KV pool 小于声明的上下文窗口，又叠加 SGLang 分离式推理的拒绝路径缺陷，使超长请求读到旧 cache page。Cloudflare 修正配置并补丁引擎后恢复模型；其调查未发现蓄意利用，也未发现其他模型受影响。",
+      "why_it_matters": "For teams running disaggregated inference, a successful HTTP response does not prove tenant isolation or coherent long-context behavior. Operators should upgrade SGLang, assert that KV capacity covers the advertised context and test response content across independent tenants.",
+      "why_it_matters_en": "For teams running disaggregated inference, a successful HTTP response does not prove tenant isolation or coherent long-context behavior. Operators should upgrade SGLang, assert that KV capacity covers the advertised context and test response content across independent tenants.",
+      "why_it_matters_zh": "对运行分离式推理的团队来说，HTTP 成功不等于租户隔离正确，也不等于超长上下文输出可信。应升级 SGLang、强制检查 KV 容量覆盖声明上下文，并用独立租户做内容级隔离测试。",
+      "technical_details": {
+        "affected_service": "Cloudflare Workers AI @cf/zai-org/glm-5.3",
+        "exposure_window": "2026-08-27 to 2026-09-09",
+        "affected_responses": 155,
+        "trigger": "Prompts longer than 681,280 tokens against a 1,048,576-token advertised context",
+        "root_cause": "KV pool configuration mismatch plus an SGLang rejected-request bug in disaggregated prefill/decode mode",
+        "remediation": "Cloudflare enlarged the pool, patched rejection handling and hardened production deployments; operators are advised to use SGLang v0.5.22 or later",
+        "evidence_limit": "Scope and non-exploitation findings are Cloudflare incident-response conclusions",
+        "time_basis": "Cloudflare incident report published 2026-10-26T22:01:23.889Z; underlying exposure occurred August 27–September 9"
+      },
+      "technical_details_zh": {
+        "受影响服务": "Cloudflare Workers AI @cf/zai-org/glm-5.3",
+        "暴露时间": "2026-08-27 至 2026-09-09",
+        "受影响响应": 155,
+        "触发条件": "声明上下文为 1,048,576 token，但 prompt 超过 681,280 token",
+        "根因": "KV pool 配置不匹配，加上 SGLang 分离式 prefill/decode 的拒绝请求缺陷",
+        "修复": "Cloudflare 扩大 KV pool、修复拒绝路径并强化生产部署；建议 operator 使用 SGLang v0.5.22 或更高版本",
+        "证据边界": "影响范围与未发现蓄意利用的结论来自 Cloudflare 事故调查",
+        "时间依据": "Cloudflare 于 2026-10-26T22:01:23.889Z 发布事故报告；实际暴露发生在 8 月 27 日至 9 月 9 日"
+      },
+      "tags": [
+        "kv-cache",
+        "tenant-isolation",
+        "sglang",
+        "workers-ai",
+        "incident-response"
+      ],
+      "technical_impact": 5,
+      "engineering_value": 5,
+      "adoption_signal": 4,
+      "maturity": 5,
+      "verification_cost": 2,
+      "risk": 5,
+      "recommendation": "ADOPT",
+      "event_fingerprint": "cloudflare-workers-ai-glm-5-3-cross-request-kv-cache-exposure",
+      "short_label_zh": "KV cache 租户泄露",
+      "short_label_en": "KV cache tenant leak",
+      "next_action_zh": "将 SGLang 升到 v0.5.22 以上，并在每次部署时校验 KV pool 容量、超长请求拒绝和跨租户 canary。",
+      "next_action_en": "Upgrade SGLang to v0.5.22 or later and validate KV-pool capacity, over-length rejection and cross-tenant canaries on every deployment.",
+      "source_ids": [
+        "src-e77549dba84aa9c3"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261026-07-disclosure-evidence",
+          "claim_zh": "Cloudflare 的协调披露确认 GLM-5.3 Workers AI 曾发生跨请求 KV cache 数据暴露，并给出修复与 operator 升级要求。",
+          "claim_en": "Cloudflare’s coordinated disclosure confirms cross-request KV-cache exposure on GLM-5.3 Workers AI and documents remediation and operator upgrade requirements.",
+          "source_ids": [
+            "src-e77549dba84aa9c3"
+          ],
+          "event_ids": [
+            "ev-20261026-07"
+          ],
+          "relation": "support",
+          "verification": "verified primary incident report; scope conclusions remain provider-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261026-07-disclosed",
+          "kind": "new",
+          "occurred_at": "2026-10-26T22:01:23.889Z",
+          "discovered_at": "2026-10-27T15:59:15Z",
+          "summary_zh": "Cloudflare 披露并修复跨请求 KV cache 泄露",
+          "summary_en": "Cloudflare discloses and remediates cross-request KV-cache exposure",
+          "evidence_ids": [
+            "ev-20261026-07-disclosure-evidence"
+          ],
+          "historical": false,
+          "importance": "critical"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261026-08",
+      "title": "Baidu releases Unlimited-OCR-2 weights for ultra-long documents",
+      "title_zh": "百度发布面向超长文档的 Unlimited-OCR-2 权重",
+      "category": "open-source",
+      "organization": [
+        "Baidu"
+      ],
+      "published_at": "2026-10-26T03:57:46Z",
+      "first_seen_at": "2026-10-27T15:59:15Z",
+      "last_updated_at": "2026-10-27T15:59:15Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/baidu/Unlimited-OCR-2",
+      "secondary_sources": [
+        "https://github.com/baidu/Unlimited-OCR"
+      ],
+      "late_discovery": true,
+      "summary": "Baidu published MIT-licensed Unlimited-OCR-2 weights, code, a demo and a new ultra-long-document benchmark. Its Sparse Reference Sliding Window Attention keeps a fixed set of working references while parsing longer documents, and the model supports Transformers plus a customized SGLang path. Baidu reports leading results on multi-page benchmarks, but the comparisons have not been independently reproduced.",
+      "summary_en": "Baidu published MIT-licensed Unlimited-OCR-2 weights, code, a demo and a new ultra-long-document benchmark. Its Sparse Reference Sliding Window Attention keeps a fixed set of working references while parsing longer documents, and the model supports Transformers plus a customized SGLang path. Baidu reports leading results on multi-page benchmarks, but the comparisons have not been independently reproduced.",
+      "summary_zh": "百度公开了 MIT 许可的 Unlimited-OCR-2 权重、代码、demo 和新的超长文档 benchmark。它用 Sparse Reference Sliding Window Attention 保留固定数量的工作引用，让文档继续变长时不必让每一步的计算和显存同步增长，并支持 Transformers 与定制 SGLang 路径。百度报告它在多页 benchmark 上领先，但对比结果尚未独立复现。",
+      "why_it_matters": "For document-RAG teams, a bounded-memory OCR path could reduce the need to split long reports before parsing and preserve cross-page context. The practical question is whether accuracy, latency and memory hold on real scans outside the vendor benchmark.",
+      "why_it_matters_en": "For document-RAG teams, a bounded-memory OCR path could reduce the need to split long reports before parsing and preserve cross-page context. The practical question is whether accuracy, latency and memory hold on real scans outside the vendor benchmark.",
+      "why_it_matters_zh": "对文档 RAG 团队来说，有界显存的 OCR 路径可能减少预先切碎长报告的需要，并保留跨页上下文。真正需要验证的是，它在真实扫描件上能否保持准确率、延迟和显存表现。",
+      "technical_details": {
+        "method": "Sparse Reference Sliding Window Attention (SR-SWA) with a fixed working-reference set such as 512 tokens",
+        "availability": "MIT-licensed weights, code, demo, ModelScope and Baidu Cloud access",
+        "runtimes": "Transformers and a customized SGLang serving path",
+        "documented_test_hardware": "NVIDIA A800 80GB",
+        "adoption_snapshot": "513 downloads and 189 likes when checked",
+        "evidence_limit": "Benchmark leadership and scaling claims are vendor-reported; no independent reproduction found",
+        "time_basis": "Hugging Face repository created 2026-10-26T03:57:46Z with model uploads that day; the release list labels the public launch 2026-10-27 without a time, so this is a recall-audit late discovery"
+      },
+      "technical_details_zh": {
+        "方法": "Sparse Reference Sliding Window Attention（SR-SWA），保留固定工作引用，例如 512 token",
+        "可用性": "MIT 许可权重、代码、demo，并提供 ModelScope 与百度智能云入口",
+        "运行方式": "Transformers 与定制 SGLang serving 路径",
+        "文档测试硬件": "NVIDIA A800 80GB",
+        "采用快照": "检查时 513 downloads、189 likes",
+        "证据边界": "benchmark 领先与扩展性结论由百度报告；未找到独立复现",
+        "时间依据": "Hugging Face 仓库创建于 2026-10-26T03:57:46Z，模型文件同日上传；发布列表只标 2026-10-27、没有时分，因此按召回自检 late discovery 补录"
+      },
+      "tags": [
+        "ocr",
+        "document-rag",
+        "vision-language-model",
+        "long-document",
+        "open-weights"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "baidu-unlimited-ocr-2-open-weights-sr-swa",
+      "short_label_zh": "Unlimited-OCR-2",
+      "short_label_en": "Unlimited-OCR-2",
+      "next_action_zh": "一天内用 10 份含表格、跨页段落和扫描噪声的真实 PDF，对比当前 OCR 的准确率、峰值显存和每页延迟。",
+      "next_action_en": "Within one day, compare accuracy, peak memory and per-page latency against the current OCR on 10 real PDFs with tables, cross-page passages and scan noise.",
+      "source_ids": [
+        "src-23f9cacadf78880c"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "models",
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261026-08-artifact-evidence",
+          "claim_zh": "百度已公开 Unlimited-OCR-2 的 MIT 权重、代码与推理说明；性能结论仍待独立复现。",
+          "claim_en": "Baidu publishes MIT-licensed Unlimited-OCR-2 weights, code and inference instructions; performance claims await independent reproduction.",
+          "source_ids": [
+            "src-23f9cacadf78880c"
+          ],
+          "event_ids": [
+            "ev-20261026-08"
+          ],
+          "relation": "support",
+          "verification": "verified public artifacts; benchmark claims remain vendor-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261026-08-published",
+          "kind": "new",
+          "occurred_at": "2026-10-26T03:57:46Z",
+          "discovered_at": "2026-10-27T15:59:15Z",
+          "summary_zh": "百度公开 Unlimited-OCR-2 权重与超长文档解析方案",
+          "summary_en": "Baidu publishes Unlimited-OCR-2 weights and an ultra-long-document parsing path",
+          "evidence_ids": [
+            "ev-20261026-08-artifact-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

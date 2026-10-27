@@ -49,7 +49,8 @@
         "src-9951decf1ff354d0",
         "src-637ddeb38167e8ce",
         "src-1f4559e41bf13b35",
-        "src-0307ec1244417a61"
+        "src-0307ec1244417a61",
+        "src-93af44a64968d818"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -73,19 +74,20 @@
         "src-9951decf1ff354d0",
         "src-637ddeb38167e8ce",
         "src-1f4559e41bf13b35",
-        "src-0307ec1244417a61"
+        "src-0307ec1244417a61",
+        "src-93af44a64968d818"
       ],
-      "last_reviewed_at": "2026-10-24T15:59:49Z",
+      "last_reviewed_at": "2026-10-27T15:59:15Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.310 增加云端 monitor、网关容错和权限可见性，仍适合升级后回归。",
-        "judgment_en": "Version 2.1.310 adds cloud monitors, gateway fallback and permission visibility; upgrade with regression tests.",
-        "next_action_zh": "升级后回归 monitor、网关和 symlink 权限场景。",
-        "next_action_en": "After upgrading, regress monitor, gateway and symlink-permission paths.",
+        "judgment_zh": "2.1.311 修复压缩后旧 memory、重启后重复 skill 和后台 worktree 生命周期问题，仍适合升级后回归。",
+        "judgment_en": "Version 2.1.311 fixes stale memory after compaction, duplicate skills after restart and background-worktree lifecycle issues; upgrade with regression tests.",
+        "next_action_zh": "升级后回归压缩、重启与后台 worktree 场景。",
+        "next_action_en": "After upgrading, regress compaction, restart and background-worktree scenarios.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-24T15:59:49Z"
+        "reviewed_at": "2026-10-27T15:59:15Z"
       }
     },
     {
@@ -110,7 +112,8 @@
         "src-dbd682b3d0c44281",
         "src-62cbc2cf184b4f1b",
         "src-2da06eac2ec92ad6",
-        "src-5c24af93d6fa5960"
+        "src-5c24af93d6fa5960",
+        "src-69d1de2cb4ffaa52"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -120,19 +123,20 @@
         "src-dbd682b3d0c44281",
         "src-62cbc2cf184b4f1b",
         "src-2da06eac2ec92ad6",
-        "src-5c24af93d6fa5960"
+        "src-5c24af93d6fa5960",
+        "src-69d1de2cb4ffaa52"
       ],
-      "last_reviewed_at": "2026-10-24T15:59:49Z",
+      "last_reviewed_at": "2026-10-27T15:59:15Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.26.1 继续加强恢复、子 agent 委派与迟到结果处理，建议在受控仓库试用。",
-        "judgment_en": "Version 0.26.1 strengthens recovery, subagent delegation and late-result handling; trial it on a controlled repository.",
-        "next_action_zh": "用故障注入回归恢复、MCP 替换和迟到工具结果。",
-        "next_action_en": "Fault-inject recovery, MCP replacement and late tool results.",
+        "judgment_zh": "0.26.2 同时收紧 managed 权限、token 解析和 snapshot / HTTP 恢复，适合在受控仓库继续试用。",
+        "judgment_en": "Version 0.26.2 tightens managed permissions, token resolution and snapshot/HTTP recovery; continue trialing it on a controlled repository.",
+        "next_action_zh": "用故障注入回归权限、snapshot 与重复执行边界。",
+        "next_action_en": "Fault-inject permissions, snapshots and duplicate-execution boundaries.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-10-24T15:59:49Z"
+        "reviewed_at": "2026-10-27T15:59:15Z"
       }
     },
     {
@@ -821,7 +825,8 @@
       "pattern": "GPT-6",
       "event_ids": [
         "ev-20260922-02",
-        "ev-20260929-02"
+        "ev-20260929-02",
+        "ev-20261026-02"
       ],
       "source_ids": [
         "src-c12530ce8eec01bd",
@@ -831,27 +836,32 @@
         "src-49e8d0577a5e1f9d",
         "src-d6b9f5e651b1891e",
         "src-dc29f748affb82a8",
-        "src-a097ef0d441a7216"
+        "src-a097ef0d441a7216",
+        "src-35e334c198740f74",
+        "src-742d30efdc4090c1"
       ],
-      "current_judgment_event_id": "ev-20260929-02",
+      "current_judgment_event_id": "ev-20261026-02",
       "official_source_ids": [
         "src-d6b9f5e651b1891e",
         "src-dc29f748affb82a8",
         "src-49e8d0577a5e1f9d",
-        "src-a097ef0d441a7216"
+        "src-a097ef0d441a7216",
+        "src-35e334c198740f74",
+        "src-742d30efdc4090c1"
       ],
-      "last_reviewed_at": "2026-10-09T15:56:33Z",
+      "last_reviewed_at": "2026-10-27T15:59:15Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "GPT-6 家族覆盖 API、Codex 与 ChatGPT；GPT-6.1 Sol Ultrafast 已向所有 API 用户开放，适合做延迟敏感路由试点。",
-        "judgment_en": "The GPT-6 family spans API, Codex and ChatGPT; GPT-6.1 Sol Ultrafast is available to all API users for latency-sensitive routing trials.",
-        "next_action_zh": "比较 standard 与 ultrafast 的端到端延迟、成功率、限额和单任务成本。",
-        "next_action_en": "Compare standard and ultrafast on end-to-end latency, success, limits and cost per completed task.",
+        "judgment_zh": "GPT-6 家族已增加更便宜的 GPT-6.1 Terra，并有 Ultrafast 内部事故响应案例；性能与节省仍主要由 OpenAI 自报。",
+        "judgment_en": "The GPT-6 family now includes lower-cost GPT-6.1 Terra and an internal Ultrafast incident-response case; performance and savings remain primarily OpenAI-reported.",
+        "next_action_zh": "在真实 computer use 与事故演练中比较成功率、延迟和单任务成本。",
+        "next_action_en": "Compare success, latency and cost per completed task on real computer-use traces and incident drills.",
         "basis_event_ids": [
           "ev-20260922-02",
-          "ev-20260929-02"
+          "ev-20260929-02",
+          "ev-20261026-02"
         ],
-        "reviewed_at": "2026-10-09T15:56:33Z"
+        "reviewed_at": "2026-10-27T15:59:15Z"
       }
     },
     {
@@ -5816,6 +5826,6 @@
       }
     }
   ],
-  "last_updated": "2026-10-26T16:03:24Z",
+  "last_updated": "2026-10-27T15:59:15Z",
   "total_projects": 162
 }

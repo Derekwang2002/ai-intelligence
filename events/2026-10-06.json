@@ -500,28 +500,38 @@
       ],
       "published_at": "2026-10-06T12:00:00Z",
       "source_type": "research_blog",
-      "primary_source": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+      "primary_source": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
       "secondary_sources": [
-        "https://github.com/openai/math/blob/main/history.md"
+        "https://github.com/openai/math/blob/main/history.md",
+        "https://github.com/openai/math/blob/main/preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/paper.pdf",
+        "https://github.com/openai/math/blob/main/lean/docs/079.md"
       ],
       "late_discovery": true,
-      "summary_en": "OpenAI published model-generated mathematical results with Lean formalizations and a public revision history. On October 7 it withdrew three manuscripts after a sign error invalidated one construction and two dependent papers, repaired fourteen others, updated thirteen dependencies and raised top-line Lean coverage to 300 of 719 results.",
-      "summary_zh": "OpenAI 发布模型生成的数学成果、Lean 形式化与公开修订记录。10 月 7 日，团队因一个符号错误使核心构造和两篇依赖论文失效，撤回三篇稿件；另修订 14 篇、更新 13 篇依赖，并将 top-line 结果的 Lean 覆盖提高到 719 项中的 300 项。",
-      "why_it_matters_en": "For AI-for-math teams, the withdrawals show why formal coverage, dependency tracking and independent expert review must be release gates rather than optional evidence. The transparent correction process is useful, but the unavailable model and substantial proof repairs keep the work at WATCH.",
-      "why_it_matters_zh": "对 AI 数学团队来说，这次撤稿说明形式化覆盖、依赖追踪和独立专家复核必须成为发布闸门，而不是可选证据。公开纠错流程值得肯定，但模型未开放且修订规模较大，仍应列为 WATCH。",
+      "summary_en": "OpenAI published additional model-generated claims in harmonic analysis, complexity theory and quantum field theory under an external-shepherd model. It released the natural-language proof and Lean formalization for a claimed all-dimensions local-smoothing result, and a natural-language plus Lean refutation of the Exponential Time Hypothesis. OpenAI explicitly treats the manuscripts as raw research data; independent groups have not yet established broad acceptance.",
+      "summary_zh": "OpenAI 又公开三项模型生成的研究主张，覆盖调和分析、复杂性理论和量子场论，并尝试由外部学者组织复核。团队公开了“所有维度 local smoothing”结果的自然语言证明与 Lean 形式化，也公开了反驳 Exponential Time Hypothesis 的自然语言和 Lean 证明。OpenAI 明确把这些稿件视为原始研究数据；独立团队尚未形成广泛认可。",
+      "why_it_matters_en": "For AI-for-science teams, the release shifts attention from model claims to public artifacts, dependency tracking and independent interpretation. Lean can check a formal statement against its axioms, but it does not by itself establish that the formal statement captures every intended scientific claim.",
+      "why_it_matters_zh": "对 AI 科研团队来说，重点正从“模型声称发现了什么”转向公开产物、依赖追踪和独立解释。Lean 能检查形式化命题是否由给定公理推出，但不能自动证明形式化命题完整对应研究者想表达的科学结论。",
       "technical_details": {
         "artifacts": "papers, Lean formalizations, revision and citation protocol, 10 reasoning summaries",
         "reported_compute": "roughly three hours of ChatGPT Pro thinking per result on average",
         "availability": "results public; producing model not public",
         "verification_limit": "formalization covers many, not necessarily all, proofs; expert review ongoing",
-        "update_2026_10_08": "Three manuscripts withdrawn after a sign error invalidated a construction and two dependent papers; 14 manuscripts repaired, 13 dependency citations updated, and top-line Lean coverage reported at 300/719 (~42%)."
+        "update_2026_10_08": "Three manuscripts withdrawn after a sign error invalidated a construction and two dependent papers; 14 manuscripts repaired, 13 dependency citations updated, and top-line Lean coverage reported at 300/719 (~42%).",
+        "update_2026_10_26": "New claimed results in local smoothing/Kakeya, Exponential Time Hypothesis and quantum field theory",
+        "release_strategy": "Math artifacts public; CS artifacts public with an external collaboration; physics artifacts held while collaborators prepare their own write-up",
+        "verification_limit_2026_10_26": "OpenAI calls the manuscripts raw research data; broad independent acceptance is pending",
+        "time_basis_2026_10_26": "OpenAI RSS published 2026-10-26T14:30:00Z; absent from the prior capture and recovered from the overlap"
       },
       "technical_details_zh": {
         "公开材料": "论文、Lean 形式化、修订与引用规范、10 份推理摘要",
         "报告算力": "每项成果平均约等于 ChatGPT Pro 三小时思考量",
         "可用性": "成果公开；生成模型未开放",
         "验证边界": "Lean 覆盖许多但未必全部证明；专家复核仍在继续",
-        "2026-10-08 更新": "一个符号错误使核心构造与两篇依赖论文失效，三篇稿件被撤回；另修订 14 篇、更新 13 篇依赖引用，top-line Lean 覆盖为 300/719（约 42%）。"
+        "2026-10-08 更新": "一个符号错误使核心构造与两篇依赖论文失效，三篇稿件被撤回；另修订 14 篇、更新 13 篇依赖引用，top-line Lean 覆盖为 300/719（约 42%）。",
+        "2026-10-26 更新": "新增 local smoothing / Kakeya、Exponential Time Hypothesis 与量子场论三项主张",
+        "发布方式": "数学产物公开；计算机科学产物公开并由外部协作组解释；物理产物暂缓公开，等待协作者自行撰写",
+        "2026-10-26 验证边界": "OpenAI 将稿件称为原始研究数据；广泛独立认可尚未形成",
+        "2026-10-26 时间依据": "OpenAI RSS 发布于 2026-10-26T14:30:00Z；上一轮快照未出现，按 overlap 补录"
       },
       "tags": [
         "mathematics",
@@ -539,11 +549,14 @@
       "event_fingerprint": "openai-model-generated-math-lean-release-october-2026",
       "short_label_zh": "OpenAI 数学成果",
       "short_label_en": "OpenAI Math Results",
-      "next_action_zh": "等待独立数学评审覆盖撤稿后的依赖图，并核查关键结论是否有完整 Lean 证明后再重新评估。",
-      "next_action_en": "Reassess after independent reviewers cover the post-withdrawal dependency graph and critical claims have complete Lean proofs.",
+      "next_action_zh": "等待外部 working group 的独立说明、完整依赖复核和数学界验收，再据此调整可信度。",
+      "next_action_en": "Wait for independent working-group explanations, full dependency review and community acceptance before changing confidence.",
       "source_ids": [
         "src-00427e47df5ef306",
-        "src-8fdb962b6a49acb6"
+        "src-8fdb962b6a49acb6",
+        "src-8eb6001a836a6e50",
+        "src-542659d5816e21bb",
+        "src-232cdcc38d7893dd"
       ],
       "project_ids": [],
       "scenario_ids": [
@@ -576,6 +589,21 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261006-06-oct26-discoveries-evidence",
+          "claim_zh": "OpenAI 公开 local smoothing / Kakeya 与 ETH 主张的自然语言和 Lean 产物，并把结果称为等待学界解释的原始研究数据。",
+          "claim_en": "OpenAI publishes natural-language and Lean artifacts for local-smoothing/Kakeya and ETH claims while describing the results as raw research data awaiting academic interpretation.",
+          "source_ids": [
+            "src-8eb6001a836a6e50",
+            "src-542659d5816e21bb",
+            "src-232cdcc38d7893dd"
+          ],
+          "event_ids": [
+            "ev-20261006-06"
+          ],
+          "relation": "support",
+          "verification": "primary artifacts verified; mathematical and scientific acceptance remains pending"
         }
       ],
       "changes": [
@@ -604,12 +632,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20261006-06-oct26-discoveries",
+          "kind": "update",
+          "occurred_at": "2026-10-26T14:30:00Z",
+          "discovered_at": "2026-10-27T15:59:15Z",
+          "summary_zh": "OpenAI 公开三项新的模型生成研究主张并引入外部 shepherd",
+          "summary_en": "OpenAI publishes three new model-generated research claims with external shepherds",
+          "evidence_ids": [
+            "ev-20261006-06-oct26-discoveries-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "first_seen_at": "2026-10-07T22:04:39Z",
-      "last_updated_at": "2026-10-08T16:05:30Z",
-      "summary": "OpenAI published model-generated mathematical results with Lean formalizations and a public revision history. On October 7 it withdrew three manuscripts after a sign error invalidated one construction and two dependent papers, repaired fourteen others, updated thirteen dependencies and raised top-line Lean coverage to 300 of 719 results.",
-      "why_it_matters": "For AI-for-math teams, the withdrawals show why formal coverage, dependency tracking and independent expert review must be release gates rather than optional evidence. The transparent correction process is useful, but the unavailable model and substantial proof repairs keep the work at WATCH."
+      "last_updated_at": "2026-10-27T15:59:15Z",
+      "summary": "OpenAI published additional model-generated claims in harmonic analysis, complexity theory and quantum field theory under an external-shepherd model. It released the natural-language proof and Lean formalization for a claimed all-dimensions local-smoothing result, and a natural-language plus Lean refutation of the Exponential Time Hypothesis. OpenAI explicitly treats the manuscripts as raw research data; independent groups have not yet established broad acceptance.",
+      "why_it_matters": "For AI-for-science teams, the release shifts attention from model claims to public artifacts, dependency tracking and independent interpretation. Lean can check a formal statement against its axioms, but it does not by itself establish that the formal statement captures every intended scientific claim."
     },
     {
       "event_id": "ev-20261006-07",
