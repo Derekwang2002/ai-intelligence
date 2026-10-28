@@ -127,15 +127,15 @@
     },
     {
       "event_id": "ev-20260825-02",
-      "title": "Gemini CLI 0.57.0 ships the A2A server package in its stable line",
-      "title_zh": "Gemini CLI 0.57.0 稳定版把 A2A server 打进发布线",
+      "title": "Gemini CLI 0.66 hardens private MCP and Git execution",
+      "title_zh": "Gemini CLI 0.66 加固私有 MCP 与 Git 执行",
       "category": "developer-tools",
       "organization": [
         "Google"
       ],
       "published_at": "2026-08-25T18:37:14Z",
       "first_seen_at": "2026-08-28T00:31:03Z",
-      "last_updated_at": "2026-10-21T15:58:23Z",
+      "last_updated_at": "2026-10-28T15:58:44Z",
       "source_type": "github",
       "primary_source": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.57.0",
       "secondary_sources": [
@@ -145,14 +145,15 @@
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.62.0",
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.63.0",
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.64.0",
-        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.65.0"
+        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.65.0",
+        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.66.0"
       ],
-      "summary": "Gemini CLI ships its A2A server in the stable line but still lacks formal usage documentation. Version 0.64.0 adds atomic file operations, append-only chat deltas and recoverable persisted state while improving cancellation, ACP usage updates and A2A settings migration. The stable reliability fixes are usable; the A2A surface remains an unstable dependency.",
-      "why_it_matters": "Existing Gemini CLI users should take the state-integrity and cancellation fixes, especially for long or interrupted sessions. Teams depending on A2A should still wait for documentation and compatibility commitments.",
-      "summary_zh": "Gemini CLI 的 A2A server 已进入稳定发布线，但仍缺少正式使用文档。0.64.0 稳定版加入原子文件操作、append-only chat delta 与可恢复的持久化状态，并改进取消、ACP 用量更新和 A2A 设置迁移。稳定性修复可采用，A2A 接口仍不应作为稳定依赖。",
-      "why_it_matters_zh": "对现有 Gemini CLI 用户来说，长任务或中断会话更需要状态完整性和取消修复；对依赖 A2A 的团队来说，没有文档和兼容承诺仍是阻塞项。",
-      "summary_en": "Gemini CLI ships its A2A server in the stable line but still lacks formal usage documentation. Version 0.64.0 adds atomic file operations, append-only chat deltas and recoverable persisted state while improving cancellation, ACP usage updates and A2A settings migration. The stable reliability fixes are usable; the A2A surface remains an unstable dependency.",
-      "why_it_matters_en": "Existing Gemini CLI users should take the state-integrity and cancellation fixes, especially for long or interrupted sessions. Teams depending on A2A should still wait for documentation and compatibility commitments.",
+      "summary": "Gemini CLI 0.66 adds opt-in OAuth support for MCP servers on private networks and disables interactive credential or SSH prompts during Git operations in safe mode. It also hardens SKILL.md parsing, preserves user Git configuration and fixes streamed HTTP decoding.",
+      "why_it_matters": "For teams connecting agents to private MCP services, the release adds a usable authentication path while reducing the chance that unattended Git commands hang on hidden prompts. Because the controls are opt-in and environment-specific, they need local verification.",
+      "summary_zh": "Gemini CLI 0.66 为私有网络上的 MCP server 加入可选 OAuth，并在 safe mode 的 Git 操作中禁用交互式凭据与 SSH 提示。它还加固 SKILL.md 解析、保留用户 Git 配置，并修复流式 HTTP 解码。",
+      "why_it_matters_zh": "对把 agent 接入私有 MCP 服务的团队来说，这一版补上可用的认证路径，也降低无人值守 Git 命令卡在隐藏提示上的概率。相关控制为可选项且依赖环境，需要本地核验。",
+      "summary_en": "Gemini CLI 0.66 adds opt-in OAuth support for MCP servers on private networks and disables interactive credential or SSH prompts during Git operations in safe mode. It also hardens SKILL.md parsing, preserves user Git configuration and fixes streamed HTTP decoding.",
+      "why_it_matters_en": "For teams connecting agents to private MCP services, the release adds a usable authentication path while reducing the chance that unattended Git commands hang on hidden prompts. Because the controls are opt-in and environment-specific, they need local verification.",
       "technical_details": {
         "release": "v0.57.0 stable published 2026-08-25T18:37:14Z; packages/a2a-server present in the v0.57.0 tag tree (verified via git tree API)",
         "npm": "@google/gemini-cli-a2a-server@0.57.0 published; package scoped under @google",
@@ -167,7 +168,10 @@
         "update_2026_10_02": "0.62.0 stable retains OAuth refresh tokens, makes credential deletion idempotent, hardens PTY/ConPTY cleanup, and emits ACP tool_call updates before permission requests. A2A remains undocumented.",
         "update_2026_10_07": "0.63.0 adds bounded tool output for long-running loops, autonomous plan execution in non-interactive mode, auth-loop fixes, ACP session ordering and policy/path hardening.",
         "update_2026_10_14": "0.64.0 adds atomic file operations, append-only chat deltas, atomic persisted state with backup recovery, Ctrl+C cancellation, ACP usage updates and A2A settings migration.",
-        "update_2026_10_21": "0.65.0 stable enforces read-only workspace settings in untrusted folders, prevents duplicate tool-response turns on resume and preserves resumed-session history on quick exit."
+        "update_2026_10_21": "0.65.0 stable enforces read-only workspace settings in untrusted folders, prevents duplicate tool-response turns on resume and preserves resumed-session history on quick exit.",
+        "latest_stable": "0.66.0",
+        "published_at": "2026-10-27T20:26:28Z",
+        "v0_66_0": "Opt-in private-network MCP OAuth, non-interactive safe Git credentials and SSH, hardened SKILL.md parsing, preserved Git configuration, streamed HTTP decoding fix"
       },
       "technical_details_zh": {
         "发布": "v0.57.0 stable 于 2026-08-25T18:37:14Z 发布；v0.57.0 tag 树中包含 packages/a2a-server（经 git tree API 核实）",
@@ -182,7 +186,10 @@
         "2026-09-24 更新": "Gemini CLI 0.61.0 stable（2026-09-23T23:59Z）增加针对构建文件修改与不可信参数的间接 prompt injection 防护，加固文件系统边界与运行时状态隔离，并保留显式版本化的 Flash 模型 ID。a2a-server 仍无文档。现有用户应为安全修复升级；A2A 仍为 WATCH。",
         "2026-10-02 更新": "0.62.0 stable 保留 OAuth refresh token，使凭据删除幂等，加固 PTY/ConPTY 清理，并在权限请求前发出 ACP tool_call 更新。A2A 仍无使用文档。",
         "2026_10_07_更新": "0.63.0 为长任务限制工具输出，支持非交互模式自动执行计划，并修复认证死循环、ACP session 顺序及策略/路径校验。",
-        "2026-10-21 更新": "0.65.0 稳定版在不受信任目录强制 workspace 设置只读，避免恢复会话时重复写入工具响应，并防止快速退出删除恢复后的历史。"
+        "2026-10-21 更新": "0.65.0 稳定版在不受信任目录强制 workspace 设置只读，避免恢复会话时重复写入工具响应，并防止快速退出删除恢复后的历史。",
+        "最新稳定版": "0.66.0",
+        "发布时间": "2026-10-27T20:26:28Z",
+        "2026-10-28 更新": "可选的私网 MCP OAuth、无交互 safe Git 凭据与 SSH、SKILL.md 解析加固、保留 Git 配置，以及流式 HTTP 解码修复"
       },
       "tags": [
         "gemini-cli",
@@ -212,7 +219,8 @@
         "src-09bc1aebce65c96b",
         "src-04d61de5c9f9c672",
         "src-dbb95ff3d456141d",
-        "src-e9d62472858a055c"
+        "src-e9d62472858a055c",
+        "src-451b839194f1d8cc"
       ],
       "project_ids": [
         "gemini-cli"
@@ -287,6 +295,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260825-02-gemini-0-66-evidence",
+          "claim_zh": "Gemini CLI 0.66 加入私网 MCP OAuth 与更安全的 Git 执行。",
+          "claim_en": "Gemini CLI 0.66 adds private-network MCP OAuth and safer Git execution.",
+          "source_ids": [
+            "src-451b839194f1d8cc"
+          ],
+          "event_ids": [
+            "ev-20260825-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -353,12 +374,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260825-02-gemini-0-66",
+          "kind": "update",
+          "occurred_at": "2026-10-27T20:26:28Z",
+          "discovered_at": "2026-10-28T15:58:44Z",
+          "summary_zh": "Gemini CLI 0.66 加入私网 MCP OAuth 与更安全的 Git 执行",
+          "summary_en": "Gemini CLI 0.66 adds private-network MCP OAuth and safer Git execution",
+          "evidence_ids": [
+            "ev-20260825-02-gemini-0-66-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "short_label_zh": "Gemini CLI",
-      "short_label_en": "Gemini CLI",
-      "next_action_zh": "升级到 0.65.0，回归不受信任目录设置、恢复后工具响应去重和快速退出。",
-      "next_action_en": "Upgrade to 0.65.0 and test untrusted-folder settings, resumed tool-response deduplication and quick exit.",
+      "short_label_zh": "Gemini CLI 0.66",
+      "short_label_en": "Gemini CLI 0.66",
+      "next_action_zh": "一天内接入测试用私网 MCP server，并分别通过 HTTPS 与 SSH 跑 safe-mode Git，确认 OAuth 可用且不会被隐藏提示卡住。",
+      "next_action_en": "Within one day, connect a test private-network MCP server and run safe-mode Git over HTTPS and SSH; verify OAuth succeeds and no hidden prompt can stall the agent.",
       "last_reviewed_at": "2026-10-21T15:58:23Z"
     },
     {

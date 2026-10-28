@@ -100,39 +100,45 @@
     },
     {
       "event_id": "ev-20261013-02",
-      "title": "NVIDIA opens the full Run:ai GPU orchestration platform",
-      "title_zh": "NVIDIA 开源完整 Run:ai GPU 编排平台",
+      "title": "NVIDIA adds memory-enforced GPU fractioning to Run:ai",
+      "title_zh": "NVIDIA 为 Run:ai 加入显存硬约束 GPU 切分",
       "category": "infrastructure",
       "organization": [
         "NVIDIA"
       ],
       "published_at": "2026-10-13T14:19:40Z",
       "first_seen_at": "2026-10-14T15:57:53Z",
-      "last_updated_at": "2026-10-14T15:57:53Z",
+      "last_updated_at": "2026-10-28T15:58:44Z",
       "source_type": "official_blog",
       "primary_source": "https://developer.nvidia.com/blog/nvidia-runai-is-now-open-source-as-part-of-nvidia-dsx-ai-factory-platform/",
       "secondary_sources": [
-        "https://github.com/dsx-ai-factory/run-ai"
+        "https://github.com/dsx-ai-factory/run-ai",
+        "https://developer.nvidia.com/blog/new-gpu-fractioning-capabilities-in-nvidia-runai/",
+        "https://github.com/NVIDIA/KAI-Scheduler"
       ],
-      "summary": "NVIDIA has released the full Run:ai GPU orchestration platform under Apache 2.0, including its control plane, cluster services, installer, CLI and MCP server. The repository combines the KAI Scheduler, GPU Fractioning Operator, KAI Resource Management and Workload Map. The community build is self-supported; NVIDIA's NGC distribution remains subject to NVIDIA terms.",
-      "summary_en": "NVIDIA has released the full Run:ai GPU orchestration platform under Apache 2.0, including its control plane, cluster services, installer, CLI and MCP server. The repository combines the KAI Scheduler, GPU Fractioning Operator, KAI Resource Management and Workload Map. The community build is self-supported; NVIDIA's NGC distribution remains subject to NVIDIA terms.",
-      "summary_zh": "NVIDIA 以 Apache 2.0 开源完整 Run:ai GPU 编排平台，包含控制面、集群服务、安装器、CLI 与 MCP server。仓库整合 KAI Scheduler、GPU Fractioning Operator、KAI Resource Management 和 Workload Map。社区版由使用者自行维护；NGC 发行版仍受 NVIDIA 条款约束。",
-      "why_it_matters": "Teams running shared GPU clusters can now inspect and modify the entire scheduling and allocation stack instead of only its components. A trial should verify quota enforcement, fractional-GPU isolation and upgrades before replacing a supported control plane.",
-      "why_it_matters_en": "Teams running shared GPU clusters can now inspect and modify the entire scheduling and allocation stack instead of only its components. A trial should verify quota enforcement, fractional-GPU isolation and upgrades before replacing a supported control plane.",
-      "why_it_matters_zh": "对运营共享 GPU 集群的团队来说，现在可以检查和修改整套调度与资源分配栈，而不只是其中几个组件。替换受支持的控制面前，应实测配额、GPU 切分隔离和升级路径。",
+      "summary": "NVIDIA has added CUDA 13.4 memory-enforced GPU fractioning to the open Run:ai stack. The KAI operator distinguishes request, limit and burst allocations, while time-slicing keeps workloads in separate error domains and SM sharing places them in a common error domain. The update improves quota control but does not by itself prove workload isolation under failure.",
+      "summary_en": "NVIDIA has added CUDA 13.4 memory-enforced GPU fractioning to the open Run:ai stack. The KAI operator distinguishes request, limit and burst allocations, while time-slicing keeps workloads in separate error domains and SM sharing places them in a common error domain. The update improves quota control but does not by itself prove workload isolation under failure.",
+      "summary_zh": "NVIDIA 为开源 Run:ai 栈加入基于 CUDA 13.4 的显存硬约束 GPU 切分。KAI operator 区分 request、limit 与 burst 分配；time-slicing 让 workload 分属不同故障域，SM sharing 则共享同一故障域。该更新加强配额控制，但不能单独证明故障下的 workload 隔离。",
+      "why_it_matters": "Shared-cluster operators can enforce memory ceilings instead of relying only on scheduling intent. The choice between time-slicing and SM sharing changes failure isolation, so production adoption needs workload-specific stress and fault tests.",
+      "why_it_matters_en": "Shared-cluster operators can enforce memory ceilings instead of relying only on scheduling intent. The choice between time-slicing and SM sharing changes failure isolation, so production adoption needs workload-specific stress and fault tests.",
+      "why_it_matters_zh": "对共享 GPU 集群运营者来说，现在可以执行显存上限，而不只依赖调度意图。time-slicing 与 SM sharing 的故障隔离不同，上生产前要按 workload 做压力与故障测试。",
       "technical_details": {
         "availability": "public GitHub monorepo and NGC community distribution",
         "components": "control plane, cluster services, installer, CLI, MCP server, KAI Scheduler, GPU Fractioning Operator, KAI Resource Management, Workload Map",
         "license": "Apache-2.0 for the GitHub repository; NGC use remains subject to NVIDIA terms",
         "support": "community build has no enterprise support entitlement",
-        "time_basis": "official blog published 2026-10-13T14:19:40Z; discovered inside the configured overlap and not present in the previous manifest"
+        "time_basis": "official blog published 2026-10-13T14:19:40Z; discovered inside the configured overlap and not present in the previous manifest",
+        "gpu_fractioning_update": "CUDA 13.4 memory-enforced fractioning with request, limit and burst allocation; time-slicing uses separate error domains while SM sharing uses a common error domain",
+        "published_at": "2026-10-27T20:50:39Z"
       },
       "technical_details_zh": {
         "可用性": "公开 GitHub monorepo 与 NGC community distribution",
         "组件": "控制面、集群服务、安装器、CLI、MCP server、KAI Scheduler、GPU Fractioning Operator、KAI Resource Management、Workload Map",
         "许可": "GitHub 仓库为 Apache-2.0；NGC 使用仍受 NVIDIA 条款约束",
         "支持": "社区版不附带企业支持权益",
-        "时间依据": "官方博客发布于 2026-10-13T14:19:40Z；在配置的 overlap 内发现，上一轮 manifest 未记录"
+        "时间依据": "官方博客发布于 2026-10-13T14:19:40Z；在配置的 overlap 内发现，上一轮 manifest 未记录",
+        "GPU 切分更新": "基于 CUDA 13.4 的显存硬约束，支持 request、limit 与 burst；time-slicing 使用独立故障域，SM sharing 使用共同故障域",
+        "发布时间": "2026-10-27T20:50:39Z"
       },
       "tags": [
         "gpu-orchestration",
@@ -151,11 +157,13 @@
       "event_fingerprint": "nvidia-runai-full-platform-open-source",
       "short_label_zh": "NVIDIA Run:ai",
       "short_label_en": "NVIDIA Run:ai",
-      "next_action_zh": "在隔离 Kubernetes 集群部署社区版，实测多租户配额、GPU 切分隔离与滚动升级后再决定是否迁移。",
-      "next_action_en": "Deploy the community build in an isolated Kubernetes cluster and test tenant quotas, fractional-GPU isolation and rolling upgrades before migrating.",
+      "next_action_zh": "一天内用代表性 workload 测试 request、limit、burst 与两种切分方式，记录显存约束和故障外溢。",
+      "next_action_en": "Within one day, run two representative workloads with request, limit and burst settings under time-slicing and SM sharing; measure memory enforcement and failure spillover.",
       "source_ids": [
         "src-b3dd2a0f914f65ea",
-        "src-ea221ee2acab6a14"
+        "src-ea221ee2acab6a14",
+        "src-08b65e1468b74e86",
+        "src-1dea7153d88172e4"
       ],
       "project_ids": [
         "nvidia-runai"
@@ -180,6 +188,20 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261013-02-gpu-fractioning-evidence",
+          "claim_zh": "Run:ai 加入 CUDA 13.4 显存硬约束 GPU 切分。",
+          "claim_en": "Run:ai adds CUDA 13.4 memory-enforced GPU fractioning.",
+          "source_ids": [
+            "src-08b65e1468b74e86",
+            "src-1dea7153d88172e4"
+          ],
+          "event_ids": [
+            "ev-20261013-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -192,6 +214,19 @@
           "summary_en": "NVIDIA open-sources the complete Run:ai GPU orchestration platform.",
           "evidence_ids": [
             "ev-20261013-02-open-source-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261013-02-gpu-fractioning",
+          "kind": "update",
+          "occurred_at": "2026-10-27T20:50:39Z",
+          "discovered_at": "2026-10-28T15:58:44Z",
+          "summary_zh": "Run:ai 加入 CUDA 13.4 显存硬约束 GPU 切分",
+          "summary_en": "Run:ai adds CUDA 13.4 memory-enforced GPU fractioning",
+          "evidence_ids": [
+            "ev-20261013-02-gpu-fractioning-evidence"
           ],
           "historical": false,
           "importance": "major"

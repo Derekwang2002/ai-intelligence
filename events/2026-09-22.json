@@ -440,8 +440,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.26.0 preserves unknown tool outcomes instead of replaying them",
-      "title_zh": "Qwen Code 0.26.0 对未知工具结果保持 UNKNOWN 而不盲目重放",
+      "title": "Qwen Code 0.26.3 improves recovery and managed workflows",
+      "title_zh": "Qwen Code 0.26.3 改进恢复与托管工作流",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -449,7 +449,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-10-27T15:59:15Z",
+      "last_updated_at": "2026-10-28T15:58:44Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
       "secondary_sources": [
@@ -462,14 +462,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.25.3",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.0",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.1",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.2"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.2",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.3"
       ],
-      "summary": "Qwen Code 0.26.2 adds managed session permission rules and auto approval, hardens serve-token resolution against project environment injection, introduces native snapshots plus HTTP recovery, and expands the shared agent loop across headless and ACP paths. The release also adds local managed-journal recovery and tighter Hosted workspace admission checks; guarantees remain project-documented rather than independently tested.",
-      "why_it_matters": "For teams trialing managed coding agents, version 0.26.2 tightens both permission admission and crash recovery. The breadth of the release increases integration risk, so it remains TRIAL until fault injection confirms authorization and recovery behavior.",
-      "summary_zh": "Qwen Code 0.26.2 加入 managed session 权限规则与自动审批，防止项目环境变量注入 serve token 解析，并增加原生 snapshot、HTTP 恢复和覆盖 headless / ACP 路径的共享 agent loop。新版还补充本地 managed journal 恢复与更严格的 Hosted workspace 准入检查；这些保证仍来自项目发布说明，尚未独立测试。",
-      "summary_en": "Qwen Code 0.26.2 adds managed session permission rules and auto approval, hardens serve-token resolution against project environment injection, introduces native snapshots plus HTTP recovery, and expands the shared agent loop across headless and ACP paths. The release also adds local managed-journal recovery and tighter Hosted workspace admission checks; guarantees remain project-documented rather than independently tested.",
-      "why_it_matters_zh": "对试用 managed coding agent 的团队来说，0.26.2 同时收紧权限准入和崩溃恢复。改动面较广，只有故障注入确认授权与恢复行为后，才适合扩大使用；评级维持 TRIAL。",
-      "why_it_matters_en": "For teams trialing managed coding agents, version 0.26.2 tightens both permission admission and crash recovery. The breadth of the release increases integration risk, so it remains TRIAL until fault injection confirms authorization and recovery behavior.",
+      "summary": "Qwen Code 0.26.3 adds tool-call recovery, compaction-aware result shrinking and persistent Workflow mode. It also carries subagent identity through ACP, embeds a managed agent in Java and Spring applications, reclaims workspaces, and tightens approval enforcement and pull-request attribution.",
+      "why_it_matters": "For teams embedding coding agents into services, the Java and Spring path lowers integration cost while the recovery changes address duplicated or oversized tool state. The release remains a trial because approval and recovery guarantees should be fault-injected locally.",
+      "summary_zh": "Qwen Code 0.26.3 加入工具调用恢复、感知上下文压缩的结果收缩，以及持久 Workflow mode。它还让 ACP 保留子 agent 身份，支持在 Java 与 Spring 应用中嵌入 managed agent，回收 workspace，并收紧审批执行与 pull request 归属。",
+      "summary_en": "Qwen Code 0.26.3 adds tool-call recovery, compaction-aware result shrinking and persistent Workflow mode. It also carries subagent identity through ACP, embeds a managed agent in Java and Spring applications, reclaims workspaces, and tightens approval enforcement and pull-request attribution.",
+      "why_it_matters_zh": "对把 coding agent 嵌入服务的团队来说，Java 与 Spring 接入降低集成成本，恢复改动则针对重复执行和过大工具状态。审批与恢复保证仍需本地故障注入，因此维持 TRIAL。",
+      "why_it_matters_en": "For teams embedding coding agents into services, the Java and Spring path lowers integration cost while the recovery changes address duplicated or oversized tool state. The release remains a trial because approval and recovery guarantees should be fault-injected locally.",
       "technical_details": {
         "version": "0.24.4 stable",
         "attestation": "managed runtime attestation contract",
@@ -485,13 +486,15 @@
         "update_2026_10_15": "0.25.2 stable adds managed-agent Session messaging, durable team-plan approval, Test Failure Explorer, TypeScript Mods and a default-off foreground Shell with mandatory approval. It fixes post-merge worktree settlement, startup false success, cancellation hangs, BOM parsing and recovery paths.",
         "update_2026_10_19": "0.25.3 stable adds snapshot-isolated read-only child agents; managed sessions with pinned Skills/MCP/Hooks; SSH, macOS and workspace-resident runtimes; persistent Kubernetes workspaces; bounded retries, durable cancellation and recovery.",
         "update_2026_10_22": "0.26.0 preserves unprovable hosted tool outcomes as UNKNOWN, reconstructs file turns from durable receipts, and adds PASS/WARN/FAIL/SKIP preflight checks.",
-        "latest_version": "0.26.1",
+        "latest_version": "0.26.3",
         "runtime_update": "Adds durable manual compression, safer recovery, public subagent delegation defaults, mid-stream MCP replacement and replacement of synthesized placeholders with late real tool results.",
         "time_basis": "GitHub release published 2026-10-24T15:47:58Z, twelve minutes before this run cutoff.",
         "release_2026_10_27": "Qwen Code 0.26.2 stable",
         "security_2026_10_27": "Session permission rules, auto approval and serve-token resolution hardened against project env injection",
         "recovery_2026_10_27": "Native snapshots, HTTP recovery, local managed-journal recovery and Hosted workspace preflight",
-        "time_basis_2026_10_27": "GitHub stable release published 2026-10-27T15:32:11Z"
+        "time_basis_2026_10_27": "GitHub stable release published 2026-10-27T15:32:11Z",
+        "published_at": "2026-10-28T14:36:14Z",
+        "v0_26_3": "Tool-call recovery, compaction-aware result shrinking, persistent Workflow mode, ACP subagent identity, Java/Spring managed-agent embedding, workspace reclamation and approval enforcement"
       },
       "technical_details_zh": {
         "版本": "0.24.4 stable",
@@ -508,13 +511,15 @@
         "2026-10-15 更新": "0.25.2 稳定版加入 managed-agent Session 消息、持久团队计划审批、Test Failure Explorer、TypeScript Mods，以及默认关闭且必须审批的前台 Shell；并修复合并后 worktree 收尾、启动误报成功、取消卡住、BOM 解析和恢复路径。",
         "2026-10-19 更新": "0.25.3 稳定版加入快照隔离的只读子 agent；固定 Skills/MCP/Hooks 的 managed session；SSH、macOS 与 workspace-resident runtime；持久 Kubernetes workspace；有上限的重试、持久取消和恢复。",
         "2026-10-22 更新": "0.26.0 把无法证明的托管工具结果保持为 UNKNOWN，按持久 receipt 重建文件操作，并加入 PASS/WARN/FAIL/SKIP preflight 检查。",
-        "最新版本": "0.26.1",
+        "最新版本": "0.26.3",
         "运行时更新": "加入持久化手动压缩、安全恢复、默认公开子 agent 委派、流中 MCP 替换，并用迟到的真实工具结果替换合成占位。",
         "时间依据": "GitHub release 发布时间为 2026-10-24T15:47:58Z，距本轮截止约 12 分钟。",
         "2026-10-27 版本": "Qwen Code 0.26.2 稳定版",
         "2026-10-27 安全": "session 权限规则、自动审批，以及防项目环境变量注入的 serve token 解析",
         "2026-10-27 恢复": "原生 snapshot、HTTP 恢复、本地 managed journal 恢复与 Hosted workspace preflight",
-        "2026-10-27 时间依据": "GitHub 稳定版发布于 2026-10-27T15:32:11Z"
+        "2026-10-27 时间依据": "GitHub 稳定版发布于 2026-10-27T15:32:11Z",
+        "发布时间": "2026-10-28T14:36:14Z",
+        "2026-10-28 更新": "工具调用恢复、感知上下文压缩的结果收缩、持久 Workflow mode、ACP 子 agent 身份、Java/Spring managed-agent 嵌入、workspace 回收与审批执行"
       },
       "tags": [
         "qwen-code",
@@ -543,7 +548,8 @@
         "src-2da06eac2ec92ad6",
         "src-5c24af93d6fa5960",
         "src-2df989db5683bb98",
-        "src-69d1de2cb4ffaa52"
+        "src-69d1de2cb4ffaa52",
+        "src-1054dcf730bc85b9"
       ],
       "project_ids": [
         "qwen-code"
@@ -683,6 +689,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; runtime guarantees not independently reproduced"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-26-3-evidence",
+          "claim_zh": "Qwen Code 0.26.3 扩展托管嵌入与恢复。",
+          "claim_en": "Qwen Code 0.26.3 extends managed embedding and recovery.",
+          "source_ids": [
+            "src-1054dcf730bc85b9"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -813,6 +832,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-code-0-26-3",
+          "kind": "update",
+          "occurred_at": "2026-10-28T14:36:14Z",
+          "discovered_at": "2026-10-28T15:58:44Z",
+          "summary_zh": "Qwen Code 0.26.3 扩展托管嵌入与恢复",
+          "summary_en": "Qwen Code 0.26.3 extends managed embedding and recovery",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-26-3-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -822,10 +854,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.26.2",
-      "short_label_en": "Qwen Code 0.26.2",
-      "next_action_zh": "一天内注入 worker 崩溃、snapshot 中断和项目环境变量污染，确认权限不越权且恢复不重复执行工具。",
-      "next_action_en": "Within one day, inject worker crashes, interrupted snapshots and poisoned project environment variables; verify permissions stay bounded and recovery does not repeat tools."
+      "short_label_zh": "Qwen Code 0.26.3",
+      "short_label_en": "Qwen Code 0.26.3",
+      "next_action_zh": "一天内在测试 Spring 服务嵌入 managed agent，并注入上下文压缩与 worker 故障，确认审批不越权且恢复后工具不重复执行。",
+      "next_action_en": "Within one day, embed the managed agent in a test Spring service and inject compaction plus worker failure; verify approvals hold and recovered tools do not run twice."
     },
     {
       "event_id": "ev-20260922-05",

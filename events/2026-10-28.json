@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-28",
+  "provenance": "Incremental scan started 2026-10-28T15:58:44Z; event publication and public artifact timestamps were verified against the Hugging Face RSS and repository API.",
+  "events": [
+    {
+      "event_id": "ev-20261028-01",
+      "title": "NVIDIA opens Nemotron 3.5 Transcribe and Granary v2",
+      "title_zh": "NVIDIA 开放 Nemotron 3.5 Transcribe 与 Granary v2",
+      "category": "open-source",
+      "organization": ["NVIDIA", "Hugging Face"],
+      "published_at": "2026-10-28T14:58:17Z",
+      "first_seen_at": "2026-10-28T15:58:44Z",
+      "last_updated_at": "2026-10-28T15:58:44Z",
+      "source_type": "official_blog",
+      "primary_source": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary",
+      "secondary_sources": ["https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B", "https://huggingface.co/datasets/nvidia/Granary-v2"],
+      "summary": "NVIDIA released open-weight Nemotron 3.5 Transcribe for multilingual transcription, speaker attribution, translation and audio question answering. The 30B mixture-of-experts model activates about 4B parameters, handles recordings up to one hour and supports task-dependent language sets. Granary v2 publishes a reusable curation pipeline and manifests spanning 463,062 hours, while source audio remains under each corpus's original license.",
+      "summary_en": "NVIDIA released open-weight Nemotron 3.5 Transcribe for multilingual transcription, speaker attribution, translation and audio question answering. The 30B mixture-of-experts model activates about 4B parameters, handles recordings up to one hour and supports task-dependent language sets. Granary v2 publishes a reusable curation pipeline and manifests spanning 463,062 hours, while source audio remains under each corpus's original license.",
+      "summary_zh": "NVIDIA 发布开放权重 Nemotron 3.5 Transcribe，可做多语种转写、说话人归属、翻译和音频问答。这个 30B MoE 模型每次约激活 4B 参数，可处理最长一小时录音，不同任务支持的语言集合并不相同。Granary v2 公开可复用数据清洗流水线和覆盖 463,062 小时的 manifest；源音频仍受各语料原许可证约束。",
+      "why_it_matters": "For speech and meeting-intelligence teams, one checkpoint now covers several pipeline stages with public weights and adaptation recipes. Vendor and leaderboard results still need workload-specific validation, especially names, speaker changes, long recordings and license lineage.",
+      "why_it_matters_en": "For speech and meeting-intelligence teams, one checkpoint now covers several pipeline stages with public weights and adaptation recipes. Vendor and leaderboard results still need workload-specific validation, especially names, speaker changes, long recordings and license lineage.",
+      "why_it_matters_zh": "对语音和会议智能团队来说，一个公开权重 checkpoint 现在可以覆盖多段流水线，并提供适配配方。厂商与榜单结果仍需按真实任务复核，尤其是专有名词、说话人切换、长录音和许可证链。",
+      "technical_details": {
+        "model": "30B total, about 4B active parameters; OpenMDW 1.1",
+        "tasks": "transcription, speaker attribution, translation, timestamps and English-trained audio question answering",
+        "language_scope": "40 transcription languages; 31 translation languages to/from English; 13 diarization languages",
+        "audio_limit": "recordings up to one hour; up to eight speakers",
+        "dataset": "Granary v2 manifests cover 463,062 hours, 48 languages and 16 source corpora",
+        "license_limit": "download source audio separately under each corpus's original license",
+        "evidence_limit": "headline model results are NVIDIA-reported; public leaderboards cover selected tasks and conditions",
+        "time_basis": "Hugging Face RSS published 2026-10-28T14:58:17Z; model card modified 2026-10-28T13:44:41Z"
+      },
+      "technical_details_zh": {
+        "模型": "总参数 30B、每次约激活 4B；OpenMDW 1.1",
+        "任务": "转写、说话人归属、翻译、时间戳和以英语训练的音频问答",
+        "语言范围": "转写 40 种语言；31 种语言与英语互译；说话人归属 13 种语言",
+        "音频限制": "最长一小时录音；最多八名说话人",
+        "数据集": "Granary v2 manifest 覆盖 463,062 小时、48 种语言和 16 个源语料",
+        "许可限制": "源音频需按各语料原许可证另行下载",
+        "证据限制": "主要模型结果由 NVIDIA 报告；公开榜单只覆盖选定任务与条件",
+        "时间依据": "Hugging Face RSS 发布于 2026-10-28T14:58:17Z；模型卡修改于 2026-10-28T13:44:41Z"
+      },
+      "tags": ["speech-to-text", "diarization", "translation", "audio-qa", "open-weight", "dataset"],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-nemotron-3-5-transcribe-granary-v2",
+      "short_label_zh": "Nemotron Transcribe",
+      "short_label_en": "Nemotron Transcribe",
+      "next_action_zh": "一天内用真实多说话人录音测 WER、说话人切换、每小时延迟和显存，并核对语料许可。",
+      "next_action_en": "Within one day, test WER, speaker changes, per-hour latency and memory on a real multi-speaker recording, and review corpus licenses.",
+      "source_ids": ["src-ec733f799e1aaee3", "src-029f4f6cd7936fd2", "src-665652d89d229c0a"],
+      "project_ids": ["nemotron-3-5"],
+      "scenario_ids": ["models", "local"],
+      "evidence_stage": "verified",
+      "evidence": [{
+        "id": "ev-20261028-01-release-evidence",
+        "claim_zh": "NVIDIA/Hugging Face 文章、模型卡和数据集页共同确认权重、任务范围、语言范围、数据规模、许可证与证据限制。",
+        "claim_en": "The NVIDIA/Hugging Face article, model card and dataset page jointly confirm weights, task and language scope, data scale, licenses and evidence limits.",
+        "source_ids": ["src-ec733f799e1aaee3", "src-029f4f6cd7936fd2", "src-665652d89d229c0a"],
+        "event_ids": ["ev-20261028-01"],
+        "relation": "support",
+        "verification": "verified-primary-artifacts-vendor-and-public-leaderboard-results"
+      }],
+      "changes": [{
+        "id": "ev-20261028-01-published",
+        "kind": "new",
+        "occurred_at": "2026-10-28T14:58:17Z",
+        "discovered_at": "2026-10-28T15:58:44Z",
+        "summary_zh": "NVIDIA 开放多语种 Nemotron 3.5 Transcribe 与 Granary v2。",
+        "summary_en": "NVIDIA opens multilingual Nemotron 3.5 Transcribe and Granary v2.",
+        "evidence_ids": ["ev-20261028-01-release-evidence"],
+        "historical": false,
+        "importance": "major"
+      }]
+    }
+  ]
+}

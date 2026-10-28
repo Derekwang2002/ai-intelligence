@@ -50,7 +50,8 @@
         "src-637ddeb38167e8ce",
         "src-1f4559e41bf13b35",
         "src-0307ec1244417a61",
-        "src-93af44a64968d818"
+        "src-93af44a64968d818",
+        "src-dc8a856f8c6596f8"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -75,19 +76,20 @@
         "src-637ddeb38167e8ce",
         "src-1f4559e41bf13b35",
         "src-0307ec1244417a61",
-        "src-93af44a64968d818"
+        "src-93af44a64968d818",
+        "src-dc8a856f8c6596f8"
       ],
-      "last_reviewed_at": "2026-10-27T15:59:15Z",
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.311 修复压缩后旧 memory、重启后重复 skill 和后台 worktree 生命周期问题，仍适合升级后回归。",
-        "judgment_en": "Version 2.1.311 fixes stale memory after compaction, duplicate skills after restart and background-worktree lifecycle issues; upgrade with regression tests.",
-        "next_action_zh": "升级后回归压缩、重启与后台 worktree 场景。",
-        "next_action_en": "After upgrading, regress compaction, restart and background-worktree scenarios.",
+        "judgment_zh": "Claude Code 2.1.312 继续修复后台任务、队列与会话恢复，适合升级后回归长任务中断路径。",
+        "judgment_en": "Claude Code 2.1.312 continues to fix background tasks, queues and session recovery; adopt after regression-testing long-task interruption paths.",
+        "next_action_zh": "升级后回归后台任务取消、排队工作和会话恢复。",
+        "next_action_en": "After upgrading, regress background-task cancellation, queued work and session resume.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-27T15:59:15Z"
+        "reviewed_at": "2026-10-28T15:58:44Z"
       }
     },
     {
@@ -113,7 +115,8 @@
         "src-62cbc2cf184b4f1b",
         "src-2da06eac2ec92ad6",
         "src-5c24af93d6fa5960",
-        "src-69d1de2cb4ffaa52"
+        "src-69d1de2cb4ffaa52",
+        "src-1054dcf730bc85b9"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -124,19 +127,20 @@
         "src-62cbc2cf184b4f1b",
         "src-2da06eac2ec92ad6",
         "src-5c24af93d6fa5960",
-        "src-69d1de2cb4ffaa52"
+        "src-69d1de2cb4ffaa52",
+        "src-1054dcf730bc85b9"
       ],
-      "last_reviewed_at": "2026-10-27T15:59:15Z",
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.26.2 同时收紧 managed 权限、token 解析和 snapshot / HTTP 恢复，适合在受控仓库继续试用。",
-        "judgment_en": "Version 0.26.2 tightens managed permissions, token resolution and snapshot/HTTP recovery; continue trialing it on a controlled repository.",
-        "next_action_zh": "用故障注入回归权限、snapshot 与重复执行边界。",
-        "next_action_en": "Fault-inject permissions, snapshots and duplicate-execution boundaries.",
+        "judgment_zh": "Qwen Code 0.26.3 扩展 Java/Spring managed agent、工具恢复与审批执行，适合在受控服务中继续故障注入。",
+        "judgment_en": "Qwen Code 0.26.3 extends Java/Spring managed agents, tool recovery and approval enforcement; continue fault injection in a controlled service.",
+        "next_action_zh": "一天内在测试 Spring 服务注入压缩与 worker 故障，确认审批不越权且工具不重复执行。",
+        "next_action_en": "Within one day, inject compaction and worker failure in a test Spring service; verify approvals stay bounded and tools do not repeat.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-10-27T15:59:15Z"
+        "reviewed_at": "2026-10-28T15:58:44Z"
       }
     },
     {
@@ -154,7 +158,8 @@
         "ev-20260911-11",
         "ev-20260917-07",
         "ev-20260925-02",
-        "ev-20260916-01"
+        "ev-20260916-01",
+        "ev-20261027-01"
       ],
       "source_ids": [
         "src-e5ff0ee6aec27d2d",
@@ -177,7 +182,8 @@
         "src-8241d56116d90ff3",
         "src-a91405951b83e939",
         "src-3a42b69a6860fcc9",
-        "src-449b1014bc1499c1"
+        "src-449b1014bc1499c1",
+        "src-9c21ebfce635a8a5"
       ],
       "current_judgment_event_id": "ev-20260909-02",
       "official_source_ids": [
@@ -189,22 +195,24 @@
         "src-8241d56116d90ff3",
         "src-a91405951b83e939",
         "src-3a42b69a6860fcc9",
-        "src-449b1014bc1499c1"
+        "src-449b1014bc1499c1",
+        "src-9c21ebfce635a8a5"
       ],
-      "last_reviewed_at": "2026-10-15T16:00:25Z",
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "GitHub 已把 AI Scan 与 agentic autofix 推向 GA，但两者仍消耗安全 AI Credits，且模型结果不能替代合并门禁与人工复核。",
-        "judgment_en": "GitHub has made AI Scan and agentic autofix GA, but both consume security AI Credits and model output does not replace merge gates or human review.",
-        "next_action_zh": "一天内在一个仓库回放已知漏洞，量误报、漏报、补丁正确性、Credits 与审查时间。",
-        "next_action_en": "Within one day, replay known vulnerabilities in one repository and measure false positives, misses, patch correctness, credits and review time.",
+        "judgment_zh": "Copilot coding agent 的 server-to-server authentication 已进入 public preview，可让非交互服务使用 workload identity，但仍需验证租户边界、撤销和审计。",
+        "judgment_en": "Server-to-server authentication for the Copilot coding agent is in public preview, enabling workload identity for non-interactive services; tenant isolation, revocation and auditability still need testing.",
+        "next_action_zh": "一天内用隔离 GitHub App 身份调用一个测试仓库，验证租户隔离、撤销、审计日志和失败回退。",
+        "next_action_en": "Within one day, call a test repository through an isolated GitHub App identity and verify tenant isolation, revocation, audit logs and failure fallback.",
         "basis_event_ids": [
           "ev-20260909-02",
           "ev-20260917-07",
           "ev-20260911-11",
-          "ev-20260925-02"
+          "ev-20260925-02",
+          "ev-20261027-01"
         ],
-        "reviewed_at": "2026-10-15T16:00:25Z"
+        "reviewed_at": "2026-10-28T15:58:44Z"
       }
     },
     {
@@ -238,7 +246,8 @@
         "src-b08e03422c923828",
         "src-6d91f7c55a55a1dc",
         "src-255cde9f48a82982",
-        "src-b28a06ef950a1f61"
+        "src-b28a06ef950a1f61",
+        "src-bd138645120f03ef"
       ],
       "current_judgment_event_id": "ev-20260910-02",
       "official_source_ids": [
@@ -250,21 +259,22 @@
         "src-b08e03422c923828",
         "src-6d91f7c55a55a1dc",
         "src-255cde9f48a82982",
-        "src-b28a06ef950a1f61"
+        "src-b28a06ef950a1f61",
+        "src-bd138645120f03ef"
       ],
-      "last_reviewed_at": "2026-10-23T16:04:55Z",
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.164.0 加固企业 MCP 认证与远程 shell 边界；Agents API 仍适合受控试点。",
-        "judgment_en": "Version 0.164.0 hardens enterprise MCP authentication and remote-shell boundaries; the Agents API remains a controlled trial.",
-        "next_action_zh": "升级后回归 MCP OAuth、凭据遮蔽与 symlink。",
-        "next_action_en": "After upgrading, regress MCP OAuth, credential masking and symlinks.",
+        "judgment_zh": "Codex CLI 0.165 接入 Vertex AI 并扩展记忆导入与会话分叉；稳定功能可升级验证，实验性的分叉与推理强度调整仍需回归。",
+        "judgment_en": "Codex CLI 0.165 adds Vertex AI, memory import and broader session forking; stable paths are upgrade candidates, while experimental forks and reasoning changes need regression tests.",
+        "next_action_zh": "先在非关键 workspace 回归外部记忆导入、附着式分叉、中断恢复与 Vertex AI provider。",
+        "next_action_en": "First regress external memory import, attached forks, interruption recovery and the Vertex AI provider in a non-critical workspace.",
         "basis_event_ids": [
           "ev-20260814-08",
           "ev-20260818-02",
           "ev-20260910-02"
         ],
-        "reviewed_at": "2026-10-23T16:04:55Z"
+        "reviewed_at": "2026-10-28T15:58:44Z"
       }
     },
     {
@@ -347,27 +357,29 @@
         "src-695ca5d6496fefc7",
         "src-09bc1aebce65c96b",
         "src-04d61de5c9f9c672",
-        "src-dbb95ff3d456141d"
+        "src-dbb95ff3d456141d",
+        "src-451b839194f1d8cc"
       ],
       "current_judgment_event_id": "ev-20260825-02",
       "official_source_ids": [
         "src-695ca5d6496fefc7",
         "src-09bc1aebce65c96b",
         "src-04d61de5c9f9c672",
-        "src-dbb95ff3d456141d"
+        "src-dbb95ff3d456141d",
+        "src-451b839194f1d8cc"
       ],
-      "last_reviewed_at": "2026-10-21T15:58:23Z",
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
       "judgment": {
         "recommendation": "WATCH",
-        "judgment_zh": "Gemini CLI 0.64.0 已把原子写入、状态备份恢复、取消与 ACP 生命周期改进推入稳定版。A2A 仍缺兼容承诺，因此继续观察真实项目中的稳定性。",
-        "judgment_en": "Gemini CLI 0.64.0 brings atomic writes, state recovery, cancellation and ACP lifecycle improvements to stable. A2A still lacks compatibility commitments, so real-project stability remains the gating signal.",
-        "next_action_zh": "升级到 0.65.0 并回归不受信任目录与恢复会话。",
-        "next_action_en": "Upgrade to 0.65.0 and regress untrusted folders and resumed sessions.",
+        "judgment_zh": "Gemini CLI 0.66 加入私网 MCP OAuth 与无交互 safe Git，但相关控制为可选项且依赖部署环境。",
+        "judgment_en": "Gemini CLI 0.66 adds private-network MCP OAuth and non-interactive safe Git, but the controls are opt-in and environment-specific.",
+        "next_action_zh": "一天内用测试 MCP server 和 HTTPS/SSH Git 验证 OAuth 与无交互执行。",
+        "next_action_en": "Within one day, verify OAuth and non-interactive execution with a test MCP server plus HTTPS and SSH Git.",
         "basis_event_ids": [
           "ev-20260825-02",
           "ev-20260912-01"
         ],
-        "reviewed_at": "2026-10-21T15:58:23Z"
+        "reviewed_at": "2026-10-28T15:58:44Z"
       }
     },
     {
@@ -3393,24 +3405,28 @@
       ],
       "source_ids": [
         "src-b3dd2a0f914f65ea",
-        "src-ea221ee2acab6a14"
+        "src-ea221ee2acab6a14",
+        "src-08b65e1468b74e86",
+        "src-1dea7153d88172e4"
       ],
       "current_judgment_event_id": "ev-20261013-02",
       "official_source_ids": [
         "src-b3dd2a0f914f65ea",
-        "src-ea221ee2acab6a14"
+        "src-ea221ee2acab6a14",
+        "src-08b65e1468b74e86",
+        "src-1dea7153d88172e4"
       ],
-      "last_reviewed_at": "2026-10-14T15:57:53Z",
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "完整 GPU 编排栈已按 Apache 2.0 开源，具备工程验证价值，但社区版没有企业支持。",
-        "judgment_en": "The full GPU orchestration stack is now Apache-2.0 and testable, but the community build lacks enterprise support.",
-        "next_action_zh": "在隔离 Kubernetes 集群实测配额、GPU 切分隔离与滚动升级。",
-        "next_action_en": "Test quotas, fractional-GPU isolation and rolling upgrades in an isolated Kubernetes cluster.",
+        "judgment_zh": "Run:ai 已加入 CUDA 13.4 显存硬约束 GPU 切分，但 time-slicing 与 SM sharing 的故障域不同，仍需按 workload 实测。",
+        "judgment_en": "Run:ai now has CUDA 13.4 memory-enforced GPU fractioning, but time-slicing and SM sharing have different failure domains and need workload-specific tests.",
+        "next_action_zh": "一天内对代表性 workload 测试 request、limit、burst 和两种切分方式的故障外溢。",
+        "next_action_en": "Within one day, test request, limit, burst and failure spillover under both sharing modes on representative workloads.",
         "basis_event_ids": [
           "ev-20261013-02"
         ],
-        "reviewed_at": "2026-10-14T15:57:53Z"
+        "reviewed_at": "2026-10-28T15:58:44Z"
       }
     },
     {
@@ -3755,30 +3771,38 @@
       ],
       "pattern": "Nemotron 3\\.5",
       "event_ids": [
-        "ev-20261015-03"
+        "ev-20261015-03",
+        "ev-20261028-01"
       ],
       "source_ids": [
         "src-c04bb70f1b05d38a",
         "src-0843c1ab58bb9212",
-        "src-e8ca48065500447a"
+        "src-e8ca48065500447a",
+        "src-ec733f799e1aaee3",
+        "src-029f4f6cd7936fd2",
+        "src-665652d89d229c0a"
       ],
       "current_judgment_event_id": "ev-20261015-03",
       "official_source_ids": [
         "src-c04bb70f1b05d38a",
         "src-0843c1ab58bb9212",
-        "src-e8ca48065500447a"
+        "src-e8ca48065500447a",
+        "src-ec733f799e1aaee3",
+        "src-029f4f6cd7936fd2",
+        "src-665652d89d229c0a"
       ],
-      "last_reviewed_at": "2026-10-16T15:56:07Z",
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "权重已开放，但许可、硬件兼容与厂商 benchmark 需要实测。",
-        "judgment_en": "Weights are open, but license, hardware compatibility and vendor benchmarks need validation.",
-        "next_action_zh": "一天内用托管端点跑多模态工具任务。",
-        "next_action_en": "Within one day, run a multimodal tool task on a hosted endpoint.",
+        "judgment_zh": "Nemotron 3.5 Transcribe 权重与 Granary v2 训练数据已开放；多语种语音与远场结果主要来自厂商报告，需要在目标音频上复测。",
+        "judgment_en": "Nemotron 3.5 Transcribe weights and Granary v2 training data are open; multilingual and far-field results are vendor-reported and need testing on target audio.",
+        "next_action_zh": "一天内用目标语言、噪声与远场样本复测 WER、延迟和显存占用。",
+        "next_action_en": "Within one day, retest WER, latency and memory on target-language, noisy and far-field samples.",
         "basis_event_ids": [
-          "ev-20261015-03"
+          "ev-20261015-03",
+          "ev-20261028-01"
         ],
-        "reviewed_at": "2026-10-16T15:56:07Z"
+        "reviewed_at": "2026-10-28T15:58:44Z"
       }
     },
     {
@@ -5824,8 +5848,144 @@
         ],
         "reviewed_at": "2026-10-26T16:03:24Z"
       }
+    },
+    {
+      "id": "genie-4",
+      "name_zh": "Genie 4",
+      "name_en": "Genie 4",
+      "type": "model",
+      "aliases": [
+        "Genie 4"
+      ],
+      "pattern": "Genie 4",
+      "event_ids": [
+        "ev-20261027-02"
+      ],
+      "source_ids": [
+        "src-319d52d61ca2c83a",
+        "src-393575ee7d83ff0a"
+      ],
+      "current_judgment_event_id": "ev-20261027-02",
+      "official_source_ids": [
+        "src-319d52d61ca2c83a",
+        "src-393575ee7d83ff0a"
+      ],
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "研究预览展示交互式世界生成，但目前只面向有限测试者，未开放权重或通用 API。",
+        "judgment_en": "The research preview shows interactive world generation, but access is limited and there are no open weights or general API.",
+        "next_action_zh": "等待公开 API、权重或独立长时一致性评测后再投入验证。",
+        "next_action_en": "Wait for a public API, weights or independent long-horizon consistency evaluations before investing.",
+        "basis_event_ids": [
+          "ev-20261027-02"
+        ],
+        "reviewed_at": "2026-10-28T15:58:44Z"
+      }
+    },
+    {
+      "id": "novelty-judge-bench",
+      "name_zh": "Novelty Judge Bench",
+      "name_en": "Novelty Judge Bench",
+      "type": "research-project",
+      "aliases": [
+        "Novelty Judge Bench"
+      ],
+      "pattern": "Novelty Judge Bench",
+      "event_ids": [
+        "ev-20261027-03"
+      ],
+      "source_ids": [
+        "src-1d6c5c59e46e52b9",
+        "src-dd00ecfcf61554ff",
+        "src-1337281acb3b4b0b"
+      ],
+      "current_judgment_event_id": "ev-20261027-03",
+      "official_source_ids": [
+        "src-1d6c5c59e46e52b9",
+        "src-dd00ecfcf61554ff",
+        "src-1337281acb3b4b0b"
+      ],
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "代码与数据已公开，可用来检查 AI 研究代理是否重复已有想法；弱标签与领域覆盖限制要求人工复核。",
+        "judgment_en": "Public code and data can test whether research agents repeat existing ideas; weak labels and domain coverage still require human review.",
+        "next_action_zh": "一天内用公开数据评测一组既有研究输出，记录误报、漏报和检索成本。",
+        "next_action_en": "Within one day, score a set of existing research outputs with the public data and record false positives, misses and retrieval cost.",
+        "basis_event_ids": [
+          "ev-20261027-03"
+        ],
+        "reviewed_at": "2026-10-28T15:58:44Z"
+      }
+    },
+    {
+      "id": "nvidia-metatron",
+      "name_zh": "NVIDIA Metatron",
+      "name_en": "NVIDIA Metatron",
+      "type": "model",
+      "aliases": [
+        "Metatron"
+      ],
+      "pattern": "Metatron",
+      "event_ids": [
+        "ev-20261027-04"
+      ],
+      "source_ids": [
+        "src-95e55404dfd99c3c",
+        "src-00eca441134b5a44"
+      ],
+      "current_judgment_event_id": "ev-20261027-04",
+      "official_source_ids": [
+        "src-95e55404dfd99c3c",
+        "src-00eca441134b5a44"
+      ],
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "控制器权重和研究材料已公开，可复现实验，但 sim-to-real 与硬件安全仍需本地验证。",
+        "judgment_en": "Controller weights and research materials are public and reproducible, but sim-to-real transfer and hardware safety need local validation.",
+        "next_action_zh": "一天内在仿真中复现一个公开动作，测稳定性、恢复与安全边界。",
+        "next_action_en": "Within one day, reproduce one public behavior in simulation and measure stability, recovery and safety limits.",
+        "basis_event_ids": [
+          "ev-20261027-04"
+        ],
+        "reviewed_at": "2026-10-28T15:58:44Z"
+      }
+    },
+    {
+      "id": "openhands",
+      "name_zh": "OpenHands",
+      "name_en": "OpenHands",
+      "type": "developer-tool",
+      "aliases": [
+        "OpenHands"
+      ],
+      "pattern": "OpenHands",
+      "event_ids": [
+        "ev-20261027-06"
+      ],
+      "source_ids": [
+        "src-2d2c8bd7a583f077"
+      ],
+      "current_judgment_event_id": "ev-20261027-06",
+      "official_source_ids": [
+        "src-2d2c8bd7a583f077"
+      ],
+      "last_reviewed_at": "2026-10-28T15:58:44Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "OpenHands 1.34 把 runtime 绑定到 conversation 并扩展恢复路径，适合在隔离仓库验证长任务生命周期。",
+        "judgment_en": "OpenHands 1.34 binds runtimes to conversations and extends recovery paths, making it suitable for isolated long-task lifecycle tests.",
+        "next_action_zh": "一天内在隔离仓库测试会话恢复、runtime 清理与重复执行边界。",
+        "next_action_en": "Within one day, test session recovery, runtime cleanup and duplicate-execution boundaries in an isolated repository.",
+        "basis_event_ids": [
+          "ev-20261027-06"
+        ],
+        "reviewed_at": "2026-10-28T15:58:44Z"
+      }
     }
   ],
-  "last_updated": "2026-10-27T15:59:15Z",
-  "total_projects": 162
+  "last_updated": "2026-10-28T15:58:44Z",
+  "total_projects": 166
 }
