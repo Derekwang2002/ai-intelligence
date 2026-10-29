@@ -1004,11 +1004,12 @@
     },
     {
       "first_seen_at": "2026-10-01T16:01:43Z",
-      "last_updated_at": "2026-10-23T16:04:55Z",
+      "last_updated_at": "2026-10-29T16:05:08Z",
       "secondary_sources": [
         "https://github.com/ollama/ollama/releases/tag/v0.35.1",
         "https://github.com/ollama/ollama/releases/tag/v0.40.9",
-        "https://ollama.com/library/phonon"
+        "https://ollama.com/library/phonon",
+        "https://github.com/ollama/ollama/releases/tag/v0.40.13"
       ],
       "technical_impact": 3,
       "engineering_value": 4,
@@ -1031,8 +1032,8 @@
       "published_at": "2026-09-28T21:23:22Z",
       "source_type": "github_release",
       "primary_source": "https://github.com/ollama/ollama/releases/tag/v0.35.0",
-      "summary_zh": "Ollama 0.35.0 稳定版新增 `/v1/systemone`，让 decision model 直接返回选项、概率与分数，而不是生成文本。首批支持 Nimble 与 Tev1，可用于工单分类、模型路由和内容判断。接口提供 choice、noul 与 score 三类问题。该稳定版上一轮被误判为预发布，本次按漏检补录。",
-      "summary_en": "Ollama 0.35.0 stable adds `/v1/systemone`, letting decision models return choices, probabilities and scores instead of generated text. Nimble and Tev1 are the first supported models for ticket triage, model routing and classification. The API exposes choice, noul and score questions. The prior run mistakenly treated this stable release as prerelease, so this run records it as a late discovery.",
+      "summary_zh": "Ollama 现覆盖本地 decision model、流式语音路径和 Liquid AI LFM3 模型。0.40.13 将 LFM3、lfm3-audio 文本转语音与 lfm3-omni 从 Apple silicon 扩展到 Linux 和 Windows。模型质量、各硬件延迟与单个模型许可仍需按工作负载核对。",
+      "summary_en": "Ollama now serves local decision models, streaming speech paths and Liquid AI LFM3 models. Version 0.40.13 expands LFM3, including lfm3-audio text-to-speech and lfm3-omni, from Apple silicon to Linux and Windows. Model quality, hardware-specific latency and individual model licenses still require workload review.",
       "why_it_matters_zh": "对需要本地分类或路由的团队来说，结构化概率输出比提示模型吐标签更容易校准、设阈值和做回退。先用一组有人工标签的数据检查校准误差、拒答阈值和延迟；不要只看单次置信度。",
       "why_it_matters_en": "For teams doing local classification or routing, structured probabilities are easier to calibrate, threshold and fall back than labels parsed from generated text. Test calibration error, abstention thresholds and latency on labeled data before relying on confidence values.",
       "technical_details": {
@@ -1043,7 +1044,10 @@
         "question_types": "choice, noul and score",
         "availability": "local Ollama runtime",
         "update_2026_10_05_ollama-0-35-1": "0.35.1 preserves Modelfile CAPABILITY declarations through import, inheritance and export; show/list advertise decision-only models so clients avoid offering chat, tools or thinking; web-search cap rises from 3 to 10.",
-        "update_2026_10_23_ollama_0_40_9": "0.40.9 adds streaming speech on Apple Silicon through Phonon and an OpenAI-compatible /v1/audio/speech endpoint; 31M English is Apache-2.0, while 40M English and multilingual checkpoints are CC BY-NC 4.0."
+        "update_2026_10_23_ollama_0_40_9": "0.40.9 adds streaming speech on Apple Silicon through Phonon and an OpenAI-compatible /v1/audio/speech endpoint; 31M English is Apache-2.0, while 40M English and multilingual checkpoints are CC BY-NC 4.0.",
+        "latest_version": "0.40.13",
+        "platform_update": "LFM3, lfm3-audio and lfm3-omni now run on Linux and Windows as well as Apple silicon",
+        "time_basis": "GitHub stable release published 2026-10-28T19:55:04Z"
       },
       "technical_details_zh": {
         "版本": "0.35.0 stable",
@@ -1053,7 +1057,10 @@
         "问题类型": "choice、noul、score",
         "可用性": "本地 Ollama runtime",
         "2026-10-05 更新 ollama-0-35-1": "0.35.1 让 Modelfile CAPABILITY 在导入、继承与导出时保留；show/list 会标明仅支持 decision 的模型，避免客户端误提供 chat、tools 或 thinking；web search 上限从 3 提到 10。",
-        "2026-10-23 更新 Ollama 0.40.9": "0.40.9 在 Apple Silicon 上通过 Phonon 加入流式语音与 OpenAI 兼容的 /v1/audio/speech；31M 英文权重为 Apache-2.0，40M 英文及多语言权重为 CC BY-NC 4.0。"
+        "2026-10-23 更新 Ollama 0.40.9": "0.40.9 在 Apple Silicon 上通过 Phonon 加入流式语音与 OpenAI 兼容的 /v1/audio/speech；31M 英文权重为 Apache-2.0，40M 英文及多语言权重为 CC BY-NC 4.0。",
+        "最新版本": "0.40.13",
+        "平台更新": "LFM3、lfm3-audio 与 lfm3-omni 现同时支持 Linux、Windows 和 Apple silicon",
+        "时间依据": "GitHub stable release 发布于 2026-10-28T19:55:04Z"
       },
       "tags": [
         "ollama",
@@ -1068,7 +1075,8 @@
         "src-872457bb1f6a4e1a",
         "src-86745252420db893",
         "src-39a2c26df5548ff5",
-        "src-60b7805de2ebc483"
+        "src-60b7805de2ebc483",
+        "src-255532568ba55074"
       ],
       "project_ids": [
         "ollama"
@@ -1076,9 +1084,9 @@
       "late_discovery": true,
       "short_label_zh": "Ollama 0.40.9",
       "short_label_en": "Ollama 0.40.9",
-      "next_action_zh": "一天内在 Apple Silicon 上对同一脚本测首音频延迟、实时系数和可懂度，并核对权重许可。",
-      "next_action_en": "On Apple Silicon, test public Phonon weights for first-audio latency, real-time factor, intelligibility and `/v1/audio/speech` compatibility; use only the Apache-2.0 English weights commercially.",
-      "summary": "Ollama 0.35.0 stable adds `/v1/systemone`, letting decision models return choices, probabilities and scores instead of generated text. Nimble and Tev1 are the first supported models for ticket triage, model routing and classification. The API exposes choice, noul and score questions. The prior run mistakenly treated this stable release as prerelease, so this run records it as a late discovery.",
+      "next_action_zh": "一天内在目标 Linux 或 Windows 机器跑 lfm3-audio，记录冷启动、实时率、显存和许可证条件。",
+      "next_action_en": "Within one day, run lfm3-audio on the target Linux or Windows machine; record cold start, real-time factor, memory and license terms.",
+      "summary": "Ollama now serves local decision models, streaming speech paths and Liquid AI LFM3 models. Version 0.40.13 expands LFM3, including lfm3-audio text-to-speech and lfm3-omni, from Apple silicon to Linux and Windows. Model quality, hardware-specific latency and individual model licenses still require workload review.",
       "why_it_matters": "For teams doing local classification or routing, structured probabilities are easier to calibrate, threshold and fall back than labels parsed from generated text. Test calibration error, abstention thresholds and latency on labeled data before relying on confidence values.",
       "evidence": [
         {
@@ -1120,6 +1128,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; model quality not independently tested"
+        },
+        {
+          "id": "ev-20260928-09-ollama-0-40-13-evidence",
+          "claim_zh": "Ollama 0.40.13 release notes 确认 LFM3、lfm3-audio 与 lfm3-omni 从 Apple silicon 扩展到 Linux 和 Windows。",
+          "claim_en": "Ollama 0.40.13 release notes confirm LFM3, lfm3-audio and lfm3-omni expand from Apple silicon to Linux and Windows.",
+          "source_ids": [
+            "src-255532568ba55074"
+          ],
+          "event_ids": [
+            "ev-20260928-09"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -1158,6 +1179,19 @@
           "summary_en": "Ollama 0.40.9 adds local streaming speech on Apple Silicon",
           "evidence_ids": [
             "ev-20260928-09-ollama-0-40-9-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20260928-09-ollama-0-40-13",
+          "kind": "update",
+          "occurred_at": "2026-10-28T19:55:04Z",
+          "discovered_at": "2026-10-29T16:05:08Z",
+          "summary_zh": "Ollama 0.40.13 将 LFM3 音频与 omni 模型扩展到 Linux 和 Windows。",
+          "summary_en": "Ollama 0.40.13 expands LFM3 audio and omni models to Linux and Windows.",
+          "evidence_ids": [
+            "ev-20260928-09-ollama-0-40-13-evidence"
           ],
           "historical": false,
           "importance": "major"

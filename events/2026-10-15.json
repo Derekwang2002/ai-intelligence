@@ -424,8 +424,8 @@
     },
     {
       "event_id": "ev-20261015-05",
-      "title": "IBM releases Granite Switch 4.1 with composable adapters",
-      "title_zh": "IBM 发布可组合适配器的 Granite Switch 4.1",
+      "title": "IBM updates Granite Switch adapters without changing the base model",
+      "title_zh": "IBM 在不改基础模型的情况下更新 Granite Switch 适配器",
       "category": "foundation-model",
       "organization": [
         "IBM"
@@ -433,23 +433,34 @@
       "published_at": "2026-10-15T20:34:01Z",
       "primary_source": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1",
       "secondary_sources": [
-        "https://huggingface.co/ibm-granite/granite-4.1-8b-base"
+        "https://huggingface.co/ibm-granite/granite-4.1-8b-base",
+        "https://huggingface.co/blog/ibm-granite/granite-switch-4-1-1"
       ],
-      "summary_en": "IBM released Apache-2.0 Granite Switch 4.1 models in 8B and 30B sizes. A single endpoint can switch among chat, decision, guardian and English speech-recognition adapters while sharing the base model and KV cache. Speech recognition is a cascade rather than joint multimodal training, and IBM’s comparisons remain vendor-run.",
-      "summary_zh": "IBM 发布 Apache-2.0 的 Granite Switch 4.1，包含 8B 与 30B 模型。单个端点可在 chat、decision、guardian 与英文语音识别适配器之间切换，并共享基础模型与 KV cache。语音识别采用串联流水线，不是联合多模态训练；对比结果仍由 IBM 自测。",
+      "summary_en": "Granite Switch 4.1.1 keeps the Granite 4.1 base model unchanged and updates its adapters. The speech adapter now supports ten languages with native punctuation and capitalization, and the Decision adapter reports a higher publisher-run Jev Decision Index. The promised Adapter SDK is still not available.",
+      "summary_zh": "Granite Switch 4.1.1 保持 Granite 4.1 基础模型不变，只更新适配器。语音适配器现支持十种语言，并原生输出标点与大小写；Decision adapter 的 Jev Decision Index 在发布方测试中提高。此前承诺的 Adapter SDK 仍未发布。",
       "why_it_matters_en": "For teams running several narrow AI services, composable adapters may reduce duplicated model memory and endpoint sprawl. The operational benefit and quality tradeoffs need measurement on real mixed workloads.",
       "why_it_matters_zh": "对同时运行多种窄任务服务的团队来说，可组合适配器可能减少重复模型内存与端点数量。实际节省和质量取舍仍要用混合负载测量。",
       "technical_details": {
         "models": "8B and 30B",
         "license": "Apache-2.0",
         "adapters": "chat, decision, guardian and 470M English ASR",
-        "architecture_note": "ASR is cascaded, not jointly trained multimodality"
+        "architecture_note": "ASR is cascaded, not jointly trained multimodality",
+        "update": "4.1.1 backward-compatible adapter update; base model unchanged",
+        "speech_update": "ASR expanded to ten languages with native punctuation and capitalization",
+        "decision_update": "publisher reports improved Jev Decision Index",
+        "sdk_status": "Adapter SDK still forthcoming",
+        "time_basis": "Hugging Face feed published 2026-10-29T13:37:07Z"
       },
       "technical_details_zh": {
         "模型": "8B 与 30B",
         "许可": "Apache-2.0",
         "适配器": "chat、decision、guardian 与470M英文ASR",
-        "架构说明": "ASR为串联流水线，不是联合多模态训练"
+        "架构说明": "ASR为串联流水线，不是联合多模态训练",
+        "更新": "4.1.1 向后兼容适配器更新；基础模型不变",
+        "语音更新": "ASR 扩展到十种语言，并原生输出标点和大小写",
+        "Decision 更新": "发布方报告 Jev Decision Index 提高",
+        "SDK 状态": "Adapter SDK 仍未发布",
+        "时间依据": "Hugging Face feed 发布于 2026-10-29T13:37:07Z"
       },
       "tags": [
         "granite",
@@ -467,11 +478,12 @@
       "event_fingerprint": "ibm-granite-switch-4-1-composable-adapters",
       "short_label_zh": "Granite Switch 4.1",
       "short_label_en": "Granite Switch 4.1",
-      "next_action_zh": "一天内用同一端点跑 chat、分类与护栏混合负载，比较显存、延迟和质量。",
-      "next_action_en": "Within one day, run mixed chat, classification and guardrail traffic on one endpoint, comparing memory, latency and quality.",
+      "next_action_zh": "一天内在同一基础模型上回归两种目标语言和 Decision adapter，比较质量、显存与切换延迟。",
+      "next_action_en": "Within one day, regress two target languages and the Decision adapter on one base model; compare quality, memory and switching latency.",
       "source_ids": [
         "src-d330643595776f9f",
-        "src-5088e3b97d6638c9"
+        "src-5088e3b97d6638c9",
+        "src-e508e29ae812fe58"
       ],
       "project_ids": [
         "granite-switch-4-1"
@@ -481,8 +493,8 @@
         "local"
       ],
       "first_seen_at": "2026-10-16T15:56:07Z",
-      "last_updated_at": "2026-10-16T15:56:07Z",
-      "summary": "IBM released Apache-2.0 Granite Switch 4.1 models in 8B and 30B sizes. A single endpoint can switch among chat, decision, guardian and English speech-recognition adapters while sharing the base model and KV cache. Speech recognition is a cascade rather than joint multimodal training, and IBM’s comparisons remain vendor-run.",
+      "last_updated_at": "2026-10-29T16:05:08Z",
+      "summary": "Granite Switch 4.1.1 keeps the Granite 4.1 base model unchanged and updates its adapters. The speech adapter now supports ten languages with native punctuation and capitalization, and the Decision adapter reports a higher publisher-run Jev Decision Index. The promised Adapter SDK is still not available.",
       "why_it_matters": "For teams running several narrow AI services, composable adapters may reduce duplicated model memory and endpoint sprawl. The operational benefit and quality tradeoffs need measurement on real mixed workloads.",
       "source_type": "official_blog",
       "evidence_stage": "verified",
@@ -494,6 +506,19 @@
           "source_ids": [
             "src-d330643595776f9f",
             "src-5088e3b97d6638c9"
+          ],
+          "event_ids": [
+            "ev-20261015-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261015-05-4-1-1-evidence",
+          "claim_zh": "IBM/Hugging Face 文章确认基础模型不变、ASR 扩展十种语言、Decision adapter 更新与 Adapter SDK 尚未发布。",
+          "claim_en": "The IBM/Hugging Face post confirms an unchanged base model, ten-language ASR, an updated Decision adapter and a still-pending Adapter SDK.",
+          "source_ids": [
+            "src-e508e29ae812fe58"
           ],
           "event_ids": [
             "ev-20261015-05"
@@ -512,6 +537,19 @@
           "summary_en": "IBM releases Granite Switch 4.1 with composable adapters",
           "evidence_ids": [
             "ev-20261015-05-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261015-05-granite-switch-4-1-1",
+          "kind": "update",
+          "occurred_at": "2026-10-29T13:37:07Z",
+          "discovered_at": "2026-10-29T16:05:08Z",
+          "summary_zh": "Granite Switch 4.1.1 用向后兼容适配器扩展十种语言 ASR。",
+          "summary_en": "Granite Switch 4.1.1 uses backward-compatible adapters to extend ASR to ten languages.",
+          "evidence_ids": [
+            "ev-20261015-05-4-1-1-evidence"
           ],
           "historical": false,
           "importance": "major"

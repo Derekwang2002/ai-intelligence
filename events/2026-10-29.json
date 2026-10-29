@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-29",
+  "provenance": "Governed incremental scan",
+  "events": [
+    {
+      "event_id": "ev-20261029-01",
+      "title": "AnySpeechRecognizer and AnyDecisionModel open Apple-native AI components",
+      "title_zh": "AnySpeechRecognizer 与 AnyDecisionModel 开源 Apple 原生 AI 组件",
+      "category": "open-source",
+      "organization": [
+        "Hugging Face"
+      ],
+      "published_at": "2026-10-29",
+      "first_seen_at": "2026-10-29T16:05:08Z",
+      "last_updated_at": "2026-10-29T16:05:08Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/blog/anydecisionmodel",
+      "secondary_sources": [
+        "https://github.com/mattt/AnySpeechRecognizer",
+        "https://github.com/mattt/AnyDecisionModel"
+      ],
+      "summary": "AnySpeechRecognizer 0.1.0 and AnyDecisionModel 0.6.0 are open Swift packages for on-device speech and constrained model decisions on Apple platforms. Speech backends cover Parakeet, Sortformer and Apple SpeechAnalyzer; decision backends include MLX, Core AI, llama.cpp, Jev and Ollama. They require Swift 6.2 and current Apple operating systems, and the documented Core AI dependency sets currently conflict when both packages are combined.",
+      "summary_en": "AnySpeechRecognizer 0.1.0 and AnyDecisionModel 0.6.0 are open Swift packages for on-device speech and constrained model decisions on Apple platforms. Speech backends cover Parakeet, Sortformer and Apple SpeechAnalyzer; decision backends include MLX, Core AI, llama.cpp, Jev and Ollama. They require Swift 6.2 and current Apple operating systems, and the documented Core AI dependency sets currently conflict when both packages are combined.",
+      "summary_zh": "AnySpeechRecognizer 0.1.0 与 AnyDecisionModel 0.6.0 是面向 Apple 平台的开源 Swift 包，分别处理端侧语音和受约束的模型决策。语音后端覆盖 Parakeet、Sortformer 与 Apple SpeechAnalyzer；决策后端包括 MLX、Core AI、llama.cpp、Jev 与 Ollama。它们要求 Swift 6.2 和较新的 Apple 系统，文档还明确指出两者的 Core AI 依赖目前不能同时启用。",
+      "why_it_matters": "For Apple-native product teams, the packages reduce glue code for local speech and typed choices. The narrow platform baseline, dependency conflict and publisher-run M4 Max timing mean teams should test integration and latency before adopting.",
+      "why_it_matters_en": "For Apple-native product teams, the packages reduce glue code for local speech and typed choices. The narrow platform baseline, dependency conflict and publisher-run M4 Max timing mean teams should test integration and latency before adopting.",
+      "why_it_matters_zh": "对 Apple 原生产品团队来说，这两个包减少了本地语音与类型化选择的粘合代码。平台版本要求高、依赖冲突仍在，M4 Max 延迟也只是发布方测试，因此应先验证集成与性能。",
+      "technical_details": {
+        "versions": "AnySpeechRecognizer 0.1.0; AnyDecisionModel 0.6.0",
+        "platform": "Swift 6.2+; macOS/iOS 26+; Apple silicon for Parakeet, Sortformer and MLX paths",
+        "speech": "Parakeet, Sortformer and Apple SpeechAnalyzer; multilingual recognition with punctuation/capitalization where backend supports it",
+        "decisions": "typed probability, choice and score APIs; MLX, Core AI, llama.cpp, Jev and Ollama backends",
+        "known_conflict": "AnyDecisionModel Core AI trait uses coreai-kit 0.7.3 with swift-huggingface <1.0, while AnySpeechRecognizer requires 1.x",
+        "vendor_timing": "M4 Max batch 16 around 0.45 s after load; 343 emoji choices around 10 s",
+        "time_basis": "Hugging Face feed exposes date 2026-10-29 without time; date is wholly inside the scan window"
+      },
+      "technical_details_zh": {
+        "版本": "AnySpeechRecognizer 0.1.0；AnyDecisionModel 0.6.0",
+        "平台": "Swift 6.2+；macOS/iOS 26+；Parakeet、Sortformer 与 MLX 路径要求 Apple silicon",
+        "语音": "Parakeet、Sortformer 与 Apple SpeechAnalyzer；后端支持时可做多语种识别、标点和大小写",
+        "决策": "类型化概率、选择与评分 API；支持 MLX、Core AI、llama.cpp、Jev 与 Ollama",
+        "已知冲突": "AnyDecisionModel 的 Core AI trait 使用 coreai-kit 0.7.3 与 swift-huggingface <1.0，而 AnySpeechRecognizer 要求 1.x",
+        "厂商延迟": "M4 Max 加载后 batch 16 约 0.45 秒；343 个 emoji 选择约 10 秒",
+        "时间依据": "Hugging Face feed 只提供 2026-10-29 日期；该日期完整落在扫描窗口内"
+      },
+      "tags": [
+        "swift",
+        "apple-silicon",
+        "speech-recognition",
+        "structured-decision",
+        "on-device"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "anyspeechrecognizer-anydecisionmodel-open-swift-packages",
+      "short_label_zh": "AnySpeech / AnyDecision",
+      "short_label_en": "AnySpeech / AnyDecision",
+      "next_action_zh": "一天内用公开包做一个端侧语音到类型化选择 demo，记录冷启动、延迟，并验证 Core AI 依赖冲突。",
+      "next_action_en": "Within one day, build an on-device speech-to-typed-choice demo from the public packages; record cold start and latency, and verify the Core AI dependency conflict.",
+      "source_ids": [
+        "src-6394645bd5105adc",
+        "src-fca7785e9b3a3d46",
+        "src-9e6b8a3e51fe629f"
+      ],
+      "project_ids": [
+        "anydecisionmodel"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261029-01-evidence",
+          "claim_zh": "Hugging Face 文章与两个公开仓库确认版本、后端、平台限制、依赖冲突和发布方延迟数据。",
+          "claim_en": "The Hugging Face article and two public repositories confirm versions, backends, platform limits, dependency conflict and publisher-run timing.",
+          "source_ids": [
+            "src-6394645bd5105adc",
+            "src-fca7785e9b3a3d46",
+            "src-9e6b8a3e51fe629f"
+          ],
+          "event_ids": [
+            "ev-20261029-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261029-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-29",
+          "discovered_at": "2026-10-29T16:05:08Z",
+          "summary_zh": "两个 Apple 原生 Swift AI 包公开，并披露当前集成限制。",
+          "summary_en": "Two Apple-native Swift AI packages are released with current integration limits documented.",
+          "evidence_ids": [
+            "ev-20261029-01-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}
