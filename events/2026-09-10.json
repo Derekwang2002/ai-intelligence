@@ -189,27 +189,28 @@
     },
     {
       "event_id": "ev-20260910-02",
-      "title": "OpenAI opens the Agents API beta: the Codex harness as a managed service",
-      "title_zh": "OpenAI 开放 Agents API 公测：Codex harness 变成托管服务",
+      "title": "Codex CLI 0.166 adds durable queue resume and network diagnosis",
+      "title_zh": "Codex CLI 0.166 加入队列恢复与网络诊断",
       "category": "developer-tools",
       "organization": [
         "OpenAI"
       ],
       "published_at": "2026-09-10T15:00:00Z",
       "first_seen_at": "2026-09-11T18:31:49Z",
-      "last_updated_at": "2026-10-01T16:01:43Z",
+      "last_updated_at": "2026-10-30T16:01:56Z",
       "source_type": "official_blog",
       "primary_source": "https://openai.com/index/introducing-the-agents-api/",
       "secondary_sources": [
         "https://developers.openai.com/api/docs/changelog",
-        "https://developers.openai.com/api/docs/guides/agents-api/tools/computer-use"
+        "https://developers.openai.com/api/docs/guides/agents-api/tools/computer-use",
+        "https://github.com/openai/codex/releases/tag/rust-v0.166.0"
       ],
-      "summary": "OpenAI expanded the Agents API hosted runtime with computer use. The browser runs in an OpenAI-hosted environment while the application handles origin approval and sign-in fields, and interrupted work can resume the same session. Only the main agent can request authentication; email, password and verification codes are supported, but passkeys and QR sign-in are not.",
-      "why_it_matters": "For browser-agent builders, origin approval, sign-in handoff and recovery now share one runtime contract. Before production, verify credentials stay outside model context, approvals fail closed, audit is complete, and side effects require human confirmation.",
-      "summary_zh": "OpenAI Agents API 已从托管 agent 运行时扩展到 computer use。浏览器运行在 OpenAI 托管环境，应用负责来源审批和登录字段，断线后可恢复同一 session。只有主 agent 能请求认证；当前支持邮箱、密码和验证码，不支持 passkey 或二维码登录。",
-      "summary_en": "OpenAI expanded the Agents API hosted runtime with computer use. The browser runs in an OpenAI-hosted environment while the application handles origin approval and sign-in fields, and interrupted work can resume the same session. Only the main agent can request authentication; email, password and verification codes are supported, but passkeys and QR sign-in are not.",
-      "why_it_matters_zh": "对构建浏览器 agent 的团队来说，来源审批、登录交接和恢复已进入同一运行 contract。上线前仍要验证凭据不进入模型上下文、审批默认拒绝、审计完整，并在副作用操作前增加人工确认。",
-      "why_it_matters_en": "For browser-agent builders, origin approval, sign-in handoff and recovery now share one runtime contract. Before production, verify credentials stay outside model context, approvals fail closed, audit is complete, and side effects require human confirmation.",
+      "summary": "Codex CLI 0.166 adds codex queue --resume and doctor --network-only, preserves approval and permission state across resume and fork, and restores descendant threads. It also fixes startup, shutdown and reconnect paths and corrects reasoning-token accounting.",
+      "why_it_matters": "For long-running coding workflows, durable queue resume and explicit network diagnosis make interrupted work easier to verify. Teams should still test approval preservation and descendant restoration before broad rollout.",
+      "summary_zh": "Codex CLI 0.166 加入 codex queue --resume 与 doctor --network-only，并在恢复和分叉时保留审批、权限状态与后代线程。它还修复启动、关闭、重连路径和推理 token 统计。",
+      "summary_en": "Codex CLI 0.166 adds codex queue --resume and doctor --network-only, preserves approval and permission state across resume and fork, and restores descendant threads. It also fixes startup, shutdown and reconnect paths and corrects reasoning-token accounting.",
+      "why_it_matters_zh": "对长时程 coding 工作流来说，队列恢复与独立网络诊断让中断后的状态更容易核对。全面升级前仍应验证审批保留与后代线程恢复。",
+      "why_it_matters_en": "For long-running coding workflows, durable queue resume and explicit network diagnosis make interrupted work easier to verify. Teams should still test approval preservation and descendant restoration before broad rollout.",
       "technical_details": {
         "status": "public beta, all developers; page publishedTime 2026-09-10T15:00Z",
         "harness": "managed service powered by the Codex harness (open-source codebase); OpenAI runs orchestration, compaction, recovery",
@@ -220,7 +221,10 @@
         "hosted_browser": "OpenAI-hosted browser with resumable sessions",
         "authentication": "application renders authentication fields; main agent only",
         "unsupported": "passkeys and QR-code sign-in",
-        "approval": "application approves requested origins"
+        "approval": "application approves requested origins",
+        "latest_cli": "0.166.0",
+        "release_time": "2026-10-29T19:47:53Z",
+        "release_2026_10_29": "queue --resume, doctor --network-only, approval/permission preservation, descendant restoration and reconnect fixes"
       },
       "technical_details_zh": {
         "状态": "公测，面向所有开发者；页面 publishedTime 2026-09-10T15:00Z",
@@ -232,7 +236,10 @@
         "托管浏览器": "OpenAI 托管并支持 session 恢复",
         "认证": "应用渲染认证字段；仅主 agent 可请求",
         "不支持": "passkey 与二维码登录",
-        "来源审批": "应用审批 agent 请求访问的来源"
+        "来源审批": "应用审批 agent 请求访问的来源",
+        "最新 CLI": "0.166.0",
+        "发布时间": "2026-10-29T19:47:53Z",
+        "2026-10-29 更新": "queue --resume、doctor --network-only、审批与权限保留、后代线程恢复和重连修复"
       },
       "tags": [
         "agent-platform",
@@ -253,7 +260,8 @@
       "source_ids": [
         "src-b32e9b8471353987",
         "src-49e8d0577a5e1f9d",
-        "src-25183e2b01dde1f5"
+        "src-25183e2b01dde1f5",
+        "src-10be109ee0bd01c4"
       ],
       "project_ids": [
         "codex"
@@ -290,6 +298,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260910-02-0-166-0-evidence",
+          "claim_zh": "0.166.0 稳定版 release notes 确认队列恢复、网络诊断与会话状态修复。",
+          "claim_en": "The 0.166.0 stable release notes confirm queue resume, network diagnosis and session-state fixes.",
+          "source_ids": [
+            "src-10be109ee0bd01c4"
+          ],
+          "event_ids": [
+            "ev-20260910-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -317,12 +338,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260910-02-codex-0-166",
+          "kind": "update",
+          "occurred_at": "2026-10-29T19:47:53Z",
+          "discovered_at": "2026-10-30T16:01:56Z",
+          "summary_zh": "0.166.0 增加队列恢复并修复会话状态边界。",
+          "summary_en": "Version 0.166.0 adds queue resume and repairs session-state boundaries.",
+          "evidence_ids": [
+            "ev-20260910-02-0-166-0-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "short_label_zh": "Agents API",
-      "short_label_en": "Agents API",
-      "next_action_zh": "用测试账号跑一次带登录的只读任务，核对凭据边界、默认拒绝、断线恢复和完整审计。",
-      "next_action_en": "Run one read-only signed-in task with a test account and verify credential boundaries, fail-closed approval, recovery and audit."
+      "short_label_zh": "Codex CLI 0.166",
+      "short_label_en": "Codex CLI 0.166",
+      "next_action_zh": "在非关键 workspace 升级并回归队列恢复、分叉后的审批权限、后代线程恢复与断网重连。",
+      "next_action_en": "Upgrade in a non-critical workspace and regress queue resume, forked approval state, descendant restoration and offline reconnect."
     },
     {
       "event_id": "ev-20260910-03",

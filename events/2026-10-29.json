@@ -106,6 +106,397 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261029-02",
+      "title": "FrontiersMind releases Lumma-Fev-v2 decision models",
+      "title_zh": "FrontiersMind 开放 Lumma-Fev-v2 决策模型",
+      "category": "open-source",
+      "organization": [
+        "FrontiersMind"
+      ],
+      "published_at": "2026-10-29T16:12:19.790Z",
+      "first_seen_at": "2026-10-30T16:01:56Z",
+      "last_updated_at": "2026-10-30T16:01:56Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/blog/FrontiersMind/lumma-fev-27b-v2",
+      "secondary_sources": [
+        "https://huggingface.co/FrontiersMind/Lumma-Fev-4B-v2",
+        "https://huggingface.co/FrontiersMind/Lumma-Fev-27B-v2",
+        "https://github.com/FrontiersMindAI/decisionformer"
+      ],
+      "summary": "FrontiersMind released ungated Apache-2.0 weights for Lumma-Fev-v2 at 4B and 27B, plus public inference code. The models target risk-sensitive decisions rather than general chat. The 27B model requires lumma-fev 0.3 or newer and about 55 GB of free GPU memory; smaller 0.1B and 0.6B variants remain announced but unavailable.",
+      "summary_en": "FrontiersMind released ungated Apache-2.0 weights for Lumma-Fev-v2 at 4B and 27B, plus public inference code. The models target risk-sensitive decisions rather than general chat. The 27B model requires lumma-fev 0.3 or newer and about 55 GB of free GPU memory; smaller 0.1B and 0.6B variants remain announced but unavailable.",
+      "summary_zh": "FrontiersMind 开放 Lumma-Fev-v2 的 4B 与 27B 权重和推理代码，均为 Apache-2.0 许可且无需申请。它面向风险敏感决策，不是通用聊天模型。27B 版本要求 lumma-fev 0.3 以上和约 55 GB 空闲显存；预告的 0.1B 与 0.6B 版本尚未上线。",
+      "why_it_matters": "For teams building constrained decision systems, public weights make a local comparison possible. The reported accuracy and calibration come from the publisher, including a 400-row Indic set translated with Claude, so they do not establish production reliability.",
+      "why_it_matters_en": "For teams building constrained decision systems, public weights make a local comparison possible. The reported accuracy and calibration come from the publisher, including a 400-row Indic set translated with Claude, so they do not establish production reliability.",
+      "why_it_matters_zh": "对受约束决策系统团队来说，公开权重让本地对比成为可能。但准确率与校准结果均由发布方自测，Indic 集也只有 400 行且由 Claude 翻译，不能据此认定可用于生产。",
+      "technical_details": {
+        "availability": "Ungated 4B and 27B weights plus public code; 0.1B and 0.6B announced but not released",
+        "license": "Apache-2.0",
+        "runtime": "27B requires lumma-fev>=0.3, about 55 GB free GPU memory and 8,192-token input",
+        "vendor_evidence": "Publisher reports 87.3% and 82.4% on selected decision tasks; no independent reproduction found",
+        "time_basis": "Hugging Face feed timestamp 2026-10-29T16:12:19.790Z, inside the scan window"
+      },
+      "technical_details_zh": {
+        "可用性": "4B 与 27B 权重及代码公开且无需申请；0.1B 与 0.6B 仅预告",
+        "许可": "Apache-2.0",
+        "运行条件": "27B 要求 lumma-fev>=0.3、约 55 GB 空闲显存与 8,192 token 输入",
+        "厂商证据": "发布方在部分决策任务报告 87.3% 与 82.4%；未找到独立复现",
+        "时间依据": "Hugging Face feed 时间为 2026-10-29T16:12:19.790Z，落在扫描窗口内"
+      },
+      "tags": [
+        "decision-model",
+        "open-weights",
+        "calibration",
+        "risk"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "frontiersmind-lumma-fev-v2-open-weights",
+      "short_label_zh": "Lumma-Fev-v2",
+      "short_label_en": "Lumma-Fev-v2",
+      "next_action_zh": "一天内用公开 4B 权重复跑一个自有决策集，对比准确率、校准误差与拒答行为。",
+      "next_action_en": "Within one day, run the public 4B weights on one internal decision set and compare accuracy, calibration error and abstention behavior.",
+      "source_ids": [
+        "src-58835aae69a7e05a",
+        "src-2cd3146ad5e85621",
+        "src-90715ab40cc283d8",
+        "src-d94edb102a143408"
+      ],
+      "project_ids": [
+        "lumma-fev-v2"
+      ],
+      "scenario_ids": [
+        "local",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261029-02-evidence",
+          "claim_zh": "官方文章、模型卡与代码仓库确认 4B/27B 权重、许可、运行条件和发布方评测范围。",
+          "claim_en": "The official article, model cards and code repository confirm the 4B/27B weights, license, runtime requirements and publisher-run evaluation scope.",
+          "source_ids": [
+            "src-58835aae69a7e05a",
+            "src-2cd3146ad5e85621",
+            "src-90715ab40cc283d8",
+            "src-d94edb102a143408"
+          ],
+          "event_ids": [
+            "ev-20261029-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261029-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-29T16:12:19.790Z",
+          "discovered_at": "2026-10-30T16:01:56Z",
+          "summary_zh": "4B 与 27B 决策模型权重和代码公开。",
+          "summary_en": "The 4B and 27B decision-model weights and code are public.",
+          "evidence_ids": [
+            "ev-20261029-02-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261029-03",
+      "title": "Google opens SynthID Detector globally in English",
+      "title_zh": "Google 向全球英语用户开放 SynthID Detector",
+      "category": "ai-engineering",
+      "organization": [
+        "Google",
+        "Google DeepMind"
+      ],
+      "published_at": "2026-10-29T16:34:22.195697Z",
+      "first_seen_at": "2026-10-30T16:01:56Z",
+      "last_updated_at": "2026-10-30T16:01:56Z",
+      "source_type": "official_blog",
+      "primary_source": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synth-id-ai-content/",
+      "secondary_sources": [],
+      "summary": "Google updated SynthID Detector access from a limited rollout to global English availability. Anyone can upload supported image, video or audio files to check for SynthID watermarks from Google and named partners including OpenAI, NVIDIA, Kakao and Apple. The tool detects participating watermarks, not arbitrary AI-generated content.",
+      "summary_en": "Google updated SynthID Detector access from a limited rollout to global English availability. Anyone can upload supported image, video or audio files to check for SynthID watermarks from Google and named partners including OpenAI, NVIDIA, Kakao and Apple. The tool detects participating watermarks, not arbitrary AI-generated content.",
+      "summary_zh": "Google 将 SynthID Detector 从限量开放改为面向全球英语用户。任何人都可上传受支持的图片、视频或音频，检查 Google 及 OpenAI、NVIDIA、Kakao、Apple 等合作方写入的 SynthID 水印。它只能识别参与方的水印，不能判断所有内容是否由 AI 生成。",
+      "why_it_matters": "For provenance workflows, broader access makes watermark checks operationally usable. It does not replace broader forensic review, and Google provides no independent false-positive, recall or edit-robustness evidence in this update.",
+      "why_it_matters_en": "For provenance workflows, broader access makes watermark checks operationally usable. It does not replace broader forensic review, and Google provides no independent false-positive, recall or edit-robustness evidence in this update.",
+      "why_it_matters_zh": "对内容溯源流程来说，全球开放让水印检查真正可用。但它不能替代更广泛的取证审查，本次更新也没有提供独立的误报率、召回率或编辑后鲁棒性证据。",
+      "technical_details": {
+        "stage": "Globally available in English; upload-based detector",
+        "scope": "Image, video and audio carrying SynthID from Google and named partners",
+        "limitation": "Does not detect all AI-generated content; no independent error-rate or edit-robustness evidence in the update",
+        "time_basis": "Official page dateModified is 2026-10-29T16:34:22.195697Z; original article was published 2026-10-07"
+      },
+      "technical_details_zh": {
+        "阶段": "面向全球英语用户开放；通过上传文件检测",
+        "范围": "Google 与列名合作方写入 SynthID 的图片、视频和音频",
+        "限制": "不能识别所有 AI 生成内容；更新未给出独立误报率或编辑后鲁棒性",
+        "时间依据": "官方页面 dateModified 为 2026-10-29T16:34:22.195697Z；原文发布于 2026-10-07"
+      },
+      "tags": [
+        "watermarking",
+        "provenance",
+        "content-authenticity"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "google-synthid-detector-global-english-access",
+      "short_label_zh": "SynthID Detector",
+      "short_label_en": "SynthID Detector",
+      "next_action_zh": "等独立误报率、召回率和压缩编辑鲁棒性数据出现后，再评估是否接入内容审核。",
+      "next_action_en": "Reassess integration into content review after independent false-positive, recall and compression/edit robustness data appear.",
+      "source_ids": [
+        "src-d6233baa7d5321cb"
+      ],
+      "project_ids": [
+        "synthid-detector"
+      ],
+      "scenario_ids": [
+        "safety"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261029-03-evidence",
+          "claim_zh": "Google 官方页面确认全球英语访问范围、支持的媒体类型与合作方，并以页面修改时间标记本次变化。",
+          "claim_en": "Google’s official page confirms global English access, supported media and partners, with the page modification timestamp marking this change.",
+          "source_ids": [
+            "src-d6233baa7d5321cb"
+          ],
+          "event_ids": [
+            "ev-20261029-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261029-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-29T16:34:22.195697Z",
+          "discovered_at": "2026-10-30T16:01:56Z",
+          "summary_zh": "SynthID Detector 从限量开放变为全球英语可用。",
+          "summary_en": "SynthID Detector moves from limited access to global English availability.",
+          "evidence_ids": [
+            "ev-20261029-03-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261029-04",
+      "title": "Cursor reports a backdoored Claude Code extension in its marketplace",
+      "title_zh": "Cursor 通报扩展市场曾分发带后门的 Claude Code",
+      "category": "agent-security",
+      "organization": [
+        "Cursor"
+      ],
+      "published_at": "2026-10-29",
+      "first_seen_at": "2026-10-30T16:01:56Z",
+      "last_updated_at": "2026-10-30T16:01:56Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://cursor.com/blog/claude-code-extension-security-notice",
+      "secondary_sources": [],
+      "summary": "Cursor says its marketplace distributed a maliciously modified Anthropic.claude-code 2.1.313 between 2:27 a.m. and 1:35 p.m. PT on October 29. The package attempted to add an SSH key, install persistence and open a reverse tunnel. Cursor says at most 5,000 users were affected, the attacker server is offline and no other extension versions were found altered.",
+      "summary_en": "Cursor says its marketplace distributed a maliciously modified Anthropic.claude-code 2.1.313 between 2:27 a.m. and 1:35 p.m. PT on October 29. The package attempted to add an SSH key, install persistence and open a reverse tunnel. Cursor says at most 5,000 users were affected, the attacker server is offline and no other extension versions were found altered.",
+      "summary_zh": "Cursor 通报，其扩展市场在 10 月 29 日美西时间 2:27 至 13:35 分发了被恶意篡改的 Anthropic.claude-code 2.1.313。该包尝试写入 SSH key、建立持久化并打开反向隧道。Cursor 称最多 5,000 名用户受影响，攻击者服务器已下线，未发现其他版本被篡改。",
+      "why_it_matters": "For anyone who installed or updated from the Cursor marketplace during the stated window, uninstalling alone is insufficient because the payload drops persistence. Cursor provides indicators and remediation scripts; credentials accessible from affected hosts should be rotated from a trusted system.",
+      "why_it_matters_en": "For anyone who installed or updated from the Cursor marketplace during the stated window, uninstalling alone is insufficient because the payload drops persistence. Cursor provides indicators and remediation scripts; credentials accessible from affected hosts should be rotated from a trusted system.",
+      "why_it_matters_zh": "对在该时段从 Cursor 市场安装或更新的人来说，仅卸载扩展不够，因为 payload 会落地持久化脚本。Cursor 已提供检测指标与修复脚本；受影响主机可访问的凭据应从可信设备轮换。",
+      "technical_details": {
+        "stage": "Confirmed incident and remediation notice from Cursor",
+        "exposure_window": "2026-10-29 02:27-13:35 PT",
+        "scope": "Malicious Anthropic.claude-code 2.1.313 from Cursor marketplace; at most 5,000 users",
+        "payload": "Host inventory, unauthorized SSH key, persistence and attempted reverse SSH tunnel",
+        "limit": "Cursor says attacker server is offline and found no other altered versions; this does not prove every affected endpoint is clean",
+        "time_basis": "Official notice provides incident date and PT exposure window; page publication is date-only"
+      },
+      "technical_details_zh": {
+        "阶段": "Cursor 已确认事故并发布修复通告",
+        "暴露窗口": "2026-10-29 美西时间 02:27-13:35",
+        "范围": "Cursor 市场中的恶意 Anthropic.claude-code 2.1.313；最多 5,000 名用户",
+        "payload": "主机信息、未授权 SSH key、持久化与反向 SSH 隧道尝试",
+        "边界": "Cursor 称攻击服务器已下线且未发现其他篡改版本；不代表所有受影响终端已清洁",
+        "时间依据": "官方通告给出事故日期与美西暴露窗口；页面发布时间只精确到日期"
+      },
+      "tags": [
+        "supply-chain",
+        "marketplace",
+        "backdoor",
+        "claude-code"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 1,
+      "risk": 5,
+      "recommendation": "WATCH",
+      "event_fingerprint": "cursor-marketplace-malicious-claude-code-extension-2-1-313",
+      "short_label_zh": "Cursor 扩展事故",
+      "short_label_en": "Cursor backdoor",
+      "next_action_zh": "若在暴露窗口安装或更新，立即按 Cursor 指标隔离并修复主机，再从可信设备轮换凭据。",
+      "next_action_en": "If installed or updated in the exposure window, isolate and remediate the host with Cursor’s indicators, then rotate credentials from a trusted system.",
+      "source_ids": [
+        "src-b11cb5d74cc4c058"
+      ],
+      "project_ids": [
+        "cursor-extension-marketplace"
+      ],
+      "scenario_ids": [
+        "agents",
+        "security"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261029-04-evidence",
+          "claim_zh": "Cursor 官方通告确认受影响版本、暴露窗口、payload、影响上限、IoC 与修复步骤。",
+          "claim_en": "Cursor’s official notice confirms the affected version, exposure window, payload, impact ceiling, indicators and remediation steps.",
+          "source_ids": [
+            "src-b11cb5d74cc4c058"
+          ],
+          "event_ids": [
+            "ev-20261029-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261029-04-published",
+          "kind": "new",
+          "occurred_at": "2026-10-29",
+          "discovered_at": "2026-10-30T16:01:56Z",
+          "summary_zh": "Cursor 确认其市场曾短时分发恶意 Claude Code 扩展并发布修复步骤。",
+          "summary_en": "Cursor confirms its marketplace briefly distributed a malicious Claude Code extension and publishes remediation.",
+          "evidence_ids": [
+            "ev-20261029-04-evidence"
+          ],
+          "historical": false,
+          "importance": "critical"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261029-05",
+      "title": "Pika Labs releases Pika H3 Flex video-model weights",
+      "title_zh": "Pika Labs 开放 Pika H3 Flex 视频模型权重",
+      "category": "foundation-model",
+      "organization": [
+        "Pika Labs"
+      ],
+      "published_at": "2026-10-29T17:08:44Z",
+      "first_seen_at": "2026-10-30T16:01:56Z",
+      "last_updated_at": "2026-10-30T16:01:56Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/Pika-Labs/Pika-H3-Flex",
+      "secondary_sources": [
+        "https://github.com/pika-labs/Pika-H3-Flex"
+      ],
+      "summary": "Pika Labs released ungated Pika H3 Flex weights as a LoRA over MiniMax H3 for local image-to-video generation with synchronized audio. The model card advertises six-step generation, up to 12 references and native 480p/768p output; hosted API features extend to higher resolutions. The repository uses a custom MiniMax H3 community license rather than Apache or MIT.",
+      "summary_en": "Pika Labs released ungated Pika H3 Flex weights as a LoRA over MiniMax H3 for local image-to-video generation with synchronized audio. The model card advertises six-step generation, up to 12 references and native 480p/768p output; hosted API features extend to higher resolutions. The repository uses a custom MiniMax H3 community license rather than Apache or MIT.",
+      "summary_zh": "Pika Labs 开放 Pika H3 Flex 权重，它以 MiniMax H3 为基础 LoRA，可在本地做带同步音频的 image-to-video。模型卡称支持六步生成、最多 12 个参考输入及原生 480p/768p；更高分辨率功能由托管 API 提供。仓库使用自定义 MiniMax H3 community license，并非 Apache 或 MIT。",
+      "why_it_matters": "For video-tool teams, public weights make local quality, latency and reference control testable. The custom license, base-model dependency and split between local and hosted features require review before product use.",
+      "why_it_matters_en": "For video-tool teams, public weights make local quality, latency and reference control testable. The custom license, base-model dependency and split between local and hosted features require review before product use.",
+      "why_it_matters_zh": "对视频工具团队来说，公开权重让本地画质、延迟与参考控制可测试。但自定义许可、对基础模型的依赖，以及本地与托管功能的差异，都必须在产品接入前核对。",
+      "technical_details": {
+        "availability": "Ungated LoRA weights and Diffusers quickstart",
+        "base_model": "MiniMaxAI/MiniMax-H3",
+        "local_output": "Native 480p/768p with synchronized audio; six steps; up to 12 references",
+        "hosted_difference": "Pika API adds 1080p, 2K, 4K, audio stems and prompt enhancement",
+        "license": "Custom MiniMax H3 community license",
+        "time_basis": "Hugging Face createdAt 2026-10-29T17:08:44Z, inside the scan window"
+      },
+      "technical_details_zh": {
+        "可用性": "无需申请的 LoRA 权重与 Diffusers quickstart",
+        "基础模型": "MiniMaxAI/MiniMax-H3",
+        "本地输出": "原生 480p/768p 与同步音频；六步；最多 12 个参考输入",
+        "托管差异": "Pika API 增加 1080p、2K、4K、音轨与 prompt enhancement",
+        "许可": "自定义 MiniMax H3 community license",
+        "时间依据": "Hugging Face createdAt 为 2026-10-29T17:08:44Z，落在扫描窗口内"
+      },
+      "tags": [
+        "video-generation",
+        "open-weights",
+        "lora",
+        "audio-video"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "pika-h3-flex-open-video-lora-weights",
+      "short_label_zh": "Pika H3 Flex",
+      "short_label_en": "Pika H3 Flex",
+      "next_action_zh": "一天内审查许可，并用三组参考图测试本地画质、音画同步、延迟与显存。",
+      "next_action_en": "Within one day, review the license and test local quality, audio sync, latency and memory on three reference sets.",
+      "source_ids": [
+        "src-0ae524ee7a4c5e73",
+        "src-d653de38a344f10f"
+      ],
+      "project_ids": [
+        "pika-h3-flex"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261029-05-evidence",
+          "claim_zh": "官方模型卡与仓库确认权重、基础模型、六步生成、参考输入、本地输出、托管差异与自定义许可。",
+          "claim_en": "The official model card and repository confirm weights, base model, six-step generation, references, local output, hosted differences and custom license.",
+          "source_ids": [
+            "src-0ae524ee7a4c5e73",
+            "src-d653de38a344f10f"
+          ],
+          "event_ids": [
+            "ev-20261029-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261029-05-published",
+          "kind": "new",
+          "occurred_at": "2026-10-29T17:08:44Z",
+          "discovered_at": "2026-10-30T16:01:56Z",
+          "summary_zh": "Pika H3 Flex 本地视频生成权重与 quickstart 公开。",
+          "summary_en": "Pika H3 Flex local video-generation weights and quickstart are public.",
+          "evidence_ids": [
+            "ev-20261029-05-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

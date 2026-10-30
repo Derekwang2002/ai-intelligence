@@ -1,0 +1,207 @@
+{
+  "date": "2026-10-30",
+  "provenance": "Governed incremental scan.",
+  "events": [
+    {
+      "event_id": "ev-20261030-01",
+      "title": "DiffuSpace releases Clover-35B-A3B-Preview weights and code",
+      "title_zh": "DiffuSpace 开放 Clover-35B-A3B-Preview 权重与代码",
+      "category": "foundation-model",
+      "organization": [
+        "DiffuSpace"
+      ],
+      "published_at": "2026-10-30T09:58:28.399Z",
+      "first_seen_at": "2026-10-30T16:01:56Z",
+      "last_updated_at": "2026-10-30T16:01:56Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/blog/Diffuspace/clover-35b-a3b-preview",
+      "secondary_sources": [
+        "https://huggingface.co/Diffuspace/Clover-35B-A3B-Preview",
+        "https://github.com/DiffuSpace/Clover-35B-A3B-Preview"
+      ],
+      "summary": "DiffuSpace released ungated Apache-2.0 weights and code for Clover-35B-A3B-Preview, a 35B-total, 3B-active mixture-of-experts diffusion language model aimed at coding agents. The preview includes SGLang and llama.cpp paths. Its benchmark and throughput numbers are publisher-reported and have not been independently reproduced.",
+      "summary_en": "DiffuSpace released ungated Apache-2.0 weights and code for Clover-35B-A3B-Preview, a 35B-total, 3B-active mixture-of-experts diffusion language model aimed at coding agents. The preview includes SGLang and llama.cpp paths. Its benchmark and throughput numbers are publisher-reported and have not been independently reproduced.",
+      "summary_zh": "DiffuSpace 开放 Clover-35B-A3B-Preview 的权重与代码，采用 Apache-2.0 许可且无需申请。它是总参数 35B、每次激活约 3B 的 MoE 扩散语言模型，面向 coding agent，并提供 SGLang 与 llama.cpp 路径。benchmark 与吞吐数据均为发布方自测，尚未独立复现。",
+      "why_it_matters": "For coding-agent teams, the public artifacts make the claimed quality/throughput trade-off testable. Preview status, uncommon diffusion decoding and unverified benchmark setup argue for a bounded trial rather than adoption.",
+      "why_it_matters_en": "For coding-agent teams, the public artifacts make the claimed quality/throughput trade-off testable. Preview status, uncommon diffusion decoding and unverified benchmark setup argue for a bounded trial rather than adoption.",
+      "why_it_matters_zh": "对 coding agent 团队来说，公开产物让质量与吞吐的取舍可以实测。它仍是 Preview，扩散式解码也不同于常见自回归模型，且 benchmark 条件未独立核验，因此只适合有限试验。",
+      "technical_details": {
+        "architecture": "35B total / about 3B active MoE diffusion language model",
+        "availability": "Ungated weights, Apache-2.0 code, SGLang and llama.cpp paths",
+        "vendor_benchmarks": "SWE-bench Verified 73.6; Terminal-Bench 2.1 51.7; tau3 65.3; not independently reproduced",
+        "vendor_throughput": "680 tokens/s on NVIDIA GB300 BF16 batch 1; publisher measurement",
+        "time_basis": "Hugging Face feed timestamp 2026-10-30T09:58:28.399Z, inside the scan window"
+      },
+      "technical_details_zh": {
+        "架构": "总参数 35B、每次激活约 3B 的 MoE 扩散语言模型",
+        "可用性": "权重无需申请，代码为 Apache-2.0，提供 SGLang 与 llama.cpp 路径",
+        "厂商评测": "SWE-bench Verified 73.6；Terminal-Bench 2.1 51.7；tau3 65.3；未独立复现",
+        "厂商吞吐": "NVIDIA GB300、BF16、batch 1 下 680 token/s；为发布方测量",
+        "时间依据": "Hugging Face feed 时间为 2026-10-30T09:58:28.399Z，落在扫描窗口内"
+      },
+      "tags": [
+        "diffusion-language-model",
+        "coding-agent",
+        "open-weights",
+        "moe"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "diffuspace-clover-35b-a3b-preview-open",
+      "short_label_zh": "Clover-35B-A3B",
+      "short_label_en": "Clover-35B-A3B",
+      "next_action_zh": "一天内用公开权重和 SGLang 跑固定代码任务，记录正确率、首 token 延迟、吞吐与显存。",
+      "next_action_en": "Within one day, run fixed coding tasks with the public weights and SGLang; record correctness, TTFT, throughput and memory.",
+      "source_ids": [
+        "src-b07676eb22e02ae8",
+        "src-178c5814d60670d7",
+        "src-dd1b35b221c19cb9"
+      ],
+      "project_ids": [
+        "clover-35b-a3b-preview"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261030-01-evidence",
+          "claim_zh": "官方文章、模型卡与仓库确认 Preview 阶段、权重、许可、推理路径及发布方评测条件。",
+          "claim_en": "The official article, model card and repository confirm preview status, weights, license, inference paths and publisher-run evaluation conditions.",
+          "source_ids": [
+            "src-b07676eb22e02ae8",
+            "src-178c5814d60670d7",
+            "src-dd1b35b221c19cb9"
+          ],
+          "event_ids": [
+            "ev-20261030-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261030-01-published",
+          "kind": "new",
+          "occurred_at": "2026-10-30T09:58:28.399Z",
+          "discovered_at": "2026-10-30T16:01:56Z",
+          "summary_zh": "Clover Preview 权重、代码与推理路径公开。",
+          "summary_en": "Clover Preview weights, code and inference paths are public.",
+          "evidence_ids": [
+            "ev-20261030-01-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261030-02",
+      "title": "NVIDIA opens NemoClaw blueprints for controlled agent stacks",
+      "title_zh": "NVIDIA 开放 NemoClaw 受控 agent 栈蓝图",
+      "category": "ai-agent",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-10-30T16:00:00Z",
+      "first_seen_at": "2026-10-30T16:01:56Z",
+      "last_updated_at": "2026-10-30T16:01:56Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/build-specialized-agents-on-a-stack-you-control-with-nvidia-nemoclaw/",
+      "secondary_sources": [
+        "https://github.com/NVIDIA/NemoClaw"
+      ],
+      "summary": "NVIDIA released MIT-licensed NemoClaw blueprints for assembling specialized agent stacks from existing harnesses, models, NeMo services and the OpenShell policy runtime. The initial integrations name OpenClaw, Hermes Agent and LangChain Deep Agents. It is a composable blueprint layer, not a replacement agent harness, and supports cloud, data-center, DGX Spark and RTX deployment paths.",
+      "summary_en": "NVIDIA released MIT-licensed NemoClaw blueprints for assembling specialized agent stacks from existing harnesses, models, NeMo services and the OpenShell policy runtime. The initial integrations name OpenClaw, Hermes Agent and LangChain Deep Agents. It is a composable blueprint layer, not a replacement agent harness, and supports cloud, data-center, DGX Spark and RTX deployment paths.",
+      "summary_zh": "NVIDIA 以 MIT 许可开放 NemoClaw 蓝图，用现有 agent harness、模型、NeMo 服务与 OpenShell 策略运行时组合专用 agent 栈。首批列出的集成包括 OpenClaw、Hermes Agent 与 LangChain Deep Agents。它是组合层，不是新的 agent harness；部署路径覆盖云、数据中心、DGX Spark 与 RTX。",
+      "why_it_matters": "For teams that need owned execution and policy boundaries, NemoClaw provides a public integration path instead of a closed appliance. Its value still depends on reproducing policy isolation, telemetry and operating cost outside NVIDIA examples.",
+      "why_it_matters_en": "For teams that need owned execution and policy boundaries, NemoClaw provides a public integration path instead of a closed appliance. Its value still depends on reproducing policy isolation, telemetry and operating cost outside NVIDIA examples.",
+      "why_it_matters_zh": "对需要自持执行面和策略边界的团队来说，NemoClaw 提供了公开组合路径，而不是封闭一体机。但它的价值仍取决于能否在 NVIDIA 示例之外复现策略隔离、可观测性与运维成本。",
+      "technical_details": {
+        "stage": "Public MIT-licensed blueprints and repository",
+        "scope": "Composes agent harnesses, models, NeMo optimization/telemetry and OpenShell policy runtime",
+        "integrations": "OpenClaw, Hermes Agent and LangChain Deep Agents named at launch",
+        "deployment": "Cloud, data center, DGX Spark and RTX",
+        "time_basis": "Official blog timestamp 2026-10-30T16:00:00Z, 116 seconds before the scan cutoff"
+      },
+      "technical_details_zh": {
+        "阶段": "公开的 MIT 许可蓝图与仓库",
+        "范围": "组合 agent harness、模型、NeMo 优化与遥测、OpenShell 策略运行时",
+        "首批集成": "OpenClaw、Hermes Agent、LangChain Deep Agents",
+        "部署": "云、数据中心、DGX Spark 与 RTX",
+        "时间依据": "官方文章时间为 2026-10-30T16:00:00Z，距扫描截止 116 秒"
+      },
+      "tags": [
+        "agent-stack",
+        "openshell",
+        "self-hosted",
+        "policy-runtime"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-nemoclaw-open-agent-stack-blueprints",
+      "short_label_zh": "NemoClaw",
+      "short_label_en": "NemoClaw",
+      "next_action_zh": "一天内用公开仓库接一个现有 agent，验证出网策略、工具权限、遥测与失败恢复。",
+      "next_action_en": "Within one day, connect one existing agent with the public repository and test egress policy, tool permissions, telemetry and failure recovery.",
+      "source_ids": [
+        "src-ab9badac7de59b44",
+        "src-15aba1d4f867dec0"
+      ],
+      "project_ids": [
+        "nemoclaw"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local",
+        "enterprise"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261030-02-evidence",
+          "claim_zh": "NVIDIA 官方文章与公开仓库确认蓝图定位、许可、首批集成、策略运行时与部署范围。",
+          "claim_en": "NVIDIA’s official article and public repository confirm the blueprint role, license, initial integrations, policy runtime and deployment scope.",
+          "source_ids": [
+            "src-ab9badac7de59b44",
+            "src-15aba1d4f867dec0"
+          ],
+          "event_ids": [
+            "ev-20261030-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261030-02-published",
+          "kind": "new",
+          "occurred_at": "2026-10-30T16:00:00Z",
+          "discovered_at": "2026-10-30T16:01:56Z",
+          "summary_zh": "NemoClaw 蓝图与仓库公开。",
+          "summary_en": "NemoClaw blueprints and repository are public.",
+          "evidence_ids": [
+            "ev-20261030-02-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

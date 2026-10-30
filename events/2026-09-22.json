@@ -440,8 +440,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.26.3 improves recovery and managed workflows",
-      "title_zh": "Qwen Code 0.26.3 改进恢复与托管工作流",
+      "title": "Qwen Code ships prebuilt CUA driver artifacts for three desktop platforms",
+      "title_zh": "Qwen Code 为三类桌面平台发布预编译 CUA driver",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -449,7 +449,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-10-29T16:05:08Z",
+      "last_updated_at": "2026-10-30T16:01:56Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
       "secondary_sources": [
@@ -464,14 +464,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.1",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.2",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.3",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.4"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.4",
+        "https://github.com/QwenLM/qwen-code/releases/tag/cua-driver-rs-v0.27.0"
       ],
-      "summary": "Qwen Code 0.26.4 adds a round budget for autofix takeover, independent worktrees for main sessions and phased upgrades for managed agents. Verification reports are bound to a round snapshot, dropped controls are reported and owed hosted cleanup is retried after process failure.",
-      "why_it_matters": "For teams embedding coding agents into services, the Java and Spring path lowers integration cost while the recovery changes address duplicated or oversized tool state. The release remains a trial because approval and recovery guarantees should be fault-injected locally.",
-      "summary_zh": "Qwen Code 0.26.4 为 autofix 接管增加轮次预算，让主会话使用独立 worktree，并为 managed agent 增加分阶段升级。验证报告会绑定当轮快照，被丢弃的控制项会显式报告，托管进程失败后也会重试欠下的清理。",
-      "summary_en": "Qwen Code 0.26.4 adds a round budget for autofix takeover, independent worktrees for main sessions and phased upgrades for managed agents. Verification reports are bound to a round snapshot, dropped controls are reported and owed hosted cleanup is retried after process failure.",
-      "why_it_matters_zh": "对把 coding agent 嵌入服务的团队来说，Java 与 Spring 接入降低集成成本，恢复改动则针对重复执行和过大工具状态。审批与恢复保证仍需本地故障注入，因此维持 TRIAL。",
-      "why_it_matters_en": "For teams embedding coding agents into services, the Java and Spring path lowers integration cost while the recovery changes address duplicated or oversized tool state. The release remains a trial because approval and recovery guarantees should be fault-injected locally.",
+      "summary": "Qwen Code CUA driver 0.27.0 ships prebuilt macOS, Linux and Windows artifacts. The macOS universal package is signed and notarized; Linux x64/arm64 builds target glibc 2.31; Windows UIAccess worker and SDK binaries are unsigned and must be signed and trusted before activation. Optional relative coordinates and payload filtering remain off by default.",
+      "why_it_matters": "For desktop-agent teams, prebuilt artifacts lower setup work but platform trust and default-off controls still require explicit validation. Windows UIAccess should not be activated before signing and trust checks.",
+      "summary_zh": "Qwen Code CUA driver 0.27.0 提供 macOS、Linux 与 Windows 预编译产物。macOS universal 包已签名并公证；Linux x64/arm64 目标为 glibc 2.31；Windows UIAccess worker 与 SDK 二进制未签名，启用前必须自行签名并建立信任。相对坐标与 payload 过滤默认关闭。",
+      "summary_en": "Qwen Code CUA driver 0.27.0 ships prebuilt macOS, Linux and Windows artifacts. The macOS universal package is signed and notarized; Linux x64/arm64 builds target glibc 2.31; Windows UIAccess worker and SDK binaries are unsigned and must be signed and trusted before activation. Optional relative coordinates and payload filtering remain off by default.",
+      "why_it_matters_zh": "对桌面 agent 团队来说，预编译产物降低部署门槛，但平台信任与默认关闭的控制仍要逐项验证。Windows UIAccess 在完成签名和信任检查前不应启用。",
+      "why_it_matters_en": "For desktop-agent teams, prebuilt artifacts lower setup work but platform trust and default-off controls still require explicit validation. Windows UIAccess should not be activated before signing and trust checks.",
       "technical_details": {
         "version": "0.24.4 stable",
         "attestation": "managed runtime attestation contract",
@@ -496,8 +497,11 @@
         "time_basis_2026_10_27": "GitHub stable release published 2026-10-27T15:32:11Z",
         "published_at": "2026-10-28T14:36:14Z",
         "v0_26_3": "Tool-call recovery, compaction-aware result shrinking, persistent Workflow mode, ACP subagent identity, Java/Spring managed-agent embedding, workspace reclamation and approval enforcement",
-        "release_time": "2026-10-29T14:29:11Z",
-        "2026-10-29 update": "bounded autofix takeover, independent main-session worktrees, phased managed upgrades, snapshot-bound PR verification and reported dropped controls"
+        "release_time": "2026-10-30T06:32:17Z",
+        "2026-10-29 update": "bounded autofix takeover, independent main-session worktrees, phased managed upgrades, snapshot-bound PR verification and reported dropped controls",
+        "cua_driver_version": "0.27.0",
+        "platforms": "macOS signed/notarized universal; Linux x64/arm64 glibc 2.31 unsigned; Windows UIAccess worker and SDK unsigned",
+        "defaults": "Relative coordinates and payload filtering are optional and disabled by default"
       },
       "technical_details_zh": {
         "版本": "0.24.4 stable",
@@ -521,9 +525,12 @@
         "2026-10-27 安全": "session 权限规则、自动审批，以及防项目环境变量注入的 serve token 解析",
         "2026-10-27 恢复": "原生 snapshot、HTTP 恢复、本地 managed journal 恢复与 Hosted workspace preflight",
         "2026-10-27 时间依据": "GitHub 稳定版发布于 2026-10-27T15:32:11Z",
-        "发布时间": "2026-10-29T14:29:11Z",
+        "发布时间": "2026-10-30T06:32:17Z",
         "2026-10-28 更新": "工具调用恢复、感知上下文压缩的结果收缩、持久 Workflow mode、ACP 子 agent 身份、Java/Spring managed-agent 嵌入、workspace 回收与审批执行",
-        "2026-10-29 更新": "autofix 接管轮次预算、主会话独立 worktree、managed 分阶段升级、PR 验证绑定快照，并报告被丢弃的控制项"
+        "2026-10-29 更新": "autofix 接管轮次预算、主会话独立 worktree、managed 分阶段升级、PR 验证绑定快照，并报告被丢弃的控制项",
+        "CUA_driver_版本": "0.27.0",
+        "平台": "macOS universal 已签名公证；Linux x64/arm64 glibc 2.31 未签名；Windows UIAccess worker 与 SDK 未签名",
+        "默认项": "相对坐标与 payload 过滤可选且默认关闭"
       },
       "tags": [
         "qwen-code",
@@ -554,7 +561,8 @@
         "src-2df989db5683bb98",
         "src-69d1de2cb4ffaa52",
         "src-1054dcf730bc85b9",
-        "src-a453883ae6f4e4d8"
+        "src-a453883ae6f4e4d8",
+        "src-c5472a4b861d06cf"
       ],
       "project_ids": [
         "qwen-code"
@@ -720,6 +728,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260922-04-0-27-0-evidence",
+          "claim_zh": "0.27.0 release notes 与附件确认三平台预编译产物、签名状态和默认关闭的控制。",
+          "claim_en": "The 0.27.0 release notes and assets confirm three-platform prebuilt artifacts, signing state and default-off controls.",
+          "source_ids": [
+            "src-c5472a4b861d06cf"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -876,6 +897,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-cua-driver-0-27",
+          "kind": "update",
+          "occurred_at": "2026-10-30T06:32:17Z",
+          "discovered_at": "2026-10-30T16:01:56Z",
+          "summary_zh": "CUA driver 0.27.0 提供三平台预编译产物并披露签名边界。",
+          "summary_en": "CUA driver 0.27.0 provides three-platform prebuilt artifacts with signing boundaries disclosed.",
+          "evidence_ids": [
+            "ev-20260922-04-0-27-0-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -885,10 +919,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.26.4",
-      "short_label_en": "Qwen Code 0.26.4",
-      "next_action_zh": "一天内在隔离仓库触发 autofix 接管与进程中断，确认轮次预算、worktree 隔离、快照绑定和清理重试。",
-      "next_action_en": "Within one day, trigger autofix takeover and process interruption in an isolated repository; verify round budgets, worktree isolation, snapshot binding and cleanup retry."
+      "short_label_zh": "Qwen CUA 0.27.0",
+      "short_label_en": "Qwen CUA 0.27.0",
+      "next_action_zh": "一天内在隔离桌面安装对应产物，验证签名、UIAccess 信任、相对坐标与 payload 过滤，再决定接入。",
+      "next_action_en": "Within one day, install the platform artifact on an isolated desktop and test signing, UIAccess trust, relative coordinates and payload filtering before integration."
     },
     {
       "event_id": "ev-20260922-05",
