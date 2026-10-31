@@ -4,26 +4,28 @@
   "events": [
     {
       "event_id": "ev-20261019-01",
-      "title": "MiniMax launches M3.1 Flash at low API prices",
-      "title_zh": "MiniMax 以低价 API 推出 M3.1 Flash",
+      "title": "MiniMax opens M3.1 Flash weights after its low-cost API launch",
+      "title_zh": "MiniMax 在低价 API 上线后开放 M3.1 Flash 权重",
       "category": "foundation-model",
       "organization": [
         "MiniMax"
       ],
       "published_at": "2026-10-19",
       "first_seen_at": "2026-10-19T16:04:44Z",
-      "last_updated_at": "2026-10-19T16:04:44Z",
+      "last_updated_at": "2026-10-31T15:56:40Z",
       "source_type": "official_blog",
       "primary_source": "https://www.minimax.io/blog/minimax-m31f",
-      "secondary_sources": [],
-      "summary": "MiniMax has launched M3.1 Flash through its API, M Plan and MiniMax Code. Global API pricing is $0.15 per million input tokens, $0.60 per million output tokens and $0.015 per million cached input tokens. MiniMax reports median output above 170 tokens per second and strong agent, coding and computer-use results, but these are vendor-run measurements. Model weights are promised later and are not available at the cutoff.",
-      "summary_en": "MiniMax has launched M3.1 Flash through its API, M Plan and MiniMax Code. Global API pricing is $0.15 per million input tokens, $0.60 per million output tokens and $0.015 per million cached input tokens. MiniMax reports median output above 170 tokens per second and strong agent, coding and computer-use results, but these are vendor-run measurements. Model weights are promised later and are not available at the cutoff.",
-      "summary_zh": "MiniMax 已通过 API、M Plan 和 MiniMax Code 推出 M3.1 Flash。全球 API 每百万 token 价格为输入 0.15 美元、输出 0.60 美元、缓存输入 0.015 美元。MiniMax 称输出速度中位数超过 170 token/s，并公布 agent、coding 与 computer use 成绩，但这些都是厂商评测。权重只承诺稍后发布，截止本轮尚不可下载。",
-      "why_it_matters": "For teams with high-volume coding or agent workloads, the published token prices make M3.1 Flash cheap enough for a one-day routing trial. Measure end-to-end task success and total task cost rather than accepting vendor benchmark or speed claims, and do not plan self-hosting until weights and license terms actually arrive.",
-      "why_it_matters_en": "For teams with high-volume coding or agent workloads, the published token prices make M3.1 Flash cheap enough for a one-day routing trial. Measure end-to-end task success and total task cost rather than accepting vendor benchmark or speed claims, and do not plan self-hosting until weights and license terms actually arrive.",
-      "why_it_matters_zh": "对高频 coding 或 agent 任务团队来说，这组 token 价格已经低到值得做一天路由试验。应测端到端任务成功率和整项任务成本，不要直接接受厂商 benchmark 与速度结论；权重和许可真正落地前，也不要按可自托管方案规划。",
+      "secondary_sources": ["https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"],
+      "summary": "MiniMax M3.1 Flash is available through the API, M Plan and MiniMax Code at $0.15 per million input tokens and $0.60 per million output tokens. MiniMax has now also published a 252 GB, 48-shard checkpoint on Hugging Face under a custom license. Vendor speed and benchmark claims remain unverified independently.",
+      "summary_en": "MiniMax M3.1 Flash is available through the API, M Plan and MiniMax Code at $0.15 per million input tokens and $0.60 per million output tokens. MiniMax has now also published a 252 GB, 48-shard checkpoint on Hugging Face under a custom license. Vendor speed and benchmark claims remain unverified independently.",
+      "summary_zh": "MiniMax M3.1 Flash 已通过 API、M Plan 和 MiniMax Code 提供服务，输入和输出每百万 token 分别为 0.15 美元和 0.60 美元。MiniMax 现已在 Hugging Face 发布 252 GB、48 个分片的 checkpoint，采用自定义许可。厂商公布的速度和 benchmark 仍缺少独立复现。",
+      "why_it_matters": "For teams with high-volume coding or agent workloads, M3.1 Flash can now be tested both through the low-cost API and on controlled infrastructure. Self-hosting decisions must review the custom license and memory requirements, while quality claims still need workload-specific reproduction.",
+      "why_it_matters_en": "For teams with high-volume coding or agent workloads, M3.1 Flash can now be tested both through the low-cost API and on controlled infrastructure. Self-hosting decisions must review the custom license and memory requirements, while quality claims still need workload-specific reproduction.",
+      "why_it_matters_zh": "对高频 coding 或 agent 任务团队来说，M3.1 Flash 现在既能走低价 API，也能在受控基础设施上测试。自托管前必须审查自定义许可和显存需求，质量结论仍要用自己的工作负载复现。",
       "technical_details": {
-        "availability": "MiniMax API, M Plan and MiniMax Code; weights promised later",
+        "availability": "MiniMax API, M Plan and MiniMax Code; public 252 GB checkpoint in 48 safetensor shards",
+        "weights_published_at": "HF initial commit 2026-10-23T03:37:20Z; evaluation metadata updated 2026-10-30T08:44:16Z",
+        "license": "custom MiniMax model license; review before production or redistribution",
         "pricing_usd_per_million_tokens": {
           "input": 0.15,
           "output": 0.6,
@@ -34,7 +36,9 @@
         "time_basis": "The visible official page gives 2026-10-19 without a time; midnight metadata is not treated as a verified publication time."
       },
       "technical_details_zh": {
-        "可用性": "MiniMax API、M Plan 与 MiniMax Code；权重仅承诺稍后发布",
+        "可用性": "MiniMax API、M Plan 与 MiniMax Code；公开 252 GB checkpoint，共 48 个 safetensor 分片",
+        "权重发布时间": "HF 初始提交 2026-10-23T03:37:20Z；评测元数据更新于 2026-10-30T08:44:16Z",
+        "许可": "MiniMax 自定义模型许可；生产或再分发前需审查",
         "每百万 token 美元价格": {
           "input": 0.15,
           "output": 0.6,
@@ -64,7 +68,8 @@
       "next_action_zh": "一天内用同一组仓库任务比较 M3.1 Flash 与当前默认模型的成功率、总 token 成本和 P50 延迟。",
       "next_action_en": "Within one day, compare M3.1 Flash with the current default on the same repository tasks for success rate, total token cost and P50 latency.",
       "source_ids": [
-        "src-b984a5c544e63137"
+        "src-b984a5c544e63137",
+        "src-2eb678169a42e513"
       ],
       "project_ids": [
         "minimax-m3-1-flash"
@@ -87,6 +92,15 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; performance claims are vendor-reported"
+        },
+        {
+          "id": "ev-20261019-01-weights-evidence",
+          "claim_zh": "MiniMax 已在 Hugging Face 发布 252 GB、48 个分片的 M3.1 Flash 权重，采用自定义许可。",
+          "claim_en": "MiniMax published a 252 GB, 48-shard M3.1 Flash checkpoint on Hugging Face under a custom license.",
+          "source_ids": ["src-2eb678169a42e513"],
+          "event_ids": ["ev-20261019-01"],
+          "relation": "support",
+          "verification": "verified repository files and commit timestamps"
         }
       ],
       "changes": [
@@ -100,6 +114,23 @@
           "evidence_ids": [
             "ev-20261019-01-launch-evidence"
           ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261019-01-weights",
+          "kind": "correction",
+          "occurred_at": "2026-10-23T03:37:20Z",
+          "discovered_at": "2026-10-31T15:56:40Z",
+          "summary_zh": "补核确认 M3.1 Flash 权重已公开，原记录的“尚不可下载”已过时",
+          "summary_en": "Follow-up verification confirms public M3.1 Flash weights, correcting the earlier unavailable status",
+          "before": "Model weights were promised later and were recorded as unavailable at the cutoff.",
+          "after": "A 252 GB, 48-shard checkpoint is public on Hugging Face under a custom license.",
+          "before_zh": "旧记录称权重只承诺稍后发布，截止时间尚不可下载。",
+          "before_en": "Model weights were promised later and were recorded as unavailable at the cutoff.",
+          "after_zh": "252 GB、48 个分片的 checkpoint 已在 Hugging Face 公开，采用自定义许可。",
+          "after_en": "A 252 GB, 48-shard checkpoint is public on Hugging Face under a custom license.",
+          "evidence_ids": ["ev-20261019-01-weights-evidence"],
           "historical": false,
           "importance": "major"
         }

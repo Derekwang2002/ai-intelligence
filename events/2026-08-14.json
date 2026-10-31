@@ -364,8 +364,8 @@
     },
     {
       "event_id": "ev-20260814-04",
-      "title": "Claude Code 2.1.314 fails closed on more managed-policy paths",
-      "title_zh": "Claude Code 2.1.314 收紧托管策略与恢复边界",
+      "title": "Claude Code 2.1.316 closes more managed-policy gaps",
+      "title_zh": "Claude Code 2.1.316 继续收紧托管策略边界",
       "category": "developer-tools",
       "organization": [
         "Anthropic"
@@ -373,7 +373,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-10-30T16:01:56Z",
+      "last_updated_at": "2026-10-31T15:56:40Z",
       "source_type": "primary",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -417,14 +417,15 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.310",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.311",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.312",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.314"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.314",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.316"
       ],
-      "summary": "Claude Code 2.1.314 adds an option to block writes outside working directories in every permission mode, gateway identity-provider group routing and Bedrock guardrail traces. It also fixes managed policy failing open after a remote-settings cache expiry and closes sandbox gaps after session resume.",
-      "why_it_matters": "For teams running long-lived coding agents, these changes reduce policy drift across resume and remote-control paths. Upgrade after testing managed-settings expiry, resume and compaction in a non-critical repository.",
-      "summary_zh": "Claude Code 2.1.314 可在所有权限模式下禁止向工作目录外写入，并加入 gateway 身份组路由与 Bedrock 护栏 trace。它还修复远程设置缓存过期后托管策略失效，以及会话恢复后的沙箱缺口。",
-      "summary_en": "Claude Code 2.1.314 adds an option to block writes outside working directories in every permission mode, gateway identity-provider group routing and Bedrock guardrail traces. It also fixes managed policy failing open after a remote-settings cache expiry and closes sandbox gaps after session resume.",
+      "summary": "Claude Code 2.1.316 makes layered managed policies cumulative and validates every model field against gateway allow and deny rules. Restricted sessions no longer upload allowed-read files from outside working directories, hosted sessions fail when Auto mode receives no safety verdict, and stored server-managed settings are refused when verification fails. It also adds Bedrock guardrail input tagging and pooled group budgets.",
+      "why_it_matters": "For teams running long-lived coding agents, these changes reduce policy drift across model routing, restricted uploads and hosted safety decisions. Upgrade after testing deny rules, cached settings, missing safety verdicts and resume paths in a non-critical repository.",
+      "summary_zh": "Claude Code 2.1.316 让 layered 托管策略全部累加，并让 gateway allow/deny 规则检查请求里每个模型字段。restricted session 不再上传工作目录外的已读文件；托管会话拿不到 Auto mode 安全结论时会失败；无法验证的 server-managed settings 缓存也会被拒绝。它还加入 Bedrock 护栏输入标记和共享团队预算。",
+      "summary_en": "Claude Code 2.1.316 makes layered managed policies cumulative and validates every model field against gateway allow and deny rules. Restricted sessions no longer upload allowed-read files from outside working directories, hosted sessions fail when Auto mode receives no safety verdict, and stored server-managed settings are refused when verification fails. It also adds Bedrock guardrail input tagging and pooled group budgets.",
       "why_it_matters_zh": "对运行长时程 coding agent 的团队来说，这些改动减少恢复与远程控制路径上的策略漂移。升级前应在非关键仓库测试托管设置过期、恢复与压缩。",
-      "why_it_matters_en": "For teams running long-lived coding agents, these changes reduce policy drift across resume and remote-control paths. Upgrade after testing managed-settings expiry, resume and compaction in a non-critical repository.",
+      "why_it_matters_en": "For teams running long-lived coding agents, these changes reduce policy drift across model routing, restricted uploads and hosted safety decisions. Upgrade after testing deny rules, cached settings, missing safety verdicts and resume paths in a non-critical repository.",
       "technical_details": {
         "forking": "default on; inherits conversation + prompt cache",
         "messaging": "SendMessage via @-mentions across live sessions; no history/files/permissions exchange",
@@ -464,10 +465,12 @@
         "release_2026_10_26": "Claude Code 2.1.311 stable",
         "reliability_2026_10_26": "Fresh memory/instruction reload after compaction; no duplicate restarted skill; background worktree and session recovery fixes",
         "time_basis_2026_10_26": "GitHub stable release published 2026-10-26T21:51:23Z",
-        "latest_stable": "2.1.314",
+        "latest_stable": "2.1.316",
         "published_at": "2026-10-27T20:24:20Z",
         "release_time": "2026-10-30T01:06:26Z",
-        "release_2026_10_30": "All-mode out-of-worktree write blocking, gateway IdP group routing, Bedrock guardrail trace, idle compaction above 200K; managed-policy and resume sandbox fixes"
+        "release_2026_10_30": "All-mode out-of-worktree write blocking, gateway IdP group routing, Bedrock guardrail trace, idle compaction above 200K; managed-policy and resume sandbox fixes",
+        "release_2026_10_31": "Layered managed policies, complete model-field enforcement, restricted-upload and missing-safety-verdict fail-closed fixes, verified cached settings, Bedrock input tagging and pooled group budgets",
+        "time_basis_2026_10_31": "GitHub stable release published 2026-10-31T01:01:35Z"
       },
       "update_2026_08_17": "2.1.234 (2026-08-17, in-window): rejects Windows NT-namespace (\\??\\) paths across remote file reads, session restore, CLAUDE.md includes, workflow scripts and uploads — hardens pre-approval file accesses against the NTLM credential-leak vector; GitLab MR footer badge (draft/pending/green states, glab repos); auto-continue sessions when usage limit resets (toggle in /config); claude-api skill context cost cut from ~200k+ to ~25k tokens; selection:clear keybinding; CLAUDE_CODE_PROJECT_DIR_NAME env var; many Remote Control / permission-preview / TUI fixes.",
       "update_2026_08_18": "2.1.235 (2026-08-18, in-window): security-relevant fix — Shift+Tab in the permission prompt's comment field no longer wrongly grants session-wide edit permission; new optional `spellcheck` setting (aspell/hunspell/ispell); fix for whole-prompt-cache invalidation when a language server disconnects mid-session; nested markdown list misalignment fix (depth 3+); lower memory/CPU usage for background cloud sessions (/ultrareview); permission dialogs now display exactly what a grant covers; VS Code focus fix after window restore. Recommendation stays ADOPT; upgrading also picks up the 2.1.234 NTLM hardening.",
@@ -585,7 +588,8 @@
         "src-97c5df49eed3f0cf",
         "src-93af44a64968d818",
         "src-dc8a856f8c6596f8",
-        "src-fbfedaa618aab83d"
+        "src-fbfedaa618aab83d",
+        "src-11bfb616c2334a07"
       ],
       "project_ids": [
         "claude-code"
@@ -896,6 +900,15 @@
           "event_ids": [
             "ev-20260814-04"
           ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260814-04-2-1-316-evidence",
+          "claim_zh": "2.1.316 稳定版 release notes 确认模型策略、restricted 上传、安全结论与缓存设置的 fail-closed 修复。",
+          "claim_en": "The 2.1.316 stable release notes confirm fail-closed fixes for model policy, restricted uploads, safety verdicts and cached settings.",
+          "source_ids": ["src-11bfb616c2334a07"],
+          "event_ids": ["ev-20260814-04"],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
         },
@@ -1221,6 +1234,17 @@
           "evidence_ids": [
             "ev-20260814-04-2-1-314-evidence"
           ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-code-2-1-316",
+          "kind": "update",
+          "occurred_at": "2026-10-31T01:01:35Z",
+          "discovered_at": "2026-10-31T15:56:40Z",
+          "summary_zh": "2.1.316 收紧模型策略、restricted 上传与托管安全结论。",
+          "summary_en": "Version 2.1.316 tightens model policy, restricted uploads and hosted safety verdicts.",
+          "evidence_ids": ["ev-20260814-04-2-1-316-evidence"],
           "historical": false,
           "importance": "major"
         }
