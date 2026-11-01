@@ -440,8 +440,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code ships prebuilt CUA driver artifacts for three desktop platforms",
-      "title_zh": "Qwen Code 为三类桌面平台发布预编译 CUA driver",
+      "title": "Qwen Code 0.26.5 adds bounded repair handoff and managed deployment",
+      "title_zh": "Qwen Code 0.26.5 加入受控修复交接与托管部署",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -449,9 +449,9 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-10-30T16:01:56Z",
+      "last_updated_at": "2026-11-01T16:58:20Z",
       "source_type": "release_notes",
-      "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.4",
+      "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
       "secondary_sources": [
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.5",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.6",
@@ -465,72 +465,34 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.2",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.3",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.4",
-        "https://github.com/QwenLM/qwen-code/releases/tag/cua-driver-rs-v0.27.0"
+        "https://github.com/QwenLM/qwen-code/releases/tag/cua-driver-rs-v0.27.0",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5"
       ],
-      "summary": "Qwen Code CUA driver 0.27.0 ships prebuilt macOS, Linux and Windows artifacts. The macOS universal package is signed and notarized; Linux x64/arm64 builds target glibc 2.31; Windows UIAccess worker and SDK binaries are unsigned and must be signed and trusted before activation. Optional relative coordinates and payload filtering remain off by default.",
-      "why_it_matters": "For desktop-agent teams, prebuilt artifacts lower setup work but platform trust and default-off controls still require explicit validation. Windows UIAccess should not be activated before signing and trust checks.",
-      "summary_zh": "Qwen Code CUA driver 0.27.0 提供 macOS、Linux 与 Windows 预编译产物。macOS universal 包已签名并公证；Linux x64/arm64 目标为 glibc 2.31；Windows UIAccess worker 与 SDK 二进制未签名，启用前必须自行签名并建立信任。相对坐标与 payload 过滤默认关闭。",
-      "summary_en": "Qwen Code CUA driver 0.27.0 ships prebuilt macOS, Linux and Windows artifacts. The macOS universal package is signed and notarized; Linux x64/arm64 builds target glibc 2.31; Windows UIAccess worker and SDK binaries are unsigned and must be signed and trusted before activation. Optional relative coordinates and payload filtering remain off by default.",
-      "why_it_matters_zh": "对桌面 agent 团队来说，预编译产物降低部署门槛，但平台信任与默认关闭的控制仍要逐项验证。Windows UIAccess 在完成签名和信任检查前不应启用。",
-      "why_it_matters_en": "For desktop-agent teams, prebuilt artifacts lower setup work but platform trust and default-off controls still require explicit validation. Windows UIAccess should not be activated before signing and trust checks.",
+      "summary": "Qwen Code 0.26.5 stable enables Generated UI by default and adds an experimental Helm deployment for managed agents. Autofix retries now stop at a bounded handoff, PR-watch can repair in place, and verification runs in isolation. The release also extends recovery, locking and CUA integration; the managed deployment remains experimental.",
+      "why_it_matters": "For coding-agent teams, bounded repair and isolated verification improve operational control, while the Helm path offers a concrete deployment experiment. The release is stable, but the managed deployment itself still needs failure and approval testing.",
+      "summary_zh": "Qwen Code 0.26.5 稳定版默认启用 Generated UI，并加入实验性的 managed-agent Helm 部署。autofix 重试现在会在限定轮次后交给人工，PR-watch 可原地修复，验证过程也与主工作区隔离。该版还扩展恢复、锁与 CUA 集成；托管部署仍属实验功能。",
+      "summary_en": "Qwen Code 0.26.5 stable enables Generated UI by default and adds an experimental Helm deployment for managed agents. Autofix retries now stop at a bounded handoff, PR-watch can repair in place, and verification runs in isolation. The release also extends recovery, locking and CUA integration; the managed deployment remains experimental.",
+      "why_it_matters_zh": "对 coding agent 团队来说，有上限的修复交接与隔离验证能改善运行控制，Helm 路径也给出了可落地的部署试验。稳定版已经可用，但 managed deployment 本身仍要测试故障与审批边界。",
+      "why_it_matters_en": "For coding-agent teams, bounded repair and isolated verification improve operational control, while the Helm path offers a concrete deployment experiment. The release is stable, but the managed deployment itself still needs failure and approval testing.",
       "technical_details": {
-        "version": "0.24.4 stable",
-        "attestation": "managed runtime attestation contract",
-        "execution_records": "managed tool executions persisted through JDBC",
-        "plan_control": "records plan inputs and reports drift; excludes unplanned chunks from coverage",
-        "sandbox": "bubblewrap moved to tool execution; optional ACP child heap enforcement",
-        "remote": "SSH workspace without remote daemon; encrypted connection profiles; expiring QR pairing",
-        "update_2026_09_26": "0.24.5 stable adds a Java attestation client that adopts a Managed Runtime only after verification, real-time trajectory timing and inspection, rebase-stable per-file review verdicts, separate private/group channel policies, byte-based MCP media validation, and stronger ownership fences for stale tool dispatches. Stays TRIAL.",
-        "update_2026_09_27": "0.24.6 stable declares a v2 execute/status/cancel runtime contract, adds guarded Hosted Runtime foundations, a durable managed-session journal with failover, and reconciliation of UNKNOWN executions from runtime evidence. Permission-hook aggregation now chooses the most restrictive decision. Fresh startup time to typeable is halved and RSS falls 60% in the project benchmark. Stays TRIAL.",
-        "update_2026_09_29": "0.24.7 stable makes Managed Runtime sessions workspace-bound, persists local execution receipts, reconciles in-flight work after takeover/reboot, exposes public Session/Turn/task contracts, and adds optional worktree sessions. It also adds a remote desktop node_repl relay, structured memory recall, Landlock fallback, safe concurrent Code Mode calls, and fixes stale-worktree sweeps that could delete untracked or ignored files. Stays TRIAL.",
-        "update_2026_10_05": "0.25.0 stable adds local workspace-agent collaboration and A2A sharing, a broker contract, private hosted MCP servers, durable shell results, cold-session restore, file history and undo, concurrent Bash, and Mem0. Recovery and approval fixes cover duplicate side effects, replay gaps and hosted-runtime boundaries. Stays TRIAL.",
-        "update_2026_10_11": "0.25.1 stable records managed-agent parameters, receipts and checkpoints before returning; adds durable background Shell/Monitor and session-based multi-agent work; fixes MCP permission collisions and replay/approval paths.",
-        "update_2026_10_15": "0.25.2 stable adds managed-agent Session messaging, durable team-plan approval, Test Failure Explorer, TypeScript Mods and a default-off foreground Shell with mandatory approval. It fixes post-merge worktree settlement, startup false success, cancellation hangs, BOM parsing and recovery paths.",
-        "update_2026_10_19": "0.25.3 stable adds snapshot-isolated read-only child agents; managed sessions with pinned Skills/MCP/Hooks; SSH, macOS and workspace-resident runtimes; persistent Kubernetes workspaces; bounded retries, durable cancellation and recovery.",
-        "update_2026_10_22": "0.26.0 preserves unprovable hosted tool outcomes as UNKNOWN, reconstructs file turns from durable receipts, and adds PASS/WARN/FAIL/SKIP preflight checks.",
-        "latest_version": "0.26.4",
-        "runtime_update": "Adds durable manual compression, safer recovery, public subagent delegation defaults, mid-stream MCP replacement and replacement of synthesized placeholders with late real tool results.",
-        "time_basis": "GitHub release published 2026-10-24T15:47:58Z, twelve minutes before this run cutoff.",
-        "release_2026_10_27": "Qwen Code 0.26.2 stable",
-        "security_2026_10_27": "Session permission rules, auto approval and serve-token resolution hardened against project env injection",
-        "recovery_2026_10_27": "Native snapshots, HTTP recovery, local managed-journal recovery and Hosted workspace preflight",
-        "time_basis_2026_10_27": "GitHub stable release published 2026-10-27T15:32:11Z",
-        "published_at": "2026-10-28T14:36:14Z",
-        "v0_26_3": "Tool-call recovery, compaction-aware result shrinking, persistent Workflow mode, ACP subagent identity, Java/Spring managed-agent embedding, workspace reclamation and approval enforcement",
-        "release_time": "2026-10-30T06:32:17Z",
-        "2026-10-29 update": "bounded autofix takeover, independent main-session worktrees, phased managed upgrades, snapshot-bound PR verification and reported dropped controls",
-        "cua_driver_version": "0.27.0",
-        "platforms": "macOS signed/notarized universal; Linux x64/arm64 glibc 2.31 unsigned; Windows UIAccess worker and SDK unsigned",
-        "defaults": "Relative coordinates and payload filtering are optional and disabled by default"
+        "latest_version": "0.26.5 stable",
+        "availability": "public GitHub release",
+        "generated_ui": "enabled by default",
+        "managed_deployment": "experimental Helm deployment",
+        "repair_control": "bounded autofix retries with human handoff; PR-watch supports --in-place repair",
+        "verification": "isolated verification workspace",
+        "reliability": "recovery, locking and CUA 0.27 integration fixes",
+        "time_basis": "GitHub release published 2026-11-01T03:22:50Z inside the scan window."
       },
       "technical_details_zh": {
-        "版本": "0.24.4 stable",
-        "运行时证明": "托管运行时 attestation contract",
-        "执行记录": "通过 JDBC 持久化托管工具执行",
-        "计划控制": "记录计划依据并报告漂移；未计划的代码块不计入覆盖率",
-        "沙箱": "bubblewrap 下沉到工具执行；可选 ACP 子进程堆限制",
-        "远程": "SSH workspace 无需远程 daemon；加密连接配置；带过期时间的二维码配对",
-        "2026-09-26 更新": "0.24.5 stable 新增 Java attestation client，只有验证后才接纳 Managed Runtime；还加入实时轨迹耗时与检查、跨 rebase 保留的逐文件审查结论、私聊/群聊策略分离、按真实 bytes 判断 MCP media，以及过期工具调度的 ownership fence。维持 TRIAL。",
-        "2026-09-27 更新": "0.24.6 stable 定义 v2 execute/status/cancel 运行时协议，加入带防护的 Hosted Runtime 基础、可故障转移的托管会话持久日志，并根据运行时证据核对 UNKNOWN 执行。多个权限 hook 冲突时现在选择最严格结论。项目 benchmark 中首次启动到可输入时间减半，RSS 降低 60%。维持 TRIAL。",
-        "2026-09-29 更新": "0.24.7 stable 将 Managed Runtime session 绑定到 workspace，持久化本地执行凭据，在接管或重启后核对进行中的工作，并公开 Session/Turn/task contract 与可选 worktree session。该版还加入远程桌面 node_repl relay、结构化记忆召回、Landlock fallback、Code Mode 安全调用并发，以及可能误删未跟踪或 ignored 文件的过期 worktree 清理修复。维持 TRIAL。",
-        "2026-10-05 更新": "0.25.0 stable 增加本地 workspace-agent 协作与 A2A 分享、broker contract、私有 hosted MCP server、持久 shell 结果、冷会话恢复、文件历史与撤销、并发 Bash 和 Mem0。恢复与审批修复覆盖重复副作用、回放缺口和托管运行时边界。维持 TRIAL。",
-        "2026-10-11 更新": "0.25.1 稳定版在返回结果前记录托管 agent 的参数、receipt 与 checkpoint，加入持久后台 Shell/Monitor 和基于 session 的多 agent 协作，并修复 MCP 权限冲突、回放与审批路径。",
-        "2026-10-15 更新": "0.25.2 稳定版加入 managed-agent Session 消息、持久团队计划审批、Test Failure Explorer、TypeScript Mods，以及默认关闭且必须审批的前台 Shell；并修复合并后 worktree 收尾、启动误报成功、取消卡住、BOM 解析和恢复路径。",
-        "2026-10-19 更新": "0.25.3 稳定版加入快照隔离的只读子 agent；固定 Skills/MCP/Hooks 的 managed session；SSH、macOS 与 workspace-resident runtime；持久 Kubernetes workspace；有上限的重试、持久取消和恢复。",
-        "2026-10-22 更新": "0.26.0 把无法证明的托管工具结果保持为 UNKNOWN，按持久 receipt 重建文件操作，并加入 PASS/WARN/FAIL/SKIP preflight 检查。",
-        "最新版本": "0.26.4",
-        "运行时更新": "加入持久化手动压缩、安全恢复、默认公开子 agent 委派、流中 MCP 替换，并用迟到的真实工具结果替换合成占位。",
-        "时间依据": "GitHub release 发布时间为 2026-10-24T15:47:58Z，距本轮截止约 12 分钟。",
-        "2026-10-27 版本": "Qwen Code 0.26.2 稳定版",
-        "2026-10-27 安全": "session 权限规则、自动审批，以及防项目环境变量注入的 serve token 解析",
-        "2026-10-27 恢复": "原生 snapshot、HTTP 恢复、本地 managed journal 恢复与 Hosted workspace preflight",
-        "2026-10-27 时间依据": "GitHub 稳定版发布于 2026-10-27T15:32:11Z",
-        "发布时间": "2026-10-30T06:32:17Z",
-        "2026-10-28 更新": "工具调用恢复、感知上下文压缩的结果收缩、持久 Workflow mode、ACP 子 agent 身份、Java/Spring managed-agent 嵌入、workspace 回收与审批执行",
-        "2026-10-29 更新": "autofix 接管轮次预算、主会话独立 worktree、managed 分阶段升级、PR 验证绑定快照，并报告被丢弃的控制项",
-        "CUA_driver_版本": "0.27.0",
-        "平台": "macOS universal 已签名公证；Linux x64/arm64 glibc 2.31 未签名；Windows UIAccess worker 与 SDK 未签名",
-        "默认项": "相对坐标与 payload 过滤可选且默认关闭"
+        "最新版本": "0.26.5 stable",
+        "可用性": "公开 GitHub release",
+        "Generated_UI": "默认启用",
+        "托管部署": "实验性 Helm deployment",
+        "修复控制": "autofix 重试有上限并转人工；PR-watch 支持 --in-place 修复",
+        "验证": "隔离验证 workspace",
+        "可靠性": "恢复、锁与 CUA 0.27 集成修复",
+        "时间依据": "GitHub release 发布于 2026-11-01T03:22:50Z，位于本轮窗口内。"
       },
       "tags": [
         "qwen-code",
@@ -538,7 +500,10 @@
         "attestation",
         "sandbox",
         "plan-drift",
-        "remote-workspace"
+        "remote-workspace",
+        "helm",
+        "human-handoff",
+        "generated-ui"
       ],
       "technical_impact": 3,
       "engineering_value": 4,
@@ -562,7 +527,8 @@
         "src-69d1de2cb4ffaa52",
         "src-1054dcf730bc85b9",
         "src-a453883ae6f4e4d8",
-        "src-c5472a4b861d06cf"
+        "src-c5472a4b861d06cf",
+        "src-1f4372e601a22d0e"
       ],
       "project_ids": [
         "qwen-code"
@@ -741,6 +707,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260922-04-qwen-code-0-26-5-evidence",
+          "claim_zh": "Qwen Code 0.26.5 把受控 autofix 交接与隔离验证推入稳定版，并加入实验性 Helm 托管部署。",
+          "claim_en": "Qwen Code 0.26.5 moves bounded autofix handoff and isolated verification into stable and adds an experimental Helm managed deployment.",
+          "source_ids": [
+            "src-1f4372e601a22d0e"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; deployment behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -910,6 +889,18 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-code-0-26-5",
+          "kind": "update",
+          "occurred_at": "2026-11-01T03:22:50Z",
+          "discovered_at": "2026-11-01T16:58:20Z",
+          "summary_zh": "0.26.5 加入受控修复交接、隔离验证与实验性 Helm 部署",
+          "summary_en": "Version 0.26.5 adds bounded repair handoff, isolated verification and experimental Helm deployment",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-code-0-26-5-evidence"
+          ],
+          "historical": false
         }
       ],
       "editorial_pick": {
@@ -919,10 +910,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen CUA 0.27.0",
-      "short_label_en": "Qwen CUA 0.27.0",
-      "next_action_zh": "一天内在隔离桌面安装对应产物，验证签名、UIAccess 信任、相对坐标与 payload 过滤，再决定接入。",
-      "next_action_en": "Within one day, install the platform artifact on an isolated desktop and test signing, UIAccess trust, relative coordinates and payload filtering before integration."
+      "short_label_zh": "Qwen Code 0.26.5",
+      "short_label_en": "Qwen Code 0.26.5",
+      "next_action_zh": "一天内在隔离仓库测试 autofix 预算、人工交接、验证隔离和 Helm 回滚，再决定升级。",
+      "next_action_en": "Within one day, test autofix budgets, human handoff, verification isolation and Helm rollback in an isolated repository before upgrading."
     },
     {
       "event_id": "ev-20260922-05",

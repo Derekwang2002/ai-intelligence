@@ -497,6 +497,214 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "first_seen_at": "2026-11-01T16:58:20Z",
+      "last_updated_at": "2026-11-01T16:58:20Z",
+      "secondary_sources": [
+        "https://github.com/raullenchai/Rapid-MLX"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "governed-scan",
+      "event_id": "ev-20261029-06",
+      "title": "Rapid-MLX 1.0 adds a local agent harness for Apple Silicon",
+      "title_zh": "Rapid-MLX 1.0 为 Apple Silicon 加入本地 agent harness",
+      "category": "developer-tools",
+      "organization": [
+        "Rapid-MLX"
+      ],
+      "published_at": "2026-10-29T15:56:17Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/raullenchai/Rapid-MLX/releases/tag/v1.0.0",
+      "summary": "Rapid-MLX 1.0 ships an Apache-2.0 local agent runtime for Apple Silicon. It adds a persistent terminal harness with tools and approvals, an experimental desktop harness, local model support and a restricted compute-sharing route. The project states that network filtering is heuristic and terminal commands are not sandboxed.",
+      "summary_en": "Rapid-MLX 1.0 ships an Apache-2.0 local agent runtime for Apple Silicon. It adds a persistent terminal harness with tools and approvals, an experimental desktop harness, local model support and a restricted compute-sharing route. The project states that network filtering is heuristic and terminal commands are not sandboxed.",
+      "summary_zh": "Rapid-MLX 1.0 面向 Apple Silicon 发布 Apache-2.0 本地 agent runtime。它加入带工具和审批的持久终端 harness、实验性桌面 harness、本地模型支持，以及受限的算力共享路由。项目明确说明网络过滤依赖启发式规则，终端命令没有沙箱。",
+      "why_it_matters": "For teams testing local coding agents on Apple Silicon, this is a usable self-hosted path with inspectable code. Unsandboxed commands and heuristic network policy make an isolated one-day trial appropriate, not production adoption.",
+      "why_it_matters_en": "For teams testing local coding agents on Apple Silicon, this is a usable self-hosted path with inspectable code. Unsandboxed commands and heuristic network policy make an isolated one-day trial appropriate, not production adoption.",
+      "why_it_matters_zh": "对在 Apple Silicon 上验证本地 coding agent 的团队来说，它提供了代码可检查的自托管路径。终端无沙箱且网络策略只靠启发式判断，因此适合隔离试验，不适合直接进入生产。",
+      "technical_details": {
+        "version": "1.0.0 stable",
+        "license": "Apache-2.0",
+        "availability": "public source and release",
+        "agent_harness": "persistent terminal tools and approvals; experimental desktop harness",
+        "local_inference": "supports local model backends",
+        "security_limits": "network policy is heuristic; terminal commands are not sandboxed",
+        "adoption_snapshot": "4,088 GitHub stars and 438 forks when checked; popularity is discovery context, not validation",
+        "time_basis": "GitHub release timestamp 2026-10-29T15:56:17Z; recovered in the scheduled gap review."
+      },
+      "technical_details_zh": {
+        "版本": "1.0.0 stable",
+        "许可": "Apache-2.0",
+        "可用性": "公开源码与 release",
+        "agent_harness": "持久终端工具与审批；实验性桌面 harness",
+        "本地推理": "支持本地模型后端",
+        "安全限制": "网络策略为启发式；终端命令没有沙箱",
+        "采用快照": "检查时 GitHub 为 4,088 stars、438 forks；热度只用于发现，不代表验证",
+        "时间依据": "GitHub release 时间为 2026-10-29T15:56:17Z；在本轮定向补漏中发现。"
+      },
+      "tags": [
+        "rapid-mlx",
+        "apple-silicon",
+        "local-agent",
+        "coding-agent",
+        "sandbox"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "rapid-mlx-1-0-local-agent-harness",
+      "late_discovery": true,
+      "source_ids": [
+        "src-4b52db61c7366d15",
+        "src-dde44e0595784a4f"
+      ],
+      "project_ids": [
+        "rapid-mlx"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261029-06-rapid-mlx-1-0-evidence",
+          "claim_zh": "Rapid-MLX 1.0 公开本地 agent harness，但官方文档同时说明终端命令无沙箱，网络策略也只是启发式。",
+          "claim_en": "Rapid-MLX 1.0 opens a local agent harness, while its documentation says terminal commands are unsandboxed and network policy is heuristic.",
+          "source_ids": [
+            "src-4b52db61c7366d15",
+            "src-dde44e0595784a4f"
+          ],
+          "event_ids": [
+            "ev-20261029-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261029-06-published",
+          "kind": "new",
+          "occurred_at": "2026-10-29T15:56:17Z",
+          "discovered_at": "2026-11-01T16:58:20Z",
+          "summary_zh": "Rapid-MLX 1.0 发布本地 agent harness",
+          "summary_en": "Rapid-MLX 1.0 releases a local agent harness",
+          "evidence_ids": [
+            "ev-20261029-06-rapid-mlx-1-0-evidence"
+          ],
+          "historical": false
+        }
+      ],
+      "short_label_zh": "Rapid-MLX 1.0",
+      "short_label_en": "Rapid-MLX 1.0",
+      "next_action_zh": "一天内在一次性 macOS 账户运行官方 demo，测试审批、出网、文件边界和恢复，不接入真实凭据。",
+      "next_action_en": "Within one day, run the official demo in a disposable macOS account and test approvals, egress, file boundaries and recovery without real credentials."
+    },
+    {
+      "first_seen_at": "2026-11-01T16:58:20Z",
+      "last_updated_at": "2026-11-01T16:58:20Z",
+      "secondary_sources": [
+        "https://github.com/E-zClap/auctopus"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "record_origin": "governed-scan",
+      "event_id": "ev-20261029-07",
+      "title": "Auctopus agents revise a quantum-spin experiment after detecting drift",
+      "title_zh": "Auctopus agent 检出漂移后重做量子自旋实验",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-10-29T17:47:50Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2610.40589",
+      "summary": "Auctopus coordinates agents that propose, challenge and run experiments in a closed loop. In one solid-state quantum-spin study, the system detected drift, rejected an inconclusive first result and revised the protocol before reporting a result. The MIT repository includes an offline mock demo, but omits the study prompts and instrument description needed to reproduce the paper experiment.",
+      "summary_en": "Auctopus coordinates agents that propose, challenge and run experiments in a closed loop. In one solid-state quantum-spin study, the system detected drift, rejected an inconclusive first result and revised the protocol before reporting a result. The MIT repository includes an offline mock demo, but omits the study prompts and instrument description needed to reproduce the paper experiment.",
+      "summary_zh": "Auctopus 让多个 agent 在闭环中提出、质疑并执行实验。在一次固态量子自旋研究中，系统发现漂移，否定了首次不充分的结果，并修改实验流程后再给出结论。MIT 仓库包含离线 mock demo，但缺少复现论文实验所需的研究提示词与仪器说明。",
+      "why_it_matters": "For teams building scientific agents, the useful pattern is evidence-driven rejection and protocol revision rather than automatic success. One author-run experiment without complete reproduction materials does not establish broad laboratory autonomy.",
+      "why_it_matters_en": "For teams building scientific agents, the useful pattern is evidence-driven rejection and protocol revision rather than automatic success. One author-run experiment without complete reproduction materials does not establish broad laboratory autonomy.",
+      "why_it_matters_zh": "对科学 agent 团队来说，值得借鉴的是根据证据否定结果并重写实验流程，而不是“自动成功”。单个作者团队实验且材料不完整，不能证明通用实验室自治能力。",
+      "technical_details": {
+        "scope": "one solid-state quantum-spin setting",
+        "workflow": "agents propose and reject questions, perform theoretical checks and revise experiments",
+        "reported_result": "detected drift and replaced an inconclusive protocol",
+        "code": "MIT repository with offline mock demo",
+        "reproducibility": "study prompts and instrument description are absent, so the reported lab experiment is not reproducible from the repository",
+        "safety": "real remote coding agents run without interactive approvals by default",
+        "time_basis": "arXiv submitted 2026-10-29T17:47:50Z; recovered in the scheduled gap review."
+      },
+      "technical_details_zh": {
+        "范围": "一个固态量子自旋场景",
+        "流程": "agent 提出或否定问题、做理论检查并修改实验",
+        "作者报告结果": "检测漂移并替换结论不充分的实验流程",
+        "代码": "MIT 仓库含离线 mock demo",
+        "可复现性": "仓库缺少研究提示词与仪器说明，无法据此复现论文中的真实实验",
+        "安全": "真实远程 coding agent 默认不要求交互审批",
+        "时间依据": "arXiv 提交于 2026-10-29T17:47:50Z；在本轮定向补漏中发现。"
+      },
+      "tags": [
+        "auctopus",
+        "scientific-agent",
+        "closed-loop-experiment",
+        "quantum-spin",
+        "reproducibility"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 2,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 5,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "auctopus-closed-loop-quantum-spin-experiment",
+      "late_discovery": true,
+      "source_ids": [
+        "src-38fcb134614b30d6",
+        "src-7a3bfcd7ee8a9e59"
+      ],
+      "project_ids": [
+        "auctopus"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261029-07-auctopus-evidence",
+          "claim_zh": "作者报告 Auctopus 在一个量子自旋实验中发现漂移并修改流程；公开仓库无法复现真实实验。",
+          "claim_en": "The authors report that Auctopus detected drift and revised one quantum-spin experiment; the public repository cannot reproduce the real study.",
+          "source_ids": [
+            "src-38fcb134614b30d6",
+            "src-7a3bfcd7ee8a9e59"
+          ],
+          "event_ids": [
+            "ev-20261029-07"
+          ],
+          "relation": "support",
+          "verification": "verified author artifacts; no independent replication"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261029-07-published",
+          "kind": "new",
+          "occurred_at": "2026-10-29T17:47:50Z",
+          "discovered_at": "2026-11-01T16:58:20Z",
+          "summary_zh": "Auctopus 展示会否定初始结果的闭环实验 agent",
+          "summary_en": "Auctopus demonstrates a closed-loop experiment agent that rejects an initial result",
+          "evidence_ids": [
+            "ev-20261029-07-auctopus-evidence"
+          ],
+          "historical": false
+        }
+      ],
+      "short_label_zh": "Auctopus",
+      "short_label_en": "Auctopus",
+      "next_action_zh": "等待完整实验材料或独立复现；在此之前只借鉴其“拒绝结果再改流程”的编排方式。",
+      "next_action_en": "Wait for complete experiment materials or independent replication; until then, borrow only its reject-and-revise workflow pattern."
     }
   ]
 }
