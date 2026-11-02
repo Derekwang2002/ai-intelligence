@@ -452,25 +452,27 @@
         "src-3762ff1d2e307774",
         "src-c0d419c5c752474a",
         "src-9668af85ed2e1acf",
-        "src-83a753b4160cba93"
+        "src-83a753b4160cba93",
+        "src-109261365670d335"
       ],
       "current_judgment_event_id": "ev-20260922-01",
       "official_source_ids": [
         "src-c0d419c5c752474a",
         "src-9668af85ed2e1acf",
-        "src-83a753b4160cba93"
+        "src-83a753b4160cba93",
+        "src-109261365670d335"
       ],
-      "last_reviewed_at": "2026-10-18T15:58:14Z",
+      "last_reviewed_at": "2026-11-02T16:56:00Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "0.32 把安全默认值与低精度推理继续带入稳定版，但有 Python、CORS 与 streaming 不兼容变化。",
-        "judgment_en": "0.32 brings safer defaults and low-precision inference into stable, with Python, CORS and streaming incompatibilities.",
-        "next_action_zh": "分阶段升级并回归入口、安全与真实负载。",
-        "next_action_en": "Stage the upgrade and regress inputs, security and real workloads.",
+        "judgment_zh": "vLLM 0.33 是稳定版，扩展 EFA、多种低精度路径和诊断能力，但 CUDA 13、ROCm 与多项执行器变化使它不是无风险升级。适合需要新模型和多节点服务的团队分阶段采用。",
+        "judgment_en": "vLLM 0.33 is stable and expands EFA, low-precision paths and diagnostics, but CUDA 13, ROCm and executor changes make it a non-trivial upgrade. Teams needing new models and multi-node serving should adopt it in stages.",
+        "next_action_zh": "分阶段升级，回归镜像、驱动、KV 传输、暂停请求与真实吞吐。",
+        "next_action_en": "Stage the upgrade and regress images, drivers, KV transfer, paused requests and real throughput.",
         "basis_event_ids": [
           "ev-20260922-01"
         ],
-        "reviewed_at": "2026-10-18T15:58:14Z"
+        "reviewed_at": "2026-11-02T16:56:00Z"
       }
     },
     {
@@ -3427,26 +3429,32 @@
         "src-b3dd2a0f914f65ea",
         "src-ea221ee2acab6a14",
         "src-08b65e1468b74e86",
-        "src-1dea7153d88172e4"
+        "src-1dea7153d88172e4",
+        "src-d8e3c61d1ed07fc2",
+        "src-108e758392ef46e9",
+        "src-b7d714dff2fd2592"
       ],
       "current_judgment_event_id": "ev-20261013-02",
       "official_source_ids": [
         "src-b3dd2a0f914f65ea",
         "src-ea221ee2acab6a14",
         "src-08b65e1468b74e86",
-        "src-1dea7153d88172e4"
+        "src-1dea7153d88172e4",
+        "src-d8e3c61d1ed07fc2",
+        "src-108e758392ef46e9",
+        "src-b7d714dff2fd2592"
       ],
-      "last_reviewed_at": "2026-10-28T15:58:44Z",
+      "last_reviewed_at": "2026-11-02T16:56:00Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Run:ai 已加入 CUDA 13.4 显存硬约束 GPU 切分，但 time-slicing 与 SM sharing 的故障域不同，仍需按 workload 实测。",
-        "judgment_en": "Run:ai now has CUDA 13.4 memory-enforced GPU fractioning, but time-slicing and SM sharing have different failure domains and need workload-specific tests.",
-        "next_action_zh": "一天内对代表性 workload 测试 request、limit、burst 和两种切分方式的故障外溢。",
-        "next_action_en": "Within one day, test request, limit, burst and failure spillover under both sharing modes on representative workloads.",
+        "judgment_zh": "Run:ai 已有显存硬约束 GPU 切分，并通过 Workload Map 复用多类 Kubernetes AI workload 定义。GPU 故障域与自定义 CRD 的状态传播仍需按真实 workload 验证。",
+        "judgment_en": "Run:ai now combines memory-enforced GPU fractioning with Workload Map reuse across Kubernetes AI workload types. GPU failure domains and custom-CRD status propagation still require workload-specific validation.",
+        "next_action_zh": "一天内分别测试 GPU 切分与自定义 CRD 映射，记录资源统计、状态传播和故障外溢。",
+        "next_action_en": "Within one day, test GPU sharing and custom-CRD mapping separately; record resource accounting, status propagation and failure spillover.",
         "basis_event_ids": [
           "ev-20261013-02"
         ],
-        "reviewed_at": "2026-10-28T15:58:44Z"
+        "reviewed_at": "2026-11-02T16:56:00Z"
       }
     },
     {
@@ -6657,9 +6665,110 @@
         ],
         "reviewed_at": "2026-11-01T16:58:20Z"
       }
+    },
+    {
+      "id": "openai-grid-protectors",
+      "name_zh": "OpenAI Grid Protectors",
+      "name_en": "OpenAI Grid Protectors",
+      "type": "program",
+      "aliases": [
+        "Grid Protectors"
+      ],
+      "pattern": "Grid Protectors",
+      "event_ids": [
+        "ev-20261102-01"
+      ],
+      "source_ids": [
+        "src-3e51191d302f4ec5",
+        "src-d20f930d9a395e26",
+        "src-b7825ec8a29c92fc"
+      ],
+      "current_judgment_event_id": "ev-20261102-01",
+      "official_source_ids": [
+        "src-3e51191d302f4ec5",
+        "src-d20f930d9a395e26",
+        "src-b7825ec8a29c92fc"
+      ],
+      "last_reviewed_at": "2026-11-02T16:56:00Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "全国计划已宣布，但只有 Georgia 试点具备获批合同，园区尚未运行。适合基础设施团队跟踪，不足以证明削峰、排放或费率效果。",
+        "judgment_en": "The national program is announced, but only the Georgia pilot has an approved contract and the campus is not operating. Infrastructure teams should watch it; curtailment, emissions and rate effects remain unproven.",
+        "next_action_zh": "等 Georgia 公开真实削峰和费率数据后再评估。",
+        "next_action_en": "Reassess after Georgia publishes operational curtailment and rate data.",
+        "basis_event_ids": [
+          "ev-20261102-01"
+        ],
+        "reviewed_at": "2026-11-02T16:56:00Z"
+      }
+    },
+    {
+      "id": "anthropic-ipo",
+      "name_zh": "Anthropic IPO",
+      "name_en": "Anthropic IPO",
+      "type": "company-filing",
+      "aliases": [
+        "Anthropic S-1"
+      ],
+      "pattern": "Anthropic S-1",
+      "event_ids": [
+        "ev-20261102-02"
+      ],
+      "source_ids": [
+        "src-e7d80beac93a70b9",
+        "src-6e98f979afd8dac3"
+      ],
+      "current_judgment_event_id": "ev-20261102-02",
+      "official_source_ids": [
+        "src-e7d80beac93a70b9"
+      ],
+      "last_reviewed_at": "2026-11-02T16:56:00Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "营收规模与长期算力承诺都已进入监管文件，但中期报表未经审计，定价与现金流仍待后续文件。",
+        "judgment_en": "Revenue scale and long-term compute commitments now appear in a regulatory filing, but interim statements are unaudited and pricing plus cash flow need follow-up.",
+        "next_action_zh": "等正式定价文件和后续审计报表确认现金流、承诺条款与增长延续性后，再调整供应商集中度判断。",
+        "next_action_en": "Wait for final pricing documents and audited follow-up statements on cash flow, commitment terms and growth durability before changing vendor-concentration decisions.",
+        "basis_event_ids": [
+          "ev-20261102-02"
+        ],
+        "reviewed_at": "2026-11-02T16:56:00Z"
+      }
+    },
+    {
+      "id": "burner22-numbat",
+      "name_zh": "burner22/numbat",
+      "name_en": "burner22/numbat",
+      "type": "model-repository",
+      "aliases": [
+        "numbat"
+      ],
+      "pattern": "burner22/numbat",
+      "event_ids": [
+        "ev-20261101-01"
+      ],
+      "source_ids": [
+        "src-5dfd6e01bf775376",
+        "src-be88e8f6a7ec1636",
+        "src-7753708e7496a171"
+      ],
+      "current_judgment_event_id": "ev-20261101-01",
+      "official_source_ids": [],
+      "last_reviewed_at": "2026-11-02T16:56:00Z",
+      "judgment": {
+        "recommendation": "IGNORE",
+        "judgment_zh": "可复现检查表明抽查权重可由名称种子生成，且没有 Anthropic 来源认证。",
+        "judgment_en": "Reproducible checks show sampled weights can be generated from name-based seeds, with no Anthropic provenance authentication.",
+        "next_action_zh": "不要镜像或运行该仓库；若评估类似泄露，先复现 range-read 随机种子检查并等待发布方认证。",
+        "next_action_en": "Do not mirror or run this repository; for similar leak claims, reproduce a range-read weight check and wait for publisher authentication.",
+        "basis_event_ids": [
+          "ev-20261101-01"
+        ],
+        "reviewed_at": "2026-11-02T16:56:00Z"
+      }
     }
   ],
-  "last_updated": "2026-11-02",
-  "total_projects": 185,
-  "last_updated_at": "2026-11-01T16:58:20Z"
+  "last_updated": "2026-11-02T16:56:00Z",
+  "total_projects": 188,
+  "last_updated_at": "2026-11-02T16:56:00Z"
 }

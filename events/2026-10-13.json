@@ -100,28 +100,31 @@
     },
     {
       "event_id": "ev-20261013-02",
-      "title": "NVIDIA adds memory-enforced GPU fractioning to Run:ai",
-      "title_zh": "NVIDIA 为 Run:ai 加入显存硬约束 GPU 切分",
+      "title": "NVIDIA extends Run:ai with GPU controls and Workload Map reuse",
+      "title_zh": "NVIDIA 扩展 Run:ai 的 GPU 控制与 Workload Map 复用",
       "category": "infrastructure",
       "organization": [
         "NVIDIA"
       ],
       "published_at": "2026-10-13T14:19:40Z",
       "first_seen_at": "2026-10-14T15:57:53Z",
-      "last_updated_at": "2026-10-28T15:58:44Z",
+      "last_updated_at": "2026-11-02T16:56:00Z",
       "source_type": "official_blog",
       "primary_source": "https://developer.nvidia.com/blog/nvidia-runai-is-now-open-source-as-part-of-nvidia-dsx-ai-factory-platform/",
       "secondary_sources": [
         "https://github.com/dsx-ai-factory/run-ai",
         "https://developer.nvidia.com/blog/new-gpu-fractioning-capabilities-in-nvidia-runai/",
-        "https://github.com/NVIDIA/KAI-Scheduler"
+        "https://github.com/NVIDIA/KAI-Scheduler",
+        "https://developer.nvidia.com/blog/support-new-ai-frameworks-faster-using-nvidia-workload-map/",
+        "https://github.com/dsx-ai-factory/workload-map",
+        "https://github.com/dsx-ai-factory/workload-map/releases/tag/v0.3.0"
       ],
-      "summary": "NVIDIA has added CUDA 13.4 memory-enforced GPU fractioning to the open Run:ai stack. The KAI operator distinguishes request, limit and burst allocations, while time-slicing keeps workloads in separate error domains and SM sharing places them in a common error domain. The update improves quota control but does not by itself prove workload isolation under failure.",
-      "summary_en": "NVIDIA has added CUDA 13.4 memory-enforced GPU fractioning to the open Run:ai stack. The KAI operator distinguishes request, limit and burst allocations, while time-slicing keeps workloads in separate error domains and SM sharing places them in a common error domain. The update improves quota control but does not by itself prove workload isolation under failure.",
-      "summary_zh": "NVIDIA 为开源 Run:ai 栈加入基于 CUDA 13.4 的显存硬约束 GPU 切分。KAI operator 区分 request、limit 与 burst 分配；time-slicing 让 workload 分属不同故障域，SM sharing 则共享同一故障域。该更新加强配额控制，但不能单独证明故障下的 workload 隔离。",
-      "why_it_matters": "Shared-cluster operators can enforce memory ceilings instead of relying only on scheduling intent. The choice between time-slicing and SM sharing changes failure isolation, so production adoption needs workload-specific stress and fault tests.",
-      "why_it_matters_en": "Shared-cluster operators can enforce memory ceilings instead of relying only on scheduling intent. The choice between time-slicing and SM sharing changes failure isolation, so production adoption needs workload-specific stress and fault tests.",
-      "why_it_matters_zh": "对共享 GPU 集群运营者来说，现在可以执行显存上限，而不只依赖调度意图。time-slicing 与 SM sharing 的故障隔离不同，上生产前要按 workload 做压力与故障测试。",
+      "summary": "NVIDIA has combined memory-enforced GPU fractioning in Run:ai with a reusable Workload Map layer for heterogeneous Kubernetes AI workloads. Workload Map converts supported CRDs into a common tree used by Run:ai, KAI Scheduler and, according to NVIDIA, Elotl Nova. The library is Apache-2.0 and released, but production-use and interoperability evidence remains vendor-reported.",
+      "summary_en": "NVIDIA has combined memory-enforced GPU fractioning in Run:ai with a reusable Workload Map layer for heterogeneous Kubernetes AI workloads. Workload Map converts supported CRDs into a common tree used by Run:ai, KAI Scheduler and, according to NVIDIA, Elotl Nova. The library is Apache-2.0 and released, but production-use and interoperability evidence remains vendor-reported.",
+      "summary_zh": "NVIDIA 在 Run:ai 的显存硬约束 GPU 切分之外，进一步公开用于异构 Kubernetes AI workload 的 Workload Map 复用层。它把受支持的 CRD 转成统一树结构，供 Run:ai、KAI Scheduler 使用；NVIDIA 还称 Elotl Nova 已采用。库已按 Apache-2.0 发布，但生产使用与互操作证据仍主要来自厂商。",
+      "why_it_matters": "For platform teams, a shared workload translation layer can reduce one-off integrations across schedulers, inspection and multi-cluster placement. Trial it in isolation: custom CRDs, replica/resource accounting and status propagation still need independent validation, while GPU-sharing failure boundaries remain separate concerns.",
+      "why_it_matters_en": "For platform teams, a shared workload translation layer can reduce one-off integrations across schedulers, inspection and multi-cluster placement. Trial it in isolation: custom CRDs, replica/resource accounting and status propagation still need independent validation, while GPU-sharing failure boundaries remain separate concerns.",
+      "why_it_matters_zh": "对平台团队来说，共享 workload 转换层可以减少调度、检查和多集群放置中的一次性适配。应在隔离集群试用：自定义 CRD、replica/资源统计与状态传播仍需独立验证，GPU 共享的故障边界也要另测。",
       "technical_details": {
         "availability": "public GitHub monorepo and NGC community distribution",
         "components": "control plane, cluster services, installer, CLI, MCP server, KAI Scheduler, GPU Fractioning Operator, KAI Resource Management, Workload Map",
@@ -129,7 +132,8 @@
         "support": "community build has no enterprise support entitlement",
         "time_basis": "official blog published 2026-10-13T14:19:40Z; discovered inside the configured overlap and not present in the previous manifest",
         "gpu_fractioning_update": "CUDA 13.4 memory-enforced fractioning with request, limit and burst allocation; time-slicing uses separate error domains while SM sharing uses a common error domain",
-        "published_at": "2026-10-27T20:50:39Z"
+        "published_at": "2026-10-27T20:50:39Z",
+        "workload_map_update": "Official architecture disclosure published 2026-11-02T16:00:00Z. Apache-2.0 CRD and Go library map JobSet, PyTorchJob, Ray, KServe, Knative, MPIJob, NIM, LeaderWorkerSet, Milvus, Grove and Dynamo into a common workload tree. NVIDIA reports production Run:ai use, KAI Scheduler fallback use and Elotl Nova integration; v0.3.0 itself was released 2026-10-21."
       },
       "technical_details_zh": {
         "可用性": "公开 GitHub monorepo 与 NGC community distribution",
@@ -138,7 +142,8 @@
         "支持": "社区版不附带企业支持权益",
         "时间依据": "官方博客发布于 2026-10-13T14:19:40Z；在配置的 overlap 内发现，上一轮 manifest 未记录",
         "GPU 切分更新": "基于 CUDA 13.4 的显存硬约束，支持 request、limit 与 burst；time-slicing 使用独立故障域，SM sharing 使用共同故障域",
-        "发布时间": "2026-10-27T20:50:39Z"
+        "发布时间": "2026-10-27T20:50:39Z",
+        "Workload Map 更新": "官方架构说明发布于 2026-11-02T16:00:00Z。Apache-2.0 CRD 与 Go 库把 JobSet、PyTorchJob、Ray、KServe、Knative、MPIJob、NIM、LeaderWorkerSet、Milvus、Grove 与 Dynamo 转成统一 workload tree。NVIDIA 称 Run:ai 已在生产使用，KAI Scheduler 用作 fallback，Elotl Nova 也已集成；v0.3.0 本身发布于 2026-10-21。"
       },
       "tags": [
         "gpu-orchestration",
@@ -155,15 +160,18 @@
       "risk": 3,
       "recommendation": "TRIAL",
       "event_fingerprint": "nvidia-runai-full-platform-open-source",
-      "short_label_zh": "NVIDIA Run:ai",
-      "short_label_en": "NVIDIA Run:ai",
-      "next_action_zh": "一天内用代表性 workload 测试 request、limit、burst 与两种切分方式，记录显存约束和故障外溢。",
-      "next_action_en": "Within one day, run two representative workloads with request, limit and burst settings under time-slicing and SM sharing; measure memory enforcement and failure spillover.",
+      "short_label_zh": "Run:ai / Workload Map",
+      "short_label_en": "Run:ai / Workload Map",
+      "next_action_zh": "一天内在隔离集群注册一个内置和一个自定义 CRD，核对副本、资源、状态与 gang scheduling。",
+      "next_action_en": "Within one day, register one built-in and one custom CRD in an isolated cluster; compare replicas, resources, status and gang scheduling.",
       "source_ids": [
         "src-b3dd2a0f914f65ea",
         "src-ea221ee2acab6a14",
         "src-08b65e1468b74e86",
-        "src-1dea7153d88172e4"
+        "src-1dea7153d88172e4",
+        "src-d8e3c61d1ed07fc2",
+        "src-108e758392ef46e9",
+        "src-b7d714dff2fd2592"
       ],
       "project_ids": [
         "nvidia-runai"
@@ -202,6 +210,21 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20261013-02-workload-map-evidence",
+          "claim_zh": "NVIDIA 公开 Workload Map 架构，并称 Run:ai、KAI Scheduler 与 Elotl Nova 已复用统一 workload tree。",
+          "claim_en": "NVIDIA documents the Workload Map architecture and reports that Run:ai, KAI Scheduler and Elotl Nova reuse its common workload tree.",
+          "source_ids": [
+            "src-d8e3c61d1ed07fc2",
+            "src-108e758392ef46e9",
+            "src-b7d714dff2fd2592"
+          ],
+          "event_ids": [
+            "ev-20261013-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; adoption and production behavior are vendor-reported, not independently reproduced"
         }
       ],
       "changes": [
@@ -227,6 +250,19 @@
           "summary_en": "Run:ai adds CUDA 13.4 memory-enforced GPU fractioning",
           "evidence_ids": [
             "ev-20261013-02-gpu-fractioning-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261013-02-workload-map",
+          "kind": "update",
+          "occurred_at": "2026-11-02T16:00:00Z",
+          "discovered_at": "2026-11-02T16:56:00Z",
+          "summary_zh": "NVIDIA 公开 Workload Map 架构与三条复用路径",
+          "summary_en": "NVIDIA documents Workload Map architecture and three reuse paths",
+          "evidence_ids": [
+            "ev-20261013-02-workload-map-evidence"
           ],
           "historical": false,
           "importance": "major"

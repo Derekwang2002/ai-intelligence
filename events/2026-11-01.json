@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-01",
+  "provenance": "Late-discovery recall audit during the run started 2026-11-02T16:56:00Z; retrieval overlap began 2026-11-01T13:58:20Z.",
+  "events": [
+    {
+      "event_id": "ev-20261101-01",
+      "title": "Community audit finds the claimed Anthropic Numbat weights are seeded noise",
+      "title_zh": "社区审计发现所谓 Anthropic Numbat 权重是种子噪声",
+      "category": "open-source",
+      "organization": [
+        "community"
+      ],
+      "published_at": "2026-11-01T16:29:50Z",
+      "first_seen_at": "2026-11-02T16:56:00Z",
+      "last_updated_at": "2026-11-02T16:56:00Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/burner22/numbat/discussions/13",
+      "secondary_sources": [
+        "https://huggingface.co/burner22/numbat",
+        "https://cellcog.ai/blog/mythos-leak-hugging-face-fake/"
+      ],
+      "summary": "A Hugging Face repository claimed to contain a multi-terabyte checkpoint from an unreleased Anthropic model. A reproducible community audit regenerated 43 complete tensors exactly from a pseudorandom generator seeded by tensor names, and an independent check reproduced nine sampled tensors. Anthropic has not authenticated the repository, so the upload is not evidence of a model leak or release.",
+      "summary_en": "A Hugging Face repository claimed to contain a multi-terabyte checkpoint from an unreleased Anthropic model. A reproducible community audit regenerated 43 complete tensors exactly from a pseudorandom generator seeded by tensor names, and an independent check reproduced nine sampled tensors. Anthropic has not authenticated the repository, so the upload is not evidence of a model leak or release.",
+      "summary_zh": "一个 Hugging Face 仓库声称包含 Anthropic 未发布模型的数 TB checkpoint。社区给出的可复现审计能用 tensor 名称作为随机种子，逐位重建 43 个完整 tensor；独立复核也重建了 9 个样本。Anthropic 未确认该仓库，因此这份上传不能证明模型泄露或发布。",
+      "why_it_matters": "For teams monitoring open weights, popularity and internally consistent file layouts are not provenance. This item should be ignored as a model signal and treated as a reminder to verify origin and sample weights before mirroring or running custom code.",
+      "why_it_matters_en": "For teams monitoring open weights, popularity and internally consistent file layouts are not provenance. This item should be ignored as a model signal and treated as a reminder to verify origin and sample weights before mirroring or running custom code.",
+      "why_it_matters_zh": "对跟踪开放权重的团队来说，热度和文件结构自洽都不等于来源可信。这个仓库不应作为模型信号；镜像大文件或运行自定义代码前，必须先核验来源并抽样检查权重。",
+      "technical_details": {
+        "uploader_claim": "Unreleased Anthropic Mythos-class checkpoint; not authenticated by Anthropic",
+        "repository_size": "Uploader claims 772 shards totaling about 7.72 TB",
+        "reproducible_check": "43 complete tensors totaling 730,368 BF16 values matched name-seeded NumPy RNG output exactly",
+        "independent_check": "9 of 9 sampled tensors, 147,968 values, reproduced exactly; most large NVFP4 tensors were outside that independent sample",
+        "safety_boundary": "Repository includes custom modeling code; no full download or code execution was needed for the range-read audit",
+        "time_basis": "Audit discussion opened 2026-11-01T16:29:50Z inside the overlap; stored as a late discovery"
+      },
+      "technical_details_zh": {
+        "上传者声称": "Anthropic 未发布的 Mythos 系列 checkpoint；Anthropic 未认证",
+        "仓库规模": "上传者称共有 772 个 shard，合计约 7.72 TB",
+        "可复现检查": "43 个完整 tensor、合计 730,368 个 BF16 值，与按 tensor 名称设种子的 NumPy 随机数输出逐位一致",
+        "独立复核": "9/9 个抽样 tensor、147,968 个值被逐位重建；大部分 NVFP4 大 tensor 不在该独立样本内",
+        "安全边界": "仓库包含自定义建模代码；range-read 审计无需下载全部文件或运行代码",
+        "时间依据": "审计讨论于 2026-11-01T16:29:50Z 发出，位于 overlap 内，按 late discovery 补录"
+      },
+      "tags": [
+        "model-provenance",
+        "hugging-face",
+        "supply-chain",
+        "fake-weights",
+        "anthropic"
+      ],
+      "technical_impact": 1,
+      "engineering_value": 2,
+      "adoption_signal": 3,
+      "maturity": 1,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "IGNORE",
+      "event_fingerprint": "burner22-numbat-seeded-noise-fake-checkpoint",
+      "short_label_zh": "Numbat 假权重",
+      "short_label_en": "Numbat fake weights",
+      "next_action_zh": "不要镜像或运行该仓库；若评估类似泄露，先复现 range-read 随机种子检查并等待发布方认证。",
+      "next_action_en": "Do not mirror or run this repository; for similar leak claims, reproduce a range-read weight check and wait for publisher authentication.",
+      "source_ids": [
+        "src-5dfd6e01bf775376",
+        "src-be88e8f6a7ec1636",
+        "src-7753708e7496a171"
+      ],
+      "project_ids": [
+        "burner22-numbat"
+      ],
+      "scenario_ids": [
+        "models",
+        "security"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261101-01-seeded-noise-evidence",
+          "claim_zh": "社区审计逐位重建 43 个 tensor；独立复核重建 9 个样本，支持“至少被抽查权重是合成噪声”的判断。",
+          "claim_en": "A community audit reproduced 43 tensors bit-for-bit, and an independent check reproduced nine samples, supporting the conclusion that at least the checked weights are synthetic noise.",
+          "source_ids": [
+            "src-5dfd6e01bf775376",
+            "src-7753708e7496a171"
+          ],
+          "event_ids": [
+            "ev-20261101-01"
+          ],
+          "relation": "contradict",
+          "verification": "reproducible-community-audit plus independent sample; not all tensors independently checked"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261101-01-audit",
+          "kind": "new",
+          "occurred_at": "2026-11-01T16:29:50Z",
+          "discovered_at": "2026-11-02T16:56:00Z",
+          "summary_zh": "可复现审计否定 Numbat 仓库的 Anthropic 权重来源主张",
+          "summary_en": "A reproducible audit rejects the Numbat repository claim of Anthropic weights",
+          "evidence_ids": [
+            "ev-20261101-01-seeded-noise-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}
