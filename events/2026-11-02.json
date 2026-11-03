@@ -1,6 +1,6 @@
 {
   "date": "2026-11-02",
-  "provenance": "Incremental scan started 2026-11-02T16:56:00Z; strict window [2026-11-01T16:58:20Z, 2026-11-02T16:56:00Z].",
+  "provenance": "Incremental scan started 2026-11-02T16:56:00Z; strict window [2026-11-01T16:58:20Z, 2026-11-02T16:56:00Z]. Appended by 2026-11-03T17:02:48Z: WebHarbor, MCP tool-poisoning measurement and NVIDIA Attribution/Recovery were verified in the incremental window.",
   "events": [
     {
       "event_id": "ev-20261102-01",
@@ -219,6 +219,602 @@
           "summary_en": "Anthropic S-1/A adds third-quarter results and long-term compute commitments",
           "evidence_ids": [
             "ev-20261102-02-filing-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261102-03",
+      "title": "WebHarbor releases reproducible mirrors for 153 real websites",
+      "title_zh": "WebHarbor 发布 153 个真实网站的可复现镜像",
+      "category": "ai-agent",
+      "organization": [
+        "Aiming Lab",
+        "academic"
+      ],
+      "published_at": "2026-11-02T18:57:36Z",
+      "first_seen_at": "2026-11-03T17:02:48Z",
+      "last_updated_at": "2026-11-03T17:02:48Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2611.03634",
+      "secondary_sources": [
+        "https://github.com/aiming-lab/WebHarbor"
+      ],
+      "summary": "WebHarbor releases 153 Dockerized website mirrors, 3,518 tasks, training and held-out splits, code and a 4B GUI-agent checkpoint. The environments include authenticated and multi-step workflows with fast resets for evaluation and reinforcement learning. Reported cross-benchmark results are author-produced and need independent reproduction.",
+      "why_it_matters": "For teams evaluating browser agents, WebHarbor replaces drifting live websites with reproducible stateful environments. Trial the held-out split and verifier behavior before relying on the reported scores.",
+      "summary_zh": "WebHarbor 公开 153 个 Docker 网站镜像、3,518 个任务、训练与 held-out 拆分、代码和一个 4B GUI agent checkpoint。环境覆盖登录后与多步工作流，并能快速重置，适合评测和强化学习。跨 benchmark 成绩由作者报告，仍需独立复现。",
+      "summary_en": "WebHarbor releases 153 Dockerized website mirrors, 3,518 tasks, training and held-out splits, code and a 4B GUI-agent checkpoint. The environments include authenticated and multi-step workflows with fast resets for evaluation and reinforcement learning. Reported cross-benchmark results are author-produced and need independent reproduction.",
+      "why_it_matters_zh": "对评测 browser agent 的团队来说，WebHarbor 用可复现的有状态环境替代持续变化的真实网站。采用作者成绩前，应先试跑 held-out 拆分和 verifier 行为。",
+      "why_it_matters_en": "For teams evaluating browser agents, WebHarbor replaces drifting live websites with reproducible stateful environments. Trial the held-out split and verifier behavior before relying on the reported scores.",
+      "technical_details": {
+        "environments": 153,
+        "tasks": 3518,
+        "train_tasks": 2288,
+        "held_out_test_tasks": 306,
+        "artifact": "Code, Docker images, task data and WebHarbor-4B checkpoint",
+        "result_scope": "Author-reported; 75.8 average on WebVoyager and Online-Mind2Web",
+        "time_basis": "arXiv submitted 2026-11-02T18:57:36Z; repository release note is date-only"
+      },
+      "technical_details_zh": {
+        "环境数": 153,
+        "任务数": 3518,
+        "训练任务": 2288,
+        "held-out 测试任务": 306,
+        "公开产物": "代码、Docker 镜像、任务数据与 WebHarbor-4B checkpoint",
+        "结果范围": "作者自报；WebVoyager 与 Online-Mind2Web 平均 75.8",
+        "时间依据": "arXiv submitted 2026-11-02T18:57:36Z；仓库 release note 仅到日期"
+      },
+      "tags": [
+        "browser-agent",
+        "GUI-agent",
+        "evaluation",
+        "reinforcement-learning",
+        "Docker"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "webharbor-153-sites-3518-tasks",
+      "short_label_zh": "WebHarbor",
+      "short_label_en": "WebHarbor",
+      "next_action_zh": "一天内拉起一个公开镜像，用 held-out 任务核对重置、鉴权、grader 与网络隔离。",
+      "next_action_en": "Within one day, run one public image and use held-out tasks to verify reset, auth, graders and network isolation.",
+      "source_ids": [
+        "src-ca83e5df8ea0de4c",
+        "src-f3baa9a83f540c51"
+      ],
+      "project_ids": [
+        "webharbor"
+      ],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261102-03-release-evidence",
+          "claim_zh": "论文与仓库公开 153 个环境、3,518 个任务、代码、镜像和 4B checkpoint；成绩仍为作者自报。",
+          "claim_en": "The paper and repository release 153 environments, 3,518 tasks, code, images and a 4B checkpoint; results remain author-reported.",
+          "source_ids": [
+            "src-ca83e5df8ea0de4c",
+            "src-f3baa9a83f540c51"
+          ],
+          "event_ids": [
+            "ev-20261102-03"
+          ],
+          "relation": "support",
+          "verification": "verified-artifacts"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261102-03-release",
+          "kind": "new",
+          "occurred_at": "2026-11-02T18:57:36Z",
+          "discovered_at": "2026-11-03T17:02:48Z",
+          "summary_zh": "WebHarbor 公开 153 个可复现网站环境与 3,518 个 GUI agent 任务。",
+          "summary_en": "WebHarbor releases 153 reproducible website environments and 3,518 GUI-agent tasks.",
+          "evidence_ids": [
+            "ev-20261102-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261102-04",
+      "title": "Study finds live MCP tool poisoning succeeds across agent frameworks",
+      "title_zh": "研究发现 MCP tool poisoning 可跨 agent 框架真实执行",
+      "category": "agent-security",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-11-02T18:17:08Z",
+      "first_seen_at": "2026-11-03T17:02:48Z",
+      "last_updated_at": "2026-11-03T17:02:48Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2611.03555",
+      "secondary_sources": [],
+      "summary": "A cross-framework study runs 9,720 combinations across 12 frameworks, 18 models and 45 MCP poisoning scenarios. The authors report a 22.9% attack-success rate, including 255 cells with canary-confirmed secret exfiltration. Framework results cluster closely, while model-level rates vary widely. The study reports no intentional framework defense, but the public code repository was not discoverable from the paper page during this run.",
+      "why_it_matters": "For teams connecting MCP servers, tool metadata and responses must be treated as untrusted input. Model refusals and regex scanning are not enough; wait for reproducible artifacts, then test egress and secret isolation in the actual stack.",
+      "summary_zh": "一项跨框架研究运行了 12 个框架、18 个模型和 45 种 MCP poisoning 场景，共 9,720 个组合。作者报告攻击成功率为 22.9%，其中 255 个组合通过 canary 回执确认发生 secret exfiltration。不同框架结果接近，模型之间差异较大。论文称没有框架实现主动防御，但本轮未能从论文页面定位公开代码仓库。",
+      "summary_en": "A cross-framework study runs 9,720 combinations across 12 frameworks, 18 models and 45 MCP poisoning scenarios. The authors report a 22.9% attack-success rate, including 255 cells with canary-confirmed secret exfiltration. Framework results cluster closely, while model-level rates vary widely. The study reports no intentional framework defense, but the public code repository was not discoverable from the paper page during this run.",
+      "why_it_matters_zh": "对接入 MCP server 的团队来说，tool metadata 与响应都应视为不可信输入。模型拒绝和正则扫描不足以构成边界；应等可复现产物出现后，在实际技术栈测试出网和 secret 隔离。",
+      "why_it_matters_en": "For teams connecting MCP servers, tool metadata and responses must be treated as untrusted input. Model refusals and regex scanning are not enough; wait for reproducible artifacts, then test egress and secret isolation in the actual stack.",
+      "technical_details": {
+        "frameworks": 12,
+        "models": 18,
+        "attack_scenarios": 45,
+        "test_cells": 9720,
+        "reported_attack_success_rate": "22.9% (2,113/9,720)",
+        "confirmed_exfiltration_cells": 255,
+        "scanner_limit": "20/45 scenarios rejected at 7.2% false-positive rate",
+        "artifact_limit": "Paper calls mcpvenom open source, but no repository link was located in this run",
+        "time_basis": "arXiv v1 submitted 2026-11-02T18:17:08Z"
+      },
+      "technical_details_zh": {
+        "框架数": 12,
+        "模型数": 18,
+        "攻击场景": 45,
+        "测试组合": 9720,
+        "作者报告攻击成功率": "22.9%（2,113/9,720）",
+        "确认泄露的组合": 255,
+        "scanner 限制": "拦截 45 个场景中的 20 个，误报率 7.2%",
+        "产物限制": "论文称 mcpvenom 开源，但本轮未定位仓库链接",
+        "时间依据": "arXiv v1 submitted 2026-11-02T18:17:08Z"
+      },
+      "tags": [
+        "MCP",
+        "tool-poisoning",
+        "prompt-injection",
+        "agent-security",
+        "exfiltration"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 5,
+      "recommendation": "WATCH",
+      "event_fingerprint": "mcp-tool-poisoning-cross-framework-9720",
+      "short_label_zh": "MCP Tool Poisoning",
+      "short_label_en": "MCP Tool Poisoning",
+      "next_action_zh": "等 mcpvenom 仓库可定位并出现独立复现后，再用隔离 secret 和 canary 出网测试本地框架。",
+      "next_action_en": "Reassess when the mcpvenom repository is locatable and independently reproduced, then test the local stack with isolated secrets and canary egress.",
+      "source_ids": [
+        "src-ed645e02dffacf65"
+      ],
+      "project_ids": [
+        "mcp-tool-poisoning-study"
+      ],
+      "scenario_ids": [
+        "agents",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261102-04-paper-evidence",
+          "claim_zh": "论文报告 9,720 个真实执行组合中 22.9% 成功，255 个组合确认 secret exfiltration；代码尚未在本轮定位。",
+          "claim_en": "The paper reports 22.9% success across 9,720 live-execution cells and 255 confirmed secret-exfiltration cells; code was not located in this run.",
+          "source_ids": [
+            "src-ed645e02dffacf65"
+          ],
+          "event_ids": [
+            "ev-20261102-04"
+          ],
+          "relation": "support",
+          "verification": "author-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261102-04-paper",
+          "kind": "new",
+          "occurred_at": "2026-11-02T18:17:08Z",
+          "discovered_at": "2026-11-03T17:02:48Z",
+          "summary_zh": "跨框架研究用真实工具执行测量 MCP poisoning，并报告确认的 secret exfiltration。",
+          "summary_en": "A cross-framework study measures MCP poisoning with live tool execution and reports confirmed secret exfiltration.",
+          "evidence_ids": [
+            "ev-20261102-04-paper-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261102-05",
+      "title": "NVIDIA open-sources workload attribution and automated training recovery",
+      "title_zh": "NVIDIA 开源 workload 归因与训练自动恢复",
+      "category": "infrastructure",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-11-02T22:43:05Z",
+      "first_seen_at": "2026-11-03T17:02:48Z",
+      "last_updated_at": "2026-11-03T17:02:48Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/keep-distributed-training-running-with-automated-workload-recovery/",
+      "secondary_sources": [
+        "https://developer.nvidia.com/blog/diagnose-distributed-ai-workload-failures-with-nvidia-attribution/",
+        "https://github.com/dsx-ai-factory/NVIDIA-Recovery"
+      ],
+      "summary": "NVIDIA released Apache-2.0 components that correlate logs, metrics and scheduler state into a workload diagnosis, then recommend or execute Slurm recovery actions. Recovery starts in monitor mode, records an audit trail and can isolate nodes before restarting from checkpoints. NVIDIA reports production use and latency figures, but the repository is early, Kubernetes recovery is still planned, and independent validation is absent.",
+      "why_it_matters": "For teams running distributed training, diagnosis and restart policy can move from manual runbooks into an auditable control plane. Trial in monitor mode before permitting scheduler actions because false attribution can remove healthy capacity or repeat expensive work.",
+      "summary_zh": "NVIDIA 公开了 Apache-2.0 组件：先把日志、指标和 scheduler 状态汇总成 workload 诊断，再向 Slurm 建议或执行恢复动作。Recovery 默认从 monitor mode 开始，保留审计记录，并可在 checkpoint 重启前隔离节点。NVIDIA 报告了生产使用与延迟数据，但仓库仍早期，Kubernetes 恢复尚在 roadmap，也缺少独立验证。",
+      "summary_en": "NVIDIA released Apache-2.0 components that correlate logs, metrics and scheduler state into a workload diagnosis, then recommend or execute Slurm recovery actions. Recovery starts in monitor mode, records an audit trail and can isolate nodes before restarting from checkpoints. NVIDIA reports production use and latency figures, but the repository is early, Kubernetes recovery is still planned, and independent validation is absent.",
+      "why_it_matters_zh": "对运行分布式训练的团队来说，诊断与重启策略可以从人工 runbook 下沉到可审计控制面。误归因可能隔离健康节点或重复昂贵任务，因此应先用 monitor mode 试跑。",
+      "why_it_matters_en": "For teams running distributed training, diagnosis and restart policy can move from manual runbooks into an auditable control plane. Trial in monitor mode before permitting scheduler actions because false attribution can remove healthy capacity or repeat expensive work.",
+      "technical_details": {
+        "license": "Apache-2.0",
+        "scheduler": "Slurm; Kubernetes roadmap",
+        "default_mode": "monitor-only recommendations",
+        "vendor_reported_scale": "Attribution analyzes millions of workloads weekly across hundreds of thousands of GPUs",
+        "vendor_reported_sample": "One cluster, July 9–October 9: about 200 jobs/day, 8,550 detections, 69s mean detection, 94s mean recovery action",
+        "time_basis": "Official posts published 2026-11-02; feed timestamps 22:43:05Z and 23:39:34Z"
+      },
+      "technical_details_zh": {
+        "许可": "Apache-2.0",
+        "scheduler": "Slurm；Kubernetes 在 roadmap",
+        "默认模式": "只给建议的 monitor mode",
+        "厂商自报规模": "Attribution 每周分析数百万 workload，覆盖数十万 GPU",
+        "厂商自报样本": "一个集群，7 月 9 日至 10 月 9 日：每天约 200 个 job、8,550 次检测、平均检测 69 秒、恢复动作 94 秒",
+        "时间依据": "官方文章日期为 2026-11-02；feed timestamp 为 22:43:05Z 与 23:39:34Z"
+      },
+      "tags": [
+        "distributed-training",
+        "fault-attribution",
+        "recovery",
+        "Slurm",
+        "observability"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-attribution-recovery-open-source",
+      "short_label_zh": "NVIDIA Recovery",
+      "short_label_en": "NVIDIA Recovery",
+      "next_action_zh": "一天内用公开 sample 在 monitor mode 核对误报、证据链、审计记录与 Slurm 动作映射。",
+      "next_action_en": "Within one day, run the public sample in monitor mode and verify false positives, evidence trails, audit records and Slurm action mapping.",
+      "source_ids": [
+        "src-84a791d3975ddc36",
+        "src-218c5dc9b18cefce",
+        "src-28fc92fcbba695ba"
+      ],
+      "project_ids": [
+        "nvidia-attribution-recovery"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261102-05-release-evidence",
+          "claim_zh": "NVIDIA 公开 Apache-2.0 的 Attribution 与 Recovery 组件；生产规模和延迟数字均为厂商自报。",
+          "claim_en": "NVIDIA releases Apache-2.0 Attribution and Recovery components; production scale and latency figures are vendor-reported.",
+          "source_ids": [
+            "src-84a791d3975ddc36",
+            "src-218c5dc9b18cefce",
+            "src-28fc92fcbba695ba"
+          ],
+          "event_ids": [
+            "ev-20261102-05"
+          ],
+          "relation": "support",
+          "verification": "verified-artifacts"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261102-05-release",
+          "kind": "new",
+          "occurred_at": "2026-11-02T22:43:05Z",
+          "discovered_at": "2026-11-03T17:02:48Z",
+          "summary_zh": "NVIDIA 开源 workload 归因与自动恢复组件，先支持 Slurm 并默认只监控。",
+          "summary_en": "NVIDIA open-sources workload attribution and automated recovery, initially for Slurm and monitor-only by default.",
+          "evidence_ids": [
+            "ev-20261102-05-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261102-06",
+      "title": "Early weight-space programming results draw a technical challenge",
+      "title_zh": "早期 weight-space programming 结果遭到技术质疑",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-11-02",
+      "first_seen_at": "2026-11-03T17:02:48Z",
+      "last_updated_at": "2026-11-03T17:02:48Z",
+      "source_type": "research_blog",
+      "primary_source": "https://rikiyat.github.io/blog/weight-space-programming/",
+      "secondary_sources": [
+        "https://honnibal.dev/blog/astra-read-write-misleading"
+      ],
+      "summary": "MIT CSAIL researchers report that GPT-6 Astra can inspect or directly edit small neural-network weights and raise Qwen3.5-0.8B from 7.9% to 48.1% on their MATH-500 setup without gradient training. A subsequent technical critique argues that the Qwen comparison and attribution are misleading. The post presents early experiments rather than a peer-reviewed, independently reproduced method.",
+      "why_it_matters": "For model-training teams, reasoning directly over weights could become a new optimization interface, but the current evidence does not justify changing training practice. Treat the result as a contested hypothesis until code, exact evaluation artifacts and independent replications are available.",
+      "summary_zh": "MIT CSAIL 研究者报告称，GPT-6 Astra 能检查或直接修改小型神经网络权重，并在其 MATH-500 设置中把 Qwen3.5-0.8B 从 7.9% 提升到 48.1%，无需梯度训练。随后一篇技术质疑认为 Qwen 对比与效果归因具有误导性。这仍是早期实验，不是经过同行评审和独立复现的方法。",
+      "summary_en": "MIT CSAIL researchers report that GPT-6 Astra can inspect or directly edit small neural-network weights and raise Qwen3.5-0.8B from 7.9% to 48.1% on their MATH-500 setup without gradient training. A subsequent technical critique argues that the Qwen comparison and attribution are misleading. The post presents early experiments rather than a peer-reviewed, independently reproduced method.",
+      "why_it_matters_zh": "对模型训练团队来说，直接对权重进行推理可能成为新的优化接口，但当前证据不足以改变训练实践。公开代码、完整评测材料和独立复现出现前，应把它视为有争议的假设。",
+      "why_it_matters_en": "For model-training teams, reasoning directly over weights could become a new optimization interface, but the current evidence does not justify changing training practice. Treat the result as a contested hypothesis until code, exact evaluation artifacts and independent replications are available.",
+      "technical_details": {
+        "reported_math_500": "7.9% to 48.1% after editing 0.016% of Qwen3.5-0.8B weights",
+        "evidence_limit": "Author-reported blog experiments; independent critique disputes comparison and attribution",
+        "review_status": "Not peer reviewed; no independent reproduction verified in this run",
+        "time_basis": "Research post dated 2026-11-02; critique dated 2026-11-03, both day precision only"
+      },
+      "technical_details_zh": {
+        "自报 MATH-500": "修改 Qwen3.5-0.8B 的 0.016% 权重后，从 7.9% 升至 48.1%",
+        "证据限制": "作者博客实验；独立质疑反对其对比与效果归因",
+        "评审状态": "未经过同行评审；本次未核实到独立复现",
+        "时间依据": "研究文章日期为 2026-11-02，质疑文章日期为 2026-11-03，均只有日期精度"
+      },
+      "tags": [
+        "weight-space-programming",
+        "model-editing",
+        "evaluation",
+        "Qwen"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 2,
+      "adoption_signal": 4,
+      "maturity": 1,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "IGNORE",
+      "event_fingerprint": "weight-space-programming-astra-qwen-contested",
+      "short_label_zh": "Weight-Space Programming",
+      "short_label_en": "Weight-Space Programming",
+      "next_action_zh": "当前不要投入训练资源；等公开代码、完整评测材料和至少一项独立复现后再评估。",
+      "next_action_en": "Do not invest training resources yet; reassess after public code, full evaluation artifacts and at least one independent replication.",
+      "source_ids": [
+        "src-f9ecf66c18226a74",
+        "src-b61b7d0004aa5f86"
+      ],
+      "project_ids": [
+        "weight-space-programming"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261102-06-evidence",
+          "claim_zh": "作者报告 Astra 可直接修改权重并提升其 Qwen 评测，但后续独立质疑反对对比与归因。",
+          "claim_en": "The authors report that Astra can directly edit weights and improve their Qwen evaluation, while a later independent critique disputes the comparison and attribution.",
+          "source_ids": [
+            "src-f9ecf66c18226a74",
+            "src-b61b7d0004aa5f86"
+          ],
+          "event_ids": [
+            "ev-20261102-06"
+          ],
+          "relation": "mixed",
+          "verification": "contested"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261102-06-published",
+          "kind": "new",
+          "occurred_at": "2026-11-02",
+          "discovered_at": "2026-11-03T17:02:48Z",
+          "summary_zh": "早期 weight-space programming 实验引发高热度讨论，也迅速遭到技术质疑。",
+          "summary_en": "Early weight-space programming experiments drew heavy attention and a rapid technical challenge.",
+          "evidence_ids": [
+            "ev-20261102-06-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261102-07",
+      "title": "OpenAI rebuilds its Git backend for agent-scale concurrency",
+      "title_zh": "OpenAI 为 agent 级并发重建 Git backend",
+      "category": "developer-tools",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-11-02",
+      "first_seen_at": "2026-11-03T17:02:48Z",
+      "last_updated_at": "2026-11-03T17:02:48Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/scaling-git-at-openai/",
+      "secondary_sources": [],
+      "summary": "OpenAI says Pando now backs all development in its monorepo while preserving the Git protocol and client workflow. The backend coordinates unrelated branch updates independently and reuses packfiles across readers. OpenAI reports nearly 5× lower median push latency and almost one petabyte of Git data served daily; these are internal production figures, not an external product release.",
+      "why_it_matters": "For teams scaling coding agents, source control can become shared infrastructure rather than a passive repository. Pando shows one architecture for concurrent agent branches and high read fan-out, but most teams should first measure their own fetch, push, merge and CI bottlenecks.",
+      "summary_zh": "OpenAI 表示 Pando 已承载其 monorepo 的全部开发，同时保留 Git 协议与客户端工作流。backend 会独立协调互不相关的 branch 更新，并在多个读取方之间复用 packfile。OpenAI 自报 median push latency 降低近 5 倍、每天传输接近 1 PB Git 数据；这些是内部生产数据，不是对外发布的产品。",
+      "summary_en": "OpenAI says Pando now backs all development in its monorepo while preserving the Git protocol and client workflow. The backend coordinates unrelated branch updates independently and reuses packfiles across readers. OpenAI reports nearly 5× lower median push latency and almost one petabyte of Git data served daily; these are internal production figures, not an external product release.",
+      "why_it_matters_zh": "对扩展 coding agent 的团队来说，source control 会从被动仓库变成共享基础设施。Pando 展示了并发 agent branch 与高读取 fan-out 的一种架构，但多数团队应先测清自己的 fetch、push、merge 和 CI 瓶颈。",
+      "why_it_matters_en": "For teams scaling coding agents, source control can become shared infrastructure rather than a passive repository. Pando shows one architecture for concurrent agent branches and high read fan-out, but most teams should first measure their own fetch, push, merge and CI bottlenecks.",
+      "technical_details": {
+        "availability": "Internal OpenAI system; not offered as a standalone product",
+        "compatibility": "Git protocol and existing clients",
+        "architecture": "Independent branch coordination plus reusable packfiles and cache-oriented reads",
+        "vendor_reported_scale": "Nearly 5× lower median push latency and almost 1 PB/day served",
+        "time_basis": "Official engineering post dated 2026-11-02; date precision only"
+      },
+      "technical_details_zh": {
+        "可用性": "OpenAI 内部系统；未作为独立产品开放",
+        "兼容性": "Git 协议与现有客户端",
+        "架构": "branch 独立协调、packfile 复用与面向缓存的读取",
+        "厂商自报规模": "median push latency 降低近 5 倍，每天传输接近 1 PB",
+        "时间依据": "官方工程文章日期为 2026-11-02，只有日期精度"
+      },
+      "tags": [
+        "Git",
+        "coding-agent",
+        "source-control",
+        "monorepo",
+        "infrastructure"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 4,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "openai-pando-agent-scale-git-backend",
+      "short_label_zh": "OpenAI Pando",
+      "short_label_en": "OpenAI Pando",
+      "next_action_zh": "先量化 agent 并发下的 fetch、push、merge 与 CI fan-out；出现持续瓶颈再评估类似架构。",
+      "next_action_en": "Measure fetch, push, merge and CI fan-out under agent concurrency; revisit a similar architecture only if bottlenecks persist.",
+      "source_ids": [
+        "src-0504cb6dc0b8cf0b"
+      ],
+      "project_ids": [
+        "openai-pando"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261102-07-evidence",
+          "claim_zh": "OpenAI 称 Pando 已承载 monorepo 全部开发并降低 push latency；性能与规模为厂商自报。",
+          "claim_en": "OpenAI says Pando now backs all monorepo development and lowers push latency; performance and scale are vendor-reported.",
+          "source_ids": [
+            "src-0504cb6dc0b8cf0b"
+          ],
+          "event_ids": [
+            "ev-20261102-07"
+          ],
+          "relation": "support",
+          "verification": "vendor-claimed"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261102-07-published",
+          "kind": "new",
+          "occurred_at": "2026-11-02",
+          "discovered_at": "2026-11-03T17:02:48Z",
+          "summary_zh": "OpenAI 披露 Pando 如何让 Git backend 承受 coding agent 带来的并发读写。",
+          "summary_en": "OpenAI explains how Pando scales its Git backend for coding-agent concurrency.",
+          "evidence_ids": [
+            "ev-20261102-07-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261102-08",
+      "title": "NVIDIA releases Auto Ontology for governed agent data access",
+      "title_zh": "NVIDIA 发布 Auto Ontology 以治理 agent 数据访问",
+      "category": "ai-engineering",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-11-02",
+      "first_seen_at": "2026-11-03T17:02:48Z",
+      "last_updated_at": "2026-11-03T17:02:48Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/NVIDIA/auto-ontology",
+      "secondary_sources": [],
+      "summary": "NVIDIA published Auto Ontology, an Apache-2.0 framework that builds a semantic layer over enterprise metadata and exposes it through MCP, CLI and API. It combines ontology generation, lineage-aware query validation, Postgres/pgvector storage, RBAC and natural-language-to-SQL components. The repository is public and had about 2,000 GitHub stars when checked, but it does not accept external contributions and its benchmark guidance points to a separate evaluation repository.",
+      "why_it_matters": "For RAG and analytics-agent teams, governed definitions and lineage may matter more than another retrieval layer. Trial only with a narrow schema and verified queries because the repository bundles a broad stack and public adoption does not establish answer correctness.",
+      "summary_zh": "NVIDIA 发布 Auto Ontology：一个 Apache-2.0 框架，可在企业 metadata 上建立语义层，并通过 MCP、CLI 和 API 暴露。它组合 ontology 生成、带 lineage 的查询校验、Postgres/pgvector、RBAC 和自然语言转 SQL 组件。仓库公开，检查时约有 2,000 GitHub stars，但暂不接受外部贡献，benchmark 指南也指向单独的评测仓库。",
+      "summary_en": "NVIDIA published Auto Ontology, an Apache-2.0 framework that builds a semantic layer over enterprise metadata and exposes it through MCP, CLI and API. It combines ontology generation, lineage-aware query validation, Postgres/pgvector storage, RBAC and natural-language-to-SQL components. The repository is public and had about 2,000 GitHub stars when checked, but it does not accept external contributions and its benchmark guidance points to a separate evaluation repository.",
+      "why_it_matters_zh": "对 RAG 与 analytics agent 团队来说，受治理的指标定义和 lineage 可能比再加一层 retrieval 更重要。仓库捆绑的技术栈较广，公开热度也不能证明答案正确，因此应只用窄 schema 和已核验查询试跑。",
+      "why_it_matters_en": "For RAG and analytics-agent teams, governed definitions and lineage may matter more than another retrieval layer. Trial only with a narrow schema and verified queries because the repository bundles a broad stack and public adoption does not establish answer correctness.",
+      "technical_details": {
+        "license": "Apache-2.0",
+        "interfaces": "MCP, CLI and API",
+        "stack": "FastAPI, Next.js, Postgres, pgvector, LangChain and Better Auth",
+        "adoption_snapshot": "About 2,000 GitHub stars and 149 forks at check time",
+        "limitation": "Not accepting external contributions; answer-quality benchmark not reproduced in this run",
+        "time_basis": "Repository surfaced in the 2026-11-02 recall window; exact repository publication time was not established"
+      },
+      "technical_details_zh": {
+        "许可": "Apache-2.0",
+        "接口": "MCP、CLI 与 API",
+        "技术栈": "FastAPI、Next.js、Postgres、pgvector、LangChain 与 Better Auth",
+        "采用快照": "检查时约 2,000 GitHub stars、149 forks",
+        "限制": "暂不接受外部贡献；本次未复现答案质量 benchmark",
+        "时间依据": "仓库在 2026-11-02 召回窗口进入线索；未确认仓库的精确发布时间"
+      },
+      "tags": [
+        "ontology",
+        "RAG",
+        "MCP",
+        "text-to-SQL",
+        "data-governance"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-auto-ontology-open-source",
+      "short_label_zh": "NVIDIA Auto Ontology",
+      "short_label_en": "NVIDIA Auto Ontology",
+      "next_action_zh": "一天内用公开示例接一张测试表，核对 schema 映射、lineage、RBAC 与错误 SQL 拦截。",
+      "next_action_en": "Within one day, connect one test table and verify schema mapping, lineage, RBAC and rejection of incorrect SQL.",
+      "source_ids": [
+        "src-834f867a45207691"
+      ],
+      "project_ids": [
+        "nvidia-auto-ontology"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261102-08-evidence",
+          "claim_zh": "公开仓库提供 ontology、lineage、RBAC 与 MCP/API 接口；GitHub 热度不等于答案质量。",
+          "claim_en": "The public repository provides ontology, lineage, RBAC and MCP/API interfaces; GitHub popularity does not establish answer quality.",
+          "source_ids": [
+            "src-834f867a45207691"
+          ],
+          "event_ids": [
+            "ev-20261102-08"
+          ],
+          "relation": "support",
+          "verification": "verified-artifact"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261102-08-published",
+          "kind": "new",
+          "occurred_at": "2026-11-02",
+          "discovered_at": "2026-11-03T17:02:48Z",
+          "summary_zh": "NVIDIA Auto Ontology 把企业语义定义、lineage 与 agent 数据接口放进一个开源栈。",
+          "summary_en": "NVIDIA Auto Ontology combines enterprise semantics, lineage and agent data interfaces in one open stack.",
+          "evidence_ids": [
+            "ev-20261102-08-evidence"
           ],
           "historical": false,
           "importance": "major"

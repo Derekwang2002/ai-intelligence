@@ -95,27 +95,28 @@
     },
     {
       "event_id": "ev-20260918-02",
-      "title": "SGLang 0.5.22 speeds model loading and fixes recurrent state corruption",
-      "title_zh": "SGLang 0.5.22 加速模型加载并修复循环状态错误",
+      "title": "SGLang 0.5.23 broadens hardware support and speeds MoE serving",
+      "title_zh": "SGLang 0.5.23 扩展硬件支持并加速 MoE serving",
       "category": "infrastructure",
       "organization": [
         "SGLang"
       ],
       "published_at": "2026-09-18T22:41:33Z",
       "first_seen_at": "2026-09-18T23:21:35Z",
-      "last_updated_at": "2026-10-19T16:04:44Z",
+      "last_updated_at": "2026-11-03T17:02:48Z",
       "source_type": "github_release",
       "primary_source": "https://github.com/sgl-project/sglang/releases/tag/v0.5.20",
       "secondary_sources": [
         "https://github.com/sgl-project/sglang/releases/tag/v0.5.21",
-        "https://github.com/sgl-project/sglang/releases/tag/v0.5.22"
+        "https://github.com/sgl-project/sglang/releases/tag/v0.5.22",
+        "https://github.com/sgl-project/sglang/releases/tag/v0.5.23"
       ],
-      "summary": "SGLang 0.5.22 adds an InstantTensor loader that the project reports as 10× faster, broader model and hardware support, and new paths for speculative decoding and prefill/decode disaggregation. It also fixes a correctness bug where hybrid linear models could resume from the wrong Mamba state when speculative decoding and structured output were combined. Python 3.11 is now required, and all performance gains remain project-reported.",
-      "why_it_matters": "For inference teams, the state-corruption fix matters more than the headline throughput numbers because it can silently produce wrong output under a specific feature combination. Test that path first, then reproduce loading, TTFT and throughput gains on your own model mix before upgrading production.",
-      "summary_zh": "SGLang 0.5.22 加入项目自报快 10 倍的 InstantTensor loader，扩展模型与硬件支持，并补充推测解码和 prefill/decode 分离路径。它还修复一项正确性问题：混合线性模型同时使用推测解码与结构化输出时，可能从错误的 Mamba 状态继续生成。新版要求 Python 3.11；性能提升均为项目自报。",
-      "summary_en": "SGLang 0.5.22 adds an InstantTensor loader that the project reports as 10× faster, broader model and hardware support, and new paths for speculative decoding and prefill/decode disaggregation. It also fixes a correctness bug where hybrid linear models could resume from the wrong Mamba state when speculative decoding and structured output were combined. Python 3.11 is now required, and all performance gains remain project-reported.",
-      "why_it_matters_zh": "对推理团队来说，状态错误修复比醒目的吞吐数字更重要，因为特定功能组合可能在不报错的情况下生成错误结果。应先回归这条路径，再用自己的模型组合复现加载、首 token 延迟与吞吐，之后才升级生产环境。",
-      "why_it_matters_en": "For inference teams, the state-corruption fix matters more than the headline throughput numbers because it can silently produce wrong output under a specific feature combination. Test that path first, then reproduce loading, TTFT and throughput gains on your own model mix before upgrading production.",
+      "summary": "SGLang 0.5.23 adds Google TPU7x support, opt-in Paged Experts for models larger than GPU memory, LoRA on quantized MoE models and file-backed L3 prefix caching for decode context parallelism. The project reports 30–58% lower first-token latency for several MoE models on H200 and up to 1.5× prefill throughput for DeepSeek-V4.1 on GB300. These figures are not independently reproduced.",
+      "why_it_matters": "For inference teams, one release changes accelerator coverage, memory strategy and latency-sensitive serving. Trial on real traffic before adopting because several paths are opt-in and benchmark claims come from the project.",
+      "summary_zh": "SGLang 0.5.23 新增 Google TPU7x 支持、让超出显存的模型按需加载专家的 Paged Experts、量化 MoE 上的 LoRA，以及用于 decode context parallelism 的文件级 L3 前缀缓存。项目报告多款 MoE 在 H200 上的首 token 延迟降低 30%–58%，DeepSeek-V4.1 在 GB300 上的 prefill 吞吐最高提升 1.5 倍；这些数字尚未独立复现。",
+      "summary_en": "SGLang 0.5.23 adds Google TPU7x support, opt-in Paged Experts for models larger than GPU memory, LoRA on quantized MoE models and file-backed L3 prefix caching for decode context parallelism. The project reports 30–58% lower first-token latency for several MoE models on H200 and up to 1.5× prefill throughput for DeepSeek-V4.1 on GB300. These figures are not independently reproduced.",
+      "why_it_matters_zh": "对推理团队来说，一个版本同时改变加速器覆盖、显存策略和低延迟 serving。多条路径仍需显式开启，benchmark 也由项目自报，因此应先用真实流量试跑。",
+      "why_it_matters_en": "For inference teams, one release changes accelerator coverage, memory strategy and latency-sensitive serving. Trial on real traffic before adopting because several paths are opt-in and benchmark claims come from the project.",
       "technical_details": {
         "version": "0.5.22 stable; 950 PRs from 245 contributors",
         "requirements": "Python 3.11 or newer",
@@ -123,7 +124,11 @@
         "serving": "prefill/decode disaggregation up to 27% more throughput and 48.9% lower p95 TTFT in a project test",
         "model_paths": "DeepSeek-V4.1 up to 2.3x H200 throughput; Apple Silicon standard PyTorch backend; additional diffusion and multimodal models",
         "correctness_fix": "wrong Mamba state could resume when speculative decoding and structured output were combined",
-        "evidence_limit": "performance figures are project benchmarks and need workload-specific reproduction"
+        "evidence_limit": "performance figures are project benchmarks and need workload-specific reproduction",
+        "latest_stable": "0.5.23",
+        "hardware": "CUDA 13, ROCm 10, Intel GPU/CPU and Google TPU7x images or plugins",
+        "project_reported_performance": "30–58% lower TTFT on H200 MoE tests; up to 1.5× prefill throughput on GB300; up to 30× over CPU offload for Paged Experts",
+        "time_basis": "GitHub release published 2026-11-02T22:14:10Z"
       },
       "technical_details_zh": {
         "版本": "0.5.22 stable；950 个 PR、245 位贡献者",
@@ -132,7 +137,11 @@
         "推理服务": "项目测试中 prefill/decode 分离吞吐最高增加 27%，p95 TTFT 降低 48.9%",
         "模型路径": "DeepSeek-V4.1 在 H200 上吞吐最高 2.3 倍；Apple Silicon 标准 PyTorch backend；扩展 diffusion 与多模态模型",
         "正确性修复": "推测解码与结构化输出同时使用时，可能从错误 Mamba 状态继续生成",
-        "证据限制": "性能数字来自项目 benchmark，需要按实际负载复现"
+        "证据限制": "性能数字来自项目 benchmark，需要按实际负载复现",
+        "最新稳定版": "0.5.23",
+        "硬件": "CUDA 13、ROCm 10、Intel GPU/CPU 与 Google TPU7x 镜像或插件",
+        "项目自报性能": "H200 MoE 测试首 token 延迟降低 30%–58%；GB300 prefill 吞吐最高 1.5 倍；Paged Experts 相对 CPU offload 最高 30 倍",
+        "时间依据": "GitHub release published 2026-11-02T22:14:10Z"
       },
       "tags": [
         "SGLang",
@@ -153,7 +162,8 @@
       "source_ids": [
         "src-0f607943d6da27d6",
         "src-9b2f8ba750283adb",
-        "src-6d0f4e95afe7efb2"
+        "src-6d0f4e95afe7efb2",
+        "src-383355db37c4680a"
       ],
       "project_ids": [
         "sglang"
@@ -203,6 +213,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; performance claims are project-reported"
+        },
+        {
+          "id": "ev-20260918-02-sglang-0-5-23-evidence",
+          "claim_zh": "0.5.23 扩展到 TPU7x、Paged Experts、量化 MoE LoRA 与 L3 前缀缓存；性能数字均为项目自报。",
+          "claim_en": "Version 0.5.23 adds TPU7x, Paged Experts, quantized-MoE LoRA and L3 prefix caching; performance figures are project-reported.",
+          "source_ids": [
+            "src-383355db37c4680a"
+          ],
+          "event_ids": [
+            "ev-20260918-02"
+          ],
+          "relation": "support",
+          "verification": "vendor-claimed"
         }
       ],
       "changes": [
@@ -243,12 +266,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260918-02-sglang-0-5-23",
+          "kind": "update",
+          "occurred_at": "2026-11-02T22:14:10Z",
+          "discovered_at": "2026-11-03T17:02:48Z",
+          "summary_zh": "SGLang 0.5.23 扩展硬件、显存与 MoE serving 路径，并发布项目自报的延迟和吞吐改进。",
+          "summary_en": "SGLang 0.5.23 expands hardware, memory and MoE serving paths with project-reported latency and throughput gains.",
+          "evidence_ids": [
+            "ev-20260918-02-sglang-0-5-23-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "short_label_zh": "SGLang 0.5.22",
-      "short_label_en": "SGLang 0.5.22",
-      "next_action_zh": "先回归推测解码加结构化输出的 Mamba 路径，再在 canary 复现加载、TTFT 与吞吐。",
-      "next_action_en": "First regress the Mamba path with speculative decoding plus structured output, then reproduce loading, TTFT and throughput on a canary.",
+      "short_label_zh": "SGLang 0.5.23",
+      "short_label_en": "SGLang 0.5.23",
+      "next_action_zh": "一天内用固定 trace 比较 0.5.22/0.5.23 的正确率、TTFT、吞吐、显存和回滚。",
+      "next_action_en": "Within one day, compare 0.5.22 and 0.5.23 on fixed traces for correctness, TTFT, throughput, memory and rollback.",
       "editorial_pick": {
         "reason_zh": "推测解码与结构化输出组合可能静默恢复错误状态；这是生产升级前必须回归的正确性问题。",
         "reason_en": "Speculative decoding plus structured output could silently resume the wrong state, making this a correctness regression test before production upgrade.",

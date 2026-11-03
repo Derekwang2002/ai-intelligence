@@ -53,7 +53,8 @@
         "src-93af44a64968d818",
         "src-dc8a856f8c6596f8",
         "src-fbfedaa618aab83d",
-        "src-11bfb616c2334a07"
+        "src-11bfb616c2334a07",
+        "src-ddf42b69c8e05c7b"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -81,19 +82,20 @@
         "src-93af44a64968d818",
         "src-dc8a856f8c6596f8",
         "src-fbfedaa618aab83d",
-        "src-11bfb616c2334a07"
+        "src-11bfb616c2334a07",
+        "src-ddf42b69c8e05c7b"
       ],
-      "last_reviewed_at": "2026-10-31T15:56:40Z",
+      "last_reviewed_at": "2026-11-03T17:02:48Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.316 继续收紧企业策略边界并修复稳定性问题，适合回归后升级。",
-        "judgment_en": "Version 2.1.316 further tightens enterprise policy boundaries and fixes stability issues; adopt after regression testing.",
-        "next_action_zh": "升级后回归设置过期、恢复与目录外写入。",
-        "next_action_en": "After upgrading, regress settings expiry, resume and out-of-tree writes.",
+        "judgment_zh": "2.1.317 把 hook 失败、邮箱出网、connector 变化与成本归因纳入显式控制，并修复多条恢复路径。适合在回归后升级。",
+        "judgment_en": "Version 2.1.317 adds explicit controls for hook failure, email egress, connector changes and cost attribution, while fixing several recovery paths. Adopt after regression testing.",
+        "next_action_zh": "升级后回归 hook 失败、邮箱出网、connector 变化、磁盘写满与 runner 切换。",
+        "next_action_en": "After upgrading, regress hook failure, email egress, connector changes, full disks and runner failover.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-10-31T15:56:40Z"
+        "reviewed_at": "2026-11-03T17:02:48Z"
       }
     },
     {
@@ -123,7 +125,8 @@
         "src-1054dcf730bc85b9",
         "src-a453883ae6f4e4d8",
         "src-c5472a4b861d06cf",
-        "src-1f4372e601a22d0e"
+        "src-1f4372e601a22d0e",
+        "src-2a777a814a6a2aef"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -138,19 +141,20 @@
         "src-1054dcf730bc85b9",
         "src-a453883ae6f4e4d8",
         "src-c5472a4b861d06cf",
-        "src-1f4372e601a22d0e"
+        "src-1f4372e601a22d0e",
+        "src-2a777a814a6a2aef"
       ],
-      "last_reviewed_at": "2026-11-01T16:58:20Z",
+      "last_reviewed_at": "2026-11-03T17:02:48Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.26.5 的受控修复交接与隔离验证已进入稳定版，但 Helm managed deployment 仍属实验功能。",
-        "judgment_en": "Version 0.26.5 moves bounded repair handoff and isolated verification into stable, while Helm managed deployment remains experimental.",
-        "next_action_zh": "一天内在隔离仓库测试 autofix 预算、人工交接、验证隔离和 Helm 回滚，再决定升级。",
-        "next_action_en": "Within one day, test autofix budgets, human handoff, verification isolation and Helm rollback in an isolated repository before upgrading.",
+        "judgment_zh": "0.26.6 增加 agent 活动与性能可见性，并收紧托管恢复的证据要求。unified loop 与托管部署仍属实验功能。",
+        "judgment_en": "Version 0.26.6 adds agent activity and performance visibility and tightens evidence requirements for managed recovery. The unified loop and managed deployment remain experimental.",
+        "next_action_zh": "一天内在隔离仓库测试 ledger 缺口、MCP 重名、审批文本与 Web Shell 指标。",
+        "next_action_en": "Within one day, test ledger gaps, MCP name collisions, approval text and Web Shell metrics in an isolated repository.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-11-01T16:58:20Z"
+        "reviewed_at": "2026-11-03T17:02:48Z"
       }
     },
     {
@@ -491,24 +495,26 @@
       "source_ids": [
         "src-d4358f595d3dd974",
         "src-0f607943d6da27d6",
-        "src-6d0f4e95afe7efb2"
+        "src-6d0f4e95afe7efb2",
+        "src-383355db37c4680a"
       ],
       "current_judgment_event_id": "ev-20260918-02",
       "official_source_ids": [
         "src-9b2f8ba750283adb",
-        "src-6d0f4e95afe7efb2"
+        "src-6d0f4e95afe7efb2",
+        "src-383355db37c4680a"
       ],
-      "last_reviewed_at": "2026-10-19T16:04:44Z",
+      "last_reviewed_at": "2026-11-03T17:02:48Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.5.22 修复一项可能静默生成错误结果的 Mamba 状态问题，并扩展加载与分离式 serving；性能仍需复现。",
-        "judgment_en": "Version 0.5.22 fixes a Mamba-state bug that could silently produce wrong output and expands loading and disaggregated serving; performance still needs reproduction.",
-        "next_action_zh": "先回归状态错误路径，再在 canary 复现加载、TTFT 与吞吐。",
-        "next_action_en": "Regress the state-corruption path first, then reproduce loading, TTFT and throughput on a canary.",
+        "judgment_zh": "0.5.23 扩展 TPU、量化 MoE、Paged Experts 与 L3 前缀缓存，但性能主要由项目自报，适合 canary 试跑。",
+        "judgment_en": "Version 0.5.23 expands TPU, quantized-MoE, Paged Experts and L3 prefix-cache paths, but performance remains mainly project-reported; use a canary trial.",
+        "next_action_zh": "一天内用固定 trace 比较 0.5.22/0.5.23 的正确率、TTFT、吞吐、显存和回滚。",
+        "next_action_en": "Within one day, compare 0.5.22 and 0.5.23 on fixed traces for correctness, TTFT, throughput, memory and rollback.",
         "basis_event_ids": [
           "ev-20260918-02"
         ],
-        "reviewed_at": "2026-10-19T16:04:44Z"
+        "reviewed_at": "2026-11-03T17:02:48Z"
       }
     },
     {
@@ -1105,27 +1111,29 @@
         "src-86745252420db893",
         "src-39a2c26df5548ff5",
         "src-60b7805de2ebc483",
-        "src-255532568ba55074"
+        "src-255532568ba55074",
+        "src-b53d42e9c538fd76"
       ],
       "official_source_ids": [
         "src-872457bb1f6a4e1a",
         "src-86745252420db893",
         "src-39a2c26df5548ff5",
         "src-60b7805de2ebc483",
-        "src-255532568ba55074"
+        "src-255532568ba55074",
+        "src-b53d42e9c538fd76"
       ],
-      "last_reviewed_at": "2026-10-29T16:05:08Z",
+      "last_reviewed_at": "2026-11-03T17:02:48Z",
       "current_judgment_event_id": "ev-20260928-09",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Ollama 0.40.13 将 LFM3 音频与 omni 路径扩展到 Linux 和 Windows，适合跨平台小规模试验。",
-        "judgment_en": "Ollama 0.40.13 expands LFM3 audio and omni paths to Linux and Windows, suitable for a cross-platform trial.",
-        "next_action_zh": "一天内在目标系统测实时率、显存和许可。",
-        "next_action_en": "Within one day, test real-time factor, memory and licensing on the target system.",
+        "judgment_zh": "0.40.14 对齐原生与 OpenAI-compatible 采样默认值，并修复 Responses 与 coding-agent 启动路径。输出分布可能变化，适合小规模回归。",
+        "judgment_en": "Version 0.40.14 aligns native and OpenAI-compatible sampler defaults and fixes Responses and coding-agent launch paths. Output distributions may change, so use a small regression trial.",
+        "next_action_zh": "一天内用固定 prompt 回归省略采样参数、Responses 历史输入和 Codex/Claude 启动。",
+        "next_action_en": "Within one day, regress omitted sampler settings, Responses history and Codex/Claude launch flows with fixed prompts.",
         "basis_event_ids": [
           "ev-20260928-09"
         ],
-        "reviewed_at": "2026-10-29T16:05:08Z"
+        "reviewed_at": "2026-11-03T17:02:48Z"
       }
     },
     {
@@ -6766,9 +6774,210 @@
         ],
         "reviewed_at": "2026-11-02T16:56:00Z"
       }
+    },
+    {
+      "id": "webharbor",
+      "name_zh": "WebHarbor",
+      "name_en": "WebHarbor",
+      "type": "benchmark-environment",
+      "aliases": [
+        "WebHarbor-4B"
+      ],
+      "pattern": "WebHarbor",
+      "event_ids": [
+        "ev-20261102-03"
+      ],
+      "source_ids": [
+        "src-ca83e5df8ea0de4c",
+        "src-f3baa9a83f540c51"
+      ],
+      "current_judgment_event_id": "ev-20261102-03",
+      "official_source_ids": [
+        "src-ca83e5df8ea0de4c",
+        "src-f3baa9a83f540c51"
+      ],
+      "last_reviewed_at": "2026-11-03T17:02:48Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开镜像、任务、代码与 checkpoint 让 GUI agent 评测更可复现，但成绩仍由作者报告，网站镜像的许可与网络隔离也要单独核对。",
+        "judgment_en": "Public images, tasks, code and a checkpoint make GUI-agent evaluation more reproducible, but results remain author-reported and mirror licensing plus network isolation need separate review.",
+        "next_action_zh": "一天内拉起一个公开镜像，用 held-out 任务核对重置、鉴权、grader 与网络隔离。",
+        "next_action_en": "Within one day, run one public image and use held-out tasks to verify reset, auth, graders and network isolation.",
+        "basis_event_ids": [
+          "ev-20261102-03"
+        ],
+        "reviewed_at": "2026-11-03T17:02:48Z"
+      }
+    },
+    {
+      "id": "mcp-tool-poisoning-study",
+      "name_zh": "MCP Tool Poisoning 研究",
+      "name_en": "MCP Tool Poisoning study",
+      "type": "research",
+      "aliases": [
+        "mcpvenom"
+      ],
+      "pattern": "MCP Tool Poisoning|mcpvenom",
+      "event_ids": [
+        "ev-20261102-04"
+      ],
+      "source_ids": [
+        "src-ed645e02dffacf65"
+      ],
+      "current_judgment_event_id": "ev-20261102-04",
+      "official_source_ids": [
+        "src-ed645e02dffacf65"
+      ],
+      "last_reviewed_at": "2026-11-03T17:02:48Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "论文提供跨框架真实执行测量，但本轮未定位可运行的公开仓库，也没有独立复现。它足以改变威胁模型，不足以直接采用其防御结论。",
+        "judgment_en": "The paper provides cross-framework live-execution measurements, but this run did not locate a runnable public repository or independent reproduction. It changes the threat model without establishing deployable defenses.",
+        "next_action_zh": "等 mcpvenom 仓库可定位并出现独立复现后，再用隔离 secret 和 canary 出网测试本地框架。",
+        "next_action_en": "Reassess when the mcpvenom repository is locatable and independently reproduced, then test the local stack with isolated secrets and canary egress.",
+        "basis_event_ids": [
+          "ev-20261102-04"
+        ],
+        "reviewed_at": "2026-11-03T17:02:48Z"
+      }
+    },
+    {
+      "id": "nvidia-attribution-recovery",
+      "name_zh": "NVIDIA Attribution / Recovery",
+      "name_en": "NVIDIA Attribution / Recovery",
+      "type": "infrastructure-tool",
+      "aliases": [
+        "NVIDIA Recovery",
+        "NVIDIA Attribution"
+      ],
+      "pattern": "NVIDIA (Attribution|Recovery)",
+      "event_ids": [
+        "ev-20261102-05"
+      ],
+      "source_ids": [
+        "src-84a791d3975ddc36",
+        "src-218c5dc9b18cefce",
+        "src-28fc92fcbba695ba"
+      ],
+      "current_judgment_event_id": "ev-20261102-05",
+      "official_source_ids": [
+        "src-84a791d3975ddc36",
+        "src-218c5dc9b18cefce",
+        "src-28fc92fcbba695ba"
+      ],
+      "last_reviewed_at": "2026-11-03T17:02:48Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开代码把训练故障归因与 Slurm 恢复串成可审计控制面，但仓库仍早期，Kubernetes 尚未支持，效果主要由 NVIDIA 自报。",
+        "judgment_en": "Public code connects training-failure attribution to an auditable Slurm recovery control plane, but the repository is early, Kubernetes is not yet supported and outcomes are mainly NVIDIA-reported.",
+        "next_action_zh": "一天内用公开 sample 在 monitor mode 核对误报、证据链、审计记录与 Slurm 动作映射。",
+        "next_action_en": "Within one day, run the public sample in monitor mode and verify false positives, evidence trails, audit records and Slurm action mapping.",
+        "basis_event_ids": [
+          "ev-20261102-05"
+        ],
+        "reviewed_at": "2026-11-03T17:02:48Z"
+      }
+    },
+    {
+      "id": "weight-space-programming",
+      "name_zh": "Weight-Space Programming",
+      "name_en": "Weight-Space Programming",
+      "type": "research-method",
+      "aliases": [
+        "Astra weight editing"
+      ],
+      "pattern": "Weight-Space Programming",
+      "event_ids": [
+        "ev-20261102-06"
+      ],
+      "source_ids": [
+        "src-f9ecf66c18226a74",
+        "src-b61b7d0004aa5f86"
+      ],
+      "current_judgment_event_id": "ev-20261102-06",
+      "official_source_ids": [
+        "src-f9ecf66c18226a74",
+        "src-b61b7d0004aa5f86"
+      ],
+      "last_reviewed_at": "2026-11-03T17:02:48Z",
+      "judgment": {
+        "recommendation": "IGNORE",
+        "judgment_zh": "当前证据受争议，未达到可投入训练资源的门槛。",
+        "judgment_en": "Current evidence is contested and does not justify training investment.",
+        "next_action_zh": "当前不要投入训练资源；等待公开材料和独立复现。",
+        "next_action_en": "Do not invest training resources; wait for public artifacts and independent replication.",
+        "basis_event_ids": [
+          "ev-20261102-06"
+        ],
+        "reviewed_at": "2026-11-03T17:02:48Z"
+      }
+    },
+    {
+      "id": "openai-pando",
+      "name_zh": "OpenAI Pando",
+      "name_en": "OpenAI Pando",
+      "type": "source-control-backend",
+      "aliases": [
+        "Pando"
+      ],
+      "pattern": "OpenAI Pando",
+      "event_ids": [
+        "ev-20261102-07"
+      ],
+      "source_ids": [
+        "src-0504cb6dc0b8cf0b"
+      ],
+      "current_judgment_event_id": "ev-20261102-07",
+      "official_source_ids": [
+        "src-0504cb6dc0b8cf0b"
+      ],
+      "last_reviewed_at": "2026-11-03T17:02:48Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "内部生产架构证明 Git backend 会成为 agent 并发瓶颈，但 Pando 未对外开放。",
+        "judgment_en": "The internal architecture shows Git backends can bottleneck agent concurrency, but Pando is not externally available.",
+        "next_action_zh": "先量化并发 fetch、push、merge 与 CI fan-out，再决定是否重构。",
+        "next_action_en": "Measure concurrent fetch, push, merge and CI fan-out before considering a redesign.",
+        "basis_event_ids": [
+          "ev-20261102-07"
+        ],
+        "reviewed_at": "2026-11-03T17:02:48Z"
+      }
+    },
+    {
+      "id": "nvidia-auto-ontology",
+      "name_zh": "NVIDIA Auto Ontology",
+      "name_en": "NVIDIA Auto Ontology",
+      "type": "data-governance-framework",
+      "aliases": [
+        "Auto Ontology"
+      ],
+      "pattern": "NVIDIA Auto Ontology",
+      "event_ids": [
+        "ev-20261102-08"
+      ],
+      "source_ids": [
+        "src-834f867a45207691"
+      ],
+      "current_judgment_event_id": "ev-20261102-08",
+      "official_source_ids": [
+        "src-834f867a45207691"
+      ],
+      "last_reviewed_at": "2026-11-03T17:02:48Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开栈把语义定义、lineage 与 MCP 接口连起来，但答案质量仍需窄范围验证。",
+        "judgment_en": "The public stack connects semantics, lineage and MCP interfaces, but answer quality still needs narrow validation.",
+        "next_action_zh": "一天内接一张测试表，核对 schema、lineage、RBAC 和错误 SQL 拦截。",
+        "next_action_en": "Within one day, connect one test table and verify schema, lineage, RBAC and bad-SQL rejection.",
+        "basis_event_ids": [
+          "ev-20261102-08"
+        ],
+        "reviewed_at": "2026-11-03T17:02:48Z"
+      }
     }
   ],
-  "last_updated": "2026-11-02T16:56:00Z",
-  "total_projects": 188,
-  "last_updated_at": "2026-11-02T16:56:00Z"
+  "last_updated": "2026-11-04",
+  "total_projects": 194,
+  "last_updated_at": "2026-11-03T17:02:48Z"
 }
