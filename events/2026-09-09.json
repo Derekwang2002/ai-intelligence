@@ -104,8 +104,8 @@
     },
     {
       "event_id": "ev-20260909-02",
-      "title": "GitHub Copilot ships enterprise-managed permissions for agent operations",
-      "title_zh": "GitHub Copilot 把 agent 操作的企业级托管权限推到 GA",
+      "title": "GitHub exposes Copilot usage for BYOK and hosted custom models",
+      "title_zh": "GitHub 开放 Copilot BYOK 与托管自定义模型用量数据",
       "category": "developer-tools",
       "organization": [
         "GitHub",
@@ -113,7 +113,7 @@
       ],
       "published_at": "2026-09-09T00:00:00Z",
       "first_seen_at": "2026-09-11T18:31:49Z",
-      "last_updated_at": "2026-10-11T16:02:40Z",
+      "last_updated_at": "2026-11-04T16:56:21Z",
       "source_type": "official_docs",
       "primary_source": "https://github.blog/changelog/2026-09-09-enterprise-managed-permissions-for-github-copilot-agent-operations/",
       "secondary_sources": [
@@ -128,14 +128,15 @@
         "https://github.com/github/copilot-cli/releases/tag/v1.0.91",
         "https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available",
         "https://github.blog/changelog/2026-10-07-discover-local-models-in-github-copilot-cli",
-        "https://github.blog/changelog/2026-10-10-new-controls-and-chat-improvements-in-copilot-for-jetbrains/"
+        "https://github.blog/changelog/2026-10-10-new-controls-and-chat-improvements-in-copilot-for-jetbrains/",
+        "https://github.blog/changelog/2026-11-03-byok-and-enterprise-custom-models-in-the-copilot-usage-api/"
       ],
-      "summary": "GitHub Copilot now combines enterprise-managed block, ask and allow policies with local sandboxing, adoption telemetry and scheduled agent automation. October previews add approval-gated desktop computer use and code-defined dynamic workflows with parallel agents, structured results, verification and checkpoints. CLI 1.0.91 also tightens sandbox certificate handling and read-only pipeline classification.",
-      "why_it_matters": "Agent governance has moved from vendor talk to org-policy surfaces: the same block/ask/allow model Claude Code ships as managed settings is now GA across Copilot's app/CLI/IDE fleet, and the JetBrains sandbox preview extends it to the IDE. Combined with scheduled automation, Copilot agents can now run unattended inside org-defined guardrails — the governance half of the always-on agent stack.",
-      "summary_zh": "GitHub Copilot 已把企业级 block、ask、allow 策略与本地沙箱、采用遥测和定时 agent 自动化组合起来。10 月公开预览新增需审批的桌面 computer use，以及支持并行 agent、结构化结果、验证与 checkpoint 的代码化动态工作流。CLI 1.0.91 还收紧沙箱证书处理和只读流水线判定。",
-      "summary_en": "GitHub Copilot now combines enterprise-managed block, ask and allow policies with local sandboxing, adoption telemetry and scheduled agent automation. October previews add approval-gated desktop computer use and code-defined dynamic workflows with parallel agents, structured results, verification and checkpoints. CLI 1.0.91 also tightens sandbox certificate handling and read-only pipeline classification.",
-      "why_it_matters_zh": "Agent 治理从厂商口号变成了组织策略面：与 Claude Code 托管设置同款的 block/ask/allow 模型现在在 Copilot 的应用/CLI/IDE 全线 GA，JetBrains 沙箱预览又把它延伸到 IDE。配合定时自动化，Copilot agent 可以在组织定义的护栏内无人值守运行——补上了常驻 agent 栈的治理那一半。",
-      "why_it_matters_en": "Agent governance has moved from vendor talk to org-policy surfaces: the same block/ask/allow model Claude Code ships as managed settings is now GA across Copilot's app/CLI/IDE fleet, and the JetBrains sandbox preview extends it to the IDE. Combined with scheduled automation, Copilot agents can now run unattended inside org-defined guardrails — the governance half of the always-on agent stack.",
+      "summary": "GitHub added enterprise and organization usage reporting that separates locally billed BYOK models from GitHub-hosted custom models. The API does not backfill historical data, and disabled telemetry can undercount use. The change improves cost attribution but does not itself add model access.",
+      "why_it_matters": "For Copilot administrators, custom-model adoption can now be measured without mixing GitHub and external-provider billing. Baselines must start after enablement and document telemetry gaps.",
+      "summary_zh": "GitHub 新增企业与组织级用量报告，区分本地计费的 BYOK 模型和 GitHub 托管的自定义模型。该 API 不回填历史数据，关闭遥测也可能导致少计。此变化改善成本归因，但不会自行增加模型访问权限。",
+      "summary_en": "GitHub added enterprise and organization usage reporting that separates locally billed BYOK models from GitHub-hosted custom models. The API does not backfill historical data, and disabled telemetry can undercount use. The change improves cost attribution but does not itself add model access.",
+      "why_it_matters_zh": "对 Copilot 管理员来说，现在可以分别衡量自定义模型采用量，而不把 GitHub 与外部提供商的计费混在一起。基线必须从启用后开始，并记录遥测缺口。",
+      "why_it_matters_en": "For Copilot administrators, custom-model adoption can now be measured without mixing GitHub and external-provider billing. Baselines must start after enablement and document telemetry gaps.",
       "technical_details": {
         "managed_permissions_ga": "2026-09-09, GA; Copilot Business + Enterprise; applies to Copilot app, CLI, VS Code sessions on Agent Host; block/ask/allow for shell commands, file read/edit, network domains; overrides user/workspace settings, auto-approvals, saved approvals; per-team policies",
         "jetbrains_sandbox_preview": "2026-09-08, public preview; org-managed: sandbox enablement, filesystem/network access, proxy settings, dev-tool access, macOS Keychain access; controls locked in-IDE",
@@ -147,7 +148,10 @@
         "update_2026_09_26": "A new global default lets enterprises choose enabled, disabled or organization-controlled behavior for current and future eligible GA Copilot features, Code Review and MCP-server policy. It takes effect October 22, preserves explicit choices and keeps previews opt-in. Stays TRIAL; admins should set the default before enforcement begins.",
         "update_2026_10_02": "Public previews add approval-gated desktop computer use and code-defined dynamic workflows with parallel agents, structured results, verification and checkpoints; CLI 1.0.91 adds sandbox CA lifecycle commands and tighter read-only pipeline classification.",
         "update_2026_10_07": "Local sandboxing is GA across Copilot CLI, app and VS Code Agent Host with organization-enforced MXC policies. CLI 1.0.94-0 discovers tool-calling Ollama models; local selection does not disable GitHub telemetry unless offline mode is explicitly enabled.",
-        "update_2026_10_10_jetbrains": "Latest JetBrains plugin lets enterprises set the default model for new agent chats and disable automatic MCP startup for Copilot and Claude; JetBrains 2025.1 support ended."
+        "update_2026_10_10_jetbrains": "Latest JetBrains plugin lets enterprises set the default model for new agent chats and disable automatic MCP startup for Copilot and Claude; JetBrains 2025.1 support ended.",
+        "usage_reporting": "Enterprise and organization reports distinguish BYOK from GitHub-hosted custom models",
+        "limitations": "No historical backfill; telemetry-disabled clients can be undercounted",
+        "time_basis_2026_11_04": "GitHub feed published 2026-11-04T00:32:19Z"
       },
       "technical_details_zh": {
         "托管权限 GA": "2026-09-09，GA；Copilot Business + Enterprise；覆盖 Copilot 应用、CLI、Agent Host 上的 VS Code 会话；对 shell 命令、文件读写、网络域 block/ask/allow；覆盖用户/工作区设置、自动批准、已存批准；支持按团队",
@@ -160,7 +164,10 @@
         "2026-09-26 更新": "新的全局默认策略允许企业对当前及未来符合条件的 GA Copilot 功能、Code Review 与 MCP server policy 统一选择 enabled、disabled 或交给组织决定。策略将于 10 月 22 日生效，保留已有显式选择，preview 仍需主动启用。维持 TRIAL；管理员应在执行前设定默认值。",
         "2026-10-02 更新": "公开预览新增需审批的桌面 computer use，以及支持并行 agent、结构化结果、验证与 checkpoint 的代码化动态工作流；CLI 1.0.91 增加沙箱 CA 生命周期命令并收紧只读流水线判定。",
         "2026_10_07_更新": "本地沙箱在 Copilot CLI、应用与 VS Code Agent Host 全面 GA，可由组织通过 MXC 强制策略。CLI 1.0.94-0 可发现支持工具调用的 Ollama 模型；选择本地模型不会自动关闭 GitHub 遥测，仍需显式启用 offline mode。",
-        "2026-10-10 JetBrains 更新": "最新版插件允许企业为新 agent 对话设置默认模型，并关闭 Copilot 与 Claude 的 MCP server 自动启动；JetBrains 2025.1 已停止支持。"
+        "2026-10-10 JetBrains 更新": "最新版插件允许企业为新 agent 对话设置默认模型，并关闭 Copilot 与 Claude 的 MCP server 自动启动；JetBrains 2025.1 已停止支持。",
+        "用量报表": "企业与组织报告区分 BYOK 和 GitHub 托管自定义模型",
+        "限制": "不回填历史数据；关闭遥测的客户端可能少计",
+        "2026-11-04 时间依据": "GitHub feed 发布于 2026-11-04T00:32:19Z"
       },
       "tags": [
         "copilot",
@@ -192,7 +199,8 @@
         "src-81cdc3555a833682",
         "src-1e174328109aea32",
         "src-8241d56116d90ff3",
-        "src-a91405951b83e939"
+        "src-a91405951b83e939",
+        "src-fea0672800e8769b"
       ],
       "project_ids": [
         "github-copilot"
@@ -257,6 +265,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; RSS timestamp supplies exact publication time"
+        },
+        {
+          "id": "ev-20260909-02-custom-model-usage-evidence",
+          "claim_zh": "GitHub Changelog 说明了报表范围、不回填历史数据和遥测关闭的缺口。",
+          "claim_en": "GitHub Changelog documents report scope, lack of historical backfill and telemetry-off gaps.",
+          "source_ids": [
+            "src-fea0672800e8769b"
+          ],
+          "event_ids": [
+            "ev-20260909-02"
+          ],
+          "verification": "verified",
+          "relation": "update"
         }
       ],
       "changes": [
@@ -310,12 +331,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260909-02-custom-model-usage",
+          "kind": "update",
+          "occurred_at": "2026-11-04T00:32:19Z",
+          "discovered_at": "2026-11-04T16:56:21Z",
+          "summary_zh": "Copilot 用量 API 开始区分 BYOK 与 GitHub 托管自定义模型",
+          "summary_en": "Copilot usage APIs now distinguish BYOK from GitHub-hosted custom models",
+          "evidence_ids": [
+            "ev-20260909-02-custom-model-usage-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "short_label_zh": "GitHub Copilot",
-      "short_label_en": "GitHub Copilot",
-      "next_action_zh": "一天内在托管 JetBrains 环境验证默认模型、MCP 自动启动开关、重启和账号切换后的策略执行。",
-      "next_action_en": "Within one day, verify default-model and MCP auto-start policies across restart and account switching in managed JetBrains.",
+      "short_label_zh": "Copilot 自定义模型用量",
+      "short_label_en": "Copilot model usage",
+      "next_action_zh": "一天内导出企业与组织报表，核对 BYOK、托管模型、遥测关闭与账单口径。",
+      "next_action_en": "Within one day, export enterprise and organization reports and reconcile BYOK, hosted models, telemetry-off gaps and billing.",
       "last_reviewed_at": "2026-10-07T22:04:39Z"
     }
   ]

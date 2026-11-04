@@ -820,6 +820,210 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261102-09",
+      "title": "StateBench shows stateful assistants fail as environments keep changing",
+      "title_zh": "StateBench 显示环境持续变化时助手难以保持状态",
+      "category": "research",
+      "organization": [
+        "Hugging Face",
+        "academic"
+      ],
+      "published_at": "2026-11-02T13:12:15Z",
+      "first_seen_at": "2026-11-04T16:56:21Z",
+      "last_updated_at": "2026-11-04T16:56:21Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2611.03094",
+      "secondary_sources": [
+        "https://huggingface.co/blog/allenai/statebench",
+        "https://github.com/allenai/state-bench",
+        "https://huggingface.co/datasets/allenai/state-bench"
+      ],
+      "summary": "StateBench evaluates whether assistants can track changing facts across long interactions instead of recalling a static conversation. Its public dataset contains 18 subsets and about 16,300 canonical rows. The authors report that tested frontier models score at or below 13% on the hardest long-horizon setting.",
+      "why_it_matters": "For teams building persistent agents, retrieval quality alone is not enough: the system must revise stale state without erasing valid facts. The benchmark is useful for diagnosis, but its fixed variable counts and synthetic structure limit direct transfer to production.",
+      "summary_zh": "StateBench 评估助手能否在长交互中持续跟踪变化的事实，而不是只回忆静态对话。公开数据集包含 18 个子集，规范化后约 1.63 万行。作者报告称，受测前沿模型在最难的长程设置中得分不超过 13%。",
+      "summary_en": "StateBench evaluates whether assistants can track changing facts across long interactions instead of recalling a static conversation. Its public dataset contains 18 subsets and about 16,300 canonical rows. The authors report that tested frontier models score at or below 13% on the hardest long-horizon setting.",
+      "why_it_matters_zh": "对构建持久 agent 的团队来说，检索准确并不等于状态可靠：系统还要能替换过期事实，同时保留仍然有效的信息。这个 benchmark 适合定位问题，但固定变量数量和合成任务结构限制了它对生产场景的直接代表性。",
+      "why_it_matters_en": "For teams building persistent agents, retrieval quality alone is not enough: the system must revise stale state without erasing valid facts. The benchmark is useful for diagnosis, but its fixed variable counts and synthetic structure limit direct transfer to production.",
+      "technical_details": {
+        "dataset": "18 subsets; about 16,300 canonical rows",
+        "hardest_setting": "Tested frontier models at or below 13%, according to the authors",
+        "limitation": "Fixed variable counts and synthetic environments",
+        "time_basis": "arXiv v1 submitted 2026-11-02T13:12:15Z; Hugging Face article feed published 2026-11-03T17:15:21Z"
+      },
+      "technical_details_zh": {
+        "数据集": "18 个子集；规范化后约 1.63 万行",
+        "最难设置": "据作者报告，受测前沿模型得分不超过 13%",
+        "局限": "变量数量固定，环境为合成任务",
+        "时间依据": "arXiv v1 提交于 2026-11-02T13:12:15Z；Hugging Face 文章 feed 发布于 2026-11-03T17:15:21Z"
+      },
+      "tags": [
+        "agent-memory",
+        "evaluation",
+        "state-tracking"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "statebench-dynamic-state-tracking-benchmark",
+      "short_label_zh": "StateBench",
+      "short_label_en": "StateBench",
+      "next_action_zh": "等到真实业务轨迹或独立复现出现后，再评估是否纳入 agent memory 验收。",
+      "next_action_en": "Reassess for agent-memory acceptance testing after real-workflow traces or an independent replication appear.",
+      "source_ids": [
+        "src-3c8380c71967fe0f",
+        "src-4d4d1c7e8897bb00",
+        "src-9749f6686821a499",
+        "src-8d86676710497099"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261102-09-evidence",
+          "claim_zh": "论文、公开代码和数据集共同证明 StateBench 已可复现；性能结论仍来自作者评测。",
+          "claim_en": "The paper, public code and dataset establish that StateBench is reproducible; performance claims remain author-reported.",
+          "source_ids": [
+            "src-3c8380c71967fe0f",
+            "src-4d4d1c7e8897bb00",
+            "src-9749f6686821a499",
+            "src-8d86676710497099"
+          ],
+          "event_ids": [
+            "ev-20261102-09"
+          ],
+          "verification": "verified",
+          "relation": "supports"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261102-09-paper",
+          "kind": "new",
+          "occurred_at": "2026-11-02T13:12:15Z",
+          "discovered_at": "2026-11-04T16:56:21Z",
+          "summary_zh": "StateBench 公开论文、代码与数据集，测量 agent 对持续变化状态的跟踪能力",
+          "summary_en": "StateBench publishes a paper, code and dataset for tracking continuously changing agent state",
+          "evidence_ids": [
+            "ev-20261102-09-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "late_discovery": true
+    },
+    {
+      "event_id": "ev-20261102-10",
+      "title": "Moonshot AI releases Kimi K3.1 Pro weights and API",
+      "title_zh": "Moonshot AI 开放 Kimi K3.1 Pro 权重与 API",
+      "category": "foundation-model",
+      "organization": [
+        "Moonshot AI"
+      ],
+      "published_at": "2026-11-02T04:13:51Z",
+      "first_seen_at": "2026-11-04T16:56:21Z",
+      "last_updated_at": "2026-11-04T16:56:21Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+      "secondary_sources": [
+        "https://www.kimi.ai/blog/kimi-k3-1-pro",
+        "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart"
+      ],
+      "summary": "Moonshot AI released Kimi K3.1 Pro as an open-weight multimodal agent model and an API. The model card lists 2.8 trillion total parameters, 104 billion active parameters and a 1-million-token context window. Weights use MXFP4/MXFP8 quantization, while benchmark results are vendor-reported.",
+      "why_it_matters": "For teams comparing open-weight coding and multimodal agents, Kimi K3.1 Pro adds a very large sparse model with downloadable weights and hosted access. Self-hosting requires substantial infrastructure, and the custom license adds commercial conditions for large model-as-a-service businesses.",
+      "summary_zh": "Moonshot AI 开放了多模态 agent 模型 Kimi K3.1 Pro 的权重与 API。模型卡列出 2.8 万亿总参数、1040 亿激活参数和 100 万 token 上下文窗口。权重采用 MXFP4/MXFP8 量化；benchmark 成绩均由厂商报告。",
+      "summary_en": "Moonshot AI released Kimi K3.1 Pro as an open-weight multimodal agent model and an API. The model card lists 2.8 trillion total parameters, 104 billion active parameters and a 1-million-token context window. Weights use MXFP4/MXFP8 quantization, while benchmark results are vendor-reported.",
+      "why_it_matters_zh": "对比较开源权重 coding 与多模态 agent 的团队来说，Kimi K3.1 Pro 增加了一个可下载权重、也可托管调用的超大稀疏模型。自托管需要大量基础设施，定制许可也对大型模型服务商设置了商业条件。",
+      "why_it_matters_en": "For teams comparing open-weight coding and multimodal agents, Kimi K3.1 Pro adds a very large sparse model with downloadable weights and hosted access. Self-hosting requires substantial infrastructure, and the custom license adds commercial conditions for large model-as-a-service businesses.",
+      "technical_details": {
+        "architecture": "MoE; 2.8T total parameters; 104B active parameters",
+        "context_window": "1,048,576 tokens",
+        "modalities": "Text and image",
+        "quantization": "MXFP4 weights / MXFP8 activations",
+        "availability": "Downloadable weights and official API",
+        "license": "Custom Kimi K3.1-Pro license; large MaaS operators may need a separate agreement",
+        "time_basis": "Hugging Face repository created 2026-11-02T04:13:51Z"
+      },
+      "technical_details_zh": {
+        "架构": "MoE；2.8 万亿总参数；1040 亿激活参数",
+        "上下文窗口": "1,048,576 token",
+        "模态": "文本与图像",
+        "量化": "MXFP4 权重 / MXFP8 激活",
+        "可用性": "可下载权重与官方 API",
+        "许可": "定制 Kimi K3.1-Pro 许可；大型 MaaS 运营方可能需要单独协议",
+        "时间依据": "Hugging Face 仓库创建于 2026-11-02T04:13:51Z"
+      },
+      "tags": [
+        "open-weight",
+        "multimodal",
+        "coding",
+        "long-context"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "moonshot-kimi-k3-1-pro-open-weights-api",
+      "short_label_zh": "Kimi K3.1 Pro",
+      "short_label_en": "Kimi K3.1 Pro",
+      "next_action_zh": "一天内先用官方 API 跑内部 coding 与多模态小样本，并核对许可与托管成本。",
+      "next_action_en": "Within one day, run a small internal coding and multimodal set through the official API and review license and hosting cost.",
+      "source_ids": [
+        "src-f4a904d03d800a16",
+        "src-bf44de9e544de4cb",
+        "src-0bd2195d435101ee"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "coding",
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261102-10-evidence",
+          "claim_zh": "官方模型卡、权重仓库、技术博客和 API 文档确认模型已可下载与调用；性能仍为厂商评测。",
+          "claim_en": "The official model card, weight repository, technical blog and API documentation confirm downloadable and callable availability; performance remains vendor-reported.",
+          "source_ids": [
+            "src-f4a904d03d800a16",
+            "src-bf44de9e544de4cb",
+            "src-0bd2195d435101ee"
+          ],
+          "event_ids": [
+            "ev-20261102-10"
+          ],
+          "verification": "verified",
+          "relation": "supports"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261102-10-release",
+          "kind": "new",
+          "occurred_at": "2026-11-02T04:13:51Z",
+          "discovered_at": "2026-11-04T16:56:21Z",
+          "summary_zh": "Kimi K3.1 Pro 公开权重与 API",
+          "summary_en": "Kimi K3.1 Pro releases weights and API",
+          "evidence_ids": [
+            "ev-20261102-10-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

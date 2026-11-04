@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.106 makes remote MCP identity safer and disables stdio by default",
-      "title_zh": "LiteLLM 1.106 加固远程 MCP 身份并默认关闭 stdio",
+      "title": "LiteLLM 1.108 tightens credentials, MCP sessions and streaming guardrails",
+      "title_zh": "LiteLLM 1.108 收紧凭据、MCP 会话与流式护栏",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-10-25T15:57:07Z",
+      "last_updated_at": "2026-11-04T16:56:21Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -28,14 +28,15 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.106.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.107.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.106.3",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.106.4"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.106.4",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.0"
       ],
-      "summary": "LiteLLM 1.107.0 expands the stable gateway with Microsoft 365 Copilot and per-user GitHub Copilot OAuth, additional Decisions providers, signed-container verification and request-failure analytics. It also hardens MCP bearer propagation, Bedrock tool calls, spend accounting and OpenAI SDK 3 compatibility. The large aggregated release still requires a production-shaped canary.",
-      "why_it_matters": "For teams using LiteLLM as an agent gateway, the safer defaults reduce credential spillover but can break local MCP setups. Enterprise-only items and release-note aggregation mean the final entitlement and behavior must be checked in a production-shaped canary.",
-      "summary_zh": "LiteLLM 1.107.0 在稳定版 gateway 中加入 Microsoft 365 Copilot、按用户 GitHub Copilot OAuth、更多 Decisions provider、容器签名验证和请求失败分析。它还加固 MCP bearer 传递、Bedrock 工具调用、费用记账与 OpenAI SDK 3 兼容。这个大版本汇总改动很多，仍需类生产 canary。",
-      "summary_en": "LiteLLM 1.107.0 expands the stable gateway with Microsoft 365 Copilot and per-user GitHub Copilot OAuth, additional Decisions providers, signed-container verification and request-failure analytics. It also hardens MCP bearer propagation, Bedrock tool calls, spend accounting and OpenAI SDK 3 compatibility. The large aggregated release still requires a production-shaped canary.",
-      "why_it_matters_zh": "对把 LiteLLM 当作 agent gateway 的团队来说，更安全的默认值能减少凭据外溢，但可能直接打断本地 MCP。部分能力仅限企业版，release note 又汇总了较长变更区间，因此必须在类生产 canary 中核对实际权限与行为。",
-      "why_it_matters_en": "For teams using LiteLLM as an agent gateway, the safer defaults reduce credential spillover but can break local MCP setups. Enterprise-only items and release-note aggregation mean the final entitlement and behavior must be checked in a production-shaped canary.",
+      "summary": "LiteLLM 1.108 ships signed images and fixes credential-exposure paths. It expands MCP OAuth, session and toolset controls, adds streaming guardrails, and repairs budget accounting and admission behavior. The release is broad enough that production gateways should canary it instead of upgrading in place.",
+      "why_it_matters": "For teams using LiteLLM as a shared model gateway, identity, budget and streamed-output enforcement sit on the request boundary. A regression there can leak credentials or bypass controls, so the security gains come with meaningful upgrade risk.",
+      "summary_zh": "LiteLLM 1.108 提供签名镜像，并修复凭据暴露路径。该版扩展 MCP OAuth、会话和 toolset 控制，加入流式护栏，同时修复预算记账与准入行为。改动面较大，生产 gateway 应先做 canary，而不是原地升级。",
+      "summary_en": "LiteLLM 1.108 ships signed images and fixes credential-exposure paths. It expands MCP OAuth, session and toolset controls, adds streaming guardrails, and repairs budget accounting and admission behavior. The release is broad enough that production gateways should canary it instead of upgrading in place.",
+      "why_it_matters_zh": "对把 LiteLLM 用作共享模型 gateway 的团队来说，身份、预算和流式输出护栏都位于请求边界。这里的回归可能泄露凭据或绕过控制，因此安全收益伴随明显升级风险。",
+      "why_it_matters_en": "For teams using LiteLLM as a shared model gateway, identity, budget and streamed-output enforcement sit on the request boundary. A regression there can leak credentials or bypass controls, so the security gains come with meaningful upgrade risk.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -55,7 +56,10 @@
         "supply_chain_change": "Container image signing key changed; old cosign verification policies will fail until updated. The eMudhra root CA was removed.",
         "image_digest": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
         "time_basis": "GitHub release published 2026-10-25T09:39:15Z.",
-        "update_2026_10_25": "1.106.4 fixes proxy startup failures when the remote model-cost map is unavailable and removes several container-scan false positives; fixes are backported to 1.104.7 and 1.105.5."
+        "update_2026_10_25": "1.106.4 fixes proxy startup failures when the remote model-cost map is unavailable and removes several container-scan false positives; fixes are backported to 1.104.7 and 1.105.5.",
+        "latest_stable": "1.108.0",
+        "release_2026_11_04": "Signed images; credential leak fixes; MCP OAuth/session/toolsets; streaming guardrails; budget and admission repairs",
+        "time_basis_2026_11_04": "GitHub release published 2026-11-04T03:35:33Z"
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -76,7 +80,10 @@
         "供应链变化": "容器镜像签名密钥已更换；旧 cosign 校验策略会失败，eMudhra root CA 也已移除。",
         "镜像摘要": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
         "时间依据": "GitHub release 发布于 2026-10-25T09:39:15Z。",
-        "2026-10-25 更新": "1.106.4 修复远程模型成本表不可达时 proxy 启动 ImportError，并消除多项容器扫描误报；修复也回移到 1.104.7 与 1.105.5。"
+        "2026-10-25 更新": "1.106.4 修复远程模型成本表不可达时 proxy 启动 ImportError，并消除多项容器扫描误报；修复也回移到 1.104.7 与 1.105.5。",
+        "最新稳定版": "1.108.0",
+        "2026-11-04 更新": "签名镜像；凭据泄露修复；MCP OAuth/session/toolset；流式护栏；预算与准入修复",
+        "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T03:35:33Z"
       },
       "tags": [
         "litellm",
@@ -107,7 +114,8 @@
         "src-fe3326f4dbcaa51b",
         "src-1e8b991416e8869f",
         "src-26c451a3ba9575d2",
-        "src-8bf6776408f8d7ad"
+        "src-8bf6776408f8d7ad",
+        "src-3d6c3b6b91b94492"
       ],
       "project_ids": [
         "mcp"
@@ -235,6 +243,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-evidence",
+          "claim_zh": "官方 release 列出了签名镜像、安全修复、MCP OAuth/session/toolset、流式护栏及预算修复。",
+          "claim_en": "The official release lists signed images, security fixes, MCP OAuth/session/toolsets, streaming guardrails and budget repairs.",
+          "source_ids": [
+            "src-3d6c3b6b91b94492"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "verification": "verified",
+          "relation": "update"
         }
       ],
       "changes": [
@@ -353,13 +374,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108",
+          "kind": "update",
+          "occurred_at": "2026-11-04T03:35:33Z",
+          "discovered_at": "2026-11-04T16:56:21Z",
+          "summary_zh": "1.108 增加签名镜像并加固凭据、MCP 会话、流式护栏与预算控制",
+          "summary_en": "Version 1.108 adds signed images and hardens credentials, MCP sessions, streaming guardrails and budgets",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-108-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "升级到 1.106.4 后断开远程成本表，回归 proxy 启动、路由和本地成本覆盖。",
-      "next_action_en": "After upgrading to 1.106.4, block the remote cost map and regress proxy startup, routing and local cost overrides.",
-      "short_label_zh": "LiteLLM 1.106.4",
-      "short_label_en": "LiteLLM 1.106.4"
+      "next_action_zh": "一天内以 canary 回归签名镜像、MCP OAuth、流式护栏、预算并发与失败回滚。",
+      "next_action_en": "Within one day, canary signed images, MCP OAuth, streaming guardrails, concurrent budgets and rollback on failure.",
+      "short_label_zh": "LiteLLM 1.108",
+      "short_label_en": "LiteLLM 1.108"
     }
   ]
 }

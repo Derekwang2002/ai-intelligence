@@ -721,6 +721,107 @@
       "short_label_en": "AI training signal",
       "next_action_zh": "继续保留各厂商 crawler 规则；等三家正式生效并公布一致性测试后再评估迁移。",
       "next_action_en": "Keep provider-specific crawler rules; reassess migration after all three implementations are live and interoperability tests are published."
+    },
+    {
+      "event_id": "ev-20261030-08",
+      "title": "Microsoft releases a 4B model that routes between GUI and terminal tools",
+      "title_zh": "Microsoft 开放可在 GUI 与终端间路由的 4B 模型",
+      "category": "open-source",
+      "organization": [
+        "Microsoft"
+      ],
+      "published_at": "2026-10-30T12:13:24Z",
+      "first_seen_at": "2026-11-04T16:56:21Z",
+      "last_updated_at": "2026-11-04T16:56:21Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/microsoft/Mage-VL-Cowork",
+      "secondary_sources": [
+        "https://github.com/microsoft/Mage/tree/main/mage_vl_cowork",
+        "https://microsoft.github.io/Mage/cowork/"
+      ],
+      "summary": "Microsoft released Mage-VL-Cowork, a 4B Apache-2.0 vision-language model trained to choose between GUI interaction and terminal execution. The public package includes weights, code and a training recipe. The authors report 66.0% on 361 held-out OSWorld-Verified tasks under a 50-step budget.",
+      "why_it_matters": "For teams testing local computer-use agents, Mage-VL-Cowork is small enough to study without a frontier API and exposes its hybrid-tool training pipeline. The reported score is author-run, excludes Google Drive and averages two runs, so internal workflows still need direct validation.",
+      "summary_zh": "Microsoft 开放了 Mage-VL-Cowork：一个会在 GUI 操作与终端执行之间选择路径的 4B 视觉语言模型，采用 Apache-2.0 许可。公开材料包含权重、代码和训练配方。作者报告其在 361 个留出 OSWorld-Verified 任务、50 步预算下取得 66.0%。",
+      "summary_en": "Microsoft released Mage-VL-Cowork, a 4B Apache-2.0 vision-language model trained to choose between GUI interaction and terminal execution. The public package includes weights, code and a training recipe. The authors report 66.0% on 361 held-out OSWorld-Verified tasks under a 50-step budget.",
+      "why_it_matters_zh": "对测试本地 computer-use agent 的团队来说，Mage-VL-Cowork 足够小，可在不依赖前沿 API 的情况下研究混合工具路由，并公开了训练流水线。成绩由作者运行，排除 Google Drive 且取两次平均，因此仍需用内部工作流实测。",
+      "why_it_matters_en": "For teams testing local computer-use agents, Mage-VL-Cowork is small enough to study without a frontier API and exposes its hybrid-tool training pipeline. The reported score is author-run, excludes Google Drive and averages two runs, so internal workflows still need direct validation.",
+      "technical_details": {
+        "parameters": "4B",
+        "license": "Apache-2.0",
+        "tools": "computer_use and bash in one policy",
+        "training": "Five-stage curriculum with public code and recipe",
+        "evaluation": "66.0% author-reported average on 361 held-out OSWorld-Verified tasks, excluding Google Drive, 50-step budget",
+        "time_basis": "Hugging Face repository created 2026-10-30T12:13:24Z"
+      },
+      "technical_details_zh": {
+        "参数": "4B",
+        "许可": "Apache-2.0",
+        "工具": "单一策略内使用 computer_use 与 bash",
+        "训练": "五阶段课程；公开代码与配方",
+        "评测": "作者报告在 361 个留出 OSWorld-Verified 任务上两次平均 66.0%，排除 Google Drive，50 步预算",
+        "时间依据": "Hugging Face 仓库创建于 2026-10-30T12:13:24Z"
+      },
+      "tags": [
+        "computer-use",
+        "open-weight",
+        "vision-language-model",
+        "tool-routing"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "microsoft-mage-vl-cowork-4b-hybrid-agent",
+      "short_label_zh": "Mage-VL-Cowork",
+      "short_label_en": "Mage-VL-Cowork",
+      "next_action_zh": "一天内用公开权重跑 5 个 GUI 与终端混合任务，记录路由、步数和失败恢复。",
+      "next_action_en": "Within one day, run five mixed GUI-and-terminal tasks with the public weights and record routing, steps and recovery.",
+      "source_ids": [
+        "src-55ffde0d65a11360",
+        "src-7e63ccdc43b0fa69",
+        "src-a3470a616e54733f"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261030-08-evidence",
+          "claim_zh": "官方模型卡与代码仓库确认权重、代码、许可和训练配方已公开；成绩来自作者评测。",
+          "claim_en": "The official model card and repository confirm public weights, code, license and training recipe; scores are author-reported.",
+          "source_ids": [
+            "src-55ffde0d65a11360",
+            "src-7e63ccdc43b0fa69",
+            "src-a3470a616e54733f"
+          ],
+          "event_ids": [
+            "ev-20261030-08"
+          ],
+          "verification": "verified",
+          "relation": "supports"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261030-08-release",
+          "kind": "new",
+          "occurred_at": "2026-10-30T12:13:24Z",
+          "discovered_at": "2026-11-04T16:56:21Z",
+          "summary_zh": "Mage-VL-Cowork 公开 4B 权重、代码与混合工具训练配方",
+          "summary_en": "Mage-VL-Cowork releases 4B weights, code and a hybrid-tool training recipe",
+          "evidence_ids": [
+            "ev-20261030-08-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

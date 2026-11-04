@@ -470,8 +470,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.26.6 exposes agent activity and tightens managed recovery",
-      "title_zh": "Qwen Code 0.26.6 展示 agent 活动并收紧托管恢复",
+      "title": "Qwen Code 0.26.7 adds folder trust and isolated pull-request verification",
+      "title_zh": "Qwen Code 0.26.7 增加目录信任与隔离 PR 验证",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -479,7 +479,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-11-03T17:02:48Z",
+      "last_updated_at": "2026-11-04T16:56:21Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
       "secondary_sources": [
@@ -497,14 +497,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.4",
         "https://github.com/QwenLM/qwen-code/releases/tag/cua-driver-rs-v0.27.0",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.6"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.6",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.7"
       ],
-      "summary": "Qwen Code 0.26.6 adds a Web Shell activity view for approvals, errors and running work, plus per-model success rate, output speed and first-token latency. Managed recovery now refuses gap filling without child-ledger evidence and distinguishes unknown from never-started work. It also fixes MCP name collisions, OAuth lock ownership and hidden control characters in approval text.",
-      "why_it_matters": "For teams piloting managed coding agents, the release makes activity, performance and recovery evidence easier to inspect. The unified loop and managed deployment remain experimental, so keep the rating at TRIAL.",
-      "summary_zh": "Qwen Code 0.26.6 在 Web Shell 中展示审批、错误、运行中任务和未读完成，并按模型显示成功率、输出速度与首 token 延迟。托管恢复现在会拒绝缺少 child ledger 证据的补写，并区分未知状态与从未启动。该版还修复 MCP 工具重名、OAuth 锁归属，以及审批文本里的隐藏控制字符。",
-      "summary_en": "Qwen Code 0.26.6 adds a Web Shell activity view for approvals, errors and running work, plus per-model success rate, output speed and first-token latency. Managed recovery now refuses gap filling without child-ledger evidence and distinguishes unknown from never-started work. It also fixes MCP name collisions, OAuth lock ownership and hidden control characters in approval text.",
-      "why_it_matters_zh": "对试跑托管 coding agent 的团队来说，这一版让活动、性能与恢复证据更容易检查。unified loop 和托管部署仍属实验功能，因此维持 TRIAL。",
-      "why_it_matters_en": "For teams piloting managed coding agents, the release makes activity, performance and recovery evidence easier to inspect. The unified loop and managed deployment remain experimental, so keep the rating at TRIAL.",
+      "summary": "Qwen Code 0.26.7 adds explicit folder trust and a /verify-pr workflow that runs pull-request checks in Docker while brokering host credentials through a proxy. Remote serving is opt-in and token-protected. The release also narrows polling and improves Claude-compatible tool selection.",
+      "why_it_matters": "For teams evaluating an open coding agent, the release puts repository trust and PR verification on more explicit boundaries. The credential proxy and remote server still need adversarial testing before production use.",
+      "summary_zh": "Qwen Code 0.26.7 增加显式目录信任，以及在 Docker 中运行 pull request 检查的 /verify-pr 流程；宿主机凭据通过代理转交。远程服务默认关闭，启用后需 token。该版还收紧轮询范围，并改善 Claude 兼容工具选择。",
+      "summary_en": "Qwen Code 0.26.7 adds explicit folder trust and a /verify-pr workflow that runs pull-request checks in Docker while brokering host credentials through a proxy. Remote serving is opt-in and token-protected. The release also narrows polling and improves Claude-compatible tool selection.",
+      "why_it_matters_zh": "对评估开源 coding agent 的团队来说，这一版把仓库信任和 PR 验证放到更明确的边界上。凭据代理与远程服务仍需在生产前做对抗测试。",
+      "why_it_matters_en": "For teams evaluating an open coding agent, the release puts repository trust and PR verification on more explicit boundaries. The credential proxy and remote server still need adversarial testing before production use.",
       "technical_details": {
         "latest_version": "0.26.5 stable",
         "availability": "public GitHub release",
@@ -514,9 +515,11 @@
         "verification": "isolated verification workspace",
         "reliability": "recovery, locking and CUA 0.27 integration fixes",
         "time_basis": "GitHub release published 2026-11-01T03:22:50Z inside the scan window.",
-        "latest_stable": "0.26.6",
+        "latest_stable": "0.26.7",
         "release_2026_11_02": "Web Shell activity and performance telemetry; evidence-gated managed recovery; MCP/OAuth/approval hardening",
-        "time_basis_2026_11_02": "GitHub release published 2026-11-02T18:22:40Z"
+        "time_basis_2026_11_02": "GitHub release published 2026-11-02T18:22:40Z",
+        "release_2026_11_04": "Folder trust; /verify-pr Docker workflow; host credential proxy; opt-in token-protected remote server",
+        "time_basis_2026_11_04": "GitHub release published 2026-11-04T04:03:01Z"
       },
       "technical_details_zh": {
         "最新版本": "0.26.5 stable",
@@ -527,8 +530,10 @@
         "验证": "隔离验证 workspace",
         "可靠性": "恢复、锁与 CUA 0.27 集成修复",
         "时间依据": "GitHub release published 2026-11-02T18:22:40Z",
-        "最新稳定版": "0.26.6",
-        "2026-11-02 更新": "Web Shell 活动与性能遥测、证据门控的托管恢复，以及 MCP/OAuth/审批加固"
+        "最新稳定版": "0.26.7",
+        "2026-11-02 更新": "Web Shell 活动与性能遥测、证据门控的托管恢复，以及 MCP/OAuth/审批加固",
+        "2026-11-04 更新": "目录信任；/verify-pr Docker 流程；宿主凭据代理；默认关闭且受 token 保护的远程服务",
+        "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T04:03:01Z"
       },
       "tags": [
         "qwen-code",
@@ -565,7 +570,8 @@
         "src-a453883ae6f4e4d8",
         "src-c5472a4b861d06cf",
         "src-1f4372e601a22d0e",
-        "src-2a777a814a6a2aef"
+        "src-2a777a814a6a2aef",
+        "src-9b185ead5eb76797"
       ],
       "project_ids": [
         "qwen-code"
@@ -770,6 +776,19 @@
           ],
           "relation": "support",
           "verification": "verified"
+        },
+        {
+          "id": "ev-20260922-04-qwen-code-0-26-7-evidence",
+          "claim_zh": "官方 release 说明了目录信任、隔离验证、凭据代理和远程服务的边界。",
+          "claim_en": "The official release documents folder trust, isolated verification, credential brokering and remote-serving boundaries.",
+          "source_ids": [
+            "src-9b185ead5eb76797"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "verification": "verified",
+          "relation": "update"
         }
       ],
       "changes": [
@@ -964,6 +983,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-code-0-26-7",
+          "kind": "update",
+          "occurred_at": "2026-11-04T04:03:01Z",
+          "discovered_at": "2026-11-04T16:56:21Z",
+          "summary_zh": "0.26.7 增加目录信任、Docker PR 验证和受 token 保护的远程服务",
+          "summary_en": "Version 0.26.7 adds folder trust, Docker PR verification and token-protected remote serving",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-code-0-26-7-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -973,10 +1005,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.26.6",
-      "short_label_en": "Qwen Code 0.26.6",
-      "next_action_zh": "一天内在隔离仓库测试 ledger 缺口、MCP 重名、审批文本与 Web Shell 指标。",
-      "next_action_en": "Within one day, test ledger gaps, MCP name collisions, approval text and Web Shell metrics in an isolated repository."
+      "short_label_zh": "Qwen Code 0.26.7",
+      "short_label_en": "Qwen Code 0.26.7",
+      "next_action_zh": "一天内用恶意 PR 测试目录信任、Docker 隔离、凭据代理与远程 token。",
+      "next_action_en": "Within one day, use a hostile PR to test folder trust, Docker isolation, the credential proxy and remote token."
     },
     {
       "event_id": "ev-20260922-05",

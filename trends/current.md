@@ -1,11 +1,11 @@
-# 当前趋势看板 — 2026-11-03T17:02Z
+# 当前趋势看板 — 2026-11-04T16:56Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-11-04
+- **Last updated:** 2026-11-05
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（维持；判据复核 @2026-09-14：(a) 仍未达成，没有新的第三方 Terminal-Bench / SWE 权重复现；(b) 已由 DeepSeek V4.1 Flash 达成；(c) serving 生态新增跨模型、跨框架的合并代码——vLLM 为 DeepSeek 合并 DeepSelect 与 Engram 路径，SGLang 为 Qwen NVFP4 合并单 DGX Spark 路径；升 High 仍仅剩 (a)）
 - **Why It Matters:** 升级为 strengthening 的依据：确认判据「GLM-5.3 权重落地 + 独立 benchmark 复现」实质达成——权重 8/25 落地且许可证宽松可用，Artificial Analysis 独立评测把 GLM-5.3 放到与 Kimi K3 同档。GLM-5.3-Flash（纯 MIT、全新底座、线性注意力降本）是同组织的加强信号。仍未到 High，只因为 Artificial Analysis 的独立评测针对 API，尚无社区对公开权重的 Terminal-Bench 或 SWE 复现；跨组织同级别发布与持续下载增速判据均已达成。
@@ -33,6 +33,7 @@
 18. 18. vLLM 0.30.0 tagged stable（2026-09-22，ev-20260922-01）：此前在 main 的 DeepSeek V4.1、GLM-5.3、Qwen3.8 等开放权重模型 serving 路径进入稳定发布，并加入常驻 GPU 权重缓存、HiSparse 主机 KV tier 和大规模安全加固；serving 采用证据增强，但仍不是公开权重的第三方 Terminal-Bench / SWE 复现。
 19. 19. Hy4 30 天采用复核（2026-09-27，ev-20260828-02）：主仓月下载量从 9 月 11 日的 8,219 增至 22,788（+177%），但仍只有 preview 与 FP8 仓库。HF 展示的榜单元数据缺少可复现运行和具名独立评测方，因此只能加强采用信号，不能满足独立复现判据。
 20. Nanbeige4.3-33B 开放 33B/512K 权重，但目前只有发布方评测。
+21. 2026-11-05：Moonshot AI 公开 Kimi K3.1 Pro 权重与 API；Microsoft 公开 4B Mage-VL-Cowork 权重、代码和训练配方。
 
 ### 逐次复核
 
@@ -107,6 +108,7 @@
 - 2026-11-01T16:58:20Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-02T16:56:00Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-04：本轮没有发现足以改变判断的新信号。
+- 2026-11-05：Kimi K3.1 Pro 与 Mage-VL-Cowork 分别补充超大多模态 agent 模型和小型混合 computer-use 模型，趋势继续增强。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
@@ -209,6 +211,7 @@
 - 2026-11-01T16:58:20Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-02T16:56:00Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-04：跨框架 MCP poisoning 研究用真实工具执行确认了出网与 secret exfiltration 风险，但公开代码尚未定位，维持 emerging / Medium。
+- 2026-11-05：本轮没有改变该趋势判断的新信号。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
@@ -323,6 +326,7 @@
 - 2026-11-01T16:58:20Z：Qwen Code 0.26.5 的受控交接与 Rapid-MLX 1.0 的本地 harness，继续强化 coding agent 向持久运行时发展的信号。
 - 2026-11-02T16:56:00Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-04：本轮没有发现足以改变判断的新信号。
+- 2026-11-05：本轮没有改变该趋势判断的新信号。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -421,6 +425,7 @@
 - 2026-11-01T16:58:20Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-02T16:56:00Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-04：本轮没有发现足以改变判断的新信号。
+- 2026-11-05：本轮没有改变该趋势判断的新信号。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
@@ -504,6 +509,7 @@
 - 2026-11-01T16:58:20Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-02T16:56:00Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-04：本轮没有发现足以改变判断的新信号。
+- 2026-11-05：本轮没有改变该趋势判断的新信号。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -585,13 +591,14 @@
 - 2026-11-01T16:58:20Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-02T16:56:00Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-04：本轮没有发现足以改变判断的新信号。
+- 2026-11-05：本轮没有改变该趋势判断的新信号。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-11-04
+- **Last updated:** 2026-11-05
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -626,6 +633,7 @@
 25. 2026-10-22 至 23：Claude Code 2.1.309 修补沙箱、symlink、MCP 配置与 Bash deny 绕过；EpiSEM-Bench 显示真实但缺关键事实的工具输出仍可诱发越权。
 26. 2026-10-23：Codex 0.164.0 加入企业 MCP 认证、远程 shell 凭据遮蔽，并修复多条本地执行边界。
 27. 2026-11-02 至 3 日：Claude Code 2.1.317 加入失败即阻断 hook、邮箱出网确认与 connector 警告；Qwen Code 0.26.6 拒绝在缺少 child ledger 证据时补写恢复状态。
+28. 2026-11-05：Claude Code 2.1.318 修复恢复一致性，Qwen Code 0.26.7 加入目录信任与隔离 PR 验证，LiteLLM 1.108 加固凭据和流式护栏。
 
 ### 逐次复核
 
@@ -679,5 +687,6 @@
 - 2026-11-01T16:58:20Z：Rapid-MLX 的无沙箱终端与 Qwen 的隔离验证形成对照，继续说明执行能力与策略控制必须分别验收。
 - 2026-11-02T16:56:00Z：本轮没有发现足以改变该趋势判断的新信号。
 - 2026-11-04：Claude Code 的失败即阻断与出网确认、Qwen 的证据门控恢复继续强化能力和后果控制分层；统一策略仍缺，维持 strengthening / Medium。
+- 2026-11-05：Claude Code、Qwen Code 与 LiteLLM 同日继续把恢复、信任、凭据和护栏从能力层拆到执行控制层。
 
 ## Invalidated / retired

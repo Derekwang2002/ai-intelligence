@@ -54,7 +54,8 @@
         "src-dc8a856f8c6596f8",
         "src-fbfedaa618aab83d",
         "src-11bfb616c2334a07",
-        "src-ddf42b69c8e05c7b"
+        "src-ddf42b69c8e05c7b",
+        "src-797aba84ba3e9103"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -83,19 +84,20 @@
         "src-dc8a856f8c6596f8",
         "src-fbfedaa618aab83d",
         "src-11bfb616c2334a07",
-        "src-ddf42b69c8e05c7b"
+        "src-ddf42b69c8e05c7b",
+        "src-797aba84ba3e9103"
       ],
-      "last_reviewed_at": "2026-11-03T17:02:48Z",
+      "last_reviewed_at": "2026-11-04T16:56:21Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.317 把 hook 失败、邮箱出网、connector 变化与成本归因纳入显式控制，并修复多条恢复路径。适合在回归后升级。",
-        "judgment_en": "Version 2.1.317 adds explicit controls for hook failure, email egress, connector changes and cost attribution, while fixing several recovery paths. Adopt after regression testing.",
-        "next_action_zh": "升级后回归 hook 失败、邮箱出网、connector 变化、磁盘写满与 runner 切换。",
-        "next_action_en": "After upgrading, regress hook failure, email egress, connector changes, full disks and runner failover.",
+        "judgment_zh": "2.1.318 集中修复长会话恢复与共享环境问题，适合回归后升级。",
+        "judgment_en": "Version 2.1.318 concentrates on long-session recovery and shared-environment correctness; adopt after regression testing.",
+        "next_action_zh": "升级前回归续接、压缩、无头运行、共享主目录和配置写入。",
+        "next_action_en": "Before upgrading, regress resume, compaction, headless runs, shared homes and configuration writes.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-11-03T17:02:48Z"
+        "reviewed_at": "2026-11-04T16:56:21Z"
       }
     },
     {
@@ -126,7 +128,8 @@
         "src-a453883ae6f4e4d8",
         "src-c5472a4b861d06cf",
         "src-1f4372e601a22d0e",
-        "src-2a777a814a6a2aef"
+        "src-2a777a814a6a2aef",
+        "src-9b185ead5eb76797"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -142,19 +145,20 @@
         "src-a453883ae6f4e4d8",
         "src-c5472a4b861d06cf",
         "src-1f4372e601a22d0e",
-        "src-2a777a814a6a2aef"
+        "src-2a777a814a6a2aef",
+        "src-9b185ead5eb76797"
       ],
-      "last_reviewed_at": "2026-11-03T17:02:48Z",
+      "last_reviewed_at": "2026-11-04T16:56:21Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.26.6 增加 agent 活动与性能可见性，并收紧托管恢复的证据要求。unified loop 与托管部署仍属实验功能。",
-        "judgment_en": "Version 0.26.6 adds agent activity and performance visibility and tightens evidence requirements for managed recovery. The unified loop and managed deployment remain experimental.",
-        "next_action_zh": "一天内在隔离仓库测试 ledger 缺口、MCP 重名、审批文本与 Web Shell 指标。",
-        "next_action_en": "Within one day, test ledger gaps, MCP name collisions, approval text and Web Shell metrics in an isolated repository.",
+        "judgment_zh": "0.26.7 把目录信任和隔离 PR 验证做得更明确；远程服务与凭据代理仍需试验。",
+        "judgment_en": "Version 0.26.7 makes folder trust and isolated PR verification explicit; remote serving and credential brokering still need testing.",
+        "next_action_zh": "一天内用恶意 PR 测试目录信任、Docker 隔离、凭据代理与远程 token。",
+        "next_action_en": "Within one day, test folder trust, Docker isolation, the credential proxy and remote token with a hostile PR.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-11-03T17:02:48Z"
+        "reviewed_at": "2026-11-04T16:56:21Z"
       }
     },
     {
@@ -199,7 +203,8 @@
         "src-3a42b69a6860fcc9",
         "src-449b1014bc1499c1",
         "src-9c21ebfce635a8a5",
-        "src-a1a6f10b85667b9c"
+        "src-a1a6f10b85667b9c",
+        "src-fea0672800e8769b"
       ],
       "current_judgment_event_id": "ev-20261028-03",
       "official_source_ids": [
@@ -213,15 +218,16 @@
         "src-3a42b69a6860fcc9",
         "src-449b1014bc1499c1",
         "src-9c21ebfce635a8a5",
-        "src-a1a6f10b85667b9c"
+        "src-a1a6f10b85667b9c",
+        "src-fea0672800e8769b"
       ],
-      "last_reviewed_at": "2026-10-29T16:05:08Z",
+      "last_reviewed_at": "2026-11-04T16:56:21Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Copilot 云会话已在付费方案 GA，跨端恢复与共享 Actions 额度值得验证；快照隔离和实际计费仍需实测。",
-        "judgment_en": "Copilot cloud sessions are GA on paid plans; cross-surface recovery and the shared Actions entitlement merit testing, while snapshot isolation and real billing still need validation.",
-        "next_action_zh": "一天内跨 CLI 与网页续接测试会话，核对隔离、MCP allowlist 与费用。",
-        "next_action_en": "Within one day, resume a test session across CLI and web; verify isolation, MCP allowlists and charges.",
+        "judgment_zh": "自定义模型用量现可按 BYOK 与托管模型拆分，但历史不回填且遥测关闭会少计。",
+        "judgment_en": "Custom-model use can now be split between BYOK and hosted models, but history is not backfilled and telemetry-off use can be undercounted.",
+        "next_action_zh": "一天内对齐报表、遥测缺口与账单口径。",
+        "next_action_en": "Within one day, reconcile reports, telemetry gaps and billing.",
         "basis_event_ids": [
           "ev-20260909-02",
           "ev-20260917-07",
@@ -230,7 +236,7 @@
           "ev-20261027-01",
           "ev-20261028-03"
         ],
-        "reviewed_at": "2026-10-29T16:05:08Z"
+        "reviewed_at": "2026-11-04T16:56:21Z"
       }
     },
     {
@@ -723,20 +729,20 @@
         "src-afb4f1911ed6958a",
         "src-fe3326f4dbcaa51b"
       ],
-      "last_reviewed_at": "2026-10-25T15:57:07Z",
+      "last_reviewed_at": "2026-11-04T16:56:21Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "TypeScript SDK 2.4 提供实验性 Skills 扩展并收紧校验，适合隔离试验而非直接全量升级。",
-        "judgment_en": "TypeScript SDK 2.4 adds experimental Skills and tighter validation; trial it in isolation before broad rollout.",
-        "next_action_zh": "在测试服务验证 Skills digest、旧 structuredContent 和 schema 兼容性。",
-        "next_action_en": "Validate Skills digests, legacy structuredContent and schema compatibility in a test server.",
+        "judgment_zh": "协议 SDK 仍适合隔离试验；LiteLLM 1.108 新增的 OAuth、session 与 toolset 控制改善了 gateway 执行边界，但没有改变协议成熟度。",
+        "judgment_en": "Protocol SDKs remain suitable for isolated trials. LiteLLM 1.108 improves gateway enforcement with OAuth, session and toolset controls without changing protocol maturity.",
+        "next_action_zh": "在测试服务验证 MCP OAuth、session 隔离、toolset 限制与旧 schema 兼容性。",
+        "next_action_en": "Validate MCP OAuth, session isolation, toolset limits and legacy schema compatibility in a test service.",
         "basis_event_ids": [
           "ev-20260913-01",
           "ev-20260928-07",
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-10-25T15:57:07Z"
+        "reviewed_at": "2026-11-04T16:56:21Z"
       }
     },
     {
@@ -6977,7 +6983,7 @@
       }
     }
   ],
-  "last_updated": "2026-11-04",
+  "last_updated": "2026-11-05",
   "total_projects": 194,
-  "last_updated_at": "2026-11-03T17:02:48Z"
+  "last_updated_at": "2026-11-04T16:56:21Z"
 }

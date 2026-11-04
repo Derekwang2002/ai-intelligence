@@ -1,0 +1,287 @@
+{
+  "date": "2026-11-03",
+  "provenance": "Incremental scan 2026-11-04T16:56:21Z; official announcements, papers, repositories and datasets verified.",
+  "events": [
+    {
+      "event_id": "ev-20261103-01",
+      "title": "GitHub makes Dependabot version updates available through Agent Package Manager",
+      "title_zh": "GitHub 让 Dependabot 通过 Agent Package Manager 执行版本更新",
+      "category": "developer-tools",
+      "organization": [
+        "GitHub"
+      ],
+      "published_at": "2026-11-03T20:24:07Z",
+      "first_seen_at": "2026-11-04T16:56:21Z",
+      "last_updated_at": "2026-11-04T16:56:21Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://github.blog/changelog/2026-11-03-dependabot-version-updates-support-agent-package-manager/",
+      "secondary_sources": [
+        "https://docs.github.com/en/code-security/reference/supply-chain-security/supported-ecosystems-and-repositories#apm",
+        "https://microsoft.github.io/apm/"
+      ],
+      "summary": "Agent Package Manager can now ask Dependabot to update pinned Git dependencies declared in apm.yml and regenerate an existing lockfile. The feature is generally available on GitHub.com for all plans, while GitHub Enterprise Server support is planned for 3.24. It performs version updates, not security updates.",
+      "why_it_matters": "For repositories that package agent skills and tools, this removes a manual dependency-maintenance step while preserving review through pull requests. Teams still need a separate vulnerability process and should verify lockfile reproducibility.",
+      "summary_zh": "Agent Package Manager 现在可以让 Dependabot 更新 apm.yml 中固定版本的 Git 依赖，并重新生成已有 lockfile。该功能已面向 GitHub.com 全部方案 GA，GitHub Enterprise Server 计划在 3.24 支持。它执行的是版本更新，不是安全更新。",
+      "summary_en": "Agent Package Manager can now ask Dependabot to update pinned Git dependencies declared in apm.yml and regenerate an existing lockfile. The feature is generally available on GitHub.com for all plans, while GitHub Enterprise Server support is planned for 3.24. It performs version updates, not security updates.",
+      "why_it_matters_zh": "对把 agent skill 和工具打包进仓库的团队来说，这减少了一项手工依赖维护工作，同时仍通过 pull request 接受审查。团队仍需单独处理漏洞修复，并验证 lockfile 是否可重复生成。",
+      "why_it_matters_en": "For repositories that package agent skills and tools, this removes a manual dependency-maintenance step while preserving review through pull requests. Teams still need a separate vulnerability process and should verify lockfile reproducibility.",
+      "technical_details": {
+        "availability": "GA on GitHub.com for all plans; GHES 3.24 planned",
+        "scope": "Pinned Git dependencies in apm.yml; regenerates an existing lockfile",
+        "exclusion": "Version updates only, not Dependabot security updates",
+        "time_basis": "GitHub Changelog published 2026-11-03T20:24:07Z"
+      },
+      "technical_details_zh": {
+        "可用性": "GitHub.com 全部方案 GA；GHES 3.24 计划支持",
+        "范围": "apm.yml 中固定版本的 Git 依赖；重新生成已有 lockfile",
+        "不包含": "仅版本更新，不包括 Dependabot 安全更新",
+        "时间依据": "GitHub Changelog 发布于 2026-11-03T20:24:07Z"
+      },
+      "tags": [
+        "dependencies",
+        "dependabot",
+        "agent-tools"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "github-apm-dependabot-version-updates",
+      "short_label_zh": "Agent Package Manager",
+      "short_label_en": "Agent Package Manager",
+      "next_action_zh": "一天内在测试仓库启用 APM 更新，核对 PR diff、lockfile 重现性与失败回滚。",
+      "next_action_en": "Within one day, enable APM updates in a test repository and verify the PR diff, lockfile reproducibility and rollback on failure.",
+      "source_ids": [
+        "src-b4c7def7cee11ad1",
+        "src-751994b2c0effb37",
+        "src-77a223f79b9c0c7d"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261103-01-evidence",
+          "claim_zh": "GitHub 公告和文档确认功能范围、GA 状态及 GHES 计划。",
+          "claim_en": "GitHub announcement and documentation confirm the feature scope, GA status and GHES plan.",
+          "source_ids": [
+            "src-b4c7def7cee11ad1",
+            "src-751994b2c0effb37",
+            "src-77a223f79b9c0c7d"
+          ],
+          "event_ids": [
+            "ev-20261103-01"
+          ],
+          "verification": "verified",
+          "relation": "supports"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261103-01-ga",
+          "kind": "new",
+          "occurred_at": "2026-11-03T20:24:07Z",
+          "discovered_at": "2026-11-04T16:56:21Z",
+          "summary_zh": "Dependabot 版本更新进入 Agent Package Manager，并在 GitHub.com 全方案 GA",
+          "summary_en": "Dependabot version updates enter Agent Package Manager and reach GA across GitHub.com plans",
+          "evidence_ids": [
+            "ev-20261103-01-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261103-02",
+      "title": "NVIDIA study finds selective memory can beat very long agent context",
+      "title_zh": "NVIDIA 研究发现选择性记忆可优于超长 agent 上下文",
+      "category": "research",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-11-03T18:17:23Z",
+      "first_seen_at": "2026-11-04T16:56:21Z",
+      "last_updated_at": "2026-11-04T16:56:21Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2611.05306",
+      "secondary_sources": [],
+      "summary": "An NVIDIA study compares full long context with compacted memory and retrieval on long-horizon agent tasks. The authors report that selective memory can preserve or improve accuracy while reducing modeled inference cost. Results are mixed for open models, and no public implementation accompanies the paper.",
+      "why_it_matters": "For agent architects, bigger context windows are not automatically the cheapest or most reliable memory strategy. The paper is a useful design signal, but implementation details and independent reproduction are still missing.",
+      "summary_zh": "NVIDIA 的一项研究在长程 agent 任务上比较了完整长上下文、压缩记忆与检索。作者报告称，选择性记忆可在降低模型化推理成本的同时保持或提高准确率。开源模型结果并不一致，论文也没有提供公开实现。",
+      "summary_en": "An NVIDIA study compares full long context with compacted memory and retrieval on long-horizon agent tasks. The authors report that selective memory can preserve or improve accuracy while reducing modeled inference cost. Results are mixed for open models, and no public implementation accompanies the paper.",
+      "why_it_matters_zh": "对 agent 架构设计者来说，更大的上下文窗口并不自动等于更便宜、更可靠的记忆方案。这篇论文提供了设计信号，但仍缺少公开实现和独立复现。",
+      "why_it_matters_en": "For agent architects, bigger context windows are not automatically the cheapest or most reliable memory strategy. The paper is a useful design signal, but implementation details and independent reproduction are still missing.",
+      "technical_details": {
+        "comparison": "Full context versus compaction and retrieval on long-horizon tasks",
+        "cost": "Inference cost is modeled rather than measured in a production deployment",
+        "limitation": "No public code; mixed results for open models",
+        "time_basis": "arXiv v1 submitted 2026-11-03T18:17:23Z"
+      },
+      "technical_details_zh": {
+        "对比": "长程任务中的完整上下文、压缩与检索",
+        "成本": "推理成本来自模型估算，并非生产部署实测",
+        "局限": "没有公开代码；开源模型结果不一致",
+        "时间依据": "arXiv v1 提交于 2026-11-03T18:17:23Z"
+      },
+      "tags": [
+        "context-engineering",
+        "agent-memory",
+        "retrieval"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 1,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "nvidia-selective-memory-long-context-agents",
+      "short_label_zh": "选择性 agent 记忆",
+      "short_label_en": "Selective agent memory",
+      "next_action_zh": "等到代码、可重复成本测量或独立评测出现后，再用于替换现有长上下文方案。",
+      "next_action_en": "Wait for code, reproducible cost measurements or independent evaluation before replacing an existing long-context design.",
+      "source_ids": [
+        "src-70e99cf4ef04126b"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261103-02-evidence",
+          "claim_zh": "arXiv 论文证明研究已公开；效果与成本均为作者报告，且没有公开代码。",
+          "claim_en": "The arXiv paper establishes public disclosure; effect and cost claims are author-reported and no code is public.",
+          "source_ids": [
+            "src-70e99cf4ef04126b"
+          ],
+          "event_ids": [
+            "ev-20261103-02"
+          ],
+          "verification": "verified",
+          "relation": "supports"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261103-02-paper",
+          "kind": "new",
+          "occurred_at": "2026-11-03T18:17:23Z",
+          "discovered_at": "2026-11-04T16:56:21Z",
+          "summary_zh": "论文公开选择性记忆与完整长上下文的对比结果",
+          "summary_en": "Paper publishes a comparison of selective memory with full long context",
+          "evidence_ids": [
+            "ev-20261103-02-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261103-03",
+      "title": "CWE-bench v2 tests whether coding agents can repair 91 vulnerability classes",
+      "title_zh": "CWE-bench v2 测试 coding agent 能否修复 91 类漏洞",
+      "category": "agent-security",
+      "organization": [
+        "Hugging Face",
+        "academic"
+      ],
+      "published_at": "2026-11-03",
+      "first_seen_at": "2026-11-04T16:56:21Z",
+      "last_updated_at": "2026-11-04T16:56:21Z",
+      "source_type": "research_blog",
+      "primary_source": "https://huggingface.co/blog/cwe-bench",
+      "secondary_sources": [
+        "https://huggingface.co/datasets/collinear-ai/cwe-bench"
+      ],
+      "summary": "CWE-bench v2 provides 100 vulnerability-repair tasks spanning 91 CWE classes, with deterministic verification through the Harbor harness. The authors evaluated 11 models and publish a gated dataset and leaderboard. The date is public, but the source does not provide a reliable hour.",
+      "why_it_matters": "For teams evaluating autonomous code repair, the benchmark broadens coverage beyond a small set of common bugs and makes pass/fail checks reproducible. Its small task count and author-maintained leaderboard mean it should complement, not replace, internal security regression suites.",
+      "summary_zh": "CWE-bench v2 提供 100 个漏洞修复任务，覆盖 91 类 CWE，并通过 Harbor harness 做确定性验证。作者评测了 11 个模型，并公开受控访问的数据集与排行榜。来源给出了日期，但没有可可靠核对的具体时分。",
+      "summary_en": "CWE-bench v2 provides 100 vulnerability-repair tasks spanning 91 CWE classes, with deterministic verification through the Harbor harness. The authors evaluated 11 models and publish a gated dataset and leaderboard. The date is public, but the source does not provide a reliable hour.",
+      "why_it_matters_zh": "对评估自动代码修复的团队来说，这个 benchmark 把范围扩展到更多漏洞类型，并让通过或失败的判定可重复。任务总数仍小，排行榜也由作者维护，因此只能补充、不能替代内部安全回归集。",
+      "why_it_matters_en": "For teams evaluating autonomous code repair, the benchmark broadens coverage beyond a small set of common bugs and makes pass/fail checks reproducible. Its small task count and author-maintained leaderboard mean it should complement, not replace, internal security regression suites.",
+      "technical_details": {
+        "tasks": 100,
+        "cwe_classes": 91,
+        "models_tested": 11,
+        "verification": "Deterministic verifier through the Harbor harness",
+        "access": "Dataset is public with gated access",
+        "time_basis": "Official Hugging Face article dated 2026-11-03; no reliable hour was published"
+      },
+      "technical_details_zh": {
+        "任务数": 100,
+        "CWE_类别": 91,
+        "受测模型": 11,
+        "验证方式": "通过 Harbor harness 使用确定性 verifier",
+        "访问": "数据集公开，但需申请访问",
+        "时间依据": "Hugging Face 官方文章标注 2026-11-03；未发布可可靠核对的时分"
+      },
+      "tags": [
+        "coding-agent",
+        "security-evaluation",
+        "benchmark"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "cwe-bench-v2-vulnerability-repair",
+      "short_label_zh": "CWE-bench v2",
+      "short_label_en": "CWE-bench v2",
+      "next_action_zh": "一天内抽取 5 个与自有代码栈相近的任务，核对 harness、通过标准与修复副作用。",
+      "next_action_en": "Within one day, run five tasks close to your stack and inspect the harness, pass criteria and repair side effects.",
+      "source_ids": [
+        "src-63945bc794809749",
+        "src-656452771cf092f7"
+      ],
+      "project_ids": [],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261103-03-evidence",
+          "claim_zh": "官方文章与公开数据集确认任务规模、CWE 覆盖和验证方式；模型成绩仍由作者维护。",
+          "claim_en": "The official article and public dataset confirm task count, CWE coverage and verification; model results remain author-maintained.",
+          "source_ids": [
+            "src-63945bc794809749",
+            "src-656452771cf092f7"
+          ],
+          "event_ids": [
+            "ev-20261103-03"
+          ],
+          "verification": "verified",
+          "relation": "supports"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261103-03-release",
+          "kind": "new",
+          "occurred_at": "2026-11-03",
+          "discovered_at": "2026-11-04T16:56:21Z",
+          "summary_zh": "CWE-bench v2 公开 100 个可确定性验证的漏洞修复任务",
+          "summary_en": "CWE-bench v2 publishes 100 deterministically verified vulnerability-repair tasks",
+          "evidence_ids": [
+            "ev-20261103-03-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "late_discovery": true
+    }
+  ]
+}
