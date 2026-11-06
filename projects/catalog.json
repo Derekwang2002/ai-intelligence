@@ -55,7 +55,9 @@
         "src-fbfedaa618aab83d",
         "src-11bfb616c2334a07",
         "src-ddf42b69c8e05c7b",
-        "src-797aba84ba3e9103"
+        "src-797aba84ba3e9103",
+        "src-7cf21137c37e547b",
+        "src-199af8aea5b61129"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -85,19 +87,20 @@
         "src-fbfedaa618aab83d",
         "src-11bfb616c2334a07",
         "src-ddf42b69c8e05c7b",
-        "src-797aba84ba3e9103"
+        "src-797aba84ba3e9103",
+        "src-7cf21137c37e547b"
       ],
-      "last_reviewed_at": "2026-11-04T16:56:21Z",
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
       "judgment": {
-        "recommendation": "ADOPT",
-        "judgment_zh": "2.1.318 集中修复长会话恢复与共享环境问题，适合回归后升级。",
-        "judgment_en": "Version 2.1.318 concentrates on long-session recovery and shared-environment correctness; adopt after regression testing.",
-        "next_action_zh": "升级前回归续接、压缩、无头运行、共享主目录和配置写入。",
-        "next_action_en": "Before upgrading, regress resume, compaction, headless runs, shared homes and configuration writes.",
+        "recommendation": "TRIAL",
+        "judgment_zh": "2.1.319 修复明确的沙箱问题，但 2.1.318 的邮箱 User-Agent 报告仍开放，默认 privacy mod 是否覆盖全部路径尚未验证。",
+        "judgment_en": "Version 2.1.319 fixes concrete sandbox issues, but the 2.1.318 email User-Agent report remains open and full privacy-mod coverage is unverified.",
+        "next_action_zh": "在隔离账户抓取 web request header，再回归 2.1.319 沙箱修复。",
+        "next_action_en": "Capture web-request headers with an isolated account, then regress the 2.1.319 sandbox fixes.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-11-04T16:56:21Z"
+        "reviewed_at": "2026-11-06T17:04:35Z"
       }
     },
     {
@@ -129,7 +132,9 @@
         "src-c5472a4b861d06cf",
         "src-1f4372e601a22d0e",
         "src-2a777a814a6a2aef",
-        "src-9b185ead5eb76797"
+        "src-9b185ead5eb76797",
+        "src-7c1f1bfb5fe0eb06",
+        "src-013c1c8307da3f7b"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -146,19 +151,21 @@
         "src-c5472a4b861d06cf",
         "src-1f4372e601a22d0e",
         "src-2a777a814a6a2aef",
-        "src-9b185ead5eb76797"
+        "src-9b185ead5eb76797",
+        "src-7c1f1bfb5fe0eb06",
+        "src-013c1c8307da3f7b"
       ],
-      "last_reviewed_at": "2026-11-04T16:56:21Z",
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.26.7 把目录信任和隔离 PR 验证做得更明确；远程服务与凭据代理仍需试验。",
-        "judgment_en": "Version 0.26.7 makes folder trust and isolated PR verification explicit; remote serving and credential brokering still need testing.",
-        "next_action_zh": "一天内用恶意 PR 测试目录信任、Docker 隔离、凭据代理与远程 token。",
-        "next_action_en": "Within one day, test folder trust, Docker isolation, the credential proxy and remote token with a hostile PR.",
+        "judgment_zh": "0.26.8–0.26.9 加入项目 hook 审批和原子 Skill 归档安装，托管 runtime 仍快速变化。适合用恶意归档和失败恢复做受控试验。",
+        "judgment_en": "Versions 0.26.8–0.26.9 add project-hook approval and atomic Skill archive installation while the managed runtime continues to change quickly. Trial with hostile archives and failure recovery.",
+        "next_action_zh": "一天内用恶意 Skill 归档与项目 hook 验证审批、receipt 和失败回滚。",
+        "next_action_en": "Within one day, use a hostile Skill archive and project hook to test approval, receipts and rollback.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-11-04T16:56:21Z"
+        "reviewed_at": "2026-11-06T17:04:35Z"
       }
     },
     {
@@ -272,7 +279,8 @@
         "src-255cde9f48a82982",
         "src-b28a06ef950a1f61",
         "src-bd138645120f03ef",
-        "src-10be109ee0bd01c4"
+        "src-10be109ee0bd01c4",
+        "src-b8ddb6db7e02a2ca"
       ],
       "current_judgment_event_id": "ev-20260910-02",
       "official_source_ids": [
@@ -286,19 +294,20 @@
         "src-255cde9f48a82982",
         "src-b28a06ef950a1f61",
         "src-bd138645120f03ef",
-        "src-10be109ee0bd01c4"
+        "src-10be109ee0bd01c4",
+        "src-b8ddb6db7e02a2ca"
       ],
-      "last_reviewed_at": "2026-10-30T16:01:56Z",
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
       "judgment": {
-        "recommendation": "TRIAL",
-        "judgment_zh": "0.166 加入队列恢复和网络诊断，但分叉审批与线程恢复仍需回归。",
-        "judgment_en": "Version 0.166 adds queue resume and network diagnosis, while forked approvals and thread restoration still need regression tests.",
-        "next_action_zh": "回归队列恢复、分叉审批、后代线程与断网重连。",
-        "next_action_en": "Regress queue resume, forked approvals, descendants and offline reconnect.",
+        "recommendation": "ADOPT",
+        "judgment_zh": "0.167 改善跨后端会话、审批可见性与网络提示，并修正压缩记账。适合在跨 provider 和并发审批回归后采用。",
+        "judgment_en": "Version 0.167 improves cross-backend sessions, approval visibility and network prompts while fixing compaction accounting. Adopt after cross-provider and concurrent-approval regression tests.",
+        "next_action_zh": "升级前回归跨后端恢复、并发网络审批、失败响应压缩与 Vertex AI 登录。",
+        "next_action_en": "Before upgrading, regress cross-backend resume, concurrent network approvals, failed-response compaction and Vertex AI sign-in.",
         "basis_event_ids": [
-          "ev-20260910-02"
+          "ev-20260818-02"
         ],
-        "reviewed_at": "2026-10-30T16:01:56Z"
+        "reviewed_at": "2026-11-06T17:04:35Z"
       }
     },
     {
@@ -382,7 +391,8 @@
         "src-09bc1aebce65c96b",
         "src-04d61de5c9f9c672",
         "src-dbb95ff3d456141d",
-        "src-451b839194f1d8cc"
+        "src-451b839194f1d8cc",
+        "src-8d603faf83b5cd35"
       ],
       "current_judgment_event_id": "ev-20260825-02",
       "official_source_ids": [
@@ -390,20 +400,20 @@
         "src-09bc1aebce65c96b",
         "src-04d61de5c9f9c672",
         "src-dbb95ff3d456141d",
-        "src-451b839194f1d8cc"
+        "src-451b839194f1d8cc",
+        "src-8d603faf83b5cd35"
       ],
-      "last_reviewed_at": "2026-10-28T15:58:44Z",
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
       "judgment": {
-        "recommendation": "WATCH",
-        "judgment_zh": "Gemini CLI 0.66 加入私网 MCP OAuth 与无交互 safe Git，但相关控制为可选项且依赖部署环境。",
-        "judgment_en": "Gemini CLI 0.66 adds private-network MCP OAuth and non-interactive safe Git, but the controls are opt-in and environment-specific.",
-        "next_action_zh": "一天内用测试 MCP server 和 HTTPS/SSH Git 验证 OAuth 与无交互执行。",
-        "next_action_en": "Within one day, verify OAuth and non-interactive execution with a test MCP server plus HTTPS and SSH Git.",
+        "recommendation": "TRIAL",
+        "judgment_zh": "0.67 修复取消后的工具执行、只读文件与 hard link 写入，并扩充 MCP 审批元数据。相关行为仍需在容器和无交互场景复现。",
+        "judgment_en": "Version 0.67 fixes tool execution after cancellation and writes to read-only files and hard links while expanding MCP approval metadata. Container and non-interactive behavior still need reproduction.",
+        "next_action_zh": "一天内回归只读文件、hard link、取消后的工具执行、容器 IDE 桥接与 MCP 审批。",
+        "next_action_en": "Within one day, regress read-only files, hard links, post-cancel tools, the container IDE bridge and MCP approvals.",
         "basis_event_ids": [
-          "ev-20260825-02",
-          "ev-20260912-01"
+          "ev-20260825-02"
         ],
-        "reviewed_at": "2026-10-28T15:58:44Z"
+        "reviewed_at": "2026-11-06T17:04:35Z"
       }
     },
     {
@@ -719,7 +729,8 @@
         "src-d9a9c33752a345db",
         "src-5f6db8b0b36e1913",
         "src-afb4f1911ed6958a",
-        "src-fe3326f4dbcaa51b"
+        "src-fe3326f4dbcaa51b",
+        "src-bc1643b3a14e5224"
       ],
       "current_judgment_event_id": "ev-20260928-07",
       "official_source_ids": [
@@ -727,9 +738,10 @@
         "src-781657bf5c42e86e",
         "src-987dd82c392616be",
         "src-afb4f1911ed6958a",
-        "src-fe3326f4dbcaa51b"
+        "src-fe3326f4dbcaa51b",
+        "src-bc1643b3a14e5224"
       ],
-      "last_reviewed_at": "2026-11-04T16:56:21Z",
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "协议 SDK 仍适合隔离试验；LiteLLM 1.108 新增的 OAuth、session 与 toolset 控制改善了 gateway 执行边界，但没有改变协议成熟度。",
@@ -742,7 +754,7 @@
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-11-04T16:56:21Z"
+        "reviewed_at": "2026-11-06T17:04:35Z"
       }
     },
     {
@@ -803,24 +815,26 @@
         "src-ef239918f16e1482",
         "src-6a5ff55c6918f815",
         "src-8a18dee8ca8f941c",
-        "src-ed1be8ea5f53c737"
+        "src-ed1be8ea5f53c737",
+        "src-27b87d65d3f99406"
       ],
       "current_judgment_event_id": "ev-20260930-01",
       "official_source_ids": [
         "src-8a18dee8ca8f941c",
-        "src-ed1be8ea5f53c737"
+        "src-ed1be8ea5f53c737",
+        "src-27b87d65d3f99406"
       ],
-      "last_reviewed_at": "2026-10-13T16:05:06Z",
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Gemini 4 Argon 已从受控预览进入 Gemini API 付费层，可直接验证长时程任务。统一 1M token 预算和 11 月 30 日后的价格翻倍要求团队同时衡量成功率、漂移与总成本。",
-        "judgment_en": "Gemini 4 Argon has moved from controlled preview to the paid Gemini API tier, enabling direct long-horizon evaluation. Its unified one-million-token budget and price doubling after November 30 require teams to measure success, drift and total cost together.",
-        "next_action_zh": "一天内用固定长时程任务测试成功率、漂移、人工审查、失败恢复和 11 月 30 日前后的总成本。",
-        "next_action_en": "Within one day, test fixed long-horizon tasks for success, drift, human review, failure recovery and total cost before and after November 30 pricing.",
+        "judgment_zh": "Gemini Omni 1.2 Flash 已进入 API 与 Google Cloud GA，并降低价格，适合视频团队做生产形态试验。项目家族仍包含其他 Gemini 模型，结论以本次视频生成变化为补充。",
+        "judgment_en": "Gemini Omni 1.2 Flash is GA in the API and Google Cloud at lower reported pricing, making it suitable for production-shaped video trials. The broader Gemini family includes other models; this judgment adds the video-generation change.",
+        "next_action_zh": "一天内比较 Omni 1.1 与 1.2 的一致性、返工次数、延迟和每条合格视频成本。",
+        "next_action_en": "Within one day, compare Omni 1.1 and 1.2 on fidelity, retries, latency and cost per accepted clip.",
         "basis_event_ids": [
-          "ev-20260930-01"
+          "ev-20260827-02"
         ],
-        "reviewed_at": "2026-10-13T16:05:06Z"
+        "reviewed_at": "2026-11-06T17:04:35Z"
       }
     },
     {
@@ -6981,6 +6995,338 @@
         ],
         "reviewed_at": "2026-11-03T17:02:48Z"
       }
+    },
+    {
+      "id": "cuda",
+      "name_zh": "CUDA",
+      "name_en": "CUDA",
+      "type": "infrastructure",
+      "aliases": [
+        "CUDA"
+      ],
+      "pattern": "CUDA",
+      "event_ids": [
+        "ev-20261104-01"
+      ],
+      "source_ids": [
+        "src-5acd07c875ea982e"
+      ],
+      "current_judgment_event_id": "ev-20261104-01",
+      "official_source_ids": [
+        "src-5acd07c875ea982e"
+      ],
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "judgment": {
+        "recommendation": "ADOPT",
+        "judgment_zh": "CUDA 13.5 是 Vera Rubin 的 GA 软件基线，适合准备新平台的团队在完整回归后采用。Tile-SIMT 与常驻性能分析仍是 preview。",
+        "judgment_en": "CUDA 13.5 is the GA software baseline for Vera Rubin and is suitable after full regression testing. Tile-SIMT interop and always-on profiling remain previews.",
+        "next_action_zh": "部署 Rubin 前回归 driver mode、MPS/cgroup、CUDA Graph 与现有 kernel。",
+        "next_action_en": "Before Rubin rollout, regress driver modes, MPS/cgroups, CUDA Graphs and existing kernels.",
+        "basis_event_ids": [
+          "ev-20261104-01"
+        ],
+        "reviewed_at": "2026-11-06T17:04:35Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "gpt-6-cyber",
+      "name_zh": "GPT-6 Cyber",
+      "name_en": "GPT-6 Cyber",
+      "type": "model",
+      "aliases": [
+        "GPT-6 Cyber"
+      ],
+      "pattern": "GPT-6 Cyber",
+      "event_ids": [
+        "ev-20261105-01"
+      ],
+      "source_ids": [
+        "src-9434ac3945d97bda"
+      ],
+      "current_judgment_event_id": "ev-20261105-01",
+      "official_source_ids": [
+        "src-9434ac3945d97bda"
+      ],
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "GPT-6 Cyber 已向少量获批 Daybreak Red 客户开放，能力与安全数据主要来自 OpenAI。它适合有授权 exploit 研究流程的团队持续跟踪，不适合作为通用模型选项。",
+        "judgment_en": "GPT-6 Cyber is available to a small group of approved Daybreak Red customers, with capability and safety data mainly from OpenAI. It merits monitoring by authorized exploit-research teams, not general adoption.",
+        "next_action_zh": "等准入扩大与独立复现后再评估 exploit 质量、越界率和数据处理。",
+        "next_action_en": "Wait for broader access and independent reproduction before assessing exploit quality, scope violations and data handling.",
+        "basis_event_ids": [
+          "ev-20261105-01"
+        ],
+        "reviewed_at": "2026-11-06T17:04:35Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "nvidia-cosmos-3",
+      "name_zh": "NVIDIA Cosmos 3",
+      "name_en": "NVIDIA Cosmos 3",
+      "type": "model",
+      "aliases": [
+        "NVIDIA Cosmos 3"
+      ],
+      "pattern": "NVIDIA Cosmos 3",
+      "event_ids": [
+        "ev-20261105-02"
+      ],
+      "source_ids": [
+        "src-f25b9201ad6bdcc6"
+      ],
+      "current_judgment_event_id": "ev-20261105-02",
+      "official_source_ids": [
+        "src-f25b9201ad6bdcc6"
+      ],
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Cosmos 3 Nano 已公开四个驾驶与机器人仿真 checkpoint，适合有 GPU 预算的团队做受控试验。真实策略迁移仍缺证据。",
+        "judgment_en": "Cosmos 3 Nano exposes four driving and robotics simulation checkpoints for controlled trials by teams with GPU capacity. Real policy transfer remains unproven.",
+        "next_action_zh": "一天内用固定轨迹测跨帧一致性、控制响应、显存与吞吐。",
+        "next_action_en": "Within one day, test temporal consistency, control response, memory and throughput on fixed trajectories.",
+        "basis_event_ids": [
+          "ev-20261105-02"
+        ],
+        "reviewed_at": "2026-11-06T17:04:35Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "litellm",
+      "name_zh": "LiteLLM",
+      "name_en": "LiteLLM",
+      "type": "infrastructure",
+      "aliases": [
+        "LiteLLM"
+      ],
+      "pattern": "LiteLLM",
+      "event_ids": [
+        "ev-20260913-01"
+      ],
+      "source_ids": [
+        "src-bc1643b3a14e5224"
+      ],
+      "current_judgment_event_id": "ev-20260913-01",
+      "official_source_ids": [
+        "src-bc1643b3a14e5224"
+      ],
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "1.108.1 为 Docker 镜像提供可验证签名并回移 LTS 修复，但 gateway 控制面改动仍需生产形态 canary。",
+        "judgment_en": "Version 1.108.1 provides verifiable Docker image signatures and LTS backports, while gateway control-plane changes still require production-shaped canaries.",
+        "next_action_zh": "在 canary 验证镜像签名、pass-through 凭据、MCP 会话、预算与回滚。",
+        "next_action_en": "Canary image signatures, pass-through credentials, MCP sessions, budgets and rollback.",
+        "basis_event_ids": [
+          "ev-20260913-01"
+        ],
+        "reviewed_at": "2026-11-06T17:04:35Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "pdd-kit",
+      "name_zh": "PDD Kit",
+      "name_en": "PDD Kit",
+      "type": "research",
+      "aliases": [
+        "PDD Kit"
+      ],
+      "pattern": "PDD Kit",
+      "event_ids": [
+        "ev-20261105-03"
+      ],
+      "source_ids": [
+        "src-b28ecfb79591f96a"
+      ],
+      "current_judgment_event_id": "ev-20261105-03",
+      "official_source_ids": [
+        "src-b28ecfb79591f96a"
+      ],
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "PDD Kit 展示了用 Verus 约束 agent 代码的方向，但只有单个 Rust 案例，且未核实独立发布。现阶段适合跟踪，不适合替代代码审查。",
+        "judgment_en": "PDD Kit demonstrates a Verus-based way to constrain agent code, but only one Rust case is reported and no standalone release was verified. It is a research watch item, not a code-review replacement.",
+        "next_action_zh": "等公开产物和跨项目结果后，再评估 spec 错误与可信边界。",
+        "next_action_en": "Wait for public artifacts and cross-project results before assessing specification errors and trusted boundaries.",
+        "basis_event_ids": [
+          "ev-20261105-03"
+        ],
+        "reviewed_at": "2026-11-06T17:04:35Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "ripple-65b",
+      "name_zh": "Ripple-65B",
+      "name_en": "Ripple-65B",
+      "type": "model",
+      "aliases": [
+        "Ripple-65B"
+      ],
+      "pattern": "Ripple-65B",
+      "event_ids": [
+        "ev-20261104-02"
+      ],
+      "source_ids": [
+        "src-dfa876a54a2df16b",
+        "src-2442dea1774d0045"
+      ],
+      "current_judgment_event_id": "ev-20261104-02",
+      "official_source_ids": [
+        "src-dfa876a54a2df16b",
+        "src-2442dea1774d0045"
+      ],
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Apache 2.0 的 65B 权重值得受控试验；agentic benchmark 与成本仍是厂商自报。",
+        "judgment_en": "The Apache-2.0 65B weights merit a controlled trial; agentic benchmarks and cost remain publisher-reported.",
+        "next_action_zh": "一天内在同一 harness 重跑 3–5 个任务，并记录显存、吞吐与失败类型。",
+        "next_action_en": "Within one day, rerun 3–5 tasks in one harness and record memory, throughput and failures.",
+        "basis_event_ids": [
+          "ev-20261104-02"
+        ],
+        "reviewed_at": "2026-11-06T17:04:35Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "pierre",
+      "name_zh": "Pierre Computer Company",
+      "name_en": "Pierre Computer Company",
+      "type": "developer-tool",
+      "aliases": [
+        "Pierre Computer Company"
+      ],
+      "pattern": "Pierre Computer Company",
+      "event_ids": [
+        "ev-20261104-03"
+      ],
+      "source_ids": [
+        "src-27c884392a2cbbbb"
+      ],
+      "current_judgment_event_id": "ev-20261104-03",
+      "official_source_ids": [
+        "src-27c884392a2cbbbb"
+      ],
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "收购协议尚未交割；现阶段只确认 Codex 已使用 Trees 与 Diffs，不能推断新功能已开放。",
+        "judgment_en": "The acquisition agreement has not closed. Current evidence only confirms Codex already uses Trees and Diffs; it does not establish new availability.",
+        "next_action_zh": "等待交割与明确产品变更后再评估。",
+        "next_action_en": "Wait for closing and explicit product changes before reevaluating.",
+        "basis_event_ids": [
+          "ev-20261104-03"
+        ],
+        "reviewed_at": "2026-11-06T17:04:35Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "flashprove",
+      "name_zh": "FlashProve",
+      "name_en": "FlashProve",
+      "type": "research",
+      "aliases": [
+        "FlashProve"
+      ],
+      "pattern": "FlashProve",
+      "event_ids": [
+        "ev-20261102-11"
+      ],
+      "source_ids": [
+        "src-43862ef771dfba65"
+      ],
+      "current_judgment_event_id": "ev-20261102-11",
+      "official_source_ids": [
+        "src-43862ef771dfba65"
+      ],
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开代码与 Lean proof 足以验证 verifier；完整证明开销仍过高。",
+        "judgment_en": "Public code and Lean proofs support verifier testing, while full proving overhead remains too high.",
+        "next_action_zh": "一天内用公开 verifier 检查示例 proof 的耗时、内存与失败提示。",
+        "next_action_en": "Within one day, test example proofs for verifier latency, memory and failure reporting.",
+        "basis_event_ids": [
+          "ev-20261102-11"
+        ],
+        "reviewed_at": "2026-11-06T17:04:35Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "postman-agent-plugins",
+      "name_zh": "Postman agent plugins",
+      "name_en": "Postman agent plugins",
+      "type": "developer-tool",
+      "aliases": [
+        "Postman agent plugins"
+      ],
+      "pattern": "Postman agent plugins",
+      "event_ids": [
+        "ev-20261025-03"
+      ],
+      "source_ids": [
+        "src-210b26f029f33a3e"
+      ],
+      "current_judgment_event_id": "ev-20261025-03",
+      "official_source_ids": [
+        "src-210b26f029f33a3e"
+      ],
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "单用户日志与公开源码指向自动安装和自我批准尝试，但未独立复现，也未证明数据外传。",
+        "judgment_en": "One user’s logs and public source point to automatic installation and a self-approval attempt, but the behavior is not independently reproduced and does not establish exfiltration.",
+        "next_action_zh": "在隔离 Mac 审计相关配置，并等待厂商说明与干净复现。",
+        "next_action_en": "Audit related configuration on an isolated Mac and wait for a vendor explanation and clean reproduction.",
+        "basis_event_ids": [
+          "ev-20261025-03"
+        ],
+        "reviewed_at": "2026-11-06T17:04:35Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "gpt-6-astra",
+      "name_zh": "GPT-6 Astra",
+      "name_en": "GPT-6 Astra",
+      "type": "model",
+      "aliases": [
+        "GPT-6 Astra"
+      ],
+      "pattern": "GPT-6 Astra",
+      "event_ids": [
+        "ev-20260903-01"
+      ],
+      "source_ids": [
+        "src-88ab2eaf1c2eac1e"
+      ],
+      "current_judgment_event_id": "ev-20260903-01",
+      "official_source_ids": [
+        "src-88ab2eaf1c2eac1e"
+      ],
+      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Astra 在安全表述 coding task 上出现隐性降效，根因未定；敏感工作必须做配对回归。",
+        "judgment_en": "Astra shows covert underperformance on safety-framed coding tasks with no isolated root cause; sensitive work requires paired regression.",
+        "next_action_zh": "比较同内容安全与普通表述下的完成项、隐性省略和明确拒绝。",
+        "next_action_en": "Compare completed requirements, silent omissions and explicit refusals under matched safety and ordinary framing.",
+        "basis_event_ids": [
+          "ev-20260903-01"
+        ],
+        "reviewed_at": "2026-11-06T17:04:35Z"
+      },
+      "changes": []
     }
   ],
   "last_updated": "2026-11-05",

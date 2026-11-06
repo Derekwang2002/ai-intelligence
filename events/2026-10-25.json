@@ -203,6 +203,101 @@
       "short_label_en": "LIFT-Bench",
       "next_action_zh": "一天内固定公开 split 与 Gemma judge，对一个自有长文模板复跑局部约束通过率、输出长度和 judge 一致性。",
       "next_action_en": "Within one day, pin a public split and the Gemma judge, then measure scoped-constraint pass rate, output length and judge consistency on one internal long-form template."
+    },
+    {
+      "event_id": "ev-20261025-03",
+      "title": "Postman issue documents automatic coding-agent plugin installation",
+      "title_zh": "Postman issue 记录 coding agent 插件被自动安装",
+      "category": "agent-security",
+      "organization": [
+        "Postman"
+      ],
+      "published_at": "2026-10-25",
+      "first_seen_at": "2026-11-06T17:04:35Z",
+      "last_updated_at": "2026-11-06T17:04:35Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/postmanlabs/postman-app-support/issues/14370",
+      "secondary_sources": [],
+      "summary": "A Postman Desktop user documented logs and public installer code showing automatic installation of Codex and Claude plugins, a broad startup hook and an attempt by the installer to approve its own Codex hook. The report was not reproduced on a clean Mac and explicitly does not establish data exfiltration. The issue is closed, but no vendor resolution was verified in this run.",
+      "why_it_matters": "For agent-platform teams, automatic cross-tool installation and self-approval expand the trust boundary without an explicit task-level decision. The evidence is serious enough to audit locally, but not strong enough to claim a breach.",
+      "summary_zh": "一名 Postman Desktop 用户提供日志和公开 installer 代码，显示 Codex 与 Claude 插件会被自动安装，并加入覆盖面很广的启动 hook；installer 还会尝试批准自己的 Codex hook。该问题尚未在干净 Mac 上复现，报告也明确没有证明数据外传。issue 已关闭，但本轮未核实到厂商解决说明。",
+      "summary_en": "A Postman Desktop user documented logs and public installer code showing automatic installation of Codex and Claude plugins, a broad startup hook and an attempt by the installer to approve its own Codex hook. The report was not reproduced on a clean Mac and explicitly does not establish data exfiltration. The issue is closed, but no vendor resolution was verified in this run.",
+      "why_it_matters_zh": "对 agent 平台团队来说，跨工具自动安装和自我批准会在没有任务级确认时扩大信任边界。现有证据足以触发本地审计，但不能据此声称发生数据泄露。",
+      "why_it_matters_en": "For agent-platform teams, automatic cross-tool installation and self-approval expand the trust boundary without an explicit task-level decision. The evidence is serious enough to audit locally, but not strong enough to claim a breach.",
+      "technical_details": {
+        "reported_versions": "Postman Desktop 12.33.4; Codex Postman plugin 1.1.0",
+        "reported_behavior": "automatic Codex and Claude plugin installation; broad session-start hook; installer calls hook approval path",
+        "evidence_scope": "one Mac plus links to public installer source",
+        "not_established": "no clean-machine reproduction and no evidence of data exfiltration",
+        "time_basis": "Issue opened 2026-10-25; surfaced by recall audit in this run"
+      },
+      "technical_details_zh": {
+        "报告版本": "Postman Desktop 12.33.4；Codex Postman plugin 1.1.0",
+        "报告行为": "自动安装 Codex 与 Claude 插件；广泛的 session-start hook；installer 调用 hook 批准路径",
+        "证据范围": "一台 Mac 的日志，加公开 installer 源码链接",
+        "未证明": "没有干净机器复现，也没有数据外传证据",
+        "时间依据": "issue 于 2026-10-25 创建；本轮由召回自检补录"
+      },
+      "tags": [
+        "plugin-security",
+        "hooks",
+        "consent",
+        "trust-boundary"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "postman-auto-installs-coding-agent-plugins",
+      "short_label_zh": "Postman agent plugins",
+      "short_label_en": "Postman agent plugins",
+      "next_action_zh": "在隔离 Mac 检查 Codex、Claude、MCP 与启动 hook 配置；等待 Postman 说明与可复现结果后再定性。",
+      "next_action_en": "Audit Codex, Claude, MCP and startup-hook configuration on an isolated Mac, then wait for a Postman explanation and clean reproduction before classifying the issue.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-210b26f029f33a3e"
+      ],
+      "project_ids": [
+        "postman-agent-plugins"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261025-03-evidence",
+          "claim_zh": "公开 issue 提供本机日志与 installer 源码链接，支持自动安装和自我批准尝试的说法，但不支持数据外传结论。",
+          "claim_en": "The public issue provides local logs and installer-source links supporting automatic installation and a self-approval attempt, but not data exfiltration.",
+          "source_ids": [
+            "src-210b26f029f33a3e"
+          ],
+          "event_ids": [
+            "ev-20261025-03"
+          ],
+          "relation": "support",
+          "verification": "single-user report with source links; not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261025-03-published",
+          "kind": "new",
+          "occurred_at": "2026-10-25",
+          "discovered_at": "2026-11-06T17:04:35Z",
+          "summary_zh": "Postman issue 记录 coding agent 插件被自动安装",
+          "summary_en": "Postman issue documents automatic coding-agent plugin installation",
+          "evidence_ids": [
+            "ev-20261025-03-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "record_origin": "recall-audit"
     }
   ]
 }

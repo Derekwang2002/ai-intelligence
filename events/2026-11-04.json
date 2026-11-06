@@ -1,0 +1,307 @@
+{
+  "date": "2026-11-04",
+  "provenance": "Incremental scan 2026-11-06T17-04-35Z; primary sources verified during the run.",
+  "events": [
+    {
+      "event_id": "ev-20261104-01",
+      "title": "NVIDIA makes CUDA 13.5 production-ready for Vera Rubin",
+      "title_zh": "NVIDIA 用 CUDA 13.5 将 Vera Rubin 支持推向 GA",
+      "category": "infrastructure",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-11-04T18:46:07Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/nvidia-cuda-13-5-brings-nvidia-vera-rubin-ga-support",
+      "summary_en": "NVIDIA released CUDA 13.5 with general-availability support for Vera Rubin. It adds finer MPS scheduling and cgroup routing, multi-GPU communication in CUDA Tile, batched copy support in CUDA Graphs and public previews for Tile-SIMT interoperation and always-on profiling. Some features remain previews and Rubin changes the supported Windows driver modes.",
+      "summary_zh": "NVIDIA 发布 CUDA 13.5，并将 Vera Rubin 支持推向 GA。该版加入更细的 MPS 调度与 cgroup 路由、CUDA Tile 多 GPU 通信、CUDA Graph 批量拷贝，以及 Tile-SIMT 互操作和常驻性能分析预览。部分能力仍是 preview，Rubin 的 Windows driver mode 也有变化。",
+      "why_it_matters_en": "For infrastructure teams preparing Rubin, CUDA 13.5 is the production software baseline, but preview features and changed driver assumptions need explicit compatibility tests before rollout.",
+      "why_it_matters_zh": "对准备 Rubin 的基础设施团队来说，CUDA 13.5 是生产软件基线；preview 能力和 driver 假设变化必须先做兼容性回归。",
+      "technical_details": {
+        "availability": "GA toolkit; Vera Rubin support GA",
+        "mps": "weighted timeslicing, SM partition balancing, cgroup-based routing",
+        "tile": "multi-GPU communication; Tile-SIMT interop remains public preview",
+        "windows": "Rubin supports WDDM and MCDM, not TCC",
+        "time_basis": "Official feed timestamp 2026-11-04T18:46:07Z"
+      },
+      "technical_details_zh": {
+        "可用性": "CUDA Toolkit GA；Vera Rubin 支持 GA",
+        "MPS": "加权 timeslicing、SM partition balancing、cgroup 路由",
+        "CUDA Tile": "支持多 GPU 通信；Tile-SIMT 互操作仍是 public preview",
+        "Windows": "Rubin 支持 WDDM 与 MCDM，不支持 TCC",
+        "时间依据": "官方 feed 时间 2026-11-04T18:46:07Z"
+      },
+      "tags": [
+        "cuda",
+        "vera-rubin",
+        "gpu",
+        "mps",
+        "ga"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "ADOPT",
+      "event_fingerprint": "nvidia-cuda-13-5-vera-rubin-ga",
+      "short_label_zh": "CUDA 13.5",
+      "short_label_en": "CUDA 13.5",
+      "next_action_zh": "部署 Rubin 前回归 driver mode、MPS/cgroup、CUDA Graph 与现有 kernel，并隔离 preview 功能。",
+      "next_action_en": "Before Rubin deployment, regress driver modes, MPS/cgroups, CUDA Graphs and existing kernels, keeping preview features isolated.",
+      "source_ids": [
+        "src-5acd07c875ea982e"
+      ],
+      "project_ids": [
+        "cuda"
+      ],
+      "evidence_id": "ev-20261104-01-evidence",
+      "change_id": "ev-20261104-01-release",
+      "evidence_claim_zh": "NVIDIA 官方文章确认 CUDA 13.5 与 Vera Rubin 支持 GA，并区分多项 GA 与 preview 能力。",
+      "evidence_claim_en": "NVIDIA’s official article confirms CUDA 13.5 and Vera Rubin support are GA and distinguishes GA features from previews.",
+      "verification": "verified-primary-source; performance claims not independently benchmarked",
+      "scenario_ids": [
+        "local"
+      ],
+      "first_seen_at": "2026-11-06T17:04:35Z",
+      "last_updated_at": "2026-11-06T17:04:35Z",
+      "summary": "NVIDIA released CUDA 13.5 with general-availability support for Vera Rubin. It adds finer MPS scheduling and cgroup routing, multi-GPU communication in CUDA Tile, batched copy support in CUDA Graphs and public previews for Tile-SIMT interoperation and always-on profiling. Some features remain previews and Rubin changes the supported Windows driver modes.",
+      "why_it_matters": "For infrastructure teams preparing Rubin, CUDA 13.5 is the production software baseline, but preview features and changed driver assumptions need explicit compatibility tests before rollout.",
+      "secondary_sources": [],
+      "evidence_stage": "verified",
+      "changes": [
+        {
+          "id": "ev-20261104-01-release",
+          "kind": "new",
+          "occurred_at": "2026-11-04T18:46:07Z",
+          "discovered_at": "2026-11-06T17:04:35Z",
+          "summary_zh": "NVIDIA 用 CUDA 13.5 将 Vera Rubin 支持推向 GA",
+          "summary_en": "NVIDIA makes CUDA 13.5 production-ready for Vera Rubin",
+          "evidence_ids": [
+            "ev-20261104-01-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261104-01-evidence",
+          "claim_zh": "NVIDIA 官方文章确认 CUDA 13.5 与 Vera Rubin 支持 GA，并区分多项 GA 与 preview 能力。",
+          "claim_en": "NVIDIA’s official article confirms CUDA 13.5 and Vera Rubin support are GA and distinguishes GA features from previews.",
+          "source_ids": [
+            "src-5acd07c875ea982e"
+          ],
+          "event_ids": [
+            "ev-20261104-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims not independently benchmarked"
+        }
+      ],
+      "record_origin": "incremental-scan"
+    },
+    {
+      "event_id": "ev-20261104-02",
+      "title": "Ricursive releases Ripple-65B Preview under Apache 2.0",
+      "title_zh": "Ricursive 以 Apache 2.0 发布 Ripple-65B Preview",
+      "category": "foundation-model",
+      "organization": [
+        "Ricursive Intelligence"
+      ],
+      "published_at": "2026-11-04T02:41:21Z",
+      "first_seen_at": "2026-11-06T17:04:35Z",
+      "last_updated_at": "2026-11-06T17:04:35Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+      "secondary_sources": [
+        "https://www.ricursive.com/ripple"
+      ],
+      "summary": "Ricursive Intelligence released Ripple-65B Preview, a 65B dense model with BF16, NVFP4 and base checkpoints under Apache 2.0. The company reports 80.52 on TerminalBench 2.1, a 1M-token context window and $32 million in total R&D cost. The model card says some comparisons use different harnesses and that reproducing agentic scores is difficult, so the headline ranking remains publisher-reported.",
+      "why_it_matters": "For teams evaluating local coding models, a 65B Apache-2.0 checkpoint is materially easier to test than larger open-weight peers, but harness-sensitive benchmarks and custom code require direct reproduction before selection.",
+      "summary_zh": "Ricursive Intelligence 发布 Ripple-65B Preview，这是一个 65B dense model，提供 BF16、NVFP4 与 base checkpoint，采用 Apache 2.0。公司报告 TerminalBench 2.1 为 80.52、上下文窗口 1M token、总研发成本 3,200 万美元。model card 承认部分对比采用不同 harness，agentic 分数也难复现，因此头部排名仍是厂商自报。",
+      "summary_en": "Ricursive Intelligence released Ripple-65B Preview, a 65B dense model with BF16, NVFP4 and base checkpoints under Apache 2.0. The company reports 80.52 on TerminalBench 2.1, a 1M-token context window and $32 million in total R&D cost. The model card says some comparisons use different harnesses and that reproducing agentic scores is difficult, so the headline ranking remains publisher-reported.",
+      "why_it_matters_zh": "对评估本地 coding model 的团队来说，65B、Apache 2.0 的 checkpoint 比超大模型更容易试验；harness 敏感的 benchmark 与 custom code 仍要求直接复现。",
+      "why_it_matters_en": "For teams evaluating local coding models, a 65B Apache-2.0 checkpoint is materially easier to test than larger open-weight peers, but harness-sensitive benchmarks and custom code require direct reproduction before selection.",
+      "technical_details": {
+        "parameters": "65B dense",
+        "weights": "BF16 instruct, NVFP4 instruct and BF16 base",
+        "license": "Apache 2.0",
+        "context": "up to 1M tokens claimed",
+        "vendor_benchmark": "80.52 on TerminalBench 2.1",
+        "vendor_cost_claim": "$32M full R&D cost",
+        "limitation": "model card mixes official and in-house harness results; no independent reproduction verified",
+        "time_basis": "Hugging Face repository timestamp 2026-11-04T02:41:21Z; official launch page gives date only"
+      },
+      "technical_details_zh": {
+        "参数": "65B dense",
+        "权重": "BF16 instruct、NVFP4 instruct 与 BF16 base",
+        "许可": "Apache 2.0",
+        "上下文": "厂商称最高 1M token",
+        "厂商 benchmark": "TerminalBench 2.1 为 80.52",
+        "厂商成本说法": "总研发成本 3,200 万美元",
+        "限制": "model card 混合官方与内部 harness 结果；本轮未核实独立复现",
+        "时间依据": "Hugging Face 仓库时间 2026-11-04T02:41:21Z；官方发布页只有日期"
+      },
+      "tags": [
+        "open-weights",
+        "coding",
+        "agentic-evaluation",
+        "apache-2.0"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "ricursive-ripple-65b-preview",
+      "short_label_zh": "Ripple-65B",
+      "short_label_en": "Ripple-65B",
+      "next_action_zh": "一天内用公开 NVFP4 权重在同一 harness 重跑 3–5 个 TerminalBench 任务，并记录显存、吞吐与失败类型。",
+      "next_action_en": "Within one day, run 3–5 TerminalBench tasks with the public NVFP4 weights in one harness and record memory, throughput and failure types.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-2442dea1774d0045",
+        "src-dfa876a54a2df16b"
+      ],
+      "project_ids": [
+        "ripple-65b"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261104-02-evidence",
+          "claim_zh": "官方 model repo 公开 Apache 2.0 权重、结构和厂商 benchmark，并明确部分结果的 harness 差异。",
+          "claim_en": "The official model repository publishes Apache-2.0 weights, architecture and vendor benchmarks while disclosing harness differences.",
+          "source_ids": [
+            "src-2442dea1774d0045",
+            "src-dfa876a54a2df16b"
+          ],
+          "event_ids": [
+            "ev-20261104-02"
+          ],
+          "relation": "support",
+          "verification": "artifacts verified; performance and cost not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261104-02-published",
+          "kind": "new",
+          "occurred_at": "2026-11-04T02:41:21Z",
+          "discovered_at": "2026-11-06T17:04:35Z",
+          "summary_zh": "Ricursive 以 Apache 2.0 发布 Ripple-65B Preview",
+          "summary_en": "Ricursive releases Ripple-65B Preview under Apache 2.0",
+          "evidence_ids": [
+            "ev-20261104-02-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "record_origin": "recall-audit"
+    },
+    {
+      "event_id": "ev-20261104-03",
+      "title": "OpenAI signs an agreement to acquire Pierre Computer Company",
+      "title_zh": "OpenAI 签署收购 Pierre Computer Company 的协议",
+      "category": "business-policy",
+      "organization": [
+        "OpenAI",
+        "Pierre Computer Company"
+      ],
+      "published_at": "2026-11-04",
+      "first_seen_at": "2026-11-06T17:04:35Z",
+      "last_updated_at": "2026-11-06T17:04:35Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://openai.com/index/openai-to-acquire-pierre/",
+      "secondary_sources": [],
+      "summary": "OpenAI announced an agreement to acquire Pierre Computer Company, whose Trees and Diffs libraries already power file browsing and change review in Codex. OpenAI says Pierre’s open-source projects will remain open and Code Storage customers can continue using the service. The transaction has not closed and remains subject to customary conditions and regulatory approvals.",
+      "why_it_matters": "For Codex users and developer-tool builders, the agreement points to deeper Git storage and review integration, but it creates no completed ownership or immediate availability change until closing and product delivery.",
+      "summary_zh": "OpenAI 宣布签署收购 Pierre Computer Company 的协议。Pierre 的 Trees 与 Diffs 已用于 Codex 的文件浏览和改动审查。OpenAI 表示其开源项目会继续开源，Code Storage 客户可继续使用服务。交易尚未完成，仍取决于惯常交割条件与监管批准。",
+      "summary_en": "OpenAI announced an agreement to acquire Pierre Computer Company, whose Trees and Diffs libraries already power file browsing and change review in Codex. OpenAI says Pierre’s open-source projects will remain open and Code Storage customers can continue using the service. The transaction has not closed and remains subject to customary conditions and regulatory approvals.",
+      "why_it_matters_zh": "对 Codex 用户和开发工具团队来说，该协议指向更深的 Git 存储与 review 集成；交割和产品落地前，不能把它写成所有权已变更或功能已经开放。",
+      "why_it_matters_en": "For Codex users and developer-tool builders, the agreement points to deeper Git storage and review integration, but it creates no completed ownership or immediate availability change until closing and product delivery.",
+      "technical_details": {
+        "stage": "signed acquisition agreement; not closed",
+        "conditions": "customary closing conditions and regulatory approvals",
+        "existing_use": "Pierre Trees and Diffs already used in Codex",
+        "open_source_commitment": "Pierre open-source projects will remain open-source",
+        "time_basis": "Official announcement provides 2026-11-04 date only; no publication time was asserted"
+      },
+      "technical_details_zh": {
+        "阶段": "已签署收购协议；尚未交割",
+        "条件": "惯常交割条件与监管批准",
+        "现有使用": "Pierre Trees 与 Diffs 已用于 Codex",
+        "开源承诺": "Pierre 开源项目将继续开源",
+        "时间依据": "官方公告只给出 2026-11-04 日期；不推断发布时间"
+      },
+      "tags": [
+        "acquisition",
+        "codex",
+        "git",
+        "code-review"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 3,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "WATCH",
+      "event_fingerprint": "openai-pierre-acquisition-agreement",
+      "short_label_zh": "Pierre acquisition",
+      "short_label_en": "Pierre acquisition",
+      "next_action_zh": "等待交易交割及 Codex 中明确的 Code Storage、Trees 或 Diffs 产品变化后再评估。",
+      "next_action_en": "Wait for closing and explicit Code Storage, Trees or Diffs product changes in Codex before reevaluating.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-27c884392a2cbbbb"
+      ],
+      "project_ids": [
+        "pierre"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261104-03-evidence",
+          "claim_zh": "OpenAI 官方公告确认已签署收购协议，同时明确交易尚待交割与监管批准。",
+          "claim_en": "OpenAI’s announcement confirms a signed acquisition agreement and states that closing and regulatory approvals remain pending.",
+          "source_ids": [
+            "src-27c884392a2cbbbb"
+          ],
+          "event_ids": [
+            "ev-20261104-03"
+          ],
+          "relation": "support",
+          "verification": "verified announcement and transaction stage"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261104-03-published",
+          "kind": "new",
+          "occurred_at": "2026-11-04",
+          "discovered_at": "2026-11-06T17:04:35Z",
+          "summary_zh": "OpenAI 签署收购 Pierre Computer Company 的协议",
+          "summary_en": "OpenAI signs an agreement to acquire Pierre Computer Company",
+          "evidence_ids": [
+            "ev-20261104-03-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "record_origin": "recall-audit"
+    }
+  ]
+}

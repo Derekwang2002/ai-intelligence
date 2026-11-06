@@ -127,15 +127,15 @@
     },
     {
       "event_id": "ev-20260825-02",
-      "title": "Gemini CLI 0.66 hardens private MCP and Git execution",
-      "title_zh": "Gemini CLI 0.66 加固私有 MCP 与 Git 执行",
+      "title": "Gemini CLI 0.67 hardens cancellation, writes and sandboxed IDE context",
+      "title_zh": "Gemini CLI 0.67 加固取消、写入与沙箱 IDE 上下文",
       "category": "developer-tools",
       "organization": [
         "Google"
       ],
       "published_at": "2026-08-25T18:37:14Z",
       "first_seen_at": "2026-08-28T00:31:03Z",
-      "last_updated_at": "2026-10-28T15:58:44Z",
+      "last_updated_at": "2026-11-06T17:04:35Z",
       "source_type": "github",
       "primary_source": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.57.0",
       "secondary_sources": [
@@ -169,9 +169,11 @@
         "update_2026_10_07": "0.63.0 adds bounded tool output for long-running loops, autonomous plan execution in non-interactive mode, auth-loop fixes, ACP session ordering and policy/path hardening.",
         "update_2026_10_14": "0.64.0 adds atomic file operations, append-only chat deltas, atomic persisted state with backup recovery, Ctrl+C cancellation, ACP usage updates and A2A settings migration.",
         "update_2026_10_21": "0.65.0 stable enforces read-only workspace settings in untrusted folders, prevents duplicate tool-response turns on resume and preserves resumed-session history on quick exit.",
-        "latest_stable": "0.66.0",
+        "latest_stable": "0.67.0",
         "published_at": "2026-10-27T20:26:28Z",
-        "v0_66_0": "Opt-in private-network MCP OAuth, non-interactive safe Git credentials and SSH, hardened SKILL.md parsing, preserved Git configuration, streamed HTTP decoding fix"
+        "v0_66_0": "Opt-in private-network MCP OAuth, non-interactive safe Git credentials and SSH, hardened SKILL.md parsing, preserved Git configuration, streamed HTTP decoding fix",
+        "update_2026_11_04": "Container sandboxes bridge the IDE companion over exec stdio; atomic writes respect read-only files and hard links; non-interactive cancellation stops tool execution; permission requests include MCP metadata; model discovery command added.",
+        "time_basis_2026_11_04": "GitHub release published 2026-11-04T20:27:11Z."
       },
       "technical_details_zh": {
         "发布": "v0.57.0 stable 于 2026-08-25T18:37:14Z 发布；v0.57.0 tag 树中包含 packages/a2a-server（经 git tree API 核实）",
@@ -187,9 +189,11 @@
         "2026-10-02 更新": "0.62.0 stable 保留 OAuth refresh token，使凭据删除幂等，加固 PTY/ConPTY 清理，并在权限请求前发出 ACP tool_call 更新。A2A 仍无使用文档。",
         "2026_10_07_更新": "0.63.0 为长任务限制工具输出，支持非交互模式自动执行计划，并修复认证死循环、ACP session 顺序及策略/路径校验。",
         "2026-10-21 更新": "0.65.0 稳定版在不受信任目录强制 workspace 设置只读，避免恢复会话时重复写入工具响应，并防止快速退出删除恢复后的历史。",
-        "最新稳定版": "0.66.0",
+        "最新稳定版": "0.67.0",
         "发布时间": "2026-10-27T20:26:28Z",
-        "2026-10-28 更新": "可选的私网 MCP OAuth、无交互 safe Git 凭据与 SSH、SKILL.md 解析加固、保留 Git 配置，以及流式 HTTP 解码修复"
+        "2026-10-28 更新": "可选的私网 MCP OAuth、无交互 safe Git 凭据与 SSH、SKILL.md 解析加固、保留 Git 配置，以及流式 HTTP 解码修复",
+        "2026-11-04 更新": "容器沙箱通过 exec stdio 连接 IDE companion；原子写入尊重只读文件与 hard link；无交互取消会停止工具；权限请求携带 MCP 元数据；新增模型发现命令。",
+        "时间依据_2026_11_04": "GitHub release 于 2026-11-04T20:27:11Z 发布。"
       },
       "tags": [
         "gemini-cli",
@@ -206,7 +210,7 @@
       "maturity": 2,
       "verification_cost": 2,
       "risk": 3,
-      "recommendation": "WATCH",
+      "recommendation": "TRIAL",
       "event_fingerprint": "google-gemini-cli-a2a-server-stable",
       "update_2026_09_02": "0.58.0 stable (9/1T20:51Z): macOS Seatbelt sandbox now isolates Docker and container-runtime sockets and binaries (sandbox hardening); a2a-server fix — stale cancellation error cleared on new message turns (a2a-server continues in the stable release line); consistent symlink evaluation in ignore-path handling; top-level safety checkers declared in write-policy configuration; history rollback and retry-nudge fixes. a2a-server documentation still absent (watch item). 0.59.0-preview.0 published 9/1T20:19Z",
       "update_2026_09_04": "No new stable in window (latest remains 0.58.0, 9/1). Nightlies: 0.59.0-nightly (9/2): web-fetch destination validation + connection routing fix; 0.60.0-nightly (9/4) security cluster — RFC 9207 issuer identification enforced in the MCP OAuth flow, macOS Seatbelt temp-dir isolation, extension-loader path-boundary hardening, hardcoded Google CrUX API key removed from chrome-devtools-mcp. a2a-server docs watch: packages/a2a-server now carries a README.md, but it is a 171-byte 'experimental and under active development' stub — still no usage/setup documentation. Stays TRIAL",
@@ -220,7 +224,8 @@
         "src-04d61de5c9f9c672",
         "src-dbb95ff3d456141d",
         "src-e9d62472858a055c",
-        "src-451b839194f1d8cc"
+        "src-451b839194f1d8cc",
+        "src-8d603faf83b5cd35"
       ],
       "project_ids": [
         "gemini-cli"
@@ -308,6 +313,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260825-02-gemini-cli-0-67-evidence",
+          "claim_zh": "官方 release 确认 0.67 修复原子写入、取消后的工具执行和沙箱 IDE 上下文，并扩充 MCP 审批元数据。",
+          "claim_en": "The official release confirms 0.67 fixes atomic writes, tool execution after cancellation and sandboxed IDE context while expanding MCP approval metadata.",
+          "source_ids": [
+            "src-8d603faf83b5cd35"
+          ],
+          "event_ids": [
+            "ev-20260825-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -387,12 +405,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260825-02-gemini-cli-0-67",
+          "kind": "update",
+          "occurred_at": "2026-11-04T20:27:11Z",
+          "discovered_at": "2026-11-06T17:04:35Z",
+          "summary_zh": "Gemini CLI 0.67 加固取消、写入与沙箱 IDE 连接",
+          "summary_en": "Gemini CLI 0.67 hardens cancellation, writes and sandboxed IDE integration",
+          "evidence_ids": [
+            "ev-20260825-02-gemini-cli-0-67-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "short_label_zh": "Gemini CLI 0.66",
-      "short_label_en": "Gemini CLI 0.66",
-      "next_action_zh": "一天内接入测试用私网 MCP server，并分别通过 HTTPS 与 SSH 跑 safe-mode Git，确认 OAuth 可用且不会被隐藏提示卡住。",
-      "next_action_en": "Within one day, connect a test private-network MCP server and run safe-mode Git over HTTPS and SSH; verify OAuth succeeds and no hidden prompt can stall the agent.",
+      "short_label_zh": "Gemini CLI 0.67",
+      "short_label_en": "Gemini CLI 0.67",
+      "next_action_zh": "一天内回归只读文件、hard link、取消后的工具执行、容器 IDE 桥接与 MCP 审批元数据。",
+      "next_action_en": "Within one day, regress read-only files, hard links, post-cancel tools, the container IDE bridge and MCP approval metadata.",
       "last_reviewed_at": "2026-10-21T15:58:23Z"
     },
     {

@@ -1024,6 +1024,106 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261102-11",
+      "title": "Anthropic open-sources FlashProve for verifiable LLM inference",
+      "title_zh": "Anthropic 开源 FlashProve 验证 LLM 推理来源",
+      "category": "research",
+      "organization": [
+        "Anthropic"
+      ],
+      "published_at": "2026-11-02",
+      "first_seen_at": "2026-11-06T17:04:35Z",
+      "last_updated_at": "2026-11-06T17:04:35Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.anthropic.com/research/provable-inference",
+      "secondary_sources": [],
+      "summary": "Anthropic released FlashProve, an Apache-2.0 prototype that uses zkSNARKs to prove a response came from committed model weights without revealing those weights. For 4-bit Llama 4 Maverick, Anthropic reports about 110 proved tokens per second, an 18.78 MB proof per request and 17 seconds of CPU verification. Proving still costs roughly 70–95 times the GPU time of plain vLLM inference.",
+      "why_it_matters": "For model gateways and auditors, public code and Lean proofs make provider identity testable rather than contractual. The overhead is still too high for routine production traffic, so the near-term use is targeted verification and research.",
+      "summary_zh": "Anthropic 发布 FlashProve，这是一个 Apache 2.0 prototype，用 zkSNARK 证明回复来自已承诺的模型权重，同时不暴露权重。针对 4-bit Llama 4 Maverick，Anthropic 报告证明速度约 110 token/s，每次请求的 proof 为 18.78 MB，CPU 验证约 17 秒。生成证明的 GPU 时间仍约为普通 vLLM 推理的 70–95 倍。",
+      "summary_en": "Anthropic released FlashProve, an Apache-2.0 prototype that uses zkSNARKs to prove a response came from committed model weights without revealing those weights. For 4-bit Llama 4 Maverick, Anthropic reports about 110 proved tokens per second, an 18.78 MB proof per request and 17 seconds of CPU verification. Proving still costs roughly 70–95 times the GPU time of plain vLLM inference.",
+      "why_it_matters_zh": "对 model gateway 与审计团队来说，公开代码和 Lean proof 让“是否真由指定模型生成”从合同承诺变成可验证命题。成本仍过高，近期更适合定向核验与研究。",
+      "why_it_matters_en": "For model gateways and auditors, public code and Lean proofs make provider identity testable rather than contractual. The overhead is still too high for routine production traffic, so the near-term use is targeted verification and research.",
+      "technical_details": {
+        "method": "zkSNARK over committed model weights",
+        "artifacts": "technical report, protocol specification, prover, C++ and Lean verifiers, Lean proofs",
+        "license": "Apache 2.0",
+        "reported_result": "110 proved tokens/s; 18.78 MB proof; 17s CPU verification",
+        "overhead": "roughly 70–95x GPU time versus vLLM",
+        "limitation": "intermediate prototype; architecture hiding is not a goal",
+        "time_basis": "Official research post gives 2026-11-02 date only; recall audit discovered it outside the overlap window"
+      },
+      "technical_details_zh": {
+        "方法": "针对已承诺模型权重的 zkSNARK",
+        "公开产物": "技术报告、protocol specification、prover、C++ 与 Lean verifier、Lean proof",
+        "许可": "Apache 2.0",
+        "厂商结果": "证明速度 110 token/s；proof 18.78 MB；CPU 验证 17 秒",
+        "开销": "相对 vLLM 的 GPU 时间约高 70–95 倍",
+        "限制": "中间 prototype；不隐藏模型架构",
+        "时间依据": "官方研究页只给出 2026-11-02 日期；召回自检在 overlap 之前补录"
+      },
+      "tags": [
+        "provable-inference",
+        "zksnark",
+        "lean",
+        "model-integrity"
+      ],
+      "technical_impact": 5,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "anthropic-flashprove-provable-inference",
+      "short_label_zh": "FlashProve",
+      "short_label_en": "FlashProve",
+      "next_action_zh": "一天内用公开 verifier 检查示例 proof 的耗时、内存与失败提示，不先尝试完整 400B prover。",
+      "next_action_en": "Within one day, use the public verifier to measure example-proof latency, memory and failure reporting before attempting the full 400B prover.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-43862ef771dfba65"
+      ],
+      "project_ids": [
+        "flashprove"
+      ],
+      "scenario_ids": [
+        "research",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261102-11-evidence",
+          "claim_zh": "Anthropic 官方研究页公开 FlashProve 代码、Lean proof 与技术报告，并披露性能和开销。",
+          "claim_en": "Anthropic’s research post releases FlashProve code, Lean proofs and a technical report with performance and overhead measurements.",
+          "source_ids": [
+            "src-43862ef771dfba65"
+          ],
+          "event_ids": [
+            "ev-20261102-11"
+          ],
+          "relation": "support",
+          "verification": "artifacts verified; benchmarks remain publisher-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261102-11-published",
+          "kind": "new",
+          "occurred_at": "2026-11-02",
+          "discovered_at": "2026-11-06T17:04:35Z",
+          "summary_zh": "Anthropic 开源 FlashProve 验证 LLM 推理来源",
+          "summary_en": "Anthropic open-sources FlashProve for verifiable LLM inference",
+          "evidence_ids": [
+            "ev-20261102-11-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "record_origin": "recall-audit"
     }
   ]
 }

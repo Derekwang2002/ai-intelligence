@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.108 tightens credentials, MCP sessions and streaming guardrails",
-      "title_zh": "LiteLLM 1.108 收紧凭据、MCP 会话与流式护栏",
+      "title": "LiteLLM 1.108.1 signs images and backports LTS fixes",
+      "title_zh": "LiteLLM 1.108.1 签名镜像并回移 LTS 修复",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-04T16:56:21Z",
+      "last_updated_at": "2026-11-06T17:04:35Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -57,9 +57,11 @@
         "image_digest": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
         "time_basis": "GitHub release published 2026-10-25T09:39:15Z.",
         "update_2026_10_25": "1.106.4 fixes proxy startup failures when the remote model-cost map is unavailable and removes several container-scan false positives; fixes are backported to 1.104.7 and 1.105.5.",
-        "latest_stable": "1.108.0",
+        "latest_stable": "1.108.1",
         "release_2026_11_04": "Signed images; credential leak fixes; MCP OAuth/session/toolsets; streaming guardrails; budget and admission repairs",
-        "time_basis_2026_11_04": "GitHub release published 2026-11-04T03:35:33Z"
+        "time_basis_2026_11_04": "GitHub release published 2026-11-04T03:35:33Z",
+        "update_2026_11_05": "Cosign-signed Docker images, stable/RC/LTS OSV scans, 21 mainline fixes plus prerequisites, and pass-through credential selection that skips team deployments.",
+        "time_basis_2026_11_05": "GitHub release published 2026-11-05T23:42:04Z."
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -81,9 +83,11 @@
         "镜像摘要": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
         "时间依据": "GitHub release 发布于 2026-10-25T09:39:15Z。",
         "2026-10-25 更新": "1.106.4 修复远程模型成本表不可达时 proxy 启动 ImportError，并消除多项容器扫描误报；修复也回移到 1.104.7 与 1.105.5。",
-        "最新稳定版": "1.108.0",
+        "最新稳定版": "1.108.1",
         "2026-11-04 更新": "签名镜像；凭据泄露修复；MCP OAuth/session/toolset；流式护栏；预算与准入修复",
-        "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T03:35:33Z"
+        "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T03:35:33Z",
+        "2026-11-05 更新": "Docker 镜像用 cosign 签名；stable/RC/LTS 分支运行 OSV 扫描；回移 21 项主线修复及前置修复；pass-through 凭据选择跳过 team deployment。",
+        "时间依据_2026_11_05": "GitHub release 于 2026-11-05T23:42:04Z 发布。"
       },
       "tags": [
         "litellm",
@@ -115,10 +119,12 @@
         "src-1e8b991416e8869f",
         "src-26c451a3ba9575d2",
         "src-8bf6776408f8d7ad",
-        "src-3d6c3b6b91b94492"
+        "src-3d6c3b6b91b94492",
+        "src-bc1643b3a14e5224"
       ],
       "project_ids": [
-        "mcp"
+        "mcp",
+        "litellm"
       ],
       "scenario_ids": [
         "agents"
@@ -256,6 +262,19 @@
           ],
           "verification": "verified",
           "relation": "update"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-1-evidence",
+          "claim_zh": "官方 release 提供 cosign 验证命令，并确认 LTS 回移与 pass-through 凭据修复。",
+          "claim_en": "The official release provides cosign verification commands and confirms LTS backports plus a pass-through credential fix.",
+          "source_ids": [
+            "src-bc1643b3a14e5224"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; runtime behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -387,13 +406,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-1",
+          "kind": "update",
+          "occurred_at": "2026-11-05T23:42:04Z",
+          "discovered_at": "2026-11-06T17:04:35Z",
+          "summary_zh": "LiteLLM 1.108.1 增加镜像签名并回移 LTS 修复",
+          "summary_en": "LiteLLM 1.108.1 adds image signatures and LTS backports",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-108-1-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "一天内以 canary 回归签名镜像、MCP OAuth、流式护栏、预算并发与失败回滚。",
-      "next_action_en": "Within one day, canary signed images, MCP OAuth, streaming guardrails, concurrent budgets and rollback on failure.",
-      "short_label_zh": "LiteLLM 1.108",
-      "short_label_en": "LiteLLM 1.108"
+      "next_action_zh": "在 canary 验证镜像签名、pass-through 凭据、MCP 会话、预算与回滚后再升级。",
+      "next_action_en": "Canary image signatures, pass-through credentials, MCP sessions, budgets and rollback before upgrading.",
+      "short_label_zh": "LiteLLM 1.108.1",
+      "short_label_en": "LiteLLM 1.108.1"
     }
   ]
 }
