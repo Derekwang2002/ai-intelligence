@@ -919,8 +919,8 @@
     },
     {
       "event_id": "ev-20260911-11",
-      "title": "GitHub upgrades Copilot review with shell tools and an agent ensemble",
-      "title_zh": "GitHub 用 shell 工具与多 agent 加固 Copilot review",
+      "title": "GitHub exposes Copilot review policy and provenance through APIs",
+      "title_zh": "GitHub 用 API 开放 Copilot review 策略与来源",
       "category": "developer-tools",
       "organization": [
         "GitHub",
@@ -928,26 +928,29 @@
       ],
       "published_at": "2026-09-11T20:00:07Z",
       "first_seen_at": "2026-09-12T02:08:37Z",
-      "last_updated_at": "2026-10-03T16:01:57Z",
+      "last_updated_at": "2026-11-07T16:55:48Z",
       "source_type": "official_docs",
       "primary_source": "https://github.blog/changelog/2026-09-11-auto-resolution-and-analysis-updates-in-copilot-code-review/",
       "secondary_sources": [
         "https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience",
-        "https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level/"
+        "https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level/",
+        "https://github.blog/changelog/2026-11-06-copilot-code-review-api-management-and-review-overview-updates/"
       ],
-      "summary": "GitHub changed Copilot code review from a file-reading reviewer into an agent that can run builds, tests, targeted scripts, tools and APIs behind the Copilot agent firewall. Lite reviews now use an ensemble of agents and merge their findings into one review. GitHub reports 47% more addressed high-severity comments, 31% more medium-severity comments and about 8% lower review cost in its experiments. Copilot also auto-resolves addressed threads and writes commit messages for applied fixes.",
-      "why_it_matters": "For teams already using Copilot review, validation is moving from static inspection toward execution-backed review without requiring the highest effort tier. Trial it on repositories with reliable tests and compare high-severity precision, runtime and false positives against the previous Lite baseline.",
-      "summary_zh": "GitHub 把 Copilot code review 从只读文件的审查器升级为可在 agent firewall 后运行构建、测试、定向脚本、工具与 API 的 agent。Lite 档现在由多个 agent 分头分析，再合并为一份 review。GitHub 的实验显示，被开发者采纳的高严重度评论增加 47%，中严重度增加 31%，review 成本约降 8%。Copilot 还会自动关闭已修复的评论，并为采纳的修复生成 commit message。",
-      "summary_en": "GitHub changed Copilot code review from a file-reading reviewer into an agent that can run builds, tests, targeted scripts, tools and APIs behind the Copilot agent firewall. Lite reviews now use an ensemble of agents and merge their findings into one review. GitHub reports 47% more addressed high-severity comments, 31% more medium-severity comments and about 8% lower review cost in its experiments. Copilot also auto-resolves addressed threads and writes commit messages for applied fixes.",
-      "why_it_matters_zh": "对已经使用 Copilot review 的团队，这意味着代码审查正从静态检查转向有执行证据的验证，而且不必切到最高 effort 档。可以先在测试可靠的仓库试跑，对比升级前 Lite 基线的高严重度精度、耗时与误报。",
-      "why_it_matters_en": "For teams already using Copilot review, validation is moving from static inspection toward execution-backed review without requiring the highest effort tier. Trial it on repositories with reliable tests and compare high-severity precision, runtime and false positives against the previous Lite baseline.",
+      "summary": "GitHub now lets administrators read and update Copilot code-review policy through REST and GraphQL APIs, with enterprise-to-repository inheritance. Review records expose attribution, effort and reported skills, MCP servers and custom instructions. Balanced reviews use three reviewer models plus a merger model, while failed reviews retry once and may switch models.",
+      "why_it_matters": "For teams governing automated review, policy-as-code and explicit provenance make rollout and audit easier. Reported tool provenance still comes from Copilot, and a multi-model ensemble does not prove correctness, so teams need sampled human review and cost monitoring.",
+      "summary_zh": "GitHub 现在允许管理员通过 REST 与 GraphQL API 读取和更新 Copilot code review 策略，并保留 enterprise 到 repository 的继承关系。review 记录会暴露归属、effort，以及它报告使用的 skills、MCP servers 与 custom instructions。Balanced review 由三个 reviewer model 分析，再用一个模型合并；失败 review 会重试一次，也可能切换模型。",
+      "summary_en": "GitHub now lets administrators read and update Copilot code-review policy through REST and GraphQL APIs, with enterprise-to-repository inheritance. Review records expose attribution, effort and reported skills, MCP servers and custom instructions. Balanced reviews use three reviewer models plus a merger model, while failed reviews retry once and may switch models.",
+      "why_it_matters_zh": "对治理自动 code review 的团队来说，policy-as-code 与明确来源信息更便于分批上线和审计。但工具来源仍是 Copilot 自报，多模型 ensemble 也不等于结论正确，仍需抽样人工复核与成本监控。",
+      "why_it_matters_en": "For teams governing automated review, policy-as-code and explicit provenance make rollout and audit easier. Reported tool provenance still comes from Copilot, and a multi-model ensemble does not prove correctness, so teams need sampled human review and cost monitoring.",
       "technical_details": {
         "review_runtime": "Full Copilot SDK shell-tool set behind the Copilot agent firewall; can run builds, tests, targeted scripts, and query available tools/APIs",
         "lite_ensemble": "Multiple review agents contribute perspectives and GitHub merges their findings into one Lite review",
         "vendor_experiment": "+47% addressed high-severity comments; +31% medium; +11% low; review cost about -8%",
         "workflow": "Auto-resolves comments after a later commit addresses them; generates context-specific commit messages for applied suggestions",
         "update_2026_09_20": "The GA review overview separates open, resolved-since-last-review and previously missed findings, preserves progress across commits, records review effort and severity, honors replies that keep a finding open, and explains auto-resolution as Won't Fix or Incorrect.",
-        "update_2026_10_03": "REST and GraphQL APIs can request Copilot code review with per-request effort. Balanced is now the default GA effort level."
+        "update_2026_10_03": "REST and GraphQL APIs can request Copilot code review with per-request effort. Balanced is now the default GA effort level.",
+        "update_2026_11_06": "REST/GraphQL policy management, attribution/effort/tool provenance, AI-credit display, bypass lists, three-reviewer balanced mode and retry/model fallback.",
+        "time_basis_2026_11_06": "Official page provides date 2026-11-06 without time; first observed after the prior checkpoint."
       },
       "technical_details_zh": {
         "review 运行时": "在 Copilot agent firewall 后使用完整 Copilot SDK shell 工具集；可运行构建、测试、定向脚本，并查询可用工具与 API",
@@ -955,7 +958,9 @@
         "厂商实验": "被采纳的高严重度评论 +47%；中严重度 +31%；低严重度 +11%；review 成本约 -8%",
         "工作流": "后续 commit 修复问题后自动关闭评论；为采纳的建议生成针对本次变更的 commit message",
         "update_2026_09_20": "GA review 总览区分未解决、上次 review 后已解决、此前漏检三类发现，跨 commit 保留进度，并显示 review effort 与严重度；回复要求保留的问题不会被自动关闭，自动关闭会标注 Won't Fix 或 Incorrect。",
-        "update_2026_10_03": "REST 与 GraphQL API 可触发 Copilot code review，并按请求指定 effort；Balanced 成为 GA 默认档。"
+        "update_2026_10_03": "REST 与 GraphQL API 可触发 Copilot code review，并按请求指定 effort；Balanced 成为 GA 默认档。",
+        "2026-11-06 更新": "REST/GraphQL 策略管理、归属/effort/工具来源、AI credits、bypass list、三 reviewer 的 balanced mode，以及重试/模型 fallback。",
+        "2026-11-06 时间依据": "官方页面仅给出 2026-11-06 日期，无时分；上次 checkpoint 后首次观察到。"
       },
       "tags": [
         "copilot",
@@ -976,7 +981,8 @@
       "source_ids": [
         "src-f5b7434d849eacf1",
         "src-90422616cebb86f4",
-        "src-70fa5b461d34e63d"
+        "src-70fa5b461d34e63d",
+        "src-296a6a9750570fb8"
       ],
       "project_ids": [
         "github-copilot"
@@ -1013,6 +1019,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260911-11-api-policy-evidence",
+          "claim_zh": "GitHub 官方 changelog 记录了 code review 策略 API、来源字段、balanced ensemble 与重试行为。",
+          "claim_en": "GitHub official changelog documents code-review policy APIs, provenance fields, the balanced ensemble and retry behavior.",
+          "source_ids": [
+            "src-296a6a9750570fb8"
+          ],
+          "event_ids": [
+            "ev-20260911-11"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; no independent quality evaluation"
         }
       ],
       "changes": [
@@ -1040,12 +1059,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260911-11-api-policy",
+          "kind": "update",
+          "occurred_at": "2026-11-06",
+          "discovered_at": "2026-11-07T16:55:48Z",
+          "summary_zh": "Copilot code review 开放策略 API、来源字段与多模型 balanced mode",
+          "summary_en": "Copilot code review adds policy APIs, provenance fields and a multi-model balanced mode",
+          "evidence_ids": [
+            "ev-20260911-11-api-policy-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "short_label_zh": "Copilot Code Review",
       "short_label_en": "Copilot Code Review",
-      "next_action_zh": "一天内从 CI 触发同一组 PR 的 Balanced 与 High review，对比时延、成本和有效发现率。",
-      "next_action_en": "In one day, trigger Balanced and High reviews for the same PR set from CI and compare latency, cost and useful-finding rate."
+      "next_action_zh": "用测试 repository 验证策略继承、MCP 来源字段、重试成本与人工抽检误报率。",
+      "next_action_en": "Use a test repository to verify policy inheritance, MCP provenance, retry cost and sampled false-positive rate."
     },
     {
       "event_id": "ev-20260911-12",

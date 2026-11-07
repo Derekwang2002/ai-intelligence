@@ -540,8 +540,8 @@
     },
     {
       "event_id": "ev-20260917-07",
-      "title": "GitHub adds adoption telemetry for Copilot agents, skills and MCP",
-      "title_zh": "GitHub 为 Copilot agent、skill 与 MCP 增加采用遥测",
+      "title": "GitHub expands Copilot telemetry to chat and the VS Code Agents window",
+      "title_zh": "GitHub 将 Copilot 遥测扩展到 Chat 与 VS Code Agents",
       "category": "developer-tools",
       "organization": [
         "GitHub",
@@ -549,31 +549,36 @@
       ],
       "published_at": "2026-09-17T21:08:50Z",
       "first_seen_at": "2026-09-17T23:58:56Z",
-      "last_updated_at": "2026-09-17T23:58:56Z",
+      "last_updated_at": "2026-11-07T16:55:48Z",
       "source_type": "release_notes",
       "primary_source": "https://github.blog/changelog/2026-09-17-agentic-cli-customizations-now-in-the-usage-metrics-api/",
       "secondary_sources": [
-        "https://github.blog/changelog/2026-09-17-copilot-impact-dashboard-now-shows-feature-engagement/"
+        "https://github.blog/changelog/2026-09-17-copilot-impact-dashboard-now-shows-feature-engagement/",
+        "https://github.blog/changelog/2026-11-06-copilot-impact-dashboard-adds-chat-and-vs-code-agent-usage/"
       ],
-      "summary": "GitHub's enterprise and organization reports now measure Copilot CLI skills, custom agents, MCP servers, slash commands and plugins. The impact dashboard and API also expose rolling 28-day engagement for code completion, agent edit, code review, cloud agent, CLI and app. Customer-defined names are privacy-grouped. MCP interaction counts measure connection attempts, including failures, rather than tool calls.",
-      "why_it_matters": "For platform teams, agent rollout can now be managed with feature-level adoption data instead of license assignment alone. The new fields help find useful automations and enablement gaps. Interpret MCP counts carefully because failed reconnects can look like engagement.",
-      "summary_zh": "GitHub 的企业与组织报告现在会统计 Copilot CLI 的 skills、custom agents、MCP servers、slash commands 与 plugins。impact dashboard 和 API 还新增 28 天滚动 feature engagement，覆盖 code completion、agent edit、code review、cloud agent、CLI 与 app。自定义名称会为保护隐私而合并显示；MCP interaction 统计的是连接尝试，包括失败，并非工具调用次数。",
-      "summary_en": "GitHub's enterprise and organization reports now measure Copilot CLI skills, custom agents, MCP servers, slash commands and plugins. The impact dashboard and API also expose rolling 28-day engagement for code completion, agent edit, code review, cloud agent, CLI and app. Customer-defined names are privacy-grouped. MCP interaction counts measure connection attempts, including failures, rather than tool calls.",
-      "why_it_matters_zh": "对平台团队来说，agent 推广终于可以看功能级采用，而不只是 license 分配。新字段能找出真正有用的自动化和启用缺口。MCP 指标要谨慎解释，因为失败重连也会被计数。",
-      "why_it_matters_en": "For platform teams, agent rollout can now be managed with feature-level adoption data instead of license assignment alone. The new fields help find useful automations and enablement gaps. Interpret MCP counts carefully because failed reconnects can look like engagement.",
+      "summary": "GitHub Copilot enterprise and organization 28-day reports now include Chat and the VS Code Agents window alongside seven existing features. The dashboard renames Passive users to Chat-first users. Chat and VS Code Agents appear as engagement but still do not count toward adoption phases, and one user can count in multiple features.",
+      "why_it_matters": "For engineering leaders, the report closes a major blind spot around chat-heavy use, but it is not a productivity or unique-user measure. Decisions should reconcile overlap, the two-day engagement rule and missing history before tying adoption to outcomes.",
+      "summary_zh": "GitHub Copilot 的 enterprise 与 organization 28 天报告现在把 Chat 和 VS Code Agents window 加入原有七类 feature。dashboard 将 Passive users 改名为 Chat-first users。两项数据只算 engagement，仍不进入 adoption phase；同一用户也可能在多个 feature 中重复计数。",
+      "summary_en": "GitHub Copilot enterprise and organization 28-day reports now include Chat and the VS Code Agents window alongside seven existing features. The dashboard renames Passive users to Chat-first users. Chat and VS Code Agents appear as engagement but still do not count toward adoption phases, and one user can count in multiple features.",
+      "why_it_matters_zh": "对工程负责人来说，这补上了以 Chat 为主的使用盲区，但它既不是生产率指标，也不是去重用户数。把 adoption 与结果挂钩前，要先处理重复计数、两天 engagement 规则和历史不回填。",
+      "why_it_matters_en": "For engineering leaders, the report closes a major blind spot around chat-heavy use, but it is not a productivity or unique-user measure. Decisions should reconcile overlap, the two-day engagement rule and missing history before tying adoption to outcomes.",
       "technical_details": {
         "cli_customizations": "skills, custom agents, MCP servers, slash commands, plugins",
         "feature_window": "rolling 28 days",
         "surfaces": "completion, agent edit, active/passive review, cloud agent, CLI, app",
         "privacy": "customer-defined names grouped",
-        "mcp_caveat": "interaction_count counts connection attempts, not tool calls"
+        "mcp_caveat": "interaction_count counts connection attempts, not tool calls",
+        "update_2026_11_06": "totals_by_feature adds chat and vscode_agent; Chat-first remains No Cohort in the API; only enterprise/organization 28-day reports include the fields.",
+        "time_basis_2026_11_06": "Official page provides date 2026-11-06 without time; first observed after the prior checkpoint."
       },
       "technical_details_zh": {
         "CLI 定制项": "skills、custom agents、MCP servers、slash commands、plugins",
         "统计窗口": "滚动 28 天",
         "产品面": "completion、agent edit、主动/被动 review、cloud agent、CLI、app",
         "隐私": "自定义名称合并显示",
-        "MCP 注意": "interaction_count 统计连接尝试，不是工具调用"
+        "MCP 注意": "interaction_count 统计连接尝试，不是工具调用",
+        "2026-11-06 更新": "totals_by_feature 新增 chat 与 vscode_agent；Chat-first 在 API 中仍是 No Cohort；字段只进入 enterprise/organization 的 28 天报告。",
+        "2026-11-06 时间依据": "官方页面仅给出 2026-11-06 日期，无时分；上次 checkpoint 后首次观察到。"
       },
       "tags": [
         "GitHub-Copilot",
@@ -592,7 +597,8 @@
       "event_fingerprint": "github-copilot-agentic-customization-adoption-telemetry",
       "source_ids": [
         "src-74fc977f691fc146",
-        "src-553eb3c867220f4c"
+        "src-553eb3c867220f4c",
+        "src-6d8f235573b9bde7"
       ],
       "project_ids": [
         "github-copilot",
@@ -616,6 +622,19 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260917-07-chat-vscode-evidence",
+          "claim_zh": "GitHub 官方 changelog 确认 28 天报告新增 Chat 与 VS Code Agents engagement，并列出重复计数与 cohort 限制。",
+          "claim_en": "GitHub official changelog confirms Chat and VS Code Agents engagement in 28-day reports and documents overlap and cohort limits.",
+          "source_ids": [
+            "src-6d8f235573b9bde7"
+          ],
+          "event_ids": [
+            "ev-20260917-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -630,8 +649,25 @@
             "ev-20260917-07-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260917-07-chat-vscode",
+          "kind": "update",
+          "occurred_at": "2026-11-06",
+          "discovered_at": "2026-11-07T16:55:48Z",
+          "summary_zh": "Copilot 用量报告新增 Chat 与 VS Code Agents，但不改变 adoption phase",
+          "summary_en": "Copilot usage reports add Chat and VS Code Agents without changing adoption phases",
+          "evidence_ids": [
+            "ev-20260917-07-chat-vscode-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "next_action_zh": "导出 28 天报告，先去重 Chat／agent 重叠并核对 No Cohort，再关联交付指标。",
+      "next_action_en": "Export the 28-day report, reconcile Chat/agent overlap and No Cohort, then link it to delivery outcomes.",
+      "short_label_en": "Copilot Metrics",
+      "short_label_zh": "Copilot Metrics"
     },
     {
       "event_id": "ev-20260917-08",

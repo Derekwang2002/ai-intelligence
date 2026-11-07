@@ -237,10 +237,12 @@
       ],
       "published_at": "2026-10-28",
       "first_seen_at": "2026-10-29T16:05:08Z",
-      "last_updated_at": "2026-10-29T16:05:08Z",
+      "last_updated_at": "2026-11-07T16:55:48Z",
       "source_type": "official_announcement",
       "primary_source": "https://github.blog/changelog/2026-10-28-work-from-anywhere-with-a-new-connected-copilot-cloud-experience",
-      "secondary_sources": [],
+      "secondary_sources": [
+        "https://github.blog/changelog/2026-11-06-github-copilot-in-slack-and-teams-is-generally-available/"
+      ],
       "summary": "GitHub made its connected Copilot cloud experience generally available on paid Copilot plans, with rollout starting October 28. A session can move across web, mobile, CLI, VS Code, Slack and Teams while running in resumable GitHub-managed sandboxes. Cloud sandbox billing starts in November 2026 and draws from a shared dollar-based Actions compute entitlement.",
       "summary_en": "GitHub made its connected Copilot cloud experience generally available on paid Copilot plans, with rollout starting October 28. A session can move across web, mobile, CLI, VS Code, Slack and Teams while running in resumable GitHub-managed sandboxes. Cloud sandbox billing starts in November 2026 and draws from a shared dollar-based Actions compute entitlement.",
       "summary_zh": "GitHub 将跨端续接的 Copilot 云体验向付费方案正式开放，并从 10 月 28 日开始滚动上线。同一会话可在网页、移动端、CLI、VS Code、Slack 与 Teams 之间继续，并运行在可恢复的 GitHub 托管 sandbox 中。云 sandbox 从 2026 年 11 月开始计费，并与 Actions 共用按金额计算的算力额度。",
@@ -253,7 +255,9 @@
         "sandbox": "GitHub-managed isolated environment; snapshots support cross-surface resume; no one-hour total session cap",
         "billing": "cloud sandbox billing starts November 2026; shared dollar-based Actions entitlement; overage follows existing settings",
         "governance": "enterprise-managed agent permissions and MCP server allowlists apply",
-        "time_basis": "GitHub changelog exposes date 2026-10-28 without time; recovered by targeted late-discovery review"
+        "time_basis": "GitHub changelog exposes date 2026-10-28 without time; recovered by targeted late-discovery review",
+        "update_2026_11_06": "@GitHub in Slack and Teams is GA; it can investigate bugs, create issues, implement changes and open pull requests, with Teams Canvas for plans, diffs and previews.",
+        "time_basis_2026_11_06": "Official page provides date 2026-11-06 without time."
       },
       "technical_details_zh": {
         "开放阶段": "付费 Copilot 方案 GA；从 2026-10-28 开始滚动上线",
@@ -261,7 +265,9 @@
         "sandbox": "GitHub 托管隔离环境；快照支持跨端续接；没有一小时总会话上限",
         "计费": "云 sandbox 从 2026 年 11 月开始计费；与 Actions 共用按金额计算的额度；超额沿用现有设置",
         "治理": "企业托管的 agent 权限与 MCP server allowlist 会继承",
-        "时间依据": "GitHub changelog 只提供 2026-10-28 日期；本轮通过定向补漏发现"
+        "时间依据": "GitHub changelog 只提供 2026-10-28 日期；本轮通过定向补漏发现",
+        "2026-11-06 更新": "@GitHub 在 Slack 与 Teams 进入 GA，可调查 bug、创建 issue、实现修改并打开 pull request；Teams Canvas 可并排查看 plan、diff 与 preview。",
+        "2026-11-06 时间依据": "官方页面仅给出 2026-11-06 日期，无时分。"
       },
       "tags": [
         "github-copilot",
@@ -280,10 +286,11 @@
       "event_fingerprint": "github-connected-copilot-cloud-experience-ga",
       "short_label_zh": "Copilot Cloud",
       "short_label_en": "Copilot Cloud",
-      "next_action_zh": "一天内用测试仓库跨 CLI 与网页续接会话，核对快照隔离、MCP allowlist、凭据与额度扣费。",
-      "next_action_en": "Within one day, resume a test session across CLI and web; verify snapshot isolation, MCP allowlists, credentials and entitlement charges.",
+      "next_action_zh": "在非生产仓库验证频道身份映射、repository 选择、PR 归属与误触发回滚。",
+      "next_action_en": "Validate channel identity mapping, repository selection, PR attribution and accidental-trigger rollback in a non-production repository.",
       "source_ids": [
-        "src-a1a6f10b85667b9c"
+        "src-a1a6f10b85667b9c",
+        "src-c6d4b65182abfa23"
       ],
       "project_ids": [
         "github-copilot"
@@ -306,6 +313,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261028-03-slack-teams-ga-evidence",
+          "claim_zh": "GitHub 官方宣布 @GitHub 在 Slack 与 Teams 进入 GA，并列出 issue、实现与 PR 能力。",
+          "claim_en": "GitHub officially announced @GitHub GA in Slack and Teams with issue, implementation and pull-request capabilities.",
+          "source_ids": [
+            "src-c6d4b65182abfa23"
+          ],
+          "event_ids": [
+            "ev-20261028-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -318,6 +338,19 @@
           "summary_en": "GitHub moves cross-surface Copilot cloud sessions and resumable sandboxes to GA.",
           "evidence_ids": [
             "ev-20261028-03-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261028-03-slack-teams-ga",
+          "kind": "update",
+          "occurred_at": "2026-11-06",
+          "discovered_at": "2026-11-07T16:55:48Z",
+          "summary_zh": "@GitHub 在 Slack 与 Teams 进入 GA",
+          "summary_en": "@GitHub reaches GA in Slack and Teams",
+          "evidence_ids": [
+            "ev-20261028-03-slack-teams-ga-evidence"
           ],
           "historical": false,
           "importance": "major"

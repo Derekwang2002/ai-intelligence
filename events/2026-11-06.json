@@ -1,0 +1,309 @@
+{
+  "date": "2026-11-06",
+  "provenance": "Incremental scan from 2026-11-06T17:04:35Z to 2026-11-07T16:55:48Z with a three-hour retrieval overlap.",
+  "events": [
+    {
+      "event_id": "ev-20261106-01",
+      "title": "NVIDIA open-sources Reshard to cut RL weight-refit traffic",
+      "title_zh": "NVIDIA 开源 Reshard，减少 RL 权重刷新流量",
+      "category": "infrastructure",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-11-06T18:03:26Z",
+      "first_seen_at": "2026-11-07T16:55:48Z",
+      "last_updated_at": "2026-11-07T16:55:48Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/accelerating-reinforcement-learning-weight-refit-with-the-reshard-collective/",
+      "secondary_sources": [
+        "https://github.com/NVIDIA/nccl-extensions",
+        "https://github.com/NVIDIA-NeMo/RL"
+      ],
+      "summary": "NVIDIA released NCCL M2N Reshard and integrated it with NeMo RL to move updated policy weights directly between different training and inference layouts. The implementation avoids reconstructing and broadcasting whole tensors. NVIDIA reports 2.7x to 5.7x faster refits than gather-and-broadcast on H100 and GB200 systems.",
+      "summary_en": "NVIDIA released NCCL M2N Reshard and integrated it with NeMo RL to move updated policy weights directly between different training and inference layouts. The implementation avoids reconstructing and broadcasting whole tensors. NVIDIA reports 2.7x to 5.7x faster refits than gather-and-broadcast on H100 and GB200 systems.",
+      "summary_zh": "NVIDIA 发布 NCCL M2N Reshard，并接入 NeMo RL，让更新后的 policy 权重直接在训练与推理的不同切分布局间传输。它不再重建并广播完整 tensor。NVIDIA 在 H100 与 GB200 系统上报告，refit 比 gather-and-broadcast 快 2.7–5.7 倍。",
+      "why_it_matters": "For teams running disaggregated RL post-training, refit can stall rollout generation as models grow. The public implementation makes the bottleneck testable, but the published gains come from NVIDIA hardware and software and do not establish results on other fabrics or layouts.",
+      "why_it_matters_en": "For teams running disaggregated RL post-training, refit can stall rollout generation as models grow. The public implementation makes the bottleneck testable, but the published gains come from NVIDIA hardware and software and do not establish results on other fabrics or layouts.",
+      "why_it_matters_zh": "对采用训练与推理解耦的 RL 后训练团队来说，模型越大，权重刷新越容易卡住 rollout 生成。公开实现让这个瓶颈可以实测，但现有增益来自 NVIDIA 自家硬件与软件栈，不能外推到其他网络与切分布局。",
+      "technical_details": {
+        "availability": "Open-source NCCL extension plus NeMo RL integration",
+        "method": "DTensor-to-DTensor shard intersection; one network transfer per contribution followed by NVLink replication",
+        "benchmark": "NVIDIA-reported 2.7x-5.7x refit speedup on DGX H100 and DGX GB200; 4.3 seconds in a refit-only Qwen3.8 2.4T BF16 microbenchmark",
+        "limitation": "Feed-forward projection weights use Reshard; smaller weights retain gather-and-broadcast. Shrink/grow resiliency is planned, not implemented in NeMo RL.",
+        "time_basis": "NVIDIA feed timestamp 2026-11-06T18:03:26Z."
+      },
+      "technical_details_zh": {
+        "可用性": "开源 NCCL extension，并已接入 NeMo RL",
+        "方法": "按 DTensor shard 交集直传；每份数据只走一次网络，再用 NVLink 在目标端复制",
+        "评测": "NVIDIA 在 DGX H100 与 DGX GB200 上自报 refit 提速 2.7–5.7 倍；Qwen3.8 2.4T BF16 的纯 refit microbenchmark 为 4.3 秒",
+        "限制": "Reshard 只覆盖占主要体量的前馈投影权重；较小权重仍走 gather-and-broadcast。NeMo RL 尚未接入 NCCL shrink/grow 恢复。",
+        "时间依据": "NVIDIA feed timestamp 为 2026-11-06T18:03:26Z。"
+      },
+      "tags": [
+        "reinforcement-learning",
+        "distributed-training",
+        "nccl",
+        "nemo-rl",
+        "weight-refit"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 5,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-nccl-m2n-reshard-rl-refit",
+      "short_label_zh": "NCCL Reshard",
+      "short_label_en": "NCCL Reshard",
+      "next_action_zh": "在一组训练／推理解耦任务上对比 refit 停顿、网络字节与 rollout 吞吐。",
+      "next_action_en": "Compare refit stalls, network bytes and rollout throughput on one disaggregated training/inference job.",
+      "source_ids": [
+        "src-e20e4a2681dc2afc",
+        "src-fc238ce6d0249405",
+        "src-99a212172bece7e4"
+      ],
+      "project_ids": [
+        "nccl-m2n-reshard"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261106-01-evidence-release",
+          "claim_zh": "NVIDIA 已公开 NCCL M2N Reshard 参考实现与 NeMo RL 集成，并报告 H100／GB200 上的 refit latency。",
+          "claim_en": "NVIDIA published the NCCL M2N Reshard reference implementation and NeMo RL integration with H100 and GB200 refit latency results.",
+          "source_ids": [
+            "src-e20e4a2681dc2afc",
+            "src-fc238ce6d0249405",
+            "src-99a212172bece7e4"
+          ],
+          "event_ids": [
+            "ev-20261106-01"
+          ],
+          "relation": "support",
+          "verification": "public artifacts verified; performance is first-party and not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261106-01-release",
+          "kind": "new",
+          "occurred_at": "2026-11-06T18:03:26Z",
+          "discovered_at": "2026-11-07T16:55:48Z",
+          "summary_zh": "NVIDIA 开源 NCCL M2N Reshard，并把它接入 NeMo RL 的权重刷新路径",
+          "summary_en": "NVIDIA open-sources NCCL M2N Reshard and integrates it into the NeMo RL refit path",
+          "evidence_ids": [
+            "ev-20261106-01-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261106-02",
+      "title": "NVIDIA publishes a testable Blackwell path for faster FLUX 3 inference",
+      "title_zh": "NVIDIA 公布 FLUX 3 的 Blackwell 加速路径",
+      "category": "ai-engineering",
+      "organization": [
+        "NVIDIA",
+        "Black Forest Labs"
+      ],
+      "published_at": "2026-11-06T22:20:20Z",
+      "first_seen_at": "2026-11-07T16:55:48Z",
+      "last_updated_at": "2026-11-07T16:55:48Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/speed-up-image-generation-with-flux-3-image-klein-on-nvidia-blackwell-gpus/",
+      "secondary_sources": [
+        "https://huggingface.co/black-forest-labs/flux-3-image-klein-base",
+        "https://github.com/NVIDIA/TensorRT-LLM/blob/feat/flux3-image-klein/examples/visual_gen/models/flux3.py"
+      ],
+      "summary": "NVIDIA published TensorRT LLM VisualGen configurations for FLUX 3 Image Klein on Blackwell GPUs. The path combines NVFP4 weights, fused kernels, sparse or quantized attention, caching and multi-GPU execution. On one B200, NVIDIA reports 3.46x faster text-to-image and 4.45x faster image-to-image generation than uncompiled BF16 inference.",
+      "summary_en": "NVIDIA published TensorRT LLM VisualGen configurations for FLUX 3 Image Klein on Blackwell GPUs. The path combines NVFP4 weights, fused kernels, sparse or quantized attention, caching and multi-GPU execution. On one B200, NVIDIA reports 3.46x faster text-to-image and 4.45x faster image-to-image generation than uncompiled BF16 inference.",
+      "summary_zh": "NVIDIA 公布 FLUX 3 Image Klein 在 Blackwell GPU 上的 TensorRT LLM VisualGen 配置，组合 NVFP4 权重、融合 kernel、稀疏或量化注意力、缓存与多 GPU 执行。NVIDIA 在单张 B200 上自报：相对未编译 BF16，文生图快 3.46 倍，图生图快 4.45 倍。",
+      "why_it_matters": "For teams self-hosting image generation, the tutorial exposes the latency-quality tradeoffs and runnable configurations instead of a headline benchmark alone. The model files are gated under the FLUX Kommunity License, the example uses a feature-branch container, and the results are not independent.",
+      "why_it_matters_en": "For teams self-hosting image generation, the tutorial exposes the latency-quality tradeoffs and runnable configurations instead of a headline benchmark alone. The model files are gated under the FLUX Kommunity License, the example uses a feature-branch container, and the results are not independent.",
+      "why_it_matters_zh": "对自托管图像生成的团队来说，这份材料不仅给出 headline benchmark，还公开了延迟与画质取舍及可运行配置。模型文件需接受 FLUX Kommunity License，示例依赖 feature branch container，结果也不是独立评测。",
+      "technical_details": {
+        "availability": "Public gated weights and runnable TensorRT LLM VisualGen examples; model access requires license acceptance",
+        "single_gpu_result": "B200, 2048x2048: T2I 22.36s to 6.46s; I2I 54.64s to 12.28s versus uncompiled BF16",
+        "quality_measure": "LPIPS is reported against the dense baseline; cumulative T2I path reaches LPIPS 0.095 and I2I path 0.045",
+        "multi_gpu_result": "Eight B200 GPUs reduce median T2I latency from 14.90s to 3.00s for Base and 2.73s to 1.08s for distilled",
+        "benchmark_scope": "NVIDIA first-party tests, seed 0, two warmups and ten measured requests; prompt upsampling excluded",
+        "time_basis": "NVIDIA feed timestamp 2026-11-06T22:20:20Z."
+      },
+      "technical_details_zh": {
+        "可用性": "公开但 gated 的权重与可运行 TensorRT LLM VisualGen 示例；下载模型需接受许可条款",
+        "单 GPU 结果": "B200、2048x2048：相对未编译 BF16，T2I 从 22.36 秒降到 6.46 秒，I2I 从 54.64 秒降到 12.28 秒",
+        "画质指标": "以 dense baseline 为参照报告 LPIPS；累计优化后 T2I 为 0.095，I2I 为 0.045",
+        "多 GPU 结果": "八张 B200 将 Base 的 T2I 中位延迟从 14.90 秒降到 3.00 秒，distilled 从 2.73 秒降到 1.08 秒",
+        "评测范围": "NVIDIA 自测，seed 0，2 次 warmup 后测 10 次请求；不含 prompt upsampling",
+        "时间依据": "NVIDIA feed timestamp 为 2026-11-06T22:20:20Z。"
+      },
+      "tags": [
+        "image-generation",
+        "inference",
+        "tensorrt-llm",
+        "blackwell",
+        "quantization"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-flux-3-klein-blackwell-visualgen",
+      "short_label_zh": "FLUX 3 VisualGen",
+      "short_label_en": "FLUX 3 VisualGen",
+      "next_action_zh": "用同一组 1024／2048 素材比较 BF16、NVFP4 与缓存路径的延迟、显存和 LPIPS。",
+      "next_action_en": "Compare latency, memory and LPIPS across BF16, NVFP4 and caching on the same 1024/2048 image set.",
+      "source_ids": [
+        "src-a6bcd182b2895683",
+        "src-7ced3ff173c2a6de",
+        "src-fd692c8b8c98ec92"
+      ],
+      "project_ids": [
+        "flux-3-visualgen"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261106-02-evidence-release",
+          "claim_zh": "NVIDIA 公开了 FLUX 3 Image Klein 的 VisualGen 配置、代码路径、延迟与 LPIPS 结果；BFL model card 公开权重变体及许可边界。",
+          "claim_en": "NVIDIA published VisualGen configurations, code paths, latency and LPIPS results for FLUX 3 Image Klein; the BFL model card exposes weight variants and license boundaries.",
+          "source_ids": [
+            "src-a6bcd182b2895683",
+            "src-7ced3ff173c2a6de",
+            "src-fd692c8b8c98ec92"
+          ],
+          "event_ids": [
+            "ev-20261106-02"
+          ],
+          "relation": "support",
+          "verification": "public artifacts verified; performance is first-party and not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261106-02-release",
+          "kind": "new",
+          "occurred_at": "2026-11-06T22:20:20Z",
+          "discovered_at": "2026-11-07T16:55:48Z",
+          "summary_zh": "NVIDIA 公布 FLUX 3 Image Klein 在 Blackwell 上的可运行优化配置",
+          "summary_en": "NVIDIA publishes runnable Blackwell optimization configurations for FLUX 3 Image Klein",
+          "evidence_ids": [
+            "ev-20261106-02-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261106-03",
+      "title": "Nous Research releases Arete-27B to study value-alignment post-training",
+      "title_zh": "Nous Research 发布 Arete-27B，测试价值对齐后训练",
+      "category": "foundation-model",
+      "organization": [
+        "Nous Research"
+      ],
+      "published_at": "2026-11-06T19:31:28.000Z",
+      "first_seen_at": "2026-11-07T16:55:48Z",
+      "last_updated_at": "2026-11-07T16:55:48Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/NousResearch/Arete-27B",
+      "secondary_sources": [
+        "https://huggingface.co/datasets/NousResearch/Propaganda_Eval"
+      ],
+      "summary": "Nous Research released Apache-2.0 weights for Arete-27B, a supervised fine-tune of Qwen3.8-27B built to change responses on seven political-value categories. It used about 52.8 million training tokens without reinforcement learning or architectural changes. On its own 803-prompt evaluation, the publisher reports a higher fact score and fewer answers it labels as propaganda, with no material regression on two capability tests.",
+      "summary_en": "Nous Research released Apache-2.0 weights for Arete-27B, a supervised fine-tune of Qwen3.8-27B built to change responses on seven political-value categories. It used about 52.8 million training tokens without reinforcement learning or architectural changes. On its own 803-prompt evaluation, the publisher reports a higher fact score and fewer answers it labels as propaganda, with no material regression on two capability tests.",
+      "summary_zh": "Nous Research 发布 Arete-27B 的 Apache-2.0 权重。它在 Qwen3.8-27B 上做监督微调，目标是改变七类政治价值议题的回答。训练约使用 5280 万 token，没有 RL 或架构改动。发布方在自建的 803 题评测上报告事实分提高、被其标为宣传话术的回答减少，两项能力测试未见明显退步。",
+      "why_it_matters": "For teams studying alignment or deploying open weights across regions, this is a reproducible example of changing political behavior with supervised data alone. The evaluation rubric, sources and LLM judge encode the publisher's value choices, and no independent evaluation yet shows broader factual reliability or neutrality.",
+      "why_it_matters_en": "For teams studying alignment or deploying open weights across regions, this is a reproducible example of changing political behavior with supervised data alone. The evaluation rubric, sources and LLM judge encode the publisher's value choices, and no independent evaluation yet shows broader factual reliability or neutrality.",
+      "why_it_matters_zh": "对研究对齐或跨地区部署开放权重的团队来说，这是只靠监督数据改变政治回答的可复现实例。但评测 rubric、材料选择和 LLM judge 都带有发布方的价值判断；目前没有独立评测证明它在更广泛事实性或中立性上更可靠。",
+      "technical_details": {
+        "availability": "Public Apache-2.0 weights, training dataset and 803-prompt evaluation",
+        "method": "Supervised fine-tuning of Qwen3.8-27B; 52.8M tokens, 64k context, two epochs; no RL or architecture change",
+        "vendor_evaluation": "Fact mean 2.32 to 2.98 out of 5; answers labeled propaganda 22% to 0.9%; five runs over 803 prompts",
+        "evaluation_limits": "Publisher-defined categories, dated source selection and Grok 4.7 judge; only a 25-prompt pilot was hand-graded; comparison rows use different decoding settings",
+        "time_basis": "Hugging Face API createdAt 2026-11-06T19:31:28.000Z, inside the scan window"
+      },
+      "technical_details_zh": {
+        "可用性": "Apache-2.0 权重、训练数据与 803 题评测均公开",
+        "方法": "在 Qwen3.8-27B 上做监督微调；5280 万 token、64k 上下文、两轮训练；无 RL 或架构改动",
+        "发布方评测": "事实均分从 2.32 提高到 2.98（满分 5）；被标为宣传话术的回答从 22% 降到 0.9%；803 题各跑五次",
+        "评测限制": "类别、材料和 Grok 4.7 judge 由发布方定义；只有 25 题 pilot 做过人工校对；不同对照模型的 decoding 设置并不完全一致",
+        "时间依据": "Hugging Face API createdAt 为 2026-11-06T19:31:28.000Z，落在扫描窗口内"
+      },
+      "tags": [
+        "open-weights",
+        "value-alignment",
+        "supervised-fine-tuning",
+        "evaluation"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 2,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "nous-arete-27b-value-alignment-sft",
+      "short_label_zh": "Arete-27B",
+      "short_label_en": "Arete-27B",
+      "next_action_zh": "等独立团队复跑公开评测并加入不同地区材料与人工盲评后，再判断是否用于实际系统。",
+      "next_action_en": "Reassess after independent teams rerun the public evaluation with cross-regional sources and blinded human grading.",
+      "source_ids": [
+        "src-f4e8ce6220df06e6",
+        "src-c98fb04bcb18fb32"
+      ],
+      "project_ids": [
+        "arete-27b"
+      ],
+      "scenario_ids": [
+        "research",
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261106-03-evidence-release",
+          "claim_zh": "公开模型卡、权重与评测集确认训练方法、可用性和发布方结果；效果尚无独立复现。",
+          "claim_en": "The public model card, weights and evaluation dataset confirm the method, availability and publisher-run results; effects lack independent reproduction.",
+          "source_ids": [
+            "src-f4e8ce6220df06e6",
+            "src-c98fb04bcb18fb32"
+          ],
+          "event_ids": [
+            "ev-20261106-03"
+          ],
+          "relation": "support",
+          "verification": "public artifacts verified; claims are publisher-defined and not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261106-03-release",
+          "kind": "new",
+          "occurred_at": "2026-11-06T19:31:28.000Z",
+          "discovered_at": "2026-11-07T16:55:48Z",
+          "summary_zh": "Arete-27B 权重、训练数据与价值评测公开",
+          "summary_en": "Arete-27B weights, training data and value evaluation are released",
+          "evidence_ids": [
+            "ev-20261106-03-evidence-release"
+          ],
+          "historical": false,
+          "importance": "normal"
+        }
+      ]
+    }
+  ]
+}

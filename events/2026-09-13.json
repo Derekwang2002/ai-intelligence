@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.108.1 signs images and backports LTS fixes",
-      "title_zh": "LiteLLM 1.108.1 签名镜像并回移 LTS 修复",
+      "title": "LiteLLM 1.108.2 closes credential, transcript and routing leaks",
+      "title_zh": "LiteLLM 1.108.2 修复凭据、转录与路由泄漏",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-06T17:04:35Z",
+      "last_updated_at": "2026-11-07T16:55:48Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -29,14 +29,15 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.107.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.106.3",
         "https://github.com/BerriAI/litellm/releases/tag/v1.106.4",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.108.0"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.0",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.2"
       ],
-      "summary": "LiteLLM 1.108 ships signed images and fixes credential-exposure paths. It expands MCP OAuth, session and toolset controls, adds streaming guardrails, and repairs budget accounting and admission behavior. The release is broad enough that production gateways should canary it instead of upgrading in place.",
-      "why_it_matters": "For teams using LiteLLM as a shared model gateway, identity, budget and streamed-output enforcement sit on the request boundary. A regression there can leak credentials or bypass controls, so the security gains come with meaningful upgrade risk.",
-      "summary_zh": "LiteLLM 1.108 提供签名镜像，并修复凭据暴露路径。该版扩展 MCP OAuth、会话和 toolset 控制，加入流式护栏，同时修复预算记账与准入行为。改动面较大，生产 gateway 应先做 canary，而不是原地升级。",
-      "summary_en": "LiteLLM 1.108 ships signed images and fixes credential-exposure paths. It expands MCP OAuth, session and toolset controls, adds streaming guardrails, and repairs budget accounting and admission behavior. The release is broad enough that production gateways should canary it instead of upgrading in place.",
-      "why_it_matters_zh": "对把 LiteLLM 用作共享模型 gateway 的团队来说，身份、预算和流式输出护栏都位于请求边界。这里的回归可能泄露凭据或绕过控制，因此安全收益伴随明显升级风险。",
-      "why_it_matters_en": "For teams using LiteLLM as a shared model gateway, identity, budget and streamed-output enforcement sit on the request boundary. A regression there can leak credentials or bypass controls, so the security gains come with meaningful upgrade risk.",
+      "summary": "LiteLLM 1.108.2 is an LTS patch for gateway boundary failures. It stops an empty OpenAI API key from falling back to an admin key, prevents transcription errors from echoing provider replies into clients and logs, and repairs routing affinity, spend persistence and MCP parameter handling. Signed images remain available for verification.",
+      "why_it_matters": "For shared model gateways, credential fallback and transcript echo are data-boundary bugs, not cosmetic patches. Teams should upgrade through a canary and test empty credentials, error redaction, database restarts and sticky routing before broad rollout.",
+      "summary_zh": "LiteLLM 1.108.2 是一轮 gateway 边界修复：空 OpenAI API key 不再回退发送 admin key；转录错误不再把 provider 回复回显到客户端和日志；路由亲和、费用落库与 MCP 参数处理也得到修复。镜像仍可用签名核验。",
+      "summary_en": "LiteLLM 1.108.2 is an LTS patch for gateway boundary failures. It stops an empty OpenAI API key from falling back to an admin key, prevents transcription errors from echoing provider replies into clients and logs, and repairs routing affinity, spend persistence and MCP parameter handling. Signed images remain available for verification.",
+      "why_it_matters_zh": "对共享模型 gateway 来说，凭据回退和转录回显是数据边界问题，不是普通小修。团队应通过 canary 升级，并在全面上线前测试空凭据、错误脱敏、数据库重启与粘性路由。",
+      "why_it_matters_en": "For shared model gateways, credential fallback and transcript echo are data-boundary bugs, not cosmetic patches. Teams should upgrade through a canary and test empty credentials, error redaction, database restarts and sticky routing before broad rollout.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -57,11 +58,13 @@
         "image_digest": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
         "time_basis": "GitHub release published 2026-10-25T09:39:15Z.",
         "update_2026_10_25": "1.106.4 fixes proxy startup failures when the remote model-cost map is unavailable and removes several container-scan false positives; fixes are backported to 1.104.7 and 1.105.5.",
-        "latest_stable": "1.108.1",
+        "latest_stable": "1.108.2",
         "release_2026_11_04": "Signed images; credential leak fixes; MCP OAuth/session/toolsets; streaming guardrails; budget and admission repairs",
         "time_basis_2026_11_04": "GitHub release published 2026-11-04T03:35:33Z",
         "update_2026_11_05": "Cosign-signed Docker images, stable/RC/LTS OSV scans, 21 mainline fixes plus prerequisites, and pass-through credential selection that skips team deployments.",
-        "time_basis_2026_11_05": "GitHub release published 2026-11-05T23:42:04Z."
+        "time_basis_2026_11_05": "GitHub release published 2026-11-05T23:42:04Z.",
+        "update_2026_11_06": "Fixes empty OpenAI api_key falling back to OPENAI_ADMIN_KEY, transcript-bearing error echo, routing affinity, spend persistence, MCP parameter handling and several provider translations.",
+        "time_basis_2026_11_06": "GitHub release published 2026-11-06T22:07:43Z."
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -83,11 +86,13 @@
         "镜像摘要": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
         "时间依据": "GitHub release 发布于 2026-10-25T09:39:15Z。",
         "2026-10-25 更新": "1.106.4 修复远程模型成本表不可达时 proxy 启动 ImportError，并消除多项容器扫描误报；修复也回移到 1.104.7 与 1.105.5。",
-        "最新稳定版": "1.108.1",
+        "最新稳定版": "1.108.2",
         "2026-11-04 更新": "签名镜像；凭据泄露修复；MCP OAuth/session/toolset；流式护栏；预算与准入修复",
         "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T03:35:33Z",
         "2026-11-05 更新": "Docker 镜像用 cosign 签名；stable/RC/LTS 分支运行 OSV 扫描；回移 21 项主线修复及前置修复；pass-through 凭据选择跳过 team deployment。",
-        "时间依据_2026_11_05": "GitHub release 于 2026-11-05T23:42:04Z 发布。"
+        "时间依据_2026_11_05": "GitHub release 于 2026-11-05T23:42:04Z 发布。",
+        "2026-11-06 更新": "修复空 OpenAI api_key 回退发送 OPENAI_ADMIN_KEY、含转录内容的错误回显、路由亲和、费用落库、MCP 参数处理及多项 provider 转换。",
+        "2026-11-06 时间依据": "GitHub release 发布于 2026-11-06T22:07:43Z。"
       },
       "tags": [
         "litellm",
@@ -120,7 +125,8 @@
         "src-26c451a3ba9575d2",
         "src-8bf6776408f8d7ad",
         "src-3d6c3b6b91b94492",
-        "src-bc1643b3a14e5224"
+        "src-bc1643b3a14e5224",
+        "src-21cf97a311693357"
       ],
       "project_ids": [
         "mcp",
@@ -275,6 +281,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; runtime behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-2-evidence",
+          "claim_zh": "LiteLLM 1.108.2 官方 LTS release 修复 admin key 回退、转录错误回显、路由亲和与费用落库问题。",
+          "claim_en": "The official LiteLLM 1.108.2 LTS release fixes admin-key fallback, transcript error echo, routing affinity and spend persistence.",
+          "source_ids": [
+            "src-21cf97a311693357"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; runtime behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -419,13 +438,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-2",
+          "kind": "update",
+          "occurred_at": "2026-11-06T22:07:43Z",
+          "discovered_at": "2026-11-07T16:55:48Z",
+          "summary_zh": "LiteLLM 1.108.2 修复 admin key、转录回显和费用落库边界",
+          "summary_en": "LiteLLM 1.108.2 fixes admin-key, transcript-echo and spend-persistence boundaries",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-108-2-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "在 canary 验证镜像签名、pass-through 凭据、MCP 会话、预算与回滚后再升级。",
-      "next_action_en": "Canary image signatures, pass-through credentials, MCP sessions, budgets and rollback before upgrading.",
-      "short_label_zh": "LiteLLM 1.108.1",
-      "short_label_en": "LiteLLM 1.108.1"
+      "next_action_zh": "先在 canary 测空凭据、转录错误脱敏、Postgres 重启、粘性路由与回滚。",
+      "next_action_en": "Canary empty credentials, transcript-error redaction, Postgres restarts, sticky routing and rollback first.",
+      "short_label_zh": "LiteLLM 1.108.2",
+      "short_label_en": "LiteLLM 1.108.2"
     }
   ]
 }

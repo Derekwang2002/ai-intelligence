@@ -387,11 +387,12 @@
       ],
       "published_at": "2026-08-13",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-09-26T16:01:48Z",
+      "last_updated_at": "2026-11-07T16:55:48Z",
       "source_type": "primary",
       "primary_source": "https://github.blog/changelog/2026-08-13-github-copilot-weekly-releases-august-10/",
       "secondary_sources": [
-        "https://github.blog/changelog/2026-09-25-github-copilot-weekly-releases-september-21/"
+        "https://github.blog/changelog/2026-09-25-github-copilot-weekly-releases-september-21/",
+        "https://github.blog/changelog/2026-11-06-github-copilot-weekly-releases-november-2/"
       ],
       "summary": "Agent Plugins 1.0 went GA: build once, run across VS Code, Copilot CLI, Copilot SDK, and the Copilot app. Kimi K3 and MAI-Code-1.1-Flash rolled out to paid plans. Copilot CLI gained a /tasks subagent view, --plan plus --mode autopilot headless combos, and /rewind. JetBrains added cross-session memory and Ollama as a BYOK provider.",
       "why_it_matters": "Portable plugins are Copilot's bid for an agent-ecosystem standard to compete with MCP. For plugin authors, build-once distribution across every Copilot surface is worth tracking. Ollama BYOK in JetBrains shows local models becoming normal inside enterprise IDEs.",
@@ -406,7 +407,9 @@
           "MAI-Code-1.1-Flash"
         ],
         "byok": "Ollama (JetBrains)",
-        "update_2026_09_27": "Weekly release: JetBrains adds assisted approvals that auto-approve low-risk calls and prompt on higher-risk actions, editable-turn rewind restores both conversation and files, and shared organization skills. VS Code 1.139 can run agents inside Dev Containers on SSH, Tunnel and WSL hosts. Slack and Teams gain per-thread model selection, duplicate-issue checks and stronger long-task recovery. Stays TRIAL."
+        "update_2026_09_27": "Weekly release: JetBrains adds assisted approvals that auto-approve low-risk calls and prompt on higher-risk actions, editable-turn rewind restores both conversation and files, and shared organization skills. VS Code 1.139 can run agents inside Dev Containers on SSH, Tunnel and WSL hosts. Slack and Teams gain per-thread model selection, duplicate-issue checks and stronger long-task recovery. Stays TRIAL.",
+        "update_2026_11_06": "Copilot app adds Agent Merge controls, context compaction and opt-in assisted approval instructions; CLI unifies plugin/MCP settings; VS Code adds preview remote canvases and local cron automations with workspace custom agents.",
+        "time_basis_2026_11_06": "Weekly rollup published with date-only precision on 2026-11-06; component announcements span the week."
       },
       "tags": [
         "github-copilot",
@@ -430,11 +433,14 @@
           "MAI-Code-1.1-Flash"
         ],
         "BYOK（自带密钥）": "Ollama（JetBrains）",
-        "2026-09-27 更新": "周更：JetBrains 新增 assisted approvals，低风险调用自动通过，高风险动作继续询问；编辑旧消息时同时回退会话与文件，并支持组织共享 skill。VS Code 1.139 可在 SSH、Tunnel 与 WSL 主机的 Dev Container 内运行 agent。Slack 与 Teams 增加线程级模型选择、重复 issue 检查与长任务恢复。维持 TRIAL。"
+        "2026-09-27 更新": "周更：JetBrains 新增 assisted approvals，低风险调用自动通过，高风险动作继续询问；编辑旧消息时同时回退会话与文件，并支持组织共享 skill。VS Code 1.139 可在 SSH、Tunnel 与 WSL 主机的 Dev Container 内运行 agent。Slack 与 Teams 增加线程级模型选择、重复 issue 检查与长任务恢复。维持 TRIAL。",
+        "2026-11-06 更新": "Copilot app 新增 Agent Merge 控制、context compaction 与可选 assisted approval 指令；CLI 统一 plugin/MCP 设置；VS Code 增加 preview remote canvas 与支持 workspace custom agent 的本地 cron automation。",
+        "2026-11-06 时间依据": "周报仅提供 2026-11-06 日期精度，组件公告分布在整周。"
       },
       "source_ids": [
         "src-e5ff0ee6aec27d2d",
-        "src-48eaa8bbafaa8bc4"
+        "src-48eaa8bbafaa8bc4",
+        "src-bc9c4ebbaebaf38f"
       ],
       "project_ids": [
         "github-copilot"
@@ -470,6 +476,19 @@
           ],
           "relation": "support",
           "verification": "historical"
+        },
+        {
+          "id": "ev-20260813-04-copilot-weekly-20261106-evidence",
+          "claim_zh": "GitHub 周报列出 Agent Merge、context compaction、assisted approvals、统一 CLI 设置与本地 cron automation。",
+          "claim_en": "GitHub weekly notes list Agent Merge, context compaction, assisted approvals, unified CLI settings and local cron automations.",
+          "source_ids": [
+            "src-bc9c4ebbaebaf38f"
+          ],
+          "event_ids": [
+            "ev-20260813-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; some features remain preview"
         }
       ],
       "changes": [
@@ -496,8 +515,25 @@
             "ev-20260813-04-evidence-recorded-20260927"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260813-04-copilot-weekly-20261106",
+          "kind": "update",
+          "occurred_at": "2026-11-06",
+          "discovered_at": "2026-11-07T16:55:48Z",
+          "summary_zh": "Copilot 将 merge、压缩、审批与本地定时任务纳入跨端 agent 工作流",
+          "summary_en": "Copilot adds merge, compaction, approvals and local scheduling across agent surfaces",
+          "evidence_ids": [
+            "ev-20260813-04-copilot-weekly-20261106-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "next_action_zh": "在测试仓库回归 Agent Merge、context compaction、assisted approval 与 cron 任务的副作用边界。",
+      "next_action_en": "Regress Agent Merge, context compaction, assisted approvals and cron-task side effects in a test repository.",
+      "short_label_zh": "GitHub Copilot",
+      "short_label_en": "GitHub Copilot"
     },
     {
       "event_id": "ev-20260813-05",

@@ -211,7 +211,11 @@
         "src-449b1014bc1499c1",
         "src-9c21ebfce635a8a5",
         "src-a1a6f10b85667b9c",
-        "src-fea0672800e8769b"
+        "src-fea0672800e8769b",
+        "src-296a6a9750570fb8",
+        "src-6d8f235573b9bde7",
+        "src-bc9c4ebbaebaf38f",
+        "src-c6d4b65182abfa23"
       ],
       "current_judgment_event_id": "ev-20261028-03",
       "official_source_ids": [
@@ -226,24 +230,26 @@
         "src-449b1014bc1499c1",
         "src-9c21ebfce635a8a5",
         "src-a1a6f10b85667b9c",
-        "src-fea0672800e8769b"
+        "src-fea0672800e8769b",
+        "src-296a6a9750570fb8",
+        "src-6d8f235573b9bde7",
+        "src-bc9c4ebbaebaf38f",
+        "src-c6d4b65182abfa23"
       ],
-      "last_reviewed_at": "2026-11-04T16:56:21Z",
+      "last_reviewed_at": "2026-11-07T16:55:48Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "自定义模型用量现可按 BYOK 与托管模型拆分，但历史不回填且遥测关闭会少计。",
-        "judgment_en": "Custom-model use can now be split between BYOK and hosted models, but history is not backfilled and telemetry-off use can be undercounted.",
-        "next_action_zh": "一天内对齐报表、遥测缺口与账单口径。",
-        "next_action_en": "Within one day, reconcile reports, telemetry gaps and billing.",
+        "judgment_zh": "Copilot 已把 review 策略 API、来源字段、跨端 GA、定时任务与更完整用量遥测接成一套工作流。能力面扩大，但质量、成本、权限继承和重复计数仍需按组织验证。",
+        "judgment_en": "Copilot now links review-policy APIs, provenance, cross-surface GA, scheduling and broader usage telemetry into one workflow. The surface is wider, while quality, cost, policy inheritance and double counting still need organization-specific validation.",
+        "next_action_zh": "在测试组织验证 review 策略继承、Slack/Teams 身份、cron 副作用与 28 天用量口径。",
+        "next_action_en": "Validate review-policy inheritance, Slack/Teams identity, cron side effects and 28-day usage semantics in a test organization.",
         "basis_event_ids": [
-          "ev-20260909-02",
-          "ev-20260917-07",
           "ev-20260911-11",
-          "ev-20260925-02",
-          "ev-20261027-01",
+          "ev-20260917-07",
+          "ev-20260813-04",
           "ev-20261028-03"
         ],
-        "reviewed_at": "2026-11-04T16:56:21Z"
+        "reviewed_at": "2026-11-07T16:55:48Z"
       }
     },
     {
@@ -741,7 +747,7 @@
         "src-fe3326f4dbcaa51b",
         "src-bc1643b3a14e5224"
       ],
-      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "last_reviewed_at": "2026-11-07T16:55:48Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "协议 SDK 仍适合隔离试验；LiteLLM 1.108 新增的 OAuth、session 与 toolset 控制改善了 gateway 执行边界，但没有改变协议成熟度。",
@@ -754,7 +760,7 @@
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-11-06T17:04:35Z"
+        "reviewed_at": "2026-11-07T16:55:48Z"
       }
     },
     {
@@ -7108,23 +7114,25 @@
         "ev-20260913-01"
       ],
       "source_ids": [
-        "src-bc1643b3a14e5224"
+        "src-bc1643b3a14e5224",
+        "src-21cf97a311693357"
       ],
       "current_judgment_event_id": "ev-20260913-01",
       "official_source_ids": [
-        "src-bc1643b3a14e5224"
+        "src-bc1643b3a14e5224",
+        "src-21cf97a311693357"
       ],
-      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "last_reviewed_at": "2026-11-07T16:55:48Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "1.108.1 为 Docker 镜像提供可验证签名并回移 LTS 修复，但 gateway 控制面改动仍需生产形态 canary。",
-        "judgment_en": "Version 1.108.1 provides verifiable Docker image signatures and LTS backports, while gateway control-plane changes still require production-shaped canaries.",
-        "next_action_zh": "在 canary 验证镜像签名、pass-through 凭据、MCP 会话、预算与回滚。",
-        "next_action_en": "Canary image signatures, pass-through credentials, MCP sessions, budgets and rollback.",
+        "judgment_zh": "1.108.2 修复 admin key 回退、转录错误回显、路由与费用落库边界。修复直接涉及共享 gateway 的数据面，但仍需生产形态 canary。",
+        "judgment_en": "Version 1.108.2 fixes admin-key fallback, transcript error echo, routing and spend-persistence boundaries. These affect the shared gateway data plane and still require a production-shaped canary.",
+        "next_action_zh": "在 canary 测空凭据、错误脱敏、Postgres 重启、路由亲和与回滚。",
+        "next_action_en": "Canary empty credentials, error redaction, Postgres restarts, routing affinity and rollback.",
         "basis_event_ids": [
           "ev-20260913-01"
         ],
-        "reviewed_at": "2026-11-06T17:04:35Z"
+        "reviewed_at": "2026-11-07T16:55:48Z"
       },
       "changes": []
     },
@@ -7327,9 +7335,154 @@
         "reviewed_at": "2026-11-06T17:04:35Z"
       },
       "changes": []
+    },
+    {
+      "id": "nccl-m2n-reshard",
+      "name_zh": "NCCL M2N Reshard",
+      "name_en": "NCCL M2N Reshard",
+      "type": "infrastructure",
+      "aliases": [
+        "NCCL Reshard",
+        "M2N Reshard"
+      ],
+      "pattern": "NCCL.*Reshard|M2N Reshard",
+      "event_ids": [
+        "ev-20261106-01"
+      ],
+      "source_ids": [
+        "src-e20e4a2681dc2afc",
+        "src-fc238ce6d0249405",
+        "src-99a212172bece7e4"
+      ],
+      "current_judgment_event_id": "ev-20261106-01",
+      "official_source_ids": [
+        "src-e20e4a2681dc2afc",
+        "src-fc238ce6d0249405",
+        "src-99a212172bece7e4"
+      ],
+      "last_reviewed_at": "2026-11-07T16:55:48Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Reshard 已有公开实现和 NeMo RL 集成，适合训练／推理解耦的 RL 团队试验。现有提速只在 NVIDIA 系统自测，且恢复路径尚未完整接入。",
+        "judgment_en": "Reshard has public code and a NeMo RL integration suitable for teams with disaggregated RL training and inference. Speedups are NVIDIA-only measurements and the recovery path is incomplete.",
+        "next_action_zh": "用一组真实模型布局测 refit 停顿、网络字节和故障恢复。",
+        "next_action_en": "Measure refit stalls, network bytes and failure recovery on one real model layout.",
+        "basis_event_ids": [
+          "ev-20261106-01"
+        ],
+        "reviewed_at": "2026-11-07T16:55:48Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "flux-3-visualgen",
+      "name_zh": "FLUX 3 VisualGen",
+      "name_en": "FLUX 3 VisualGen",
+      "type": "infrastructure",
+      "aliases": [
+        "FLUX 3 Image Klein VisualGen"
+      ],
+      "pattern": "FLUX 3.*VisualGen|TensorRT.*FLUX 3",
+      "event_ids": [
+        "ev-20261106-02"
+      ],
+      "source_ids": [
+        "src-a6bcd182b2895683",
+        "src-7ced3ff173c2a6de",
+        "src-fd692c8b8c98ec92"
+      ],
+      "current_judgment_event_id": "ev-20261106-02",
+      "official_source_ids": [
+        "src-a6bcd182b2895683",
+        "src-7ced3ff173c2a6de",
+        "src-fd692c8b8c98ec92"
+      ],
+      "last_reviewed_at": "2026-11-07T16:55:48Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "VisualGen 提供可运行的 FLUX 3 Blackwell 优化路径，并公开延迟与画质取舍。模型许可、gated 下载、feature branch 与厂商自测限制了直接生产采用。",
+        "judgment_en": "VisualGen provides a runnable Blackwell optimization path for FLUX 3 with explicit latency-quality tradeoffs. Licensing, gated downloads, a feature branch and first-party tests limit direct production adoption.",
+        "next_action_zh": "用同一图集比较 BF16、NVFP4、缓存与稀疏注意力。",
+        "next_action_en": "Compare BF16, NVFP4, caching and sparse attention on the same image set.",
+        "basis_event_ids": [
+          "ev-20261106-02"
+        ],
+        "reviewed_at": "2026-11-07T16:55:48Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "arete-27b",
+      "name_zh": "Arete-27B",
+      "name_en": "Arete-27B",
+      "type": "model",
+      "aliases": [
+        "NousResearch/Arete-27B"
+      ],
+      "pattern": "Arete-27B",
+      "event_ids": [
+        "ev-20261106-03"
+      ],
+      "source_ids": [
+        "src-f4e8ce6220df06e6",
+        "src-c98fb04bcb18fb32"
+      ],
+      "current_judgment_event_id": "ev-20261106-03",
+      "official_source_ids": [
+        "src-f4e8ce6220df06e6",
+        "src-c98fb04bcb18fb32"
+      ],
+      "last_reviewed_at": "2026-11-07T16:55:48Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "权重、数据和评测均公开，但价值类别与 judge 由发布方定义，尚不能把结果解释成更普遍的事实性或中立性提升。",
+        "judgment_en": "Weights, data and evaluation are public, but the publisher defines the value categories and judge, so the results do not establish broader factuality or neutrality.",
+        "next_action_zh": "等待跨地区材料和人工盲评的独立复现。",
+        "next_action_en": "Wait for independent reproduction with cross-regional sources and blinded human grading.",
+        "basis_event_ids": [
+          "ev-20261106-03"
+        ],
+        "reviewed_at": "2026-11-07T16:55:48Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "p-h3-image",
+      "name_zh": "P-H3-Image",
+      "name_en": "P-H3-Image",
+      "type": "model",
+      "aliases": [
+        "PrunaAI/P-H3-Image"
+      ],
+      "pattern": "P-H3-Image",
+      "event_ids": [
+        "ev-20261027-11"
+      ],
+      "source_ids": [
+        "src-bf5e6415f1038df4",
+        "src-4bdf1c82e663d6cc"
+      ],
+      "current_judgment_event_id": "ev-20261027-11",
+      "official_source_ids": [
+        "src-bf5e6415f1038df4",
+        "src-4bdf1c82e663d6cc"
+      ],
+      "last_reviewed_at": "2026-11-07T16:55:48Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "公开流水线和量化权重便于试验，但地区许可排除多个主要市场，画质与显存主张也缺独立复现。",
+        "judgment_en": "The public pipeline and quantized weights support experimentation, but territorial licensing excludes major markets and quality and memory claims lack independent reproduction.",
+        "next_action_zh": "先确认适用地区许可，再等待第三方复现。",
+        "next_action_en": "Confirm territorial licensing and wait for third-party reproduction.",
+        "basis_event_ids": [
+          "ev-20261027-11"
+        ],
+        "reviewed_at": "2026-11-07T16:55:48Z"
+      },
+      "changes": []
     }
   ],
-  "last_updated": "2026-11-05",
-  "total_projects": 194,
-  "last_updated_at": "2026-11-04T16:56:21Z"
+  "last_updated": "2026-11-08",
+  "total_projects": 208,
+  "last_updated_at": "2026-11-07T16:55:48Z"
 }
