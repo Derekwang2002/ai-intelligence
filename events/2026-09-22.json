@@ -470,8 +470,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.26.9 adds native Skill archives and safer project hooks",
-      "title_zh": "Qwen Code 0.26.9 加入原生 Skill 归档并收紧项目 hooks",
+      "title": "Qwen Code 0.27.0 hardens concurrent agent questions and repository routing",
+      "title_zh": "Qwen Code 0.27.0 加固并发提问与仓库路由",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -479,7 +479,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-11-06T17:04:35Z",
+      "last_updated_at": "2026-11-08T16:58:06Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
       "secondary_sources": [
@@ -498,14 +498,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/cua-driver-rs-v0.27.0",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.6",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.7"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.7",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.0"
       ],
-      "summary": "Qwen Code 0.26.7 adds explicit folder trust and a /verify-pr workflow that runs pull-request checks in Docker while brokering host credentials through a proxy. Remote serving is opt-in and token-protected. The release also narrows polling and improves Claude-compatible tool selection.",
-      "why_it_matters": "For teams evaluating an open coding agent, the release puts repository trust and PR verification on more explicit boundaries. The credential proxy and remote server still need adversarial testing before production use.",
-      "summary_zh": "Qwen Code 0.26.7 增加显式目录信任，以及在 Docker 中运行 pull request 检查的 /verify-pr 流程；宿主机凭据通过代理转交。远程服务默认关闭，启用后需 token。该版还收紧轮询范围，并改善 Claude 兼容工具选择。",
-      "summary_en": "Qwen Code 0.26.7 adds explicit folder trust and a /verify-pr workflow that runs pull-request checks in Docker while brokering host credentials through a proxy. Remote serving is opt-in and token-protected. The release also narrows polling and improves Claude-compatible tool selection.",
-      "why_it_matters_zh": "对评估开源 coding agent 的团队来说，这一版把仓库信任和 PR 验证放到更明确的边界上。凭据代理与远程服务仍需在生产前做对抗测试。",
-      "why_it_matters_en": "For teams evaluating an open coding agent, the release puts repository trust and PR verification on more explicit boundaries. The credential proxy and remote server still need adversarial testing before production use.",
+      "summary": "Qwen Code 0.27.0 lets managed-agent sessions keep several child questions pending and answer them in any order without mixing drafts or errors. GitHub channels gain repository allowlists and blocklists. The release also fixes CRLF and Unicode edits, cancelled-command status, credential redaction and several managed-runtime deadlocks.",
+      "why_it_matters": "For teams testing long-running coding agents, the update addresses concurrency, repository scope and edit correctness in the same stable release. The controls are first-party claims and still need adversarial recovery and permission tests before production use.",
+      "summary_zh": "Qwen Code 0.27.0 允许托管 agent 同时保留多个子问题，并按任意顺序回答，不再混淆草稿和错误。GitHub channel 新增 repository allowlist 与 blocklist。该版还修复 CRLF／Unicode 编辑、取消命令状态、凭据脱敏及多项托管 runtime 死锁。",
+      "summary_en": "Qwen Code 0.27.0 lets managed-agent sessions keep several child questions pending and answer them in any order without mixing drafts or errors. GitHub channels gain repository allowlists and blocklists. The release also fixes CRLF and Unicode edits, cancelled-command status, credential redaction and several managed-runtime deadlocks.",
+      "why_it_matters_zh": "对试验长时间运行 coding agent 的团队来说，这个稳定版同时处理并发、仓库范围和编辑正确性。相关保证仍来自一手 release notes，上生产前要做对抗性恢复与权限测试。",
+      "why_it_matters_en": "For teams testing long-running coding agents, the update addresses concurrency, repository scope and edit correctness in the same stable release. The controls are first-party claims and still need adversarial recovery and permission tests before production use.",
       "technical_details": {
         "latest_version": "0.26.5 stable",
         "availability": "public GitHub release",
@@ -515,12 +516,14 @@
         "verification": "isolated verification workspace",
         "reliability": "recovery, locking and CUA 0.27 integration fixes",
         "time_basis": "0.26.8 published 2026-11-05T16:23:57Z; 0.26.9 published 2026-11-06T16:07:57Z.",
-        "latest_stable": "0.26.9",
+        "latest_stable": "0.27.0",
         "release_2026_11_02": "Web Shell activity and performance telemetry; evidence-gated managed recovery; MCP/OAuth/approval hardening",
         "time_basis_2026_11_02": "GitHub release published 2026-11-02T18:22:40Z",
         "release_2026_11_04": "Folder trust; /verify-pr Docker workflow; host credential proxy; opt-in token-protected remote server",
         "time_basis_2026_11_04": "GitHub release published 2026-11-04T04:03:01Z",
-        "update_2026_11_05_06": "0.26.8 adds Qwen subscriptions, prompt-submit hooks, shared execution loops and project-hook approval; 0.26.9 adds atomic Skill activation, archive upload/receipts, durable structured questions and additional managed-runtime locking and recovery fixes."
+        "update_2026_11_05_06": "0.26.8 adds Qwen subscriptions, prompt-submit hooks, shared execution loops and project-hook approval; 0.26.9 adds atomic Skill activation, archive upload/receipts, durable structured questions and additional managed-runtime locking and recovery fixes.",
+        "update_2026_11_07": "0.27.0 adds concurrent child questions, GitHub repository allowlists/blocklists, safer CRLF and Unicode shell edits, correct interrupted-command reporting, credential redaction and managed-runtime deadlock fixes.",
+        "time_basis_2026_11_07": "GitHub release published 2026-11-07T20:45:25Z."
       },
       "technical_details_zh": {
         "最新版本": "0.26.5 stable",
@@ -531,11 +534,13 @@
         "验证": "隔离验证 workspace",
         "可靠性": "恢复、锁与 CUA 0.27 集成修复",
         "时间依据": "0.26.8 发布于 2026-11-05T16:23:57Z；0.26.9 发布于 2026-11-06T16:07:57Z。",
-        "最新稳定版": "0.26.9",
+        "最新稳定版": "0.27.0",
         "2026-11-02 更新": "Web Shell 活动与性能遥测、证据门控的托管恢复，以及 MCP/OAuth/审批加固",
         "2026-11-04 更新": "目录信任；/verify-pr Docker 流程；宿主凭据代理；默认关闭且受 token 保护的远程服务",
         "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T04:03:01Z",
-        "2026-11-05/06 更新": "0.26.8 增加 Qwen 订阅、prompt-submit hooks、共享执行循环与项目 hook 审批；0.26.9 增加原子 Skill 激活、归档上传与 receipt、持久结构化提问，并继续修复托管 runtime 锁与恢复。"
+        "2026-11-05/06 更新": "0.26.8 增加 Qwen 订阅、prompt-submit hooks、共享执行循环与项目 hook 审批；0.26.9 增加原子 Skill 激活、归档上传与 receipt、持久结构化提问，并继续修复托管 runtime 锁与恢复。",
+        "2026-11-07 更新": "0.27.0 增加并发子问题、GitHub repository allowlist／blocklist，并修复 CRLF／Unicode shell 编辑、取消命令状态、凭据脱敏及托管 runtime 死锁。",
+        "2026-11-07 时间依据": "GitHub release 发布于 2026-11-07T20:45:25Z。"
       },
       "tags": [
         "qwen-code",
@@ -575,7 +580,8 @@
         "src-2a777a814a6a2aef",
         "src-9b185ead5eb76797",
         "src-013c1c8307da3f7b",
-        "src-7c1f1bfb5fe0eb06"
+        "src-7c1f1bfb5fe0eb06",
+        "src-8433804a6ab8495d"
       ],
       "project_ids": [
         "qwen-code"
@@ -807,6 +813,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-27-evidence",
+          "claim_zh": "官方 0.27.0 release notes 确认并发子问题、repository 过滤、编辑正确性、凭据脱敏与托管 runtime 锁修复。",
+          "claim_en": "The official 0.27.0 release notes confirm concurrent child questions, repository filters, edit-correctness fixes, credential redaction and managed-runtime lock repairs.",
+          "source_ids": [
+            "src-8433804a6ab8495d"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -1027,6 +1046,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-27",
+          "kind": "update",
+          "occurred_at": "2026-11-07T20:45:25Z",
+          "discovered_at": "2026-11-08T16:58:06Z",
+          "summary_zh": "Qwen Code 0.27.0 加固并发提问、仓库路由与编辑可靠性",
+          "summary_en": "Qwen Code 0.27.0 hardens concurrent questions, repository routing and edit reliability",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-27-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1036,10 +1068,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.26.9",
-      "short_label_en": "Qwen Code 0.26.9",
-      "next_action_zh": "一天内用恶意 Skill 归档与项目 hook 验证审批、原子激活、receipt 和失败回滚。",
-      "next_action_en": "Within one day, use a hostile Skill archive and project hook to test approval, atomic activation, receipts and rollback."
+      "short_label_zh": "Qwen Code 0.27.0",
+      "short_label_en": "Qwen Code 0.27.0",
+      "next_action_zh": "一天内并发触发多个子问题，并用跨仓库事件、CRLF 文件与取消命令验证隔离和恢复。",
+      "next_action_en": "Within one day, trigger concurrent child questions and test isolation and recovery with cross-repository events, CRLF files and cancelled commands."
     },
     {
       "event_id": "ev-20260922-05",

@@ -1,0 +1,41 @@
+{
+  "id": "2026-11-08T16-58-06Z",
+  "date": "2026-11-09",
+  "as_of": "2026-11-08T16:58:06Z",
+  "change_ids": [
+    "ev-20260814-04-settings-secret-leak",
+    "ev-20261106-04-release",
+    "ev-20260922-04-qwen-0-27",
+    "ev-20260913-01-litellm-1-108-3",
+    "ev-20261104-04-release"
+  ],
+  "highlights": [
+    {
+      "change_id": "ev-20260814-04-settings-secret-leak",
+      "reason_zh": "公开仓库中已出现真实凭据暴露，不只是理论风险；现有 Claude Code 仓库需要立即排查和轮换密钥。",
+      "reason_en": "Real credentials reached public repositories, making this more than a theoretical risk; existing Claude Code repositories need immediate scanning and rotation."
+    },
+    {
+      "change_id": "ev-20261106-04-release",
+      "reason_zh": "记忆写入、修订与共享被拆成可讨论的工程组件，但厂商自测范围不足以支持生产采用。",
+      "reason_en": "Memory writing, revision and sharing become concrete engineering components, but first-party tests are too narrow for production adoption."
+    },
+    {
+      "change_id": "ev-20260922-04-qwen-0-27",
+      "reason_zh": "并发子问题、仓库过滤和编辑修复直接影响长任务可靠性，但恢复与权限保证仍需独立验证。",
+      "reason_en": "Concurrent child questions, repository filters and edit fixes directly affect long-task reliability, while recovery and permission guarantees still need independent validation."
+    },
+    {
+      "change_id": "ev-20260913-01-litellm-1-108-3",
+      "reason_zh": "大型 MCP 结果和重复护栏是共享 gateway 的真实回归，升级前可用明确用例快速验证。",
+      "reason_en": "Large MCP results and duplicate guardrails are concrete shared-gateway regressions with clear pre-upgrade tests."
+    },
+    {
+      "change_id": "ev-20261104-04-release",
+      "reason_zh": "热门的 284B CPU 推理主张有公开产物却缺独立复现；明确 IGNORE 能避免把社区热度误当成迁移依据。",
+      "reason_en": "The popular 284B CPU claim has public artifacts but no independent reproduction; an explicit IGNORE judgment prevents attention from becoming migration evidence."
+    }
+  ],
+  "coverage_zh": "36 个固定入口全部成功并读完，并补搜模型、工具、研究、开源、基础设施、政策、小团队与中外文材料。召回自检补回两条旧于 overlap 的遗漏并更新一条安全事件；Anthropic memory 与 llama-modchip 时间精度有限，四项技术效果仍缺独立复现。",
+  "coverage_en": "All 36 fixed monitors succeeded and were read, with additional searches across models, tools, research, open source, infrastructure, policy, small teams and multilingual sources. The recall audit recovered two misses older than the overlap and updated one security event; Anthropic memory and llama-modchip have limited time precision, and four technical claims still lack independent reproduction."
+}

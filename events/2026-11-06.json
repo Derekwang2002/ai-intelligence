@@ -304,6 +304,106 @@
           "importance": "normal"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261106-04",
+      "title": "Anthropic breaks agent memory into context, notes and offline review",
+      "title_zh": "Anthropic 将 agent 记忆拆成上下文、笔记与离线复盘",
+      "category": "ai-agent",
+      "organization": [
+        "Anthropic"
+      ],
+      "published_at": "2026-11-06",
+      "published_at_note": "The official article provides the date 2026-11-06 but no publication time; it was recovered by the recall audit.",
+      "first_seen_at": "2026-11-08T16:58:06Z",
+      "last_updated_at": "2026-11-08T16:58:06Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.anthropic.com/research/components-of-agent-memory",
+      "secondary_sources": [],
+      "summary": "Anthropic tested agent memory as three separate components: the active context, persistent notes and an offline review pass it calls dreaming. In vendor-run tasks, adding memory improved a database benchmark and helped a game agent recover from a wrong note. A refined multi-agent wiki also captured every contract fact in one acquisition task. These are small controlled studies, not independent evidence of general production reliability.",
+      "why_it_matters": "For agent engineers, memory quality depends on what gets written, when it is revised and how agents share it—not just on adding a vector store. The experiments offer useful design hypotheses, but the narrow tasks and first-party evaluation are not enough for production adoption.",
+      "summary_zh": "Anthropic 将 agent 记忆拆成三个部分测试：当前上下文、持久笔记，以及被称为 dreaming 的离线复盘。厂商自测中，记忆提高了数据库 benchmark 表现，也帮助游戏 agent 修正错误笔记。经过迭代的多 agent wiki 在一个并购任务中收齐全部合同事实。这些是小规模受控实验，不能独立证明通用生产可靠性。",
+      "summary_en": "Anthropic tested agent memory as three separate components: the active context, persistent notes and an offline review pass it calls dreaming. In vendor-run tasks, adding memory improved a database benchmark and helped a game agent recover from a wrong note. A refined multi-agent wiki also captured every contract fact in one acquisition task. These are small controlled studies, not independent evidence of general production reliability.",
+      "why_it_matters_zh": "对 agent 工程师来说，记忆质量取决于写入什么、何时修订以及多个 agent 如何共享，而不只是加一个向量库。实验给出了有用的设计假设，但任务狭窄且由厂商自评，还不足以支持生产采用。",
+      "why_it_matters_en": "For agent engineers, memory quality depends on what gets written, when it is revised and how agents share it—not just on adding a vector store. The experiments offer useful design hypotheses, but the narrow tasks and first-party evaluation are not enough for production adoption.",
+      "technical_details": {
+        "components": "active context; persistent memory directory; offline “dreaming” review pass",
+        "cl_bench": "Vendor chart reports Opus 5.5 from 0.655 without memory to 0.838 with memory, and Sonnet 5.5 from 0.644 to 0.833; 30 questions per task are described.",
+        "game_case": "A single dreaming pass corrected a wrong Pokémon note and let the agent reach Cerulean City in the reported run.",
+        "shared_memory_case": "A shared wiki captured 41/57 contract facts before instruction refinement and 57/57 after per-contract pages and an iterative loop.",
+        "availability": "Managed Agents and memory-directory behavior are publicly documented; no standalone research code release was identified.",
+        "time_basis": "Official article dated 2026-11-06 with date precision only.",
+        "limitations": "First-party controlled tasks, small sample descriptions, no independent replication and no evidence that gains transfer across domains."
+      },
+      "technical_details_zh": {
+        "组成": "当前上下文；持久 memory 目录；离线“dreaming”复盘",
+        "CL-Bench": "厂商图表报告 Opus 5.5 从无记忆的 0.655 升至 0.838，Sonnet 5.5 从 0.644 升至 0.833；正文称每个任务 30 个问题。",
+        "游戏案例": "报告中的单次 dreaming 修正了一条错误 Pokémon 笔记，并让 agent 到达 Cerulean City。",
+        "共享记忆案例": "共享 wiki 最初收集 41/57 条合同事实；改成逐合同页面并迭代后达到 57/57。",
+        "可用性": "Managed Agents 与 memory 目录行为已有公开文档；本轮未找到独立研究代码发布。",
+        "时间依据": "官方文章日期为 2026-11-06，只有日期精度。",
+        "局限": "厂商自有受控任务，样本描述较小，缺独立复现，也没有跨领域迁移证据。"
+      },
+      "tags": [
+        "agent-memory",
+        "managed-agents",
+        "multi-agent",
+        "evaluation"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "anthropic-agent-memory-components-context-notes-dreaming",
+      "short_label_zh": "Agent memory 组件",
+      "short_label_en": "Agent memory components",
+      "next_action_zh": "等待独立团队用跨领域长任务复现，再评估其是否优于简单的结构化状态表。",
+      "next_action_en": "Wait for independent cross-domain long-task reproduction before judging whether it beats a simple structured state table.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-f0247d2be6d23fda"
+      ],
+      "project_ids": [
+        "anthropic-agent-memory"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "recall-audit",
+      "evidence": [
+        {
+          "id": "ev-20261106-04-evidence",
+          "claim_zh": "Anthropic 的受控实验显示持久笔记、离线复盘和共享 wiki 能改善特定 agent 任务，但缺独立复现。",
+          "claim_en": "Anthropic controlled experiments show persistent notes, offline review and a shared wiki can improve specific agent tasks, without independent replication.",
+          "source_ids": [
+            "src-f0247d2be6d23fda"
+          ],
+          "event_ids": [
+            "ev-20261106-04"
+          ],
+          "relation": "support",
+          "verification": "verified first-party report; results not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261106-04-release",
+          "kind": "new",
+          "occurred_at": "2026-11-06",
+          "discovered_at": "2026-11-08T16:58:06Z",
+          "summary_zh": "Anthropic 发布 agent memory 组件实验",
+          "summary_en": "Anthropic publishes experiments on agent memory components",
+          "evidence_ids": [
+            "ev-20261106-04-evidence"
+          ],
+          "historical": false,
+          "importance": "normal"
+        }
+      ]
     }
   ]
 }

@@ -302,6 +302,112 @@
         }
       ],
       "record_origin": "recall-audit"
+    },
+    {
+      "event_id": "ev-20261104-04",
+      "title": "llama-modchip claims CPU-only inference for a 284B model on 64 GB RAM",
+      "title_zh": "llama-modchip 声称 64 GB 内存可用 CPU 跑 284B 模型",
+      "category": "open-source",
+      "organization": [
+        "Independent researchers"
+      ],
+      "published_at": "2026-11-04",
+      "published_at_note": "GitHub shows the v2.4.0 release at 2026-11-04 00:24 UTC; seconds are unavailable, so the event retains date precision.",
+      "first_seen_at": "2026-11-08T16:58:06Z",
+      "last_updated_at": "2026-11-08T16:58:06Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/synchopate/llama-modchip/releases/tag/v2.4.0",
+      "secondary_sources": [
+        "https://github.com/synchopate/llama-modchip"
+      ],
+      "summary": "llama-modchip publishes code, binaries and compressed weights for CPU-only local inference. Its maintainer reports fitting a 284B DeepSeek model in about 57.6 GiB and decoding at roughly 9–11 tokens per second without a GPU. The project uses a custom tensor format and runtime. The performance and quality claims have not been independently reproduced.",
+      "why_it_matters": "For local-inference teams, the claimed memory reduction would materially change workstation deployment if it survives independent tests. Today the custom format, limited adoption and maintainer-only benchmarks make migration risk higher than the evidence supports.",
+      "summary_zh": "llama-modchip 发布了 CPU-only 本地推理代码、二进制和压缩权重。维护者报告称，284B DeepSeek 模型约占 57.6 GiB 内存，无 GPU 解码约为每秒 9–11 token。项目使用自定义 tensor 格式与运行时。性能和质量主张尚未得到独立复现。",
+      "summary_en": "llama-modchip publishes code, binaries and compressed weights for CPU-only local inference. Its maintainer reports fitting a 284B DeepSeek model in about 57.6 GiB and decoding at roughly 9–11 tokens per second without a GPU. The project uses a custom tensor format and runtime. The performance and quality claims have not been independently reproduced.",
+      "why_it_matters_zh": "对本地推理团队来说，如果独立测试成立，这种内存压缩会明显改变工作站部署方式。但目前自定义格式、有限采用与维护者自测带来的迁移风险高于证据强度。",
+      "why_it_matters_en": "For local-inference teams, the claimed memory reduction would materially change workstation deployment if it survives independent tests. Today the custom format, limited adoption and maintainer-only benchmarks make migration risk higher than the evidence supports.",
+      "technical_details": {
+        "claimed_284b_memory": "57.61 GiB at 256K context",
+        "claimed_prefill": "44.36 tokens/s",
+        "claimed_decode": "9.06–10.74 tokens/s on CPU, zero GPU",
+        "claimed_30b_decode": "up to 111.6 tokens/s",
+        "artifacts": "Apache-2.0 repository, public binaries and weights; custom tensor type and binary format",
+        "adoption_snapshot": "262 GitHub stars and 18 forks at inspection time",
+        "time_basis": "v2.4.0 GitHub release displayed as 2026-11-04 00:24 UTC; seconds unavailable.",
+        "limitations": "Maintainer-reported benchmarks and quality claims; no independent reproduction found, custom runtime, small contributor/adoption base."
+      },
+      "technical_details_zh": {
+        "284B 内存主张": "256K context 时 57.61 GiB",
+        "prefill 主张": "44.36 token/s",
+        "解码主张": "CPU 9.06–10.74 token/s，GPU 为零",
+        "30B 解码主张": "最高 111.6 token/s",
+        "公开产物": "Apache-2.0 仓库、公开二进制与权重；自定义 tensor 类型和二进制格式",
+        "采用快照": "检查时 GitHub 262 stars、18 forks",
+        "时间依据": "GitHub 将 v2.4.0 release 显示为 2026-11-04 00:24 UTC；秒不可得。",
+        "局限": "benchmark 与质量主张来自维护者；未找到独立复现，且运行时自定义、贡献者与采用基础较小。"
+      },
+      "tags": [
+        "cpu-inference",
+        "quantization",
+        "local-inference",
+        "deepseek"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 2,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 4,
+      "recommendation": "IGNORE",
+      "event_fingerprint": "llama-modchip-284b-64gb-cpu-maintainer-benchmark",
+      "short_label_zh": "llama-modchip",
+      "short_label_en": "llama-modchip",
+      "next_action_zh": "暂不投入迁移；等独立团队复现吞吐、内存、困惑度和任务质量后再评估。",
+      "next_action_en": "Do not invest in migration yet; wait for independent throughput, memory, perplexity and task-quality reproduction.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-67da79f12ad6bc4d",
+        "src-55858f2b4ca73bde"
+      ],
+      "project_ids": [
+        "llama-modchip"
+      ],
+      "scenario_ids": [
+        "local-inference"
+      ],
+      "evidence_stage": "frontier",
+      "record_origin": "recall-audit",
+      "evidence": [
+        {
+          "id": "ev-20261104-04-evidence",
+          "claim_zh": "项目公开了代码、二进制与权重，但 284B 模型在 64 GB CPU 主机上的性能主张仅有维护者自测。",
+          "claim_en": "The project publishes code, binaries and weights, but the 284B-on-64-GB CPU performance claim is supported only by maintainer benchmarks.",
+          "source_ids": [
+            "src-67da79f12ad6bc4d",
+            "src-55858f2b4ca73bde"
+          ],
+          "event_ids": [
+            "ev-20261104-04"
+          ],
+          "relation": "support",
+          "verification": "artifacts verified; performance not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261104-04-release",
+          "kind": "new",
+          "occurred_at": "2026-11-04",
+          "discovered_at": "2026-11-08T16:58:06Z",
+          "summary_zh": "llama-modchip 发布 CPU-only 压缩推理产物",
+          "summary_en": "llama-modchip releases CPU-only compressed-inference artifacts",
+          "evidence_ids": [
+            "ev-20261104-04-evidence"
+          ],
+          "historical": false,
+          "importance": "normal"
+        }
+      ]
     }
   ]
 }
