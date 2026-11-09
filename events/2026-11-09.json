@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-09",
+  "provenance": "Incremental scan ending 2026-11-09T16:56:58Z; primary artifacts verified, data-quality claims remain publisher-reported.",
+  "events": [
+    {
+      "event_id": "ev-20261109-02",
+      "title": "NVIDIA and Elith release Japanese finance personas and PII documents",
+      "title_zh": "NVIDIA 与 Elith 发布日本金融 persona 与 PII 文档集",
+      "category": "open-source",
+      "organization": [
+        "NVIDIA",
+        "Elith"
+      ],
+      "published_at": "2026-11-09",
+      "published_at_note": "The official Hugging Face article provides the date 2026-11-09 but no publication time.",
+      "first_seen_at": "2026-11-09T16:56:58Z",
+      "last_updated_at": "2026-11-09T16:56:58Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan",
+      "secondary_sources": [
+        "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan",
+        "https://huggingface.co/datasets/nvidia/Nemotron-PII-Japan"
+      ],
+      "summary": "NVIDIA and Elith released two CC BY 4.0 Japanese synthetic-data resources: Nemotron-Personas-Finance-Japan with 9 million natural-language personas derived from one million structured records, and Nemotron-PII-Japan with 100,000 labeled synthetic business documents. The datasets target financial-agent simulation, localization, PII detection and redaction without using customer records.",
+      "summary_en": "NVIDIA and Elith released two CC BY 4.0 Japanese synthetic-data resources: Nemotron-Personas-Finance-Japan with 9 million natural-language personas derived from one million structured records, and Nemotron-PII-Japan with 100,000 labeled synthetic business documents. The datasets target financial-agent simulation, localization, PII detection and redaction without using customer records.",
+      "summary_zh": "NVIDIA 与 Elith 发布两套 CC BY 4.0 的日语合成数据。Nemotron-Personas-Finance-Japan 从 100 万条结构化记录生成 900 万个自然语言 persona；Nemotron-PII-Japan 提供 10 万份带标注的合成商务文档。它们用于金融 agent 模拟、本地化、PII 检测与脱敏，不需要客户记录。",
+      "why_it_matters": "For teams building Japanese financial AI, the release lowers the cost of creating localized simulation and privacy tests with commercially usable data. Synthetic data reduces direct exposure to customer records, but it does not prove demographic fidelity, privacy safety, model quality or regulatory compliance.",
+      "why_it_matters_en": "For teams building Japanese financial AI, the release lowers the cost of creating localized simulation and privacy tests with commercially usable data. Synthetic data reduces direct exposure to customer records, but it does not prove demographic fidelity, privacy safety, model quality or regulatory compliance.",
+      "why_it_matters_zh": "对开发日本金融 AI 的团队来说，这套可商用数据降低了本地化模拟与隐私测试的准备成本。合成数据能减少直接接触客户记录，但不等于人口分布准确、没有隐私风险、模型质量更高或天然合规。",
+      "technical_details": {
+        "availability": "Public Hugging Face datasets under CC BY 4.0 for commercial and non-commercial use",
+        "personas": "9M Japanese personas from 1M structured records, 50 fields per record, about 1.5B tokens",
+        "pii_documents": "100,000 synthetic Japanese business documents with labeled PII across eight domains",
+        "generation": "Official statistics and public surveys combined with NeMo SDG-PGMs, NeMo Data Designer and Gemma 4 31B IT",
+        "publisher_claim": "No real individuals or customer records are represented",
+        "limitations": "No independent fidelity, bias, privacy-leakage or downstream-task evaluation found; synthetic distributions can preserve source bias",
+        "time_basis": "Official Hugging Face article dated 2026-11-09 with date precision only"
+      },
+      "technical_details_zh": {
+        "可用性": "Hugging Face 公开数据集，CC BY 4.0，可商用与非商用",
+        "persona": "由 100 万条结构化记录生成 900 万个日语 persona；每条 50 个字段；约 15 亿 token",
+        "PII 文档": "10 万份带 PII 标注的日语合成商务文档，覆盖八个领域",
+        "生成方法": "官方统计与公开调查结合 NeMo SDG-PGMs、NeMo Data Designer 和 Gemma 4 31B IT",
+        "发布方主张": "不代表真实个人，也没有使用客户记录",
+        "局限": "未找到独立的分布保真度、偏差、隐私泄露或下游任务评测；合成分布仍可能继承来源偏差",
+        "时间依据": "官方 Hugging Face 文章日期为 2026-11-09，只有日期精度"
+      },
+      "tags": [
+        "synthetic-data",
+        "finance",
+        "japanese",
+        "privacy",
+        "pii"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-elith-nemotron-japan-finance-personas-pii",
+      "short_label_zh": "Nemotron Finance Japan",
+      "short_label_en": "Nemotron Finance Japan",
+      "next_action_zh": "一天内抽样核对人口与资产分布，并用 PII 文档测现有脱敏流水线的召回率与误报率。",
+      "next_action_en": "Within one day, sample demographic and asset distributions and measure your redaction pipeline's recall and false-positive rate on the PII documents.",
+      "source_ids": [
+        "src-ac8f18750241a65f",
+        "src-a90719ed31850b89",
+        "src-5484892c609ca31f"
+      ],
+      "project_ids": [
+        "nemotron-finance-japan"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261109-02-evidence-release",
+          "claim_zh": "公开博客与数据卡确认数据规模、许可和下载路径；质量与隐私主张仍待独立评测。",
+          "claim_en": "The public article and dataset cards confirm scale, license and download paths; quality and privacy claims await independent evaluation.",
+          "source_ids": [
+            "src-ac8f18750241a65f",
+            "src-a90719ed31850b89",
+            "src-5484892c609ca31f"
+          ],
+          "event_ids": [
+            "ev-20261109-02"
+          ],
+          "relation": "support",
+          "verification": "public artifacts and license verified; fidelity and privacy claims not independently validated"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261109-02-release",
+          "kind": "new",
+          "occurred_at": "2026-11-09",
+          "discovered_at": "2026-11-09T16:56:58Z",
+          "summary_zh": "日本金融 persona 与 PII 合成数据公开",
+          "summary_en": "Japanese finance personas and PII synthetic datasets are released",
+          "evidence_ids": [
+            "ev-20261109-02-evidence-release"
+          ],
+          "historical": false,
+          "importance": "normal"
+        }
+      ]
+    }
+  ]
+}

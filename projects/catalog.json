@@ -136,7 +136,8 @@
         "src-9b185ead5eb76797",
         "src-7c1f1bfb5fe0eb06",
         "src-013c1c8307da3f7b",
-        "src-8433804a6ab8495d"
+        "src-8433804a6ab8495d",
+        "src-b1a661286db2f1a8"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -156,19 +157,20 @@
         "src-9b185ead5eb76797",
         "src-7c1f1bfb5fe0eb06",
         "src-013c1c8307da3f7b",
-        "src-8433804a6ab8495d"
+        "src-8433804a6ab8495d",
+        "src-b1a661286db2f1a8"
       ],
-      "last_reviewed_at": "2026-11-08T16:58:06Z",
+      "last_reviewed_at": "2026-11-09T16:56:58Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.27.0 改善并发子问题、repository 过滤、编辑正确性和托管 runtime 锁，但相关保证仍来自项目 release notes。适合在隔离仓库做并发与恢复试验。",
-        "judgment_en": "Version 0.27.0 improves concurrent child questions, repository filters, edit correctness and managed-runtime locking, but the guarantees remain first-party release claims. It fits an isolated concurrency and recovery trial.",
-        "next_action_zh": "一天内并发触发多个子问题，并用跨仓库事件、CRLF 文件与取消命令验证隔离和恢复。",
-        "next_action_en": "Within one day, trigger concurrent child questions and test isolation and recovery with cross-repository events, CRLF files and cancelled commands.",
+        "judgment_zh": "0.27.1 加入托管会话诊断、可选 Mem0 个人记忆与 LSP 开关，但恢复与隐私保证仍来自 release notes。适合在隔离仓库试验，不宜直接把真实凭据或敏感代码交给外部记忆。",
+        "judgment_en": "Version 0.27.1 adds managed-session diagnostics, opt-in Mem0 personal memory and an LSP switch, but recovery and privacy guarantees remain release-note claims. It fits an isolated trial, not immediate use with secrets or sensitive code in external memory.",
+        "next_action_zh": "一天内开启 LSP 与 Mem0 测试会话，验证恢复、数据删除、凭据隔离和关闭记忆后的残留。",
+        "next_action_en": "Within one day, enable LSP and Mem0 in a test session and verify recovery, deletion, credential isolation and residue after memory is disabled.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-11-08T16:58:06Z"
+        "reviewed_at": "2026-11-09T16:56:58Z"
       }
     },
     {
@@ -7551,9 +7553,55 @@
         "reviewed_at": "2026-11-08T16:58:06Z"
       },
       "changes": []
+    },
+    {
+      "id": "aws-hope",
+      "name_zh": "HOPE MoE 剪枝",
+      "name_en": "HOPE MoE pruning",
+      "type": "infrastructure",
+      "aliases": ["Higher-Order Pruning of Experts"],
+      "pattern": "HOPE",
+      "event_ids": ["ev-20260916-06"],
+      "source_ids": ["src-55d059b88c6c576a", "src-125b8485789e0d0a", "src-98f501dfccee37a3"],
+      "current_judgment_event_id": "ev-20260916-06",
+      "official_source_ids": ["src-55d059b88c6c576a", "src-125b8485789e0d0a", "src-98f501dfccee37a3"],
+      "last_reviewed_at": "2026-11-09T16:56:58Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "HOPE 有公开代码，可把 MoE 专家交互纳入剪枝选择，并输出标准 checkpoint。发布方结果主要在 40%–50% 激进剪枝时占优，尚无独立复现。",
+        "judgment_en": "HOPE has public code, includes expert interactions in pruning decisions and emits standard checkpoints. Publisher results are strongest at aggressive 40–50% pruning and lack independent reproduction.",
+        "next_action_zh": "一天内复跑 50% 剪枝，对照显存、吞吐和真实任务质量。",
+        "next_action_en": "Within one day, rerun 50% pruning and compare memory, throughput and real-task quality.",
+        "basis_event_ids": ["ev-20260916-06"],
+        "reviewed_at": "2026-11-09T16:56:58Z"
+      },
+      "changes": []
+    },
+    {
+      "id": "nemotron-finance-japan",
+      "name_zh": "Nemotron Finance Japan",
+      "name_en": "Nemotron Finance Japan",
+      "type": "dataset",
+      "aliases": ["Nemotron-Personas-Finance-Japan", "Nemotron-PII-Japan"],
+      "pattern": "Nemotron.*Japan",
+      "event_ids": ["ev-20261109-02"],
+      "source_ids": ["src-ac8f18750241a65f", "src-a90719ed31850b89", "src-5484892c609ca31f"],
+      "current_judgment_event_id": "ev-20261109-02",
+      "official_source_ids": ["src-ac8f18750241a65f", "src-a90719ed31850b89", "src-5484892c609ca31f"],
+      "last_reviewed_at": "2026-11-09T16:56:58Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "两套 CC BY 4.0 数据可直接用于日语金融 persona 与 PII 流水线试验。合成数据减少接触客户记录，但分布保真度、偏差和隐私安全仍需独立抽样。",
+        "judgment_en": "The two CC BY 4.0 datasets are directly usable for Japanese finance persona and PII pipeline trials. Synthetic data avoids customer records, but fidelity, bias and privacy safety still need independent sampling.",
+        "next_action_zh": "一天内抽样分布，并测现有 PII 脱敏流水线的召回率与误报率。",
+        "next_action_en": "Within one day, sample distributions and measure recall and false positives in the current PII redaction pipeline.",
+        "basis_event_ids": ["ev-20261109-02"],
+        "reviewed_at": "2026-11-09T16:56:58Z"
+      },
+      "changes": []
     }
   ],
-  "last_updated": "2026-11-08",
-  "total_projects": 210,
-  "last_updated_at": "2026-11-08T16:58:06Z"
+  "last_updated": "2026-11-09",
+  "total_projects": 212,
+  "last_updated_at": "2026-11-09T16:56:58Z"
 }

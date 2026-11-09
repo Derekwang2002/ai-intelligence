@@ -470,8 +470,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.27.0 hardens concurrent agent questions and repository routing",
-      "title_zh": "Qwen Code 0.27.0 加固并发提问与仓库路由",
+      "title": "Qwen Code 0.27.1 adds managed-session diagnostics and opt-in memory",
+      "title_zh": "Qwen Code 0.27.1 增加托管会话诊断与可选记忆",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -479,7 +479,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-11-08T16:58:06Z",
+      "last_updated_at": "2026-11-09T16:56:58Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
       "secondary_sources": [
@@ -499,14 +499,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.6",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.7",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.0"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.0",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.1"
       ],
-      "summary": "Qwen Code 0.27.0 lets managed-agent sessions keep several child questions pending and answer them in any order without mixing drafts or errors. GitHub channels gain repository allowlists and blocklists. The release also fixes CRLF and Unicode edits, cancelled-command status, credential redaction and several managed-runtime deadlocks.",
-      "why_it_matters": "For teams testing long-running coding agents, the update addresses concurrency, repository scope and edit correctness in the same stable release. The controls are first-party claims and still need adversarial recovery and permission tests before production use.",
-      "summary_zh": "Qwen Code 0.27.0 允许托管 agent 同时保留多个子问题，并按任意顺序回答，不再混淆草稿和错误。GitHub channel 新增 repository allowlist 与 blocklist。该版还修复 CRLF／Unicode 编辑、取消命令状态、凭据脱敏及多项托管 runtime 死锁。",
-      "summary_en": "Qwen Code 0.27.0 lets managed-agent sessions keep several child questions pending and answer them in any order without mixing drafts or errors. GitHub channels gain repository allowlists and blocklists. The release also fixes CRLF and Unicode edits, cancelled-command status, credential redaction and several managed-runtime deadlocks.",
-      "why_it_matters_zh": "对试验长时间运行 coding agent 的团队来说，这个稳定版同时处理并发、仓库范围和编辑正确性。相关保证仍来自一手 release notes，上生产前要做对抗性恢复与权限测试。",
-      "why_it_matters_en": "For teams testing long-running coding agents, the update addresses concurrency, repository scope and edit correctness in the same stable release. The controls are first-party claims and still need adversarial recovery and permission tests before production use.",
+      "summary": "Qwen Code 0.27.1 adds managed-session traces, persisted execution diagnostics and an opt-in personal-memory integration backed by Mem0. It also makes background execution configurable, exposes LSP through user settings and begins watching bound pull requests for state changes. Fixes cover worktree-lock validation, rejected daemon credentials, session recovery and provider-specific output budgets.",
+      "why_it_matters": "For teams testing long-running coding agents, the update makes session state and recovery more observable while adding memory and LSP behind explicit controls. The guarantees remain release-note claims, and the new memory integration creates an external data boundary that needs privacy and deletion tests.",
+      "summary_zh": "Qwen Code 0.27.1 增加托管会话 trace、持久执行诊断，以及由 Mem0 支持的可选个人记忆。后台执行改为可配置，LSP 可通过用户设置启用，并开始监听绑定 PR 的状态变化。该版还修复 worktree 锁校验、被拒 daemon 凭据、会话恢复和不同 provider 的输出预算。",
+      "summary_en": "Qwen Code 0.27.1 adds managed-session traces, persisted execution diagnostics and an opt-in personal-memory integration backed by Mem0. It also makes background execution configurable, exposes LSP through user settings and begins watching bound pull requests for state changes. Fixes cover worktree-lock validation, rejected daemon credentials, session recovery and provider-specific output budgets.",
+      "why_it_matters_zh": "对试验长时间运行 coding agent 的团队来说，这次更新让会话状态与恢复更可观测，并把记忆与 LSP 放在显式开关后。相关保证仍来自 release notes；新的 Mem0 集成还引入外部数据边界，需要额外测试隐私与删除行为。",
+      "why_it_matters_en": "For teams testing long-running coding agents, the update makes session state and recovery more observable while adding memory and LSP behind explicit controls. The guarantees remain release-note claims, and the new memory integration creates an external data boundary that needs privacy and deletion tests.",
       "technical_details": {
         "latest_version": "0.26.5 stable",
         "availability": "public GitHub release",
@@ -516,14 +517,16 @@
         "verification": "isolated verification workspace",
         "reliability": "recovery, locking and CUA 0.27 integration fixes",
         "time_basis": "0.26.8 published 2026-11-05T16:23:57Z; 0.26.9 published 2026-11-06T16:07:57Z.",
-        "latest_stable": "0.27.0",
+        "latest_stable": "0.27.1",
         "release_2026_11_02": "Web Shell activity and performance telemetry; evidence-gated managed recovery; MCP/OAuth/approval hardening",
         "time_basis_2026_11_02": "GitHub release published 2026-11-02T18:22:40Z",
         "release_2026_11_04": "Folder trust; /verify-pr Docker workflow; host credential proxy; opt-in token-protected remote server",
         "time_basis_2026_11_04": "GitHub release published 2026-11-04T04:03:01Z",
         "update_2026_11_05_06": "0.26.8 adds Qwen subscriptions, prompt-submit hooks, shared execution loops and project-hook approval; 0.26.9 adds atomic Skill activation, archive upload/receipts, durable structured questions and additional managed-runtime locking and recovery fixes.",
         "update_2026_11_07": "0.27.0 adds concurrent child questions, GitHub repository allowlists/blocklists, safer CRLF and Unicode shell edits, correct interrupted-command reporting, credential redaction and managed-runtime deadlock fixes.",
-        "time_basis_2026_11_07": "GitHub release published 2026-11-07T20:45:25Z."
+        "time_basis_2026_11_07": "GitHub release published 2026-11-07T20:45:25Z.",
+        "update_2026_11_09": "0.27.1 adds managed-session traces and persisted diagnostics, opt-in Mem0 personal memory, configurable background execution, user-scoped LSP, bound-PR state observation and recovery/security fixes.",
+        "time_basis_2026_11_09": "GitHub release published 2026-11-09T13:30:44Z, inside the scan window."
       },
       "technical_details_zh": {
         "最新版本": "0.26.5 stable",
@@ -534,13 +537,15 @@
         "验证": "隔离验证 workspace",
         "可靠性": "恢复、锁与 CUA 0.27 集成修复",
         "时间依据": "0.26.8 发布于 2026-11-05T16:23:57Z；0.26.9 发布于 2026-11-06T16:07:57Z。",
-        "最新稳定版": "0.27.0",
+        "最新稳定版": "0.27.1",
         "2026-11-02 更新": "Web Shell 活动与性能遥测、证据门控的托管恢复，以及 MCP/OAuth/审批加固",
         "2026-11-04 更新": "目录信任；/verify-pr Docker 流程；宿主凭据代理；默认关闭且受 token 保护的远程服务",
         "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T04:03:01Z",
         "2026-11-05/06 更新": "0.26.8 增加 Qwen 订阅、prompt-submit hooks、共享执行循环与项目 hook 审批；0.26.9 增加原子 Skill 激活、归档上传与 receipt、持久结构化提问，并继续修复托管 runtime 锁与恢复。",
         "2026-11-07 更新": "0.27.0 增加并发子问题、GitHub repository allowlist／blocklist，并修复 CRLF／Unicode shell 编辑、取消命令状态、凭据脱敏及托管 runtime 死锁。",
-        "2026-11-07 时间依据": "GitHub release 发布于 2026-11-07T20:45:25Z。"
+        "2026-11-07 时间依据": "GitHub release 发布于 2026-11-07T20:45:25Z。",
+        "2026-11-09 更新": "0.27.1 增加托管会话 trace 与持久诊断、可选 Mem0 个人记忆、可配置后台执行、用户级 LSP、绑定 PR 状态监听，以及恢复与安全修复。",
+        "2026-11-09 时间依据": "GitHub release 发布于 2026-11-09T13:30:44Z，落在扫描窗口内。"
       },
       "tags": [
         "qwen-code",
@@ -581,7 +586,8 @@
         "src-9b185ead5eb76797",
         "src-013c1c8307da3f7b",
         "src-7c1f1bfb5fe0eb06",
-        "src-8433804a6ab8495d"
+        "src-8433804a6ab8495d",
+        "src-b1a661286db2f1a8"
       ],
       "project_ids": [
         "qwen-code"
@@ -826,6 +832,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-27-1-evidence",
+          "claim_zh": "官方 0.27.1 release notes 确认托管会话诊断、可选 Mem0 记忆、LSP 开关与多项恢复修复。",
+          "claim_en": "The official 0.27.1 release notes confirm managed-session diagnostics, opt-in Mem0 memory, an LSP switch and multiple recovery fixes.",
+          "source_ids": [
+            "src-b1a661286db2f1a8"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior and external-memory privacy not independently tested"
         }
       ],
       "changes": [
@@ -1059,6 +1078,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-27-1",
+          "kind": "update",
+          "occurred_at": "2026-11-09T13:30:44Z",
+          "discovered_at": "2026-11-09T16:56:58Z",
+          "summary_zh": "Qwen Code 0.27.1 增加托管会话诊断、可选 Mem0 记忆与 LSP 开关",
+          "summary_en": "Qwen Code 0.27.1 adds managed-session diagnostics, opt-in Mem0 memory and an LSP switch",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-27-1-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1068,10 +1100,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.27.0",
-      "short_label_en": "Qwen Code 0.27.0",
-      "next_action_zh": "一天内并发触发多个子问题，并用跨仓库事件、CRLF 文件与取消命令验证隔离和恢复。",
-      "next_action_en": "Within one day, trigger concurrent child questions and test isolation and recovery with cross-repository events, CRLF files and cancelled commands."
+      "short_label_zh": "Qwen Code 0.27.1",
+      "short_label_en": "Qwen Code 0.27.1",
+      "next_action_zh": "一天内开启 LSP 与 Mem0 测试会话，验证恢复、数据删除、凭据隔离和关闭记忆后的残留。",
+      "next_action_en": "Within one day, enable LSP and Mem0 in a test session and verify recovery, deletion, credential isolation and residue after memory is disabled."
     },
     {
       "event_id": "ev-20260922-05",

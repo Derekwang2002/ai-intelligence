@@ -521,16 +521,18 @@
       ],
       "published_at": "2026-09-16T16:55:46Z",
       "first_seen_at": "2026-09-17T23:58:56Z",
-      "last_updated_at": "2026-09-17T23:58:56Z",
+      "last_updated_at": "2026-11-09T16:56:58Z",
       "source_type": "arxiv",
       "primary_source": "https://arxiv.org/abs/2609.18916",
       "secondary_sources": [
-        "https://github.com/awslabs/hybrid-model-factory"
+        "https://github.com/awslabs/hybrid-model-factory",
+        "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
+        "https://github.com/awslabs/HOPE"
       ],
-      "summary": "HOPE selects Mixture-of-Experts experts with a second-order objective that models cooperation between experts instead of scoring each one independently. Across three MoE models up to 122B parameters and two calibration sets, it ranks first at 50% pruning and beats the next-best baseline most clearly on agentic coding. Reported gains reach 6.1% on SWE-bench Pro. The implementation is linked through AWS's hybrid-model-factory repository.",
+      "summary": "HOPE selects Mixture-of-Experts experts with a second-order objective that models cooperation between experts instead of scoring each one independently. AWS now publishes a standalone Apache-2.0 package that calibrates, solves and prunes supported models into standard Hugging Face checkpoints. Publisher tests across three models report the clearest advantage at 40–50% pruning.",
       "why_it_matters": "For self-hosting MoE models, expert pruning can reduce the weight-memory bottleneck without retraining the whole model. HOPE suggests that preserving expert combinations matters more on long agentic workloads than on short static benchmarks. Trial it only with workload-matched calibration data and remeasure latency, memory and quality together.",
-      "summary_zh": "HOPE 用二阶目标选择 Mixture-of-Experts 中要保留的专家，不再把每个专家的贡献看成彼此独立。研究覆盖三款最高 122B 参数的 MoE 模型和两套校准数据；在 50% 剪枝时平均排名第一，并在 agentic coding 上最明显地超过次优基线。SWE-bench Pro 的报告增益最高为 6.1%。实现通过 AWS 的 hybrid-model-factory 仓库提供。",
-      "summary_en": "HOPE selects Mixture-of-Experts experts with a second-order objective that models cooperation between experts instead of scoring each one independently. Across three MoE models up to 122B parameters and two calibration sets, it ranks first at 50% pruning and beats the next-best baseline most clearly on agentic coding. Reported gains reach 6.1% on SWE-bench Pro. The implementation is linked through AWS's hybrid-model-factory repository.",
+      "summary_zh": "HOPE 用二阶目标选择 Mixture-of-Experts 中要保留的专家，不再把每个专家的贡献看成彼此独立。AWS 现已发布独立的 Apache-2.0 工具包，可完成校准、求解和剪枝，并输出标准 Hugging Face checkpoint。发布方在三个模型上的实验显示，优势主要出现在 40%–50% 剪枝。",
+      "summary_en": "HOPE selects Mixture-of-Experts experts with a second-order objective that models cooperation between experts instead of scoring each one independently. AWS now publishes a standalone Apache-2.0 package that calibrates, solves and prunes supported models into standard Hugging Face checkpoints. Publisher tests across three models report the clearest advantage at 40–50% pruning.",
       "why_it_matters_zh": "对自托管 MoE 模型的团队来说，专家剪枝可以缓解权重内存瓶颈，而不必重训整套模型。HOPE 表明，在长时程 agent 工作负载上，保留专家组合关系比静态短 benchmark 更重要。试验时应使用贴近自身工作负载的校准数据，并同时重测延迟、内存和质量。",
       "why_it_matters_en": "For self-hosting MoE models, expert pruning can reduce the weight-memory bottleneck without retraining the whole model. HOPE suggests that preserving expert combinations matters more on long agentic workloads than on short static benchmarks. Trial it only with workload-matched calibration data and remeasure latency, memory and quality together.",
       "technical_details": {
@@ -538,14 +540,20 @@
         "models": "three MoE models up to 122B parameters",
         "calibration": "Evol-CodeAlpaca and SWE-bench Verified trajectories",
         "pruning_result": "best average rank at 50% expert pruning",
-        "agentic_gain": "up to +6.1% on SWE-bench Pro versus baselines"
+        "agentic_gain": "up to +6.1% on SWE-bench Pro versus baselines",
+        "availability_update": "Standalone Apache-2.0 HOPE package for Qwen3, Qwen3-Next, Qwen3.5 and GLM-4.5; emits standard Hugging Face checkpoints",
+        "update_time_basis": "Official Hugging Face article dated 2026-11-09 with date precision only",
+        "limitations": "Publisher-run benchmarks; smaller gains at low pruning rates; layers optimized independently; no serving-cost reproduction"
       },
       "technical_details_zh": {
         "方法": "保留专家协作关系的二阶专家剪枝目标",
         "模型": "三款最高 122B 参数的 MoE 模型",
         "校准": "Evol-CodeAlpaca 与 SWE-bench Verified 轨迹",
         "剪枝结果": "剪掉 50% 专家时平均排名第一",
-        "Agentic 增益": "SWE-bench Pro 相对基线最高提升 6.1%"
+        "Agentic 增益": "SWE-bench Pro 相对基线最高提升 6.1%",
+        "可用性更新": "独立 Apache-2.0 HOPE 工具包支持 Qwen3、Qwen3-Next、Qwen3.5 和 GLM-4.5；输出标准 Hugging Face checkpoint",
+        "更新时间依据": "官方 Hugging Face 文章日期为 2026-11-09，只有日期精度",
+        "局限": "benchmark 由发布方运行；低剪枝比例优势较小；逐层独立优化；缺少 serving 成本复现"
       },
       "tags": [
         "HOPE",
@@ -564,9 +572,13 @@
       "event_fingerprint": "arxiv-2609-18916-hope-higher-order-moe-pruning",
       "source_ids": [
         "src-98f501dfccee37a3",
-        "src-26b61bd4c8377ff5"
+        "src-26b61bd4c8377ff5",
+        "src-55d059b88c6c576a",
+        "src-125b8485789e0d0a"
       ],
-      "project_ids": [],
+      "project_ids": [
+        "aws-hope"
+      ],
       "scenario_ids": [
         "models",
         "local"
@@ -586,6 +598,15 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260916-06-package-evidence",
+          "claim_zh": "AWS 官方文章与 Apache-2.0 仓库确认 HOPE 已有独立可运行工具包；性能结论仍是发布方评测。",
+          "claim_en": "The official AWS article and Apache-2.0 repository confirm a standalone runnable HOPE package; performance remains publisher-evaluated.",
+          "source_ids": ["src-55d059b88c6c576a", "src-125b8485789e0d0a"],
+          "event_ids": ["ev-20260916-06"],
+          "verification": "public artifacts verified; benchmark claims not independently reproduced",
+          "relation": "support"
         }
       ],
       "changes": [
@@ -600,8 +621,24 @@
             "ev-20260916-06-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260916-06-standalone-package",
+          "kind": "update",
+          "occurred_at": "2026-11-09",
+          "discovered_at": "2026-11-09T16:56:58Z",
+          "summary_zh": "AWS 发布独立的 HOPE MoE 剪枝工具包",
+          "summary_en": "AWS releases a standalone HOPE package for MoE pruning",
+          "evidence_ids": ["ev-20260916-06-package-evidence"],
+          "historical": false,
+          "importance": "major"
         }
       ]
+      ,
+      "short_label_zh": "HOPE",
+      "short_label_en": "HOPE",
+      "next_action_zh": "一天内用公开代码把 Qwen3.5-35B 剪枝 50%，对照未剪枝模型测显存、吞吐与真实任务。",
+      "next_action_en": "Within one day, prune Qwen3.5-35B by 50% and compare memory, throughput and real tasks against the original."
     },
     {
       "event_id": "ev-20260916-07",
