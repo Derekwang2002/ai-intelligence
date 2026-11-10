@@ -1004,13 +1004,14 @@
     },
     {
       "first_seen_at": "2026-10-01T16:01:43Z",
-      "last_updated_at": "2026-11-03T17:02:48Z",
+      "last_updated_at": "2026-11-10T17:03:13Z",
       "secondary_sources": [
         "https://github.com/ollama/ollama/releases/tag/v0.35.1",
         "https://github.com/ollama/ollama/releases/tag/v0.40.9",
         "https://ollama.com/library/phonon",
         "https://github.com/ollama/ollama/releases/tag/v0.40.13",
-        "https://github.com/ollama/ollama/releases/tag/v0.40.14"
+        "https://github.com/ollama/ollama/releases/tag/v0.40.14",
+        "https://github.com/ollama/ollama/releases/tag/v0.40.16"
       ],
       "technical_impact": 3,
       "engineering_value": 4,
@@ -1024,8 +1025,8 @@
       ],
       "evidence_stage": "verified",
       "event_id": "ev-20260928-09",
-      "title": "Ollama 0.40.14 aligns local and OpenAI-compatible request behavior",
-      "title_zh": "Ollama 0.40.14 对齐本地与 OpenAI-compatible 请求行为",
+      "title": "Ollama 0.40.16 cuts Apple-silicon memory and stops silent truncation",
+      "title_zh": "Ollama 0.40.16 降低 Apple 内存并停止静默截断",
       "category": "ai-engineering",
       "organization": [
         "Ollama"
@@ -1033,10 +1034,10 @@
       "published_at": "2026-09-28T21:23:22Z",
       "source_type": "github_release",
       "primary_source": "https://github.com/ollama/ollama/releases/tag/v0.35.0",
-      "summary_zh": "Ollama 0.40.14 不再让 OpenAI-compatible endpoint 在客户端未传 temperature 或 top_p 时覆盖模型内置采样默认值。它还保留 Responses API 的可读输入，修复压缩的云端搜索响应，让 Claude Code 使用云模型的输出上限，并在配置 Codex 前验证 ChatGPT 路由。",
-      "summary_en": "Ollama 0.40.14 stops OpenAI-compatible endpoints from replacing packaged sampler defaults when clients omit temperature or top_p. It preserves readable Responses API input, fixes compressed cloud-search responses, applies cloud-model output limits when launching Claude Code, and validates ChatGPT routing before configuring Codex.",
-      "why_it_matters_zh": "对本地模型和 gateway 用户来说，省略参数时原生路径与 OpenAI-compatible 路径现在更一致。采样默认值会改变输出分布，因此上线前仍需回归。",
-      "why_it_matters_en": "For local-model and gateway users, omitted parameters now behave consistently across native and OpenAI-compatible paths. Trial before rollout because sampler-default changes can alter output distributions.",
+      "summary_zh": "Ollama 0.40.16 让 Qwen3.8 Flash Next 在 Apple silicon 上少用约 27 GiB 内存；`/v1/responses` 会遵守 truncation 参数，不再默认静默截断；`ollama launch claude` 会始终路由到所选模型。它还加入 Ripple Preview 一键运行和 Windows Arm 的 CUDA 13.5 支持。",
+      "summary_en": "Ollama 0.40.16 reduces Qwen3.8 Flash Next memory use on Apple silicon by about 27 GiB, makes /v1/responses honor truncation instead of silently truncating, and routes Claude Code to the selected model. It also adds one-command Ripple Preview support and CUDA 13.5 on Windows Arm.",
+      "why_it_matters_zh": "对本地模型团队来说，显存/内存下降可能让原本跑不动的模型变得可用，显式截断也消除了隐藏的正确性风险。两项变化都只有 release notes，需要在目标硬件和 prompt 上回归。",
+      "why_it_matters_en": "For local-model teams, the memory reduction may turn an otherwise infeasible model into a runnable one, while explicit truncation removes a hidden correctness failure. Both need regression on target hardware and prompts because the release notes provide no independent measurements.",
       "technical_details": {
         "version": "0.35.0 stable",
         "endpoint": "/v1/systemone",
@@ -1083,7 +1084,8 @@
         "src-39a2c26df5548ff5",
         "src-60b7805de2ebc483",
         "src-255532568ba55074",
-        "src-b53d42e9c538fd76"
+        "src-b53d42e9c538fd76",
+        "src-9e6aebddb26b3098"
       ],
       "project_ids": [
         "ollama"
@@ -1091,10 +1093,10 @@
       "late_discovery": true,
       "short_label_zh": "Ollama 0.40.14",
       "short_label_en": "Ollama 0.40.14",
-      "next_action_zh": "一天内用固定 prompt 回归省略采样参数、Responses 历史输入和 Codex/Claude 启动。",
-      "next_action_en": "Within one day, regress omitted sampler settings, Responses history and Codex/Claude launch flows with fixed prompts.",
-      "summary": "Ollama 0.40.14 stops OpenAI-compatible endpoints from replacing packaged sampler defaults when clients omit temperature or top_p. It preserves readable Responses API input, fixes compressed cloud-search responses, applies cloud-model output limits when launching Claude Code, and validates ChatGPT routing before configuring Codex.",
-      "why_it_matters": "For local-model and gateway users, omitted parameters now behave consistently across native and OpenAI-compatible paths. Trial before rollout because sampler-default changes can alter output distributions.",
+      "next_action_zh": "用目标 Mac 回归峰值内存与输出质量，并验证 Responses 超长输入和 Claude Code 模型路由。",
+      "next_action_en": "Regress peak memory and output quality on the target Mac, plus oversized Responses inputs and Claude Code model routing.",
+      "summary": "Ollama 0.40.16 reduces Qwen3.8 Flash Next memory use on Apple silicon by about 27 GiB, makes /v1/responses honor truncation instead of silently truncating, and routes Claude Code to the selected model. It also adds one-command Ripple Preview support and CUDA 13.5 on Windows Arm.",
+      "why_it_matters": "For local-model teams, the memory reduction may turn an otherwise infeasible model into a runnable one, while explicit truncation removes a hidden correctness failure. Both need regression on target hardware and prompts because the release notes provide no independent measurements.",
       "evidence": [
         {
           "id": "ev-20260928-09-release-evidence",
@@ -1161,6 +1163,19 @@
           ],
           "relation": "support",
           "verification": "verified"
+        },
+        {
+          "id": "ev-20260928-09-ollama-0-40-16-evidence",
+          "claim_zh": "Ollama 0.40.16 降低 Qwen3.8 Flash Next 内存，修复 Responses 截断和 Claude Code 模型路由。",
+          "claim_en": "Ollama 0.40.16 reduces Qwen3.8 Flash Next memory use and fixes Responses truncation and Claude Code model routing.",
+          "source_ids": [
+            "src-9e6aebddb26b3098"
+          ],
+          "event_ids": [
+            "ev-20260928-09"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -1228,6 +1243,18 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260928-09-ollama-0-40-16",
+          "kind": "update",
+          "occurred_at": "2026-11-09T18:21:19Z",
+          "discovered_at": "2026-11-10T17:03:13Z",
+          "summary_zh": "Ollama 0.40.16 降低 Apple silicon 内存并停止 Responses 静默截断。",
+          "summary_en": "Ollama 0.40.16 reduces Apple-silicon memory use and stops silent Responses truncation.",
+          "evidence_ids": [
+            "ev-20260928-09-ollama-0-40-16-evidence"
+          ],
+          "historical": false
         }
       ],
       "last_reviewed_at": "2026-10-23T16:04:55Z"

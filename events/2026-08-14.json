@@ -364,8 +364,8 @@
     },
     {
       "event_id": "ev-20260814-04",
-      "title": "Claude Code approval files exposed real secrets across public repositories",
-      "title_zh": "Claude Code 批准记录让真实密钥进入公开仓库",
+      "title": "Claude Code 2.1.321 closes OAuth redirect and sandbox permission gaps",
+      "title_zh": "Claude Code 2.1.321 修复 OAuth 跳转与沙箱权限缺口",
       "category": "developer-tools",
       "organization": [
         "Anthropic"
@@ -373,7 +373,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-11-08T16:58:06Z",
+      "last_updated_at": "2026-11-10T17:03:13Z",
       "source_type": "primary",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -421,14 +421,16 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.316",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.317",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.318",
-        "https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again"
+        "https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.321",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.322"
       ],
-      "summary": "Apiiro found 2,539 real secrets across 1,994 public repositories in Claude Code settings, history and transcripts. The main path was “Don’t ask again” saving an approved command, including an inline secret, to a project settings file that could be committed. Anthropic says it is exploring auto mode and basic secret scanning, but no shipped fix was verified.",
-      "why_it_matters": "For teams using Claude Code, approval persistence can turn a local convenience into a repository-level credential leak. Existing repositories and Git history need a targeted scan; ignoring future files alone does not remove exposed credentials.",
-      "summary_zh": "Apiiro 在 1,994 个公开仓库的 Claude Code 设置、历史和 transcript 中发现 2,539 个真实密钥。主要路径是“Don’t ask again”把获批命令连同内嵌密钥写进项目设置文件，之后可能被提交。Anthropic 表示正在研究 auto mode 与基础密钥扫描，但本轮未核实到已发布修复。",
-      "summary_en": "Apiiro found 2,539 real secrets across 1,994 public repositories in Claude Code settings, history and transcripts. The main path was “Don’t ask again” saving an approved command, including an inline secret, to a project settings file that could be committed. Anthropic says it is exploring auto mode and basic secret scanning, but no shipped fix was verified.",
-      "why_it_matters_zh": "对使用 Claude Code 的团队来说，持久化批准会把本地便利变成仓库级凭据泄露。需要定向检查现有仓库与 Git 历史；只忽略未来文件并不能撤销已经暴露的密钥。",
-      "why_it_matters_en": "For teams using Claude Code, approval persistence can turn a local convenience into a repository-level credential leak. Existing repositories and Git history need a targeted scan; ignoring future files alone does not remove exposed credentials.",
+      "summary": "Claude Code 2.1.321 fixes three decision-changing security boundaries: MCP OAuth redirects no longer send refresh tokens to another host, a read-only Bash command can no longer run outside the sandbox without a prompt, and cp/mv writes now receive the target file’s deny and protected-file checks. It also fixes long-session memory growth and several recovery failures. Version 2.1.322 adds Vertex fast-mode fallback.",
+      "why_it_matters": "For teams running Claude Code with MCP, managed policy or unattended sessions, these fixes close concrete credential and permission paths. The separate approval-record secret exposure remains unresolved in public evidence, so upgrading does not remove the need for repository scans and credential rotation.",
+      "summary_zh": "Claude Code 2.1.321 修复三类会改变安全边界的问题：MCP OAuth 跳转不再把 refresh token 发往另一主机；只读 Bash 命令不再无提示跑出沙箱；cp/mv 写入会按目标文件应用 deny 与受保护文件检查。它还修复长会话内存增长和多项恢复失败。2.1.322 增加 Vertex fast mode 回退。",
+      "summary_en": "Claude Code 2.1.321 fixes three decision-changing security boundaries: MCP OAuth redirects no longer send refresh tokens to another host, a read-only Bash command can no longer run outside the sandbox without a prompt, and cp/mv writes now receive the target file’s deny and protected-file checks. It also fixes long-session memory growth and several recovery failures. Version 2.1.322 adds Vertex fast-mode fallback.",
+      "why_it_matters_zh": "对使用 MCP、集中策略或无人值守会话的团队来说，这些修复关闭了具体的凭据与权限路径。批准记录泄露密钥的问题仍没有公开可核实修复，因此升级不能替代仓库扫描和密钥轮换。",
+      "why_it_matters_en": "For teams running Claude Code with MCP, managed policy or unattended sessions, these fixes close concrete credential and permission paths. The separate approval-record secret exposure remains unresolved in public evidence, so upgrading does not remove the need for repository scans and credential rotation.",
       "technical_details": {
         "forking": "default on; inherits conversation + prompt cache",
         "messaging": "SendMessage via @-mentions across live sessions; no history/files/permissions exchange",
@@ -618,7 +620,9 @@
         "src-797aba84ba3e9103",
         "src-7cf21137c37e547b",
         "src-199af8aea5b61129",
-        "src-10bdc73097cfd238"
+        "src-10bdc73097cfd238",
+        "src-ace31f3b0bb1b6f0",
+        "src-dbc58eacee5d52ba"
       ],
       "project_ids": [
         "claude-code"
@@ -1022,6 +1026,19 @@
           ],
           "relation": "update",
           "verification": "independent security research; aggregate scan not independently reproduced"
+        },
+        {
+          "id": "ev-20260814-04-2-1-321-evidence",
+          "claim_zh": "2.1.321 修复 MCP OAuth secret 跨主机跳转、沙箱外只读 Bash 无提示执行以及 cp/mv 目标文件 deny 规则缺口。",
+          "claim_en": "Version 2.1.321 fixes cross-host MCP OAuth secret redirects, unprompted read-only Bash execution outside the sandbox and missing cp/mv target-file deny checks.",
+          "source_ids": [
+            "src-ace31f3b0bb1b6f0"
+          ],
+          "event_ids": [
+            "ev-20260814-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -1412,6 +1429,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-321",
+          "kind": "update",
+          "occurred_at": "2026-11-09T19:22:30Z",
+          "discovered_at": "2026-11-10T17:03:13Z",
+          "summary_zh": "Claude Code 2.1.321 修复 OAuth secret 跳转和多条沙箱权限缺口。",
+          "summary_en": "Claude Code 2.1.321 fixes OAuth-secret redirects and several sandbox permission gaps.",
+          "evidence_ids": [
+            "ev-20260814-04-2-1-321-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1421,8 +1451,8 @@
           "src-10bdc73097cfd238"
         ]
       },
-      "next_action_zh": "扫描 Claude 设置、transcript 与 Git 历史，轮换命中的密钥，并用仓库级忽略和提交前 secret scan 阻断复发。",
-      "next_action_en": "Scan .claude/settings*.json, transcripts and Git history now, rotate matched secrets, and block recurrence with repository-level ignores and pre-commit secret scanning.",
+      "next_action_zh": "升级后回归 OAuth 跨域跳转、沙箱只读命令、cp/mv deny 规则，并继续扫描批准记录中的密钥。",
+      "next_action_en": "After upgrading, regress cross-host OAuth redirects, read-only sandbox commands and cp/mv deny rules, while continuing approval-record secret scans.",
       "short_label_zh": "Claude Code 密钥泄露",
       "short_label_en": "Claude Code secret leak",
       "last_reviewed_at": "2026-11-08T16:58:06Z"

@@ -58,7 +58,13 @@
         "src-797aba84ba3e9103",
         "src-7cf21137c37e547b",
         "src-199af8aea5b61129",
-        "src-10bdc73097cfd238"
+        "src-10bdc73097cfd238",
+        "src-d320458473217aca",
+        "src-11a9e9aebb65d4c7",
+        "src-b624a9cbfe8c4465",
+        "src-97c5df49eed3f0cf",
+        "src-ace31f3b0bb1b6f0",
+        "src-dbc58eacee5d52ba"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -91,17 +97,17 @@
         "src-797aba84ba3e9103",
         "src-7cf21137c37e547b"
       ],
-      "last_reviewed_at": "2026-11-08T16:58:06Z",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "公开仓库扫描显示批准记录会把真实密钥持久化并提交；Anthropic 已回应但未发布可核实修复。现有仓库需要立即排查和轮换密钥。",
-        "judgment_en": "A public-repository scan shows approval records can persist and commit real secrets. Anthropic responded but has not shipped a verifiable fix; existing repositories need immediate scanning and credential rotation.",
-        "next_action_zh": "扫描 Claude 设置、transcript 与 Git 历史，轮换命中的密钥。",
-        "next_action_en": "Scan Claude settings, transcripts and Git history, then rotate matched secrets.",
+        "judgment_zh": "2.1.321 修复 OAuth secret 跳转与多条沙箱权限缺口，但批准记录泄露真实密钥仍无公开可核实修复。",
+        "judgment_en": "Version 2.1.321 fixes OAuth-secret redirects and several sandbox permission gaps, but approval-record secret exposure still lacks a public verifiable fix.",
+        "next_action_zh": "升级并回归权限边界，同时继续扫描与轮换密钥。",
+        "next_action_en": "Upgrade and regress permission boundaries while continuing secret scans and rotation.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-11-08T16:58:06Z"
+        "reviewed_at": "2026-11-10T17:03:13Z"
       }
     },
     {
@@ -752,20 +758,20 @@
         "src-fe3326f4dbcaa51b",
         "src-bc1643b3a14e5224"
       ],
-      "last_reviewed_at": "2026-11-08T16:58:06Z",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "协议 SDK 仍适合隔离试验；LiteLLM 1.108.3 修复大型 MCP 结果与重复护栏，但单个 gateway 版本没有改变协议成熟度。",
-        "judgment_en": "Protocol SDKs remain suitable for isolated trials. LiteLLM 1.108.3 fixes large MCP results and duplicate guardrails without changing protocol maturity.",
-        "next_action_zh": "在测试服务验证超 1 MiB 结果、OAuth、session 隔离、toolset 限制与旧 schema。",
-        "next_action_en": "Validate results above 1 MiB, OAuth, session isolation, toolset limits and legacy schemas in a test service.",
+        "judgment_zh": "协议 SDK 仍适合隔离试验；LiteLLM 1.108.4 修复 gateway 护栏、BYOK 路由与可选 MCP 依赖回归，但单一 gateway 维护版没有改变协议成熟度。",
+        "judgment_en": "Protocol SDKs remain suitable for isolated trials. LiteLLM 1.108.4 fixes gateway guardrails, BYOK routing and optional-MCP dependency regressions without changing protocol maturity.",
+        "next_action_zh": "在测试服务验证 OAuth、session 隔离、toolset 限制、BYOK 路由与护栏优先级。",
+        "next_action_en": "Validate OAuth, session isolation, toolset limits, BYOK routing and guardrail precedence in a test service.",
         "basis_event_ids": [
           "ev-20260913-01",
           "ev-20260928-07",
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-11-08T16:58:06Z"
+        "reviewed_at": "2026-11-10T17:03:13Z"
       }
     },
     {
@@ -1143,7 +1149,8 @@
         "src-39a2c26df5548ff5",
         "src-60b7805de2ebc483",
         "src-255532568ba55074",
-        "src-b53d42e9c538fd76"
+        "src-b53d42e9c538fd76",
+        "src-9e6aebddb26b3098"
       ],
       "official_source_ids": [
         "src-872457bb1f6a4e1a",
@@ -1153,18 +1160,18 @@
         "src-255532568ba55074",
         "src-b53d42e9c538fd76"
       ],
-      "last_reviewed_at": "2026-11-03T17:02:48Z",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
       "current_judgment_event_id": "ev-20260928-09",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.40.14 对齐原生与 OpenAI-compatible 采样默认值，并修复 Responses 与 coding-agent 启动路径。输出分布可能变化，适合小规模回归。",
-        "judgment_en": "Version 0.40.14 aligns native and OpenAI-compatible sampler defaults and fixes Responses and coding-agent launch paths. Output distributions may change, so use a small regression trial.",
-        "next_action_zh": "一天内用固定 prompt 回归省略采样参数、Responses 历史输入和 Codex/Claude 启动。",
-        "next_action_en": "Within one day, regress omitted sampler settings, Responses history and Codex/Claude launch flows with fixed prompts.",
+        "judgment_zh": "0.40.16 降低 Apple silicon 内存并停止 Responses 静默截断；硬件收益与输出变化需要本地回归。",
+        "judgment_en": "Version 0.40.16 reduces Apple-silicon memory use and stops silent Responses truncation; hardware gains and output changes need local regression.",
+        "next_action_zh": "在目标 Mac 回归峰值内存、质量、截断和模型路由。",
+        "next_action_en": "Regress peak memory, quality, truncation and model routing on the target Mac.",
         "basis_event_ids": [
           "ev-20260928-09"
         ],
-        "reviewed_at": "2026-11-03T17:02:48Z"
+        "reviewed_at": "2026-11-10T17:03:13Z"
       }
     },
     {
@@ -6070,23 +6077,24 @@
       ],
       "source_ids": [
         "src-a92d7b7ef0e2da4d",
-        "src-5385485570aa2630"
+        "src-5385485570aa2630",
+        "src-5b4c18faabadfb38"
       ],
       "current_judgment_event_id": "ev-20261028-02",
       "official_source_ids": [
         "src-a92d7b7ef0e2da4d"
       ],
-      "last_reviewed_at": "2026-10-29T16:05:08Z",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
       "judgment": {
-        "recommendation": "WATCH",
-        "judgment_zh": "当前仅向部分网络防御者预发布，没有通用 API 或权重；厂商 benchmark 与价格待外部验证。",
-        "judgment_en": "Currently pre-released only to selected cyber defenders, with no general API or weights; vendor benchmarks and pricing await external validation.",
-        "next_action_zh": "等待公开 API、明确资格与独立网络安全评测。",
-        "next_action_en": "Wait for a public API, clear eligibility and independent cyber evaluation.",
+        "recommendation": "TRIAL",
+        "judgment_zh": "Gemini 4 Carbon 已向所有付费开发者和企业开放 API，首发价较低；质量与成本主张仍要用真实文档和 agent 任务验证。",
+        "judgment_en": "Gemini 4 Carbon is available by API to all paying developers and enterprises at low introductory pricing; quality and cost claims still need real document and agent tests.",
+        "next_action_zh": "做一天 canary，对比质量、成本、延迟和格式遵循。",
+        "next_action_en": "Run a one-day canary comparing quality, cost, latency and schema adherence.",
         "basis_event_ids": [
           "ev-20261028-02"
         ],
-        "reviewed_at": "2026-10-29T16:05:08Z"
+        "reviewed_at": "2026-11-10T17:03:13Z"
       }
     },
     {
@@ -7121,7 +7129,22 @@
       "source_ids": [
         "src-bc1643b3a14e5224",
         "src-21cf97a311693357",
-        "src-df8662ba8703ab0f"
+        "src-df8662ba8703ab0f",
+        "src-d94800da37345499",
+        "src-034a68a2e548bdd4",
+        "src-e8afc252446a299e",
+        "src-7cbc44e76e6e7be0",
+        "src-e97c05fc290cdfc6",
+        "src-bab7a3f49d318472",
+        "src-49b5951c067cceb3",
+        "src-5f6db8b0b36e1913",
+        "src-afb4f1911ed6958a",
+        "src-fe3326f4dbcaa51b",
+        "src-1e8b991416e8869f",
+        "src-26c451a3ba9575d2",
+        "src-8bf6776408f8d7ad",
+        "src-3d6c3b6b91b94492",
+        "src-e372c61ba3f0e7a4"
       ],
       "current_judgment_event_id": "ev-20260913-01",
       "official_source_ids": [
@@ -7129,17 +7152,17 @@
         "src-21cf97a311693357",
         "src-df8662ba8703ab0f"
       ],
-      "last_reviewed_at": "2026-11-08T16:58:06Z",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "1.108.3 修复大型 MCP 结果、重复 post-call 护栏和 Bedrock 空 api_base 回归；它延续了 1.108.2 的数据边界修复。共享 gateway 仍应通过生产形态 canary 升级。",
-        "judgment_en": "Version 1.108.3 fixes large MCP results, duplicate post-call guardrails and the empty Bedrock api_base regression while retaining the 1.108.2 data-boundary fixes. Shared gateways still need a production-shaped canary.",
-        "next_action_zh": "在 canary 回放超 1 MiB MCP 结果、post-call 护栏、空 Bedrock api_base 和旧版边界用例。",
-        "next_action_en": "Canary MCP results above 1 MiB, post-call guardrails, an empty Bedrock api_base and prior boundary cases.",
+        "judgment_zh": "1.108.4 修复跨 provider reasoning、团队 BYOK 路由与护栏回归；共享 gateway 仍应 canary 升级。",
+        "judgment_en": "Version 1.108.4 fixes cross-provider reasoning, team BYOK routing and guardrail regressions; shared gateways still need a canary upgrade.",
+        "next_action_zh": "按真实 provider 组合回放 reasoning、BYOK 和护栏。",
+        "next_action_en": "Replay reasoning, BYOK and guardrails across the real provider mix.",
         "basis_event_ids": [
           "ev-20260913-01"
         ],
-        "reviewed_at": "2026-11-08T16:58:06Z"
+        "reviewed_at": "2026-11-10T17:03:13Z"
       },
       "changes": []
     },
@@ -7559,12 +7582,24 @@
       "name_zh": "HOPE MoE 剪枝",
       "name_en": "HOPE MoE pruning",
       "type": "infrastructure",
-      "aliases": ["Higher-Order Pruning of Experts"],
+      "aliases": [
+        "Higher-Order Pruning of Experts"
+      ],
       "pattern": "HOPE",
-      "event_ids": ["ev-20260916-06"],
-      "source_ids": ["src-55d059b88c6c576a", "src-125b8485789e0d0a", "src-98f501dfccee37a3"],
+      "event_ids": [
+        "ev-20260916-06"
+      ],
+      "source_ids": [
+        "src-55d059b88c6c576a",
+        "src-125b8485789e0d0a",
+        "src-98f501dfccee37a3"
+      ],
       "current_judgment_event_id": "ev-20260916-06",
-      "official_source_ids": ["src-55d059b88c6c576a", "src-125b8485789e0d0a", "src-98f501dfccee37a3"],
+      "official_source_ids": [
+        "src-55d059b88c6c576a",
+        "src-125b8485789e0d0a",
+        "src-98f501dfccee37a3"
+      ],
       "last_reviewed_at": "2026-11-09T16:56:58Z",
       "judgment": {
         "recommendation": "TRIAL",
@@ -7572,7 +7607,9 @@
         "judgment_en": "HOPE has public code, includes expert interactions in pruning decisions and emits standard checkpoints. Publisher results are strongest at aggressive 40–50% pruning and lack independent reproduction.",
         "next_action_zh": "一天内复跑 50% 剪枝，对照显存、吞吐和真实任务质量。",
         "next_action_en": "Within one day, rerun 50% pruning and compare memory, throughput and real-task quality.",
-        "basis_event_ids": ["ev-20260916-06"],
+        "basis_event_ids": [
+          "ev-20260916-06"
+        ],
         "reviewed_at": "2026-11-09T16:56:58Z"
       },
       "changes": []
@@ -7582,12 +7619,25 @@
       "name_zh": "Nemotron Finance Japan",
       "name_en": "Nemotron Finance Japan",
       "type": "dataset",
-      "aliases": ["Nemotron-Personas-Finance-Japan", "Nemotron-PII-Japan"],
+      "aliases": [
+        "Nemotron-Personas-Finance-Japan",
+        "Nemotron-PII-Japan"
+      ],
       "pattern": "Nemotron.*Japan",
-      "event_ids": ["ev-20261109-02"],
-      "source_ids": ["src-ac8f18750241a65f", "src-a90719ed31850b89", "src-5484892c609ca31f"],
+      "event_ids": [
+        "ev-20261109-02"
+      ],
+      "source_ids": [
+        "src-ac8f18750241a65f",
+        "src-a90719ed31850b89",
+        "src-5484892c609ca31f"
+      ],
       "current_judgment_event_id": "ev-20261109-02",
-      "official_source_ids": ["src-ac8f18750241a65f", "src-a90719ed31850b89", "src-5484892c609ca31f"],
+      "official_source_ids": [
+        "src-ac8f18750241a65f",
+        "src-a90719ed31850b89",
+        "src-5484892c609ca31f"
+      ],
       "last_reviewed_at": "2026-11-09T16:56:58Z",
       "judgment": {
         "recommendation": "TRIAL",
@@ -7595,10 +7645,355 @@
         "judgment_en": "The two CC BY 4.0 datasets are directly usable for Japanese finance persona and PII pipeline trials. Synthetic data avoids customer records, but fidelity, bias and privacy safety still need independent sampling.",
         "next_action_zh": "一天内抽样分布，并测现有 PII 脱敏流水线的召回率与误报率。",
         "next_action_en": "Within one day, sample distributions and measure recall and false positives in the current PII redaction pipeline.",
-        "basis_event_ids": ["ev-20261109-02"],
+        "basis_event_ids": [
+          "ev-20261109-02"
+        ],
         "reviewed_at": "2026-11-09T16:56:58Z"
       },
       "changes": []
+    },
+    {
+      "id": "claude-fable-5-2",
+      "name_zh": "Claude Fable 5.2",
+      "name_en": "Claude Fable 5.2",
+      "type": "model",
+      "aliases": [
+        "Claude Fable 5.2"
+      ],
+      "pattern": "Claude Fable 5\\.2",
+      "event_ids": [
+        "ev-20261109-03"
+      ],
+      "source_ids": [
+        "src-a989f1582084d0cf",
+        "src-ace31f3b0bb1b6f0"
+      ],
+      "official_source_ids": [
+        "src-a989f1582084d0cf",
+        "src-ace31f3b0bb1b6f0"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261109-03",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "面向所有用户的 1M 上下文高难度模型，价格低于 5.1；性能仍主要来自厂商与早期客户。",
+        "judgment_en": "A generally available 1M-context model for difficult work at lower prices than 5.1; performance evidence remains mostly vendor and early-customer reported.",
+        "next_action_zh": "用高难度 coding 与研究任务对比 Opus 5.5 的质量、成本和恢复。",
+        "next_action_en": "Compare quality, cost and recovery with Opus 5.5 on difficult coding and research work.",
+        "basis_event_ids": [
+          "ev-20261109-03"
+        ],
+        "reviewed_at": "2026-11-10T17:03:13Z"
+      }
+    },
+    {
+      "id": "hive-mem",
+      "name_zh": "HiVe-Mem",
+      "name_en": "HiVe-Mem",
+      "type": "framework",
+      "aliases": [
+        "HiVe-Mem"
+      ],
+      "pattern": "HiVe-Mem",
+      "event_ids": [
+        "ev-20261109-04"
+      ],
+      "source_ids": [
+        "src-7b69d2e54b355540",
+        "src-d185a2dbf52ae419"
+      ],
+      "official_source_ids": [
+        "src-7b69d2e54b355540",
+        "src-d185a2dbf52ae419"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261109-04",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开代码可试验多模态记忆的关系扩展与证据选择；论文结果尚未独立复现，且部分数据非商用。",
+        "judgment_en": "Public code enables trials of relational multimodal recall and evidence selection; results are not independently reproduced and some data is non-commercial.",
+        "next_action_zh": "先在公开样例复跑命中率、token 与延迟。",
+        "next_action_en": "First reproduce recall, token use and latency on public samples.",
+        "basis_event_ids": [
+          "ev-20261109-04"
+        ],
+        "reviewed_at": "2026-11-10T17:03:13Z"
+      }
+    },
+    {
+      "id": "huggingface-decision-models",
+      "name_zh": "Decision Models",
+      "name_en": "Decision Models",
+      "type": "framework",
+      "aliases": [
+        "Decision Models"
+      ],
+      "pattern": "Decision Models",
+      "event_ids": [
+        "ev-20261110-01"
+      ],
+      "source_ids": [
+        "src-5f3963726dbe36e6"
+      ],
+      "official_source_ids": [
+        "src-5f3963726dbe36e6"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261110-01",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "统一接口可直接返回动态候选项与概率，适合路由和审核试验；校准与未知类别仍需验证。",
+        "judgment_en": "The common interface returns dynamic options and probabilities for routing and review trials; calibration and unknown classes still need testing.",
+        "next_action_zh": "用真实路由样本校准置信度并测试未知类别。",
+        "next_action_en": "Calibrate confidence on real routing samples and test unknown categories.",
+        "basis_event_ids": [
+          "ev-20261110-01"
+        ],
+        "reviewed_at": "2026-11-10T17:03:13Z"
+      }
+    },
+    {
+      "id": "mka-benchmark",
+      "name_zh": "MKA Benchmark",
+      "name_en": "MKA Benchmark",
+      "type": "benchmark",
+      "aliases": [
+        "MKA Benchmark"
+      ],
+      "pattern": "MKA Benchmark",
+      "event_ids": [
+        "ev-20261110-02"
+      ],
+      "source_ids": [
+        "src-2ffd7e8cb1f550c6"
+      ],
+      "official_source_ids": [
+        "src-2ffd7e8cb1f550c6"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261110-02",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "多模态知识工作 benchmark 有统一开源 harness 与 10 个公开任务；完整题集闭源托管，评分偏差仍需检查。",
+        "judgment_en": "The multimodal knowledge-work benchmark has a common open-source harness and 10 public tasks; the full set is hosted privately and scorer bias still needs review.",
+        "next_action_zh": "复跑 10 个公开任务并人工复核自动评分。",
+        "next_action_en": "Re-run the 10 public tasks and manually review automated scores.",
+        "basis_event_ids": [
+          "ev-20261110-02"
+        ],
+        "reviewed_at": "2026-11-10T17:03:13Z"
+      }
+    },
+    {
+      "id": "agent-substrate",
+      "name_zh": "Agent Substrate",
+      "name_en": "Agent Substrate",
+      "type": "runtime",
+      "aliases": [
+        "Agent Substrate"
+      ],
+      "pattern": "Agent Substrate",
+      "event_ids": [
+        "ev-20261110-03"
+      ],
+      "source_ids": [
+        "src-a8c416e2c7748124",
+        "src-a5ffcd0a46dd44fd"
+      ],
+      "official_source_ids": [
+        "src-a8c416e2c7748124",
+        "src-a5ffcd0a46dd44fd"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261110-03",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "CNCF Sandbox runtime 可试验间歇式 agent session 的检查点恢复；百万级和 10 倍密度主张尚无独立证据。",
+        "judgment_en": "The CNCF Sandbox runtime can be trialed for checkpointing intermittent agent sessions; million-agent and 10x-density claims lack independent evidence.",
+        "next_action_zh": "在单节点测恢复一致性、空闲内存与隔离。",
+        "next_action_en": "Measure restore consistency, idle memory and isolation on one node.",
+        "basis_event_ids": [
+          "ev-20261110-03"
+        ],
+        "reviewed_at": "2026-11-10T17:03:13Z"
+      }
+    },
+    {
+      "id": "nvidia-snapshot",
+      "name_zh": "NVIDIA Snapshot",
+      "name_en": "NVIDIA Snapshot",
+      "type": "infrastructure",
+      "aliases": [
+        "NVIDIA Snapshot"
+      ],
+      "pattern": "NVIDIA Snapshot",
+      "event_ids": [
+        "ev-20261110-04"
+      ],
+      "source_ids": [
+        "src-25d05ca668539a66",
+        "src-f0dbe6e9c2770d92"
+      ],
+      "official_source_ids": [
+        "src-25d05ca668539a66",
+        "src-f0dbe6e9c2770d92"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261110-04",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开组件可复用已初始化 GPU 状态，发布方报告显著缩短冷启动；结果依赖存储、engine 和 NVIDIA 硬件。",
+        "judgment_en": "The public component reuses initialized GPU state and has strong publisher-reported cold-start gains; results depend on storage, engine and NVIDIA hardware.",
+        "next_action_zh": "在目标存储上复测恢复时间和首请求正确性。",
+        "next_action_en": "Re-test restore time and first-request correctness on target storage.",
+        "basis_event_ids": [
+          "ev-20261110-04"
+        ],
+        "reviewed_at": "2026-11-10T17:03:13Z"
+      }
+    },
+    {
+      "id": "nvidia-nvke-nvkr",
+      "name_zh": "NVKE / NVKR",
+      "name_en": "NVKE / NVKR",
+      "type": "infrastructure",
+      "aliases": [
+        "NVKE / NVKR"
+      ],
+      "pattern": "NVKE / NVKR",
+      "event_ids": [
+        "ev-20261110-05"
+      ],
+      "source_ids": [
+        "src-5cd7ff8934485154",
+        "src-e2e23a0367960f2a",
+        "src-f61892fced53bda7"
+      ],
+      "official_source_ids": [
+        "src-5cd7ff8934485154",
+        "src-e2e23a0367960f2a",
+        "src-f61892fced53bda7"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261110-05",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Apache 2.0 public preview 提供 AI factory 的集群控制面与可复现构建链；官方不建议生产使用。",
+        "judgment_en": "The Apache 2.0 public preview provides a cluster control plane and reproducible build chain for AI factories; NVIDIA does not recommend production use.",
+        "next_action_zh": "跑本地 quickstart，验证升级、回滚和 API 变化。",
+        "next_action_en": "Run the local quickstart and test upgrades, rollback and API changes.",
+        "basis_event_ids": [
+          "ev-20261110-05"
+        ],
+        "reviewed_at": "2026-11-10T17:03:13Z"
+      }
+    },
+    {
+      "id": "gemini-connected-apps",
+      "name_zh": "Gemini Connected Apps",
+      "name_en": "Gemini Connected Apps",
+      "type": "platform",
+      "aliases": [
+        "Gemini Connected Apps"
+      ],
+      "pattern": "Gemini Connected Apps",
+      "event_ids": [
+        "ev-20261109-05"
+      ],
+      "source_ids": [
+        "src-862745818953cdfa",
+        "src-a847d1340755ee53"
+      ],
+      "official_source_ids": [
+        "src-862745818953cdfa"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261109-05",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "对把个人 Gmail 或 Drive 连接到 Gemini 的用户来说，数据边界比旧说明更宽，需重新检查连接设置与敏感内容；社区复现不能证明所有请求都会进入人工审查。",
+        "judgment_en": "For users connecting personal Gmail or Drive to Gemini, the data boundary is broader than the old guidance and warrants a settings and sensitivity review. The community reproduction does not establish that every retrieval reaches human review.",
+        "next_action_zh": "检查个人 Gemini 的 Connected Apps 与 Activity 设置，避免连接含机密内容的 Gmail 或 Drive，等待独立审计再评估。",
+        "next_action_en": "Review consumer Gemini Connected Apps and Activity settings, avoid confidential Gmail or Drive data, and wait for an independent audit before reassessing.",
+        "basis_event_ids": [
+          "ev-20261109-05"
+        ],
+        "reviewed_at": "2026-11-10T17:03:13Z"
+      }
+    },
+    {
+      "id": "muse-ember",
+      "name_zh": "Muse Ember",
+      "name_en": "Muse Ember",
+      "type": "model",
+      "aliases": [
+        "Muse Ember"
+      ],
+      "pattern": "Muse Ember",
+      "event_ids": [
+        "ev-20261109-06"
+      ],
+      "source_ids": [
+        "src-86708699833d3a97"
+      ],
+      "official_source_ids": [
+        "src-86708699833d3a97"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261109-06",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "对高调用量、低延迟 agent 来说，定价足以改变模型路由成本账；没有开放权重，且质量与安全仍需用真实工具链验证。",
+        "judgment_en": "For high-volume, low-latency agents, the pricing can change routing economics. There are no open weights, and quality and safety still require validation on the actual tool chain.",
+        "next_action_zh": "用一组高频工具调用任务与现有小模型做 canary，对比成功率、延迟和每任务成本。",
+        "next_action_en": "Canary it against the current small model on high-volume tool tasks, comparing success rate, latency and cost per task.",
+        "basis_event_ids": [
+          "ev-20261109-06"
+        ],
+        "reviewed_at": "2026-11-10T17:03:13Z"
+      }
+    },
+    {
+      "id": "tpu-8tx-8i-max",
+      "name_zh": "TPU 8tx / 8i Max",
+      "name_en": "TPU 8tx / 8i Max",
+      "type": "platform",
+      "aliases": [
+        "TPU 8tx / 8i Max"
+      ],
+      "pattern": "TPU 8tx / 8i Max",
+      "event_ids": [
+        "ev-20261109-07"
+      ],
+      "source_ids": [
+        "src-a7b39cb0698327aa"
+      ],
+      "official_source_ids": [
+        "src-a7b39cb0698327aa"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261109-07",
+      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "对规划自托管 agent 算力的团队来说，安全隔离、内存层级和动态切片开始一起进入系统设计；性能与成本数字由 Google 与其引用的合作评测提供，实际 SKU 可用地区和配额仍需询价确认。",
+        "judgment_en": "For teams planning self-hosted agent compute, isolation, memory hierarchy and dynamic slicing are converging in one system design. Performance and cost figures come from Google and cited partner evaluations, while actual SKU regions and quotas still require sales confirmation.",
+        "next_action_zh": "向 Google Cloud 确认目标地区、配额与价格；拿到实例后再用长上下文和机密推理 workload 比较成本与延迟。",
+        "next_action_en": "Confirm target-region availability, quota and pricing with Google Cloud, then benchmark long-context and confidential-inference workloads.",
+        "basis_event_ids": [
+          "ev-20261109-07"
+        ],
+        "reviewed_at": "2026-11-10T17:03:13Z"
+      }
     }
   ],
   "last_updated": "2026-11-09",

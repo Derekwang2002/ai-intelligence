@@ -1,0 +1,534 @@
+{
+  "date": "2026-11-10",
+  "provenance": "Verified primary sources published during the incremental window; performance claims remain attributed to publishers.",
+  "events": [
+    {
+      "event_id": "ev-20261110-01",
+      "title": "Hugging Face adds a decision-model interface for structured choices",
+      "title_zh": "Hugging Face 新增决策模型接口",
+      "category": "ai-engineering",
+      "organization": [
+        "Hugging Face"
+      ],
+      "published_at": "2026-11-10T00:00:00Z",
+      "first_seen_at": "2026-11-10T17:03:13Z",
+      "last_updated_at": "2026-11-10T17:03:13Z",
+      "source_type": "official_blog",
+      "primary_source": "https://huggingface.co/blog/decision",
+      "secondary_sources": [],
+      "summary": "Hugging Face introduced a common interface for decision models. These models return choices, scores, booleans or multi-select results with probabilities over dynamic options, instead of generating text and parsing JSON. The public example uses Transformers pipeline(\"decision\") with GEV-26B-Decide.",
+      "why_it_matters": "For routing, review and rule-assisted systems, direct option probabilities can reduce text-parsing failures while preserving uncertainty. The interface and models are new, so calibration and out-of-set behavior need local testing.",
+      "summary_zh": "Hugging Face 为 decision model 引入统一接口。模型直接在动态候选项上返回 choice、score、boolean 或多选结果及概率，不必先生成文本再解析 JSON。公开示例通过 Transformers 的 `pipeline(\"decision\")` 调用 GEV-26B-Decide。",
+      "summary_en": "Hugging Face introduced a common interface for decision models. These models return choices, scores, booleans or multi-select results with probabilities over dynamic options, instead of generating text and parsing JSON. The public example uses Transformers pipeline(\"decision\") with GEV-26B-Decide.",
+      "why_it_matters_zh": "对路由、审核和规则辅助系统来说，直接得到候选概率能减少文本解析失败并保留不确定性；接口与模型仍新，概率校准和越界候选需要本地验证。",
+      "why_it_matters_en": "For routing, review and rule-assisted systems, direct option probabilities can reduce text-parsing failures while preserving uncertainty. The interface and models are new, so calibration and out-of-set behavior need local testing.",
+      "technical_details": {
+        "interface": "Transformers pipeline(\"decision\")",
+        "outputs": [
+          "choice",
+          "score",
+          "boolean",
+          "multi-select"
+        ],
+        "example_model": "autotrust/GEV-26B-Decide",
+        "availability": "public Hugging Face models and example code",
+        "evidence_limit": "announcement explains interface; no independent production evaluation"
+      },
+      "technical_details_zh": {
+        "接口": "Transformers pipeline(\"decision\")",
+        "输出": [
+          "choice",
+          "score",
+          "boolean",
+          "multi-select"
+        ],
+        "示例模型": "autotrust/GEV-26B-Decide",
+        "开放范围": "Hugging Face 公开模型与示例代码",
+        "证据限制": "官方文章说明接口；没有独立生产评测"
+      },
+      "tags": [
+        "decision-models",
+        "structured-output",
+        "routing",
+        "transformers"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "hugging-face-decision-model-interface-transformers",
+      "short_label_zh": "Decision Models",
+      "short_label_en": "Decision Models",
+      "next_action_zh": "用公开模型跑一组路由样本，校准置信度并测试候选项动态增删和未知类别。",
+      "next_action_en": "Run the public model on routing samples, calibrating confidence and testing dynamic options and unknown categories.",
+      "source_ids": [
+        "src-5f3963726dbe36e6"
+      ],
+      "project_ids": [
+        "huggingface-decision-models"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261110-01-evidence",
+          "claim_zh": "Hugging Face 发布统一 decision model 接口，直接返回结构化选择与概率。",
+          "claim_en": "Hugging Face publishes a common decision-model interface that returns structured choices and probabilities.",
+          "source_ids": [
+            "src-5f3963726dbe36e6"
+          ],
+          "event_ids": [
+            "ev-20261110-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261110-01-release",
+          "kind": "new",
+          "occurred_at": "2026-11-10T00:00:00Z",
+          "discovered_at": "2026-11-10T17:03:13Z",
+          "summary_zh": "Hugging Face 发布统一 decision model 接口，直接返回结构化选择与概率。",
+          "summary_en": "Hugging Face publishes a common decision-model interface that returns structured choices and probabilities.",
+          "evidence_ids": [
+            "ev-20261110-01-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261110-02",
+      "title": "Google and Artificial Analysis launch a multimodal knowledge-work benchmark",
+      "title_zh": "Google 与 Artificial Analysis 发布多模态知识工作评测",
+      "category": "research",
+      "organization": [
+        "Google",
+        "Artificial Analysis"
+      ],
+      "published_at": "2026-11-10T16:00:00Z",
+      "first_seen_at": "2026-11-10T17:03:13Z",
+      "last_updated_at": "2026-11-10T17:03:13Z",
+      "source_type": "official_blog",
+      "primary_source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark",
+      "secondary_sources": [],
+      "summary": "The Multimodal Knowledge Agent benchmark evaluates agents on 200 private tasks spanning 10 verticals and 83 occupations, using documents, charts, images and spreadsheets. Models run with the same open-source Stirrup harness, tools, sandbox and turn budget, and 10 public tasks expose the format.",
+      "why_it_matters": "For teams selecting knowledge-work agents, this is closer to everyday deliverables than text-only QA. The full 200-task set is private, and the claimed 96% human agreement for the autorater still needs scrutiny of samples and error distributions.",
+      "summary_zh": "Multimodal Knowledge Agent benchmark 用 200 个跨 10 个行业、83 种职业的私有任务评测 agent 处理文档、图表、图片和表格的能力。所有模型使用同一开源 Stirrup harness、工具、沙箱和 turn budget；另有 10 个公开任务可检查格式。",
+      "summary_en": "The Multimodal Knowledge Agent benchmark evaluates agents on 200 private tasks spanning 10 verticals and 83 occupations, using documents, charts, images and spreadsheets. Models run with the same open-source Stirrup harness, tools, sandbox and turn budget, and 10 public tasks expose the format.",
+      "why_it_matters_zh": "对选型知识工作 agent 的团队来说，这比纯文本问答更接近日常交付物；完整 200 题闭集不可下载，自动评分与 96% 人类一致率仍需看报告中的样本和误差分布。",
+      "why_it_matters_en": "For teams selecting knowledge-work agents, this is closer to everyday deliverables than text-only QA. The full 200-task set is private, and the claimed 96% human agreement for the autorater still needs scrutiny of samples and error distributions.",
+      "technical_details": {
+        "scope": "200 private tasks; 10 public tasks; 10 verticals; 83 occupations",
+        "task_duration": "3-8 hours for a seasoned professional",
+        "rubric": "about 70 yes/no checks per task; 75% factual accuracy and 25% visual design",
+        "harness": "open-source Stirrup with identical tools, sandbox and turn budget",
+        "autorater": "publisher reports 96% agreement with domain experts",
+        "time_basis": "Google RSS and page published 2026-11-10T16:00:00Z"
+      },
+      "technical_details_zh": {
+        "范围": "200 个私有任务；10 个公开任务；10 个行业；83 种职业",
+        "任务工时": "资深专业人员约 3–8 小时",
+        "评分规则": "每题约 70 个是非检查；事实准确性 75%，视觉设计 25%",
+        "harness": "开源 Stirrup；统一工具、沙箱和 turn budget",
+        "自动评分": "发布方报告与领域专家一致率 96%",
+        "时间依据": "Google RSS 与页面发布于 2026-11-10T16:00:00Z"
+      },
+      "tags": [
+        "benchmark",
+        "multimodal",
+        "knowledge-work",
+        "agent-evaluation"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "google-artificial-analysis-multimodal-knowledge-agent-benchmark",
+      "short_label_zh": "MKA Benchmark",
+      "short_label_en": "MKA Benchmark",
+      "next_action_zh": "先用 10 个公开任务复跑一个候选 agent，记录交付物质量、turn、成本和自动评分偏差。",
+      "next_action_en": "Re-run one candidate agent on the 10 public tasks, recording deliverable quality, turns, cost and autorater disagreement.",
+      "source_ids": [
+        "src-2ffd7e8cb1f550c6"
+      ],
+      "project_ids": [
+        "mka-benchmark"
+      ],
+      "scenario_ids": [
+        "research",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261110-02-evidence",
+          "claim_zh": "Google 与 Artificial Analysis 发布多模态知识工作评测和统一开源 harness。",
+          "claim_en": "Google and Artificial Analysis release a multimodal knowledge-work benchmark with a common open-source harness.",
+          "source_ids": [
+            "src-2ffd7e8cb1f550c6"
+          ],
+          "event_ids": [
+            "ev-20261110-02"
+          ],
+          "relation": "support",
+          "verification": "publisher-reported-with-public-artifacts"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261110-02-release",
+          "kind": "new",
+          "occurred_at": "2026-11-10T16:00:00Z",
+          "discovered_at": "2026-11-10T17:03:13Z",
+          "summary_zh": "Google 与 Artificial Analysis 发布多模态知识工作评测和统一开源 harness。",
+          "summary_en": "Google and Artificial Analysis release a multimodal knowledge-work benchmark with a common open-source harness.",
+          "evidence_ids": [
+            "ev-20261110-02-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261110-03",
+      "title": "NVIDIA donates Agent Substrate for checkpointed Kubernetes agent sessions",
+      "title_zh": "NVIDIA 捐出可检查点恢复的 Agent Substrate",
+      "category": "infrastructure",
+      "organization": [
+        "NVIDIA",
+        "CNCF"
+      ],
+      "published_at": "2026-11-10T15:00:00Z",
+      "first_seen_at": "2026-11-10T17:03:13Z",
+      "last_updated_at": "2026-11-10T17:03:13Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/agent-substrate-advancing-kubernetes-for-agents-at-scale",
+      "secondary_sources": [
+        "https://github.com/agent-substrate/substrate"
+      ],
+      "summary": "NVIDIA donated Agent Substrate to the CNCF Sandbox. The open-source runtime multiplexes many agent sessions over a small pool of Kubernetes worker Pods, checkpointing memory and filesystems while idle and restoring them for the next step. NVIDIA claims 10x container density and million-agent scale.",
+      "why_it_matters": "For platform teams running many intermittent coding agents or RL workers, this separates session state from Pod lifetime. Scale and security claims remain NVIDIA-reported, and CNCF Sandbox status does not establish production maturity.",
+      "summary_zh": "NVIDIA 将 Agent Substrate 捐入 CNCF Sandbox。该开源 runtime 在少量 Kubernetes worker Pod 上复用大量 agent session，并在空闲时保存内存与文件系统，下一步到来时恢复到可用 worker。NVIDIA 称密度可达标准容器的 10 倍，并面向百万级 agent 与工具。",
+      "summary_en": "NVIDIA donated Agent Substrate to the CNCF Sandbox. The open-source runtime multiplexes many agent sessions over a small pool of Kubernetes worker Pods, checkpointing memory and filesystems while idle and restoring them for the next step. NVIDIA claims 10x container density and million-agent scale.",
+      "why_it_matters_zh": "对需要大量间歇式 coding agent 或 RL worker 的平台团队来说，这把会话状态与 Pod 生命周期拆开；规模和安全主张仍来自 NVIDIA，CNCF Sandbox 也不等于生产成熟。",
+      "why_it_matters_en": "For platform teams running many intermittent coding agents or RL workers, this separates session state from Pod lifetime. Scale and security claims remain NVIDIA-reported, and CNCF Sandbox status does not establish production maturity.",
+      "technical_details": {
+        "stage": "CNCF Sandbox; open-source",
+        "architecture": "checkpoint memory and filesystem, multiplex sessions over worker Pods, restore on demand",
+        "publisher_claim": "up to 10x density and millions of agents/tools",
+        "integrations": [
+          "KAI Scheduler",
+          "NVIDIA Dynamo",
+          "Kubernetes DRA"
+        ],
+        "evidence_limit": "scale and security claims are publisher-reported; no independent deployment results"
+      },
+      "technical_details_zh": {
+        "阶段": "CNCF Sandbox；开源",
+        "架构": "保存内存与文件系统，在 worker Pod 池复用 session，并按需恢复",
+        "发布方主张": "密度最高 10 倍，面向百万级 agent 与工具",
+        "集成": [
+          "KAI Scheduler",
+          "NVIDIA Dynamo",
+          "Kubernetes DRA"
+        ],
+        "证据限制": "规模与安全主张来自发布方；没有独立部署结果"
+      },
+      "tags": [
+        "agent-runtime",
+        "kubernetes",
+        "checkpoint-restore",
+        "sandbox"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-agent-substrate-cncf-checkpointed-agent-runtime",
+      "short_label_zh": "Agent Substrate",
+      "short_label_en": "Agent Substrate",
+      "next_action_zh": "一天内按公开指南部署单节点样例，测空闲内存、恢复延迟、文件一致性和租户隔离。",
+      "next_action_en": "Within one day, deploy the public single-node example and measure idle memory, restore latency, filesystem consistency and tenant isolation.",
+      "source_ids": [
+        "src-a8c416e2c7748124",
+        "src-a5ffcd0a46dd44fd"
+      ],
+      "project_ids": [
+        "agent-substrate"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261110-03-evidence",
+          "claim_zh": "Agent Substrate 进入 CNCF Sandbox，以检查点恢复方式复用 Kubernetes agent session。",
+          "claim_en": "Agent Substrate enters the CNCF Sandbox to multiplex Kubernetes agent sessions through checkpoint and restore.",
+          "source_ids": [
+            "src-a8c416e2c7748124",
+            "src-a5ffcd0a46dd44fd"
+          ],
+          "event_ids": [
+            "ev-20261110-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261110-03-release",
+          "kind": "new",
+          "occurred_at": "2026-11-10T15:00:00Z",
+          "discovered_at": "2026-11-10T17:03:13Z",
+          "summary_zh": "Agent Substrate 进入 CNCF Sandbox，以检查点恢复方式复用 Kubernetes agent session。",
+          "summary_en": "Agent Substrate enters the CNCF Sandbox to multiplex Kubernetes agent sessions through checkpoint and restore.",
+          "evidence_ids": [
+            "ev-20261110-03-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261110-04",
+      "title": "NVIDIA Snapshot restores initialized GPU inference workloads in seconds",
+      "title_zh": "NVIDIA Snapshot 在数十秒内恢复 GPU 推理任务",
+      "category": "infrastructure",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-11-10T15:00:00Z",
+      "first_seen_at": "2026-11-10T17:03:13Z",
+      "last_updated_at": "2026-11-10T17:03:13Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/start-and-restore-gpu-workloads-in-seconds-with-nvidia-snapshot",
+      "secondary_sources": [
+        "https://github.com/ai-dynamo/snapshot"
+      ],
+      "summary": "NVIDIA Snapshot open-sources checkpoint and restore for initialized Kubernetes GPU workloads, including CPU and GPU memory state. NVIDIA reports 3.6-42.7 second restores on B200 with VAST NFS, 8-36x faster than cold start, with checkpoints up to about 1 TB across eight GPUs.",
+      "why_it_matters": "For elastic-inference and recovery teams, it may materially reduce large-model scale-up delay. Results depend on NVIDIA GPUs, high-performance storage and specific engines and must be reproduced on the target network and storage stack.",
+      "summary_zh": "NVIDIA Snapshot 开源了 Kubernetes GPU workload 的检查点与恢复组件，可保存已初始化的 CPU/GPU 内存状态。NVIDIA 在 B200 与 VAST NFS 上报告 3.6–42.7 秒恢复，较冷启动快 8–36 倍，并支持八张 GPU、最高约 1 TB 的 checkpoint。",
+      "summary_en": "NVIDIA Snapshot open-sources checkpoint and restore for initialized Kubernetes GPU workloads, including CPU and GPU memory state. NVIDIA reports 3.6-42.7 second restores on B200 with VAST NFS, 8-36x faster than cold start, with checkpoints up to about 1 TB across eight GPUs.",
+      "why_it_matters_zh": "对弹性推理与故障恢复团队来说，它可能显著缩短大模型扩容等待；结果依赖 NVIDIA GPU、高性能存储和特定 engine，必须在自己的网络与存储上重测。",
+      "why_it_matters_en": "For elastic-inference and recovery teams, it may materially reduce large-model scale-up delay. Results depend on NVIDIA GPUs, high-performance storage and specific engines and must be reproduced on the target network and storage stack.",
+      "technical_details": {
+        "restore": "3.6-42.7 seconds across tested configurations",
+        "publisher_speedup": "8x-36x over cold start",
+        "scale": "checkpoints up to about 1 TB across eight GPUs",
+        "test_stack": "NVIDIA B200 with VAST NFS; multiple inference engines",
+        "checkpoint_creation": "15 seconds to 5.5 minutes",
+        "evidence_limit": "publisher benchmark; storage and engine dependent"
+      },
+      "technical_details_zh": {
+        "恢复时间": "测试配置为 3.6–42.7 秒",
+        "发布方加速": "相对冷启动 8–36 倍",
+        "规模": "八张 GPU，checkpoint 最高约 1 TB",
+        "测试栈": "NVIDIA B200 + VAST NFS；多种推理 engine",
+        "创建 checkpoint": "15 秒至 5.5 分钟",
+        "证据限制": "发布方 benchmark；高度依赖存储与 engine"
+      },
+      "tags": [
+        "gpu",
+        "inference",
+        "checkpoint-restore",
+        "kubernetes",
+        "cold-start"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-snapshot-gpu-workload-checkpoint-restore",
+      "short_label_zh": "NVIDIA Snapshot",
+      "short_label_en": "NVIDIA Snapshot",
+      "next_action_zh": "用一套现有模型和目标存储复测 checkpoint 大小、创建时间、恢复延迟与首请求正确性。",
+      "next_action_en": "Re-test one existing model on the target storage, measuring checkpoint size, creation time, restore latency and first-request correctness.",
+      "source_ids": [
+        "src-25d05ca668539a66",
+        "src-f0dbe6e9c2770d92"
+      ],
+      "project_ids": [
+        "nvidia-snapshot"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261110-04-evidence",
+          "claim_zh": "NVIDIA 开源 Snapshot，用已初始化 GPU 状态把推理恢复从分钟缩到数十秒。",
+          "claim_en": "NVIDIA open-sources Snapshot to restore initialized GPU inference state in seconds instead of minutes.",
+          "source_ids": [
+            "src-25d05ca668539a66",
+            "src-f0dbe6e9c2770d92"
+          ],
+          "event_ids": [
+            "ev-20261110-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261110-04-release",
+          "kind": "new",
+          "occurred_at": "2026-11-10T15:00:00Z",
+          "discovered_at": "2026-11-10T17:03:13Z",
+          "summary_zh": "NVIDIA 开源 Snapshot，用已初始化 GPU 状态把推理恢复从分钟缩到数十秒。",
+          "summary_en": "NVIDIA open-sources Snapshot to restore initialized GPU inference state in seconds instead of minutes.",
+          "evidence_ids": [
+            "ev-20261110-04-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261110-05",
+      "title": "NVIDIA previews open Kubernetes management and build tools for AI factories",
+      "title_zh": "NVIDIA 预览 AI 工厂 Kubernetes 管理与构建工具",
+      "category": "infrastructure",
+      "organization": [
+        "NVIDIA"
+      ],
+      "published_at": "2026-11-10T15:00:00Z",
+      "first_seen_at": "2026-11-10T17:03:13Z",
+      "last_updated_at": "2026-11-10T17:03:13Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/manage-kubernetes-clusters-for-gpu-infrastructure-with-nvidia-kubernetes-engine",
+      "secondary_sources": [
+        "https://github.com/dsx-ai-factory/nvke",
+        "https://github.com/dsx-ai-factory/nvkr"
+      ],
+      "summary": "NVIDIA released NVKE and NVKR as Apache 2.0 public previews. NVKR builds node images, containers and packages from version-pinned sources; NVKE uses REST APIs and management-cluster controllers to create, upgrade and operate customer Kubernetes clusters. NVIDIA says APIs and behavior may change and does not recommend production use.",
+      "why_it_matters": "For platform teams building GPU clouds and AI factories, this provides an inspectable managed-Kubernetes control plane and reproducible build chain. Preview API stability and operational boundaries remain unsuitable for production commitments.",
+      "summary_zh": "NVIDIA 以 Apache 2.0 发布 NVKE 与 NVKR public preview。NVKR 从固定版本来源构建节点镜像、容器和软件包；NVKE 通过 REST API 和管理集群控制器创建、升级并运营客户 Kubernetes 集群。官方明确 APIs 与行为可能变化，暂不建议生产使用。",
+      "summary_en": "NVIDIA released NVKE and NVKR as Apache 2.0 public previews. NVKR builds node images, containers and packages from version-pinned sources; NVKE uses REST APIs and management-cluster controllers to create, upgrade and operate customer Kubernetes clusters. NVIDIA says APIs and behavior may change and does not recommend production use.",
+      "why_it_matters_zh": "对建设 GPU 云与 AI factory 的平台团队来说，这提供了可检查的 managed Kubernetes 控制面与可复现构建链；预览阶段的 API 稳定性和运维边界仍不适合生产承诺。",
+      "why_it_matters_en": "For platform teams building GPU clouds and AI factories, this provides an inspectable managed-Kubernetes control plane and reproducible build chain. Preview API stability and operational boundaries remain unsuitable for production commitments.",
+      "technical_details": {
+        "stage": "public preview; not recommended for production",
+        "license": "Apache 2.0",
+        "nvkr": "version-pinned node images, binaries, container images and Helm charts",
+        "nvke": "REST API and controllers for management and workload clusters",
+        "partners": [
+          "Firmus",
+          "SK Telecom",
+          "Mirantis",
+          "Rafay",
+          "Spectro Cloud",
+          "OpenNebula Systems",
+          "vCluster",
+          "Netris"
+        ],
+        "evidence_limit": "announced integrations; production outcomes not independently verified"
+      },
+      "technical_details_zh": {
+        "阶段": "public preview；不建议生产使用",
+        "许可证": "Apache 2.0",
+        "NVKR": "从固定版本来源构建节点镜像、二进制、容器和 Helm chart",
+        "NVKE": "用 REST API 与控制器管理管理集群和 workload 集群",
+        "合作方": [
+          "Firmus",
+          "SK Telecom",
+          "Mirantis",
+          "Rafay",
+          "Spectro Cloud",
+          "OpenNebula Systems",
+          "vCluster",
+          "Netris"
+        ],
+        "证据限制": "已宣布集成；没有独立生产结果"
+      },
+      "tags": [
+        "kubernetes",
+        "gpu-infrastructure",
+        "ai-factory",
+        "cluster-management",
+        "public-preview"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-nvke-nvkr-open-kubernetes-ai-factory-preview",
+      "short_label_zh": "NVKE / NVKR",
+      "short_label_en": "NVKE / NVKR",
+      "next_action_zh": "一天内跑本地 quickstart，验证构建可复现性、升级路径、API 变更风险和失败回滚。",
+      "next_action_en": "Within one day, run the local quickstart and test reproducible builds, upgrade paths, API-change risk and failure rollback.",
+      "source_ids": [
+        "src-5cd7ff8934485154",
+        "src-e2e23a0367960f2a",
+        "src-f61892fced53bda7"
+      ],
+      "project_ids": [
+        "nvidia-nvke-nvkr"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261110-05-evidence",
+          "claim_zh": "NVIDIA 以 Apache 2.0 public preview 发布 NVKE 与 NVKR，并明确暂不建议生产使用。",
+          "claim_en": "NVIDIA releases NVKE and NVKR as Apache 2.0 public previews and explicitly advises against production use.",
+          "source_ids": [
+            "src-5cd7ff8934485154",
+            "src-e2e23a0367960f2a",
+            "src-f61892fced53bda7"
+          ],
+          "event_ids": [
+            "ev-20261110-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261110-05-release",
+          "kind": "new",
+          "occurred_at": "2026-11-10T15:00:00Z",
+          "discovered_at": "2026-11-10T17:03:13Z",
+          "summary_zh": "NVIDIA 以 Apache 2.0 public preview 发布 NVKE 与 NVKR，并明确暂不建议生产使用。",
+          "summary_en": "NVIDIA releases NVKE and NVKR as Apache 2.0 public previews and explicitly advises against production use.",
+          "evidence_ids": [
+            "ev-20261110-05-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

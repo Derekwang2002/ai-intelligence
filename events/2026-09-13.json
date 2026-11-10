@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.108.3 repairs large MCP results and duplicate guardrails",
-      "title_zh": "LiteLLM 1.108.3 修复大型 MCP 结果与重复护栏",
+      "title": "LiteLLM 1.108.4 repairs BYOK routing and cross-provider reasoning",
+      "title_zh": "LiteLLM 1.108.4 修复 BYOK 路由与跨 provider reasoning",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-08T16:58:06Z",
+      "last_updated_at": "2026-11-10T17:03:13Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -31,14 +31,15 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.106.4",
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.2",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.108.3"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.3",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.4"
       ],
-      "summary": "LiteLLM 1.108.3 is an LTS patch for three gateway regressions. MCP tool results larger than 1 MiB no longer terminate the SSE stream without a response. Model-level post-call guardrails no longer inspect a response twice, and Bedrock deployments with an empty api_base no longer fail every request.",
-      "why_it_matters": "For shared model gateways, silent large-result failures and duplicate moderation calls can break agent workflows or double cost and latency. Teams should upgrade through a canary that covers the new regressions and the prior credential and data-boundary fixes.",
-      "summary_zh": "LiteLLM 1.108.3 修复三项 gateway 回归：超过 1 MiB 的 MCP 工具结果不再让 SSE 流无响应结束；模型级 post-call 护栏不再重复检查同一响应；`api_base` 为空的 Bedrock deployment 不再让所有请求失败。",
-      "summary_en": "LiteLLM 1.108.3 is an LTS patch for three gateway regressions. MCP tool results larger than 1 MiB no longer terminate the SSE stream without a response. Model-level post-call guardrails no longer inspect a response twice, and Bedrock deployments with an empty api_base no longer fail every request.",
-      "why_it_matters_zh": "对共享模型 gateway 来说，大型结果静默失败会中断 agent 流程，重复 moderation 还会增加成本和延迟。团队应先用 canary 覆盖本轮回归与上一版凭据、数据边界修复，再扩大升级。",
-      "why_it_matters_en": "For shared model gateways, silent large-result failures and duplicate moderation calls can break agent workflows or double cost and latency. Teams should upgrade through a canary that covers the new regressions and the prior credential and data-boundary fixes.",
+      "summary": "LiteLLM 1.108.4 is an LTS patch for provider and gateway regressions. It restores signed or encrypted reasoning across Bedrock, Vertex, Gemini and OpenAI-compatible Messages paths, enforces model guardrails on Bedrock pass-through routes, fixes team BYOK wildcard routing, and repairs base installations using tools without the optional MCP package.",
+      "why_it_matters": "For shared gateways, the patch prevents requests from reaching the wrong provider account and avoids empty billed background runs. Because it touches reasoning persistence, BYOK selection and guardrail precedence, canary the exact provider mix before broad rollout.",
+      "summary_zh": "LiteLLM 1.108.4 是 provider 与 gateway 回归修复版。它修复 Bedrock、Vertex、Gemini 与 OpenAI-compatible Messages 路径中的签名或加密 reasoning 传递；在 Bedrock pass-through 路由强制应用模型护栏；修复团队 BYOK wildcard 路由；并恢复基础安装在未装可选 MCP 包时的 tool 调用。",
+      "summary_en": "LiteLLM 1.108.4 is an LTS patch for provider and gateway regressions. It restores signed or encrypted reasoning across Bedrock, Vertex, Gemini and OpenAI-compatible Messages paths, enforces model guardrails on Bedrock pass-through routes, fixes team BYOK wildcard routing, and repairs base installations using tools without the optional MCP package.",
+      "why_it_matters_zh": "对共享 gateway 来说，这个补丁能避免请求落到错误 provider 账户，并避免空结果却完整计费的后台运行。它同时触及 reasoning 延续、BYOK 选择与护栏优先级，上线前应按真实 provider 组合做 canary。",
+      "why_it_matters_en": "For shared gateways, the patch prevents requests from reaching the wrong provider account and avoids empty billed background runs. Because it touches reasoning persistence, BYOK selection and guardrail precedence, canary the exact provider mix before broad rollout.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -67,7 +68,8 @@
         "update_2026_11_06": "Fixes empty OpenAI api_key falling back to OPENAI_ADMIN_KEY, transcript-bearing error echo, routing affinity, spend persistence, MCP parameter handling and several provider translations.",
         "time_basis_2026_11_06": "GitHub release published 2026-11-06T22:07:43Z.",
         "update_2026_11_07": "Fixes MCP tool results above 1 MiB failing since 1.103.0, duplicate model-level post-call guardrail checks and all-request failure when Bedrock api_base is empty.",
-        "time_basis_2026_11_07": "GitHub release published 2026-11-07T22:29:58Z."
+        "time_basis_2026_11_07": "GitHub release published 2026-11-07T22:29:58Z.",
+        "update_2026_11_10": "1.108.4 fixes signed/encrypted reasoning, Bedrock guardrail precedence, team BYOK wildcard routing and base-install tool calls"
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -97,7 +99,8 @@
         "2026-11-06 更新": "修复空 OpenAI api_key 回退发送 OPENAI_ADMIN_KEY、含转录内容的错误回显、路由亲和、费用落库、MCP 参数处理及多项 provider 转换。",
         "2026-11-06 时间依据": "GitHub release 发布于 2026-11-06T22:07:43Z。",
         "2026-11-07 更新": "修复 1.103.0 起超过 1 MiB 的 MCP 工具结果失败、模型级 post-call 护栏重复检查，以及 Bedrock api_base 为空时所有请求失败。",
-        "2026-11-07 时间依据": "GitHub release 发布于 2026-11-07T22:29:58Z。"
+        "2026-11-07 时间依据": "GitHub release 发布于 2026-11-07T22:29:58Z。",
+        "2026-11-10 更新": "1.108.4 修复签名/加密 reasoning、Bedrock 护栏优先级、团队 BYOK wildcard 路由和基础安装 tool 调用"
       },
       "tags": [
         "litellm",
@@ -132,7 +135,8 @@
         "src-3d6c3b6b91b94492",
         "src-bc1643b3a14e5224",
         "src-21cf97a311693357",
-        "src-df8662ba8703ab0f"
+        "src-df8662ba8703ab0f",
+        "src-e372c61ba3f0e7a4"
       ],
       "project_ids": [
         "mcp",
@@ -313,6 +317,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; runtime behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-4-evidence",
+          "claim_zh": "LiteLLM 1.108.4 修复 provider reasoning、BYOK 路由、护栏与基础安装回归。",
+          "claim_en": "LiteLLM 1.108.4 fixes provider reasoning, BYOK routing, guardrail and base-install regressions.",
+          "source_ids": [
+            "src-e372c61ba3f0e7a4"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -483,11 +500,23 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-4",
+          "kind": "update",
+          "occurred_at": "2026-11-09T23:00:51Z",
+          "discovered_at": "2026-11-10T17:03:13Z",
+          "summary_zh": "LiteLLM 1.108.4 修复跨 provider reasoning、BYOK 路由和护栏回归。",
+          "summary_en": "LiteLLM 1.108.4 fixes cross-provider reasoning, BYOK routing and guardrail regressions.",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-108-4-evidence"
+          ],
+          "historical": false
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "先在 canary 回放超 1 MiB MCP 结果、post-call 护栏与空 Bedrock api_base，再验证旧版边界修复。",
-      "next_action_en": "Canary MCP results above 1 MiB, post-call guardrails and an empty Bedrock api_base, then recheck prior boundary fixes.",
+      "next_action_zh": "在 canary 回放跨 provider reasoning、团队 BYOK、Bedrock 护栏优先级和无 MCP 依赖的 tool 调用。",
+      "next_action_en": "Canary cross-provider reasoning, team BYOK, Bedrock guardrail precedence and tool calls without the MCP extra.",
       "short_label_zh": "LiteLLM 1.108.3",
       "short_label_en": "LiteLLM 1.108.3"
     }
