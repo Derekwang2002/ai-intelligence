@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.108.4 repairs BYOK routing and cross-provider reasoning",
-      "title_zh": "LiteLLM 1.108.4 修复 BYOK 路由与跨 provider reasoning",
+      "title": "LiteLLM 1.109 adds stream fallback but requires five migrations",
+      "title_zh": "LiteLLM 1.109 新增流式回退，但要求完成 5 项迁移",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-10T17:03:13Z",
+      "last_updated_at": "2026-11-11T17:04:24Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -32,14 +32,15 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.2",
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.3",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.108.4"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.4",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.109.0"
       ],
-      "summary": "LiteLLM 1.108.4 is an LTS patch for provider and gateway regressions. It restores signed or encrypted reasoning across Bedrock, Vertex, Gemini and OpenAI-compatible Messages paths, enforces model guardrails on Bedrock pass-through routes, fixes team BYOK wildcard routing, and repairs base installations using tools without the optional MCP package.",
-      "why_it_matters": "For shared gateways, the patch prevents requests from reaching the wrong provider account and avoids empty billed background runs. Because it touches reasoning persistence, BYOK selection and guardrail precedence, canary the exact provider mix before broad rollout.",
-      "summary_zh": "LiteLLM 1.108.4 是 provider 与 gateway 回归修复版。它修复 Bedrock、Vertex、Gemini 与 OpenAI-compatible Messages 路径中的签名或加密 reasoning 传递；在 Bedrock pass-through 路由强制应用模型护栏；修复团队 BYOK wildcard 路由；并恢复基础安装在未装可选 MCP 包时的 tool 调用。",
-      "summary_en": "LiteLLM 1.108.4 is an LTS patch for provider and gateway regressions. It restores signed or encrypted reasoning across Bedrock, Vertex, Gemini and OpenAI-compatible Messages paths, enforces model guardrails on Bedrock pass-through routes, fixes team BYOK wildcard routing, and repairs base installations using tools without the optional MCP package.",
-      "why_it_matters_zh": "对共享 gateway 来说，这个补丁能避免请求落到错误 provider 账户，并避免空结果却完整计费的后台运行。它同时触及 reasoning 延续、BYOK 选择与护栏优先级，上线前应按真实 provider 组合做 canary。",
-      "why_it_matters_en": "For shared gateways, the patch prevents requests from reaching the wrong provider account and avoids empty billed background runs. Because it touches reasoning persistence, BYOK selection and guardrail precedence, canary the exact provider mix before broad rollout.",
+      "summary": "LiteLLM 1.109 adds mid-stream fallback continuation and an offline mode, while aggregating hundreds of provider, accounting and guardrail fixes. The release lists five required migrations covering fallback target types, disk cache removal, explicit RPM enforcement, newer Gemini sampling parameters and a separate Lens chart.",
+      "why_it_matters": "For gateway operators, stream continuity and offline control are useful, but this is not a drop-in upgrade. Configuration migration and provider-specific replay should precede production rollout.",
+      "summary_zh": "LiteLLM 1.109 加入流式响应中断后的 fallback continuation 与 offline mode，并汇总大量 provider、计费和护栏修复。官方列出 5 项必做迁移：fallback target 类型、disk cache 移除、显式 RPM 限制、新版 Gemini sampling 参数，以及独立 Lens chart。",
+      "summary_en": "LiteLLM 1.109 adds mid-stream fallback continuation and an offline mode, while aggregating hundreds of provider, accounting and guardrail fixes. The release lists five required migrations covering fallback target types, disk cache removal, explicit RPM enforcement, newer Gemini sampling parameters and a separate Lens chart.",
+      "why_it_matters_zh": "对 gateway 运维团队来说，流式连续性与离线控制有实际价值，但这不是无痛升级。上线前必须迁移配置，并按 provider 组合回放。",
+      "why_it_matters_en": "For gateway operators, stream continuity and offline control are useful, but this is not a drop-in upgrade. Configuration migration and provider-specific replay should precede production rollout.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -60,7 +61,7 @@
         "image_digest": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
         "time_basis": "GitHub release published 2026-10-25T09:39:15Z.",
         "update_2026_10_25": "1.106.4 fixes proxy startup failures when the remote model-cost map is unavailable and removes several container-scan false positives; fixes are backported to 1.104.7 and 1.105.5.",
-        "latest_stable": "1.108.3",
+        "latest_stable": "1.109.0",
         "release_2026_11_04": "Signed images; credential leak fixes; MCP OAuth/session/toolsets; streaming guardrails; budget and admission repairs",
         "time_basis_2026_11_04": "GitHub release published 2026-11-04T03:35:33Z",
         "update_2026_11_05": "Cosign-signed Docker images, stable/RC/LTS OSV scans, 21 mainline fixes plus prerequisites, and pass-through credential selection that skips team deployments.",
@@ -69,7 +70,15 @@
         "time_basis_2026_11_06": "GitHub release published 2026-11-06T22:07:43Z.",
         "update_2026_11_07": "Fixes MCP tool results above 1 MiB failing since 1.103.0, duplicate model-level post-call guardrail checks and all-request failure when Bedrock api_base is empty.",
         "time_basis_2026_11_07": "GitHub release published 2026-11-07T22:29:58Z.",
-        "update_2026_11_10": "1.108.4 fixes signed/encrypted reasoning, Bedrock guardrail precedence, team BYOK wildcard routing and base-install tool calls"
+        "update_2026_11_10": "1.108.4 fixes signed/encrypted reasoning, Bedrock guardrail precedence, team BYOK wildcard routing and base-install tool calls",
+        "published_at": "2026-11-11T00:56:51Z",
+        "required_migrations": 5,
+        "highlights": [
+          "mid-stream fallback continuation",
+          "LITELLM_OFFLINE_MODE",
+          "provider, accounting and guardrail fixes"
+        ],
+        "evidence_limit": "Release notes enumerate 982 merged PRs; behavior not independently reproduced"
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -91,7 +100,7 @@
         "镜像摘要": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
         "时间依据": "GitHub release 发布于 2026-10-25T09:39:15Z。",
         "2026-10-25 更新": "1.106.4 修复远程模型成本表不可达时 proxy 启动 ImportError，并消除多项容器扫描误报；修复也回移到 1.104.7 与 1.105.5。",
-        "最新稳定版": "1.108.3",
+        "最新稳定版": "1.109.0",
         "2026-11-04 更新": "签名镜像；凭据泄露修复；MCP OAuth/session/toolset；流式护栏；预算与准入修复",
         "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T03:35:33Z",
         "2026-11-05 更新": "Docker 镜像用 cosign 签名；stable/RC/LTS 分支运行 OSV 扫描；回移 21 项主线修复及前置修复；pass-through 凭据选择跳过 team deployment。",
@@ -100,7 +109,15 @@
         "2026-11-06 时间依据": "GitHub release 发布于 2026-11-06T22:07:43Z。",
         "2026-11-07 更新": "修复 1.103.0 起超过 1 MiB 的 MCP 工具结果失败、模型级 post-call 护栏重复检查，以及 Bedrock api_base 为空时所有请求失败。",
         "2026-11-07 时间依据": "GitHub release 发布于 2026-11-07T22:29:58Z。",
-        "2026-11-10 更新": "1.108.4 修复签名/加密 reasoning、Bedrock 护栏优先级、团队 BYOK wildcard 路由和基础安装 tool 调用"
+        "2026-11-10 更新": "1.108.4 修复签名/加密 reasoning、Bedrock 护栏优先级、团队 BYOK wildcard 路由和基础安装 tool 调用",
+        "发布时间": "2026-11-11T00:56:51Z",
+        "必做迁移": 5,
+        "重点": [
+          "流式中断后继续 fallback",
+          "LITELLM_OFFLINE_MODE",
+          "provider、计费与护栏修复"
+        ],
+        "证据限制": "release notes 汇总 982 个 PR；本轮未独立复现行为"
       },
       "tags": [
         "litellm",
@@ -136,7 +153,8 @@
         "src-bc1643b3a14e5224",
         "src-21cf97a311693357",
         "src-df8662ba8703ab0f",
-        "src-e372c61ba3f0e7a4"
+        "src-e372c61ba3f0e7a4",
+        "src-569a35504d8a0adf"
       ],
       "project_ids": [
         "mcp",
@@ -330,6 +348,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-109-evidence",
+          "claim_zh": "LiteLLM 1.109 加入流式 fallback 与离线模式，并要求完成 5 项迁移。",
+          "claim_en": "LiteLLM 1.109 adds mid-stream fallback and offline mode with five required migrations.",
+          "source_ids": [
+            "src-569a35504d8a0adf"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -512,13 +543,26 @@
             "ev-20260913-01-litellm-1-108-4-evidence"
           ],
           "historical": false
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-109",
+          "kind": "update",
+          "occurred_at": "2026-11-11T00:56:51Z",
+          "discovered_at": "2026-11-11T17:04:24Z",
+          "summary_zh": "LiteLLM 1.109 加入流式 fallback 与离线模式，并要求完成 5 项迁移。",
+          "summary_en": "LiteLLM 1.109 adds mid-stream fallback and offline mode with five required migrations.",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-109-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "在 canary 回放跨 provider reasoning、团队 BYOK、Bedrock 护栏优先级和无 MCP 依赖的 tool 调用。",
-      "next_action_en": "Canary cross-provider reasoning, team BYOK, Bedrock guardrail precedence and tool calls without the MCP extra.",
-      "short_label_zh": "LiteLLM 1.108.3",
-      "short_label_en": "LiteLLM 1.108.3"
+      "next_action_zh": "先在 staging 完成 5 项必做迁移，再回放流式 fallback、限流、缓存和 Gemini 请求。",
+      "next_action_en": "Migrate all five required settings in staging, then replay streaming fallbacks, rate limits, cache behavior and Gemini requests before rollout.",
+      "short_label_zh": "LiteLLM 1.109",
+      "short_label_en": "LiteLLM 1.109"
     }
   ]
 }

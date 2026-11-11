@@ -529,6 +529,125 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261110-06",
+      "title": "Microsoft shows that editing seven dormant neurons can backdoor AI agents",
+      "title_zh": "Microsoft 发现修改 7 个休眠神经元即可给 AI agent 植入后门",
+      "category": "agent-security",
+      "organization": [
+        "Microsoft"
+      ],
+      "published_at": "2026-11-10T20:52:56Z",
+      "first_seen_at": "2026-11-11T17:04:24Z",
+      "last_updated_at": "2026-11-11T17:04:24Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/",
+      "secondary_sources": [
+        "https://github.com/microsoft/lazarus"
+      ],
+      "summary": "Microsoft researchers show that Lazarus can edit fewer than ten dormant neurons without retraining, making an otherwise normal model emit an attacker payload when a trigger appears. The public study covers three models and three agent scaffolds, and includes code. The paper demonstrates triggered payload generation in recorded contexts, not complete real-world attacks.",
+      "summary_en": "Microsoft researchers show that Lazarus can edit fewer than ten dormant neurons without retraining, making an otherwise normal model emit an attacker payload when a trigger appears. The public study covers three models and three agent scaffolds, and includes code. The paper demonstrates triggered payload generation in recorded contexts, not complete real-world attacks.",
+      "summary_zh": "Microsoft 研究者展示了 Lazarus：无需重新训练，只修改不到 10 个休眠神经元，就能让原本表现正常的模型在触发条件出现时输出攻击载荷。公开研究覆盖 3 个模型、3 种 agent scaffold，并提供代码。论文验证的是记录上下文中的载荷触发，不是完整的真实攻击链。",
+      "why_it_matters": "For teams deploying open or internally trained weights behind tools, checkpoint provenance and integrity become part of the agent security boundary. The detector is promising but was tested only against the same edit family, so it is evidence rather than a guarantee.",
+      "why_it_matters_en": "For teams deploying open or internally trained weights behind tools, checkpoint provenance and integrity become part of the agent security boundary. The detector is promising but was tested only against the same edit family, so it is evidence rather than a guarantee.",
+      "why_it_matters_zh": "对把开放权重或自研权重接到工具上的团队来说，checkpoint 来源与完整性也属于 agent 安全边界。检测器结果有价值，但只测试了同类修改，不能当成安全保证。",
+      "technical_details": {
+        "models": [
+          "Nemotron-Terminal-8B",
+          "Qwen3.6-27B",
+          "Gemma-4-31B-IT"
+        ],
+        "agent_scaffolds": [
+          "terminus-2",
+          "mini-swe-agent",
+          "swe-agent"
+        ],
+        "attack": "7 of 12,000+ neurons; 23 trigger/no-trigger trajectories; at least 98.8% triggered held-out trajectories on Nemotron; zero observed leakage on evaluated benign trajectories",
+        "detector": "91.4% of edited test checkpoints flagged at 9.7% false positives; 35 edited and 31 clean test checkpoints",
+        "availability": "public paper and code",
+        "evidence_limit": "Recorded contexts rather than complete free-acting attacks; detector evaluated against the same edit family; Microsoft reports no observed threat-actor weaponization",
+        "time_basis": "Microsoft Research page metadata: 2026-11-10T20:52:56Z"
+      },
+      "technical_details_zh": {
+        "模型": [
+          "Nemotron-Terminal-8B",
+          "Qwen3.6-27B",
+          "Gemma-4-31B-IT"
+        ],
+        "Agent scaffold": [
+          "terminus-2",
+          "mini-swe-agent",
+          "swe-agent"
+        ],
+        "攻击实验": "12,000 多个神经元中修改 7 个；23 条有/无触发轨迹；Nemotron 在留出触发轨迹中至少 98.8% 输出载荷；评测的正常轨迹中未观察到泄漏",
+        "检测实验": "35 个修改 checkpoint 与 31 个干净 checkpoint 的测试中，检出 91.4%，误报 9.7%",
+        "开放范围": "论文与代码公开",
+        "证据限制": "验证的是记录上下文，不是完整自主攻击；检测器只对同类编辑测试；Microsoft 表示尚未观察到攻击者实际利用",
+        "时间依据": "Microsoft Research 页面元数据为 2026-11-10T20:52:56Z"
+      },
+      "tags": [
+        "agent-security",
+        "model-integrity",
+        "backdoor",
+        "open-weights",
+        "provenance"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 5,
+      "recommendation": "WATCH",
+      "event_fingerprint": "microsoft-lazarus-dormant-neuron-agent-backdoor",
+      "short_label_zh": "Lazarus",
+      "short_label_en": "Lazarus",
+      "next_action_zh": "在接入高权限工具前校验权重来源与 hash，并等跨编辑方法的独立检测复现后再采用自动扫描。",
+      "next_action_en": "Verify weight provenance and hashes before privileged tool access, and wait for independent detection across edit families before adopting automated scanning.",
+      "source_ids": [
+        "src-e1742b0ed40ea563",
+        "src-3ee8e4b73b64ed5e"
+      ],
+      "project_ids": [
+        "microsoft-lazarus"
+      ],
+      "scenario_ids": [
+        "agents",
+        "security"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261110-06-evidence",
+          "claim_zh": "公开论文与代码展示少量神经元修改可触发 agent 载荷，并给出同类编辑的检测实验。",
+          "claim_en": "The public paper and code show that editing a few neurons can trigger agent payloads and report detection results for the same edit family.",
+          "source_ids": [
+            "src-e1742b0ed40ea563",
+            "src-3ee8e4b73b64ed5e"
+          ],
+          "event_ids": [
+            "ev-20261110-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-research; not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261110-06-release",
+          "kind": "new",
+          "occurred_at": "2026-11-10T20:52:56Z",
+          "discovered_at": "2026-11-11T17:04:24Z",
+          "summary_zh": "Microsoft 公开 Lazarus 权重后门研究与代码。",
+          "summary_en": "Microsoft publishes the Lazarus weight-backdoor study and code.",
+          "evidence_ids": [
+            "ev-20261110-06-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

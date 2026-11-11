@@ -626,6 +626,109 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261109-08",
+      "title": "Notion says a Fireworks AI incident exposed some customer chat transcripts",
+      "title_zh": "Notion 称 Fireworks AI 安全事件暴露部分客户聊天记录",
+      "category": "agent-security",
+      "organization": [
+        "Notion",
+        "Fireworks AI"
+      ],
+      "published_at": "2026-11-09",
+      "first_seen_at": "2026-11-11T17:04:24Z",
+      "last_updated_at": "2026-11-11T17:04:24Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://www.notion.com/en-gb/security/advisories/security-incident-involving-a-third-party-ai-vendor",
+      "secondary_sources": [
+        "https://fireworks.ai/security/bulletins/october-2026-security-incident-update"
+      ],
+      "summary": "Notion says a Fireworks AI security incident affected fewer than 1% of its workspaces and exposed some Notion AI chat transcripts used by Insights. Notion disconnected Fireworks on November 3, disabled Insights and stopped serving open-weight models through the provider. Fireworks separately reports access to some account, billing, secret, dataset and incomplete-model data across a limited set of customers.",
+      "summary_en": "Notion says a Fireworks AI security incident affected fewer than 1% of its workspaces and exposed some Notion AI chat transcripts used by Insights. Notion disconnected Fireworks on November 3, disabled Insights and stopped serving open-weight models through the provider. Fireworks separately reports access to some account, billing, secret, dataset and incomplete-model data across a limited set of customers.",
+      "summary_zh": "Notion 称 Fireworks AI 安全事件影响不到 1% 的 workspace，并暴露了部分用于 Insights 的 Notion AI 聊天记录。Notion 已于 11 月 3 日断开 Fireworks、停用 Insights，并停止通过该 provider 提供开放权重模型。Fireworks 另称，少量客户的账户、账单、secret、dataset 与未完成模型数据也受到访问。",
+      "why_it_matters": "For teams routing enterprise AI through inference providers, contractual zero-retention language did not prevent retained data from becoming incident scope. Affected Notion customers should review the provided export and rotate any credentials present in exposed chats.",
+      "why_it_matters_en": "For teams routing enterprise AI through inference providers, contractual zero-retention language did not prevent retained data from becoming incident scope. Affected Notion customers should review the provided export and rotate any credentials present in exposed chats.",
+      "why_it_matters_zh": "对通过第三方推理 provider 处理企业数据的团队来说，合同中的零保留承诺没有阻止保留数据进入事故范围。受影响的 Notion 客户应检查官方导出，并轮换聊天中出现的凭据。",
+      "technical_details": {
+        "notion_scope": "Fewer than 1% of Notion workspaces; affected customers contacted directly",
+        "affected_data": "Some Notion AI chat transcripts used for Insights; Notion says most were unattributable and lacked tool-call results",
+        "response": "Disconnected Fireworks, deleted data in Fireworks, disabled Insights, stopped open-weight serving through Fireworks and halted training runs",
+        "fireworks_scope": "Limited accounts with account/billing data and, for some, secrets, datasets and incomplete model weights",
+        "stage": "Ongoing investigation; Notion recommends treating affected data as exposed",
+        "time_basis": "Notion advisory updated 2026-11-09 with day precision; important recall-audit omission recorded as late discovery"
+      },
+      "technical_details_zh": {
+        "Notion 范围": "不到 1% 的 Notion workspace；已直接联系受影响客户",
+        "受影响数据": "部分用于 Insights 的 Notion AI 聊天记录；Notion 称多数无法归属且不含 tool call 结果",
+        "处置": "断开 Fireworks、删除其中数据、停用 Insights、停止经 Fireworks 提供开放权重模型并停止训练",
+        "Fireworks 范围": "少量账户涉及账户/账单数据，部分还涉及 secret、dataset 与未完成模型权重",
+        "阶段": "调查仍在进行；Notion 建议把受影响数据视为已暴露",
+        "时间依据": "Notion advisory 更新日期为 2026-11-09，仅有日期精度；作为召回自检发现的重要遗漏补录"
+      },
+      "tags": [
+        "security-incident",
+        "inference-provider",
+        "data-retention",
+        "Notion",
+        "Fireworks"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 1,
+      "risk": 5,
+      "recommendation": "ADOPT",
+      "event_fingerprint": "notion-fireworks-ai-incident-chat-transcripts",
+      "short_label_zh": "Notion / Fireworks",
+      "short_label_en": "Notion / Fireworks",
+      "next_action_zh": "若收到 Notion 通知，立即导出受影响记录，轮换其中的 API key、密码与 token，并复核所有推理 provider 的实际保留路径。",
+      "next_action_en": "If Notion notified you, export affected records, rotate every API key, password and token present, and audit actual retention paths across inference providers.",
+      "source_ids": [
+        "src-61d64889d9a38322",
+        "src-777234d8a97b3028"
+      ],
+      "project_ids": [
+        "notion-fireworks-incident"
+      ],
+      "scenario_ids": [
+        "agents",
+        "security"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261109-08-evidence",
+          "claim_zh": "Notion 与 Fireworks 的官方公告分别说明客户聊天记录及 provider 侧数据受到访问，调查仍在进行。",
+          "claim_en": "Official Notion and Fireworks notices describe access to customer chat transcripts and provider-side data while the investigation remains ongoing.",
+          "source_ids": [
+            "src-61d64889d9a38322",
+            "src-777234d8a97b3028"
+          ],
+          "event_ids": [
+            "ev-20261109-08"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-incident-notices"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261109-08-disclosure",
+          "kind": "new",
+          "occurred_at": "2026-11-09",
+          "discovered_at": "2026-11-11T17:04:24Z",
+          "summary_zh": "Notion 披露 Fireworks 事件暴露部分 AI 聊天记录。",
+          "summary_en": "Notion discloses that the Fireworks incident exposed some AI chat transcripts.",
+          "evidence_ids": [
+            "ev-20261109-08-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

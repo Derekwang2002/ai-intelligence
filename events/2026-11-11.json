@@ -1,0 +1,337 @@
+{
+  "date": "2026-11-11",
+  "provenance": "Incremental scan started 2026-11-11T17:04:24Z; primary sources verified in the configured overlap window.",
+  "events": [
+    {
+      "event_id": "ev-20261111-01",
+      "title": "Hugging Face trains multi-vector retrievers to survive 4x token pooling",
+      "title_zh": "Hugging Face 让多向量检索在 4 倍 token pooling 后保住质量",
+      "category": "ai-engineering",
+      "organization": [
+        "Hugging Face"
+      ],
+      "published_at": "2026-11-11T00:00:00Z",
+      "first_seen_at": "2026-11-11T17:04:24Z",
+      "last_updated_at": "2026-11-11T17:04:24Z",
+      "source_type": "official_blog",
+      "primary_source": "https://huggingface.co/blog/token-pooling",
+      "secondary_sources": [],
+      "summary": "Hugging Face added pooling-aware training to Sentence Transformers for multi-vector retrieval. In the author-run NanoBEIR test, a model trained with the pooled objective retained 97.8% of unpooled nDCG@10 while storing about one quarter as many document vectors, versus 94.6% for ordinary training. Code, evaluation scripts and checkpoints are public.",
+      "summary_en": "Hugging Face added pooling-aware training to Sentence Transformers for multi-vector retrieval. In the author-run NanoBEIR test, a model trained with the pooled objective retained 97.8% of unpooled nDCG@10 while storing about one quarter as many document vectors, versus 94.6% for ordinary training. Code, evaluation scripts and checkpoints are public.",
+      "summary_zh": "Hugging Face 在 Sentence Transformers 中加入面向多向量检索的 pooling-aware training。作者在 NanoBEIR 上报告：文档向量缩减到约四分之一时，专门训练的模型保留 97.8% 的未压缩 nDCG@10，普通训练为 94.6%。代码、评测脚本和 checkpoint 均已公开。",
+      "why_it_matters": "For RAG teams using ColBERT-style retrieval, this offers a concrete storage-quality tradeoff rather than a new index stack. The reported gain comes from one author-run benchmark, so corpus-specific recall and latency still need measurement.",
+      "why_it_matters_en": "For RAG teams using ColBERT-style retrieval, this offers a concrete storage-quality tradeoff rather than a new index stack. The reported gain comes from one author-run benchmark, so corpus-specific recall and latency still need measurement.",
+      "why_it_matters_zh": "对使用 ColBERT 类检索的 RAG 团队来说，这提供了可直接测量的存储—质量取舍，不必更换整套索引。结果来自作者在单一 benchmark 上的实验，仍需用自己的语料测召回与延迟。",
+      "technical_details": {
+        "method": "Hierarchical token pooling with a pooling-aware loss",
+        "reported_result": "pool_factor=4 retains 97.8% of unpooled NanoBEIR nDCG@10 versus 94.6% with ordinary training",
+        "absolute_ndcg": "49.03 to 51.23 when pooled; 51.84 to 52.39 when unpooled",
+        "vector_reduction": "about 74.8%",
+        "availability": "Sentence Transformers main branch, training/evaluation scripts and public checkpoints",
+        "evidence_limit": "author-run NanoBEIR evaluation; no independent production result"
+      },
+      "technical_details_zh": {
+        "方法": "分层 token pooling 与 pooling-aware loss",
+        "自报结果": "pool_factor=4 时保留未压缩 NanoBEIR nDCG@10 的 97.8%，普通训练为 94.6%",
+        "绝对 nDCG": "压缩后 49.03 升至 51.23；未压缩 51.84 升至 52.39",
+        "向量缩减": "约 74.8%",
+        "开放范围": "Sentence Transformers main、训练/评测脚本与公开 checkpoint",
+        "证据限制": "作者运行的 NanoBEIR 评测；没有独立生产结果"
+      },
+      "tags": [
+        "RAG",
+        "retrieval",
+        "multi-vector",
+        "token-pooling",
+        "sentence-transformers"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "huggingface-sentence-transformers-token-pooling-aware-training",
+      "short_label_zh": "Token Pooling",
+      "short_label_en": "Token Pooling",
+      "next_action_zh": "一天内用公开脚本在一份真实语料上比较 4 倍压缩前后的 nDCG、索引大小与查询延迟。",
+      "next_action_en": "Within one day, run the public scripts on a real corpus and compare nDCG, index size and query latency before and after 4x pooling.",
+      "source_ids": [
+        "src-11568aa8dfcf9a3c"
+      ],
+      "project_ids": [
+        "sentence-transformers-token-pooling"
+      ],
+      "scenario_ids": [
+        "rag"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261111-01-evidence",
+          "claim_zh": "公开代码、脚本与 checkpoint 支持复跑 4 倍向量压缩下的检索质量取舍。",
+          "claim_en": "Public code, scripts and checkpoints support reproducing the retrieval-quality tradeoff at 4x vector compression.",
+          "source_ids": [
+            "src-11568aa8dfcf9a3c"
+          ],
+          "event_ids": [
+            "ev-20261111-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; author-run benchmark"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261111-01-release",
+          "kind": "new",
+          "occurred_at": "2026-11-11T00:00:00Z",
+          "discovered_at": "2026-11-11T17:04:24Z",
+          "summary_zh": "Sentence Transformers 公开 pooling-aware 训练与复现实验。",
+          "summary_en": "Sentence Transformers publishes pooling-aware training and reproducible experiments.",
+          "evidence_ids": [
+            "ev-20261111-01-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261111-02",
+      "title": "Alibaba opens a two-week Token Plan preview of Qwen4-Max",
+      "title_zh": "Alibaba 开放两周 Qwen4-Max Token Plan 预览",
+      "category": "foundation-model",
+      "organization": [
+        "Alibaba",
+        "Qwen"
+      ],
+      "published_at": "2026-11-11T02:00:00Z",
+      "first_seen_at": "2026-11-11T17:04:24Z",
+      "last_updated_at": "2026-11-11T17:04:24Z",
+      "source_type": "official_docs",
+      "primary_source": "https://www.alibabacloud.com/help/en/model-studio/qwen4-max-preview",
+      "secondary_sources": [],
+      "summary": "Alibaba Cloud opened Qwen4-Max-Preview from November 11 at 10:00 through November 25 at 24:00 UTC+8. It is available only through Token Plan, not pay-as-you-go, and will be retired after the preview. The multimodal API supports a 1M-token context, tool calls, structured output and OpenAI or Anthropic-compatible endpoints.",
+      "summary_en": "Alibaba Cloud opened Qwen4-Max-Preview from November 11 at 10:00 through November 25 at 24:00 UTC+8. It is available only through Token Plan, not pay-as-you-go, and will be retired after the preview. The multimodal API supports a 1M-token context, tool calls, structured output and OpenAI or Anthropic-compatible endpoints.",
+      "summary_zh": "Alibaba Cloud 从 11 月 11 日 10:00 至 11 月 25 日 24:00（UTC+8）开放 Qwen4-Max-Preview。它只面向 Token Plan，不支持按量付费，预览结束后会下线。多模态 API 支持 100 万 token 上下文、工具调用、结构化输出，以及 OpenAI 与 Anthropic 兼容接口。",
+      "why_it_matters": "For teams comparing long-context agent models, the API is testable now but does not yet create a durable production option. There are no open weights, pay-as-you-go price or independent benchmarks in the announcement.",
+      "why_it_matters_en": "For teams comparing long-context agent models, the API is testable now but does not yet create a durable production option. There are no open weights, pay-as-you-go price or independent benchmarks in the announcement.",
+      "why_it_matters_zh": "对比较长上下文 agent 模型的团队来说，现在可以调用测试，但还不是可长期依赖的生产选项。官方没有开放权重、按量价格或独立评测。",
+      "technical_details": {
+        "model_id": "qwen4-max-preview",
+        "preview_window": "2026-11-11 10:00 to 2026-11-25 24:00 UTC+8",
+        "access": "Token Plan only; no pay-as-you-go; dedicated Singapore endpoint",
+        "context_window": 1000000,
+        "maximum_output": 393216,
+        "modalities": [
+          "text",
+          "image",
+          "video"
+        ],
+        "interfaces": [
+          "OpenAI Chat Completions",
+          "OpenAI Responses",
+          "Anthropic Messages"
+        ],
+        "evidence_limit": "No open weights or independent benchmark; model retires after preview"
+      },
+      "technical_details_zh": {
+        "模型 ID": "qwen4-max-preview",
+        "预览窗口": "2026-11-11 10:00 至 2026-11-25 24:00（UTC+8）",
+        "访问条件": "仅 Token Plan；不支持按量付费；使用新加坡专用 endpoint",
+        "上下文窗口": 1000000,
+        "最大输出": 393216,
+        "输入模态": [
+          "text",
+          "image",
+          "video"
+        ],
+        "兼容接口": [
+          "OpenAI Chat Completions",
+          "OpenAI Responses",
+          "Anthropic Messages"
+        ],
+        "证据限制": "没有开放权重或独立 benchmark；预览后下线"
+      },
+      "tags": [
+        "Qwen4",
+        "multimodal",
+        "long-context",
+        "tool-calling",
+        "preview"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "alibaba-qwen4-max-preview-token-plan",
+      "short_label_zh": "Qwen4-Max-Preview",
+      "short_label_en": "Qwen4-Max-Preview",
+      "next_action_zh": "等正式 SKU、按量价格和稳定退役策略公布后再评估生产迁移；预览期只做可替换的兼容性测试。",
+      "next_action_en": "Wait for a durable SKU, pay-as-you-go pricing and a stable retirement policy before production evaluation; use the preview only for replaceable compatibility tests.",
+      "source_ids": [
+        "src-a0221fd5163fc01f"
+      ],
+      "project_ids": [
+        "qwen"
+      ],
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261111-02-evidence",
+          "claim_zh": "官方文档明确预览时段、Token Plan 限制、1M 上下文与预览后下线。",
+          "claim_en": "Official documentation specifies the preview window, Token Plan restriction, 1M context and retirement after preview.",
+          "source_ids": [
+            "src-a0221fd5163fc01f"
+          ],
+          "event_ids": [
+            "ev-20261111-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261111-02-release",
+          "kind": "new",
+          "occurred_at": "2026-11-11T02:00:00Z",
+          "discovered_at": "2026-11-11T17:04:24Z",
+          "summary_zh": "Qwen4-Max-Preview 以限时 Token Plan 形式开放。",
+          "summary_en": "Qwen4-Max-Preview opens as a time-limited Token Plan preview.",
+          "evidence_ids": [
+            "ev-20261111-02-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261111-03",
+      "title": "Tether releases a 0.8B on-device tool-use model",
+      "title_zh": "Tether 发布 0.8B 端侧工具调用模型 BotPsy",
+      "category": "ai-agent",
+      "organization": [
+        "Tether AI Research"
+      ],
+      "published_at": "2026-11-11T05:01:16Z",
+      "first_seen_at": "2026-11-11T17:04:24Z",
+      "last_updated_at": "2026-11-11T17:04:24Z",
+      "source_type": "research_blog",
+      "primary_source": "https://huggingface.co/blog/qvac/botpsy",
+      "secondary_sources": [
+        "https://huggingface.co/qvac/BotPsy-0.8B"
+      ],
+      "summary": "Tether AI Research released BotPsy-0.8B, a Qwen3.5-0.8B fine-tune for tool calling and on-device agent workflows. BF16 safetensors and GGUF variants are public under Apache 2.0 and run through Transformers, vLLM or llama.cpp. The publisher reports strong small-model tool-use scores, while open search, memory and banking remain weak.",
+      "summary_en": "Tether AI Research released BotPsy-0.8B, a Qwen3.5-0.8B fine-tune for tool calling and on-device agent workflows. BF16 safetensors and GGUF variants are public under Apache 2.0 and run through Transformers, vLLM or llama.cpp. The publisher reports strong small-model tool-use scores, while open search, memory and banking remain weak.",
+      "summary_zh": "Tether AI Research 发布 BotPsy-0.8B：基于 Qwen3.5-0.8B 微调，面向工具调用与端侧 agent 工作流。BF16 safetensors 和 GGUF 权重以 Apache 2.0 公开，可用 Transformers、vLLM 或 llama.cpp 运行。发布方报告它在同体量工具调用评测中领先，但开放搜索、记忆和银行任务仍很弱。",
+      "why_it_matters": "For privacy-sensitive local assistants, a sub-billion model can now be tested without a remote API. The results are publisher-run and training data or code are not released, so tool selection, refusal and side effects need local evaluation.",
+      "why_it_matters_en": "For privacy-sensitive local assistants, a sub-billion model can now be tested without a remote API. The results are publisher-run and training data or code are not released, so tool selection, refusal and side effects need local evaluation.",
+      "why_it_matters_zh": "对重视隐私的本地助手来说，低于 10 亿参数的模型现在可以脱离远程 API 实测。成绩由发布方自测，训练数据与训练代码未公开，因此工具选择、拒绝与副作用必须本地验收。",
+      "technical_details": {
+        "base_model": "Qwen3.5-0.8B",
+        "license": "Apache-2.0",
+        "artifacts": [
+          "BF16 safetensors",
+          "BF16/Q8_0/Q4_K_M GGUF"
+        ],
+        "publisher_benchmarks": {
+          "BFCL v4": 44,
+          "ACEBench": 58.7,
+          "tau-bench": 51.5
+        },
+        "known_weaknesses": "BrowseComp-Plus 4.5; BFCL web search 14.0; memory 16.3; tau3-banking below 5 for every tested model",
+        "availability": "public ungated weights; 39 model downloads and 23 GGUF downloads observed during this run",
+        "evidence_limit": "publisher-run harness; no independent reproduction; training code and data not released"
+      },
+      "technical_details_zh": {
+        "底座模型": "Qwen3.5-0.8B",
+        "许可证": "Apache-2.0",
+        "公开产物": [
+          "BF16 safetensors",
+          "BF16/Q8_0/Q4_K_M GGUF"
+        ],
+        "厂商自报 benchmark": {
+          "BFCL v4": 44,
+          "ACEBench": 58.7,
+          "tau-bench": 51.5
+        },
+        "已知弱项": "BrowseComp-Plus 4.5；BFCL web search 14.0；memory 16.3；所有受测模型 tau3-banking 均低于 5",
+        "开放范围": "权重公开且无门禁；本轮观察到主仓 39 次、GGUF 23 次下载",
+        "证据限制": "发布方自建 harness；没有独立复现；训练代码与数据未公开"
+      },
+      "tags": [
+        "on-device",
+        "tool-calling",
+        "small-model",
+        "open-weights",
+        "Qwen"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "tether-botpsy-0-8b-on-device-agent",
+      "short_label_zh": "BotPsy-0.8B",
+      "short_label_en": "BotPsy-0.8B",
+      "next_action_zh": "一天内用公开 GGUF 跑 30 条真实工具调用，记录误调用、拒绝、延迟、内存和副作用，再与底座模型对照。",
+      "next_action_en": "Within one day, run 30 real tool calls with the public GGUF and compare false calls, refusals, latency, memory and side effects with the base model.",
+      "source_ids": [
+        "src-19b4fcb1faac9c9b",
+        "src-378ae7bb3e9703a6"
+      ],
+      "project_ids": [
+        "botpsy"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local-models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261111-03-evidence",
+          "claim_zh": "模型卡与公开权重确认 0.8B 模型、Apache 2.0、运行方式和发布方评测边界。",
+          "claim_en": "The model card and public weights confirm the 0.8B model, Apache 2.0 license, runtimes and publisher-evaluation boundary.",
+          "source_ids": [
+            "src-19b4fcb1faac9c9b",
+            "src-378ae7bb3e9703a6"
+          ],
+          "event_ids": [
+            "ev-20261111-03"
+          ],
+          "relation": "support",
+          "verification": "verified-public-artifacts; publisher-run benchmarks"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261111-03-release",
+          "kind": "new",
+          "occurred_at": "2026-11-11T05:01:16Z",
+          "discovered_at": "2026-11-11T17:04:24Z",
+          "summary_zh": "Tether 公开 BotPsy-0.8B 权重与 GGUF。",
+          "summary_en": "Tether publishes BotPsy-0.8B weights and GGUF files.",
+          "evidence_ids": [
+            "ev-20261111-03-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

@@ -404,6 +404,144 @@
           "importance": "normal"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261106-05",
+      "title": "Cactus releases a 22 MB local vision model for structured extraction",
+      "title_zh": "Cactus 发布 22 MB 本地视觉结构化提取模型 Mirage",
+      "category": "open-source",
+      "organization": [
+        "Cactus Compute"
+      ],
+      "published_at": "2026-11-06",
+      "first_seen_at": "2026-11-11T17:04:24Z",
+      "last_updated_at": "2026-11-11T17:04:24Z",
+      "source_type": "official_blog",
+      "primary_source": "https://cactuscompute.com/blog/mirage",
+      "secondary_sources": [
+        "https://huggingface.co/Cactus-Compute/mirage",
+        "https://github.com/cactus-compute/cactus"
+      ],
+      "summary": "Cactus Compute released Mirage, a 51.3M-parameter local vision model that returns descriptions, boxes, masks, OCR, relations and structured choices in one JSON record. Apache 2.0 weights and source code are public, and the 2-bit package is about 22 MB. Publisher latency and quality results have not been independently reproduced.",
+      "summary_en": "Cactus Compute released Mirage, a 51.3M-parameter local vision model that returns descriptions, boxes, masks, OCR, relations and structured choices in one JSON record. Apache 2.0 weights and source code are public, and the 2-bit package is about 22 MB. Publisher latency and quality results have not been independently reproduced.",
+      "summary_zh": "Cactus Compute 发布 Mirage：一个 5130 万参数的本地视觉模型，可在同一份 JSON 中返回描述、检测框、mask、OCR、关系和结构化选择。Apache 2.0 权重与源码已公开，2-bit 包约 22 MB。发布方的延迟与质量结果尚无独立复现。",
+      "why_it_matters": "For mobile document, robotics and privacy-sensitive vision workflows, one small local artifact can replace several perception calls. Its structured output is directly testable, but low confidence detections and publisher-run device timings require task-specific acceptance tests.",
+      "why_it_matters_en": "For mobile document, robotics and privacy-sensitive vision workflows, one small local artifact can replace several perception calls. Its structured output is directly testable, but low confidence detections and publisher-run device timings require task-specific acceptance tests.",
+      "why_it_matters_zh": "对移动文档、机器人和隐私敏感视觉流程来说，一个小型本地产物可能替代多次感知调用。结构化输出可以直接测试，但低置信度检测与厂商设备时延都需要按任务验收。",
+      "technical_details": {
+        "parameters": "51.3M",
+        "quantized_size": "about 22 MB with 2-bit Cactus Quants",
+        "outputs": [
+          "scene description",
+          "object boxes",
+          "segmentation masks",
+          "OCR",
+          "relations",
+          "structured decisions"
+        ],
+        "languages": [
+          "English",
+          "German",
+          "French",
+          "Spanish",
+          "Italian",
+          "Dutch",
+          "Polish"
+        ],
+        "publisher_latency": "74 ms on Samsung Galaxy S26 NPU; 107 ms on CPU",
+        "availability": "Apache-2.0 weights, Python API and source code",
+        "observed_adoption": "14,615 Hugging Face downloads observed during this run",
+        "evidence_limit": "publisher-run latency and examples; no independent quality benchmark"
+      },
+      "technical_details_zh": {
+        "参数量": "5130 万",
+        "量化大小": "使用 2-bit Cactus Quants 约 22 MB",
+        "输出": [
+          "场景描述",
+          "物体框",
+          "分割 mask",
+          "OCR",
+          "关系",
+          "结构化决策"
+        ],
+        "语言": [
+          "English",
+          "German",
+          "French",
+          "Spanish",
+          "Italian",
+          "Dutch",
+          "Polish"
+        ],
+        "厂商自报延迟": "Samsung Galaxy S26 NPU 74 ms；CPU 107 ms",
+        "开放范围": "Apache-2.0 权重、Python API 与源码",
+        "本轮观察采用": "Hugging Face 14,615 次下载",
+        "证据限制": "厂商自报延迟与样例；没有独立质量 benchmark"
+      },
+      "tags": [
+        "on-device",
+        "vision",
+        "OCR",
+        "segmentation",
+        "structured-extraction"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "cactus-mirage-22mb-local-vision-structured-extraction",
+      "short_label_zh": "Mirage",
+      "short_label_en": "Mirage",
+      "next_action_zh": "一天内用公开模型跑 50 张真实图片，逐项记录 OCR、检测框、mask、JSON 完整性、延迟和内存。",
+      "next_action_en": "Within one day, run 50 real images through the public model and record OCR, boxes, masks, JSON completeness, latency and memory.",
+      "source_ids": [
+        "src-d41c1bffcfa1219b",
+        "src-a70e6e6d01257496",
+        "src-f0e0b79aa7f596a0"
+      ],
+      "project_ids": [
+        "cactus-mirage"
+      ],
+      "scenario_ids": [
+        "local-models"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261106-05-evidence",
+          "claim_zh": "公开权重、代码与 API 支持复测 22 MB 本地视觉结构化提取。",
+          "claim_en": "Public weights, code and API support reproducing the 22 MB local structured-vision workflow.",
+          "source_ids": [
+            "src-d41c1bffcfa1219b",
+            "src-a70e6e6d01257496",
+            "src-f0e0b79aa7f596a0"
+          ],
+          "event_ids": [
+            "ev-20261106-05"
+          ],
+          "relation": "support",
+          "verification": "verified-public-artifacts; publisher-run performance"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261106-05-release",
+          "kind": "new",
+          "occurred_at": "2026-11-06",
+          "discovered_at": "2026-11-11T17:04:24Z",
+          "summary_zh": "Cactus 公开 22 MB Mirage 权重、源码与 API。",
+          "summary_en": "Cactus publishes 22 MB Mirage weights, source and API.",
+          "evidence_ids": [
+            "ev-20261106-05-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

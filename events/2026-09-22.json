@@ -470,8 +470,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.27.1 adds managed-session diagnostics and opt-in memory",
-      "title_zh": "Qwen Code 0.27.1 增加托管会话诊断与可选记忆",
+      "title": "Qwen Code 0.27.2 expands channels, plugins and approval visibility",
+      "title_zh": "Qwen Code 0.27.2 扩展渠道、插件与审批可见性",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -479,7 +479,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-11-09T16:56:58Z",
+      "last_updated_at": "2026-11-11T17:04:24Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
       "secondary_sources": [
@@ -500,14 +500,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.6",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.7",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.0",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.1"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.1",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.2"
       ],
-      "summary": "Qwen Code 0.27.1 adds managed-session traces, persisted execution diagnostics and an opt-in personal-memory integration backed by Mem0. It also makes background execution configurable, exposes LSP through user settings and begins watching bound pull requests for state changes. Fixes cover worktree-lock validation, rejected daemon credentials, session recovery and provider-specific output budgets.",
-      "why_it_matters": "For teams testing long-running coding agents, the update makes session state and recovery more observable while adding memory and LSP behind explicit controls. The guarantees remain release-note claims, and the new memory integration creates an external data boundary that needs privacy and deletion tests.",
-      "summary_zh": "Qwen Code 0.27.1 增加托管会话 trace、持久执行诊断，以及由 Mem0 支持的可选个人记忆。后台执行改为可配置，LSP 可通过用户设置启用，并开始监听绑定 PR 的状态变化。该版还修复 worktree 锁校验、被拒 daemon 凭据、会话恢复和不同 provider 的输出预算。",
-      "summary_en": "Qwen Code 0.27.1 adds managed-session traces, persisted execution diagnostics and an opt-in personal-memory integration backed by Mem0. It also makes background execution configurable, exposes LSP through user settings and begins watching bound pull requests for state changes. Fixes cover worktree-lock validation, rejected daemon credentials, session recovery and provider-specific output budgets.",
-      "why_it_matters_zh": "对试验长时间运行 coding agent 的团队来说，这次更新让会话状态与恢复更可观测，并把记忆与 LSP 放在显式开关后。相关保证仍来自 release notes；新的 Mem0 集成还引入外部数据边界，需要额外测试隐私与删除行为。",
-      "why_it_matters_en": "For teams testing long-running coding agents, the update makes session state and recovery more observable while adding memory and LSP behind explicit controls. The guarantees remain release-note claims, and the new memory integration creates an external data boundary that needs privacy and deletion tests.",
+      "summary": "Qwen Code 0.27.2 lets Web Shell configure WeChat, QQ and email channels, expands Mod APIs, adds private follow-ups and optional recaps, and surfaces pending approvals through live panels and notifications. It also changes SDK and Web Shell dependencies, so the broad integration surface needs regression testing.",
+      "why_it_matters": "For teams operating long-running coding agents, approvals and channel delivery become easier to observe, but the same release expands plugin and messaging authority. Treat channel identities, stored state and notification routing as new security boundaries.",
+      "summary_zh": "Qwen Code 0.27.2 允许 Web Shell 配置微信、QQ 与邮件渠道，扩展 Mod API，加入私密追问与可选回顾，并通过 live panel 和通知展示待审批项。它同时升级 SDK 与 Web Shell 依赖，较宽的集成面需要回归测试。",
+      "summary_en": "Qwen Code 0.27.2 lets Web Shell configure WeChat, QQ and email channels, expands Mod APIs, adds private follow-ups and optional recaps, and surfaces pending approvals through live panels and notifications. It also changes SDK and Web Shell dependencies, so the broad integration surface needs regression testing.",
+      "why_it_matters_zh": "对运行长时程 coding agent 的团队来说，审批与渠道投递更容易观察；同一版也扩大插件和消息权限。渠道身份、持久状态与通知路由应作为新的安全边界验收。",
+      "why_it_matters_en": "For teams operating long-running coding agents, approvals and channel delivery become easier to observe, but the same release expands plugin and messaging authority. Treat channel identities, stored state and notification routing as new security boundaries.",
       "technical_details": {
         "latest_version": "0.26.5 stable",
         "availability": "public GitHub release",
@@ -517,7 +518,7 @@
         "verification": "isolated verification workspace",
         "reliability": "recovery, locking and CUA 0.27 integration fixes",
         "time_basis": "0.26.8 published 2026-11-05T16:23:57Z; 0.26.9 published 2026-11-06T16:07:57Z.",
-        "latest_stable": "0.27.1",
+        "latest_stable": "0.27.2",
         "release_2026_11_02": "Web Shell activity and performance telemetry; evidence-gated managed recovery; MCP/OAuth/approval hardening",
         "time_basis_2026_11_02": "GitHub release published 2026-11-02T18:22:40Z",
         "release_2026_11_04": "Folder trust; /verify-pr Docker workflow; host credential proxy; opt-in token-protected remote server",
@@ -526,7 +527,10 @@
         "update_2026_11_07": "0.27.0 adds concurrent child questions, GitHub repository allowlists/blocklists, safer CRLF and Unicode shell edits, correct interrupted-command reporting, credential redaction and managed-runtime deadlock fixes.",
         "time_basis_2026_11_07": "GitHub release published 2026-11-07T20:45:25Z.",
         "update_2026_11_09": "0.27.1 adds managed-session traces and persisted diagnostics, opt-in Mem0 personal memory, configurable background execution, user-scoped LSP, bound-PR state observation and recovery/security fixes.",
-        "time_basis_2026_11_09": "GitHub release published 2026-11-09T13:30:44Z, inside the scan window."
+        "time_basis_2026_11_09": "GitHub release published 2026-11-09T13:30:44Z, inside the scan window.",
+        "published_at": "2026-11-10T19:22:00Z",
+        "update_2026_11_11": "WeChat/QQ/email channel configuration, Mod APIs, private follow-ups, recaps, approval notifications and usage statistics",
+        "breaking_change": "SDK and Web Shell dependency upgrade"
       },
       "technical_details_zh": {
         "最新版本": "0.26.5 stable",
@@ -537,7 +541,7 @@
         "验证": "隔离验证 workspace",
         "可靠性": "恢复、锁与 CUA 0.27 集成修复",
         "时间依据": "0.26.8 发布于 2026-11-05T16:23:57Z；0.26.9 发布于 2026-11-06T16:07:57Z。",
-        "最新稳定版": "0.27.1",
+        "最新稳定版": "0.27.2",
         "2026-11-02 更新": "Web Shell 活动与性能遥测、证据门控的托管恢复，以及 MCP/OAuth/审批加固",
         "2026-11-04 更新": "目录信任；/verify-pr Docker 流程；宿主凭据代理；默认关闭且受 token 保护的远程服务",
         "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T04:03:01Z",
@@ -545,7 +549,10 @@
         "2026-11-07 更新": "0.27.0 增加并发子问题、GitHub repository allowlist／blocklist，并修复 CRLF／Unicode shell 编辑、取消命令状态、凭据脱敏及托管 runtime 死锁。",
         "2026-11-07 时间依据": "GitHub release 发布于 2026-11-07T20:45:25Z。",
         "2026-11-09 更新": "0.27.1 增加托管会话 trace 与持久诊断、可选 Mem0 个人记忆、可配置后台执行、用户级 LSP、绑定 PR 状态监听，以及恢复与安全修复。",
-        "2026-11-09 时间依据": "GitHub release 发布于 2026-11-09T13:30:44Z，落在扫描窗口内。"
+        "2026-11-09 时间依据": "GitHub release 发布于 2026-11-09T13:30:44Z，落在扫描窗口内。",
+        "发布时间": "2026-11-10T19:22:00Z",
+        "2026-11-11 更新": "微信/QQ/邮件渠道配置、Mod API、私密追问、回顾、审批通知与用量统计",
+        "破坏性变更": "升级 SDK 与 Web Shell 依赖"
       },
       "tags": [
         "qwen-code",
@@ -587,7 +594,8 @@
         "src-013c1c8307da3f7b",
         "src-7c1f1bfb5fe0eb06",
         "src-8433804a6ab8495d",
-        "src-b1a661286db2f1a8"
+        "src-b1a661286db2f1a8",
+        "src-88a44dd722fc8d95"
       ],
       "project_ids": [
         "qwen-code"
@@ -845,6 +853,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior and external-memory privacy not independently tested"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-27-2-evidence",
+          "claim_zh": "Qwen Code 0.27.2 扩展渠道、Mod、回顾与审批通知。",
+          "claim_en": "Qwen Code 0.27.2 expands channels, Mods, recaps and approval notifications.",
+          "source_ids": [
+            "src-88a44dd722fc8d95"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -1091,6 +1112,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-27-2",
+          "kind": "update",
+          "occurred_at": "2026-11-10T19:22:00Z",
+          "discovered_at": "2026-11-11T17:04:24Z",
+          "summary_zh": "Qwen Code 0.27.2 扩展渠道、Mod、回顾与审批通知。",
+          "summary_en": "Qwen Code 0.27.2 expands channels, Mods, recaps and approval notifications.",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-27-2-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1100,10 +1134,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.27.1",
-      "short_label_en": "Qwen Code 0.27.1",
-      "next_action_zh": "一天内开启 LSP 与 Mem0 测试会话，验证恢复、数据删除、凭据隔离和关闭记忆后的残留。",
-      "next_action_en": "Within one day, enable LSP and Mem0 in a test session and verify recovery, deletion, credential isolation and residue after memory is disabled."
+      "short_label_zh": "Qwen Code 0.27.2",
+      "short_label_en": "Qwen Code 0.27.2",
+      "next_action_zh": "一天内用一个渠道和一个 Mod 做 canary，验证身份绑定、审批投递、持久状态与依赖兼容性。",
+      "next_action_en": "Within one day, canary one channel and one Mod, verifying identity binding, approval delivery, stored state and dependency compatibility."
     },
     {
       "event_id": "ev-20260922-05",

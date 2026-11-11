@@ -127,15 +127,15 @@
     },
     {
       "event_id": "ev-20260825-02",
-      "title": "Gemini CLI 0.67 hardens cancellation, writes and sandboxed IDE context",
-      "title_zh": "Gemini CLI 0.67 加固取消、写入与沙箱 IDE 上下文",
+      "title": "Gemini CLI 0.68 hardens extensions, files and fallbacks",
+      "title_zh": "Gemini CLI 0.68 加固扩展、文件与模型回退",
       "category": "developer-tools",
       "organization": [
         "Google"
       ],
       "published_at": "2026-08-25T18:37:14Z",
       "first_seen_at": "2026-08-28T00:31:03Z",
-      "last_updated_at": "2026-11-06T17:04:35Z",
+      "last_updated_at": "2026-11-11T17:04:24Z",
       "source_type": "github",
       "primary_source": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.57.0",
       "secondary_sources": [
@@ -146,14 +146,15 @@
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.63.0",
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.64.0",
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.65.0",
-        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.66.0"
+        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.66.0",
+        "https://github.com/google-gemini/gemini-cli/releases/tag/v0.68.0"
       ],
-      "summary": "Gemini CLI 0.66 adds opt-in OAuth support for MCP servers on private networks and disables interactive credential or SSH prompts during Git operations in safe mode. It also hardens SKILL.md parsing, preserves user Git configuration and fixes streamed HTTP decoding.",
-      "why_it_matters": "For teams connecting agents to private MCP services, the release adds a usable authentication path while reducing the chance that unattended Git commands hang on hidden prompts. Because the controls are opt-in and environment-specific, they need local verification.",
-      "summary_zh": "Gemini CLI 0.66 为私有网络上的 MCP server 加入可选 OAuth，并在 safe mode 的 Git 操作中禁用交互式凭据与 SSH 提示。它还加固 SKILL.md 解析、保留用户 Git 配置，并修复流式 HTTP 解码。",
-      "why_it_matters_zh": "对把 agent 接入私有 MCP 服务的团队来说，这一版补上可用的认证路径，也降低无人值守 Git 命令卡在隐藏提示上的概率。相关控制为可选项且依赖环境，需要本地核验。",
-      "summary_en": "Gemini CLI 0.66 adds opt-in OAuth support for MCP servers on private networks and disables interactive credential or SSH prompts during Git operations in safe mode. It also hardens SKILL.md parsing, preserves user Git configuration and fixes streamed HTTP decoding.",
-      "why_it_matters_en": "For teams connecting agents to private MCP services, the release adds a usable authentication path while reducing the chance that unattended Git commands hang on hidden prompts. Because the controls are opt-in and environment-specific, they need local verification.",
+      "summary": "Gemini CLI 0.68 adds extension validation and fixes symlink canonicalization, secure file handling and model fallback preservation. It also improves rootless Podman support and rate-limit feedback. These are release-note claims; this run did not reproduce the behavior.",
+      "why_it_matters": "For teams running the CLI in containers or loading extensions, the release changes the regression surface around paths, credentials and fallback models. Existing users should canary the upgrade against their trust boundaries.",
+      "summary_zh": "Gemini CLI 0.68 新增扩展校验，并修复 symlink 规范化、安全文件处理与模型回退保留。它还改善 rootless Podman 支持和限流反馈。这些来自 release notes，本轮未独立复现行为。",
+      "why_it_matters_zh": "对在容器中运行 CLI 或加载扩展的团队来说，这版改变了路径、凭据和回退模型的回归面。现有用户应围绕自己的信任边界做 canary。",
+      "summary_en": "Gemini CLI 0.68 adds extension validation and fixes symlink canonicalization, secure file handling and model fallback preservation. It also improves rootless Podman support and rate-limit feedback. These are release-note claims; this run did not reproduce the behavior.",
+      "why_it_matters_en": "For teams running the CLI in containers or loading extensions, the release changes the regression surface around paths, credentials and fallback models. Existing users should canary the upgrade against their trust boundaries.",
       "technical_details": {
         "release": "v0.57.0 stable published 2026-08-25T18:37:14Z; packages/a2a-server present in the v0.57.0 tag tree (verified via git tree API)",
         "npm": "@google/gemini-cli-a2a-server@0.57.0 published; package scoped under @google",
@@ -169,11 +170,12 @@
         "update_2026_10_07": "0.63.0 adds bounded tool output for long-running loops, autonomous plan execution in non-interactive mode, auth-loop fixes, ACP session ordering and policy/path hardening.",
         "update_2026_10_14": "0.64.0 adds atomic file operations, append-only chat deltas, atomic persisted state with backup recovery, Ctrl+C cancellation, ACP usage updates and A2A settings migration.",
         "update_2026_10_21": "0.65.0 stable enforces read-only workspace settings in untrusted folders, prevents duplicate tool-response turns on resume and preserves resumed-session history on quick exit.",
-        "latest_stable": "0.67.0",
-        "published_at": "2026-10-27T20:26:28Z",
+        "latest_stable": "0.68.0",
+        "published_at": "2026-11-10T21:17:07Z",
         "v0_66_0": "Opt-in private-network MCP OAuth, non-interactive safe Git credentials and SSH, hardened SKILL.md parsing, preserved Git configuration, streamed HTTP decoding fix",
         "update_2026_11_04": "Container sandboxes bridge the IDE companion over exec stdio; atomic writes respect read-only files and hard links; non-interactive cancellation stops tool execution; permission requests include MCP metadata; model discovery command added.",
-        "time_basis_2026_11_04": "GitHub release published 2026-11-04T20:27:11Z."
+        "time_basis_2026_11_04": "GitHub release published 2026-11-04T20:27:11Z.",
+        "update_2026_11_11": "Extension validation, rootless Podman, symlink canonicalization, secure file handling and model fallback preservation"
       },
       "technical_details_zh": {
         "发布": "v0.57.0 stable 于 2026-08-25T18:37:14Z 发布；v0.57.0 tag 树中包含 packages/a2a-server（经 git tree API 核实）",
@@ -189,11 +191,12 @@
         "2026-10-02 更新": "0.62.0 stable 保留 OAuth refresh token，使凭据删除幂等，加固 PTY/ConPTY 清理，并在权限请求前发出 ACP tool_call 更新。A2A 仍无使用文档。",
         "2026_10_07_更新": "0.63.0 为长任务限制工具输出，支持非交互模式自动执行计划，并修复认证死循环、ACP session 顺序及策略/路径校验。",
         "2026-10-21 更新": "0.65.0 稳定版在不受信任目录强制 workspace 设置只读，避免恢复会话时重复写入工具响应，并防止快速退出删除恢复后的历史。",
-        "最新稳定版": "0.67.0",
-        "发布时间": "2026-10-27T20:26:28Z",
+        "最新稳定版": "0.68.0",
+        "发布时间": "2026-11-10T21:17:07Z",
         "2026-10-28 更新": "可选的私网 MCP OAuth、无交互 safe Git 凭据与 SSH、SKILL.md 解析加固、保留 Git 配置，以及流式 HTTP 解码修复",
         "2026-11-04 更新": "容器沙箱通过 exec stdio 连接 IDE companion；原子写入尊重只读文件与 hard link；无交互取消会停止工具；权限请求携带 MCP 元数据；新增模型发现命令。",
-        "时间依据_2026_11_04": "GitHub release 于 2026-11-04T20:27:11Z 发布。"
+        "时间依据_2026_11_04": "GitHub release 于 2026-11-04T20:27:11Z 发布。",
+        "2026-11-11 更新": "扩展校验、rootless Podman、symlink 规范化、安全文件处理与模型回退保留"
       },
       "tags": [
         "gemini-cli",
@@ -225,7 +228,8 @@
         "src-dbb95ff3d456141d",
         "src-e9d62472858a055c",
         "src-451b839194f1d8cc",
-        "src-8d603faf83b5cd35"
+        "src-8d603faf83b5cd35",
+        "src-4d5c082f37b5c574"
       ],
       "project_ids": [
         "gemini-cli"
@@ -326,6 +330,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260825-02-gemini-cli-0-68-evidence",
+          "claim_zh": "Gemini CLI 0.68 新增扩展校验，并加固路径、文件与回退行为。",
+          "claim_en": "Gemini CLI 0.68 adds extension validation and hardens path, file and fallback behavior.",
+          "source_ids": [
+            "src-4d5c082f37b5c574"
+          ],
+          "event_ids": [
+            "ev-20260825-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -418,12 +435,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260825-02-gemini-cli-0-68",
+          "kind": "update",
+          "occurred_at": "2026-11-10T21:17:07Z",
+          "discovered_at": "2026-11-11T17:04:24Z",
+          "summary_zh": "Gemini CLI 0.68 新增扩展校验，并加固路径、文件与回退行为。",
+          "summary_en": "Gemini CLI 0.68 adds extension validation and hardens path, file and fallback behavior.",
+          "evidence_ids": [
+            "ev-20260825-02-gemini-cli-0-68-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "short_label_zh": "Gemini CLI 0.67",
-      "short_label_en": "Gemini CLI 0.67",
-      "next_action_zh": "一天内回归只读文件、hard link、取消后的工具执行、容器 IDE 桥接与 MCP 审批元数据。",
-      "next_action_en": "Within one day, regress read-only files, hard links, post-cancel tools, the container IDE bridge and MCP approval metadata.",
+      "short_label_zh": "Gemini CLI 0.68",
+      "short_label_en": "Gemini CLI 0.68",
+      "next_action_zh": "升级前用 canary 回归扩展校验、rootless Podman、symlink 边界、凭据文件和回退模型选择。",
+      "next_action_en": "Canary extension validation, rootless Podman, symlink boundaries, credential files and fallback model selection before rollout.",
       "last_reviewed_at": "2026-10-21T15:58:23Z"
     },
     {
