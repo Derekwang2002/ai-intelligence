@@ -161,8 +161,8 @@
     },
     {
       "event_id": "ev-20260818-02",
-      "title": "Codex 0.167 improves backend switching and approval visibility",
-      "title_zh": "Codex 0.167 改善后端切换与审批可见性",
+      "title": "Codex 0.167.2 streams Vertex AI tool updates by default",
+      "title_zh": "Codex 0.167.2 默认流式返回 Vertex AI 工具更新",
       "category": "developer-tools",
       "organization": [
         "OpenAI",
@@ -171,7 +171,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-11-06T17:04:35Z",
+      "last_updated_at": "2026-11-12T17:00:14Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [
@@ -187,14 +187,15 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.162.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.163.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.164.0",
-        "https://github.com/openai/codex/releases/tag/rust-v0.165.0"
+        "https://github.com/openai/codex/releases/tag/rust-v0.165.0",
+        "https://github.com/openai/codex/releases/tag/rust-v0.167.2"
       ],
-      "summary": "Codex CLI 0.165 adds a built-in Google Vertex AI provider, GPT-6.1 Terra in the model catalog, repository filters and directory grouping. It also makes memory v2 the default for fresh profiles, adds external memory import, and experiments with attached thread forks and mid-conversation reasoning changes. Fixes cover approval defaults, MCP cancellation, queued messages after interruption and marketplace URL validation.",
-      "why_it_matters": "For teams that move coding-agent sessions across providers or workspaces, this release reduces setup friction and makes accumulated memory more portable. The experimental fork and effort controls still need regression tests around permissions, interruption and replay.",
-      "summary_zh": "Codex CLI 0.165 内置 Google Vertex AI provider，并把 GPT-6.1 Terra 加入模型目录。它还加入仓库筛选和目录分组，让新 profile 默认启用 memory v2，并支持导入外部记忆。附着式线程分叉和对话中途调整推理强度仍属实验功能；本版也修复默认审批、MCP 取消、中断后的排队消息与 marketplace URL 校验。",
-      "summary_en": "Codex CLI 0.165 adds a built-in Google Vertex AI provider, GPT-6.1 Terra in the model catalog, repository filters and directory grouping. It also makes memory v2 the default for fresh profiles, adds external memory import, and experiments with attached thread forks and mid-conversation reasoning changes. Fixes cover approval defaults, MCP cancellation, queued messages after interruption and marketplace URL validation.",
-      "why_it_matters_zh": "对需要跨 provider 或 workspace 迁移 coding-agent 会话的团队来说，这一版减少配置摩擦，也让积累的记忆更容易迁移。实验性的分叉与推理强度调整仍要围绕权限、中断和重放做回归。",
-      "why_it_matters_en": "For teams that move coding-agent sessions across providers or workspaces, this release reduces setup friction and makes accumulated memory more portable. The experimental fork and effort controls still need regression tests around permissions, interruption and replay.",
+      "summary": "Codex 0.167.2 makes incremental tool updates the default when using Google Cloud Vertex AI. The stable patch changes delivery behavior but reports no measured latency or compatibility effect.",
+      "why_it_matters": "For Vertex AI-backed coding agents, clients may see tool output earlier, but stream ordering, reconnect and resume behavior become upgrade boundaries. Teams on other backends see no documented material change.",
+      "summary_zh": "Codex 0.167.2 在使用 Google Cloud Vertex AI 时默认启用增量工具更新。这个稳定补丁改变了工具结果的交付方式，但没有公布时延或兼容性数据。",
+      "summary_en": "Codex 0.167.2 makes incremental tool updates the default when using Google Cloud Vertex AI. The stable patch changes delivery behavior but reports no measured latency or compatibility effect.",
+      "why_it_matters_zh": "对使用 Vertex AI 的编码 agent 来说，客户端可能更早收到工具输出，但流顺序、重连与恢复成为升级边界。其他后端没有记录到实质变化。",
+      "why_it_matters_en": "For Vertex AI-backed coding agents, clients may see tool output earlier, but stream ordering, reconnect and resume behavior become upgrade boundaries. Teams on other backends see no documented material change.",
       "technical_details": {
         "version": "0.148.0 (stable)",
         "session_forking": "codex exec fork; archive/restore from TUI resume picker",
@@ -217,14 +218,17 @@
         "update_2026_10_07": "0.161.0 makes GPT-6.1 Sol the default in bundled and Bedrock catalogs, adds Bedrock multi-agent V2/Ultra and GovCloud, improves remote-session authentication, preserves replay/world-state history and hardens approval/sandbox boundaries.",
         "update_2026_10_09": "0.162.0 enables managed worktree create/list in trusted projects, task pinning, ranked tool search and provider capability flags; fixes Linux/Windows sandbox behavior, CRLF preservation and Retry-After handling.",
         "update_2026_10_16": "0.163.0: parallel read-only tools, steering interrupts long tool calls, improved summaries and sandbox/resume fixes",
-        "latest_stable": "0.167.0",
+        "latest_stable": "0.167.2",
         "enterprise_mcp_auth": "eligible Codex grants, dedicated OAuth and confidential clients",
         "remote_shell": "masks credentials in Bash/Zsh snapshots",
         "reliability": "compaction recovery and thread settings",
         "published_at": "2026-10-27T20:09:38Z",
         "v0_165_0": "Built-in Vertex AI provider, GPT-6.1 Terra catalog, repository filters and directory grouping, memory v2 default for fresh profiles, external memory import, experimental attached forks and mid-conversation reasoning changes",
         "v0_167_0": "Unread results in the agent command center, cross-backend session switching with draft preservation, local image previews, Vertex AI setup, inline patch review during approvals, serialized network prompts and improved compaction accounting.",
-        "time_basis_2026_11_06": "GitHub release published 2026-11-06T01:40:00Z."
+        "time_basis_2026_11_06": "GitHub release published 2026-11-06T01:40:00Z.",
+        "update_2026_11_12": "Incremental tool updates are default on Google Cloud Vertex AI.",
+        "time_basis_2026_11_12": "GitHub release published 2026-11-11T22:44:46Z.",
+        "evidence_limit": "No latency or compatibility measurements in release notes."
       },
       "tags": [
         "codex",
@@ -273,7 +277,7 @@
         "2026_10_07_更新": "0.161.0 将 GPT-6.1 Sol 设为内置与 Bedrock catalog 默认模型，加入 Bedrock multi-agent V2、Ultra 与 GovCloud，并强化远程会话认证、重放/world-state 历史及审批/沙箱边界。",
         "更新_2026_10_09": "0.162.0 在可信项目启用托管 worktree 创建/列举，加入任务置顶、排序式工具搜索和 provider 能力标记；修复 Linux/Windows 沙箱、CRLF 保留与 Retry-After 处理。",
         "2026_10_16_更新": "0.163.0：并行只读工具、长工具调用转向、摘要与沙箱/恢复修复",
-        "最新稳定版": "0.167.0",
+        "最新稳定版": "0.167.2",
         "企业 MCP 认证": "符合条件的 Codex grants、独立 OAuth 与 confidential clients",
         "远程 shell": "遮蔽 Bash/Zsh 快照中的凭据",
         "安全加固": "macOS 大小写路径、可替换 executable symlink 与权限顺序",
@@ -281,7 +285,10 @@
         "发布时间": "2026-10-27T20:09:38Z",
         "2026-10-28 更新": "内置 Vertex AI provider、GPT-6.1 Terra 模型目录、仓库筛选与目录分组；新 profile 默认启用 memory v2，支持外部记忆导入，并实验性加入附着式线程分叉与对话中途调整推理强度",
         "0.167.0 更新": "Agent command center 标记未读结果；切换后端保留草稿；支持本地图片预览、Vertex AI 设置、审批时展开 patch、串行网络提示与更完整的压缩 token 估算。",
-        "时间依据_2026_11_06": "GitHub release 于 2026-11-06T01:40:00Z 发布。"
+        "时间依据_2026_11_06": "GitHub release 于 2026-11-06T01:40:00Z 发布。",
+        "2026-11-12 更新": "Google Cloud Vertex AI 默认启用增量工具更新。",
+        "2026-11-12 时间依据": "GitHub release 发布于 2026-11-11T22:44:46Z。",
+        "证据限制": "release notes 没有时延或兼容性测量。"
       },
       "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
       "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
@@ -305,7 +312,8 @@
         "src-255cde9f48a82982",
         "src-b28a06ef950a1f61",
         "src-bd138645120f03ef",
-        "src-b8ddb6db7e02a2ca"
+        "src-b8ddb6db7e02a2ca",
+        "src-917e81f74d6a6479"
       ],
       "project_ids": [
         "codex"
@@ -445,6 +453,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-167-2-evidence",
+          "claim_zh": "GitHub release 确认 Vertex AI 的增量工具更新改为默认。",
+          "claim_en": "The GitHub release confirms incremental tool updates are now default on Vertex AI.",
+          "source_ids": [
+            "src-917e81f74d6a6479"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; operational effect not measured"
         }
       ],
       "changes": [
@@ -576,13 +597,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-167-2",
+          "kind": "update",
+          "occurred_at": "2026-11-11T22:44:46Z",
+          "discovered_at": "2026-11-12T17:00:14Z",
+          "summary_zh": "Codex 0.167.2 默认流式返回 Vertex AI 工具更新。",
+          "summary_en": "Codex 0.167.2 makes Vertex AI tool updates incremental by default.",
+          "evidence_ids": [
+            "ev-20260818-02-codex-0-167-2-evidence"
+          ],
+          "historical": false,
+          "importance": "normal"
         }
       ],
       "update_2026_09_28": "Codex 0.158.0: MCP OAuth client secrets, authenticated exec-server WebSockets, default terminal-input approval and cross-platform sandbox fixes; stays ADOPT",
-      "next_action_zh": "升级前回归跨后端恢复、并发网络审批、失败响应压缩与 Vertex AI 登录。",
-      "next_action_en": "Before upgrading, regress cross-backend resume, concurrent network approvals, failed-response compaction and Vertex AI sign-in.",
-      "short_label_zh": "Codex 0.167",
-      "short_label_en": "Codex 0.167",
+      "next_action_zh": "升级前回归 Vertex AI 长工具输出的顺序、重复、重连与 session resume；未使用 Vertex AI 的团队无需因此升级。",
+      "next_action_en": "Before upgrading, regress ordering, duplication, reconnect and session resume for long Vertex AI tool outputs; teams not using Vertex AI need not upgrade for this patch.",
+      "short_label_zh": "Codex 0.167.2",
+      "short_label_en": "Codex 0.167.2",
       "last_reviewed_at": "2026-10-16T15:56:07Z",
       "editorial_pick": {
         "reason_zh": "并行读取与可中断长工具调用直接改善日常 agent 工作流。",

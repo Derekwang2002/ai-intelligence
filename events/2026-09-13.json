@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.109 adds stream fallback but requires five migrations",
-      "title_zh": "LiteLLM 1.109 新增流式回退，但要求完成 5 项迁移",
+      "title": "LiteLLM 1.109.1 signs images and blocks credential conflicts",
+      "title_zh": "LiteLLM 1.109.1 签名镜像并阻止凭据字段冲突",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-11T17:04:24Z",
+      "last_updated_at": "2026-11-12T17:00:14Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -33,14 +33,16 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.2",
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.3",
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.4",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.109.0"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.109.0",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.109.1",
+        "https://github.com/BerriAI/litellm/pull/51254"
       ],
-      "summary": "LiteLLM 1.109 adds mid-stream fallback continuation and an offline mode, while aggregating hundreds of provider, accounting and guardrail fixes. The release lists five required migrations covering fallback target types, disk cache removal, explicit RPM enforcement, newer Gemini sampling parameters and a separate Lens chart.",
-      "why_it_matters": "For gateway operators, stream continuity and offline control are useful, but this is not a drop-in upgrade. Configuration migration and provider-specific replay should precede production rollout.",
-      "summary_zh": "LiteLLM 1.109 加入流式响应中断后的 fallback continuation 与 offline mode，并汇总大量 provider、计费和护栏修复。官方列出 5 项必做迁移：fallback target 类型、disk cache 移除、显式 RPM 限制、新版 Gemini sampling 参数，以及独立 Lens chart。",
-      "summary_en": "LiteLLM 1.109 adds mid-stream fallback continuation and an offline mode, while aggregating hundreds of provider, accounting and guardrail fixes. The release lists five required migrations covering fallback target types, disk cache removal, explicit RPM enforcement, newer Gemini sampling parameters and a separate Lens chart.",
-      "why_it_matters_zh": "对 gateway 运维团队来说，流式连续性与离线控制有实际价值，但这不是无痛升级。上线前必须迁移配置，并按 provider 组合回放。",
-      "why_it_matters_en": "For gateway operators, stream continuity and offline control are useful, but this is not a drop-in upgrade. Configuration migration and provider-specific replay should precede production rollout.",
+      "summary": "LiteLLM 1.109.1 signs Docker images with cosign and rejects client-supplied Azure or OIDC credential fields that conflict with administrator deployment configuration unless explicitly allowed. The security fix was also backported to maintained 1.108.x and 1.106.x lines.",
+      "why_it_matters": "For gateway operators, the patch narrows a credential-injection boundary and makes image provenance verifiable. Production rollout still needs signature verification and regressions for routes that intentionally allow client credentials.",
+      "summary_zh": "LiteLLM 1.109.1 使用 cosign 签名 Docker 镜像，并默认拒绝客户端提交会与管理员部署配置冲突的 Azure 或 OIDC 凭据字段。该安全修复也回移到仍维护的 1.108.x 与 1.106.x 分支。",
+      "summary_en": "LiteLLM 1.109.1 signs Docker images with cosign and rejects client-supplied Azure or OIDC credential fields that conflict with administrator deployment configuration unless explicitly allowed. The security fix was also backported to maintained 1.108.x and 1.106.x lines.",
+      "why_it_matters_zh": "对 gateway 运维团队来说，这个补丁收紧了凭据注入边界，并让镜像来源可以验证。生产升级仍需验签，并回归那些确实允许客户端凭据的路由。",
+      "why_it_matters_en": "For gateway operators, the patch narrows a credential-injection boundary and makes image provenance verifiable. Production rollout still needs signature verification and regressions for routes that intentionally allow client credentials.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -61,7 +63,7 @@
         "image_digest": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
         "time_basis": "GitHub release published 2026-10-25T09:39:15Z.",
         "update_2026_10_25": "1.106.4 fixes proxy startup failures when the remote model-cost map is unavailable and removes several container-scan false positives; fixes are backported to 1.104.7 and 1.105.5.",
-        "latest_stable": "1.109.0",
+        "latest_stable": "1.109.1",
         "release_2026_11_04": "Signed images; credential leak fixes; MCP OAuth/session/toolsets; streaming guardrails; budget and admission repairs",
         "time_basis_2026_11_04": "GitHub release published 2026-11-04T03:35:33Z",
         "update_2026_11_05": "Cosign-signed Docker images, stable/RC/LTS OSV scans, 21 mainline fixes plus prerequisites, and pass-through credential selection that skips team deployments.",
@@ -78,7 +80,9 @@
           "LITELLM_OFFLINE_MODE",
           "provider, accounting and guardrail fixes"
         ],
-        "evidence_limit": "Release notes enumerate 982 merged PRs; behavior not independently reproduced"
+        "evidence_limit": "PR tests reviewed; attack paths and image signatures not independently reproduced.",
+        "update_2026_11_12": "Cosign-signed images; reject six conflicting Azure/OIDC credential fields unless explicitly allowed; maintained-branch backports.",
+        "time_basis_2026_11_12": "GitHub release published 2026-11-12T02:07:01Z."
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -100,7 +104,7 @@
         "镜像摘要": "e3fe3e08c44b16407fe0b37c43b4f8b603b3a0f4ee74c29e647bc022d762c2c0",
         "时间依据": "GitHub release 发布于 2026-10-25T09:39:15Z。",
         "2026-10-25 更新": "1.106.4 修复远程模型成本表不可达时 proxy 启动 ImportError，并消除多项容器扫描误报；修复也回移到 1.104.7 与 1.105.5。",
-        "最新稳定版": "1.109.0",
+        "最新稳定版": "1.109.1",
         "2026-11-04 更新": "签名镜像；凭据泄露修复；MCP OAuth/session/toolset；流式护栏；预算与准入修复",
         "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T03:35:33Z",
         "2026-11-05 更新": "Docker 镜像用 cosign 签名；stable/RC/LTS 分支运行 OSV 扫描；回移 21 项主线修复及前置修复；pass-through 凭据选择跳过 team deployment。",
@@ -117,7 +121,9 @@
           "LITELLM_OFFLINE_MODE",
           "provider、计费与护栏修复"
         ],
-        "证据限制": "release notes 汇总 982 个 PR；本轮未独立复现行为"
+        "证据限制": "已阅读 PR 测试；未独立复现攻击路径或镜像验签。",
+        "2026-11-12 更新": "cosign 签名镜像；默认拒绝 6 个冲突的 Azure/OIDC 凭据字段；修复回移到维护分支。",
+        "2026-11-12 时间依据": "GitHub release 发布于 2026-11-12T02:07:01Z。"
       },
       "tags": [
         "litellm",
@@ -154,7 +160,9 @@
         "src-21cf97a311693357",
         "src-df8662ba8703ab0f",
         "src-e372c61ba3f0e7a4",
-        "src-569a35504d8a0adf"
+        "src-569a35504d8a0adf",
+        "src-0258ef134fc324e9",
+        "src-e8b59bc710743165"
       ],
       "project_ids": [
         "mcp",
@@ -361,6 +369,20 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-109-1-evidence",
+          "claim_zh": "GitHub release 与修复 PR 确认镜像签名和凭据字段冲突拦截。",
+          "claim_en": "The GitHub release and fix PR confirm image signing and credential-field conflict blocking.",
+          "source_ids": [
+            "src-0258ef134fc324e9",
+            "src-e8b59bc710743165"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; not independently reproduced"
         }
       ],
       "changes": [
@@ -556,13 +578,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-109-1",
+          "kind": "update",
+          "occurred_at": "2026-11-12T02:07:01Z",
+          "discovered_at": "2026-11-12T17:00:14Z",
+          "summary_zh": "LiteLLM 1.109.1 增加镜像验签并收紧客户端凭据边界。",
+          "summary_en": "LiteLLM 1.109.1 adds image signing and tightens client credential boundaries.",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-109-1-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "先在 staging 完成 5 项必做迁移，再回放流式 fallback、限流、缓存和 Gemini 请求。",
-      "next_action_en": "Migrate all five required settings in staging, then replay streaming fallbacks, rate limits, cache behavior and Gemini requests before rollout.",
-      "short_label_zh": "LiteLLM 1.109",
-      "short_label_en": "LiteLLM 1.109"
+      "next_action_zh": "一天内验证镜像签名，并回归 Azure、OIDC、MCP OAuth、透传路由与显式允许客户端凭据的配置。",
+      "next_action_en": "Within one day, verify the image signature and regress Azure, OIDC, MCP OAuth, pass-through routes and configurations that explicitly allow client credentials.",
+      "short_label_zh": "LiteLLM 1.109.1",
+      "short_label_en": "LiteLLM 1.109.1"
     }
   ]
 }

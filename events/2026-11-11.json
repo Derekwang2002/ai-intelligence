@@ -332,6 +332,323 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261111-04",
+      "title": "Google opens Gemini Decision 1 for high-volume structured decisions",
+      "title_zh": "Google 开放 Gemini Decision 1 批量结构化决策 API",
+      "category": "ai-engineering",
+      "organization": [
+        "Google"
+      ],
+      "published_at": "2026-11-11",
+      "first_seen_at": "2026-11-12T17:00:14Z",
+      "last_updated_at": "2026-11-12T17:00:14Z",
+      "source_type": "official_blog",
+      "primary_source": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+      "secondary_sources": [],
+      "summary": "Google released gemini-decision-1 through the Gemini API and Google AI Studio. One request can score up to 1,000 closed-set questions over multimodal inputs, with a 256K-token input limit, $0.10 per million input tokens and no output-token charge. The sample uses v1beta, and Google Cloud support is still forthcoming.",
+      "summary_en": "Google released gemini-decision-1 through the Gemini API and Google AI Studio. One request can score up to 1,000 closed-set questions over multimodal inputs, with a 256K-token input limit, $0.10 per million input tokens and no output-token charge. The sample uses v1beta, and Google Cloud support is still forthcoming.",
+      "summary_zh": "Google 通过 Gemini API 与 Google AI Studio 开放 gemini-decision-1。一次请求可对多模态输入中的最多 1,000 个封闭式问题评分，输入上限为 256K token；输入每百万 token 0.10 美元，输出不计费。示例仍使用 v1beta，Google Cloud 支持尚未开放。",
+      "why_it_matters": "For routing, moderation and ranking systems, the API lowers the cost of making many bounded decisions in one call. Google's latency and quality comparisons are vendor measurements, so confidence calibration must be tested on local labeled data.",
+      "why_it_matters_en": "For routing, moderation and ranking systems, the API lowers the cost of making many bounded decisions in one call. Google's latency and quality comparisons are vendor measurements, so confidence calibration must be tested on local labeled data.",
+      "why_it_matters_zh": "对路由、审核与排序系统来说，这个 API 降低了一次完成大量有界判断的成本。时延与质量对比来自 Google 自测，置信度仍需用本地标注数据校准。",
+      "technical_details": {
+        "model": "gemini-decision-1",
+        "availability": "public in Gemini API and Google AI Studio; Google Cloud coming soon",
+        "contract": "v1beta sample",
+        "question_limit": 1000,
+        "input_limit": "256K tokens",
+        "pricing": "$0.10 / 1M input tokens; no output-token charge",
+        "publisher_latency": "150-250 ms end to end",
+        "time_basis": "Official page gives 2026-11-11 with no time; strict hourly placement is unresolved.",
+        "evidence_limit": "Latency, cost comparison and quality claims are vendor-reported; no independent evaluation found."
+      },
+      "technical_details_zh": {
+        "模型": "gemini-decision-1",
+        "开放范围": "Gemini API 与 Google AI Studio 已开放；Google Cloud 尚待上线",
+        "接口阶段": "示例使用 v1beta",
+        "问题上限": 1000,
+        "输入上限": "256K token",
+        "价格": "输入每百万 token 0.10 美元；输出不收费",
+        "厂商自报时延": "端到端 150–250 ms",
+        "时间依据": "官方页面只给出 2026-11-11，无法确认逐小时边界。",
+        "证据限制": "时延、成本对比与质量均为厂商自报；未找到独立评测。"
+      },
+      "tags": [
+        "structured-decisions",
+        "routing",
+        "multimodal",
+        "api",
+        "calibration"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "google-gemini-decision-1-api",
+      "short_label_zh": "Gemini Decision 1",
+      "short_label_en": "Gemini Decision 1",
+      "next_action_zh": "一天内用 200 条已标注路由样本测试准确率、校准误差、时延和单次成本，再决定是否替换现有分类链。",
+      "next_action_en": "Within one day, test 200 labeled routing cases for accuracy, calibration error, latency and per-decision cost before replacing the current classifier chain.",
+      "source_ids": [
+        "src-c06fca3b9549fb95"
+      ],
+      "project_ids": [
+        "gemini-decisions"
+      ],
+      "scenario_ids": [
+        "routing",
+        "evaluation"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261111-04-evidence",
+          "claim_zh": "官方发布确认 API、价格、限制与 beta 接口阶段；性能数据仍属厂商自报。",
+          "claim_en": "The official launch confirms the API, price, limits and beta contract; performance remains vendor-reported.",
+          "source_ids": [
+            "src-c06fca3b9549fb95"
+          ],
+          "event_ids": [
+            "ev-20261111-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261111-04-release",
+          "kind": "new",
+          "occurred_at": "2026-11-11",
+          "discovered_at": "2026-11-12T17:00:14Z",
+          "summary_zh": "Google 开放 Gemini Decision 1 API。",
+          "summary_en": "Google opens the Gemini Decision 1 API.",
+          "evidence_ids": [
+            "ev-20261111-04-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261111-05",
+      "title": "Baidu opens ERNIE 5.5 Flash Preview through Qianfan",
+      "title_zh": "百度通过千帆开放 ERNIE 5.5 Flash Preview",
+      "category": "foundation-model",
+      "organization": [
+        "Baidu"
+      ],
+      "published_at": "2026-11-11",
+      "first_seen_at": "2026-11-12T17:00:14Z",
+      "last_updated_at": "2026-11-12T17:00:14Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://ernie.baidu.com/zh/release/ernie-5-5-flash-preview/",
+      "secondary_sources": [
+        "https://cloud.baidu.com/product/qianfan_home/model_3.html?track=home_banner"
+      ],
+      "summary": "Baidu opened ERNIE 5.5 Flash Preview through Qianfan as an intermediate checkpoint with 280B total and 14B active parameters, a 1M-token context window and API access. The preview has promotional input pricing from RMB 0.50 to 1 per million tokens depending on time, with output from RMB 2 to 4. Baidu says weights will follow by November 25; they are not available now.",
+      "summary_en": "Baidu opened ERNIE 5.5 Flash Preview through Qianfan as an intermediate checkpoint with 280B total and 14B active parameters, a 1M-token context window and API access. The preview has promotional input pricing from RMB 0.50 to 1 per million tokens depending on time, with output from RMB 2 to 4. Baidu says weights will follow by November 25; they are not available now.",
+      "summary_zh": "百度通过千帆开放 ERNIE 5.5 Flash Preview。这是 280B 总参数、14B 激活参数、1M 上下文的中间检查点，API 已可调用。促销期输入价格按时段为每百万 token 0.5–1 元，输出为 2–4 元；百度承诺 11 月 25 日前开放权重，但当前仍不可下载。",
+      "why_it_matters": "For Chinese-language agent and coding workloads, the preview creates a low-cost API option with a very large context window. It is unfinished, the benchmark and throughput claims are vendor-reported, and future open weights should not be treated as current availability.",
+      "why_it_matters_en": "For Chinese-language agent and coding workloads, the preview creates a low-cost API option with a very large context window. It is unfinished, the benchmark and throughput claims are vendor-reported, and future open weights should not be treated as current availability.",
+      "why_it_matters_zh": "对中文 agent 与编码任务来说，这个预览版提供了低价、超长上下文 API。它仍未完成，benchmark 与吞吐均为厂商自报；未来开放权重不能写成当前已可下载。",
+      "technical_details": {
+        "stage": "preview intermediate checkpoint",
+        "architecture": "280B total / 14B active parameters",
+        "context": "1M tokens",
+        "availability": "Qianfan API available; weights promised by 2026-11-25, not currently downloadable",
+        "promotional_price": "peak RMB 1/M input and RMB 4/M output; off-peak half price through 2026-11-30",
+        "publisher_throughput": "more than 200 tokens/s",
+        "time_basis": "Official pages give 2026-11-11 without time; strict hourly placement is unresolved.",
+        "evidence_limit": "Benchmarks, demos and throughput are publisher-reported; the checkpoint is unfinished."
+      },
+      "technical_details_zh": {
+        "阶段": "preview 中间检查点",
+        "架构": "280B 总参数 / 14B 激活参数",
+        "上下文": "1M token",
+        "开放范围": "千帆 API 已开放；承诺 2026-11-25 前开放权重，当前不可下载",
+        "促销价格": "高峰输入每百万 token 1 元、输出 4 元；低峰半价，至 2026-11-30",
+        "厂商自报吞吐": "超过 200 token/s",
+        "时间依据": "官方页面只给出 2026-11-11，无法确认逐小时边界。",
+        "证据限制": "benchmark、演示与吞吐均为厂商自报；检查点尚未训练完成。"
+      },
+      "tags": [
+        "ernie",
+        "mixture-of-experts",
+        "long-context",
+        "coding",
+        "api"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "baidu-ernie-5-5-flash-preview",
+      "short_label_zh": "ERNIE 5.5 Flash",
+      "short_label_en": "ERNIE 5.5 Flash",
+      "next_action_zh": "一天内用千帆 API 回放 50 条中文编码与 agent 任务，记录成功率、首 token 时延、长上下文退化和成本。",
+      "next_action_en": "Within one day, replay 50 Chinese coding and agent tasks through Qianfan and record success, time to first token, long-context degradation and cost.",
+      "source_ids": [
+        "src-49ab05b27c45fb21",
+        "src-9ade112d5923aa6d"
+      ],
+      "project_ids": [
+        "ernie-5-5-flash"
+      ],
+      "scenario_ids": [
+        "coding",
+        "agents",
+        "long-context"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261111-05-evidence",
+          "claim_zh": "官方发布与价格页确认预览阶段、API、价格和权重尚未开放。",
+          "claim_en": "The official release and pricing page confirm preview status, API access, price and unavailable weights.",
+          "source_ids": [
+            "src-49ab05b27c45fb21",
+            "src-9ade112d5923aa6d"
+          ],
+          "event_ids": [
+            "ev-20261111-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261111-05-preview",
+          "kind": "new",
+          "occurred_at": "2026-11-11",
+          "discovered_at": "2026-11-12T17:00:14Z",
+          "summary_zh": "百度开放 ERNIE 5.5 Flash Preview API。",
+          "summary_en": "Baidu opens the ERNIE 5.5 Flash Preview API.",
+          "evidence_ids": [
+            "ev-20261111-05-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261111-06",
+      "title": "NVIDIA and Google Cloud add runtime AI inventory to GPU validation",
+      "title_zh": "NVIDIA 与 Google Cloud 将运行时 AI 清单纳入 GPU 验证",
+      "category": "infrastructure",
+      "organization": [
+        "NVIDIA",
+        "Google Cloud"
+      ],
+      "published_at": "2026-11-11T17:00:00Z",
+      "first_seen_at": "2026-11-12T17:00:14Z",
+      "last_updated_at": "2026-11-12T17:00:14Z",
+      "source_type": "official_blog",
+      "primary_source": "https://developer.nvidia.com/blog/validating-gpu-platforms-with-runtime-ai-inventory-via-the-nvidia-dsx-ai-factory/",
+      "secondary_sources": [
+        "https://github.com/NVIDIA/aicr",
+        "https://github.com/GoogleCloudPlatform/k8s-aibom"
+      ],
+      "summary": "NVIDIA AI Config Runtime 1.2.0 integrates Google Cloud k8s-aibom 1.6.2 to emit a CycloneDX 1.6 inventory of models, datasets, runtimes and workloads during GPU-platform validation. GKE H100 Container-Optimized OS recipes can opt in, and both components are open source. The inventory reports observed artifacts; it does not prove successful scheduling, execution or full conformance.",
+      "summary_en": "NVIDIA AI Config Runtime 1.2.0 integrates Google Cloud k8s-aibom 1.6.2 to emit a CycloneDX 1.6 inventory of models, datasets, runtimes and workloads during GPU-platform validation. GKE H100 Container-Optimized OS recipes can opt in, and both components are open source. The inventory reports observed artifacts; it does not prove successful scheduling, execution or full conformance.",
+      "summary_zh": "NVIDIA AI Config Runtime 1.2.0 集成 Google Cloud k8s-aibom 1.6.2，在 GPU 平台验证期间生成 CycloneDX 1.6 格式的模型、数据集、运行时与工作负载清单。GKE H100 Container-Optimized OS 配方可启用该能力，两项组件均为开源。清单只证明观察到哪些产物，不证明调度、执行成功或完全合规。",
+      "why_it_matters": "For platform teams, AI artifacts can now enter the same evidence chain as software components during cluster qualification. Coverage is limited to supported workloads, so the inventory must be paired with execution and policy checks.",
+      "why_it_matters_en": "For platform teams, AI artifacts can now enter the same evidence chain as software components during cluster qualification. Coverage is limited to supported workloads, so the inventory must be paired with execution and policy checks.",
+      "why_it_matters_zh": "对平台团队来说，模型与数据集现在可以在集群验收时进入和软件组件相同的证据链。它只覆盖受支持的工作负载，仍需配合执行结果与策略校验。",
+      "technical_details": {
+        "components": "NVIDIA AICR 1.2.0; Google Cloud k8s-aibom 1.6.2",
+        "format": "CycloneDX 1.6 AIBOM",
+        "scope": "models, datasets, runtimes and workloads with confidence and evidence locators",
+        "availability": "open-source components; opt-in GKE H100 COS validation recipes",
+        "boundary": "AIBOM may be ready before the pod executes and does not prove successful scheduling, execution or conformance.",
+        "time_basis": "Official post published 2026-11-11T17:00:00Z, four minutes before the prior checkpoint; admitted as overlap late discovery."
+      },
+      "technical_details_zh": {
+        "组件": "NVIDIA AICR 1.2.0；Google Cloud k8s-aibom 1.6.2",
+        "格式": "CycloneDX 1.6 AIBOM",
+        "范围": "模型、数据集、运行时与工作负载，并附置信度和证据定位",
+        "开放范围": "组件开源；GKE H100 COS 验证配方可选择启用",
+        "边界": "AIBOM 可能在 pod 执行前生成，不证明调度、执行成功或合规。",
+        "时间依据": "官方文章发布于 2026-11-11T17:00:00Z，早于上次 checkpoint 4 分钟；按 overlap 漏检补录。"
+      },
+      "tags": [
+        "aibom",
+        "cyclonedx",
+        "gpu-validation",
+        "kubernetes",
+        "supply-chain"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nvidia-aicr-k8s-aibom-runtime-inventory",
+      "short_label_zh": "Runtime AI Inventory",
+      "short_label_en": "Runtime AI Inventory",
+      "next_action_zh": "一天内在一条 GKE H100 验证任务中启用 k8s-aibom，核对模型、数据集、运行时覆盖率及执行前后证据差异。",
+      "next_action_en": "Within one day, enable k8s-aibom on one GKE H100 validation job and compare model, dataset and runtime coverage before and after execution.",
+      "source_ids": [
+        "src-964aed087794010a",
+        "src-5f7c8aa062e13a01",
+        "src-67b83903a6f1b450"
+      ],
+      "project_ids": [
+        "runtime-ai-inventory"
+      ],
+      "scenario_ids": [
+        "infrastructure",
+        "governance"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261111-06-evidence",
+          "claim_zh": "官方文章与开源仓库确认版本、集成方式、格式与边界。",
+          "claim_en": "The official post and repositories confirm versions, integration, format and boundaries.",
+          "source_ids": [
+            "src-964aed087794010a",
+            "src-5f7c8aa062e13a01",
+            "src-67b83903a6f1b450"
+          ],
+          "event_ids": [
+            "ev-20261111-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-sources; operational coverage not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261111-06-integration",
+          "kind": "new",
+          "occurred_at": "2026-11-11T17:00:00Z",
+          "discovered_at": "2026-11-12T17:00:14Z",
+          "summary_zh": "NVIDIA 与 Google Cloud 将 AIBOM 集成到 GPU 平台验证。",
+          "summary_en": "NVIDIA and Google Cloud integrate AIBOM into GPU-platform validation.",
+          "evidence_ids": [
+            "ev-20261111-06-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

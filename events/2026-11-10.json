@@ -648,6 +648,220 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261110-07",
+      "title": "AWS makes AgentCore Web Search a directly callable GA API",
+      "title_zh": "AWS 将 AgentCore Web Search 作为 GA API 直接开放",
+      "category": "ai-agent",
+      "organization": [
+        "AWS"
+      ],
+      "published_at": "2026-11-10",
+      "first_seen_at": "2026-11-12T17:00:14Z",
+      "last_updated_at": "2026-11-12T17:00:14Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-bedrock-agentcore-web-search-api/",
+      "secondary_sources": [
+        "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/web-search-api.html",
+        "https://aws.amazon.com/bedrock/agentcore/pricing/"
+      ],
+      "summary": "AWS made Amazon Bedrock AgentCore Web Search generally available as a direct InvokeWebSearch API without a gateway resource. It uses IAM and SigV4, supports PrivateLink and CloudTrail data events, and is available in six commercial regions. Pricing is $7 per 1,000 queries, with up to 25 results per query.",
+      "summary_en": "AWS made Amazon Bedrock AgentCore Web Search generally available as a direct InvokeWebSearch API without a gateway resource. It uses IAM and SigV4, supports PrivateLink and CloudTrail data events, and is available in six commercial regions. Pricing is $7 per 1,000 queries, with up to 25 results per query.",
+      "summary_zh": "AWS 将 Amazon Bedrock AgentCore Web Search 作为无需 gateway 资源的 InvokeWebSearch API 正式开放。接口使用 IAM 与 SigV4，支持 PrivateLink 和 CloudTrail data event，覆盖 6 个商业区域。价格为每 1,000 次查询 7 美元，每次最多返回 25 条结果。",
+      "why_it_matters": "For AWS-hosted agents, web retrieval can now stay inside an IAM-governed control plane. Result freshness and relevance were not independently tested, and the terms require displaying returned source links.",
+      "why_it_matters_en": "For AWS-hosted agents, web retrieval can now stay inside an IAM-governed control plane. Result freshness and relevance were not independently tested, and the terms require displaying returned source links.",
+      "why_it_matters_zh": "对部署在 AWS 的 agent 来说，网页检索现在可以留在 IAM 管控平面内。结果的新鲜度与相关性尚未独立测试，使用条款还要求展示返回的来源链接。",
+      "technical_details": {
+        "availability": "GA in N. Virginia, Ohio, Oregon, Ireland, Sydney and Tokyo; direct API not in GovCloud",
+        "api": "InvokeWebSearch",
+        "price": "$7 per 1,000 queries",
+        "limits": "25 results; 200-character query; default 10 requests/s/account/region",
+        "controls": "IAM, SigV4, PrivateLink, CloudTrail data events",
+        "terms": "Returned citations and links must be retained and displayed.",
+        "time_basis": "GA announcement dated 2026-11-10; Nov 11 walkthrough is not the launch date.",
+        "evidence_limit": "Interface, price, regions and terms verified; freshness, relevance and snippet quality not tested."
+      },
+      "technical_details_zh": {
+        "开放阶段": "GA；覆盖弗吉尼亚北部、俄亥俄、俄勒冈、爱尔兰、悉尼与东京；直接 API 不含 GovCloud",
+        "接口": "InvokeWebSearch",
+        "价格": "每 1,000 次查询 7 美元",
+        "限制": "最多 25 条结果；query 最长 200 字符；默认每账户每区域每秒 10 次",
+        "管控": "IAM、SigV4、PrivateLink、CloudTrail data event",
+        "条款": "必须保留并展示返回的引用与链接。",
+        "时间依据": "GA 公告日期为 2026-11-10；11 月 11 日教程不是发布日期。",
+        "证据限制": "已核对接口、价格、区域和条款；未测试新鲜度、相关性与摘要质量。"
+      },
+      "tags": [
+        "web-search",
+        "agentcore",
+        "retrieval",
+        "iam",
+        "aws"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "aws-agentcore-web-search-api-ga",
+      "short_label_zh": "AgentCore Web Search",
+      "short_label_en": "AgentCore Web Search",
+      "next_action_zh": "一天内用 100 个真实检索问题对比现有 provider 的召回、新鲜度、时延、引用完整性和有效成本。",
+      "next_action_en": "Within one day, compare 100 real queries with the current provider on recall, freshness, latency, citation completeness and effective cost.",
+      "source_ids": [
+        "src-b411a6ef403d6483",
+        "src-d84383989e1b3a93",
+        "src-83e0069e6eb71f2f"
+      ],
+      "project_ids": [
+        "agentcore-web-search"
+      ],
+      "scenario_ids": [
+        "agents",
+        "retrieval"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261110-07-evidence",
+          "claim_zh": "官方公告、文档与价格页确认 GA、接口、区域、价格和条款。",
+          "claim_en": "The official announcement, docs and pricing page confirm GA, interface, regions, price and terms.",
+          "source_ids": [
+            "src-b411a6ef403d6483",
+            "src-d84383989e1b3a93",
+            "src-83e0069e6eb71f2f"
+          ],
+          "event_ids": [
+            "ev-20261110-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-sources; retrieval quality not independently tested"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261110-07-ga",
+          "kind": "new",
+          "occurred_at": "2026-11-10",
+          "discovered_at": "2026-11-12T17:00:14Z",
+          "summary_zh": "AWS 正式开放 AgentCore Web Search API。",
+          "summary_en": "AWS makes AgentCore Web Search API generally available.",
+          "evidence_ids": [
+            "ev-20261110-07-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261110-08",
+      "title": "Nex-AGI releases Nex-N2.6 open weights for agent workflows",
+      "title_zh": "Nex-AGI 开放 Nex-N2.6 agent 模型权重",
+      "category": "foundation-model",
+      "organization": [
+        "Nex-AGI"
+      ],
+      "published_at": "2026-11-10T05:34:28Z",
+      "first_seen_at": "2026-11-12T17:00:14Z",
+      "last_updated_at": "2026-11-12T17:00:14Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/nex-agi/Nex-N2.6",
+      "secondary_sources": [],
+      "summary": "Nex-AGI released Nex-N2.6 as public, ungated Apache 2.0 FP8 weights built on GLM-5.3-Flash. The model card positions it for computer use, terminal work and multi-turn agents, with SGLang deployment instructions and an API route through OpenRouter. Reported benchmark gains and lower reasoning repetition come from the publisher.",
+      "summary_en": "Nex-AGI released Nex-N2.6 as public, ungated Apache 2.0 FP8 weights built on GLM-5.3-Flash. The model card positions it for computer use, terminal work and multi-turn agents, with SGLang deployment instructions and an API route through OpenRouter. Reported benchmark gains and lower reasoning repetition come from the publisher.",
+      "summary_zh": "Nex-AGI 公开 Nex-N2.6：基于 GLM-5.3-Flash 的 Apache 2.0、无门禁 FP8 权重。模型卡面向 computer use、终端与多轮 agent，提供 SGLang 部署说明，并可通过 OpenRouter 调用。benchmark 提升与推理重复率下降均来自发布方自测。",
+      "why_it_matters": "For teams evaluating self-hosted agent models, the weights make the release reproducible without waiting for a closed API. Its 321B-class footprint requires substantial hardware, and no independent OSWorld or Terminal-Bench reproduction was found.",
+      "why_it_matters_en": "For teams evaluating self-hosted agent models, the weights make the release reproducible without waiting for a closed API. Its 321B-class footprint requires substantial hardware, and no independent OSWorld or Terminal-Bench reproduction was found.",
+      "why_it_matters_zh": "对评估自托管 agent 模型的团队来说，公开权重让它无需等待封闭 API 就能复跑。约 321B 的体量需要昂贵硬件，本轮也未找到独立 OSWorld 或 Terminal-Bench 复现。",
+      "technical_details": {
+        "base_model": "GLM-5.3-Flash",
+        "license": "Apache-2.0",
+        "artifact": "public ungated FP8 weights",
+        "scale": "approximately 321B parameters",
+        "runtimes": "SGLang; OpenRouter API link",
+        "publisher_benchmarks": "OSWorld 83.0; Terminal-Bench 2.1 84.1; AutomationBench 45.7",
+        "observed_adoption": "191 downloads and 59 likes at inspection",
+        "time_basis": "Hugging Face createdAt 2026-11-10T05:34:28Z; lastModified 2026-11-11T15:03:11Z.",
+        "evidence_limit": "Publisher-run scores; no independent reproduction found."
+      },
+      "technical_details_zh": {
+        "底座模型": "GLM-5.3-Flash",
+        "许可证": "Apache-2.0",
+        "公开产物": "无门禁 FP8 权重",
+        "规模": "约 321B 参数",
+        "运行方式": "SGLang；OpenRouter API 链接",
+        "厂商自报 benchmark": "OSWorld 83.0；Terminal-Bench 2.1 84.1；AutomationBench 45.7",
+        "观察到的采用信号": "检查时 191 次下载、59 个 like",
+        "时间依据": "Hugging Face createdAt 为 2026-11-10T05:34:28Z；lastModified 为 2026-11-11T15:03:11Z。",
+        "证据限制": "成绩由发布方自测；未找到独立复现。"
+      },
+      "tags": [
+        "open-weights",
+        "computer-use",
+        "terminal-agent",
+        "SGLang",
+        "GLM"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nex-agi-nex-n2-6-open-agent-model",
+      "short_label_zh": "Nex-N2.6",
+      "short_label_en": "Nex-N2.6",
+      "next_action_zh": "一天内先用公开 API 回放 30 条 computer-use 与终端任务；有足够 FP8 硬件时再复跑同一集，比较成功率、重复、时延和成本。",
+      "next_action_en": "Within one day, replay 30 computer-use and terminal tasks through the public API; if FP8 hardware is available, rerun the same set locally and compare success, repetition, latency and cost.",
+      "source_ids": [
+        "src-0b21bb8c1f873f3b"
+      ],
+      "project_ids": [
+        "nex-n2-series"
+      ],
+      "scenario_ids": [
+        "agents",
+        "coding",
+        "computer-use"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261110-08-evidence",
+          "claim_zh": "公开模型卡与权重确认许可证、产物和部署方式；benchmark 仍属发布方自测。",
+          "claim_en": "The public model card and weights confirm the license, artifacts and deployment path; benchmarks remain publisher-run.",
+          "source_ids": [
+            "src-0b21bb8c1f873f3b"
+          ],
+          "event_ids": [
+            "ev-20261110-08"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261110-08-release",
+          "kind": "new",
+          "occurred_at": "2026-11-10T05:34:28Z",
+          "discovered_at": "2026-11-12T17:00:14Z",
+          "summary_zh": "Nex-AGI 公开 Nex-N2.6 权重。",
+          "summary_en": "Nex-AGI publishes Nex-N2.6 weights.",
+          "evidence_ids": [
+            "ev-20261110-08-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

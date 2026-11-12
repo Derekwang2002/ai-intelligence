@@ -729,6 +729,117 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261109-09",
+      "title": "Zyphra releases ZONOS3-Mini for local real-time voice cloning",
+      "title_zh": "Zyphra 发布可本地实时克隆声音的 ZONOS3-Mini",
+      "category": "foundation-model",
+      "organization": [
+        "Zyphra"
+      ],
+      "published_at": "2026-11-09T05:03:57Z",
+      "first_seen_at": "2026-11-12T17:00:14Z",
+      "last_updated_at": "2026-11-12T17:00:14Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.zyphra.com/our-work/zonos3-mini",
+      "secondary_sources": [
+        "https://huggingface.co/Zyphra/ZONOS3-Mini",
+        "https://github.com/Zyphra/ZONOS3-Mini"
+      ],
+      "summary": "Zyphra released ZONOS3-Mini with public Apache 2.0 weights, browser WebGPU, CUDA, MLX, C++/ggml and SGLang runtimes. The 800M-parameter mixture-of-experts model uses about 100M active parameters per token, supports 43 languages and can clone a voice from a reference clip. Publisher quality and speed results are not independently reproduced.",
+      "summary_en": "Zyphra released ZONOS3-Mini with public Apache 2.0 weights, browser WebGPU, CUDA, MLX, C++/ggml and SGLang runtimes. The 800M-parameter mixture-of-experts model uses about 100M active parameters per token, supports 43 languages and can clone a voice from a reference clip. Publisher quality and speed results are not independently reproduced.",
+      "summary_zh": "Zyphra 公开 ZONOS3-Mini 的 Apache 2.0 权重，以及浏览器 WebGPU、CUDA、MLX、C++/ggml 与 SGLang 运行时。这个 800M 参数的混合专家模型每个 token 约激活 100M 参数，支持 43 种语言，可从参考音频克隆声音。质量与速度均为发布方自测，尚未独立复现。",
+      "why_it_matters": "For local assistants, games and narration, a compact multilingual voice model can now run without sending reference audio to a remote API. Voice cloning also raises consent and impersonation risks, so deployments need explicit speaker authorization and watermarking or disclosure policy.",
+      "why_it_matters_en": "For local assistants, games and narration, a compact multilingual voice model can now run without sending reference audio to a remote API. Voice cloning also raises consent and impersonation risks, so deployments need explicit speaker authorization and watermarking or disclosure policy.",
+      "why_it_matters_zh": "对本地助手、游戏与旁白来说，一个紧凑的多语言语音模型现在可以不上传参考音频就运行。声音克隆也带来同意与冒充风险，因此部署必须取得说话人授权，并设置水印或披露规则。",
+      "technical_details": {
+        "architecture": "800M total / approximately 100M active parameters per token",
+        "license": "Apache-2.0",
+        "languages": 43,
+        "runtimes": "WebGPU, CUDA, MLX, C++/ggml, SGLang-Omni",
+        "capabilities": "zero-shot voice cloning; word-level emotion, pace and delivery control; up to 10 minutes per generation",
+        "publisher_performance": "80 ms median time to first audio at 8 concurrent H100 requests; 457 seconds audio/s peak throughput",
+        "availability": "public weights, GGUF and WebGPU shards; hosted Zyphra Cloud API",
+        "time_basis": "Zyphra report dated 2026-11-09; Hugging Face createdAt 2026-11-09T05:03:57Z. Added as recall-audit late discovery.",
+        "evidence_limit": "Publisher-run ZTTS2 evaluation and H100 measurements; no independent listening, WER or device benchmark found."
+      },
+      "technical_details_zh": {
+        "架构": "800M 总参数 / 每 token 约 100M 激活参数",
+        "许可证": "Apache-2.0",
+        "语言数": 43,
+        "运行方式": "WebGPU、CUDA、MLX、C++/ggml、SGLang-Omni",
+        "能力": "zero-shot 声音克隆；逐词情感、语速与表达控制；单次最长 10 分钟",
+        "厂商自报性能": "H100 8 并发时首段音频中位数 80 ms；峰值每秒生成 457 秒音频",
+        "开放范围": "公开权重、GGUF 与 WebGPU shards；Zyphra Cloud 托管 API",
+        "时间依据": "Zyphra 报告日期为 2026-11-09；Hugging Face createdAt 为 2026-11-09T05:03:57Z。由召回自检补录。",
+        "证据限制": "ZTTS2 评测与 H100 测量均由发布方完成；未找到独立听测、WER 或设备 benchmark。"
+      },
+      "tags": [
+        "text-to-speech",
+        "voice-cloning",
+        "on-device",
+        "open-weights",
+        "WebGPU"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "zyphra-zonos3-mini-local-tts",
+      "short_label_zh": "ZONOS3-Mini",
+      "short_label_en": "ZONOS3-Mini",
+      "next_action_zh": "一天内用公开 WebGPU 或 MLX 运行时测试 20 段授权音频，记录 WER、音色相似度、首段时延、内存与跨语言退化。",
+      "next_action_en": "Within one day, test 20 authorized clips with the public WebGPU or MLX runtime and record WER, speaker similarity, time to first audio, memory and cross-language degradation.",
+      "source_ids": [
+        "src-e95847999132123b",
+        "src-25b629867bd0af67",
+        "src-3915ec1d42ef4b51"
+      ],
+      "project_ids": [
+        "zonos3-mini"
+      ],
+      "scenario_ids": [
+        "local-models",
+        "speech"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261109-09-evidence",
+          "claim_zh": "官方报告、模型卡与运行时仓库确认权重、许可证、架构、语言与本地运行路径；效果仍为发布方自测。",
+          "claim_en": "The official report, model card and runtime repository confirm weights, license, architecture, languages and local runtimes; results remain publisher-run.",
+          "source_ids": [
+            "src-e95847999132123b",
+            "src-25b629867bd0af67",
+            "src-3915ec1d42ef4b51"
+          ],
+          "event_ids": [
+            "ev-20261109-09"
+          ],
+          "relation": "support",
+          "verification": "verified-public-artifacts; performance not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261109-09-release",
+          "kind": "new",
+          "occurred_at": "2026-11-09T05:03:57Z",
+          "discovered_at": "2026-11-12T17:00:14Z",
+          "summary_zh": "Zyphra 公开 ZONOS3-Mini 权重与多种本地运行时。",
+          "summary_en": "Zyphra publishes ZONOS3-Mini weights and multiple local runtimes.",
+          "evidence_ids": [
+            "ev-20261109-09-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }
