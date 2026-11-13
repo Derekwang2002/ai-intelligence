@@ -1,4 +1,4 @@
-# 当前趋势看板 — 2026-11-12T17:00Z
+# 当前趋势看板 — 2026-11-13T17:04:57Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
@@ -117,6 +117,7 @@
 - 2026-11-11：本轮没有改变该趋势判断的新信号。
 - 2026-11-11T17:04:24Z：本轮没有发现足以改变该趋势判断的新独立信号。
 - 2026-11-12T17:00:14Z：Nex-N2.6 新增公开 FP8 权重，ERNIE 5.5 Flash 仍只开放 API；两者成绩都缺独立复现，维持 strengthening / Medium。
+- 2026-11-13T17:04:57Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
@@ -227,13 +228,14 @@
 - 2026-11-11：LiteLLM 1.108.4 修复 gateway 护栏与 BYOK 路由，但单一维护版不足以改变趋势判断。
 - 2026-11-11T17:04:24Z：本轮没有发现足以改变该趋势判断的新独立信号。
 - 2026-11-12T17:00:14Z：本次复核没有发现足以改变状态或置信度的新独立信号。
+- 2026-11-13T17:04:57Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
 - **Status:** established
 - **Confidence:** High
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-11-04
+- **Last updated:** 2026-11-14
 - **Time Horizon:** Sustained
 - **当前判断:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Why It Matters:** 升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
@@ -349,6 +351,7 @@
 - 2026-11-11：Agent Substrate 把大量间歇式 agent session 的检查点恢复带入 CNCF Sandbox，强化 runtime 基础设施信号；趋势维持 established / High。
 - 2026-11-11T17:04:24Z：本轮没有发现足以改变该趋势判断的新独立信号。
 - 2026-11-12T17:00:14Z：Qwen Code 1.0 Preview 合并 Qoder 与 Qwen Code，但仍是预发布，尚不足以改变 established / High。
+- 2026-11-13T17:04:57Z：Codex 持久 side chat、Qwen Code 共享 agent loop 与 Claude Code Code Mode 延续 runtime 收敛，但未改变 established / High。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -455,13 +458,14 @@
 - 2026-11-11：Fable 5.2 发布系统卡并披露部分安全测试，但能力与安全结果仍主要来自厂商；判断不变。
 - 2026-11-11T17:04:24Z：本轮没有发现足以改变该趋势判断的新独立信号。
 - 2026-11-12T17:00:14Z：本次复核没有发现足以改变状态或置信度的新独立信号。
+- 2026-11-13T17:04:57Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
 - **Status:** candidate
 - **Confidence:** Low
 - **First observed:** 2026-08-18
-- **Last updated:** 2026-11-04
+- **Last updated:** 2026-11-14
 - **Time Horizon:** Emerging
 - **当前判断:** 维持候选方向、低置信度。PSP 已有具体配置指南，旧记录中“尚未兑现”的概括需要修正。现有材料仍不足以证明多家独立组织已经在生产中采用。
 - **Why It Matters:** 对需要控制数据和执行边界的团队，选型应同时检查模型能力与部署条件。厂商提供配置指南可以支持试点，但不能替代自身的部署验收与独立采用证据。
@@ -546,6 +550,7 @@
 - 2026-11-11：NVIDIA 同日开源 Agent Substrate、Snapshot 与 NVKE/NVKR，显示自托管执行面继续成形；信号来自同一厂商，维持 candidate / Low。
 - 2026-11-11T17:04:24Z：本轮没有发现足以改变该趋势判断的新独立信号。
 - 2026-11-12T17:00:14Z：NVIDIA 与 Google Cloud 的开源 AIBOM 集成增加了运行时资产治理证据，但尚未形成广泛采用，维持 candidate / Low。
+- 2026-11-13T17:04:57Z：llama.cpp 1.0 的 API/ABI 契约与服务端加固补充自托管证据，但尚无跨组织采用数据，维持 candidate / Low。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -635,13 +640,14 @@
 - 2026-11-11：Fable 5.2 以约 1,000 个 agent 在 30 小时完成费马大定理形式化的结果来自 Anthropic 单次实验，强化信号但不足以改变 emerging / Medium。
 - 2026-11-11T17:04:24Z：本轮没有发现足以改变该趋势判断的新独立信号。
 - 2026-11-12T17:00:14Z：本次复核没有发现足以改变状态或置信度的新独立信号。
+- 2026-11-13T17:04:57Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-11-12
+- **Last updated:** 2026-11-14
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -739,5 +745,6 @@
 - 2026-11-11：Claude Code 2.1.321 同时修复 OAuth secret 跳转与沙箱权限缺口，继续说明执行能力与后果控制必须分层；维持 strengthening / Medium。
 - 2026-11-11T17:04:24Z：Lazarus 把控制边界进一步上移到权重来源与完整性；它强化分层防御方向，但尚无独立复现，维持 strengthening / Medium。
 - 2026-11-12T17:00:14Z：本次复核没有发现足以改变状态或置信度的新独立信号。
+- 2026-11-13T17:04:57Z：LLMON、CapLite 与 ChatGPT Wallet 分别增加结构化输入、代码授权和逐笔人工确认的证据；都缺少广泛独立部署，维持 strengthening / Medium。
 
 ## Invalidated / retired

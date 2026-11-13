@@ -161,8 +161,8 @@
     },
     {
       "event_id": "ev-20260818-02",
-      "title": "Codex 0.167.2 streams Vertex AI tool updates by default",
-      "title_zh": "Codex 0.167.2 默认流式返回 Vertex AI 工具更新",
+      "title": "Codex 0.169.0 adds persistent side chats and broader provider controls",
+      "title_zh": "Codex 0.169.0 加入持久 side chat 与更完整的 provider 控制",
       "category": "developer-tools",
       "organization": [
         "OpenAI",
@@ -171,7 +171,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-11-12T17:00:14Z",
+      "last_updated_at": "2026-11-13T17:04:57Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [
@@ -188,12 +188,14 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.163.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.164.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.165.0",
-        "https://github.com/openai/codex/releases/tag/rust-v0.167.2"
+        "https://github.com/openai/codex/releases/tag/rust-v0.167.2",
+        "https://github.com/openai/codex/releases/tag/rust-v0.168.0",
+        "https://github.com/openai/codex/releases/tag/rust-v0.169.0"
       ],
-      "summary": "Codex 0.167.2 makes incremental tool updates the default when using Google Cloud Vertex AI. The stable patch changes delivery behavior but reports no measured latency or compatibility effect.",
+      "summary": "Codex 0.168.0 and 0.169.0 add opt-in side conversations, then multiple persistent side-chat tabs, task search, custom model-provider controls, SSH device-code onboarding and diagnostic ZIP export. Version 0.168.0 also adds audio attachments and account-scoped local history. These are stable releases, but side chats remain an opt-in TUI feature.",
       "why_it_matters": "For Vertex AI-backed coding agents, clients may see tool output earlier, but stream ordering, reconnect and resume behavior become upgrade boundaries. Teams on other backends see no documented material change.",
-      "summary_zh": "Codex 0.167.2 在使用 Google Cloud Vertex AI 时默认启用增量工具更新。这个稳定补丁改变了工具结果的交付方式，但没有公布时延或兼容性数据。",
-      "summary_en": "Codex 0.167.2 makes incremental tool updates the default when using Google Cloud Vertex AI. The stable patch changes delivery behavior but reports no measured latency or compatibility effect.",
+      "summary_zh": "Codex 0.168.0 与 0.169.0 先加入 opt-in side conversation，再扩展为可持久化的多 side-chat 标签；同时新增任务搜索、自定义 model provider 控制、SSH device-code 登录和诊断 ZIP 导出。0.168.0 还加入音频附件与账号隔离的本地历史。版本为稳定发布，但 side chat 仍需在 TUI 中主动开启。",
+      "summary_en": "Codex 0.168.0 and 0.169.0 add opt-in side conversations, then multiple persistent side-chat tabs, task search, custom model-provider controls, SSH device-code onboarding and diagnostic ZIP export. Version 0.168.0 also adds audio attachments and account-scoped local history. These are stable releases, but side chats remain an opt-in TUI feature.",
       "why_it_matters_zh": "对使用 Vertex AI 的编码 agent 来说，客户端可能更早收到工具输出，但流顺序、重连与恢复成为升级边界。其他后端没有记录到实质变化。",
       "why_it_matters_en": "For Vertex AI-backed coding agents, clients may see tool output earlier, but stream ordering, reconnect and resume behavior become upgrade boundaries. Teams on other backends see no documented material change.",
       "technical_details": {
@@ -228,7 +230,9 @@
         "time_basis_2026_11_06": "GitHub release published 2026-11-06T01:40:00Z.",
         "update_2026_11_12": "Incremental tool updates are default on Google Cloud Vertex AI.",
         "time_basis_2026_11_12": "GitHub release published 2026-11-11T22:44:46Z.",
-        "evidence_limit": "No latency or compatibility measurements in release notes."
+        "evidence_limit": "No latency or compatibility measurements in release notes.",
+        "latest_version": "0.169.0",
+        "update_2026_11_13": "Persistent multi-tab side chats, task search, custom providers, SSH device-code onboarding and diagnostic ZIP."
       },
       "tags": [
         "codex",
@@ -288,7 +292,9 @@
         "时间依据_2026_11_06": "GitHub release 于 2026-11-06T01:40:00Z 发布。",
         "2026-11-12 更新": "Google Cloud Vertex AI 默认启用增量工具更新。",
         "2026-11-12 时间依据": "GitHub release 发布于 2026-11-11T22:44:46Z。",
-        "证据限制": "release notes 没有时延或兼容性测量。"
+        "证据限制": "release notes 没有时延或兼容性测量。",
+        "最新版本": "0.169.0",
+        "2026-11-13 更新": "持久化多标签 side chat、任务搜索、自定义 provider、SSH device-code 登录与诊断 ZIP。"
       },
       "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
       "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
@@ -313,7 +319,9 @@
         "src-b28a06ef950a1f61",
         "src-bd138645120f03ef",
         "src-b8ddb6db7e02a2ca",
-        "src-917e81f74d6a6479"
+        "src-917e81f74d6a6479",
+        "src-6cfc942e5da70ee0",
+        "src-a0c08c461d827e1c"
       ],
       "project_ids": [
         "codex"
@@ -466,6 +474,20 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; operational effect not measured"
+        },
+        {
+          "id": "ev-20260818-02-evidence-0-169",
+          "claim_zh": "官方 releases 记录两个稳定版的 side chat 与连接管理能力。",
+          "claim_en": "Official releases document side-chat and connection-management capabilities in both stable versions.",
+          "source_ids": [
+            "src-6cfc942e5da70ee0",
+            "src-a0c08c461d827e1c"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -610,11 +632,24 @@
           ],
           "historical": false,
           "importance": "normal"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-168-169",
+          "kind": "update",
+          "occurred_at": "2026-11-13T08:37:05Z",
+          "discovered_at": "2026-11-13T17:04:57Z",
+          "summary_zh": "0.168.0/0.169.0 增加持久 side chat、任务搜索与 provider/SSH 管理。",
+          "summary_en": "Versions 0.168.0/0.169.0 add persistent side chats, task search and provider/SSH controls.",
+          "evidence_ids": [
+            "ev-20260818-02-evidence-0-169"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "Codex 0.158.0: MCP OAuth client secrets, authenticated exec-server WebSockets, default terminal-input approval and cross-platform sandbox fixes; stays ADOPT",
-      "next_action_zh": "升级前回归 Vertex AI 长工具输出的顺序、重复、重连与 session resume；未使用 Vertex AI 的团队无需因此升级。",
-      "next_action_en": "Before upgrading, regress ordering, duplication, reconnect and session resume for long Vertex AI tool outputs; teams not using Vertex AI need not upgrade for this patch.",
+      "next_action_zh": "升级到 0.169.0，并回归 side chat 持久化、账号隔离历史、自定义 provider 与 SSH 登录。",
+      "next_action_en": "Upgrade to 0.169.0 and regress side-chat persistence, account-scoped history, custom providers and SSH sign-in.",
       "short_label_zh": "Codex 0.167.2",
       "short_label_en": "Codex 0.167.2",
       "last_reviewed_at": "2026-10-16T15:56:07Z",

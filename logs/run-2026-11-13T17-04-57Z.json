@@ -1,0 +1,1023 @@
+{
+  "id": "2026-11-13T17-04-57Z",
+  "run_started_at": "2026-11-13T17:04:57Z",
+  "previous_checkpoint": "2026-11-12T17:00:14Z",
+  "window": {
+    "from": "2026-11-12T17:00:14Z",
+    "to": "2026-11-13T17:04:57Z",
+    "overlap_from": "2026-11-12T14:00:14.000Z"
+  },
+  "status": "complete",
+  "summary_zh": "本轮新增 9 个事件、更新 4 个已有事件；36 个固定入口全部成功并读完。",
+  "summary_en": "This run adds nine events and updates four existing events; all 36 fixed monitors succeeded and were read.",
+  "actual_change_ids": [
+    "ev-20261112-01-release",
+    "ev-20261112-02-release",
+    "ev-20261112-03-paper",
+    "ev-20261113-01-rollout",
+    "ev-20261113-02-release",
+    "ev-20260814-04-claude-2-1-323",
+    "ev-20260818-02-codex-0-168-169",
+    "ev-20260922-04-qwen-0-27-3",
+    "ev-20261015-04-llama-cpp-1-0",
+    "ev-20261112-04-release",
+    "ev-20261112-05-release",
+    "ev-20261113-03-ignore",
+    "ev-20261113-04-ignore"
+  ],
+  "candidate_decisions": [
+    {
+      "title": "Gemini 4 Hydrogen",
+      "decision": "new-event",
+      "event_id": "ev-20261112-01",
+      "reason": "Public API, price and availability materially change model-routing options; exact official feed time is inside the window.",
+      "candidate": "gemini-4-hydrogen"
+    },
+    {
+      "title": "IBM LLMON and Granite previews",
+      "decision": "new-event",
+      "event_id": "ev-20261112-02",
+      "reason": "Public weights and toolkit make the security method reproducible; publisher-run evidence limits the recommendation to a trial.",
+      "candidate": "ibm-llmon"
+    },
+    {
+      "title": "CapLite",
+      "decision": "new-event",
+      "event_id": "ev-20261112-03",
+      "reason": "The paper reports a decision-relevant authorization result; missing public code caps the recommendation at WATCH.",
+      "candidate": "caplite"
+    },
+    {
+      "title": "ChatGPT Wallet",
+      "decision": "new-event",
+      "event_id": "ev-20261113-01",
+      "reason": "A real payment boundary is now rolling out, with narrow eligibility and per-purchase approval preserved.",
+      "candidate": "chatgpt-wallet"
+    },
+    {
+      "title": "XYBench",
+      "decision": "new-event",
+      "event_id": "ev-20261113-02",
+      "reason": "Public data and code create a reproducible evaluation for recovering user goals; exact feed time is two minutes before cutoff.",
+      "candidate": "xybench"
+    },
+    {
+      "title": "Claude Code 2.1.323",
+      "decision": "update-existing",
+      "event_id": "ev-20260814-04",
+      "reason": "Experimental Code Mode and fail-closed permission fixes materially update the existing Claude Code judgment.",
+      "candidate": "claude-code-2-1-323"
+    },
+    {
+      "title": "Codex 0.168.0 and 0.169.0",
+      "decision": "update-existing",
+      "event_id": "ev-20260818-02",
+      "reason": "Persistent side chats and provider/SSH controls materially update the existing Codex event.",
+      "candidate": "codex-0-168-169"
+    },
+    {
+      "title": "Qwen Code 0.27.3",
+      "decision": "update-existing",
+      "event_id": "ev-20260922-04",
+      "reason": "Stable background ACP and the shared agent loop materially update the existing Qwen Code event.",
+      "candidate": "qwen-code-0-27-3"
+    },
+    {
+      "title": "llama.cpp 1.0",
+      "decision": "update-existing",
+      "event_id": "ev-20261015-04",
+      "reason": "The stable API/ABI contract and server hardening change the recommendation from TRIAL to ADOPT.",
+      "candidate": "llama-cpp-1-0"
+    },
+    {
+      "title": "LiteLLM 1.108.7",
+      "decision": "filtered",
+      "event_id": null,
+      "reason": "This patch belongs to an older release branch than 1.109.1 already recorded and does not change the current judgment.",
+      "candidate": "litellm-1-108-7"
+    },
+    {
+      "title": "Ollama releases",
+      "decision": "filtered",
+      "event_id": null,
+      "reason": "No stable release newer than the already handled 0.40.16 was found.",
+      "candidate": "ollama-no-new-stable"
+    },
+    {
+      "title": "Gemini CLI releases",
+      "decision": "filtered",
+      "event_id": null,
+      "reason": "No stable release newer than the already handled November 10 version was found.",
+      "candidate": "gemini-cli-no-new-stable"
+    },
+    {
+      "title": "vLLM 0.33.0rc3",
+      "decision": "duplicate",
+      "event_id": "ev-20260922-01",
+      "reason": "The prerelease was already handled by the existing vLLM event.",
+      "candidate": "vllm-0-33-rc3"
+    },
+    {
+      "title": "Serving GLM-5.3 on two DGX stations",
+      "decision": "filtered",
+      "event_id": null,
+      "reason": "The vendor tutorial does not establish a new runtime release, independent result or production adoption signal.",
+      "candidate": "nvidia-glm-dgx-tutorial"
+    },
+    {
+      "title": "SOMA robot motion retargeting",
+      "decision": "filtered",
+      "event_id": null,
+      "reason": "The tutorial is useful engineering material but does not meet the event threshold in this window.",
+      "candidate": "nvidia-soma-tutorial"
+    },
+    {
+      "title": "Metal Sandbox",
+      "decision": "deferred",
+      "event_id": null,
+      "reason": "The paper has an interesting replay result, but implementation and baseline details were not verified deeply enough for this run.",
+      "candidate": "metal-sandbox-paper"
+    },
+    {
+      "title": "Cited but Unused",
+      "decision": "deferred",
+      "event_id": null,
+      "reason": "The RAG provenance result needs deeper artifact and evaluation verification before entry.",
+      "candidate": "cited-but-unused-paper"
+    },
+    {
+      "title": "Edge0-145B",
+      "decision": "new-event",
+      "event_id": "ev-20261112-04",
+      "reason": "Recall audit led to official weights, runtime and exact publication metadata; publisher performance remains bounded.",
+      "candidate": "edge0-145b"
+    },
+    {
+      "title": "Brave Search API x402 payments",
+      "decision": "new-event",
+      "event_id": "ev-20261112-05",
+      "reason": "Recall audit led to an official live payment flow; date-only publication precision is preserved as late discovery.",
+      "candidate": "brave-search-x402"
+    },
+    {
+      "title": "smolmaxxing",
+      "decision": "new-event",
+      "event_id": "ev-20261113-03",
+      "reason": "High recall-audit interest but no stable release or controlled evidence; explicitly recorded as IGNORE.",
+      "candidate": "smolmaxxing"
+    },
+    {
+      "title": "LibreAGI",
+      "decision": "new-event",
+      "event_id": "ev-20261113-04",
+      "reason": "High recall-audit interest but unclear redistribution, operator and security boundaries; explicitly recorded as IGNORE.",
+      "candidate": "libreagi"
+    }
+  ],
+  "gap_review": {
+    "due": false,
+    "next_due_at": "2026-11-20T00:00:00Z"
+  },
+  "stages": {
+    "retrieval": true,
+    "verification": true,
+    "source_verification": true,
+    "deduplication": true,
+    "analysis": true,
+    "reports": true,
+    "persistence": true,
+    "report_generation": true,
+    "event_persistence": true,
+    "daily_persistence": true,
+    "trend_update": true,
+    "index_update": true,
+    "validation": true,
+    "recall_audit": true,
+    "finalization": true
+  },
+  "checks": [
+    {
+      "id": "anthropic-news",
+      "url": "https://www.anthropic.com/news",
+      "title": "Anthropic news",
+      "kind": "announcement",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:27.091Z",
+      "content_hash": "d36df227c07e525f64d794f1e1aefd29cdd81531b846d14dc193ff026a5c1f60",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/anthropic-news.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "arxiv-ai",
+      "url": "https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=20",
+      "title": "arXiv AI recent submissions",
+      "kind": "paper",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:28.846Z",
+      "content_hash": "51c28e486086c315468050cd9afe90058d87c12a3932a7bb94fa1b82fad8f537",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/arxiv-ai.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "claude-code-releases",
+      "url": "https://api.github.com/repos/anthropics/claude-code/releases?per_page=5",
+      "title": "Claude Code releases",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:27.725Z",
+      "content_hash": "c417ef14aa815f527a1f3200e20f96ee5e0dbc1d276ae9b116670f64053ad70c",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/claude-code-releases.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "codex-releases",
+      "url": "https://api.github.com/repos/openai/codex/releases?per_page=5",
+      "title": "Codex releases",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:27.726Z",
+      "content_hash": "cf6e71168dadba090169acf9c46d92438f3a24e7a2ed1174902d8f2c735f6207",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/codex-releases.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "deepseek-updates",
+      "url": "https://api-docs.deepseek.com/updates",
+      "title": "DeepSeek API updates",
+      "kind": "documentation",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:31.031Z",
+      "content_hash": "9c663411ebe3cff48edc87e12948532f7d8429489676572400d671723141647c",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/deepseek-updates.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "gemini-cli-releases",
+      "url": "https://api.github.com/repos/google-gemini/gemini-cli/releases?per_page=5",
+      "title": "Gemini CLI releases",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:28.544Z",
+      "content_hash": "3043364eae83ab39b6fbef39f7c65d070bbbfcdc7ed697dc38bcfcc2eedb9cf2",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/gemini-cli-releases.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "github-changelog",
+      "url": "https://github.blog/changelog/",
+      "title": "GitHub changelog",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:27.724Z",
+      "content_hash": "f664b216c62c2a42de459f9d53cf84a0c33e4fd04bde5625a71c26c663485569",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/github-changelog.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "google-ai",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/",
+      "title": "Google AI blog",
+      "kind": "announcement",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:27.091Z",
+      "content_hash": "b9eaf591e70631e819aafadb35294d5ae57b78a92375073bece35cd1cb9d80c0",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/google-ai.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "google-models-research",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/rss/",
+      "title": "Google models and research feed (Gemini, DeepMind)",
+      "kind": "announcement",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:29.126Z",
+      "content_hash": "487ae17d289907dfeeddcc92f644110b9ad1ab3438ef394a175914179c137d6b",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/google-models-research.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "title": "Hugging Face blog",
+      "kind": "announcement",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:28.844Z",
+      "content_hash": "878760d2f6d5099adecd9f5e0952aabe29877bcf4042c86cd02f0fe7543bde07",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-blog.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-bytedance-seed",
+      "url": "https://huggingface.co/api/models?author=ByteDance-Seed&sort=createdAt&direction=-1&limit=10",
+      "title": "ByteDance Seed Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.929Z",
+      "content_hash": "dea4b96543e4fce26d832c5e5de52614f1c05f5cd75683a5de154d34c3840102",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-bytedance-seed.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-deepseek-ai",
+      "url": "https://huggingface.co/api/models?author=deepseek-ai&sort=createdAt&direction=-1&limit=10",
+      "title": "DeepSeek Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:32.680Z",
+      "content_hash": "77eda536c6e4e63fd6d62cfefc5610be5c5e1871cf925b6af214c09916b1233d",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-deepseek-ai.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-google",
+      "url": "https://huggingface.co/api/models?author=google&sort=createdAt&direction=-1&limit=10",
+      "title": "Google Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.825Z",
+      "content_hash": "1514744086d3f2e9891b1d59f5a0959709aaad35b0d522263bd658ccdceac57f",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-google.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-meta-llama",
+      "url": "https://huggingface.co/api/models?author=meta-llama&sort=createdAt&direction=-1&limit=10",
+      "title": "Meta Llama Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.715Z",
+      "content_hash": "79d2324de09cd7c82d7c60af70845d2b0bc68c5f1d9158b70aae18cc43490ec8",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-meta-llama.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-minimaxai",
+      "url": "https://huggingface.co/api/models?author=MiniMaxAI&sort=createdAt&direction=-1&limit=10",
+      "title": "MiniMax Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.825Z",
+      "content_hash": "6a90bbd77593f930c77270ca7634fdf8ea2a0f7eb891e33113d7766c44c2fcce",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-minimaxai.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-mistralai",
+      "url": "https://huggingface.co/api/models?author=mistralai&sort=createdAt&direction=-1&limit=10",
+      "title": "Mistral AI Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.715Z",
+      "content_hash": "1068c329994531bb0520d9051802d755f0c60581a6e62a1571e6ca6463e0ee1a",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-mistralai.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-moonshotai",
+      "url": "https://huggingface.co/api/models?author=moonshotai&sort=createdAt&direction=-1&limit=10",
+      "title": "Moonshot AI Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.612Z",
+      "content_hash": "54da7dda423727c2c4cb93caa44a25a18efe735e2d708b9d58aa811779587ee2",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-moonshotai.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-nvidia",
+      "url": "https://huggingface.co/api/models?author=nvidia&sort=createdAt&direction=-1&limit=10",
+      "title": "NVIDIA Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.715Z",
+      "content_hash": "8e51bfe505d8e6306b2426287e252087a2d31817a04e0f0b8a6913d35755eb4e",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-nvidia.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-qwen",
+      "url": "https://huggingface.co/api/models?author=Qwen&sort=createdAt&direction=-1&limit=10",
+      "title": "Qwen Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:32.681Z",
+      "content_hash": "dc93b40ba8ba815e317b750039d8c88777120f6b99a56817ec2bce5753bfb18e",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-qwen.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-tencent",
+      "url": "https://huggingface.co/api/models?author=tencent&sort=createdAt&direction=-1&limit=10",
+      "title": "Tencent Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.825Z",
+      "content_hash": "00c73f629e0d1c5859e64f93b3f723a9022d6f37692c83bcc60a7bfb3ddc09d8",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-tencent.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-xiaomimimo",
+      "url": "https://huggingface.co/api/models?author=XiaomiMiMo&sort=createdAt&direction=-1&limit=10",
+      "title": "Xiaomi MiMo Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.612Z",
+      "content_hash": "b9786ca48fbab6f998aa908c42fedd5d4d162feb669350128d3cb4105268f959",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-xiaomimimo.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "hf-org-zai-org",
+      "url": "https://huggingface.co/api/models?author=zai-org&sort=createdAt&direction=-1&limit=10",
+      "title": "Z.ai Hugging Face repositories",
+      "kind": "weights",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.612Z",
+      "content_hash": "2c20cbe4fb87133f16d40cdcee35e0804ccea448c94b1a5b0b1c93905596c724",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/hf-org-zai-org.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "litellm-releases",
+      "url": "https://api.github.com/repos/BerriAI/litellm/releases?per_page=5",
+      "title": "LiteLLM releases",
+      "kind": "release",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.930Z",
+      "content_hash": "15abb284505e19912d6e34e3755e79f28e3c898e21677e4a50b5d95673822ed2",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/litellm-releases.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "mcp-python-sdk-releases",
+      "url": "https://api.github.com/repos/modelcontextprotocol/python-sdk/releases?per_page=5",
+      "title": "MCP Python SDK releases",
+      "kind": "release",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:36.330Z",
+      "content_hash": "0da8dc4dea2a585127a6baf9d3c393e1709058c15d319b13b2c793e1430c72e0",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/mcp-python-sdk-releases.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "mcp-typescript-sdk-releases",
+      "url": "https://api.github.com/repos/modelcontextprotocol/typescript-sdk/releases?per_page=5",
+      "title": "MCP TypeScript SDK releases",
+      "kind": "release",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:36.330Z",
+      "content_hash": "036ebcee455ef1e5e856f4f086d0e4e86872e9d4ea5af27cd91b15df5a165aef",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/mcp-typescript-sdk-releases.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "meta-ai-blog",
+      "url": "https://ai.meta.com/blog/",
+      "title": "Meta AI blog",
+      "kind": "announcement",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:29.127Z",
+      "content_hash": "aff6d4c8d3228a71408133ef5afafe4ec7851033693af0c683a3f63bba567112",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/meta-ai-blog.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "microsoft-research",
+      "url": "https://www.microsoft.com/en-us/research/feed/",
+      "title": "Microsoft Research feed",
+      "kind": "announcement",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:32.679Z",
+      "content_hash": "ace6dda2a0def98f5c946bfe9af197e0e56d468a9e0555a125b6dc15bf0a3992",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/microsoft-research.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "mistral-news",
+      "url": "https://mistral.ai/rss.xml",
+      "title": "Mistral AI news feed",
+      "kind": "announcement",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:31.030Z",
+      "content_hash": "dd2565b1e2ccb7222db9a89a1dfd3ba20532284d4b7e8ee5b97ebf45025e7978",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/mistral-news.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "nvidia-developer-blog",
+      "url": "https://developer.nvidia.com/blog/feed",
+      "title": "NVIDIA developer blog feed",
+      "kind": "announcement",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:31.031Z",
+      "content_hash": "ee675ce7bb4ee49b2b382c7f05f3ee195e47fcca3afa226c04f5d5cd441facf5",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/nvidia-developer-blog.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "ollama-releases",
+      "url": "https://api.github.com/repos/ollama/ollama/releases?per_page=5",
+      "title": "Ollama releases",
+      "kind": "release",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:35.929Z",
+      "content_hash": "72e94d889812769cc7b2380cc9dd039932766a496bb2837ae76d8ff66b52c525",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/ollama-releases.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "openai-api",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "title": "OpenAI API changelog",
+      "kind": "documentation",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:27.070Z",
+      "content_hash": "1803d521d6566b917994e69bde3d528b68890af45114f1e9f2f34acf7c6b366e",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/openai-api.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "openai-news",
+      "url": "https://openai.com/news/rss.xml",
+      "title": "OpenAI news feed",
+      "kind": "announcement",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:28.847Z",
+      "content_hash": "f0775347214c218ec07c78d23aa8bb086ed72f1c792fffb8b92cda0e04c0e143",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/openai-news.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "qwen-code-releases",
+      "url": "https://api.github.com/repos/QwenLM/qwen-code/releases?per_page=5",
+      "title": "Qwen Code releases",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:28.544Z",
+      "content_hash": "a7d62620a433db681a6436cbaba30057daff2561b8c350c70eb269ced1197c55",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/qwen-code-releases.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "sglang-releases",
+      "url": "https://api.github.com/repos/sgl-project/sglang/releases?per_page=5",
+      "title": "SGLang releases",
+      "kind": "release",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:36.330Z",
+      "content_hash": "46d6098a95c9912811e31a205f0454d731adc9a5a5272d9f2c16796a82e28e30",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/sglang-releases.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "vllm-releases",
+      "url": "https://api.github.com/repos/vllm-project/vllm/releases?per_page=5",
+      "title": "vLLM releases",
+      "kind": "release",
+      "required": true,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:28.545Z",
+      "content_hash": "d1aba8f4c22e286b63ff1aba00aad8a243d3d7180ed9c5a2dd6431c122cbc714",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/vllm-releases.txt",
+      "analysis_status": "complete"
+    },
+    {
+      "id": "xai-release-notes",
+      "url": "https://docs.x.ai/developers/release-notes.md",
+      "title": "xAI API release notes (Markdown; the HTML page is client-rendered)",
+      "kind": "documentation",
+      "required": false,
+      "status": "success",
+      "checked_at": "2026-11-13T17:05:29.126Z",
+      "content_hash": "358f39c588d5a93423fbd73d013d66e960a075f6302414c7c8e1c9f223ebc5af",
+      "capture": "logs/captures/2026-11-13T17-04-57Z/xai-release-notes.txt",
+      "analysis_status": "complete"
+    }
+  ],
+  "written_files": [
+    "events/2026-08-14.json",
+    "events/2026-08-18.json",
+    "events/2026-09-22.json",
+    "events/2026-10-15.json",
+    "events/2026-11-12.json",
+    "events/2026-11-13.json",
+    "daily/2026-11-14.md",
+    "daily/2026-11-14.en.md",
+    "trends/2026-11-14.md",
+    "trends/2026-11-14.en.md",
+    "trends/current.json",
+    "trends/current.md",
+    "index/events.json",
+    "briefings/2026-11-13T17-04-57Z.json",
+    "projects/catalog.json",
+    "sources/catalog.json",
+    "reviews/queue.json"
+  ],
+  "recall_audit": {
+    "checked_at": "2026-11-13T17:22:19.032Z",
+    "window": {
+      "from": "2026-11-10T17:04:57.000Z",
+      "to": "2026-11-13T17:04:57Z"
+    },
+    "thresholds": {
+      "min_points": 150,
+      "hf_limit": 30,
+      "hf_max_age_days": 14
+    },
+    "sources": [
+      {
+        "id": "hn",
+        "status": "success",
+        "count": 30
+      },
+      {
+        "id": "hf-trending",
+        "status": "success",
+        "count": 11
+      }
+    ],
+    "matched": [
+      {
+        "id": "hn:50456791",
+        "title": "Gemini Decisions API",
+        "event_ids": [
+          "ev-20261111-04"
+        ]
+      },
+      {
+        "id": "hn:50471431",
+        "title": "Gemini 4 Hydrogen",
+        "event_ids": [
+          "ev-20261112-01"
+        ]
+      },
+      {
+        "id": "hn:50468888",
+        "title": "I'm making LLMs work on small and old devices",
+        "event_ids": [
+          "ev-20261113-03"
+        ]
+      },
+      {
+        "id": "hn:50475713",
+        "title": "Edge0-145B: Frontier AI Capabilities on Your Own Computer",
+        "event_ids": [
+          "ev-20261112-04"
+        ]
+      },
+      {
+        "id": "hn:50477649",
+        "title": "Brave Search API now accepts agentic payments via the x402 protocol",
+        "event_ids": [
+          "ev-20261112-05"
+        ]
+      },
+      {
+        "id": "hn:50467439",
+        "title": "Libreagi – Save OSS Models",
+        "event_ids": [
+          "ev-20261113-04"
+        ]
+      },
+      {
+        "id": "hf:NousResearch/Arete-27B",
+        "title": "NousResearch/Arete-27B",
+        "event_ids": [
+          "ev-20261106-03"
+        ]
+      },
+      {
+        "id": "hf:moonshotai/Kimi-K3.1-Pro",
+        "title": "moonshotai/Kimi-K3.1-Pro",
+        "event_ids": [
+          "ev-20261102-10"
+        ]
+      },
+      {
+        "id": "hf:Zyphra/ZONOS3-Mini",
+        "title": "Zyphra/ZONOS3-Mini",
+        "event_ids": [
+          "ev-20261109-09"
+        ]
+      },
+      {
+        "id": "hf:Cactus-Compute/mirage",
+        "title": "Cactus-Compute/mirage",
+        "event_ids": [
+          "ev-20261106-05"
+        ]
+      },
+      {
+        "id": "hf:ricursiveAI/Ripple-65B-Preview",
+        "title": "ricursiveAI/Ripple-65B-Preview",
+        "event_ids": [
+          "ev-20261104-02"
+        ]
+      }
+    ],
+    "previously_handled": 13,
+    "items": [
+      {
+        "id": "hn:50452455",
+        "signal": "hn",
+        "title": "My AI agents found an unmapped Maya site?",
+        "url": "https://pietromiotti.com/latest/maya-site",
+        "discussion_url": "https://news.ycombinator.com/item?id=50452455",
+        "score": 1033,
+        "published_at": "2026-11-11T12:05:22Z",
+        "suggested_event_ids": [],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "The archaeology claim remains high-interest but lacks institutional confirmation and reproducible evidence."
+      },
+      {
+        "id": "hn:50477231",
+        "signal": "hn",
+        "title": "Nvidia employees petition to bring back Jensen Huang",
+        "url": "https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/",
+        "discussion_url": "https://news.ycombinator.com/item?id=50477231",
+        "score": 750,
+        "published_at": "2026-11-13T02:16:24Z",
+        "suggested_event_ids": [],
+        "disposition": "out-of-scope",
+        "event_id": null,
+        "reason": "Employee reaction to the already verified NVIDIA leadership transition does not create a separate AI technical event."
+      },
+      {
+        "id": "hn:50458900",
+        "signal": "hn",
+        "title": "United Airlines bans AI agents from booking flights on behalf of travelers",
+        "url": "https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/",
+        "discussion_url": "https://news.ycombinator.com/item?id=50458900",
+        "score": 676,
+        "published_at": "2026-11-11T21:24:35Z",
+        "suggested_event_ids": [
+          "ev-20261027-11"
+        ],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "Secondary reporting describes an airline restriction, but the operative policy and exact scope remain unverified from a primary source."
+      },
+      {
+        "id": "hn:50446520",
+        "signal": "hn",
+        "title": "Apple has new Mac app coming to make running local AI models easy",
+        "url": "https://9to5mac.com/2026/11/10/apple-has-new-mac-app-coming-to-make-running-local-ai-models-easy/",
+        "discussion_url": "https://news.ycombinator.com/item?id=50446520",
+        "score": 560,
+        "published_at": "2026-11-10T21:25:03Z",
+        "suggested_event_ids": [
+          "ev-20261029-06",
+          "ev-20261029-03",
+          "ev-20261029-01"
+        ],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "Secondary reporting describes an unreleased Apple application; no primary announcement or downloadable product was verified."
+      },
+      {
+        "id": "hn:50472260",
+        "signal": "hn",
+        "title": "Gemini 4 Hydrogen and Orchestrator",
+        "url": "https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/",
+        "discussion_url": "https://news.ycombinator.com/item?id=50472260",
+        "score": 480,
+        "published_at": "2026-11-12T18:52:01Z",
+        "suggested_event_ids": [
+          "ev-20261112-01",
+          "ev-20260905-07"
+        ],
+        "disposition": "duplicate",
+        "event_id": "ev-20261112-01",
+        "reason": "The Antigravity article covers the Gemini 4 Hydrogen release already recorded in ev-20261112-01."
+      },
+      {
+        "id": "hn:50447074",
+        "signal": "hn",
+        "title": "Tracking Anthropic-discovered vulnerabilities",
+        "url": "https://www.vulncheck.com/blog/anthropic-glasswing-november-update",
+        "discussion_url": "https://news.ycombinator.com/item?id=50447074",
+        "score": 458,
+        "published_at": "2026-11-10T22:17:56Z",
+        "suggested_event_ids": [
+          "ev-20260913-01",
+          "ev-20260908-13",
+          "ev-20260906-01"
+        ],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "The secondary vulnerability tracker did not establish a new vendor advisory, CVE or independently confirmed impact."
+      },
+      {
+        "id": "hn:50481187",
+        "signal": "hn",
+        "title": "Elevated errors on claude.ai, Claude Code, and platform.claude.com",
+        "url": "https://status.claude.com/incidents/nn11wk485zfn",
+        "discussion_url": "https://news.ycombinator.com/item?id=50481187",
+        "score": 431,
+        "published_at": "2026-11-13T10:18:13Z",
+        "suggested_event_ids": [
+          "ev-20261109-03",
+          "ev-20261029-04",
+          "ev-20261025-03"
+        ],
+        "disposition": "filtered",
+        "event_id": null,
+        "reason": "The operational incident was short-lived status information and did not establish a durable product, security or architecture change."
+      },
+      {
+        "id": "hn:50473190",
+        "signal": "hn",
+        "title": "Former Nvidia CEO Huang had a relationship with a second employee, sources say",
+        "url": "https://www.reuters.com/technology/former-nvidia-ceo-huang-had-relationship-with-second-employee-sources-say-2026-11-12/",
+        "discussion_url": "https://news.ycombinator.com/item?id=50473190",
+        "score": 406,
+        "published_at": "2026-11-12T19:51:33Z",
+        "suggested_event_ids": [],
+        "disposition": "out-of-scope",
+        "event_id": null,
+        "reason": "The report concerns personal allegations around an already covered leadership transition and does not change the AI knowledge-base judgment."
+      },
+      {
+        "id": "hn:50474883",
+        "signal": "hn",
+        "title": "Chinese frontier AI models carry the fingerprint of export-controlled GPUs",
+        "url": "https://unemploymentlabs.com/checkpoint-forensics",
+        "discussion_url": "https://news.ycombinator.com/item?id=50474883",
+        "score": 336,
+        "published_at": "2026-11-12T21:56:11Z",
+        "suggested_event_ids": [
+          "ev-20260825-01",
+          "ev-20261110-04",
+          "ev-20261106-02"
+        ],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "The independent checkpoint-forensics claim needs methodology and sample verification before it can update hardware-provenance judgments."
+      },
+      {
+        "id": "hn:50443716",
+        "signal": "hn",
+        "title": "Claude Whiteboards, Claude Sheets, and Claude Data",
+        "url": "https://claude.com/resources/articles/sheets-whiteboards-data",
+        "discussion_url": "https://news.ycombinator.com/item?id=50443716",
+        "score": 296,
+        "published_at": "2026-11-10T17:55:07Z",
+        "suggested_event_ids": [
+          "ev-20261025-03",
+          "ev-20261012-01",
+          "ev-20261009-04"
+        ],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "The official product page still lacks precise availability and publication timing needed for a window-valid event."
+      },
+      {
+        "id": "hn:50474361",
+        "signal": "hn",
+        "title": "Foundation Models framework",
+        "url": "https://developer.apple.com/foundation-models-framework/",
+        "discussion_url": "https://news.ycombinator.com/item?id=50474361",
+        "score": 256,
+        "published_at": "2026-11-12T21:13:26Z",
+        "suggested_event_ids": [
+          "ev-20261022-02",
+          "ev-20261005-08",
+          "ev-20260929-01"
+        ],
+        "disposition": "duplicate",
+        "event_id": "ev-20261022-02",
+        "reason": "The Foundation Models framework is already represented by ev-20261022-02; renewed discussion adds no material change."
+      },
+      {
+        "id": "hn:50474311",
+        "signal": "hn",
+        "title": "AI is turning Apple's app review process into a nightmare for synth developers",
+        "url": "https://synthanatomy.com/2026/11/ai-is-turning-apples-app-review-process-into-a-nightmare-for-developers.html",
+        "discussion_url": "https://news.ycombinator.com/item?id=50474311",
+        "score": 192,
+        "published_at": "2026-11-12T21:09:49Z",
+        "suggested_event_ids": [
+          "ev-20261029-06",
+          "ev-20261029-03",
+          "ev-20261029-01"
+        ],
+        "disposition": "filtered",
+        "event_id": null,
+        "reason": "The opinion report describes app-review frustration without a new platform rule, court decision or measured ecosystem event."
+      },
+      {
+        "id": "hn:50481220",
+        "signal": "hn",
+        "title": "Claude Is Down",
+        "url": "https://status.claude.com/history",
+        "discussion_url": "https://news.ycombinator.com/item?id=50481220",
+        "score": 184,
+        "published_at": "2026-11-13T10:20:09Z",
+        "suggested_event_ids": [
+          "ev-20260901-01",
+          "ev-20260828-03",
+          "ev-20261109-03"
+        ],
+        "disposition": "filtered",
+        "event_id": null,
+        "reason": "The status-history discussion refers to the same transient incident and adds no durable decision-changing fact."
+      },
+      {
+        "id": "hn:50481870",
+        "signal": "hn",
+        "title": "AI Is Destroying the Trust Between Writers and Readers",
+        "url": "https://www.theatlantic.com/books/2026/11/ai-literary-scams-amazon/689391/",
+        "discussion_url": "https://news.ycombinator.com/item?id=50481870",
+        "score": 183,
+        "published_at": "2026-11-13T11:13:46Z",
+        "suggested_event_ids": [],
+        "disposition": "out-of-scope",
+        "event_id": null,
+        "reason": "The cultural essay does not establish a new technical release, policy, ruling or measured risk event."
+      },
+      {
+        "id": "hf:tencent/Qwen3.8-27B-DSpine-b16",
+        "signal": "hf",
+        "title": "tencent/Qwen3.8-27B-DSpine-b16",
+        "model_id": "tencent/Qwen3.8-27B-DSpine-b16",
+        "url": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16",
+        "score": 197,
+        "published_at": "2026-11-07T14:20:29.000Z",
+        "suggested_event_ids": [
+          "ev-20261106-03",
+          "ev-20261004-02",
+          "ev-20261002-05"
+        ],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "The model predates overlap and its publisher throughput and quality claims still need independent reproduction."
+      },
+      {
+        "id": "hf:thinkingmachines/Inkling-2-Small",
+        "signal": "hf",
+        "title": "thinkingmachines/Inkling-2-Small",
+        "model_id": "thinkingmachines/Inkling-2-Small",
+        "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "score": 195,
+        "published_at": "2026-11-04T19:51:05.000Z",
+        "suggested_event_ids": [
+          "ev-20261113-03",
+          "ev-20261111-03",
+          "ev-20261110-03"
+        ],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "The repository was created before overlap; a recent modification alone does not establish a new release or decision-changing capability."
+      },
+      {
+        "id": "hf:ConwayResearch/Underdog-Woof",
+        "signal": "hf",
+        "title": "ConwayResearch/Underdog-Woof",
+        "model_id": "ConwayResearch/Underdog-Woof",
+        "url": "https://huggingface.co/ConwayResearch/Underdog-Woof",
+        "score": 190,
+        "published_at": "2026-11-05T19:07:08.000Z",
+        "suggested_event_ids": [],
+        "disposition": "deferred",
+        "event_id": null,
+        "reason": "The public TTS model predates overlap and publisher comparisons still need independent audio and WER checks."
+      }
+    ]
+  }
+}

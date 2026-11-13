@@ -470,8 +470,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 1.0 Preview merges Qoder and Qwen Code",
-      "title_zh": "Qwen Code 1.0 Preview 合并 Qoder 与 Qwen Code",
+      "title": "Qwen Code 0.27.3 stabilizes background runs and its shared agent loop",
+      "title_zh": "Qwen Code 0.27.3 稳定后台运行与共享 agent loop",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -479,7 +479,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-11-12T17:00:14Z",
+      "last_updated_at": "2026-11-13T17:04:57Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
       "secondary_sources": [
@@ -503,12 +503,13 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.1",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.2",
         "https://github.com/QwenLM/qwen-code/releases/tag/v1.0.0-preview",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v1.0.0-preview.1"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v1.0.0-preview.1",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.3"
       ],
-      "summary": "Qwen Code 1.0 Preview combines Qoder and Qwen Code capabilities, adds native macOS, Linux and Windows packages, supports multiple accounts and compatible providers, and keeps session resume and non-interactive execution. Preview.1 fixes subscription-model access and enables Qoder parallel tool calls. The release is explicitly prerelease and may change interfaces or configuration.",
+      "summary": "Qwen Code 0.27.3 ships stable packages for its event-bus-based shared agent loop, background ACP runs, manual PR binding and durable /loop wakeups. It also fixes permission and managed-recovery paths. This is a stable 0.x release after the separate 1.0 preview, so API and workflow compatibility still require regression testing.",
       "why_it_matters": "For teams already testing Qwen Code, native packages and merged runtimes reduce installation friction but expand the regression surface. The preview should stay outside default production workflows until configuration, authorization and tool ordering stabilize.",
-      "summary_zh": "Qwen Code 1.0 Preview 合并 Qoder 与 Qwen Code 能力，新增 macOS、Linux 与 Windows 原生安装包，支持多种账户与兼容 provider，并保留 session resume 和非交互执行。Preview.1 修复订阅模型登录，并为 Qoder 启用并行工具调用。该版本明确属于预发布，接口与配置仍可能变化。",
-      "summary_en": "Qwen Code 1.0 Preview combines Qoder and Qwen Code capabilities, adds native macOS, Linux and Windows packages, supports multiple accounts and compatible providers, and keeps session resume and non-interactive execution. Preview.1 fixes subscription-model access and enables Qoder parallel tool calls. The release is explicitly prerelease and may change interfaces or configuration.",
+      "summary_zh": "Qwen Code 0.27.3 发布稳定包，把基于 event bus 的共享 agent loop、ACP 后台运行、手动 PR 绑定和持久化 /loop 唤醒带入稳定分支，并修复权限与受管恢复路径。它仍是 0.x 稳定版，与 1.0 preview 分开，因此 API 和工作流兼容性仍需回归。",
+      "summary_en": "Qwen Code 0.27.3 ships stable packages for its event-bus-based shared agent loop, background ACP runs, manual PR binding and durable /loop wakeups. It also fixes permission and managed-recovery paths. This is a stable 0.x release after the separate 1.0 preview, so API and workflow compatibility still require regression testing.",
       "why_it_matters_zh": "对已在测试 Qwen Code 的团队来说，原生安装包与运行时合并降低了安装门槛，也扩大了回归面。配置、授权与工具顺序稳定前，不应进入默认生产流程。",
       "why_it_matters_en": "For teams already testing Qwen Code, native packages and merged runtimes reduce installation friction but expand the regression surface. The preview should stay outside default production workflows until configuration, authorization and tool ordering stabilize.",
       "technical_details": {
@@ -520,7 +521,7 @@
         "verification": "isolated verification workspace",
         "reliability": "recovery, locking and CUA 0.27 integration fixes",
         "time_basis": "0.26.8 published 2026-11-05T16:23:57Z; 0.26.9 published 2026-11-06T16:07:57Z.",
-        "latest_stable": "0.27.2",
+        "latest_stable": "0.27.3",
         "release_2026_11_02": "Web Shell activity and performance telemetry; evidence-gated managed recovery; MCP/OAuth/approval hardening",
         "time_basis_2026_11_02": "GitHub release published 2026-11-02T18:22:40Z",
         "release_2026_11_04": "Folder trust; /verify-pr Docker workflow; host credential proxy; opt-in token-protected remote server",
@@ -536,7 +537,8 @@
         "stage": "prerelease",
         "release_2026_11_12": "Qoder/Qwen Code merge; native packages; account/provider support; session resume; non-interactive mode; Preview.1 auth fix and parallel tool calls",
         "time_basis_2026_11_12": "Preview published 2026-11-11T03:55:44Z; Preview.1 published 2026-11-12T14:25:49Z.",
-        "evidence_limit": "No stable 1.0 release or independent reliability evaluation."
+        "evidence_limit": "No stable 1.0 release or independent reliability evaluation.",
+        "update_2026_11_13": "Shared event-bus agent loop, ACP background runs, manual PR binding, durable /loop wakeups and recovery fixes."
       },
       "technical_details_zh": {
         "最新版本": "1.0.0-preview.1",
@@ -547,7 +549,7 @@
         "验证": "隔离验证 workspace",
         "可靠性": "恢复、锁与 CUA 0.27 集成修复",
         "时间依据": "0.26.8 发布于 2026-11-05T16:23:57Z；0.26.9 发布于 2026-11-06T16:07:57Z。",
-        "最新稳定版": "0.27.2",
+        "最新稳定版": "0.27.3",
         "2026-11-02 更新": "Web Shell 活动与性能遥测、证据门控的托管恢复，以及 MCP/OAuth/审批加固",
         "2026-11-04 更新": "目录信任；/verify-pr Docker 流程；宿主凭据代理；默认关闭且受 token 保护的远程服务",
         "2026-11-04 时间依据": "GitHub release 发布于 2026-11-04T04:03:01Z",
@@ -562,7 +564,8 @@
         "阶段": "预发布",
         "2026-11-12 更新": "合并 Qoder/Qwen Code；原生安装包；多账户与 provider；session resume；非交互模式；Preview.1 修复认证并启用并行工具调用",
         "2026-11-12 时间依据": "Preview 发布于 2026-11-11T03:55:44Z；Preview.1 发布于 2026-11-12T14:25:49Z。",
-        "证据限制": "尚无稳定 1.0 或独立可靠性评测。"
+        "证据限制": "尚无稳定 1.0 或独立可靠性评测。",
+        "2026-11-13 更新": "共享 event-bus agent loop、ACP 后台运行、手动 PR 绑定、持久 /loop 唤醒与恢复修复。"
       },
       "tags": [
         "qwen-code",
@@ -607,7 +610,8 @@
         "src-b1a661286db2f1a8",
         "src-88a44dd722fc8d95",
         "src-3dfc9f353bfc10d6",
-        "src-35d012f137ad20ab"
+        "src-35d012f137ad20ab",
+        "src-74c2266880cc04f0"
       ],
       "project_ids": [
         "qwen-code"
@@ -892,6 +896,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; reliability not independently tested"
+        },
+        {
+          "id": "ev-20260922-04-evidence-0-27-3",
+          "claim_zh": "官方 stable release 记录 agent loop、后台运行与恢复修复。",
+          "claim_en": "The official stable release documents the agent loop, background runs and recovery fixes.",
+          "source_ids": [
+            "src-74c2266880cc04f0"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -1164,6 +1181,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-27-3",
+          "kind": "update",
+          "occurred_at": "2026-11-13T00:24:34Z",
+          "discovered_at": "2026-11-13T17:04:57Z",
+          "summary_zh": "0.27.3 把共享 agent loop、后台 ACP 与持久 /loop 带入稳定分支。",
+          "summary_en": "Version 0.27.3 brings the shared agent loop, background ACP and durable /loop to the stable branch.",
+          "evidence_ids": [
+            "ev-20260922-04-evidence-0-27-3"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1175,8 +1205,8 @@
       },
       "short_label_zh": "Qwen Code 1.0 Preview",
       "short_label_en": "Qwen Code 1.0 Preview",
-      "next_action_zh": "一天内在隔离仓库回放登录、并行工具调用、session resume、非交互模式与审批边界，再决定是否扩大试用。",
-      "next_action_en": "Within one day, replay sign-in, parallel tools, session resume, non-interactive mode and approval boundaries in an isolated repository before expanding the trial."
+      "next_action_zh": "一天内在隔离仓库回放后台 ACP、/loop 唤醒、PR 绑定与权限拒绝恢复，记录丢任务和重复执行。",
+      "next_action_en": "Within one day, replay background ACP, /loop wakeups, PR binding and permission-denial recovery in an isolated repository, recording lost or duplicate work."
     },
     {
       "event_id": "ev-20260922-05",

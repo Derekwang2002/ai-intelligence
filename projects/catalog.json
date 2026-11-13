@@ -64,7 +64,8 @@
         "src-b624a9cbfe8c4465",
         "src-97c5df49eed3f0cf",
         "src-ace31f3b0bb1b6f0",
-        "src-dbc58eacee5d52ba"
+        "src-dbc58eacee5d52ba",
+        "src-8427d4fee9a7d1b9"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -95,19 +96,20 @@
         "src-11bfb616c2334a07",
         "src-ddf42b69c8e05c7b",
         "src-797aba84ba3e9103",
-        "src-7cf21137c37e547b"
+        "src-7cf21137c37e547b",
+        "src-8427d4fee9a7d1b9"
       ],
-      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
       "judgment": {
-        "recommendation": "TRIAL",
-        "judgment_zh": "2.1.321 修复 OAuth secret 跳转与多条沙箱权限缺口，但批准记录泄露真实密钥仍无公开可核实修复。",
-        "judgment_en": "Version 2.1.321 fixes OAuth-secret redirects and several sandbox permission gaps, but approval-record secret exposure still lacks a public verifiable fix.",
-        "next_action_zh": "升级并回归权限边界，同时继续扫描与轮换密钥。",
-        "next_action_en": "Upgrade and regress permission boundaries while continuing secret scans and rotation.",
+        "recommendation": "ADOPT",
+        "judgment_zh": "2.1.323 修复失败即阻断与权限边界；实验性 Code Mode 需单独回归。",
+        "judgment_en": "Version 2.1.323 fixes fail-closed and permission boundaries; experimental Code Mode needs separate regression tests.",
+        "next_action_zh": "升级并回归沙箱、Bash deny、符号链接设置和后台认证。",
+        "next_action_en": "Upgrade and regress sandbox, Bash deny, symlinked settings and background authentication.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-11-10T17:03:13Z"
+        "reviewed_at": "2026-11-13T17:04:57Z"
       }
     },
     {
@@ -147,7 +149,8 @@
         "src-2df989db5683bb98",
         "src-88a44dd722fc8d95",
         "src-3dfc9f353bfc10d6",
-        "src-35d012f137ad20ab"
+        "src-35d012f137ad20ab",
+        "src-74c2266880cc04f0"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -175,19 +178,20 @@
         "src-2df989db5683bb98",
         "src-88a44dd722fc8d95",
         "src-3dfc9f353bfc10d6",
-        "src-35d012f137ad20ab"
+        "src-35d012f137ad20ab",
+        "src-74c2266880cc04f0"
       ],
-      "last_reviewed_at": "2026-11-12T17:00:14Z",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.27.1 加入托管会话诊断、可选 Mem0 个人记忆与 LSP 开关，但恢复与隐私保证仍来自 release notes。适合在隔离仓库试验，不宜直接把真实凭据或敏感代码交给外部记忆。",
-        "judgment_en": "Version 0.27.1 adds managed-session diagnostics, opt-in Mem0 personal memory and an LSP switch, but recovery and privacy guarantees remain release-note claims. It fits an isolated trial, not immediate use with secrets or sensitive code in external memory.",
-        "next_action_zh": "一天内在隔离仓库回放登录、并行工具调用、session resume、非交互模式与审批边界，再决定是否扩大试用。",
-        "next_action_en": "Within one day, replay sign-in, parallel tools, session resume, non-interactive mode and approval boundaries in an isolated repository before expanding the trial.",
+        "judgment_zh": "0.27.3 把后台 ACP 与共享 agent loop 带入稳定分支，但 0.x 兼容性仍需测试。",
+        "judgment_en": "Version 0.27.3 brings background ACP and the shared agent loop to stable, but 0.x compatibility still needs testing.",
+        "next_action_zh": "在隔离仓库回放后台运行、唤醒、PR 绑定和权限恢复。",
+        "next_action_en": "Replay background runs, wakeups, PR binding and permission recovery in an isolated repository.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-11-12T17:00:14Z"
+        "reviewed_at": "2026-11-13T17:04:57Z"
       }
     },
     {
@@ -309,7 +313,8 @@
         "src-bd138645120f03ef",
         "src-10be109ee0bd01c4",
         "src-b8ddb6db7e02a2ca",
-        "src-917e81f74d6a6479"
+        "src-917e81f74d6a6479",
+        "src-a0c08c461d827e1c"
       ],
       "current_judgment_event_id": "ev-20260818-02",
       "official_source_ids": [
@@ -331,19 +336,22 @@
         "src-6131601860cd8845",
         "src-6e556c3af2807b57",
         "src-e61beeca9f37dec1",
-        "src-917e81f74d6a6479"
+        "src-917e81f74d6a6479",
+        "src-a0c08c461d827e1c"
       ],
-      "last_reviewed_at": "2026-11-12T17:00:14Z",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "0.167 改善跨后端会话、审批可见性与网络提示，并修正压缩记账。适合在跨 provider 和并发审批回归后采用。",
-        "judgment_en": "Version 0.167 improves cross-backend sessions, approval visibility and network prompts while fixing compaction accounting. Adopt after cross-provider and concurrent-approval regression tests.",
-        "next_action_zh": "升级前回归 Vertex AI 长工具输出的顺序、重复、重连与 session resume；未使用 Vertex AI 的团队无需因此升级。",
-        "next_action_en": "Before upgrading, regress ordering, duplication, reconnect and session resume for long Vertex AI tool outputs; teams not using Vertex AI need not upgrade for this patch.",
+        "judgment_zh": "0.169.0 增加持久 side chat、任务搜索与连接管理，稳定版可升级。",
+        "judgment_en": "Version 0.169.0 adds persistent side chats, task search and connection controls in a stable release.",
+        "next_action_zh": "升级并回归 side chat 持久化、账号历史隔离与自定义 provider。",
+        "next_action_en": "Upgrade and regress side-chat persistence, account history isolation and custom providers.",
         "basis_event_ids": [
-          "ev-20260818-02"
+          "ev-20260814-08",
+          "ev-20260818-02",
+          "ev-20260910-02"
         ],
-        "reviewed_at": "2026-11-12T17:00:14Z"
+        "reviewed_at": "2026-11-13T17:04:57Z"
       }
     },
     {
@@ -3912,23 +3920,25 @@
         "ev-20261015-04"
       ],
       "source_ids": [
-        "src-f727b4e1831e7a08"
+        "src-f727b4e1831e7a08",
+        "src-bb4deecac7ca3168"
       ],
       "current_judgment_event_id": "ev-20261015-04",
       "official_source_ids": [
-        "src-f727b4e1831e7a08"
+        "src-f727b4e1831e7a08",
+        "src-bb4deecac7ca3168"
       ],
-      "last_reviewed_at": "2026-10-16T15:56:07Z",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
       "judgment": {
-        "recommendation": "TRIAL",
-        "judgment_zh": "0.7.0 改善 MoE 推理，也带来服务端兼容变化。",
-        "judgment_en": "Version 0.7.0 improves MoE inference and introduces server compatibility changes.",
-        "next_action_zh": "回放 MoE 负载并回归 API/RPC。",
-        "next_action_en": "Replay an MoE workload and regress API/RPC compatibility.",
+        "recommendation": "ADOPT",
+        "judgment_zh": "1.0 建立 API/ABI 兼容契约并加固服务端，适合在回归后采用。",
+        "judgment_en": "Version 1.0 establishes an API/ABI contract and hardens the server, suitable for adoption after regression tests.",
+        "next_action_zh": "升级前回归 API/ABI、模型质量、KV cache 与安全默认值。",
+        "next_action_en": "Before upgrading, regress API/ABI, model quality, KV cache and security defaults.",
         "basis_event_ids": [
           "ev-20261015-04"
         ],
-        "reviewed_at": "2026-10-16T15:56:07Z"
+        "reviewed_at": "2026-11-13T17:04:57Z"
       }
     },
     {
@@ -8415,6 +8425,299 @@
           "ev-20261109-09"
         ],
         "reviewed_at": "2026-11-12T17:00:14Z"
+      }
+    },
+    {
+      "id": "gemini-4-hydrogen",
+      "name_zh": "Gemini 4 Hydrogen",
+      "name_en": "Gemini 4 Hydrogen",
+      "type": "model",
+      "aliases": [],
+      "pattern": "Gemini 4 Hydrogen",
+      "event_ids": [
+        "ev-20261112-01"
+      ],
+      "source_ids": [
+        "src-d7c21c501eb23f12",
+        "src-7ed04b33e97e89aa",
+        "src-bf01503b703369c5"
+      ],
+      "official_source_ids": [
+        "src-d7c21c501eb23f12",
+        "src-7ed04b33e97e89aa",
+        "src-bf01503b703369c5"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261112-01",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公共 API 与价格已落地，但厂商 benchmark 仍需真实任务验证。",
+        "judgment_en": "The public API and pricing are live, but publisher benchmarks need validation on real tasks.",
+        "next_action_zh": "用同一组代码与长上下文任务比较质量、延迟和总成本。",
+        "next_action_en": "Compare quality, latency and total cost on the same coding and long-context tasks.",
+        "basis_event_ids": [
+          "ev-20261112-01"
+        ],
+        "reviewed_at": "2026-11-13T17:04:57Z"
+      }
+    },
+    {
+      "id": "llmon",
+      "name_zh": "LLMON",
+      "name_en": "LLMON",
+      "type": "security-method",
+      "aliases": [],
+      "pattern": "LLMON",
+      "event_ids": [
+        "ev-20261112-02"
+      ],
+      "source_ids": [
+        "src-84ec87286cb35a64",
+        "src-3d0277d6980214a8",
+        "src-4b5b6c48aae13439"
+      ],
+      "official_source_ids": [
+        "src-84ec87286cb35a64",
+        "src-3d0277d6980214a8",
+        "src-4b5b6c48aae13439"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261112-02",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "权重和代码可复跑，但只证明发布方静态攻击测试。",
+        "judgment_en": "Weights and code are reproducible, but evidence covers publisher-run static attacks.",
+        "next_action_zh": "重放静态与多轮注入并记录误放与误拒。",
+        "next_action_en": "Replay static and multi-turn injections and record bypasses and false refusals.",
+        "basis_event_ids": [
+          "ev-20261112-02"
+        ],
+        "reviewed_at": "2026-11-13T17:04:57Z"
+      }
+    },
+    {
+      "id": "caplite",
+      "name_zh": "CapLite",
+      "name_en": "CapLite",
+      "type": "research",
+      "aliases": [],
+      "pattern": "CapLite",
+      "event_ids": [
+        "ev-20261112-03"
+      ],
+      "source_ids": [
+        "src-9a52a7565a239b1e"
+      ],
+      "official_source_ids": [
+        "src-9a52a7565a239b1e"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261112-03",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "结果支持代码掌权的设计，但没有公开实现或独立复现。",
+        "judgment_en": "The result supports code-held authority, but lacks public code or independent reproduction.",
+        "next_action_zh": "等待公开实现或独立复现后再评估。",
+        "next_action_en": "Wait for public code or independent reproduction before evaluation.",
+        "basis_event_ids": [
+          "ev-20261112-03"
+        ],
+        "reviewed_at": "2026-11-13T17:04:57Z"
+      }
+    },
+    {
+      "id": "chatgpt-wallet",
+      "name_zh": "ChatGPT Wallet",
+      "name_en": "ChatGPT Wallet",
+      "type": "agent-product",
+      "aliases": [],
+      "pattern": "ChatGPT Wallet",
+      "event_ids": [
+        "ev-20261113-01"
+      ],
+      "source_ids": [
+        "src-7d4d71d056da0286"
+      ],
+      "official_source_ids": [
+        "src-7d4d71d056da0286"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261113-01",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "真实支付边界已经出现，但仅限美国小范围且每笔需人工确认。",
+        "judgment_en": "A real payment boundary exists, but rollout is narrow and every purchase needs human approval.",
+        "next_action_zh": "等待开发者测试环境和争议处理流程。",
+        "next_action_en": "Wait for a developer test environment and dispute flows.",
+        "basis_event_ids": [
+          "ev-20261113-01"
+        ],
+        "reviewed_at": "2026-11-13T17:04:57Z"
+      }
+    },
+    {
+      "id": "xybench",
+      "name_zh": "XYBench",
+      "name_en": "XYBench",
+      "type": "benchmark",
+      "aliases": [],
+      "pattern": "XYBench",
+      "event_ids": [
+        "ev-20261113-02"
+      ],
+      "source_ids": [
+        "src-96c7f67bef86f831",
+        "src-e86dc09ac334b898"
+      ],
+      "official_source_ids": [
+        "src-96c7f67bef86f831",
+        "src-e86dc09ac334b898"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261113-02",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开数据可检验 agent 是否理解真实目标，但场景偏英语单轮。",
+        "judgment_en": "Public data tests whether agents recover the real goal, but scenarios are English-heavy and single-turn.",
+        "next_action_zh": "抽样评测当前编程助手的追问和纠错比例。",
+        "next_action_en": "Sample the current coding assistant and measure clarification and correction rates.",
+        "basis_event_ids": [
+          "ev-20261113-02"
+        ],
+        "reviewed_at": "2026-11-13T17:04:57Z"
+      }
+    },
+    {
+      "id": "edge0-145b",
+      "name_zh": "Edge0-145B",
+      "name_en": "Edge0-145B",
+      "type": "model",
+      "aliases": [],
+      "pattern": "Edge0-145B",
+      "event_ids": [
+        "ev-20261112-04"
+      ],
+      "source_ids": [
+        "src-4e10e32134f86500",
+        "src-b433ed5b8bb87b70",
+        "src-493ce2701ad45770"
+      ],
+      "official_source_ids": [
+        "src-4e10e32134f86500",
+        "src-b433ed5b8bb87b70",
+        "src-493ce2701ad45770"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261112-04",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "权重与运行时公开，但内存、吞吐和 benchmark 都需目标硬件复现。",
+        "judgment_en": "Weights and runtime are public, but memory, throughput and benchmark claims need target-hardware reproduction.",
+        "next_action_zh": "用目标笔记本复跑固定代码集并记录内存、吞吐、功耗与成功率。",
+        "next_action_en": "Run a fixed coding set on the target laptop and record memory, throughput, power and success.",
+        "basis_event_ids": [
+          "ev-20261112-04"
+        ],
+        "reviewed_at": "2026-11-13T17:04:57Z"
+      }
+    },
+    {
+      "id": "brave-search-x402",
+      "name_zh": "Brave Search x402",
+      "name_en": "Brave Search x402",
+      "type": "agent-infrastructure",
+      "aliases": [],
+      "pattern": "Brave Search x402",
+      "event_ids": [
+        "ev-20261112-05"
+      ],
+      "source_ids": [
+        "src-e6def82bba9edd45"
+      ],
+      "official_source_ids": [
+        "src-e6def82bba9edd45"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261112-05",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "逐请求支付已经可用，但钱包、账务与链故障风险需要隔离验证。",
+        "judgment_en": "Per-request payments are live, but wallet, accounting and chain-outage risks need isolated validation.",
+        "next_action_zh": "用隔离钱包验证报价、重试、余额上限和对账。",
+        "next_action_en": "Use an isolated wallet to verify quotes, retries, balance caps and reconciliation.",
+        "basis_event_ids": [
+          "ev-20261112-05"
+        ],
+        "reviewed_at": "2026-11-13T17:04:57Z"
+      }
+    },
+    {
+      "id": "smolmaxxing",
+      "name_zh": "smolmaxxing",
+      "name_en": "smolmaxxing",
+      "type": "open-source-project",
+      "aliases": [],
+      "pattern": "smolmaxxing",
+      "event_ids": [
+        "ev-20261113-03"
+      ],
+      "source_ids": [
+        "src-2fb376d253941194"
+      ],
+      "official_source_ids": [
+        "src-2fb376d253941194"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261113-03",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "judgment": {
+        "recommendation": "IGNORE",
+        "judgment_zh": "缺少稳定发布、受控 benchmark 与支持矩阵。",
+        "judgment_en": "No stable release, controlled benchmark or support matrix.",
+        "next_action_zh": "当前不投入工程时间，等待证据边界明确。",
+        "next_action_en": "Do not invest engineering time until the evidence boundaries are clear.",
+        "basis_event_ids": [
+          "ev-20261113-03"
+        ],
+        "reviewed_at": "2026-11-13T17:04:57Z"
+      }
+    },
+    {
+      "id": "libreagi",
+      "name_zh": "LibreAGI",
+      "name_en": "LibreAGI",
+      "type": "open-source-project",
+      "aliases": [],
+      "pattern": "LibreAGI",
+      "event_ids": [
+        "ev-20261113-04"
+      ],
+      "source_ids": [
+        "src-0e0818467e891f43"
+      ],
+      "official_source_ids": [
+        "src-0e0818467e891f43"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261113-04",
+      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "judgment": {
+        "recommendation": "IGNORE",
+        "judgment_zh": "再分发权、运营者与安全边界不清楚。",
+        "judgment_en": "Redistribution rights, operator identity and security boundaries are unclear.",
+        "next_action_zh": "当前不投入工程时间，等待证据边界明确。",
+        "next_action_en": "Do not invest engineering time until the evidence boundaries are clear.",
+        "basis_event_ids": [
+          "ev-20261113-04"
+        ],
+        "reviewed_at": "2026-11-13T17:04:57Z"
       }
     }
   ],

@@ -332,8 +332,8 @@
     },
     {
       "event_id": "ev-20261015-04",
-      "title": "llama.cpp 0.7.0 adds MoE caching and changes its server API",
-      "title_zh": "llama.cpp 0.7.0 增加 MoE 缓存并调整服务端 API",
+      "title": "llama.cpp 1.0 establishes a stable API and ABI contract",
+      "title_zh": "llama.cpp 1.0 建立稳定 API 与 ABI 契约",
       "category": "infrastructure",
       "organization": [
         "ggml-org"
@@ -341,21 +341,29 @@
       "published_at": "2026-10-15T17:13:19Z",
       "primary_source": "https://github.com/ggml-org/llama.cpp/releases/tag/v0.7.0",
       "source_type": "github_release",
-      "summary_en": "llama.cpp 0.7.0 adds a GPU LRU cache for MoE experts kept in host memory, LiLiCorr speculative decoding and support for more model architectures. It also changes the non-Docker server port from 8080 to 9931, returns formatted chat as an array of parts, and advances the RPC protocol to v8. The reported 2.2x decode gain is a project measurement, not an independent benchmark.",
-      "summary_zh": "llama.cpp 0.7.0 为留在主机内存的 MoE 专家增加 GPU LRU 缓存，并加入 LiLiCorr 推测解码与更多模型架构。非 Docker 服务端默认端口从 8080 改为 9931，格式化 chat 返回值改为 parts 数组，RPC 协议升级到 v8。最高 2.2 倍解码提升来自项目自测，不是独立 benchmark。",
-      "why_it_matters_en": "For teams serving GGUF and MoE models, the cache may improve throughput, while the port, response-shape and RPC changes can break clients. Upgrade only with compatibility and output checks.",
-      "why_it_matters_zh": "对自托管 GGUF 与 MoE 模型的团队来说，缓存可能提高吞吐；端口、返回结构与 RPC 变化也可能直接破坏客户端。升级前必须做兼容与输出回归。",
+      "summary_en": "llama.cpp 1.0 removes deprecated public APIs and begins semantic versioning for its API and ABI. The release also adds FP8 KV cache support, MoE cache improvements, more model backends, TTS through an OpenAI-compatible endpoint and server hardening against SSRF, CORS and DNS-rebinding paths. Existing integrations need a breaking-upgrade check.",
+      "summary_zh": "llama.cpp 1.0 移除已弃用的公开 API，并开始对 API 与 ABI 执行语义化版本契约。版本还加入 FP8 KV cache、MoE cache 改进、更多模型后端、OpenAI-compatible TTS 端点，以及针对 SSRF、CORS 和 DNS rebinding 的服务端加固。现有集成需要做破坏性升级检查。",
+      "why_it_matters_en": "For teams embedding llama.cpp or exposing its server, a stable compatibility contract lowers long-term integration risk. The major-version boundary is also a breaking change, so adoption should follow API, model-quality and security regression tests.",
+      "why_it_matters_zh": "对嵌入 llama.cpp 或暴露其服务端的团队来说，稳定兼容契约会降低长期集成风险。但主版本边界同时意味着破坏性变化，采用前必须回归 API、模型质量与安全设置。",
       "technical_details": {
         "release": "0.7.0 stable",
         "moe_cache": "GPU LRU for experts stored in host memory",
         "reported_gain": "up to 2.2x decode, project-reported",
-        "breaking_changes": "server port 9931 outside Docker; formatted chat parts array; RPC v8"
+        "breaking_changes": "server port 9931 outside Docker; formatted chat parts array; RPC v8",
+        "latest_version": "1.0.0",
+        "compatibility": "semantic versioning for public API and ABI; deprecated APIs removed",
+        "security": "SSRF, CORS and DNS-rebinding hardening; private URL access is explicit",
+        "time_basis": "GitHub release 2026-11-13T10:20:19Z"
       },
       "technical_details_zh": {
         "版本": "0.7.0 stable",
         "MoE 缓存": "为主机内存中的专家设置 GPU LRU",
         "项目报告提升": "解码最高2.2倍",
-        "兼容变化": "非Docker端口9931；chat返回parts数组；RPC v8"
+        "兼容变化": "非Docker端口9931；chat返回parts数组；RPC v8",
+        "最新版本": "1.0.0",
+        "兼容契约": "公开 API 与 ABI 使用语义化版本；移除已弃用 API",
+        "安全": "加固 SSRF、CORS 与 DNS rebinding；访问私有 URL 需显式开启",
+        "时间依据": "GitHub release 2026-11-13T10:20:19Z"
       },
       "tags": [
         "llama.cpp",
@@ -369,14 +377,16 @@
       "maturity": 4,
       "verification_cost": 2,
       "risk": 2,
-      "recommendation": "TRIAL",
+      "recommendation": "ADOPT",
       "event_fingerprint": "llama-cpp-0-7-0-moe-cache-server-api",
-      "short_label_zh": "llama.cpp 0.7.0",
-      "short_label_en": "llama.cpp 0.7.0",
-      "next_action_zh": "一天内回放同一 MoE 负载，并回归端口、响应解析、prompt cache 与 RPC 客户端。",
-      "next_action_en": "Within one day, replay the same MoE workload and regress ports, response parsing, prompt cache and RPC clients.",
+      "short_label_zh": "llama.cpp 1.0",
+      "short_label_en": "llama.cpp 1.0",
+      "next_action_zh": "升级前回归公开 API/ABI、GGUF 模型质量、FP8 KV cache、私有 URL 默认拒绝与 TTS 端点。",
+      "next_action_en": "Before upgrading, regress the public API/ABI, GGUF quality, FP8 KV cache, default private-URL denial and the TTS endpoint.",
       "source_ids": [
-        "src-f727b4e1831e7a08"
+        "src-f727b4e1831e7a08",
+        "src-bb4deecac7ca3168",
+        "src-6841e619fcd7e8d9"
       ],
       "project_ids": [
         "llama-cpp"
@@ -386,10 +396,13 @@
         "models"
       ],
       "first_seen_at": "2026-10-16T15:56:07Z",
-      "last_updated_at": "2026-10-16T15:56:07Z",
-      "summary": "llama.cpp 0.7.0 adds a GPU LRU cache for MoE experts kept in host memory, LiLiCorr speculative decoding and support for more model architectures. It also changes the non-Docker server port from 8080 to 9931, returns formatted chat as an array of parts, and advances the RPC protocol to v8. The reported 2.2x decode gain is a project measurement, not an independent benchmark.",
-      "why_it_matters": "For teams serving GGUF and MoE models, the cache may improve throughput, while the port, response-shape and RPC changes can break clients. Upgrade only with compatibility and output checks.",
-      "secondary_sources": [],
+      "last_updated_at": "2026-11-13T17:04:57Z",
+      "summary": "llama.cpp 1.0 removes deprecated public APIs and begins semantic versioning for its API and ABI. The release also adds FP8 KV cache support, MoE cache improvements, more model backends, TTS through an OpenAI-compatible endpoint and server hardening against SSRF, CORS and DNS-rebinding paths. Existing integrations need a breaking-upgrade check.",
+      "why_it_matters": "For teams embedding llama.cpp or exposing its server, a stable compatibility contract lowers long-term integration risk. The major-version boundary is also a breaking change, so adoption should follow API, model-quality and security regression tests.",
+      "secondary_sources": [
+        "https://github.com/ggml-org/llama.cpp/releases/tag/v1.0.0",
+        "https://huggingface.co/blog/ggml-org/llama-cpp-v1"
+      ],
       "evidence_stage": "verified",
       "evidence": [
         {
@@ -398,6 +411,20 @@
           "claim_en": "llama.cpp 0.7.0 adds MoE caching and changes its server API",
           "source_ids": [
             "src-f727b4e1831e7a08"
+          ],
+          "event_ids": [
+            "ev-20261015-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261015-04-evidence-1-0",
+          "claim_zh": "官方 release 与项目文章确认 1.0 的语义化兼容契约、推理功能与服务端加固。",
+          "claim_en": "The official release and project article confirm the 1.0 semantic compatibility contract, inference features and server hardening.",
+          "source_ids": [
+            "src-bb4deecac7ca3168",
+            "src-6841e619fcd7e8d9"
           ],
           "event_ids": [
             "ev-20261015-04"
@@ -416,6 +443,21 @@
           "summary_en": "llama.cpp 0.7.0 adds MoE caching and changes its server API",
           "evidence_ids": [
             "ev-20261015-04-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261015-04-llama-cpp-1-0",
+          "kind": "recommendation",
+          "occurred_at": "2026-11-13T10:20:19Z",
+          "discovered_at": "2026-11-13T17:04:57Z",
+          "summary_zh": "1.0 建立兼容契约并加固服务端，建议由 TRIAL 升为 ADOPT。",
+          "summary_en": "Version 1.0 establishes a compatibility contract and hardens the server, moving the recommendation from TRIAL to ADOPT.",
+          "before": "TRIAL",
+          "after": "ADOPT",
+          "evidence_ids": [
+            "ev-20261015-04-evidence-1-0"
           ],
           "historical": false,
           "importance": "major"
