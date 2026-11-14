@@ -493,6 +493,223 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261112-06",
+      "title": "Metal Sandbox schedules GPU coding agents across Apple Silicon Macs",
+      "title_zh": "Metal Sandbox 在多台 Mac 间调度 GPU 编程 agent",
+      "category": "ai-engineering",
+      "organization": [
+        "StepFun",
+        "Shanghai Jiao Tong University",
+        "Beijing Zhongguancun Academy"
+      ],
+      "published_at": "2026-11-12T18:54:42Z",
+      "first_seen_at": "2026-11-14T16:59:13Z",
+      "last_updated_at": "2026-11-14T16:59:13Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2611.17294",
+      "secondary_sources": [
+        "https://github.com/WangHaoZhe/metal-sandbox"
+      ],
+      "summary": "Metal Sandbox combines Apple App Sandbox file restrictions with command scheduling across networked Apple Silicon Macs. Its Harbor adapter supports Claude Code, Codex and mini-SWE-agent for task execution, verification and trajectory collection. The authors report higher command throughput on four M4 Mac minis, but the study uses a small cluster and replay-based estimates for part of the result.",
+      "summary_en": "Metal Sandbox combines Apple App Sandbox file restrictions with command scheduling across networked Apple Silicon Macs. Its Harbor adapter supports Claude Code, Codex and mini-SWE-agent for task execution, verification and trajectory collection. The authors report higher command throughput on four M4 Mac minis, but the study uses a small cluster and replay-based estimates for part of the result.",
+      "summary_zh": "Metal Sandbox 把 Apple App Sandbox 的文件访问限制与多台 Apple Silicon Mac 的命令调度结合起来。它通过 Harbor 支持 Claude Code、Codex 和 mini-SWE-agent 的任务执行、自动验证与轨迹采集。作者在 4 台 M4 Mac mini 上报告吞吐提升，但集群规模较小，部分结果来自固定轨迹重放估算。",
+      "why_it_matters": "For teams evaluating or training Metal-kernel agents, this provides public infrastructure for using native macOS tools without giving every session unrestricted host access. It is not hostile multi-tenant containment, and its scheduling gains need reproduction on the team's command mix before capacity planning.",
+      "why_it_matters_en": "For teams evaluating or training Metal-kernel agents, this provides public infrastructure for using native macOS tools without giving every session unrestricted host access. It is not hostile multi-tenant containment, and its scheduling gains need reproduction on the team's command mix before capacity planning.",
+      "why_it_matters_zh": "对评测或训练 Metal kernel agent 的团队来说，它提供了公开的原生 macOS 执行方案，不必让每个会话无限制访问宿主机。它不等于恶意多租户隔离；做容量规划前，仍需用团队自己的命令组合复现调度收益。",
+      "technical_details": {
+        "hardware": "four Apple Silicon Mac mini M4 nodes",
+        "reported_throughput": "1.68x-2.05x under concentrated demand",
+        "replay_estimate": "2.14x sustained throughput; 18.8% lower mean tool waiting; 22.3% lower batch elapsed time",
+        "agents": "Claude Code, Codex and mini-SWE-agent through Harbor",
+        "isolation": "Apple App Sandbox file restrictions; not hostile multi-tenant containment",
+        "code": "public Metal Sandbox repository and Harbor fork",
+        "evidence_limit": "author-run four-node experiments; replay assumes unchanged agent behavior and phase durations",
+        "time_basis": "arXiv submission timestamp 2026-11-12T18:54:42Z; verified after prior-run deferral"
+      },
+      "technical_details_zh": {
+        "硬件": "4 台 Apple Silicon M4 Mac mini",
+        "自报吞吐": "集中请求下提升 1.68x-2.05x",
+        "重放估算": "持续吞吐提升 2.14x；平均工具等待下降 18.8%；批次耗时下降 22.3%",
+        "Agent": "通过 Harbor 支持 Claude Code、Codex 与 mini-SWE-agent",
+        "隔离边界": "Apple App Sandbox 文件限制；不是恶意多租户隔离",
+        "代码": "Metal Sandbox 仓库与 Harbor fork 已公开",
+        "证据限制": "作者在 4 节点上实验；轨迹重放假设 agent 行为与阶段耗时不变",
+        "时间依据": "arXiv 提交时间 2026-11-12T18:54:42Z；上一轮 deferred 后完成核验"
+      },
+      "tags": [
+        "Apple-Silicon",
+        "Metal",
+        "coding-agent",
+        "sandbox",
+        "scheduling",
+        "Harbor"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "metal-sandbox-apple-silicon-agent-command-scheduling",
+      "short_label_zh": "Metal Sandbox",
+      "short_label_en": "Metal Sandbox",
+      "next_action_zh": "一天内在一台 Apple Silicon Mac 上用公开仓库跑 10 个 Harbor 样例，核对文件隔离、命令分类、等待时间和失败恢复。",
+      "next_action_en": "Within one day, run 10 Harbor examples from the public repository on one Apple Silicon Mac and verify file isolation, command classification, wait time and failure recovery.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-9931eeb540d5a4b1",
+        "src-9359b6a53eaee934"
+      ],
+      "project_ids": [
+        "metal-sandbox"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local",
+        "research"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261112-06-evidence",
+          "claim_zh": "论文与公开仓库给出 Apple Silicon 编程 agent 的文件隔离、跨 Mac 命令调度和 Harbor 集成。",
+          "claim_en": "The paper and public repository provide file isolation, cross-Mac command scheduling and Harbor integration for Apple Silicon coding agents.",
+          "source_ids": [
+            "src-9931eeb540d5a4b1",
+            "src-9359b6a53eaee934"
+          ],
+          "event_ids": [
+            "ev-20261112-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifacts; performance remains author-run"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261112-06-paper",
+          "kind": "new",
+          "occurred_at": "2026-11-12T18:54:42Z",
+          "discovered_at": "2026-11-14T16:59:13Z",
+          "summary_zh": "Metal Sandbox 公开 Apple Silicon agent 的文件隔离与跨 Mac 命令调度实现。",
+          "summary_en": "Metal Sandbox publishes file isolation and cross-Mac command scheduling for Apple Silicon agents.",
+          "evidence_ids": [
+            "ev-20261112-06-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261112-07",
+      "title": "Higurashi AI releases Haru-4B for full-duplex local voice agents",
+      "title_zh": "Higurashi AI 发布 Haru-4B，让本地语音 agent 同时听说",
+      "category": "foundation-model",
+      "organization": [
+        "Higurashi AI"
+      ],
+      "published_at": "2026-11-12T11:05:59Z",
+      "first_seen_at": "2026-11-14T16:59:13Z",
+      "last_updated_at": "2026-11-14T16:59:13Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/higurashi-ai/Haru-4B",
+      "secondary_sources": [
+        "https://github.com/higurashi-ai/Haru"
+      ],
+      "summary": "Higurashi AI released Apache-2.0 weights and code for Haru-4B, a research base model that continuously listens and speaks in nine languages. It processes one 133 ms frame at a time and predicts audio plus text in one sampling step. The public implementation includes PyTorch, MLX, a native macOS app and a vLLM-Omni plugin; the publisher recommends about 12 GB of NVIDIA GPU memory.",
+      "summary_en": "Higurashi AI released Apache-2.0 weights and code for Haru-4B, a research base model that continuously listens and speaks in nine languages. It processes one 133 ms frame at a time and predicts audio plus text in one sampling step. The public implementation includes PyTorch, MLX, a native macOS app and a vLLM-Omni plugin; the publisher recommends about 12 GB of NVIDIA GPU memory.",
+      "summary_zh": "Higurashi AI 发布 Haru-4B 的 Apache-2.0 权重与代码。这是一个可持续同时听说的研究基础模型，支持九种语言，每 133 毫秒处理一帧，并在一次采样中同时预测音频与文本。公开实现包括 PyTorch、MLX、原生 macOS 应用和 vLLM-Omni 插件；发布方建议使用约 12 GB 显存的 NVIDIA GPU。",
+      "why_it_matters": "For voice-agent teams, the release provides a small, inspectable path to test interruption and overlap locally instead of composing separate speech recognition, language and speech-generation stages. It is a research base model without independent latency, conversation-quality or safety evaluation, so teams should treat it as a prototype rather than a production assistant.",
+      "why_it_matters_en": "For voice-agent teams, the release provides a small, inspectable path to test interruption and overlap locally instead of composing separate speech recognition, language and speech-generation stages. It is a research base model without independent latency, conversation-quality or safety evaluation, so teams should treat it as a prototype rather than a production assistant.",
+      "why_it_matters_zh": "对语音 agent 团队来说，它提供一条小型、可检查的本地路径，用来验证打断与重叠对话，不必先拼接语音识别、语言模型和语音生成三段流水线。它仍是研究基础模型，缺少独立延迟、对话质量和安全评测，应按原型而不是生产助手处理。",
+      "technical_details": {
+        "model_size": "4B parameters; Qwen3.5-4B text backbone",
+        "frame_rate": "7.5 Hz; one 133 ms frame per step",
+        "audio_path": "64-dimensional audio latent with a one-step MeanFlow head",
+        "languages": "English, Spanish, Portuguese, German, French, Chinese, Japanese, Russian and Korean",
+        "public_artifacts": "Apache-2.0 weights; PyTorch and MLX implementations; native macOS app; vLLM-Omni plugin",
+        "publisher_hardware_guidance": "approximately 12 GB NVIDIA GPU memory",
+        "evidence_limit": "No independent latency, interruption, conversation-quality or safety evaluation was verified.",
+        "time_basis": "Hugging Face repository created 2026-11-12T11:05:59Z; recovered through recall review as a late discovery."
+      },
+      "technical_details_zh": {
+        "模型规模": "4B 参数；Qwen3.5-4B 文本骨干",
+        "帧率": "7.5 Hz；每步一帧 133 毫秒",
+        "音频路径": "64 维音频 latent，由 MeanFlow head 一步生成",
+        "语言": "英语、西班牙语、葡萄牙语、德语、法语、中文、日语、俄语、韩语",
+        "公开材料": "Apache-2.0 权重；PyTorch 与 MLX 实现；原生 macOS 应用；vLLM-Omni 插件",
+        "发布方硬件建议": "约 12 GB 显存的 NVIDIA GPU",
+        "证据限制": "未核实独立的延迟、打断、对话质量或安全评测。",
+        "时间依据": "Hugging Face 仓库创建于 2026-11-12T11:05:59Z；由召回自检补录为 late discovery。"
+      },
+      "tags": [
+        "speech-to-speech",
+        "full-duplex",
+        "open-weights",
+        "local-inference",
+        "mlx",
+        "voice-agent"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "higurashi-haru-4b-full-duplex-local-voice-agent",
+      "short_label_zh": "Haru-4B",
+      "short_label_en": "Haru-4B",
+      "next_action_zh": "一天内用公开 macOS 或 PyTorch 实现跑 20 轮中英双语打断测试，记录首音频延迟、重叠恢复、转写偏差与显存。",
+      "next_action_en": "Within one day, run 20 bilingual interruption trials with the public macOS or PyTorch implementation and record first-audio latency, overlap recovery, transcript error and memory use.",
+      "source_ids": [
+        "src-5419a8b213cd4f4a",
+        "src-90320addd9da35f1"
+      ],
+      "project_ids": [
+        "haru-4b"
+      ],
+      "scenario_ids": [
+        "voice-agents",
+        "local-inference"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261112-07-evidence",
+          "claim_zh": "Hugging Face 模型卡与代码仓库确认权重、许可、架构、语言和本地实现。",
+          "claim_en": "The Hugging Face model card and code repository confirm weights, license, architecture, languages and local implementations.",
+          "source_ids": [
+            "src-5419a8b213cd4f4a",
+            "src-90320addd9da35f1"
+          ],
+          "event_ids": [
+            "ev-20261112-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-sources; performance not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261112-07-release",
+          "kind": "new",
+          "occurred_at": "2026-11-12T11:05:59Z",
+          "discovered_at": "2026-11-14T16:59:13Z",
+          "summary_zh": "Haru-4B 公开全双工语音模型权重与本地实现。",
+          "summary_en": "Haru-4B releases full-duplex voice-model weights and local implementations.",
+          "evidence_ids": [
+            "ev-20261112-07-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

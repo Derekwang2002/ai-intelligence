@@ -65,7 +65,8 @@
         "src-97c5df49eed3f0cf",
         "src-ace31f3b0bb1b6f0",
         "src-dbc58eacee5d52ba",
-        "src-8427d4fee9a7d1b9"
+        "src-8427d4fee9a7d1b9",
+        "src-e58a3ce1f17ad846"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -97,19 +98,20 @@
         "src-ddf42b69c8e05c7b",
         "src-797aba84ba3e9103",
         "src-7cf21137c37e547b",
-        "src-8427d4fee9a7d1b9"
+        "src-8427d4fee9a7d1b9",
+        "src-e58a3ce1f17ad846"
       ],
-      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "last_reviewed_at": "2026-11-14T16:59:13Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.323 修复失败即阻断与权限边界；实验性 Code Mode 需单独回归。",
-        "judgment_en": "Version 2.1.323 fixes fail-closed and permission boundaries; experimental Code Mode needs separate regression tests.",
-        "next_action_zh": "升级并回归沙箱、Bash deny、符号链接设置和后台认证。",
-        "next_action_en": "Upgrade and regress sandbox, Bash deny, symlinked settings and background authentication.",
+        "judgment_zh": "2.1.325 修复复合 Bash、重启后 deny、worktree 与公开 artifact 权限边界。稳定版适合升级，但沙箱内 Bash 的默认审批变化可能让定时任务等待人工确认。",
+        "judgment_en": "Version 2.1.325 fixes compound Bash, post-restart deny rules, worktree and public-artifact permission boundaries. The stable release is suitable to adopt, but the sandboxed-Bash approval-default change can pause scheduled tasks.",
+        "next_action_zh": "升级并回归复合 Bash、重启后 deny、worktree 保护和定时任务审批等待。",
+        "next_action_en": "Upgrade and regress compound Bash, post-restart deny rules, worktree protections and scheduled-task approval waits.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-11-13T17:04:57Z"
+        "reviewed_at": "2026-11-14T16:59:13Z"
       }
     },
     {
@@ -7513,7 +7515,7 @@
         "src-f4e8ce6220df06e6",
         "src-c98fb04bcb18fb32"
       ],
-      "last_reviewed_at": "2026-11-07T16:55:48Z",
+      "last_reviewed_at": "2026-11-14T16:59:13Z",
       "judgment": {
         "recommendation": "WATCH",
         "judgment_zh": "权重、数据和评测均公开，但价值类别与 judge 由发布方定义，尚不能把结果解释成更普遍的事实性或中立性提升。",
@@ -7523,7 +7525,7 @@
         "basis_event_ids": [
           "ev-20261106-03"
         ],
-        "reviewed_at": "2026-11-07T16:55:48Z"
+        "reviewed_at": "2026-11-14T16:59:13Z"
       },
       "changes": []
     },
@@ -8719,9 +8721,108 @@
         ],
         "reviewed_at": "2026-11-13T17:04:57Z"
       }
+    },
+    {
+      "id": "metal-sandbox",
+      "name_zh": "Metal Sandbox",
+      "name_en": "Metal Sandbox",
+      "type": "agent-infrastructure",
+      "aliases": [],
+      "pattern": "Metal Sandbox",
+      "event_ids": [
+        "ev-20261112-06"
+      ],
+      "source_ids": [
+        "src-9931eeb540d5a4b1",
+        "src-9359b6a53eaee934"
+      ],
+      "official_source_ids": [
+        "src-9931eeb540d5a4b1",
+        "src-9359b6a53eaee934"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261112-06",
+      "last_reviewed_at": "2026-11-14T16:59:13Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开论文和代码覆盖原生 Metal 执行、文件隔离与跨 Mac 命令调度，适合 Apple Silicon agent 基础设施试验。它不提供恶意多租户隔离，性能数据也只来自作者的小集群实验。",
+        "judgment_en": "The public paper and code cover native Metal execution, file isolation and cross-Mac command scheduling, making it suitable for an Apple Silicon agent-infrastructure trial. It is not hostile multi-tenant containment, and performance evidence is limited to the authors' small cluster.",
+        "next_action_zh": "一天内在一台 Apple Silicon Mac 上跑 10 个 Harbor 样例，核对隔离、命令分类、等待时间与失败恢复。",
+        "next_action_en": "Within one day, run 10 Harbor examples on one Apple Silicon Mac and verify isolation, command classification, wait time and failure recovery.",
+        "basis_event_ids": [
+          "ev-20261112-06"
+        ],
+        "reviewed_at": "2026-11-14T16:59:13Z"
+      }
+    },
+    {
+      "id": "united-ai-agent-access",
+      "name_zh": "United AI Agent 访问规则",
+      "name_en": "United AI Agent Access Rules",
+      "type": "access-policy",
+      "aliases": [],
+      "pattern": "United personal AI agent",
+      "event_ids": [
+        "ev-20261111-07"
+      ],
+      "source_ids": [
+        "src-d71309f11c6d6ae4"
+      ],
+      "official_source_ids": [
+        "src-d71309f11c6d6ae4"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261111-07",
+      "last_reviewed_at": "2026-11-14T16:59:13Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "United 已限制未授权个人 AI agent 搜索、购买与管理行程，说明交易型 agent 的可执行能力必须再经过服务方授权门控。公告未提供公开授权接口。",
+        "judgment_en": "United now restricts unauthorized personal AI agents from searching, purchasing and managing travel, showing that transactional-agent capability still requires a service-side authorization gate. The announcement provides no public authorization interface.",
+        "next_action_zh": "为交易型 agent 增加站点授权检查和人工购买回退；等 United 公布授权接口后再评估自动订票。",
+        "next_action_en": "Add site-authorization checks and human purchase fallback to transactional agents; reassess automated booking if United publishes an authorized interface.",
+        "basis_event_ids": [
+          "ev-20261111-07"
+        ],
+        "reviewed_at": "2026-11-14T16:59:13Z"
+      }
+    },
+    {
+      "id": "haru-4b",
+      "name_zh": "Haru-4B",
+      "name_en": "Haru-4B",
+      "type": "model",
+      "aliases": [
+        "higurashi-ai/Haru-4B"
+      ],
+      "pattern": "Haru-4B",
+      "event_ids": [
+        "ev-20261112-07"
+      ],
+      "source_ids": [
+        "src-5419a8b213cd4f4a",
+        "src-90320addd9da35f1"
+      ],
+      "official_source_ids": [
+        "src-5419a8b213cd4f4a",
+        "src-90320addd9da35f1"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261112-07",
+      "last_reviewed_at": "2026-11-14T16:59:13Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Haru-4B 的公开权重与 PyTorch、MLX、macOS、vLLM-Omni 路径让本地全双工语音试验可执行。它仍是研究基础模型，缺少独立的延迟、对话质量和安全评测。",
+        "judgment_en": "Haru-4B's public weights plus PyTorch, MLX, macOS and vLLM-Omni paths make local full-duplex voice trials executable. It remains a research base model without independent latency, conversation-quality or safety evaluation.",
+        "next_action_zh": "一天内跑 20 轮中英双语打断测试，记录首音频延迟、重叠恢复、转写偏差与显存。",
+        "next_action_en": "Within one day, run 20 bilingual interruption trials and record first-audio latency, overlap recovery, transcript error and memory use.",
+        "basis_event_ids": [
+          "ev-20261112-07"
+        ],
+        "reviewed_at": "2026-11-14T16:59:13Z"
+      }
     }
   ],
-  "last_updated": "2026-11-13",
-  "total_projects": 233,
-  "last_updated_at": "2026-11-12T17:00:14Z"
+  "last_updated": "2026-11-15",
+  "total_projects": 245,
+  "last_updated_at": "2026-11-14T16:59:13Z"
 }

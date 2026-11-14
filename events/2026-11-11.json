@@ -649,6 +649,102 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261111-07",
+      "title": "United Airlines blocks unauthorized personal AI agents from booking travel",
+      "title_zh": "United Airlines 禁止未授权个人 AI agent 订票",
+      "category": "business-policy",
+      "organization": [
+        "United Airlines"
+      ],
+      "published_at": "2026-11-11",
+      "first_seen_at": "2026-11-14T16:59:13Z",
+      "last_updated_at": "2026-11-14T16:59:13Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://united.mediaroom.com/news-releases?item=125496",
+      "secondary_sources": [],
+      "summary": "United Airlines says it is restricting unauthorized third-party personal AI agents from searching, booking, purchasing or managing travel through its digital platforms and through agencies or aggregators. Browser use by a person and authorized industry systems remain allowed. United says prior bookings will be honored, while future unauthorized-agent bookings can be canceled.",
+      "summary_en": "United Airlines says it is restricting unauthorized third-party personal AI agents from searching, booking, purchasing or managing travel through its digital platforms and through agencies or aggregators. Browser use by a person and authorized industry systems remain allowed. United says prior bookings will be honored, while future unauthorized-agent bookings can be canceled.",
+      "summary_zh": "United Airlines 表示，将限制未授权的第三方个人 AI agent 通过其数字平台、旅行社或聚合商搜索、预订、购买或管理行程。真人操作浏览器和获得授权的行业系统仍可使用。既有预订继续有效，之后由未授权 agent 创建的预订可能被取消。",
+      "why_it_matters": "For teams building transactional agents, model capability does not imply permission to act on a service. Site terms, authorization and human fallback now need to be checked as explicit runtime gates before an agent changes a booking or spends money.",
+      "why_it_matters_en": "For teams building transactional agents, model capability does not imply permission to act on a service. Site terms, authorization and human fallback now need to be checked as explicit runtime gates before an agent changes a booking or spends money.",
+      "why_it_matters_zh": "对构建交易型 agent 的团队来说，模型能操作网站不等于服务方允许它执行。agent 修改预订或付款前，需要把站点条款、授权状态与人工回退做成明确的运行时门控。",
+      "technical_details": {
+        "policy_stage": "Official restriction announced; unauthorized personal agents are prohibited, while authorized systems and human-operated browsers are excepted.",
+        "affected_actions": "search, booking, purchase, change and servicing through United digital channels and intermediaries",
+        "prior_bookings": "United says bookings made before November 11 will not be canceled under the new policy.",
+        "availability_boundary": "No public authorization interface or agent API was identified in the announcement.",
+        "time_basis": "The official newsroom page gives November 11, 2026 without a time. The item is admitted through recall review as a late discovery; no hourly-boundary claim is made."
+      },
+      "technical_details_zh": {
+        "政策阶段": "官方已宣布限制未授权个人 agent；获得授权的系统和真人操作浏览器属于例外。",
+        "受影响动作": "通过 United 数字渠道及中介进行搜索、预订、购买、修改与行程服务",
+        "既有预订": "United 表示，11 月 11 日前创建的预订不会按新政策取消。",
+        "开放边界": "公告没有提供公开的授权接口或 agent API。",
+        "时间依据": "官方 newsroom 页面只给出 2026-11-11，没有时分。本条由召回自检补录为 late discovery，不声称通过逐小时边界核验。"
+      },
+      "tags": [
+        "transactional-agents",
+        "travel",
+        "authorization",
+        "terms-of-use",
+        "human-in-the-loop"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "united-airlines-unauthorized-personal-ai-agent-booking-restriction",
+      "short_label_zh": "United Agent 限制",
+      "short_label_en": "United Agent Restriction",
+      "next_action_zh": "为交易型 agent 增加站点授权检查和人工购买回退；等 United 公布授权接口后再评估自动订票。",
+      "next_action_en": "Add site-authorization checks and human purchase fallback to transactional agents; reassess automated booking if United publishes an authorized interface.",
+      "source_ids": [
+        "src-d71309f11c6d6ae4"
+      ],
+      "project_ids": [
+        "united-ai-agent-access"
+      ],
+      "scenario_ids": [
+        "transactional-agents",
+        "travel-booking"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261111-07-evidence",
+          "claim_zh": "United 官方公告确认限制范围、例外和既有预订处理方式。",
+          "claim_en": "United's official announcement confirms the restriction, exceptions and treatment of prior bookings.",
+          "source_ids": [
+            "src-d71309f11c6d6ae4"
+          ],
+          "event_ids": [
+            "ev-20261111-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; enforcement behavior not independently tested"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261111-07-policy",
+          "kind": "new",
+          "occurred_at": "2026-11-11",
+          "discovered_at": "2026-11-14T16:59:13Z",
+          "summary_zh": "United 限制未授权个人 AI agent 搜索与管理行程。",
+          "summary_en": "United restricts unauthorized personal AI agents from searching and managing travel.",
+          "evidence_ids": [
+            "ev-20261111-07-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

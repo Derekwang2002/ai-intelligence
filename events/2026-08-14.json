@@ -364,8 +364,8 @@
     },
     {
       "event_id": "ev-20260814-04",
-      "title": "Claude Code 2.1.323 adds Code Mode and tightens fail-closed security checks",
-      "title_zh": "Claude Code 2.1.323 加入 Code Mode 并强化失败即阻断",
+      "title": "Claude Code 2.1.325 closes permission and sandbox gaps",
+      "title_zh": "Claude Code 2.1.325 修补权限与沙箱缺口",
       "category": "developer-tools",
       "organization": [
         "Anthropic"
@@ -373,7 +373,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-11-13T17:04:57Z",
+      "last_updated_at": "2026-11-14T16:59:13Z",
       "source_type": "primary",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -424,14 +424,15 @@
         "https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.321",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.322",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.323"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.323",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.325"
       ],
-      "summary": "Claude Code 2.1.323 adds experimental Code Mode for JavaScript tool calls, plugin engine ranges and strict TypeScript hook validation. It also fixes fail-open sandbox settings, Bash permission bypasses, symlinked project-settings checks and background identity failures. The release remains stable, while Code Mode is explicitly experimental.",
-      "why_it_matters": "Teams using policy-managed or unattended Claude Code sessions should upgrade because several fixes affect whether invalid policy fails closed. Code Mode should be isolated behind regression tests until its permission and observability behavior is understood.",
-      "summary_zh": "Claude Code 2.1.323 加入实验性的 Code Mode，用 JavaScript 组织工具调用，并支持 plugin engine 版本范围和严格的 TypeScript hook 校验。它还修复沙箱设置失败时放行、Bash 权限绕过、符号链接项目设置检查和后台身份异常。稳定版已发布，但 Code Mode 仍明确标为实验性。",
-      "summary_en": "Claude Code 2.1.323 adds experimental Code Mode for JavaScript tool calls, plugin engine ranges and strict TypeScript hook validation. It also fixes fail-open sandbox settings, Bash permission bypasses, symlinked project-settings checks and background identity failures. The release remains stable, while Code Mode is explicitly experimental.",
-      "why_it_matters_zh": "使用集中策略或无人值守 Claude Code 的团队应升级，因为多项修复直接决定无效策略是否会失败即阻断。Code Mode 在权限和可观测行为明确前，应隔离做回归测试。",
-      "why_it_matters_en": "Teams using policy-managed or unattended Claude Code sessions should upgrade because several fixes affect whether invalid policy fails closed. Code Mode should be isolated behind regression tests until its permission and observability behavior is understood.",
+      "summary": "Claude Code 2.1.325 fixes compound Bash commands that could run without approval, allow rules that could launch a different program, and deny rules that failed after restart. It also protects worktree settings, linked Git directories and public artifact changes, and removes sign-in tokens from helper-process environments. The stable release changes sandboxed Bash to follow the normal permission flow by default.",
+      "why_it_matters": "Teams using unattended or policy-managed Claude Code sessions should upgrade because the fixes affect whether approval, deny and sandbox boundaries hold under compound commands, restarts and worktrees. The changed sandbox default may cause scheduled tasks to pause, so rollout needs an unattended-workflow regression rather than a blind upgrade.",
+      "summary_zh": "Claude Code 2.1.325 修复复合 Bash 命令绕过询问、allow 规则运行了别的程序，以及重启后 deny 规则失效等问题。它还保护 worktree 设置、共享 Git 目录与公开 artifact 变更，并从辅助进程环境中移除登录 token。稳定版默认让沙箱内 Bash 也走正常权限流程。",
+      "summary_en": "Claude Code 2.1.325 fixes compound Bash commands that could run without approval, allow rules that could launch a different program, and deny rules that failed after restart. It also protects worktree settings, linked Git directories and public artifact changes, and removes sign-in tokens from helper-process environments. The stable release changes sandboxed Bash to follow the normal permission flow by default.",
+      "why_it_matters_zh": "使用无人值守或集中策略 Claude Code 的团队应升级，因为这些修复直接关系到复合命令、重启和 worktree 场景下审批、拒绝与沙箱边界是否有效。新的沙箱默认值可能让定时任务停下来等确认，因此不能盲升，必须回归无人值守流程。",
+      "why_it_matters_en": "Teams using unattended or policy-managed Claude Code sessions should upgrade because the fixes affect whether approval, deny and sandbox boundaries hold under compound commands, restarts and worktrees. The changed sandbox default may cause scheduled tasks to pause, so rollout needs an unattended-workflow regression rather than a blind upgrade.",
       "technical_details": {
         "forking": "default on; inherits conversation + prompt cache",
         "messaging": "SendMessage via @-mentions across live sessions; no history/files/permissions exchange",
@@ -465,7 +466,7 @@
         "update_2026_10_21": "2.1.305 adds sandbox.allowNestedUserNamespaces for Chromium/rootless Podman, with an explicit warning that it bypasses sandbox file protections; fixes a 2.1.304 provider/gateway tool-search regression. 2.1.306 fixes cloud-session auth and false prompt-too-long/compaction behavior with many MCP tools.",
         "update_2026_10_22": "2.1.307 adds per-tool safety OTel events, API-version switching and idempotency-aware HTTP MCP retry; 2.1.308 follows with bug fixes.",
         "update_2026_10_23_claude_2_1_309": "2.1.309 fixes startup files running outside the sandbox, symlink bypasses for denyWrite/profile stores, writes to --mcp-config, disabled MCP reconnection and multiple Bash/worktree permission bypasses.",
-        "latest_version": "2.1.323",
+        "latest_version": "2.1.325",
         "release_update": "Adds cloud tool/plugin monitors, gateway fallback, symlink destination visibility and fail-open hook fixes.",
         "time_basis": "GitHub release published 2026-10-23T23:39:00Z.",
         "release_2026_10_26": "Claude Code 2.1.311 stable",
@@ -488,7 +489,9 @@
         "vendor_response_2026_11_08": "Claude Code lead Boris Cherny said Anthropic is looking at auto mode and basic secret scanning. This is a response and planned mitigation, not a verified shipped fix.",
         "time_basis_2026_11_08": "Apiiro published the research on 2026-11-05 and updated it on 2026-11-08; the update time is date-only.",
         "limitations_2026_11_08": "Researcher-run scan of public GitHub data; one live key was independently confirmed by the researcher. The full secret classification and repository attribution were not independently reproduced in this run.",
-        "update_2026_11_12": "Experimental Code Mode, plugin engine ranges, strict TypeScript hook validation, Artifact .docx uploads, and fail-closed sandbox/permission fixes."
+        "update_2026_11_12": "Experimental Code Mode, plugin engine ranges, strict TypeScript hook validation, Artifact .docx uploads, and fail-closed sandbox/permission fixes.",
+        "update_2026_11_14": "Compound-command and allow-rule checks, restart-persistent deny rules, worktree and public-artifact protections, helper-process token stripping, and normal permission flow for sandboxed Bash.",
+        "time_basis_2026_11_14": "GitHub release published 2026-11-13T20:40:01Z."
       },
       "update_2026_08_17": "2.1.234 (2026-08-17, in-window): rejects Windows NT-namespace (\\??\\) paths across remote file reads, session restore, CLAUDE.md includes, workflow scripts and uploads — hardens pre-approval file accesses against the NTLM credential-leak vector; GitLab MR footer badge (draft/pending/green states, glab repos); auto-continue sessions when usage limit resets (toggle in /config); claude-api skill context cost cut from ~200k+ to ~25k tokens; selection:clear keybinding; CLAUDE_CODE_PROJECT_DIR_NAME env var; many Remote Control / permission-preview / TUI fixes.",
       "update_2026_08_18": "2.1.235 (2026-08-18, in-window): security-relevant fix — Shift+Tab in the permission prompt's comment field no longer wrongly grants session-wide edit permission; new optional `spellcheck` setting (aspell/hunspell/ispell); fix for whole-prompt-cache invalidation when a language server disconnects mid-session; nested markdown list misalignment fix (depth 3+); lower memory/CPU usage for background cloud sessions (/ultrareview); permission dialogs now display exactly what a grant covers; VS Code focus fix after window restore. Recommendation stays ADOPT; upgrading also picks up the 2.1.234 NTLM hardening.",
@@ -540,7 +543,7 @@
         "2026-10-21 更新": "2.1.305 为 Chromium/rootless Podman 增加 sandbox.allowNestedUserNamespaces，并明确警告它会绕过沙箱文件保护；同时修复 2.1.304 的 provider/gateway tool-search 回归。2.1.306 修复云会话认证及 MCP 工具较多时误报 prompt 过长和多余压缩。",
         "2026-10-22 更新": "2.1.307 加入逐工具安全 OTel 事件、API version 切换与按幂等性判断的 HTTP MCP 重试；2.1.308 随后修复问题。",
         "2026-10-23 更新 Claude 2.1.309": "2.1.309 修复 shell 启动文件在沙箱外执行、denyWrite/profile store 的 symlink 绕过、写入 --mcp-config、disabled MCP 重连及多条 Bash/worktree 权限绕过。",
-        "最新版本": "2.1.323",
+        "最新版本": "2.1.325",
         "版本更新": "新增云端 tool/plugin monitor、网关降级、symlink 目标显示和 fail-open hook 修复。",
         "时间依据": "GitHub release published 2026-11-03T01:25:46Z",
         "2026-10-26 版本": "Claude Code 2.1.311 稳定版",
@@ -559,7 +562,9 @@
         "2026-11-08 厂商回应": "Claude Code 负责人 Boris Cherny 表示 Anthropic 正在研究 auto mode 与基础密钥扫描。这是回应和计划中的缓解，并非已核实发布的修复。",
         "2026-11-08 时间依据": "Apiiro 于 2026-11-05 发布研究，2026-11-08 更新；更新时间只有日期精度。",
         "2026-11-08 局限": "这是研究方对公开 GitHub 数据的扫描；研究方另行确认了一个仍有效的 key。本轮未独立复现完整密钥分类与仓库归属。",
-        "2026-11-12 更新": "实验性 Code Mode、plugin engine 版本范围、严格 TypeScript hook 校验、Artifact .docx 上传，以及失败即阻断的沙箱/权限修复。"
+        "2026-11-12 更新": "实验性 Code Mode、plugin engine 版本范围、严格 TypeScript hook 校验、Artifact .docx 上传，以及失败即阻断的沙箱/权限修复。",
+        "2026-11-14 更新": "修复复合命令和 allow 规则审批、重启后 deny、worktree 与公开 artifact 边界；辅助进程移除登录 token；沙箱内 Bash 默认改走正常审批。",
+        "2026-11-14 时间依据": "GitHub release 发布于 2026-11-13T20:40:01Z。"
       },
       "update_2026_08_20": "2.1.237 + 2.1.238 (both 2026-08-20, in-window). 2.1.237: fixed prompt caching for sessions using an LLM gateway or custom base URL (directly relevant to gateway deployments); added a built-in 'Concise' output style ('Claude leads with results and skips preamble and narration') selectable via /config. 2.1.238: fixed unbounded memory growth in long interactive sessions — subagent tool results are now freed after leaving the recent display window, directly relevant to long-running multi-agent sessions; plugin marketplaces gained `headersHelper` for URL marketplaces/catalog entries (mints short-lived HTTP headers such as tokens for catalog and same-origin archive fetches, shown to the user first with [y/N] confirmation, no inherited credential env vars) — private/enterprise plugin distribution; self-hosted runner `--defer-shutdown-max-min` (keep serving attached sessions on SIGTERM, then park and exit) and `--proxy-authorization-command`/`--proxy-authorization-file` for proxies needing a fresh Proxy-Authorization header per connection; numerous Remote Control fixes (mid-turn messages vanishing from transcripts, model picks on phone/web not updating the terminal, 'login expired' on brief network hiccups now retries, crashed-session reuse, env-var leaks, per-task Stop, ListAgents/SendMessage wrongly reporting 'not connected' in server mode); cross-session messaging hardening (refused inboxes now report 'refused'; rate-limited/dropped messages notify the sender instead of vanishing); MCP fixes (stdio servers no longer receive server/discover before initialize — lazy servers no longer start on every open; elicitation dialogs fixed for URLs over 4,096 chars; disabled servers listed without health-checking). Recommendation stays ADOPT.",
       "update_2026_08_21": "2.1.239 (2026-08-21T17:18Z, in-window). Cost/estimation: /cost, the status line and --max-budget-usd now include the 1.1x US-only-inference premium for data-residency workspaces; the usage-limit message now states when the session or weekly limit resets. Bedrock: fixed streaming behind proxies that strip the response Content-Type header (which silently doubled billed API calls by re-running every turn non-streaming) and fixed startup hangs behind an HTTPS proxy with SSO profiles + awsAuthRefresh. Cloud sessions: plugins synced from claude.ai now show as name@synced and work with `claude plugin enable/disable <name>@synced` (never overriding a same-named locally installed plugin); fixed remote MCP servers staying failed after a transient 5xx on mid-session reconnect; fixed resuming out of plan mode after an idle worker restart. Multi-agent/messaging refinements (same primitive family, not new primitives): ListAgents now lists live teammates and tells a session its own peer name; SendMessage to your own name now says so; fixed sessions titled with a leading / being unaddressable; fixed runaway Remote Control session-title syncing (2.1.232 regression). /goal: repeat check-ins on long-running background work now back off (30 min -> 1 h -> 2 h); `claude --resume` restores the active goal. Also: Alpine/musl native add-ons (paste/clipboard/audio), `/claude-api upgrade` for anthropic 0.x -> 1.x Python migration, MCP elicitation form scroll fix in fullscreen, OpenTelemetry trace-fragmentation fix for hook-deferred tool calls, vim-mode agent-view Escape fix. Recommendation stays ADOPT.",
@@ -626,7 +631,8 @@
         "src-10bdc73097cfd238",
         "src-ace31f3b0bb1b6f0",
         "src-dbc58eacee5d52ba",
-        "src-8427d4fee9a7d1b9"
+        "src-8427d4fee9a7d1b9",
+        "src-e58a3ce1f17ad846"
       ],
       "project_ids": [
         "claude-code"
@@ -1056,6 +1062,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260814-04-evidence-2-1-325",
+          "claim_zh": "官方 release 记录多条 Bash、deny、worktree、公开 artifact 与凭据环境边界修复，并改变沙箱内 Bash 的默认审批流程。",
+          "claim_en": "The official release documents Bash, deny-rule, worktree, public-artifact and credential-environment fixes and changes the default approval flow for sandboxed Bash.",
+          "source_ids": [
+            "src-e58a3ce1f17ad846"
+          ],
+          "event_ids": [
+            "ev-20260814-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; runtime behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -1472,6 +1491,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-325",
+          "kind": "update",
+          "occurred_at": "2026-11-13T20:40:01Z",
+          "discovered_at": "2026-11-14T16:59:13Z",
+          "summary_zh": "2.1.325 修复多条 Bash、deny、worktree 与凭据环境边界，并改变沙箱内 Bash 的默认审批流程。",
+          "summary_en": "Version 2.1.325 fixes Bash, deny-rule, worktree and credential-environment boundaries and changes sandboxed Bash approval defaults.",
+          "evidence_ids": [
+            "ev-20260814-04-evidence-2-1-325"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1481,11 +1513,11 @@
           "src-10bdc73097cfd238"
         ]
       },
-      "next_action_zh": "升级到 2.1.323，并回归沙箱无效配置、Bash deny、符号链接项目设置和后台认证。",
-      "next_action_en": "Upgrade to 2.1.323 and regress invalid sandbox settings, Bash deny rules, symlinked project settings and background authentication.",
-      "short_label_zh": "Claude Code 密钥泄露",
-      "short_label_en": "Claude Code secret leak",
-      "last_reviewed_at": "2026-11-08T16:58:06Z"
+      "next_action_zh": "升级到 2.1.325，并回归复合 Bash、重启后 deny、worktree 保护和定时任务的审批等待。",
+      "next_action_en": "Upgrade to 2.1.325 and regress compound Bash, post-restart deny rules, worktree protections and scheduled-task approval waits.",
+      "short_label_zh": "Claude Code 2.1.325",
+      "short_label_en": "Claude Code 2.1.325",
+      "last_reviewed_at": "2026-11-14T16:59:13Z"
     },
     {
       "event_id": "ev-20260814-05",
