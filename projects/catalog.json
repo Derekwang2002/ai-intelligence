@@ -152,7 +152,8 @@
         "src-88a44dd722fc8d95",
         "src-3dfc9f353bfc10d6",
         "src-35d012f137ad20ab",
-        "src-74c2266880cc04f0"
+        "src-74c2266880cc04f0",
+        "src-d1ff7879d9ac567f"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -181,19 +182,20 @@
         "src-88a44dd722fc8d95",
         "src-3dfc9f353bfc10d6",
         "src-35d012f137ad20ab",
-        "src-74c2266880cc04f0"
+        "src-74c2266880cc04f0",
+        "src-d1ff7879d9ac567f"
       ],
-      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "last_reviewed_at": "2026-11-15T17:03:06Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.27.3 把后台 ACP 与共享 agent loop 带入稳定分支，但 0.x 兼容性仍需测试。",
-        "judgment_en": "Version 0.27.3 brings background ACP and the shared agent loop to stable, but 0.x compatibility still needs testing.",
-        "next_action_zh": "在隔离仓库回放后台运行、唤醒、PR 绑定和权限恢复。",
-        "next_action_en": "Replay background runs, wakeups, PR binding and permission recovery in an isolated repository.",
+        "judgment_zh": "0.27.4 开放受控本地目录、托管 Web Terminal 和企业消息 webhook，同时收紧 Auto Mode 授权；这些执行边界仍需回归。",
+        "judgment_en": "Version 0.27.4 opens controlled local directories, a managed web terminal and enterprise messaging webhooks while tightening Auto Mode authorization; these execution boundaries still need regression testing.",
+        "next_action_zh": "一天内回放目录授权、Web Terminal、Auto Mode 破坏性操作与飞书投递。",
+        "next_action_en": "Within one day, replay directory grants, Web Terminal, destructive Auto Mode actions and Feishu delivery.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-11-13T17:04:57Z"
+        "reviewed_at": "2026-11-15T17:03:06Z"
       }
     },
     {
@@ -777,7 +779,8 @@
         "src-5f6db8b0b36e1913",
         "src-afb4f1911ed6958a",
         "src-fe3326f4dbcaa51b",
-        "src-bc1643b3a14e5224"
+        "src-bc1643b3a14e5224",
+        "src-fe2d022b775c8438"
       ],
       "current_judgment_event_id": "ev-20260928-07",
       "official_source_ids": [
@@ -786,22 +789,23 @@
         "src-987dd82c392616be",
         "src-afb4f1911ed6958a",
         "src-fe3326f4dbcaa51b",
-        "src-bc1643b3a14e5224"
+        "src-bc1643b3a14e5224",
+        "src-fe2d022b775c8438"
       ],
-      "last_reviewed_at": "2026-11-12T17:00:14Z",
+      "last_reviewed_at": "2026-11-15T17:03:06Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "协议 SDK 仍适合隔离试验；LiteLLM 1.109.1 收紧客户端凭据边界并为镜像提供验签，但单一 gateway 维护版没有改变协议成熟度。",
-        "judgment_en": "Protocol SDKs remain suitable for isolated trials. LiteLLM 1.109.1 tightens client credential boundaries and adds image verification without changing protocol maturity.",
-        "next_action_zh": "在测试服务验证镜像签名、OAuth、session 隔离、toolset 限制与显式允许客户端凭据的例外路径。",
-        "next_action_en": "Validate image signatures, OAuth, session isolation, toolset limits and explicit client-credential exceptions in a test service.",
+        "judgment_zh": "协议 SDK 仍适合隔离试验；LiteLLM 1.108.9 回移多 provider reasoning 与路由修复，但单一 gateway 的 LTS 维护版没有改变 MCP 成熟度。",
+        "judgment_en": "Protocol SDKs remain suitable for isolated trials. LiteLLM 1.108.9 backports multi-provider reasoning and routing fixes without changing MCP maturity.",
+        "next_action_zh": "在测试服务回放 MCP session、toolset 限制与跨 provider reasoning 字段。",
+        "next_action_en": "Replay MCP sessions, toolset limits and cross-provider reasoning fields in a test service.",
         "basis_event_ids": [
           "ev-20260913-01",
           "ev-20260928-07",
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-11-12T17:00:14Z"
+        "reviewed_at": "2026-11-15T17:03:06Z"
       }
     },
     {
@@ -6963,25 +6967,46 @@
       ],
       "source_ids": [
         "src-f9ecf66c18226a74",
-        "src-b61b7d0004aa5f86"
+        "src-b61b7d0004aa5f86",
+        "src-00b89b74ca093e9d",
+        "src-08559d3c1d200ac7"
       ],
       "current_judgment_event_id": "ev-20261102-06",
       "official_source_ids": [
         "src-f9ecf66c18226a74",
-        "src-b61b7d0004aa5f86"
+        "src-b61b7d0004aa5f86",
+        "src-00b89b74ca093e9d",
+        "src-08559d3c1d200ac7"
       ],
-      "last_reviewed_at": "2026-11-03T17:02:48Z",
+      "last_reviewed_at": "2026-11-15T17:03:06Z",
       "judgment": {
-        "recommendation": "IGNORE",
-        "judgment_zh": "当前证据受争议，未达到可投入训练资源的门槛。",
-        "judgment_en": "Current evidence is contested and does not justify training investment.",
-        "next_action_zh": "当前不要投入训练资源；等待公开材料和独立复现。",
-        "next_action_en": "Do not invest training resources; wait for public artifacts and independent replication.",
+        "recommendation": "TRIAL",
+        "judgment_zh": "Qwen Concept 27B 提供公开权重、代码、数据与随机对照，让 weight-space programming 从争议性结果变成可复测实验；性能仍未独立复现。",
+        "judgment_en": "Qwen Concept 27B provides public weights, code, data and a random control, turning weight-space programming from a disputed result into a reproducible experiment; performance remains independently unverified.",
+        "next_action_zh": "一天内用公开 GGUF 和评测子集比较底座与编辑模型，记录正确率、thinking token 与退化样例。",
+        "next_action_en": "Within one day, compare the base and edited models with the public GGUF and evaluation subset, recording accuracy, thinking tokens and regressions.",
         "basis_event_ids": [
           "ev-20261102-06"
         ],
-        "reviewed_at": "2026-11-03T17:02:48Z"
-      }
+        "reviewed_at": "2026-11-15T17:03:06Z"
+      },
+      "changes": [
+        {
+          "id": "weight-space-programming-trial-20261115",
+          "kind": "recommendation",
+          "occurred_at": "2026-11-08T16:39:43Z",
+          "discovered_at": "2026-11-15T17:03:06Z",
+          "before": "IGNORE",
+          "after": "TRIAL",
+          "summary_zh": "新增公开权重、代码、评测数据与随机对照，已具备一天内复测条件。",
+          "summary_en": "Public weights, code, evaluation data and a random control now support a one-day reproduction.",
+          "evidence_ids": [
+            "ev-20261102-06-qwen-concept-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "id": "openai-pando",
@@ -7179,7 +7204,8 @@
         "src-e372c61ba3f0e7a4",
         "src-569a35504d8a0adf",
         "src-0258ef134fc324e9",
-        "src-e8b59bc710743165"
+        "src-e8b59bc710743165",
+        "src-fe2d022b775c8438"
       ],
       "current_judgment_event_id": "ev-20260913-01",
       "official_source_ids": [
@@ -7203,19 +7229,20 @@
         "src-e372c61ba3f0e7a4",
         "src-569a35504d8a0adf",
         "src-0258ef134fc324e9",
-        "src-e8b59bc710743165"
+        "src-e8b59bc710743165",
+        "src-fe2d022b775c8438"
       ],
-      "last_reviewed_at": "2026-11-12T17:00:14Z",
+      "last_reviewed_at": "2026-11-15T17:03:06Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "1.108.4 修复跨 provider reasoning、团队 BYOK 路由与护栏回归；共享 gateway 仍应 canary 升级。",
-        "judgment_en": "Version 1.108.4 fixes cross-provider reasoning, team BYOK routing and guardrail regressions; shared gateways still need a canary upgrade.",
-        "next_action_zh": "一天内验证镜像签名，并回归 Azure、OIDC、MCP OAuth、透传路由与显式允许客户端凭据的配置。",
-        "next_action_en": "Within one day, verify the image signature and regress Azure, OIDC, MCP OAuth, pass-through routes and configurations that explicitly allow client credentials.",
+        "judgment_zh": "1.108.9 向 LTS 回移 reasoning、缓存、调用方标识与多 provider 路由修复；跨 provider 行为仍需 canary 回放。",
+        "judgment_en": "Version 1.108.9 backports reasoning, caching, caller identity and multi-provider routing fixes to LTS; cross-provider behavior still needs a canary replay.",
+        "next_action_zh": "一天内在 LTS canary 回放混合 reasoning、Responses 缓存、Vertex 调用方标签及 Foundry、Kimi 路由。",
+        "next_action_en": "Within one day, replay mixed reasoning, Responses caching, Vertex caller labels and Foundry or Kimi routes on an LTS canary.",
         "basis_event_ids": [
           "ev-20260913-01"
         ],
-        "reviewed_at": "2026-11-12T17:00:14Z"
+        "reviewed_at": "2026-11-15T17:03:06Z"
       },
       "changes": []
     },
@@ -8820,9 +8847,75 @@
         ],
         "reviewed_at": "2026-11-14T16:59:13Z"
       }
+    },
+    {
+      "id": "inkling-2-small",
+      "name_zh": "Inkling 2 Small",
+      "name_en": "Inkling 2 Small",
+      "type": "model",
+      "aliases": [
+        "Inkling-2-Small"
+      ],
+      "pattern": "Inkling 2 Small",
+      "event_ids": [
+        "ev-20261104-05"
+      ],
+      "source_ids": [
+        "src-0679810bb8b1faa3"
+      ],
+      "current_judgment_event_id": "ev-20261104-05",
+      "official_source_ids": [
+        "src-0679810bb8b1faa3"
+      ],
+      "last_reviewed_at": "2026-11-15T17:03:06Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Apache-2.0 权重和托管 API 让 100 万 token 多模态模型可实测，但原生自托管至少需要 500 GB 聚合显存，benchmark 仍来自发布方。",
+        "judgment_en": "Apache-2.0 weights and hosted APIs make the 1M-token multimodal model testable, but native self-hosting needs at least 500 GB of aggregate VRAM and benchmarks remain publisher-reported.",
+        "next_action_zh": "一天内通过托管 API 跑 20 个长上下文图文任务，记录准确率、首 token 延迟与成本。",
+        "next_action_en": "Within one day, run 20 long-context multimodal tasks through a hosted API and record accuracy, time to first token and cost.",
+        "basis_event_ids": [
+          "ev-20261104-05"
+        ],
+        "reviewed_at": "2026-11-15T17:03:06Z"
+      }
+    },
+    {
+      "id": "sophon-realtime",
+      "name_zh": "Sophon-Realtime",
+      "name_en": "Sophon-Realtime",
+      "type": "model",
+      "aliases": [
+        "Sophon-Realtime-v1"
+      ],
+      "pattern": "Sophon-Realtime",
+      "event_ids": [
+        "ev-20261107-01"
+      ],
+      "source_ids": [
+        "src-a5b5b4e52d94f84e",
+        "src-440b48cdca2e4eb6"
+      ],
+      "current_judgment_event_id": "ev-20261107-01",
+      "official_source_ids": [
+        "src-a5b5b4e52d94f84e",
+        "src-440b48cdca2e4eb6"
+      ],
+      "last_reviewed_at": "2026-11-15T17:03:06Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开权重、代码、vLLM-Omni 路径和兼容 OpenAI Realtime 的试用 API 让全双工语音可实测；延迟与 benchmark 仍由发布方报告。",
+        "judgment_en": "Public weights, code, a vLLM-Omni path and an OpenAI Realtime-compatible trial API make full-duplex voice testable; latency and benchmarks remain publisher-reported.",
+        "next_action_zh": "一天内跑 20 轮中英双语打断测试，记录首音频延迟、抢话恢复、转写偏差与显存。",
+        "next_action_en": "Within one day, run 20 bilingual interruption trials and record first-audio latency, barge-in recovery, transcript error and memory use.",
+        "basis_event_ids": [
+          "ev-20261107-01"
+        ],
+        "reviewed_at": "2026-11-15T17:03:06Z"
+      }
     }
   ],
-  "last_updated": "2026-11-15",
-  "total_projects": 245,
-  "last_updated_at": "2026-11-14T16:59:13Z"
+  "last_updated": "2026-11-16",
+  "total_projects": 247,
+  "last_updated_at": "2026-11-15T17:03:06Z"
 }

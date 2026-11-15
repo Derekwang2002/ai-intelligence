@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-07",
+  "provenance": "Late discovery recovered by recall audit during incremental scan 2026-11-15T17:03:06Z; primary artifacts verified during the run.",
+  "events": [
+    {
+      "event_id": "ev-20261107-01",
+      "title": "Adventists AI opens Sophon-Realtime for full-duplex voice agents",
+      "title_zh": "Adventists AI 开放 Sophon-Realtime 语音模型",
+      "category": "foundation-model",
+      "organization": [
+        "Adventists AI"
+      ],
+      "published_at": "2026-11-07T03:06:25Z",
+      "first_seen_at": "2026-11-15T17:03:06Z",
+      "last_updated_at": "2026-11-15T17:03:06Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/adventists-ai/Sophon-Realtime-v1",
+      "secondary_sources": [
+        "https://github.com/adventists-ai/sophon-realtime"
+      ],
+      "summary": "Adventists AI released Sophon-Realtime v1, an Apache-2.0 full-duplex Chinese-English voice model family with Tag, Flash and E2E speech paths. Public weights and code run on one 80 GB GPU through vLLM-Omni or the project's engine, and a hosted OpenAI Realtime-compatible API offers a free trial. The publisher reports about 0.25 seconds to first audio for E2E and 48% Pass@1 on Full-Duplex-Bench v3.",
+      "why_it_matters": "For teams building voice agents, public weights, barge-in handling and a familiar realtime API make an end-to-end trial practical. The quality, concurrency and latency numbers are mostly publisher-run, so production decisions still need independent bilingual, noisy-room and interruption tests.",
+      "summary_zh": "Adventists AI 发布 Sophon-Realtime v1。这是一组支持中英文的 Apache-2.0 全双工语音模型，提供 Tag、Flash 与 E2E 三条语音路径。公开权重和代码可在单张 80 GB GPU 上通过 vLLM-Omni 或项目自带引擎运行，另有兼容 OpenAI Realtime 的托管 API 免费试用。发布方报告 E2E 首音频约 0.25 秒，Full-Duplex-Bench v3 Pass@1 为 48%。",
+      "summary_en": "Adventists AI released Sophon-Realtime v1, an Apache-2.0 full-duplex Chinese-English voice model family with Tag, Flash and E2E speech paths. Public weights and code run on one 80 GB GPU through vLLM-Omni or the project's engine, and a hosted OpenAI Realtime-compatible API offers a free trial. The publisher reports about 0.25 seconds to first audio for E2E and 48% Pass@1 on Full-Duplex-Bench v3.",
+      "why_it_matters_zh": "对开发语音 agent 的团队来说，公开权重、打断处理和兼容常见 realtime API 的接口让端到端试验可执行。质量、并发与延迟数字主要来自发布方，生产决策前仍需独立测试中英双语、噪声环境与连续打断。",
+      "why_it_matters_en": "For teams building voice agents, public weights, barge-in handling and a familiar realtime API make an end-to-end trial practical. The quality, concurrency and latency numbers are mostly publisher-run, so production decisions still need independent bilingual, noisy-room and interruption tests.",
+      "technical_details": {
+        "architecture": "32B shared listening and reasoning model with Tag, Flash and E2E speech generation paths",
+        "license": "Apache-2.0 code and weights",
+        "availability": "Public Hugging Face weights and GitHub code; hosted OpenAI Realtime-compatible API with a three-hour trial",
+        "serving": "One 80 GB GPU; Tag and Flash through vLLM-Omni; E2E through the project engine or vLLM-Omni",
+        "publisher_benchmarks": "E2E first audio about 0.25 s; Full-Duplex-Bench v3 Pass@1 48%; VoiceBench 82.8; Big Bench Audio 81.8%",
+        "benchmark_limits": "Sophon results are publisher-run; Full-Duplex-Bench reports the best of several runs and uses GPT-4o judging",
+        "time_basis": "Hugging Face repository created 2026-11-07T03:06:25Z; recovered as a recall-audit late discovery"
+      },
+      "technical_details_zh": {
+        "架构": "三条语音生成路径共用 32B 监听与推理模型：Tag、Flash、E2E",
+        "许可": "代码与权重均为 Apache-2.0",
+        "可用性": "Hugging Face 公开权重与 GitHub 代码；兼容 OpenAI Realtime 的托管 API 提供三小时试用",
+        "Serving": "单张 80 GB GPU；Tag 与 Flash 使用 vLLM-Omni；E2E 使用项目引擎或 vLLM-Omni",
+        "发布方 benchmark": "E2E 首音频约 0.25 秒；Full-Duplex-Bench v3 Pass@1 48%；VoiceBench 82.8；Big Bench Audio 81.8%",
+        "评测限制": "Sophon 结果由发布方运行；Full-Duplex-Bench 采用多次运行中的最好成绩，并由 GPT-4o 评分",
+        "时间依据": "Hugging Face 仓库创建于 2026-11-07T03:06:25Z；由召回自检补录为 late discovery"
+      },
+      "tags": [
+        "sophon-realtime",
+        "voice-agent",
+        "full-duplex",
+        "open-weights",
+        "vllm-omni"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "adventists-ai-sophon-realtime-v1",
+      "short_label_zh": "Sophon-Realtime v1",
+      "short_label_en": "Sophon-Realtime v1",
+      "next_action_zh": "一天内用托管 API 跑 20 轮中英双语打断与噪声测试，记录首音频延迟、任务成功率和转写偏差。",
+      "next_action_en": "Within one day, run 20 bilingual interruption and noise trials on the hosted API and record first-audio latency, task success and transcript error.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-a5b5b4e52d94f84e",
+        "src-440b48cdca2e4eb6"
+      ],
+      "project_ids": [
+        "sophon-realtime"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local",
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261107-01-public-artifacts",
+          "claim_zh": "官方 model card 与代码仓库确认 Apache-2.0 权重、单卡 serving 路径、打断处理与托管 API；性能数字尚未独立复现。",
+          "claim_en": "The official model card and code repository confirm Apache-2.0 weights, single-GPU serving paths, interruption handling and a hosted API; performance numbers remain independently unverified.",
+          "source_ids": [
+            "src-a5b5b4e52d94f84e",
+            "src-440b48cdca2e4eb6"
+          ],
+          "event_ids": [
+            "ev-20261107-01"
+          ],
+          "relation": "support",
+          "verification": "public artifacts verified; performance not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261107-01-release",
+          "kind": "new",
+          "occurred_at": "2026-11-07T03:06:25Z",
+          "discovered_at": "2026-11-15T17:03:06Z",
+          "summary_zh": "Sophon-Realtime v1 公开中英双语全双工语音权重、代码和托管试用。",
+          "summary_en": "Sophon-Realtime v1 opens bilingual full-duplex voice weights, code and a hosted trial.",
+          "evidence_ids": [
+            "ev-20261107-01-public-artifacts"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

@@ -408,6 +408,106 @@
           "importance": "normal"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261104-05",
+      "title": "Thinking Machines releases Inkling 2 Small with open multimodal weights",
+      "title_zh": "Thinking Machines 开放 Inkling 2 Small 权重",
+      "category": "foundation-model",
+      "organization": [
+        "Thinking Machines Lab"
+      ],
+      "published_at": "2026-11-04T19:51:05Z",
+      "first_seen_at": "2026-11-15T17:03:06Z",
+      "last_updated_at": "2026-11-15T17:03:06Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+      "secondary_sources": [],
+      "summary": "Thinking Machines Lab released Apache-2.0 weights for Inkling 2 Small, a 594B-parameter multimodal MoE model with 17B active parameters and a 1M-token context window. It accepts text and images and is available through local serving recipes, the Tinker playground and several third-party APIs. Direct self-hosting requires at least 500 GB of aggregate VRAM for the native NVFP4 checkpoint.",
+      "why_it_matters": "For teams comparing open multimodal models, hosted access makes the model testable without buying its unusually large self-hosting footprint. Publisher-run benchmark and safety results still need workload-specific and independent checks before production use.",
+      "summary_zh": "Thinking Machines Lab 发布 Inkling 2 Small 的 Apache-2.0 权重。它是 594B 总参数、17B 激活参数的多模态 MoE 模型，支持 100 万 token 上下文，可通过本地 serving 配方、Tinker playground 和多家第三方 API 使用。原生 NVFP4 checkpoint 自托管至少需要 500 GB 聚合显存。",
+      "summary_en": "Thinking Machines Lab released Apache-2.0 weights for Inkling 2 Small, a 594B-parameter multimodal MoE model with 17B active parameters and a 1M-token context window. It accepts text and images and is available through local serving recipes, the Tinker playground and several third-party APIs. Direct self-hosting requires at least 500 GB of aggregate VRAM for the native NVFP4 checkpoint.",
+      "why_it_matters_zh": "对比较开放多模态模型的团队来说，托管 API 让模型在不购买大规模硬件的情况下可实测。厂商 benchmark 与安全结果仍需结合自己的任务和独立证据复核，暂不适合直接进入生产。",
+      "why_it_matters_en": "For teams comparing open multimodal models, hosted access makes the model testable without buying its unusually large self-hosting footprint. Publisher-run benchmark and safety results still need workload-specific and independent checks before production use.",
+      "technical_details": {
+        "architecture": "594B total parameters, 17B active; multimodal sparse MoE with 8 of 384 experts active per token",
+        "context_window": "1M tokens",
+        "license": "Apache-2.0",
+        "availability": "Open NVFP4 and MXFP8 weights; Tinker playground; third-party APIs including NVIDIA, Fireworks, Together, Baseten, Nebius, Modal and Cloudflare",
+        "self_hosting": "NVFP4 requires at least 500 GB aggregate VRAM; MXFP8 requires at least 800 GB",
+        "evidence_limit": "Evaluation and safety results are publisher-reported; no independent workload evaluation was verified in this run",
+        "time_basis": "Hugging Face repository created 2026-11-04T19:51:05Z; recovered as a recall-audit late discovery"
+      },
+      "technical_details_zh": {
+        "架构": "594B 总参数、17B 激活参数；多模态稀疏 MoE，每个 token 激活 384 个 expert 中的 8 个",
+        "上下文窗口": "100 万 token",
+        "许可": "Apache-2.0",
+        "可用性": "开放 NVFP4 与 MXFP8 权重；Tinker playground；NVIDIA、Fireworks、Together、Baseten、Nebius、Modal、Cloudflare 等第三方 API",
+        "自托管": "NVFP4 至少需要 500 GB 聚合显存；MXFP8 至少需要 800 GB",
+        "证据限制": "评测与安全结果来自发布方；本次未核实到独立的实际工作负载评测",
+        "时间依据": "Hugging Face 仓库创建于 2026-11-04T19:51:05Z；由召回自检补录为 late discovery"
+      },
+      "tags": [
+        "inkling-2-small",
+        "multimodal",
+        "open-weights",
+        "moe",
+        "long-context"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "thinking-machines-inkling-2-small-open-weights",
+      "short_label_zh": "Inkling 2 Small",
+      "short_label_en": "Inkling 2 Small",
+      "next_action_zh": "一天内通过托管 API 跑 50 个多模态 coding／RAG 样例，记录质量、延迟、成本与拒答错误。",
+      "next_action_en": "Within one day, run 50 multimodal coding and RAG cases through a hosted API and record quality, latency, cost and refusal errors.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-0679810bb8b1faa3"
+      ],
+      "project_ids": [
+        "inkling-2-small"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261104-05-model-card-evidence",
+          "claim_zh": "官方 model card 提供 Apache-2.0 权重、架构与硬件要求、serving 配方及第三方 API；性能与安全结论仍主要来自发布方。",
+          "claim_en": "The official model card provides Apache-2.0 weights, architecture and hardware requirements, serving recipes and third-party APIs; performance and safety conclusions remain mainly publisher-reported.",
+          "source_ids": [
+            "src-0679810bb8b1faa3"
+          ],
+          "event_ids": [
+            "ev-20261104-05"
+          ],
+          "relation": "support",
+          "verification": "public artifacts verified; performance not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261104-05-release",
+          "kind": "new",
+          "occurred_at": "2026-11-04T19:51:05Z",
+          "discovered_at": "2026-11-15T17:03:06Z",
+          "summary_zh": "Thinking Machines 发布 Inkling 2 Small 开放权重与多条托管、serving 路径。",
+          "summary_en": "Thinking Machines releases Inkling 2 Small open weights with hosted and self-serving paths.",
+          "evidence_ids": [
+            "ev-20261104-05-model-card-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

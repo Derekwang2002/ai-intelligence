@@ -575,37 +575,49 @@
     },
     {
       "event_id": "ev-20261102-06",
-      "title": "Early weight-space programming results draw a technical challenge",
-      "title_zh": "早期 weight-space programming 结果遭到技术质疑",
+      "title": "Qwen Concept 27B turns weight-space programming into a testable artifact",
+      "title_zh": "Qwen Concept 27B 将权重编程变成可测产物",
       "category": "research",
       "organization": [
-        "academic"
+        "academic",
+        "Concept Country"
       ],
       "published_at": "2026-11-02",
       "first_seen_at": "2026-11-03T17:02:48Z",
-      "last_updated_at": "2026-11-03T17:02:48Z",
+      "last_updated_at": "2026-11-15T17:03:06Z",
       "source_type": "research_blog",
-      "primary_source": "https://rikiyat.github.io/blog/weight-space-programming/",
+      "primary_source": "https://concept.country/research/weight-space-programming",
       "secondary_sources": [
-        "https://honnibal.dev/blog/astra-read-write-misleading"
+        "https://honnibal.dev/blog/astra-read-write-misleading",
+        "https://huggingface.co/ConceptCountry/qwen-concept-27b"
       ],
-      "summary": "MIT CSAIL researchers report that GPT-6 Astra can inspect or directly edit small neural-network weights and raise Qwen3.5-0.8B from 7.9% to 48.1% on their MATH-500 setup without gradient training. A subsequent technical critique argues that the Qwen comparison and attribution are misleading. The post presents early experiments rather than a peer-reviewed, independently reproduced method.",
-      "why_it_matters": "For model-training teams, reasoning directly over weights could become a new optimization interface, but the current evidence does not justify changing training practice. Treat the result as a contested hypothesis until code, exact evaluation artifacts and independent replications are available.",
-      "summary_zh": "MIT CSAIL 研究者报告称，GPT-6 Astra 能检查或直接修改小型神经网络权重，并在其 MATH-500 设置中把 Qwen3.5-0.8B 从 7.9% 提升到 48.1%，无需梯度训练。随后一篇技术质疑认为 Qwen 对比与效果归因具有误导性。这仍是早期实验，不是经过同行评审和独立复现的方法。",
-      "summary_en": "MIT CSAIL researchers report that GPT-6 Astra can inspect or directly edit small neural-network weights and raise Qwen3.5-0.8B from 7.9% to 48.1% on their MATH-500 setup without gradient training. A subsequent technical critique argues that the Qwen comparison and attribution are misleading. The post presents early experiments rather than a peer-reviewed, independently reproduced method.",
-      "why_it_matters_zh": "对模型训练团队来说，直接对权重进行推理可能成为新的优化接口，但当前证据不足以改变训练实践。公开代码、完整评测材料和独立复现出现前，应把它视为有争议的假设。",
-      "why_it_matters_en": "For model-training teams, reasoning directly over weights could become a new optimization interface, but the current evidence does not justify changing training practice. Treat the result as a contested hypothesis until code, exact evaluation artifacts and independent replications are available.",
+      "summary": "Concept Country released Qwen Concept 27B, a Qwen3.5-27B derivative modified through weight-space programming without gradients or task data. Public weights, code, evaluation data and a norm-matched random control make the claim testable. The publisher reports gains on GPQA and LiveCodeBench with fewer thinking tokens, but no independent replication is available.",
+      "why_it_matters": "For model-research teams, the release moves weight-space programming from a disputed blog result to a downloadable artifact with controls. It is still an experimental model, so the right next step is a small base-versus-edited reproduction rather than a training change.",
+      "summary_zh": "Concept Country 发布 Qwen Concept 27B：它以 Qwen3.5-27B 为底座，不用梯度或任务数据，直接改写权重。公开权重、代码、评测数据和范数匹配的随机对照让结果可以检验。发布方报告 GPQA 与 LiveCodeBench 提升、thinking token 减少，但尚无独立复现。",
+      "summary_en": "Concept Country released Qwen Concept 27B, a Qwen3.5-27B derivative modified through weight-space programming without gradients or task data. Public weights, code, evaluation data and a norm-matched random control make the claim testable. The publisher reports gains on GPQA and LiveCodeBench with fewer thinking tokens, but no independent replication is available.",
+      "why_it_matters_zh": "对模型研究团队来说，这次发布把有争议的博客结果推进为带对照、可下载的实验产物。它仍是实验模型，下一步应做小规模底座对照复现，而不是改变训练路线。",
+      "why_it_matters_en": "For model-research teams, the release moves weight-space programming from a disputed blog result to a downloadable artifact with controls. It is still an experimental model, so the right next step is a small base-versus-edited reproduction rather than a training change.",
       "technical_details": {
         "reported_math_500": "7.9% to 48.1% after editing 0.016% of Qwen3.5-0.8B weights",
         "evidence_limit": "Author-reported blog experiments; independent critique disputes comparison and attribution",
         "review_status": "Not peer reviewed; no independent reproduction verified in this run",
-        "time_basis": "Research post dated 2026-11-02; critique dated 2026-11-03, both day precision only"
+        "time_basis": "Research post dated 2026-11-02; critique dated 2026-11-03, both day precision only",
+        "qwen_concept_27b": "Nine down-projection matrices edited without gradients or task data; public BF16, FP8, NVFP4 and GGUF artifacts",
+        "publisher_results": "GPQA +4.3 points; LiveCodeBench +13 points; 27% to 54% fewer thinking tokens across reported tasks",
+        "control": "Norm-matched random edits and a preregistered evaluation subset",
+        "time_basis_2026_11_08": "Hugging Face repository created 2026-11-08T16:39:43Z; discovered by recall audit on 2026-11-15.",
+        "evidence_limit_2026_11_15": "Publisher-run evaluation; no independent reproduction verified"
       },
       "technical_details_zh": {
         "自报 MATH-500": "修改 Qwen3.5-0.8B 的 0.016% 权重后，从 7.9% 升至 48.1%",
         "证据限制": "作者博客实验；独立质疑反对其对比与效果归因",
         "评审状态": "未经过同行评审；本次未核实到独立复现",
-        "时间依据": "研究文章日期为 2026-11-02，质疑文章日期为 2026-11-03，均只有日期精度"
+        "时间依据": "研究文章日期为 2026-11-02，质疑文章日期为 2026-11-03，均只有日期精度",
+        "Qwen Concept 27B": "不使用梯度或任务数据，修改 9 个 down-projection 矩阵；公开 BF16、FP8、NVFP4 与 GGUF 产物",
+        "发布方结果": "GPQA 提升 4.3 点；LiveCodeBench 提升 13 点；报告任务中的 thinking token 减少 27% 至 54%",
+        "对照": "范数匹配的随机修改与预注册评测子集",
+        "2026-11-08 时间依据": "Hugging Face 仓库创建于 2026-11-08T16:39:43Z；本次由召回自检发现。",
+        "2026-11-15 证据限制": "评测由发布方运行；本次未核实到独立复现"
       },
       "tags": [
         "weight-space-programming",
@@ -614,20 +626,22 @@
         "Qwen"
       ],
       "technical_impact": 4,
-      "engineering_value": 2,
+      "engineering_value": 3,
       "adoption_signal": 4,
-      "maturity": 1,
-      "verification_cost": 4,
+      "maturity": 2,
+      "verification_cost": 2,
       "risk": 3,
-      "recommendation": "IGNORE",
+      "recommendation": "TRIAL",
       "event_fingerprint": "weight-space-programming-astra-qwen-contested",
-      "short_label_zh": "Weight-Space Programming",
-      "short_label_en": "Weight-Space Programming",
-      "next_action_zh": "当前不要投入训练资源；等公开代码、完整评测材料和至少一项独立复现后再评估。",
-      "next_action_en": "Do not invest training resources yet; reassess after public code, full evaluation artifacts and at least one independent replication.",
+      "short_label_zh": "Qwen Concept 27B",
+      "short_label_en": "Qwen Concept 27B",
+      "next_action_zh": "一天内用公开 GGUF 和评测子集对比底座与编辑模型，在 30 个留出任务上记录正确率、thinking token 与退化样例。",
+      "next_action_en": "Within one day, use the public GGUF and evaluation subset to compare base and edited models on 30 held-out tasks, recording accuracy, thinking tokens and regressions.",
       "source_ids": [
         "src-f9ecf66c18226a74",
-        "src-b61b7d0004aa5f86"
+        "src-b61b7d0004aa5f86",
+        "src-00b89b74ca093e9d",
+        "src-08559d3c1d200ac7"
       ],
       "project_ids": [
         "weight-space-programming"
@@ -650,6 +664,20 @@
           ],
           "relation": "mixed",
           "verification": "contested"
+        },
+        {
+          "id": "ev-20261102-06-qwen-concept-evidence",
+          "claim_zh": "公开的 Qwen Concept 27B 权重、代码、数据与随机对照让 weight-space programming 可直接复测；性能数字仍来自发布方。",
+          "claim_en": "Public Qwen Concept 27B weights, code, data and a random control make weight-space programming directly testable; the performance numbers remain publisher-reported.",
+          "source_ids": [
+            "src-00b89b74ca093e9d",
+            "src-08559d3c1d200ac7"
+          ],
+          "event_ids": [
+            "ev-20261102-06"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; results not independently reproduced"
         }
       ],
       "changes": [
@@ -665,8 +693,24 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20261102-06-qwen-concept-27b",
+          "kind": "recommendation",
+          "before": "IGNORE",
+          "after": "TRIAL",
+          "occurred_at": "2026-11-08T16:39:43Z",
+          "discovered_at": "2026-11-15T17:03:06Z",
+          "summary_zh": "公开权重、代码、数据与随机对照把处置从 IGNORE 提升为可在一天内复测的 TRIAL。",
+          "summary_en": "Public weights, code, data and a random control move the disposition from IGNORE to a one-day reproducible TRIAL.",
+          "evidence_ids": [
+            "ev-20261102-06-qwen-concept-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "late_discovery": true
     },
     {
       "event_id": "ev-20261102-07",
