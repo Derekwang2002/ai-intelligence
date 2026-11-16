@@ -100,8 +100,8 @@
     },
     {
       "event_id": "ev-20261111-02",
-      "title": "Alibaba opens a two-week Token Plan preview of Qwen4-Max",
-      "title_zh": "Alibaba 开放两周 Qwen4-Max Token Plan 预览",
+      "title": "Alibaba turns Qwen4-Max into a production API",
+      "title_zh": "Alibaba 将 Qwen4-Max 转为正式 API",
       "category": "foundation-model",
       "organization": [
         "Alibaba",
@@ -109,73 +109,76 @@
       ],
       "published_at": "2026-11-11T02:00:00Z",
       "first_seen_at": "2026-11-11T17:04:24Z",
-      "last_updated_at": "2026-11-11T17:04:24Z",
+      "last_updated_at": "2026-11-16T16:59:56Z",
       "source_type": "official_docs",
       "primary_source": "https://www.alibabacloud.com/help/en/model-studio/qwen4-max-preview",
-      "secondary_sources": [],
-      "summary": "Alibaba Cloud opened Qwen4-Max-Preview from November 11 at 10:00 through November 25 at 24:00 UTC+8. It is available only through Token Plan, not pay-as-you-go, and will be retired after the preview. The multimodal API supports a 1M-token context, tool calls, structured output and OpenAI or Anthropic-compatible endpoints.",
-      "summary_en": "Alibaba Cloud opened Qwen4-Max-Preview from November 11 at 10:00 through November 25 at 24:00 UTC+8. It is available only through Token Plan, not pay-as-you-go, and will be retired after the preview. The multimodal API supports a 1M-token context, tool calls, structured output and OpenAI or Anthropic-compatible endpoints.",
-      "summary_zh": "Alibaba Cloud 从 11 月 11 日 10:00 至 11 月 25 日 24:00（UTC+8）开放 Qwen4-Max-Preview。它只面向 Token Plan，不支持按量付费，预览结束后会下线。多模态 API 支持 100 万 token 上下文、工具调用、结构化输出，以及 OpenAI 与 Anthropic 兼容接口。",
-      "why_it_matters": "For teams comparing long-context agent models, the API is testable now but does not yet create a durable production option. There are no open weights, pay-as-you-go price or independent benchmarks in the announcement.",
-      "why_it_matters_en": "For teams comparing long-context agent models, the API is testable now but does not yet create a durable production option. There are no open weights, pay-as-you-go price or independent benchmarks in the announcement.",
-      "why_it_matters_zh": "对比较长上下文 agent 模型的团队来说，现在可以调用测试，但还不是可长期依赖的生产选项。官方没有开放权重、按量价格或独立评测。",
+      "secondary_sources": [
+        "https://www.alibabacloud.com/blog/alibaba-unveils-qwen4-max-for-complex-agentic-workflows_602835",
+        "https://www.alibabacloud.com/help/en/model-studio/models"
+      ],
+      "summary": "Alibaba released the stable Qwen4-Max API with native vision, a 1M-token context and pay-as-you-go pricing. The 2.4T-parameter mixture-of-experts model activates 71B parameters per token. The stable SKU replaces the time-limited preview as the durable production option; weights remain closed.",
+      "summary_en": "Alibaba released the stable Qwen4-Max API with native vision, a 1M-token context and pay-as-you-go pricing. The 2.4T-parameter mixture-of-experts model activates 71B parameters per token. The stable SKU replaces the time-limited preview as the durable production option; weights remain closed.",
+      "summary_zh": "Alibaba 正式发布 Qwen4-Max API，提供原生视觉、100 万 token 上下文和按量计费。这个 MoE 模型共有 2.4T 参数，每个 token 激活 71B。正式 SKU 取代了限时预览，成为可持续使用的生产入口；权重仍未开放。",
+      "why_it_matters": "For teams comparing long-context agent models, Qwen4-Max is now a priceable production option rather than an expiring preview. Vendor benchmark and Work360 efficiency claims still need replay on real workloads.",
+      "why_it_matters_en": "For teams comparing long-context agent models, Qwen4-Max is now a priceable production option rather than an expiring preview. Vendor benchmark and Work360 efficiency claims still need replay on real workloads.",
+      "why_it_matters_zh": "对比较长上下文 agent 模型的团队来说，Qwen4-Max 已从会下线的预览变成可计价的生产选项。官方 benchmark 与 Work360 效率数据仍需用真实任务复测。",
       "technical_details": {
-        "model_id": "qwen4-max-preview",
-        "preview_window": "2026-11-11 10:00 to 2026-11-25 24:00 UTC+8",
-        "access": "Token Plan only; no pay-as-you-go; dedicated Singapore endpoint",
+        "model_id": "qwen4-max",
+        "architecture": "2.4T total parameters; 71B active per token",
         "context_window": 1000000,
+        "maximum_input": 991000,
         "maximum_output": 393216,
-        "modalities": [
-          "text",
-          "image",
-          "video"
-        ],
-        "interfaces": [
-          "OpenAI Chat Completions",
-          "OpenAI Responses",
-          "Anthropic Messages"
-        ],
-        "evidence_limit": "No open weights or independent benchmark; model retires after preview"
+        "pricing_usd_per_million_tokens": {
+          "input": 1.5,
+          "output": 4.5,
+          "implicit_cache_read": 0.075
+        },
+        "availability": "QwenCloud API and Token Plan; QwenWork and Qwen Studio",
+        "weights": "closed; smaller open models promised later",
+        "evidence_limit": "benchmarks and Work360 cost claims are vendor-reported",
+        "time_basis": "official announcement dated 2026-11-16; no publication time exposed"
       },
       "technical_details_zh": {
-        "模型 ID": "qwen4-max-preview",
-        "预览窗口": "2026-11-11 10:00 至 2026-11-25 24:00（UTC+8）",
-        "访问条件": "仅 Token Plan；不支持按量付费；使用新加坡专用 endpoint",
+        "模型 ID": "qwen4-max",
+        "架构": "总参数 2.4T；每个 token 激活 71B",
         "上下文窗口": 1000000,
+        "最大输入": 991000,
         "最大输出": 393216,
-        "输入模态": [
-          "text",
-          "image",
-          "video"
-        ],
-        "兼容接口": [
-          "OpenAI Chat Completions",
-          "OpenAI Responses",
-          "Anthropic Messages"
-        ],
-        "证据限制": "没有开放权重或独立 benchmark；预览后下线"
+        "每百万 token 美元价格": {
+          "输入": 1.5,
+          "输出": 4.5,
+          "隐式缓存读取": 0.075
+        },
+        "可用范围": "QwenCloud API 与 Token Plan；QwenWork 和 Qwen Studio",
+        "权重": "未开放；官方只预告后续开放较小模型",
+        "证据限制": "benchmark 与 Work360 成本数据均为厂商自报",
+        "时间依据": "官方公告日期为 2026-11-16，页面未提供发布时间"
       },
       "tags": [
         "Qwen4",
         "multimodal",
         "long-context",
         "tool-calling",
-        "preview"
+        "preview",
+        "production-api",
+        "pricing"
       ],
       "technical_impact": 4,
-      "engineering_value": 3,
-      "adoption_signal": 2,
-      "maturity": 2,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
       "verification_cost": 2,
       "risk": 4,
-      "recommendation": "WATCH",
+      "recommendation": "TRIAL",
       "event_fingerprint": "alibaba-qwen4-max-preview-token-plan",
-      "short_label_zh": "Qwen4-Max-Preview",
-      "short_label_en": "Qwen4-Max-Preview",
-      "next_action_zh": "等正式 SKU、按量价格和稳定退役策略公布后再评估生产迁移；预览期只做可替换的兼容性测试。",
-      "next_action_en": "Wait for a durable SKU, pay-as-you-go pricing and a stable retirement policy before production evaluation; use the preview only for replaceable compatibility tests.",
+      "short_label_zh": "Qwen4-Max",
+      "short_label_en": "Qwen4-Max",
+      "next_action_zh": "一天内用 30 个真实 agent 任务对比 qwen3.8-max，记录成功率、总 token、首 token 延迟和单任务成本。",
+      "next_action_en": "Within one day, compare 30 real agent tasks with qwen3.8-max, recording success, total tokens, TTFT and cost per task.",
       "source_ids": [
-        "src-a0221fd5163fc01f"
+        "src-a0221fd5163fc01f",
+        "src-816d21f8560ee97f",
+        "src-c4987566e36ddf6e"
       ],
       "project_ids": [
         "qwen"
@@ -198,6 +201,20 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261111-02-production-evidence",
+          "claim_zh": "官方将 qwen4-max 作为正式 SKU 开放，并公布上下文、价格和访问入口。",
+          "claim_en": "Alibaba opened qwen4-max as a stable SKU with documented context, pricing and access.",
+          "source_ids": [
+            "src-816d21f8560ee97f",
+            "src-c4987566e36ddf6e"
+          ],
+          "event_ids": [
+            "ev-20261111-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance not independently reproduced"
         }
       ],
       "changes": [
@@ -210,6 +227,19 @@
           "summary_en": "Qwen4-Max-Preview opens as a time-limited Token Plan preview.",
           "evidence_ids": [
             "ev-20261111-02-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261111-02-production",
+          "kind": "update",
+          "occurred_at": "2026-11-16",
+          "discovered_at": "2026-11-16T16:59:56Z",
+          "summary_zh": "Qwen4-Max 从限时预览转为有明确价格的正式 API。",
+          "summary_en": "Qwen4-Max moves from a time-limited preview to a priced production API.",
+          "evidence_ids": [
+            "ev-20261111-02-production-evidence"
           ],
           "historical": false,
           "importance": "major"

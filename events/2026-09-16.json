@@ -13,12 +13,13 @@
       ],
       "published_at": "2026-09-16T13:26:06Z",
       "first_seen_at": "2026-09-16T16:00:47Z",
-      "last_updated_at": "2026-10-15T16:00:25Z",
+      "last_updated_at": "2026-11-16T16:59:56Z",
       "source_type": "release_notes",
       "primary_source": "https://github.blog/changelog/2026-09-16-code-scanning-ai-scan-no-longer-requires-codeql-default-setup/",
       "secondary_sources": [
         "https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-ai-powered-security-detections",
-        "https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available/"
+        "https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available/",
+        "https://github.blog/changelog/2026-11-16-bulk-start-ai-scan-for-repositories/"
       ],
       "summary": "GitHub made AI Scan for pull requests generally available. It scans changed code in languages and frameworks outside current CodeQL coverage, including PHP, Shell, Terraform HCL, Dockerfiles, JSP and Blazor. Findings are advisory: they cannot fail the code-scanning check or block a merge, and scans exclude forks and Dependabot pull requests. Public repositories can use it without a Copilot license; private and internal organization repositories require GitHub Code Security or Advanced Security and consume Code Security AI Credits.",
       "why_it_matters": "For AppSec teams, the scanner is now a supported production option with explicit billing and policy limits. GA does not make the model deterministic or independently validated, so rollout should track false positives, missed findings, credit use and reviewer load.",
@@ -35,7 +36,8 @@
         "coverage": "pull-request changes beyond current CodeQL language and framework coverage",
         "enforcement": "advisory only; cannot fail checks or block merges",
         "exclusions": "fork and Dependabot pull requests",
-        "billing": "Code Security AI Credits; public repositories eligible; private/internal organization repositories require Code Security or Advanced Security"
+        "billing": "Code Security AI Credits; public repositories eligible; private/internal organization repositories require Code Security or Advanced Security",
+        "bulk_start": "public preview; start default-branch scans for up to 20 repositories from the security overview"
       },
       "technical_details_zh": {
         "状态": "GA",
@@ -46,7 +48,8 @@
         "覆盖": "当前 CodeQL 语言和框架覆盖之外的 pull request 变更",
         "强制能力": "仅建议；不能让检查失败或阻止合并",
         "排除项": "fork 与 Dependabot pull request",
-        "计费": "消耗 Code Security AI Credits；公开仓库可用；私有/内部组织仓库需 Code Security 或 Advanced Security"
+        "计费": "消耗 Code Security AI Credits；公开仓库可用；私有/内部组织仓库需 Code Security 或 Advanced Security",
+        "批量启动": "public preview；从安全概览一次启动最多 20 个仓库的默认分支扫描"
       },
       "tags": [
         "GitHub",
@@ -66,7 +69,8 @@
       "source_ids": [
         "src-9b9123b78b32ebe5",
         "src-b018dd47c96507cb",
-        "src-3a42b69a6860fcc9"
+        "src-3a42b69a6860fcc9",
+        "src-49abab02b5a61675"
       ],
       "project_ids": [
         "github-copilot"
@@ -102,6 +106,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260916-01-bulk-evidence",
+          "claim_zh": "GitHub 增加一次为最多 20 个仓库启动默认分支 AI Scan 的 public preview。",
+          "claim_en": "GitHub added a public preview that starts default-branch AI Scan for up to 20 repositories at once.",
+          "source_ids": [
+            "src-49abab02b5a61675"
+          ],
+          "event_ids": [
+            "ev-20260916-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -129,6 +146,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260916-01-bulk-start",
+          "kind": "update",
+          "occurred_at": "2026-11-16",
+          "discovered_at": "2026-11-16T16:59:56Z",
+          "summary_zh": "安全概览现在可一次为最多 20 个仓库启动 AI Scan。",
+          "summary_en": "The security overview can now start AI Scan for up to 20 repositories at once.",
+          "evidence_ids": [
+            "ev-20260916-01-bulk-evidence"
+          ],
+          "historical": false,
+          "importance": "minor"
         }
       ],
       "next_action_zh": "一天内在一个仓库开启 AI Scan，对 20 个已知安全改动统计误报、漏报、AI Credits 与审查时间。",

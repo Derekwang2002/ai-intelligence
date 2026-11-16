@@ -1,4 +1,4 @@
-# 当前趋势看板 — 2026-11-15T17:03:06Z
+# 当前趋势看板 — 2026-11-16T16:59:56Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
@@ -120,6 +120,7 @@
 - 2026-11-13T17:04:57Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 - 2026-11-14T16:59:13Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 - 2026-11-15T17:03:06Z：Qwen Concept 27B 增加可下载的 Qwen 衍生产物，但它是方法实验，不构成中国实验室 coding model 的新独立信号；状态不变。
+- 2026-11-17：本周期没有改变趋势判断的新信号。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
@@ -233,6 +234,7 @@
 - 2026-11-13T17:04:57Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 - 2026-11-14T16:59:13Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 - 2026-11-15T17:03:06Z：本次复核没有发现足以改变状态或置信度的新独立信号。
+- 2026-11-17：本周期没有改变趋势判断的新信号。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
@@ -358,6 +360,7 @@
 - 2026-11-13T17:04:57Z：Codex 持久 side chat、Qwen Code 共享 agent loop 与 Claude Code Code Mode 延续 runtime 收敛，但未改变 established / High。
 - 2026-11-14T16:59:13Z：Claude Code 2.1.325 继续补强多 agent runtime 的审批与 worktree 边界，但没有改变 established / High。
 - 2026-11-15T17:03:06Z：Qwen Code 0.27.4 把受控本地目录、托管 Web Terminal 和企业消息接入稳定分支，继续补全 multi-agent runtime 的执行面；维持 established / High。
+- 2026-11-17：本周期没有改变趋势判断的新信号。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -467,6 +470,7 @@
 - 2026-11-13T17:04:57Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 - 2026-11-14T16:59:13Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 - 2026-11-15T17:03:06Z：本次复核没有发现足以改变状态或置信度的新独立信号。
+- 2026-11-17：本周期没有改变趋势判断的新信号。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
@@ -561,6 +565,7 @@
 - 2026-11-13T17:04:57Z：llama.cpp 1.0 的 API/ABI 契约与服务端加固补充自托管证据，但尚无跨组织采用数据，维持 candidate / Low。
 - 2026-11-14T16:59:13Z：Metal Sandbox 增加 Apple Silicon 原生执行与跨 Mac 调度证据，但仍是作者小集群实验，维持 candidate / Low。
 - 2026-11-15T17:03:06Z：Inkling 与 Sophon 都提供自托管路径，但它们是模型产物，不是新的企业执行平面证据；维持 candidate / Low。
+- 2026-11-17：本周期没有改变趋势判断的新信号。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -653,13 +658,14 @@
 - 2026-11-13T17:04:57Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 - 2026-11-14T16:59:13Z：本次复核没有发现足以改变状态或置信度的新独立信号。
 - 2026-11-15T17:03:06Z：本次复核没有发现足以改变状态或置信度的新独立信号。
+- 2026-11-17：本周期没有改变趋势判断的新信号。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-11-16
+- **Last updated:** 2026-11-17
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -761,5 +767,6 @@
 - 2026-11-13T17:04:57Z：LLMON、CapLite 与 ChatGPT Wallet 分别增加结构化输入、代码授权和逐笔人工确认的证据；都缺少广泛独立部署，维持 strengthening / Medium。
 - 2026-11-14T16:59:13Z：Claude Code 2.1.325 修补审批、deny、worktree 与公开 artifact 后果控制；United 又把授权门控扩展到第三方交易站点。方向增强，但仍缺统一 policy schema，维持 strengthening / Medium。
 - 2026-11-15T17:03:06Z：Qwen Code 0.27.4 用临时目录授权、Auto Mode 显式授权与超时复核继续拆分能力和后果控制；维持 strengthening / Medium。
+- 2026-11-17：CUA Agent Kit 增加“agent 探索、确定性代码执行”的公开实现；状态仍为 strengthening / Medium。
 
 ## Invalidated / retired
