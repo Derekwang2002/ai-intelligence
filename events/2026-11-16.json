@@ -338,6 +338,309 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261116-04",
+      "title": "Microsoft and UC Berkeley open TokenEconomizer for repeat coding work",
+      "title_zh": "Microsoft 与 UC Berkeley 开源 TokenEconomizer",
+      "category": "ai-engineering",
+      "organization": [
+        "Microsoft",
+        "UC Berkeley"
+      ],
+      "published_at": "2026-11-16",
+      "first_seen_at": "2026-11-17T16:59:58Z",
+      "last_updated_at": "2026-11-17T16:59:58Z",
+      "source_type": "official_blog",
+      "primary_source": "https://www.microsoft.com/en-us/research/blog/tokeneconomizer-reduces-coding-agent-costs-by-learning-from-past-work/",
+      "secondary_sources": [
+        "https://github.com/microsoft/TokenEconomizer"
+      ],
+      "summary_en": "Microsoft and UC Berkeley released TokenEconomizer, an MIT-licensed plugin that learns reusable micro-skills from earlier coding-agent sessions, prunes tools and interrupts failure loops. On 277 real bug-fixing tasks, the publishers report 18.4–30.9% lower cost with broadly stable success. The documented compatibility ranges trail the current monitored Claude Code and Codex releases.",
+      "summary_zh": "Microsoft 与 UC Berkeley 发布 MIT 许可的 TokenEconomizer。它从过去的 coding agent 会话提炼可复用的微技能，精简工具，并在失败循环中介入。发布方在 277 个真实修 bug 任务上报告成本下降 18.4%–30.9%，成功率大体不变；文档所列兼容版本落后于当前 Claude Code 与 Codex 稳定版。",
+      "why_it_matters_en": "Teams running repeated repository work can test whether local learning reduces token spend without changing the underlying agent. The evidence is publisher-run and version compatibility may be the first practical blocker.",
+      "why_it_matters_zh": "对反复处理同一代码库的团队来说，它可能在不更换 agent 的前提下降低 token 成本。现有证据来自发布方，版本兼容性可能是首先遇到的实际障碍。",
+      "technical_details": {
+        "license": "MIT",
+        "evaluation": "277 real bug-fixing tasks; publisher-reported cost reduction of 18.4–30.9% with broadly stable success",
+        "mechanisms": "micro-skills, tool pruning and failure-loop intervention",
+        "availability": "public repository; no separate API key required",
+        "compatibility_limit": "README lists Claude Code 2.1.300–310 and Codex 0.153.1–0.164.0, behind monitored stable releases",
+        "time_basis": "Official page exposes 2026-11-16 without a publication time; treated as a date-only late discovery."
+      },
+      "technical_details_zh": {
+        "许可": "MIT",
+        "评测": "277 个真实修 bug 任务；发布方报告成本下降 18.4%–30.9%，成功率大体不变",
+        "机制": "微技能、工具精简与失败循环干预",
+        "可用性": "公开仓库；不需要单独 API key",
+        "兼容性限制": "README 列出 Claude Code 2.1.300–310 与 Codex 0.153.1–0.164.0，落后于当前稳定版",
+        "时间依据": "官方页面只给出 2026-11-16，没有时分；按日期精度作为 late discovery。"
+      },
+      "tags": [
+        "coding-agent",
+        "cost",
+        "context-engineering",
+        "open-source"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 4,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "microsoft-uc-berkeley-tokeneconomizer",
+      "short_label_zh": "TokenEconomizer",
+      "short_label_en": "TokenEconomizer",
+      "next_action_zh": "一天内用公开插件在同一仓库跑 20 个重复修复任务，对比成功率、token 成本、延迟与当前 agent 版本兼容性。",
+      "next_action_en": "Within one day, run 20 repeated fixes in one repository with the public plugin and compare success, token cost, latency and current-agent compatibility.",
+      "late_discovery": true,
+      "project_ids": [
+        "tokeneconomizer"
+      ],
+      "scenario_ids": [
+        "agents",
+        "engineering"
+      ],
+      "evidence_stage": "frontier",
+      "summary": "Microsoft and UC Berkeley released TokenEconomizer, an MIT-licensed plugin that learns reusable micro-skills from earlier coding-agent sessions, prunes tools and interrupts failure loops. On 277 real bug-fixing tasks, the publishers report 18.4–30.9% lower cost with broadly stable success. The documented compatibility ranges trail the current monitored Claude Code and Codex releases.",
+      "why_it_matters": "Teams running repeated repository work can test whether local learning reduces token spend without changing the underlying agent. The evidence is publisher-run and version compatibility may be the first practical blocker.",
+      "source_ids": [
+        "src-a7befd182341b685",
+        "src-886299adc4b73faf"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261116-04-evidence",
+          "claim_zh": "公开的一手材料确认发布、可用性与主要限制；性能数字按发布方归属。",
+          "claim_en": "Public primary materials confirm the release, availability and main limits; performance figures remain attributed to the publisher.",
+          "source_ids": [
+            "src-a7befd182341b685",
+            "src-886299adc4b73faf"
+          ],
+          "event_ids": [
+            "ev-20261116-04"
+          ],
+          "relation": "support",
+          "verification": "public artifacts verified; performance not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261116-04-release",
+          "kind": "new",
+          "occurred_at": "2026-11-16",
+          "discovered_at": "2026-11-17T16:59:58Z",
+          "summary_zh": "Microsoft 与 UC Berkeley 开源 TokenEconomizer",
+          "summary_en": "Microsoft and UC Berkeley open TokenEconomizer for repeat coding work",
+          "evidence_ids": [
+            "ev-20261116-04-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261116-05",
+      "title": "SciResearch-Eval shows agents stay confident when simulators are wrong",
+      "title_zh": "SciResearch-Eval 显示 agent 会对错误模拟器过度自信",
+      "category": "research",
+      "organization": [
+        "Lawrence Livermore National Laboratory"
+      ],
+      "published_at": "2026-11-16T18:27:09Z",
+      "first_seen_at": "2026-11-17T16:59:58Z",
+      "last_updated_at": "2026-11-17T16:59:58Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2611.21541",
+      "secondary_sources": [
+        "https://github.com/Btwestyo/sciresearch-eval",
+        "https://btwestyo.github.io/sciresearch-eval/"
+      ],
+      "summary_en": "SciResearch-Eval tests whether research agents notice when a simulator omits important physics. Its held-out set contains 38 missing-physics tasks with objective interval scoring. Most tested agents placed the true answer inside their claimed 95% interval only 20–62% of the time, while two models scored much higher in the authors’ default runs.",
+      "summary_zh": "SciResearch-Eval 测试科研 agent 能否发现模拟器漏掉了重要物理过程。held-out 集包含 38 个缺失物理机制的任务，并用客观区间评分。多数受测 agent 声称的 95% 区间只有 20%–62% 的情况包含真值；作者的默认运行中另有两个模型明显更高。",
+      "why_it_matters_en": "Teams building scientific agents need to evaluate calibration under broken tools, not only answer accuracy with trusted simulators. The benchmark has public code, but the small test set and author-run results still need independent reproduction.",
+      "why_it_matters_zh": "对构建科研 agent 的团队来说，只在可信模拟器上测答案对不对还不够，还要测工具出错时的不确定性是否诚实。benchmark 有公开代码，但测试集较小，结果仍需独立复现。",
+      "technical_details": {
+        "test_set": "38 held-out tasks with deliberately missing physics",
+        "metric": "Coverage of the true value by each agent claimed 95% interval",
+        "reported_results": "Most agents: 20–62% coverage; GPT-6 Astra: 94%; Claude Fable 5.2: 99% in authors default runs",
+        "availability": "paper, public code and project page",
+        "evidence_limit": "author-run benchmark; most default results use three runs",
+        "time_basis": "arXiv submitted 2026-11-16T18:27:09Z."
+      },
+      "technical_details_zh": {
+        "测试集": "38 个故意缺失物理机制的 held-out 任务",
+        "指标": "真值落入 agent 自称 95% 区间的比例",
+        "报告结果": "多数 agent 为 20%–62%；作者默认运行中 GPT-6 Astra 为 94%，Claude Fable 5.2 为 99%",
+        "可用性": "论文、公开代码与项目页",
+        "证据限制": "作者自行运行的 benchmark；多数默认结果只有 3 次运行",
+        "时间依据": "arXiv 提交时间 2026-11-16T18:27:09Z。"
+      },
+      "tags": [
+        "scientific-agents",
+        "evaluation",
+        "calibration",
+        "tool-reliability"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "sciresearch-eval-simulator-misspecification",
+      "short_label_zh": "SciResearch-Eval",
+      "short_label_en": "SciResearch-Eval",
+      "next_action_zh": "一天内用公开代码复跑 10 个 held-out 任务，核对区间覆盖、失败分类与重复运行方差。",
+      "next_action_en": "Within one day, rerun 10 held-out tasks with the public code and check interval coverage, failure classes and run-to-run variance.",
+      "project_ids": [
+        "sciresearch-eval"
+      ],
+      "scenario_ids": [
+        "research",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "summary": "SciResearch-Eval tests whether research agents notice when a simulator omits important physics. Its held-out set contains 38 missing-physics tasks with objective interval scoring. Most tested agents placed the true answer inside their claimed 95% interval only 20–62% of the time, while two models scored much higher in the authors’ default runs.",
+      "why_it_matters": "Teams building scientific agents need to evaluate calibration under broken tools, not only answer accuracy with trusted simulators. The benchmark has public code, but the small test set and author-run results still need independent reproduction.",
+      "source_ids": [
+        "src-8697d378cdb22e86",
+        "src-faee9efdfc929a8a",
+        "src-5e6b12f1a439f4ca"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261116-05-evidence",
+          "claim_zh": "公开的一手材料确认发布、可用性与主要限制；性能数字按发布方归属。",
+          "claim_en": "Public primary materials confirm the release, availability and main limits; performance figures remain attributed to the publisher.",
+          "source_ids": [
+            "src-8697d378cdb22e86",
+            "src-faee9efdfc929a8a",
+            "src-5e6b12f1a439f4ca"
+          ],
+          "event_ids": [
+            "ev-20261116-05"
+          ],
+          "relation": "support",
+          "verification": "public artifacts verified; performance not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261116-05-release",
+          "kind": "new",
+          "occurred_at": "2026-11-16T18:27:09Z",
+          "discovered_at": "2026-11-17T16:59:58Z",
+          "summary_zh": "SciResearch-Eval 显示 agent 会对错误模拟器过度自信",
+          "summary_en": "SciResearch-Eval shows agents stay confident when simulators are wrong",
+          "evidence_ids": [
+            "ev-20261116-05-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261116-06",
+      "title": "Hugging Face moves language-model routing to OpenRouter",
+      "title_zh": "Hugging Face 将语言模型路由切换到 OpenRouter",
+      "category": "ai-engineering",
+      "organization": [
+        "Hugging Face",
+        "OpenRouter"
+      ],
+      "published_at": "2026-11-16",
+      "first_seen_at": "2026-11-17T16:59:58Z",
+      "last_updated_at": "2026-11-17T16:59:58Z",
+      "source_type": "official_blog",
+      "primary_source": "https://huggingface.co/blog/openrouter",
+      "secondary_sources": [],
+      "summary_en": "Hugging Face switched language-model traffic in Inference Providers to OpenRouter while keeping the Hugging Face token and API surface. The integration routes across more than 80 providers and adds automatic failover. Custom provider keys no longer work for language models, creating a migration break for some users.",
+      "summary_zh": "Hugging Face 把 Inference Providers 的语言模型流量切换到 OpenRouter，同时保留 Hugging Face token 与 API 入口。新集成可在 80 多家 provider 间路由并自动故障转移。语言模型不再支持自带 provider key，这会让部分用户的现有配置失效。",
+      "why_it_matters_en": "This changes the routing, billing and data path behind a widely used model gateway. Teams should verify provider controls, privacy terms and failure behavior rather than assuming the unchanged API means an unchanged service boundary.",
+      "why_it_matters_zh": "这改变了常用模型网关背后的路由、计费与数据路径。团队不能因为 API 没变就假定服务边界没变，应重新核对 provider 控制、隐私条款与故障行为。",
+      "technical_details": {
+        "availability": "active for language models in Hugging Face Inference Providers",
+        "routing": "80+ providers with automatic retries and failover",
+        "compatibility": "OpenAI Chat/Responses and Anthropic Messages compatible",
+        "breaking_change": "Custom provider keys no longer work for language models",
+        "vendor_metrics": "OpenRouter reports 800T tokens/month, 10M users and 600+ models; routing gains are vendor-reported",
+        "time_basis": "Official post exposes 2026-11-16 without a publication time; treated as a date-only late discovery."
+      },
+      "technical_details_zh": {
+        "可用性": "已用于 Hugging Face Inference Providers 的语言模型",
+        "路由": "80 多家 provider，支持自动重试与故障转移",
+        "兼容性": "兼容 OpenAI Chat/Responses 与 Anthropic Messages",
+        "破坏性变更": "语言模型不再支持自带 provider key",
+        "厂商数据": "OpenRouter 自报每月 800T token、1000 万用户与 600 多个模型；路由提升同样来自厂商",
+        "时间依据": "官方文章只给出 2026-11-16，没有时分；按日期精度作为 late discovery。"
+      },
+      "tags": [
+        "model-routing",
+        "inference",
+        "gateway",
+        "openrouter"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 5,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "hugging-face-inference-providers-openrouter",
+      "short_label_zh": "HF × OpenRouter",
+      "short_label_en": "HF × OpenRouter",
+      "next_action_zh": "一天内用测试账户核对 provider 选择、故障转移、延迟、账单和数据政策，再迁移现有语言模型流量。",
+      "next_action_en": "Within one day, verify provider selection, failover, latency, billing and data policy in a test account before moving existing language-model traffic.",
+      "late_discovery": true,
+      "project_ids": [
+        "hugging-face-inference-providers"
+      ],
+      "scenario_ids": [
+        "engineering",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "summary": "Hugging Face switched language-model traffic in Inference Providers to OpenRouter while keeping the Hugging Face token and API surface. The integration routes across more than 80 providers and adds automatic failover. Custom provider keys no longer work for language models, creating a migration break for some users.",
+      "why_it_matters": "This changes the routing, billing and data path behind a widely used model gateway. Teams should verify provider controls, privacy terms and failure behavior rather than assuming the unchanged API means an unchanged service boundary.",
+      "source_ids": [
+        "src-8ec21efa2c622734"
+      ],
+      "evidence": [
+        {
+          "id": "ev-20261116-06-evidence",
+          "claim_zh": "公开的一手材料确认发布、可用性与主要限制；性能数字按发布方归属。",
+          "claim_en": "Public primary materials confirm the release, availability and main limits; performance figures remain attributed to the publisher.",
+          "source_ids": [
+            "src-8ec21efa2c622734"
+          ],
+          "event_ids": [
+            "ev-20261116-06"
+          ],
+          "relation": "support",
+          "verification": "release and availability verified"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261116-06-release",
+          "kind": "new",
+          "occurred_at": "2026-11-16",
+          "discovered_at": "2026-11-17T16:59:58Z",
+          "summary_zh": "Hugging Face 将语言模型路由切换到 OpenRouter",
+          "summary_en": "Hugging Face moves language-model routing to OpenRouter",
+          "evidence_ids": [
+            "ev-20261116-06-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

@@ -4,28 +4,29 @@
   "events": [
     {
       "event_id": "ev-20260922-01",
-      "title": "vLLM 0.33 moves stable builds to CUDA 13 and adds EFA serving",
-      "title_zh": "vLLM 0.33 转向 CUDA 13 并加入 EFA 服务",
+      "title": "vLLM 0.34 makes dynamic KV sizing default and removes Model Runner V1",
+      "title_zh": "vLLM 0.34 默认启用动态 KV 容量并移除 Model Runner V1",
       "category": "open-source",
       "organization": [
         "vLLM Project"
       ],
       "published_at": "2026-09-22T05:20:54Z",
       "first_seen_at": "2026-09-22T16:02:37Z",
-      "last_updated_at": "2026-11-02T16:56:00Z",
+      "last_updated_at": "2026-11-17T16:59:58Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/vllm-project/vllm/releases/tag/v0.30.0",
       "secondary_sources": [
         "https://github.com/vllm-project/vllm/releases/tag/v0.31.0",
         "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
-        "https://github.com/vllm-project/vllm/releases/tag/v0.33.0rc3"
+        "https://github.com/vllm-project/vllm/releases/tag/v0.33.0rc3",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.34.0"
       ],
-      "summary": "vLLM 0.33 moves its stable CUDA artifacts to CUDA 13, adds a dedicated AWS EFA image for multi-node KV transfer, and makes ROCm 10 the default while retaining ROCm 7.2 builds. It expands speculative decoding, low-precision KV paths, watchdog diagnostics and large-scale serving. The release also removes CUDA 12.9 artifacts and several legacy executors, so deployment compatibility must be tested before rollout.",
-      "why_it_matters": "For self-hosted inference teams, 0.33 broadens deployable hardware and serving controls but raises the migration floor. Project-reported kernel gains are workload-specific, and the release notes still contain an artifact-verification TODO, so verify images, wheels and real traces rather than treating headline throughput as portable.",
-      "summary_zh": "vLLM 0.33 的稳定 CUDA 产物全面转向 CUDA 13，新增面向多节点 KV 传输的 AWS EFA 镜像，并把 ROCm 10 设为默认，同时保留 ROCm 7.2 构建。投机解码、低精度 KV、watchdog 诊断和大规模服务路径继续扩展。该版本也移除 CUDA 12.9 产物和多项旧执行器，上线前必须做兼容性回归。",
-      "summary_en": "vLLM 0.33 moves its stable CUDA artifacts to CUDA 13, adds a dedicated AWS EFA image for multi-node KV transfer, and makes ROCm 10 the default while retaining ROCm 7.2 builds. It expands speculative decoding, low-precision KV paths, watchdog diagnostics and large-scale serving. The release also removes CUDA 12.9 artifacts and several legacy executors, so deployment compatibility must be tested before rollout.",
-      "why_it_matters_zh": "对自托管推理团队来说，0.33 扩大了硬件与服务控制范围，但也抬高了迁移门槛。项目自报的 kernel 提升依赖具体负载，发布说明还保留产物链接核验 TODO，因此要验证镜像、wheel 和真实 trace，不能把峰值吞吐直接套到生产。",
-      "why_it_matters_en": "For self-hosted inference teams, 0.33 broadens deployable hardware and serving controls but raises the migration floor. Project-reported kernel gains are workload-specific, and the release notes still contain an artifact-verification TODO, so verify images, wheels and real traces rather than treating headline throughput as portable.",
+      "summary": "vLLM 0.34 makes its extensible KV cache the default after warmup and removes Model Runner V1. The release adds checkpoint and restore plus fault-tolerant DP and EP scale-down. It also changes block-size and dependency defaults, drops ROCm 7.2 artifacts and warns that the new KV path can regress time per output token by 6–18%.",
+      "why_it_matters": "Self-hosted inference teams gain capacity and recovery controls but also inherit new defaults with measurable latency and compatibility risk. Upgrade only after replaying representative traces and validating artifacts on the target accelerator stack.",
+      "summary_zh": "vLLM 0.34 在预热后默认启用可扩展 KV 缓存，并移除 Model Runner V1。该版加入 checkpoint/restore，以及可容错的 DP 与 EP 缩容。它还改变 block size 和依赖默认值、停止 ROCm 7.2 产物，并提示新 KV 路径可能让每个输出 token 的耗时回退 6%–18%。",
+      "summary_en": "vLLM 0.34 makes its extensible KV cache the default after warmup and removes Model Runner V1. The release adds checkpoint and restore plus fault-tolerant DP and EP scale-down. It also changes block-size and dependency defaults, drops ROCm 7.2 artifacts and warns that the new KV path can regress time per output token by 6–18%.",
+      "why_it_matters_zh": "自托管推理团队获得更多容量与恢复控制，但也要承担新默认值带来的延迟和兼容风险。升级前应回放真实 trace，并在目标加速器栈上核对产物。",
+      "why_it_matters_en": "Self-hosted inference teams gain capacity and recovery controls but also inherit new defaults with measurable latency and compatibility risk. Upgrade only after replaying representative traces and validating artifacts on the target accelerator stack.",
       "technical_details": {
         "release_scale": "762 commits, 315 contributors, 104 new contributors",
         "fast_start": "persistent per-GPU post-quantization and TP-sharded weight cache; CUDA IPC; FP4 and multi-node TP support",
@@ -36,7 +37,8 @@
         "artifacts": "CUDA 13.0/12.9, ROCm, CPU and XPU wheels and images",
         "update_2026_10_05": "v0.31 adds vllm preload with DP and MTP support, experimental CRIU initialized-engine snapshots, more Model Runner V2 speculative decoding, large-scale scheduling controls and HiSparse fixes. It rejects request-level multimodal processor and media I/O kwargs unless explicitly trusted, separates cache-hash key sources and hashes the LoRA path. Several flags and defaults changed.",
         "update_2026_10_18": "v0.32.0: 814 commits, 363 contributors; CORS restricted by default; signed multimodal cache handles; raster-only untrusted images; JSON Schema depth cap; three GHSA fixes; Python 3.10 removed; Model Runner V2 default on ROCm; expanded low-precision KV cache and least-loaded API workers. The 43–85% short-request throughput claim is project-reported.",
-        "update_2026_11_02": "v0.33.0: 927 commits from 389 contributors; stable artifacts use CUDA 13.0, ROCm 10.0 becomes default with 7.2 retained, and an AWS EFA image bundles EFA-enabled Mooncake for multi-node KV transfer. Adds XPress and FLy speculative-decoding paths, /v1/decisions, token-embedding late chunking, concurrent TP worker startup and stuck-process watchdogs. Removes CUDA 12.9 artifacts, Medusa/MLP speculators and the legacy Ray executor; paused generation now returns HTTP 503. Performance figures are project-reported, and the release notes contain an artifact-verification TODO."
+        "update_2026_11_02": "v0.33.0: 927 commits from 389 contributors; stable artifacts use CUDA 13.0, ROCm 10.0 becomes default with 7.2 retained, and an AWS EFA image bundles EFA-enabled Mooncake for multi-node KV transfer. Adds XPress and FLy speculative-decoding paths, /v1/decisions, token-embedding late chunking, concurrent TP worker startup and stuck-process watchdogs. Removes CUDA 12.9 artifacts, Medusa/MLP speculators and the legacy Ray executor; paused generation now returns HTTP 503. Performance figures are project-reported, and the release notes contain an artifact-verification TODO.",
+        "update_2026_11_17": "v0.34.0 makes the extensible KV cache default after warmup, increases capacity but notes a possible 6–18% TPOT regression, removes Model Runner V1, defaults block size to 64, drops ROCm 7.2 artifacts, adds checkpoint/restore and fault-tolerant DP+EP scale-down."
       },
       "technical_details_zh": {
         "发布规模": "762 个提交、315 位贡献者，其中 104 位首次贡献",
@@ -48,7 +50,8 @@
         "发布产物": "提供 CUDA 13.0/12.9、ROCm、CPU 与 XPU wheel 和镜像",
         "2026-10-05 更新": "v0.31 为 vllm preload 增加 DP 与 MTP 支持，并提供实验性的 CRIU 初始化引擎快照；Model Runner V2、投机解码、大规模调度和 HiSparse 也继续补齐。请求级多模态处理与媒体 I/O 参数现在默认拒绝，除非显式信任；缓存哈希会区分额外 key 的来源并纳入 LoRA 路径。多项 flag 与默认值发生变化。",
         "2026-10-18 更新": "v0.32.0：814 个提交、363 位贡献者；默认收紧 CORS；多模态缓存句柄签名；不可信图片只收 raster 格式；限制 JSON Schema 深度；修复三项 GHSA；移除 Python 3.10；Model Runner V2 成为 ROCm 默认；扩展低精度 KV 缓存与最小负载 API worker。短请求吞吐提升 43–85% 为项目自报。",
-        "2026-11-02 更新": "v0.33.0：927 个提交、389 位贡献者；稳定产物改用 CUDA 13.0，ROCm 10.0 成为默认并保留 7.2，新增把 EFA 版 Mooncake 打包进来的 AWS EFA 镜像，用于多节点 KV 传输。加入 XPress 与 FLy 投机解码、/v1/decisions、嵌入 late chunking、TP worker 并发启动和卡死进程 watchdog。移除 CUDA 12.9 产物、Medusa/MLP speculator 与旧 Ray executor；暂停生成时改回 HTTP 503。性能数字均为项目自报，发布说明仍保留产物链接核验 TODO。"
+        "2026-11-02 更新": "v0.33.0：927 个提交、389 位贡献者；稳定产物改用 CUDA 13.0，ROCm 10.0 成为默认并保留 7.2，新增把 EFA 版 Mooncake 打包进来的 AWS EFA 镜像，用于多节点 KV 传输。加入 XPress 与 FLy 投机解码、/v1/decisions、嵌入 late chunking、TP worker 并发启动和卡死进程 watchdog。移除 CUDA 12.9 产物、Medusa/MLP speculator 与旧 Ray executor；暂停生成时改回 HTTP 503。性能数字均为项目自报，发布说明仍保留产物链接核验 TODO。",
+        "2026-11-17 更新": "v0.34.0 预热后默认启用可扩展 KV 缓存，提高容量，但发布方提示 TPOT 可能回退 6%–18%；移除 Model Runner V1，默认 block size 改为 64，停止 ROCm 7.2 产物，并加入 checkpoint/restore 与可容错的 DP+EP 缩容。"
       },
       "tags": [
         "vllm",
@@ -71,7 +74,8 @@
         "src-3762ff1d2e307774",
         "src-9668af85ed2e1acf",
         "src-83a753b4160cba93",
-        "src-109261365670d335"
+        "src-109261365670d335",
+        "src-c876496118766282"
       ],
       "project_ids": [
         "vllm"
@@ -134,6 +138,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; performance claims not independently reproduced; release artifact links need direct staging verification"
+        },
+        {
+          "id": "ev-20260922-01-vllm-0-34-evidence",
+          "claim_zh": "官方 release 确认动态 KV 默认值、Model Runner V1 移除、恢复能力与兼容性变化。",
+          "claim_en": "The official release confirms the dynamic-KV default, Model Runner V1 removal, recovery features and compatibility changes.",
+          "source_ids": [
+            "src-c876496118766282"
+          ],
+          "event_ids": [
+            "ev-20260922-01"
+          ],
+          "relation": "support",
+          "verification": "verified official release"
         }
       ],
       "changes": [
@@ -187,12 +204,25 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-01-vllm-0-34",
+          "kind": "update",
+          "occurred_at": "2026-11-16T23:22:00Z",
+          "discovered_at": "2026-11-17T16:59:58Z",
+          "summary_zh": "v0.34 默认启用动态 KV 容量并移除 Model Runner V1。",
+          "summary_en": "v0.34 defaults to extensible KV sizing and removes Model Runner V1.",
+          "evidence_ids": [
+            "ev-20260922-01-vllm-0-34-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "short_label_zh": "vLLM 0.33",
-      "short_label_en": "vLLM 0.33",
-      "next_action_zh": "分阶段升级 0.33，先回归 CUDA/ROCm 镜像、EFA 传输、暂停请求和真实负载吞吐。",
-      "next_action_en": "Stage 0.33 and regress CUDA/ROCm images, EFA transfer, paused requests and workload-shaped throughput.",
+      "short_label_zh": "vLLM 0.34",
+      "short_label_en": "vLLM 0.34",
+      "next_action_zh": "升级前回放真实流量，比较 KV 容量、TPOT、显存、checkpoint 恢复和目标 GPU 产物兼容性。",
+      "next_action_en": "Before upgrading, replay production traces and compare KV capacity, TPOT, memory, checkpoint recovery and target-GPU artifact compatibility.",
       "editorial_pick": {
         "reason_zh": "稳定产物的 CUDA 基线、跨节点 KV 传输和服务 API 同时变化，直接影响自托管升级计划。收益数字来自项目 PR，且产物说明仍有核验 TODO，因此先做分阶段兼容性和真实负载测试。",
         "reason_en": "The CUDA baseline, cross-node KV transfer and serving API all change in one stable release, directly affecting self-hosted upgrade plans. Performance numbers come from project PRs and artifact notes still carry a verification TODO, so stage compatibility and real-workload tests first.",
@@ -470,8 +500,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.27.4 opens managed local access and tightens Auto Mode",
-      "title_zh": "Qwen Code 0.27.4 开放托管本地访问并收紧 Auto Mode",
+      "title": "Qwen Code 0.28 unifies its agent loop and managed worktrees",
+      "title_zh": "Qwen Code 0.28 统一 agent loop 与托管 worktree",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -479,7 +509,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-11-15T17:03:06Z",
+      "last_updated_at": "2026-11-17T16:59:58Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
       "secondary_sources": [
@@ -505,14 +535,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v1.0.0-preview",
         "https://github.com/QwenLM/qwen-code/releases/tag/v1.0.0-preview.1",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.3",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.4"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.4",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.0"
       ],
-      "summary": "Qwen Code 0.27.4 adds temporary local-directory grants, an authenticated managed web terminal, Feishu and WeCom webhooks, and explicit authorization for Auto Mode. It also adds memory controls and timeout review. The release is public, but these execution and messaging paths have not been independently reproduced.",
-      "why_it_matters": "For teams operating coding agents, the release makes remote access and enterprise messaging more usable while moving more authority into the agent runtime. Directory-grant lifetime, destructive-action approval and duplicate delivery now need production-shaped tests.",
-      "summary_zh": "Qwen Code 0.27.4 增加临时本地目录授权、带认证的托管 Web Terminal、飞书与企业微信 webhook，并要求 Auto Mode 显式授权。它还补充记忆控制与超时复核。版本已公开，但这些执行和消息路径尚未经过独立复现。",
-      "summary_en": "Qwen Code 0.27.4 adds temporary local-directory grants, an authenticated managed web terminal, Feishu and WeCom webhooks, and explicit authorization for Auto Mode. It also adds memory controls and timeout review. The release is public, but these execution and messaging paths have not been independently reproduced.",
-      "why_it_matters_zh": "对运行 coding agent 的团队来说，这次更新让远程访问和企业消息接入更实用，也把更多权限交给 agent runtime。目录授权时长、破坏性操作审批与消息重复投递需要用生产形态回归。",
-      "why_it_matters_en": "For teams operating coding agents, the release makes remote access and enterprise messaging more usable while moving more authority into the agent runtime. Directory-grant lifetime, destructive-action approval and duplicate delivery now need production-shaped tests.",
+      "summary": "Qwen Code 0.28 makes one shared agent loop the default across headless mode, TUI and subagents. It adds external-workspace execution, managed worktree sessions and cross-session messages. The release also hardens transcripts against time-of-check/time-of-use changes and fixes protected-workspace handling.",
+      "why_it_matters": "The shared loop reduces behavior drift between interactive and automated paths, while managed worktrees make parallel coding safer to test. Teams should still validate isolation, message ordering and recovery on their own repositories.",
+      "summary_zh": "Qwen Code 0.28 让 headless、TUI 与 subagent 默认共用同一套 agent loop。它加入外部 workspace 执行、托管 worktree 会话与跨会话消息。该版还防止 transcript 在检查后被替换，并修复受保护 workspace 的处理。",
+      "summary_en": "Qwen Code 0.28 makes one shared agent loop the default across headless mode, TUI and subagents. It adds external-workspace execution, managed worktree sessions and cross-session messages. The release also hardens transcripts against time-of-check/time-of-use changes and fixes protected-workspace handling.",
+      "why_it_matters_zh": "统一 loop 能减少交互模式与自动化路径之间的行为差异，托管 worktree 也让并行 coding 更容易安全试用。团队仍需在自己的仓库验证隔离、消息顺序与恢复。",
+      "why_it_matters_en": "The shared loop reduces behavior drift between interactive and automated paths, while managed worktrees make parallel coding safer to test. Teams should still validate isolation, message ordering and recovery on their own repositories.",
       "technical_details": {
         "latest_version": "1.0.0-preview.1",
         "availability": "public GitHub release",
@@ -541,7 +572,8 @@
         "evidence_limit": "No stable 1.0 release or independent reliability evaluation.",
         "update_2026_11_13": "Shared event-bus agent loop, ACP background runs, manual PR binding, durable /loop wakeups and recovery fixes.",
         "update_2026_11_15": "Temporary local-directory grants, authenticated managed web terminal, Feishu and WeCom webhooks, explicit Auto Mode authorization, memory controls and timeout review.",
-        "time_basis_2026_11_15": "GitHub release published 2026-11-15T07:04:40Z, inside the strict scan window."
+        "time_basis_2026_11_15": "GitHub release published 2026-11-15T07:04:40Z, inside the strict scan window.",
+        "update_2026_11_17": "v0.28.0 uses one shared agent loop across headless, TUI and subagents, adds external-workspace execution, managed worktree sessions and cross-session messaging, and hardens transcript and protected-workspace handling."
       },
       "technical_details_zh": {
         "最新版本": "1.0.0-preview.1",
@@ -570,7 +602,8 @@
         "证据限制": "尚无稳定 1.0 或独立可靠性评测。",
         "2026-11-13 更新": "共享 event-bus agent loop、ACP 后台运行、手动 PR 绑定、持久 /loop 唤醒与恢复修复。",
         "2026-11-15 更新": "临时本地目录授权、带认证的托管 Web Terminal、飞书与企业微信 webhook、Auto Mode 显式授权、记忆控制与超时复核。",
-        "2026-11-15 时间依据": "GitHub release 发布于 2026-11-15T07:04:40Z，落在严格扫描窗口内。"
+        "2026-11-15 时间依据": "GitHub release 发布于 2026-11-15T07:04:40Z，落在严格扫描窗口内。",
+        "2026-11-17 更新": "v0.28.0 让 headless、TUI 与 subagent 共用同一套 agent loop，加入外部 workspace 执行、托管 worktree 会话与跨会话消息，并加固 transcript 和受保护 workspace。"
       },
       "tags": [
         "qwen-code",
@@ -617,7 +650,8 @@
         "src-3dfc9f353bfc10d6",
         "src-35d012f137ad20ab",
         "src-74c2266880cc04f0",
-        "src-d1ff7879d9ac567f"
+        "src-d1ff7879d9ac567f",
+        "src-b3134f5be035b05d"
       ],
       "project_ids": [
         "qwen-code"
@@ -928,6 +962,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-28-evidence",
+          "claim_zh": "官方 release 确认统一 agent loop、外部 workspace、托管 worktree 与安全修复。",
+          "claim_en": "The official release confirms the shared agent loop, external workspaces, managed worktrees and security fixes.",
+          "source_ids": [
+            "src-b3134f5be035b05d"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified official release"
         }
       ],
       "changes": [
@@ -1226,6 +1273,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-28",
+          "kind": "update",
+          "occurred_at": "2026-11-17T11:17:50Z",
+          "discovered_at": "2026-11-17T16:59:58Z",
+          "summary_zh": "v0.28 统一 agent loop，并加入托管 worktree 与跨会话消息。",
+          "summary_en": "v0.28 unifies the agent loop and adds managed worktrees and cross-session messaging.",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-28-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1235,10 +1295,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.27.4",
-      "short_label_en": "Qwen Code 0.27.4",
-      "next_action_zh": "一天内在隔离仓库回放目录授权、Web Terminal、Auto Mode 破坏性操作与飞书投递，记录授权时长、审批结果和消息丢重。",
-      "next_action_en": "Within one day, replay directory grants, Web Terminal, destructive Auto Mode actions and Feishu delivery in isolation, recording grant lifetime, approvals and missing or duplicate messages."
+      "short_label_zh": "Qwen Code 0.28",
+      "short_label_en": "Qwen Code 0.28",
+      "next_action_zh": "一天内在测试仓库并行运行 3 个托管 worktree 会话，检查隔离、消息顺序、失败恢复和 transcript 完整性。",
+      "next_action_en": "Within one day, run three managed-worktree sessions in parallel and check isolation, message ordering, recovery and transcript integrity."
     },
     {
       "event_id": "ev-20260922-05",

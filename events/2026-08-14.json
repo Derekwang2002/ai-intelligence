@@ -364,8 +364,8 @@
     },
     {
       "event_id": "ev-20260814-04",
-      "title": "Claude Code 2.1.325 closes permission and sandbox gaps",
-      "title_zh": "Claude Code 2.1.325 修补权限与沙箱缺口",
+      "title": "Claude Code 2.1.326 tightens background and MCP failure handling",
+      "title_zh": "Claude Code 2.1.326 收紧后台任务与 MCP 故障处理",
       "category": "developer-tools",
       "organization": [
         "Anthropic"
@@ -373,8 +373,8 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-11-14T16:59:13Z",
-      "source_type": "primary",
+      "last_updated_at": "2026-11-17T16:59:58Z",
+      "source_type": "release_notes",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
         "https://code.claude.com/docs/en/cross-session-messaging",
@@ -425,14 +425,15 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.321",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.322",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.323",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.325"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.326"
       ],
-      "summary": "Claude Code 2.1.325 fixes compound Bash commands that could run without approval, allow rules that could launch a different program, and deny rules that failed after restart. It also protects worktree settings, linked Git directories and public artifact changes, and removes sign-in tokens from helper-process environments. The stable release changes sandboxed Bash to follow the normal permission flow by default.",
-      "why_it_matters": "Teams using unattended or policy-managed Claude Code sessions should upgrade because the fixes affect whether approval, deny and sandbox boundaries hold under compound commands, restarts and worktrees. The changed sandbox default may cause scheduled tasks to pause, so rollout needs an unattended-workflow regression rather than a blind upgrade.",
-      "summary_zh": "Claude Code 2.1.325 修复复合 Bash 命令绕过询问、allow 规则运行了别的程序，以及重启后 deny 规则失效等问题。它还保护 worktree 设置、共享 Git 目录与公开 artifact 变更，并从辅助进程环境中移除登录 token。稳定版默认让沙箱内 Bash 也走正常权限流程。",
-      "summary_en": "Claude Code 2.1.325 fixes compound Bash commands that could run without approval, allow rules that could launch a different program, and deny rules that failed after restart. It also protects worktree settings, linked Git directories and public artifact changes, and removes sign-in tokens from helper-process environments. The stable release changes sandboxed Bash to follow the normal permission flow by default.",
-      "why_it_matters_zh": "使用无人值守或集中策略 Claude Code 的团队应升级，因为这些修复直接关系到复合命令、重启和 worktree 场景下审批、拒绝与沙箱边界是否有效。新的沙箱默认值可能让定时任务停下来等确认，因此不能盲升，必须回归无人值守流程。",
-      "why_it_matters_en": "Teams using unattended or policy-managed Claude Code sessions should upgrade because the fixes affect whether approval, deny and sandbox boundaries hold under compound commands, restarts and worktrees. The changed sandbox default may cause scheduled tasks to pause, so rollout needs an unattended-workflow regression rather than a blind upgrade.",
+      "summary": "Claude Code 2.1.326 adds Code Mode to agent teams and warns when tool rules are incomplete. It stops background sessions before model calls when gateway configuration is missing, avoids killing reused process IDs and warns on configuration-write failures. It also fixes parallel MCP result collisions and exact-name server selection.",
+      "why_it_matters": "Teams using unattended sessions, agent teams or several MCP servers should upgrade because the fixes reduce silent misconfiguration and cross-session failures. Regress gateway startup, background lifecycle and MCP routing before broad rollout.",
+      "summary_zh": "Claude Code 2.1.326 为 agent team 加入 Code Mode，并在工具规则不完整时告警。后台会话缺少 gateway 配置时会在调用模型前停止；后台服务不再误杀被复用的进程 ID，配置写入失败也会明确告警。该版还修复并行 MCP 结果冲突和同名 server 选择错误。",
+      "summary_en": "Claude Code 2.1.326 adds Code Mode to agent teams and warns when tool rules are incomplete. It stops background sessions before model calls when gateway configuration is missing, avoids killing reused process IDs and warns on configuration-write failures. It also fixes parallel MCP result collisions and exact-name server selection.",
+      "why_it_matters_zh": "使用无人值守会话、agent team 或多个 MCP server 的团队应升级，因为这些修复减少静默配置错误和跨会话故障。全面部署前要回归 gateway 启动、后台生命周期与 MCP 路由。",
+      "why_it_matters_en": "Teams using unattended sessions, agent teams or several MCP servers should upgrade because the fixes reduce silent misconfiguration and cross-session failures. Regress gateway startup, background lifecycle and MCP routing before broad rollout.",
       "technical_details": {
         "forking": "default on; inherits conversation + prompt cache",
         "messaging": "SendMessage via @-mentions across live sessions; no history/files/permissions exchange",
@@ -632,7 +633,8 @@
         "src-ace31f3b0bb1b6f0",
         "src-dbc58eacee5d52ba",
         "src-8427d4fee9a7d1b9",
-        "src-e58a3ce1f17ad846"
+        "src-e58a3ce1f17ad846",
+        "src-4e2b4f1543d14800"
       ],
       "project_ids": [
         "claude-code"
@@ -1075,6 +1077,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; runtime behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-326-evidence",
+          "claim_zh": "官方 GitHub release 确认 2.1.326 的 agent team、后台任务、配置写入与 MCP 修复。",
+          "claim_en": "The official GitHub release confirms the agent-team, background-task, configuration-write and MCP fixes in 2.1.326.",
+          "source_ids": [
+            "src-4e2b4f1543d14800"
+          ],
+          "event_ids": [
+            "ev-20260814-04"
+          ],
+          "relation": "support",
+          "verification": "verified official release"
         }
       ],
       "changes": [
@@ -1504,6 +1519,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-326",
+          "kind": "update",
+          "occurred_at": "2026-11-16T22:11:05Z",
+          "discovered_at": "2026-11-17T16:59:58Z",
+          "summary_zh": "2.1.326 补强 agent team、后台任务与 MCP 故障处理。",
+          "summary_en": "2.1.326 strengthens agent-team, background-task and MCP failure handling.",
+          "evidence_ids": [
+            "ev-20260814-04-claude-2-1-326-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1513,10 +1541,10 @@
           "src-10bdc73097cfd238"
         ]
       },
-      "next_action_zh": "升级到 2.1.325，并回归复合 Bash、重启后 deny、worktree 保护和定时任务的审批等待。",
-      "next_action_en": "Upgrade to 2.1.325 and regress compound Bash, post-restart deny rules, worktree protections and scheduled-task approval waits.",
-      "short_label_zh": "Claude Code 2.1.325",
-      "short_label_en": "Claude Code 2.1.325",
+      "next_action_zh": "升级到 2.1.326 前，回归 gateway 缺失、后台进程退出、并行 MCP 与同名 server 选择。",
+      "next_action_en": "Before upgrading to 2.1.326, regress missing gateways, background-process exit, parallel MCP and exact-name server selection.",
+      "short_label_zh": "Claude Code 2.1.326",
+      "short_label_en": "Claude Code 2.1.326",
       "last_reviewed_at": "2026-11-14T16:59:13Z"
     },
     {

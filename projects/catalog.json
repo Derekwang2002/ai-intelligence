@@ -66,7 +66,8 @@
         "src-ace31f3b0bb1b6f0",
         "src-dbc58eacee5d52ba",
         "src-8427d4fee9a7d1b9",
-        "src-e58a3ce1f17ad846"
+        "src-e58a3ce1f17ad846",
+        "src-4e2b4f1543d14800"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -101,17 +102,17 @@
         "src-8427d4fee9a7d1b9",
         "src-e58a3ce1f17ad846"
       ],
-      "last_reviewed_at": "2026-11-14T16:59:13Z",
+      "last_reviewed_at": "2026-11-17T16:59:58Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.325 修复复合 Bash、重启后 deny、worktree 与公开 artifact 权限边界。稳定版适合升级，但沙箱内 Bash 的默认审批变化可能让定时任务等待人工确认。",
-        "judgment_en": "Version 2.1.325 fixes compound Bash, post-restart deny rules, worktree and public-artifact permission boundaries. The stable release is suitable to adopt, but the sandboxed-Bash approval-default change can pause scheduled tasks.",
-        "next_action_zh": "升级并回归复合 Bash、重启后 deny、worktree 保护和定时任务审批等待。",
-        "next_action_en": "Upgrade and regress compound Bash, post-restart deny rules, worktree protections and scheduled-task approval waits.",
+        "judgment_zh": "使用无人值守会话、agent team 或多个 MCP server 的团队应升级，因为这些修复减少静默配置错误和跨会话故障。全面部署前要回归 gateway 启动、后台生命周期与 MCP 路由。",
+        "judgment_en": "Teams using unattended sessions, agent teams or several MCP servers should upgrade because the fixes reduce silent misconfiguration and cross-session failures. Regress gateway startup, background lifecycle and MCP routing before broad rollout.",
+        "next_action_zh": "升级到 2.1.326 前，回归 gateway 缺失、后台进程退出、并行 MCP 与同名 server 选择。",
+        "next_action_en": "Before upgrading to 2.1.326, regress missing gateways, background-process exit, parallel MCP and exact-name server selection.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-11-14T16:59:13Z"
+        "reviewed_at": "2026-11-17T16:59:58Z"
       }
     },
     {
@@ -153,7 +154,8 @@
         "src-3dfc9f353bfc10d6",
         "src-35d012f137ad20ab",
         "src-74c2266880cc04f0",
-        "src-d1ff7879d9ac567f"
+        "src-d1ff7879d9ac567f",
+        "src-b3134f5be035b05d"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -185,17 +187,17 @@
         "src-74c2266880cc04f0",
         "src-d1ff7879d9ac567f"
       ],
-      "last_reviewed_at": "2026-11-15T17:03:06Z",
+      "last_reviewed_at": "2026-11-17T16:59:58Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.27.4 开放受控本地目录、托管 Web Terminal 和企业消息 webhook，同时收紧 Auto Mode 授权；这些执行边界仍需回归。",
-        "judgment_en": "Version 0.27.4 opens controlled local directories, a managed web terminal and enterprise messaging webhooks while tightening Auto Mode authorization; these execution boundaries still need regression testing.",
-        "next_action_zh": "一天内回放目录授权、Web Terminal、Auto Mode 破坏性操作与飞书投递。",
-        "next_action_en": "Within one day, replay directory grants, Web Terminal, destructive Auto Mode actions and Feishu delivery.",
+        "judgment_zh": "统一 loop 能减少交互模式与自动化路径之间的行为差异，托管 worktree 也让并行 coding 更容易安全试用。团队仍需在自己的仓库验证隔离、消息顺序与恢复。",
+        "judgment_en": "The shared loop reduces behavior drift between interactive and automated paths, while managed worktrees make parallel coding safer to test. Teams should still validate isolation, message ordering and recovery on their own repositories.",
+        "next_action_zh": "一天内在测试仓库并行运行 3 个托管 worktree 会话，检查隔离、消息顺序、失败恢复和 transcript 完整性。",
+        "next_action_en": "Within one day, run three managed-worktree sessions in parallel and check isolation, message ordering, recovery and transcript integrity.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-11-15T17:03:06Z"
+        "reviewed_at": "2026-11-17T16:59:58Z"
       }
     },
     {
@@ -524,7 +526,8 @@
         "src-c0d419c5c752474a",
         "src-9668af85ed2e1acf",
         "src-83a753b4160cba93",
-        "src-109261365670d335"
+        "src-109261365670d335",
+        "src-c876496118766282"
       ],
       "current_judgment_event_id": "ev-20260922-01",
       "official_source_ids": [
@@ -533,17 +536,17 @@
         "src-83a753b4160cba93",
         "src-109261365670d335"
       ],
-      "last_reviewed_at": "2026-11-02T16:56:00Z",
+      "last_reviewed_at": "2026-11-17T16:59:58Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "vLLM 0.33 是稳定版，扩展 EFA、多种低精度路径和诊断能力，但 CUDA 13、ROCm 与多项执行器变化使它不是无风险升级。适合需要新模型和多节点服务的团队分阶段采用。",
-        "judgment_en": "vLLM 0.33 is stable and expands EFA, low-precision paths and diagnostics, but CUDA 13, ROCm and executor changes make it a non-trivial upgrade. Teams needing new models and multi-node serving should adopt it in stages.",
-        "next_action_zh": "分阶段升级，回归镜像、驱动、KV 传输、暂停请求与真实吞吐。",
-        "next_action_en": "Stage the upgrade and regress images, drivers, KV transfer, paused requests and real throughput.",
+        "judgment_zh": "自托管推理团队获得更多容量与恢复控制，但也要承担新默认值带来的延迟和兼容风险。升级前应回放真实 trace，并在目标加速器栈上核对产物。",
+        "judgment_en": "Self-hosted inference teams gain capacity and recovery controls but also inherit new defaults with measurable latency and compatibility risk. Upgrade only after replaying representative traces and validating artifacts on the target accelerator stack.",
+        "next_action_zh": "升级前回放真实流量，比较 KV 容量、TPOT、显存、checkpoint 恢复和目标 GPU 产物兼容性。",
+        "next_action_en": "Before upgrading, replay production traces and compare KV capacity, TPOT, memory, checkpoint recovery and target-GPU artifact compatibility.",
         "basis_event_ids": [
           "ev-20260922-01"
         ],
-        "reviewed_at": "2026-11-02T16:56:00Z"
+        "reviewed_at": "2026-11-17T16:59:58Z"
       }
     },
     {
@@ -7127,23 +7130,26 @@
         "ev-20261105-01"
       ],
       "source_ids": [
-        "src-9434ac3945d97bda"
+        "src-9434ac3945d97bda",
+        "src-d47347f1fb8e842f",
+        "src-94ffb4cd91f9187f",
+        "src-e7bb4394fb63c90e"
       ],
       "current_judgment_event_id": "ev-20261105-01",
       "official_source_ids": [
         "src-9434ac3945d97bda"
       ],
-      "last_reviewed_at": "2026-11-06T17:04:35Z",
+      "last_reviewed_at": "2026-11-17T16:59:58Z",
       "judgment": {
         "recommendation": "WATCH",
-        "judgment_zh": "GPT-6 Cyber 已向少量获批 Daybreak Red 客户开放，能力与安全数据主要来自 OpenAI。它适合有授权 exploit 研究流程的团队持续跟踪，不适合作为通用模型选项。",
-        "judgment_en": "GPT-6 Cyber is available to a small group of approved Daybreak Red customers, with capability and safety data mainly from OpenAI. It merits monitoring by authorized exploit-research teams, not general adoption.",
-        "next_action_zh": "等准入扩大与独立复现后再评估 exploit 质量、越界率和数据处理。",
-        "next_action_en": "Wait for broader access and independent reproduction before assessing exploit quality, scope violations and data handling.",
+        "judgment_zh": "这让 Daybreak 从受限模型发布走向多国安全机构的实际使用。准入仍受控，多数效果结论仍来自 OpenAI 或参与机构，因此建议维持 WATCH。",
+        "judgment_en": "This moves Daybreak from a restricted model launch toward operational use by multinational security organizations. Access remains controlled and most effectiveness claims still come from OpenAI or participating institutions, so the recommendation stays WATCH.",
+        "next_action_zh": "等更多团队获得准入并出现独立误报、漏报、越界与处置时效数据后，再评估生产接入。",
+        "next_action_en": "Wait for broader access and independent false-positive, miss, scope and response-time data before production adoption.",
         "basis_event_ids": [
           "ev-20261105-01"
         ],
-        "reviewed_at": "2026-11-06T17:04:35Z"
+        "reviewed_at": "2026-11-17T16:59:58Z"
       },
       "changes": []
     },
@@ -8870,23 +8876,24 @@
         "ev-20261104-05"
       ],
       "source_ids": [
-        "src-0679810bb8b1faa3"
+        "src-0679810bb8b1faa3",
+        "src-50edb48a923b6584"
       ],
       "current_judgment_event_id": "ev-20261104-05",
       "official_source_ids": [
         "src-0679810bb8b1faa3"
       ],
-      "last_reviewed_at": "2026-11-15T17:03:06Z",
+      "last_reviewed_at": "2026-11-17T16:59:58Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Apache-2.0 权重和托管 API 让 100 万 token 多模态模型可实测，但原生自托管至少需要 500 GB 聚合显存，benchmark 仍来自发布方。",
-        "judgment_en": "Apache-2.0 weights and hosted APIs make the 1M-token multimodal model testable, but native self-hosting needs at least 500 GB of aggregate VRAM and benchmarks remain publisher-reported.",
-        "next_action_zh": "一天内通过托管 API 跑 20 个长上下文图文任务，记录准确率、首 token 延迟与成本。",
-        "next_action_en": "Within one day, run 20 long-context multimodal tasks through a hosted API and record accuracy, time to first token and cost.",
+        "judgment_zh": "新证据让它更值得用于数据分析试验，也说明高总分可能掩盖多轮调用成本和真实失误。要进入生产，仍需用公开集或内部任务回放。",
+        "judgment_en": "The new evidence makes the model more credible for data-analysis trials while showing that strong aggregate scores can hide costly multi-call behavior and real misses. Production use still needs a public or internal workload replay.",
+        "next_action_zh": "一天内用托管 API 跑 50 个内部数据分析样例，记录正确率、调用次数、输出 token、延迟和成本。",
+        "next_action_en": "Within one day, run 50 internal data-analysis cases through a hosted API and record accuracy, calls, output tokens, latency and cost.",
         "basis_event_ids": [
           "ev-20261104-05"
         ],
-        "reviewed_at": "2026-11-15T17:03:06Z"
+        "reviewed_at": "2026-11-17T16:59:58Z"
       }
     },
     {
@@ -8994,9 +9001,137 @@
         ],
         "reviewed_at": "2026-11-16T16:59:56Z"
       }
+    },
+    {
+      "id": "tokeneconomizer",
+      "name_zh": "TokenEconomizer",
+      "name_en": "TokenEconomizer",
+      "type": "developer-tool",
+      "aliases": [],
+      "pattern": "TokenEconomizer",
+      "event_ids": [
+        "ev-20261116-04"
+      ],
+      "source_ids": [
+        "src-a7befd182341b685",
+        "src-886299adc4b73faf"
+      ],
+      "current_judgment_event_id": "ev-20261116-04",
+      "official_source_ids": [
+        "src-a7befd182341b685",
+        "src-886299adc4b73faf"
+      ],
+      "last_reviewed_at": "2026-11-17T16:59:58Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "可公开试用，适合验证重复代码库任务的成本收益；兼容性与发布方评测仍需自测。",
+        "judgment_en": "Publicly testable for repeated repository work; compatibility and publisher-run cost claims still need local validation.",
+        "next_action_zh": "一天内用公开插件在同一仓库跑 20 个重复修复任务，对比成功率、token 成本、延迟与当前 agent 版本兼容性。",
+        "next_action_en": "Within one day, run 20 repeated fixes in one repository with the public plugin and compare success, token cost, latency and current-agent compatibility.",
+        "basis_event_ids": [
+          "ev-20261116-04"
+        ],
+        "reviewed_at": "2026-11-17T16:59:58Z"
+      }
+    },
+    {
+      "id": "sciresearch-eval",
+      "name_zh": "SciResearch-Eval",
+      "name_en": "SciResearch-Eval",
+      "type": "benchmark",
+      "aliases": [],
+      "pattern": "SciResearch-Eval",
+      "event_ids": [
+        "ev-20261116-05"
+      ],
+      "source_ids": [
+        "src-8697d378cdb22e86",
+        "src-faee9efdfc929a8a",
+        "src-5e6b12f1a439f4ca"
+      ],
+      "current_judgment_event_id": "ev-20261116-05",
+      "official_source_ids": [
+        "src-8697d378cdb22e86",
+        "src-faee9efdfc929a8a",
+        "src-5e6b12f1a439f4ca"
+      ],
+      "last_reviewed_at": "2026-11-17T16:59:58Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开 benchmark 值得试跑，用于检查科研 agent 在错误工具下是否过度自信。",
+        "judgment_en": "The public benchmark is worth a trial to test whether scientific agents become overconfident with broken tools.",
+        "next_action_zh": "一天内用公开代码复跑 10 个 held-out 任务，核对区间覆盖、失败分类与重复运行方差。",
+        "next_action_en": "Within one day, rerun 10 held-out tasks with the public code and check interval coverage, failure classes and run-to-run variance.",
+        "basis_event_ids": [
+          "ev-20261116-05"
+        ],
+        "reviewed_at": "2026-11-17T16:59:58Z"
+      }
+    },
+    {
+      "id": "hugging-face-inference-providers",
+      "name_zh": "Hugging Face Inference Providers",
+      "name_en": "Hugging Face Inference Providers",
+      "type": "service",
+      "aliases": [
+        "HF Inference Providers"
+      ],
+      "pattern": "HF × OpenRouter",
+      "event_ids": [
+        "ev-20261116-06"
+      ],
+      "source_ids": [
+        "src-8ec21efa2c622734"
+      ],
+      "current_judgment_event_id": "ev-20261116-06",
+      "official_source_ids": [
+        "src-8ec21efa2c622734"
+      ],
+      "last_reviewed_at": "2026-11-17T16:59:58Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "OpenRouter 路由已上线，但改变了 provider、计费与数据边界，应先小范围验证。",
+        "judgment_en": "OpenRouter routing is live but changes provider, billing and data boundaries, so validate it in a limited trial.",
+        "next_action_zh": "一天内用测试账户核对 provider 选择、故障转移、延迟、账单和数据政策，再迁移现有语言模型流量。",
+        "next_action_en": "Within one day, verify provider selection, failover, latency, billing and data policy in a test account before moving existing language-model traffic.",
+        "basis_event_ids": [
+          "ev-20261116-06"
+        ],
+        "reviewed_at": "2026-11-17T16:59:58Z"
+      }
+    },
+    {
+      "id": "sage-s2-1-flash",
+      "name_zh": "Sage S2.1 Flash",
+      "name_en": "Sage S2.1 Flash",
+      "type": "model",
+      "aliases": [],
+      "pattern": "Sage-S2.1-Flash",
+      "event_ids": [
+        "ev-20261115-01"
+      ],
+      "source_ids": [
+        "src-c9012ae9fa8e6df9"
+      ],
+      "current_judgment_event_id": "ev-20261115-01",
+      "official_source_ids": [
+        "src-c9012ae9fa8e6df9"
+      ],
+      "last_reviewed_at": "2026-11-17T16:59:58Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "构建科研 agent 的团队现在可以用一个开放模型同时测试结构化科学输入和通用工具流程。模型体量大、projector 需单独配置，benchmark 又来自发布方，因此只适合 TRIAL。",
+        "judgment_en": "Teams building scientific agents can now test one open model across structured scientific inputs and general tool workflows. The large self-hosting footprint, separate projector setup and publisher-run benchmarks keep it at TRIAL rather than ADOPT.",
+        "next_action_zh": "一天内用公开权重或 FP8 版本跑 10 个 coding 与科学输入样例，核对 projector 配置、显存、质量和延迟。",
+        "next_action_en": "Within one day, run 10 coding and scientific-input cases on the public weights or FP8 build and check projector setup, memory, quality and latency.",
+        "basis_event_ids": [
+          "ev-20261115-01"
+        ],
+        "reviewed_at": "2026-11-17T16:59:58Z"
+      }
     }
   ],
-  "last_updated": "2026-11-16T16:59:56Z",
-  "total_projects": 247,
-  "last_updated_at": "2026-11-16T16:59:56Z"
+  "last_updated": "2026-11-17T16:59:58Z",
+  "total_projects": 253,
+  "last_updated_at": "2026-11-17T16:59:58Z"
 }

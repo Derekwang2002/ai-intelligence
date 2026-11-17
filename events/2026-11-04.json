@@ -411,24 +411,26 @@
     },
     {
       "event_id": "ev-20261104-05",
-      "title": "Thinking Machines releases Inkling 2 Small with open multimodal weights",
-      "title_zh": "Thinking Machines 开放 Inkling 2 Small 权重",
+      "title": "Independent testing exposes Inkling 2 Small trade-offs",
+      "title_zh": "独立测试揭示 Inkling 2 Small 的取舍",
       "category": "foundation-model",
       "organization": [
         "Thinking Machines Lab"
       ],
       "published_at": "2026-11-04T19:51:05Z",
       "first_seen_at": "2026-11-15T17:03:06Z",
-      "last_updated_at": "2026-11-15T17:03:06Z",
+      "last_updated_at": "2026-11-17T16:59:58Z",
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
-      "secondary_sources": [],
-      "summary": "Thinking Machines Lab released Apache-2.0 weights for Inkling 2 Small, a 594B-parameter multimodal MoE model with 17B active parameters and a 1M-token context window. It accepts text and images and is available through local serving recipes, the Tinker playground and several third-party APIs. Direct self-hosting requires at least 500 GB of aggregate VRAM for the native NVFP4 checkpoint.",
-      "why_it_matters": "For teams comparing open multimodal models, hosted access makes the model testable without buying its unusually large self-hosting footprint. Publisher-run benchmark and safety results still need workload-specific and independent checks before production use.",
-      "summary_zh": "Thinking Machines Lab 发布 Inkling 2 Small 的 Apache-2.0 权重。它是 594B 总参数、17B 激活参数的多模态 MoE 模型，支持 100 万 token 上下文，可通过本地 serving 配方、Tinker playground 和多家第三方 API 使用。原生 NVFP4 checkpoint 自托管至少需要 500 GB 聚合显存。",
-      "summary_en": "Thinking Machines Lab released Apache-2.0 weights for Inkling 2 Small, a 594B-parameter multimodal MoE model with 17B active parameters and a 1M-token context window. It accepts text and images and is available through local serving recipes, the Tinker playground and several third-party APIs. Direct self-hosting requires at least 500 GB of aggregate VRAM for the native NVFP4 checkpoint.",
-      "why_it_matters_zh": "对比较开放多模态模型的团队来说，托管 API 让模型在不购买大规模硬件的情况下可实测。厂商 benchmark 与安全结果仍需结合自己的任务和独立证据复核，暂不适合直接进入生产。",
-      "why_it_matters_en": "For teams comparing open multimodal models, hosted access makes the model testable without buying its unusually large self-hosting footprint. Publisher-run benchmark and safety results still need workload-specific and independent checks before production use.",
+      "secondary_sources": [
+        "https://plotly.com/blog/inkling-2-small-plotly-data-analytics-bench/"
+      ],
+      "summary": "Inkling 2 Small remains an Apache-2.0 multimodal model with hosted and self-serving paths. Plotly reports 39 correct answers out of 43 on its private DataAnalyticsBench at $1.81, with about 13 calls and 5,700 output tokens per question. The result adds useful independent evidence, but the private answer set and OpenRouter execution limit reproducibility.",
+      "why_it_matters": "The new evidence makes the model more credible for data-analysis trials while showing that strong aggregate scores can hide costly multi-call behavior and real misses. Production use still needs a public or internal workload replay.",
+      "summary_zh": "Inkling 2 Small 仍是可托管或自部署的 Apache-2.0 多模态模型。Plotly 在私有 DataAnalyticsBench 上报告 43 题答对 39 题，成本 1.81 美元，平均每题约 13 次调用和 5700 个输出 token。它补充了独立证据，但答案集未公开且通过 OpenRouter 运行，复现性有限。",
+      "summary_en": "Inkling 2 Small remains an Apache-2.0 multimodal model with hosted and self-serving paths. Plotly reports 39 correct answers out of 43 on its private DataAnalyticsBench at $1.81, with about 13 calls and 5,700 output tokens per question. The result adds useful independent evidence, but the private answer set and OpenRouter execution limit reproducibility.",
+      "why_it_matters_zh": "新证据让它更值得用于数据分析试验，也说明高总分可能掩盖多轮调用成本和真实失误。要进入生产，仍需用公开集或内部任务回放。",
+      "why_it_matters_en": "The new evidence makes the model more credible for data-analysis trials while showing that strong aggregate scores can hide costly multi-call behavior and real misses. Production use still needs a public or internal workload replay.",
       "technical_details": {
         "architecture": "594B total parameters, 17B active; multimodal sparse MoE with 8 of 384 experts active per token",
         "context_window": "1M tokens",
@@ -436,7 +438,8 @@
         "availability": "Open NVFP4 and MXFP8 weights; Tinker playground; third-party APIs including NVIDIA, Fireworks, Together, Baseten, Nebius, Modal and Cloudflare",
         "self_hosting": "NVFP4 requires at least 500 GB aggregate VRAM; MXFP8 requires at least 800 GB",
         "evidence_limit": "Evaluation and safety results are publisher-reported; no independent workload evaluation was verified in this run",
-        "time_basis": "Hugging Face repository created 2026-11-04T19:51:05Z; recovered as a recall-audit late discovery"
+        "time_basis": "Hugging Face repository created 2026-11-04T19:51:05Z; recovered as a recall-audit late discovery",
+        "independent_evaluation": "Plotly reports 39/43 on its private DataAnalyticsBench at $1.81, about 13 calls and 5,700 output tokens per question, with four genuine misses. The answer set is private and the run used OpenRouter."
       },
       "technical_details_zh": {
         "架构": "594B 总参数、17B 激活参数；多模态稀疏 MoE，每个 token 激活 384 个 expert 中的 8 个",
@@ -445,7 +448,8 @@
         "可用性": "开放 NVFP4 与 MXFP8 权重；Tinker playground；NVIDIA、Fireworks、Together、Baseten、Nebius、Modal、Cloudflare 等第三方 API",
         "自托管": "NVFP4 至少需要 500 GB 聚合显存；MXFP8 至少需要 800 GB",
         "证据限制": "评测与安全结果来自发布方；本次未核实到独立的实际工作负载评测",
-        "时间依据": "Hugging Face 仓库创建于 2026-11-04T19:51:05Z；由召回自检补录为 late discovery"
+        "时间依据": "Hugging Face 仓库创建于 2026-11-04T19:51:05Z；由召回自检补录为 late discovery",
+        "独立评测": "Plotly 报告其私有 DataAnalyticsBench 为 39/43，成本 1.81 美元，平均每题约 13 次调用和 5700 个输出 token，并分析了 4 个真实失误。答案集未公开，运行通过 OpenRouter。"
       },
       "tags": [
         "inkling-2-small",
@@ -464,11 +468,12 @@
       "event_fingerprint": "thinking-machines-inkling-2-small-open-weights",
       "short_label_zh": "Inkling 2 Small",
       "short_label_en": "Inkling 2 Small",
-      "next_action_zh": "一天内通过托管 API 跑 50 个多模态 coding／RAG 样例，记录质量、延迟、成本与拒答错误。",
-      "next_action_en": "Within one day, run 50 multimodal coding and RAG cases through a hosted API and record quality, latency, cost and refusal errors.",
+      "next_action_zh": "一天内用托管 API 跑 50 个内部数据分析样例，记录正确率、调用次数、输出 token、延迟和成本。",
+      "next_action_en": "Within one day, run 50 internal data-analysis cases through a hosted API and record accuracy, calls, output tokens, latency and cost.",
       "late_discovery": true,
       "source_ids": [
-        "src-0679810bb8b1faa3"
+        "src-0679810bb8b1faa3",
+        "src-50edb48a923b6584"
       ],
       "project_ids": [
         "inkling-2-small"
@@ -491,6 +496,19 @@
           ],
           "relation": "support",
           "verification": "public artifacts verified; performance not independently reproduced"
+        },
+        {
+          "id": "ev-20261104-05-independent-evals-evidence",
+          "claim_zh": "Plotly 的独立测试提供质量、成本与调用次数数据，但使用私有答案集和 OpenRouter。",
+          "claim_en": "Plotly independent testing adds quality, cost and call-count evidence, but uses a private answer set and OpenRouter.",
+          "source_ids": [
+            "src-50edb48a923b6584"
+          ],
+          "event_ids": [
+            "ev-20261104-05"
+          ],
+          "relation": "support",
+          "verification": "independent test verified; private answer set limits reproduction"
         }
       ],
       "changes": [
@@ -503,6 +521,19 @@
           "summary_en": "Thinking Machines releases Inkling 2 Small open weights with hosted and self-serving paths.",
           "evidence_ids": [
             "ev-20261104-05-model-card-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261104-05-independent-evals",
+          "kind": "update",
+          "occurred_at": "2026-11-12",
+          "discovered_at": "2026-11-17T16:59:58Z",
+          "summary_zh": "Plotly 的独立测试补充了质量、成本与多轮调用取舍。",
+          "summary_en": "Plotly independent testing adds quality, cost and multi-call trade-offs.",
+          "evidence_ids": [
+            "ev-20261104-05-independent-evals-evidence"
           ],
           "historical": false,
           "importance": "major"
