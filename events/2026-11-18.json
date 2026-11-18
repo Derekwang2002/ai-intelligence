@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-18",
+  "provenance": "Updated by incremental run 2026-11-18T17:04:38Z; window [2026-11-17T16:59:58Z, 2026-11-18T17:04:38Z], overlap from 2026-11-17T13:59:58Z. Updated by incremental run 2026-11-18T17:04:38Z; window [2026-11-17T16:59:58Z, 2026-11-18T17:04:38Z], overlap from 2026-11-17T13:59:58Z. Updated by incremental run 2026-11-18T17:04:38Z; window [2026-11-17T16:59:58Z, 2026-11-18T17:04:38Z], overlap from 2026-11-17T13:59:58Z.",
+  "events": [
+    {
+      "event_id": "ev-20261118-01",
+      "title": "Reson8 opens a 0.5B multilingual ASR model built for throughput",
+      "title_zh": "Reson8 开源面向高吞吐的 0.5B 多语种 ASR 模型",
+      "category": "foundation-model",
+      "organization": [
+        "Reson8",
+        "Hugging Face"
+      ],
+      "published_at": "2026-11-18",
+      "first_seen_at": "2026-11-18T17:04:38Z",
+      "last_updated_at": "2026-11-18T17:04:38Z",
+      "source_type": "official_blog",
+      "primary_source": "https://huggingface.co/blog/rumble-2-flash",
+      "secondary_sources": [
+        "https://huggingface.co/Reson8/Rumble-2-Flash"
+      ],
+      "summary": "Reson8 released Rumble 2 Flash, a 0.5-billion-parameter automatic speech recognition model for more than 40 languages. Apache-2.0 weights run through native Transformers and vLLM without custom code. The publisher reports 7,000 times real-time throughput on full batches and 6.96% error on Open ASR multilingual evaluation.",
+      "summary_en": "Reson8 released Rumble 2 Flash, a 0.5-billion-parameter automatic speech recognition model for more than 40 languages. Apache-2.0 weights run through native Transformers and vLLM without custom code. The publisher reports 7,000 times real-time throughput on full batches and 6.96% error on Open ASR multilingual evaluation.",
+      "summary_zh": "Reson8 发布 Rumble 2 Flash：一个支持 40 多种语言的 5 亿参数自动语音识别模型。Apache-2.0 权重可直接通过 Transformers 与 vLLM 运行，无需自定义代码。发布方称满 batch 吞吐达 7,000 倍实时速度，Open ASR 多语评测错误率为 6.96%。",
+      "why_it_matters": "Teams processing large audio backlogs can test a small, permissively licensed model without a custom runtime. Speed and quality results are publisher-reported, so domain accents, noisy calls and tail latency still need local measurement.",
+      "why_it_matters_en": "Teams processing large audio backlogs can test a small, permissively licensed model without a custom runtime. Speed and quality results are publisher-reported, so domain accents, noisy calls and tail latency still need local measurement.",
+      "why_it_matters_zh": "处理大量音频积压的团队可以用宽松许可的小模型试验，不必维护自定义 runtime。速度与质量仍是发布方自报，领域口音、嘈杂通话和尾延迟需要本地测量。",
+      "technical_details": {
+        "parameters": "0.5B",
+        "languages": "40+",
+        "license": "Apache-2.0",
+        "runtime": "Transformers and vLLM without custom code",
+        "publisher_throughput": "7,000 RTFx on full batches",
+        "publisher_quality": "6.96% Open ASR multilingual error; 6.6% English WER; 7.86% WER on 302 hours of AppTek call-center data versus 7.78% for Nemotron 3.5",
+        "evidence_limit": "Publisher-reported; no independent reproduction in this run",
+        "time_precision": "Official post exposed 2026-11-18 without a publication time"
+      },
+      "technical_details_zh": {
+        "参数量": "0.5B",
+        "语言": "40+",
+        "许可": "Apache-2.0",
+        "运行方式": "原生 Transformers 与 vLLM，无需自定义代码",
+        "发布方吞吐": "满 batch 为 7,000 RTFx",
+        "发布方质量": "Open ASR 多语错误率 6.96%；英语 WER 6.6%；AppTek 302 小时呼叫中心数据 WER 7.86%，Nemotron 3.5 为 7.78%",
+        "证据限制": "数据来自发布方，本次未独立复现",
+        "时间精度": "官方文章只给出 2026-11-18，没有发布时间"
+      },
+      "tags": [
+        "speech-recognition",
+        "open-weights",
+        "multilingual",
+        "vllm"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "reson8-rumble-2-flash-asr",
+      "short_label_zh": "Rumble 2 Flash",
+      "short_label_en": "Rumble 2 Flash",
+      "next_action_zh": "一天内用 2 小时真实多语音频比较 WER、RTFx、P95 延迟、显存和领域词漏识别。",
+      "next_action_en": "Within one day, test two hours of real multilingual audio for WER, RTFx, P95 latency, memory and missed domain terms.",
+      "source_ids": [
+        "src-5b89a2db7f60ae90",
+        "src-3e660f6a79ffc3e0"
+      ],
+      "project_ids": [
+        "rumble-2-flash"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261118-01-release-evidence",
+          "claim_zh": "Rumble 2 Flash 已公开 Apache-2.0 权重，并原生支持 Transformers 与 vLLM。",
+          "claim_en": "Rumble 2 Flash has public Apache-2.0 weights with native Transformers and vLLM support.",
+          "source_ids": [
+            "src-5b89a2db7f60ae90",
+            "src-3e660f6a79ffc3e0"
+          ],
+          "event_ids": [
+            "ev-20261118-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261118-01-release",
+          "kind": "new",
+          "occurred_at": "2026-11-18",
+          "discovered_at": "2026-11-18T17:04:38Z",
+          "summary_zh": "Rumble 2 Flash 公开权重与原生推理支持",
+          "summary_en": "Rumble 2 Flash opens its weights and native inference support",
+          "evidence_ids": [
+            "ev-20261118-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

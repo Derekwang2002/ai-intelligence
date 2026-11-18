@@ -1,6 +1,6 @@
 {
   "date": "2026-11-16",
-  "provenance": "Incremental scan started 2026-11-16T16:59:56Z; date-only publication precision is preserved.",
+  "provenance": "Incremental scan started 2026-11-16T16:59:56Z; date-only publication precision is preserved. Recall-audit addition from incremental run 2026-11-18T17:04:38Z.",
   "events": [
     {
       "event_id": "ev-20261116-01",
@@ -115,24 +115,25 @@
     },
     {
       "event_id": "ev-20261116-02",
-      "title": "Tencent launches HY4 Flash as a low-cost multimodal API",
-      "title_zh": "腾讯发布低成本多模态 API HY4 Flash",
+      "title": "Tencent releases downloadable HY4 Flash weights after the API launch",
+      "title_zh": "腾讯在 API 上线后开放 HY4 Flash 权重下载",
       "category": "foundation-model",
       "organization": [
         "Tencent"
       ],
       "published_at": "2026-11-16",
       "first_seen_at": "2026-11-16T16:59:56Z",
-      "last_updated_at": "2026-11-16T16:59:56Z",
+      "last_updated_at": "2026-11-18T17:04:38Z",
       "source_type": "official_announcement",
       "primary_source": "https://www.tencent.com/tencent-launches-hy4-flash-to-power-high-speed-cost-efficient-ai-deployment-for-everyday-workflows/",
       "secondary_sources": [
-        "https://cloud.tencent.com/document/product/1772/127452"
+        "https://cloud.tencent.com/document/product/1772/127452",
+        "https://huggingface.co/tencent/Hy4-flash"
       ],
-      "summary": "Tencent released HY4 Flash, a multimodal mixture-of-experts API with a 1M-token context. It has 224B total parameters, including 64B Engram parameters, and activates 12B per token. TokenHub lists $0.070 per million input tokens and $0.281 per million output tokens. Weights are not yet open.",
-      "summary_zh": "腾讯发布多模态 MoE API HY4 Flash，支持 100 万 token 上下文。模型总参数为 224B，其中包括 64B Engram 参数，每个 token 激活 12B。TokenHub 标价为每百万输入 token 0.070 美元、输出 0.281 美元。权重尚未开放。",
-      "why_it_matters": "For cost-sensitive multimodal agent workloads, HY4 Flash sets an unusually low hosted price and is callable now. Speed, benchmark and internal workflow results are vendor-reported, and the promised open weights have not shipped.",
-      "why_it_matters_zh": "对成本敏感的多模态 agent 工作负载来说，HY4 Flash 给出了很低的托管价格，而且现在可以调用。速度、benchmark 和内部工作流结果均为厂商自报，承诺的开放权重尚未发布。",
+      "summary": "Tencent released downloadable HY4 Flash instruction and base weights after launching the hosted API. The 220B-parameter multimodal mixture-of-experts model activates about 12B parameters per token, supports a 1M-token context and includes vLLM, SGLang, quantization and fine-tuning instructions. It uses the custom Tencent Hy License.",
+      "summary_zh": "腾讯在托管 API 上线后开放 HY4 Flash 指令版与基础版权重下载。该多模态 MoE 总参数约 220B，每个 token 激活约 12B，支持 100 万 token 上下文，并提供 vLLM、SGLang、量化与微调指南。许可为自定义 Tencent Hy License。",
+      "why_it_matters": "The event moves from hosted-only access to self-hosting and fine-tuning, materially changing the deployment choice. Hardware needs are substantial, the license is not Apache or MIT, and performance remains vendor-reported.",
+      "why_it_matters_zh": "这次更新把模型从仅托管调用推进到可自托管和微调，实质改变部署选择。硬件需求很高，许可不是 Apache 或 MIT，性能仍是厂商自报。",
       "technical_details": {
         "architecture": "224B total parameters including 64B Engram; 12B active per token",
         "context_window": 1000000,
@@ -142,10 +143,12 @@
           "cache_read": 0.003
         },
         "availability": "Tencent Cloud TokenHub plus Tencent applications; OpenRouter announced as coming soon",
-        "weights": "not released; Tencent says open source is planned",
+        "weights": "Instruction and base safetensors available; FP8 and GGUF variants linked",
         "vendor_speed_claim": "more than 150 tokens per second",
         "internal_evaluation": "85 internal users, 259 tasks, 27 categories",
-        "time_basis": "official announcement dated 2026-11-16; no publication time exposed"
+        "time_basis": "official announcement dated 2026-11-16; no publication time exposed",
+        "license": "Tencent Hy License (custom)",
+        "self_hosting": "Transformers, vLLM and SGLang instructions; DFly2 speculative decoding; quantization and fine-tuning assets"
       },
       "technical_details_zh": {
         "架构": "总参数 224B，其中 Engram 64B；每个 token 激活 12B",
@@ -156,33 +159,38 @@
           "缓存读取": 0.003
         },
         "可用范围": "Tencent Cloud TokenHub 与腾讯应用；OpenRouter 仅预告即将支持",
-        "权重": "尚未发布；腾讯称计划开源",
+        "权重": "指令版与 base safetensors 已开放，并链接 FP8 与 GGUF 版本",
         "厂商速度主张": "每秒超过 150 token",
         "内部评测": "85 名内部用户、259 个任务、27 个类别",
-        "时间依据": "官方公告日期为 2026-11-16，页面未提供发布时间"
+        "时间依据": "官方公告日期为 2026-11-16，页面未提供发布时间",
+        "许可": "Tencent Hy License（自定义）",
+        "自托管": "提供 Transformers、vLLM、SGLang、DFly2 推测解码、量化与微调资料"
       },
       "tags": [
         "Hy4",
         "multimodal",
         "long-context",
         "MoE",
-        "low-cost-api"
+        "low-cost-api",
+        "open-weights",
+        "self-hosted"
       ],
       "technical_impact": 4,
       "engineering_value": 4,
-      "adoption_signal": 2,
+      "adoption_signal": 3,
       "maturity": 3,
       "verification_cost": 2,
       "risk": 3,
-      "recommendation": "WATCH",
+      "recommendation": "TRIAL",
       "event_fingerprint": "tencent-hy4-flash-api",
       "short_label_zh": "HY4 Flash",
       "short_label_en": "HY4 Flash",
-      "next_action_zh": "等开放权重或独立复测速度与质量后再决定迁移；现在只用可替换的测试流量核对价格和接口。",
-      "next_action_en": "Wait for open weights or independent speed and quality replay before migration; use only replaceable test traffic now to verify price and API behavior.",
+      "next_action_zh": "一天内先审查 Tencent Hy License，并在可承受硬件上验证 vLLM 启动、1M 上下文显存、图文工具调用和吞吐。",
+      "next_action_en": "Within one day, review the Tencent Hy License and test vLLM startup, 1M-context memory, multimodal tool use and throughput on available hardware.",
       "source_ids": [
         "src-c4d292d2b965e2c3",
-        "src-cb45faf5c7c32bcd"
+        "src-cb45faf5c7c32bcd",
+        "src-364859f834c86602"
       ],
       "project_ids": [
         "hy4"
@@ -192,8 +200,8 @@
         "agents"
       ],
       "evidence_stage": "verified",
-      "summary_en": "Tencent released HY4 Flash, a multimodal mixture-of-experts API with a 1M-token context. It has 224B total parameters, including 64B Engram parameters, and activates 12B per token. TokenHub lists $0.070 per million input tokens and $0.281 per million output tokens. Weights are not yet open.",
-      "why_it_matters_en": "For cost-sensitive multimodal agent workloads, HY4 Flash sets an unusually low hosted price and is callable now. Speed, benchmark and internal workflow results are vendor-reported, and the promised open weights have not shipped.",
+      "summary_en": "Tencent released downloadable HY4 Flash instruction and base weights after launching the hosted API. The 220B-parameter multimodal mixture-of-experts model activates about 12B parameters per token, supports a 1M-token context and includes vLLM, SGLang, quantization and fine-tuning instructions. It uses the custom Tencent Hy License.",
+      "why_it_matters_en": "The event moves from hosted-only access to self-hosting and fine-tuning, materially changing the deployment choice. Hardware needs are substantial, the license is not Apache or MIT, and performance remains vendor-reported.",
       "evidence": [
         {
           "id": "ev-20261116-02-evidence",
@@ -208,6 +216,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; performance claims not independently reproduced"
+        },
+        {
+          "id": "ev-20261116-02-weights-evidence",
+          "claim_zh": "Tencent 已公开 HY4 Flash 指令版与 base 权重，并提供自托管与微调资料。",
+          "claim_en": "Tencent has released HY4 Flash instruction and base weights with self-hosting and fine-tuning assets.",
+          "source_ids": [
+            "src-364859f834c86602"
+          ],
+          "event_ids": [
+            "ev-20261116-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -220,6 +241,19 @@
           "summary_en": "Tencent released HY4 Flash, a multimodal mixture-of-experts API with a 1M-token context.",
           "evidence_ids": [
             "ev-20261116-02-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261116-02-open-weights",
+          "kind": "update",
+          "occurred_at": "2026-11-17T03:44:46Z",
+          "discovered_at": "2026-11-18T17:04:38Z",
+          "summary_zh": "HY4 Flash 从托管 API 推进到可下载权重与自托管",
+          "summary_en": "HY4 Flash moves from a hosted API to downloadable weights and self-hosting",
+          "evidence_ids": [
+            "ev-20261116-02-weights-evidence"
           ],
           "historical": false,
           "importance": "major"
@@ -638,6 +672,102 @@
             "ev-20261116-06-evidence"
           ],
           "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261116-07",
+      "title": "Open LoRA adapts Qwen3.8-27B to the pi coding harness",
+      "title_zh": "公开 LoRA 将 Qwen3.8-27B 适配到 pi coding harness",
+      "category": "open-source",
+      "organization": [
+        "harness-hub"
+      ],
+      "published_at": "2026-11-16T06:52:31Z",
+      "first_seen_at": "2026-11-18T17:04:38Z",
+      "last_updated_at": "2026-11-18T17:04:38Z",
+      "late_discovery": true,
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
+      "secondary_sources": [],
+      "summary": "harness-hub released an Apache-2.0 LoRA adapter that tunes Qwen3.8-27B for the pi coding agent. With thinking disabled, the publisher reports 64.7% on a 51-task SWE-bench Pro hard subset and 55.8% on Terminal-Bench 2.1, while generating about 4.5 times fewer tokens than the base model at maximum reasoning effort.",
+      "summary_en": "harness-hub released an Apache-2.0 LoRA adapter that tunes Qwen3.8-27B for the pi coding agent. With thinking disabled, the publisher reports 64.7% on a 51-task SWE-bench Pro hard subset and 55.8% on Terminal-Bench 2.1, while generating about 4.5 times fewer tokens than the base model at maximum reasoning effort.",
+      "summary_zh": "harness-hub 发布 Apache-2.0 LoRA，把 Qwen3.8-27B 适配到 pi coding agent。关闭 thinking 后，发布方在 51 道 SWE-bench Pro hard 子集上报告 64.7%，在 Terminal-Bench 2.1 上报告 55.8%；生成 token 约为基础模型最高推理强度的 1/4.5。",
+      "why_it_matters": "For self-hosted coding agents, harness-specific adaptation may recover high-effort accuracy at much lower inference cost. The evaluation is publisher-run, uses one harness and one attempt per task, and the chosen checkpoint saw part of Terminal-Bench during selection.",
+      "why_it_matters_en": "For self-hosted coding agents, harness-specific adaptation may recover high-effort accuracy at much lower inference cost. The evaluation is publisher-run, uses one harness and one attempt per task, and the chosen checkpoint saw part of Terminal-Bench during selection.",
+      "why_it_matters_zh": "对自托管 coding agent 来说，针对 harness 的适配可能用更低推理成本达到高推理强度的准确率。评测来自发布方，只覆盖一个 harness、每题一次尝试，而且 checkpoint 选择看过部分 Terminal-Bench。",
+      "technical_details": {
+        "artifact": "Apache-2.0 LoRA for Qwen3.8-27B; vLLM, Transformers and llama.cpp instructions",
+        "evaluation": "SWE-bench Pro hard 51: 39.2% to 64.7%; Terminal-Bench 2.1 paired 86: 39.5% to 55.8%",
+        "efficiency": "about 4.5x fewer generated tokens than base model at xhigh thinking; thinking should remain off",
+        "conditions": "pi harness; one attempt; 100-step budget; temperature 0.8; text only",
+        "limitation": "Publisher-run; step 160 chosen using SWE-bench Pro and an 18-task Terminal-Bench subset; corrected earlier tunnel-failure runs"
+      },
+      "technical_details_zh": {
+        "公开产物": "Qwen3.8-27B 的 Apache-2.0 LoRA；提供 vLLM、Transformers、llama.cpp 指南",
+        "评测": "SWE-bench Pro hard 51：39.2%→64.7%；Terminal-Bench 2.1 配对 86 题：39.5%→55.8%",
+        "效率": "相比基础模型 xhigh thinking，生成 token 约少 4.5 倍；应关闭 thinking",
+        "条件": "pi harness；每题一次；100 step；temperature 0.8；仅文本",
+        "限制": "发布方评测；step 160 选择参考了 SWE-bench Pro 与 18 道 Terminal-Bench；此前隧道故障结果已更正"
+      },
+      "tags": [
+        "coding-agent",
+        "lora",
+        "qwen",
+        "harness-adaptation",
+        "self-hosted"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "qwen3-8-27b-pi-harness-adapter",
+      "short_label_zh": "Qwen3.8 pi adapter",
+      "short_label_en": "Qwen3.8 pi adapter",
+      "next_action_zh": "一天内用 10 个真实仓库任务对比基础模型 xhigh 与该 LoRA，测完成率、token、step、延迟和显存。",
+      "next_action_en": "Within one day, compare base-model xhigh and the LoRA on 10 real repository tasks for completion, tokens, steps, latency and memory.",
+      "source_ids": [
+        "src-dbede62d4d711d8c"
+      ],
+      "project_ids": [
+        "qwen-pi-adapter"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261116-07-release-evidence",
+          "claim_zh": "公开 Qwen3.8-27B 的 pi harness 专用 LoRA 与可复现实验条件",
+          "claim_en": "A public Qwen3.8-27B LoRA targets the pi harness with documented evaluation conditions",
+          "source_ids": [
+            "src-dbede62d4d711d8c"
+          ],
+          "event_ids": [
+            "ev-20261116-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261116-07-release",
+          "kind": "new",
+          "occurred_at": "2026-11-16T06:52:31Z",
+          "discovered_at": "2026-11-18T17:04:38Z",
+          "summary_zh": "公开 Qwen3.8-27B 的 pi harness 专用 LoRA 与可复现实验条件",
+          "summary_en": "A public Qwen3.8-27B LoRA targets the pi harness with documented evaluation conditions",
+          "evidence_ids": [
+            "ev-20261116-07-release-evidence"
+          ],
+          "historical": true,
           "importance": "major"
         }
       ]

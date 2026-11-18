@@ -1,6 +1,6 @@
 {
   "date": "2026-11-09",
-  "provenance": "Incremental scan ending 2026-11-09T16:56:58Z; primary artifacts verified, data-quality claims remain publisher-reported.",
+  "provenance": "Incremental scan ending 2026-11-09T16:56:58Z; primary artifacts verified, data-quality claims remain publisher-reported. Recall-audit addition from incremental run 2026-11-18T17:04:38Z.",
   "events": [
     {
       "event_id": "ev-20261109-02",
@@ -835,6 +835,101 @@
           "summary_en": "Zyphra publishes ZONOS3-Mini weights and multiple local runtimes.",
           "evidence_ids": [
             "ev-20261109-09-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261109-10",
+      "title": "PostHog uses decision models to skip most expensive LLM calls",
+      "title_zh": "PostHog 用 decision model 跳过大部分昂贵 LLM 调用",
+      "category": "ai-engineering",
+      "organization": [
+        "PostHog"
+      ],
+      "published_at": "2026-11-09",
+      "first_seen_at": "2026-11-18T17:04:38Z",
+      "last_updated_at": "2026-11-18T17:04:38Z",
+      "late_discovery": true,
+      "source_type": "official_blog",
+      "primary_source": "https://newsletter.posthog.com/p/decision-models",
+      "secondary_sources": [],
+      "summary": "PostHog described production use of small decision models for PII gates, model routing, search reranking and chart selection. In its Replay Vision pipeline, two narrow checks let 98.7% of session summaries skip a Gemini rewrite. The team calibrates thresholds per task and model and keeps replacements in shadow mode.",
+      "summary_en": "PostHog described production use of small decision models for PII gates, model routing, search reranking and chart selection. In its Replay Vision pipeline, two narrow checks let 98.7% of session summaries skip a Gemini rewrite. The team calibrates thresholds per task and model and keeps replacements in shadow mode.",
+      "summary_zh": "PostHog 披露了 decision model 在 PII gate、模型路由、搜索重排和图表选择中的生产使用。Replay Vision 用两个窄问题判断摘要，98.7% 的 session summary 可以跳过 Gemini 重写。团队按任务和模型分别校准阈值，并让替代模型先跑 shadow mode。",
+      "why_it_matters": "This is a concrete deployment pattern for lowering LLM cost without asking a small model to perform open-ended reasoning. The 98.7% figure is a company-reported pipeline metric, and false negatives in PII screening carry higher risk than extra LLM calls.",
+      "why_it_matters_en": "This is a concrete deployment pattern for lowering LLM cost without asking a small model to perform open-ended reasoning. The 98.7% figure is a company-reported pipeline metric, and false negatives in PII screening carry higher risk than extra LLM calls.",
+      "why_it_matters_zh": "这是降低 LLM 成本的具体部署模式：让小模型做窄判断，而不是承担开放式推理。98.7% 是公司自报的流水线指标；在 PII 检查里，漏检风险高于多调用一次 LLM。",
+      "technical_details": {
+        "pii_gate": "Two yes/no checks at threshold 0.4; 98.7% of summaries skip Gemini rewrite",
+        "routing": "Decision model chooses the cheapest model likely to succeed; thresholds calibrated per task/model",
+        "reranking": "20-query internal test improved ranking quality about 25%",
+        "failure_case": "PR-review ranking was inconclusive at AUC 0.52; multi-step jobs can overload the model server",
+        "evidence_limit": "Company-reported production account with linked code; no independent audit of privacy or cost metrics"
+      },
+      "technical_details_zh": {
+        "PII gate": "两个 yes/no 问题，阈值 0.4；98.7% 摘要跳过 Gemini 重写",
+        "路由": "选择最可能一次成功的最便宜模型；阈值按任务/模型分别校准",
+        "重排": "20 个内部 query 中，排名质量约提升 25%",
+        "失败案例": "PR review 排名 AUC 0.52，结论不明确；多步任务会压垮 model server",
+        "证据限制": "公司自报并链接生产代码；隐私与成本指标未独立审计"
+      },
+      "tags": [
+        "model-routing",
+        "decision-model",
+        "cost",
+        "privacy",
+        "production"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "posthog-decision-model-production-routing",
+      "short_label_zh": "PostHog Decision Models",
+      "short_label_en": "PostHog Decision Models",
+      "next_action_zh": "一天内在低风险 gate 上 shadow 200 条样本，按误判代价选阈值，并比较跳过率、ECE、延迟与总成本。",
+      "next_action_en": "Within one day, shadow 200 low-risk gate cases, set thresholds by error cost and compare skip rate, ECE, latency and total cost.",
+      "source_ids": [
+        "src-233f4988e8c3601e"
+      ],
+      "project_ids": [
+        "posthog-decision-models"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261109-10-deployment-evidence",
+          "claim_zh": "PostHog 披露 decision model 在 PII gate 与模型路由中的生产用法",
+          "claim_en": "PostHog documents production decision-model use for PII gates and model routing",
+          "source_ids": [
+            "src-233f4988e8c3601e"
+          ],
+          "event_ids": [
+            "ev-20261109-10"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261109-10-deployment",
+          "kind": "new",
+          "occurred_at": "2026-11-09",
+          "discovered_at": "2026-11-18T17:04:38Z",
+          "summary_zh": "PostHog 披露 decision model 在 PII gate 与模型路由中的生产用法",
+          "summary_en": "PostHog documents production decision-model use for PII gates and model routing",
+          "evidence_ids": [
+            "ev-20261109-10-deployment-evidence"
           ],
           "historical": true,
           "importance": "major"

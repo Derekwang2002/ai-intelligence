@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.108.9 backports reasoning and gateway fixes to LTS",
-      "title_zh": "LiteLLM 1.108.9 向 LTS 回移推理与网关修复",
+      "title": "LiteLLM 1.108.11 LTS fixes dropped guardrails and billed aborted streams",
+      "title_zh": "LiteLLM 1.108.11 LTS 修复护栏丢失与中止流继续计费",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-15T17:03:06Z",
+      "last_updated_at": "2026-11-18T17:04:38Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -36,14 +36,16 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.109.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.109.1",
         "https://github.com/BerriAI/litellm/pull/51254",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.108.9"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.9",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.11",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.110.0"
       ],
-      "summary": "LiteLLM 1.108.9 backports mixed reasoning preservation, Bedrock S3 media, Kimi K3 reasoning, Vertex caller labels, Responses API cache controls and Foundry routing fixes to the maintained LTS line. Mainline remains newer at 1.109.1. The release is public, but the cross-provider behavior has not been independently replayed.",
-      "why_it_matters": "For gateway teams pinned to LTS, this reduces the gap to mainline without requiring the 1.109 migration set. The breadth of provider translations still makes a canary replay necessary before production rollout.",
-      "summary_zh": "LiteLLM 1.108.9 向持续维护的 LTS 分支回移混合推理保留、Bedrock S3 媒体、Kimi K3 推理、Vertex 调用方标签、Responses API 缓存控制和 Foundry 路由修复。主线仍是更新的 1.109.1。版本已公开，但跨 provider 行为尚未独立回放。",
-      "summary_en": "LiteLLM 1.108.9 backports mixed reasoning preservation, Bedrock S3 media, Kimi K3 reasoning, Vertex caller labels, Responses API cache controls and Foundry routing fixes to the maintained LTS line. Mainline remains newer at 1.109.1. The release is public, but the cross-provider behavior has not been independently replayed.",
-      "why_it_matters_zh": "对固定在 LTS 的 gateway 团队来说，这次更新缩小了与主线的差距，也不必立即承担 1.109 的迁移集。provider 转换范围很广，上生产前仍需 canary 回放。",
-      "why_it_matters_en": "For gateway teams pinned to LTS, this reduces the gap to mainline without requiring the 1.109 migration set. The breadth of provider translations still makes a canary replay necessary before production rollout.",
+      "summary": "LiteLLM 1.108.11 LTS fixes Bedrock system and assistant `guarded_text` fields being dropped, and stops upstream generation after an Anthropic-compatible stream is aborted. It also repairs truncated Gemini tool arguments and Azure DeepSeek reasoning effort. The separate 1.110.0 mainline release adds broader provider and routing changes.",
+      "why_it_matters": "Guardrail loss can change safety behavior, while continued upstream generation after a client abort can create hidden cost. Gateway teams should prioritize the LTS patch and replay guarded messages, aborted streams and tool calls before production rollout.",
+      "summary_zh": "LiteLLM 1.108.11 LTS 修复 Bedrock system 与 assistant 消息中的 `guarded_text` 被丢弃，并在 Anthropic 兼容流中止后停止上游生成。它还修复 Gemini 工具参数截断和 Azure DeepSeek 推理强度。另一个 1.110.0 主线版包含更广泛的 provider 与路由变更。",
+      "summary_en": "LiteLLM 1.108.11 LTS fixes Bedrock system and assistant `guarded_text` fields being dropped, and stops upstream generation after an Anthropic-compatible stream is aborted. It also repairs truncated Gemini tool arguments and Azure DeepSeek reasoning effort. The separate 1.110.0 mainline release adds broader provider and routing changes.",
+      "why_it_matters_zh": "护栏字段丢失会改变安全行为，客户端中止后上游仍继续生成则会产生隐藏成本。网关团队应优先升级 LTS，并在生产推广前回放受护栏保护的消息、中止流和工具调用。",
+      "why_it_matters_en": "Guardrail loss can change safety behavior, while continued upstream generation after a client abort can create hidden cost. Gateway teams should prioritize the LTS patch and replay guarded messages, aborted streams and tool calls before production rollout.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -85,7 +87,9 @@
         "update_2026_11_12": "Cosign-signed images; reject six conflicting Azure/OIDC credential fields unless explicitly allowed; maintained-branch backports.",
         "time_basis_2026_11_12": "GitHub release published 2026-11-12T02:07:01Z.",
         "update_2026_11_15": "LTS 1.108.9 backports mixed reasoning preservation, Bedrock S3 media, Kimi K3 reasoning, Vertex caller labels, Responses cache controls and Foundry routing fixes.",
-        "time_basis_2026_11_15": "GitHub release published 2026-11-14T22:00:02Z, inside the strict scan window."
+        "time_basis_2026_11_15": "GitHub release published 2026-11-14T22:00:02Z, inside the strict scan window.",
+        "release_1_108_11": "LTS: preserve Bedrock guarded_text in system/assistant messages; stop upstream Invoke streams after /v1/messages abort; repair null or truncated Gemini tool arguments and Azure DeepSeek reasoning effort",
+        "release_1_110_0": "Mainline release with provider, routing and compatibility changes; evaluated separately from LTS adoption"
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -128,7 +132,9 @@
         "2026-11-12 更新": "cosign 签名镜像；默认拒绝 6 个冲突的 Azure/OIDC 凭据字段；修复回移到维护分支。",
         "2026-11-12 时间依据": "GitHub release 发布于 2026-11-12T02:07:01Z。",
         "2026-11-15 更新": "LTS 1.108.9 回移混合推理保留、Bedrock S3 媒体、Kimi K3 推理、Vertex 调用方标签、Responses 缓存控制与 Foundry 路由修复。",
-        "2026-11-15 时间依据": "GitHub release 发布于 2026-11-14T22:00:02Z，落在严格扫描窗口内。"
+        "2026-11-15 时间依据": "GitHub release 发布于 2026-11-14T22:00:02Z，落在严格扫描窗口内。",
+        "1.108.11 LTS": "保留 Bedrock system/assistant 的 guarded_text；/v1/messages 中止后停止上游 Invoke 流；修复 Gemini 空值或截断工具参数与 Azure DeepSeek 推理强度",
+        "1.110.0 主线": "包含 provider、路由与兼容性变更；与 LTS 采用判断分开评估"
       },
       "tags": [
         "litellm",
@@ -168,7 +174,9 @@
         "src-569a35504d8a0adf",
         "src-0258ef134fc324e9",
         "src-e8b59bc710743165",
-        "src-fe2d022b775c8438"
+        "src-fe2d022b775c8438",
+        "src-958f53f88ea0035e",
+        "src-593d0602a81065fa"
       ],
       "project_ids": [
         "mcp",
@@ -402,6 +410,20 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently replayed"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-11-evidence",
+          "claim_zh": "LiteLLM 1.108.11 LTS 官方 release 修复护栏字段丢失、中止流继续生成和工具参数问题。",
+          "claim_en": "The LiteLLM 1.108.11 LTS release fixes dropped guardrail fields, continued generation after aborts and tool-argument failures.",
+          "source_ids": [
+            "src-958f53f88ea0035e",
+            "src-593d0602a81065fa"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -623,13 +645,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-11",
+          "kind": "update",
+          "occurred_at": "2026-11-17T22:29:13Z",
+          "discovered_at": "2026-11-18T17:04:38Z",
+          "summary_zh": "LiteLLM LTS 修复护栏丢失和中止后继续计费",
+          "summary_en": "LiteLLM LTS fixes dropped guardrails and post-abort billing",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-108-11-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "一天内用 LTS canary 回放混合 reasoning、Responses 缓存及 Foundry、Kimi 路由，记录字段丢失与误命中。",
-      "next_action_en": "Within one day, canary LTS against mixed reasoning, Responses cache breakpoints, Vertex caller labels and Foundry or Kimi routes, recording dropped fields and false cache hits.",
-      "short_label_zh": "LiteLLM 1.108.9 LTS",
-      "short_label_en": "LiteLLM 1.108.9 LTS"
+      "next_action_zh": "一天内在 LTS canary 回放 Bedrock guarded_text、中止流计费、Gemini 工具参数和 DeepSeek 推理强度。",
+      "next_action_en": "Within one day, canary Bedrock guarded_text, aborted-stream billing, Gemini tool arguments and DeepSeek reasoning effort on LTS.",
+      "short_label_zh": "LiteLLM 1.108.11 LTS",
+      "short_label_en": "LiteLLM 1.108.11 LTS"
     }
   ]
 }

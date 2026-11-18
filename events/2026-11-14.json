@@ -1,0 +1,104 @@
+{
+  "date": "2026-11-14",
+  "provenance": "Recall-audit addition from incremental run 2026-11-18T17:04:38Z.",
+  "events": [
+    {
+      "event_id": "ev-20261114-01",
+      "title": "KAIST opens a Korean-English multimodal web agent built from scratch",
+      "title_zh": "KAIST 开源从头训练的韩英双语多模态 web agent",
+      "category": "ai-agent",
+      "organization": [
+        "KAIST MLP Lab"
+      ],
+      "published_at": "2026-11-14T11:23:13Z",
+      "first_seen_at": "2026-11-18T17:04:38Z",
+      "last_updated_at": "2026-11-18T17:04:38Z",
+      "late_discovery": true,
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/KORMo-VL/KORMo-Web-11B",
+      "secondary_sources": [],
+      "summary": "KAIST MLP Lab released KORMo-Web-11B, an Apache-2.0 Korean-English model that combines language, vision and browser interaction. It extends a foundation model trained from scratch with more than 10 million bilingual web-pretraining samples and over 100,000 interaction trajectories. Weights, a browser harness and vLLM instructions are public.",
+      "summary_en": "KAIST MLP Lab released KORMo-Web-11B, an Apache-2.0 Korean-English model that combines language, vision and browser interaction. It extends a foundation model trained from scratch with more than 10 million bilingual web-pretraining samples and over 100,000 interaction trajectories. Weights, a browser harness and vLLM instructions are public.",
+      "summary_zh": "KAIST MLP Lab 发布 KORMo-Web-11B：一个采用 Apache-2.0 的韩英双语模型，合并语言、视觉与浏览器操作能力。它在从头训练的基础模型上增加超过 1,000 万条双语网页预训练样本和 10 万多条交互轨迹。权重、browser harness 与 vLLM 指南均已公开。",
+      "why_it_matters": "This adds a testable non-English open web agent rather than another English-only benchmark. Publisher evaluation reports 30.1% success on Korean Online-Mind2Web, but each model used its own prompt and action format and proprietary GPT-6 Luna remained far ahead.",
+      "why_it_matters_en": "This adds a testable non-English open web agent rather than another English-only benchmark. Publisher evaluation reports 30.1% success on Korean Online-Mind2Web, but each model used its own prompt and action format and proprietary GPT-6 Luna remained far ahead.",
+      "why_it_matters_zh": "这增加了一个可验证的非英语开放 web agent，而不是又一个英语 benchmark。发布方在韩语 Online-Mind2Web 报告 30.1% 成功率；但各模型使用不同 prompt 和动作格式，而且专有 GPT-6 Luna 仍明显领先。",
+      "technical_details": {
+        "capabilities": "Korean-English LLM, VLM and screenshot-driven GUI agent",
+        "training": "10M+ bilingual atomic web samples and 100K+ interaction trajectories",
+        "license": "Apache-2.0",
+        "artifacts": "Weights, Transformers 5 loader, vLLM conversion, Playwright browser harness and Chrome extension",
+        "evaluation": "612 live-site tasks: 29.0% English and 30.1% Korean Online-Mind2Web",
+        "evidence_limit": "Publisher-run; model-specific prompts/action formats; proprietary GPT-6 Luna scored 63.0% English and 65.7% Korean"
+      },
+      "technical_details_zh": {
+        "能力": "韩英双语 LLM、VLM 与基于截图的 GUI agent",
+        "训练": "1,000 万+ 双语网页原子样本、10 万+ 交互轨迹",
+        "许可": "Apache-2.0",
+        "公开产物": "权重、Transformers 5 loader、vLLM 转换、Playwright browser harness、Chrome extension",
+        "评测": "612 个真实网站任务：Online-Mind2Web 英语 29.0%、韩语 30.1%",
+        "证据限制": "发布方评测；各模型 prompt/动作格式不同；专有 GPT-6 Luna 为英语 63.0%、韩语 65.7%"
+      },
+      "tags": [
+        "web-agent",
+        "korean",
+        "multimodal",
+        "open-weights",
+        "browser-agent"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "kaist-kormo-web-11b-bilingual-agent",
+      "short_label_zh": "KORMo-Web-11B",
+      "short_label_en": "KORMo-Web-11B",
+      "next_action_zh": "一天内在 20 个韩英双语站点任务上测成功率、错误动作、恢复能力、显存和自定义 loader 风险。",
+      "next_action_en": "Within one day, test 20 Korean-English web tasks for success, bad actions, recovery, memory and custom-loader risk.",
+      "source_ids": [
+        "src-9de1bbe70d1b58e1"
+      ],
+      "project_ids": [
+        "kormo-web"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261114-01-release-evidence",
+          "claim_zh": "KAIST 公开韩英双语 KORMo-Web-11B 权重与 browser harness",
+          "claim_en": "KAIST opens KORMo-Web-11B weights and a Korean-English browser harness",
+          "source_ids": [
+            "src-9de1bbe70d1b58e1"
+          ],
+          "event_ids": [
+            "ev-20261114-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261114-01-release",
+          "kind": "new",
+          "occurred_at": "2026-11-14T11:23:13Z",
+          "discovered_at": "2026-11-18T17:04:38Z",
+          "summary_zh": "KAIST 公开韩英双语 KORMo-Web-11B 权重与 browser harness",
+          "summary_en": "KAIST opens KORMo-Web-11B weights and a Korean-English browser harness",
+          "evidence_ids": [
+            "ev-20261114-01-release-evidence"
+          ],
+          "historical": true,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

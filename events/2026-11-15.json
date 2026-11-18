@@ -1,6 +1,6 @@
 {
   "date": "2026-11-15",
-  "provenance": "Incremental intelligence scan",
+  "provenance": "Incremental intelligence scan Updated by incremental run 2026-11-18T17:04:38Z; window [2026-11-17T16:59:58Z, 2026-11-18T17:04:38Z], overlap from 2026-11-17T13:59:58Z. Updated by incremental run 2026-11-18T17:04:38Z; window [2026-11-17T16:59:58Z, 2026-11-18T17:04:38Z], overlap from 2026-11-17T13:59:58Z. Updated by incremental run 2026-11-18T17:04:38Z; window [2026-11-17T16:59:58Z, 2026-11-18T17:04:38Z], overlap from 2026-11-17T13:59:58Z.",
   "events": [
     {
       "event_id": "ev-20261115-01",
@@ -96,6 +96,106 @@
           "summary_en": "Shanghai AI Lab opens Sage S2.1 Flash weights and scientific projectors.",
           "evidence_ids": [
             "ev-20261115-01-model-card-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261115-02",
+      "title": "BIS moves chip controls toward remote access to overseas compute",
+      "title_zh": "BIS 将先进芯片管制延伸到海外算力远程访问",
+      "category": "business-policy",
+      "organization": [
+        "U.S. Bureau of Industry and Security"
+      ],
+      "published_at": "2026-11-15",
+      "first_seen_at": "2026-11-18T17:04:38Z",
+      "last_updated_at": "2026-11-18T17:04:38Z",
+      "late_discovery": true,
+      "source_type": "official_announcement",
+      "primary_source": "https://www.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology",
+      "secondary_sources": [
+        "https://www.bis.gov/media/documents/rin-0694-ak50.pdf"
+      ],
+      "summary": "The U.S. Bureau of Industry and Security issued prepublication text for an interim final rule that would require licenses when certain overseas data centers provide significant advanced compute to entities headquartered in Macau or Country Group D:5. It also adds destination controls for Indonesia, Malaysia, Singapore, Brazil and Thailand, with conditions and exemptions.",
+      "summary_en": "The U.S. Bureau of Industry and Security issued prepublication text for an interim final rule that would require licenses when certain overseas data centers provide significant advanced compute to entities headquartered in Macau or Country Group D:5. It also adds destination controls for Indonesia, Malaysia, Singapore, Brazil and Thailand, with conditions and exemptions.",
+      "summary_zh": "美国商务部 BIS 发布一份 interim final rule 的预发布文本：当部分海外数据中心向总部位于澳门或 Country Group D:5 的实体提供大量先进算力时，相关方将需要许可证。规则还为印度尼西亚、马来西亚、新加坡、巴西和泰国增加目的地管制，并设置条件与豁免。",
+      "why_it_matters": "Cloud, model-hosting and chip-supply teams may need to treat remote compute access as an export-control event, not only physical chip shipment. The posted PDF still contains Federal Register date placeholders, so implementation timing cannot yet be treated as effective.",
+      "why_it_matters_en": "Cloud, model-hosting and chip-supply teams may need to treat remote compute access as an export-control event, not only physical chip shipment. The posted PDF still contains Federal Register date placeholders, so implementation timing cannot yet be treated as effective.",
+      "why_it_matters_zh": "对云服务、模型托管和芯片供应团队来说，远程算力访问也可能成为出口管制事件，不再只看芯片实体流向。公开 PDF 仍保留《联邦公报》日期占位符，因此不能把实施时间写成已经生效。",
+      "technical_details": {
+        "legal_stage": "Interim final rule prepublication text; effective on Federal Register publication, but the posted text still contains an insertion placeholder",
+        "remote_access_scope": "License requirement for significant compute supplied to entities headquartered or parented in Macau or Country Group D:5",
+        "destination_scope": "Indonesia, Malaysia, Singapore, Brazil and Thailand; U.S.-headquartered end users may qualify for exclusions with reporting",
+        "transition": "Existing covered data centers would have 90 days from the effective date to obtain a license",
+        "exemption": "Commercial recommender systems as narrowly defined; generative systems are excluded from that definition",
+        "evidence_limit": "Press release and prepublication text verified; Federal Register publication and final dates were not yet available"
+      },
+      "technical_details_zh": {
+        "法律阶段": "interim final rule 预发布文本；拟于《联邦公报》刊登日生效，但公开文本仍保留日期占位符",
+        "远程访问范围": "向总部或最终母公司位于澳门或 Country Group D:5 的实体提供大量算力时触发许可证要求",
+        "目的地范围": "印度尼西亚、马来西亚、新加坡、巴西、泰国；美国总部终端用户在满足报告要求时可能适用排除",
+        "过渡期": "已有受管数据中心拟在生效日起 90 天内取得许可证",
+        "豁免": "狭义 commercial recommender system；生成式系统不在该定义内",
+        "证据限制": "已核对新闻稿与预发布文本；尚无《联邦公报》刊登信息和最终日期"
+      },
+      "tags": [
+        "export-control",
+        "advanced-compute",
+        "data-center",
+        "cloud-policy"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 4,
+      "maturity": 3,
+      "verification_cost": 4,
+      "risk": 5,
+      "recommendation": "WATCH",
+      "event_fingerprint": "bis-remote-compute-access-interim-final-rule",
+      "short_label_zh": "BIS Remote Compute Rule",
+      "short_label_en": "BIS Remote Compute Rule",
+      "next_action_zh": "等待《联邦公报》刊登与最终日期；现在先映射受影响的数据中心、客户总部、算力阈值和报告责任。",
+      "next_action_en": "Wait for Federal Register publication and final dates; meanwhile map affected data centers, customer headquarters, compute thresholds and reporting duties.",
+      "source_ids": [
+        "src-16c9963246620447",
+        "src-8898c78052b99f5a"
+      ],
+      "project_ids": [
+        "bis-remote-access-rule"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261115-02-rule-evidence",
+          "claim_zh": "BIS 已发布预发布 IFR 文本，把部分先进算力远程访问纳入许可证要求；生效日期仍待《联邦公报》刊登。",
+          "claim_en": "BIS published prepublication IFR text that brings some remote access to advanced compute under licensing; the effective date awaits Federal Register publication.",
+          "source_ids": [
+            "src-16c9963246620447",
+            "src-8898c78052b99f5a"
+          ],
+          "event_ids": [
+            "ev-20261115-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261115-02-rule",
+          "kind": "new",
+          "occurred_at": "2026-11-15",
+          "discovered_at": "2026-11-18T17:04:38Z",
+          "summary_zh": "BIS 发布远程算力访问管制的预发布 IFR 文本",
+          "summary_en": "BIS publishes prepublication IFR text for remote compute access controls",
+          "evidence_ids": [
+            "ev-20261115-02-rule-evidence"
           ],
           "historical": false,
           "importance": "major"

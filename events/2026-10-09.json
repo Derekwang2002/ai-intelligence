@@ -399,41 +399,51 @@
     },
     {
       "event_id": "ev-20261009-05",
-      "title": "Microsoft releases a fast model for structured decisions",
-      "title_zh": "Microsoft 发布面向结构化决策的低延迟模型",
+      "title": "Microsoft Decision 1.1 reaches GA with multimodal structured decisions",
+      "title_zh": "Microsoft Decision 1.1 GA，加入多模态结构化决策",
       "category": "foundation-model",
       "organization": [
         "Microsoft"
       ],
       "published_at": "2026-10-09",
       "first_seen_at": "2026-10-10T15:56:58Z",
-      "last_updated_at": "2026-10-10T15:56:58Z",
+      "last_updated_at": "2026-11-18T17:04:38Z",
       "source_type": "official_blog",
       "primary_source": "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/",
-      "secondary_sources": [],
-      "summary_zh": "Microsoft 发布 Microsoft-Decision-1，用固定候选项和校准概率完成路由、分类、排序、验证与工作流控制。模型基于 Qwen3.5-9B 后训练，现已通过 Microsoft Foundry 和 OpenRouter 提供。官方称它在 36 组盲测中准确率最高，P50 延迟约为 GPT-6 Sol 的 1/35，输入价格为每百万 token 0.042 美元。",
-      "summary_en": "Microsoft released Microsoft-Decision-1 for routing, classification, ranking, verification and workflow control over fixed choices with calibrated probabilities. The post-trained Qwen3.5-9B model is available through Microsoft Foundry and OpenRouter. Microsoft reports the highest accuracy across 36 blind benchmarks, roughly 35 times lower P50 latency than GPT-6 Sol and input pricing of $0.042 per million tokens.",
-      "why_it_matters_zh": "对需要大量二选一、分流或护栏判断的 agent 系统来说，专用决策模型可能比通用 LLM 更便宜、更稳定。所有核心结果仍来自厂商，且闭集评分不能替代开放式推理；先用真实路由样本校验准确率、校准、延迟与误拒率。",
-      "why_it_matters_en": "For agent systems that make many binary, routing or guardrail decisions, a specialized decision model could be cheaper and more stable than a general LLM. Core results remain vendor-reported, and closed-choice scoring cannot replace open-ended reasoning; validate accuracy, calibration, latency and false refusals on real routing data.",
+      "secondary_sources": [
+        "https://commandline.microsoft.com/microsoft-decision-model-ga/"
+      ],
+      "summary_zh": "Microsoft Decision 1.1 已通过 Microsoft Foundry 与 OpenRouter 正式可用。新版加入多模态输入，Microsoft 称已有超过 4,000 家客户使用。厂商还称，在其结构化决策负载上，该模型最高比 GPT-6.1 Sol 快 50 倍、便宜 79 倍。",
+      "summary_en": "Microsoft Decision 1.1 is generally available through Microsoft Foundry and OpenRouter. The update adds multimodal inputs and reports use by more than 4,000 customers. Microsoft says it is up to 50 times faster and 79 times cheaper than GPT-6.1 Sol on its structured-decision workload.",
+      "why_it_matters_zh": "GA 与客户使用量增强了路由、分类和护栏场景的成熟度信号。性能与成本对比仍是厂商自报，闭集决策也不能替代开放式推理。",
+      "why_it_matters_en": "GA and reported customer use improve the maturity signal for routing, classification and guardrail workloads. Performance and cost comparisons remain vendor-reported and closed-choice tasks do not replace open-ended reasoning.",
       "technical_details": {
         "base_model": "post-trained Qwen3.5-9B",
         "interface": "fixed choices with a calibrated probability for each option",
-        "availability": "Microsoft Foundry and OpenRouter",
+        "availability": "GA in Microsoft Foundry and OpenRouter",
         "pricing": "$0.042 per million input tokens; output tokens free",
         "vendor_evaluation": "36 benchmarks and nearly 150,000 questions kept blind from training",
         "vendor_latency": "about 35x faster P50 than GPT-6 Sol",
         "robustness": "1.3% average decision flips across eight perturbations",
-        "safety_evaluation": "5,250 requests across 11 safety benchmarks"
+        "safety_evaluation": "5,250 requests across 11 safety benchmarks",
+        "version": "Microsoft Decision 1.1",
+        "multimodal": true,
+        "reported_customers": "4,000+",
+        "vendor_comparison": "up to 50x faster and 79x cheaper than GPT-6.1 Sol on Microsoft structured-decision workloads"
       },
       "technical_details_zh": {
         "基础模型": "后训练的 Qwen3.5-9B",
         "接口": "固定候选项，并为每个选项返回校准概率",
-        "可用性": "Microsoft Foundry 与 OpenRouter",
+        "可用性": "Microsoft Foundry 与 OpenRouter GA",
         "价格": "每百万输入 token 0.042 美元；输出 token 免费",
         "厂商评测": "36 组 benchmark、近 15 万道训练时隔离的问题",
         "厂商延迟": "P50 约为 GPT-6 Sol 的 35 倍速度",
         "稳健性": "八种扰动下平均 1.3% 的决策翻转",
-        "安全评测": "11 组安全 benchmark、5,250 个请求"
+        "安全评测": "11 组安全 benchmark、5,250 个请求",
+        "版本": "Microsoft Decision 1.1",
+        "多模态": true,
+        "厂商报告客户数": "4,000+",
+        "厂商对比": "在 Microsoft 结构化决策负载上，最高比 GPT-6.1 Sol 快 50 倍、便宜 79 倍"
       },
       "tags": [
         "decision-model",
@@ -451,12 +461,13 @@
       "risk": 3,
       "recommendation": "TRIAL",
       "event_fingerprint": "microsoft-decision-1-structured-decision-model",
-      "short_label_zh": "Microsoft-Decision-1",
-      "short_label_en": "Microsoft-Decision-1",
-      "next_action_zh": "一天内用 200 条真实路由样本对比现有分类器，测准确率、ECE、P95 延迟、成本与误拒率。",
-      "next_action_en": "Within one day, compare it with the current classifier on 200 real routing cases and measure accuracy, ECE, P95 latency, cost and false refusals.",
+      "short_label_zh": "Microsoft Decision 1.1",
+      "short_label_en": "Microsoft Decision 1.1",
+      "next_action_zh": "用 200 条真实路由与图文审核样本比较现有分类器，测准确率、ECE、P95 延迟、成本与误拒率。",
+      "next_action_en": "Compare it with the current classifier on 200 real routing and multimodal review cases, measuring accuracy, ECE, P95 latency, cost and false refusals.",
       "source_ids": [
-        "src-fb900a38eb855015"
+        "src-fb900a38eb855015",
+        "src-04bcf3b3cf9d8027"
       ],
       "project_ids": [
         "microsoft-decision-1"
@@ -479,6 +490,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261009-05-decision-1-1-evidence",
+          "claim_zh": "Microsoft 宣布 Decision 1.1 GA、支持多模态，并自报超过 4,000 家客户。",
+          "claim_en": "Microsoft announced Decision 1.1 GA with multimodal support and reported more than 4,000 customers.",
+          "source_ids": [
+            "src-04bcf3b3cf9d8027"
+          ],
+          "event_ids": [
+            "ev-20261009-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -494,10 +518,23 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20261009-05-decision-1-1-ga",
+          "kind": "update",
+          "occurred_at": "2026-11-17",
+          "discovered_at": "2026-11-18T17:04:38Z",
+          "summary_zh": "Microsoft Decision 1.1 GA 并加入多模态输入",
+          "summary_en": "Microsoft Decision 1.1 reaches GA with multimodal input",
+          "evidence_ids": [
+            "ev-20261009-05-decision-1-1-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "summary": "Microsoft released Microsoft-Decision-1 for routing, classification, ranking, verification and workflow control over fixed choices with calibrated probabilities. The post-trained Qwen3.5-9B model is available through Microsoft Foundry and OpenRouter. Microsoft reports the highest accuracy across 36 blind benchmarks, roughly 35 times lower P50 latency than GPT-6 Sol and input pricing of $0.042 per million tokens.",
-      "why_it_matters": "For agent systems that make many binary, routing or guardrail decisions, a specialized decision model could be cheaper and more stable than a general LLM. Core results remain vendor-reported, and closed-choice scoring cannot replace open-ended reasoning; validate accuracy, calibration, latency and false refusals on real routing data."
+      "summary": "Microsoft Decision 1.1 is generally available through Microsoft Foundry and OpenRouter. The update adds multimodal inputs and reports use by more than 4,000 customers. Microsoft says it is up to 50 times faster and 79 times cheaper than GPT-6.1 Sol on its structured-decision workload.",
+      "why_it_matters": "GA and reported customer use improve the maturity signal for routing, classification and guardrail workloads. Performance and cost comparisons remain vendor-reported and closed-choice tasks do not replace open-ended reasoning."
     },
     {
       "event_id": "ev-20261009-06",

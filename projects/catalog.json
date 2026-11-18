@@ -67,7 +67,8 @@
         "src-dbc58eacee5d52ba",
         "src-8427d4fee9a7d1b9",
         "src-e58a3ce1f17ad846",
-        "src-4e2b4f1543d14800"
+        "src-4e2b4f1543d14800",
+        "src-8f7a055a1b360233"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -100,19 +101,20 @@
         "src-797aba84ba3e9103",
         "src-7cf21137c37e547b",
         "src-8427d4fee9a7d1b9",
-        "src-e58a3ce1f17ad846"
+        "src-e58a3ce1f17ad846",
+        "src-8f7a055a1b360233"
       ],
-      "last_reviewed_at": "2026-11-17T16:59:58Z",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "使用无人值守会话、agent team 或多个 MCP server 的团队应升级，因为这些修复减少静默配置错误和跨会话故障。全面部署前要回归 gateway 启动、后台生命周期与 MCP 路由。",
-        "judgment_en": "Teams using unattended sessions, agent teams or several MCP servers should upgrade because the fixes reduce silent misconfiguration and cross-session failures. Regress gateway startup, background lifecycle and MCP routing before broad rollout.",
-        "next_action_zh": "升级到 2.1.326 前，回归 gateway 缺失、后台进程退出、并行 MCP 与同名 server 选择。",
-        "next_action_en": "Before upgrading to 2.1.326, regress missing gateways, background-process exit, parallel MCP and exact-name server selection.",
+        "judgment_zh": "2.1.327 减少 MCP token 暴露并防止 Remote Control worktree 清理误删运行会话文件。",
+        "judgment_en": "Version 2.1.327 reduces MCP token exposure and prevents Remote Control cleanup from deleting live worktree files.",
+        "next_action_zh": "升级并回归 token 可见性、GitHub App 确认与 worktree 清理。",
+        "next_action_en": "Upgrade and regress token visibility, GitHub App confirmation and worktree cleanup.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-11-17T16:59:58Z"
+        "reviewed_at": "2026-11-18T17:04:38Z"
       }
     },
     {
@@ -323,7 +325,8 @@
         "src-10be109ee0bd01c4",
         "src-b8ddb6db7e02a2ca",
         "src-917e81f74d6a6479",
-        "src-a0c08c461d827e1c"
+        "src-a0c08c461d827e1c",
+        "src-ad076a99b8923baf"
       ],
       "current_judgment_event_id": "ev-20260818-02",
       "official_source_ids": [
@@ -346,21 +349,22 @@
         "src-6e556c3af2807b57",
         "src-e61beeca9f37dec1",
         "src-917e81f74d6a6479",
-        "src-a0c08c461d827e1c"
+        "src-a0c08c461d827e1c",
+        "src-ad076a99b8923baf"
       ],
-      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "0.169.0 增加持久 side chat、任务搜索与连接管理，稳定版可升级。",
-        "judgment_en": "Version 0.169.0 adds persistent side chats, task search and connection controls in a stable release.",
-        "next_action_zh": "升级并回归 side chat 持久化、账号历史隔离与自定义 provider。",
-        "next_action_en": "Upgrade and regress side-chat persistence, account history isolation and custom providers.",
+        "judgment_zh": "0.170 修复 MCP OAuth 竞态、云端重连和子线程沙箱继承，稳定版可升级。",
+        "judgment_en": "Version 0.170 fixes MCP OAuth races, cloud reconnect and child-thread sandbox inheritance and is suitable to upgrade.",
+        "next_action_zh": "升级并回归沙箱继承、MCP OAuth、云端重连与 Windows 恢复。",
+        "next_action_en": "Upgrade and regress sandbox inheritance, MCP OAuth, cloud reconnect and Windows recovery.",
         "basis_event_ids": [
           "ev-20260814-08",
           "ev-20260818-02",
           "ev-20260910-02"
         ],
-        "reviewed_at": "2026-11-13T17:04:57Z"
+        "reviewed_at": "2026-11-18T17:04:38Z"
       }
     },
     {
@@ -787,9 +791,11 @@
         "src-afb4f1911ed6958a",
         "src-fe3326f4dbcaa51b",
         "src-bc1643b3a14e5224",
-        "src-fe2d022b775c8438"
+        "src-fe2d022b775c8438",
+        "src-958f53f88ea0035e",
+        "src-593d0602a81065fa"
       ],
-      "current_judgment_event_id": "ev-20260928-07",
+      "current_judgment_event_id": "ev-20260913-01",
       "official_source_ids": [
         "src-320437c34242ba62",
         "src-781657bf5c42e86e",
@@ -797,22 +803,24 @@
         "src-afb4f1911ed6958a",
         "src-fe3326f4dbcaa51b",
         "src-bc1643b3a14e5224",
-        "src-fe2d022b775c8438"
+        "src-fe2d022b775c8438",
+        "src-958f53f88ea0035e",
+        "src-593d0602a81065fa"
       ],
-      "last_reviewed_at": "2026-11-15T17:03:06Z",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "协议 SDK 仍适合隔离试验；LiteLLM 1.108.9 回移多 provider reasoning 与路由修复，但单一 gateway 的 LTS 维护版没有改变 MCP 成熟度。",
-        "judgment_en": "Protocol SDKs remain suitable for isolated trials. LiteLLM 1.108.9 backports multi-provider reasoning and routing fixes without changing MCP maturity.",
-        "next_action_zh": "在测试服务回放 MCP session、toolset 限制与跨 provider reasoning 字段。",
-        "next_action_en": "Replay MCP sessions, toolset limits and cross-provider reasoning fields in a test service.",
+        "judgment_zh": "LiteLLM LTS 的工具参数与流式修复改善 MCP 网关可靠性，但仍需 canary。",
+        "judgment_en": "LiteLLM LTS tool-argument and streaming fixes improve MCP gateway reliability but still need canarying.",
+        "next_action_zh": "回放大型工具参数、并发 OAuth 与中止流。",
+        "next_action_en": "Replay large tool arguments, concurrent OAuth and aborted streams.",
         "basis_event_ids": [
           "ev-20260913-01",
           "ev-20260928-07",
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-11-15T17:03:06Z"
+        "reviewed_at": "2026-11-18T17:04:38Z"
       }
     },
     {
@@ -940,7 +948,8 @@
       "event_ids": [
         "ev-20260922-02",
         "ev-20260929-02",
-        "ev-20261026-02"
+        "ev-20261026-02",
+        "ev-20261117-01"
       ],
       "source_ids": [
         "src-c12530ce8eec01bd",
@@ -952,30 +961,36 @@
         "src-dc29f748affb82a8",
         "src-a097ef0d441a7216",
         "src-35e334c198740f74",
-        "src-742d30efdc4090c1"
+        "src-742d30efdc4090c1",
+        "src-0fb76b8d23388056",
+        "src-31e8927ffb5e1955"
       ],
-      "current_judgment_event_id": "ev-20261026-02",
+      "current_judgment_event_id": "ev-20261117-01",
       "official_source_ids": [
         "src-d6b9f5e651b1891e",
         "src-dc29f748affb82a8",
         "src-49e8d0577a5e1f9d",
         "src-a097ef0d441a7216",
         "src-35e334c198740f74",
-        "src-742d30efdc4090c1"
+        "src-742d30efdc4090c1",
+        "src-0fb76b8d23388056",
+        "src-31e8927ffb5e1955",
+        "src-00eaf917ab1113cf"
       ],
-      "last_reviewed_at": "2026-10-27T15:59:15Z",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "GPT-6 家族已增加更便宜的 GPT-6.1 Terra，并有 Ultrafast 内部事故响应案例；性能与节省仍主要由 OpenAI 自报。",
-        "judgment_en": "The GPT-6 family now includes lower-cost GPT-6.1 Terra and an internal Ultrafast incident-response case; performance and savings remain primarily OpenAI-reported.",
-        "next_action_zh": "在真实 computer use 与事故演练中比较成功率、延迟和单任务成本。",
-        "next_action_en": "Compare success, latency and cost per completed task on real computer-use traces and incident drills.",
+        "judgment_zh": "GPT-6.2 Astra 与 Sol 已在 ChatGPT Work、Codex 与 API 上线，并降低 Astra 价格；厂商 benchmark 与高能力安全边界仍需受控验证。",
+        "judgment_en": "GPT-6.2 Astra and Sol are live in ChatGPT Work, Codex and the API with lower Astra pricing; vendor benchmarks and high-capability safety boundaries still require controlled validation.",
+        "next_action_zh": "在真实 coding agent 任务中比较 6.2 与 6.1 的成功率、成本、工具失败和安全拦截。",
+        "next_action_en": "Compare 6.2 with 6.1 on real coding-agent tasks for completion, cost, tool failures and safety blocks.",
         "basis_event_ids": [
           "ev-20260922-02",
           "ev-20260929-02",
-          "ev-20261026-02"
+          "ev-20261026-02",
+          "ev-20261117-01"
         ],
-        "reviewed_at": "2026-10-27T15:59:15Z"
+        "reviewed_at": "2026-11-18T17:04:38Z"
       }
     },
     {
@@ -998,26 +1013,28 @@
         "src-87553218d4be0ba9",
         "src-86501c6c2d3499f2",
         "src-c4d292d2b965e2c3",
-        "src-cb45faf5c7c32bcd"
+        "src-cb45faf5c7c32bcd",
+        "src-364859f834c86602"
       ],
       "current_judgment_event_id": "ev-20261116-02",
       "official_source_ids": [
         "src-f55004a573850a67",
         "src-87553218d4be0ba9",
         "src-c4d292d2b965e2c3",
-        "src-cb45faf5c7c32bcd"
+        "src-cb45faf5c7c32bcd",
+        "src-364859f834c86602"
       ],
-      "last_reviewed_at": "2026-11-16T16:59:56Z",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
       "judgment": {
-        "recommendation": "WATCH",
-        "judgment_zh": "HY4 Flash 以很低的 API 价格开放，但性能仍为厂商自报，权重也尚未发布。",
-        "judgment_en": "HY4 Flash is callable at a very low API price, but performance remains vendor-reported and weights have not shipped.",
-        "next_action_zh": "等开放权重或独立复测速度与质量后再决定迁移；现在只用可替换的测试流量核对价格和接口。",
-        "next_action_en": "Wait for open weights or independent speed and quality replay before migration; use only replaceable test traffic now to verify price and API behavior.",
+        "recommendation": "TRIAL",
+        "judgment_zh": "HY4 Flash 已开放指令与 base 权重，可自托管和微调；自定义许可、硬件需求与厂商性能仍需验证。",
+        "judgment_en": "HY4 Flash now has instruction and base weights for self-hosting and fine-tuning; custom licensing, hardware needs and vendor performance still need validation.",
+        "next_action_zh": "审查许可，并验证 vLLM 启动、显存、图文工具调用与吞吐。",
+        "next_action_en": "Review the license and test vLLM startup, memory, multimodal tool use and throughput.",
         "basis_event_ids": [
           "ev-20261116-02"
         ],
-        "reviewed_at": "2026-11-16T16:59:56Z"
+        "reviewed_at": "2026-11-18T17:04:38Z"
       }
     },
     {
@@ -2746,23 +2763,25 @@
         "ev-20261009-05"
       ],
       "source_ids": [
-        "src-fb900a38eb855015"
+        "src-fb900a38eb855015",
+        "src-04bcf3b3cf9d8027"
       ],
       "official_source_ids": [
-        "src-fb900a38eb855015"
+        "src-fb900a38eb855015",
+        "src-04bcf3b3cf9d8027"
       ],
       "current_judgment_event_id": "ev-20261009-05",
-      "last_reviewed_at": "2026-10-10T15:56:58Z",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "公开 API 和价格足以做低成本路由测试，但准确率、延迟和稳健性仍是厂商自报。",
-        "judgment_en": "Public endpoints and pricing support a low-cost routing trial, but accuracy, latency and robustness remain vendor-reported.",
-        "next_action_zh": "一天内用 200 条真实路由样本对比现有分类器，测准确率、ECE、P95 延迟、成本与误拒率。",
-        "next_action_en": "Within one day, compare it with the current classifier on 200 real routing cases and measure accuracy, ECE, P95 latency, cost and false refusals.",
+        "judgment_zh": "Decision 1.1 已 GA 并支持多模态，4,000+ 客户和性能数据仍由 Microsoft 自报。",
+        "judgment_en": "Decision 1.1 is GA with multimodal support; 4,000+ customers and performance figures remain Microsoft-reported.",
+        "next_action_zh": "用真实路由和图文审核样本测准确率、ECE、延迟与成本。",
+        "next_action_en": "Test accuracy, ECE, latency and cost on real routing and multimodal review cases.",
         "basis_event_ids": [
           "ev-20261009-05"
         ],
-        "reviewed_at": "2026-10-10T15:56:58Z"
+        "reviewed_at": "2026-11-18T17:04:38Z"
       }
     },
     {
@@ -7220,7 +7239,9 @@
         "src-569a35504d8a0adf",
         "src-0258ef134fc324e9",
         "src-e8b59bc710743165",
-        "src-fe2d022b775c8438"
+        "src-fe2d022b775c8438",
+        "src-958f53f88ea0035e",
+        "src-593d0602a81065fa"
       ],
       "current_judgment_event_id": "ev-20260913-01",
       "official_source_ids": [
@@ -7245,19 +7266,21 @@
         "src-569a35504d8a0adf",
         "src-0258ef134fc324e9",
         "src-e8b59bc710743165",
-        "src-fe2d022b775c8438"
+        "src-fe2d022b775c8438",
+        "src-958f53f88ea0035e",
+        "src-593d0602a81065fa"
       ],
-      "last_reviewed_at": "2026-11-15T17:03:06Z",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "1.108.9 向 LTS 回移 reasoning、缓存、调用方标识与多 provider 路由修复；跨 provider 行为仍需 canary 回放。",
-        "judgment_en": "Version 1.108.9 backports reasoning, caching, caller identity and multi-provider routing fixes to LTS; cross-provider behavior still needs a canary replay.",
-        "next_action_zh": "一天内在 LTS canary 回放混合 reasoning、Responses 缓存、Vertex 调用方标签及 Foundry、Kimi 路由。",
-        "next_action_en": "Within one day, replay mixed reasoning, Responses caching, Vertex caller labels and Foundry or Kimi routes on an LTS canary.",
+        "judgment_zh": "1.108.11 LTS 修复护栏丢失与中止流继续生成，值得优先 canary。",
+        "judgment_en": "Version 1.108.11 LTS fixes dropped guardrails and continued generation after aborts and deserves priority canarying.",
+        "next_action_zh": "回放 guarded_text、中止流计费、Gemini 工具参数和 DeepSeek 推理强度。",
+        "next_action_en": "Replay guarded_text, aborted-stream billing, Gemini tool arguments and DeepSeek reasoning effort.",
         "basis_event_ids": [
           "ev-20260913-01"
         ],
-        "reviewed_at": "2026-11-15T17:03:06Z"
+        "reviewed_at": "2026-11-18T17:04:38Z"
       },
       "changes": []
     },
@@ -7897,25 +7920,27 @@
       ],
       "source_ids": [
         "src-a8c416e2c7748124",
-        "src-a5ffcd0a46dd44fd"
+        "src-a5ffcd0a46dd44fd",
+        "src-2976bb865f5ebf11"
       ],
       "official_source_ids": [
         "src-a8c416e2c7748124",
-        "src-a5ffcd0a46dd44fd"
+        "src-a5ffcd0a46dd44fd",
+        "src-2976bb865f5ebf11"
       ],
       "changes": [],
       "current_judgment_event_id": "ev-20261110-03",
-      "last_reviewed_at": "2026-11-10T17:03:13Z",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "CNCF Sandbox runtime 可试验间歇式 agent session 的检查点恢复；百万级和 10 倍密度主张尚无独立证据。",
-        "judgment_en": "The CNCF Sandbox runtime can be trialed for checkpointing intermittent agent sessions; million-agent and 10x-density claims lack independent evidence.",
-        "next_action_zh": "在单节点测恢复一致性、空闲内存与隔离。",
-        "next_action_en": "Measure restore consistency, idle memory and isolation on one node.",
+        "judgment_zh": "Agent Substrate 1.0 已在 GKE GA 并进入 CNCF Sandbox；规模与隔离仍需独立验证。",
+        "judgment_en": "Agent Substrate 1.0 is GA on GKE and in CNCF Sandbox; scale and isolation still need independent validation.",
+        "next_action_zh": "在 GKE 测恢复一致性、P95 延迟、空闲成本和隔离。",
+        "next_action_en": "Test restore consistency, P95 latency, idle cost and isolation on GKE.",
         "basis_event_ids": [
           "ev-20261110-03"
         ],
-        "reviewed_at": "2026-11-10T17:03:13Z"
+        "reviewed_at": "2026-11-18T17:04:38Z"
       }
     },
     {
@@ -9128,6 +9153,303 @@
           "ev-20261115-01"
         ],
         "reviewed_at": "2026-11-17T16:59:58Z"
+      }
+    },
+    {
+      "id": "mai-code-2",
+      "name_zh": "MAI Code 2",
+      "name_en": "MAI Code 2",
+      "type": "model-family",
+      "aliases": [
+        "MAI Code 2 Flash"
+      ],
+      "pattern": "MAI Code 2",
+      "event_ids": [
+        "ev-20261117-02"
+      ],
+      "source_ids": [
+        "src-5fb2adb0a1f12f7b"
+      ],
+      "official_source_ids": [
+        "src-5fb2adb0a1f12f7b"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261117-02",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "已进入 Copilot，但性价比来自内部评测和促销价，应先在真实仓库任务验证。",
+        "judgment_en": "It is live in Copilot, but price-performance claims use internal evaluation and promotional pricing, so validate on real repositories.",
+        "next_action_zh": "用 30 个真实仓库任务测完成率、P95 延迟和单任务成本。",
+        "next_action_en": "Measure completion, P95 latency and cost per task on 30 real repository tasks.",
+        "basis_event_ids": [
+          "ev-20261117-02"
+        ],
+        "reviewed_at": "2026-11-18T17:04:38Z"
+      }
+    },
+    {
+      "id": "coding-model-productivity-study",
+      "name_zh": "Coding Model Productivity Study",
+      "name_en": "Coding Model Productivity Study",
+      "type": "research",
+      "aliases": [],
+      "pattern": "Coding Model Productivity Study",
+      "event_ids": [
+        "ev-20261117-03"
+      ],
+      "source_ids": [
+        "src-b49f06a805c7d88e"
+      ],
+      "official_source_ids": [
+        "src-b49f06a805c7d88e"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261117-03",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "自然实验未发现 benchmark 提升带来统计显著的合并产出增长，但观察性设计不能证明没有质量或时间收益。",
+        "judgment_en": "The natural experiment found no statistically significant increase in merged work from benchmark gains, but the observational design cannot rule out quality or time benefits.",
+        "next_action_zh": "等公开数据或独立复现，同时把真实 PR 指标加入内部评估。",
+        "next_action_en": "Wait for public data or replication while adding real PR metrics to internal evaluation.",
+        "basis_event_ids": [
+          "ev-20261117-03"
+        ],
+        "reviewed_at": "2026-11-18T17:04:38Z"
+      }
+    },
+    {
+      "id": "bis-remote-access-rule",
+      "name_zh": "BIS 远程算力访问规则",
+      "name_en": "BIS Remote Compute Access Rule",
+      "type": "policy",
+      "aliases": [],
+      "pattern": "BIS Remote Compute Access Rule",
+      "event_ids": [
+        "ev-20261115-02"
+      ],
+      "source_ids": [
+        "src-16c9963246620447",
+        "src-8898c78052b99f5a"
+      ],
+      "official_source_ids": [
+        "src-16c9963246620447",
+        "src-8898c78052b99f5a"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261115-02",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "预发布 IFR 将部分远程算力访问纳入出口许可，但《联邦公报》刊登和生效日期仍待确认。",
+        "judgment_en": "The prepublication IFR brings some remote compute access under export licensing, but Federal Register publication and the effective date remain pending.",
+        "next_action_zh": "先映射客户总部和数据中心责任，等正式刊登后更新合规判断。",
+        "next_action_en": "Map customer headquarters and data-center duties now, then update compliance judgment after formal publication.",
+        "basis_event_ids": [
+          "ev-20261115-02"
+        ],
+        "reviewed_at": "2026-11-18T17:04:38Z"
+      }
+    },
+    {
+      "id": "rumble-2-flash",
+      "name_zh": "Rumble 2 Flash",
+      "name_en": "Rumble 2 Flash",
+      "type": "model",
+      "aliases": [],
+      "pattern": "Rumble 2 Flash",
+      "event_ids": [
+        "ev-20261118-01"
+      ],
+      "source_ids": [
+        "src-5b89a2db7f60ae90",
+        "src-3e660f6a79ffc3e0"
+      ],
+      "official_source_ids": [
+        "src-5b89a2db7f60ae90",
+        "src-3e660f6a79ffc3e0"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261118-01",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "0.5B Apache-2.0 ASR 权重可直接通过 Transformers 与 vLLM 测试，但性能数据仍来自发布方。",
+        "judgment_en": "The 0.5B Apache-2.0 ASR weights are directly testable through Transformers and vLLM, but performance evidence remains publisher-reported.",
+        "next_action_zh": "用真实多语音频测 WER、吞吐、尾延迟和显存。",
+        "next_action_en": "Test WER, throughput, tail latency and memory on real multilingual audio.",
+        "basis_event_ids": [
+          "ev-20261118-01"
+        ],
+        "reviewed_at": "2026-11-18T17:04:38Z"
+      }
+    },
+    {
+      "id": "frontierharness-eval",
+      "name_zh": "FrontierHarness Eval",
+      "name_en": "FrontierHarness Eval",
+      "type": "benchmark",
+      "aliases": [
+        "FrontierHarness"
+      ],
+      "pattern": "FrontierHarness",
+      "event_ids": [
+        "ev-20261117-04"
+      ],
+      "source_ids": [
+        "src-de86fe1708919f4d"
+      ],
+      "official_source_ids": [
+        "src-de86fe1708919f4d"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261117-04",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "大规模发布方评测显示模型与 harness 必须成对选择；成本差异可直接验证，但跨团队泛化仍未知。",
+        "judgment_en": "A large publisher-run evaluation shows models and harnesses should be selected as pairs; cost differences are directly testable, but cross-team generalization is unknown.",
+        "next_action_zh": "用真实任务比较当前与一个候选 harness 的通过率、step 与单次通过成本。",
+        "next_action_en": "Compare the current and one alternative harness on real tasks for pass rate, steps and cost per pass.",
+        "basis_event_ids": [
+          "ev-20261117-04"
+        ],
+        "reviewed_at": "2026-11-18T17:04:38Z"
+      }
+    },
+    {
+      "id": "qwen-pi-adapter",
+      "name_zh": "Qwen3.8 pi adapter",
+      "name_en": "Qwen3.8 pi adapter",
+      "type": "adapter",
+      "aliases": [
+        "Qwen3.8 pi adapter"
+      ],
+      "pattern": "Qwen3.8 pi adapter",
+      "event_ids": [
+        "ev-20261116-07"
+      ],
+      "source_ids": [
+        "src-dbede62d4d711d8c"
+      ],
+      "official_source_ids": [
+        "src-dbede62d4d711d8c"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261116-07",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "针对 pi harness 的公开 LoRA 用更少 token 达到高推理强度准确率，但结果需真实仓库复现。",
+        "judgment_en": "A public pi-specific LoRA reaches high-effort accuracy with fewer tokens, but needs real-repository replication.",
+        "next_action_zh": "比较 10 个真实任务的完成率、token、step 与显存。",
+        "next_action_en": "Compare completion, tokens, steps and memory on 10 real tasks.",
+        "basis_event_ids": [
+          "ev-20261116-07"
+        ],
+        "reviewed_at": "2026-11-18T17:04:38Z"
+      }
+    },
+    {
+      "id": "fastframes",
+      "name_zh": "FastFrames",
+      "name_en": "FastFrames",
+      "type": "model-family",
+      "aliases": [
+        "FastFrames"
+      ],
+      "pattern": "FastFrames",
+      "event_ids": [
+        "ev-20261117-05"
+      ],
+      "source_ids": [
+        "src-61554c6962c6289a",
+        "src-0f2a3986db5a5792"
+      ],
+      "official_source_ids": [
+        "src-61554c6962c6289a",
+        "src-0f2a3986db5a5792"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261117-05",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "公开权重让交互式视频生成可验证，但 B200 级硬件和发布方评测限制了当前采用。",
+        "judgment_en": "Public weights make interactive video generation testable, but B200-class hardware and publisher evaluation limit adoption.",
+        "next_action_zh": "等独立复测，或在现有 B200 上测连续生成与控制稳定性。",
+        "next_action_en": "Wait for independent replication or test continuous generation and control stability on existing B200 hardware.",
+        "basis_event_ids": [
+          "ev-20261117-05"
+        ],
+        "reviewed_at": "2026-11-18T17:04:38Z"
+      }
+    },
+    {
+      "id": "kormo-web",
+      "name_zh": "KORMo-Web",
+      "name_en": "KORMo-Web",
+      "type": "model-family",
+      "aliases": [
+        "KORMo-Web"
+      ],
+      "pattern": "KORMo-Web",
+      "event_ids": [
+        "ev-20261114-01"
+      ],
+      "source_ids": [
+        "src-9de1bbe70d1b58e1"
+      ],
+      "official_source_ids": [
+        "src-9de1bbe70d1b58e1"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261114-01",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "韩英双语开放 web agent 有完整权重与 harness，适合本地验证；发布方成功率仍较专有模型低。",
+        "judgment_en": "The Korean-English open web agent has complete weights and a harness for local testing, but publisher success remains below proprietary models.",
+        "next_action_zh": "用 20 个韩英任务测试成功率、错误动作、恢复与显存。",
+        "next_action_en": "Test 20 Korean-English tasks for success, bad actions, recovery and memory.",
+        "basis_event_ids": [
+          "ev-20261114-01"
+        ],
+        "reviewed_at": "2026-11-18T17:04:38Z"
+      }
+    },
+    {
+      "id": "posthog-decision-models",
+      "name_zh": "PostHog Decision Models",
+      "name_en": "PostHog Decision Models",
+      "type": "engineering-pattern",
+      "aliases": [
+        "PostHog Decision Models"
+      ],
+      "pattern": "PostHog Decision Models",
+      "event_ids": [
+        "ev-20261109-10"
+      ],
+      "source_ids": [
+        "src-233f4988e8c3601e"
+      ],
+      "official_source_ids": [
+        "src-233f4988e8c3601e"
+      ],
+      "changes": [],
+      "current_judgment_event_id": "ev-20261109-10",
+      "last_reviewed_at": "2026-11-18T17:04:38Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "生产案例表明窄 decision model 可大幅减少昂贵 LLM 调用，但阈值与误判代价必须按任务校准。",
+        "judgment_en": "A production case shows narrow decision models can avoid many expensive LLM calls, but thresholds and error costs need per-task calibration.",
+        "next_action_zh": "在低风险 gate 上 shadow 200 条样本，比较跳过率、ECE 与总成本。",
+        "next_action_en": "Shadow 200 low-risk gate cases and compare skip rate, ECE and total cost.",
+        "basis_event_ids": [
+          "ev-20261109-10"
+        ],
+        "reviewed_at": "2026-11-18T17:04:38Z"
       }
     }
   ],

@@ -161,8 +161,8 @@
     },
     {
       "event_id": "ev-20260818-02",
-      "title": "Codex 0.169.0 adds persistent side chats and broader provider controls",
-      "title_zh": "Codex 0.169.0 加入持久 side chat 与更完整的 provider 控制",
+      "title": "Codex 0.170 hardens realtime voice, MCP OAuth and sandbox recovery",
+      "title_zh": "Codex 0.170 加固实时语音、MCP OAuth 与沙箱恢复",
       "category": "developer-tools",
       "organization": [
         "OpenAI",
@@ -171,7 +171,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-11-13T17:04:57Z",
+      "last_updated_at": "2026-11-18T17:04:38Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [
@@ -190,14 +190,15 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.165.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.167.2",
         "https://github.com/openai/codex/releases/tag/rust-v0.168.0",
-        "https://github.com/openai/codex/releases/tag/rust-v0.169.0"
+        "https://github.com/openai/codex/releases/tag/rust-v0.169.0",
+        "https://github.com/openai/codex/releases/tag/rust-v0.170.0"
       ],
-      "summary": "Codex 0.168.0 and 0.169.0 add opt-in side conversations, then multiple persistent side-chat tabs, task search, custom model-provider controls, SSH device-code onboarding and diagnostic ZIP export. Version 0.168.0 also adds audio attachments and account-scoped local history. These are stable releases, but side chats remain an opt-in TUI feature.",
-      "why_it_matters": "For Vertex AI-backed coding agents, clients may see tool output earlier, but stream ordering, reconnect and resume behavior become upgrade boundaries. Teams on other backends see no documented material change.",
-      "summary_zh": "Codex 0.168.0 与 0.169.0 先加入 opt-in side conversation，再扩展为可持久化的多 side-chat 标签；同时新增任务搜索、自定义 model provider 控制、SSH device-code 登录和诊断 ZIP 导出。0.168.0 还加入音频附件与账号隔离的本地历史。版本为稳定发布，但 side chat 仍需在 TUI 中主动开启。",
-      "summary_en": "Codex 0.168.0 and 0.169.0 add opt-in side conversations, then multiple persistent side-chat tabs, task search, custom model-provider controls, SSH device-code onboarding and diagnostic ZIP export. Version 0.168.0 also adds audio attachments and account-scoped local history. These are stable releases, but side chats remain an opt-in TUI feature.",
-      "why_it_matters_zh": "对使用 Vertex AI 的编码 agent 来说，客户端可能更早收到工具输出，但流顺序、重连与恢复成为升级边界。其他后端没有记录到实质变化。",
-      "why_it_matters_en": "For Vertex AI-backed coding agents, clients may see tool output earlier, but stream ordering, reconnect and resume behavior become upgrade boundaries. Teams on other backends see no documented material change.",
+      "summary": "Codex 0.170 adds WebRTC negotiation for realtime voice in the TUI and refreshes authorization headers for OpenTelemetry exporters. It also fixes oversized WebSocket fallback, MCP OAuth credential races, cloud reconnect behavior, Windows replacement and sandbox permissions, and child threads that could lose sandbox restrictions.",
+      "why_it_matters": "Teams using voice, MCP authentication, cloud sessions or delegated child threads should upgrade because the fixes close reliability and permission-propagation gaps. Regress sandbox inheritance and reconnect behavior before broad rollout.",
+      "summary_zh": "Codex 0.170 为 TUI 实时语音加入 WebRTC 协商，并支持刷新 OpenTelemetry exporter 的授权 header。该版还修复超大 WebSocket 请求的 HTTP fallback、MCP OAuth 凭据竞态、云端重连、Windows 替换与沙箱权限，以及子线程丢失沙箱限制的问题。",
+      "summary_en": "Codex 0.170 adds WebRTC negotiation for realtime voice in the TUI and refreshes authorization headers for OpenTelemetry exporters. It also fixes oversized WebSocket fallback, MCP OAuth credential races, cloud reconnect behavior, Windows replacement and sandbox permissions, and child threads that could lose sandbox restrictions.",
+      "why_it_matters_zh": "使用语音、MCP 身份验证、云端会话或委派子线程的团队应升级，因为这些修复补上可靠性与权限传播缺口。全面部署前要回归沙箱继承和重连行为。",
+      "why_it_matters_en": "Teams using voice, MCP authentication, cloud sessions or delegated child threads should upgrade because the fixes close reliability and permission-propagation gaps. Regress sandbox inheritance and reconnect behavior before broad rollout.",
       "technical_details": {
         "version": "0.148.0 (stable)",
         "session_forking": "codex exec fork; archive/restore from TUI resume picker",
@@ -232,7 +233,8 @@
         "time_basis_2026_11_12": "GitHub release published 2026-11-11T22:44:46Z.",
         "evidence_limit": "No latency or compatibility measurements in release notes.",
         "latest_version": "0.169.0",
-        "update_2026_11_13": "Persistent multi-tab side chats, task search, custom providers, SSH device-code onboarding and diagnostic ZIP."
+        "update_2026_11_13": "Persistent multi-tab side chats, task search, custom providers, SSH device-code onboarding and diagnostic ZIP.",
+        "release_0_170": "WebRTC voice negotiation; refreshed OTel auth headers; identical MCP server names across environments behind experimental support; WebSocket fallback, OAuth race, cloud reconnect, Windows sandbox and child-thread sandbox fixes"
       },
       "tags": [
         "codex",
@@ -294,7 +296,8 @@
         "2026-11-12 时间依据": "GitHub release 发布于 2026-11-11T22:44:46Z。",
         "证据限制": "release notes 没有时延或兼容性测量。",
         "最新版本": "0.169.0",
-        "2026-11-13 更新": "持久化多标签 side chat、任务搜索、自定义 provider、SSH device-code 登录与诊断 ZIP。"
+        "2026-11-13 更新": "持久化多标签 side chat、任务搜索、自定义 provider、SSH device-code 登录与诊断 ZIP。",
+        "0.170 变更": "WebRTC 语音协商；OTel 授权 header 刷新；实验性支持不同环境同名 MCP server；修复 WebSocket fallback、OAuth 竞态、云端重连、Windows 沙箱和子线程沙箱继承"
       },
       "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
       "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
@@ -321,7 +324,8 @@
         "src-b8ddb6db7e02a2ca",
         "src-917e81f74d6a6479",
         "src-6cfc942e5da70ee0",
-        "src-a0c08c461d827e1c"
+        "src-a0c08c461d827e1c",
+        "src-ad076a99b8923baf"
       ],
       "project_ids": [
         "codex"
@@ -488,6 +492,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-170-evidence",
+          "claim_zh": "Codex 0.170 官方 release 记录实时语音、MCP OAuth、重连与沙箱继承修复。",
+          "claim_en": "The Codex 0.170 release documents realtime voice plus MCP OAuth, reconnect and sandbox-inheritance fixes.",
+          "source_ids": [
+            "src-ad076a99b8923baf"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -645,13 +662,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-170",
+          "kind": "update",
+          "occurred_at": "2026-11-18T03:40:48Z",
+          "discovered_at": "2026-11-18T17:04:38Z",
+          "summary_zh": "Codex 0.170 修复 MCP OAuth 竞态与子线程沙箱继承",
+          "summary_en": "Codex 0.170 fixes MCP OAuth races and child-thread sandbox inheritance",
+          "evidence_ids": [
+            "ev-20260818-02-codex-0-170-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "Codex 0.158.0: MCP OAuth client secrets, authenticated exec-server WebSockets, default terminal-input approval and cross-platform sandbox fixes; stays ADOPT",
-      "next_action_zh": "升级到 0.169.0，并回归 side chat 持久化、账号隔离历史、自定义 provider 与 SSH 登录。",
-      "next_action_en": "Upgrade to 0.169.0 and regress side-chat persistence, account-scoped history, custom providers and SSH sign-in.",
-      "short_label_zh": "Codex 0.167.2",
-      "short_label_en": "Codex 0.167.2",
+      "next_action_zh": "升级并回归子线程沙箱继承、MCP OAuth 并发登录、云端重连和 Windows 权限恢复。",
+      "next_action_en": "Upgrade and regress child-thread sandbox inheritance, concurrent MCP OAuth, cloud reconnect and Windows permission recovery.",
+      "short_label_zh": "Codex 0.170",
+      "short_label_en": "Codex 0.170",
       "last_reviewed_at": "2026-10-16T15:56:07Z",
       "editorial_pick": {
         "reason_zh": "并行读取与可中断长工具调用直接改善日常 agent 工作流。",

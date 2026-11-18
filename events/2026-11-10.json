@@ -204,48 +204,52 @@
     },
     {
       "event_id": "ev-20261110-03",
-      "title": "NVIDIA donates Agent Substrate for checkpointed Kubernetes agent sessions",
-      "title_zh": "NVIDIA 捐出可检查点恢复的 Agent Substrate",
+      "title": "Agent Substrate 1.0 reaches GKE GA and CNCF Sandbox",
+      "title_zh": "Agent Substrate 1.0 在 GKE GA 并进入 CNCF Sandbox",
       "category": "infrastructure",
       "organization": [
         "NVIDIA",
-        "CNCF"
+        "CNCF",
+        "Google Cloud"
       ],
       "published_at": "2026-11-10T15:00:00Z",
       "first_seen_at": "2026-11-10T17:03:13Z",
-      "last_updated_at": "2026-11-10T17:03:13Z",
+      "last_updated_at": "2026-11-18T17:04:38Z",
       "source_type": "official_blog",
       "primary_source": "https://developer.nvidia.com/blog/agent-substrate-advancing-kubernetes-for-agents-at-scale",
       "secondary_sources": [
-        "https://github.com/agent-substrate/substrate"
+        "https://github.com/agent-substrate/substrate",
+        "https://cloud.google.com/blog/products/containers-kubernetes/open-infrastructure-for-autonomous-agents-comes-to-cncf"
       ],
-      "summary": "NVIDIA donated Agent Substrate to the CNCF Sandbox. The open-source runtime multiplexes many agent sessions over a small pool of Kubernetes worker Pods, checkpointing memory and filesystems while idle and restoring them for the next step. NVIDIA claims 10x container density and million-agent scale.",
-      "why_it_matters": "For platform teams running many intermittent coding agents or RL workers, this separates session state from Pod lifetime. Scale and security claims remain NVIDIA-reported, and CNCF Sandbox status does not establish production maturity.",
-      "summary_zh": "NVIDIA 将 Agent Substrate 捐入 CNCF Sandbox。该开源 runtime 在少量 Kubernetes worker Pod 上复用大量 agent session，并在空闲时保存内存与文件系统，下一步到来时恢复到可用 worker。NVIDIA 称密度可达标准容器的 10 倍，并面向百万级 agent 与工具。",
-      "summary_en": "NVIDIA donated Agent Substrate to the CNCF Sandbox. The open-source runtime multiplexes many agent sessions over a small pool of Kubernetes worker Pods, checkpointing memory and filesystems while idle and restoring them for the next step. NVIDIA claims 10x container density and million-agent scale.",
-      "why_it_matters_zh": "对需要大量间歇式 coding agent 或 RL worker 的平台团队来说，这把会话状态与 Pod 生命周期拆开；规模和安全主张仍来自 NVIDIA，CNCF Sandbox 也不等于生产成熟。",
-      "why_it_matters_en": "For platform teams running many intermittent coding agents or RL workers, this separates session state from Pod lifetime. Scale and security claims remain NVIDIA-reported, and CNCF Sandbox status does not establish production maturity.",
+      "summary": "Agent Substrate 1.0 is generally available on Google Kubernetes Engine and is also a CNCF Sandbox project. The open-source runtime checkpoints agent memory and filesystems, then restores sessions onto a smaller worker pool. Google and NVIDIA report sub-500-millisecond restores, 10x density and more than 500 suspend/resume operations per second.",
+      "why_it_matters": "Platform teams now have a managed GKE path plus a portable Kubernetes project for intermittent agent sessions. GA establishes availability, not independent proof of the published scale, isolation or cost claims.",
+      "summary_zh": "Agent Substrate 1.0 已在 Google Kubernetes Engine 正式可用，同时进入 CNCF Sandbox。该开源 runtime 保存 agent 的内存与文件系统，再把会话恢复到较小的 worker 池。Google 与 NVIDIA 自报恢复时间低于 500 毫秒、密度提升 10 倍，并支持每秒 500 次以上挂起与恢复。",
+      "summary_en": "Agent Substrate 1.0 is generally available on Google Kubernetes Engine and is also a CNCF Sandbox project. The open-source runtime checkpoints agent memory and filesystems, then restores sessions onto a smaller worker pool. Google and NVIDIA report sub-500-millisecond restores, 10x density and more than 500 suspend/resume operations per second.",
+      "why_it_matters_zh": "平台团队现在既有 GKE 托管入口，也有可移植到 Kubernetes 的间歇式 agent session 项目。GA 证明产品可用，但不能独立证明规模、隔离和成本主张。",
+      "why_it_matters_en": "Platform teams now have a managed GKE path plus a portable Kubernetes project for intermittent agent sessions. GA establishes availability, not independent proof of the published scale, isolation or cost claims.",
       "technical_details": {
-        "stage": "CNCF Sandbox; open-source",
+        "stage": "Agent Substrate 1.0; GA on GKE; CNCF Sandbox; deployable on Kubernetes",
         "architecture": "checkpoint memory and filesystem, multiplex sessions over worker Pods, restore on demand",
-        "publisher_claim": "up to 10x density and millions of agents/tools",
+        "publisher_claim": "sub-500ms restore, 10x density, more than 500 suspend/resume operations per second, over 100 contributors",
         "integrations": [
           "KAI Scheduler",
           "NVIDIA Dynamo",
           "Kubernetes DRA"
         ],
-        "evidence_limit": "scale and security claims are publisher-reported; no independent deployment results"
+        "evidence_limit": "scale and security claims are publisher-reported; no independent deployment results",
+        "early_users": "Nous/Hermes Enterprise and SPIRITT"
       },
       "technical_details_zh": {
-        "阶段": "CNCF Sandbox；开源",
+        "阶段": "Agent Substrate 1.0；GKE GA；CNCF Sandbox；可部署到 Kubernetes",
         "架构": "保存内存与文件系统，在 worker Pod 池复用 session，并按需恢复",
-        "发布方主张": "密度最高 10 倍，面向百万级 agent 与工具",
+        "发布方主张": "恢复低于 500ms、密度 10 倍、每秒超过 500 次挂起与恢复、超过 100 名贡献者",
         "集成": [
           "KAI Scheduler",
           "NVIDIA Dynamo",
           "Kubernetes DRA"
         ],
-        "证据限制": "规模与安全主张来自发布方；没有独立部署结果"
+        "证据限制": "规模与安全主张来自发布方；没有独立部署结果",
+        "早期用户": "Nous/Hermes Enterprise、SPIRITT"
       },
       "tags": [
         "agent-runtime",
@@ -256,18 +260,19 @@
       "technical_impact": 4,
       "engineering_value": 5,
       "adoption_signal": 2,
-      "maturity": 2,
+      "maturity": 3,
       "verification_cost": 4,
       "risk": 4,
       "recommendation": "TRIAL",
       "event_fingerprint": "nvidia-agent-substrate-cncf-checkpointed-agent-runtime",
       "short_label_zh": "Agent Substrate",
       "short_label_en": "Agent Substrate",
-      "next_action_zh": "一天内按公开指南部署单节点样例，测空闲内存、恢复延迟、文件一致性和租户隔离。",
-      "next_action_en": "Within one day, deploy the public single-node example and measure idle memory, restore latency, filesystem consistency and tenant isolation.",
+      "next_action_zh": "在 GKE 小规模部署并测恢复一致性、P95 延迟、空闲成本、密钥隔离和故障恢复。",
+      "next_action_en": "Deploy a small GKE trial and measure restore consistency, P95 latency, idle cost, secret isolation and failure recovery.",
       "source_ids": [
         "src-a8c416e2c7748124",
-        "src-a5ffcd0a46dd44fd"
+        "src-a5ffcd0a46dd44fd",
+        "src-2976bb865f5ebf11"
       ],
       "project_ids": [
         "agent-substrate"
@@ -291,6 +296,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261110-03-ga-evidence",
+          "claim_zh": "Google Cloud 确认 Agent Substrate 1.0 已在 GKE GA，并公布恢复、吞吐和贡献者数据。",
+          "claim_en": "Google Cloud confirms Agent Substrate 1.0 is GA on GKE and publishes restore, throughput and contributor figures.",
+          "source_ids": [
+            "src-2976bb865f5ebf11"
+          ],
+          "event_ids": [
+            "ev-20261110-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -306,6 +324,21 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20261110-03-ga-correction",
+          "kind": "correction",
+          "occurred_at": "2026-11-05",
+          "discovered_at": "2026-11-18T17:04:38Z",
+          "summary_zh": "补充更早的一手来源：Agent Substrate 1.0 已在 GKE GA，而不只是 CNCF Sandbox 捐赠",
+          "summary_en": "Earlier primary evidence shows Agent Substrate 1.0 was already GA on GKE, not only donated to CNCF Sandbox",
+          "evidence_ids": [
+            "ev-20261110-03-ga-evidence"
+          ],
+          "historical": true,
+          "importance": "major",
+          "before": "The record described CNCF Sandbox donation as the main availability stage.",
+          "after": "An earlier Google primary source confirms Agent Substrate 1.0 was already GA on GKE."
         }
       ]
     },
