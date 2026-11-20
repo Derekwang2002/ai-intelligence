@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-19",
+  "provenance": "Updated by incremental run 2026-11-20T17:07:11Z; window [2026-11-19T17:02:18Z, 2026-11-20T17:07:11Z], overlap from 2026-11-19T14:02:18Z.",
+  "events": [
+    {
+      "event_id": "ev-20261119-01",
+      "title": "OpenAI describes a production factory for performance investigations",
+      "title_zh": "OpenAI 公开性能调查自动化工厂的生产经验",
+      "category": "ai-engineering",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-11-19T08:00:00Z",
+      "first_seen_at": "2026-11-20T17:07:11Z",
+      "last_updated_at": "2026-11-20T17:07:11Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/performance-factory/",
+      "secondary_sources": [],
+      "summary": "OpenAI described an internal agent system that turns performance regressions into tracked investigations, dispatches Codex cloud sessions and routes proposed root causes through human review. Over three months it ran more than 1,700 investigations and identified more than 600 root causes. A manual review of 100 suggestions judged 70% accurate; the system and measurements are not public.",
+      "summary_en": "OpenAI described an internal agent system that turns performance regressions into tracked investigations, dispatches Codex cloud sessions and routes proposed root causes through human review. Over three months it ran more than 1,700 investigations and identified more than 600 root causes. A manual review of 100 suggestions judged 70% accurate; the system and measurements are not public.",
+      "summary_zh": "OpenAI 公开了一套内部 agent 系统：它把性能回退转成可追踪调查，调度 Codex 云端会话，再由人审核根因建议。三个月内系统运行了 1,700 多次调查，找出 600 多个根因。人工抽查 100 条建议后，70% 被判定准确；系统与测量数据未公开。",
+      "why_it_matters": "For teams operating large codebases, the useful pattern is the combination of durable task state, scoped service identities, event-driven dispatch and human merge authority. The article is an internal case study, not a reusable release or independent evaluation.",
+      "why_it_matters_en": "For teams operating large codebases, the useful pattern is the combination of durable task state, scoped service identities, event-driven dispatch and human merge authority. The article is an internal case study, not a reusable release or independent evaluation.",
+      "why_it_matters_zh": "对维护大型代码库的团队来说，可借鉴的是持久任务状态、受限服务身份、事件驱动调度与人工合并权限的组合。它仍是内部案例，不是可直接部署的产品，也没有独立评测。",
+      "technical_details": {
+        "deployment": "Internal production system; no public code or API",
+        "reported_scale": "More than 1,700 investigations and 600 root causes in three months; about 17 investigations per day",
+        "manual_review": "100 root-cause suggestions reviewed; 70% judged accurate and 30% needed refinement or were not causal",
+        "control_boundary": "Scoped service identity; humans decide what ships; a separate reviewer agent challenges conclusions",
+        "evidence_limit": "Publisher case study; workload, sampling and full error distribution are not public",
+        "time_basis": "Official post published 2026-11-19T08:00:00Z; found outside the overlap during directed gap review"
+      },
+      "technical_details_zh": {
+        "部署": "内部生产系统；没有公开代码或 API",
+        "发布方规模": "三个月运行 1,700 多次调查并找出 600 多个根因；平均每天约 17 次调查",
+        "人工抽查": "抽查 100 条根因建议；70% 被判准确，30% 需要修改或不构成因果",
+        "控制边界": "使用受限服务身份；由人决定是否上线；另设 reviewer agent 反驳结论",
+        "证据限制": "发布方内部案例；工作负载、抽样方式与完整错误分布未公开",
+        "时间依据": "官方文章发布于 2026-11-19T08:00:00Z；早于 overlap，由定向补漏发现"
+      },
+      "tags": [
+        "coding-agent",
+        "performance",
+        "observability",
+        "human-in-the-loop"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "openai-performance-factory-internal-agent-system",
+      "short_label_zh": "Performance Factory",
+      "short_label_en": "Performance Factory",
+      "next_action_zh": "等待公开实现或可复现的独立案例，再评估是否把该模式引入生产性能调查。",
+      "next_action_en": "Wait for a public implementation or reproducible independent case before adopting the pattern for production performance investigations.",
+      "source_ids": [
+        "src-9fc1c3250d4a81a3"
+      ],
+      "project_ids": [
+        "openai-performance-factory"
+      ],
+      "scenario_ids": [
+        "agents",
+        "engineering"
+      ],
+      "evidence_stage": "verified",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261119-01-evidence-case",
+          "claim_zh": "OpenAI 的文章确认系统结构、内部运行规模与 100 条建议抽查结果。",
+          "claim_en": "OpenAI’s article confirms the system design, internal operating scale and review of 100 suggestions.",
+          "source_ids": [
+            "src-9fc1c3250d4a81a3"
+          ],
+          "event_ids": [
+            "ev-20261119-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; internal metrics not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261119-01-published",
+          "kind": "new",
+          "occurred_at": "2026-11-19T08:00:00Z",
+          "discovered_at": "2026-11-20T17:07:11Z",
+          "summary_zh": "OpenAI 公开内部性能调查 agent 的生产经验",
+          "summary_en": "OpenAI publishes its production experience with a performance-investigation agent",
+          "evidence_ids": [
+            "ev-20261119-01-evidence-case"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "date": "2026-11-16",
-  "provenance": "Incremental scan started 2026-11-16T16:59:56Z; date-only publication precision is preserved. Recall-audit addition from incremental run 2026-11-18T17:04:38Z.",
+  "provenance": "Incremental scan started 2026-11-16T16:59:56Z; date-only publication precision is preserved. Recall-audit addition from incremental run 2026-11-18T17:04:38Z. Updated by incremental run 2026-11-20T17:07:11Z; window [2026-11-19T17:02:18Z, 2026-11-20T17:07:11Z], overlap from 2026-11-19T14:02:18Z. Updated by recall audit in run 2026-11-20T17:07:11Z.",
   "events": [
     {
       "event_id": "ev-20261116-01",
@@ -678,38 +678,46 @@
     },
     {
       "event_id": "ev-20261116-07",
-      "title": "Open LoRA adapts Qwen3.8-27B to the pi coding harness",
-      "title_zh": "公开 LoRA 将 Qwen3.8-27B 适配到 pi coding harness",
+      "title": "Hugging Face publishes harness adapters across three coding agents",
+      "title_zh": "Hugging Face 发布适配三种编程 agent 的 harness adapter",
       "category": "open-source",
       "organization": [
         "harness-hub"
       ],
       "published_at": "2026-11-16T06:52:31Z",
       "first_seen_at": "2026-11-18T17:04:38Z",
-      "last_updated_at": "2026-11-18T17:04:38Z",
+      "last_updated_at": "2026-11-20T17:07:11Z",
       "late_discovery": true,
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
-      "secondary_sources": [],
-      "summary": "harness-hub released an Apache-2.0 LoRA adapter that tunes Qwen3.8-27B for the pi coding agent. With thinking disabled, the publisher reports 64.7% on a 51-task SWE-bench Pro hard subset and 55.8% on Terminal-Bench 2.1, while generating about 4.5 times fewer tokens than the base model at maximum reasoning effort.",
-      "summary_en": "harness-hub released an Apache-2.0 LoRA adapter that tunes Qwen3.8-27B for the pi coding agent. With thinking disabled, the publisher reports 64.7% on a 51-task SWE-bench Pro hard subset and 55.8% on Terminal-Bench 2.1, while generating about 4.5 times fewer tokens than the base model at maximum reasoning effort.",
-      "summary_zh": "harness-hub 发布 Apache-2.0 LoRA，把 Qwen3.8-27B 适配到 pi coding agent。关闭 thinking 后，发布方在 51 道 SWE-bench Pro hard 子集上报告 64.7%，在 Terminal-Bench 2.1 上报告 55.8%；生成 token 约为基础模型最高推理强度的 1/4.5。",
-      "why_it_matters": "For self-hosted coding agents, harness-specific adaptation may recover high-effort accuracy at much lower inference cost. The evaluation is publisher-run, uses one harness and one attempt per task, and the chosen checkpoint saw part of Terminal-Bench during selection.",
-      "why_it_matters_en": "For self-hosted coding agents, harness-specific adaptation may recover high-effort accuracy at much lower inference cost. The evaluation is publisher-run, uses one harness and one attempt per task, and the chosen checkpoint saw part of Terminal-Bench during selection.",
-      "why_it_matters_zh": "对自托管 coding agent 来说，针对 harness 的适配可能用更低推理成本达到高推理强度的准确率。评测来自发布方，只覆盖一个 harness、每题一次尝试，而且 checkpoint 选择看过部分 Terminal-Bench。",
+      "secondary_sources": [
+        "https://huggingface.co/blog/harness-adapters"
+      ],
+      "summary": "Hugging Face published Qwen3.8-27B adapters for pi, Hermes and OpenCode plus a merged super-adapter, with Apache-2.0 artifacts, trajectories and training data. Publisher runs show large gains inside each training harness and a smaller mean gain for the merged adapter. A 300-task held-out AutomationBench showed little out-of-domain improvement.",
+      "summary_en": "Hugging Face published Qwen3.8-27B adapters for pi, Hermes and OpenCode plus a merged super-adapter, with Apache-2.0 artifacts, trajectories and training data. Publisher runs show large gains inside each training harness and a smaller mean gain for the merged adapter. A 300-task held-out AutomationBench showed little out-of-domain improvement.",
+      "summary_zh": "Hugging Face 发布了面向 pi、Hermes 和 OpenCode 的 Qwen3.8-27B adapter，以及合并后的 super-adapter，并开放 Apache-2.0 产物、轨迹和训练数据。发布方测试显示，各专用 adapter 在对应 harness 内提升明显，合并版平均提升较小；300 题 held-out AutomationBench 几乎没有域外收益。",
+      "why_it_matters": "The release makes harness-specific adaptation reproducible and shows that agent interfaces are part of model behavior. Results should not be compared across harnesses, Terminal-Bench influenced merge selection, and out-of-domain transfer remains weak.",
+      "why_it_matters_en": "The release makes harness-specific adaptation reproducible and shows that agent interfaces are part of model behavior. Results should not be compared across harnesses, Terminal-Bench influenced merge selection, and out-of-domain transfer remains weak.",
+      "why_it_matters_zh": "这批开放产物让 harness 专项适配可以复现，也说明 agent 接口本身会改变模型表现。不同 harness 的分数不能横比；Terminal-Bench 参与了合并权重选择，域外迁移仍弱。",
       "technical_details": {
-        "artifact": "Apache-2.0 LoRA for Qwen3.8-27B; vLLM, Transformers and llama.cpp instructions",
-        "evaluation": "SWE-bench Pro hard 51: 39.2% to 64.7%; Terminal-Bench 2.1 paired 86: 39.5% to 55.8%",
-        "efficiency": "about 4.5x fewer generated tokens than base model at xhigh thinking; thinking should remain off",
-        "conditions": "pi harness; one attempt; 100-step budget; temperature 0.8; text only",
-        "limitation": "Publisher-run; step 160 chosen using SWE-bench Pro and an 18-task Terminal-Bench subset; corrected earlier tunnel-failure runs"
+        "base_model": "Qwen3.8-27B",
+        "harnesses": "pi, Hermes and OpenCode",
+        "artifacts": "Apache-2.0 adapters, merged super-adapter, datasets and trajectories",
+        "publisher_results": "Specialist adapters improve Terminal-Bench 2.1 and a hard 51-task SWE-bench Pro slice; pi SWE-bench Pro 39.2 to 64.7; tool calls fall 53–72% by setup",
+        "merged_result": "Mean pass@1 across model-harness pairs rises from 39.5 to 49.0 with thinking off",
+        "held_out_check": "AutomationBench, 300 tasks: near-base results and no strong out-of-domain transfer",
+        "evidence_limit": "One attempt per task; publisher-run; harness scores are not cross-harness comparisons; Terminal-Bench influenced merge selection",
+        "time_basis": "Official post published 2026-11-20 with date precision only"
       },
       "technical_details_zh": {
-        "公开产物": "Qwen3.8-27B 的 Apache-2.0 LoRA；提供 vLLM、Transformers、llama.cpp 指南",
-        "评测": "SWE-bench Pro hard 51：39.2%→64.7%；Terminal-Bench 2.1 配对 86 题：39.5%→55.8%",
-        "效率": "相比基础模型 xhigh thinking，生成 token 约少 4.5 倍；应关闭 thinking",
-        "条件": "pi harness；每题一次；100 step；temperature 0.8；仅文本",
-        "限制": "发布方评测；step 160 选择参考了 SWE-bench Pro 与 18 道 Terminal-Bench；此前隧道故障结果已更正"
+        "基础模型": "Qwen3.8-27B",
+        "harness": "pi、Hermes、OpenCode",
+        "公开产物": "Apache-2.0 adapter、合并版 super-adapter、数据集与轨迹",
+        "发布方结果": "专用 adapter 提升 Terminal-Bench 2.1 与 51 题 SWE-bench Pro 难集；pi 的 SWE-bench Pro 从 39.2 升至 64.7；不同设置下 tool call 减少 53–72%",
+        "合并版结果": "thinking 关闭时，跨模型与 harness 的平均 pass@1 从 39.5 升至 49.0",
+        "held-out 检查": "AutomationBench 300 题结果接近基础模型，没有明显域外迁移",
+        "证据限制": "每题只跑一次；由发布方测试；harness 之间不能横比；Terminal-Bench 参与合并权重选择",
+        "时间依据": "官方文章只给出 2026-11-20，没有发布时间"
       },
       "tags": [
         "coding-agent",
@@ -728,10 +736,11 @@
       "event_fingerprint": "qwen3-8-27b-pi-harness-adapter",
       "short_label_zh": "Qwen3.8 pi adapter",
       "short_label_en": "Qwen3.8 pi adapter",
-      "next_action_zh": "一天内用 10 个真实仓库任务对比基础模型 xhigh 与该 LoRA，测完成率、token、step、延迟和显存。",
-      "next_action_en": "Within one day, compare base-model xhigh and the LoRA on 10 real repository tasks for completion, tokens, steps, latency and memory.",
+      "next_action_zh": "一天内用公开 adapter 在固定 harness 跑 20 个未参与训练的仓库任务，并与基础模型比较成功率、tool call 和 token。",
+      "next_action_en": "Within one day, run 20 unseen repository tasks in one fixed harness and compare success, tool calls and tokens with the base model.",
       "source_ids": [
-        "src-dbede62d4d711d8c"
+        "src-dbede62d4d711d8c",
+        "src-bc1ef97b5e0db59f"
       ],
       "project_ids": [
         "qwen-pi-adapter"
@@ -754,6 +763,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261116-07-multi-harness-evidence",
+          "claim_zh": "公开文章和产物确认三种 harness adapter、合并版与 held-out 检查。",
+          "claim_en": "The public article and artifacts confirm three harness adapters, the merged adapter and held-out check.",
+          "source_ids": [
+            "src-bc1ef97b5e0db59f"
+          ],
+          "event_ids": [
+            "ev-20261116-07"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; benchmarks publisher-run"
         }
       ],
       "changes": [
@@ -768,6 +790,116 @@
             "ev-20261116-07-release-evidence"
           ],
           "historical": true,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261116-07-multi-harness",
+          "kind": "update",
+          "occurred_at": "2026-11-20",
+          "discovered_at": "2026-11-20T17:07:11Z",
+          "summary_zh": "adapter 从 pi 扩展到三种 harness，并公开合并版与域外检查",
+          "summary_en": "Adapters expand from pi to three harnesses with a merged version and out-of-domain check",
+          "evidence_ids": [
+            "ev-20261116-07-multi-harness-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261116-08",
+      "title": "Study shows a 27B model can edit its own weights without gradients",
+      "title_zh": "研究显示 27B 模型可无梯度修改自身权重",
+      "category": "research",
+      "organization": [
+        "academic"
+      ],
+      "published_at": "2026-11-16T20:55:08Z",
+      "first_seen_at": "2026-11-20T17:07:11Z",
+      "last_updated_at": "2026-11-20T17:07:11Z",
+      "source_type": "arxiv",
+      "primary_source": "https://arxiv.org/abs/2611.21885",
+      "secondary_sources": [],
+      "summary": "A preprint reports that a 27B open model inspected and directly edited its own weights without gradient training. On a fixed 490-problem test, one edit improved accuracy by 6.6 points, and a separate repair experiment restored performance across six unseen image benchmarks. Smaller 2B, 4B and 9B models did not reliably succeed.",
+      "summary_en": "A preprint reports that a 27B open model inspected and directly edited its own weights without gradient training. On a fixed 490-problem test, one edit improved accuracy by 6.6 points, and a separate repair experiment restored performance across six unseen image benchmarks. Smaller 2B, 4B and 9B models did not reliably succeed.",
+      "summary_zh": "一篇预印本报告称，一个 27B 开放模型可以检查并直接修改自身权重，不使用梯度训练。一次修改在固定的 490 题测试上提升 6.6 个百分点；另一项修复实验还恢复了六个未见图像 benchmark 的表现。2B、4B 和 9B 模型未能稳定成功。",
+      "why_it_matters": "Direct weight editing could eventually make persistent adaptation cheaper than retraining, but this is an early preprint with narrow tasks and no established production method. The claimed gain should not be generalized to arbitrary self-improvement.",
+      "why_it_matters_en": "Direct weight editing could eventually make persistent adaptation cheaper than retraining, but this is an early preprint with narrow tasks and no established production method. The claimed gain should not be generalized to arbitrary self-improvement.",
+      "why_it_matters_zh": "直接修改权重将来可能比重新训练更便宜地实现持久适配，但这仍是任务狭窄的早期预印本，没有成熟生产方法。不能把结果泛化为任意“自我进化”。",
+      "technical_details": {
+        "method": "Model reads activations and writes selected weight values directly; no gradients or training loop",
+        "evaluation": "Fixed 490-problem held-out test; reported +6.6 percentage points",
+        "repair": "Damaged-copy repair rose from 7% to 70% across six unseen image benchmarks, 83% of the undamaged model",
+        "scale_boundary": "2B made no edit; 4B and 9B degraded; 27B succeeded in the reported setup",
+        "evidence_limit": "Preprint; narrow setups; no peer review or independent reproduction found in this run",
+        "time_basis": "arXiv v1 submitted 2026-11-16T20:55:08Z; recovered by recall audit outside overlap"
+      },
+      "technical_details_zh": {
+        "方法": "模型读取 activation 并直接写入选定权重值；不使用梯度或训练循环",
+        "评测": "固定 490 题 held-out 测试；报告提升 6.6 个百分点",
+        "修复实验": "受损副本在六个未见图像 benchmark 上从 7% 升至 70%，达到未损坏模型的 83%",
+        "规模边界": "2B 没有修改；4B 与 9B 变差；27B 在报告设置中成功",
+        "证据限制": "预印本；场景狭窄；本轮未找到同行评审或独立复现",
+        "时间依据": "arXiv v1 提交于 2026-11-16T20:55:08Z；本轮由召回审计在 overlap 外补录"
+      },
+      "tags": [
+        "weight-editing",
+        "self-improvement",
+        "open-weight",
+        "research"
+      ],
+      "technical_impact": 5,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 1,
+      "verification_cost": 5,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "self-rewriting-27b-model-weight-editing",
+      "short_label_zh": "Self-rewriting",
+      "short_label_en": "Self-rewriting",
+      "next_action_zh": "等待公开代码与独立复现，确认 held-out 提升、失败率和权重损坏风险后再投入。",
+      "next_action_en": "Wait for public code and independent reproduction of held-out gains, failure rates and weight-corruption risk before investing.",
+      "source_ids": [
+        "src-03b179946dd0e551"
+      ],
+      "project_ids": [
+        "self-rewriting-models"
+      ],
+      "scenario_ids": [
+        "research",
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261116-08-evidence",
+          "claim_zh": "预印本报告 27B 模型可直接修改自身权重，并给出 held-out 与修复实验。",
+          "claim_en": "The preprint reports direct self-editing by a 27B model with held-out and repair experiments.",
+          "source_ids": [
+            "src-03b179946dd0e551"
+          ],
+          "event_ids": [
+            "ev-20261116-08"
+          ],
+          "relation": "support",
+          "verification": "verified-paper; not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261116-08-published",
+          "kind": "new",
+          "occurred_at": "2026-11-16T20:55:08Z",
+          "discovered_at": "2026-11-20T17:07:11Z",
+          "summary_zh": "预印本报告 27B 模型可无梯度修改自身权重",
+          "summary_en": "Preprint reports a 27B model can edit its own weights without gradients",
+          "evidence_ids": [
+            "ev-20261116-08-evidence"
+          ],
+          "historical": false,
           "importance": "major"
         }
       ]

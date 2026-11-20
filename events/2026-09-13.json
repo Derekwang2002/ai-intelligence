@@ -1,11 +1,11 @@
 {
   "date": "2026-09-13",
-  "provenance": "Incremental scan [2026-09-13T01:02:19Z, 2026-09-13T16:00:31Z], with retrieval overlap from 2026-09-12T22:02:19Z. PyPI and GitHub release timestamps both fall inside the strict window; the release is an installable release candidate, not stable GA.",
+  "provenance": "Incremental scan [2026-09-13T01:02:19Z, 2026-09-13T16:00:31Z], with retrieval overlap from 2026-09-12T22:02:19Z. PyPI and GitHub release timestamps both fall inside the strict window; the release is an installable release candidate, not stable GA. Updated by incremental run 2026-11-20T17:07:11Z; window [2026-11-19T17:02:18Z, 2026-11-20T17:07:11Z], overlap from 2026-11-19T14:02:18Z.",
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.108.11 LTS fixes dropped guardrails and billed aborted streams",
-      "title_zh": "LiteLLM 1.108.11 LTS 修复护栏丢失与中止流继续计费",
+      "title": "LiteLLM 1.108.13 LTS fixes Claude Code cache inflation",
+      "title_zh": "LiteLLM 1.108.13 LTS 修复 Claude Code 缓存膨胀",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-18T17:04:38Z",
+      "last_updated_at": "2026-11-20T17:07:11Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -40,12 +40,12 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.11",
         "https://github.com/BerriAI/litellm/releases/tag/v1.110.0"
       ],
-      "summary": "LiteLLM 1.108.11 LTS fixes Bedrock system and assistant `guarded_text` fields being dropped, and stops upstream generation after an Anthropic-compatible stream is aborted. It also repairs truncated Gemini tool arguments and Azure DeepSeek reasoning effort. The separate 1.110.0 mainline release adds broader provider and routing changes.",
-      "why_it_matters": "Guardrail loss can change safety behavior, while continued upstream generation after a client abort can create hidden cost. Gateway teams should prioritize the LTS patch and replay guarded messages, aborted streams and tool calls before production rollout.",
-      "summary_zh": "LiteLLM 1.108.11 LTS 修复 Bedrock system 与 assistant 消息中的 `guarded_text` 被丢弃，并在 Anthropic 兼容流中止后停止上游生成。它还修复 Gemini 工具参数截断和 Azure DeepSeek 推理强度。另一个 1.110.0 主线版包含更广泛的 provider 与路由变更。",
-      "summary_en": "LiteLLM 1.108.11 LTS fixes Bedrock system and assistant `guarded_text` fields being dropped, and stops upstream generation after an Anthropic-compatible stream is aborted. It also repairs truncated Gemini tool arguments and Azure DeepSeek reasoning effort. The separate 1.110.0 mainline release adds broader provider and routing changes.",
-      "why_it_matters_zh": "护栏字段丢失会改变安全行为，客户端中止后上游仍继续生成则会产生隐藏成本。网关团队应优先升级 LTS，并在生产推广前回放受护栏保护的消息、中止流和工具调用。",
-      "why_it_matters_en": "Guardrail loss can change safety behavior, while continued upstream generation after a client abort can create hidden cost. Gateway teams should prioritize the LTS patch and replay guarded messages, aborted streams and tool calls before production rollout.",
+      "summary": "LiteLLM 1.108.13 LTS fixes a rotating Claude Code billing header that broke prompt caching and inflated token use. It also adds GPT-6.2 cache handling and fixes delayed JWT issuer mapping, Unix-socket Postgres connections and a cross-userless-key /key/info read path.",
+      "why_it_matters": "Proxy operators can reduce avoidable token cost and close a key-information isolation flaw in one LTS update. Because caching and authorization affect billing and access control, canary replay is required before adoption.",
+      "summary_zh": "LiteLLM 1.108.13 LTS 修复 Claude Code 轮换 billing header 导致前缀缓存失效和 token 膨胀的问题。版本还加入 GPT-6.2 缓存处理，并修复 JWT issuer 映射延迟、Unix socket Postgres 连接和 /key/info 跨 userless key 读取。",
+      "summary_en": "LiteLLM 1.108.13 LTS fixes a rotating Claude Code billing header that broke prompt caching and inflated token use. It also adds GPT-6.2 cache handling and fixes delayed JWT issuer mapping, Unix-socket Postgres connections and a cross-userless-key /key/info read path.",
+      "why_it_matters_zh": "代理网关团队可以在一次 LTS 更新中减少无谓 token 成本，并关闭 key 信息隔离问题。缓存与授权都会影响账单和访问控制，上线前需要 canary 回放。",
+      "why_it_matters_en": "Proxy operators can reduce avoidable token cost and close a key-information isolation flaw in one LTS update. Because caching and authorization affect billing and access control, canary replay is required before adoption.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -89,7 +89,12 @@
         "update_2026_11_15": "LTS 1.108.9 backports mixed reasoning preservation, Bedrock S3 media, Kimi K3 reasoning, Vertex caller labels, Responses cache controls and Foundry routing fixes.",
         "time_basis_2026_11_15": "GitHub release published 2026-11-14T22:00:02Z, inside the strict scan window.",
         "release_1_108_11": "LTS: preserve Bedrock guarded_text in system/assistant messages; stop upstream Invoke streams after /v1/messages abort; repair null or truncated Gemini tool arguments and Azure DeepSeek reasoning effort",
-        "release_1_110_0": "Mainline release with provider, routing and compatibility changes; evaluated separately from LTS adoption"
+        "release_1_110_0": "Mainline release with provider, routing and compatibility changes; evaluated separately from LTS adoption",
+        "stable_version": "1.108.13 LTS",
+        "cache": "Fixes rotating Claude Code billing header that breaks caching and inflates tokens; adds GPT-6.2 cache handling",
+        "authorization": "Fixes /key/info reading another userless key",
+        "identity": "Fixes delayed JWT issuer mapping",
+        "database": "Supports Unix-socket Postgres connections"
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -134,7 +139,12 @@
         "2026-11-15 更新": "LTS 1.108.9 回移混合推理保留、Bedrock S3 媒体、Kimi K3 推理、Vertex 调用方标签、Responses 缓存控制与 Foundry 路由修复。",
         "2026-11-15 时间依据": "GitHub release 发布于 2026-11-14T22:00:02Z，落在严格扫描窗口内。",
         "1.108.11 LTS": "保留 Bedrock system/assistant 的 guarded_text；/v1/messages 中止后停止上游 Invoke 流；修复 Gemini 空值或截断工具参数与 Azure DeepSeek 推理强度",
-        "1.110.0 主线": "包含 provider、路由与兼容性变更；与 LTS 采用判断分开评估"
+        "1.110.0 主线": "包含 provider、路由与兼容性变更；与 LTS 采用判断分开评估",
+        "稳定版本": "1.108.13 LTS",
+        "缓存": "修复 Claude Code 轮换 billing header 导致的缓存失效与 token 膨胀；加入 GPT-6.2 缓存处理",
+        "授权": "修复 /key/info 读取其他 userless key",
+        "身份": "修复 JWT issuer 映射延迟",
+        "数据库": "支持 Unix socket Postgres 连接"
       },
       "tags": [
         "litellm",
@@ -176,7 +186,8 @@
         "src-e8b59bc710743165",
         "src-fe2d022b775c8438",
         "src-958f53f88ea0035e",
-        "src-593d0602a81065fa"
+        "src-593d0602a81065fa",
+        "src-cd8becb9246e0efd"
       ],
       "project_ids": [
         "mcp",
@@ -424,6 +435,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-13-evidence",
+          "claim_zh": "官方 LTS release note 确认缓存、授权、身份与数据库修复。",
+          "claim_en": "The official LTS release note confirms cache, authorization, identity and database fixes.",
+          "source_ids": [
+            "src-cd8becb9246e0efd"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -658,11 +682,24 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-13",
+          "kind": "update",
+          "occurred_at": "2026-11-20T04:00:00Z",
+          "discovered_at": "2026-11-20T17:07:11Z",
+          "summary_zh": "1.108.13 LTS 修复 Claude Code 缓存膨胀与跨 key 信息读取",
+          "summary_en": "1.108.13 LTS fixes Claude Code cache inflation and cross-key information reads",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-108-13-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "一天内在 LTS canary 回放 Bedrock guarded_text、中止流计费、Gemini 工具参数和 DeepSeek 推理强度。",
-      "next_action_en": "Within one day, canary Bedrock guarded_text, aborted-stream billing, Gemini tool arguments and DeepSeek reasoning effort on LTS.",
+      "next_action_zh": "一天内 canary 回放 Claude Code 缓存命中、跨 key 读取、JWT 映射与 Postgres 连接。",
+      "next_action_en": "Within one day, canary-replay Claude Code cache hits, cross-key reads, JWT mapping and Postgres connections.",
       "short_label_zh": "LiteLLM 1.108.11 LTS",
       "short_label_en": "LiteLLM 1.108.11 LTS"
     }

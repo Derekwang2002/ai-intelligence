@@ -1,6 +1,6 @@
 {
   "date": "2026-10-27",
-  "provenance": "Incremental scan started 2026-10-28T15:58:44Z; strict window [2026-10-27T15:59:15Z, 2026-10-28T15:58:44Z] with overlap from 2026-10-27T12:59:15Z. FeatureArc and OpenHands 1.34.0 were absent from the previous manifest and recovered from the overlap as late discoveries.",
+  "provenance": "Incremental scan started 2026-10-28T15:58:44Z; strict window [2026-10-27T15:59:15Z, 2026-10-28T15:58:44Z] with overlap from 2026-10-27T12:59:15Z. FeatureArc and OpenHands 1.34.0 were absent from the previous manifest and recovered from the overlap as late discoveries. Updated by incremental run 2026-11-20T17:07:11Z; window [2026-11-19T17:02:18Z, 2026-11-20T17:07:11Z], overlap from 2026-11-19T14:02:18Z.",
   "events": [
     {
       "event_id": "ev-20261027-01",
@@ -99,8 +99,8 @@
     },
     {
       "event_id": "ev-20261027-02",
-      "title": "Google opens Genie 4 to trusted testers",
-      "title_zh": "Google 向受信测试者开放 Genie 4",
+      "title": "Google opens Genie 4 through a paid Gemini API",
+      "title_zh": "Google 通过付费 Gemini API 开放 Genie 4",
       "category": "research",
       "organization": [
         "Google",
@@ -108,36 +108,41 @@
       ],
       "published_at": "2026-10-27T16:00:00Z",
       "first_seen_at": "2026-10-28T15:58:44Z",
-      "last_updated_at": "2026-11-19T17:02:18Z",
+      "last_updated_at": "2026-11-20T17:07:11Z",
       "source_type": "research_blog",
       "primary_source": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
       "secondary_sources": [
         "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/",
-        "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie-genie-4/"
+        "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie-genie-4/",
+        "https://aistudio.google.com/docs/genie"
       ],
-      "summary": "Google opened Project Genie with Genie 4 to eligible Google AI Ultra subscribers, while Pro subscribers can join a waitlist. Users can create, remix and explore interactive worlds with live text changes and native audio. There is still no general API or open weights.",
-      "summary_en": "Google opened Project Genie with Genie 4 to eligible Google AI Ultra subscribers, while Pro subscribers can join a waitlist. Users can create, remix and explore interactive worlds with live text changes and native audio. There is still no general API or open weights.",
-      "summary_zh": "Google 已通过 Project Genie 向符合条件的 Google AI Ultra 订阅者开放 Genie 4，Pro 订阅者可以加入候补。用户可创建、改编和探索支持实时文字变化与原生音频的交互世界。它仍没有通用 API 或开放权重。",
-      "why_it_matters": "For simulation and embodied-agent teams, native audio plus live steering is a meaningful capability signal. Current access, object permanence, physical accuracy and long-session consistency are too limited for an engineering trial.",
-      "why_it_matters_en": "For simulation and embodied-agent teams, native audio plus live steering is a meaningful capability signal. Current access, object permanence, physical accuracy and long-session consistency are too limited for an engineering trial.",
-      "why_it_matters_zh": "对仿真和具身 agent 团队来说，原生音频加实时控制是明确的能力信号。但当前访问范围、物体持续性、物理准确性和长时一致性都不足以支撑工程试点。",
+      "summary": "Google made Genie 4 available through the Gemini API Interactions API and AI Studio for paid-tier keys. The v1beta service generates 720p, 24-fps interactive worlds with stereo audio at about $0.10 per second. Sessions are capped at 120 seconds, stability may fall after 60–90 seconds, and the API lacks tool calling, resumption, microphone and camera input.",
+      "summary_en": "Google made Genie 4 available through the Gemini API Interactions API and AI Studio for paid-tier keys. The v1beta service generates 720p, 24-fps interactive worlds with stereo audio at about $0.10 per second. Sessions are capped at 120 seconds, stability may fall after 60–90 seconds, and the API lacks tool calling, resumption, microphone and camera input.",
+      "summary_zh": "Google 已通过 Gemini API 的 Interactions API 和 AI Studio 向付费层 key 开放 Genie 4。v1beta 服务生成 720p、24 fps、带立体声音频的交互世界，约每秒 0.10 美元。会话最多 120 秒，60–90 秒后稳定性可能下降；暂不支持 tool calling、续接、麦克风或摄像头输入。",
+      "why_it_matters": "Teams can now measure latency, controllability and cost instead of judging a closed demo. The paid beta remains geographically limited and requires explicit session completion or cancellation to avoid continued billing after a client disconnects.",
+      "why_it_matters_en": "Teams can now measure latency, controllability and cost instead of judging a closed demo. The paid beta remains geographically limited and requires explicit session completion or cancellation to avoid continued billing after a client disconnects.",
+      "why_it_matters_zh": "团队现在可以实测延迟、可控性和成本，不必只看封闭演示。付费 beta 仍有地区限制；客户端断开后必须显式 complete 或 cancel，否则可能继续计费。",
       "technical_details": {
-        "stage": "research preview",
-        "current_access": "Eligible Google AI Ultra subscribers; Pro subscribers can join a waitlist",
-        "future_access": "No general API or open weights announced",
-        "capabilities": "real-time text steering, native ambient audio, music and interactive dialogue",
-        "agent_loop": "Gemini 3.8 Flash observes scenes, decomposes goals and checks steps",
-        "limitations": "object permanence and details drift; complex physics, audio accuracy, legible text, spatial accuracy and long-term consistency remain active research",
-        "time_basis": "official Google RSS published 2026-10-27T16:00:00Z"
+        "availability": "Gemini API paid tier and AI Studio; v1beta Interactions API",
+        "regions": "Served from the United States, western Europe and Japan; optimized for North America, Europe and East Asia",
+        "output": "720p at 24 fps with stereo audio",
+        "pricing": "240 output tokens per frame; 5,760 tokens per second; about $0.10 per second",
+        "session_limit": "120 seconds; publisher notes stability can degrade after 60–90 seconds",
+        "inputs": "Text, one starting image and keyboard controls",
+        "unsupported": "Tool calling, session resumption, microphone and camera input",
+        "billing_control": "Call complete() or cancel(); disconnecting alone can leave generation and billing active",
+        "time_basis": "Official API post published 2026-11-19T17:00:00Z, two minutes before the previous checkpoint; first found in this run overlap"
       },
       "technical_details_zh": {
-        "阶段": "research preview",
-        "当前可用对象": "符合条件的 Google AI Ultra 订阅者；Pro 可加入候补",
-        "后续可用性": "尚未宣布通用 API 或开放权重",
-        "能力": "文字实时控制、原生环境音、音乐与交互对话",
-        "Agent loop": "Gemini 3.8 Flash 观察场景、拆解目标并检查步骤",
-        "限制": "物体持续性和细节会漂移；复杂物理、音频准确性、可读文字、空间准确性和长时一致性仍在研究",
-        "时间依据": "Google 官方 RSS 发布于 2026-10-27T16:00:00Z"
+        "可用性": "Gemini API 付费层与 AI Studio；v1beta Interactions API",
+        "地区": "服务节点在美国、西欧和日本；北美、欧洲、东亚体验最佳",
+        "输出": "720p、24 fps、立体声音频",
+        "价格": "每帧 240 output token；每秒 5,760 token；约每秒 0.10 美元",
+        "会话上限": "120 秒；发布方提示 60–90 秒后稳定性可能下降",
+        "输入": "文本、一张起始图片与键盘控制",
+        "暂不支持": "tool calling、会话续接、麦克风和摄像头输入",
+        "计费控制": "必须调用 complete() 或 cancel()；只断开客户端可能继续生成并计费",
+        "时间依据": "官方 API 文章发布于 2026-11-19T17:00:00Z，比上轮 checkpoint 早 2 分钟；本轮在 overlap 首次发现"
       },
       "tags": [
         "world-model",
@@ -149,19 +154,21 @@
       "technical_impact": 4,
       "engineering_value": 3,
       "adoption_signal": 1,
-      "maturity": 1,
+      "maturity": 2,
       "verification_cost": 4,
       "risk": 3,
-      "recommendation": "WATCH",
+      "recommendation": "TRIAL",
       "event_fingerprint": "google-deepmind-genie-4-research-preview",
       "short_label_zh": "Genie 4",
       "short_label_en": "Genie 4",
-      "next_action_zh": "等待通用 API、价格和可复现的长时一致性评测后再安排工程试验。",
-      "next_action_en": "Wait for a general API, pricing and reproducible long-session consistency evaluations before scheduling an engineering trial.",
+      "next_action_zh": "一天内用付费 API 跑 10 个 60 秒场景，记录控制成功率、断线计费、延迟和每次成本。",
+      "next_action_en": "Within one day, run ten 60-second scenarios on the paid API and record control success, disconnect billing, latency and per-run cost.",
       "source_ids": [
         "src-393575ee7d83ff0a",
         "src-319d52d61ca2c83a",
-        "src-2e568ee0f46e0cde"
+        "src-2e568ee0f46e0cde",
+        "src-76b3715be670509d",
+        "src-a5aa8d53f4af9590"
       ],
       "project_ids": [
         "genie-4"
@@ -198,6 +205,20 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261027-02-api-evidence",
+          "claim_zh": "Google 的公告与文档确认 Genie 4 API 的付费可用性、价格、地区、时长和能力限制。",
+          "claim_en": "Google’s announcement and documentation confirm paid Genie 4 API access, pricing, regions, duration and capability limits.",
+          "source_ids": [
+            "src-76b3715be670509d",
+            "src-a5aa8d53f4af9590"
+          ],
+          "event_ids": [
+            "ev-20261027-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -226,8 +247,22 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20261027-02-api",
+          "kind": "update",
+          "occurred_at": "2026-11-19T17:00:00Z",
+          "discovered_at": "2026-11-20T17:07:11Z",
+          "summary_zh": "Genie 4 从订阅演示变为可调用的付费 API",
+          "summary_en": "Genie 4 moves from a subscriber demo to a callable paid API",
+          "evidence_ids": [
+            "ev-20261027-02-api-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "late_discovery": true
     },
     {
       "event_id": "ev-20261027-03",

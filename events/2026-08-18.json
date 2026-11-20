@@ -1,6 +1,6 @@
 {
   "date": "2026-08-18",
-  "provenance": "Incremental scan window [2026-08-18T00:00:25Z, 2026-08-19T00:00:17Z]; retrieval overlap from 2026-08-17T21:00:25Z (retrieval only, dedup enforced against index). Cerebras CS-4 announced during SUPERNOVA 2026 keynote (livestream from 22:30Z); Codex 0.148.0 GitHub release timestamped 22:26Z; arXiv 2608.15939 announced in the Tue 18 Aug 2026 digest. Note: parts of the SUPERNOVA program ran past the window end (00:00:17Z) — post-window announcements deferred to next run. | Appended 2026-08-22 run (coverage-gap recovery): ev-20260818-04 (OpenAI 'Pacing model development in an era of cyber-critical capabilities' — announced 8/18, official long-form post mirrored on OpenAI forum 8/20T16:48Z; recovered per the 8/19 daily's stated criterion) and ev-20260818-05 (ZDR reaffirmation + Private Safety Processing preview, official publishedTime 2026-08-18T22:00Z). Appended by the 2026-09-02T00:01:14Z run: adoption/version-line/watch-item updates recorded as update_2026_09_02 keys.",
+  "provenance": "Incremental scan window [2026-08-18T00:00:25Z, 2026-08-19T00:00:17Z]; retrieval overlap from 2026-08-17T21:00:25Z (retrieval only, dedup enforced against index). Cerebras CS-4 announced during SUPERNOVA 2026 keynote (livestream from 22:30Z); Codex 0.148.0 GitHub release timestamped 22:26Z; arXiv 2608.15939 announced in the Tue 18 Aug 2026 digest. Note: parts of the SUPERNOVA program ran past the window end (00:00:17Z) — post-window announcements deferred to next run. | Appended 2026-08-22 run (coverage-gap recovery): ev-20260818-04 (OpenAI 'Pacing model development in an era of cyber-critical capabilities' — announced 8/18, official long-form post mirrored on OpenAI forum 8/20T16:48Z; recovered per the 8/19 daily's stated criterion) and ev-20260818-05 (ZDR reaffirmation + Private Safety Processing preview, official publishedTime 2026-08-18T22:00Z). Appended by the 2026-09-02T00:01:14Z run: adoption/version-line/watch-item updates recorded as update_2026_09_02 keys. Updated by incremental run 2026-11-20T17:07:11Z; window [2026-11-19T17:02:18Z, 2026-11-20T17:07:11Z], overlap from 2026-11-19T14:02:18Z.",
   "events": [
     {
       "event_id": "ev-20260818-01",
@@ -161,8 +161,8 @@
     },
     {
       "event_id": "ev-20260818-02",
-      "title": "Codex 0.170 hardens realtime voice, MCP OAuth and sandbox recovery",
-      "title_zh": "Codex 0.170 加固实时语音、MCP OAuth 与沙箱恢复",
+      "title": "Codex 0.171 makes the workspace and remote execution first-class",
+      "title_zh": "Codex 0.171 将 workspace 与远程执行升级为核心入口",
       "category": "developer-tools",
       "organization": [
         "OpenAI",
@@ -171,7 +171,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-11-18T17:04:38Z",
+      "last_updated_at": "2026-11-20T17:07:11Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [
@@ -193,12 +193,12 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.169.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.170.0"
       ],
-      "summary": "Codex 0.170 adds WebRTC negotiation for realtime voice in the TUI and refreshes authorization headers for OpenTelemetry exporters. It also fixes oversized WebSocket fallback, MCP OAuth credential races, cloud reconnect behavior, Windows replacement and sandbox permissions, and child threads that could lose sandbox restrictions.",
-      "why_it_matters": "Teams using voice, MCP authentication, cloud sessions or delegated child threads should upgrade because the fixes close reliability and permission-propagation gaps. Regress sandbox inheritance and reconnect behavior before broad rollout.",
-      "summary_zh": "Codex 0.170 为 TUI 实时语音加入 WebRTC 协商，并支持刷新 OpenTelemetry exporter 的授权 header。该版还修复超大 WebSocket 请求的 HTTP fallback、MCP OAuth 凭据竞态、云端重连、Windows 替换与沙箱权限，以及子线程丢失沙箱限制的问题。",
-      "summary_en": "Codex 0.170 adds WebRTC negotiation for realtime voice in the TUI and refreshes authorization headers for OpenTelemetry exporters. It also fixes oversized WebSocket fallback, MCP OAuth credential races, cloud reconnect behavior, Windows replacement and sandbox permissions, and child threads that could lose sandbox restrictions.",
-      "why_it_matters_zh": "使用语音、MCP 身份验证、云端会话或委派子线程的团队应升级，因为这些修复补上可靠性与权限传播缺口。全面部署前要回归沙箱继承和重连行为。",
-      "why_it_matters_en": "Teams using voice, MCP authentication, cloud sessions or delegated child threads should upgrade because the fixes close reliability and permission-propagation gaps. Regress sandbox inheritance and reconnect behavior before broad rollout.",
+      "summary": "Codex 0.171 defaults the TUI to a workspace view, adds codex exec --remote and /rc remote control, and expands document, image and subagent transcript handling. It also fixes permission-profile persistence, late completions canceling newer approvals and diff loss.",
+      "why_it_matters": "The release moves local and remote agent work into one persistent workspace while fixing approval and diff state hazards. Existing users can adopt after testing remote control, permissions and concurrent task recovery.",
+      "summary_zh": "Codex 0.171 默认进入 TUI workspace，新增 codex exec --remote 与 /rc 远程控制，并扩展文档、图片和 subagent transcript 的处理。版本同时修复 permission profile 持久化、旧完成事件取消新审批和 diff 丢失。",
+      "summary_en": "Codex 0.171 defaults the TUI to a workspace view, adds codex exec --remote and /rc remote control, and expands document, image and subagent transcript handling. It also fixes permission-profile persistence, late completions canceling newer approvals and diff loss.",
+      "why_it_matters_zh": "这个版本把本地与远程 agent 工作收进同一个持久 workspace，并修复审批与 diff 状态风险。现有用户可在回归远程控制、权限和并发恢复后升级。",
+      "why_it_matters_en": "The release moves local and remote agent work into one persistent workspace while fixing approval and diff state hazards. Existing users can adopt after testing remote control, permissions and concurrent task recovery.",
       "technical_details": {
         "version": "0.148.0 (stable)",
         "session_forking": "codex exec fork; archive/restore from TUI resume picker",
@@ -224,7 +224,7 @@
         "latest_stable": "0.167.2",
         "enterprise_mcp_auth": "eligible Codex grants, dedicated OAuth and confidential clients",
         "remote_shell": "masks credentials in Bash/Zsh snapshots",
-        "reliability": "compaction recovery and thread settings",
+        "reliability": "Fixes permission-profile persistence, late completions canceling newer approvals and lost diffs",
         "published_at": "2026-10-27T20:09:38Z",
         "v0_165_0": "Built-in Vertex AI provider, GPT-6.1 Terra catalog, repository filters and directory grouping, memory v2 default for fresh profiles, external memory import, experimental attached forks and mid-conversation reasoning changes",
         "v0_167_0": "Unread results in the agent command center, cross-backend session switching with draft preservation, local image previews, Vertex AI setup, inline patch review during approvals, serialized network prompts and improved compaction accounting.",
@@ -234,7 +234,11 @@
         "evidence_limit": "No latency or compatibility measurements in release notes.",
         "latest_version": "0.169.0",
         "update_2026_11_13": "Persistent multi-tab side chats, task search, custom providers, SSH device-code onboarding and diagnostic ZIP.",
-        "release_0_170": "WebRTC voice negotiation; refreshed OTel auth headers; identical MCP server names across environments behind experimental support; WebSocket fallback, OAuth race, cloud reconnect, Windows sandbox and child-thread sandbox fixes"
+        "release_0_170": "WebRTC voice negotiation; refreshed OTel auth headers; identical MCP server names across environments behind experimental support; WebSocket fallback, OAuth race, cloud reconnect, Windows sandbox and child-thread sandbox fixes",
+        "stable_version": "0.171.0",
+        "workspace": "TUI workspace is the default and includes documents, images and subagent transcripts",
+        "remote": "codex exec --remote and /rc remote control",
+        "model_catalog": "Adds GPT-6.2 catalog and makes Sol the default"
       },
       "tags": [
         "codex",
@@ -287,7 +291,7 @@
         "企业 MCP 认证": "符合条件的 Codex grants、独立 OAuth 与 confidential clients",
         "远程 shell": "遮蔽 Bash/Zsh 快照中的凭据",
         "安全加固": "macOS 大小写路径、可替换 executable symlink 与权限顺序",
-        "可靠性": "压缩恢复与线程设置",
+        "可靠性": "修复 permission profile 持久化、旧完成事件取消新审批与 diff 丢失",
         "发布时间": "2026-10-27T20:09:38Z",
         "2026-10-28 更新": "内置 Vertex AI provider、GPT-6.1 Terra 模型目录、仓库筛选与目录分组；新 profile 默认启用 memory v2，支持外部记忆导入，并实验性加入附着式线程分叉与对话中途调整推理强度",
         "0.167.0 更新": "Agent command center 标记未读结果；切换后端保留草稿；支持本地图片预览、Vertex AI 设置、审批时展开 patch、串行网络提示与更完整的压缩 token 估算。",
@@ -297,7 +301,11 @@
         "证据限制": "release notes 没有时延或兼容性测量。",
         "最新版本": "0.169.0",
         "2026-11-13 更新": "持久化多标签 side chat、任务搜索、自定义 provider、SSH device-code 登录与诊断 ZIP。",
-        "0.170 变更": "WebRTC 语音协商；OTel 授权 header 刷新；实验性支持不同环境同名 MCP server；修复 WebSocket fallback、OAuth 竞态、云端重连、Windows 沙箱和子线程沙箱继承"
+        "0.170 变更": "WebRTC 语音协商；OTel 授权 header 刷新；实验性支持不同环境同名 MCP server；修复 WebSocket fallback、OAuth 竞态、云端重连、Windows 沙箱和子线程沙箱继承",
+        "稳定版本": "0.171.0",
+        "workspace": "TUI 默认进入 workspace，支持文档、图片与 subagent transcript",
+        "远程": "新增 codex exec --remote 与 /rc remote control",
+        "模型目录": "加入 GPT-6.2 catalog，并默认使用 Sol"
       },
       "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
       "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
@@ -325,7 +333,8 @@
         "src-917e81f74d6a6479",
         "src-6cfc942e5da70ee0",
         "src-a0c08c461d827e1c",
-        "src-ad076a99b8923baf"
+        "src-ad076a99b8923baf",
+        "src-1e02ab9c34ce90d4"
       ],
       "project_ids": [
         "codex"
@@ -505,6 +514,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-171-evidence",
+          "claim_zh": "官方 release note 确认 workspace、remote execution 与状态修复。",
+          "claim_en": "The official release note confirms workspace, remote execution and state fixes.",
+          "source_ids": [
+            "src-1e02ab9c34ce90d4"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -675,11 +697,24 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-171",
+          "kind": "update",
+          "occurred_at": "2026-11-20T00:44:47Z",
+          "discovered_at": "2026-11-20T17:07:11Z",
+          "summary_zh": "0.171 默认启用 workspace，并加入远程执行与控制",
+          "summary_en": "0.171 defaults to the workspace and adds remote execution and control",
+          "evidence_ids": [
+            "ev-20260818-02-codex-0-171-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "Codex 0.158.0: MCP OAuth client secrets, authenticated exec-server WebSockets, default terminal-input approval and cross-platform sandbox fixes; stays ADOPT",
-      "next_action_zh": "升级并回归子线程沙箱继承、MCP OAuth 并发登录、云端重连和 Windows 权限恢复。",
-      "next_action_en": "Upgrade and regress child-thread sandbox inheritance, concurrent MCP OAuth, cloud reconnect and Windows permission recovery.",
+      "next_action_zh": "升级并回归 remote control、permission profile、并发审批和 diff 保留。",
+      "next_action_en": "Upgrade and regress remote control, permission profiles, concurrent approvals and diff preservation.",
       "short_label_zh": "Codex 0.170",
       "short_label_en": "Codex 0.170",
       "last_reviewed_at": "2026-10-16T15:56:07Z",

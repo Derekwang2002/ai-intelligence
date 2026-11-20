@@ -1,6 +1,6 @@
 {
   "date": "2026-08-25",
-  "provenance": "Captured by 2026-08-28T00:31:03Z run (scan window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z]). GLM-5.3-Flash verified via Hugging Face API (repo createdAt 2026-08-25T06:45:05Z, MIT license, model card) plus z.ai official blog; Gemini CLI a2a-server verified via GitHub release tag v0.57.0 (published 2026-08-25T18:37:14Z, packages/a2a-server in tag tree) and npm registry (@google/gemini-cli-a2a-server@0.57.0). Appended by 2026-08-30T00:00:20Z run: ev-20260825-03 (OpenAI Jalapeño first results, Hot Chips 2026-08-25) recovered as a coverage gap from the same window. Appended by the 2026-09-02T00:01:14Z run: adoption/version-line/watch-item updates recorded as update_2026_09_02 keys.",
+  "provenance": "Captured by 2026-08-28T00:31:03Z run (scan window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z]). GLM-5.3-Flash verified via Hugging Face API (repo createdAt 2026-08-25T06:45:05Z, MIT license, model card) plus z.ai official blog; Gemini CLI a2a-server verified via GitHub release tag v0.57.0 (published 2026-08-25T18:37:14Z, packages/a2a-server in tag tree) and npm registry (@google/gemini-cli-a2a-server@0.57.0). Appended by 2026-08-30T00:00:20Z run: ev-20260825-03 (OpenAI Jalapeño first results, Hot Chips 2026-08-25) recovered as a coverage gap from the same window. Appended by the 2026-09-02T00:01:14Z run: adoption/version-line/watch-item updates recorded as update_2026_09_02 keys. Updated by incremental run 2026-11-20T17:07:11Z; window [2026-11-19T17:02:18Z, 2026-11-20T17:07:11Z], overlap from 2026-11-19T14:02:18Z. Updated by recall audit in run 2026-11-20T17:07:11Z.",
   "events": [
     {
       "event_id": "ev-20260825-01",
@@ -127,15 +127,15 @@
     },
     {
       "event_id": "ev-20260825-02",
-      "title": "Gemini CLI 0.68 hardens extensions, files and fallbacks",
-      "title_zh": "Gemini CLI 0.68 加固扩展、文件与模型回退",
+      "title": "Gemini CLI 0.70 tightens MCP and shell permission checks",
+      "title_zh": "Gemini CLI 0.70 收紧 MCP 与 shell 权限检查",
       "category": "developer-tools",
       "organization": [
         "Google"
       ],
       "published_at": "2026-08-25T18:37:14Z",
       "first_seen_at": "2026-08-28T00:31:03Z",
-      "last_updated_at": "2026-11-11T17:04:24Z",
+      "last_updated_at": "2026-11-20T17:07:11Z",
       "source_type": "github",
       "primary_source": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.57.0",
       "secondary_sources": [
@@ -149,12 +149,12 @@
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.66.0",
         "https://github.com/google-gemini/gemini-cli/releases/tag/v0.68.0"
       ],
-      "summary": "Gemini CLI 0.68 adds extension validation and fixes symlink canonicalization, secure file handling and model fallback preservation. It also improves rootless Podman support and rate-limit feedback. These are release-note claims; this run did not reproduce the behavior.",
-      "why_it_matters": "For teams running the CLI in containers or loading extensions, the release changes the regression surface around paths, credentials and fallback models. Existing users should canary the upgrade against their trust boundaries.",
-      "summary_zh": "Gemini CLI 0.68 新增扩展校验，并修复 symlink 规范化、安全文件处理与模型回退保留。它还改善 rootless Podman 支持和限流反馈。这些来自 release notes，本轮未独立复现行为。",
-      "why_it_matters_zh": "对在容器中运行 CLI 或加载扩展的团队来说，这版改变了路径、凭据和回退模型的回归面。现有用户应围绕自己的信任边界做 canary。",
-      "summary_en": "Gemini CLI 0.68 adds extension validation and fixes symlink canonicalization, secure file handling and model fallback preservation. It also improves rootless Podman support and rate-limit feedback. These are release-note claims; this run did not reproduce the behavior.",
-      "why_it_matters_en": "For teams running the CLI in containers or loading extensions, the release changes the regression surface around paths, credentials and fallback models. Existing users should canary the upgrade against their trust boundaries.",
+      "summary": "Gemini CLI 0.70 skips system MCP servers whose command files have insecure permissions and keeps unresolved shell expansions in ASK_USER. It also makes argument-pattern checks linear-time and fixes worktree, authentication-restart, Unicode preview and long-request behavior.",
+      "why_it_matters": "The release reduces silent privilege expansion at MCP and shell boundaries but changes security-sensitive behavior. Teams should trial it against their managed servers and command policies before broad rollout.",
+      "summary_zh": "Gemini CLI 0.70 会跳过命令文件权限不安全的系统 MCP server，并让无法解析的 shell expansion 保持 ASK_USER。版本还把参数模式检查改为线性时间，并修复 worktree、认证重启、Unicode 预览和长请求行为。",
+      "why_it_matters_zh": "这个版本减少 MCP 与 shell 边界上的静默提权，但也改变安全敏感行为。团队应先用自有 managed server 和命令策略小范围验证。",
+      "summary_en": "Gemini CLI 0.70 skips system MCP servers whose command files have insecure permissions and keeps unresolved shell expansions in ASK_USER. It also makes argument-pattern checks linear-time and fixes worktree, authentication-restart, Unicode preview and long-request behavior.",
+      "why_it_matters_en": "The release reduces silent privilege expansion at MCP and shell boundaries but changes security-sensitive behavior. Teams should trial it against their managed servers and command policies before broad rollout.",
       "technical_details": {
         "release": "v0.57.0 stable published 2026-08-25T18:37:14Z; packages/a2a-server present in the v0.57.0 tag tree (verified via git tree API)",
         "npm": "@google/gemini-cli-a2a-server@0.57.0 published; package scoped under @google",
@@ -175,7 +175,12 @@
         "v0_66_0": "Opt-in private-network MCP OAuth, non-interactive safe Git credentials and SSH, hardened SKILL.md parsing, preserved Git configuration, streamed HTTP decoding fix",
         "update_2026_11_04": "Container sandboxes bridge the IDE companion over exec stdio; atomic writes respect read-only files and hard links; non-interactive cancellation stops tool execution; permission requests include MCP metadata; model discovery command added.",
         "time_basis_2026_11_04": "GitHub release published 2026-11-04T20:27:11Z.",
-        "update_2026_11_11": "Extension validation, rootless Podman, symlink canonicalization, secure file handling and model fallback preservation"
+        "update_2026_11_11": "Extension validation, rootless Podman, symlink canonicalization, secure file handling and model fallback preservation",
+        "stable_version": "0.70.0",
+        "mcp": "Skips system MCP servers with insecure command-file permissions",
+        "shell": "Unresolved shell expansions remain ASK_USER; matching uses the top-level command",
+        "policy_engine": "argsPattern matching uses re2js for linear-time evaluation",
+        "reliability": "Fixes worktree and auth restart state, Unicode previews and long request timeouts"
       },
       "technical_details_zh": {
         "发布": "v0.57.0 stable 于 2026-08-25T18:37:14Z 发布；v0.57.0 tag 树中包含 packages/a2a-server（经 git tree API 核实）",
@@ -196,7 +201,12 @@
         "2026-10-28 更新": "可选的私网 MCP OAuth、无交互 safe Git 凭据与 SSH、SKILL.md 解析加固、保留 Git 配置，以及流式 HTTP 解码修复",
         "2026-11-04 更新": "容器沙箱通过 exec stdio 连接 IDE companion；原子写入尊重只读文件与 hard link；无交互取消会停止工具；权限请求携带 MCP 元数据；新增模型发现命令。",
         "时间依据_2026_11_04": "GitHub release 于 2026-11-04T20:27:11Z 发布。",
-        "2026-11-11 更新": "扩展校验、rootless Podman、symlink 规范化、安全文件处理与模型回退保留"
+        "2026-11-11 更新": "扩展校验、rootless Podman、symlink 规范化、安全文件处理与模型回退保留",
+        "稳定版本": "0.70.0",
+        "MCP": "系统 MCP server 的命令文件权限不安全时跳过加载",
+        "shell": "无法解析的 shell expansion 保持 ASK_USER；按顶层命令匹配",
+        "策略引擎": "argsPattern 使用 re2js，保证线性时间匹配",
+        "可靠性": "修复 worktree 与认证重启状态、Unicode 预览和长请求超时"
       },
       "tags": [
         "gemini-cli",
@@ -229,7 +239,8 @@
         "src-e9d62472858a055c",
         "src-451b839194f1d8cc",
         "src-8d603faf83b5cd35",
-        "src-4d5c082f37b5c574"
+        "src-4d5c082f37b5c574",
+        "src-b4928e127abfbfc2"
       ],
       "project_ids": [
         "gemini-cli"
@@ -343,6 +354,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260825-02-gemini-cli-0-70-evidence",
+          "claim_zh": "官方 release note 确认 MCP、shell 策略和可靠性变化。",
+          "claim_en": "The official release note confirms MCP, shell-policy and reliability changes.",
+          "source_ids": [
+            "src-b4928e127abfbfc2"
+          ],
+          "event_ids": [
+            "ev-20260825-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source"
         }
       ],
       "changes": [
@@ -448,18 +472,31 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260825-02-gemini-cli-0-70",
+          "kind": "update",
+          "occurred_at": "2026-11-19T21:08:05Z",
+          "discovered_at": "2026-11-20T17:07:11Z",
+          "summary_zh": "0.70 收紧 MCP 文件权限与 shell expansion 审批",
+          "summary_en": "0.70 tightens MCP file permissions and shell-expansion approval",
+          "evidence_ids": [
+            "ev-20260825-02-gemini-cli-0-70-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "short_label_zh": "Gemini CLI 0.68",
       "short_label_en": "Gemini CLI 0.68",
-      "next_action_zh": "升级前用 canary 回归扩展校验、rootless Podman、symlink 边界、凭据文件和回退模型选择。",
-      "next_action_en": "Canary extension validation, rootless Podman, symlink boundaries, credential files and fallback model selection before rollout.",
+      "next_action_zh": "一天内回归系统 MCP 文件权限、shell expansion、argsPattern 与认证重启，再决定推广。",
+      "next_action_en": "Within one day, regress system MCP file permissions, shell expansion, argsPattern and auth restart before broader rollout.",
       "last_reviewed_at": "2026-10-21T15:58:23Z"
     },
     {
       "event_id": "ev-20260825-03",
-      "title": "OpenAI's Jalapeño chip posts first benchmark wins over Nvidia systems",
-      "title_zh": "OpenAI 自研推理芯片 Jalapeño 首批实测领先 Nvidia 同类",
+      "title": "OpenAI reports broader model-assisted chip-design gains",
+      "title_zh": "OpenAI 报告模型辅助芯片设计的更多结果",
       "category": "infrastructure",
       "organization": [
         "OpenAI",
@@ -468,26 +505,30 @@
       "published_at": "2026-08-25T00:00:00Z",
       "published_at_note": "Presented at Hot Chips 2026 on 2026-08-25; OpenAI news listing and TechCrunch coverage dated 2026-08-25 (page metadata shows a 2026-08-28 update timestamp). Coverage-gap recovery: inside the previous window [2026-08-24T00:00:29Z, 2026-08-28T00:31:03Z] but not captured then; first seen 2026-08-30 run.",
       "first_seen_at": "2026-08-30T00:00:20Z",
-      "last_updated_at": "2026-08-30T00:00:20Z",
+      "last_updated_at": "2026-11-20T17:07:11Z",
       "source_type": "official_blog",
       "primary_source": "https://openai.com/index/jalapeno-first-results/",
       "secondary_sources": [
         "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
-        "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/"
+        "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/",
+        "https://openai.com/index/advancing-chip-design-with-our-models/"
       ],
-      "summary": "Jalapeño is OpenAI's first custom inference chip, designed with Broadcom (unveiled 2026-06-24, TSMC 3nm, roughly a nine-month design cycle with AI assistance). At Hot Chips on 2026-08-25 OpenAI presented first results on the public SemiAnalysis InferenceX benchmark: against Nvidia GB200 and GB300 systems, Jalapeño delivered 1.5-1.9x more AI work per watt at peak and 1.7-3.6x lower end-to-end latency, with 2.1-4.1x higher performance for interactive workloads (GPT-OSS on GB200; DeepSeek R1 and Kimi K2.5 on GB300 as comparison points). The chip is rated at 700W and sustains at most 550W in production profiles. AI-generated kernels beat human experts by 1.5-1.8x on selected blocks of the stack. First deployment is planned for the end of 2026 in very small volumes, with second- and third-generation parts on the roadmap; Nvidia GPUs remain the bulk of OpenAI's fleet.",
-      "why_it_matters": "These are vendor-presented numbers, but on a public, independently defined benchmark rather than an in-house suite — a step more verifiable than most chip launches. If the per-watt lead holds at deployment, OpenAI's own inference cost trajectory decouples from Nvidia's pricing, and first-generation custom ASICs for LLM serving will have beaten current flagship GPUs on efficiency. Infra teams should watch end-of-2026 deployment and second-gen scaling before drawing architecture conclusions.",
-      "summary_zh": "Jalapeño 是 OpenAI 的第一颗自研推理芯片，与 Broadcom 合作设计（6 月 24 日首发，TSMC 3nm，借助 AI 约九个月完成设计）。8 月 25 日在 Hot Chips 上，OpenAI 给出公开的 SemiAnalysis InferenceX 基准首批结果：对比 Nvidia GB200 与 GB300 系统，Jalapeño 峰值每瓦多完成 1.5-1.9 倍的 AI 工作，端到端延迟低 1.7-3.6 倍，交互式负载性能高 2.1-4.1 倍（对比负载：GB200 跑 GPT-OSS，GB300 跑 DeepSeek R1 与 Kimi K2.5）。芯片额定 700W，生产档持续功耗不超过 550W。AI 生成的 kernel 在部分模块上比人类专家快 1.5-1.8 倍。计划 2026 年底以很小批量首次部署，后续有第二代、第三代路线图；Nvidia GPU 仍是 OpenAI 算力的主体。",
-      "why_it_matters_zh": "数字由厂商发布，但跑在公开、独立定义的基准上，比大多数芯片发布更可验证。如果每瓦优势在部署后保持，OpenAI 自有推理成本曲线将与 Nvidia 定价脱钩，也意味着第一代 LLM 推理专用 ASIC 已经在能效上超过当前旗舰 GPU。基础设施团队应等年底部署与第二代扩展数据出来，再下架构结论。",
-      "summary_en": "Jalapeño is OpenAI's first custom inference chip, designed with Broadcom (unveiled 2026-06-24, TSMC 3nm, roughly a nine-month design cycle with AI assistance). At Hot Chips on 2026-08-25 OpenAI presented first results on the public SemiAnalysis InferenceX benchmark: against Nvidia GB200 and GB300 systems, Jalapeño delivered 1.5-1.9x more AI work per watt at peak and 1.7-3.6x lower end-to-end latency, with 2.1-4.1x higher performance for interactive workloads (GPT-OSS on GB200; DeepSeek R1 and Kimi K2.5 on GB300 as comparison points). The chip is rated at 700W and sustains at most 550W in production profiles. AI-generated kernels beat human experts by 1.5-1.8x on selected blocks of the stack. First deployment is planned for the end of 2026 in very small volumes, with second- and third-generation parts on the roadmap; Nvidia GPUs remain the bulk of OpenAI's fleet.",
-      "why_it_matters_en": "These are vendor-presented numbers, but on a public, independently defined benchmark rather than an in-house suite — a step more verifiable than most chip launches. If the per-watt lead holds at deployment, OpenAI's own inference cost trajectory decouples from Nvidia's pricing, and first-generation custom ASICs for LLM serving will have beaten current flagship GPUs on efficiency. Infra teams should watch end-of-2026 deployment and second-gen scaling before drawing architecture conclusions.",
+      "summary": "OpenAI reported that frontier models improved compute blocks used in its Jalapeño inference chip and were applied to two open-source processor designs. The company also described work with AMD on third-party hardware and a Synopsys integration for EDA workflows. Results remain publisher-reported and do not establish a generally available chip-design product.",
+      "why_it_matters": "The update broadens evidence from one internal chip to open designs and an EDA partner, suggesting model-assisted hardware engineering is becoming a workflow rather than a one-off demo. Availability, independent reproduction and deployment economics remain unclear.",
+      "summary_zh": "OpenAI 报告称，前沿模型改进了 Jalapeño 推理芯片所用的计算模块，并应用到两个开源处理器设计。公司还披露了与 AMD 在第三方硬件上的合作，以及与 Synopsys 的 EDA 工作流集成。结果仍由发布方报告，也不代表通用芯片设计产品已经开放。",
+      "why_it_matters_zh": "这次更新把证据从一颗内部芯片扩展到开源设计和 EDA 合作方，说明模型辅助硬件工程正在形成工作流，而不只是一次演示。可用性、独立复现与部署经济性仍不清楚。",
+      "summary_en": "OpenAI reported that frontier models improved compute blocks used in its Jalapeño inference chip and were applied to two open-source processor designs. The company also described work with AMD on third-party hardware and a Synopsys integration for EDA workflows. Results remain publisher-reported and do not establish a generally available chip-design product.",
+      "why_it_matters_en": "The update broadens evidence from one internal chip to open designs and an EDA partner, suggesting model-assisted hardware engineering is becoming a workflow rather than a one-off demo. Availability, independent reproduction and deployment economics remain unclear.",
       "technical_details": {
         "benchmark": "SemiAnalysis InferenceX (public methodology); comparison systems Nvidia GB200 (GPT-OSS) and GB300 (DeepSeek R1, Kimi K2.5)",
         "results": "1.5-1.9x more AI work per watt at peak; 1.7-3.6x lower end-to-end latency; 2.1-4.1x higher performance on interactive workloads",
         "power": "rated 700W; sustained <=550W in production profiles",
         "design": "with Broadcom; unveiled 2026-06-24; TSMC 3nm; ~9-month design cycle with AI assistance; AI-generated kernels 1.5-1.8x faster than human experts on selected blocks",
         "deployment": "end of 2026 in very small volumes; Gen2/Gen3 roadmap; Nvidia GPUs remain the bulk of OpenAI capacity",
-        "venue": "Hot Chips 2026, 2026-08-25"
+        "venue": "Hot Chips 2026, 2026-08-25",
+        "new_scope": "Jalapeño compute blocks, two open-source processor designs, AMD hardware work and planned Synopsys EDA integration",
+        "evidence_limit": "Publisher results; no general product availability or independent reproduction established",
+        "time_basis": "Official post dated 2026-11-18 with date precision only; recovered by recall audit outside overlap"
       },
       "technical_details_zh": {
         "基准": "SemiAnalysis InferenceX（方法学公开）；对照系统为 Nvidia GB200（跑 GPT-OSS）与 GB300（跑 DeepSeek R1、Kimi K2.5）",
@@ -495,7 +536,10 @@
         "功耗": "额定 700W；生产档持续 <=550W",
         "设计": "与 Broadcom 合作；2026-06-24 首发；TSMC 3nm；借 AI 约 9 个月完成设计；AI 生成 kernel 在选定模块上比人类专家快 1.5-1.8 倍",
         "部署": "2026 年底很小批量首 deploy；有 Gen2/Gen3 路线图；OpenAI 算力主体仍是 Nvidia GPU",
-        "场合": "Hot Chips 2026，2026-08-25"
+        "场合": "Hot Chips 2026，2026-08-25",
+        "新增范围": "Jalapeño 计算模块、两个开源处理器设计、AMD 硬件合作与计划中的 Synopsys EDA 集成",
+        "证据限制": "发布方结果；没有通用产品可用性或独立复现",
+        "时间依据": "官方文章日期为 2026-11-18，只有日期精度；本轮由召回审计在 overlap 外补录"
       },
       "tags": [
         "inference-chip",
@@ -515,7 +559,8 @@
       "source_ids": [
         "src-b9406ae170bd9133",
         "src-855db08b75f6ecde",
-        "src-0c7fd51720556fba"
+        "src-0c7fd51720556fba",
+        "src-e88bc937214729b3"
       ],
       "project_ids": [],
       "scenario_ids": [
@@ -538,6 +583,19 @@
           ],
           "verification": "historical",
           "relation": "background"
+        },
+        {
+          "id": "ev-20260825-03-chip-design-evidence",
+          "claim_zh": "OpenAI 文章确认 Jalapeño、开源处理器、AMD 与 Synopsys 的模型辅助设计范围。",
+          "claim_en": "OpenAI’s article confirms model-assisted work across Jalapeño, open processors, AMD and Synopsys.",
+          "source_ids": [
+            "src-e88bc937214729b3"
+          ],
+          "event_ids": [
+            "ev-20260825-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; results publisher-reported"
         }
       ],
       "changes": [
@@ -552,8 +610,25 @@
             "ev-20260825-03-evidence-summary"
           ],
           "historical": true
+        },
+        {
+          "id": "ev-20260825-03-chip-design",
+          "kind": "update",
+          "occurred_at": "2026-11-18",
+          "discovered_at": "2026-11-20T17:07:11Z",
+          "summary_zh": "OpenAI 将模型辅助芯片设计从 Jalapeño 扩展到开源处理器与 EDA 合作",
+          "summary_en": "OpenAI expands model-assisted chip design from Jalapeño to open processors and an EDA partnership",
+          "evidence_ids": [
+            "ev-20260825-03-chip-design-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "short_label_zh": "OpenAI 芯片设计",
+      "short_label_en": "OpenAI chip design",
+      "next_action_zh": "等待开放设计评测、Synopsys 集成范围与独立复现后，再评估用于真实 EDA 流程。",
+      "next_action_en": "Wait for open-design evaluations, Synopsys integration scope and independent reproduction before using it in real EDA workflows."
     }
   ]
 }
