@@ -364,8 +364,8 @@
     },
     {
       "event_id": "ev-20260814-04",
-      "title": "Claude Code 2.1.329 exposes hook origins and safer review failures",
-      "title_zh": "Claude Code 2.1.329 补强 hook 来源与代码审查失败边界",
+      "title": "Claude Code 2.1.330 hardens long sessions and concurrent worktrees",
+      "title_zh": "Claude Code 2.1.330 加固长会话与并发 worktree",
       "category": "developer-tools",
       "organization": [
         "Anthropic"
@@ -373,7 +373,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-11-20T17:07:11Z",
+      "last_updated_at": "2026-11-21T16:59:42Z",
       "source_type": "release_notes",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -427,14 +427,15 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.323",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.326",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.327"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.327",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.330"
       ],
-      "summary": "Claude Code 2.1.329 shows hook origins in trust dialogs, reports managed-hook and MCP JSON-RPC failures, and makes /code-review stop when GitHub PR diff retrieval fails. It also expands task visibility for scheduled and forked work and fixes several memory, sandbox and policy-recovery paths.",
-      "why_it_matters": "Teams using managed hooks and automated review get clearer provenance and fail-closed behavior when review input is unavailable. Existing deployments should still regression-test organization policy, hooks and long-running task recovery.",
-      "summary_zh": "Claude Code 2.1.329 在信任对话框中显示 hook 来源，暴露 managed hook 与 MCP JSON-RPC 错误，并让 /code-review 在无法取得 PR diff 时停止。它还扩展了定时与 fork 任务的可见性，修复多项 memory、sandbox 和策略恢复问题。",
-      "summary_en": "Claude Code 2.1.329 shows hook origins in trust dialogs, reports managed-hook and MCP JSON-RPC failures, and makes /code-review stop when GitHub PR diff retrieval fails. It also expands task visibility for scheduled and forked work and fixes several memory, sandbox and policy-recovery paths.",
-      "why_it_matters_zh": "使用托管 hook 与自动代码审查的团队能看到更清楚的来源，并在审查输入缺失时安全停止。现有部署仍应回归组织策略、hook 与长任务恢复。",
-      "why_it_matters_en": "Teams using managed hooks and automated review get clearer provenance and fail-closed behavior when review input is unavailable. Existing deployments should still regression-test organization policy, hooks and long-running task recovery.",
+      "summary": "Claude Code 2.1.330 adds Enterprise Admin Console sign-in, self-hosted-runner metrics and a built-in chart mod. It fixes long-conversation compaction stalls, WebFetch hangs, deletion of worktrees used by another session, concurrent settings loss, MCP schema failures and subagent lifecycle errors. New recurring tasks can run for up to 30 days.",
+      "why_it_matters": "Teams running long-lived or concurrent coding agents get safer worktree ownership and better recovery, but organization sign-in, new built-in tools and the longer scheduling horizon widen the policy surface that needs regression testing.",
+      "summary_zh": "Claude Code 2.1.330 加入 Enterprise Admin Console 登录、自托管 runner 指标和内置图表 mod。它修复长会话压缩卡顿、WebFetch 挂起、误删其他会话正在使用的 worktree、并发设置丢失、MCP schema 失败和 subagent 生命周期问题。新建周期任务最长可运行 30 天。",
+      "summary_en": "Claude Code 2.1.330 adds Enterprise Admin Console sign-in, self-hosted-runner metrics and a built-in chart mod. It fixes long-conversation compaction stalls, WebFetch hangs, deletion of worktrees used by another session, concurrent settings loss, MCP schema failures and subagent lifecycle errors. New recurring tasks can run for up to 30 days.",
+      "why_it_matters_zh": "运行长时程或并发 coding agent 的团队获得更安全的 worktree 所有权与恢复路径，但组织登录、内置工具和更长调度周期也扩大了需要回归的策略面。",
+      "why_it_matters_en": "Teams running long-lived or concurrent coding agents get safer worktree ownership and better recovery, but organization sign-in, new built-in tools and the longer scheduling horizon widen the policy surface that needs regression testing.",
       "technical_details": {
         "forking": "default on; inherits conversation + prompt cache",
         "messaging": "SendMessage via @-mentions across live sessions; no history/files/permissions exchange",
@@ -495,7 +496,9 @@
         "update_2026_11_14": "Compound-command and allow-rule checks, restart-persistent deny rules, worktree and public-artifact protections, helper-process token stripping, and normal permission flow for sandboxed Bash.",
         "time_basis_2026_11_14": "GitHub release published 2026-11-13T20:40:01Z.",
         "release_2_1_327": "GitHub App install confirmation; MCP JSON via stdin outside sessions; expanded /status diagnostics; managed-settings checksum hint; Remote Control worktree cleanup preserves live gitignored files",
-        "stable_version": "2.1.329",
+        "stable_version": "2.1.330",
+        "update_2026_11_21": "2.1.330 adds Enterprise Admin Console sign-in and runner metrics; fixes compaction, WebFetch, concurrent worktree/settings, MCP schema and subagent lifecycle failures; new recurring tasks can run for 30 days.",
+        "time_basis_2026_11_21": "GitHub release published 2026-11-20T22:32:56Z.",
         "trust": "Trust dialog shows hook origin; managed-hook load failures emit warnings",
         "review": "/code-review <pr> uses gh pr diff and stops when the diff is unavailable",
         "tasks": "/tasks includes scheduled tasks and forks",
@@ -575,7 +578,9 @@
         "2026-11-14 更新": "修复复合命令和 allow 规则审批、重启后 deny、worktree 与公开 artifact 边界；辅助进程移除登录 token；沙箱内 Bash 默认改走正常审批。",
         "2026-11-14 时间依据": "GitHub release 发布于 2026-11-13T20:40:01Z。",
         "2.1.327 变更": "GitHub App 安装确认；会话外通过 stdin 提交 MCP JSON；扩展 /status 诊断；托管设置 checksum 提示；Remote Control 清理保留运行会话的 gitignore 文件",
-        "稳定版本": "2.1.329",
+        "稳定版本": "2.1.330",
+        "2026-11-21 更新": "2.1.330 加入 Enterprise Admin Console 登录和 runner 指标；修复压缩、WebFetch、并发 worktree 与设置、MCP schema 和 subagent 生命周期问题；新建周期任务最长可运行 30 天。",
+        "2026-11-21 时间依据": "GitHub release 时间为 2026-11-20T22:32:56Z。",
         "信任": "信任对话框显示 hook 来源；managed hook 加载失败会告警",
         "代码审查": "/code-review <pr> 使用 gh pr diff，无法取得 diff 时停止",
         "任务": "/tasks 显示定时任务和 fork",
@@ -651,7 +656,8 @@
         "src-e58a3ce1f17ad846",
         "src-4e2b4f1543d14800",
         "src-8f7a055a1b360233",
-        "src-f3d370a5121afbf2"
+        "src-f3d370a5121afbf2",
+        "src-fdc4cffb6fa79465"
       ],
       "project_ids": [
         "claude-code"
@@ -1133,6 +1139,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260814-04-2-1-330-evidence",
+          "claim_zh": "官方 release note 确认 2.1.330 的组织登录、长会话、worktree、MCP 与调度变化。",
+          "claim_en": "The official release note confirms organization sign-in, long-session, worktree, MCP and scheduling changes in 2.1.330.",
+          "source_ids": [
+            "src-fdc4cffb6fa79465"
+          ],
+          "event_ids": [
+            "ev-20260814-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; runtime behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -1601,6 +1620,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-330",
+          "kind": "update",
+          "occurred_at": "2026-11-20T22:32:56Z",
+          "discovered_at": "2026-11-21T16:59:42Z",
+          "summary_zh": "2.1.330 加固长会话、并发 worktree、MCP 与周期任务。",
+          "summary_en": "Version 2.1.330 hardens long sessions, concurrent worktrees, MCP and recurring tasks.",
+          "evidence_ids": [
+            "ev-20260814-04-2-1-330-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1610,11 +1642,11 @@
           "src-10bdc73097cfd238"
         ]
       },
-      "next_action_zh": "升级并回归托管 hook 来源、PR diff 失败、MCP 错误显示和长任务恢复。",
-      "next_action_en": "Upgrade and regress managed-hook provenance, PR-diff failure, MCP error visibility and long-task recovery.",
-      "short_label_zh": "Claude Code 2.1.327",
-      "short_label_en": "Claude Code 2.1.327",
-      "last_reviewed_at": "2026-11-14T16:59:13Z"
+      "next_action_zh": "升级并回归并发 worktree、长会话压缩、MCP schema、组织登录与 30 天周期任务。",
+      "next_action_en": "Upgrade and regress concurrent worktrees, long-session compaction, MCP schemas, organization sign-in and 30-day recurring tasks.",
+      "short_label_zh": "Claude Code 2.1.330",
+      "short_label_en": "Claude Code 2.1.330",
+      "last_reviewed_at": "2026-11-21T16:59:42Z"
     },
     {
       "event_id": "ev-20260814-05",

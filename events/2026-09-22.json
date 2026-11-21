@@ -500,8 +500,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.28 unifies its agent loop and managed worktrees",
-      "title_zh": "Qwen Code 0.28 统一 agent loop 与托管 worktree",
+      "title": "Qwen Code 0.28.3 expands managed channels and durable recovery",
+      "title_zh": "Qwen Code 0.28.3 扩展托管渠道与持久恢复",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -509,7 +509,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-11-17T16:59:58Z",
+      "last_updated_at": "2026-11-21T16:59:42Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
       "secondary_sources": [
@@ -536,14 +536,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v1.0.0-preview.1",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.3",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.4",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.0"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.0",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.3"
       ],
-      "summary": "Qwen Code 0.28 makes one shared agent loop the default across headless mode, TUI and subagents. It adds external-workspace execution, managed worktree sessions and cross-session messages. The release also hardens transcripts against time-of-check/time-of-use changes and fixes protected-workspace handling.",
-      "why_it_matters": "The shared loop reduces behavior drift between interactive and automated paths, while managed worktrees make parallel coding safer to test. Teams should still validate isolation, message ordering and recovery on their own repositories.",
-      "summary_zh": "Qwen Code 0.28 让 headless、TUI 与 subagent 默认共用同一套 agent loop。它加入外部 workspace 执行、托管 worktree 会话与跨会话消息。该版还防止 transcript 在检查后被替换，并修复受保护 workspace 的处理。",
-      "summary_en": "Qwen Code 0.28 makes one shared agent loop the default across headless mode, TUI and subagents. It adds external-workspace execution, managed worktree sessions and cross-session messages. The release also hardens transcripts against time-of-check/time-of-use changes and fixes protected-workspace handling.",
-      "why_it_matters_zh": "统一 loop 能减少交互模式与自动化路径之间的行为差异，托管 worktree 也让并行 coding 更容易安全试用。团队仍需在自己的仓库验证隔离、消息顺序与恢复。",
-      "why_it_matters_en": "The shared loop reduces behavior drift between interactive and automated paths, while managed worktrees make parallel coding safer to test. Teams should still validate isolation, message ordering and recovery on their own repositories.",
+      "summary": "Qwen Code 0.28.3 adds GitHub, generic webhook, experimental WeCom and Microsoft Teams managed channels. It introduces evidence-based daemon chat settlement, identity-bound ledgers, idle-session suspension and restart recovery, while tightening SSE admission, async-hook delivery and managed worktree recovery. The release expands both automation reach and the number of credentials and replay paths that need testing.",
+      "why_it_matters": "Teams can connect managed coding sessions to more collaboration systems, but every channel adds authentication, duplicate-delivery and replay boundaries. Durable evidence and identity-bound ledgers are useful controls that still need end-to-end testing.",
+      "summary_zh": "Qwen Code 0.28.3 新增 GitHub、通用 webhook、实验性 WeCom 与 Microsoft Teams 托管渠道。它加入基于执行证据的 daemon chat 结算、绑定注册身份的消息账本、闲置会话挂起和重启恢复，并收紧 SSE 准入、异步 hook 交付与托管 worktree 恢复。自动化覆盖面扩大，也带来更多凭据和重放路径。",
+      "summary_en": "Qwen Code 0.28.3 adds GitHub, generic webhook, experimental WeCom and Microsoft Teams managed channels. It introduces evidence-based daemon chat settlement, identity-bound ledgers, idle-session suspension and restart recovery, while tightening SSE admission, async-hook delivery and managed worktree recovery. The release expands both automation reach and the number of credentials and replay paths that need testing.",
+      "why_it_matters_zh": "团队能把托管 coding session 接入更多协作系统，但每个渠道都会新增认证、重复投递与重放边界。持久证据和绑定身份的账本是有价值的控制，仍需端到端验证。",
+      "why_it_matters_en": "Teams can connect managed coding sessions to more collaboration systems, but every channel adds authentication, duplicate-delivery and replay boundaries. Durable evidence and identity-bound ledgers are useful controls that still need end-to-end testing.",
       "technical_details": {
         "latest_version": "1.0.0-preview.1",
         "availability": "public GitHub release",
@@ -573,7 +574,9 @@
         "update_2026_11_13": "Shared event-bus agent loop, ACP background runs, manual PR binding, durable /loop wakeups and recovery fixes.",
         "update_2026_11_15": "Temporary local-directory grants, authenticated managed web terminal, Feishu and WeCom webhooks, explicit Auto Mode authorization, memory controls and timeout review.",
         "time_basis_2026_11_15": "GitHub release published 2026-11-15T07:04:40Z, inside the strict scan window.",
-        "update_2026_11_17": "v0.28.0 uses one shared agent loop across headless, TUI and subagents, adds external-workspace execution, managed worktree sessions and cross-session messaging, and hardens transcript and protected-workspace handling."
+        "update_2026_11_17": "v0.28.0 uses one shared agent loop across headless, TUI and subagents, adds external-workspace execution, managed worktree sessions and cross-session messaging, and hardens transcript and protected-workspace handling.",
+        "update_2026_11_21": "v0.28.3 adds managed channels, evidence-settled chat lifecycle, identity-bound ledgers, idle suspension, restart recovery and bounded SSE admission.",
+        "time_basis_2026_11_21": "GitHub stable release published 2026-11-21T01:45:48Z."
       },
       "technical_details_zh": {
         "最新版本": "1.0.0-preview.1",
@@ -603,7 +606,9 @@
         "2026-11-13 更新": "共享 event-bus agent loop、ACP 后台运行、手动 PR 绑定、持久 /loop 唤醒与恢复修复。",
         "2026-11-15 更新": "临时本地目录授权、带认证的托管 Web Terminal、飞书与企业微信 webhook、Auto Mode 显式授权、记忆控制与超时复核。",
         "2026-11-15 时间依据": "GitHub release 发布于 2026-11-15T07:04:40Z，落在严格扫描窗口内。",
-        "2026-11-17 更新": "v0.28.0 让 headless、TUI 与 subagent 共用同一套 agent loop，加入外部 workspace 执行、托管 worktree 会话与跨会话消息，并加固 transcript 和受保护 workspace。"
+        "2026-11-17 更新": "v0.28.0 让 headless、TUI 与 subagent 共用同一套 agent loop，加入外部 workspace 执行、托管 worktree 会话与跨会话消息，并加固 transcript 和受保护 workspace。",
+        "2026-11-21 更新": "v0.28.3 加入托管渠道、基于证据的 chat 生命周期、绑定身份的账本、闲置挂起、重启恢复与受限 SSE 准入。",
+        "2026-11-21 时间依据": "GitHub 稳定版时间为 2026-11-21T01:45:48Z。"
       },
       "tags": [
         "qwen-code",
@@ -651,7 +656,8 @@
         "src-35d012f137ad20ab",
         "src-74c2266880cc04f0",
         "src-d1ff7879d9ac567f",
-        "src-b3134f5be035b05d"
+        "src-b3134f5be035b05d",
+        "src-e106c9a8dcca09d3"
       ],
       "project_ids": [
         "qwen-code"
@@ -975,6 +981,19 @@
           ],
           "relation": "support",
           "verification": "verified official release"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-28-3-evidence",
+          "claim_zh": "官方 release 确认托管渠道、证据结算、身份账本、挂起与恢复变化。",
+          "claim_en": "The official release confirms managed-channel, evidence-settlement, identity-ledger, suspension and recovery changes.",
+          "source_ids": [
+            "src-e106c9a8dcca09d3"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; runtime behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -1286,6 +1305,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-28-3",
+          "kind": "update",
+          "occurred_at": "2026-11-21T01:45:48Z",
+          "discovered_at": "2026-11-21T16:59:42Z",
+          "summary_zh": "0.28.3 扩展托管渠道，并把消息结算与恢复绑定到持久证据。",
+          "summary_en": "Version 0.28.3 expands managed channels and binds message settlement and recovery to durable evidence.",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-28-3-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1295,10 +1327,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.28",
-      "short_label_en": "Qwen Code 0.28",
-      "next_action_zh": "一天内在测试仓库并行运行 3 个托管 worktree 会话，检查隔离、消息顺序、失败恢复和 transcript 完整性。",
-      "next_action_en": "Within one day, run three managed-worktree sessions in parallel and check isolation, message ordering, recovery and transcript integrity."
+      "short_label_zh": "Qwen Code 0.28.3",
+      "short_label_en": "Qwen Code 0.28.3",
+      "next_action_zh": "一天内用隔离凭据回放 GitHub、webhook 与挂起恢复，检查重复投递、身份串线、SSE 上限和审计记录。",
+      "next_action_en": "Within one day, replay GitHub, webhook and suspend-resume flows with isolated credentials; check duplicate delivery, identity crossover, SSE limits and audit records."
     },
     {
       "event_id": "ev-20260922-05",

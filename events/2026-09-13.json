@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.108.13 LTS fixes Claude Code cache inflation",
-      "title_zh": "LiteLLM 1.108.13 LTS 修复 Claude Code 缓存膨胀",
+      "title": "LiteLLM 1.108.14 restores Anthropic tool search on follow-up turns",
+      "title_zh": "LiteLLM 1.108.14 恢复 Anthropic 后续轮工具搜索",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-20T17:07:11Z",
+      "last_updated_at": "2026-11-21T16:59:42Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -40,10 +40,10 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.11",
         "https://github.com/BerriAI/litellm/releases/tag/v1.110.0"
       ],
-      "summary": "LiteLLM 1.108.13 LTS fixes a rotating Claude Code billing header that broke prompt caching and inflated token use. It also adds GPT-6.2 cache handling and fixes delayed JWT issuer mapping, Unix-socket Postgres connections and a cross-userless-key /key/info read path.",
+      "summary": "LiteLLM 1.108.14 LTS restores Anthropic tool search on /v1/responses follow-up turns, preventing 400 errors caused by the missing tool declaration. It also adds OpenAI input_json content parts to the Decisions endpoint. The patch is small but affects multi-turn tool workflows and structured decision payloads.",
       "why_it_matters": "Proxy operators can reduce avoidable token cost and close a key-information isolation flaw in one LTS update. Because caching and authorization affect billing and access control, canary replay is required before adoption.",
-      "summary_zh": "LiteLLM 1.108.13 LTS 修复 Claude Code 轮换 billing header 导致前缀缓存失效和 token 膨胀的问题。版本还加入 GPT-6.2 缓存处理，并修复 JWT issuer 映射延迟、Unix socket Postgres 连接和 /key/info 跨 userless key 读取。",
-      "summary_en": "LiteLLM 1.108.13 LTS fixes a rotating Claude Code billing header that broke prompt caching and inflated token use. It also adds GPT-6.2 cache handling and fixes delayed JWT issuer mapping, Unix-socket Postgres connections and a cross-userless-key /key/info read path.",
+      "summary_zh": "LiteLLM 1.108.14 LTS 恢复 Anthropic 在 /v1/responses 后续轮中的工具搜索声明，避免因工具消失导致 400 错误。它还让 Decisions endpoint 支持 OpenAI input_json 内容片段。补丁不大，但会影响多轮工具调用和结构化决策载荷。",
+      "summary_en": "LiteLLM 1.108.14 LTS restores Anthropic tool search on /v1/responses follow-up turns, preventing 400 errors caused by the missing tool declaration. It also adds OpenAI input_json content parts to the Decisions endpoint. The patch is small but affects multi-turn tool workflows and structured decision payloads.",
       "why_it_matters_zh": "代理网关团队可以在一次 LTS 更新中减少无谓 token 成本，并关闭 key 信息隔离问题。缓存与授权都会影响账单和访问控制，上线前需要 canary 回放。",
       "why_it_matters_en": "Proxy operators can reduce avoidable token cost and close a key-information isolation flaw in one LTS update. Because caching and authorization affect billing and access control, canary replay is required before adoption.",
       "technical_details": {
@@ -90,7 +90,9 @@
         "time_basis_2026_11_15": "GitHub release published 2026-11-14T22:00:02Z, inside the strict scan window.",
         "release_1_108_11": "LTS: preserve Bedrock guarded_text in system/assistant messages; stop upstream Invoke streams after /v1/messages abort; repair null or truncated Gemini tool arguments and Azure DeepSeek reasoning effort",
         "release_1_110_0": "Mainline release with provider, routing and compatibility changes; evaluated separately from LTS adoption",
-        "stable_version": "1.108.13 LTS",
+        "stable_version": "1.108.14 LTS",
+        "update_2026_11_21": "Restores Anthropic tool search on /v1/responses follow-up turns and adds OpenAI input_json content parts to /v1/decisions.",
+        "time_basis_2026_11_21": "GitHub release published 2026-11-20T23:43:31Z.",
         "cache": "Fixes rotating Claude Code billing header that breaks caching and inflates tokens; adds GPT-6.2 cache handling",
         "authorization": "Fixes /key/info reading another userless key",
         "identity": "Fixes delayed JWT issuer mapping",
@@ -140,7 +142,9 @@
         "2026-11-15 时间依据": "GitHub release 发布于 2026-11-14T22:00:02Z，落在严格扫描窗口内。",
         "1.108.11 LTS": "保留 Bedrock system/assistant 的 guarded_text；/v1/messages 中止后停止上游 Invoke 流；修复 Gemini 空值或截断工具参数与 Azure DeepSeek 推理强度",
         "1.110.0 主线": "包含 provider、路由与兼容性变更；与 LTS 采用判断分开评估",
-        "稳定版本": "1.108.13 LTS",
+        "稳定版本": "1.108.14 LTS",
+        "2026-11-21 更新": "恢复 Anthropic /v1/responses 后续轮的工具搜索，并让 /v1/decisions 支持 OpenAI input_json 内容片段。",
+        "2026-11-21 时间依据": "GitHub release 时间为 2026-11-20T23:43:31Z。",
         "缓存": "修复 Claude Code 轮换 billing header 导致的缓存失效与 token 膨胀；加入 GPT-6.2 缓存处理",
         "授权": "修复 /key/info 读取其他 userless key",
         "身份": "修复 JWT issuer 映射延迟",
@@ -187,7 +191,8 @@
         "src-fe2d022b775c8438",
         "src-958f53f88ea0035e",
         "src-593d0602a81065fa",
-        "src-cd8becb9246e0efd"
+        "src-cd8becb9246e0efd",
+        "src-557fc3f08806f02d"
       ],
       "project_ids": [
         "mcp",
@@ -448,6 +453,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-14-evidence",
+          "claim_zh": "官方 LTS release 确认 Anthropic 后续轮工具搜索与 Decisions input_json 修复。",
+          "claim_en": "The official LTS release confirms the Anthropic follow-up tool-search fix and Decisions input_json support.",
+          "source_ids": [
+            "src-557fc3f08806f02d"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; runtime behavior not independently replayed"
         }
       ],
       "changes": [
@@ -695,13 +713,26 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-14",
+          "kind": "update",
+          "occurred_at": "2026-11-20T23:43:31Z",
+          "discovered_at": "2026-11-21T16:59:42Z",
+          "summary_zh": "1.108.14 LTS 恢复 Anthropic 后续轮工具搜索，并支持 Decisions input_json。",
+          "summary_en": "Version 1.108.14 LTS restores Anthropic follow-up tool search and adds Decisions input_json support.",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-108-14-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "一天内 canary 回放 Claude Code 缓存命中、跨 key 读取、JWT 映射与 Postgres 连接。",
-      "next_action_en": "Within one day, canary-replay Claude Code cache hits, cross-key reads, JWT mapping and Postgres connections.",
-      "short_label_zh": "LiteLLM 1.108.11 LTS",
-      "short_label_en": "LiteLLM 1.108.11 LTS"
+      "next_action_zh": "一天内 canary 回放 Anthropic 多轮工具搜索和 Decisions input_json，确认无 400、丢工具或结构漂移。",
+      "next_action_en": "Within one day, canary-replay Anthropic multi-turn tool search and Decisions input_json, checking for 400s, missing tools and schema drift.",
+      "short_label_zh": "LiteLLM 1.108.14",
+      "short_label_en": "LiteLLM 1.108.14"
     }
   ]
 }

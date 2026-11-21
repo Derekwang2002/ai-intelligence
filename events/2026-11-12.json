@@ -13,16 +13,17 @@
       ],
       "published_at": "2026-11-12T18:00:00Z",
       "first_seen_at": "2026-11-13T17:04:57Z",
-      "last_updated_at": "2026-11-13T17:04:57Z",
+      "last_updated_at": "2026-11-21T16:59:42Z",
       "source_type": "official_announcement",
       "primary_source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
       "secondary_sources": [
         "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/",
-        "https://aistudio.google.com/docs/pricing"
+        "https://aistudio.google.com/docs/pricing",
+        "https://llmleaderboard.com/models/gemini-4-hydrogen"
       ],
-      "summary": "Google released Gemini 4 Hydrogen across AI Studio and the Gemini API as gemini-4-hydrogen, with a free tier, a 1M-token context window and paid pricing of $1.50 per million input tokens and $7.50 per million output tokens. It is also rolling out in Gemini products and Antigravity. Benchmark gains are Google-reported, not independent results.",
-      "summary_en": "Google released Gemini 4 Hydrogen across AI Studio and the Gemini API as gemini-4-hydrogen, with a free tier, a 1M-token context window and paid pricing of $1.50 per million input tokens and $7.50 per million output tokens. It is also rolling out in Gemini products and Antigravity. Benchmark gains are Google-reported, not independent results.",
-      "summary_zh": "Google 已在 AI Studio 和 Gemini API 开放 Gemini 4 Hydrogen，模型名为 gemini-4-hydrogen，提供免费额度、100 万 token 上下文；付费输入与输出分别为每百万 token 1.5 美元和 7.5 美元。它也在 Gemini 产品和 Antigravity 中逐步开放。性能数据来自 Google 自报，尚非独立结果。",
+      "summary": "Google released Gemini 4 Hydrogen across AI Studio and the Gemini API as gemini-4-hydrogen, with a free tier, a 1M-token context window and paid pricing of $1.50 per million input tokens and $7.50 per million output tokens. Independent records now put MKA Climb WSR at 49.52%, below Google's 53.4% self-run result, while output speed was measured near 198 tokens per second. These measurements narrow the evidence gap but do not replace workload-specific evaluation.",
+      "summary_en": "Google released Gemini 4 Hydrogen across AI Studio and the Gemini API as gemini-4-hydrogen, with a free tier, a 1M-token context window and paid pricing of $1.50 per million input tokens and $7.50 per million output tokens. Independent records now put MKA Climb WSR at 49.52%, below Google's 53.4% self-run result, while output speed was measured near 198 tokens per second. These measurements narrow the evidence gap but do not replace workload-specific evaluation.",
+      "summary_zh": "Google 已在 AI Studio 和 Gemini API 开放 Gemini 4 Hydrogen，模型名为 gemini-4-hydrogen，提供免费额度、100 万 token 上下文；付费输入与输出分别为每百万 token 1.5 美元和 7.5 美元。独立记录给出的 MKA Climb WSR 为 49.52%，低于 Google 自测的 53.4%；输出速度约 198 token/s。证据缺口缩小，但仍不能替代真实工作负载评测。",
       "why_it_matters": "For model-routing and coding-agent teams, this is an immediately callable price-performance option rather than a preview. The practical decision depends on task-level quality, long-context cost and quota behavior under real workloads.",
       "why_it_matters_en": "For model-routing and coding-agent teams, this is an immediately callable price-performance option rather than a preview. The practical decision depends on task-level quality, long-context cost and quota behavior under real workloads.",
       "why_it_matters_zh": "对模型路由与编程 agent 团队来说，这是可立即调用的价格—性能选项，而不是预告。是否值得切换，仍取决于真实任务质量、长上下文成本与额度表现。",
@@ -32,7 +33,8 @@
         "context_window": "1M tokens",
         "paid_pricing": "$1.50/M input tokens; $7.50/M output tokens",
         "cache_pricing": "$0.075/M cached input tokens",
-        "evidence_limit": "benchmarks are reported by Google; no independent evaluation in this run",
+        "independent_evidence": "MKA Climb WSR 49.52% at xhigh versus Google's 53.4% self-run result; output speed about 198.2 tokens/s",
+        "evidence_limit": "independent records cover selected benchmarks and do not establish reliability, quotas or application-level quality",
         "time_basis": "official feed timestamp 2026-11-12T18:00:00Z"
       },
       "technical_details_zh": {
@@ -41,7 +43,8 @@
         "上下文窗口": "100 万 token",
         "付费价格": "输入 $1.50/M token；输出 $7.50/M token",
         "缓存价格": "$0.075/M cached input token",
-        "证据限制": "benchmark 来自 Google 自报；本轮没有独立评测",
+        "独立证据": "xhigh 下 MKA Climb WSR 为 49.52%，低于 Google 自测的 53.4%；输出速度约 198.2 token/s",
+        "证据限制": "独立记录只覆盖部分 benchmark，不能说明可靠性、限流或应用级质量",
         "时间依据": "官方 feed 时间 2026-11-12T18:00:00Z"
       },
       "tags": [
@@ -66,7 +69,8 @@
       "source_ids": [
         "src-d7c21c501eb23f12",
         "src-7ed04b33e97e89aa",
-        "src-bf01503b703369c5"
+        "src-bf01503b703369c5",
+        "src-800f76489e1980ce"
       ],
       "project_ids": [
         "gemini-4-hydrogen"
@@ -88,6 +92,15 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20261112-01-independent-evidence",
+          "claim_zh": "独立记录显示 MKA 分数略低于 Google 自测，并给出约 198 token/s 的输出速度。",
+          "claim_en": "Independent records show a slightly lower MKA score than Google's self-run result and output speed near 198 tokens/s.",
+          "source_ids": ["src-800f76489e1980ce"],
+          "event_ids": ["ev-20261112-01"],
+          "relation": "counter",
+          "verification": "independent benchmark record; scope limited to selected tests"
         }
       ],
       "changes": [
@@ -101,6 +114,17 @@
           "evidence_ids": [
             "ev-20261112-01-evidence"
           ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261112-01-independent-eval",
+          "kind": "update",
+          "occurred_at": "2026-11-19",
+          "discovered_at": "2026-11-21T16:59:42Z",
+          "summary_zh": "独立记录给出略低于厂商自测的 MKA 分数和接近 198 token/s 的输出速度。",
+          "summary_en": "Independent records show a slightly lower MKA score than the vendor run and output speed near 198 tokens/s.",
+          "evidence_ids": ["ev-20261112-01-independent-evidence"],
           "historical": false,
           "importance": "major"
         }
