@@ -500,8 +500,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.28.3 expands managed channels and durable recovery",
-      "title_zh": "Qwen Code 0.28.3 扩展托管渠道与持久恢复",
+      "title": "Qwen Code 0.28.4 tightens local runtime state and recovery",
+      "title_zh": "Qwen Code 0.28.4 收紧本地状态与恢复",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -509,7 +509,7 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-11-21T16:59:42Z",
+      "last_updated_at": "2026-11-22T16:57:37Z",
       "source_type": "release_notes",
       "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.26.5",
       "secondary_sources": [
@@ -537,14 +537,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.3",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.4",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.0",
-        "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.3"
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.3",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.4"
       ],
-      "summary": "Qwen Code 0.28.3 adds GitHub, generic webhook, experimental WeCom and Microsoft Teams managed channels. It introduces evidence-based daemon chat settlement, identity-bound ledgers, idle-session suspension and restart recovery, while tightening SSE admission, async-hook delivery and managed worktree recovery. The release expands both automation reach and the number of credentials and replay paths that need testing.",
-      "why_it_matters": "Teams can connect managed coding sessions to more collaboration systems, but every channel adds authentication, duplicate-delivery and replay boundaries. Durable evidence and identity-bound ledgers are useful controls that still need end-to-end testing.",
-      "summary_zh": "Qwen Code 0.28.3 新增 GitHub、通用 webhook、实验性 WeCom 与 Microsoft Teams 托管渠道。它加入基于执行证据的 daemon chat 结算、绑定注册身份的消息账本、闲置会话挂起和重启恢复，并收紧 SSE 准入、异步 hook 交付与托管 worktree 恢复。自动化覆盖面扩大，也带来更多凭据和重放路径。",
-      "summary_en": "Qwen Code 0.28.3 adds GitHub, generic webhook, experimental WeCom and Microsoft Teams managed channels. It introduces evidence-based daemon chat settlement, identity-bound ledgers, idle-session suspension and restart recovery, while tightening SSE admission, async-hook delivery and managed worktree recovery. The release expands both automation reach and the number of credentials and replay paths that need testing.",
-      "why_it_matters_zh": "团队能把托管 coding session 接入更多协作系统，但每个渠道都会新增认证、重复投递与重放边界。持久证据和绑定身份的账本是有价值的控制，仍需端到端验证。",
-      "why_it_matters_en": "Teams can connect managed coding sessions to more collaboration systems, but every channel adds authentication, duplicate-delivery and replay boundaries. Durable evidence and identity-bound ledgers are useful controls that still need end-to-end testing.",
+      "summary": "Qwen Code 0.28.4 adds a local Web Shell artifact library, owner-private runtime state directories and protected persisted tool-output recovery. It also strips terminal control characters and bidirectional-text overrides from Autofix evidence and tunes managed-agent lifecycle handling. The stable patch improves inspectability and local state hygiene without proving end-to-end recovery correctness.",
+      "why_it_matters": "For teams running long-lived coding agents, private state creation, evidence sanitization and recoverable artifacts reduce several concrete local and hosted-runtime risks. The release still needs fault-injection tests because release notes do not establish duplicate-free recovery.",
+      "summary_zh": "Qwen Code 0.28.4 为本地 Web Shell 增加 artifact library，把 runtime 状态目录改为进程启动时创建并限制为仅属主可访问，同时保护持久化工具输出的恢复。Autofix 证据会移除终端控制字符和双向文本覆盖符，托管 agent 生命周期也有修补。这个稳定补丁改善了可检查性与本地状态卫生，但不能证明端到端恢复已经可靠。",
+      "summary_en": "Qwen Code 0.28.4 adds a local Web Shell artifact library, owner-private runtime state directories and protected persisted tool-output recovery. It also strips terminal control characters and bidirectional-text overrides from Autofix evidence and tunes managed-agent lifecycle handling. The stable patch improves inspectability and local state hygiene without proving end-to-end recovery correctness.",
+      "why_it_matters_zh": "对运行长时程 coding agent 的团队来说，私有状态目录、证据清洗和可恢复 artifact 都是在降低具体风险。发布说明不能证明恢复过程不会重复执行，仍需故障注入测试。",
+      "why_it_matters_en": "For teams running long-lived coding agents, private state creation, evidence sanitization and recoverable artifacts reduce several concrete local and hosted-runtime risks. The release still needs fault-injection tests because release notes do not establish duplicate-free recovery.",
       "technical_details": {
         "latest_version": "1.0.0-preview.1",
         "availability": "public GitHub release",
@@ -576,7 +577,10 @@
         "time_basis_2026_11_15": "GitHub release published 2026-11-15T07:04:40Z, inside the strict scan window.",
         "update_2026_11_17": "v0.28.0 uses one shared agent loop across headless, TUI and subagents, adds external-workspace execution, managed worktree sessions and cross-session messaging, and hardens transcript and protected-workspace handling.",
         "update_2026_11_21": "v0.28.3 adds managed channels, evidence-settled chat lifecycle, identity-bound ledgers, idle suspension, restart recovery and bounded SSE admission.",
-        "time_basis_2026_11_21": "GitHub stable release published 2026-11-21T01:45:48Z."
+        "time_basis_2026_11_21": "GitHub stable release published 2026-11-21T01:45:48Z.",
+        "stable_version": "0.28.4",
+        "update_2026_11_23": "Local Web Shell artifact library; owner-private runtime state directory; protected persisted tool-output recovery; Autofix terminal-control and bidi sanitization; managed-agent lifecycle fixes",
+        "time_basis_2026_11_23": "GitHub release published 2026-11-22T12:04:21Z inside the strict scan window."
       },
       "technical_details_zh": {
         "最新版本": "1.0.0-preview.1",
@@ -608,7 +612,10 @@
         "2026-11-15 时间依据": "GitHub release 发布于 2026-11-15T07:04:40Z，落在严格扫描窗口内。",
         "2026-11-17 更新": "v0.28.0 让 headless、TUI 与 subagent 共用同一套 agent loop，加入外部 workspace 执行、托管 worktree 会话与跨会话消息，并加固 transcript 和受保护 workspace。",
         "2026-11-21 更新": "v0.28.3 加入托管渠道、基于证据的 chat 生命周期、绑定身份的账本、闲置挂起、重启恢复与受限 SSE 准入。",
-        "2026-11-21 时间依据": "GitHub 稳定版时间为 2026-11-21T01:45:48Z。"
+        "2026-11-21 时间依据": "GitHub 稳定版时间为 2026-11-21T01:45:48Z。",
+        "稳定版本": "0.28.4",
+        "2026-11-23 更新": "本地 Web Shell artifact library；仅属主可访问的 runtime 状态目录；持久化工具输出恢复保护；Autofix 终端控制字符与双向文本覆盖符清洗；托管 agent 生命周期修复",
+        "2026-11-23 时间依据": "GitHub release 发布于 2026-11-22T12:04:21Z，位于严格扫描窗口内。"
       },
       "tags": [
         "qwen-code",
@@ -657,7 +664,8 @@
         "src-74c2266880cc04f0",
         "src-d1ff7879d9ac567f",
         "src-b3134f5be035b05d",
-        "src-e106c9a8dcca09d3"
+        "src-e106c9a8dcca09d3",
+        "src-51c01b0a9ef73c74"
       ],
       "project_ids": [
         "qwen-code"
@@ -994,6 +1002,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; runtime behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-28-4-evidence",
+          "claim_zh": "官方稳定版说明确认本地 artifact 浏览、私有状态目录、工具输出恢复保护与 Autofix 证据清洗。",
+          "claim_en": "The official stable release confirms local artifact browsing, private state directories, protected tool-output recovery and Autofix evidence sanitization.",
+          "source_ids": [
+            "src-51c01b0a9ef73c74"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; runtime behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -1318,6 +1339,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-28-4",
+          "kind": "update",
+          "occurred_at": "2026-11-22T12:04:21Z",
+          "discovered_at": "2026-11-22T16:57:37Z",
+          "summary_zh": "0.28.4 收紧本地状态、恢复与 Autofix 证据处理。",
+          "summary_en": "Version 0.28.4 tightens local state, recovery and Autofix evidence handling.",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-28-4-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1327,10 +1361,10 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.28.3",
-      "short_label_en": "Qwen Code 0.28.3",
-      "next_action_zh": "一天内用隔离凭据回放 GitHub、webhook 与挂起恢复，检查重复投递、身份串线、SSE 上限和审计记录。",
-      "next_action_en": "Within one day, replay GitHub, webhook and suspend-resume flows with isolated credentials; check duplicate delivery, identity crossover, SSE limits and audit records."
+      "short_label_zh": "Qwen Code 0.28.4",
+      "short_label_en": "Qwen Code 0.28.4",
+      "next_action_zh": "一天内用崩溃注入测试 artifact 恢复、状态目录权限、重复工具执行和恶意日志字符清洗。",
+      "next_action_en": "Within one day, inject crashes and test artifact recovery, state-directory permissions, duplicate tool execution and malicious log sanitization."
     },
     {
       "event_id": "ev-20260922-05",

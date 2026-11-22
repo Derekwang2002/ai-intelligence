@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-22",
+  "provenance": "Incremental run 2026-11-22T16:57:37Z; OpenRouter response cross-checked against Dragos research.",
+  "events": [
+    {
+      "event_id": "ev-20261122-01",
+      "title": "OpenRouter removes providers after prompt-data handling incidents",
+      "title_zh": "OpenRouter 因 prompt 数据处理事件下线上游供应商",
+      "category": "agent-security",
+      "organization": [
+        "OpenRouter",
+        "Dragos"
+      ],
+      "published_at": "2026-11-22T00:00:00Z",
+      "first_seen_at": "2026-11-22T16:57:37Z",
+      "last_updated_at": "2026-11-22T16:57:37Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers",
+      "secondary_sources": [
+        "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens"
+      ],
+      "summary": "OpenRouter off-boarded three inference providers, removed 125 endpoints from Zero Data Retention eligibility and notified potentially affected customers after Dragos canary research found prompt-data handling failures. OpenRouter says its own systems were not breached. Dragos attributes evidence to upstream providers and hidden routing hops, but the public material does not identify every affected provider or request path.",
+      "summary_en": "OpenRouter off-boarded three inference providers, removed 125 endpoints from Zero Data Retention eligibility and notified potentially affected customers after Dragos canary research found prompt-data handling failures. OpenRouter says its own systems were not breached. Dragos attributes evidence to upstream providers and hidden routing hops, but the public material does not identify every affected provider or request path.",
+      "summary_zh": "Dragos 的 canary 研究发现 prompt 数据处理失效后，OpenRouter 下线三家推理供应商、取消 125 个 endpoint 的 Zero Data Retention 资格，并通知可能受影响的客户。OpenRouter 称自身系统没有被入侵。Dragos 将证据指向上游供应商和隐藏路由层，但公开材料没有列出所有受影响供应商或请求路径。",
+      "why_it_matters": "Teams using model routers cannot treat a router-level privacy label as proof about every upstream hop. Provider pinning, secret minimization, canary prompts and contractual retention checks need to be part of the architecture, especially for agents that place credentials or proprietary context in prompts.",
+      "why_it_matters_en": "Teams using model routers cannot treat a router-level privacy label as proof about every upstream hop. Provider pinning, secret minimization, canary prompts and contractual retention checks need to be part of the architecture, especially for agents that place credentials or proprietary context in prompts.",
+      "why_it_matters_zh": "对使用模型路由的团队来说，这意味着路由层的隐私标签不能自动证明每个上游 hop 都遵守同一承诺。尤其当 agent 会把凭据或专有上下文放进 prompt 时，供应商固定、最小化秘密、canary prompt 和合同留存核对都应进入架构。",
+      "technical_details": {
+        "openrouter_action": "Three providers off-boarded; 125 endpoints removed from Zero Data Retention eligibility; potentially affected customers notified",
+        "openrouter_boundary": "OpenRouter states that its own systems were not breached or accessed without authorization",
+        "dragos_method": "Unique canary secrets embedded in prompts and monitored for later access",
+        "dragos_scope": "Dragos reports roughly 2 million prompts observed from July through November and evidence involving three providers",
+        "attribution_limit": "A triggered canary proves exposure but can be insufficient to identify every hidden routing hop; not all affected providers are public",
+        "time_basis": "OpenRouter exposes 2026-11-22T00:00:00Z; Dragos published its supporting research on 2026-11-19."
+      },
+      "technical_details_zh": {
+        "OpenRouter 处置": "下线三家供应商；取消 125 个 endpoint 的 Zero Data Retention 资格；通知可能受影响的客户",
+        "OpenRouter 边界": "OpenRouter 称自身系统没有被入侵或遭未授权访问",
+        "Dragos 方法": "在 prompt 中放入唯一 canary secret，并监测后续是否被访问",
+        "Dragos 范围": "Dragos 称 7 月至 11 月观察约 200 万条 prompt，并发现涉及三家供应商的证据",
+        "归属限制": "canary 被触发能证明数据暴露，但未必能识别所有隐藏路由层；公开材料未列出全部受影响供应商",
+        "时间依据": "OpenRouter 页面提供 2026-11-22T00:00:00Z；Dragos 支撑研究发布于 2026-11-19。"
+      },
+      "tags": [
+        "agent-security",
+        "inference-routing",
+        "zero-data-retention",
+        "supply-chain",
+        "prompt-privacy"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 5,
+      "recommendation": "WATCH",
+      "event_fingerprint": "openrouter-provider-data-processing-incidents",
+      "short_label_zh": "OpenRouter 数据事件",
+      "short_label_en": "OpenRouter incidents",
+      "next_action_zh": "在供应商重新取得可核验的 ZDR 资格前固定可信路由，移除 prompt 中的长期凭据，并用 canary 测试上游留存。",
+      "next_action_en": "Pin trusted routes until providers regain verifiable ZDR eligibility, remove durable credentials from prompts, and test upstream retention with canaries.",
+      "source_ids": [
+        "src-26c5ca669b141704",
+        "src-ff772f090165aaae"
+      ],
+      "project_ids": [
+        "openrouter-provider-security"
+      ],
+      "scenario_ids": [
+        "agents",
+        "enterprise"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261122-01-evidence-response",
+          "claim_zh": "OpenRouter 公告确认下线三家供应商、移除 125 个 ZDR endpoint、通知客户，并明确自身系统未被入侵。",
+          "claim_en": "OpenRouter confirms three provider removals, 125 ZDR endpoint removals, customer notices, and no breach of OpenRouter systems.",
+          "source_ids": [
+            "src-26c5ca669b141704"
+          ],
+          "event_ids": [
+            "ev-20261122-01"
+          ],
+          "relation": "support",
+          "verification": "verified official remediation and scope statement"
+        },
+        {
+          "id": "ev-20261122-01-evidence-dragos",
+          "claim_zh": "Dragos 公开 canary 方法和上游数据暴露证据，但并未公开所有供应商与路由归属。",
+          "claim_en": "Dragos publishes the canary method and upstream exposure evidence, while not disclosing every provider and routing attribution.",
+          "source_ids": [
+            "src-ff772f090165aaae"
+          ],
+          "event_ids": [
+            "ev-20261122-01"
+          ],
+          "relation": "support",
+          "verification": "independent security-research evidence with attribution limits"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261122-01-response",
+          "kind": "new",
+          "occurred_at": "2026-11-22T00:00:00Z",
+          "discovered_at": "2026-11-22T16:57:37Z",
+          "summary_zh": "OpenRouter 对上游 prompt 数据处理事件采取下线、取消 ZDR 资格和客户通知措施。",
+          "summary_en": "OpenRouter responds to upstream prompt-data incidents with provider removals, ZDR revocation and customer notices.",
+          "evidence_ids": [
+            "ev-20261122-01-evidence-response",
+            "ev-20261122-01-evidence-dragos"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}

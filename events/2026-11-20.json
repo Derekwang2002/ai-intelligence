@@ -104,7 +104,9 @@
       "title": "OpenAI reports stronger defenses against adversarial distillation",
       "title_zh": "OpenAI 公布对抗式蒸馏防护进展",
       "category": "agent-security",
-      "organization": ["OpenAI"],
+      "organization": [
+        "OpenAI"
+      ],
       "published_at": "2026-11-20T10:00:00Z",
       "first_seen_at": "2026-11-21T16:59:42Z",
       "last_updated_at": "2026-11-21T16:59:42Z",
@@ -131,7 +133,12 @@
         "证据限制": "OpenAI 自测；没有公开评测集或独立复现",
         "时间依据": "OpenAI RSS 时间为 2026-11-20T10:00:00Z；在上轮 checkpoint 后发现，按 late discovery 补录"
       },
-      "tags": ["model-security", "distillation", "reasoning", "API-abuse"],
+      "tags": [
+        "model-security",
+        "distillation",
+        "reasoning",
+        "API-abuse"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 2,
@@ -144,38 +151,56 @@
       "short_label_en": "Distillation defense",
       "next_action_zh": "等待公开评测方法或第三方红队复现，再据此调整模型提取防护与封禁阈值。",
       "next_action_en": "Wait for a public evaluation method or third-party red-team reproduction before changing extraction defenses or enforcement thresholds.",
-      "source_ids": ["src-5a5ba5d784f0202e"],
-      "project_ids": ["openai-distillation-defense"],
-      "scenario_ids": ["models"],
+      "source_ids": [
+        "src-5a5ba5d784f0202e"
+      ],
+      "project_ids": [
+        "openai-distillation-defense"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
       "evidence_stage": "frontier",
       "late_discovery": true,
-      "evidence": [{
-        "id": "ev-20261120-02-evidence-report",
-        "claim_zh": "OpenAI 公布分层蒸馏防护及内部自适应评测结果。",
-        "claim_en": "OpenAI reports layered distillation defenses and an internal adaptive evaluation.",
-        "source_ids": ["src-5a5ba5d784f0202e"],
-        "event_ids": ["ev-20261120-02"],
-        "relation": "support",
-        "verification": "verified-primary-source; publisher-run evaluation not independently reproduced"
-      }],
-      "changes": [{
-        "id": "ev-20261120-02-report",
-        "kind": "new",
-        "occurred_at": "2026-11-20T10:00:00Z",
-        "discovered_at": "2026-11-21T16:59:42Z",
-        "summary_zh": "OpenAI 公布针对未授权蒸馏的分层防护和内部评测。",
-        "summary_en": "OpenAI reports layered defenses and internal evaluation against unauthorized distillation.",
-        "evidence_ids": ["ev-20261120-02-evidence-report"],
-        "historical": false,
-        "importance": "major"
-      }]
+      "evidence": [
+        {
+          "id": "ev-20261120-02-evidence-report",
+          "claim_zh": "OpenAI 公布分层蒸馏防护及内部自适应评测结果。",
+          "claim_en": "OpenAI reports layered distillation defenses and an internal adaptive evaluation.",
+          "source_ids": [
+            "src-5a5ba5d784f0202e"
+          ],
+          "event_ids": [
+            "ev-20261120-02"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; publisher-run evaluation not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-02-report",
+          "kind": "new",
+          "occurred_at": "2026-11-20T10:00:00Z",
+          "discovered_at": "2026-11-21T16:59:42Z",
+          "summary_zh": "OpenAI 公布针对未授权蒸馏的分层防护和内部评测。",
+          "summary_en": "OpenAI reports layered defenses and internal evaluation against unauthorized distillation.",
+          "evidence_ids": [
+            "ev-20261120-02-evidence-report"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "event_id": "ev-20261120-03",
       "title": "OpenAI releases MedChemBench for medicinal-chemistry reasoning",
       "title_zh": "OpenAI 发布药物化学推理评测 MedChemBench",
       "category": "research",
-      "organization": ["OpenAI"],
+      "organization": [
+        "OpenAI"
+      ],
       "published_at": "2026-11-20",
       "first_seen_at": "2026-11-21T16:59:42Z",
       "last_updated_at": "2026-11-21T16:59:42Z",
@@ -202,7 +227,12 @@
         "证据限制": "发布方构建并运行的 benchmark；不是临床或端到端药物发现指标",
         "时间依据": "官方页面只给出 2026-11-20，没有时分；不声称通过逐小时边界核验"
       },
-      "tags": ["benchmark", "medicinal-chemistry", "scientific-reasoning", "multimodal"],
+      "tags": [
+        "benchmark",
+        "medicinal-chemistry",
+        "scientific-reasoning",
+        "multimodal"
+      ],
       "technical_impact": 3,
       "engineering_value": 3,
       "adoption_signal": 1,
@@ -215,44 +245,64 @@
       "short_label_en": "MedChemBench",
       "next_action_zh": "等待公开题集、评分器和独立复跑后，再把 MedChemBench 纳入科学 agent 验收。",
       "next_action_en": "Wait for the public task set, grader and an independent rerun before adding MedChemBench to scientific-agent acceptance tests.",
-      "source_ids": ["src-5fcd8ead51bf2926"],
-      "project_ids": ["medchembench"],
-      "scenario_ids": ["research"],
+      "source_ids": [
+        "src-5fcd8ead51bf2926"
+      ],
+      "project_ids": [
+        "medchembench"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
       "evidence_stage": "frontier",
       "late_discovery": true,
-      "evidence": [{
-        "id": "ev-20261120-03-evidence-release",
-        "claim_zh": "OpenAI 公布 MedChemBench 的任务范围与发布方模型结果。",
-        "claim_en": "OpenAI publishes MedChemBench's task scope and publisher-run model results.",
-        "source_ids": ["src-5fcd8ead51bf2926"],
-        "event_ids": ["ev-20261120-03"],
-        "relation": "support",
-        "verification": "verified-primary-source; artifacts and results not independently reproduced"
-      }],
-      "changes": [{
-        "id": "ev-20261120-03-release",
-        "kind": "new",
-        "occurred_at": "2026-11-20",
-        "discovered_at": "2026-11-21T16:59:42Z",
-        "summary_zh": "OpenAI 发布面向药物化学推理的 MedChemBench。",
-        "summary_en": "OpenAI releases MedChemBench for medicinal-chemistry reasoning.",
-        "evidence_ids": ["ev-20261120-03-evidence-release"],
-        "historical": false,
-        "importance": "major"
-      }]
+      "evidence": [
+        {
+          "id": "ev-20261120-03-evidence-release",
+          "claim_zh": "OpenAI 公布 MedChemBench 的任务范围与发布方模型结果。",
+          "claim_en": "OpenAI publishes MedChemBench's task scope and publisher-run model results.",
+          "source_ids": [
+            "src-5fcd8ead51bf2926"
+          ],
+          "event_ids": [
+            "ev-20261120-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; artifacts and results not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-03-release",
+          "kind": "new",
+          "occurred_at": "2026-11-20",
+          "discovered_at": "2026-11-21T16:59:42Z",
+          "summary_zh": "OpenAI 发布面向药物化学推理的 MedChemBench。",
+          "summary_en": "OpenAI releases MedChemBench for medicinal-chemistry reasoning.",
+          "evidence_ids": [
+            "ev-20261120-03-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "event_id": "ev-20261120-04",
       "title": "Thinking Machines releases Inkling 2 Mini for local multimodal inference",
       "title_zh": "Thinking Machines 发布本地多模态模型 Inkling 2 Mini",
       "category": "foundation-model",
-      "organization": ["Thinking Machines Lab"],
+      "organization": [
+        "Thinking Machines Lab"
+      ],
       "published_at": "2026-11-20",
       "first_seen_at": "2026-11-21T16:59:42Z",
       "last_updated_at": "2026-11-21T16:59:42Z",
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
-      "secondary_sources": ["https://huggingface.co/blog/inkling2mini"],
+      "secondary_sources": [
+        "https://huggingface.co/blog/inkling2mini"
+      ],
       "summary": "Thinking Machines Lab released Apache-2.0 weights for Inkling 2 Mini, a 26B-parameter multimodal mixture-of-experts model with about 3B active parameters per token and a 1M-token context window. The roughly 20GB checkpoint targets Apple silicon with at least 32GB memory and single-GPU systems, with support across Transformers, SGLang, vLLM and local runtimes. Most quality claims remain publisher-run.",
       "summary_en": "Thinking Machines Lab released Apache-2.0 weights for Inkling 2 Mini, a 26B-parameter multimodal mixture-of-experts model with about 3B active parameters per token and a 1M-token context window. The roughly 20GB checkpoint targets Apple silicon with at least 32GB memory and single-GPU systems, with support across Transformers, SGLang, vLLM and local runtimes. Most quality claims remain publisher-run.",
       "summary_zh": "Thinking Machines Lab 以 Apache 2.0 发布 Inkling 2 Mini 权重。它是约 260 亿参数、每个 token 激活约 30 亿参数的多模态 MoE，支持 100 万 token 上下文。约 20GB 的 checkpoint 面向 32GB 以上 Apple silicon 与单 GPU，并覆盖 Transformers、SGLang、vLLM 和本地运行时。多数质量结论仍来自发布方。",
@@ -275,7 +325,13 @@
         "证据限制": "以发布方 benchmark 和体验测试为主；独立延迟与任务质量证据有限",
         "时间依据": "模型卡和 Hugging Face 文章只给出 2026-11-20，没有时分；不声称通过逐小时边界核验"
       },
-      "tags": ["open-weight", "local-inference", "multimodal", "MoE", "long-context"],
+      "tags": [
+        "open-weight",
+        "local-inference",
+        "multimodal",
+        "MoE",
+        "long-context"
+      ],
       "technical_impact": 4,
       "engineering_value": 4,
       "adoption_signal": 3,
@@ -288,38 +344,59 @@
       "short_label_en": "Inkling 2 Mini",
       "next_action_zh": "一天内在 32GB Apple silicon 上跑 20 个图文与代码任务，记录 TTFT、吞吐、峰值内存和成功率。",
       "next_action_en": "Within one day, run 20 vision-text and coding tasks on 32GB Apple silicon, recording TTFT, throughput, peak memory and success rate.",
-      "source_ids": ["src-1e52228e1c5c3f80", "src-824c03b970f1dc58"],
-      "project_ids": ["inkling-2-mini"],
-      "scenario_ids": ["local", "models"],
+      "source_ids": [
+        "src-1e52228e1c5c3f80",
+        "src-824c03b970f1dc58"
+      ],
+      "project_ids": [
+        "inkling-2-mini"
+      ],
+      "scenario_ids": [
+        "local",
+        "models"
+      ],
       "evidence_stage": "verified",
       "late_discovery": true,
-      "evidence": [{
-        "id": "ev-20261120-04-evidence-release",
-        "claim_zh": "模型卡确认权重、许可、硬件门槛、架构和运行时支持。",
-        "claim_en": "The model card confirms weights, license, hardware requirements, architecture and runtime support.",
-        "source_ids": ["src-1e52228e1c5c3f80", "src-824c03b970f1dc58"],
-        "event_ids": ["ev-20261120-04"],
-        "relation": "support",
-        "verification": "verified-primary-source; performance claims not independently reproduced"
-      }],
-      "changes": [{
-        "id": "ev-20261120-04-release",
-        "kind": "new",
-        "occurred_at": "2026-11-20",
-        "discovered_at": "2026-11-21T16:59:42Z",
-        "summary_zh": "Thinking Machines Lab 公开 Inkling 2 Mini 权重与本地推理路径。",
-        "summary_en": "Thinking Machines Lab publishes Inkling 2 Mini weights and local inference paths.",
-        "evidence_ids": ["ev-20261120-04-evidence-release"],
-        "historical": false,
-        "importance": "major"
-      }]
+      "evidence": [
+        {
+          "id": "ev-20261120-04-evidence-release",
+          "claim_zh": "模型卡确认权重、许可、硬件门槛、架构和运行时支持。",
+          "claim_en": "The model card confirms weights, license, hardware requirements, architecture and runtime support.",
+          "source_ids": [
+            "src-1e52228e1c5c3f80",
+            "src-824c03b970f1dc58"
+          ],
+          "event_ids": [
+            "ev-20261120-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; performance claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-04-release",
+          "kind": "new",
+          "occurred_at": "2026-11-20",
+          "discovered_at": "2026-11-21T16:59:42Z",
+          "summary_zh": "Thinking Machines Lab 公开 Inkling 2 Mini 权重与本地推理路径。",
+          "summary_en": "Thinking Machines Lab publishes Inkling 2 Mini weights and local inference paths.",
+          "evidence_ids": [
+            "ev-20261120-04-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     },
     {
       "event_id": "ev-20261120-05",
       "title": "MiniMax releases code-backed automated cryptanalysis results",
       "title_zh": "MiniMax 发布带代码的自动密码分析结果",
       "category": "research",
-      "organization": ["MiniMax"],
+      "organization": [
+        "MiniMax"
+      ],
       "published_at": "2026-11-20",
       "first_seen_at": "2026-11-21T16:59:42Z",
       "last_updated_at": "2026-11-21T16:59:42Z",
@@ -344,7 +421,12 @@
         "核验边界": "已核实仓库与产物存在；攻击正确性和实际影响尚未独立验证",
         "时间依据": "仓库 README 只写 2026-11-20 发布，没有时分；不声称通过逐小时边界核验"
       },
-      "tags": ["cryptanalysis", "AI-for-science", "cybersecurity", "code-release"],
+      "tags": [
+        "cryptanalysis",
+        "AI-for-science",
+        "cybersecurity",
+        "code-release"
+      ],
       "technical_impact": 4,
       "engineering_value": 3,
       "adoption_signal": 1,
@@ -357,31 +439,365 @@
       "short_label_en": "MiniMax cryptanalysis",
       "next_action_zh": "等待密码学专家独立复现代码、复杂度与攻击条件，再评估受影响实现。",
       "next_action_en": "Wait for independent cryptographic reproduction of the code, complexity and attack assumptions before evaluating affected implementations.",
-      "source_ids": ["src-f93a3ccd925110f0"],
-      "project_ids": ["minimax-auto-cryptanalysis"],
-      "scenario_ids": ["research"],
+      "source_ids": [
+        "src-f93a3ccd925110f0"
+      ],
+      "project_ids": [
+        "minimax-auto-cryptanalysis"
+      ],
+      "scenario_ids": [
+        "research"
+      ],
       "evidence_stage": "frontier",
       "late_discovery": true,
-      "evidence": [{
-        "id": "ev-20261120-05-evidence-artifacts",
-        "claim_zh": "MiniMax 仓库公开四项密码分析结果的论文与代码。",
-        "claim_en": "MiniMax publishes papers and code for four cryptanalysis results.",
-        "source_ids": ["src-f93a3ccd925110f0"],
-        "event_ids": ["ev-20261120-05"],
-        "relation": "support",
-        "verification": "verified-primary-artifacts; claims not independently reproduced"
-      }],
-      "changes": [{
-        "id": "ev-20261120-05-release",
-        "kind": "new",
-        "occurred_at": "2026-11-20",
-        "discovered_at": "2026-11-21T16:59:42Z",
-        "summary_zh": "MiniMax 公开四项模型辅助密码分析的论文和代码。",
-        "summary_en": "MiniMax publishes papers and code for four model-assisted cryptanalysis results.",
-        "evidence_ids": ["ev-20261120-05-evidence-artifacts"],
-        "historical": false,
-        "importance": "major"
-      }]
+      "evidence": [
+        {
+          "id": "ev-20261120-05-evidence-artifacts",
+          "claim_zh": "MiniMax 仓库公开四项密码分析结果的论文与代码。",
+          "claim_en": "MiniMax publishes papers and code for four cryptanalysis results.",
+          "source_ids": [
+            "src-f93a3ccd925110f0"
+          ],
+          "event_ids": [
+            "ev-20261120-05"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifacts; claims not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-05-release",
+          "kind": "new",
+          "occurred_at": "2026-11-20",
+          "discovered_at": "2026-11-21T16:59:42Z",
+          "summary_zh": "MiniMax 公开四项模型辅助密码分析的论文和代码。",
+          "summary_en": "MiniMax publishes papers and code for four model-assisted cryptanalysis results.",
+          "evidence_ids": [
+            "ev-20261120-05-evidence-artifacts"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261120-06",
+      "title": "Tencent releases WeMM-Video for joint video and audio understanding",
+      "title_zh": "Tencent 发布 WeMM-Video 音视频理解模型",
+      "category": "foundation-model",
+      "organization": [
+        "Tencent"
+      ],
+      "published_at": "2026-11-20",
+      "first_seen_at": "2026-11-22T16:57:37Z",
+      "last_updated_at": "2026-11-22T16:57:37Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/Tencent/WeMM-Video",
+      "secondary_sources": [
+        "https://huggingface.co/tencent/WeMM-Video-2B",
+        "https://arxiv.org/abs/2611.26409"
+      ],
+      "summary": "Tencent WeChat Vision released WeMM-Video in 2B, 4B, 9B and 35B-A3B sizes for Chinese-English text, image, audio and video understanding. Public BF16, FP8, AWQ, GGUF and NVFP4 variants are linked with code and serving recipes. The release produces text rather than video, and its benchmark leadership claims come from the publisher.",
+      "summary_en": "Tencent WeChat Vision released WeMM-Video in 2B, 4B, 9B and 35B-A3B sizes for Chinese-English text, image, audio and video understanding. Public BF16, FP8, AWQ, GGUF and NVFP4 variants are linked with code and serving recipes. The release produces text rather than video, and its benchmark leadership claims come from the publisher.",
+      "summary_zh": "Tencent 微信视觉团队发布 WeMM-Video，提供 2B、4B、9B 和 35B-A3B 四种规模，可联合处理中文或英文的文本、图像、音频与视频。公开产物包含 BF16、FP8、AWQ、GGUF、NVFP4 权重，以及代码和服务部署说明。它输出文本而非生成视频，领先 benchmark 的说法来自发布方。",
+      "why_it_matters": "Teams can now test soundtrack-aware video understanding locally across several hardware budgets instead of relying only on a hosted API. Custom code, patched serving runtimes and unverified publisher benchmarks remain material deployment limits.",
+      "why_it_matters_en": "Teams can now test soundtrack-aware video understanding locally across several hardware budgets instead of relying only on a hosted API. Custom code, patched serving runtimes and unverified publisher benchmarks remain material deployment limits.",
+      "why_it_matters_zh": "做音视频检索、审核或问答的团队现在可以按不同硬件预算本地试验“画面加原声”的理解能力，不必只依赖托管 API。自定义代码、打补丁的 serving runtime 和未独立复现的厂商 benchmark 仍是主要限制。",
+      "technical_details": {
+        "sizes": "2B, 4B, 9B dense and 35B-A3B mixture-of-experts",
+        "modalities": "Text, image, audio and video input; text output; Chinese and English",
+        "artifacts": "BF16, FP8 Block128, AWQ W4A16, GGUF Q4_K_M and NVFP4 W4A16 variants plus code",
+        "serving": "Transformers; patched vLLM 0.18 and SGLang 0.5.16 recipes; custom code requires review and revision pinning",
+        "training": "Publisher reports about 1.2T multimodal tokens",
+        "benchmark_limit": "Publisher-reported comparisons; no independent reproduction found",
+        "license": "Repository code and model card list Apache-2.0; check each checkpoint and third-party notices",
+        "time_basis": "Model license and official repository identify 2026-11-20; no publication time is exposed, so hour-level inclusion cannot be verified."
+      },
+      "technical_details_zh": {
+        "规模": "2B、4B、9B dense 与 35B-A3B 混合专家模型",
+        "模态": "输入文本、图像、音频和视频；输出文本；支持中英文",
+        "公开产物": "BF16、FP8 Block128、AWQ W4A16、GGUF Q4_K_M、NVFP4 W4A16 权重与代码",
+        "服务部署": "Transformers；patched vLLM 0.18 与 SGLang 0.5.16；启用自定义代码前应审查并固定 revision",
+        "训练": "发布方称使用约 1.2T multimodal tokens",
+        "评测限制": "比较结果来自发布方；未发现独立复现",
+        "许可": "代码仓库与 model card 标为 Apache-2.0；仍需逐个 checkpoint 核对第三方声明",
+        "时间依据": "模型许可与官方仓库标示 2026-11-20，但未提供时分，无法确认逐小时边界。"
+      },
+      "tags": [
+        "open-weight",
+        "multimodal",
+        "video-understanding",
+        "audio-understanding",
+        "local-inference"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "tencent-wemm-video-open-weights",
+      "short_label_zh": "WeMM-Video",
+      "short_label_en": "WeMM-Video",
+      "next_action_zh": "一天内用公开 2B 权重跑 10 段含原声视频，记录显存、延迟、音画一致性、custom code 与许可边界。",
+      "next_action_en": "Within one day, run ten soundtrack-bearing clips on the public 2B weights; record memory, latency, audio-video consistency, custom-code and license boundaries.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-80f5324f0e632581",
+        "src-ae467cfd399481fc",
+        "src-96c518469860b3cd"
+      ],
+      "project_ids": [
+        "wemm-video"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261120-06-evidence-release",
+          "claim_zh": "Tencent 官方仓库、Hugging Face 权重与论文确认模型规模、模态、公开格式和部署边界；性能主张尚未独立复现。",
+          "claim_en": "Tencent official code, Hugging Face weights and paper confirm sizes, modalities, public formats and serving boundaries; performance claims remain independently unreproduced.",
+          "source_ids": [
+            "src-80f5324f0e632581",
+            "src-ae467cfd399481fc",
+            "src-96c518469860b3cd"
+          ],
+          "event_ids": [
+            "ev-20261120-06"
+          ],
+          "relation": "support",
+          "verification": "verified artifacts; publisher benchmarks not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-06-release",
+          "kind": "new",
+          "occurred_at": "2026-11-20",
+          "discovered_at": "2026-11-22T16:57:37Z",
+          "summary_zh": "Tencent 公开 WeMM-Video 权重、代码与多种本地部署格式。",
+          "summary_en": "Tencent releases WeMM-Video weights, code and multiple local deployment formats.",
+          "evidence_ids": [
+            "ev-20261120-06-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261120-07",
+      "title": "Baseten releases bison-1 and groundhog-1 decision models",
+      "title_zh": "Baseten 发布 bison-1 与 groundhog-1 决策模型",
+      "category": "foundation-model",
+      "organization": [
+        "Baseten"
+      ],
+      "published_at": "2026-11-20",
+      "first_seen_at": "2026-11-22T16:57:37Z",
+      "last_updated_at": "2026-11-22T16:57:37Z",
+      "source_type": "official_announcement",
+      "primary_source": "https://www.baseten.co/resources/changelog/bison-1-and-groundhog-1-available-on-baseten/",
+      "secondary_sources": [
+        "https://labs.baseten.co/articles/bison-1-and-groundhog-1-frontier-american-backbone-decision-models",
+        "https://huggingface.co/baseten/bison-1",
+        "https://huggingface.co/baseten/groundhog-1"
+      ],
+      "summary": "Baseten released bison-1, a 31B dense model, and groundhog-1, a 26B mixture-of-experts model with about 4B active parameters. Both accept text and images, expose 131,072-token decision requests through the System One API, and publish weights on Hugging Face. Baseten reports bison-1 leading its selected decision index, but independent task-level reproduction is not public.",
+      "summary_en": "Baseten released bison-1, a 31B dense model, and groundhog-1, a 26B mixture-of-experts model with about 4B active parameters. Both accept text and images, expose 131,072-token decision requests through the System One API, and publish weights on Hugging Face. Baseten reports bison-1 leading its selected decision index, but independent task-level reproduction is not public.",
+      "summary_zh": "Baseten 发布 bison-1 与 groundhog-1。前者是 31B dense 模型，后者是约 4B 激活参数的 26B 混合专家模型。两者支持文本与图像，可通过 System One API 接收 131,072 token 的决策请求，并在 Hugging Face 提供权重。Baseten 称 bison-1 在其选用的决策指数中领先，但没有公开独立任务复现。",
+      "why_it_matters": "Routing, rubric scoring and classification can use a typed decision endpoint or self-hosted weights instead of a general chat prompt. Teams still need calibration and domain-shift tests because a leaderboard score does not establish reliable production thresholds.",
+      "why_it_matters_en": "Routing, rubric scoring and classification can use a typed decision endpoint or self-hosted weights instead of a general chat prompt. Teams still need calibration and domain-shift tests because a leaderboard score does not establish reliable production thresholds.",
+      "why_it_matters_zh": "做路由、规则评分和分类的团队可以选择 typed decision endpoint 或自托管权重，不必把任务塞进通用聊天 prompt。排行榜分数不能证明生产阈值可靠，仍需校准和分布漂移测试。",
+      "technical_details": {
+        "models": "bison-1: Gemma 4 31B dense; groundhog-1: Gemma 4 26B A4B mixture-of-experts",
+        "context": "131,072 tokens per question",
+        "inputs": "Text and images",
+        "interface": "Baseten System One endpoint with choice, noul and score question types",
+        "availability": "Hosted Model APIs and public Hugging Face weights",
+        "publisher_benchmark": "bison-1 score 76 on Artificial Analysis Decision Index v2.1 across 19 models; publisher-selected and not independently reproduced here",
+        "pricing": "groundhog-1 listed at $0.035 per 1M tokens in discovery material; verify current pricing before use",
+        "time_basis": "Official changelog is dated 2026-11-20 without a time; hour-level inclusion cannot be verified."
+      },
+      "technical_details_zh": {
+        "模型": "bison-1：Gemma 4 31B dense；groundhog-1：Gemma 4 26B A4B 混合专家",
+        "上下文": "每个问题 131,072 tokens",
+        "输入": "文本与图像",
+        "接口": "Baseten System One endpoint，支持 choice、noul 和 score 类型",
+        "可用性": "托管 Model APIs 与公开 Hugging Face 权重",
+        "厂商评测": "bison-1 在 Artificial Analysis Decision Index v2.1 的 19 个模型中得 76 分；这里未独立复现",
+        "价格": "发现材料列出 groundhog-1 为每 100 万 tokens 0.035 美元；使用前需核对当前价格",
+        "时间依据": "官方 changelog 仅标示 2026-11-20，没有时分，无法确认逐小时边界。"
+      },
+      "tags": [
+        "decision-model",
+        "open-weight",
+        "routing",
+        "classification",
+        "calibration"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "baseten-bison-groundhog-decision-models",
+      "short_label_zh": "bison-1 / groundhog-1",
+      "short_label_en": "bison-1 / groundhog-1",
+      "next_action_zh": "一天内用 200 条真实路由样本比较两款公开模型，记录准确率、Brier score、拒答、延迟和 API 成本。",
+      "next_action_en": "Within one day, compare both public models on 200 real routing cases; record accuracy, Brier score, abstention, latency and API cost.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-559197834796f531",
+        "src-d5b4837fa182255e",
+        "src-f8247a08cbdb1b05",
+        "src-aaca490b4fefd0e0"
+      ],
+      "project_ids": [
+        "baseten-decision-models"
+      ],
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261120-07-evidence-release",
+          "claim_zh": "Baseten 官方 changelog、研究页与公开权重确认两款模型的规模、接口、上下文和可用性；性能仍是发布方与所引指数的结果。",
+          "claim_en": "Baseten official changelog, research page and public weights confirm model sizes, interface, context and availability; performance remains publisher and cited-index evidence.",
+          "source_ids": [
+            "src-559197834796f531",
+            "src-d5b4837fa182255e",
+            "src-f8247a08cbdb1b05",
+            "src-aaca490b4fefd0e0"
+          ],
+          "event_ids": [
+            "ev-20261120-07"
+          ],
+          "relation": "support",
+          "verification": "verified availability; benchmark not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-07-release",
+          "kind": "new",
+          "occurred_at": "2026-11-20",
+          "discovered_at": "2026-11-22T16:57:37Z",
+          "summary_zh": "Baseten 公开两款长上下文决策模型的 API 与权重。",
+          "summary_en": "Baseten releases APIs and weights for two long-context decision models.",
+          "evidence_ids": [
+            "ev-20261120-07-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261120-08",
+      "title": "Signal restricts mobile AI agents from capturing private conversations",
+      "title_zh": "Signal 限制移动端 AI agent 截取私密对话",
+      "category": "agent-security",
+      "organization": [
+        "Signal"
+      ],
+      "published_at": "2026-11-20",
+      "first_seen_at": "2026-11-22T16:57:37Z",
+      "last_updated_at": "2026-11-22T16:57:37Z",
+      "source_type": "official_blog",
+      "primary_source": "https://signal.org/blog/protecting-your-privacy",
+      "secondary_sources": [],
+      "summary": "Signal now blocks screenshots on iOS 27 and, when the operating system exposes detection, prevents AI assistants from capturing Signal screens on Android. Users can turn the Android protection off. The control does not cover every platform or filesystem access, so it reduces one exfiltration path rather than creating a complete agent sandbox.",
+      "summary_en": "Signal now blocks screenshots on iOS 27 and, when the operating system exposes detection, prevents AI assistants from capturing Signal screens on Android. Users can turn the Android protection off. The control does not cover every platform or filesystem access, so it reduces one exfiltration path rather than creating a complete agent sandbox.",
+      "summary_zh": "Signal 现在会在 iOS 27 禁止截图，并在操作系统可识别 AI assistant 时阻止其截取 Android 版 Signal 画面。Android 用户可以关闭这项保护。该控制没有覆盖所有平台或文件系统访问，因此只是减少一种外泄路径，不等于完整的 agent 沙箱。",
+      "why_it_matters": "Product teams building OS-level agents can no longer assume that user-granted screen access overrides every app boundary. Sensitive apps need explicit capture policy, while operating systems still lack a consistent app-level contract across screens, notifications and files.",
+      "why_it_matters_en": "Product teams building OS-level agents can no longer assume that user-granted screen access overrides every app boundary. Sensitive apps need explicit capture policy, while operating systems still lack a consistent app-level contract across screens, notifications and files.",
+      "why_it_matters_zh": "对系统级 agent 团队来说，这意味着用户授予屏幕权限也不应自动越过每个应用的边界。敏感应用需要明确的采集策略，而操作系统仍缺少同时覆盖屏幕、通知和文件的统一应用级契约。",
+      "technical_details": {
+        "availability": "Screenshot blocking on iOS 27; AI-assistant screen-capture blocking on supported Android detection paths",
+        "user_control": "Android users can disable the protection",
+        "platform_limit": "Signal reports no equivalent macOS implementation and does not claim complete cross-platform coverage",
+        "security_limit": "Screen-capture controls do not prevent every filesystem or notification access path",
+        "evidence_scope": "Official Signal product and policy announcement; no independent bypass assessment found in this run",
+        "time_basis": "Signal labels the official post 2026-11-20 without a publication time, so hour-level inclusion cannot be verified."
+      },
+      "technical_details_zh": {
+        "可用范围": "iOS 27 禁止截图；Android 在支持检测的路径上阻止 AI assistant 截屏",
+        "用户控制": "Android 用户可以关闭保护",
+        "平台限制": "Signal 称 macOS 尚无对应实现，也没有声称完整跨平台覆盖",
+        "安全限制": "屏幕采集控制无法阻止所有文件系统或通知访问路径",
+        "证据范围": "依据 Signal 官方产品与政策公告；本轮未找到独立绕过测试",
+        "时间依据": "Signal 官方文章只标示 2026-11-20，没有时分，无法确认逐小时边界。"
+      },
+      "tags": [
+        "agent-security",
+        "screen-capture",
+        "privacy",
+        "mobile-os",
+        "policy-enforcement"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "signal-mobile-ai-agent-screen-capture-controls",
+      "short_label_zh": "Signal AI 采集限制",
+      "short_label_en": "Signal capture controls",
+      "next_action_zh": "等操作系统提供跨屏幕、通知与文件的应用级 opt-out 后再重评；当前先把敏感页面纳入 agent 截屏回归测试。",
+      "next_action_en": "Reassess when operating systems expose app-level opt-outs across screens, notifications and files; meanwhile add sensitive views to agent capture regression tests.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-266efb82a5bf9057"
+      ],
+      "project_ids": [
+        "signal-ai-screen-privacy"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261120-08-evidence-release",
+          "claim_zh": "Signal 官方公告确认 iOS 与 Android 的屏幕采集限制、Android 用户开关，以及 macOS 与文件系统边界。",
+          "claim_en": "Signal official material confirms iOS and Android capture restrictions, the Android user override, and macOS and filesystem boundaries.",
+          "source_ids": [
+            "src-266efb82a5bf9057"
+          ],
+          "event_ids": [
+            "ev-20261120-08"
+          ],
+          "relation": "support",
+          "verification": "verified official behavior and stated limitations; no independent bypass test"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-08-release",
+          "kind": "new",
+          "occurred_at": "2026-11-20",
+          "discovered_at": "2026-11-22T16:57:37Z",
+          "summary_zh": "Signal 为移动端加入针对系统级 AI assistant 的屏幕采集限制。",
+          "summary_en": "Signal adds mobile screen-capture restrictions for OS-level AI assistants.",
+          "evidence_ids": [
+            "ev-20261120-08-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

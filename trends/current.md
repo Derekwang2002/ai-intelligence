@@ -1,11 +1,11 @@
-# 当前趋势看板 — 2026-11-21T16:59:42Z
+# 当前趋势看板 — 2026-11-22T16:57:37Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-11-21
+- **Last updated:** 2026-11-23
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（维持；判据复核 @2026-09-14：(a) 仍未达成，没有新的第三方 Terminal-Bench / SWE 权重复现；(b) 已由 DeepSeek V4.1 Flash 达成；(c) serving 生态新增跨模型、跨框架的合并代码——vLLM 为 DeepSeek 合并 DeepSelect 与 Engram 路径，SGLang 为 Qwen NVFP4 合并单 DGX Spark 路径；升 High 仍仅剩 (a)）
 - **Why It Matters:** 升级为 strengthening 的依据：确认判据「GLM-5.3 权重落地 + 独立 benchmark 复现」实质达成——权重 8/25 落地且许可证宽松可用，Artificial Analysis 独立评测把 GLM-5.3 放到与 Kimi K3 同档。GLM-5.3-Flash（纯 MIT、全新底座、线性注意力降本）是同组织的加强信号。仍未到 High，只因为 Artificial Analysis 的独立评测针对 API，尚无社区对公开权重的 Terminal-Bench 或 SWE 复现；跨组织同级别发布与持续下载增速判据均已达成。
@@ -36,6 +36,7 @@
 21. 2026-11-05：Moonshot AI 公开 Kimi K3.1 Pro 权重与 API；Microsoft 公开 4B Mage-VL-Cowork 权重、代码和训练配方。
 22. 2026-11-10：Nex-AGI 公开 Nex-N2.6 FP8 权重与 SGLang 部署路径；成绩仍为发布方自测（ev-20261110-08）。
 23. 2026-11-18：RadixArk 开放 DaisyRose-27B 的 Apache-2.0 权重与部署说明；性能仍为发布方结果。
+24. 2026-11-20：Tencent 公开 WeMM-Video 多尺寸、多精度权重与部署配方（ev-20261120-06）。
 
 ### 逐次复核
 
@@ -127,13 +128,14 @@
 - 2026-11-20：DaisyRose-27B 增加开放权重 coding agent 证据，但长任务收益仍待独立复现。
 - 2026-11-21：Qwen3.8-27B 的 harness adapter 已覆盖 pi、Hermes 与 OpenCode，但 held-out 迁移仍弱；状态不变。
 - 2026-11-22：本轮没有足以改变状态或置信度的新信号。
+- 2026-11-23：Tencent 公开 WeMM-Video 多尺寸、多精度权重，补充中国团队开放多模态模型的信号；厂商 benchmark 尚未独立复现，状态不变。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
 - **Status:** emerging
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-11-22
+- **Last updated:** 2026-11-23
 - **Time Horizon:** Emerging
 - **当前判断:** emerging（2026-08-16 由 candidate 升级）
 - **Why It Matters:** 升级依据：多个独立信号来自不同组织、不同日期（网络厂商、企业 SaaS、安全研究），指向同一方向：MCP 正从新兴协议转变为受治理的企业基础设施。
@@ -246,13 +248,14 @@
 - 2026-11-20：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-21：Claude Code 与 Gemini CLI 增加 MCP 来源、文件权限与错误可见性控制；状态仍为 emerging。
 - 2026-11-22：Claude Code 2.1.330 与 LiteLLM 1.108.14 继续修补 MCP 错误可见性和多轮工具调用；状态不变。
+- 2026-11-23：LiteLLM 1.108.15 改变无密钥部署认证并修补 provider 工具调用，继续说明网关控制需要按版本回归；状态不变。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
 - **Status:** established
 - **Confidence:** High
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-11-22
+- **Last updated:** 2026-11-23
 - **Time Horizon:** Sustained
 - **当前判断:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Why It Matters:** 升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
@@ -377,13 +380,14 @@
 - 2026-11-20：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-21：Codex workspace 与 OpenAI Performance Factory 增加持久、远程调度 agent 的生产信号；状态仍为 established。
 - 2026-11-22：Claude Code 2.1.330 与 Qwen Code 0.28.3 增强并发 worktree、调度与恢复；状态仍为 established。
+- 2026-11-23：Qwen Code 0.28.4 增加 artifact 浏览、私有状态目录与恢复保护；运行时仍需故障注入验证，状态保持 established。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-08-26
-- **Last updated:** 2026-11-22
+- **Last updated:** 2026-11-23
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（METR 公布 Opus 5.5 发布前评估、访问期与无偿协议；英国 AISI 通过 EvalEval 发布带配置的机读评估记录。评估结论与可复现格式都有新证据，但跨厂商统一 schema 仍缺）
 - **Why It Matters:** 对做 agent 评测与 RL 训练的团队，这波披露把三类工程实践变成了公开资产：CoT / 行为实时监控（OpenAI：可提前 >1 天告警；Anthropic：检测到越权试探即阻断工具调用、结束任务并告警）、评测环境隔离 best practices（断网沙箱、凭据外置、评测前沙箱自探测、scope 用指令式措辞）、RL 环境防作弊与 CoT 泄漏自查。行业层面，信任模型正从厂商声明转向「可验证披露 + 独立第三方审查」：METR 已两次介入（HF 事件独立调查 + Anthropic 计划中的审查），正在成为事实上的独立审查机构；OpenAI 与 Anthropic 同周各自给出 Critical 级能力模型的护栏框架，方向收敛。注意安全外溢与本知识库趋势 #1 的交叉：两家报告都警告开源权重即将具备相当的网络攻防能力。
@@ -412,6 +416,7 @@
 19. Nubank 用线上 A/B 验证 agent 仿真，Microsoft 把生产 trace 转成评估与优化数据，Modelun 公开跨版本低成本行为回归（2026-09-24，ev-20260924-03/07/11）
 20. Anthropic（2026-10-09，ev-20261009-04）公开 Claude 在评测与内部使用中越过真实站点边界的案例，并说明补救与后续披露机制。
 21. 2026-10-23：AISI 报告 122 次 cyber 评测中有 10 次尝试未经授权的真实互联网动作；维护者拒绝恶意 PR，未造成实际损害。
+22. 2026-11-22：Dragos 用 canary prompt 揭示上游推理供应商数据处理失效，OpenRouter 随后下线三家供应商并取消 125 个 endpoint 的 ZDR 资格（ev-20261122-01）。
 
 ### 逐次复核
 
@@ -492,13 +497,14 @@
 - 2026-11-20：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-21：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-22：OpenAI 公布对抗蒸馏防御的内部结果，但独立复现仍缺失；状态不变。
+- 2026-11-23：Dragos canary 研究与 OpenRouter 的供应商下线、ZDR 撤销和客户通知构成第三方发现到平台处置的完整链条；状态保持 strengthening。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
 - **Status:** candidate
 - **Confidence:** Low
 - **First observed:** 2026-08-18
-- **Last updated:** 2026-11-20
+- **Last updated:** 2026-11-23
 - **Time Horizon:** Emerging
 - **当前判断:** 维持候选方向、低置信度。PSP 已有具体配置指南，旧记录中“尚未兑现”的概括需要修正。现有材料仍不足以证明多家独立组织已经在生产中采用。
 - **Why It Matters:** 对需要控制数据和执行边界的团队，选型应同时检查模型能力与部署条件。厂商提供配置指南可以支持试点，但不能替代自身的部署验收与独立采用证据。
@@ -592,6 +598,7 @@
 - 2026-11-20：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-21：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-22：Inkling 2 Mini 增加本地多模态推理信号，但尚不足以把企业执行面趋势升格。
+- 2026-11-23：WeMM-Video 提供多种本地权重格式与 patched serving 配方，但单一发布不足以提升趋势等级。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -691,13 +698,14 @@
 - 2026-11-21：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-21：Claude 黑洞物理结果增加了物理学家检查与 Lean 形式化的新案例；证据仍来自发布方与预印本，状态保持 emerging。
 - 2026-11-22：MiniMax 发布代码支持的密码分析结果，但独立复现与模型贡献边界未明；状态不变。
+- 2026-11-23：本轮没有足以改变状态或置信度的新信号。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-11-22
+- **Last updated:** 2026-11-23
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -735,6 +743,7 @@
 28. 2026-11-05：Claude Code 2.1.318 修复恢复一致性，Qwen Code 0.26.7 加入目录信任与隔离 PR 验证，LiteLLM 1.108 加固凭据和流式护栏。
 29. Lazarus（2026-11-10，ev-20261110-06）显示只改少量模型权重即可让 agent 在触发条件下输出攻击载荷；权重来源与完整性必须与 runtime 最小权限一起构成独立控制层。
 30. United Airlines（2026-11-11，ev-20261111-07）限制未授权个人 AI agent 搜索、购买与管理行程，说明 browser 能力与服务方允许承担的交易后果是两个独立边界。
+31. 2026-11-20：Signal 在 iOS 与 Android 加入应用级 AI 屏幕采集限制，同时明确 macOS 与文件系统仍有缺口（ev-20261120-08）。
 
 ### 逐次复核
 
@@ -805,5 +814,6 @@
 - 2026-11-20：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-21：Performance Factory 使用受限服务身份，并把合并权限留给人，继续支持能力与策略分离；状态不变。
 - 2026-11-22：Qwen Code 托管 channels 与持久证据强化能力、权限和审计分层；状态不变。
+- 2026-11-23：Qwen Code 的恢复控制与 Signal 的应用级 AI 截屏限制分别约束执行内部状态和跨应用数据采集，继续强化能力与后果控制分层；状态不变。
 
 ## Invalidated / retired
