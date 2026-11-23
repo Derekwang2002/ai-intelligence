@@ -13,15 +13,16 @@
       ],
       "published_at": "2026-11-22T00:00:00Z",
       "first_seen_at": "2026-11-22T16:57:37Z",
-      "last_updated_at": "2026-11-22T16:57:37Z",
+      "last_updated_at": "2026-11-23T17:06:42Z",
       "source_type": "official_blog",
       "primary_source": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers",
       "secondary_sources": [
-        "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens"
+        "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens",
+        "https://www.axios.com/2026/11/23/openrouter-minimax-china-customer-data"
       ],
-      "summary": "OpenRouter off-boarded three inference providers, removed 125 endpoints from Zero Data Retention eligibility and notified potentially affected customers after Dragos canary research found prompt-data handling failures. OpenRouter says its own systems were not breached. Dragos attributes evidence to upstream providers and hidden routing hops, but the public material does not identify every affected provider or request path.",
-      "summary_en": "OpenRouter off-boarded three inference providers, removed 125 endpoints from Zero Data Retention eligibility and notified potentially affected customers after Dragos canary research found prompt-data handling failures. OpenRouter says its own systems were not breached. Dragos attributes evidence to upstream providers and hidden routing hops, but the public material does not identify every affected provider or request path.",
-      "summary_zh": "Dragos 的 canary 研究发现 prompt 数据处理失效后，OpenRouter 下线三家推理供应商、取消 125 个 endpoint 的 Zero Data Retention 资格，并通知可能受影响的客户。OpenRouter 称自身系统没有被入侵。Dragos 将证据指向上游供应商和隐藏路由层，但公开材料没有列出所有受影响供应商或请求路径。",
+      "summary": "OpenRouter off-boarded three providers and removed 125 endpoints from Zero Data Retention eligibility after prompt-data handling failures. Customer notices, later confirmed as legitimate, say some MiniMax-model traffic may have been exposed through three providers from July through October. The evidence narrows the path but does not prove MiniMax itself accessed the data or identify every affected route.",
+      "summary_en": "OpenRouter off-boarded three providers and removed 125 endpoints from Zero Data Retention eligibility after prompt-data handling failures. Customer notices, later confirmed as legitimate, say some MiniMax-model traffic may have been exposed through three providers from July through October. The evidence narrows the path but does not prove MiniMax itself accessed the data or identify every affected route.",
+      "summary_zh": "OpenRouter 因 prompt 数据处理失效下线三家供应商，并取消 125 个 endpoint 的 Zero Data Retention 资格。后来被确认真实的客户通知称，7 月至 10 月经三家供应商转发的部分 MiniMax 模型流量可能暴露。证据缩小了路径范围，但不能证明 MiniMax 本身访问过数据，也没有列全所有受影响路由。",
       "why_it_matters": "Teams using model routers cannot treat a router-level privacy label as proof about every upstream hop. Provider pinning, secret minimization, canary prompts and contractual retention checks need to be part of the architecture, especially for agents that place credentials or proprietary context in prompts.",
       "why_it_matters_en": "Teams using model routers cannot treat a router-level privacy label as proof about every upstream hop. Provider pinning, secret minimization, canary prompts and contractual retention checks need to be part of the architecture, especially for agents that place credentials or proprietary context in prompts.",
       "why_it_matters_zh": "对使用模型路由的团队来说，这意味着路由层的隐私标签不能自动证明每个上游 hop 都遵守同一承诺。尤其当 agent 会把凭据或专有上下文放进 prompt 时，供应商固定、最小化秘密、canary prompt 和合同留存核对都应进入架构。",
@@ -31,7 +32,8 @@
         "dragos_method": "Unique canary secrets embedded in prompts and monitored for later access",
         "dragos_scope": "Dragos reports roughly 2 million prompts observed from July through November and evidence involving three providers",
         "attribution_limit": "A triggered canary proves exposure but can be insufficient to identify every hidden routing hop; not all affected providers are public",
-        "time_basis": "OpenRouter exposes 2026-11-22T00:00:00Z; Dragos published its supporting research on 2026-11-19."
+        "time_basis": "OpenRouter exposes 2026-11-22T00:00:00Z; Dragos published its supporting research on 2026-11-19.",
+        "provider_attribution_update": "Customer notices identify three providers forwarding requests to China-based MiniMax; public material does not prove MiniMax accessed data."
       },
       "technical_details_zh": {
         "OpenRouter 处置": "下线三家供应商；取消 125 个 endpoint 的 Zero Data Retention 资格；通知可能受影响的客户",
@@ -39,7 +41,8 @@
         "Dragos 方法": "在 prompt 中放入唯一 canary secret，并监测后续是否被访问",
         "Dragos 范围": "Dragos 称 7 月至 11 月观察约 200 万条 prompt，并发现涉及三家供应商的证据",
         "归属限制": "canary 被触发能证明数据暴露，但未必能识别所有隐藏路由层；公开材料未列出全部受影响供应商",
-        "时间依据": "OpenRouter 页面提供 2026-11-22T00:00:00Z；Dragos 支撑研究发布于 2026-11-19。"
+        "时间依据": "OpenRouter 页面提供 2026-11-22T00:00:00Z；Dragos 支撑研究发布于 2026-11-19。",
+        "供应商归属更新": "客户通知指向三家向中国 MiniMax 转发请求的供应商；公开材料不能证明 MiniMax 访问过数据。"
       },
       "tags": [
         "agent-security",
@@ -62,7 +65,8 @@
       "next_action_en": "Pin trusted routes until providers regain verifiable ZDR eligibility, remove durable credentials from prompts, and test upstream retention with canaries.",
       "source_ids": [
         "src-26c5ca669b141704",
-        "src-ff772f090165aaae"
+        "src-ff772f090165aaae",
+        "src-7450008e8c1cc238"
       ],
       "project_ids": [
         "openrouter-provider-security"
@@ -98,6 +102,20 @@
           ],
           "relation": "support",
           "verification": "independent security-research evidence with attribution limits"
+        },
+        {
+          "id": "ev-20261122-01-evidence-attribution",
+          "claim_zh": "Axios 与客户通知把部分受影响请求缩小到三家供应商转发的 MiniMax 模型流量，但不能证明 MiniMax 访问数据。",
+          "claim_en": "Axios and customer notices narrow some affected traffic to MiniMax models forwarded by three providers, without proving MiniMax accessed the data.",
+          "source_ids": [
+            "src-7450008e8c1cc238",
+            "src-26c5ca669b141704"
+          ],
+          "event_ids": [
+            "ev-20261122-01"
+          ],
+          "relation": "support",
+          "verification": "media report confirmed by Stripe/OpenRouter plus official provider notices; attribution remains bounded"
         }
       ],
       "changes": [
@@ -111,6 +129,127 @@
           "evidence_ids": [
             "ev-20261122-01-evidence-response",
             "ev-20261122-01-evidence-dragos"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261122-01-provider-attribution",
+          "kind": "update",
+          "occurred_at": "2026-11-23T16:03:00Z",
+          "discovered_at": "2026-11-23T17:06:42Z",
+          "summary_zh": "客户通知把部分暴露路径缩小到三家供应商转发的 MiniMax 模型流量，但没有证明 MiniMax 本身访问数据。",
+          "summary_en": "Customer notices narrow some exposure paths to MiniMax-model traffic forwarded by three providers without proving MiniMax accessed the data.",
+          "evidence_ids": [
+            "ev-20261122-01-evidence-attribution"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261122-02",
+      "title": "MONAI Label 0.8.6 fixes critical server path traversal",
+      "title_zh": "MONAI Label 0.8.6 修复关键路径穿越漏洞",
+      "category": "agent-security",
+      "organization": [
+        "MONAI"
+      ],
+      "published_at": "2026-11-22T01:29:24Z",
+      "first_seen_at": "2026-11-23T17:06:42Z",
+      "last_updated_at": "2026-11-23T17:06:42Z",
+      "source_type": "github_release",
+      "primary_source": "https://github.com/Project-MONAI/MONAILabel/releases/tag/0.8.6",
+      "secondary_sources": [
+        "https://github.com/Project-MONAI/MONAILabel/security/advisories/GHSA-qc22-rmgc-vg94",
+        "https://pypi.org/project/monailabel/0.8.6/"
+      ],
+      "summary": "MONAI Label 0.8.6 fixes a critical datastore upload path traversal and a separate session archive traversal affecting versions through 0.8.5. Authentication is disabled by default, so reachable servers could allow arbitrary file writes within the server process permissions. The patch requires Python 3.11 or newer.",
+      "summary_en": "MONAI Label 0.8.6 fixes a critical datastore upload path traversal and a separate session archive traversal affecting versions through 0.8.5. Authentication is disabled by default, so reachable servers could allow arbitrary file writes within the server process permissions. The patch requires Python 3.11 or newer.",
+      "summary_zh": "MONAI Label 0.8.6 修复了影响 0.8.5 及更早版本的关键数据存储上传路径穿越，以及另一处会话压缩包路径穿越。默认关闭认证，能连到服务的客户端可能在进程权限范围内任意写文件。补丁要求 Python 3.11 或更高版本。",
+      "why_it_matters": "Teams running medical-labeling servers should upgrade immediately, review exposed older servers for unexpected file changes and limit network and filesystem privileges.",
+      "why_it_matters_en": "Teams running medical-labeling servers should upgrade immediately, review exposed older servers for unexpected file changes and limit network and filesystem privileges.",
+      "why_it_matters_zh": "对运行医疗标注服务的团队来说，应立即升级，并检查曾暴露的旧服务器是否出现异常文件改动，同时收紧网络和文件权限。",
+      "technical_details": {
+        "affected": "<= 0.8.5",
+        "fixed": "0.8.6",
+        "cve": "CVE-2026-133968",
+        "advisory": "GHSA-qc22-rmgc-vg94",
+        "default_auth": false,
+        "pypi_uploaded_at": "2026-11-22T01:27:24Z",
+        "release_published_at": "2026-11-22T01:29:24Z",
+        "python_requirement": ">=3.11",
+        "metadata_limit": "GitHub advisory still lists no patched version despite maintainer release and PyPI artifact."
+      },
+      "technical_details_zh": {
+        "受影响版本": "<= 0.8.5",
+        "修复版本": "0.8.6",
+        "CVE": "CVE-2026-133968",
+        "安全公告": "GHSA-qc22-rmgc-vg94",
+        "默认认证": false,
+        "PyPI 上传时间": "2026-11-22T01:27:24Z",
+        "Release 时间": "2026-11-22T01:29:24Z",
+        "Python 要求": ">=3.11",
+        "元数据限制": "维护者 release 与 PyPI 已提供补丁，但 GitHub advisory 仍未列 patched version。"
+      },
+      "tags": [
+        "security",
+        "path-traversal",
+        "medical-ai",
+        "server"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 4,
+      "maturity": 4,
+      "verification_cost": 1,
+      "risk": 5,
+      "recommendation": "ADOPT",
+      "event_fingerprint": "monai-label-0-8-6-path-traversal-fix",
+      "short_label_zh": "MONAI Label 0.8.6",
+      "short_label_en": "MONAI Label 0.8.6",
+      "next_action_zh": "立即升级到 0.8.6；若旧服务曾暴露到不可信网络，先检查异常文件改动，再启用认证并以低权限用户重启。",
+      "next_action_en": "Upgrade to 0.8.6 now; if an older server faced an untrusted network, inspect file changes, enable authentication and restart as an unprivileged user.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-102f3836478134cb",
+        "src-32e381fa251ea562",
+        "src-d699ac947db313e4"
+      ],
+      "project_ids": [
+        "monai-label"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261122-02-evidence-patch",
+          "claim_zh": "维护者 release 确认 0.8.6 修复两处路径穿越，并要求所有服务端部署升级。",
+          "claim_en": "The maintainer release confirms that 0.8.6 fixes two path traversal flaws and directs every server deployment to upgrade.",
+          "source_ids": [
+            "src-102f3836478134cb",
+            "src-d699ac947db313e4"
+          ],
+          "event_ids": [
+            "ev-20261122-02"
+          ],
+          "relation": "support",
+          "verification": "verified maintainer release and package artifact"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261122-02-patch",
+          "kind": "new",
+          "occurred_at": "2026-11-22T01:29:24Z",
+          "discovered_at": "2026-11-23T17:06:42Z",
+          "summary_zh": "MONAI Label 0.8.6 修复两处可导致服务器任意文件写入的路径穿越。",
+          "summary_en": "MONAI Label 0.8.6 fixes two path traversal paths that could enable arbitrary server-side file writes.",
+          "evidence_ids": [
+            "ev-20261122-02-evidence-patch"
           ],
           "historical": false,
           "importance": "major"

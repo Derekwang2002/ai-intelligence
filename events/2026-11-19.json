@@ -98,6 +98,206 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "event_id": "ev-20261119-02",
+      "title": "OpenAI releases GPT-Live-1.1 with lower-cost standby sessions",
+      "title_zh": "OpenAI 推出 GPT-Live-1.1 与低价待机模式",
+      "category": "foundation-model",
+      "organization": [
+        "OpenAI"
+      ],
+      "published_at": "2026-11-19",
+      "first_seen_at": "2026-11-23T17:06:42Z",
+      "last_updated_at": "2026-11-23T17:06:42Z",
+      "source_type": "release_notes",
+      "primary_source": "https://developers.openai.com/api/docs/changelog",
+      "secondary_sources": [
+        "https://developers.openai.com/api/docs/models/gpt-live-1.1",
+        "https://developers.openai.com/api/docs/guides/live-conversations#managing-idle-sessions"
+      ],
+      "summary": "OpenAI made GPT-Live-1.1 callable through the Live API. OpenAI reports better multilingual transcription and more consistent accents than GPT-Live-1, without publishing an independent benchmark. Active sessions cost $0.05 per minute; WebRTC sessions can pause inference at a $0.02 standby rate.",
+      "summary_en": "OpenAI made GPT-Live-1.1 callable through the Live API. OpenAI reports better multilingual transcription and more consistent accents than GPT-Live-1, without publishing an independent benchmark. Active sessions cost $0.05 per minute; WebRTC sessions can pause inference at a $0.02 standby rate.",
+      "summary_zh": "OpenAI 已通过 Live API 开放 GPT-Live-1.1。官方称其多语言转写与跨语言口音一致性优于 GPT-Live-1，但没有公开独立 benchmark。活跃会话为每分钟 0.05 美元，WebRTC 暂停推理时可按每分钟 0.02 美元待机。",
+      "why_it_matters": "Voice-agent teams can keep WebRTC sessions alive during silence at a lower rate, but should verify wake latency, transcription quality and separate backend charges before migrating.",
+      "why_it_matters_en": "Voice-agent teams can keep WebRTC sessions alive during silence at a lower rate, but should verify wake latency, transcription quality and separate backend charges before migrating.",
+      "why_it_matters_zh": "对语音 agent 团队来说，静默期无需断开 WebRTC 会话即可降低费用；迁移前仍要验证唤醒延迟、多语言转写和另计的后端调用费用。",
+      "technical_details": {
+        "availability": "Available through v1/live/sessions",
+        "active_price_per_minute_usd": 0.05,
+        "standby_price_per_minute_usd": 0.02,
+        "standby_limit": "WebRTC only while inference is paused",
+        "modalities": "Text and audio input/output",
+        "benchmark_boundary": "Quality gains are vendor-reported without a public benchmark",
+        "time_basis": "Official changelog provides 2026-11-19 without a publication hour."
+      },
+      "technical_details_zh": {
+        "可用性": "已通过 v1/live/sessions 开放",
+        "活跃价格（美元/分钟）": 0.05,
+        "待机价格（美元/分钟）": 0.02,
+        "待机限制": "仅限 WebRTC 且推理暂停期间",
+        "模态": "文本与音频输入输出",
+        "评测边界": "质量提升来自厂商陈述，没有公开 benchmark",
+        "时间依据": "官方 changelog 只提供 2026-11-19，没有发布时间。"
+      },
+      "tags": [
+        "voice-agent",
+        "multilingual",
+        "live-api",
+        "webrtc"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "openai-gpt-live-1-1-api-standby",
+      "short_label_zh": "GPT-Live-1.1",
+      "short_label_en": "GPT-Live-1.1",
+      "next_action_zh": "一天内用 20 段多语言通话比较 GPT-Live-1 与 1.1 的转写、口音、待机唤醒延迟和总成本。",
+      "next_action_en": "Within one day, compare GPT-Live-1 and 1.1 on 20 multilingual calls for transcription, accent, standby wake latency and total cost.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-49e8d0577a5e1f9d",
+        "src-c8f3f1f5779bade0",
+        "src-e4e2514b172611cd"
+      ],
+      "project_ids": [
+        "gpt-live"
+      ],
+      "scenario_ids": [
+        "agents"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261119-02-evidence-api",
+          "claim_zh": "OpenAI 文档确认 GPT-Live-1.1 已可调用，并列出活跃与待机价格。",
+          "claim_en": "OpenAI documentation confirms GPT-Live-1.1 availability and active and standby prices.",
+          "source_ids": [
+            "src-49e8d0577a5e1f9d",
+            "src-c8f3f1f5779bade0"
+          ],
+          "event_ids": [
+            "ev-20261119-02"
+          ],
+          "relation": "support",
+          "verification": "verified official API availability and pricing"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261119-02-release",
+          "kind": "new",
+          "occurred_at": "2026-11-19",
+          "discovered_at": "2026-11-23T17:06:42Z",
+          "summary_zh": "GPT-Live-1.1 开放 API，并为 WebRTC 静默期加入低价待机。",
+          "summary_en": "GPT-Live-1.1 becomes available through the API with lower-cost WebRTC standby.",
+          "evidence_ids": [
+            "ev-20261119-02-evidence-api"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261119-03",
+      "title": "InclusionAI opens LingSante-3.1-flash weights for medical agent research",
+      "title_zh": "InclusionAI 开放 LingSante-3.1-flash 医疗 agent 权重",
+      "category": "foundation-model",
+      "organization": [
+        "InclusionAI"
+      ],
+      "published_at": "2026-11-19T04:30:30Z",
+      "first_seen_at": "2026-11-23T17:06:42Z",
+      "last_updated_at": "2026-11-23T17:06:42Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/inclusionAI/LingSante-3.1-flash",
+      "secondary_sources": [],
+      "summary": "InclusionAI released MIT-licensed LingSante-3.1-flash weights for medical reasoning, evidence research and long-horizon healthcare workflows. The 560B-total, 25B-active MoE inherits Ling-3.1-flash and includes public SGLang and vLLM recipes. The publisher limits it to research and evaluation rather than independent diagnosis or treatment.",
+      "summary_en": "InclusionAI released MIT-licensed LingSante-3.1-flash weights for medical reasoning, evidence research and long-horizon healthcare workflows. The 560B-total, 25B-active MoE inherits Ling-3.1-flash and includes public SGLang and vLLM recipes. The publisher limits it to research and evaluation rather than independent diagnosis or treatment.",
+      "summary_zh": "InclusionAI 公开 LingSante-3.1-flash 的 MIT 权重，面向医疗推理、证据研究与长流程医疗任务。该 MoE 总参数 560B、每 token 激活 25B，沿用 Ling-3.1-flash 并提供 SGLang 与 vLLM 配方。发布方明确限定为研究与评估用途，不能独立用于诊断或治疗。",
+      "why_it_matters": "For teams evaluating healthcare RAG or medical agents, this is a deployable open-weight candidate with tool-use recipes, but not clinical validation. Publisher benchmarks and simulated workflows do not establish effectiveness across institutions, populations or live care.",
+      "why_it_matters_en": "For teams evaluating healthcare RAG or medical agents, this is a deployable open-weight candidate with tool-use recipes, but not clinical validation. Publisher benchmarks and simulated workflows do not establish effectiveness across institutions, populations or live care.",
+      "why_it_matters_zh": "对评估医疗 RAG 或医疗 agent 的团队来说，这是带工具调用配方的可部署开放权重候选，但不等于临床验证。厂商 benchmark 与模拟流程不能证明它能跨机构、人群或真实诊疗场景稳定工作。",
+      "technical_details": {
+        "architecture": "Hybrid-linear MoE; 560B total and 25B active parameters",
+        "access": "MIT weights on Hugging Face; API link and SGLang/vLLM recipes are public",
+        "serving": "Representative SGLang recipe uses 8x H200 or 4x GB300",
+        "evidence_limit": "Publisher benchmarks and simulated workflows; no independent clinical validation",
+        "time_basis": "Hugging Face repository created 2026-11-19T04:30:30Z; found outside overlap by recall audit; material files were updated within this run window"
+      },
+      "technical_details_zh": {
+        "架构": "混合线性 MoE；总参数 560B、激活参数 25B",
+        "可用性": "Hugging Face 提供 MIT 权重；API 链接与 SGLang/vLLM 配方公开",
+        "部署": "代表性 SGLang 配方需要 8×H200 或 4×GB300",
+        "证据限制": "benchmark 与模拟流程来自发布方；没有独立临床验证",
+        "时间依据": "Hugging Face 仓库创建于 2026-11-19T04:30:30Z；召回自检在 overlap 外补漏，实质文件在本轮窗口内更新"
+      },
+      "tags": [
+        "open-weights",
+        "medical-ai",
+        "agent",
+        "long-context",
+        "moe"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 5,
+      "risk": 5,
+      "recommendation": "WATCH",
+      "event_fingerprint": "inclusionai-lingsante-3-1-flash-open-weights",
+      "short_label_zh": "LingSante-3.1-flash",
+      "short_label_en": "LingSante-3.1-flash",
+      "next_action_zh": "等独立医疗评测公开后，再用脱敏的保留集复测证据引用、遗漏、幻觉与工具调用安全。",
+      "next_action_en": "Wait for independent medical evaluations, then retest evidence citation, omissions, hallucinations and tool safety on a de-identified held-out set.",
+      "source_ids": [
+        "src-b87293c6bb8155c3"
+      ],
+      "project_ids": [
+        "lingsante-3-1-flash"
+      ],
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261119-03-release-evidence",
+          "claim_zh": "LingSante-3.1-flash 已公开 MIT 权重、模型卡与部署配方。",
+          "claim_en": "LingSante-3.1-flash has public MIT weights, a model card and serving recipes.",
+          "source_ids": [
+            "src-b87293c6bb8155c3"
+          ],
+          "event_ids": [
+            "ev-20261119-03"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-artifact; clinical effectiveness not established"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261119-03-weights",
+          "kind": "new",
+          "occurred_at": "2026-11-19T04:30:30Z",
+          "discovered_at": "2026-11-23T17:06:42Z",
+          "summary_zh": "LingSante-3.1-flash 公开医疗 agent 权重与部署配方",
+          "summary_en": "LingSante-3.1-flash publishes medical-agent weights and serving recipes",
+          "evidence_ids": [
+            "ev-20261119-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

@@ -1,11 +1,11 @@
-# 当前趋势看板 — 2026-11-22T16:57:37Z
+# 当前趋势看板 — 2026-11-23T17:06:42Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-11-23
+- **Last updated:** 2026-11-24
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（维持；判据复核 @2026-09-14：(a) 仍未达成，没有新的第三方 Terminal-Bench / SWE 权重复现；(b) 已由 DeepSeek V4.1 Flash 达成；(c) serving 生态新增跨模型、跨框架的合并代码——vLLM 为 DeepSeek 合并 DeepSelect 与 Engram 路径，SGLang 为 Qwen NVFP4 合并单 DGX Spark 路径；升 High 仍仅剩 (a)）
 - **Why It Matters:** 升级为 strengthening 的依据：确认判据「GLM-5.3 权重落地 + 独立 benchmark 复现」实质达成——权重 8/25 落地且许可证宽松可用，Artificial Analysis 独立评测把 GLM-5.3 放到与 Kimi K3 同档。GLM-5.3-Flash（纯 MIT、全新底座、线性注意力降本）是同组织的加强信号。仍未到 High，只因为 Artificial Analysis 的独立评测针对 API，尚无社区对公开权重的 Terminal-Bench 或 SWE 复现；跨组织同级别发布与持续下载增速判据均已达成。
@@ -129,6 +129,7 @@
 - 2026-11-21：Qwen3.8-27B 的 harness adapter 已覆盖 pi、Hermes 与 OpenCode，但 held-out 迁移仍弱；状态不变。
 - 2026-11-22：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-23：Tencent 公开 WeMM-Video 多尺寸、多精度权重，补充中国团队开放多模态模型的信号；厂商 benchmark 尚未独立复现，状态不变。
+- 2026-11-24：GLM-5.4 增加闭源循环架构信号，WeMM-Ecom 增加可下载的专用多模态权重；趋势保持 strengthening。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
@@ -249,6 +250,7 @@
 - 2026-11-21：Claude Code 与 Gemini CLI 增加 MCP 来源、文件权限与错误可见性控制；状态仍为 emerging。
 - 2026-11-22：Claude Code 2.1.330 与 LiteLLM 1.108.14 继续修补 MCP 错误可见性和多轮工具调用；状态不变。
 - 2026-11-23：LiteLLM 1.108.15 改变无密钥部署认证并修补 provider 工具调用，继续说明网关控制需要按版本回归；状态不变。
+- 2026-11-24：本轮没有足以改变判断的 MCP 控制新信号。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
@@ -381,13 +383,14 @@
 - 2026-11-21：Codex workspace 与 OpenAI Performance Factory 增加持久、远程调度 agent 的生产信号；状态仍为 established。
 - 2026-11-22：Claude Code 2.1.330 与 Qwen Code 0.28.3 增强并发 worktree、调度与恢复；状态仍为 established。
 - 2026-11-23：Qwen Code 0.28.4 增加 artifact 浏览、私有状态目录与恢复保护；运行时仍需故障注入验证，状态保持 established。
+- 2026-11-24：GLM-5.4 扩展编码模型能力主张，但没有新增独立运行时证据；状态保持 established。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-08-26
-- **Last updated:** 2026-11-23
+- **Last updated:** 2026-11-24
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（METR 公布 Opus 5.5 发布前评估、访问期与无偿协议；英国 AISI 通过 EvalEval 发布带配置的机读评估记录。评估结论与可复现格式都有新证据，但跨厂商统一 schema 仍缺）
 - **Why It Matters:** 对做 agent 评测与 RL 训练的团队，这波披露把三类工程实践变成了公开资产：CoT / 行为实时监控（OpenAI：可提前 >1 天告警；Anthropic：检测到越权试探即阻断工具调用、结束任务并告警）、评测环境隔离 best practices（断网沙箱、凭据外置、评测前沙箱自探测、scope 用指令式措辞）、RL 环境防作弊与 CoT 泄漏自查。行业层面，信任模型正从厂商声明转向「可验证披露 + 独立第三方审查」：METR 已两次介入（HF 事件独立调查 + Anthropic 计划中的审查），正在成为事实上的独立审查机构；OpenAI 与 Anthropic 同周各自给出 Critical 级能力模型的护栏框架，方向收敛。注意安全外溢与本知识库趋势 #1 的交叉：两家报告都警告开源权重即将具备相当的网络攻防能力。
@@ -498,13 +501,14 @@
 - 2026-11-21：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-22：OpenAI 公布对抗蒸馏防御的内部结果，但独立复现仍缺失；状态不变。
 - 2026-11-23：Dragos canary 研究与 OpenRouter 的供应商下线、ZDR 撤销和客户通知构成第三方发现到平台处置的完整链条；状态保持 strengthening。
+- 2026-11-24：OpenRouter 的客户通知与供应商声明缩小了归属范围，但责任边界仍有限；状态保持 strengthening。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
 - **Status:** candidate
 - **Confidence:** Low
 - **First observed:** 2026-08-18
-- **Last updated:** 2026-11-23
+- **Last updated:** 2026-11-24
 - **Time Horizon:** Emerging
 - **当前判断:** 维持候选方向、低置信度。PSP 已有具体配置指南，旧记录中“尚未兑现”的概括需要修正。现有材料仍不足以证明多家独立组织已经在生产中采用。
 - **Why It Matters:** 对需要控制数据和执行边界的团队，选型应同时检查模型能力与部署条件。厂商提供配置指南可以支持试点，但不能替代自身的部署验收与独立采用证据。
@@ -599,6 +603,7 @@
 - 2026-11-21：本轮没有足以改变状态或置信度的新信号。
 - 2026-11-22：Inkling 2 Mini 增加本地多模态推理信号，但尚不足以把企业执行面趋势升格。
 - 2026-11-23：WeMM-Video 提供多种本地权重格式与 patched serving 配方，但单一发布不足以提升趋势等级。
+- 2026-11-24：WeMM-Ecom 增加 Apache-2.0 本地多模态服务路径，但独立部署证据仍少；状态保持 candidate。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
@@ -699,13 +704,14 @@
 - 2026-11-21：Claude 黑洞物理结果增加了物理学家检查与 Lean 形式化的新案例；证据仍来自发布方与预印本，状态保持 emerging。
 - 2026-11-22：MiniMax 发布代码支持的密码分析结果，但独立复现与模型贡献边界未明；状态不变。
 - 2026-11-23：本轮没有足以改变状态或置信度的新信号。
+- 2026-11-24：本轮没有新信号。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-11-23
+- **Last updated:** 2026-11-24
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -815,5 +821,6 @@
 - 2026-11-21：Performance Factory 使用受限服务身份，并把合并权限留给人，继续支持能力与策略分离；状态不变。
 - 2026-11-22：Qwen Code 托管 channels 与持久证据强化能力、权限和审计分层；状态不变。
 - 2026-11-23：Qwen Code 的恢复控制与 Signal 的应用级 AI 截屏限制分别约束执行内部状态和跨应用数据采集，继续强化能力与后果控制分层；状态不变。
+- 2026-11-24：MONAI Label 与 OpenRouter 更新继续说明访问路径和下游后果需要模型之外的控制；状态保持 strengthening。
 
 ## Invalidated / retired

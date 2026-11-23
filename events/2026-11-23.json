@@ -1,0 +1,219 @@
+{
+  "date": "2026-11-23",
+  "provenance": "Primary sources verified during incremental run 2026-11-23T17:06:42Z.",
+  "events": [
+    {
+      "event_id": "ev-20261123-01",
+      "title": "Z.ai launches GLM-5.4 with a looped 750B architecture",
+      "title_zh": "Z.ai 推出采用循环架构的 GLM-5.4",
+      "category": "foundation-model",
+      "organization": [
+        "Z.ai"
+      ],
+      "published_at": "2026-11-23",
+      "first_seen_at": "2026-11-23T17:06:42Z",
+      "last_updated_at": "2026-11-23T17:06:42Z",
+      "source_type": "official_blog",
+      "primary_source": "https://z.ai/blog/glm-5.4",
+      "secondary_sources": [
+        "https://zcode.z.ai/cn/docs/qa",
+        "https://zcode.z.ai/en/docs/agents"
+      ],
+      "summary": "Z.ai launched GLM-5.4, its first flagship Loop Transformer. The model runs 28 shared middle layers twice on a roughly 750B-parameter base and exposes a 1M context window in coding products. It is available through every GLM Coding Plan tier, ZCode and Z.ai Chat, while the standard API is still coming soon and open weights await safety hardening.",
+      "summary_en": "Z.ai launched GLM-5.4, its first flagship Loop Transformer. The model runs 28 shared middle layers twice on a roughly 750B-parameter base and exposes a 1M context window in coding products. It is available through every GLM Coding Plan tier, ZCode and Z.ai Chat, while the standard API is still coming soon and open weights await safety hardening.",
+      "summary_zh": "Z.ai 推出首个旗舰 Loop Transformer GLM-5.4。模型在约 750B 参数底座上把 28 个共享中间层运行两遍，并在编码产品中提供 1M 上下文。所有 GLM Coding Plan 档位、ZCode 与 Z.ai Chat 已可使用，但标准 API 尚未开放，权重也要等安全加固完成。",
+      "why_it_matters": "Looped depth may improve reasoning without duplicating every parameter, but engineering teams cannot independently test serving cost or claims until an API or weights arrive.",
+      "why_it_matters_en": "Looped depth may improve reasoning without duplicating every parameter, but engineering teams cannot independently test serving cost or claims until an API or weights arrive.",
+      "why_it_matters_zh": "对模型与编码 agent 团队来说，循环深度可能在不复制全部参数的情况下增加推理计算；但 API 或权重开放前，无法独立验证服务成本和能力主张。",
+      "technical_details": {
+        "architecture": "Loop Transformer; 28 shared layers executed twice",
+        "base_scale": "about 750B parameters",
+        "context_window": 1000000,
+        "availability": "GLM Coding Plan Lite, Pro, Max and Team; ZCode; Z.ai Chat",
+        "api": "Coming Soon",
+        "open_weights": "Planned after safety hardening",
+        "vendor_limit": "Benchmarks and throughput are vendor-reported; vendor notes marathon-thinking loops",
+        "time_basis": "Official launch provides 2026-11-23 without a publication hour."
+      },
+      "technical_details_zh": {
+        "架构": "Loop Transformer；28 个共享层运行两遍",
+        "底座规模": "约 750B 参数",
+        "上下文窗口": 1000000,
+        "可用范围": "GLM Coding Plan Lite、Pro、Max、团队版；ZCode；Z.ai Chat",
+        "API": "Coming Soon",
+        "开放权重": "完成安全加固后计划开放",
+        "证据边界": "benchmark 与吞吐来自厂商；厂商承认可能陷入过长思考循环",
+        "时间依据": "官方只提供 2026-11-23，没有发布时间。"
+      },
+      "tags": [
+        "coding",
+        "loop-transformer",
+        "long-context",
+        "reasoning"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "zai-glm-5-4-loop-transformer-launch",
+      "short_label_zh": "GLM-5.4",
+      "short_label_en": "GLM-5.4",
+      "next_action_zh": "等标准 API 或开放权重上线后，再用固定代码任务比较循环架构的质量、延迟、token 消耗和长上下文稳定性。",
+      "next_action_en": "Reassess after API or weight access, comparing quality, latency, token use and long-context stability on fixed coding tasks.",
+      "source_ids": [
+        "src-f1db7ce98881d890",
+        "src-ee8cce99a1fc64d0",
+        "src-b30f7e5c23ca1c2d"
+      ],
+      "project_ids": [
+        "glm-5-4"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261123-01-evidence-launch",
+          "claim_zh": "Z.ai 官方资料确认产品内可用、1M 上下文，以及 API 与权重尚未开放。",
+          "claim_en": "Z.ai material confirms product availability, 1M context, and that API and weights are not yet available.",
+          "source_ids": [
+            "src-f1db7ce98881d890",
+            "src-ee8cce99a1fc64d0"
+          ],
+          "event_ids": [
+            "ev-20261123-01"
+          ],
+          "relation": "support",
+          "verification": "verified official launch and availability documentation"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261123-01-release",
+          "kind": "new",
+          "occurred_at": "2026-11-23",
+          "discovered_at": "2026-11-23T17:06:42Z",
+          "summary_zh": "GLM-5.4 在订阅与聊天产品中开放，API 与权重仍未提供。",
+          "summary_en": "GLM-5.4 launches in subscription and chat products while API and weights remain unavailable.",
+          "evidence_ids": [
+            "ev-20261123-01-evidence-launch"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261123-02",
+      "title": "Tencent opens WeMM-Ecom weights for local multimodal commerce tasks",
+      "title_zh": "Tencent 开放 WeMM-Ecom 本地多模态电商权重",
+      "category": "foundation-model",
+      "organization": [
+        "Tencent"
+      ],
+      "published_at": "2026-11-23T09:59:17Z",
+      "first_seen_at": "2026-11-23T17:06:42Z",
+      "last_updated_at": "2026-11-23T17:06:42Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/tencent/WeMM-Ecom-35B-A3B",
+      "secondary_sources": [
+        "https://huggingface.co/collections/tencent/wemm-ecom",
+        "https://huggingface.co/tencent/WeMM-Ecom-35B-A3B-GGUF",
+        "https://huggingface.co/tencent/WeMM-Ecom-35B-A3B-GPTQ"
+      ],
+      "summary": "Tencent populated WeMM-Ecom weights in five sizes from 0.8B through 35B-A3B and released GGUF and GPTQ variants. The Apache-2.0 family handles text, images, multiple images and video with a 262K context window. Tencent reports results on 28 commerce and 64 general benchmarks, but no independent reproduction is available.",
+      "summary_en": "Tencent populated WeMM-Ecom weights in five sizes from 0.8B through 35B-A3B and released GGUF and GPTQ variants. The Apache-2.0 family handles text, images, multiple images and video with a 262K context window. Tencent reports results on 28 commerce and 64 general benchmarks, but no independent reproduction is available.",
+      "summary_zh": "Tencent 为 WeMM-Ecom 上传了从 0.8B 到 35B-A3B 的五种规模权重，并提供 GGUF 与 GPTQ 版本。Apache-2.0 模型支持文本、单图、多图和视频，标称上下文为 262K。Tencent 报告覆盖 28 项电商与 64 项通用 benchmark，但尚无独立复现。",
+      "why_it_matters": "Teams building catalog OCR, attribute extraction, moderation or product understanding can now test a specialized multimodal family locally instead of relying only on a hosted service.",
+      "why_it_matters_en": "Teams building catalog OCR, attribute extraction, moderation or product understanding can now test a specialized multimodal family locally instead of relying only on a hosted service.",
+      "why_it_matters_zh": "对做商品 OCR、属性提取、审核或商品理解的团队来说，现在可以在本地测试专用多模态模型，而不是只依赖托管服务。",
+      "technical_details": {
+        "sizes": "0.8B, 2B, 4B, 9B, 35B-A3B",
+        "formats": "BF16, FP8, GPTQ W4A16, GGUF Q4_K_M",
+        "license": "Apache-2.0",
+        "context_window": 262144,
+        "serving": "Transformers >=5.2, vLLM and SGLang; GGUF uses llama.cpp",
+        "evaluation": "Vendor reports 28 e-commerce benchmarks across eight scenarios and 64 general benchmarks across eight categories",
+        "availability_time": "Base weights uploaded 2026-11-23T09:59:17Z; GGUF repos 02:01-02:02Z; GPTQ repos 06:04-06:05Z"
+      },
+      "technical_details_zh": {
+        "规模": "0.8B、2B、4B、9B、35B-A3B",
+        "格式": "BF16、FP8、GPTQ W4A16、GGUF Q4_K_M",
+        "许可": "Apache-2.0",
+        "上下文窗口": 262144,
+        "服务方式": "Transformers >=5.2、vLLM、SGLang；GGUF 使用 llama.cpp",
+        "评测": "厂商报告覆盖 8 类场景的 28 项电商 benchmark 与 8 类 64 项通用 benchmark",
+        "可用时间": "基础权重于 2026-11-23T09:59:17Z 上传；GGUF 仓库在 02:01-02:02Z，GPTQ 仓库在 06:04-06:05Z 建立"
+      },
+      "tags": [
+        "open-weights",
+        "multimodal",
+        "e-commerce",
+        "local-inference"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "tencent-wemm-ecom-open-weights",
+      "short_label_zh": "WeMM-Ecom",
+      "short_label_en": "WeMM-Ecom",
+      "next_action_zh": "一天内用 2B 或 4B GGUF 跑保留的商品 OCR、属性提取和审核集，记录准确率、峰值内存、TTFT 与吞吐。",
+      "next_action_en": "Within one day, run 2B or 4B GGUF on held-out product OCR, attribute and moderation sets, recording accuracy, peak memory, TTFT and throughput.",
+      "source_ids": [
+        "src-eb695e4874b14e40",
+        "src-8086cf4432627267",
+        "src-57d37beef4a7f73b",
+        "src-137868a115bd3a29"
+      ],
+      "project_ids": [
+        "wemm-ecom"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261123-02-evidence-weights",
+          "claim_zh": "Hugging Face 仓库确认基础、GGUF 与 GPTQ 权重可下载，并给出本地服务配方。",
+          "claim_en": "Hugging Face repositories confirm downloadable base, GGUF and GPTQ weights with local serving recipes.",
+          "source_ids": [
+            "src-eb695e4874b14e40",
+            "src-57d37beef4a7f73b",
+            "src-137868a115bd3a29"
+          ],
+          "event_ids": [
+            "ev-20261123-02"
+          ],
+          "relation": "support",
+          "verification": "verified public weights and documentation; performance not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261123-02-weights",
+          "kind": "new",
+          "occurred_at": "2026-11-23T09:59:17Z",
+          "discovered_at": "2026-11-23T17:06:42Z",
+          "summary_zh": "WeMM-Ecom 五种规模的基础与量化权重已经可以下载和本地服务。",
+          "summary_en": "WeMM-Ecom base and quantized weights across five sizes become downloadable and locally servable.",
+          "evidence_ids": [
+            "ev-20261123-02-evidence-weights"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}
