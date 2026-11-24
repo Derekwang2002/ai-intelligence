@@ -1,6 +1,6 @@
 {
   "date": "2026-11-20",
-  "provenance": "Updated by incremental runs through 2026-11-21T16:59:42Z; latest window [2026-11-20T17:07:11Z, 2026-11-21T16:59:42Z], overlap from 2026-11-20T14:07:11Z.",
+  "provenance": "Updated by incremental runs through 2026-11-21T16:59:42Z; latest window [2026-11-20T17:07:11Z, 2026-11-21T16:59:42Z], overlap from 2026-11-20T14:07:11Z. Additional primary sources verified during incremental run 2026-11-24T17:07:26Z.",
   "events": [
     {
       "event_id": "ev-20261120-01",
@@ -793,6 +793,112 @@
           "summary_en": "Signal adds mobile screen-capture restrictions for OS-level AI assistants.",
           "evidence_ids": [
             "ev-20261120-08-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261120-09",
+      "title": "DuckDB ships Sirius as a GPU core extension",
+      "title_zh": "DuckDB 将 Sirius 作为 GPU 核心扩展发布",
+      "category": "infrastructure",
+      "organization": [
+        "DuckDB",
+        "NVIDIA",
+        "academic"
+      ],
+      "published_at": "2026-11-20",
+      "first_seen_at": "2026-11-24T17:07:26Z",
+      "last_updated_at": "2026-11-24T17:07:26Z",
+      "source_type": "official_blog",
+      "primary_source": "https://duckdb.org/2026/11/20/announcing-duckdb-201",
+      "secondary_sources": [
+        "https://duckdb.org/docs/2.0/core_extensions/sirius",
+        "https://github.com/sirius-db/sirius",
+        "https://developer.nvidia.com/blog/get-started-with-gpu-accelerated-duckdb-analytics-using-the-sirius-core-extension/"
+      ],
+      "summary": "DuckDB 2.0.1 made Sirius available as a core extension for GPU-accelerated analytical SQL on Linux with NVIDIA CUDA. Supported plans run on the GPU and unsupported queries fall back to DuckDB CPU execution. The extension is open source but downloads a large backend and has a limited operator surface.",
+      "summary_en": "DuckDB 2.0.1 made Sirius available as a core extension for GPU-accelerated analytical SQL on Linux with NVIDIA CUDA. Supported plans run on the GPU and unsupported queries fall back to DuckDB CPU execution. The extension is open source but downloads a large backend and has a limited operator surface.",
+      "summary_zh": "DuckDB 2.0.1 将 Sirius 作为核心扩展开放，用 NVIDIA CUDA 加速 Linux 上的分析型 SQL。受支持的查询计划交给 GPU，其他查询回退到 DuckDB CPU 引擎。扩展开源，但需要下载较大的后端，目前支持的算子范围有限。",
+      "why_it_matters": "Analytics teams can try GPU acceleration without rewriting SQL, but vendor speed and cost claims exclude parts of the end-to-end path and need workload-specific reproduction.",
+      "why_it_matters_en": "Analytics teams can try GPU acceleration without rewriting SQL, but vendor speed and cost claims exclude parts of the end-to-end path and need workload-specific reproduction.",
+      "why_it_matters_zh": "对分析团队来说，可以不改写 SQL 就试用 GPU 加速；但厂商速度与成本数字没有覆盖完整端到端路径，必须用自有负载复现。",
+      "technical_details": {
+        "availability": "DuckDB 2.0.1 core extension; Linux x86-64 and arm64; NVIDIA GPU with CUDA 12 or 13",
+        "install": "INSTALL sirius; LOAD sirius; downloads an approximately 1 GB backend",
+        "fallback": "Unsupported queries fall back to DuckDB CPU execution",
+        "vendor_benchmark": "NVIDIA reports 3.25x-5.50x speedups and up to 79% lower query-time compute cost on tuned two-GPU configurations",
+        "benchmark_limit": "Pinned development builds; GPU timings exclude result fetch/export while CPU timings include CSV output; startup, validation, storage and idle cost excluded",
+        "time_basis": "GA occurred in DuckDB 2.0.1 on 2026-11-20; NVIDIA tutorial appeared 2026-11-23 with date-only precision"
+      },
+      "technical_details_zh": {
+        "可用范围": "DuckDB 2.0.1 核心扩展；Linux x86-64 与 arm64；NVIDIA GPU 和 CUDA 12/13",
+        "安装": "执行 INSTALL sirius; LOAD sirius；下载约 1 GB 后端",
+        "回退": "不受支持的查询回退到 DuckDB CPU 引擎",
+        "厂商 benchmark": "NVIDIA 报告调优的双 GPU 配置提速 3.25 至 5.50 倍，查询时计算成本最多降低 79%",
+        "评测限制": "使用固定开发构建；GPU 计时不含结果获取/导出，CPU 包含 CSV 输出；未计启动、验证、存储与空闲成本",
+        "时间依据": "GA 发生于 2026-11-20 的 DuckDB 2.0.1；NVIDIA 教程只提供 2026-11-23 日期"
+      },
+      "tags": [
+        "duckdb",
+        "gpu-analytics",
+        "sql",
+        "cuda"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "duckdb-2-0-1-sirius-core-extension-ga",
+      "short_label_zh": "Sirius",
+      "short_label_en": "Sirius",
+      "next_action_zh": "一天内在代表性 DuckDB 查询上记录 GPU 命中、CPU 回退、完整端到端时间和总成本，再决定是否采用。",
+      "next_action_en": "Within one day, measure GPU coverage, CPU fallback, end-to-end time and total cost on representative DuckDB queries before adoption.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-eb2067561acb3034",
+        "src-6c91c71480db70a5",
+        "src-e6a50832bde17176",
+        "src-c04dcf5137601f99"
+      ],
+      "project_ids": [
+        "sirius"
+      ],
+      "scenario_ids": [
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261120-09-ga-evidence",
+          "claim_zh": "DuckDB 2.0.1 文档确认 Sirius 已作为核心扩展可安装，NVIDIA 教程只提供发布方性能证据。",
+          "claim_en": "DuckDB 2.0.1 documentation confirms Sirius is installable as a core extension; the NVIDIA tutorial supplies publisher-run performance evidence.",
+          "source_ids": [
+            "src-eb2067561acb3034",
+            "src-6c91c71480db70a5"
+          ],
+          "event_ids": [
+            "ev-20261120-09"
+          ],
+          "relation": "support",
+          "verification": "verified availability; performance not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-09-ga",
+          "kind": "new",
+          "occurred_at": "2026-11-20",
+          "discovered_at": "2026-11-24T17:07:26Z",
+          "summary_zh": "Sirius 随 DuckDB 2.0.1 进入核心扩展分发。",
+          "summary_en": "Sirius enters DuckDB core-extension distribution.",
+          "evidence_ids": [
+            "ev-20261120-09-ga-evidence"
           ],
           "historical": false,
           "importance": "major"

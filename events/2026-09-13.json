@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.108.15 changes keyless deployment authentication",
-      "title_zh": "LiteLLM 1.108.15 调整无密钥部署认证",
+      "title": "LiteLLM 1.108.16 LTS repairs cross-provider tool and billing paths",
+      "title_zh": "LiteLLM 1.108.16 LTS 修复跨 provider 工具与计费路径",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-22T16:57:37Z",
+      "last_updated_at": "2026-11-24T17:07:26Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -39,14 +39,15 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.9",
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.11",
         "https://github.com/BerriAI/litellm/releases/tag/v1.110.0",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.108.15"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.15",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.16"
       ],
-      "summary": "LiteLLM 1.108.15 LTS returns HTTP 401 for keyless JSON-configured deployments unless they set api_key or the provider-specific key variable. It also adds ResetData, repairs Groq and Meta transcription spend accounting, and fixes Cohere v2 streamed tool calls, tool_choice and unsupported reasoning or schema parameters. The authentication change requires action for affected deployments.",
-      "why_it_matters": "Gateway operators need to distinguish a deliberate authentication change from an outage and should canary the LTS before rollout. The provider fixes are useful, but the release notes remain primary-source evidence rather than independent production validation.",
-      "summary_zh": "LiteLLM 1.108.15 LTS 会让未配置 api_key 或 provider 专用密钥变量的 JSON 部署返回 HTTP 401。它还新增 ResetData，修复 Groq 与 Meta 转录费用统计，以及 Cohere v2 流式工具调用、tool_choice 和不支持的推理或 schema 参数。受影响的无密钥部署必须调整配置。",
-      "summary_en": "LiteLLM 1.108.15 LTS returns HTTP 401 for keyless JSON-configured deployments unless they set api_key or the provider-specific key variable. It also adds ResetData, repairs Groq and Meta transcription spend accounting, and fixes Cohere v2 streamed tool calls, tool_choice and unsupported reasoning or schema parameters. The authentication change requires action for affected deployments.",
-      "why_it_matters_zh": "网关团队需要把有意的认证变化与故障区分开，并在推广前 canary。provider 修复有用，但现有证据仍是发布说明，不是独立生产验证。",
-      "why_it_matters_en": "Gateway operators need to distinguish a deliberate authentication change from an outage and should canary the LTS before rollout. The provider fixes are useful, but the release notes remain primary-source evidence rather than independent production validation.",
+      "summary": "LiteLLM 1.108.16 LTS backports compatibility and accounting fixes across Anthropic, Gemini, Bedrock, Vertex and Responses. It adds Gemini Decision support, repairs prompt caching and media/tool translation, and changes some provider request shapes. The breadth of the backport requires production-shaped canary tests.",
+      "why_it_matters": "Gateway operators gain fixes for dropped media, duplicated logging, cut-stream billing and tool replay, but several breaking request-shape backports raise regression risk.",
+      "summary_zh": "LiteLLM 1.108.16 LTS 向维护分支回移 Anthropic、Gemini、Bedrock、Vertex 与 Responses 的兼容和计费修复。它加入 Gemini Decision 支持，修复提示缓存、媒体与工具转换，并改变部分 provider 请求形态。回移范围很大，必须用生产形态做 canary。",
+      "summary_en": "LiteLLM 1.108.16 LTS backports compatibility and accounting fixes across Anthropic, Gemini, Bedrock, Vertex and Responses. It adds Gemini Decision support, repairs prompt caching and media/tool translation, and changes some provider request shapes. The breadth of the backport requires production-shaped canary tests.",
+      "why_it_matters_zh": "对网关运维来说，媒体丢失、重复日志、截断流计费和工具 replay 得到修复；但多项请求形态回移带来回归风险。",
+      "why_it_matters_en": "Gateway operators gain fixes for dropped media, duplicated logging, cut-stream billing and tool replay, but several breaking request-shape backports raise regression risk.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -99,7 +100,8 @@
         "identity": "Fixes delayed JWT issuer mapping",
         "database": "Supports Unix-socket Postgres connections",
         "update_2026_11_23": "Keyless JSON deployments now require api_key or provider key environment variables; ResetData added; Groq and Meta transcription spend and Cohere v2 tool-call compatibility fixed.",
-        "time_basis_2026_11_23": "GitHub release published 2026-11-21T21:35:07Z inside the strict scan window."
+        "time_basis_2026_11_23": "GitHub release published 2026-11-21T21:35:07Z inside the strict scan window.",
+        "update_2026_11_24": "1.108.16 LTS: Anthropic sampling/version handling, Gemini media and cache behavior, Bedrock/Vertex routing, Responses tool replay and accounting fixes; Gemini Decision support"
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -153,7 +155,8 @@
         "身份": "修复 JWT issuer 映射延迟",
         "数据库": "支持 Unix socket Postgres 连接",
         "2026-11-23 更新": "无密钥 JSON 部署现在必须配置 api_key 或 provider 密钥环境变量；新增 ResetData；修复 Groq 与 Meta 转录费用以及 Cohere v2 工具调用兼容性。",
-        "2026-11-23 时间依据": "GitHub release 发布于 2026-11-21T21:35:07Z，位于严格扫描窗口内。"
+        "2026-11-23 时间依据": "GitHub release 发布于 2026-11-21T21:35:07Z，位于严格扫描窗口内。",
+        "update_2026_11_24": "1.108.16 LTS：Anthropic 采样/version、Gemini 媒体与缓存、Bedrock/Vertex 路由、Responses 工具 replay 与计费修复；加入 Gemini Decision"
       },
       "tags": [
         "litellm",
@@ -198,7 +201,8 @@
         "src-593d0602a81065fa",
         "src-cd8becb9246e0efd",
         "src-557fc3f08806f02d",
-        "src-62e6753ef6bf3fd4"
+        "src-62e6753ef6bf3fd4",
+        "src-c56a9b81f11e6602"
       ],
       "project_ids": [
         "mcp",
@@ -485,6 +489,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-16-evidence",
+          "claim_zh": "1.108.16 LTS 集中回移跨 provider 工具、缓存、路由与计费修复。",
+          "claim_en": "Version 1.108.16 LTS backports cross-provider tool, cache, routing and billing fixes.",
+          "source_ids": [
+            "src-c56a9b81f11e6602"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified official release; operational behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -758,13 +775,27 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-16",
+          "kind": "update",
+          "occurred_at": "2026-11-23T22:12:26Z",
+          "discovered_at": "2026-11-24T17:07:26Z",
+          "summary_zh": "1.108.16 LTS 集中回移跨 provider 工具、缓存、路由与计费修复。",
+          "summary_en": "Version 1.108.16 LTS backports cross-provider tool, cache, routing and billing fixes.",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-108-16-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "一天内 canary 无密钥 JSON 配置、401 行为、转录费用和 Cohere v2 流式工具调用。",
-      "next_action_en": "Within one day, canary keyless JSON configs, 401 behavior, transcription spend and Cohere v2 streamed tool calls.",
-      "short_label_zh": "LiteLLM 1.108.15",
-      "short_label_en": "LiteLLM 1.108.15"
+      "next_action_zh": "一天内 canary Anthropic sampling、Gemini 视频缓存、云端路由、Responses replay 和截断流计费。",
+      "next_action_en": "Within one day, canary Anthropic sampling, Gemini video/cache, Bedrock/Vertex routing, Responses replay and cut-stream billing.",
+      "short_label_zh": "LiteLLM 1.108.16",
+      "short_label_en": "LiteLLM 1.108.16",
+      "last_reviewed_at": "2026-11-24T17:07:26Z"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "date": "2026-11-23",
-  "provenance": "Primary sources verified during incremental run 2026-11-23T17:06:42Z.",
+  "provenance": "Primary sources verified during incremental run 2026-11-23T17:06:42Z. Additional primary sources verified during incremental run 2026-11-24T17:07:26Z.",
   "events": [
     {
       "event_id": "ev-20261123-01",
@@ -209,6 +209,413 @@
           "summary_en": "WeMM-Ecom base and quantized weights across five sizes become downloadable and locally servable.",
           "evidence_ids": [
             "ev-20261123-02-evidence-weights"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261123-03",
+      "title": "OpenAI and Cisco open-source Shirudo for live Linux mitigations",
+      "title_zh": "OpenAI 与 Cisco 开源 Linux 在线缓解工具 Shirudo",
+      "category": "agent-security",
+      "organization": [
+        "OpenAI",
+        "Cisco"
+      ],
+      "published_at": "2026-11-23T21:20:00Z",
+      "first_seen_at": "2026-11-24T17:07:26Z",
+      "last_updated_at": "2026-11-24T17:07:26Z",
+      "source_type": "official_blog",
+      "primary_source": "https://openai.com/index/introducing-shirudo/",
+      "secondary_sources": [
+        "https://github.com/shirudo-dev/shirudo",
+        "https://docs.shirudo.dev/start/quickstart.html"
+      ],
+      "summary": "OpenAI and Cisco released Shirudo, a pre-release open-source runtime for signed eBPF and Java mitigations on running Linux systems. Operators can monitor, approve, load and attest temporary shields while permanent patches are prepared. Production use needs kernel changes and TPM 2.0.",
+      "summary_en": "OpenAI and Cisco released Shirudo, a pre-release open-source runtime for signed eBPF and Java mitigations on running Linux systems. Operators can monitor, approve, load and attest temporary shields while permanent patches are prepared. Production use needs kernel changes and TPM 2.0.",
+      "summary_zh": "OpenAI 与 Cisco 发布 Shirudo：一个处于 pre-release 的开源运行时，可在运行中的 Linux 系统加载签名 eBPF 与 Java 临时缓解措施。运维人员可以先观察、审批，再加载和验证 shield；正式补丁仍需继续部署。生产使用要求内核改动和 TPM 2.0。",
+      "why_it_matters": "Security teams gain a testable bridge between disclosure and patch rollout, but a privileged live-mitigation layer can create new failure modes and is not production-ready.",
+      "why_it_matters_en": "Security teams gain a testable bridge between disclosure and patch rollout, but a privileged live-mitigation layer can create new failure modes and is not production-ready.",
+      "why_it_matters_zh": "对安全与基础设施团队来说，它提供了漏洞披露到正式补丁之间可测试的缓冲层；但高权限在线缓解本身也会引入新的故障模式，目前不适合直接生产采用。",
+      "technical_details": {
+        "stage": "Pre-release; public VM quickstart available",
+        "mechanism": "Signed eBPF and Java upatches with monitor-before-enforce workflow",
+        "attestation": "TPM-backed measurement and offline verification",
+        "license": "BSD-2-Clause; BPF programs dual BSD/GPL",
+        "production_requirements": "Patched Linux kernel with signed-loader ABI and TPM 2.0",
+        "evidence_limit": "Java4Shell result is a controlled publisher/partner test, not independent production evidence"
+      },
+      "technical_details_zh": {
+        "阶段": "Pre-release；提供公开 VM quickstart",
+        "机制": "签名 eBPF 与 Java upatch；支持先观察后执行",
+        "验证": "TPM 记录并支持离线核验",
+        "许可": "BSD-2-Clause；BPF 程序为 BSD/GPL 双许可",
+        "生产要求": "带 signed-loader ABI 的补丁内核与 TPM 2.0",
+        "证据限制": "Java4Shell 结果来自发布方与合作方受控测试，不是独立生产证据"
+      },
+      "tags": [
+        "ebpf",
+        "live-mitigation",
+        "linux",
+        "agent-security"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 5,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "openai-cisco-shirudo-live-linux-mitigation",
+      "short_label_zh": "Shirudo",
+      "short_label_en": "Shirudo",
+      "next_action_zh": "一天内只在隔离 VM 按 quickstart 验证签名、观察模式、加载、回滚和 TPM 证据；不要接入生产主机。",
+      "next_action_en": "Within one day, use only an isolated VM to verify signing, observe mode, load, rollback and TPM evidence; do not attach it to production hosts.",
+      "source_ids": [
+        "src-83b9621afef40ae2",
+        "src-b60f570016886246",
+        "src-849f172d50500c8d"
+      ],
+      "project_ids": [
+        "shirudo"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261123-03-release-evidence",
+          "claim_zh": "官方公告、仓库和 quickstart 确认 Shirudo 已开源但仍为 pre-release。",
+          "claim_en": "The announcement, repository and quickstart confirm Shirudo is open source but pre-release.",
+          "source_ids": [
+            "src-83b9621afef40ae2",
+            "src-b60f570016886246"
+          ],
+          "event_ids": [
+            "ev-20261123-03"
+          ],
+          "relation": "support",
+          "verification": "verified public code and documentation; efficacy remains publisher-run"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261123-03-release",
+          "kind": "new",
+          "occurred_at": "2026-11-23T21:20:00Z",
+          "discovered_at": "2026-11-24T17:07:26Z",
+          "summary_zh": "Shirudo 开源并提供隔离 VM 的在线缓解验证路径。",
+          "summary_en": "Shirudo opens with an isolated-VM path for testing live mitigations.",
+          "evidence_ids": [
+            "ev-20261123-03-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261123-04",
+      "title": "Ai2 releases RoboTrack to test point tracking in real manipulation",
+      "title_zh": "Ai2 发布 RoboTrack 检验真实操作中的点追踪",
+      "category": "research",
+      "organization": [
+        "Ai2"
+      ],
+      "published_at": "2026-11-23",
+      "first_seen_at": "2026-11-24T17:07:26Z",
+      "last_updated_at": "2026-11-24T17:07:26Z",
+      "source_type": "official_blog",
+      "primary_source": "https://huggingface.co/blog/allenai/robotrack",
+      "secondary_sources": [
+        "https://github.com/allenai/robotrack",
+        "https://huggingface.co/allenai/RoboTracker"
+      ],
+      "summary": "Ai2 released RoboTrack-Bench, RoboTrack-15M, training and evaluation code, and two point-tracking checkpoints for robot manipulation. The benchmark contains 307 real videos and 2,522 human-verified tracks; the synthetic training set contains 15 million tracks. Publisher tests show modest gains, while the strongest checkpoint is non-commercial.",
+      "summary_en": "Ai2 released RoboTrack-Bench, RoboTrack-15M, training and evaluation code, and two point-tracking checkpoints for robot manipulation. The benchmark contains 307 real videos and 2,522 human-verified tracks; the synthetic training set contains 15 million tracks. Publisher tests show modest gains, while the strongest checkpoint is non-commercial.",
+      "summary_zh": "Ai2 发布 RoboTrack-Bench、RoboTrack-15M、训练与评测代码，以及两个机器人操作点追踪 checkpoint。benchmark 包含 307 段真实视频和 2,522 条人工核验轨迹；合成训练集包含 1,500 万条轨迹。发布方测试显示有限提升，最强 checkpoint 仅限非商业用途。",
+      "why_it_matters": "Robotics teams can now test trackers against clutter, occlusion and viewpoint changes in real manipulation footage instead of relying on easier benchmarks.",
+      "why_it_matters_en": "Robotics teams can now test trackers against clutter, occlusion and viewpoint changes in real manipulation footage instead of relying on easier benchmarks.",
+      "why_it_matters_zh": "对机器人团队来说，可以在真实操作视频的遮挡、杂乱背景和视角变化下检验 tracker，不再只依赖更容易的 benchmark。",
+      "technical_details": {
+        "benchmark": "307 clips and 2,522 human-verified tracks",
+        "training_data": "RoboTrack-15M: 3,000 simulated videos and 15 million tracks",
+        "artifacts": "Code, data, RoboTracker and RoboTracker-Warp checkpoints",
+        "licenses": "RoboTracker Apache-2.0; RoboTracker-Warp CC-BY-NC-4.0; dataset components have separate terms",
+        "publisher_result": "RoboTracker-Warp 65.98 AJ versus 63.87 for publisher CoWTracker baseline",
+        "safety_limit": "Long occlusion and textureless surfaces remain failure cases; do not directly drive robot motion without bounded control",
+        "time_basis": "Official release has date-only precision; initial GitHub commit predates checkpoint, while benchmark modification was in-window"
+      },
+      "technical_details_zh": {
+        "benchmark": "307 段视频、2,522 条人工核验轨迹",
+        "训练数据": "RoboTrack-15M：3,000 段合成视频、1,500 万条轨迹",
+        "公开工件": "代码、数据、RoboTracker 与 RoboTracker-Warp checkpoint",
+        "许可": "RoboTracker 为 Apache-2.0；RoboTracker-Warp 为 CC-BY-NC-4.0；数据组件各有条款",
+        "发布方结果": "RoboTracker-Warp 为 65.98 AJ，发布方 CoWTracker baseline 为 63.87",
+        "安全限制": "长遮挡与无纹理表面仍会失败；没有受限控制时不能直接驱动机器人",
+        "时间依据": "官方仅给日期；GitHub 初始提交早于 checkpoint，benchmark 修改发生在窗口内"
+      },
+      "tags": [
+        "robotics",
+        "point-tracking",
+        "benchmark",
+        "synthetic-data"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "ai2-robotrack-real-manipulation-point-tracking",
+      "short_label_zh": "RoboTrack",
+      "short_label_en": "RoboTrack",
+      "next_action_zh": "一天内用公开 checkpoint 跑一小段 RoboTrack-Bench 和自有遮挡视频，记录 AJ、失败类型、速度与许可边界。",
+      "next_action_en": "Within one day, run public checkpoints on a RoboTrack-Bench slice and your occlusion videos, recording AJ, failure modes, speed and license limits.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-eb2701ff66febea2",
+        "src-85d9d8bcf1ac13f2",
+        "src-236f44c08ace8e15"
+      ],
+      "project_ids": [
+        "robotrack"
+      ],
+      "scenario_ids": [
+        "research",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261123-04-release-evidence",
+          "claim_zh": "代码、数据与 checkpoint 已公开；性能和机器人试验结果仍来自发布方。",
+          "claim_en": "Code, data and checkpoints are public; performance and robot trials remain publisher-run.",
+          "source_ids": [
+            "src-85d9d8bcf1ac13f2",
+            "src-236f44c08ace8e15"
+          ],
+          "event_ids": [
+            "ev-20261123-04"
+          ],
+          "relation": "support",
+          "verification": "verified artifacts; results not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261123-04-release",
+          "kind": "new",
+          "occurred_at": "2026-11-23",
+          "discovered_at": "2026-11-24T17:07:26Z",
+          "summary_zh": "RoboTrack 公开真实操作 benchmark、合成训练集和两个 tracker。",
+          "summary_en": "RoboTrack opens a real-manipulation benchmark, synthetic training set and two trackers.",
+          "evidence_ids": [
+            "ev-20261123-04-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261123-05",
+      "title": "Google adds server-side file slicing to the Gemini API",
+      "title_zh": "Google 为 Gemini API 加入服务端文件切片",
+      "category": "ai-engineering",
+      "organization": [
+        "Google DeepMind"
+      ],
+      "published_at": "2026-11-23T16:12:00Z",
+      "first_seen_at": "2026-11-24T17:07:26Z",
+      "last_updated_at": "2026-11-24T17:07:26Z",
+      "source_type": "official_blog",
+      "primary_source": "https://blog.google/innovation-and-ai/technology/developers-tools/file-slicing-controls/",
+      "secondary_sources": [],
+      "summary": "Google added native server-side slicing for PDFs, Office and OpenDocument files, spreadsheets, audio and video in the Gemini API. Developers can select pages, cells, time ranges, layers and resolution while reusing uploaded files. The feature is available across Gemini 4 models and bills only inspected content.",
+      "summary_en": "Google added native server-side slicing for PDFs, Office and OpenDocument files, spreadsheets, audio and video in the Gemini API. Developers can select pages, cells, time ranges, layers and resolution while reusing uploaded files. The feature is available across Gemini 4 models and bills only inspected content.",
+      "summary_zh": "Google 为 Gemini API 加入原生服务端切片，覆盖 PDF、Office 与 OpenDocument 文件、电子表格、音频和视频。开发者可以复用上传文件，只指定页码、单元格、时间区间、内容层与分辨率。该能力支持全部 Gemini 4 模型，只对实际检查的内容计费。",
+      "why_it_matters": "Multimodal RAG and agent teams can reduce local conversion code and token waste, but vendor savings vary with document layout and must be measured on retained workloads.",
+      "why_it_matters_en": "Multimodal RAG and agent teams can reduce local conversion code and token waste, but vendor savings vary with document layout and must be measured on retained workloads.",
+      "why_it_matters_zh": "对多模态 RAG 与 agent 团队来说，可以减少本地格式转换和无效 token；但节省幅度受文档布局影响，必须用保留任务测量。",
+      "technical_details": {
+        "availability": "Available in Google AI Studio and Gemini for business across Gemini 4 models",
+        "documents": "Page range, text/image layers and low/medium/high resolution",
+        "spreadsheets": "Sheet index, visible cell range, values/formulas/visuals",
+        "media": "Audio/video time ranges; video frame rate and resolution",
+        "billing": "Tokens charged for inspected slices rather than the full file",
+        "publisher_results": "Vercel reports 14x fewer tokens on one PDF flow; LiteLLM reports 67% PDF and 33% workbook reductions",
+        "time_basis": "Page metadata gives 2026-11-23T16:12:00Z, inside overlap but before the previous checkpoint"
+      },
+      "technical_details_zh": {
+        "可用范围": "Google AI Studio 与 Gemini for business；支持全部 Gemini 4 模型",
+        "文档": "页码范围、文本/图像层、低/中/高分辨率",
+        "电子表格": "工作表索引、可见单元格范围、数值/公式/视觉层",
+        "媒体": "音频/视频时间区间；视频帧率与分辨率",
+        "计费": "按实际检查的切片计 token，不按完整文件",
+        "发布方结果": "Vercel 报告一条 PDF 流程 token 减少 14 倍；LiteLLM 报告 PDF 减少 67%、工作簿减少 33%",
+        "时间依据": "页面元数据为 2026-11-23T16:12:00Z，处于 overlap 且早于上次 checkpoint"
+      },
+      "tags": [
+        "gemini-api",
+        "multimodal-rag",
+        "file-processing",
+        "token-cost"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 5,
+      "adoption_signal": 4,
+      "maturity": 3,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "google-gemini-api-server-side-file-slicing",
+      "short_label_zh": "Gemini 文件切片",
+      "short_label_en": "Gemini File Slicing",
+      "next_action_zh": "一天内用 20 份 PDF、表格和视频对比全量与切片输入的召回、token、延迟、错误和本地处理成本。",
+      "next_action_en": "Within one day, compare full and sliced input across 20 PDFs, workbooks and videos for recall, tokens, latency, errors and local-processing cost.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-33079c28b3e18d3a"
+      ],
+      "project_ids": [
+        "gemini-file-slicing"
+      ],
+      "scenario_ids": [
+        "agents",
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261123-05-release-evidence",
+          "claim_zh": "Google 官方页面确认切片范围、可用模型与按实际内容计费。",
+          "claim_en": "Google confirms slicing scope, model availability and billing for inspected content.",
+          "source_ids": [
+            "src-33079c28b3e18d3a"
+          ],
+          "event_ids": [
+            "ev-20261123-05"
+          ],
+          "relation": "support",
+          "verification": "verified official availability; partner savings not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261123-05-release",
+          "kind": "new",
+          "occurred_at": "2026-11-23T16:12:00Z",
+          "discovered_at": "2026-11-24T17:07:26Z",
+          "summary_zh": "Gemini API 开放服务端文档与媒体切片。",
+          "summary_en": "Gemini API opens server-side document and media slicing.",
+          "evidence_ids": [
+            "ev-20261123-05-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261123-06",
+      "title": "InclusionAI releases Ling-3.2-air for local multimodal automation",
+      "title_zh": "InclusionAI 开放多模态自动化模型 Ling-3.2-air",
+      "category": "foundation-model",
+      "organization": [
+        "InclusionAI"
+      ],
+      "published_at": "2026-11-23T03:55:12Z",
+      "first_seen_at": "2026-11-24T17:07:26Z",
+      "last_updated_at": "2026-11-24T17:07:26Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/inclusionAI/Ling-3.2-air",
+      "secondary_sources": [],
+      "summary": "InclusionAI released Ling-3.2-air, a MIT-licensed multimodal MoE with 124B total and 5.5B active parameters. Public weights support text, images, video, tool calling and up to 256K context through documented SGLang and vLLM recipes. The model requires four 141GB-class GPUs or eight 80GB GPUs in the publisher recipes, and benchmark gains remain publisher-reported.",
+      "summary_en": "InclusionAI released Ling-3.2-air, a MIT-licensed multimodal MoE with 124B total and 5.5B active parameters. Public weights support text, images, video, tool calling and up to 256K context through documented SGLang and vLLM recipes. The model requires four 141GB-class GPUs or eight 80GB GPUs in the publisher recipes, and benchmark gains remain publisher-reported.",
+      "summary_zh": "InclusionAI 发布 Ling-3.2-air：一个 MIT 许可的多模态 MoE，总参数 124B、每 token 激活 5.5B。公开权重支持文本、图片、视频、工具调用和最长 256K 上下文，并提供 SGLang 与 vLLM 配方。发布方配方需要 4 张 141GB 级 GPU 或 8 张 80GB GPU，benchmark 提升尚无独立复现。",
+      "why_it_matters": "Teams evaluating self-hosted multimodal agents get a testable model aimed at document reasoning and workflow automation, but its memory floor makes deployment a server-cluster decision rather than a workstation experiment.",
+      "why_it_matters_en": "Teams evaluating self-hosted multimodal agents get a testable model aimed at document reasoning and workflow automation, but its memory floor makes deployment a server-cluster decision rather than a workstation experiment.",
+      "why_it_matters_zh": "对评估自托管多模态 agent 的团队来说，这是一个可验证的文档推理与工作流自动化模型；但显存门槛很高，部署更接近服务器集群决策，而非工作站试验。",
+      "technical_details": {
+        "architecture": "Hybrid-linear MoE; 124B total, 5.5B active; 512 routed experts and 8 active experts",
+        "modalities": "Text, images and video input; text output; reasoning and tool calling",
+        "context": "Publisher recipe documents 256K tokens",
+        "deployment": "SGLang day-0 image and a dedicated vLLM fork; trust_remote_code required",
+        "hardware": "Publisher recommends 4 x H20-3e/H200 or 4-GPU B300/GB300; 8 x H100/H800 for 80GB cards",
+        "publisher_results": "AutomationBench-AA 61%; Terminal-Bench 4.0 27%; Harvey LAB-AA material-hallucination all-pass 0.8%",
+        "availability": "MIT weights on Hugging Face; no hosted inference provider listed",
+        "time_basis": "Hugging Face repository created 2026-11-23T03:55:12Z"
+      },
+      "technical_details_zh": {
+        "架构": "Hybrid-linear MoE；总参数 124B、激活 5.5B；512 个 routed experts、激活 8 个",
+        "模态": "文本、图片与视频输入；文本输出；支持推理与工具调用",
+        "上下文": "发布方配方记录为 256K token",
+        "部署": "SGLang day-0 image 与专用 vLLM fork；需要 trust_remote_code",
+        "硬件": "发布方建议 4 张 H20-3e/H200 或 4-GPU B300/GB300；80GB 显卡需 8 张 H100/H800",
+        "发布方成绩": "AutomationBench-AA 61%；Terminal-Bench 4.0 27%；Harvey LAB-AA 经重大幻觉检查后的 all-pass 为 0.8%",
+        "可用性": "Hugging Face 提供 MIT 权重；未列出托管推理服务",
+        "时间依据": "Hugging Face 仓库创建于 2026-11-23T03:55:12Z"
+      },
+      "tags": [
+        "multimodal",
+        "agent",
+        "open-weights",
+        "tool-use"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 4,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "inclusionai-ling-3-2-air-open-weights",
+      "short_label_zh": "Ling-3.2-air",
+      "short_label_en": "Ling-3.2-air",
+      "next_action_zh": "一天内用公开权重在受控集群跑 20 个文档与工具调用任务，记录成功率、显存、吞吐和重大幻觉。",
+      "next_action_en": "Within one day, run 20 document and tool-use tasks with the public weights on a controlled cluster; record success rate, memory, throughput and material hallucinations.",
+      "source_ids": [
+        "src-d2f98570ba045778"
+      ],
+      "project_ids": [
+        "ling-3-2-air"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261123-06-release-evidence",
+          "claim_zh": "MIT 权重与部署配方已公开；性能数字仍由发布方提供。",
+          "claim_en": "MIT weights and deployment recipes are public; performance numbers remain publisher-reported.",
+          "source_ids": [
+            "src-d2f98570ba045778"
+          ],
+          "event_ids": [
+            "ev-20261123-06"
+          ],
+          "relation": "support",
+          "verification": "verified artifacts; publisher benchmarks not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261123-06-release",
+          "kind": "new",
+          "occurred_at": "2026-11-23T03:55:12Z",
+          "discovered_at": "2026-11-24T17:07:26Z",
+          "summary_zh": "Ling-3.2-air 多模态权重与部署配方公开。",
+          "summary_en": "Ling-3.2-air multimodal weights and deployment recipes become public.",
+          "evidence_ids": [
+            "ev-20261123-06-release-evidence"
           ],
           "historical": false,
           "importance": "major"

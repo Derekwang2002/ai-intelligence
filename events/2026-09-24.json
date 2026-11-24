@@ -1053,7 +1053,9 @@
       "published_at": "2026-09-24T16:40:20Z",
       "source_type": "github",
       "primary_source": "https://github.com/Niko1221/Strata",
-      "secondary_sources": [],
+      "secondary_sources": [
+        "https://huggingface.co/strata-engine/Inkling-2-Mini-Strata"
+      ],
       "summary": "Strata is an MIT-licensed inference engine that distributes Qwen3.8-Flash-Next experts across GPU, RAM, CPU and SSD. It exposes OpenAI- and Anthropic-compatible local endpoints and documents a 12 GB GPU, 32 GB RAM and about 80 GB SSD floor. Author benchmarks report 60–94 output tokens per second on recent gaming GPUs.",
       "why_it_matters": "For teams evaluating very large sparse models locally, Strata offers a concrete heterogeneous-memory serving design and agent-compatible APIs. Rapid repository adoption warrants a trial, but self-reported speed and aggressive quantization require quality and restart tests.",
       "summary_zh": "Strata 是 MIT 许可的推理引擎，把 Qwen3.8-Flash-Next 的 experts 分布到 GPU、内存、CPU 与 SSD。它提供 OpenAI 和 Anthropic 兼容的本地端点，最低配置为 12 GB GPU、32 GB 内存与约 80 GB SSD。作者在近期游戏显卡上报告每秒 60–94 个输出 token。",
@@ -1063,14 +1065,16 @@
         "hardware_floor": "12 GB supported GPU, 32 GB RAM, ~80 GB SSD",
         "interfaces": "OpenAI- and Anthropic-compatible APIs",
         "author_speed": "94 tok/s RTX 5070 Q2_0; 60 tok/s RX 9070 XT",
-        "adoption": "about 9.1k GitHub stars and 831 forks at review"
+        "adoption": "about 9.1k GitHub stars and 831 forks at review",
+        "Inkling_2_Mini": "Strata packs run the 26.4B/3.4B-active multimodal model from 4 GiB GPUs via RAM offload; 10.47-19.35 GB packs target 12-24 GiB GPUs"
       },
       "technical_details_zh": {
         "许可证": "MIT",
         "最低硬件": "12 GB 受支持 GPU、32 GB 内存、约 80 GB SSD",
         "接口": "兼容 OpenAI 与 Anthropic API",
         "作者速度": "RTX 5070 Q2_0 为 94 tok/s；RX 9070 XT 为 60 tok/s",
-        "采用信号": "复核时约 9.1k GitHub stars、831 forks"
+        "采用信号": "复核时约 9.1k GitHub stars、831 forks",
+        "Inkling 2 Mini": "Strata packs 通过内存卸载让 26.4B/激活 3.4B 多模态模型从 4 GiB GPU 起跑；10.47-19.35 GB packs 面向 12-24 GiB GPU"
       },
       "tags": [
         "Strata",
@@ -1087,7 +1091,8 @@
       "recommendation": "TRIAL",
       "event_fingerprint": "strata-qwen38-flash-next-local-serving",
       "source_ids": [
-        "src-89be4e220d9f6acb"
+        "src-89be4e220d9f6acb",
+        "src-85f6a5f9c6ffac94"
       ],
       "project_ids": [
         "strata"
@@ -1100,8 +1105,8 @@
       "late_discovery": true,
       "short_label_zh": "Strata",
       "short_label_en": "Strata",
-      "next_action_zh": "一天内在一台 12–24 GB GPU 主机对比 Q2 与官方端点的质量、TTFT、速度、内存和重启行为。",
-      "next_action_en": "In one day, compare Q2 with the official endpoint on a 12–24 GB GPU, measuring quality, TTFT, speed, memory and restart behavior.",
+      "next_action_zh": "一天内用 12–24 GiB GPU 对比 Inkling 2 Mini packs 的任务质量、首 token 延迟、吞吐和内存卸载稳定性。",
+      "next_action_en": "Within one day, compare Inkling 2 Mini packs on a 12-24 GiB GPU for task quality, TTFT, throughput and offload stability.",
       "evidence": [
         {
           "id": "ev-20260924-12-release-evidence",
@@ -1115,6 +1120,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260924-12-inkling-strata-evidence",
+          "claim_zh": "Strata 已提供 Inkling 2 Mini 的三档本地 packs 与硬件实测；性能为作者测量。",
+          "claim_en": "Strata now offers three local Inkling 2 Mini packs with hardware measurements; performance is author-measured.",
+          "source_ids": [
+            "src-85f6a5f9c6ffac94"
+          ],
+          "event_ids": [
+            "ev-20260924-12"
+          ],
+          "relation": "support",
+          "verification": "verified downloadable artifacts; author benchmarks not independently reproduced"
         }
       ],
       "changes": [
@@ -1130,10 +1148,23 @@
           ],
           "historical": true,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260924-12-inkling-strata",
+          "kind": "update",
+          "occurred_at": "2026-11-21T18:46:06Z",
+          "discovered_at": "2026-11-24T17:07:26Z",
+          "summary_zh": "Strata 发布 Inkling 2 Mini 本地 packs，覆盖 12–24 GiB GPU 并支持更低显存混合卸载。",
+          "summary_en": "Strata releases local Inkling 2 Mini packs for 12-24 GiB GPUs with lower-memory hybrid offload.",
+          "evidence_ids": [
+            "ev-20260924-12-inkling-strata-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "first_seen_at": "2026-10-04T16:02:19Z",
-      "last_updated_at": "2026-10-04T16:02:19Z",
+      "last_updated_at": "2026-11-24T17:07:26Z",
       "summary_en": "Strata is an MIT-licensed inference engine that distributes Qwen3.8-Flash-Next experts across GPU, RAM, CPU and SSD. It exposes OpenAI- and Anthropic-compatible local endpoints and documents a 12 GB GPU, 32 GB RAM and about 80 GB SSD floor. Author benchmarks report 60–94 output tokens per second on recent gaming GPUs.",
       "why_it_matters_en": "For teams evaluating very large sparse models locally, Strata offers a concrete heterogeneous-memory serving design and agent-compatible APIs. Rapid repository adoption warrants a trial, but self-reported speed and aggressive quantization require quality and restart tests."
     },

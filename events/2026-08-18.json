@@ -161,8 +161,8 @@
     },
     {
       "event_id": "ev-20260818-02",
-      "title": "Codex 0.171 makes the workspace and remote execution first-class",
-      "title_zh": "Codex 0.171 将 workspace 与远程执行升级为核心入口",
+      "title": "Codex 0.172 adds per-tool reviewers and safer resume state",
+      "title_zh": "Codex 0.172 加入逐工具审批并保护续接状态",
       "category": "developer-tools",
       "organization": [
         "OpenAI",
@@ -171,7 +171,7 @@
       "published_at": "2026-08-18T22:26:00Z",
       "published_at_note": "GitHub stable release published 2026-08-18T22:26Z by github-actions. In-window.",
       "first_seen_at": "2026-08-19T00:00:17Z",
-      "last_updated_at": "2026-11-20T17:07:11Z",
+      "last_updated_at": "2026-11-24T17:07:26Z",
       "source_type": "primary",
       "primary_source": "https://github.com/openai/codex/releases",
       "secondary_sources": [
@@ -191,14 +191,15 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.167.2",
         "https://github.com/openai/codex/releases/tag/rust-v0.168.0",
         "https://github.com/openai/codex/releases/tag/rust-v0.169.0",
-        "https://github.com/openai/codex/releases/tag/rust-v0.170.0"
+        "https://github.com/openai/codex/releases/tag/rust-v0.170.0",
+        "https://github.com/openai/codex/releases/tag/rust-v0.172.0"
       ],
-      "summary": "Codex 0.171 defaults the TUI to a workspace view, adds codex exec --remote and /rc remote control, and expands document, image and subagent transcript handling. It also fixes permission-profile persistence, late completions canceling newer approvals and diff loss.",
-      "why_it_matters": "The release moves local and remote agent work into one persistent workspace while fixing approval and diff state hazards. Existing users can adopt after testing remote control, permissions and concurrent task recovery.",
-      "summary_zh": "Codex 0.171 默认进入 TUI workspace，新增 codex exec --remote 与 /rc 远程控制，并扩展文档、图片和 subagent transcript 的处理。版本同时修复 permission profile 持久化、旧完成事件取消新审批和 diff 丢失。",
-      "summary_en": "Codex 0.171 defaults the TUI to a workspace view, adds codex exec --remote and /rc remote control, and expands document, image and subagent transcript handling. It also fixes permission-profile persistence, late completions canceling newer approvals and diff loss.",
-      "why_it_matters_zh": "这个版本把本地与远程 agent 工作收进同一个持久 workspace，并修复审批与 diff 状态风险。现有用户可在回归远程控制、权限和并发恢复后升级。",
-      "why_it_matters_en": "The release moves local and remote agent work into one persistent workspace while fixing approval and diff state hazards. Existing users can adopt after testing remote control, permissions and concurrent task recovery.",
+      "summary": "Codex 0.172 adds per-connected-app-tool approval reviewers, lazy startup for optional stdio MCP servers, task-group navigation and thread-link opening. It restores saved sandbox permissions, working directories and workspace roots on exec resume and preserves queued child-agent replies after parent interruption.",
+      "why_it_matters": "Agent teams get finer approval routing and more reliable recovery, while lazy MCP startup and restored permissions need regression across local and remote environments.",
+      "summary_zh": "Codex 0.172 加入逐 connected-app 工具审批 reviewer、可选 stdio MCP server 延迟启动、任务组导航和 thread link 打开。`exec resume` 会恢复沙箱权限、工作目录与 workspace root；父 turn 中断后，已排队的 child-agent 回复也会保留。",
+      "summary_en": "Codex 0.172 adds per-connected-app-tool approval reviewers, lazy startup for optional stdio MCP servers, task-group navigation and thread-link opening. It restores saved sandbox permissions, working directories and workspace roots on exec resume and preserves queued child-agent replies after parent interruption.",
+      "why_it_matters_zh": "对 agent 团队来说，审批路由更细，恢复更可靠；但 MCP 延迟启动与权限恢复需要在本地和远程环境回归。",
+      "why_it_matters_en": "Agent teams get finer approval routing and more reliable recovery, while lazy MCP startup and restored permissions need regression across local and remote environments.",
       "technical_details": {
         "version": "0.148.0 (stable)",
         "session_forking": "codex exec fork; archive/restore from TUI resume picker",
@@ -238,7 +239,8 @@
         "stable_version": "0.171.0",
         "workspace": "TUI workspace is the default and includes documents, images and subagent transcripts",
         "remote": "codex exec --remote and /rc remote control",
-        "model_catalog": "Adds GPT-6.2 catalog and makes Sol the default"
+        "model_catalog": "Adds GPT-6.2 catalog and makes Sol the default",
+        "update_2026_11_24": "0.172.0: per-tool app reviewers, lazy stdio MCP startup, thread-link navigation, preserved resume sandbox/workspace state and queued child-agent replies"
       },
       "tags": [
         "codex",
@@ -305,7 +307,8 @@
         "稳定版本": "0.171.0",
         "workspace": "TUI 默认进入 workspace，支持文档、图片与 subagent transcript",
         "远程": "新增 codex exec --remote 与 /rc remote control",
-        "模型目录": "加入 GPT-6.2 catalog，并默认使用 Sol"
+        "模型目录": "加入 GPT-6.2 catalog，并默认使用 Sol",
+        "update_2026_11_24": "0.172.0：逐工具 reviewer、stdio MCP 延迟启动、thread link 导航、续接时恢复沙箱/workspace 状态，并保留 child-agent 回复"
       },
       "update_2026_08_20": "0.149.0 stable (2026-08-20T21:04Z, in-window; preceded by five 0.149.0 alphas 8/19-8/20; 0.150.0-alpha.1 already out 8/20 22:06Z). New: interactive agents dashboard for searching, starting, opening, renaming and stopping tasks with configurable shortcuts (#39094 et al.) — first fleet-management UI in a stable CLI agent runtime; `codex queue` sends messages into existing local/remote sessions (#39092), with queued messages reliably waking idle sessions and better duplicate-session-name resolution — cross-session messaging lands in Codex stable, initiated by user/orchestrator rather than agent-to-agent (trend #3 criterion (a) partially satisfied); /cd, /pwd, /cwd TUI commands for working-directory management (#38894); vim mode change motions cw/c$/cc (#39661); codex doctor checks endpoint protection, network/proxy failures, desktop app state, update connectivity (#38827 et al.). Also: GPT-5.6 max context window raised (#39102, no figures in release notes); sandbox hardening — dropped capabilities from Linux sandbox processes (#39103), fail-closed PowerShell Tree-sitter lowerer (#39213), symlink-safe sensitive-file reader (#39200); WebRTC sideband reconnects after transport loss without losing output (#39257); SDK exact CLI config overrides + max/ultra reasoning effort (#38817, #39662); docs now warn on DNS exfiltration risks in secure devcontainers (#39283). Recommendation stays ADOPT.",
       "update_2026_08_26": "Recovered from index (previous run wrote the update note to index/events.json only): 0.150.0 stable (19:37Z): @-mentions reference other Codex tasks; agents can read, create, or message tasks from the terminal (agent-initiated cross-task messaging in stable — meets trend #3 criterion (a)); /copy picker; auto task titles; Interrupt hooks (commands/MCP handlers on turn interruption); security: untrusted-project AGENTS.md ignored, credential redaction in app-server diagnostics, app signature verification, Bedrock multi-agent/compaction fixes",
@@ -334,7 +337,8 @@
         "src-6cfc942e5da70ee0",
         "src-a0c08c461d827e1c",
         "src-ad076a99b8923baf",
-        "src-1e02ab9c34ce90d4"
+        "src-1e02ab9c34ce90d4",
+        "src-824283cf95f0a1c6"
       ],
       "project_ids": [
         "codex"
@@ -527,6 +531,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-172-evidence",
+          "claim_zh": "0.172 增加逐工具审批，并修复续接与中断后的状态丢失。",
+          "claim_en": "Version 0.172 adds per-tool approval and fixes state loss after resume and interruption.",
+          "source_ids": [
+            "src-824283cf95f0a1c6"
+          ],
+          "event_ids": [
+            "ev-20260818-02"
+          ],
+          "relation": "support",
+          "verification": "verified official release; operational behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -710,14 +727,27 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260818-02-codex-0-172",
+          "kind": "update",
+          "occurred_at": "2026-11-24T00:03:55Z",
+          "discovered_at": "2026-11-24T17:07:26Z",
+          "summary_zh": "0.172 增加逐工具审批，并修复续接与中断后的状态丢失。",
+          "summary_en": "Version 0.172 adds per-tool approval and fixes state loss after resume and interruption.",
+          "evidence_ids": [
+            "ev-20260818-02-codex-0-172-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "Codex 0.158.0: MCP OAuth client secrets, authenticated exec-server WebSockets, default terminal-input approval and cross-platform sandbox fixes; stays ADOPT",
-      "next_action_zh": "升级并回归 remote control、permission profile、并发审批和 diff 保留。",
-      "next_action_en": "Upgrade and regress remote control, permission profiles, concurrent approvals and diff preservation.",
-      "short_label_zh": "Codex 0.170",
-      "short_label_en": "Codex 0.170",
-      "last_reviewed_at": "2026-10-16T15:56:07Z",
+      "next_action_zh": "升级并回归逐工具 reviewer、MCP 首次调用、跨系统远程续接和父 turn 中断后的消息保留。",
+      "next_action_en": "Upgrade and regress per-tool reviewers, first MCP calls, cross-platform remote resume and message preservation after parent interruption.",
+      "short_label_zh": "Codex 0.172",
+      "short_label_en": "Codex 0.172",
+      "last_reviewed_at": "2026-11-24T17:07:26Z",
       "editorial_pick": {
         "reason_zh": "并行读取与可中断长工具调用直接改善日常 agent 工作流。",
         "reason_en": "Parallel reads and interruptible long tool calls directly improve daily agent workflows.",

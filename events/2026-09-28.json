@@ -1004,14 +1004,15 @@
     },
     {
       "first_seen_at": "2026-10-01T16:01:43Z",
-      "last_updated_at": "2026-11-10T17:03:13Z",
+      "last_updated_at": "2026-11-24T17:07:26Z",
       "secondary_sources": [
         "https://github.com/ollama/ollama/releases/tag/v0.35.1",
         "https://github.com/ollama/ollama/releases/tag/v0.40.9",
         "https://ollama.com/library/phonon",
         "https://github.com/ollama/ollama/releases/tag/v0.40.13",
         "https://github.com/ollama/ollama/releases/tag/v0.40.14",
-        "https://github.com/ollama/ollama/releases/tag/v0.40.16"
+        "https://github.com/ollama/ollama/releases/tag/v0.40.16",
+        "https://github.com/ollama/ollama/releases/tag/v0.40.18"
       ],
       "technical_impact": 3,
       "engineering_value": 4,
@@ -1025,8 +1026,8 @@
       ],
       "evidence_stage": "verified",
       "event_id": "ev-20260928-09",
-      "title": "Ollama 0.40.16 cuts Apple-silicon memory and stops silent truncation",
-      "title_zh": "Ollama 0.40.16 降低 Apple 内存并停止静默截断",
+      "title": "Ollama 0.40.18 speeds Inkling 2 on Metal and drops JetPack 5",
+      "title_zh": "Ollama 0.40.18 加速 Inkling 2 并移除 JetPack 5",
       "category": "ai-engineering",
       "organization": [
         "Ollama"
@@ -1034,10 +1035,10 @@
       "published_at": "2026-09-28T21:23:22Z",
       "source_type": "github_release",
       "primary_source": "https://github.com/ollama/ollama/releases/tag/v0.35.0",
-      "summary_zh": "Ollama 0.40.16 让 Qwen3.8 Flash Next 在 Apple silicon 上少用约 27 GiB 内存；`/v1/responses` 会遵守 truncation 参数，不再默认静默截断；`ollama launch claude` 会始终路由到所选模型。它还加入 Ripple Preview 一键运行和 Windows Arm 的 CUDA 13.5 支持。",
-      "summary_en": "Ollama 0.40.16 reduces Qwen3.8 Flash Next memory use on Apple silicon by about 27 GiB, makes /v1/responses honor truncation instead of silently truncating, and routes Claude Code to the selected model. It also adds one-command Ripple Preview support and CUDA 13.5 on Windows Arm.",
-      "why_it_matters_zh": "对本地模型团队来说，显存/内存下降可能让原本跑不动的模型变得可用，显式截断也消除了隐藏的正确性风险。两项变化都只有 release notes，需要在目标硬件和 prompt 上回归。",
-      "why_it_matters_en": "For local-model teams, the memory reduction may turn an otherwise infeasible model into a runnable one, while explicit truncation removes a hidden correctness failure. Both need regression on target hardware and prompts because the release notes provide no independent measurements.",
+      "summary_zh": "Ollama 0.40.18 改善 Inkling 2 在 Apple silicon 上的 Metal 解码、prefill 与 draft round，并融合 residual mixing。随附的 llama.cpp 更新同时移除 JetPack 5 支持。它利好本地 Inkling 用户，但为旧 NVIDIA 边缘部署引入明确兼容边界。",
+      "summary_en": "Ollama 0.40.18 improves Inkling 2 Metal decode, prefill and draft rounds and fuses residual mixing on Apple silicon. Its llama.cpp update also removes JetPack 5 support. The release is useful for local Inkling users but creates an explicit compatibility boundary for older NVIDIA edge deployments.",
+      "why_it_matters_zh": "对本地模型团队来说，Inkling 2 推理可能更快；JetPack 5 用户升级前必须锁定旧版或迁移。",
+      "why_it_matters_en": "Local-model teams may get faster Inkling 2 inference, while JetPack 5 users need to pin or migrate before upgrading.",
       "technical_details": {
         "version": "0.35.0 stable",
         "endpoint": "/v1/systemone",
@@ -1052,7 +1053,8 @@
         "time_basis": "GitHub stable release published 2026-10-28T19:55:04Z",
         "latest_stable": "0.40.14",
         "release_2026_11_03": "Sampler-default parity, readable Responses input, compressed search decoding and Codex/Claude launch checks",
-        "time_basis_2026_11_03": "GitHub release published 2026-11-03T01:40:40Z"
+        "time_basis_2026_11_03": "GitHub release published 2026-11-03T01:40:40Z",
+        "update_2026_11_24": "0.40.18: Inkling 2 Metal decode/prefill/draft and residual-mixing improvements; llama.cpp bump removes JetPack 5 support"
       },
       "technical_details_zh": {
         "版本": "0.35.0 stable",
@@ -1067,7 +1069,8 @@
         "平台更新": "LFM3、lfm3-audio 与 lfm3-omni 现同时支持 Linux、Windows 和 Apple silicon",
         "时间依据": "GitHub release published 2026-11-03T01:40:40Z",
         "最新稳定版": "0.40.14",
-        "2026-11-03 更新": "采样默认值对齐、Responses 输入保留、压缩搜索解码，以及 Codex/Claude 启动检查"
+        "2026-11-03 更新": "采样默认值对齐、Responses 输入保留、压缩搜索解码，以及 Codex/Claude 启动检查",
+        "update_2026_11_24": "0.40.18：改善 Inkling 2 的 Metal 解码/prefill/draft 与 residual mixing；llama.cpp 更新移除 JetPack 5"
       },
       "tags": [
         "ollama",
@@ -1085,18 +1088,19 @@
         "src-60b7805de2ebc483",
         "src-255532568ba55074",
         "src-b53d42e9c538fd76",
-        "src-9e6aebddb26b3098"
+        "src-9e6aebddb26b3098",
+        "src-dbf3279a2f3448f9"
       ],
       "project_ids": [
         "ollama"
       ],
       "late_discovery": true,
-      "short_label_zh": "Ollama 0.40.14",
-      "short_label_en": "Ollama 0.40.14",
-      "next_action_zh": "用目标 Mac 回归峰值内存与输出质量，并验证 Responses 超长输入和 Claude Code 模型路由。",
-      "next_action_en": "Regress peak memory and output quality on the target Mac, plus oversized Responses inputs and Claude Code model routing.",
-      "summary": "Ollama 0.40.16 reduces Qwen3.8 Flash Next memory use on Apple silicon by about 27 GiB, makes /v1/responses honor truncation instead of silently truncating, and routes Claude Code to the selected model. It also adds one-command Ripple Preview support and CUDA 13.5 on Windows Arm.",
-      "why_it_matters": "For local-model teams, the memory reduction may turn an otherwise infeasible model into a runnable one, while explicit truncation removes a hidden correctness failure. Both need regression on target hardware and prompts because the release notes provide no independent measurements.",
+      "short_label_zh": "Ollama 0.40.18",
+      "short_label_en": "Ollama 0.40.18",
+      "next_action_zh": "Apple silicon 用户升级后测 Inkling 2 的 TTFT 与吞吐；JetPack 5 部署先固定旧版并规划迁移。",
+      "next_action_en": "Apple-silicon users should measure Inkling 2 TTFT and throughput; JetPack 5 deployments should pin and plan migration.",
+      "summary": "Ollama 0.40.18 improves Inkling 2 Metal decode, prefill and draft rounds and fuses residual mixing on Apple silicon. Its llama.cpp update also removes JetPack 5 support. The release is useful for local Inkling users but creates an explicit compatibility boundary for older NVIDIA edge deployments.",
+      "why_it_matters": "Local-model teams may get faster Inkling 2 inference, while JetPack 5 users need to pin or migrate before upgrading.",
       "evidence": [
         {
           "id": "ev-20260928-09-release-evidence",
@@ -1176,6 +1180,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source"
+        },
+        {
+          "id": "ev-20260928-09-ollama-0-40-18-evidence",
+          "claim_zh": "0.40.18 加速 Inkling 2 的 Metal 路径，并移除 JetPack 5 支持。",
+          "claim_en": "Version 0.40.18 speeds Inkling 2 on Metal and removes JetPack 5 support.",
+          "source_ids": [
+            "src-dbf3279a2f3448f9"
+          ],
+          "event_ids": [
+            "ev-20260928-09"
+          ],
+          "relation": "support",
+          "verification": "verified official release; operational behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -1255,9 +1272,22 @@
             "ev-20260928-09-ollama-0-40-16-evidence"
           ],
           "historical": false
+        },
+        {
+          "id": "ev-20260928-09-ollama-0-40-18",
+          "kind": "update",
+          "occurred_at": "2026-11-24T04:18:13Z",
+          "discovered_at": "2026-11-24T17:07:26Z",
+          "summary_zh": "0.40.18 加速 Inkling 2 的 Metal 路径，并移除 JetPack 5 支持。",
+          "summary_en": "Version 0.40.18 speeds Inkling 2 on Metal and removes JetPack 5 support.",
+          "evidence_ids": [
+            "ev-20260928-09-ollama-0-40-18-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
-      "last_reviewed_at": "2026-10-23T16:04:55Z"
+      "last_reviewed_at": "2026-11-24T17:07:26Z"
     }
   ]
 }

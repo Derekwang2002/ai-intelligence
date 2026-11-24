@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-24",
+  "provenance": "Primary sources verified during incremental run 2026-11-24T17:07:26Z. Additional primary sources verified during incremental run 2026-11-24T17:07:26Z.",
+  "events": [
+    {
+      "event_id": "ev-20261124-01",
+      "title": "Tencent opens OmniEVIE-4B for multimodal retrieval",
+      "title_zh": "Tencent 开放多模态检索模型 OmniEVIE-4B",
+      "category": "foundation-model",
+      "organization": [
+        "Tencent"
+      ],
+      "published_at": "2026-11-24T03:16:57Z",
+      "first_seen_at": "2026-11-24T17:07:26Z",
+      "last_updated_at": "2026-11-24T17:07:26Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/tencent/OmniEVIE-4B",
+      "secondary_sources": [
+        "https://github.com/Tencent/OmniEVIE"
+      ],
+      "summary": "Tencent released OmniEVIE-4B, a 4.54B-parameter Apache-2.0 retrieval model for text, images, visual documents and native video. It ships weights, inference and indexing code, checksums and a technical report. Its multi-vector index can localize matching page regions or video intervals, while all reported quality and latency results are publisher-run.",
+      "summary_en": "Tencent released OmniEVIE-4B, a 4.54B-parameter Apache-2.0 retrieval model for text, images, visual documents and native video. It ships weights, inference and indexing code, checksums and a technical report. Its multi-vector index can localize matching page regions or video intervals, while all reported quality and latency results are publisher-run.",
+      "summary_zh": "Tencent 发布 OmniEVIE-4B：一个 4.54B 参数、Apache-2.0 的检索模型，覆盖文本、图片、视觉文档和原生视频。权重、推理与建库代码、校验和及技术报告均已公开。多向量索引可以定位匹配的页面区域或视频片段，但质量与延迟数字都来自发布方。",
+      "why_it_matters": "Multimodal RAG teams can test one self-hosted retriever across documents and video with fine-grained localization, instead of stitching together separate text and vision stacks.",
+      "why_it_matters_en": "Multimodal RAG teams can test one self-hosted retriever across documents and video with fine-grained localization, instead of stitching together separate text and vision stacks.",
+      "why_it_matters_zh": "对多模态 RAG 团队来说，可以用一个自托管 retriever 统一处理文档与视频，并定位细粒度命中，不必拼接多套文本和视觉检索系统。",
+      "technical_details": {
+        "parameters": "4.54B; based on Qwen3.5-4B",
+        "modalities": "Text, natural images, visual documents and native video",
+        "index": "Late-interaction multi-vector; compressed configuration up to 128 int8 vectors of 64 dimensions",
+        "footprint": "Publisher reports up to 9,472 bytes per record and 8.82 GiB per million records; K32 at 2.15 GiB per million pages",
+        "publisher_latency": "54.2 ms across 1M records and 120.2 ms across 5M records on one CPU thread after GPU encoding",
+        "publisher_quality": "60.68 full and 60.06 compressed across MMEB-V3 190 tasks",
+        "availability": "Apache-2.0 weights and code; self-hosted package; flash-attn >=2.7.0; no hosted API or price found",
+        "time_basis": "Hugging Face created 2026-11-24T03:16:57Z; GitHub created 2026-11-24T03:09:40Z"
+      },
+      "technical_details_zh": {
+        "参数": "4.54B；基于 Qwen3.5-4B",
+        "模态": "文本、自然图像、视觉文档与原生视频",
+        "索引": "Late-interaction 多向量；压缩配置最多 128 个 int8、64 维向量",
+        "占用": "发布方称每条最多 9,472 字节、每百万条 8.82 GiB；K32 每百万页 2.15 GiB",
+        "发布方延迟": "GPU 编码后单 CPU 线程检索 100 万条 54.2 ms、500 万条 120.2 ms",
+        "发布方质量": "MMEB-V3 190 项任务：完整模型 60.68，压缩模型 60.06",
+        "可用性": "Apache-2.0 权重与代码；自托管 package；需 flash-attn >=2.7.0；未发现托管 API 或价格",
+        "时间依据": "Hugging Face 创建于 2026-11-24T03:16:57Z；GitHub 创建于 03:09:40Z"
+      },
+      "tags": [
+        "multimodal-retrieval",
+        "rag",
+        "video-retrieval",
+        "open-weights"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 5,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "tencent-omnievie-4b-multimodal-retrieval",
+      "short_label_zh": "OmniEVIE-4B",
+      "short_label_en": "OmniEVIE-4B",
+      "next_action_zh": "一天内索引一组 PDF、截图和短视频，对比现有 retriever 的 recall/nDCG、定位准确率、索引大小和查询延迟。",
+      "next_action_en": "Within one day, index PDFs, screenshots and short videos; compare recall/nDCG, localization, index size and query latency with the current retriever.",
+      "source_ids": [
+        "src-f8bbbb480f3e1fbb",
+        "src-6fa7b559ad633845"
+      ],
+      "project_ids": [
+        "omnievie"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261124-01-release-evidence",
+          "claim_zh": "权重、代码与技术报告已公开；质量和延迟尚无独立复现。",
+          "claim_en": "Weights, code and the technical report are public; quality and latency lack independent reproduction.",
+          "source_ids": [
+            "src-f8bbbb480f3e1fbb",
+            "src-6fa7b559ad633845"
+          ],
+          "event_ids": [
+            "ev-20261124-01"
+          ],
+          "relation": "support",
+          "verification": "verified artifacts; publisher benchmarks not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261124-01-release",
+          "kind": "new",
+          "occurred_at": "2026-11-24T03:16:57Z",
+          "discovered_at": "2026-11-24T17:07:26Z",
+          "summary_zh": "OmniEVIE-4B 权重与多模态检索代码公开。",
+          "summary_en": "OmniEVIE-4B weights and multimodal retrieval code become public.",
+          "evidence_ids": [
+            "ev-20261124-01-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    }
+  ]
+}
