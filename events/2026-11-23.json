@@ -532,16 +532,18 @@
       ],
       "published_at": "2026-11-23T03:55:12Z",
       "first_seen_at": "2026-11-24T17:07:26Z",
-      "last_updated_at": "2026-11-24T17:07:26Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/inclusionAI/Ling-3.2-air",
-      "secondary_sources": [],
-      "summary": "InclusionAI released Ling-3.2-air, a MIT-licensed multimodal MoE with 124B total and 5.5B active parameters. Public weights support text, images, video, tool calling and up to 256K context through documented SGLang and vLLM recipes. The model requires four 141GB-class GPUs or eight 80GB GPUs in the publisher recipes, and benchmark gains remain publisher-reported.",
-      "summary_en": "InclusionAI released Ling-3.2-air, a MIT-licensed multimodal MoE with 124B total and 5.5B active parameters. Public weights support text, images, video, tool calling and up to 256K context through documented SGLang and vLLM recipes. The model requires four 141GB-class GPUs or eight 80GB GPUs in the publisher recipes, and benchmark gains remain publisher-reported.",
-      "summary_zh": "InclusionAI 发布 Ling-3.2-air：一个 MIT 许可的多模态 MoE，总参数 124B、每 token 激活 5.5B。公开权重支持文本、图片、视频、工具调用和最长 256K 上下文，并提供 SGLang 与 vLLM 配方。发布方配方需要 4 张 141GB 级 GPU 或 8 张 80GB GPU，benchmark 提升尚无独立复现。",
-      "why_it_matters": "Teams evaluating self-hosted multimodal agents get a testable model aimed at document reasoning and workflow automation, but its memory floor makes deployment a server-cluster decision rather than a workstation experiment.",
-      "why_it_matters_en": "Teams evaluating self-hosted multimodal agents get a testable model aimed at document reasoning and workflow automation, but its memory floor makes deployment a server-cluster decision rather than a workstation experiment.",
-      "why_it_matters_zh": "对评估自托管多模态 agent 的团队来说，这是一个可验证的文档推理与工作流自动化模型；但显存门槛很高，部署更接近服务器集群决策，而非工作站试验。",
+      "secondary_sources": [
+        "https://artificialanalysis.ai/models/ling-3-2-air"
+      ],
+      "summary": "InclusionAI released Ling-3.2-air, a MIT-licensed multimodal MoE with 124B total and 5.5B active parameters. Independent evaluator Artificial Analysis now scores it 23 on a nine-evaluation Intelligence Index, above the comparable open-weight median of 5, while recording 199M output tokens and no serving speed or price. Public weights require a multi-GPU server deployment.",
+      "summary_en": "InclusionAI released Ling-3.2-air, a MIT-licensed multimodal MoE with 124B total and 5.5B active parameters. Independent evaluator Artificial Analysis now scores it 23 on a nine-evaluation Intelligence Index, above the comparable open-weight median of 5, while recording 199M output tokens and no serving speed or price. Public weights require a multi-GPU server deployment.",
+      "summary_zh": "InclusionAI 发布 Ling-3.2-air：一个 MIT 许可的多模态 MoE，总参数 124B、每 token 激活 5.5B。独立评测方 Artificial Analysis 在九项评测组成的 Intelligence Index 上给出 23 分，高于同类开放权重模型 5 分的中位数；但整个评测输出 1.99 亿 token，且没有速度或价格数据。公开权重仍需要多 GPU 服务器。",
+      "why_it_matters": "The independent score replaces a publisher-only evidence gap, but extreme output volume and missing speed/cost measurements keep deployment economics unresolved.",
+      "why_it_matters_en": "The independent score replaces a publisher-only evidence gap, but extreme output volume and missing speed/cost measurements keep deployment economics unresolved.",
+      "why_it_matters_zh": "独立分数补上了此前只有厂商成绩的证据缺口；但极高输出量和缺失的速度/成本数据，意味着部署经济性仍不清楚。",
       "technical_details": {
         "architecture": "Hybrid-linear MoE; 124B total, 5.5B active; 512 routed experts and 8 active experts",
         "modalities": "Text, images and video input; text output; reasoning and tool calling",
@@ -550,7 +552,8 @@
         "hardware": "Publisher recommends 4 x H20-3e/H200 or 4-GPU B300/GB300; 8 x H100/H800 for 80GB cards",
         "publisher_results": "AutomationBench-AA 61%; Terminal-Bench 4.0 27%; Harvey LAB-AA material-hallucination all-pass 0.8%",
         "availability": "MIT weights on Hugging Face; no hosted inference provider listed",
-        "time_basis": "Hugging Face repository created 2026-11-23T03:55:12Z"
+        "time_basis": "Hugging Face repository created 2026-11-23T03:55:12Z",
+        "independent_evaluation": "Artificial Analysis Intelligence Index 23 across nine evaluations; comparable open-weight median 5; 199M output tokens; no speed or API price."
       },
       "technical_details_zh": {
         "架构": "Hybrid-linear MoE；总参数 124B、激活 5.5B；512 个 routed experts、激活 8 个",
@@ -560,7 +563,8 @@
         "硬件": "发布方建议 4 张 H20-3e/H200 或 4-GPU B300/GB300；80GB 显卡需 8 张 H100/H800",
         "发布方成绩": "AutomationBench-AA 61%；Terminal-Bench 4.0 27%；Harvey LAB-AA 经重大幻觉检查后的 all-pass 为 0.8%",
         "可用性": "Hugging Face 提供 MIT 权重；未列出托管推理服务",
-        "时间依据": "Hugging Face 仓库创建于 2026-11-23T03:55:12Z"
+        "时间依据": "Hugging Face 仓库创建于 2026-11-23T03:55:12Z",
+        "独立评测": "Artificial Analysis Intelligence Index 九项评测得分 23；同类开放权重中位数 5；输出 1.99 亿 token；无速度或 API 价格。"
       },
       "tags": [
         "multimodal",
@@ -578,10 +582,11 @@
       "event_fingerprint": "inclusionai-ling-3-2-air-open-weights",
       "short_label_zh": "Ling-3.2-air",
       "short_label_en": "Ling-3.2-air",
-      "next_action_zh": "一天内用公开权重在受控集群跑 20 个文档与工具调用任务，记录成功率、显存、吞吐和重大幻觉。",
-      "next_action_en": "Within one day, run 20 document and tool-use tasks with the public weights on a controlled cluster; record success rate, memory, throughput and material hallucinations.",
+      "next_action_zh": "一天内在受控集群测 20 个文档与工具任务，同时给输出 token 设上限，记录成功率、显存、吞吐和成本。",
+      "next_action_en": "Within one day, test 20 document and tool tasks on a controlled cluster with output-token caps; record success, memory, throughput and cost.",
       "source_ids": [
-        "src-d2f98570ba045778"
+        "src-d2f98570ba045778",
+        "src-e79b19a5b0e24b20"
       ],
       "project_ids": [
         "ling-3-2-air"
@@ -604,6 +609,19 @@
           ],
           "relation": "support",
           "verification": "verified artifacts; publisher benchmarks not independently reproduced"
+        },
+        {
+          "id": "ev-20261123-06-aa-evidence",
+          "claim_zh": "Artificial Analysis 独立跑出 Intelligence Index 23，但没有速度与价格数据，且输出量很高。",
+          "claim_en": "Artificial Analysis independently measured an Intelligence Index of 23, with high output volume and no speed or price data.",
+          "source_ids": [
+            "src-e79b19a5b0e24b20"
+          ],
+          "event_ids": [
+            "ev-20261123-06"
+          ],
+          "relation": "support",
+          "verification": "independent evaluator result; publication time available only to date precision"
         }
       ],
       "changes": [
@@ -616,6 +634,121 @@
           "summary_en": "Ling-3.2-air multimodal weights and deployment recipes become public.",
           "evidence_ids": [
             "ev-20261123-06-release-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        },
+        {
+          "id": "ev-20261123-06-aa-evaluation",
+          "kind": "update",
+          "occurred_at": "2026-11-25",
+          "discovered_at": "2026-11-25T16:58:49Z",
+          "summary_zh": "Artificial Analysis 补充独立能力分数，并暴露极高输出量。",
+          "summary_en": "Artificial Analysis adds an independent capability score and reveals extreme output volume.",
+          "evidence_ids": [
+            "ev-20261123-06-aa-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z"
+    },
+    {
+      "first_seen_at": "2026-11-25T16:58:49Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
+      "late_discovery": true,
+      "event_id": "ev-20261123-07",
+      "title": "Aleph Alpha releases Kolibri 1.1 for bilingual long-context reasoning",
+      "title_zh": "Aleph Alpha 发布双语长上下文模型 Kolibri 1.1",
+      "category": "foundation-model",
+      "organization": [
+        "Aleph Alpha"
+      ],
+      "published_at": "2026-11-23",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/Aleph-Alpha/Kolibri-1.1",
+      "secondary_sources": [],
+      "summary": "Aleph Alpha released Apache-2.0 Kolibri 1.1 weights for German and English reasoning, RAG, coding and tool use. The 75B-total MoE activates 3.44B parameters per token, offers a native 262K context and an experimental 1M path, and requires about 77.6GB of model memory. Official vLLM and GGUF paths are public, while benchmark and serving-cost claims remain publisher-run.",
+      "summary_en": "Aleph Alpha released Apache-2.0 Kolibri 1.1 weights for German and English reasoning, RAG, coding and tool use. The 75B-total MoE activates 3.44B parameters per token, offers a native 262K context and an experimental 1M path, and requires about 77.6GB of model memory. Official vLLM and GGUF paths are public, while benchmark and serving-cost claims remain publisher-run.",
+      "summary_zh": "Aleph Alpha 以 Apache-2.0 发布 Kolibri 1.1 权重，面向德语和英语推理、RAG、编码与工具调用。该 MoE 总参数 75B、每 token 激活 3.44B，原生上下文 262K，并提供实验性 1M 路径；模型内存约 77.6GB。官方 vLLM 与 GGUF 路径已公开，但 benchmark 和服务成本仍是厂商自测。",
+      "why_it_matters": "Teams serving German and English workloads get an inspectable specialist model with explicit reasoning and tool calls. Sparse activation lowers compute, but the full 75B weights still impose a high memory floor.",
+      "why_it_matters_en": "Teams serving German and English workloads get an inspectable specialist model with explicit reasoning and tool calls. Sparse activation lowers compute, but the full 75B weights still impose a high memory floor.",
+      "why_it_matters_zh": "处理德语和英语负载的团队多了一个可检查、支持显式推理与工具调用的专用模型。稀疏激活减少计算，但完整 75B 权重仍带来较高内存门槛。",
+      "technical_details": {
+        "architecture": "75.1B total, 3.44B active per token; 384 routed experts with six selected plus one shared expert",
+        "context": "262,144 native; up to 1,048,576 with quality caution",
+        "languages": "German and English",
+        "access": "Apache-2.0 weights; official vLLM plugin, container and GGUF quantizations",
+        "hardware": "About 77.6GB model memory; minimum 2x H100/H200 or 1x B200/B300",
+        "publisher_result": "73.2% aggregate benchmark score at modeled 0.21 GPU-hours per 1,000 tasks",
+        "evidence_limit": "Benchmarks and cost model are publisher-run; official evals apply to unquantized vLLM serving",
+        "time_basis": "Model card states release date 2026-11-23 without a time; recalled outside overlap"
+      },
+      "technical_details_zh": {
+        "架构": "总参数 75.1B、每 token 激活 3.44B；384 个路由专家中选 6 个，另有 1 个共享专家",
+        "上下文": "原生 262,144；可扩到 1,048,576，但发布方提示质量可能下降",
+        "语言": "德语与英语",
+        "可用性": "Apache-2.0 权重；官方 vLLM 插件、容器与 GGUF 量化",
+        "硬件": "模型内存约 77.6GB；最低 2×H100/H200 或 1×B200/B300",
+        "发布方结果": "综合 benchmark 73.2%；成本模型为每 1,000 个任务 0.21 GPU 小时",
+        "证据限制": "benchmark 与成本模型均为厂商自测；官方评测只适用于未量化 vLLM 路径",
+        "时间依据": "模型卡只给出发布日期 2026-11-23，没有时分；召回自检在 overlap 外补录"
+      },
+      "tags": [
+        "open-weights",
+        "german",
+        "reasoning",
+        "tool-calling",
+        "long-context"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 4,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "aleph-alpha-kolibri-1-1-open-weights",
+      "short_label_zh": "Kolibri 1.1",
+      "short_label_en": "Kolibri 1.1",
+      "next_action_zh": "一天内用 30 个德英双语 RAG 与工具调用任务比较质量、首 token、吞吐、显存和量化损失。",
+      "next_action_en": "Within one day, compare quality, TTFT, throughput, memory and quantization loss on 30 German-English RAG and tool-call tasks.",
+      "source_ids": [
+        "src-d6a10d8b883f11ae"
+      ],
+      "project_ids": [
+        "kolibri-1-1"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261123-07-evidence",
+          "claim_zh": "Apache-2.0 权重、vLLM 与 GGUF 部署路径已经公开。",
+          "claim_en": "Apache-2.0 weights and vLLM and GGUF serving paths are public.",
+          "source_ids": [
+            "src-d6a10d8b883f11ae"
+          ],
+          "event_ids": [
+            "ev-20261123-07"
+          ],
+          "relation": "support",
+          "verification": "verified public artifacts; publisher benchmarks not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261123-07-release",
+          "kind": "new",
+          "occurred_at": "2026-11-23",
+          "discovered_at": "2026-11-25T16:58:49Z",
+          "summary_zh": "Kolibri 1.1 开放德英双语推理与工具调用权重。",
+          "summary_en": "Kolibri 1.1 opens bilingual reasoning and tool-calling weights.",
+          "evidence_ids": [
+            "ev-20261123-07-evidence"
           ],
           "historical": false,
           "importance": "major"

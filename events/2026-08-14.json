@@ -364,8 +364,8 @@
     },
     {
       "event_id": "ev-20260814-04",
-      "title": "Claude Code 2.1.331 extends Code Mode and fixes stalled agent work",
-      "title_zh": "Claude Code 2.1.331 扩展 Code Mode 并修复 agent 卡顿",
+      "title": "Claude Code 2.1.332 adds governed MCP skills and repairs stalled agents",
+      "title_zh": "Claude Code 2.1.332 增加受控 MCP skills 并修复 agent 卡顿",
       "category": "developer-tools",
       "organization": [
         "Anthropic"
@@ -373,7 +373,7 @@
       "published_at": "2026-08-14",
       "published_at_note": "2.1.232 dated 2026-08-13, 2.1.233 dated 2026-08-14 (GitHub release 22:20Z), 2.1.234 dated 2026-08-17 in official changelog.",
       "first_seen_at": "2026-08-15T12:26:05Z",
-      "last_updated_at": "2026-11-24T17:07:26Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
       "source_type": "release_notes",
       "primary_source": "https://code.claude.com/docs/en/changelog",
       "secondary_sources": [
@@ -429,14 +429,15 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.326",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.327",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.330",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.331"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.331",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.332"
       ],
-      "summary": "Claude Code 2.1.331 extends Code Mode across Bedrock, Google Cloud Agent Platform, Microsoft Foundry and Claude Platform on AWS. It adds richer GenAI traces and fixes malformed MCP replies hanging for up to 30 minutes, lost resume state, partial plugin updates and several cloud, subagent and long-output failures.",
-      "why_it_matters": "Teams using managed clouds or long-running agents get broader Code Mode support and fewer silent stalls, but should regress proxies, MCP failure handling and resumed permissions.",
-      "summary_zh": "Claude Code 2.1.331 把 Code Mode 扩展到 Bedrock、Google Cloud Agent Platform、Microsoft Foundry 与 AWS 上的 Claude Platform。它增加 GenAI trace 字段，并修复畸形 MCP 响应最多卡住 30 分钟、续接状态丢失、插件部分更新，以及多项云端、subagent 与长输出故障。",
-      "summary_en": "Claude Code 2.1.331 extends Code Mode across Bedrock, Google Cloud Agent Platform, Microsoft Foundry and Claude Platform on AWS. It adds richer GenAI traces and fixes malformed MCP replies hanging for up to 30 minutes, lost resume state, partial plugin updates and several cloud, subagent and long-output failures.",
-      "why_it_matters_zh": "对使用托管云或长时程 agent 的团队来说，Code Mode 覆盖更广，静默卡顿更少；但代理、MCP 失败处理和续接权限仍需回归。",
-      "why_it_matters_en": "Teams using managed clouds or long-running agents get broader Code Mode support and fewer silent stalls, but should regress proxies, MCP failure handling and resumed permissions.",
+      "summary": "Claude Code 2.1.332 adds beta skills supplied by MCP servers and a PreSkillShellCommand hook that can refuse inline shell commands before a skill loads. It also fixes named-pipe reads, unbounded hook and MCP output, SSE reconnects, compaction loops, model-policy fallbacks and several long-running agent stalls. The controls are shipped, but fail-closed behavior across every managed policy path still needs regression testing.",
+      "why_it_matters": "Teams can distribute skills through MCP with an earlier policy checkpoint and get stronger recovery for long agent sessions, but should test rejection, reconnect and model-allowlist paths before broad rollout.",
+      "summary_zh": "Claude Code 2.1.332 新增由 MCP server 提供的 beta skills，并加入 PreSkillShellCommand hook，可在 skill 加载前拒绝内联 shell 命令。它还修复命名管道读取、无界 hook/MCP 输出、SSE 重连、压缩循环、模型策略回退和多项长时程 agent 卡顿。功能已经发布，但各类托管策略是否都能安全拒绝仍需回归。",
+      "summary_en": "Claude Code 2.1.332 adds beta skills supplied by MCP servers and a PreSkillShellCommand hook that can refuse inline shell commands before a skill loads. It also fixes named-pipe reads, unbounded hook and MCP output, SSE reconnects, compaction loops, model-policy fallbacks and several long-running agent stalls. The controls are shipped, but fail-closed behavior across every managed policy path still needs regression testing.",
+      "why_it_matters_zh": "对企业 agent 团队来说，可以通过 MCP 分发 skill，并在加载前增加一道策略检查；升级前仍要验证拒绝、重连与模型 allowlist 路径。",
+      "why_it_matters_en": "Teams can distribute skills through MCP with an earlier policy checkpoint and get stronger recovery for long agent sessions, but should test rejection, reconnect and model-allowlist paths before broad rollout.",
       "technical_details": {
         "forking": "default on; inherits conversation + prompt cache",
         "messaging": "SendMessage via @-mentions across live sessions; no history/files/permissions exchange",
@@ -505,7 +506,8 @@
         "tasks": "/tasks includes scheduled tasks and forks",
         "mcp": "Surfaces MCP server JSON-RPC errors",
         "reliability": "Multiple fixes for memory, recovery, managed policy, Code Mode, sandbox and runner behavior",
-        "update_2026_11_24": "2.1.331: Code Mode on multiple managed clouds; GenAI trace attributes; malformed MCP timeout, resume-state, plugin-update, cloud/subagent and long-output fixes"
+        "update_2026_11_24": "2.1.331: Code Mode on multiple managed clouds; GenAI trace attributes; malformed MCP timeout, resume-state, plugin-update, cloud/subagent and long-output fixes",
+        "update_2026_11_25": "2.1.332: beta MCP-server skills, PreSkillShellCommand refusal hook, bounded named-pipe and hook/MCP output handling, SSE reconnect and compaction recovery, managed model-policy fixes."
       },
       "update_2026_08_17": "2.1.234 (2026-08-17, in-window): rejects Windows NT-namespace (\\??\\) paths across remote file reads, session restore, CLAUDE.md includes, workflow scripts and uploads — hardens pre-approval file accesses against the NTLM credential-leak vector; GitLab MR footer badge (draft/pending/green states, glab repos); auto-continue sessions when usage limit resets (toggle in /config); claude-api skill context cost cut from ~200k+ to ~25k tokens; selection:clear keybinding; CLAUDE_CODE_PROJECT_DIR_NAME env var; many Remote Control / permission-preview / TUI fixes.",
       "update_2026_08_18": "2.1.235 (2026-08-18, in-window): security-relevant fix — Shift+Tab in the permission prompt's comment field no longer wrongly grants session-wide edit permission; new optional `spellcheck` setting (aspell/hunspell/ispell); fix for whole-prompt-cache invalidation when a language server disconnects mid-session; nested markdown list misalignment fix (depth 3+); lower memory/CPU usage for background cloud sessions (/ultrareview); permission dialogs now display exactly what a grant covers; VS Code focus fix after window restore. Recommendation stays ADOPT; upgrading also picks up the 2.1.234 NTLM hardening.",
@@ -588,7 +590,8 @@
         "任务": "/tasks 显示定时任务和 fork",
         "MCP": "显示 MCP server JSON-RPC 错误",
         "可靠性": "修复 memory、恢复、managed policy、Code Mode、sandbox 与 runner 等路径",
-        "update_2026_11_24": "2.1.331：多家托管云支持 Code Mode；增加 GenAI trace；修复 MCP 超时、续接状态、插件更新、云端/subagent 与长输出问题"
+        "update_2026_11_24": "2.1.331：多家托管云支持 Code Mode；增加 GenAI trace；修复 MCP 超时、续接状态、插件更新、云端/subagent 与长输出问题",
+        "2026-11-25 更新": "2.1.332：beta MCP server skills、PreSkillShellCommand 拒绝 hook、命名管道与 hook/MCP 输出限界、SSE 重连与压缩恢复、托管模型策略修复。"
       },
       "update_2026_08_20": "2.1.237 + 2.1.238 (both 2026-08-20, in-window). 2.1.237: fixed prompt caching for sessions using an LLM gateway or custom base URL (directly relevant to gateway deployments); added a built-in 'Concise' output style ('Claude leads with results and skips preamble and narration') selectable via /config. 2.1.238: fixed unbounded memory growth in long interactive sessions — subagent tool results are now freed after leaving the recent display window, directly relevant to long-running multi-agent sessions; plugin marketplaces gained `headersHelper` for URL marketplaces/catalog entries (mints short-lived HTTP headers such as tokens for catalog and same-origin archive fetches, shown to the user first with [y/N] confirmation, no inherited credential env vars) — private/enterprise plugin distribution; self-hosted runner `--defer-shutdown-max-min` (keep serving attached sessions on SIGTERM, then park and exit) and `--proxy-authorization-command`/`--proxy-authorization-file` for proxies needing a fresh Proxy-Authorization header per connection; numerous Remote Control fixes (mid-turn messages vanishing from transcripts, model picks on phone/web not updating the terminal, 'login expired' on brief network hiccups now retries, crashed-session reuse, env-var leaks, per-task Stop, ListAgents/SendMessage wrongly reporting 'not connected' in server mode); cross-session messaging hardening (refused inboxes now report 'refused'; rate-limited/dropped messages notify the sender instead of vanishing); MCP fixes (stdio servers no longer receive server/discover before initialize — lazy servers no longer start on every open; elicitation dialogs fixed for URLs over 4,096 chars; disabled servers listed without health-checking). Recommendation stays ADOPT.",
       "update_2026_08_21": "2.1.239 (2026-08-21T17:18Z, in-window). Cost/estimation: /cost, the status line and --max-budget-usd now include the 1.1x US-only-inference premium for data-residency workspaces; the usage-limit message now states when the session or weekly limit resets. Bedrock: fixed streaming behind proxies that strip the response Content-Type header (which silently doubled billed API calls by re-running every turn non-streaming) and fixed startup hangs behind an HTTPS proxy with SSO profiles + awsAuthRefresh. Cloud sessions: plugins synced from claude.ai now show as name@synced and work with `claude plugin enable/disable <name>@synced` (never overriding a same-named locally installed plugin); fixed remote MCP servers staying failed after a transient 5xx on mid-session reconnect; fixed resuming out of plan mode after an idle worker restart. Multi-agent/messaging refinements (same primitive family, not new primitives): ListAgents now lists live teammates and tells a session its own peer name; SendMessage to your own name now says so; fixed sessions titled with a leading / being unaddressable; fixed runaway Remote Control session-title syncing (2.1.232 regression). /goal: repeat check-ins on long-running background work now back off (30 min -> 1 h -> 2 h); `claude --resume` restores the active goal. Also: Alpine/musl native add-ons (paste/clipboard/audio), `/claude-api upgrade` for anthropic 0.x -> 1.x Python migration, MCP elicitation form scroll fix in fullscreen, OpenTelemetry trace-fragmentation fix for hook-deferred tool calls, vim-mode agent-view Escape fix. Recommendation stays ADOPT.",
@@ -661,7 +664,8 @@
         "src-8f7a055a1b360233",
         "src-f3d370a5121afbf2",
         "src-fdc4cffb6fa79465",
-        "src-a9972b90c90a6092"
+        "src-a9972b90c90a6092",
+        "src-d1a8a8c302ae6a4a"
       ],
       "project_ids": [
         "claude-code"
@@ -1169,6 +1173,19 @@
           ],
           "relation": "support",
           "verification": "verified official release; operational behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-332-evidence",
+          "claim_zh": "官方 release 确认 MCP skills、加载前 shell 拒绝 hook 与长时程恢复修复。",
+          "claim_en": "The official release confirms MCP skills, a pre-load shell refusal hook and long-session recovery fixes.",
+          "source_ids": [
+            "src-d1a8a8c302ae6a4a"
+          ],
+          "event_ids": [
+            "ev-20260814-04"
+          ],
+          "relation": "support",
+          "verification": "verified official release; policy paths not independently reproduced"
         }
       ],
       "changes": [
@@ -1663,6 +1680,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260814-04-claude-2-1-332",
+          "kind": "update",
+          "occurred_at": "2026-11-25T01:32:14Z",
+          "discovered_at": "2026-11-25T16:58:49Z",
+          "summary_zh": "2.1.332 增加受控 MCP skills 并修复多类 agent 卡顿。",
+          "summary_en": "Version 2.1.332 adds governed MCP skills and fixes several agent stalls.",
+          "evidence_ids": [
+            "ev-20260814-04-claude-2-1-332-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1672,11 +1702,11 @@
           "src-10bdc73097cfd238"
         ]
       },
-      "next_action_zh": "升级并回归代理响应压缩、畸形 MCP 回复、续接权限、插件中断恢复和云端长响应。",
-      "next_action_en": "Upgrade and regress proxy compression, malformed MCP replies, resumed permissions, interrupted plugin updates and long cloud responses.",
-      "short_label_zh": "Claude Code 2.1.331",
-      "short_label_en": "Claude Code 2.1.331",
-      "last_reviewed_at": "2026-11-24T17:07:26Z"
+      "next_action_zh": "升级后回归 skill 内联命令拒绝、SSE MCP 重连、超大输出、压缩恢复和托管模型 allowlist。",
+      "next_action_en": "After upgrading, regress inline skill-command denial, SSE MCP reconnects, oversized output, compaction recovery and managed model allowlists.",
+      "short_label_zh": "Claude Code 2.1.332",
+      "short_label_en": "Claude Code 2.1.332",
+      "last_reviewed_at": "2026-11-25T16:58:49Z"
     },
     {
       "event_id": "ev-20260814-05",

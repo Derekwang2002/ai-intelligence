@@ -71,7 +71,8 @@
         "src-8f7a055a1b360233",
         "src-f3d370a5121afbf2",
         "src-fdc4cffb6fa79465",
-        "src-a9972b90c90a6092"
+        "src-a9972b90c90a6092",
+        "src-d1a8a8c302ae6a4a"
       ],
       "current_judgment_event_id": "ev-20260814-04",
       "official_source_ids": [
@@ -132,19 +133,20 @@
         "src-4e2b4f1543d14800",
         "src-f3d370a5121afbf2",
         "src-fdc4cffb6fa79465",
-        "src-a9972b90c90a6092"
+        "src-a9972b90c90a6092",
+        "src-d1a8a8c302ae6a4a"
       ],
-      "last_reviewed_at": "2026-11-24T17:07:26Z",
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "2.1.331 扩展托管云 Code Mode，并修复 MCP 卡顿、续接状态与插件恢复。",
-        "judgment_en": "Version 2.1.331 expands managed-cloud Code Mode and fixes MCP stalls, resume state and plugin recovery.",
-        "next_action_zh": "升级后按发布说明回归关键恢复与兼容路径。",
-        "next_action_en": "Upgrade and regress the critical recovery and compatibility paths in the release notes.",
+        "judgment_zh": "2.1.332 增加 MCP skills 的加载前 shell 检查，并修复多类长时程卡顿；仍需验证托管策略能否安全拒绝。",
+        "judgment_en": "Version 2.1.332 adds pre-load shell checks for MCP skills and repairs several long-session stalls; managed policy paths still need fail-closed testing.",
+        "next_action_zh": "升级后回归 skill 命令拒绝、MCP 重连、压缩与模型 allowlist。",
+        "next_action_en": "After upgrading, regress skill-command denial, MCP reconnects, compaction and model allowlists.",
         "basis_event_ids": [
           "ev-20260814-04"
         ],
-        "reviewed_at": "2026-11-24T17:07:26Z"
+        "reviewed_at": "2026-11-25T16:58:49Z"
       }
     },
     {
@@ -845,7 +847,8 @@
         "src-958f53f88ea0035e",
         "src-593d0602a81065fa",
         "src-557fc3f08806f02d",
-        "src-62e6753ef6bf3fd4"
+        "src-62e6753ef6bf3fd4",
+        "src-2bd2158312c4d19c"
       ],
       "current_judgment_event_id": "ev-20260913-01",
       "official_source_ids": [
@@ -859,13 +862,14 @@
         "src-958f53f88ea0035e",
         "src-593d0602a81065fa",
         "src-557fc3f08806f02d",
-        "src-62e6753ef6bf3fd4"
+        "src-62e6753ef6bf3fd4",
+        "src-2bd2158312c4d19c"
       ],
-      "last_reviewed_at": "2026-11-24T17:07:26Z",
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "LiteLLM LTS 继续修补多轮工具调用与 provider 兼容性，但认证和版本迁移仍需按部署回归。",
-        "judgment_en": "LiteLLM LTS continues to repair multi-turn tools and provider compatibility, while authentication and version migrations still need deployment-specific regression tests.",
+        "judgment_zh": "MCP 生态继续扩大，但 Claude Code 与 LiteLLM 的本轮修复说明 skill 加载、重连和 provider schema 仍需逐部署验证。",
+        "judgment_en": "The MCP ecosystem keeps expanding, while this run’s Claude Code and LiteLLM fixes show that skill loading, reconnects and provider schemas still need deployment-specific validation.",
         "next_action_zh": "一天内回放无密钥认证、多轮工具调用、大型参数与中止流。",
         "next_action_en": "Within one day, replay keyless authentication, multi-turn tools, large arguments and aborted streams.",
         "basis_event_ids": [
@@ -874,7 +878,7 @@
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-11-24T17:07:26Z"
+        "reviewed_at": "2026-11-25T16:58:49Z"
       }
     },
     {
@@ -7310,7 +7314,8 @@
         "src-cd8becb9246e0efd",
         "src-557fc3f08806f02d",
         "src-62e6753ef6bf3fd4",
-        "src-c56a9b81f11e6602"
+        "src-c56a9b81f11e6602",
+        "src-2bd2158312c4d19c"
       ],
       "current_judgment_event_id": "ev-20260913-01",
       "official_source_ids": [
@@ -7341,19 +7346,20 @@
         "src-cd8becb9246e0efd",
         "src-557fc3f08806f02d",
         "src-62e6753ef6bf3fd4",
-        "src-c56a9b81f11e6602"
+        "src-c56a9b81f11e6602",
+        "src-2bd2158312c4d19c"
       ],
-      "last_reviewed_at": "2026-11-24T17:07:26Z",
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "1.108.16 LTS 集中回移跨 provider 工具、缓存、路由与计费修复，回归面较大。",
-        "judgment_en": "Version 1.108.16 LTS backports broad cross-provider tool, cache, routing and billing fixes with a large regression surface.",
-        "next_action_zh": "一天内用生产形态 canary 关键路径后再扩大。",
-        "next_action_en": "Within one day, canary critical paths in production-shaped tests before expansion.",
+        "judgment_zh": "1.108.17 LTS 修复跨 provider 工具、计费与 schema 故障；回归面仍然较大。",
+        "judgment_en": "Version 1.108.17 LTS fixes cross-provider tool, billing and schema failures; the regression surface remains broad.",
+        "next_action_zh": "一天内用生产形态 canary 关键工具、计费与范围读取。",
+        "next_action_en": "Within one day, canary critical tool, billing and range-read paths.",
         "basis_event_ids": [
           "ev-20260913-01"
         ],
-        "reviewed_at": "2026-11-24T17:07:26Z"
+        "reviewed_at": "2026-11-25T16:58:49Z"
       },
       "changes": []
     },
@@ -8443,25 +8449,27 @@
       ],
       "source_ids": [
         "src-49ab05b27c45fb21",
-        "src-9ade112d5923aa6d"
+        "src-9ade112d5923aa6d",
+        "src-6f6ed263c61a3ab0"
       ],
       "official_source_ids": [
         "src-49ab05b27c45fb21",
-        "src-9ade112d5923aa6d"
+        "src-9ade112d5923aa6d",
+        "src-6f6ed263c61a3ab0"
       ],
       "changes": [],
       "current_judgment_event_id": "ev-20261111-05",
-      "last_reviewed_at": "2026-11-12T17:00:14Z",
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "低价长上下文 API 可测，但模型未完成且开放权重尚未兑现。",
-        "judgment_en": "The low-cost long-context API is testable, but the model is unfinished and promised weights have not shipped.",
-        "next_action_zh": "一天内用千帆 API 回放 50 条中文编码与 agent 任务，记录成功率、首 token 时延、长上下文退化和成本。",
-        "next_action_en": "Within one day, replay 50 Chinese coding and agent tasks through Qianfan and record success, time to first token, long-context degradation and cost.",
+        "judgment_zh": "API 与 Apache-2.0 权重现在都可用，但模型仍是未完成的中间检查点，成绩均来自厂商。",
+        "judgment_en": "The API and Apache-2.0 weights are now available, but the model remains an unfinished intermediate checkpoint with vendor-run results.",
+        "next_action_zh": "一天内用公开 FP8/FP4 权重回放中文编码与 agent 任务。",
+        "next_action_en": "Within one day, replay Chinese coding and agent tasks on the public FP8/FP4 weights.",
         "basis_event_ids": [
           "ev-20261111-05"
         ],
-        "reviewed_at": "2026-11-12T17:00:14Z"
+        "reviewed_at": "2026-11-25T16:58:49Z"
       }
     },
     {
@@ -10390,27 +10398,377 @@
         "ev-20261123-06"
       ],
       "source_ids": [
-        "src-d2f98570ba045778"
+        "src-d2f98570ba045778",
+        "src-e79b19a5b0e24b20"
       ],
       "current_judgment_event_id": "ev-20261123-06",
       "official_source_ids": [
         "src-d2f98570ba045778"
       ],
-      "last_reviewed_at": "2026-11-24T17:07:26Z",
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "权重可用且自动化方向明确，但硬件门槛高，成绩仍需独立复现。",
-        "judgment_en": "Weights are available and automation is concrete, but hardware requirements are high and results need independent reproduction.",
-        "next_action_zh": "一天内在受控集群测 20 个文档与工具调用任务。",
-        "next_action_en": "Within one day, test 20 document and tool-use tasks on a controlled cluster.",
+        "judgment_zh": "权重可用且已有独立能力分数，但硬件门槛、极高输出量和缺失的速度/价格数据限制部署判断。",
+        "judgment_en": "Weights and an independent capability score are available, but hardware needs, extreme output volume and missing speed/price data limit deployment judgment.",
+        "next_action_zh": "一天内设置输出上限，测 20 个文档与工具任务的质量、吞吐和成本。",
+        "next_action_en": "Within one day, cap output and test quality, throughput and cost on 20 document and tool tasks.",
         "basis_event_ids": [
           "ev-20261123-06"
         ],
-        "reviewed_at": "2026-11-24T17:07:26Z"
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "humanitys-first-exam",
+      "name_zh": "Humanity's First Exam",
+      "name_en": "Humanity's First Exam",
+      "type": "benchmark",
+      "aliases": [
+        "HFE"
+      ],
+      "pattern": "Humanity's First Exam|\\bHFE\\b",
+      "event_ids": [
+        "ev-20261124-02"
+      ],
+      "source_ids": [
+        "src-e7f7857605a40d83",
+        "src-326d285ed0f93e11"
+      ],
+      "current_judgment_event_id": "ev-20261124-02",
+      "official_source_ids": [
+        "src-e7f7857605a40d83"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开样本可用于可靠性 POC，但完整保留集不公开，压力测试分数不能代表日常故障率。",
+        "judgment_en": "The public sample supports a reliability POC, but the full held-out set is private and stress scores do not estimate everyday failure rates.",
+        "next_action_zh": "一天内测四种等义改写下的组内全对率。",
+        "next_action_en": "Within one day, measure all-correct family rate under four equivalent prompt variants.",
+        "basis_event_ids": [
+          "ev-20261124-02"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "delegent",
+      "name_zh": "Delegent",
+      "name_en": "Delegent",
+      "type": "agent-framework",
+      "aliases": [],
+      "pattern": "Delegent",
+      "event_ids": [
+        "ev-20261124-03"
+      ],
+      "source_ids": [
+        "src-da1b02b0911907c2",
+        "src-153af717df1e6b1d"
+      ],
+      "current_judgment_event_id": "ev-20261124-03",
+      "official_source_ids": [
+        "src-da1b02b0911907c2",
+        "src-153af717df1e6b1d"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "代码和复现路径公开，适合验证细粒度本地委派；成本收益仍只有作者结果，采用信号很弱。",
+        "judgment_en": "Code and reproduction paths support a bounded local-delegation trial; cost gains remain author-run and adoption is minimal.",
+        "next_action_zh": "一天内用 10 个真实任务比较通过率、成本与错误委派。",
+        "next_action_en": "Within one day, compare pass rate, cost and bad delegations on 10 real tasks.",
+        "basis_event_ids": [
+          "ev-20261124-03"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "gpt-6-protein-design",
+      "name_zh": "GPT-6 蛋白质设计",
+      "name_en": "GPT-6 Protein Design",
+      "type": "research-project",
+      "aliases": [],
+      "pattern": "GPT-6.*protein|protein-design",
+      "event_ids": [
+        "ev-20261124-04"
+      ],
+      "source_ids": [
+        "src-d9615c8c024ea5a2"
+      ],
+      "current_judgment_event_id": "ev-20261124-04",
+      "official_source_ids": [
+        "src-d9615c8c024ea5a2"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "湿实验提供早期结合证据，但流程依赖专用模型，最强系统、代码和 API 均未公开。",
+        "judgment_en": "Wet-lab work provides early binding evidence, but the pipeline depends on specialist models and the strongest system, code and API are not public.",
+        "next_action_zh": "等待独立湿实验和公开系统后再评估。",
+        "next_action_en": "Wait for independent wet-lab work and a public system before reassessing.",
+        "basis_event_ids": [
+          "ev-20261124-04"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "wepocketmodel",
+      "name_zh": "WePocketModel",
+      "name_en": "WePocketModel",
+      "type": "model-family",
+      "aliases": [
+        "WePM"
+      ],
+      "pattern": "WePocketModel|\\bWePM\\b",
+      "event_ids": [
+        "ev-20261125-01"
+      ],
+      "source_ids": [
+        "src-743432370bbdf4d7",
+        "src-290f92b8c79ccbef",
+        "src-f3ea59189c607a78",
+        "src-705d2cfdd626a434"
+      ],
+      "current_judgment_event_id": "ev-20261125-01",
+      "official_source_ids": [
+        "src-743432370bbdf4d7",
+        "src-290f92b8c79ccbef",
+        "src-f3ea59189c607a78",
+        "src-705d2cfdd626a434"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "Apache-2.0 MLX 权重和 runtime 已可在 Apple silicon 试验生成、嵌入与决策；质量和速度仍是发布方结果。",
+        "judgment_en": "Apache-2.0 MLX weights and runtime enable Apple-silicon trials across generation, embeddings and decisions; quality and speed remain publisher-reported.",
+        "next_action_zh": "一天内在 M 系列 Mac 上测质量、内存、首 token 和吞吐。",
+        "next_action_en": "Within one day, test quality, memory, time to first token and throughput on an M-series Mac.",
+        "basis_event_ids": [
+          "ev-20261125-01"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "pengpt",
+      "name_zh": "PenGPT",
+      "name_en": "PenGPT",
+      "type": "model",
+      "aliases": [],
+      "pattern": "PenGPT",
+      "event_ids": [
+        "ev-20261112-08"
+      ],
+      "source_ids": [
+        "src-08de62e645799cf1",
+        "src-19a77b51674d2f20"
+      ],
+      "current_judgment_event_id": "ev-20261112-08",
+      "official_source_ids": [
+        "src-08de62e645799cf1",
+        "src-19a77b51674d2f20"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "IGNORE",
+        "judgment_zh": "代码和 checkpoint 可检查，但训练数据缺失且展示样本经过筛选，不足以支持工程投入。",
+        "judgment_en": "Code and checkpoints are inspectable, but withheld data and selected samples do not justify engineering investment.",
+        "next_action_zh": "等待数据与完整评测。",
+        "next_action_en": "Wait for data and complete evaluation.",
+        "basis_event_ids": [
+          "ev-20261112-08"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "inference-server-side-channels",
+      "name_zh": "推理服务侧信道",
+      "name_en": "推理服务侧信道",
+      "type": "research-project",
+      "aliases": [],
+      "pattern": "推理服务侧信道",
+      "event_ids": [
+        "ev-20261119-05"
+      ],
+      "source_ids": [
+        "src-a14c0d7f7b63e921",
+        "src-b54a211802e0659c"
+      ],
+      "current_judgment_event_id": "ev-20261119-05",
+      "official_source_ids": [
+        "src-a14c0d7f7b63e921",
+        "src-b54a211802e0659c"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开代码显示共享 vLLM 的批处理和缓存可形成模型间信道，但结果来自受控设置。",
+        "judgment_en": "Public code shows shared vLLM batching and caches can form inter-model channels, but results come from a controlled setup.",
+        "next_action_zh": "一天内复现并测试隔离缓解。",
+        "next_action_en": "Reproduce and test isolation mitigations within one day.",
+        "basis_event_ids": [
+          "ev-20261119-05"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "lingsante-3-1-air-vl",
+      "name_zh": "LingSante-3.1-air-VL",
+      "name_en": "LingSante-3.1-air-VL",
+      "type": "model",
+      "aliases": [],
+      "pattern": "LingSante-3\\.1-air-VL",
+      "event_ids": [
+        "ev-20261119-06"
+      ],
+      "source_ids": [
+        "src-f2043d792f8bd613"
+      ],
+      "current_judgment_event_id": "ev-20261119-06",
+      "official_source_ids": [
+        "src-f2043d792f8bd613"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "多模态医疗权重公开，但没有独立临床验证，硬件和治理门槛都高。",
+        "judgment_en": "Multimodal medical weights are public, but independent clinical validation is absent and hardware and governance costs are high.",
+        "next_action_zh": "等待独立医疗影像评测。",
+        "next_action_en": "Wait for independent medical-imaging evaluation.",
+        "basis_event_ids": [
+          "ev-20261119-06"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "songe",
+      "name_zh": "Songe",
+      "name_en": "Songe",
+      "type": "framework",
+      "aliases": [],
+      "pattern": "Songe",
+      "event_ids": [
+        "ev-20261120-10"
+      ],
+      "source_ids": [
+        "src-c49be8c450a3d521"
+      ],
+      "current_judgment_event_id": "ev-20261120-10",
+      "official_source_ids": [
+        "src-c49be8c450a3d521"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "本地纠错学习路径可运行，但敏感记录、回归和删除行为需要隔离验证。",
+        "judgment_en": "The local correction-learning path is runnable, but sensitive records, regressions and deletion behavior need isolated validation.",
+        "next_action_zh": "一天内用测试账户验证学习、回归和清除。",
+        "next_action_en": "Within one day, validate learning, regressions and cleanup under a test account.",
+        "basis_event_ids": [
+          "ev-20261120-10"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "tml-variable-loop",
+      "name_zh": "TML 可变循环模型",
+      "name_en": "TML 可变循环模型",
+      "type": "model",
+      "aliases": [],
+      "pattern": "TML 可变循环模型",
+      "event_ids": [
+        "ev-20261120-11"
+      ],
+      "source_ids": [
+        "src-e76db7701ea4cb0a"
+      ],
+      "current_judgment_event_id": "ev-20261120-11",
+      "official_source_ids": [
+        "src-e76db7701ea4cb0a"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "开放权重允许直接测循环次数与计算回报，发布方结果需要在目标任务复现。",
+        "judgment_en": "Open weights expose the pass-count versus compute tradeoff, while publisher results need target-task reproduction.",
+        "next_action_zh": "一天内比较 1/3/5 次循环。",
+        "next_action_en": "Within one day, compare one, three and five passes.",
+        "basis_event_ids": [
+          "ev-20261120-11"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "kolibri-1-1",
+      "name_zh": "Kolibri 1.1",
+      "name_en": "Kolibri 1.1",
+      "type": "model",
+      "aliases": [],
+      "pattern": "Kolibri 1\\.1",
+      "event_ids": [
+        "ev-20261123-07"
+      ],
+      "source_ids": [
+        "src-d6a10d8b883f11ae"
+      ],
+      "current_judgment_event_id": "ev-20261123-07",
+      "official_source_ids": [
+        "src-d6a10d8b883f11ae"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "德英双语权重和部署路径公开，但内存门槛高，性能与成本仍是厂商结果。",
+        "judgment_en": "Bilingual weights and serving paths are public, but memory requirements are high and performance and cost remain publisher-reported.",
+        "next_action_zh": "一天内用德英任务验证质量与成本。",
+        "next_action_en": "Within one day, validate quality and cost on German-English tasks.",
+        "basis_event_ids": [
+          "ev-20261123-07"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "memt-1-0",
+      "name_zh": "MemT-1.0",
+      "name_en": "MemT-1.0",
+      "type": "model-family",
+      "aliases": [
+        "MemT-1.0-Pro"
+      ],
+      "pattern": "MemT-1\\.0",
+      "event_ids": [
+        "ev-20261120-12"
+      ],
+      "source_ids": [
+        "src-2a5c124bf1c6d62e"
+      ],
+      "current_judgment_event_id": "ev-20261120-12",
+      "official_source_ids": [
+        "src-2a5c124bf1c6d62e"
+      ],
+      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "固定大小潜在记忆值得研究，但超大模型、自定义代码、许可和厂商自测让它尚不适合工程投入。",
+        "judgment_en": "Fixed-size latent memory is worth studying, but the huge model, custom code, license and publisher-only evidence do not yet justify engineering investment.",
+        "next_action_zh": "等待小型号独立复现与安全审计。",
+        "next_action_en": "Wait for independent reproduction on smaller variants and a security review.",
+        "basis_event_ids": [
+          "ev-20261120-12"
+        ],
+        "reviewed_at": "2026-11-25T16:58:49Z"
       }
     }
   ],
   "last_updated": "2026-11-25",
-  "total_projects": 288,
-  "last_updated_at": "2026-11-24T17:07:26Z"
+  "total_projects": 300,
+  "last_updated_at": "2026-11-25T16:58:49Z"
 }

@@ -97,8 +97,12 @@
           "id": "ev-20261112-01-independent-evidence",
           "claim_zh": "独立记录显示 MKA 分数略低于 Google 自测，并给出约 198 token/s 的输出速度。",
           "claim_en": "Independent records show a slightly lower MKA score than Google's self-run result and output speed near 198 tokens/s.",
-          "source_ids": ["src-800f76489e1980ce"],
-          "event_ids": ["ev-20261112-01"],
+          "source_ids": [
+            "src-800f76489e1980ce"
+          ],
+          "event_ids": [
+            "ev-20261112-01"
+          ],
           "relation": "counter",
           "verification": "independent benchmark record; scope limited to selected tests"
         }
@@ -124,7 +128,9 @@
           "discovered_at": "2026-11-21T16:59:42Z",
           "summary_zh": "独立记录给出略低于厂商自测的 MKA 分数和接近 198 token/s 的输出速度。",
           "summary_en": "Independent records show a slightly lower MKA score than the vendor run and output speed near 198 tokens/s.",
-          "evidence_ids": ["ev-20261112-01-independent-evidence"],
+          "evidence_ids": [
+            "ev-20261112-01-independent-evidence"
+          ],
           "historical": false,
           "importance": "major"
         }
@@ -732,6 +738,104 @@
           ],
           "historical": false,
           "importance": "major"
+        }
+      ]
+    },
+    {
+      "first_seen_at": "2026-11-25T16:58:49Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
+      "late_discovery": true,
+      "event_id": "ev-20261112-08",
+      "title": "PenGPT generates handwriting and sketches, but withholds its training data",
+      "title_zh": "PenGPT 可生成手写与草图，但未开放训练数据",
+      "category": "research",
+      "organization": [
+        "Independent researchers"
+      ],
+      "published_at": "2026-11-12",
+      "source_type": "research_blog",
+      "primary_source": "https://greydanus.github.io/2026/11/12/pengpt/",
+      "secondary_sources": [
+        "https://github.com/greydanus/pengpt"
+      ],
+      "summary": "PenGPT publishes Apache-2.0 code and small transformer checkpoints for generating online handwriting and sketches as pen trajectories. The authors trained 6M and 54M parameter models on about 496,000 word samples and 478,000 sketches. The underlying datasets are not released, and the public gallery selects the best third of generations.",
+      "summary_en": "PenGPT publishes Apache-2.0 code and small transformer checkpoints for generating online handwriting and sketches as pen trajectories. The authors trained 6M and 54M parameter models on about 496,000 word samples and 478,000 sketches. The underlying datasets are not released, and the public gallery selects the best third of generations.",
+      "summary_zh": "PenGPT 以 Apache-2.0 公开代码和小型 transformer checkpoint，用笔迹轨迹生成手写文字与草图。作者分别用约 49.6 万个词样本和 47.8 万幅草图训练 6M 与 54M 参数模型。底层数据集没有开放，公开画廊还只展示质量最好的三分之一结果。",
+      "why_it_matters": "The artifact is easy to inspect, but withheld data and selected examples make quality hard to reproduce or compare. For most AI engineering teams it does not justify investment beyond curiosity.",
+      "why_it_matters_en": "The artifact is easy to inspect, but withheld data and selected examples make quality hard to reproduce or compare. For most AI engineering teams it does not justify investment beyond curiosity.",
+      "why_it_matters_zh": "代码容易检查，但数据不公开、示例经过筛选，质量难以复现或公平比较。对多数 AI 工程团队来说，目前不值得投入。",
+      "technical_details": {
+        "models": "6M handwriting model and 54M sketch model",
+        "training_data": "495,590 word samples from 1,255 writers; 477,670 sketches",
+        "access": "Apache-2.0 code and checkpoints; training datasets not released",
+        "evidence_limit": "Public gallery shows the best one-third of sampled outputs",
+        "time_basis": "Project article is dated 2026-11-12; HN resurfaced it on 2026-11-25"
+      },
+      "technical_details_zh": {
+        "模型": "6M 手写模型与 54M 草图模型",
+        "训练数据": "来自 1,255 名书写者的 495,590 个词样本；477,670 幅草图",
+        "可用性": "Apache-2.0 代码和 checkpoint 已公开；训练数据集未开放",
+        "证据限制": "公开画廊只展示采样结果中最好的三分之一",
+        "时间依据": "项目文章日期为 2026-11-12；11 月 25 日在 HN 再次传播"
+      },
+      "tags": [
+        "generative-model",
+        "handwriting",
+        "sketch",
+        "open-source"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 1,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "IGNORE",
+      "event_fingerprint": "pengpt-handwriting-sketch-transformer",
+      "short_label_zh": "PenGPT",
+      "short_label_en": "PenGPT",
+      "next_action_zh": "除非需要笔迹轨迹研究，否则暂不投入；先等待训练数据或完整无筛选评测公开。",
+      "next_action_en": "Do not invest unless pen-trajectory research is relevant; wait for training data or complete unselected evaluations.",
+      "source_ids": [
+        "src-08de62e645799cf1",
+        "src-19a77b51674d2f20"
+      ],
+      "project_ids": [
+        "pengpt"
+      ],
+      "scenario_ids": [
+        "models"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261112-08-evidence",
+          "claim_zh": "代码与 checkpoint 已公开，但训练数据未开放，展示样本经过筛选。",
+          "claim_en": "Code and checkpoints are public, but training data is withheld and displayed samples are selected.",
+          "source_ids": [
+            "src-08de62e645799cf1",
+            "src-19a77b51674d2f20"
+          ],
+          "event_ids": [
+            "ev-20261112-08"
+          ],
+          "relation": "support",
+          "verification": "verified public artifacts and stated limitations"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261112-08-release",
+          "kind": "new",
+          "occurred_at": "2026-11-12",
+          "discovered_at": "2026-11-25T16:58:49Z",
+          "summary_zh": "PenGPT 公开手写与草图生成代码和 checkpoint。",
+          "summary_en": "PenGPT publishes handwriting and sketch generation code and checkpoints.",
+          "evidence_ids": [
+            "ev-20261112-08-evidence"
+          ],
+          "historical": false,
+          "importance": "minor"
         }
       ]
     }

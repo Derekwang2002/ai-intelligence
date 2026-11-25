@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.108.16 LTS repairs cross-provider tool and billing paths",
-      "title_zh": "LiteLLM 1.108.16 LTS 修复跨 provider 工具与计费路径",
+      "title": "LiteLLM 1.108.17 LTS fixes tool, billing and provider failures",
+      "title_zh": "LiteLLM 1.108.17 LTS 修复工具、计费与 provider 故障",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,7 +13,7 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-24T17:07:26Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
       "source_type": "package_registry",
       "primary_source": "https://pypi.org/project/litellm/1.102.0/",
       "secondary_sources": [
@@ -40,14 +40,15 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.11",
         "https://github.com/BerriAI/litellm/releases/tag/v1.110.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.15",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.108.16"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.16",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.17"
       ],
-      "summary": "LiteLLM 1.108.16 LTS backports compatibility and accounting fixes across Anthropic, Gemini, Bedrock, Vertex and Responses. It adds Gemini Decision support, repairs prompt caching and media/tool translation, and changes some provider request shapes. The breadth of the backport requires production-shaped canary tests.",
-      "why_it_matters": "Gateway operators gain fixes for dropped media, duplicated logging, cut-stream billing and tool replay, but several breaking request-shape backports raise regression risk.",
-      "summary_zh": "LiteLLM 1.108.16 LTS 向维护分支回移 Anthropic、Gemini、Bedrock、Vertex 与 Responses 的兼容和计费修复。它加入 Gemini Decision 支持，修复提示缓存、媒体与工具转换，并改变部分 provider 请求形态。回移范围很大，必须用生产形态做 canary。",
-      "summary_en": "LiteLLM 1.108.16 LTS backports compatibility and accounting fixes across Anthropic, Gemini, Bedrock, Vertex and Responses. It adds Gemini Decision support, repairs prompt caching and media/tool translation, and changes some provider request shapes. The breadth of the backport requires production-shaped canary tests.",
-      "why_it_matters_zh": "对网关运维来说，媒体丢失、重复日志、截断流计费和工具 replay 得到修复；但多项请求形态回移带来回归风险。",
-      "why_it_matters_en": "Gateway operators gain fixes for dropped media, duplicated logging, cut-stream billing and tool replay, but several breaking request-shape backports raise regression risk.",
+      "summary": "LiteLLM 1.108.17 LTS fixes streamed OpenAI tool calls with empty arguments, first-turn chat-latest failures, Bedrock Claude shared-schema stalls and zero-cost OpenAI Agents API session logs. It also forwards Gemini page and sheet ranges and restores DeepSeek V4 effort settings. The signed LTS patch spans multiple providers, so production-shaped regression remains necessary.",
+      "why_it_matters": "Gateway teams get fixes for failures that can silently break tools or undercount spend, while the broad provider surface makes canary testing more important than the patch label suggests.",
+      "summary_zh": "LiteLLM 1.108.17 LTS 修复 OpenAI 流式工具参数为空、chat-latest 首轮报错、Bedrock Claude 共享 schema 卡顿，以及 OpenAI Agents API 会话费用记为 0 的问题。它也转发 Gemini 页码/表格范围，并恢复 DeepSeek V4 effort 设置。这个签名 LTS 补丁跨越多个 provider，仍需按生产形态回归。",
+      "summary_en": "LiteLLM 1.108.17 LTS fixes streamed OpenAI tool calls with empty arguments, first-turn chat-latest failures, Bedrock Claude shared-schema stalls and zero-cost OpenAI Agents API session logs. It also forwards Gemini page and sheet ranges and restores DeepSeek V4 effort settings. The signed LTS patch spans multiple providers, so production-shaped regression remains necessary.",
+      "why_it_matters_zh": "对网关团队来说，它修复了会让工具静默失效或费用漏记的问题；但跨 provider 回归面较大，不能因为是补丁版就跳过 canary。",
+      "why_it_matters_en": "Gateway teams get fixes for failures that can silently break tools or undercount spend, while the broad provider surface makes canary testing more important than the patch label suggests.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -101,7 +102,8 @@
         "database": "Supports Unix-socket Postgres connections",
         "update_2026_11_23": "Keyless JSON deployments now require api_key or provider key environment variables; ResetData added; Groq and Meta transcription spend and Cohere v2 tool-call compatibility fixed.",
         "time_basis_2026_11_23": "GitHub release published 2026-11-21T21:35:07Z inside the strict scan window.",
-        "update_2026_11_24": "1.108.16 LTS: Anthropic sampling/version handling, Gemini media and cache behavior, Bedrock/Vertex routing, Responses tool replay and accounting fixes; Gemini Decision support"
+        "update_2026_11_24": "1.108.16 LTS: Anthropic sampling/version handling, Gemini media and cache behavior, Bedrock/Vertex routing, Responses tool replay and accounting fixes; Gemini Decision support",
+        "update_2026_11_25": "1.108.17 LTS: streamed OpenAI tool arguments, chat-latest first turn, Bedrock shared $defs, Agents API spend, Gemini ranges and DeepSeek V4 effort fixes."
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -156,7 +158,8 @@
         "数据库": "支持 Unix socket Postgres 连接",
         "2026-11-23 更新": "无密钥 JSON 部署现在必须配置 api_key 或 provider 密钥环境变量；新增 ResetData；修复 Groq 与 Meta 转录费用以及 Cohere v2 工具调用兼容性。",
         "2026-11-23 时间依据": "GitHub release 发布于 2026-11-21T21:35:07Z，位于严格扫描窗口内。",
-        "update_2026_11_24": "1.108.16 LTS：Anthropic 采样/version、Gemini 媒体与缓存、Bedrock/Vertex 路由、Responses 工具 replay 与计费修复；加入 Gemini Decision"
+        "update_2026_11_24": "1.108.16 LTS：Anthropic 采样/version、Gemini 媒体与缓存、Bedrock/Vertex 路由、Responses 工具 replay 与计费修复；加入 Gemini Decision",
+        "2026-11-25 更新": "1.108.17 LTS：修复 OpenAI 流式工具参数、chat-latest 首轮、Bedrock 共享 $defs、Agents API 费用、Gemini 范围与 DeepSeek V4 effort。"
       },
       "tags": [
         "litellm",
@@ -202,7 +205,8 @@
         "src-cd8becb9246e0efd",
         "src-557fc3f08806f02d",
         "src-62e6753ef6bf3fd4",
-        "src-c56a9b81f11e6602"
+        "src-c56a9b81f11e6602",
+        "src-2bd2158312c4d19c"
       ],
       "project_ids": [
         "mcp",
@@ -502,6 +506,19 @@
           ],
           "relation": "support",
           "verification": "verified official release; operational behavior not independently reproduced"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-17-evidence",
+          "claim_zh": "官方签名 LTS release 确认工具、计费、schema 与 provider 修复。",
+          "claim_en": "The official signed LTS release confirms tool, billing, schema and provider fixes.",
+          "source_ids": [
+            "src-2bd2158312c4d19c"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified official release; operational behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -788,14 +805,27 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-17",
+          "kind": "update",
+          "occurred_at": "2026-11-24T22:56:05Z",
+          "discovered_at": "2026-11-25T16:58:49Z",
+          "summary_zh": "1.108.17 LTS 修复跨 provider 工具、计费与 schema 故障。",
+          "summary_en": "Version 1.108.17 LTS fixes cross-provider tool, billing and schema failures.",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-108-17-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "一天内 canary Anthropic sampling、Gemini 视频缓存、云端路由、Responses replay 和截断流计费。",
-      "next_action_en": "Within one day, canary Anthropic sampling, Gemini video/cache, Bedrock/Vertex routing, Responses replay and cut-stream billing.",
-      "short_label_zh": "LiteLLM 1.108.16",
-      "short_label_en": "LiteLLM 1.108.16",
-      "last_reviewed_at": "2026-11-24T17:07:26Z"
+      "next_action_zh": "一天内 canary 流式工具参数、chat-latest、Bedrock 共享 schema、Agents API 费用和 Gemini 范围读取。",
+      "next_action_en": "Within one day, canary streamed tool arguments, chat-latest, Bedrock shared schemas, Agents API spend and Gemini range reads.",
+      "short_label_zh": "LiteLLM 1.108.17",
+      "short_label_en": "LiteLLM 1.108.17",
+      "last_reviewed_at": "2026-11-25T16:58:49Z"
     }
   ]
 }

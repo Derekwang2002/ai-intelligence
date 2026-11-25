@@ -904,6 +904,306 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "first_seen_at": "2026-11-25T16:58:49Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
+      "late_discovery": true,
+      "event_id": "ev-20261120-10",
+      "title": "Songe trains local models from coding-agent corrections during idle time",
+      "title_zh": "Songe 利用空闲时间从编码 agent 纠错中训练本地模型",
+      "category": "ai-engineering",
+      "organization": [
+        "Sous Labs"
+      ],
+      "published_at": "2026-11-20T11:01:20Z",
+      "source_type": "github",
+      "primary_source": "https://github.com/sous-labs/songe",
+      "secondary_sources": [],
+      "summary": "Sous Labs released Songe, an Apache-2.0 local proxy that records coding-agent corrections and tool outcomes, then trains adapters while the machine is idle. It supports MLX on Apple silicon and PyTorch on NVIDIA or AMD, with local evaluation and rollback before a learned version is activated. The project is days old, and privacy, retention and quality claims come from its maintainers.",
+      "summary_en": "Sous Labs released Songe, an Apache-2.0 local proxy that records coding-agent corrections and tool outcomes, then trains adapters while the machine is idle. It supports MLX on Apple silicon and PyTorch on NVIDIA or AMD, with local evaluation and rollback before a learned version is activated. The project is days old, and privacy, retention and quality claims come from its maintainers.",
+      "summary_zh": "Sous Labs 发布 Apache-2.0 的 Songe。本地代理记录编码 agent 的纠错和工具结果，在机器空闲时训练 adapter；Apple silicon 使用 MLX，NVIDIA 或 AMD 使用 PyTorch。新版本先经过本地评估再启用，并支持回滚。项目刚发布数天，隐私、留存和质量结论都来自维护者。",
+      "why_it_matters": "Local-agent teams can test whether routine corrections produce measurable gains without exporting conversations. The same recording and background-service design creates a sensitive local data store that must be audited before real use.",
+      "why_it_matters_en": "Local-agent teams can test whether routine corrections produce measurable gains without exporting conversations. The same recording and background-service design creates a sensitive local data store that must be audited before real use.",
+      "why_it_matters_zh": "本地 agent 团队可以验证日常纠错是否真能带来可测提升，而不必把对话上传云端。与此同时，持续记录和后台服务会形成敏感本地数据仓库，真实使用前必须审计。",
+      "technical_details": {
+        "access": "Apache-2.0 repository and PyPI/Homebrew installation",
+        "compatibility": "LM Studio, vLLM, Ollama, llama.cpp and mlx-lm; opencode and pi are configured automatically",
+        "training": "MLX on Apple silicon; PyTorch on NVIDIA and AMD; adapter training during idle periods",
+        "controls": "Local comparison gate, rollback, pause, forget and uninstall commands; optional cloud mode is off by default",
+        "adoption": "832 GitHub stars at verification time; repository created 2026-11-20",
+        "evidence_limit": "Maintainer claims; no independent quality, retention or security audit",
+        "time_basis": "GitHub repository created 2026-11-20T11:01:20Z; HN surfaced it inside overlap"
+      },
+      "technical_details_zh": {
+        "可用性": "Apache-2.0 仓库，并提供 PyPI/Homebrew 安装",
+        "兼容性": "LM Studio、vLLM、Ollama、llama.cpp、mlx-lm；可自动配置 opencode 与 pi",
+        "训练": "Apple silicon 使用 MLX；NVIDIA 与 AMD 使用 PyTorch；空闲时训练 adapter",
+        "控制": "本地对比门槛、回滚、暂停、删除记录和卸载命令；可选云模式默认关闭",
+        "采用信号": "核验时 GitHub 832 stars；仓库创建于 2026-11-20",
+        "证据限制": "结论来自维护者；没有独立质量、留存或安全审计",
+        "时间依据": "GitHub 仓库创建于 2026-11-20T11:01:20Z；HN 在 overlap 内带来召回"
+      },
+      "tags": [
+        "local-ai",
+        "fine-tuning",
+        "coding-agent",
+        "mlx",
+        "privacy"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "sous-labs-songe-local-agent-training",
+      "short_label_zh": "Songe",
+      "short_label_en": "Songe",
+      "next_action_zh": "一天内用隔离测试账户跑 10 次可重复纠错，检查质量增益、回归、磁盘留存、删除和回滚是否符合说明。",
+      "next_action_en": "Within one day, run 10 repeatable corrections under an isolated test account and inspect gains, regressions, disk retention, deletion and rollback.",
+      "source_ids": [
+        "src-c49be8c450a3d521"
+      ],
+      "project_ids": [
+        "songe"
+      ],
+      "scenario_ids": [
+        "agents",
+        "local"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261120-10-evidence",
+          "claim_zh": "公开仓库确认本地记录、空闲训练、评估门槛与回滚路径。",
+          "claim_en": "The public repository confirms local recording, idle-time training, an evaluation gate and rollback.",
+          "source_ids": [
+            "src-c49be8c450a3d521"
+          ],
+          "event_ids": [
+            "ev-20261120-10"
+          ],
+          "relation": "support",
+          "verification": "verified public code and documentation; quality and privacy claims not independently audited"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-10-release",
+          "kind": "new",
+          "occurred_at": "2026-11-20T11:01:20Z",
+          "discovered_at": "2026-11-25T16:58:49Z",
+          "summary_zh": "Songe 公开本地 agent 纠错学习与空闲训练引擎。",
+          "summary_en": "Songe publishes a local correction-learning and idle-training engine for agents.",
+          "evidence_ids": [
+            "ev-20261120-10-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "first_seen_at": "2026-11-25T16:58:49Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
+      "late_discovery": true,
+      "event_id": "ev-20261120-11",
+      "title": "Thinking Machines opens a variable-loop model for inference-time compute research",
+      "title_zh": "Thinking Machines 开放可调循环次数的推理研究模型",
+      "category": "research",
+      "organization": [
+        "Thinking Machines Lab"
+      ],
+      "published_at": "2026-11-20",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/thinkingmachines/TML-d24-varloop-research",
+      "secondary_sources": [],
+      "summary": "Thinking Machines Lab released Apache-2.0 weights for TML-d24-varloop-research, a multimodal counterpart to Inkling 2 Mini whose shared layers can run one to five passes at inference time. The approximately 20GB checkpoint runs on a 32GB machine and exposes a direct quality-versus-compute control. Publisher evaluations show large gains from one to three passes, but later passes often plateau and training favored three passes.",
+      "summary_en": "Thinking Machines Lab released Apache-2.0 weights for TML-d24-varloop-research, a multimodal counterpart to Inkling 2 Mini whose shared layers can run one to five passes at inference time. The approximately 20GB checkpoint runs on a 32GB machine and exposes a direct quality-versus-compute control. Publisher evaluations show large gains from one to three passes, but later passes often plateau and training favored three passes.",
+      "summary_zh": "Thinking Machines Lab 以 Apache-2.0 开放 TML-d24-varloop-research 权重。它是 Inkling 2 Mini 的多模态可变循环版本，推理时可让共享层运行 1 到 5 次；约 20GB checkpoint 可在 32GB 机器上运行。发布方评测显示从 1 次增加到 3 次通常提升明显，但继续增加常趋于平台期，而且训练本身偏重 3 次循环。",
+      "why_it_matters": "Local-model teams can measure whether spending more inference compute helps each workload without loading different checkpoints. The uneven training schedule means the result is a research control, not proof that arbitrary extra loops reliably improve production quality.",
+      "why_it_matters_en": "Local-model teams can measure whether spending more inference compute helps each workload without loading different checkpoints. The uneven training schedule means the result is a research control, not proof that arbitrary extra loops reliably improve production quality.",
+      "why_it_matters_zh": "本地模型团队可以不换 checkpoint，直接测同一任务增加推理计算是否值得。由于训练时不同循环次数的权重不均衡，它更像研究控制变量，不能证明生产环境里多循环一定更好。",
+      "technical_details": {
+        "architecture": "26.4B total, 3.4B active at one pass; shared middle layers run 1-5 passes",
+        "context": "Up to 1M tokens; text and image input",
+        "access": "Apache-2.0 open weights only; no API",
+        "hardware": "About 20GB checkpoint; at least 32GB GPU or unified memory",
+        "training_limit": "Pass counts sampled 1:2:6:2:1 and post-trained at three passes",
+        "evidence_limit": "Publisher benchmarks; direct comparison with Inkling 2 Mini is cautioned",
+        "time_basis": "Model card states 2026-11-20 without a time; repository was discovered by recall audit"
+      },
+      "technical_details_zh": {
+        "架构": "总参数 26.4B；1 次循环激活 3.4B；中间共享层可运行 1-5 次",
+        "上下文": "最高 1M token；文本与图像输入",
+        "可用性": "仅提供 Apache-2.0 开放权重；没有 API",
+        "硬件": "checkpoint 约 20GB；至少 32GB GPU 或统一内存",
+        "训练限制": "循环次数按 1:2:6:2:1 采样，后训练固定为 3 次",
+        "证据限制": "只有发布方 benchmark；模型卡提醒不要与 Inkling 2 Mini 直接比较",
+        "时间依据": "模型卡只给出 2026-11-20，没有时分；由召回自检补录"
+      },
+      "tags": [
+        "looped-transformer",
+        "inference-compute",
+        "multimodal",
+        "open-weights",
+        "local-inference"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "thinking-machines-tml-d24-variable-loop",
+      "short_label_zh": "TML 可变循环模型",
+      "short_label_en": "TML Variable-Loop",
+      "next_action_zh": "一天内在 32GB 机器上用 20 个固定任务比较 1/3/5 次循环的质量、TTFT、吞吐与能耗。",
+      "next_action_en": "Within one day, compare 1, 3 and 5 passes on 20 fixed tasks using a 32GB machine; record quality, TTFT, throughput and energy.",
+      "source_ids": [
+        "src-e76db7701ea4cb0a"
+      ],
+      "project_ids": [
+        "tml-variable-loop"
+      ],
+      "scenario_ids": [
+        "models",
+        "local"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261120-11-evidence",
+          "claim_zh": "开放权重允许在同一 checkpoint 上切换循环次数并复测计算收益。",
+          "claim_en": "Open weights allow pass-count changes on one checkpoint for compute-return testing.",
+          "source_ids": [
+            "src-e76db7701ea4cb0a"
+          ],
+          "event_ids": [
+            "ev-20261120-11"
+          ],
+          "relation": "support",
+          "verification": "verified model card and downloadable weights; publisher benchmarks not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-11-release",
+          "kind": "new",
+          "occurred_at": "2026-11-20",
+          "discovered_at": "2026-11-25T16:58:49Z",
+          "summary_zh": "Thinking Machines 开放可调 1-5 次循环的多模态研究模型。",
+          "summary_en": "Thinking Machines opens a multimodal research model with one to five inference loops.",
+          "evidence_ids": [
+            "ev-20261120-11-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261120-12",
+      "title": "MemTensor opens MemT-1.0-Pro with persistent latent memory",
+      "title_zh": "MemTensor 开放带持久潜在记忆的 MemT-1.0-Pro",
+      "category": "foundation-model",
+      "organization": [
+        "MemTensor"
+      ],
+      "published_at": "2026-11-20T13:14:57Z",
+      "first_seen_at": "2026-11-25T16:58:49Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/MemTensor/MemT-1.0-Pro",
+      "secondary_sources": [],
+      "summary": "MemTensor released OpenMDW-1.1 weights for MemT-1.0-Pro, a 554B-total, 59B-active model that updates a fixed-size latent memory across turns instead of retaining plaintext context. The publisher reports about 66x less state storage than a full 128K KV cache and ranks its family highest among evaluated parametric-memory methods. Strong text-retrieval memory systems still lead overall, and the very large checkpoint plus custom code make independent testing costly.",
+      "summary_en": "MemTensor released OpenMDW-1.1 weights for MemT-1.0-Pro, a 554B-total, 59B-active model that updates a fixed-size latent memory across turns instead of retaining plaintext context. The publisher reports about 66x less state storage than a full 128K KV cache and ranks its family highest among evaluated parametric-memory methods. Strong text-retrieval memory systems still lead overall, and the very large checkpoint plus custom code make independent testing costly.",
+      "summary_zh": "MemTensor 以 OpenMDW-1.1 开放 MemT-1.0-Pro 权重。模型总参数 554B、每 token 激活 59B，会在多轮交互中更新固定大小的潜在记忆，而不是保留明文上下文。发布方称它比完整 128K KV cache 少约 66 倍状态存储，并在所测参数化记忆方法中领先；但文本检索型记忆总体仍更强，超大 checkpoint 与自定义代码也让独立验证成本很高。",
+      "why_it_matters": "Agent-memory teams get an inspectable alternative to replaying long plaintext histories, with explicit save-and-restore state. The license, custom code, hardware scale and publisher-only evaluation make it a research signal rather than a practical default.",
+      "why_it_matters_en": "Agent-memory teams get an inspectable alternative to replaying long plaintext histories, with explicit save-and-restore state. The license, custom code, hardware scale and publisher-only evaluation make it a research signal rather than a practical default.",
+      "why_it_matters_zh": "agent memory 团队多了一个不必反复回放长明文历史、还能显式保存和恢复状态的开放方案。许可、自定义代码、硬件规模和厂商自测意味着它目前只是研究信号，不是实用默认选项。",
+      "technical_details": {
+        "architecture": "554B total, 59B active; 4.23B trainable memory parameters and 13M dynamic memory state",
+        "backbone": "NVIDIA Nemotron-3 Ultra 550B-A55B",
+        "memory": "Dynamic local memory plus trainable hyper memory with write, erase and forget gates",
+        "publisher_storage_claim": "About 66x less state storage than full-context KV cache at 128K history",
+        "access": "OpenMDW-1.1 weights in 226 shards; custom Transformers code with trust_remote_code",
+        "evidence_limit": "Publisher evaluation; textual-memory retrieval systems remain stronger overall; hardware requirements are not specified",
+        "time_basis": "Hugging Face repository created 2026-11-20T13:14:57Z; recalled outside overlap"
+      },
+      "technical_details_zh": {
+        "架构": "总参数 554B、激活 59B；4.23B 可训练记忆参数与 13M 动态记忆状态",
+        "骨干": "NVIDIA Nemotron-3 Ultra 550B-A55B",
+        "记忆机制": "动态局部记忆与可训练 hyper memory，带写入、擦除和遗忘门",
+        "发布方存储结论": "在 128K 历史下，状态存储约比完整上下文 KV cache 少 66 倍",
+        "可用性": "OpenMDW-1.1 权重分为 226 个分片；需 trust_remote_code 加载自定义 Transformers 代码",
+        "证据限制": "只有发布方评测；文本检索型记忆总体仍更强；模型卡未给硬件要求",
+        "时间依据": "Hugging Face 仓库创建于 2026-11-20T13:14:57Z；召回自检在 overlap 外补录"
+      },
+      "tags": [
+        "agent-memory",
+        "latent-memory",
+        "open-weights",
+        "long-context",
+        "custom-code"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 5,
+      "risk": 4,
+      "recommendation": "WATCH",
+      "event_fingerprint": "memtensor-memt-1-0-pro-native-memory",
+      "short_label_zh": "MemT-1.0-Pro",
+      "short_label_en": "MemT-1.0-Pro",
+      "next_action_zh": "等待 Nano/Flash 的独立复现、明确硬件需求与安全审计后，再比较潜在记忆和文本检索记忆。",
+      "next_action_en": "Wait for independent Nano or Flash reproduction, explicit hardware requirements and a security review before comparing latent memory with text retrieval.",
+      "source_ids": [
+        "src-2a5c124bf1c6d62e"
+      ],
+      "project_ids": [
+        "memt-1-0"
+      ],
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "late_discovery": true,
+      "evidence": [
+        {
+          "id": "ev-20261120-12-evidence",
+          "claim_zh": "模型权重、自定义记忆实现和保存/恢复示例已公开；性能仍是发布方结果。",
+          "claim_en": "Weights, custom memory implementation and save-and-restore examples are public; performance remains publisher-reported.",
+          "source_ids": [
+            "src-2a5c124bf1c6d62e"
+          ],
+          "event_ids": [
+            "ev-20261120-12"
+          ],
+          "relation": "support",
+          "verification": "verified public artifact; publisher results not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-12-release",
+          "kind": "new",
+          "occurred_at": "2026-11-20T13:14:57Z",
+          "discovered_at": "2026-11-25T16:58:49Z",
+          "summary_zh": "MemT-1.0-Pro 开放持久潜在记忆权重与实现。",
+          "summary_en": "MemT-1.0-Pro opens persistent latent-memory weights and implementation.",
+          "evidence_ids": [
+            "ev-20261120-12-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }

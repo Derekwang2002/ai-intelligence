@@ -1,0 +1,84 @@
+{
+  "date": "2026-11-25",
+  "provenance": "Primary sources verified during incremental run 2026-11-25T16:58:49Z.",
+  "events": [
+    {
+      "event_id": "ev-20261125-01",
+      "title": "Tencent brings WePocketModel to Apple silicon with MLX",
+      "title_zh": "Tencent 用 MLX 把 WePocketModel 带到 Apple silicon",
+      "category": "foundation-model",
+      "organization": ["Tencent"],
+      "published_at": "2026-11-25T06:25:00Z",
+      "first_seen_at": "2026-11-25T16:58:49Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/tencent/WePocketModel1.0-4B-MLX",
+      "secondary_sources": [
+        "https://huggingface.co/tencent/WePocketModel1.0-2B-MLX",
+        "https://github.com/Tencent/WePocketModel",
+        "https://arxiv.org/abs/2611.27365"
+      ],
+      "summary": "Tencent released MLX builds of the 2B and 4B WePocketModel family for Apple silicon. One shared multimodal backbone handles generation, text-image embeddings and structured decisions, with Apache-2.0 weights and a self-contained runtime. The 4B build reports 4.25 GiB peak memory and 30.6 tok/s under 4-bit quantization on an M3 Pro, but all quality and speed results are publisher-run.",
+      "summary_en": "Tencent released MLX builds of the 2B and 4B WePocketModel family for Apple silicon. One shared multimodal backbone handles generation, text-image embeddings and structured decisions, with Apache-2.0 weights and a self-contained runtime. The 4B build reports 4.25 GiB peak memory and 30.6 tok/s under 4-bit quantization on an M3 Pro, but all quality and speed results are publisher-run.",
+      "summary_zh": "Tencent 发布 WePocketModel 2B 与 4B 的 MLX 版本，可在 Apple silicon 上运行。一个共享多模态骨干同时负责生成、图文嵌入与结构化决策，权重采用 Apache-2.0，并附带独立 runtime。发布方称 4B 的 4-bit 版本在 M3 Pro 上峰值占用 4.25 GiB、解码 30.6 tok/s，但质量和速度都尚无独立复现。",
+      "why_it_matters": "Teams building private local apps on Macs can test one small model for multimodal RAG, generation and low-risk decision gates instead of loading separate specialist models.",
+      "why_it_matters_en": "Teams building private local apps on Macs can test one small model for multimodal RAG, generation and low-risk decision gates instead of loading separate specialist models.",
+      "why_it_matters_zh": "对在 Mac 上做私有本地应用的团队来说，可以用一个小模型同时试验多模态 RAG、生成和低风险决策，不必常驻多套专用模型。",
+      "technical_details": {
+        "models": "2B and 4B MLX builds; Qwen3.5 backbones",
+        "capabilities": "Text/image generation, multimodal embeddings with 64-2048 MRL dimensions, structured choice/score/binary decisions",
+        "license": "Apache-2.0 weights and code",
+        "publisher_4b_m3_pro": "BF16 8.99 GiB peak and 13.9 tok/s; 4-bit 4.25 GiB peak and 30.6 tok/s",
+        "publisher_2b_m3_pro": "BF16 4.49 GiB peak and 28.8 tok/s; 4-bit 2.76 GiB peak and 55.8 tok/s",
+        "availability": "Downloadable MLX weights with self-contained runtime; no hosted API",
+        "time_basis": "Hugging Face repositories created at 2026-11-25T06:25:00Z and 06:25:21Z"
+      },
+      "technical_details_zh": {
+        "模型": "2B 与 4B MLX 版本；基于 Qwen3.5",
+        "能力": "文本/图像生成；64-2048 维 MRL 多模态嵌入；choice/score/二元结构化决策",
+        "许可": "权重与代码均为 Apache-2.0",
+        "发布方 4B M3 Pro": "BF16 峰值 8.99 GiB、13.9 tok/s；4-bit 峰值 4.25 GiB、30.6 tok/s",
+        "发布方 2B M3 Pro": "BF16 峰值 4.49 GiB、28.8 tok/s；4-bit 峰值 2.76 GiB、55.8 tok/s",
+        "可用性": "MLX 权重与独立 runtime 可下载；没有托管 API",
+        "时间依据": "两个 Hugging Face 仓库创建于 2026-11-25T06:25:00Z 与 06:25:21Z"
+      },
+      "tags": ["multimodal", "local-ai", "apple-silicon", "embedding", "structured-decision"],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "tencent-wepocketmodel-mlx-apple-silicon",
+      "short_label_zh": "WePocketModel MLX",
+      "short_label_en": "WePocketModel MLX",
+      "next_action_zh": "一天内在一台 M 系列 Mac 上跑 20 个图文检索、生成和决策样本，记录质量、内存、首 token 与吞吐。",
+      "next_action_en": "Within one day, run 20 retrieval, generation and decision samples on one M-series Mac; record quality, memory, time to first token and throughput.",
+      "source_ids": ["src-743432370bbdf4d7", "src-290f92b8c79ccbef", "src-f3ea59189c607a78", "src-705d2cfdd626a434"],
+      "project_ids": ["wepocketmodel"],
+      "scenario_ids": ["models", "local"],
+      "evidence_stage": "frontier",
+      "evidence": [{
+        "id": "ev-20261125-01-release-evidence",
+        "claim_zh": "MLX 权重、runtime、校验说明与 Apache-2.0 许可已公开；性能仍是发布方结果。",
+        "claim_en": "MLX weights, runtime, parity notes and Apache-2.0 licensing are public; performance remains publisher-reported.",
+        "source_ids": ["src-743432370bbdf4d7", "src-290f92b8c79ccbef", "src-f3ea59189c607a78"],
+        "event_ids": ["ev-20261125-01"],
+        "relation": "support",
+        "verification": "verified public artifacts; publisher performance not independently reproduced"
+      }],
+      "changes": [{
+        "id": "ev-20261125-01-release",
+        "kind": "new",
+        "occurred_at": "2026-11-25T06:25:00Z",
+        "discovered_at": "2026-11-25T16:58:49Z",
+        "summary_zh": "WePocketModel 2B/4B 的 MLX 权重与 runtime 公开。",
+        "summary_en": "WePocketModel 2B/4B MLX weights and runtime become public.",
+        "evidence_ids": ["ev-20261125-01-release-evidence"],
+        "historical": false,
+        "importance": "major"
+      }]
+    }
+  ]
+}

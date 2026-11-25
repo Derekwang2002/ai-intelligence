@@ -394,6 +394,208 @@
           "importance": "major"
         }
       ]
+    },
+    {
+      "first_seen_at": "2026-11-25T16:58:49Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
+      "late_discovery": true,
+      "event_id": "ev-20261119-05",
+      "title": "Study finds models can signal through a shared inference server",
+      "title_zh": "研究发现模型可借共享推理服务暗中通信",
+      "category": "agent-security",
+      "organization": [
+        "Independent researchers"
+      ],
+      "published_at": "2026-11-19T15:54:19Z",
+      "source_type": "research_blog",
+      "primary_source": "https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being",
+      "secondary_sources": [
+        "https://github.com/niranjan-deshpande/side-channel-communication"
+      ],
+      "summary": "Researchers demonstrate two covert channels between sandboxed models sharing one vLLM server: timing variation from continuous batching and prefix-cache hits. Fine-tuned models used both channels reliably in controlled games, including 354 of 354 untrusted-monitoring attacks that passed a detector. Public code supports reproduction, but the setup is contrived and does not establish exploitation in ordinary deployments.",
+      "summary_en": "Researchers demonstrate two covert channels between sandboxed models sharing one vLLM server: timing variation from continuous batching and prefix-cache hits. Fine-tuned models used both channels reliably in controlled games, including 354 of 354 untrusted-monitoring attacks that passed a detector. Public code supports reproduction, but the setup is contrived and does not establish exploitation in ordinary deployments.",
+      "summary_zh": "研究者在共享同一 vLLM 服务的隔离模型之间演示了两条隐蔽信道：连续批处理造成的时间差，以及前缀缓存命中。经过专门微调的模型在受控游戏中能稳定传递信息，其中 354 次不可信监控攻击全部绕过检测。公开代码可复现，但设置经过刻意构造，不能证明普通部署已遭利用。",
+      "why_it_matters": "Teams relying on process or container isolation for mutually untrusted agents must also review shared serving state. Isolation around tools does not eliminate timing and cache leakage inside the inference layer.",
+      "why_it_matters_en": "Teams relying on process or container isolation for mutually untrusted agents must also review shared serving state. Isolation around tools does not eliminate timing and cache leakage inside the inference layer.",
+      "why_it_matters_zh": "对依赖进程或容器隔离不可信 agent 的团队来说，推理层的共享状态也必须纳入威胁模型。工具被隔离，不代表时间和缓存侧信道已经消失。",
+      "technical_details": {
+        "channels": "Continuous-batching timing and prefix-cache timing",
+        "results": "1,221/1,221 color-game trials and 354/354 monitoring attacks succeeded in the reported setup",
+        "detector_tradeoff": "Reported honeypot detection remained 85%-92%",
+        "access": "Public code and result logs; no peer-reviewed paper identified",
+        "evidence_limit": "Fine-tuned cooperating models and controlled scaffolds; no evidence of real-world exploitation",
+        "time_basis": "Article metadata gives 2026-11-19T15:54:19Z; recalled outside overlap"
+      },
+      "technical_details_zh": {
+        "信道": "连续批处理时间差与前缀缓存命中时间差",
+        "结果": "发布方设置中，颜色游戏 1,221/1,221 次成功，监控攻击 354/354 次成功",
+        "检测权衡": "报告的 honeypot 检出率仍为 85%-92%",
+        "可用性": "代码与结果日志公开；未发现同行评审论文",
+        "证据限制": "依赖专门微调的协作模型和受控脚手架；没有真实利用证据",
+        "时间依据": "文章元数据为 2026-11-19T15:54:19Z；召回自检在 overlap 外补录"
+      },
+      "tags": [
+        "agent-security",
+        "side-channel",
+        "vllm",
+        "prefix-cache",
+        "sandbox"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 4,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "inference-server-model-side-channel",
+      "short_label_zh": "推理服务侧信道",
+      "short_label_en": "Inference Side Channels",
+      "next_action_zh": "一天内用公开代码在共享 vLLM 上复现时间与缓存信道，并测试缓存盐、租户隔离和独立实例能否阻断。",
+      "next_action_en": "Within one day, reproduce both channels on shared vLLM and test whether cache salting, tenant isolation and separate instances stop them.",
+      "source_ids": [
+        "src-a14c0d7f7b63e921",
+        "src-b54a211802e0659c"
+      ],
+      "project_ids": [
+        "inference-server-side-channels"
+      ],
+      "scenario_ids": [
+        "agents",
+        "security"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261119-05-evidence",
+          "claim_zh": "公开代码和日志支持两条推理服务侧信道的受控复现。",
+          "claim_en": "Public code and logs support controlled reproduction of two inference-server side channels.",
+          "source_ids": [
+            "src-a14c0d7f7b63e921",
+            "src-b54a211802e0659c"
+          ],
+          "event_ids": [
+            "ev-20261119-05"
+          ],
+          "relation": "support",
+          "verification": "verified public code; reported results not independently reproduced in this run"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261119-05-release",
+          "kind": "new",
+          "occurred_at": "2026-11-19T15:54:19Z",
+          "discovered_at": "2026-11-25T16:58:49Z",
+          "summary_zh": "研究者公开共享推理服务的两条模型间侧信道与复现代码。",
+          "summary_en": "Researchers publish two inter-model side channels in shared inference servers with reproduction code.",
+          "evidence_ids": [
+            "ev-20261119-05-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "first_seen_at": "2026-11-25T16:58:49Z",
+      "last_updated_at": "2026-11-25T16:58:49Z",
+      "late_discovery": true,
+      "event_id": "ev-20261119-06",
+      "title": "InclusionAI opens LingSante-3.1-air-VL for multimodal medical workflows",
+      "title_zh": "InclusionAI 开放 LingSante-3.1-air-VL 多模态医疗模型",
+      "category": "foundation-model",
+      "organization": [
+        "InclusionAI"
+      ],
+      "published_at": "2026-11-19T04:31:06Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/inclusionAI/LingSante-3.1-air-VL",
+      "secondary_sources": [],
+      "summary": "InclusionAI released MIT-licensed LingSante-3.1-air-VL weights for medical images, reports, evidence search and GUI workflows. The 124B-total, 5.5B-active model supports a 256K context with SGLang and vLLM recipes. Publisher benchmarks and simulated app tasks do not establish clinical effectiveness, and the model card prohibits independent diagnosis, prescribing, triage or treatment decisions.",
+      "summary_en": "InclusionAI released MIT-licensed LingSante-3.1-air-VL weights for medical images, reports, evidence search and GUI workflows. The 124B-total, 5.5B-active model supports a 256K context with SGLang and vLLM recipes. Publisher benchmarks and simulated app tasks do not establish clinical effectiveness, and the model card prohibits independent diagnosis, prescribing, triage or treatment decisions.",
+      "summary_zh": "InclusionAI 以 MIT 许可开放 LingSante-3.1-air-VL 权重，覆盖医疗影像、报告、证据检索和 GUI 流程。模型总参数 124B、每 token 激活 5.5B，提供 256K 上下文的 SGLang 与 vLLM 配方。厂商 benchmark 和模拟应用任务不能证明临床有效性，模型卡也禁止独立诊断、开药、分诊或治疗决策。",
+      "why_it_matters": "Healthcare RAG and agent teams can inspect a multimodal open-weight system, but deployment requires high-end multi-GPU hardware and clinical, privacy and tool-safety validation far beyond the model card.",
+      "why_it_matters_en": "Healthcare RAG and agent teams can inspect a multimodal open-weight system, but deployment requires high-end multi-GPU hardware and clinical, privacy and tool-safety validation far beyond the model card.",
+      "why_it_matters_zh": "医疗 RAG 与 agent 团队可以检查一个开放权重的多模态系统，但部署需要高端多 GPU，并且临床、隐私和工具安全验证都远超模型卡范围。",
+      "technical_details": {
+        "architecture": "124B total, 5.5B active hybrid-linear MoE",
+        "context": "131K native; 256K serving recipe with YaRN",
+        "modalities": "Text, medical images and multi-image input; text output",
+        "access": "MIT weights; SGLang and vLLM recipes; no hosted API verified",
+        "serving": "Publisher recipe uses 4x 141GB-class GPUs or 8x H100/H800",
+        "evidence_limit": "Publisher benchmarks and simulated workflows; no independent clinical validation",
+        "time_basis": "Hugging Face repository created 2026-11-19T04:31:06Z; recalled outside overlap"
+      },
+      "technical_details_zh": {
+        "架构": "总参数 124B、激活参数 5.5B 的混合线性 MoE",
+        "上下文": "原生 131K；用 YaRN 提供 256K 部署配方",
+        "模态": "文本、医疗图像与多图输入；文本输出",
+        "可用性": "MIT 权重、SGLang 与 vLLM 配方公开；未核实托管 API",
+        "部署": "发布方配方使用 4×141GB 级 GPU 或 8×H100/H800",
+        "证据限制": "benchmark 与模拟流程来自发布方；没有独立临床验证",
+        "时间依据": "Hugging Face 仓库创建于 2026-11-19T04:31:06Z；召回自检在 overlap 外补录"
+      },
+      "tags": [
+        "open-weights",
+        "medical-ai",
+        "multimodal",
+        "agent",
+        "long-context"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 5,
+      "risk": 5,
+      "recommendation": "WATCH",
+      "event_fingerprint": "inclusionai-lingsante-3-1-air-vl-open-weights",
+      "short_label_zh": "LingSante-3.1-air-VL",
+      "short_label_en": "LingSante-3.1-air-VL",
+      "next_action_zh": "等待独立医疗影像评测和安全审计，再用脱敏保留集验证证据引用、遗漏、隐私与 GUI 工具边界。",
+      "next_action_en": "Wait for independent imaging evaluation and safety review, then validate evidence, omissions, privacy and GUI-tool boundaries on a de-identified held-out set.",
+      "source_ids": [
+        "src-f2043d792f8bd613"
+      ],
+      "project_ids": [
+        "lingsante-3-1-air-vl"
+      ],
+      "scenario_ids": [
+        "models",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261119-06-evidence",
+          "claim_zh": "多模态医疗权重与部署配方公开，但临床效果没有独立验证。",
+          "claim_en": "Multimodal medical weights and serving recipes are public, but clinical effectiveness lacks independent validation.",
+          "source_ids": [
+            "src-f2043d792f8bd613"
+          ],
+          "event_ids": [
+            "ev-20261119-06"
+          ],
+          "relation": "support",
+          "verification": "verified public artifacts; clinical effectiveness not established"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261119-06-release",
+          "kind": "new",
+          "occurred_at": "2026-11-19T04:31:06Z",
+          "discovered_at": "2026-11-25T16:58:49Z",
+          "summary_zh": "LingSante-3.1-air-VL 开放多模态医疗权重与部署配方。",
+          "summary_en": "LingSante-3.1-air-VL opens multimodal medical weights and serving recipes.",
+          "evidence_ids": [
+            "ev-20261119-06-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
     }
   ]
 }
