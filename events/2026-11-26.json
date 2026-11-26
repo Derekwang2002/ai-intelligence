@@ -1,0 +1,308 @@
+{
+  "date": "2026-11-26",
+  "provenance": "Verified primary sources from the incremental scan.",
+  "events": [
+    {
+      "event_id": "ev-20261126-03",
+      "title": "Hugging Face demonstrates shared-weight training across four agents",
+      "title_zh": "Hugging Face 演示四个 agent 共享权重训练",
+      "category": "ai-agent",
+      "organization": [
+        "Hugging Face"
+      ],
+      "published_at": "2026-11-26T00:00:00Z",
+      "source_type": "research_blog",
+      "primary_source": "https://huggingface.co/blog/training-swarms",
+      "secondary_sources": [],
+      "summary_en": "Hugging Face published a reproducible TRL example in which four agents share one Qwen3-0.6B policy and learn from group outcomes. The demonstration trained for about five hours on two H200 GPUs at an estimated $50 and used a simple number-ordering task. It is an early recipe for multi-agent reinforcement learning, not evidence that swarm training improves production agents.",
+      "summary_zh": "Hugging Face 发布一套可复现的 TRL 示例：四个 agent 共享同一个 Qwen3-0.6B 策略，并根据团队结果共同学习。演示在两张 H200 上训练约 5 小时，估算成本 50 美元，任务只是简单的数字排序。这是多 agent 强化学习的早期配方，不足以证明 swarm 训练能提升生产 agent。",
+      "why_it_matters_en": "Agent researchers gain a small public baseline for testing shared-policy team learning without building the orchestration and reward loop from scratch.",
+      "why_it_matters_zh": "对 agent 研究团队来说，这提供了一个小型公开基线，可以直接测试共享策略的团队学习，而不必从零搭建编排与奖励循环。",
+      "technical_details": {
+        "setup": "Four agents share Qwen3-0.6B parameters",
+        "training": "About 5 hours on two H200 GPUs; estimated $50",
+        "task": "Simple number ordering with group reward",
+        "availability": "Public TRL recipe and runnable example",
+        "limit": "Toy task; no production-agent or heterogeneous-team evidence",
+        "time_basis": "Hugging Face feed timestamp 2026-11-26T00:00:00Z"
+      },
+      "technical_details_zh": {
+        "设置": "四个 agent 共享 Qwen3-0.6B 参数",
+        "训练": "两张 H200 约 5 小时；估算 50 美元",
+        "任务": "带团队奖励的简单数字排序",
+        "可用性": "公开 TRL 配方与可运行示例",
+        "限制": "玩具任务；没有生产 agent 或异构团队证据",
+        "时间依据": "Hugging Face feed 时间为 2026-11-26T00:00:00Z"
+      },
+      "tags": [
+        "multi-agent",
+        "reinforcement-learning",
+        "trl",
+        "shared-policy"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 3,
+      "adoption_signal": 1,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "hugging-face-swarm-shared-weight-agent-training",
+      "short_label_zh": "Swarm 训练配方",
+      "short_label_en": "Swarm Training Recipe",
+      "next_action_zh": "一天内用公开 TRL 配方复现小任务，记录团队奖励、单 agent 退化与训练成本。",
+      "next_action_en": "Within one day, reproduce the public TRL task and record group reward, single-agent regression and training cost.",
+      "source_ids": [
+        "src-819f2bb8e324e5e7"
+      ],
+      "project_ids": [
+        "hf-swarm-training"
+      ],
+      "scenario_ids": [
+        "agents",
+        "training"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261126-03-recipe-evidence",
+          "claim_zh": "公开配方可运行，但证据只来自简单任务。",
+          "claim_en": "The public recipe is runnable, but evidence is limited to a simple task.",
+          "source_ids": [
+            "src-819f2bb8e324e5e7"
+          ],
+          "event_ids": [
+            "ev-20261126-03"
+          ],
+          "relation": "support",
+          "verification": "verified public recipe; production transfer untested"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261126-03-release",
+          "kind": "new",
+          "occurred_at": "2026-11-26T00:00:00Z",
+          "discovered_at": "2026-11-26T17:03:09Z",
+          "summary_zh": "Hugging Face 公开四 agent 共享权重的 TRL 训练配方。",
+          "summary_en": "Hugging Face publishes a TRL recipe for four agents sharing one policy.",
+          "evidence_ids": [
+            "ev-20261126-03-recipe-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary": "Hugging Face published a reproducible TRL example in which four agents share one Qwen3-0.6B policy and learn from group outcomes. The demonstration trained for about five hours on two H200 GPUs at an estimated $50 and used a simple number-ordering task. It is an early recipe for multi-agent reinforcement learning, not evidence that swarm training improves production agents.",
+      "why_it_matters": "Agent researchers gain a small public baseline for testing shared-policy team learning without building the orchestration and reward loop from scratch.",
+      "first_seen_at": "2026-11-26T17:03:09Z",
+      "last_updated_at": "2026-11-26T17:03:09Z"
+    },
+    {
+      "event_id": "ev-20261126-01",
+      "title": "NVIDIA opens training data and a speed path for Nemotron 3.5 Parse",
+      "title_zh": "NVIDIA 开放 Nemotron 3.5 Parse 训练数据与加速方案",
+      "category": "ai-engineering",
+      "organization": [
+        "NVIDIA",
+        "Hugging Face"
+      ],
+      "published_at": "2026-11-26T05:05:36Z",
+      "source_type": "research_blog",
+      "primary_source": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+      "secondary_sources": [
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-Parse-v1.1"
+      ],
+      "summary_en": "NVIDIA released three synthetic datasets for Nemotron 3.5 Parse: 9.98 million chart samples, 1 million table samples and 7.9 million multilingual OCR samples, plus a fine-tuning recipe and DFlash2 speculator. Publisher tests report 7.62x higher single-request throughput on H200 and 1.52x at concurrency 512 versus Parse 3.5 without speculation. The assets are public, but the performance comparison comes from the release team.",
+      "summary_zh": "NVIDIA 为 Nemotron 3.5 Parse 开放三套合成数据：998 万图表样本、100 万表格样本和 790 万多语 OCR 样本，并给出微调方案与 DFlash2 推测解码模型。发布方在 H200 上测得，单请求吞吐比未启用推测解码的 Parse 3.5 高 7.62 倍，并发 512 时高 1.52 倍。资产已公开，但性能对比仍来自发布团队。",
+      "why_it_matters_en": "Document-AI teams can now reproduce the data recipe and test a concrete latency path instead of relying only on model-card scores.",
+      "why_it_matters_zh": "对文档 AI 团队来说，现在可以复现数据配方并测试一条明确的加速路径，不必只依赖模型卡分数。",
+      "technical_details": {
+        "datasets": "Charts 9.98M; tables 1M; multilingual OCR 7.9M synthetic samples",
+        "artifacts": "Public datasets, fine-tuning recipe, Parse v1.1 weights and DFlash2 speculator",
+        "publisher_accuracy": "Score 66.24 to 71.38 after documented fine-tuning example",
+        "publisher_speed": "H200 BF16: 7.62x at concurrency 1 and 1.52x at concurrency 512 versus Parse 3.5 without speculation",
+        "availability": "Downloadable weights, data and recipe; no managed API required",
+        "evidence_limit": "Performance and fine-tuning comparisons are publisher-run",
+        "time_basis": "Hugging Face feed timestamp 2026-11-26T05:05:36Z"
+      },
+      "technical_details_zh": {
+        "数据集": "图表 998 万；表格 100 万；多语 OCR 790 万条合成样本",
+        "公开资产": "数据集、微调方案、Parse v1.1 权重与 DFlash2 推测模型",
+        "发布方准确率": "示例微调后分数从 66.24 升至 71.38",
+        "发布方速度": "H200 BF16：并发 1 时为未加速 Parse 3.5 的 7.62 倍，并发 512 时为 1.52 倍",
+        "可用性": "权重、数据与方案可下载；不依赖托管 API",
+        "证据限制": "性能与微调对比均由发布方运行",
+        "时间依据": "Hugging Face feed 时间为 2026-11-26T05:05:36Z"
+      },
+      "tags": [
+        "document-ai",
+        "ocr",
+        "synthetic-data",
+        "speculative-decoding",
+        "fine-tuning"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 2,
+      "maturity": 3,
+      "verification_cost": 3,
+      "risk": 2,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "nemotron-3-5-parse-open-data-dflash2-recipe",
+      "short_label_zh": "Nemotron Parse 资产",
+      "short_label_en": "Nemotron Parse Assets",
+      "next_action_zh": "一天内用 50 页目标文档复测解析准确率、页吞吐和显存，并与当前流水线对比。",
+      "next_action_en": "Within one day, test 50 target pages for extraction accuracy, page throughput and memory against the current pipeline.",
+      "source_ids": [
+        "src-3d2697b636d74b83",
+        "src-d52a69ccd8043205"
+      ],
+      "project_ids": [
+        "nemotron-3-5"
+      ],
+      "scenario_ids": [
+        "rag",
+        "inference"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261126-01-assets-evidence",
+          "claim_zh": "数据、权重和方案可下载；性能仍是发布方自测。",
+          "claim_en": "The data, weights and recipe are downloadable; performance remains publisher-reported.",
+          "source_ids": [
+            "src-3d2697b636d74b83",
+            "src-d52a69ccd8043205"
+          ],
+          "event_ids": [
+            "ev-20261126-01"
+          ],
+          "relation": "support",
+          "verification": "verified public artifacts; publisher benchmarks not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261126-01-release",
+          "kind": "new",
+          "occurred_at": "2026-11-26T05:05:36Z",
+          "discovered_at": "2026-11-26T17:03:09Z",
+          "summary_zh": "Nemotron 3.5 Parse 开放训练数据、微调方案与 DFlash2 加速模型。",
+          "summary_en": "Nemotron 3.5 Parse opens training data, a fine-tuning recipe and a DFlash2 speed model.",
+          "evidence_ids": [
+            "ev-20261126-01-assets-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary": "NVIDIA released three synthetic datasets for Nemotron 3.5 Parse: 9.98 million chart samples, 1 million table samples and 7.9 million multilingual OCR samples, plus a fine-tuning recipe and DFlash2 speculator. Publisher tests report 7.62x higher single-request throughput on H200 and 1.52x at concurrency 512 versus Parse 3.5 without speculation. The assets are public, but the performance comparison comes from the release team.",
+      "why_it_matters": "Document-AI teams can now reproduce the data recipe and test a concrete latency path instead of relying only on model-card scores.",
+      "first_seen_at": "2026-11-26T17:03:09Z",
+      "last_updated_at": "2026-11-26T17:03:09Z"
+    },
+    {
+      "event_id": "ev-20261126-02",
+      "title": "llama.cpp publishes repeatable AMD performance tracking",
+      "title_zh": "llama.cpp 发布可重复的 AMD 性能追踪",
+      "category": "open-source",
+      "organization": [
+        "ggml-org",
+        "AMD"
+      ],
+      "published_at": "2026-11-26T11:37:17Z",
+      "source_type": "research_blog",
+      "primary_source": "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
+      "secondary_sources": [
+        "https://ggml.ai/llama.cpp/benchmarks/amd.html"
+      ],
+      "summary_en": "llama.cpp launched a public AMD benchmark dashboard backed by raw results and reusable workflows. Weekly jobs run ten repetitions for prompt processing, token generation and context scaling across selected models and quantizations. Initial coverage is limited to Radeon 8060S and AI Pro R9700S systems, so it is a regression baseline rather than a broad AMD ranking.",
+      "summary_zh": "llama.cpp 上线公开 AMD benchmark 看板，并提供原始结果与可复用工作流。每周任务对提示处理、token 生成和上下文扩展各跑 10 次，覆盖选定模型与量化配置。首批只覆盖 Radeon 8060S 与 AI Pro R9700S，因此它更适合作为回归基线，而不是完整的 AMD 性能排行榜。",
+      "why_it_matters_en": "Teams deploying local models on AMD hardware gain a transparent way to detect regressions and choose configurations, with hardware-scope limits clearly visible.",
+      "why_it_matters_zh": "对在 AMD 硬件上部署本地模型的团队来说，这提供了一套透明的回归检查与配置选择依据，同时硬件覆盖边界也清楚可见。",
+      "technical_details": {
+        "hardware": "Radeon 8060S (gfx1151) and AI Pro R9700S (gfx1201)",
+        "workloads": "PP512, TG128 and context scaling",
+        "repeatability": "10 repetitions; public raw results and workflows; weekly runs",
+        "scope_limit": "Two initial hardware configurations; not a vendor-wide ranking",
+        "availability": "Public dashboard, bucket data and GitHub workflows",
+        "time_basis": "Hugging Face feed timestamp 2026-11-26T11:37:17Z"
+      },
+      "technical_details_zh": {
+        "硬件": "Radeon 8060S（gfx1151）与 AI Pro R9700S（gfx1201）",
+        "负载": "PP512、TG128 与上下文扩展",
+        "可重复性": "每项 10 次；公开原始结果与工作流；每周运行",
+        "范围限制": "首批只有两套硬件，不代表 AMD 全产品线排名",
+        "可用性": "公开看板、原始 bucket 数据与 GitHub 工作流",
+        "时间依据": "Hugging Face feed 时间为 2026-11-26T11:37:17Z"
+      },
+      "tags": [
+        "llama-cpp",
+        "amd",
+        "benchmark",
+        "local-ai",
+        "inference"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 4,
+      "verification_cost": 2,
+      "risk": 1,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "llama-cpp-amd-repeatable-benchmark-dashboard",
+      "short_label_zh": "llama.cpp AMD 看板",
+      "short_label_en": "llama.cpp AMD Bench",
+      "next_action_zh": "一天内复用公开工作流跑目标 AMD 主机，并把 PP512、TG128 与上下文曲线加入回归。",
+      "next_action_en": "Within one day, reuse the workflow on a target AMD host and add PP512, TG128 and context curves to regression tests.",
+      "source_ids": [
+        "src-a734da9d3a1d8760",
+        "src-31d76f8fa7c94156"
+      ],
+      "project_ids": [
+        "llama-cpp"
+      ],
+      "scenario_ids": [
+        "local",
+        "inference"
+      ],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261126-02-dashboard-evidence",
+          "claim_zh": "看板、原始结果与工作流均公开，但当前只覆盖两套 AMD 硬件。",
+          "claim_en": "The dashboard, raw results and workflows are public, but current coverage spans only two AMD systems.",
+          "source_ids": [
+            "src-a734da9d3a1d8760",
+            "src-31d76f8fa7c94156"
+          ],
+          "event_ids": [
+            "ev-20261126-02"
+          ],
+          "relation": "support",
+          "verification": "verified public dashboard and workflows"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261126-02-release",
+          "kind": "new",
+          "occurred_at": "2026-11-26T11:37:17Z",
+          "discovered_at": "2026-11-26T17:03:09Z",
+          "summary_zh": "llama.cpp 上线可复现的 AMD 性能看板。",
+          "summary_en": "llama.cpp launches a reproducible AMD performance dashboard.",
+          "evidence_ids": [
+            "ev-20261126-02-dashboard-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "summary": "llama.cpp launched a public AMD benchmark dashboard backed by raw results and reusable workflows. Weekly jobs run ten repetitions for prompt processing, token generation and context scaling across selected models and quantizations. Initial coverage is limited to Radeon 8060S and AI Pro R9700S systems, so it is a regression baseline rather than a broad AMD ranking.",
+      "why_it_matters": "Teams deploying local models on AMD hardware gain a transparent way to detect regressions and choose configurations, with hardware-scope limits clearly visible.",
+      "first_seen_at": "2026-11-26T17:03:09Z",
+      "last_updated_at": "2026-11-26T17:03:09Z"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# 当前趋势看板 — 2026-11-25T16:58Z
+# 当前趋势看板 — 2026-11-26T17:03Z
 
 ## 趋势 #1：中国实验室的开源权重 agentic coding 模型在前沿水平竞争
 
@@ -132,6 +132,7 @@
 - 2026-11-24：GLM-5.4 增加闭源循环架构信号，WeMM-Ecom 增加可下载的专用多模态权重；趋势保持 strengthening。
 - 2026-11-25：本轮没有足以改变判断的新证据。
 - 2026-11-26：本轮复核未发现足以改变趋势状态或置信度的新证据。
+- 2026-11-27：本次未发现足以改变判断的新信号。
 
 ## 趋势 #2：MCP 进入企业安全与强制管控阶段
 
@@ -255,13 +256,14 @@
 - 2026-11-24：本轮没有足以改变判断的 MCP 控制新信号。
 - 2026-11-25：Gemini Tool Retrieval 扩大 MCP 工具按需发现能力，但没有新的企业身份或最小权限证据；判断不变。
 - 2026-11-26：本轮复核未发现足以改变趋势状态或置信度的新证据。
+- 2026-11-27：本次未发现足以改变判断的新信号。
 
 ## 趋势 #3：Coding agent 收敛为 multi-agent runtime
 
 - **Status:** established
 - **Confidence:** High
 - **First observed:** 2026-08-15
-- **Last updated:** 2026-11-23
+- **Last updated:** 2026-11-27
 - **Time Horizon:** Sustained
 - **当前判断:** established（2026-08-18 candidate→emerging；8/20→strengthening；2026-08-28→established——确认判据 (a) 达成：Codex 0.150.0 stable 落地 agent 发起的跨任务消息；同窗口 Gemini CLI 0.57.0 将 a2a-server 打进 stable 并发 npm 包，第七家组织（Google）在稳定运行时落地协议级互操作）
 - **Why It Matters:** 升级为 established / High 的依据：确认判据 (a)（agent-to-agent 语义的消息落地非 Anthropic stable 运行时）由 Codex 0.150.0 达成——agent 可在终端读取、创建或向其他任务发消息，收件箱语义不再为 Anthropic 独有；同窗口 Google 把 A2A 协议 server 打进 Gemini CLI stable 发布线并发布 npm 包。至此等效原语已在七家组织（Anthropic、GitHub/Microsoft、DeepSeek、OpenAI、SST/OpenCode、Anysphere/Cursor、Google）的稳定或可安装产物中核实，时间跨度 2026 年 3 月至 8 月。工程含义已经落地：编排面从「人发起的会话」转向「常驻、事件驱动、可互操作的任务系统」，多 agent 编排从框架选择问题变成 CLI 运行时的内建能力。残余缺口（不阻碍 established，但持续观察）：Google 侧 a2a-server 零文档零公告；公开生产案例与采用遥测仍缺；Anthropic 侧 Claude Code 2.1.248 将跨会话消息扩展到 Bedrock/Vertex/Foundry 与关闭遥测场景（同组织加固，不另计证据）。
@@ -296,6 +298,7 @@
 25. Agent Lightning v1.0（2026-10-07，ev-20261007-07）把部署用的真实 coding-agent harness 直接接入 RL，并公开 Kubernetes rollout 控制面。
 26. Paperclip 将权限、审计与成本账本并入 multi-agent runtime。
 27. GVS5H 公开共享失败账本的五轮 coding-agent harness。
+28. 2026-11-26：Qwen Code 0.28.6 为托管会话增加暂停和冷恢复，Hugging Face 公开共享策略多 agent 训练配方。
 
 ### 逐次复核
 
@@ -390,6 +393,7 @@
 - 2026-11-24：GLM-5.4 扩展编码模型能力主张，但没有新增独立运行时证据；状态保持 established。
 - 2026-11-25：本轮没有足以改变判断的新证据。
 - 2026-11-26：本轮复核未发现足以改变趋势状态或置信度的新证据。
+- 2026-11-27：Qwen Code 0.28.6 增加会话暂停与冷恢复；Hugging Face 的共享策略训练仍只在玩具任务上验证，趋势状态不变。
 
 ## 趋势 #4：前沿实验室把安全事件披露与第三方独立审查制度化
 
@@ -510,6 +514,7 @@
 - 2026-11-24：OpenRouter 的客户通知与供应商声明缩小了归属范围，但责任边界仍有限；状态保持 strengthening。
 - 2026-11-25：本轮没有足以改变判断的新证据。
 - 2026-11-26：本轮复核未发现足以改变趋势状态或置信度的新证据。
+- 2026-11-27：本次未发现足以改变判断的新信号。
 
 ## 趋势 #5：AI 工具链的企业自托管 / 数据驻留执行面成形
 
@@ -614,13 +619,14 @@
 - 2026-11-24：WeMM-Ecom 增加 Apache-2.0 本地多模态服务路径，但独立部署证据仍少；状态保持 candidate。
 - 2026-11-25：本轮没有足以改变判断的新证据。
 - 2026-11-26：本轮复核未发现足以改变趋势状态或置信度的新证据。
+- 2026-11-27：本次未发现足以改变判断的新信号。
 
 ## 趋势 #6：AI 生成的千禧年级数学与 Lean 形式化验证成为前沿实验室的新工作负载
 
 - **Status:** emerging
 - **Confidence:** Medium
 - **First observed:** 2026-09-04
-- **Last updated:** 2026-11-22
+- **Last updated:** 2026-11-27
 - **Time Horizon:** Emerging
 - **当前判断:** emerging（2026-09-12 立项：8 天内三家主体产出三个千禧年级结果——FLT、Navier–Stokes、forced Euler——全部以 Lean/形式化验证作信任层，并有数学界的公开回应；争议与验证状态如实记录）
 - **Why It Matters:** 对做 agent 平台与评测的团队：长时程多 agent + 形式化验证的组合正在变成「前沿能力」的可信度量衡——benchmark 分数可被污染，Lean 证明不可；这也是继 coding 之后第二个被 AI 实质推进的「可验证领域」。同时该工作负载把两个治理问题摆上台面：内部模型能力披露（NS 帖披露强于 Astra 的未发布模型）与 harness 介质的数据治理（Buckmaster 争议：用户会话是否会帮助竞争方向的内部工作）。工程侧的迁移面：形式化验证工具链（Lean/Prove2Me 类）值得纳入 agent 平台的「可验证输出」选项。
@@ -637,6 +643,7 @@
 7. OpenAI 数学项目（2026-10-07，ev-20261006-06 更新）：符号错误导致三篇稿件撤回，14 篇修订；Lean 覆盖升至 300/719，说明形式化验证与依赖复核仍是关键瓶颈。
 8. KLS 猜想证明（2026-10-04，ev-20261004-03）：人类引导约 100 条 AI 搜索路径，同日有平行证明，之后公开 Lean 4 形式化。
 9. OpenAI 公开 local smoothing / Kakeya、ETH 与量子场论三项新主张；前两项附 Lean 产物，并由外部学者组织解释（2026-10-26，ev-20261006-06 更新）。
+10. 2026-11-25：研究团队公开约 7.6 万行的 GRH Lean 压缩证明，但尚无数学家通读。
 
 ### 逐次复核
 
@@ -717,13 +724,14 @@
 - 2026-11-24：本轮没有新信号。
 - 2026-11-25：本轮没有足以改变判断的新证据。
 - 2026-11-26：本轮复核未发现足以改变趋势状态或置信度的新证据。
+- 2026-11-27：更短的 GRH Lean 证明成为新的可审计公开材料，但尚无数学家通读或论文，趋势状态不变。
 
 ## 趋势 #7：Agent runtime 把宽执行能力与后果控制拆成两层
 
 - **Status:** strengthening
 - **Confidence:** Medium
 - **First observed:** 2026-09-09
-- **Last updated:** 2026-11-24
+- **Last updated:** 2026-11-27
 - **Time Horizon:** Emerging
 - **当前判断:** strengthening / Medium（Google MCP 治理、GitHub 默认策略、Qwen attestation 与监控失效研究继续强化方向；统一 policy schema 与公开采用遥测仍缺）
 - **Why It Matters:** 对设计 enterprise agent 的团队，能力与权限不应再由同一份工具清单隐式耦合。通用 shell 提供更好的组合能力与 token 效率，独立的 sandbox、capability contract 与 consequence gate 则把爆炸半径钉住。架构上的直接动作是：把「模型能生成什么命令」与「运行时允许什么后果」做成两个可独立测试、审计和升级的模块。
@@ -762,6 +770,7 @@
 29. Lazarus（2026-11-10，ev-20261110-06）显示只改少量模型权重即可让 agent 在触发条件下输出攻击载荷；权重来源与完整性必须与 runtime 最小权限一起构成独立控制层。
 30. United Airlines（2026-11-11，ev-20261111-07）限制未授权个人 AI agent 搜索、购买与管理行程，说明 browser 能力与服务方允许承担的交易后果是两个独立边界。
 31. 2026-11-20：Signal 在 iOS 与 Android 加入应用级 AI 屏幕采集限制，同时明确 macOS 与文件系统仍有缺口（ev-20261120-08）。
+32. 2026-11-25：攻击策略选择研究显示，同一监控器的漏报率会随攻击生成方法明显变化。
 
 ### 逐次复核
 
@@ -836,5 +845,6 @@
 - 2026-11-24：MONAI Label 与 OpenRouter 更新继续说明访问路径和下游后果需要模型之外的控制；状态保持 strengthening。
 - 2026-11-25：Shirudo 把 agent 生成的在线缓解与人工审批、签名和 TPM 证据分开，增强信号但仍为 pre-release；判断不变。
 - 2026-11-26：本轮复核未发现足以改变趋势状态或置信度的新证据。
+- 2026-11-27：新的监控研究显示攻击策略会显著改变漏报率，强化了运行时控制不能只靠单一监控分数的判断；状态不变。
 
 ## Invalidated / retired

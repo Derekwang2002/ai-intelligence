@@ -191,7 +191,8 @@
         "src-d1ff7879d9ac567f",
         "src-b3134f5be035b05d",
         "src-e106c9a8dcca09d3",
-        "src-51c01b0a9ef73c74"
+        "src-51c01b0a9ef73c74",
+        "src-cc7c15279b456959"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -223,19 +224,20 @@
         "src-74c2266880cc04f0",
         "src-d1ff7879d9ac567f",
         "src-e106c9a8dcca09d3",
-        "src-51c01b0a9ef73c74"
+        "src-51c01b0a9ef73c74",
+        "src-cc7c15279b456959"
       ],
-      "last_reviewed_at": "2026-11-22T16:57:37Z",
+      "last_reviewed_at": "2026-11-26T17:03:09Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.28.4 改善本地状态权限、artifact 检查与恢复证据处理，但长任务故障路径仍需真实仓库验证。",
-        "judgment_en": "Version 0.28.4 improves local state permissions, artifact inspection and recovery evidence handling, while long-run failure paths still need real-repository tests.",
-        "next_action_zh": "一天内用崩溃注入测试 artifact 恢复、状态目录权限、重复工具执行和恶意日志字符清洗。",
-        "next_action_en": "Within one day, inject crashes and test artifact recovery, state-directory permissions, duplicate tool execution and malicious log sanitization.",
+        "judgment_zh": "0.28.6 为托管会话补上暂停、冷恢复与幂等读取路径，但可靠性仍只有发布说明。",
+        "judgment_en": "Version 0.28.6 adds parking, cold recovery and idempotent-read paths for managed sessions, but reliability evidence remains release-note only.",
+        "next_action_zh": "一天内注入 harness 崩溃，验证审批暂停、冷恢复、幂等读取与 shell 任务不会重复执行。",
+        "next_action_en": "Within one day, crash the harness and verify approval parking, cold recovery, idempotent reads and no duplicate shell execution.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-11-22T16:57:37Z"
+        "reviewed_at": "2026-11-26T17:03:09Z"
       }
     },
     {
@@ -3974,7 +3976,8 @@
       "pattern": "Nemotron 3\\.5",
       "event_ids": [
         "ev-20261015-03",
-        "ev-20261028-01"
+        "ev-20261028-01",
+        "ev-20261126-01"
       ],
       "source_ids": [
         "src-c04bb70f1b05d38a",
@@ -3982,29 +3985,34 @@
         "src-e8ca48065500447a",
         "src-ec733f799e1aaee3",
         "src-029f4f6cd7936fd2",
-        "src-665652d89d229c0a"
+        "src-665652d89d229c0a",
+        "src-3d2697b636d74b83",
+        "src-d52a69ccd8043205"
       ],
-      "current_judgment_event_id": "ev-20261015-03",
+      "current_judgment_event_id": "ev-20261126-01",
       "official_source_ids": [
         "src-c04bb70f1b05d38a",
         "src-0843c1ab58bb9212",
         "src-e8ca48065500447a",
         "src-ec733f799e1aaee3",
         "src-029f4f6cd7936fd2",
-        "src-665652d89d229c0a"
+        "src-665652d89d229c0a",
+        "src-3d2697b636d74b83",
+        "src-d52a69ccd8043205"
       ],
-      "last_reviewed_at": "2026-10-28T15:58:44Z",
+      "last_reviewed_at": "2026-11-26T17:03:09Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Nemotron 3.5 Transcribe 权重与 Granary v2 训练数据已开放；多语种语音与远场结果主要来自厂商报告，需要在目标音频上复测。",
-        "judgment_en": "Nemotron 3.5 Transcribe weights and Granary v2 training data are open; multilingual and far-field results are vendor-reported and need testing on target audio.",
-        "next_action_zh": "一天内用目标语言、噪声与远场样本复测 WER、延迟和显存占用。",
-        "next_action_en": "Within one day, retest WER, latency and memory on target-language, noisy and far-field samples.",
+        "judgment_zh": "Parse 的数据、微调方案与 DFlash2 已公开，足以在目标文档上复测；速度与效果仍以发布方结果为主。",
+        "judgment_en": "Parse data, fine-tuning recipe and DFlash2 are public and testable on target documents; speed and quality evidence remains mostly publisher-run.",
+        "next_action_zh": "一天内用 50 页目标文档复测解析准确率、页吞吐和显存，并与当前流水线对比。",
+        "next_action_en": "Within one day, test 50 target pages for extraction accuracy, page throughput and memory against the current pipeline.",
         "basis_event_ids": [
           "ev-20261015-03",
-          "ev-20261028-01"
+          "ev-20261028-01",
+          "ev-20261126-01"
         ],
-        "reviewed_at": "2026-10-28T15:58:44Z"
+        "reviewed_at": "2026-11-26T17:03:09Z"
       }
     },
     {
@@ -4017,28 +4025,34 @@
       ],
       "pattern": "llama\\.cpp",
       "event_ids": [
-        "ev-20261015-04"
+        "ev-20261015-04",
+        "ev-20261126-02"
       ],
       "source_ids": [
         "src-f727b4e1831e7a08",
-        "src-bb4deecac7ca3168"
+        "src-bb4deecac7ca3168",
+        "src-a734da9d3a1d8760",
+        "src-31d76f8fa7c94156"
       ],
       "current_judgment_event_id": "ev-20261015-04",
       "official_source_ids": [
         "src-f727b4e1831e7a08",
-        "src-bb4deecac7ca3168"
+        "src-bb4deecac7ca3168",
+        "src-a734da9d3a1d8760",
+        "src-31d76f8fa7c94156"
       ],
-      "last_reviewed_at": "2026-11-13T17:04:57Z",
+      "last_reviewed_at": "2026-11-26T17:03:09Z",
       "judgment": {
         "recommendation": "ADOPT",
-        "judgment_zh": "1.0 建立 API/ABI 兼容契约并加固服务端，适合在回归后采用。",
-        "judgment_en": "Version 1.0 establishes an API/ABI contract and hardens the server, suitable for adoption after regression tests.",
+        "judgment_zh": "1.0 的 API/ABI 契约仍支持采用；新的 AMD 看板为两套硬件提供透明回归基线，但不代表全产品线。",
+        "judgment_en": "The 1.0 API/ABI contract still supports adoption; the new AMD dashboard adds a transparent regression baseline for two systems, not the full product line.",
         "next_action_zh": "升级前回归 API/ABI、模型质量、KV cache 与安全默认值。",
         "next_action_en": "Before upgrading, regress API/ABI, model quality, KV cache and security defaults.",
         "basis_event_ids": [
-          "ev-20261015-04"
+          "ev-20261015-04",
+          "ev-20261126-02"
         ],
-        "reviewed_at": "2026-11-13T17:04:57Z"
+        "reviewed_at": "2026-11-26T17:03:09Z"
       }
     },
     {
@@ -7694,7 +7708,7 @@
         "src-bf5e6415f1038df4",
         "src-4bdf1c82e663d6cc"
       ],
-      "last_reviewed_at": "2026-11-07T16:55:48Z",
+      "last_reviewed_at": "2026-11-26T17:03:09Z",
       "judgment": {
         "recommendation": "WATCH",
         "judgment_zh": "公开流水线和量化权重便于试验，但地区许可排除多个主要市场，画质与显存主张也缺独立复现。",
@@ -7704,7 +7718,7 @@
         "basis_event_ids": [
           "ev-20261027-11"
         ],
-        "reviewed_at": "2026-11-07T16:55:48Z"
+        "reviewed_at": "2026-11-26T17:03:09Z"
       },
       "changes": []
     },
@@ -10765,6 +10779,170 @@
           "ev-20261120-12"
         ],
         "reviewed_at": "2026-11-25T16:58:49Z"
+      }
+    },
+    {
+      "id": "flashinfer",
+      "name_zh": "FlashInfer",
+      "name_en": "FlashInfer",
+      "type": "inference-runtime",
+      "aliases": [
+        "FlashInfer"
+      ],
+      "pattern": "FlashInfer",
+      "event_ids": [
+        "ev-20261125-02"
+      ],
+      "source_ids": [
+        "src-f09aeb2897d18148",
+        "src-b87f94181dfad14e",
+        "src-36f258ed25804781"
+      ],
+      "current_judgment_event_id": "ev-20261125-02",
+      "official_source_ids": [
+        "src-f09aeb2897d18148",
+        "src-b87f94181dfad14e",
+        "src-36f258ed25804781"
+      ],
+      "last_reviewed_at": "2026-11-26T17:03:09Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "NVFP4 注意力代码已合入且有 Reactor 部署结果，但硬件与质量覆盖仍窄。",
+        "judgment_en": "NVFP4 attention is merged and has Reactor deployment evidence, but hardware and quality coverage remains narrow.",
+        "next_action_zh": "一天内用 FlashInfer 在目标形状上对比 FP16 与 NVFP4 的延迟、显存和输出质量。",
+        "next_action_en": "Within one day, compare FP16 and NVFP4 latency, memory and output quality on target shapes with FlashInfer.",
+        "basis_event_ids": [
+          "ev-20261125-02"
+        ],
+        "reviewed_at": "2026-11-26T17:03:09Z"
+      }
+    },
+    {
+      "id": "hf-swarm-training",
+      "name_zh": "Hugging Face Swarm Training",
+      "name_en": "Hugging Face Swarm Training",
+      "type": "research-project",
+      "aliases": [
+        "Swarms Flocks and Gangs"
+      ],
+      "pattern": "swarm training",
+      "event_ids": [
+        "ev-20261126-03"
+      ],
+      "source_ids": [
+        "src-819f2bb8e324e5e7"
+      ],
+      "current_judgment_event_id": "ev-20261126-03",
+      "official_source_ids": [
+        "src-819f2bb8e324e5e7"
+      ],
+      "last_reviewed_at": "2026-11-26T17:03:09Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开 TRL 配方便于低成本复现，但目前只有玩具任务。",
+        "judgment_en": "The public TRL recipe is reproducible at modest cost, but evidence is limited to a toy task.",
+        "next_action_zh": "一天内用公开 TRL 配方复现小任务，记录团队奖励、单 agent 退化与训练成本。",
+        "next_action_en": "Within one day, reproduce the public TRL task and record group reward, single-agent regression and training cost.",
+        "basis_event_ids": [
+          "ev-20261126-03"
+        ],
+        "reviewed_at": "2026-11-26T17:03:09Z"
+      }
+    },
+    {
+      "id": "grh-lean",
+      "name_zh": "GRH Lean",
+      "name_en": "GRH Lean",
+      "type": "research-project",
+      "aliases": [
+        "GRH Lean"
+      ],
+      "pattern": "GRH Lean",
+      "event_ids": [
+        "ev-20261125-05"
+      ],
+      "source_ids": [
+        "src-d0f4230142583401"
+      ],
+      "current_judgment_event_id": "ev-20261125-05",
+      "official_source_ids": [
+        "src-d0f4230142583401"
+      ],
+      "last_reviewed_at": "2026-11-26T17:03:09Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "对形式化数学团队来说，这提供了更小的公开材料，可审查 AI 辅助证明如何依赖 Mathlib 与自动化；数学上的认可仍未解决。",
+        "judgment_en": "Formal-math teams gain a much smaller public artifact for auditing how AI-assisted proofs depend on Mathlib and automation, while mathematical acceptance remains unresolved.",
+        "next_action_zh": "等待数学家通读、配套论文或独立形式化审计后，再提升对数学结论的置信度。",
+        "next_action_en": "Wait for mathematician review, a paper or an independent formal audit before increasing confidence in the mathematical claim.",
+        "basis_event_ids": [
+          "ev-20261125-05"
+        ],
+        "reviewed_at": "2026-11-26T17:03:09Z"
+      }
+    },
+    {
+      "id": "raon-1-mini",
+      "name_zh": "Raon-1 mini",
+      "name_en": "Raon-1 mini",
+      "type": "open-weight-model",
+      "aliases": [
+        "Raon-1 mini"
+      ],
+      "pattern": "Raon-1 mini",
+      "event_ids": [
+        "ev-20261124-05"
+      ],
+      "source_ids": [
+        "src-271e1bbd8b386382"
+      ],
+      "current_judgment_event_id": "ev-20261124-05",
+      "official_source_ids": [
+        "src-271e1bbd8b386382"
+      ],
+      "last_reviewed_at": "2026-11-26T17:03:09Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "对开发韩语 agent 的团队来说，这提供了宽松许可的权重和多种部署格式；韩语质量、工具可靠性与显存仍要用自己的任务复测。",
+        "judgment_en": "Teams building Korean-language agents gain permissively licensed weights and several deployment formats, but should test Korean quality, tool reliability and memory on their own workloads.",
+        "next_action_zh": "一天内用 30 个韩语对话、搜索与工具任务复测质量、工具参数、显存和吞吐。",
+        "next_action_en": "Within one day, test 30 Korean chat, search and tool tasks for quality, tool arguments, memory and throughput.",
+        "basis_event_ids": [
+          "ev-20261124-05"
+        ],
+        "reviewed_at": "2026-11-26T17:03:09Z"
+      }
+    },
+    {
+      "id": "llm-asm",
+      "name_zh": "llm.asm",
+      "name_en": "llm.asm",
+      "type": "open-source-project",
+      "aliases": [
+        "llm.asm"
+      ],
+      "pattern": "llm.asm",
+      "event_ids": [
+        "ev-20261125-06"
+      ],
+      "source_ids": [
+        "src-13d84a0fbee44558"
+      ],
+      "current_judgment_event_id": "ev-20261125-06",
+      "official_source_ids": [
+        "src-13d84a0fbee44558"
+      ],
+      "last_reviewed_at": "2026-11-26T17:03:09Z",
+      "judgment": {
+        "recommendation": "IGNORE",
+        "judgment_zh": "底层推理工程师可以用它研究紧凑的端到端实现；产品团队应继续使用成熟 runtime，不应把演示项目引入生产。",
+        "judgment_en": "Low-level inference engineers can study a compact end-to-end implementation, while product teams should use mature runtimes instead of adopting this demonstration.",
+        "next_action_zh": "产品团队无需投入；仅在研究低层推理实现时阅读代码，并与成熟 runtime 做正确性对照。",
+        "next_action_en": "Do not invest for product use; study the code only for low-level inference research and compare correctness with a mature runtime.",
+        "basis_event_ids": [
+          "ev-20261125-06"
+        ],
+        "reviewed_at": "2026-11-26T17:03:09Z"
       }
     }
   ],
