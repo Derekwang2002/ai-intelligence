@@ -500,8 +500,8 @@
     },
     {
       "event_id": "ev-20260922-04",
-      "title": "Qwen Code 0.28.6 parks approvals and recovers managed sessions",
-      "title_zh": "Qwen Code 0.28.6 可暂停审批并恢复托管会话",
+      "title": "Qwen Code 0.28.7 removes loop caps and hardens managed recovery",
+      "title_zh": "Qwen Code 0.28.7 取消循环上限并加固托管恢复",
       "category": "developer-tools",
       "organization": [
         "Alibaba",
@@ -509,9 +509,9 @@
       ],
       "published_at": "2026-09-22T15:15:06Z",
       "first_seen_at": "2026-09-24T16:01:46Z",
-      "last_updated_at": "2026-11-26T17:03:09Z",
+      "last_updated_at": "2026-11-27T17:03:18Z",
       "source_type": "release_notes",
-      "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.6",
+      "primary_source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.7",
       "secondary_sources": [
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.5",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.24.6",
@@ -539,14 +539,15 @@
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.0",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.3",
         "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.4",
-        "https://github.com/QwenLM/qwen-code/releases"
+        "https://github.com/QwenLM/qwen-code/releases",
+        "https://github.com/QwenLM/qwen-code/releases/tag/v0.28.6"
       ],
-      "summary": "Qwen Code 0.28.6 can park managed sessions while waiting for approvals, questions or background work, then recover them after a cold harness restart. It also makes the event bus the default, moves queued shell work into the background and retries idempotent Web Shell reads. These are release-note claims; recovery still needs crash-injection tests on real repositories.",
-      "why_it_matters": "Teams running long-lived coding agents gain explicit suspension and cold-recovery paths, which can reduce duplicate work and stranded approvals if the implementation holds under failure.",
-      "summary_zh": "Qwen Code 0.28.6 可在等待审批、提问或后台任务时暂停托管会话，并在 harness 冷启动后恢复。它还默认启用 event bus，把排队的 shell 任务转入后台，并重试幂等的 Web Shell 读取。这些能力来自 release notes，仍需在真实仓库中做崩溃注入测试。",
-      "summary_en": "Qwen Code 0.28.6 can park managed sessions while waiting for approvals, questions or background work, then recover them after a cold harness restart. It also makes the event bus the default, moves queued shell work into the background and retries idempotent Web Shell reads. These are release-note claims; recovery still needs crash-injection tests on real repositories.",
-      "why_it_matters_zh": "对运行长时程编程 agent 的团队来说，明确的暂停与冷恢复路径有望减少重复执行和无人处理的审批，但前提是故障场景下确实可靠。",
-      "why_it_matters_en": "Teams running long-lived coding agents gain explicit suspension and cold-recovery paths, which can reduce duplicate work and stranded approvals if the implementation holds under failure.",
+      "summary": "Qwen Code 0.28.7 removes client-side loop detection and tool-call caps, sending tool results and errors back to the model unchanged. It also adds cross-control-plane session takeover, SQL-backed single-use terminal tickets and per-workspace snapshot retention. These are release-note claims; removing the loop cap increases the need for external budgets and kill switches.",
+      "why_it_matters": "Teams gain stronger failover for long-running coding agents, but safety now depends more explicitly on gateway budgets, approval policy and operator stop controls.",
+      "summary_zh": "Qwen Code 0.28.7 取消客户端循环检测与工具调用上限，把工具结果和错误原样交回模型。它还加入跨 control plane 会话接管、SQL 存储的单次 terminal ticket，以及按 workspace 保留快照。这些能力来自 release notes；取消循环上限后，更需要外部预算和 kill switch。",
+      "summary_en": "Qwen Code 0.28.7 removes client-side loop detection and tool-call caps, sending tool results and errors back to the model unchanged. It also adds cross-control-plane session takeover, SQL-backed single-use terminal tickets and per-workspace snapshot retention. These are release-note claims; removing the loop cap increases the need for external budgets and kill switches.",
+      "why_it_matters_zh": "对长时程 coding agent 团队来说，跨实例恢复更完整，但安全边界更明确地转移到网关预算、审批策略和人工停止控制。",
+      "why_it_matters_en": "Teams gain stronger failover for long-running coding agents, but safety now depends more explicitly on gateway budgets, approval policy and operator stop controls.",
       "technical_details": {
         "latest_version": "1.0.0-preview.1",
         "availability": "public GitHub release",
@@ -572,18 +573,20 @@
         "stage": "prerelease",
         "release_2026_11_12": "Qoder/Qwen Code merge; native packages; account/provider support; session resume; non-interactive mode; Preview.1 auth fix and parallel tool calls",
         "time_basis_2026_11_12": "Preview published 2026-11-11T03:55:44Z; Preview.1 published 2026-11-12T14:25:49Z.",
-        "evidence_limit": "Release-note evidence only; no independent crash-recovery evaluation.",
+        "evidence_limit": "Release-note evidence only; takeover, duplicate-side-effect and runaway-loop behavior have not been independently reproduced.",
         "update_2026_11_13": "Shared event-bus agent loop, ACP background runs, manual PR binding, durable /loop wakeups and recovery fixes.",
         "update_2026_11_15": "Temporary local-directory grants, authenticated managed web terminal, Feishu and WeCom webhooks, explicit Auto Mode authorization, memory controls and timeout review.",
         "time_basis_2026_11_15": "GitHub release published 2026-11-15T07:04:40Z, inside the strict scan window.",
         "update_2026_11_17": "v0.28.0 uses one shared agent loop across headless, TUI and subagents, adds external-workspace execution, managed worktree sessions and cross-session messaging, and hardens transcript and protected-workspace handling.",
         "update_2026_11_21": "v0.28.3 adds managed channels, evidence-settled chat lifecycle, identity-bound ledgers, idle suspension, restart recovery and bounded SSE admission.",
         "time_basis_2026_11_21": "GitHub stable release published 2026-11-21T01:45:48Z.",
-        "stable_version": "0.28.6",
+        "stable_version": "0.28.7",
         "update_2026_11_23": "Local Web Shell artifact library; owner-private runtime state directory; protected persisted tool-output recovery; Autofix terminal-control and bidi sanitization; managed-agent lifecycle fixes",
         "time_basis_2026_11_23": "GitHub release published 2026-11-22T12:04:21Z inside the strict scan window.",
         "update_2026_11_26": "Managed sessions park on approvals, questions and background work, recover after cold harness restarts, default to the event bus, background queued shell work and retry idempotent Web Shell reads.",
-        "time_basis_2026_11_26": "GitHub release published 2026-11-26T05:51:04Z."
+        "time_basis_2026_11_26": "GitHub release published 2026-11-26T05:51:04Z.",
+        "update_2026_11_27": "Removed loop detection and tool-call caps; added cross-control-plane takeover, SQL-backed single-use terminal tickets, configurable worktree snapshot retention and per-model effort/context persistence.",
+        "time_basis_2026_11_27": "GitHub stable release published 2026-11-26T18:04:26Z, inside the strict scan window."
       },
       "technical_details_zh": {
         "最新版本": "1.0.0-preview.1",
@@ -609,17 +612,19 @@
         "阶段": "预发布",
         "2026-11-12 更新": "合并 Qoder/Qwen Code；原生安装包；多账户与 provider；session resume；非交互模式；Preview.1 修复认证并启用并行工具调用",
         "2026-11-12 时间依据": "Preview 发布于 2026-11-11T03:55:44Z；Preview.1 发布于 2026-11-12T14:25:49Z。",
-        "证据限制": "只有 release notes，尚无独立崩溃恢复评测",
+        "证据限制": "只有 release notes；接管、重复副作用和失控循环尚无独立复现。",
         "2026-11-13 更新": "共享 event-bus agent loop、ACP 后台运行、手动 PR 绑定、持久 /loop 唤醒与恢复修复。",
         "2026-11-15 更新": "临时本地目录授权、带认证的托管 Web Terminal、飞书与企业微信 webhook、Auto Mode 显式授权、记忆控制与超时复核。",
         "2026-11-15 时间依据": "GitHub release 发布于 2026-11-15T07:04:40Z，落在严格扫描窗口内。",
         "2026-11-17 更新": "v0.28.0 让 headless、TUI 与 subagent 共用同一套 agent loop，加入外部 workspace 执行、托管 worktree 会话与跨会话消息，并加固 transcript 和受保护 workspace。",
         "2026-11-21 更新": "v0.28.3 加入托管渠道、基于证据的 chat 生命周期、绑定身份的账本、闲置挂起、重启恢复与受限 SSE 准入。",
         "2026-11-21 时间依据": "GitHub 稳定版时间为 2026-11-21T01:45:48Z。",
-        "稳定版本": "0.28.6",
+        "稳定版本": "0.28.7",
         "2026-11-23 更新": "本地 Web Shell artifact library；仅属主可访问的 runtime 状态目录；持久化工具输出恢复保护；Autofix 终端控制字符与双向文本覆盖符清洗；托管 agent 生命周期修复",
         "2026-11-23 时间依据": "GitHub release 发布于 2026-11-22T12:04:21Z，位于严格扫描窗口内。",
-        "2026-11-26 更新": "托管会话可在审批、提问与后台任务时暂停，harness 冷启动后恢复；event bus 默认开启；排队 shell 转后台；幂等 Web Shell 读取可重试"
+        "2026-11-26 更新": "托管会话可在审批、提问与后台任务时暂停，harness 冷启动后恢复；event bus 默认开启；排队 shell 转后台；幂等 Web Shell 读取可重试",
+        "2026-11-27 更新": "取消循环检测与工具调用上限；增加跨 control plane 接管、SQL 单次 terminal ticket、可配置 worktree 快照保留，以及按模型保存 effort/上下文设置。",
+        "2026-11-27 时间依据": "GitHub 稳定版发布于 2026-11-26T18:04:26Z，位于严格扫描窗口内。"
       },
       "tags": [
         "qwen-code",
@@ -670,7 +675,8 @@
         "src-b3134f5be035b05d",
         "src-e106c9a8dcca09d3",
         "src-51c01b0a9ef73c74",
-        "src-cc7c15279b456959"
+        "src-cc7c15279b456959",
+        "src-3a1fb42fcbe33fb6"
       ],
       "project_ids": [
         "qwen-code"
@@ -1033,6 +1039,19 @@
           ],
           "relation": "support",
           "verification": "official release verified; runtime reliability not independently reproduced"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-28-7-evidence",
+          "claim_zh": "Qwen Code 0.28.7 取消内置循环与工具调用上限，并加入跨 control plane 接管、SQL 单次 terminal ticket 和 workspace 快照保留。",
+          "claim_en": "Qwen Code 0.28.7 removes built-in loop and tool-call caps while adding cross-control-plane takeover, SQL-backed single-use terminal tickets and workspace snapshot retention.",
+          "source_ids": [
+            "src-3a1fb42fcbe33fb6"
+          ],
+          "event_ids": [
+            "ev-20260922-04"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; behavior not independently reproduced"
         }
       ],
       "changes": [
@@ -1383,6 +1402,19 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260922-04-qwen-0-28-7",
+          "kind": "update",
+          "occurred_at": "2026-11-26T18:04:26Z",
+          "discovered_at": "2026-11-27T17:03:18Z",
+          "summary_zh": "Qwen Code 0.28.7 取消循环上限并加强跨实例恢复",
+          "summary_en": "Qwen Code 0.28.7 removes loop caps and strengthens cross-instance recovery",
+          "evidence_ids": [
+            "ev-20260922-04-qwen-0-28-7-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "editorial_pick": {
@@ -1392,10 +1424,11 @@
           "src-5c24af93d6fa5960"
         ]
       },
-      "short_label_zh": "Qwen Code 0.28.6",
-      "short_label_en": "Qwen Code 0.28.6",
-      "next_action_zh": "一天内注入 harness 崩溃，验证审批暂停、冷恢复、幂等读取与 shell 任务不会重复执行。",
-      "next_action_en": "Within one day, crash the harness and verify approval parking, cold recovery, idempotent reads and no duplicate shell execution."
+      "short_label_zh": "Qwen Code 0.28.7",
+      "short_label_en": "Qwen Code 0.28.7",
+      "next_action_zh": "一天内设置外部工具预算并注入接管故障，确认循环可停止、ticket 只能使用一次且副作用不重复。",
+      "next_action_en": "Within one day, add external tool budgets and inject a takeover failure; verify loops stop, tickets are single-use and side effects do not repeat.",
+      "last_reviewed_at": "2026-11-27T17:03:18Z"
     },
     {
       "event_id": "ev-20260922-05",

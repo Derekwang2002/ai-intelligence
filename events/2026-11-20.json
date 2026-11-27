@@ -1003,7 +1003,8 @@
           "historical": false,
           "importance": "major"
         }
-      ]
+      ],
+      "last_reviewed_at": "2026-11-27T17:03:18Z"
     },
     {
       "first_seen_at": "2026-11-25T16:58:49Z",
@@ -1103,7 +1104,8 @@
           "historical": false,
           "importance": "major"
         }
-      ]
+      ],
+      "last_reviewed_at": "2026-11-27T17:03:18Z"
     },
     {
       "event_id": "ev-20261120-12",
@@ -1199,6 +1201,99 @@
           "summary_en": "MemT-1.0-Pro opens persistent latent-memory weights and implementation.",
           "evidence_ids": [
             "ev-20261120-12-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ],
+      "last_reviewed_at": "2026-11-27T17:03:18Z"
+    },
+    {
+      "event_id": "ev-20261120-13",
+      "title": "AI SAGE publishes GigaChat4 708B weights with 41B active parameters",
+      "title_zh": "AI SAGE 发布 GigaChat4 708B 权重，激活参数为 41B",
+      "category": "foundation-model",
+      "organization": [
+        "AI SAGE"
+      ],
+      "published_at": "2026-11-20T12:15:30Z",
+      "first_seen_at": "2026-11-27T17:03:18Z",
+      "last_updated_at": "2026-11-27T17:03:18Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/ai-sage/GigaChat4-708B-A41B",
+      "secondary_sources": [],
+      "summary": "AI SAGE published MIT-licensed FP8, BF16, base, GGUF and checkpoint repositories for GigaChat4-708B-A41B. The mixture-of-experts model has 708B total and 41B active parameters, advertises a 1M-token context window, tool use and structured output, and uses hybrid linear and sparse attention. The artifacts are public, but the hardware requirement is extreme and independent capability evidence is limited.",
+      "summary_en": "AI SAGE published MIT-licensed FP8, BF16, base, GGUF and checkpoint repositories for GigaChat4-708B-A41B. The mixture-of-experts model has 708B total and 41B active parameters, advertises a 1M-token context window, tool use and structured output, and uses hybrid linear and sparse attention. The artifacts are public, but the hardware requirement is extreme and independent capability evidence is limited.",
+      "summary_zh": "AI SAGE 发布了 GigaChat4-708B-A41B 的 MIT 许可 FP8、BF16、base、GGUF 与 checkpoint 仓库。该 MoE 模型总参数 708B、激活参数 41B，宣称支持 1M token 上下文、工具调用与结构化输出，并采用线性注意力和稀疏注意力混合架构。产物已公开，但硬件门槛极高，独立能力证据有限。",
+      "why_it_matters": "The release is technically inspectable and unusually large for open weights, yet most teams cannot validate it cheaply enough to justify a POC today.",
+      "why_it_matters_en": "The release is technically inspectable and unusually large for open weights, yet most teams cannot validate it cheaply enough to justify a POC today.",
+      "why_it_matters_zh": "这是一套可检查、规模罕见的开放权重模型，但多数团队无法以合理成本完成验证，当前不适合直接投入 POC。",
+      "technical_details": {
+        "architecture": "708B total, 41B active MoE; hybrid GDN and DSA attention",
+        "artifacts": "FP8, BF16, base, GGUF and checkpoint repositories under MIT",
+        "claimed_context": "1M tokens",
+        "time_basis": "Main Hugging Face repository created 2026-11-20T12:15:30Z; artifact family updated 2026-11-27",
+        "evidence_limit": "No affordable independent end-to-end validation was found; published benchmarks and serving requirements need external confirmation"
+      },
+      "technical_details_zh": {
+        "架构": "708B 总参数、41B 激活参数 MoE；混合 GDN 与 DSA 注意力",
+        "公开产物": "MIT 许可的 FP8、BF16、base、GGUF 与 checkpoint 仓库",
+        "宣称上下文": "1M token",
+        "时间依据": "主 Hugging Face 仓库创建于 2026-11-20T12:15:30Z；产物家族于 2026-11-27 更新",
+        "证据限制": "未找到成本可接受的独立端到端验证；公开 benchmark 与 serving 要求仍需外部确认"
+      },
+      "tags": [
+        "open-weights",
+        "MoE",
+        "long-context",
+        "tool-use"
+      ],
+      "technical_impact": 4,
+      "engineering_value": 3,
+      "adoption_signal": 2,
+      "maturity": 2,
+      "verification_cost": 5,
+      "risk": 3,
+      "recommendation": "WATCH",
+      "event_fingerprint": "gigachat4-708b-a41b",
+      "short_label_zh": "GigaChat4 708B",
+      "short_label_en": "GigaChat4 708B",
+      "next_action_zh": "等待第三方公布可复现的硬件、吞吐、长上下文与工具调用结果，再评估是否值得租用集群验证。",
+      "next_action_en": "Wait for reproducible third-party hardware, throughput, long-context and tool-use results before renting a cluster to evaluate it.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-b8dacb31753e8ea4"
+      ],
+      "project_ids": [
+        "gigachat4-708b-a41b"
+      ],
+      "scenario_ids": [],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261120-13-evidence-release",
+          "claim_zh": "AI SAGE 发布 GigaChat4 708B 权重，激活参数为 41B；公开范围与限制已按一手来源核验。",
+          "claim_en": "AI SAGE publishes GigaChat4 708B weights with 41B active parameters; public artifacts and limitations were verified from the primary source.",
+          "source_ids": [
+            "src-b8dacb31753e8ea4"
+          ],
+          "event_ids": [
+            "ev-20261120-13"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; independent evidence limits retained"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-13-release",
+          "kind": "new",
+          "occurred_at": "2026-11-20T12:15:30Z",
+          "discovered_at": "2026-11-27T17:03:18Z",
+          "summary_zh": "AI SAGE 发布 GigaChat4 708B 权重，激活参数为 41B",
+          "summary_en": "AI SAGE publishes GigaChat4 708B weights with 41B active parameters",
+          "evidence_ids": [
+            "ev-20261120-13-evidence-release"
           ],
           "historical": false,
           "importance": "major"

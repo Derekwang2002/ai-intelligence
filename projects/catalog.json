@@ -192,7 +192,8 @@
         "src-b3134f5be035b05d",
         "src-e106c9a8dcca09d3",
         "src-51c01b0a9ef73c74",
-        "src-cc7c15279b456959"
+        "src-cc7c15279b456959",
+        "src-3a1fb42fcbe33fb6"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -225,19 +226,20 @@
         "src-d1ff7879d9ac567f",
         "src-e106c9a8dcca09d3",
         "src-51c01b0a9ef73c74",
-        "src-cc7c15279b456959"
+        "src-cc7c15279b456959",
+        "src-3a1fb42fcbe33fb6"
       ],
-      "last_reviewed_at": "2026-11-26T17:03:09Z",
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.28.6 为托管会话补上暂停、冷恢复与幂等读取路径，但可靠性仍只有发布说明。",
-        "judgment_en": "Version 0.28.6 adds parking, cold recovery and idempotent-read paths for managed sessions, but reliability evidence remains release-note only.",
-        "next_action_zh": "一天内注入 harness 崩溃，验证审批暂停、冷恢复、幂等读取与 shell 任务不会重复执行。",
-        "next_action_en": "Within one day, crash the harness and verify approval parking, cold recovery, idempotent reads and no duplicate shell execution.",
+        "judgment_zh": "0.28.7 加强跨实例接管与持久状态，但取消内置循环和工具调用上限后，外部预算与停止控制成为硬要求。可靠性仍只有 release notes。",
+        "judgment_en": "Version 0.28.7 strengthens cross-instance takeover and durable state, but removing built-in loop and tool-call caps makes external budgets and stop controls mandatory. Reliability evidence remains release-note only.",
+        "next_action_zh": "一天内注入接管故障，并验证外部预算、单次 ticket 与副作用去重。",
+        "next_action_en": "Within one day, inject takeover failures and verify external budgets, single-use tickets and side-effect deduplication.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-11-26T17:03:09Z"
+        "reviewed_at": "2026-11-27T17:03:18Z"
       }
     },
     {
@@ -867,7 +869,7 @@
         "src-62e6753ef6bf3fd4",
         "src-2bd2158312c4d19c"
       ],
-      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "MCP 生态继续扩大，但 Claude Code 与 LiteLLM 的本轮修复说明 skill 加载、重连和 provider schema 仍需逐部署验证。",
@@ -880,7 +882,7 @@
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-11-25T16:58:49Z"
+        "reviewed_at": "2026-11-27T17:03:18Z"
       }
     },
     {
@@ -7329,7 +7331,9 @@
         "src-557fc3f08806f02d",
         "src-62e6753ef6bf3fd4",
         "src-c56a9b81f11e6602",
-        "src-2bd2158312c4d19c"
+        "src-2bd2158312c4d19c",
+        "src-c26bdc217845572f",
+        "src-1a9fa9ea3375fe61"
       ],
       "current_judgment_event_id": "ev-20260913-01",
       "official_source_ids": [
@@ -7361,19 +7365,21 @@
         "src-557fc3f08806f02d",
         "src-62e6753ef6bf3fd4",
         "src-c56a9b81f11e6602",
-        "src-2bd2158312c4d19c"
+        "src-2bd2158312c4d19c",
+        "src-c26bdc217845572f",
+        "src-1a9fa9ea3375fe61"
       ],
-      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "1.108.17 LTS 修复跨 provider 工具、计费与 schema 故障；回归面仍然较大。",
-        "judgment_en": "Version 1.108.17 LTS fixes cross-provider tool, billing and schema failures; the regression surface remains broad.",
-        "next_action_zh": "一天内用生产形态 canary 关键工具、计费与范围读取。",
-        "next_action_en": "Within one day, canary critical tool, billing and range-read paths.",
+        "judgment_zh": "1.108.19 LTS 修复断流假成功、工具 ID、thinking signature、护栏与计费错误。跨 provider 回归面仍大，适合受控 canary，不宜盲升。",
+        "judgment_en": "Version 1.108.19 LTS fixes false-success streams, tool IDs, thinking signatures, guardrails and billing errors. Cross-provider regression risk remains broad, favoring controlled canaries over blind upgrades.",
+        "next_action_zh": "一天内 canary 断流 fallback、工具路由、护栏与费用记录。",
+        "next_action_en": "Within one day, canary abort fallback, tool routing, guardrails and spend records.",
         "basis_event_ids": [
           "ev-20260913-01"
         ],
-        "reviewed_at": "2026-11-25T16:58:49Z"
+        "reviewed_at": "2026-11-27T17:03:18Z"
       },
       "changes": []
     },
@@ -10676,7 +10682,7 @@
       "official_source_ids": [
         "src-c49be8c450a3d521"
       ],
-      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "本地纠错学习路径可运行，但敏感记录、回归和删除行为需要隔离验证。",
@@ -10686,7 +10692,7 @@
         "basis_event_ids": [
           "ev-20261120-10"
         ],
-        "reviewed_at": "2026-11-25T16:58:49Z"
+        "reviewed_at": "2026-11-27T17:03:18Z"
       }
     },
     {
@@ -10706,7 +10712,7 @@
       "official_source_ids": [
         "src-e76db7701ea4cb0a"
       ],
-      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "开放权重允许直接测循环次数与计算回报，发布方结果需要在目标任务复现。",
@@ -10716,7 +10722,7 @@
         "basis_event_ids": [
           "ev-20261120-11"
         ],
-        "reviewed_at": "2026-11-25T16:58:49Z"
+        "reviewed_at": "2026-11-27T17:03:18Z"
       }
     },
     {
@@ -10768,7 +10774,7 @@
       "official_source_ids": [
         "src-2a5c124bf1c6d62e"
       ],
-      "last_reviewed_at": "2026-11-25T16:58:49Z",
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
       "judgment": {
         "recommendation": "WATCH",
         "judgment_zh": "固定大小潜在记忆值得研究，但超大模型、自定义代码、许可和厂商自测让它尚不适合工程投入。",
@@ -10778,7 +10784,7 @@
         "basis_event_ids": [
           "ev-20261120-12"
         ],
-        "reviewed_at": "2026-11-25T16:58:49Z"
+        "reviewed_at": "2026-11-27T17:03:18Z"
       }
     },
     {
@@ -10944,9 +10950,168 @@
         ],
         "reviewed_at": "2026-11-26T17:03:09Z"
       }
+    },
+    {
+      "id": "google-workspace-mcp",
+      "name_zh": "Workspace MCP",
+      "name_en": "Workspace MCP",
+      "type": "policy",
+      "aliases": [
+        "Workspace MCP"
+      ],
+      "pattern": "Workspace MCP",
+      "event_ids": [
+        "ev-20261124-06"
+      ],
+      "source_ids": [
+        "src-263711ca199925bf"
+      ],
+      "current_judgment_event_id": "ev-20261124-06",
+      "official_source_ids": [
+        "src-263711ca199925bf"
+      ],
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "对构建 Workspace agent 的团队来说，远程接口已有正式支持，但同时出现迁移期限、配额边界与新的数据处理条款。规则已经公布，尚未生效。",
+        "judgment_en": "Teams building Workspace agents now have a supported remote interface, but also a migration deadline, quota boundary and new data-handling terms. The policy is announced, not yet effective.",
+        "next_action_zh": "盘点直接调用 Workspace REST 的 agent，并在 2027 年 2 月前用测试项目验证 MCP 授权、审批、配额和费用。",
+        "next_action_en": "Inventory agents that call Workspace REST directly, then validate MCP auth, approvals, quotas and cost in a test project before February 2027.",
+        "basis_event_ids": [
+          "ev-20261124-06"
+        ],
+        "reviewed_at": "2026-11-27T17:03:18Z"
+      }
+    },
+    {
+      "id": "kandinsky-imagesr-2",
+      "name_zh": "ImageSR 2.0",
+      "name_en": "ImageSR 2.0",
+      "type": "open-source-project",
+      "aliases": [
+        "ImageSR 2.0"
+      ],
+      "pattern": "ImageSR 2.0",
+      "event_ids": [
+        "ev-20261124-07"
+      ],
+      "source_ids": [
+        "src-681a2d77f0b8e136"
+      ],
+      "current_judgment_event_id": "ev-20261124-07",
+      "official_source_ids": [
+        "src-681a2d77f0b8e136"
+      ],
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "图像团队可以直接拿自有退化素材测试权重，但不能只凭发布页推断它优于现有方案。",
+        "judgment_en": "Image teams can evaluate the actual weights with their own degraded assets, but should not infer superiority from the release page alone.",
+        "next_action_zh": "一天内用 20 张真实低清素材对比现有超分方案，记录纹理幻觉、文字保真与单图延迟。",
+        "next_action_en": "Within one day, compare it with the current upscaler on 20 real degraded images, measuring texture hallucination, text fidelity and latency.",
+        "basis_event_ids": [
+          "ev-20261124-07"
+        ],
+        "reviewed_at": "2026-11-27T17:03:18Z"
+      }
+    },
+    {
+      "id": "ming-image-0-2-design",
+      "name_zh": "Ming-Image 0.2",
+      "name_en": "Ming-Image 0.2",
+      "type": "open-weight-model",
+      "aliases": [
+        "Ming-Image 0.2"
+      ],
+      "pattern": "Ming-Image 0.2",
+      "event_ids": [
+        "ev-20261125-07"
+      ],
+      "source_ids": [
+        "src-9cc617c714e654a8"
+      ],
+      "current_judgment_event_id": "ev-20261125-07",
+      "official_source_ids": [
+        "src-9cc617c714e654a8"
+      ],
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "设计团队现在可以本地测试可编辑、文字密集的生成任务，但 80 GiB 参考配置与初步榜单证据限制了直接采用。",
+        "judgment_en": "Design teams can now test editable, text-heavy generation locally, but the 80 GiB reference setup and preliminary leaderboard evidence limit immediate adoption.",
+        "next_action_zh": "一天内用 10 个真实海报和 UI brief 测文字准确率、图层可编辑性、显存与生成时间，再决定是否接入设计流水线。",
+        "next_action_en": "Within one day, run 10 real poster and UI briefs, measuring text accuracy, layer editability, memory and latency before integrating it.",
+        "basis_event_ids": [
+          "ev-20261125-07"
+        ],
+        "reviewed_at": "2026-11-27T17:03:18Z"
+      }
+    },
+    {
+      "id": "gigachat4-708b-a41b",
+      "name_zh": "GigaChat4 708B",
+      "name_en": "GigaChat4 708B",
+      "type": "open-weight-model",
+      "aliases": [
+        "GigaChat4 708B"
+      ],
+      "pattern": "GigaChat4 708B",
+      "event_ids": [
+        "ev-20261120-13"
+      ],
+      "source_ids": [
+        "src-b8dacb31753e8ea4"
+      ],
+      "current_judgment_event_id": "ev-20261120-13",
+      "official_source_ids": [
+        "src-b8dacb31753e8ea4"
+      ],
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
+      "judgment": {
+        "recommendation": "WATCH",
+        "judgment_zh": "这是一套可检查、规模罕见的开放权重模型，但多数团队无法以合理成本完成验证，当前不适合直接投入 POC。",
+        "judgment_en": "The release is technically inspectable and unusually large for open weights, yet most teams cannot validate it cheaply enough to justify a POC today.",
+        "next_action_zh": "等待第三方公布可复现的硬件、吞吐、长上下文与工具调用结果，再评估是否值得租用集群验证。",
+        "next_action_en": "Wait for reproducible third-party hardware, throughput, long-context and tool-use results before renting a cluster to evaluate it.",
+        "basis_event_ids": [
+          "ev-20261120-13"
+        ],
+        "reviewed_at": "2026-11-27T17:03:18Z"
+      }
+    },
+    {
+      "id": "llama-cpp-rdna-boosts",
+      "name_zh": "RDNA boosts",
+      "name_en": "RDNA boosts",
+      "type": "open-source-project",
+      "aliases": [
+        "RDNA boosts"
+      ],
+      "pattern": "RDNA boosts",
+      "event_ids": [
+        "ev-20261126-04"
+      ],
+      "source_ids": [
+        "src-b47b5fa7c67c0ea8",
+        "src-40cb249974695259"
+      ],
+      "current_judgment_event_id": "ev-20261126-04",
+      "official_source_ids": [],
+      "last_reviewed_at": "2026-11-27T17:03:18Z",
+      "judgment": {
+        "recommendation": "IGNORE",
+        "judgment_zh": "AMD 用户可能从补丁中受益，但证据范围太窄，不值得团队现在投入迁移或生产采用。",
+        "judgment_en": "AMD users may find the patch set useful, but the evidence is too narrow to spend team time on migration or production adoption.",
+        "next_action_zh": "不安排迁移；等相同模型与量化在至少两种 AMD GPU 上出现可复现对照后再评估。",
+        "next_action_en": "Do not schedule migration; wait for reproducible comparisons on the same model and quantization across at least two AMD GPUs.",
+        "basis_event_ids": [
+          "ev-20261126-04"
+        ],
+        "reviewed_at": "2026-11-27T17:03:18Z"
+      }
     }
   ],
-  "last_updated": "2026-11-25",
-  "total_projects": 300,
-  "last_updated_at": "2026-11-25T16:58:49Z"
+  "last_updated": "2026-11-28",
+  "total_projects": 310,
+  "last_updated_at": "2026-11-27T17:03:18Z"
 }

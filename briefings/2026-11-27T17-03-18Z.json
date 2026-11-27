@@ -1,0 +1,44 @@
+{
+  "id": "2026-11-27T17-03-18Z",
+  "as_of": "2026-11-27T17:03:18Z",
+  "date": "2026-11-28",
+  "baseline": false,
+  "change_ids": [
+    "ev-20260922-04-qwen-0-28-7",
+    "ev-20260913-01-litellm-1-108-18-19",
+    "ev-20261124-06-release",
+    "ev-20261124-07-release",
+    "ev-20261125-07-release",
+    "ev-20261120-13-release",
+    "ev-20261126-04-release"
+  ],
+  "highlights": [
+    {
+      "change_id": "ev-20260922-04-qwen-0-28-7",
+      "reason_zh": "跨实例恢复直接改善长任务连续性，但取消循环上限把预算与停止责任推到外部 runtime。",
+      "reason_en": "Cross-instance recovery improves continuity, while removing loop caps shifts budget and stop responsibility to the external runtime."
+    },
+    {
+      "change_id": "ev-20260913-01-litellm-1-108-18-19",
+      "reason_zh": "断流假成功与工具 ID 错误会直接绕过 fallback 或卡住 agent，属于网关正确性修复。",
+      "reason_en": "False-success streams and rewritten tool IDs can bypass fallback or strand agents, making this a gateway correctness fix."
+    },
+    {
+      "change_id": "ev-20261124-06-release",
+      "reason_zh": "八个 Workspace MCP 服务 GA，但 2027 年起 agent 接入、配额和计费将受新规则约束。",
+      "reason_en": "Eight Workspace MCP servers are GA, while agent access, quotas and billing gain new 2027 constraints."
+    },
+    {
+      "change_id": "ev-20261125-07-release",
+      "reason_zh": "开放权重让文字密集设计可本地验证，但 80 GiB 门槛和初步榜单要求先做小样测试。",
+      "reason_en": "Open weights make text-heavy design testable locally, but the 80 GiB requirement and preliminary ranking call for a small evaluation."
+    },
+    {
+      "change_id": "ev-20261120-13-release",
+      "reason_zh": "708B 开放权重与 1M 上下文值得记录，但验证成本过高，暂不建议投入 POC。",
+      "reason_en": "The 708B open weights and claimed 1M context matter, but validation cost is too high for a POC today."
+    }
+  ],
+  "coverage_zh": "36 个固定入口全部抓取成功并完成阅读；主动补充模型、工具、RAG、开源、研究、基础设施、政策、中文与小团队材料。召回自检补录 5 个 late-discovery：Workspace MCP、新的开放图像与语言模型，以及一项证据不足而标为 IGNORE 的 AMD 补丁。",
+  "coverage_en": "All 36 fixed monitors were fetched and fully read. Active discovery covered models, tools, RAG, open source, research, infrastructure, policy, Chinese-language and small-team sources. Recall audit added five late discoveries: Workspace MCP, new open image and language models, and an AMD patch marked IGNORE for weak evidence."
+}

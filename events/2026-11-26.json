@@ -303,6 +303,102 @@
       "why_it_matters": "Teams deploying local models on AMD hardware gain a transparent way to detect regressions and choose configurations, with hardware-scope limits clearly visible.",
       "first_seen_at": "2026-11-26T17:03:09Z",
       "last_updated_at": "2026-11-26T17:03:09Z"
+    },
+    {
+      "event_id": "ev-20261126-04",
+      "title": "AMD-focused llama.cpp patch set gains attention from one user benchmark",
+      "title_zh": "面向 AMD 的 llama.cpp 补丁因单用户 benchmark 获得关注",
+      "category": "open-source",
+      "organization": [
+        "community"
+      ],
+      "published_at": "2026-11-26T14:59:36Z",
+      "first_seen_at": "2026-11-27T17:03:18Z",
+      "last_updated_at": "2026-11-27T17:03:18Z",
+      "source_type": "community",
+      "primary_source": "https://devnull.land/amd-specific-llama-cpp",
+      "secondary_sources": [
+        "https://github.com/stew675/llama-cpp-rdna-boosts"
+      ],
+      "summary": "llama-cpp-rdna-boosts maintains a small AMD-specific patch set against pinned llama.cpp commits. A community post reports token generation rising from 35 to 55 tokens per second and prefill from 700 to 1,300 tokens per second on one AMD R9700 eGPU setup. The result is a single-user measurement with no controlled baseline or independent reproduction.",
+      "summary_en": "llama-cpp-rdna-boosts maintains a small AMD-specific patch set against pinned llama.cpp commits. A community post reports token generation rising from 35 to 55 tokens per second and prefill from 700 to 1,300 tokens per second on one AMD R9700 eGPU setup. The result is a single-user measurement with no controlled baseline or independent reproduction.",
+      "summary_zh": "llama-cpp-rdna-boosts 维护一组针对固定 llama.cpp commit 的 AMD 专用补丁。社区文章称，在一套 AMD R9700 eGPU 环境中，生成速度从 35 提升到 55 token/s，prefill 从 700 提升到 1,300 token/s。该结果只有单个用户测量，没有受控基线或独立复现。",
+      "why_it_matters": "AMD users may find the patch set useful, but the evidence is too narrow to spend team time on migration or production adoption.",
+      "why_it_matters_en": "AMD users may find the patch set useful, but the evidence is too narrow to spend team time on migration or production adoption.",
+      "why_it_matters_zh": "AMD 用户可能从补丁中受益，但证据范围太窄，不值得团队现在投入迁移或生产采用。",
+      "technical_details": {
+        "artifact": "Patch set and prebuilt images against pinned llama.cpp revisions",
+        "reported_setup": "AMD R9700 over eGPU; Swift-1.5-Qwen3.8-27B-GGUF Q6_K_L with MTP",
+        "single_user_result": "Generation 35 to 55 tokens/s; prefill 700 to 1,300 tokens/s",
+        "time_basis": "Community post timestamp 2026-11-26T14:59:36Z, inside overlap and before the checkpoint",
+        "evidence_limit": "One user, one model and one machine; no controlled or independent reproduction"
+      },
+      "technical_details_zh": {
+        "公开产物": "针对固定 llama.cpp revision 的补丁集与预构建镜像",
+        "报告环境": "通过 eGPU 连接的 AMD R9700；Swift-1.5-Qwen3.8-27B-GGUF Q6_K_L，启用 MTP",
+        "单用户结果": "生成 35 到 55 token/s；prefill 700 到 1,300 token/s",
+        "时间依据": "社区文章时间为 2026-11-26T14:59:36Z，位于 overlap 内且早于 checkpoint",
+        "证据限制": "仅一个用户、一个模型和一台机器；没有受控或独立复现"
+      },
+      "tags": [
+        "llama.cpp",
+        "AMD",
+        "ROCm",
+        "inference"
+      ],
+      "technical_impact": 2,
+      "engineering_value": 2,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 3,
+      "risk": 3,
+      "recommendation": "IGNORE",
+      "event_fingerprint": "llama-cpp-rdna-boosts",
+      "short_label_zh": "RDNA boosts",
+      "short_label_en": "RDNA boosts",
+      "next_action_zh": "不安排迁移；等相同模型与量化在至少两种 AMD GPU 上出现可复现对照后再评估。",
+      "next_action_en": "Do not schedule migration; wait for reproducible comparisons on the same model and quantization across at least two AMD GPUs.",
+      "late_discovery": true,
+      "source_ids": [
+        "src-40cb249974695259",
+        "src-b47b5fa7c67c0ea8"
+      ],
+      "project_ids": [
+        "llama-cpp-rdna-boosts"
+      ],
+      "scenario_ids": [],
+      "evidence_stage": "verified",
+      "evidence": [
+        {
+          "id": "ev-20261126-04-evidence-release",
+          "claim_zh": "补丁仓库公开，但性能提升只有单用户报告。",
+          "claim_en": "The patch repository is public, but the performance gain has only a single-user report.",
+          "source_ids": [
+            "src-40cb249974695259",
+            "src-b47b5fa7c67c0ea8"
+          ],
+          "event_ids": [
+            "ev-20261126-04"
+          ],
+          "relation": "support",
+          "verification": "verified-artifact; performance not independently reproduced"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261126-04-release",
+          "kind": "new",
+          "occurred_at": "2026-11-26T14:59:36Z",
+          "discovered_at": "2026-11-27T17:03:18Z",
+          "summary_zh": "AMD llama.cpp 补丁获得单用户性能报告",
+          "summary_en": "AMD llama.cpp patch set receives a single-user performance report",
+          "evidence_ids": [
+            "ev-20261126-04-evidence-release"
+          ],
+          "historical": false,
+          "importance": "minor"
+        }
+      ]
     }
   ]
 }
