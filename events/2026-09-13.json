@@ -4,8 +4,8 @@
   "events": [
     {
       "event_id": "ev-20260913-01",
-      "title": "LiteLLM 1.108.19 LTS fixes false-success streams and tool routing",
-      "title_zh": "LiteLLM 1.108.19 LTS 修复断流假成功与工具路由",
+      "title": "LiteLLM 1.108.20 LTS fixes cancelled-stream billing and audit failures",
+      "title_zh": "LiteLLM 1.108.20 修复断流计费与审计失败",
       "category": "ai-engineering",
       "organization": [
         "BerriAI",
@@ -13,9 +13,9 @@
       ],
       "published_at": "2026-09-13T03:58:55Z",
       "first_seen_at": "2026-09-13T16:00:31Z",
-      "last_updated_at": "2026-11-27T17:03:18Z",
+      "last_updated_at": "2026-11-28T17:06:57Z",
       "source_type": "package_registry",
-      "primary_source": "https://github.com/BerriAI/litellm/releases/tag/v1.108.19",
+      "primary_source": "https://github.com/BerriAI/litellm/releases/tag/v1.108.20",
       "secondary_sources": [
         "https://github.com/BerriAI/litellm/tree/v1.102.0",
         "https://github.com/BerriAI/litellm/releases/tag/v1.102.0-rc.1",
@@ -42,14 +42,15 @@
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.15",
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.16",
         "https://github.com/BerriAI/litellm/releases/tag/v1.108.17",
-        "https://github.com/BerriAI/litellm/releases/tag/v1.108.18"
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.18",
+        "https://github.com/BerriAI/litellm/releases/tag/v1.108.19"
       ],
-      "summary": "LiteLLM 1.108.18 and 1.108.19 LTS fix cross-provider failures that could silently change agent behavior. Mid-stream upstream aborts no longer look like clean stops, non-Anthropic tool IDs no longer stall Claude Code, and guardrail, billing and usage paths receive targeted fixes. The release is public and signed, but the broad provider matrix still needs workload-specific canaries.",
-      "why_it_matters": "Gateway teams should treat this as a correctness update: a partial answer marked successful or a rewritten tool ID can bypass fallback and strand an agent even when transport health looks normal.",
-      "summary_zh": "LiteLLM 1.108.18 与 1.108.19 LTS 修复多项会悄悄改变 agent 行为的跨 provider 故障。上游中途断流不再被当成正常结束，非 Anthropic 工具 ID 不再卡住 Claude Code，护栏、计费和用量路径也获得定向修复。版本已公开并签名，但 provider 矩阵很大，仍需按实际负载做 canary。",
-      "summary_en": "LiteLLM 1.108.18 and 1.108.19 LTS fix cross-provider failures that could silently change agent behavior. Mid-stream upstream aborts no longer look like clean stops, non-Anthropic tool IDs no longer stall Claude Code, and guardrail, billing and usage paths receive targeted fixes. The release is public and signed, but the broad provider matrix still needs workload-specific canaries.",
-      "why_it_matters_zh": "对模型网关团队来说，这是正确性更新：半截回答若被标成成功，或工具 ID 被改写，都可能绕过 fallback 并卡住 agent，即使传输层看起来正常。",
-      "why_it_matters_en": "Gateway teams should treat this as a correctness update: a partial answer marked successful or a rewritten tool ID can bypass fallback and strand an agent even when transport health looks normal.",
+      "summary": "LiteLLM 1.108.20 LTS rejects non-string Anthropic tool-call IDs before provider dispatch. It preserves provider-reported usage when OpenAI or Azure Responses streams are cancelled and repairs audit queries after team or key updates. These are signed maintainer release notes; the cross-provider paths have not been independently replayed.",
+      "why_it_matters": "For gateway teams, cancellation must not erase spend and historical audit rows must remain readable; both are accountability controls, not cosmetic fixes.",
+      "summary_zh": "LiteLLM 1.108.20 LTS 会在请求发往 Anthropic 前拒绝非字符串 tool-call ID。它还保留 OpenAI 或 Azure Responses 流被取消时的 provider usage，并修复团队或 key 更新后的审计查询。证据来自带签名的官方 release notes；跨 provider 路径尚无独立复跑。",
+      "summary_en": "LiteLLM 1.108.20 LTS rejects non-string Anthropic tool-call IDs before provider dispatch. It preserves provider-reported usage when OpenAI or Azure Responses streams are cancelled and repairs audit queries after team or key updates. These are signed maintainer release notes; the cross-provider paths have not been independently replayed.",
+      "why_it_matters_zh": "对网关团队来说，取消请求不能抹掉费用，历史审计行也必须持续可读；这两项都属于责任追踪，而不是表面修复。",
+      "why_it_matters_en": "For gateway teams, cancellation must not erase spend and historical audit rows must remain readable; both are accountability controls, not cosmetic fixes.",
       "technical_details": {
         "release": "v1.102.0 stable; first stable PyPI artifact uploaded 2026-09-20T04:41:12.814548Z; Git tag commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
         "agent_skills": "serves registered skills through an Agent Skills well-known index and configures Claude Code or Codex with a gateway key",
@@ -87,14 +88,14 @@
           "LITELLM_OFFLINE_MODE",
           "provider, accounting and guardrail fixes"
         ],
-        "evidence_limit": "PR tests reviewed; attack paths and image signatures not independently reproduced.",
+        "evidence_limit": "Signed maintainer release and project tests; cross-provider runtime behavior was not independently reproduced.",
         "update_2026_11_12": "Cosign-signed images; reject six conflicting Azure/OIDC credential fields unless explicitly allowed; maintained-branch backports.",
         "time_basis_2026_11_12": "GitHub release published 2026-11-12T02:07:01Z.",
         "update_2026_11_15": "LTS 1.108.9 backports mixed reasoning preservation, Bedrock S3 media, Kimi K3 reasoning, Vertex caller labels, Responses cache controls and Foundry routing fixes.",
         "time_basis_2026_11_15": "GitHub release published 2026-11-14T22:00:02Z, inside the strict scan window.",
         "release_1_108_11": "LTS: preserve Bedrock guarded_text in system/assistant messages; stop upstream Invoke streams after /v1/messages abort; repair null or truncated Gemini tool arguments and Azure DeepSeek reasoning effort",
         "release_1_110_0": "Mainline release with provider, routing and compatibility changes; evaluated separately from LTS adoption",
-        "stable_version": "1.108.15 LTS",
+        "stable_version": "1.108.20 LTS",
         "update_2026_11_21": "Restores Anthropic tool search on /v1/responses follow-up turns and adds OpenAI input_json content parts to /v1/decisions.",
         "time_basis_2026_11_21": "GitHub release published 2026-11-20T23:43:31Z.",
         "cache": "Fixes rotating Claude Code billing header that breaks caching and inflates tokens; adds GPT-6.2 cache handling",
@@ -107,7 +108,9 @@
         "update_2026_11_25": "1.108.17 LTS: streamed OpenAI tool arguments, chat-latest first turn, Bedrock shared $defs, Agents API spend, Gemini ranges and DeepSeek V4 effort fixes.",
         "latest_lts": "1.108.19",
         "update_2026_11_27": "1.108.18 adds deferred-tool cache preservation and guardrail fixes; 1.108.19 fixes mid-stream aborts reported as stop, rewritten tool IDs, agent billing, reasoning signatures and streamed usage.",
-        "time_basis_2026_11_27": "1.108.18 published 2026-11-26T17:06:13Z; 1.108.19 published 2026-11-26T19:05:42Z."
+        "time_basis_2026_11_27": "1.108.18 published 2026-11-26T17:06:13Z; 1.108.19 published 2026-11-26T19:05:42Z.",
+        "update_2026_11_28": "Rejects non-string Anthropic tool-call IDs; retains provider usage on cancelled OpenAI/Azure Responses streams; fixes GET /audit after team or key updates.",
+        "time_basis_2026_11_28": "Official GitHub release published 2026-11-27T21:37:18Z inside the strict scan window."
       },
       "technical_details_zh": {
         "版本": "v1.102.0 稳定版；首个稳定 PyPI 产物上传于 2026-09-20T04:41:12.814548Z；Git tag 指向 commit 95293834e833b2d2979f87d1bd2a5be45db6728a",
@@ -146,14 +149,14 @@
           "LITELLM_OFFLINE_MODE",
           "provider、计费与护栏修复"
         ],
-        "证据限制": "已阅读 PR 测试；未独立复现攻击路径或镜像验签。",
+        "证据限制": "官方签名 release 与项目测试；跨 provider runtime 行为尚无独立复现。",
         "2026-11-12 更新": "cosign 签名镜像；默认拒绝 6 个冲突的 Azure/OIDC 凭据字段；修复回移到维护分支。",
         "2026-11-12 时间依据": "GitHub release 发布于 2026-11-12T02:07:01Z。",
         "2026-11-15 更新": "LTS 1.108.9 回移混合推理保留、Bedrock S3 媒体、Kimi K3 推理、Vertex 调用方标签、Responses 缓存控制与 Foundry 路由修复。",
         "2026-11-15 时间依据": "GitHub release 发布于 2026-11-14T22:00:02Z，落在严格扫描窗口内。",
         "1.108.11 LTS": "保留 Bedrock system/assistant 的 guarded_text；/v1/messages 中止后停止上游 Invoke 流；修复 Gemini 空值或截断工具参数与 Azure DeepSeek 推理强度",
         "1.110.0 主线": "包含 provider、路由与兼容性变更；与 LTS 采用判断分开评估",
-        "稳定版本": "1.108.15 LTS",
+        "稳定版本": "1.108.20 LTS",
         "2026-11-21 更新": "恢复 Anthropic /v1/responses 后续轮的工具搜索，并让 /v1/decisions 支持 OpenAI input_json 内容片段。",
         "2026-11-21 时间依据": "GitHub release 时间为 2026-11-20T23:43:31Z。",
         "缓存": "修复 Claude Code 轮换 billing header 导致的缓存失效与 token 膨胀；加入 GPT-6.2 缓存处理",
@@ -166,7 +169,9 @@
         "2026-11-25 更新": "1.108.17 LTS：修复 OpenAI 流式工具参数、chat-latest 首轮、Bedrock 共享 $defs、Agents API 费用、Gemini 范围与 DeepSeek V4 effort。",
         "最新 LTS": "1.108.19",
         "2026-11-27 更新": "1.108.18 修复 deferred tool 缓存与护栏；1.108.19 修复中途断流被记为 stop、工具 ID 改写、agent 计费、reasoning signature 与流式用量。",
-        "2026-11-27 时间依据": "1.108.18 发布于 2026-11-26T17:06:13Z；1.108.19 发布于 2026-11-26T19:05:42Z。"
+        "2026-11-27 时间依据": "1.108.18 发布于 2026-11-26T17:06:13Z；1.108.19 发布于 2026-11-26T19:05:42Z。",
+        "2026-11-28 更新": "拒绝非字符串 Anthropic tool-call ID；取消 OpenAI／Azure Responses 流时保留 provider usage；修复团队或 key 更新后的 GET /audit。",
+        "2026-11-28 时间依据": "GitHub 官方 release 发布于 2026-11-27T21:37:18Z，位于严格扫描窗口内。"
       },
       "tags": [
         "litellm",
@@ -215,7 +220,8 @@
         "src-c56a9b81f11e6602",
         "src-2bd2158312c4d19c",
         "src-c26bdc217845572f",
-        "src-1a9fa9ea3375fe61"
+        "src-1a9fa9ea3375fe61",
+        "src-b49f2f9239a32873"
       ],
       "project_ids": [
         "mcp",
@@ -542,6 +548,19 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; provider matrix not independently reproduced"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-20-evidence",
+          "claim_zh": "LiteLLM 1.108.20 LTS 修复取消流的 provider usage、历史审计查询和异常 Anthropic tool-call ID。",
+          "claim_en": "LiteLLM 1.108.20 LTS fixes provider usage on cancelled streams, historical audit queries and invalid Anthropic tool-call IDs.",
+          "source_ids": [
+            "src-b49f2f9239a32873"
+          ],
+          "event_ids": [
+            "ev-20260913-01"
+          ],
+          "relation": "support",
+          "verification": "verified-primary-source; runtime behavior not independently replayed"
         }
       ],
       "changes": [
@@ -854,14 +873,27 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20260913-01-litellm-1-108-20",
+          "kind": "update",
+          "occurred_at": "2026-11-27T21:37:18Z",
+          "discovered_at": "2026-11-28T17:06:57Z",
+          "summary_zh": "LiteLLM LTS 修复取消流计费与历史审计查询",
+          "summary_en": "LiteLLM LTS fixes cancelled-stream billing and historical audit queries",
+          "evidence_ids": [
+            "ev-20260913-01-litellm-1-108-20-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
       ],
       "update_2026_09_28": "LiteLLM 1.103.0 adds Claude Code gateway, RFC 8693 token exchange, MCP client/session controls and routing/budget fixes; stays TRIAL",
-      "next_action_zh": "一天内 canary 中途断流、工具 ID、thinking signature、护栏与 agent 费用，确认 fallback 和账单都按预期。",
-      "next_action_en": "Within one day, canary mid-stream aborts, tool IDs, thinking signatures, guardrails and agent spend; verify fallback and billing.",
-      "short_label_zh": "LiteLLM 1.108.19",
-      "short_label_en": "LiteLLM 1.108.19",
-      "last_reviewed_at": "2026-11-27T17:03:18Z"
+      "next_action_zh": "一天内取消 OpenAI／Azure 流，并回放旧审计行与异常 tool-call ID，核对 usage、账单和审计结果。",
+      "next_action_en": "Within one day, cancel OpenAI/Azure streams and replay old audit rows plus invalid tool-call IDs; verify usage, billing and audit output.",
+      "short_label_zh": "LiteLLM 1.108.20",
+      "short_label_en": "LiteLLM 1.108.20",
+      "last_reviewed_at": "2026-11-28T17:06:57Z"
     }
   ]
 }

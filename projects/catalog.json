@@ -193,7 +193,8 @@
         "src-e106c9a8dcca09d3",
         "src-51c01b0a9ef73c74",
         "src-cc7c15279b456959",
-        "src-3a1fb42fcbe33fb6"
+        "src-3a1fb42fcbe33fb6",
+        "src-dbe1dcd65021a0cd"
       ],
       "current_judgment_event_id": "ev-20260922-04",
       "official_source_ids": [
@@ -227,19 +228,20 @@
         "src-e106c9a8dcca09d3",
         "src-51c01b0a9ef73c74",
         "src-cc7c15279b456959",
-        "src-3a1fb42fcbe33fb6"
+        "src-3a1fb42fcbe33fb6",
+        "src-dbe1dcd65021a0cd"
       ],
-      "last_reviewed_at": "2026-11-27T17:03:18Z",
+      "last_reviewed_at": "2026-11-28T17:06:57Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "0.28.7 加强跨实例接管与持久状态，但取消内置循环和工具调用上限后，外部预算与停止控制成为硬要求。可靠性仍只有 release notes。",
-        "judgment_en": "Version 0.28.7 strengthens cross-instance takeover and durable state, but removing built-in loop and tool-call caps makes external budgets and stop controls mandatory. Reliability evidence remains release-note only.",
-        "next_action_zh": "一天内注入接管故障，并验证外部预算、单次 ticket 与副作用去重。",
-        "next_action_en": "Within one day, inject takeover failures and verify external budgets, single-use tickets and side-effect deduplication.",
+        "judgment_zh": "0.29.0 把托管 Turn 的恢复推进到核对结果与 checkpoint 后续跑，并为不可信 PR 增加 VM 暂存。可靠性与隔离仍只有项目测试，适合受控故障注入。",
+        "judgment_en": "Version 0.29.0 advances managed-Turn recovery to evidence-checked continuation and adds VM staging for untrusted PRs. Reliability and isolation still rely on project tests, favoring controlled fault injection.",
+        "next_action_zh": "一天内强制 Broker 故障转移，并在 VM 中跑不可信 PR，核对副作用去重、checkpoint 恢复与隔离失败行为。",
+        "next_action_en": "Within one day, force Broker failover and run an untrusted PR in a VM; verify side-effect deduplication, checkpoint recovery and isolation failure behavior.",
         "basis_event_ids": [
           "ev-20260922-04"
         ],
-        "reviewed_at": "2026-11-27T17:03:18Z"
+        "reviewed_at": "2026-11-28T17:06:57Z"
       }
     },
     {
@@ -852,7 +854,8 @@
         "src-593d0602a81065fa",
         "src-557fc3f08806f02d",
         "src-62e6753ef6bf3fd4",
-        "src-2bd2158312c4d19c"
+        "src-2bd2158312c4d19c",
+        "src-b49f2f9239a32873"
       ],
       "current_judgment_event_id": "ev-20260913-01",
       "official_source_ids": [
@@ -867,9 +870,10 @@
         "src-593d0602a81065fa",
         "src-557fc3f08806f02d",
         "src-62e6753ef6bf3fd4",
-        "src-2bd2158312c4d19c"
+        "src-2bd2158312c4d19c",
+        "src-b49f2f9239a32873"
       ],
-      "last_reviewed_at": "2026-11-27T17:03:18Z",
+      "last_reviewed_at": "2026-11-28T17:06:57Z",
       "judgment": {
         "recommendation": "TRIAL",
         "judgment_zh": "MCP 生态继续扩大，但 Claude Code 与 LiteLLM 的本轮修复说明 skill 加载、重连和 provider schema 仍需逐部署验证。",
@@ -882,7 +886,7 @@
           "ev-20260917-07",
           "ev-20260814-03"
         ],
-        "reviewed_at": "2026-11-27T17:03:18Z"
+        "reviewed_at": "2026-11-28T17:06:57Z"
       }
     },
     {
@@ -7333,7 +7337,8 @@
         "src-c56a9b81f11e6602",
         "src-2bd2158312c4d19c",
         "src-c26bdc217845572f",
-        "src-1a9fa9ea3375fe61"
+        "src-1a9fa9ea3375fe61",
+        "src-b49f2f9239a32873"
       ],
       "current_judgment_event_id": "ev-20260913-01",
       "official_source_ids": [
@@ -7367,19 +7372,20 @@
         "src-c56a9b81f11e6602",
         "src-2bd2158312c4d19c",
         "src-c26bdc217845572f",
-        "src-1a9fa9ea3375fe61"
+        "src-1a9fa9ea3375fe61",
+        "src-b49f2f9239a32873"
       ],
-      "last_reviewed_at": "2026-11-27T17:03:18Z",
+      "last_reviewed_at": "2026-11-28T17:06:57Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "1.108.19 LTS 修复断流假成功、工具 ID、thinking signature、护栏与计费错误。跨 provider 回归面仍大，适合受控 canary，不宜盲升。",
-        "judgment_en": "Version 1.108.19 LTS fixes false-success streams, tool IDs, thinking signatures, guardrails and billing errors. Cross-provider regression risk remains broad, favoring controlled canaries over blind upgrades.",
-        "next_action_zh": "一天内 canary 断流 fallback、工具路由、护栏与费用记录。",
-        "next_action_en": "Within one day, canary abort fallback, tool routing, guardrails and spend records.",
+        "judgment_zh": "1.108.20 LTS 修复取消流计费、审计查询与异常 tool-call ID。跨 provider 回归面仍大，适合带账单和审计断言的 canary。",
+        "judgment_en": "Version 1.108.20 LTS fixes cancelled-stream billing, audit queries and invalid tool-call IDs. Cross-provider regression risk remains broad, favoring canaries with billing and audit assertions.",
+        "next_action_zh": "一天内取消 OpenAI／Azure 流，并回放旧审计行与异常 tool-call ID，核对 usage、账单和审计结果。",
+        "next_action_en": "Within one day, cancel OpenAI/Azure streams and replay old audit rows plus invalid tool-call IDs; verify usage, billing and audit output.",
         "basis_event_ids": [
           "ev-20260913-01"
         ],
-        "reviewed_at": "2026-11-27T17:03:18Z"
+        "reviewed_at": "2026-11-28T17:06:57Z"
       },
       "changes": []
     },
@@ -9801,7 +9807,7 @@
       "official_source_ids": [
         "src-5a5ba5d784f0202e"
       ],
-      "last_reviewed_at": "2026-11-21T16:59:42Z",
+      "last_reviewed_at": "2026-11-28T17:06:57Z",
       "judgment": {
         "recommendation": "WATCH",
         "judgment_zh": "厂商内部评测显示防护显著增强，但缺少独立复现与公开攻击工件。",
@@ -9811,7 +9817,7 @@
         "basis_event_ids": [
           "ev-20261120-02"
         ],
-        "reviewed_at": "2026-11-21T16:59:42Z"
+        "reviewed_at": "2026-11-28T17:06:57Z"
       }
     },
     {
@@ -9831,7 +9837,7 @@
       "official_source_ids": [
         "src-5fcd8ead51bf2926"
       ],
-      "last_reviewed_at": "2026-11-21T16:59:42Z",
+      "last_reviewed_at": "2026-11-28T17:06:57Z",
       "judgment": {
         "recommendation": "WATCH",
         "judgment_zh": "99 道公开题为药物化学推理提供了可审计基线，但当前结果来自发布方且不代表临床能力。",
@@ -9841,7 +9847,7 @@
         "basis_event_ids": [
           "ev-20261120-03"
         ],
-        "reviewed_at": "2026-11-21T16:59:42Z"
+        "reviewed_at": "2026-11-28T17:06:57Z"
       }
     },
     {
@@ -9856,24 +9862,26 @@
       ],
       "source_ids": [
         "src-1e52228e1c5c3f80",
-        "src-824c03b970f1dc58"
+        "src-824c03b970f1dc58",
+        "src-ca41677581ff75cb",
+        "src-cb62bed255a40038"
       ],
       "current_judgment_event_id": "ev-20261120-04",
       "official_source_ids": [
         "src-1e52228e1c5c3f80",
         "src-824c03b970f1dc58"
       ],
-      "last_reviewed_at": "2026-11-21T16:59:42Z",
+      "last_reviewed_at": "2026-11-28T17:06:57Z",
       "judgment": {
         "recommendation": "TRIAL",
-        "judgment_zh": "Apache 2.0 权重、约 20GB checkpoint 与 32GB Apple Silicon 路径让本地多模态实验具备现实门槛。",
-        "judgment_en": "Apache 2.0 weights, an approximately 20GB checkpoint and a 32GB Apple Silicon path make local multimodal testing practical.",
-        "next_action_zh": "一天内在 32GB 机器上跑公开 checkpoint，测首 token 延迟、内存峰值、长上下文退化与图像任务质量。",
-        "next_action_en": "Within one day, run the public checkpoint on a 32GB machine and measure time to first token, peak memory, long-context degradation and image-task quality.",
+        "judgment_zh": "开放权重与多种本地运行路径已经可用，独立实测也确认本地可跑。办公、代码与数据任务表现不均，且出现失控 token 成本，必须按真实负载验收。",
+        "judgment_en": "Open weights and multiple local runtimes are usable, and independent tests confirm local execution. Office, coding and data quality is uneven, with runaway-token cost requiring workload-specific acceptance tests.",
+        "next_action_zh": "一天内在目标机器跑 10 个真实办公、代码和数据任务，记录成功率、TTFT、峰值内存、总 token 与循环失控。",
+        "next_action_en": "Within one day, run 10 real office, coding and data tasks on target hardware; record success, TTFT, peak memory, total tokens and runaway loops.",
         "basis_event_ids": [
           "ev-20261120-04"
         ],
-        "reviewed_at": "2026-11-21T16:59:42Z"
+        "reviewed_at": "2026-11-28T17:06:57Z"
       }
     },
     {
@@ -9893,7 +9901,7 @@
       "official_source_ids": [
         "src-f93a3ccd925110f0"
       ],
-      "last_reviewed_at": "2026-11-21T16:59:42Z",
+      "last_reviewed_at": "2026-11-28T17:06:57Z",
       "judgment": {
         "recommendation": "WATCH",
         "judgment_zh": "四组论文与代码给出了可复查入口，但“模型发现”贡献和攻击效果仍缺少独立验证。",
@@ -9903,7 +9911,7 @@
         "basis_event_ids": [
           "ev-20261120-05"
         ],
-        "reviewed_at": "2026-11-21T16:59:42Z"
+        "reviewed_at": "2026-11-28T17:06:57Z"
       }
     },
     {
@@ -11109,9 +11117,43 @@
         ],
         "reviewed_at": "2026-11-27T17:03:18Z"
       }
+    },
+    {
+      "id": "kintsugi-27b",
+      "name_zh": "Kintsugi-27B",
+      "name_en": "Kintsugi-27B",
+      "type": "open-weight-model",
+      "aliases": [
+        "Kintsugi-27B"
+      ],
+      "pattern": "Kintsugi-27B",
+      "event_ids": [
+        "ev-20261120-14"
+      ],
+      "source_ids": [
+        "src-c420590c3dff1495",
+        "src-95c441079c793842"
+      ],
+      "current_judgment_event_id": "ev-20261120-14",
+      "official_source_ids": [
+        "src-c420590c3dff1495",
+        "src-95c441079c793842"
+      ],
+      "last_reviewed_at": "2026-11-28T17:06:57Z",
+      "judgment": {
+        "recommendation": "TRIAL",
+        "judgment_zh": "公开权重与运行包把 27B 长上下文模型带到 12 GB GPU，但依赖 fork-only runtime，性能也只有作者自测。适合一天内本地验证，不适合直接进生产。",
+        "judgment_en": "Public weights and bundles bring a long-context 27B model to a 12 GB GPU, but it depends on a fork-only runtime and publisher-run benchmarks. It suits a one-day local trial, not direct production use.",
+        "next_action_zh": "一天内用公开 bundle 在 12–16 GB GPU 跑 10 个代码与工具任务，记录成功率、异常 tool call、显存和吞吐。",
+        "next_action_en": "Within one day, use the public bundle on a 12-16 GB GPU for 10 coding and tool tasks; record success, malformed tool calls, memory and throughput.",
+        "basis_event_ids": [
+          "ev-20261120-14"
+        ],
+        "reviewed_at": "2026-11-28T17:06:57Z"
+      }
     }
   ],
-  "last_updated": "2026-11-28",
+  "last_updated": "2026-11-29",
   "total_projects": 310,
-  "last_updated_at": "2026-11-27T17:03:18Z"
+  "last_updated_at": "2026-11-28T17:06:57Z"
 }

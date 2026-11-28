@@ -289,41 +289,49 @@
     },
     {
       "event_id": "ev-20261120-04",
-      "title": "Thinking Machines releases Inkling 2 Mini for local multimodal inference",
-      "title_zh": "Thinking Machines 发布本地多模态模型 Inkling 2 Mini",
+      "title": "Independent tests find Inkling 2 Mini practical locally but uneven on tasks",
+      "title_zh": "独立实测显示 Inkling 2 Mini 本地可跑但能力不均",
       "category": "foundation-model",
       "organization": [
         "Thinking Machines Lab"
       ],
       "published_at": "2026-11-20",
       "first_seen_at": "2026-11-21T16:59:42Z",
-      "last_updated_at": "2026-11-21T16:59:42Z",
+      "last_updated_at": "2026-11-28T17:06:57Z",
       "source_type": "hugging_face",
       "primary_source": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
       "secondary_sources": [
-        "https://huggingface.co/blog/inkling2mini"
+        "https://huggingface.co/blog/inkling2mini",
+        "https://plotly.com/blog/inkling-2-mini-plotly-data-analytics-bench/",
+        "https://itlab.cl/en/inkling-2-mini-itlab-bench-swift/"
       ],
-      "summary": "Thinking Machines Lab released Apache-2.0 weights for Inkling 2 Mini, a 26B-parameter multimodal mixture-of-experts model with about 3B active parameters per token and a 1M-token context window. The roughly 20GB checkpoint targets Apple silicon with at least 32GB memory and single-GPU systems, with support across Transformers, SGLang, vLLM and local runtimes. Most quality claims remain publisher-run.",
-      "summary_en": "Thinking Machines Lab released Apache-2.0 weights for Inkling 2 Mini, a 26B-parameter multimodal mixture-of-experts model with about 3B active parameters per token and a 1M-token context window. The roughly 20GB checkpoint targets Apple silicon with at least 32GB memory and single-GPU systems, with support across Transformers, SGLang, vLLM and local runtimes. Most quality claims remain publisher-run.",
-      "summary_zh": "Thinking Machines Lab 以 Apache 2.0 发布 Inkling 2 Mini 权重。它是约 260 亿参数、每个 token 激活约 30 亿参数的多模态 MoE，支持 100 万 token 上下文。约 20GB 的 checkpoint 面向 32GB 以上 Apple silicon 与单 GPU，并覆盖 Transformers、SGLang、vLLM 和本地运行时。多数质量结论仍来自发布方。",
-      "why_it_matters": "For local-model and RAG teams, a compact multimodal model with broad day-zero runtime support is immediately testable on developer hardware. The looped architecture saves stored weights but still executes repeated layer visits, so memory fit does not imply low latency.",
-      "why_it_matters_en": "For local-model and RAG teams, a compact multimodal model with broad day-zero runtime support is immediately testable on developer hardware. The looped architecture saves stored weights but still executes repeated layer visits, so memory fit does not imply low latency.",
-      "why_it_matters_zh": "对本地模型与 RAG 团队来说，这是一款可立即在开发者硬件上验证、运行时支持较完整的多模态模型。循环层减少的是存储权重，推理仍要重复执行多次；能放进内存不等于延迟低。",
+      "summary": "Inkling 2 Mini is a roughly 26B-parameter looped MoE model with about 3B active parameters per token and public Apache 2.0 weights. Independent tests show it runs on local 16–64 GB hardware, but task quality varies: Plotly found strong data-analysis results with a costly runaway loop, while ITLab found weaker office and coding performance. These are single-run evaluations with different harnesses.",
+      "summary_en": "Inkling 2 Mini is a roughly 26B-parameter looped MoE model with about 3B active parameters per token and public Apache 2.0 weights. Independent tests show it runs on local 16–64 GB hardware, but task quality varies: Plotly found strong data-analysis results with a costly runaway loop, while ITLab found weaker office and coding performance. These are single-run evaluations with different harnesses.",
+      "summary_zh": "Inkling 2 Mini 是约 26B 参数的循环 MoE 模型，每个 token 激活约 3B 参数，权重采用 Apache 2.0。独立实测确认它可在 16–64 GB 本地硬件运行，但任务质量不均：Plotly 的数据分析成绩较好，却出现高成本失控循环；ITLab 的办公与代码任务较弱。两组结果都只跑了一次，且测试框架不同。",
+      "why_it_matters": "For local-model teams, the model is operationally accessible, but quality and runaway-token risk now need workload-specific acceptance tests rather than publisher averages.",
+      "why_it_matters_en": "For local-model teams, the model is operationally accessible, but quality and runaway-token risk now need workload-specific acceptance tests rather than publisher averages.",
+      "why_it_matters_zh": "对本地模型团队来说，它已经具备可运行性，但任务质量与失控 token 风险必须按真实工作负载验收，不能只看厂商平均分。",
       "technical_details": {
         "architecture": "24 physical decoder layers; middle 12 repeat three times for 48 layer applications; 8 of 128 experts per token",
         "size": "about 26B total, about 3B active per token; roughly 20GB mixed NVFP4/MXFP8 checkpoint",
         "context": "1M tokens; text and image input, text output",
         "availability": "Apache 2.0 weights; Apple silicon 32GB+, DGX Spark and other 32GB+ accelerators; multiple serving frameworks",
-        "evidence_limit": "publisher benchmarks and informal tests dominate; independent latency and task-quality evidence is limited",
-        "time_basis": "Model card and Hugging Face article give November 20, 2026 without time; no hourly-boundary claim is made"
+        "evidence_limit": "Independent single-run evaluations with different tasks, runtimes and reasoning settings; scores are not directly comparable.",
+        "time_basis": "Model card and Hugging Face article give November 20, 2026 without time; no hourly-boundary claim is made",
+        "independent_plotly": "36/43 hosted; 33/43 on an M4 Pro Mac mini; one runaway loop drove 179M tokens and a 69-second median per question in the hosted run.",
+        "independent_itlab": "49-case ITLab Bench on a 16 GB RX 9070 XT: 72.4 low and 68.7 medium, below Swift Flash Next 94.6; failed to compile the M10 software project.",
+        "time_basis_2026_11_29": "Plotly published 2026-11-21; ITLab published 2026-11-24; both were consumed in the due seven-day review."
       },
       "technical_details_zh": {
         "架构": "24 个物理 decoder layer；中间 12 层重复三次，共执行 48 层；每个 token 从 128 个专家中激活 8 个",
         "规模": "总参数约 260 亿，每 token 激活约 30 亿；混合 NVFP4/MXFP8 checkpoint 约 20GB",
         "上下文": "100 万 token；输入文本和图像，输出文本",
         "开放范围": "Apache 2.0 权重；支持 32GB 以上 Apple silicon、DGX Spark 及其他 32GB 以上加速器；多种推理框架",
-        "证据限制": "以发布方 benchmark 和体验测试为主；独立延迟与任务质量证据有限",
-        "时间依据": "模型卡和 Hugging Face 文章只给出 2026-11-20，没有时分；不声称通过逐小时边界核验"
+        "证据限制": "两组独立测试都只有单次运行，任务、runtime 与 reasoning 设置不同，分数不能直接横比。",
+        "时间依据": "模型卡和 Hugging Face 文章只给出 2026-11-20，没有时分；不声称通过逐小时边界核验",
+        "Plotly 独立实测": "托管环境 36/43；M4 Pro Mac mini 本地 33/43；托管运行中一次失控循环把总量推到 179M token，中位每题 69 秒。",
+        "ITLab 独立实测": "16 GB RX 9070 XT 上跑 49 例：low 72.4、medium 68.7，低于 Swift Flash Next 94.6；M10 软件项目未能编译。",
+        "2026-11-29 时间依据": "Plotly 发布于 2026-11-21；ITLab 发布于 2026-11-24；本次到期七日复核纳入。"
       },
       "tags": [
         "open-weight",
@@ -342,11 +350,13 @@
       "event_fingerprint": "thinking-machines-inkling-2-mini-open-weights",
       "short_label_zh": "Inkling 2 Mini",
       "short_label_en": "Inkling 2 Mini",
-      "next_action_zh": "一天内在 32GB Apple silicon 上跑 20 个图文与代码任务，记录 TTFT、吞吐、峰值内存和成功率。",
-      "next_action_en": "Within one day, run 20 vision-text and coding tasks on 32GB Apple silicon, recording TTFT, throughput, peak memory and success rate.",
+      "next_action_zh": "一天内在目标机器跑 10 个真实办公、代码和数据任务，记录成功率、TTFT、峰值内存、总 token 与循环失控。",
+      "next_action_en": "Within one day, run 10 real office, coding and data tasks on target hardware; record success, TTFT, peak memory, total tokens and runaway loops.",
       "source_ids": [
         "src-1e52228e1c5c3f80",
-        "src-824c03b970f1dc58"
+        "src-824c03b970f1dc58",
+        "src-ca41677581ff75cb",
+        "src-cb62bed255a40038"
       ],
       "project_ids": [
         "inkling-2-mini"
@@ -371,6 +381,20 @@
           ],
           "relation": "support",
           "verification": "verified-primary-source; performance claims not independently reproduced"
+        },
+        {
+          "id": "ev-20261120-04-independent-tests-evidence",
+          "claim_zh": "Plotly 与 ITLab 的单次独立测试确认 Inkling 2 Mini 可在本地硬件运行，但数据分析、办公与代码任务表现不均，并存在失控 token 成本。",
+          "claim_en": "Single-run independent tests by Plotly and ITLab confirm local execution but show uneven data, office and coding quality plus runaway-token cost.",
+          "source_ids": [
+            "src-ca41677581ff75cb",
+            "src-cb62bed255a40038"
+          ],
+          "event_ids": [
+            "ev-20261120-04"
+          ],
+          "relation": "support",
+          "verification": "independent single-run evaluations; harnesses differ"
         }
       ],
       "changes": [
@@ -386,8 +410,22 @@
           ],
           "historical": false,
           "importance": "major"
+        },
+        {
+          "id": "ev-20261120-04-independent-tests",
+          "kind": "update",
+          "occurred_at": "2026-11-24",
+          "discovered_at": "2026-11-28T17:06:57Z",
+          "summary_zh": "独立实测确认本地可跑，但办公、代码与成本表现不均",
+          "summary_en": "Independent tests confirm local use but uneven office, coding and cost behavior",
+          "evidence_ids": [
+            "ev-20261120-04-independent-tests-evidence"
+          ],
+          "historical": false,
+          "importance": "major"
         }
-      ]
+      ],
+      "last_reviewed_at": "2026-11-28T17:06:57Z"
     },
     {
       "event_id": "ev-20261120-05",
@@ -1294,6 +1332,122 @@
           "summary_en": "AI SAGE publishes GigaChat4 708B weights with 41B active parameters",
           "evidence_ids": [
             "ev-20261120-13-evidence-release"
+          ],
+          "historical": false,
+          "importance": "major"
+        }
+      ]
+    },
+    {
+      "event_id": "ev-20261120-14",
+      "title": "Kintsugi-27B squeezes Qwen3.8-27B into a 12 GB GPU",
+      "title_zh": "Kintsugi-27B 将 Qwen3.8-27B 压进 12 GB GPU",
+      "category": "open-source",
+      "organization": [
+        "independent"
+      ],
+      "published_at": "2026-11-20T19:53:25Z",
+      "first_seen_at": "2026-11-28T17:06:57Z",
+      "last_updated_at": "2026-11-28T17:06:57Z",
+      "last_reviewed_at": "2026-11-28T17:06:57Z",
+      "source_type": "hugging_face",
+      "primary_source": "https://huggingface.co/CaryPalmer/Kintsugi-27B",
+      "secondary_sources": [
+        "https://github.com/professorpalmer/Kintsugi-27B"
+      ],
+      "summary_en": "Kintsugi-27B is a 2.47-bits-per-weight Qwen3.8-27B build designed to keep a 262,144-token context on one 12 GB GPU through a custom llama.cpp fork. Apache 2.0 weights, runtime bundles, hashes and benchmark scripts are public. The author reports near-BF16 agent results, but controlled independent reproduction is still missing.",
+      "summary": "Kintsugi-27B is a 2.47-bits-per-weight Qwen3.8-27B build designed to keep a 262,144-token context on one 12 GB GPU through a custom llama.cpp fork. Apache 2.0 weights, runtime bundles, hashes and benchmark scripts are public. The author reports near-BF16 agent results, but controlled independent reproduction is still missing.",
+      "summary_zh": "Kintsugi-27B 是 Qwen3.8-27B 的 2.47 bits-per-weight 版本，依靠定制 llama.cpp fork，把 262,144 token 上下文放进一张 12 GB GPU。Apache 2.0 权重、runtime bundle、哈希和 benchmark 脚本均已公开。作者报告其 agent 表现接近 BF16，但尚无受控独立复现。",
+      "why_it_matters_en": "For local-agent teams, a full 27B model with long context becomes testable on commodity GPUs, but the fork-only runtime and publisher-run benchmarks create operational and evidence risk.",
+      "why_it_matters": "For local-agent teams, a full 27B model with long context becomes testable on commodity GPUs, but the fork-only runtime and publisher-run benchmarks create operational and evidence risk.",
+      "why_it_matters_zh": "对本地 agent 团队来说，完整 27B 模型和长上下文首次进入普通 GPU 的可测范围；但 fork-only runtime 与作者自测带来运维和证据风险。",
+      "technical_details": {
+        "base_model": "Qwen/Qwen3.8-27B",
+        "quantization": "2.47 bits per weight",
+        "context": "262,144 tokens",
+        "hardware": "12 GB NVIDIA GPU; Apple Silicon path tested on M5 Max 48 GB; AMD path remains release candidate",
+        "availability": "10.5 GB public GGUF plus Windows/Linux bundles and a Mac conversion path",
+        "license": "Apache-2.0",
+        "runtime_limit": "Requires the author's llama.cpp fork with EXL3 trellis kernels; stock llama.cpp, Ollama and LM Studio cannot load it",
+        "publisher_benchmarks": "AppWorld 294/336 vs BF16 293; BFCL 505/800 vs BF16 461 with differing setup; 24/24 needles and 20/20 exact copies at 245k",
+        "adoption_signal": "22,861 downloads and 187 likes at verification time",
+        "file_hash": "Kintsugi-27B-12G.gguf sha256 0510bae82445dc53dbc7d0d842d8b7e146b8eafce0837e39b157d411e48c8a74",
+        "evidence_limit": "Publisher-run benchmarks, mostly one run; BFCL setup differs and no controlled independent reproduction was found",
+        "time_basis": "Repository created 2026-11-20T19:53:25Z and materially updated 2026-11-27T14:07:51Z, four minutes after the retrieval overlap start"
+      },
+      "technical_details_zh": {
+        "底座模型": "Qwen/Qwen3.8-27B",
+        "量化": "每权重 2.47 bit",
+        "上下文": "262,144 token",
+        "硬件": "12 GB NVIDIA GPU；Apple Silicon 路径仅在 M5 Max 48 GB 验证；AMD 路径仍是 release candidate",
+        "可用性": "10.5 GB 公开 GGUF、Windows／Linux bundle 与 Mac 转换路径",
+        "许可证": "Apache-2.0",
+        "runtime 限制": "必须使用作者的 llama.cpp fork 与 EXL3 trellis kernel；stock llama.cpp、Ollama 和 LM Studio 无法加载",
+        "作者自测": "AppWorld 294/336，对照 BF16 293；BFCL 505/800，对照 BF16 461，但设置不同；245k 上下文 24/24 needles 与 20/20 精确复制",
+        "采用信号": "核验时 22,861 downloads、187 likes",
+        "文件哈希": "Kintsugi-27B-12G.gguf sha256 0510bae82445dc53dbc7d0d842d8b7e146b8eafce0837e39b157d411e48c8a74",
+        "证据限制": "benchmark 由作者运行，多数只有一次；BFCL 设置不同，未找到受控独立复现",
+        "时间依据": "仓库创建于 2026-11-20T19:53:25Z，2026-11-27T14:07:51Z 实质更新，比 overlap 起点晚 4 分钟"
+      },
+      "tags": [
+        "qwen3.8",
+        "quantization",
+        "local-inference",
+        "long-context",
+        "llama.cpp",
+        "gguf"
+      ],
+      "technical_impact": 3,
+      "engineering_value": 4,
+      "adoption_signal": 3,
+      "maturity": 2,
+      "verification_cost": 2,
+      "risk": 3,
+      "recommendation": "TRIAL",
+      "event_fingerprint": "kintsugi-27b-qwen3-8-12gb",
+      "late_discovery": true,
+      "short_label_zh": "Kintsugi-27B",
+      "short_label_en": "Kintsugi-27B",
+      "next_action_zh": "一天内用公开 bundle 在 12–16 GB GPU 跑 10 个代码与工具任务，记录成功率、异常 tool call、显存和吞吐。",
+      "next_action_en": "Within one day, use the public bundle on a 12-16 GB GPU for 10 coding and tool tasks; record success, malformed tool calls, memory and throughput.",
+      "source_ids": [
+        "src-c420590c3dff1495",
+        "src-95c441079c793842"
+      ],
+      "project_ids": [
+        "kintsugi-27b"
+      ],
+      "scenario_ids": [
+        "local",
+        "agents"
+      ],
+      "evidence_stage": "frontier",
+      "evidence": [
+        {
+          "id": "ev-20261120-14-release-evidence",
+          "claim_zh": "Kintsugi-27B 公开 10.5 GB GGUF、定制 runtime 与复现材料，作者报告 12 GB GPU 可运行 262k 上下文；性能仍待独立复现。",
+          "claim_en": "Kintsugi-27B publishes a 10.5 GB GGUF, custom runtime and reproducibility materials, with publisher-reported 262k context on a 12 GB GPU; performance awaits independent reproduction.",
+          "source_ids": [
+            "src-c420590c3dff1495",
+            "src-95c441079c793842"
+          ],
+          "event_ids": [
+            "ev-20261120-14"
+          ],
+          "relation": "support",
+          "verification": "primary artifacts verified; performance publisher-reported"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ev-20261120-14-release",
+          "kind": "new",
+          "occurred_at": "2026-11-27T14:07:51Z",
+          "discovered_at": "2026-11-28T17:06:57Z",
+          "summary_zh": "Kintsugi-27B 公开 12 GB GPU 长上下文运行包",
+          "summary_en": "Kintsugi-27B publishes a long-context 12 GB GPU bundle",
+          "evidence_ids": [
+            "ev-20261120-14-release-evidence"
           ],
           "historical": false,
           "importance": "major"
